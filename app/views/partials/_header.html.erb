@@ -1,0 +1,20 @@
+<!--page regroupant tout les élement invariants du site : logo, menu de recherche, message flash -->
+<div class="container" id="general_header_container">
+</div>
+<div id="general_header">
+  <a id="index_button" href="/" ><%= image_tag "accueil.png" %></a>
+    <div id="right_part">
+      <% if flash[:success] %>
+          <div class="info success" id="flash"><%= flash[:success] %></div>
+        <% elsif flash[:error] %>
+          <div class="info error" id="flash"><%= flash[:error] %></div>
+        <% end %>
+    <div id="search_menu">
+      <%= form_for :search do |f| %>
+        <%= f.text_field :research , placeholder: "Rechercher" , id: "search_field" %>
+        <%= f.submit "", type: "button", id: "search_submit" %>
+      <% end %>
+    </div>
+    </div>
+
+</div>

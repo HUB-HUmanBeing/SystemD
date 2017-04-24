@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HUB</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="global_container">
+    <%= render "partials/header" %> <!--  Affiche le menu en haut à gauche  -->
+    <%= render "partials/session_pannel" %> <!--  affiche le menu session en haut centré  -->
+    <% if user_signed_in? %>             <!-- affiche le menu de navigation   -->
+      <%= render "partials/general_menu" %>
+    <% end %>
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

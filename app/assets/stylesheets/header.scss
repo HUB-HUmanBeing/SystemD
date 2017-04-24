@@ -1,0 +1,112 @@
+$margin_color : rgb(230, 230, 230);
+$container_color : rgb(245, 245, 245);
+$onglet_color : rgb(51, 51, 51);
+$success_color : rgb(49, 122, 76);
+$error_color : rgb(119, 64, 55);
+$clear_text_color : $margin_color;
+* {
+  //bordures apparentes pour travailler
+  //border:  1px solid rgb(182, 182, 182);
+
+  body {
+   margin: 0px;
+   min-height: 100%;
+   background-color : $margin_color ;
+
+   .info{
+
+   }
+   .container{
+     background-color: $onglet_color;
+   }
+   // the central container
+   #global_container {
+      position: relative;
+      width: 1000px;
+      min-height: 1000px;
+      max-height: 100%;
+      margin: 0 auto;
+      background-color: $container_color;
+
+//on top right, with the home button and search menu and info-flash dispalyer
+      #general_header_container {
+        position: relative;
+        border-radius: 10px 0px 0px 10px;
+        top: 20px;
+        height: 100px;
+        left: 600px;
+        right: -1000px;
+
+      }
+
+      #general_header {
+        position: absolute;
+        top: 20px;
+        right: 0px;
+        height: 100px;
+        width: 400px;
+
+
+        #index_button img {
+          position: relative;
+          top: 7px;
+          left: 7px;
+          display: inline-block;
+
+        }
+        #index_button a {
+          height: 90px;
+        }
+        #right_part{
+          display: inline-block;
+          height: 100px;
+          left: 100px;
+          position: absolute;
+          width: 300px;
+
+          #flash{
+            display: block;
+            margin: auto;
+          }
+          form{
+            position: absolute;
+            bottom: 8px;
+            width: 275px;
+            margin: 10px;
+            height: 30px;
+            border: 1px solid $margin_color;
+            border-radius: 10px;
+            #search_field{
+              background-color: $margin_color;
+              height: inherit;
+              width: 230px;
+              border-radius: 10px 0px 0px 10px;
+              margin: 0px;
+            }
+            #search_submit{
+              background-image: url(loupe.png);
+              background-repeat: no-repeat;
+              background-position: center;
+              height: inherit;
+              background-color: inherit;
+              width: 30px;
+              margin: 0px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+//css for the classes of the info-flash displayer
+.info {
+  text-align: center;
+  font-size: 12px;
+}
+.success{
+  color: $success_color;
+}
+.error {
+  color: $error_color;
+}
