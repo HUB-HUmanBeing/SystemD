@@ -1,0 +1,3 @@
+[2017-04-30 18:11:11] request.INFO: Matched route "homepage". {"route":"homepage","route_parameters":{"_controller":"AppBundle\\Controller\\DefaultController::indexAction","_route":"homepage"},"request_uri":"http://localhost/HUmanBeing/web/app_dev.php/","method":"GET"} []
+[2017-04-30 18:11:11] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
+[2017-04-30 18:11:12] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"b6d0d9","_route":"_wdt"},"request_uri":"http://localhost/HUmanBeing/web/app_dev.php/_wdt/b6d0d9","method":"GET"} []
