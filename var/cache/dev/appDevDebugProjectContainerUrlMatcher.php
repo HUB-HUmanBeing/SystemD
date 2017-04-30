@@ -105,6 +105,20 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // test_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'test_homepage');
+            }
+
+            return array (  '_controller' => 'TestBundle\\Controller\\DefaultController::indexAction',  '_route' => 'test_homepage',);
+        }
+
+        // test_coucou
+        if (0 === strpos($pathinfo, '/test') && preg_match('#^/test/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'test_coucou')), array (  '_controller' => 'TestBundle\\Controller\\DefaultController::coucouAction',));
+        }
+
         // homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {

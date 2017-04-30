@@ -2813,6 +2813,8 @@ return array(
     'Symfony\\Polyfill\\Util\\BinaryNoFuncOverload' => $vendorDir . '/symfony/polyfill-util/BinaryNoFuncOverload.php',
     'Symfony\\Polyfill\\Util\\BinaryOnFuncOverload' => $vendorDir . '/symfony/polyfill-util/BinaryOnFuncOverload.php',
     'Symfony\\Polyfill\\Util\\TestListener' => $vendorDir . '/symfony/polyfill-util/TestListener.php',
+    'TestBundle\\Controller\\DefaultController' => $baseDir . '/src/TestBundle/Controller/DefaultController.php',
+    'TestBundle\\TestBundle' => $baseDir . '/src/TestBundle/TestBundle.php',
     'Tests\\AppBundle\\Controller\\DefaultControllerTest' => $baseDir . '/tests/AppBundle/Controller/DefaultControllerTest.php',
     'Twig_Autoloader' => $vendorDir . '/twig/twig/lib/Twig/Autoloader.php',
     'Twig_BaseNodeVisitor' => $vendorDir . '/twig/twig/lib/Twig/BaseNodeVisitor.php',
