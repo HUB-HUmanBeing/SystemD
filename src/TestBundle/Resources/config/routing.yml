@@ -1,7 +1,0 @@
-test_homepage:
-    path:     /
-    defaults: { _controller: TestBundle:Default:index }
-
-test_coucou:
-    path:   /test/{name}
-    defaults: {_controller: TestBundle:Default:coucou}
