@@ -230,8 +230,9 @@ class AutowirePassTest extends TestCase
         $pass = new AutowirePass();
         $pass->process($container);
 
-        $this->assertCount(1, $container->getDefinition('coop_tilleuls')->getArguments());
+        $this->assertCount(2, $container->getDefinition('coop_tilleuls')->getArguments());
         $this->assertEquals('autowired.symfony\component\dependencyinjection\tests\compiler\dunglas', $container->getDefinition('coop_tilleuls')->getArgument(0));
+        $this->assertEquals('autowired.symfony\component\dependencyinjection\tests\compiler\dunglas', $container->getDefinition('coop_tilleuls')->getArgument(1));
 
         $dunglasDefinition = $container->getDefinition('autowired.Symfony\Component\DependencyInjection\Tests\Compiler\Dunglas');
         $this->assertEquals(__NAMESPACE__.'\Dunglas', $dunglasDefinition->getClass());
@@ -493,6 +494,21 @@ class AutowirePassTest extends TestCase
         $this->assertTrue($container->hasDefinition('bar'));
     }
 
+    public function testProcessDoesNotTriggerDeprecations()
+    {
+        $container = new ContainerBuilder();
+        $container->register('deprecated', 'Symfony\Component\DependencyInjection\Tests\Fixtures\DeprecatedClass')->setDeprecated(true);
+        $container->register('foo', __NAMESPACE__.'\Foo');
+        $container->register('bar', __NAMESPACE__.'\Bar')->setAutowired(true);
+
+        $pass = new AutowirePass();
+        $pass->process($container);
+
+        $this->assertTrue($container->hasDefinition('deprecated'));
+        $this->assertTrue($container->hasDefinition('foo'));
+        $this->assertTrue($container->hasDefinition('bar'));
+    }
+
     public function testEmptyStringIsKept()
     {
         $container = new ContainerBuilder();
@@ -640,7 +656,7 @@ class Dunglas
 
 class LesTilleuls
 {
-    public function __construct(Dunglas $k)
+    public function __construct(Dunglas $j, Dunglas $k)
     {
     }
 }

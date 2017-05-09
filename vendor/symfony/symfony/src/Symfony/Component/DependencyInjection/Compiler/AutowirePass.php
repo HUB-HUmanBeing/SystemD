@@ -134,7 +134,8 @@ class AutowirePass implements CompilerPassInterface
                 }
 
                 if (isset($this->autowired[$typeHint->name])) {
-                    return $this->autowired[$typeHint->name] ? new Reference($this->autowired[$typeHint->name]) : null;
+                    $arguments[$index] = $this->autowired[$typeHint->name] ? new Reference($this->autowired[$typeHint->name]) : null;
+                    continue;
                 }
 
                 if (null === $this->types) {
@@ -325,9 +326,28 @@ class AutowirePass implements CompilerPassInterface
 
         $class = $this->container->getParameterBag()->resolveValue($class);
 
+        if ($deprecated = $definition->isDeprecated()) {
+            $prevErrorHandler = set_error_handler(function ($level, $message, $file, $line) use (&$prevErrorHandler) {
+                return (E_USER_DEPRECATED === $level || !$prevErrorHandler) ? false : $prevErrorHandler($level, $message, $file, $line);
+            });
+        }
+
+        $e = null;
+
         try {
             $reflector = new \ReflectionClass($class);
-        } catch (\ReflectionException $e) {
+        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
+        }
+
+        if ($deprecated) {
+            restore_error_handler();
+        }
+
+        if (null !== $e) {
+            if (!$e instanceof \ReflectionException) {
+                throw $e;
+            }
             $reflector = false;
         }
 

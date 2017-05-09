@@ -75,6 +75,11 @@ class ScriptHandler
                 return;
             }
         }
+
+        if (!static::useSymfonyAutoloader($options)) {
+            $autoloadDir = $options['vendor-dir'];
+        }
+
         if (!static::hasDirectory($event, 'symfony-app-dir', $autoloadDir, 'build bootstrap file')) {
             return;
         }
@@ -107,11 +112,11 @@ class ScriptHandler
     protected static function prepareDeploymentTargetHeroku(Event $event)
     {
         $options = static::getOptions($event);
-        if (($stack = getenv('STACK')) && ($stack == 'cedar' || $stack == 'cedar-14')) {
+        if (($stack = getenv('STACK')) && ($stack == 'cedar-14' || $stack == 'heroku-16')) {
             $fs = new Filesystem();
             if (!$fs->exists('Procfile')) {
                 $event->getIO()->write('Heroku deploy detected; creating default Procfile for "web" dyno');
-                $fs->dumpFile('Procfile', sprintf('web: $(composer config bin-dir)/heroku-php-apache2 %s/', $options['symfony-web-dir']));
+                $fs->dumpFile('Procfile', sprintf('web: heroku-php-apache2 %s/', $options['symfony-web-dir']));
             }
         }
     }
@@ -377,6 +382,7 @@ EOF;
         $options['symfony-cache-warmup'] = getenv('SYMFONY_CACHE_WARMUP') ?: $options['symfony-cache-warmup'];
 
         $options['process-timeout'] = $event->getComposer()->getConfig()->get('process-timeout');
+        $options['vendor-dir'] = $event->getComposer()->getConfig()->get('vendor-dir');
 
         return $options;
     }
@@ -452,5 +458,17 @@ EOF;
     protected static function useNewDirectoryStructure(array $options)
     {
         return isset($options['symfony-var-dir']) && is_dir($options['symfony-var-dir']);
+    }
+
+    /**
+     * Returns true if the application bespoke autoloader is used.
+     *
+     * @param array $options Composer options
+     *
+     * @return bool
+     */
+    protected static function useSymfonyAutoloader(array $options)
+    {
+        return isset($options['symfony-app-dir']) && is_file($options['symfony-app-dir'].'/autoload.php');
     }
 }

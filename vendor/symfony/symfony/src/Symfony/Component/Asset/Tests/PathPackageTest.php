@@ -35,16 +35,16 @@ class PathPackageTest extends TestCase
 
             array('', '', '/foo', '/foo?v1'),
 
-            array('/foo', '', '/foo', '/foo/foo?v1'),
-            array('/foo', '', 'foo', '/foo/foo?v1'),
-            array('foo', '', 'foo', '/foo/foo?v1'),
-            array('foo/', '', 'foo', '/foo/foo?v1'),
-            array('/foo/', '', 'foo', '/foo/foo?v1'),
+            array('/foo', '', '/bar', '/bar?v1'),
+            array('/foo', '', 'bar', '/foo/bar?v1'),
+            array('foo', '', 'bar', '/foo/bar?v1'),
+            array('foo/', '', 'bar', '/foo/bar?v1'),
+            array('/foo/', '', 'bar', '/foo/bar?v1'),
 
-            array('/foo', 'version-%2$s/%1$s', '/foo', '/foo/version-v1/foo'),
-            array('/foo', 'version-%2$s/%1$s', 'foo', '/foo/version-v1/foo'),
-            array('/foo', 'version-%2$s/%1$s', 'foo/', '/foo/version-v1/foo/'),
-            array('/foo', 'version-%2$s/%1$s', '/foo/', '/foo/version-v1/foo/'),
+            array('/foo', 'version-%2$s/%1$s', '/bar', '/version-v1/bar'),
+            array('/foo', 'version-%2$s/%1$s', 'bar', '/foo/version-v1/bar'),
+            array('/foo', 'version-%2$s/%1$s', 'bar/', '/foo/version-v1/bar/'),
+            array('/foo', 'version-%2$s/%1$s', '/bar/', '/version-v1/bar/'),
         );
     }
 
@@ -61,18 +61,29 @@ class PathPackageTest extends TestCase
     public function getContextConfigs()
     {
         return array(
-            array('', '/foo', '', '/foo', '/foo/foo?v1'),
-            array('', '/foo', '', 'foo', '/foo/foo?v1'),
-            array('', 'foo', '', 'foo', '/foo/foo?v1'),
-            array('', 'foo/', '', 'foo', '/foo/foo?v1'),
-            array('', '/foo/', '', 'foo', '/foo/foo?v1'),
+            array('', '/foo', '', '/baz', '/baz?v1'),
+            array('', '/foo', '', 'baz', '/foo/baz?v1'),
+            array('', 'foo', '', 'baz', '/foo/baz?v1'),
+            array('', 'foo/', '', 'baz', '/foo/baz?v1'),
+            array('', '/foo/', '', 'baz', '/foo/baz?v1'),
 
-            array('/bar', '/foo', '', '/foo', '/bar/foo/foo?v1'),
-            array('/bar', '/foo', '', 'foo', '/bar/foo/foo?v1'),
-            array('/bar', 'foo', '', 'foo', '/bar/foo/foo?v1'),
-            array('/bar', 'foo/', '', 'foo', '/bar/foo/foo?v1'),
-            array('/bar', '/foo/', '', 'foo', '/bar/foo/foo?v1'),
+            array('/bar', '/foo', '', '/baz', '/baz?v1'),
+            array('/bar', '/foo', '', 'baz', '/bar/foo/baz?v1'),
+            array('/bar', 'foo', '', 'baz', '/bar/foo/baz?v1'),
+            array('/bar', 'foo/', '', 'baz', '/bar/foo/baz?v1'),
+            array('/bar', '/foo/', '', 'baz', '/bar/foo/baz?v1'),
         );
+    }
+
+    public function testVersionStrategyGivesAbsoluteURL()
+    {
+        $versionStrategy = $this->getMockBuilder('Symfony\Component\Asset\VersionStrategy\VersionStrategyInterface')->getMock();
+        $versionStrategy->expects($this->any())
+            ->method('applyVersion')
+            ->willReturn('https://cdn.com/bar/main.css');
+        $package = new PathPackage('/subdirectory', $versionStrategy, $this->getContext('/bar'));
+
+        $this->assertEquals('https://cdn.com/bar/main.css', $package->getUrl('main.css'));
     }
 
     private function getContext($basePath)
