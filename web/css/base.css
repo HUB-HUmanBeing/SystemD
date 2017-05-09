@@ -1,0 +1,23 @@
+/****************************
+CSS POUR LE TEMPLATE DE BASE
+ ******************************/
+* {
+    border : 1px solid grey;
+}
+
+html, body, .header-nav{
+    margin: 0;
+    width: 100%;
+}
+
+.header-nav ul{
+    display: flex;
+}
+.header-nav ul li{
+    flex: 1 ;
+    text-decoration: none;
+}
+.header-nav img{
+    width: 100%;
+    height: auto;
+}
