@@ -2,48 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}{% endblock %} | HUmanBeing</title>
+        <title>{% block title %}HUmanBeing{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/header.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <header>
-            <nav class="header-nav">
-                <ul>
-                    {#todo :rajouter condition twig : si l'utilisateur est enregistré #}
-                        <li>
-                            <button class="general-menu-btn" id="menu-btn">
-                                <img src="{{ asset('img/icon/menu_icon.png') }}" alt="menu">
-                            </button>
-                        </li>
-                        <li>
-                            {#todo : faire le lien vers la page agenda utilisiateur#}
-                            <a href="" class="general-menu-btn">
-                                <img src="{{ asset('img/icon/agenda_icon.png') }}" alt="agenda">
-                            </a>
-                        </li>
-                    {#todo : rajouter sinon -> afficher le formulaire de connexion inscription
-                        <li>
-                            <a href=" ***** url page de connexion || btn javascript formulaire qui déroule direct ***** ">connexion</a>
-                        </li>
-                    #}
-                    <li>
-                        {#todo : mettre un formulaire qui tiens la route#}
-                        <form action="">
-                            <input class="search-field" type="text" name="searched" placeholder="recherchez dans le site">
-                            <button><img src="{{ asset('img/icon/search_icon.png') }}" alt="search icon"></button>
-                        </form>
-                    </li>
-                    <li>
-                        <a href="/" class="general-menu-btn">
-                            <img src="{{ asset('img/icon/hub_logo.png') }}" alt="HUB - HUmanBeing homepage">
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        {% include "./layout/header.html.twig" %}
         {% block body %}{% endblock %}
+        <script type="text/javascript" src="{{ asset('js/header.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -1,0 +1,41 @@
+/****************************
+CSS POUR LE HEADER - MENU
+ ******************************/
+.header-nav ul{
+    display: flex;
+    list-style-type: none;
+}
+.header-nav * {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    z-index: 100;
+    border: none;
+}
+.header-nav ul li{
+    flex: 1 ;
+    text-decoration: none;
+}
+.header-nav img{
+    width: 80%;
+    height: auto;
+    background-color: white;
+    border-radius: 2vw;
+}
+.header-nav .search-field{
+    display: none;
+}
+.header-nav a {
+    display: flex;
+    justify-content: center;
+}
+.header-nav button{
+    cursor: pointer;
+}
+.header-background{
+    width: 100%;
+    background-color: white;
+    height: 18vw;
+    position: absolute;
+    z-index: 99;
+}

@@ -1,45 +1,9 @@
 /****************************
 CSS POUR LE TEMPLATE DE BASE
  ******************************/
-* {
-    /*border : 1px solid grey;*/
-}
 
 html, body, .header-nav{
     margin: 0;
     width: 100%;
     padding: 0;
-}
-
-.header-nav ul{
-    display: flex;
-    padding: 0;
-    list-style-type: none;
-}
-.header-nav * {
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-}
-.header-nav{
-    background-color: white;
-}
-.header-nav ul li{
-    flex: 1 ;
-    text-decoration: none;
-}
-.header-nav img{
-    width: 80%;
-    height: auto;
-}
-.header-nav .search-field{
-    display: none;
-}
-.header-nav a {
-    display: flex;
-    justify-content: center;
-}
-.header-nav button{
-    background-color: transparent;
-    border: none;
 }
