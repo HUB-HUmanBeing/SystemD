@@ -30,11 +30,9 @@
                     #}
                     <li>
                         {#todo : mettre un formulaire qui tiens la route#}
-                        <form class="search-field" action="">
-                            <input type="text" name="searched" placeholder="recherchez dans le site">
-                            <label for="searched">
-                                <img src="{{ asset('img/icon/search_icon.png') }}" alt="search">
-                            </label>
+                        <form action="">
+                            <input class="search-field" type="text" name="searched" placeholder="recherchez dans le site">
+                            <button><img src="{{ asset('img/icon/search_icon.png') }}" alt="search icon"></button>
                         </form>
                     </li>
                     <li>
