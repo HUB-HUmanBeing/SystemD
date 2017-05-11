@@ -2,8 +2,9 @@
 CSS POUR LE TEMPLATE DE BASE
  ******************************/
 
-html, body, .header-nav{
-    margin: 0;
+html, body, header{
+
     width: 100%;
     padding: 0;
+    margin: 0;
 }

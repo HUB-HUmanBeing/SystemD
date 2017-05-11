@@ -1,6 +1,10 @@
 /****************************
 CSS POUR LE HEADER - MENU
  ******************************/
+.header-nav{
+    padding: 0;
+    margin: 0;
+}
 .header-nav ul{
     display: flex;
     list-style-type: none;
@@ -12,6 +16,10 @@ CSS POUR LE HEADER - MENU
     z-index: 100;
     border: none;
 }
+.header-nav .left-menu{
+    flex:2;
+    display: flex;
+}
 .header-nav ul li{
     flex: 1 ;
     text-decoration: none;
@@ -22,8 +30,17 @@ CSS POUR LE HEADER - MENU
     background-color: white;
     border-radius: 2vw;
 }
+.header-nav #search{
+    display: flex;
+}
+.header-nav #search-btn{
+    flex :1;
+}
 .header-nav .search-field{
     display: none;
+    flex:3;
+    padding: 5vw;
+    font-size: 5vw;
 }
 .header-nav a {
     display: flex;
