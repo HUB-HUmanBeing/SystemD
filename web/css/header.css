@@ -30,6 +30,17 @@ CSS POUR LE HEADER - MENU
     background-color: white;
     border-radius: 2vw;
 }
+.header-nav .btn-container{
+    flex :1;
+    display: flex;
+}
+#open-search{
+    position: absolute;
+    z-index: 101;
+    width: 25vw;
+    height: 21vw;
+    cursor: pointer;
+}
 .header-nav #search{
     display: flex;
 }
@@ -38,7 +49,7 @@ CSS POUR LE HEADER - MENU
 }
 .header-nav .search-field{
     display: none;
-    flex:3;
+    width: auto;
     padding: 5vw;
     font-size: 5vw;
 }

@@ -24,10 +24,13 @@
             </div>
             <li>
                 {#todo : mettre un formulaire qui tiens la route#}
+
                 <form id="search" action="" >
-                    <button id="close"><img src="" alt=""></button>
-                    <input class="search-field" type="text" name="searched" required placeholder="recherche">
-                    <button id="search-btn"><img  src="{{ asset('img/icon/search_icon.png') }}" alt="search icon"></button>
+                    <input class="search-field" type="text" name="searched"  placeholder="recherche" >
+                    <div class="btn-container">
+                        <div id="open-search"></div>
+                        <button id="search-btn"><img  src="{{ asset('img/icon/search_icon.png') }}" alt="search icon"></button>
+                    </div>
                 </form>
             </li>
             <li id="home-btn">
