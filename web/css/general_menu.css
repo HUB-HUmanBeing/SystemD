@@ -1,0 +1,10 @@
+.general_menu{
+    display: flex;
+    position: absolute;
+    width: 40vw;
+    height: 100%;
+    flex-direction: column;
+}
+.general_menu li{
+    flex: 1;
+}

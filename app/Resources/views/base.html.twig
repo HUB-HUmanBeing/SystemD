@@ -6,10 +6,12 @@
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/base.css') }}">
         <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/general_menu.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% include "./template/header.html.twig" %}
+        {% include "./template/general_menu.html.twig" %}
         <main>
         {% block body %}{% endblock %}
         </main>
