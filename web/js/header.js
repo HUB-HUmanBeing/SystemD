@@ -6,7 +6,7 @@ function closesearch() {
         //on fait réaparaitre les autres boutons
         $('.header-nav .left-menu').toggle("slide", 500);
         setTimeout(function () {
-            $('.header-nav #home-btn').toggle("slide", {direction: 'right'}, 500);
+            $('.header-nav #home-btn').toggle("slide", {direction: 'right'}, 400);
         }, 200);
         //on annonce au reste du script que la searchbar est cachée
         searchbar = false;

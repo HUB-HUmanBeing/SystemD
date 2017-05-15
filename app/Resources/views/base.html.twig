@@ -3,10 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}HUmanBeing{% endblock %}</title>
+        {% stylesheets
+            'css/base.css'
+            'css/header.css'
+            'css/general_menu.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
         {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/header.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/general_menu.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -15,9 +19,14 @@
         <main>
         {% block body %}{% endblock %}
         </main>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script type="text/javascript" src="{{ asset('js/header.js') }}"></script>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            {% javascripts
+                'js/framework/jquery-3.2.1.min.js'
+                'js/framework/jquery-ui.min.js'
+                'js/header.js'
+            %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
     </body>
 </html>
