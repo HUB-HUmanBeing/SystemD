@@ -1,35 +1,85 @@
-.general_menu *{
-    border: 1px solid gainsboro;
-}
+/********************************
+CSS DU MENU GENERAL
+*********************************/
+
+/*
+todo : faire en sorte que cela ne se
+chevauche plus de manière dégueulasse
+lorsque s'affiche le sous menu
+ */
+
 .general_menu{
     position: fixed;
-    top: 0;
-    width: 40vw;
-    height: 100vh;
-    background-color: white ;
+    top: 20vw;
+    bottom: 0;
+    width: 17vh;
+    display: flex;
+    flex-direction: column;
+    display: none;
 
 
 }
-
+/*.general_menu_background{*/
+    /*position: fixed;*/
+    /*width: 13vh;*/
+    /*height: 150%;*/
+    /*bottom: 0;*/
+    /*background-color: white;*/
+    /*z-index: 97;*/
+/*}*/
 .general_menu>ul{
-    flex: 1;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0;
+    position: relative;
+    padding: 3vh 0 0 0;
+    margin: -3vh 0 0 0;
+    z-index: 90;
+    background-color: silver;
+
 }
 .general_menu>ul>li{
     flex: 1;
+    display: flex;
     list-style-type: none;
+    align-items: center;
+    position: relative;
+    z-index: 95;
+    left: 3vh;
+
 
 }
 .general_menu>ul>li>img{
 
-    height: 15vh;
-    width: 15vh;
+    height: 85%;
+    width: auto;
     background-color: white;
-    border-radius: 2vw;
+    border-radius: 2vh;
+    position: relative;
+    z-index: 95;
+    border: 2px solid silver;
 }
 .general_menu ul li ul {
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 20vw;
+    padding-left: 20vh;
+    z-index: 70;
+    background-color: white;
+
 }
 
+.general_menu ul li ul li{
+    list-style-type: none;
+}
+.general_menu ul li ul li a{
+    text-decoration: none;
+    color: inherit;
+}
+.general_menu ul li:hover ul{
+    display: block;
+}

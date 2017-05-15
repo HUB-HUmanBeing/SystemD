@@ -1,6 +1,12 @@
 /****************************
-CSS POUR LE HEADER - MENU
+CSS DU HEADER - MENU
  ******************************/
+
+/*
+ todo :  arriver à le passer en position fixed
+ ou lui donner un effet de paralaxe
+ */
+
 .header-nav{
     padding: 0;
     margin: 0;
@@ -29,6 +35,7 @@ CSS POUR LE HEADER - MENU
     height: auto;
     background-color: white;
     border-radius: 2vw;
+    border: 2px solid darkorange;
 }
 .header-nav .btn-container{
     flex :1;
@@ -50,8 +57,11 @@ CSS POUR LE HEADER - MENU
 .header-nav .search-field{
     display: none;
     width: auto;
-    padding: 5vw;
+    margin: 4vw -50vw 6vw 5vw;
     font-size: 5vw;
+    padding: 0 50vw 0 4vw;
+    border-bottom: 1vw solid white;
+    color: white;
 }
 .header-nav a {
     display: flex;
@@ -62,8 +72,8 @@ CSS POUR LE HEADER - MENU
 }
 .header-background{
     width: 100%;
-    background-color: white;qs
-    height: 18vw;
-    position: absolute;
+    background-color: darkorange;
+    height: 19vw;
+    position: fixed;
     z-index: 99;
 }
