@@ -32,18 +32,20 @@ $(document).ready(function () {
                 $('.header-nav .search-field').focus();
                 //on annonce au reste du script que la searchbar est visible
                 searchbar = true ;
-
             });
         }
         else{
-            if($('.search-field').val() !== ""){  //si ya quelquechose dedans on envoie
+            //si ya quelquechose dedans on envoie le formulaire
+            if($('.search-field').val() !== ""){
                 $('#search').submit();
             }
             else {
+                //sinon on le referme
                 closesearch();
             }
         }
     });
+    //on peut aussi refermer le formulaire de recherche en cliquant n'importe ou ailleurs
     $('main').click(function () {
         if(searchbar){
             closesearch();

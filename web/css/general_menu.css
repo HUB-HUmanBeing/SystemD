@@ -2,26 +2,21 @@
 CSS DU MENU GENERAL
 *********************************/
 
-/*
-todo : faire en sorte que cela ne se
-chevauche plus de manière dégueulasse
-lorsque s'affiche le sous menu
- */
 
 .general_menu{
     position: fixed;
-    top: 20vw;
+    top: 22vw;
     bottom: 0;
-    width: 13.5vh;
+    width: 14vh;
     display: flex;
     flex-direction: column;
     display: none;
 }
 .general_menu>ul{
+    position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
-    position: relative;
     padding: 3vh 0 0 0;
     margin: -3vh 0 0 0;
     z-index: 90;
@@ -43,21 +38,25 @@ lorsque s'affiche le sous menu
     border-radius: 2vh;
     position: relative;
     z-index: 95;
+    border: 2px solid silver;
 }
 
 .general_menu ul li ul {
     display: none;
     position: fixed;
-    top: 20vh;
-    left: 20vh;
+    top: 0;
+    left: 14vh;
     width: 80vw;
-    height: 80vh;
+    height: 100vh;
     z-index: 70;
-    background-color: white;
-    border: 2px solid silver;
+    background-color: whitesmoke;
+    padding: 20vw 5vw 5vw 20vw;
+
 }
 .general_menu ul li ul li{
     list-style-type: none;
+
+    width: 50vw;
 }
 .general_menu ul li ul li a{
     text-decoration: none;
