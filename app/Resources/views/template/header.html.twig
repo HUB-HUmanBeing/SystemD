@@ -2,17 +2,49 @@
     <nav class="container-fluid">
         <div class="row">
             <div class="col-xs-6">
-                <div class="col-xs-6 visible-xs-inline-block">
-                    <button type="button" class="btn btn-default  navbar-brand">
-                        <img src="{{ asset('img/icon/menu_icon.png') }}" alt="menu">
-                    </button>
+                {% if app.user is defined and app.user is not null%}
+                    <div class="row">
+                        <div class="col-xs-6 visible-xs-inline-block">
+                            <button type="button" class="btn btn-default  navbar-brand">
+                                <img src="{{ asset('img/icon/menu_icon.png') }}" alt="menu">
+                            </button>
 
-                </div>
-                <div class="col-xs-6">
-                    <a href="#" class="navbar-brand btn btn-default"><img src="{{ asset('img/icon/agenda_icon.png') }}" alt="agenda"></a>
-                </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" class="navbar-brand btn btn-default"><img src="{{ asset('img/icon/agenda_icon.png') }}" alt="agenda"></a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="dropdown col-xs-12 center-block">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            Connexion
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                    <form role="form" action="/login_check" method="post">
+                                        <div class="form-group">
+                                            <label for="username" class="hide">Nom d'utilisateur</label>
+                                            <input class="form-control" type="text" id="username" name="_username" required="required" placeholder="Nom d'utilisateur">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="hide">Password</label>
+                                            <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Password">
+                                        </div>
+                                        <div class="checkbox">
+                                            <label for="remember_me">
+                                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />Se souvenir de moi
+                                            </label>
+                                        </div>
+                                        <input type="submit" class="btn btn-default center-block"value="Connexion">
+                                    </form>
+                            </li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Créer un compte</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
-
             <div class="col-xs-6 col-sm-4 col-sm-offset-2">
                 <div class="row">
                     <form class="col-xs-6 col-sm-9" role="search">
@@ -32,53 +64,4 @@
             </div>
         </div>
     </nav>
-
-
-
-    {#<div class="header-background">#}
-    {#</div>#}
-    {#<nav class="header-nav">#}
-        {#<ul>#}
-            {#<div class="left-menu">#}
-            {#todo :rajouter condition twig : si l'utilisateur est enregistré #}
-                {#<li id="menu-btn">#}
-                    {#<button class="general-menu-btn" >#}
-                        {#<img src="{{ asset('img/icon/menu_icon.png') }}" alt="menu">#}
-                    {#</button>#}
-                {#</li>#}
-                {#<li id="agenda-btn">#}
-                    {#todo : faire le lien vers la page agenda utilisiateur#}
-                    {#<a href="" class="general-menu-btn" >#}
-                        {#<img src="{{ asset('img/icon/agenda_icon.png') }}" alt="agenda">#}
-                    {#</a>#}
-                {#</li>#}
-                {#todo : rajouter sinon -> afficher le formulaire de connexion inscription#}
-                    {#<li>#}
-                        {#<button id="login-btn">Connexion</button>#}
-                        {#<form action="" class="login-form">#}
-                            {#<input type="text" required placeholder="email">#}
-                            {#<input type="password" required placeholder="password">#}
-                        {#</form>#}
-                        {#<a href=" ***** url page de signin|| btn javascript formulaire qui déroule direct ***** ">créer un compte</a>#}
-                    {#</li>#}
-                {##}
-            {#</div>#}
-            {#<li>#}
-                {#todo : mettre un formulaire qui tiens la route#}
-
-                {#<form id="search" action="" >#}
-                    {#<input class="search-field" type="text" name="searched"  placeholder="recherche" >#}
-                    {#<div class="btn-container">#}
-                        {#<div id="open-search"></div>#}
-                        {#<button id="search-btn"><img  src="{{ asset('img/icon/search_icon.png') }}" alt="search icon"></button>#}
-                    {#</div>#}
-                {#</form>#}
-            {#</li>#}
-            {#<li id="home-btn">#}
-                {#<a href="/" class="general-menu-btn">#}
-                    {#<img src="{{ asset('img/icon/hub_logo.png') }}" alt="HUB - HUmanBeing homepage">#}
-                {#</a>#}
-            {#</li>#}
-        {#</ul>#}
-    {#</nav>#}
 </header>
