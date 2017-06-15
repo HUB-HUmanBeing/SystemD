@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bded8666-0814-4721-aa2e-b9b99677e7be" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Doc/EntityDiagramHUB.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/template/general_menu.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/template/general_menu.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/general_menu.js" afterPath="$PROJECT_DIR$/web/js/general_menu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/header.js" afterPath="$PROJECT_DIR$/web/js/header.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Doc/EntityDiagramHUB.xml" afterPath="$PROJECT_DIR$/Doc/EntityDiagramHUB.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -109,7 +105,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#7#259#0#PHP" expanded="false" />
+                <element signature="e#298#339#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,7 +118,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="988">
               <caret line="49" column="52" lean-forward="false" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
-              <folding />
+              <folding>
+                <element signature="e#7#259#0#PHP" expanded="false" />
+                <element signature="e#298#339#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -785,7 +787,7 @@
       <workItem from="1497290651766" duration="27000" />
       <workItem from="1497291141872" duration="5481000" />
       <workItem from="1497335522392" duration="598000" />
-      <workItem from="1497527518658" duration="22000" />
+      <workItem from="1497527518658" duration="648000" />
     </task>
     <task id="LOCAL-00001" summary="html + css du menu header présentable">
       <created>1494442612538</created>
@@ -885,11 +887,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497299287647</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="le bootstrap du header qui commence a ressembler a quelquechose">
+      <created>1497527555741</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1497527555741</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124755000" />
+    <option name="totallyTimeSpent" value="125381000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1225,7 +1234,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#7#259#0#PHP" expanded="false" />
+            <element signature="e#298#339#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1233,7 +1245,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="988">
           <caret line="49" column="52" lean-forward="false" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
-          <folding />
+          <folding>
+            <element signature="e#7#259#0#PHP" expanded="false" />
+            <element signature="e#298#339#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
