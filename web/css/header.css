@@ -1,79 +1,64 @@
 /****************************
 CSS DU HEADER - MENU
  ******************************/
+.hub-icon{
+    width: 50px;
+    height:50px;
+}
 
-/*
- todo :  arriver à le passer en position fixed
- ou lui donner un effet de paralaxe
- */
+.navbar-brand {
+    padding: 0px;
+}
 
-.header-nav{
-    padding: 0;
-    margin: 0;
-}
-.header-nav ul{
-    display: flex;
-    list-style-type: none;
-}
-.header-nav * {
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    z-index: 100;
-    border: none;
-}
-.header-nav .left-menu{
-    flex:2;
-    display: flex;
-}
-.header-nav ul li{
-    flex: 1 ;
-    text-decoration: none;
-}
-.header-nav img{
-    width: 80%;
-    height: auto;
-    background-color: white;
-    border-radius: 2vw;
-    border: 2px solid darkorange;
-}
-.header-nav .btn-container{
-    flex :1;
-    display: flex;
-}
-#open-search{
-    position: absolute;
-    z-index: 101;
-    width: 25vw;
-    height: 21vw;
-    cursor: pointer;
-}
-.header-nav #search{
-    display: flex;
-}
-.header-nav #search-btn{
-    flex :1;
-}
-.header-nav .search-field{
-    display: none;
+.navbar-brand>img {
+    height: 100%;
     width: auto;
-    margin: 4vw -50vw 6vw 5vw;
-    font-size: 5vw;
-    padding: 0 50vw 0 4vw;
-    border-bottom: 1vw solid white;
-    color: white;
+    padding: 5px;
 }
-.header-nav a {
-    display: flex;
-    justify-content: center;
+
+.btn>img{
+    height: 50px;
+    width: auto;
+    padding: 5px;
 }
-.header-nav button{
-    cursor: pointer;
+.hub-icon-agenda{
+    background-image: url("./../img/icon/agenda_icon.png");
 }
-.header-background{
-    width: 100%;
-    background-color: darkorange;
-    height: 19vw;
-    position: fixed;
-    z-index: 99;
+
+.hub-icon-menu{
+    background-image: url("./../img/icon/menu_icon.png");
 }
+
+.hub-icon-message{
+    background-image: url("./../img/icon/message_icon.png");
+}
+
+.hub-icon-moderation{
+    background-image: url("./../img/icon/moderation_icon.png");
+}
+
+.hub-icon-project{
+    background-image: url("./../img/icon/project_icon.png");
+}
+
+.hub-icon-search{
+    background-image: url("./../img/icon/search_icon.png");
+}
+
+.hub-icon-settings{
+    background-image: url("./../img/icon/settings_icon.png");
+}
+.hub-icon-hub{
+    background-image: url("./../img/icon/hub_logo.png");
+}
+
+.hub-icon-sharing{
+    background-image: url("./../img/icon/sharing_icon.png");
+}
+
+.hub-icon-user{
+    background-image: url("./../img/icon/user_icon.png");
+}
+
+
+

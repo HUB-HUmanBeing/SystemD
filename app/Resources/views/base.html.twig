@@ -6,6 +6,8 @@
         <meta charset="UTF-8" />
         <title>{% block title %}HUmanBeing{% endblock %}</title>
         {% stylesheets
+            'css/framework/bootstrap.min.css'
+            'css/framework/jquery-ui.min.css'
             'css/base.css'
             'css/header.css'
             'css/general_menu.css'
@@ -13,18 +15,22 @@
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% include "./template/header.html.twig" %}
-        {% include "./template/general_menu.html.twig" %}
-        <main>
-        {% block body %}{% endblock %}
-        </main>
+        <div class="container-fluid row">
+            <nav class=" col-sm-3">
+                {% include "./template/general_menu.html.twig" %}
+            </nav>
+            <main class="col-sm-9">
+                {% block body %}{% endblock %}
+            </main>
+        </div>
         {% block javascripts %}
             {% javascripts
                 'js/framework/jquery-3.2.1.min.js'
                 'js/framework/jquery-ui.min.js'
+                'js/framework/bootstrap.min.js'
                 'js/header.js'
                 'js/general_menu.js'
             %}
