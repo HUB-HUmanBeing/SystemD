@@ -1,0 +1,4 @@
+services:
+#    hub_chiffred_messenger.example:
+#        class: HUB\ChiffredMessengerBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

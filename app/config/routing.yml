@@ -1,11 +1,24 @@
-user:
-    resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /fos
+core:
+    resource: "@CoreBundle/Resources/config/routing.yml"
+    prefix:   /
 
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
     prefix:   /
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+hub_chiffred_messenger:
+    resource: "@HUBChiffredMessengerBundle/Resources/config/routing.yml"
+    prefix:   /message
+
+
+login:
+    path: /login
+    defaults:
+        _controller: UserBundle:Security:login
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
