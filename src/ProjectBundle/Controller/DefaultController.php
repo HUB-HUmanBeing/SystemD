@@ -1,6 +1,6 @@
 <?php
 
-namespace HUB\ChiffredMessengerBundle\Controller;
+namespace ProjectBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('HUBChiffredMessengerBundle:Default:index.html.twig');
+        return $this->render('ProjectBundle:Default:index.html.twig');
     }
 }

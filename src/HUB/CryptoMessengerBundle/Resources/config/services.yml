@@ -1,0 +1,4 @@
+services:
+#    hub_crypto_messenger.example:
+#        class: HUB\CryptoMessengerBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -2,8 +2,11 @@
 
 namespace UserBundle\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use HUB\CryptoMessengerBundle\Entity\CommunicatingEntity;
+use ProjectBundle\Entity\Project;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -12,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  */
-class User implements UserInterface
+class User extends CommunicatingEntity implements UserInterface
 {
     /**
      * @var int
@@ -21,7 +24,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -51,9 +54,14 @@ class User implements UserInterface
      */
     private $roles = array();
 
+    /**
+     * @ORM\ManyToMany(targetEntity="ProjectBundle\Entity\Project", inversedBy="users")
+     */
+    private $projects;
+
     public function __construct()
     {
-        $this->posts = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function eraseCredentials()
@@ -80,6 +88,12 @@ class User implements UserInterface
     public function setUsername($username)
     {
         $this->username = $username;
+
+        return $this;
+    }
+    public function setName($name)
+    {
+        $this->name = $name;
 
         return $this;
     }
@@ -166,12 +180,14 @@ class User implements UserInterface
         return $this->roles;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPosts()
+    public function addProject(Project $project)
     {
-        return $this->posts;
+        $this->projects[] = $project;
+    }
+
+    public function removeProject(Project $project)
+    {
+        $this->projects->removeElement($project);
     }
 
 }

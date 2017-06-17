@@ -1,0 +1,3 @@
+hub_crypto_messenger_homepage:
+    path:     /
+    defaults: { _controller: HUBCryptoMessengerBundle:Default:index }

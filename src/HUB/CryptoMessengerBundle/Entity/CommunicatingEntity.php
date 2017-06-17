@@ -1,16 +1,27 @@
 <?php
 
-namespace HUB\ChiffredMessengerBundle\Entity;
+namespace HUB\CryptoMessengerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CommunicatingEntity
- *
- **@MappedSuperclass
+ * @ORM\Entity
+ * @ORM\Table(name="communicating_entity")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"user" = "UserBundle\Entity\User", "project" = "ProjectBundle\Entity\Project"})
  */
 abstract class CommunicatingEntity
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
     /**
      * @var string
      *
@@ -20,18 +31,25 @@ abstract class CommunicatingEntity
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="chiffred_private_asym_key", type="string", length=255)
+     * the private_asym_key is necessary for decrypt the symmetrical key used for Encryption/decryption of a shared content
+     * @ORM\Column(name="encrypted_private_asym_key", type="string", length=255)
      */
-    protected $chiffredPrivateAsymKey;
+    protected $encryptedPrivateAsymKey;
 
     /**
      * @var string
-     *
+     *the private_asym_key is necessary for Encrypt the symmetrical key used for Encryption/decryption of a shared content
      * @ORM\Column(name="public_asym_key", type="string", length=255)
      */
     protected $publicAsymKey;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set name
@@ -58,27 +76,27 @@ abstract class CommunicatingEntity
     }
 
     /**
-     * Set chiffredPrivateAsymKey
+     * Set encryptedPrivateAsymKey
      *
-     * @param string $chiffredPrivateAsymKey
+     * @param string $encryptedPrivateAsymKey
      *
      * @return CommunicatingEntity
      */
-    public function setChiffredPrivateAsymKey($chiffredPrivateAsymKey)
+    public function setEncryptedPrivateAsymKey($encryptedPrivateAsymKey)
     {
-        $this->chiffredPrivateAsymKey = $chiffredPrivateAsymKey;
+        $this->encryptedPrivateAsymKey = $encryptedPrivateAsymKey;
 
         return $this;
     }
 
     /**
-     * Get chiffredPrivateAsymKey
+     * Get encryptedPrivateAsymKey
      *
      * @return string
      */
-    public function getChiffredPrivateAsymKey()
+    public function getencryptedPrivateAsymKey()
     {
-        return $this->chiffredPrivateAsymKey;
+        return $this->encryptedPrivateAsymKey;
     }
 
     /**

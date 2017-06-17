@@ -1,6 +1,6 @@
 <?php
 
-namespace HUB\ChiffredMessengerBundle\Tests\Controller;
+namespace HUB\CryptoMessengerBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

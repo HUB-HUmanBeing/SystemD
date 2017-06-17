@@ -3,12 +3,11 @@
 
 namespace BlogBundle\DataFixtures\ORM;
 
-use BlogBundle\Entity\Image;
+
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use UserBundle\Entity\User;
-use BlogBundle\Entity\Category;
 
 class LoadUser extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -37,6 +36,9 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
             //$post->setImage($image);
             $User->setSalt('');
             $User->setRoles(['ROLE_USER']);
+            $User->setEncryptedPrivateAsymKey("");
+            $User->setPublicAsymKey("");
+            $User->setName($User->getUsername());
             $manager->persist($User);
         }
         $manager->flush();

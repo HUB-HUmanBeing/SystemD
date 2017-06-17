@@ -1,3 +1,0 @@
-hub_chiffred_messenger_homepage:
-    path:     /
-    defaults: { _controller: HUBChiffredMessengerBundle:Default:index }
