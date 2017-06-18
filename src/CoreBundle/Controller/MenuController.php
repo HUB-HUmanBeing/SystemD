@@ -40,12 +40,12 @@ class MenuController extends Controller
                 'subMenu' => $projectSubmenu
             ),
             'sharing' => array(
-                'title'=> 'messagerie',
-                'iconUrl'=> 'img/icon/message_icon.png',
+                'title'=> 'Partage',
+                'iconUrl'=> 'img/icon/sharing_icon.png',
                 'subMenu' => $basicSubMenu
             ),
             'moderation' => array(
-                'title'=> 'messagerie',
+                'title'=> 'Modération',
                 'iconUrl'=> 'img/icon/message_icon.png',
                 'subMenu' => $basicSubMenu
             )

@@ -1,15 +1,25 @@
 <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="{{ path('work_in_progress') }}" class="row">
+                    <span class="col-xs-4 navbar-brand"><img src="{{ asset('img/icon/agenda_icon.png') }}"></span>
+                    <span class="col-xs-8">Agenda</span>
+                </a>
+            </h4>
+        </div>
+    </div>
     {% for menuItem in generalMenu %}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="row">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ loop.index }}" class="row">
                         <span class="col-xs-4 navbar-brand"><img src="{{ asset(menuItem.iconUrl) }}"></span>
-                        <span class="col-xs-4">{{ menuItem.title }}</span>
+                        <span class="col-xs-8">{{ menuItem.title }}</span>
                     </a>
                 </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
+            <div id="collapse{{ loop.index }}" class="panel-collapse collapse">
                 <div class="panel-body">
                     <div class="list-group">
                         {% for subMenuItem in menuItem.subMenu%}
