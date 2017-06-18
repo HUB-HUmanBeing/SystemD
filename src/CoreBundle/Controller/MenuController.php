@@ -14,6 +14,8 @@ class MenuController extends Controller
             ['path'=>'work_in_progress','title'=>'lien vers telle fonctionnalité'],
             ['path'=>'work_in_progress','title'=>'lien vers telle fonctionnalité']
         );
+        $userSubMenu = $basicSubMenu;
+        $userSubMenu[] = ['path'=>'logout','title'=>'déconnexion'];
         $projectSubmenu = array();
         foreach ($currentUser->getUserProjects() as $userProjects){
             $project =$userProjects->getProject();
@@ -24,10 +26,15 @@ class MenuController extends Controller
             ];
         }
         $generalMenu = array(
+            'agenda' => array(
+                'title'=> 'Agenda',
+                'iconUrl'=> 'img/icon/agenda_icon.png',
+                'subMenu' => $basicSubMenu
+            ),
             'user' => array(
                 'title'=> $currentUser->getUsername(),
                 'iconUrl'=> 'img/icon/user_icon.png',
-                'subMenu' => $basicSubMenu
+                'subMenu' => $userSubMenu
             ),
             'messenger' => array(
                 'title'=> 'messagerie',

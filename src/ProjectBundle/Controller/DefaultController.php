@@ -6,8 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function MainPageAction($id)
     {
-        return $this->render('ProjectBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('ProjectBundle:Project')->find($id);
+        return $this->render('@Project/Default/mainpage.html.twig',
+            array(
+                'project'=> $project
+            )
+        );
     }
 }

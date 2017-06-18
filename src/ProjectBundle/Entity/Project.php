@@ -51,6 +51,10 @@ class Project extends CommunicatingEntity
         $userProject= new UserProject($user , $this , $encryptedSymKey , $roles);
         $this->addUserProject($userProject);
     }
+    public function getUserProjects()
+    {
+        return $this->userProjects;
+    }
     /**
      * Get id
      *
