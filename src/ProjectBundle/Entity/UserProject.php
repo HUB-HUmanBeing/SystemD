@@ -15,12 +15,12 @@ class UserProject
 {
     /**
      * @ORM\ID
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="user_projects")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="userProjects")
      */
     private $user;
     /**
      * @ORM\ID
-     * @ORM\ManyToOne(targetEntity="ProjectBundle\Entity\Project", inversedBy="user_projects", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="ProjectBundle\Entity\Project", inversedBy="userProjects", cascade={"persist"})
      */
     private $project;
 

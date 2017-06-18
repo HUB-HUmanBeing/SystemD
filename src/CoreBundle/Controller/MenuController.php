@@ -6,19 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class MenuController extends Controller
 {
-    public function generalMenu()
+    public function generalMenuAction()
     {
         $currentUser=$this->getUser();
         $basicSubMenu = array(
-            ['href'=>'#','title'=>'lien vers telle fonctionnalité'],
-            ['href'=>'#','title'=>'lien vers telle fonctionnalité'],
-            ['href'=>'#','title'=>'lien vers telle fonctionnalité']
+            ['path'=>'work_in_progress','title'=>'lien vers telle fonctionnalité'],
+            ['path'=>'work_in_progress','title'=>'lien vers telle fonctionnalité'],
+            ['path'=>'work_in_progress','title'=>'lien vers telle fonctionnalité']
         );
         $projectSubmenu = array();
         foreach ($currentUser->getUserProjects() as $userProjects){
             $project =$userProjects->getProject();
             $projectSubmenu[] = [
-                'href'=>'project_mainpage',
+                'path'=>'project_mainpage',
                 'id'=>$project->getId(),
                 'title'=>$project->getName()
             ];
@@ -50,7 +50,8 @@ class MenuController extends Controller
                 'subMenu' => $basicSubMenu
             )
         );
-        return $this->render(':template:general_menu.html.twig', array(
+        dump($generalMenu);
+        return $this->render('CoreBundle:Menu:generalMenu.html.twig', array(
             'generalMenu' => $generalMenu
         ));
     }

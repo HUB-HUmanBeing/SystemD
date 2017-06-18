@@ -14,10 +14,13 @@
                     <div class="list-group">
                         {% for subMenuItem in menuItem.subMenu%}
 
-                            <a href="{{ path((SubMenuItem.id is defined ) ?
-                            (subMenuItem.href , {'id' : SubMenuItem.id }):
-                            (subMenuItem.href)) }}" class="list-group-item">
+                            <a href="{%  if subMenuItem.id is defined%}
+                            {{ path(subMenuItem.path , {'id' : subMenuItem.id })}}
+                            {% else %}
+                            {{ path(subMenuItem.path) }}
+                            {% endif %}" class="list-group-item">
                                 {{ subMenuItem.title }}
+
                             </a>
                         {% endfor %}
                     </div>

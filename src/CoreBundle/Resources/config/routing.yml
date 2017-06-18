@@ -1,3 +1,7 @@
 homepage:
     path:     /
     defaults: { _controller: CoreBundle:Default:index }
+
+work_in_progress:
+    path:     /wip
+    defaults: { _controller: CoreBundle:Default:workInProgress }

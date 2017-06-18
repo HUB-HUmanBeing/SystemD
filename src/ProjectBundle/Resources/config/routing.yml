@@ -1,3 +1,5 @@
-project_homepage:
-    path:     /
+project_mainpage:
+    path:     /{id}
     defaults: { _controller: ProjectBundle:Default:index }
+    requirements:
+            id: \d+
