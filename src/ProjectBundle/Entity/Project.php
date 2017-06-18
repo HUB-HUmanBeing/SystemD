@@ -4,6 +4,7 @@ namespace ProjectBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use HUB\CryptoMessengerBundle\Entity\CommunicatingEntity;
 use UserBundle\Entity\User;
 
 /**
@@ -12,36 +13,43 @@ use UserBundle\Entity\User;
  * @ORM\Table(name="project")
  * @ORM\Entity(repositoryClass="ProjectBundle\Repository\ProjectRepository")
  */
-class Project
+class Project extends CommunicatingEntity
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+
 
     /**
-    * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", mappedBy="projects")
+     * @var string
+     * @ORM\Column(name="description", type="text")
      */
-    private $users;
+    private $description;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ProjectBundle\Entity\UserProject", mappedBy="project", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $userProjects;
 
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->userProjects = new ArrayCollection();
     }
 
-    public function addUser(User $user)
+    public function addUserProject(UserProject $userProject)
     {
-        $this->users[] = $user;
+        $this->userProjects[] = $userProject;
+        $userProject->setProject($this);
     }
 
-    public function removeComment(User $user)
+    public function removeUserProject(UserProject $userProject)
     {
-        $this->users->removeElement($user);
+        $this->userProjects->removeElement($userProject);
+    }
+
+    public function addUser(User $user, $encryptedSymKey ,$roles = ["member"])
+    {
+        $userProject= new UserProject($user , $this , $encryptedSymKey , $roles);
+        $this->addUserProject($userProject);
     }
     /**
      * Get id
@@ -51,6 +59,22 @@ class Project
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
 
