@@ -1,6 +1,4 @@
-{#todo : commencer à remplir les catégories des sous-menus#}
-
-    <ul class="nav nav-pills nav-stacked">
+ <ul class="nav nav-pills nav-stacked">
         <li class="">
 
             <button type="button" class="btn btn-default  navbar-brand">
@@ -32,11 +30,13 @@
             <hr>
         </li>
         <li class="">
-            <button type="button" class="btn btn-default  navbar-brand">
-                <img  src="{{ asset("img/icon/project_icon.png") }}" alt="project icon">
-            </button>
-            <h5>Mes projets</h5>
-            <ul class="">
+            <div class="menu_line">
+                <button type="button" class="btn btn-default  navbar-brand">
+                    <img  src="{{ asset("img/icon/project_icon.png") }}" alt="project icon">
+                </button>
+                <h5>Mes projets</h5>
+            </div>
+            <ul class="hide">
                 {% for userPproject in app.user.userProjects %}
                 <li><a href="">{{ userPproject.project.name }}</a></li>
                 {% endfor %}

@@ -1,0 +1,28 @@
+<div class="panel-group" id="accordion">
+    {% for menuItem in generalMenu %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="row">
+                        <span class="col-xs-4 navbar-brand"><img src="{{ asset(menuItem.iconUrl) }}"></span>
+                        <span class="col-xs-4">{{ menuItem.title }}</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="list-group">
+                        {% for subMenuItem in menuItem.subMenu%}
+
+                            <a href="{{ path((SubMenuItem.id is defined ) ?
+                            (subMenuItem.href , {'id' : SubMenuItem.id }):
+                            (subMenuItem.href)) }}" class="list-group-item">
+                                {{ subMenuItem.title }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
