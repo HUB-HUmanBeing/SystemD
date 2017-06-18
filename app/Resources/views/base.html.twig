@@ -17,19 +17,15 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% if app.user is not defined or app.user is null%}
-            {% include "./template/header.html.twig" %}
-        {% endif %}
+        {% include "./template/header.html.twig" %}
         <div class="container-fluid row">
                 {% if app.user is defined and app.user is not null%}
             <nav class="col-sm-2 hidden-xs ">
                     {{ render(controller('CoreBundle:Menu:generalMenu')) }}
             </nav>
-            <main class="col-sm-10">
-                {% include "./template/header.html.twig" %}
+            <main class="col-sm-8">
                 {% else  %}
-            <main class="container-fluid">
-
+            <main class="container">
                 {% endif %}
                 {% for label, flashes in app.session.flashbag.all %}
                     {% for flash in flashes %}
@@ -46,6 +42,7 @@
                 'js/framework/jquery-3.2.1.min.js'
                 'js/framework/jquery-ui.min.js'
                 'js/framework/bootstrap.min.js'
+                'js/framework/headroom.js'
                 'js/header.js'
                 'js/general_menu.js'
             %}

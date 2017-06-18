@@ -7,7 +7,7 @@ CSS DU HEADER - MENU
 }
 
 .navbar-brand {
-    padding: 0px;
+    padding: 0;
 }
 
 .navbar-brand>img {
@@ -21,43 +21,27 @@ CSS DU HEADER - MENU
     width: auto;
     padding: 5px;
 }
-.hub-icon-agenda{
-    background-image: url("./../img/icon/agenda_icon.png");
+.general-header{
+    position: fixed;
+    width: 100%;
+    background-color: rgba(225, 225, 225, 0.7);
+    z-index: 10;
 }
-
-.hub-icon-menu{
-    background-image: url("./../img/icon/menu_icon.png");
+.headroom--pinned {
+    display: block;
 }
-
-.hub-icon-message{
-    background-image: url("./../img/icon/message_icon.png");
+.headroom--unpinned {
+    display: none;
 }
-
-.hub-icon-moderation{
-    background-image: url("./../img/icon/moderation_icon.png");
+.headroom {
+    will-change: transform;
+    transition: transform 200ms linear;
 }
-
-.hub-icon-project{
-    background-image: url("./../img/icon/project_icon.png");
+.headroom--pinned {
+    transform: translateY(0%);
 }
-
-.hub-icon-search{
-    background-image: url("./../img/icon/search_icon.png");
-}
-
-.hub-icon-settings{
-    background-image: url("./../img/icon/settings_icon.png");
-}
-.hub-icon-hub{
-    background-image: url("./../img/icon/hub_logo.png");
-}
-
-.hub-icon-sharing{
-    background-image: url("./../img/icon/sharing_icon.png");
-}
-
-.hub-icon-user{
-    background-image: url("./../img/icon/user_icon.png");
+.headroom--unpinned {
+    transform: translateY(-100%);
 }
 
 
