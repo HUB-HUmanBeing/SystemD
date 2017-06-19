@@ -11,14 +11,21 @@ use UserBundle\Entity\User;
 
 class LoadUser extends AbstractFixture implements OrderedFixtureInterface
 {
+    /**
+     * on crée une liste des noms d'utilisateur
+     * @var array
+     */
     private $userTable = [
         "Robin",
         "Audric",
         "Eude",
         "Giselle",
-        "JeanLucDeLaCroix"
+        "JeanLucDeLaCroix",
+        "Marc",
+        "Jérémy",
+        "Lucien"
 ];
-
+    //on commencera les fixtures avec celle la
     public function getOrder()
     {
         return 1; // number in which order to load fixtures
@@ -26,21 +33,21 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
 
     public function load(ObjectManager $manager)
     {
+        //on boucle sur les noms d'utilisateurs
         foreach($this->userTable as $i => $username ) {
-            //$image = new Image();
-            //$image->setUrl('http://www.tattoo-tatouages.com/wp-content/uploads/2010/02/britney-spears40.jpg');
-
+           // on instancie un User puis on l'hydrate de valeur de test
             $Userlist[$i] = new User();
             $Userlist[$i]->setUsername($username);
             $Userlist[$i]->setPassword('0');
-            //$post->setImage($image);
             $Userlist[$i]->setSalt('');
             $Userlist[$i]->setRoles(['ROLE_USER']);
             $Userlist[$i]->setEncryptedPrivateAsymKey("");
             $Userlist[$i]->setPublicAsymKey("");
             $Userlist[$i]->setName($Userlist[$i]->getUsername());
+            //on persite chaque utilisateur créé
             $manager->persist($Userlist[$i]);
         }
+        //on lance la requete vers la bdd
         $manager->flush();
     }
 }

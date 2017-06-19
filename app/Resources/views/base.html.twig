@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<!-- {% include "./template/logo_ascii.html.twig" %}-->
+<!-- {% include 'template/logo_ascii.html.twig' %}-->
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -17,16 +16,19 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% include "./template/header.html.twig" %}
+        {% include "template/header.html.twig" %}
         <div class="container-fluid row">
                 {% if app.user is defined and app.user is not null%}
-            <nav class="col-sm-2 hidden-xs ">
-                    {{ render(controller('CoreBundle:Menu:generalMenu')) }}
-            </nav>
-            <main class="col-sm-8">
+                    <nav class="col-sm-2 hidden-xs ">
+                            {{ render(controller('CoreBundle:Menu:generalMenu', { 'originalRequest' : app.request })) }}
+                    </nav>
+
                 {% else  %}
-            <main class="container">
+                <nav class="col-sm-2 hidden-xs ">
+                    {{ render(controller('CoreBundle:Menu:connexionPannel')) }}
+                </nav>
                 {% endif %}
+            <main class="col-sm-8">
                 {% for label, flashes in app.session.flashbag.all %}
                     {% for flash in flashes %}
                         <div class="alert alert-{{ label }}">

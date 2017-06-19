@@ -1,5 +1,5 @@
 <div class="panel-group genral_menu" id="accordion">
-    {% for menuItem in generalMenu %}
+    {% for key, menuItem in generalMenu %}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -9,9 +9,9 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapse{{ loop.index }}" class="panel-collapse collapse">
+            <div id="collapse{{ loop.index }}" class="panel-collapse collapse ">
                 <div class="panel-body">
-                    <div class="list-group">
+                    <div class="list-group sub-menu-{{ key }}">
                         {% for subMenuItem in menuItem.subMenu%}
 
                             <a href="{%  if subMenuItem.id is defined%}
@@ -19,8 +19,7 @@
                             {% else %}
                             {{ path(subMenuItem.path) }}
                             {% endif %}" class="list-group-item">
-                                {{ subMenuItem.title }}
-
+                                <small>{{ subMenuItem.title }}</small>
                             </a>
                         {% endfor %}
                     </div>

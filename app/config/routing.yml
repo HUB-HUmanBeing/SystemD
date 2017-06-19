@@ -10,6 +10,9 @@ core:
     resource: "@CoreBundle/Resources/config/routing.yml"
     prefix:   /
 
+user:
+    resource : "@UserBundle/Resources/config/routing.yml"
+    prefix: /user
 login:
     path: /login
     defaults:

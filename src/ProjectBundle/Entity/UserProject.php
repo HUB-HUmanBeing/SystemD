@@ -7,6 +7,7 @@ use UserBundle\Entity\User;
 
 /**
  * UserProject
+ * entité de liaison entre les entités user et les projets
  *
  * @ORM\Table(name="user_project")
  * @ORM\Entity(repositoryClass="ProjectBundle\Repository\UserProjectRepository")
@@ -14,17 +15,22 @@ use UserBundle\Entity\User;
 class UserProject
 {
     /**
+     * id de l'utilisateur
      * @ORM\ID
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="userProjects")
      */
     private $user;
+
     /**
+     * id du projet
      * @ORM\ID
      * @ORM\ManyToOne(targetEntity="ProjectBundle\Entity\Project", inversedBy="userProjects", cascade={"persist"})
      */
     private $project;
 
     /**
+     * contient la clef symétrique unique du projet chifrée avec la clef publique de l'utilisateur
+     * ainsi l'utilisateur pourra déchiffrer avec sa clef publique
      * @var string
      *
      * @ORM\Column(name="encrypted_sym_key", type="string", length=255)
@@ -32,6 +38,7 @@ class UserProject
     private $encryptedSymKey;
 
     /**
+     * un petit drapeau qui permet d'anoncer si il y a eu du contenu ajouté depuis la dernière visite de l'utilisateur
      * @var bool
      *
      * @ORM\Column(name="is_content_unread", type="boolean")
@@ -39,6 +46,7 @@ class UserProject
     private $isContentUnread = false;
 
     /**
+     * permet d'affecter des roles aux differents utilisateurs, par défault, le role de base est "member"
      * @var string
      *
      * @ORM\Column(name="roles", type="array")

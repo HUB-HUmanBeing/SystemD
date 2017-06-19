@@ -1,5 +1,6 @@
-<header class="general-header">
-    <nav class="container-fluid">
+{#TODO : gerer l'animation au hide et au show#}
+<header class="header-height general-header">
+    <nav class="container-fluid ">
         <div class="row">
             <div class="col-xs-6">
                 {% if app.user is defined and app.user is not null%}
@@ -8,36 +9,10 @@
                             <button type="button" class="btn btn-default  navbar-brand">
                                 <img src="{{ asset('img/icon/menu_icon.png') }}" alt="menu">
                             </button>
-
-
                         </div>
                         <div class="col-xs-6 visible-xs">
                             <a href="#" class="navbar-brand btn btn-default"><img src="{{ asset('img/icon/agenda_icon.png') }}" alt="agenda"></a>
                         </div>
-                    </div>
-                {% else %}
-                    <div class="dropdown col-xs-12 center-block">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            Connexion
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation">
-                                    <form role="form" action="{{ path('login_check') }}" method="post">
-                                        <div class="form-group">
-                                            <label for="username" class="hide">Nom d'utilisateur</label>
-                                            <input class="form-control" type="text" id="username" name="_username" required="required" placeholder="Nom d'utilisateur">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password" class="hide">Password</label>
-                                            <input type="password" class="form-control" id="password" name="_password" required="required" placeholder="Password">
-                                        </div>
-                                        <input type="submit" class="btn btn-default center-block" value="Connexion">
-                                    </form>
-                            </li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Créer un compte</a></li>
-                        </ul>
                     </div>
                 {% endif %}
             </div>
@@ -61,3 +36,4 @@
         </div>
     </nav>
 </header>
+<div class="header-height"></div>

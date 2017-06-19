@@ -27,13 +27,16 @@ CSS DU HEADER - MENU
     background-color: rgba(225, 225, 225, 0.7);
     z-index: 10;
 }
+.general-header nav{
+    margin: 10px ;
+}
 .headroom--pinned {
     display: block;
 }
 .headroom--unpinned {
     display: none;
 }
-.headroom {
+.general-header {
     will-change: transform;
     transition: transform 200ms linear;
 }
@@ -42,6 +45,10 @@ CSS DU HEADER - MENU
 }
 .headroom--unpinned {
     transform: translateY(-100%);
+}
+.header-height{
+    height: 70px;
+    margin-bottom: 5px;
 }
 
 

@@ -6,7 +6,6 @@ namespace UserBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use HUB\CryptoMessengerBundle\Entity\CommunicatingEntity;
-use ProjectBundle\Entity\Project;
 use ProjectBundle\Entity\UserProject;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -18,8 +17,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User extends CommunicatingEntity implements UserInterface
 {
+    //pas d'id, il en hérite de communicating-entity
 
     /**
+     * c'est le nom unique par lequel on authentifie un utilisateur
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
@@ -38,14 +39,14 @@ class User extends CommunicatingEntity implements UserInterface
      *
      * @ORM\Column(name="salt", type="string", length=255)
      */
-    private $salt;
-
+    private $salt = "";
+//TODO : gerer le salt
     /**
      * @var array
      *
      * @ORM\Column(name="roles", type="array")
      */
-    private $roles = array();
+    private $roles = array( "USER_ROLE");
 
     /**
      * @ORM\OneToMany(targetEntity="ProjectBundle\Entity\UserProject", mappedBy="user")
