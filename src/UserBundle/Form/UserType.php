@@ -4,6 +4,7 @@ namespace UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,7 +20,14 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username', TextType::class)
-            ->add('password', PasswordType::class)
+            ->add('password', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'invalid_message' => 'les passwords ne sont pas identiques',
+                'options' => array('attr' => array('class' => 'password-field')),
+                'required' => true,
+                'first_options'  => array('label' => 'Password'),
+                'second_options' => array('label' => 'répétez le Password'),
+            ))
             ->add('name', TextType::class)
             ->add('description' , TextareaType::class)
             ->add('encryptedPrivateAsymKey',TextType::class)
@@ -38,14 +46,4 @@ class UserType extends AbstractType
             'data_class' => 'UserBundle\Entity\User'
         ));
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'userbundle_user';
-    }
-
-
 }

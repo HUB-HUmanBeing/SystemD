@@ -23,9 +23,16 @@ class User extends CommunicatingEntity implements UserInterface
      * c'est le nom unique par lequel on authentifie un utilisateur
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @ORM\Column(name="username", type="string", length=70, unique=true)
      */
     private $username;
+    /**
+     * c'est le nom unique par lequel on authentifie un utilisateur
+     * @var string
+     *
+     * @ORM\Column(name="hashed_email", type="string", length=255, unique=false, nullable=true)
+     */
+    private $hashedEmail;
 
     /**
      * @var string
@@ -195,5 +202,20 @@ class User extends CommunicatingEntity implements UserInterface
         return $this->userProjects;
     }
 
+    /**
+     * @return string
+     */
+    public function getHashedEmail()
+    {
+        return $this->hashedEmail;
+    }
+
+    /**
+     * @param string $hashedEmail
+     */
+    public function setHashedEmail($hashedEmail)
+    {
+        $this->hashedEmail = $hashedEmail;
+    }
 }
 
