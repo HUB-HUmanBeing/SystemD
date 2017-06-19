@@ -3,7 +3,8 @@
     {{ project.name }}
 {% endblock %}
 {% block body %}
-<h1>{{ project.name }}</h1>
+<h2>{{ project.name }}</h2>
+    <hr>
     <div class="row">
         <div class="col-sm-8">
             <h3>Description</h3>
@@ -11,9 +12,11 @@
         </div>
         <div class="col-sm-4">
             <h3>Liste des membres</h3>
+            <ul>
             {% for userProject in project.getUserProjects %}
-                <p>{{ userProject.user.name }}</p>
+                <li><a href="{{ path('user_mainpage' , { 'id' : userProject.user.id}) }}">{{ userProject.user.name }}</a></li>
             {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

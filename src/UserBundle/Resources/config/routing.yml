@@ -1,3 +1,7 @@
 sign_in:
     path:     /add
     defaults: { _controller: UserBundle:User:add }
+
+user_mainpage:
+    path: /{id}
+    defaults: { _controller: UserBundle:User:mainpage}

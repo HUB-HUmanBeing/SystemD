@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+    {{ user.name }}
+{% endblock %}
+{% block body %}
+    <h2>{{  user.name }}</h2>
+    <h5>{{ user.username}}</h5>
+    <hr>
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>présentation</h3>
+                <p>{{ user.description }}</p>
+        </div>
+        <div class="col-sm-4">
+            <h3>Projets</h3>
+            <ul>
+            {% for userProjet in user.userProjects %}
+                <li><a href="{{ path('project_mainpage' , { 'id' : userProjet.project.id}) }}">{{ userProjet.project.name }}</a></li>
+                
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

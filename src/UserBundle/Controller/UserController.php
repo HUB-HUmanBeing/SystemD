@@ -19,7 +19,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+            $request->getSession()->getFlashBag()->add('notice', 'Bienvenu parmis les utilisateurs d\'HUmanBeing');
 
             return $this->redirectToRoute('homepage');
         }
@@ -29,5 +29,13 @@ class UserController extends Controller
             'path' => $this->generateUrl('sign_in'),
         ));
 
+    }
+    public function mainpageAction($id , Request $request)
+    {
+        $em = $this->getDoctrine()->getRepository('UserBundle:User');
+        $user = $em->find($id);
+        return $this->render('UserBundle:Default:userMainpage.html.twig', array(
+            'user' => $user
+        ));
     }
 }

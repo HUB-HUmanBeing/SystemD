@@ -22,13 +22,16 @@ class MenuController extends Controller
             ['path'=>'work_in_progress','title'=>'lien vers telle fonctionnalité']
         );
         //pour le menu utilisateur on ajoute la déconnexion
-        $userSubMenu = $basicSubMenu;
-        $userSubMenu[] = ['path'=>'logout','title'=>'déconnexion'];
+        $userSubMenu = array(
+            ['path'=>'user_mainpage', 'id'=> $this->getUser()->getId(), 'title'=>'Mon Profil'],
+            ['path'=>'logout','title'=>'déconnexion']
+            )
+        ;
         //sous menu des projet
         $projectSubmenu = array();
         //on boucle sur les projets utilisateurs
         foreach ($currentUser->getUserProjects() as $userProjects){
-            $project =$userProjects->getProject();
+            $project = $userProjects->getProject();
             $projectSubmenu[] = [
                 'path'=>'project_mainpage',
                 'id'=>$project->getId(),
@@ -53,7 +56,7 @@ class MenuController extends Controller
                 'subMenu' => $basicSubMenu
             ),
             'project' => array(
-                'title'=> 'Mes projets',
+                'title'=> 'Mes Projets',
                 'iconUrl'=> 'img/icon/project_icon.png',
                 'subMenu' => $projectSubmenu
             ),
@@ -73,7 +76,7 @@ class MenuController extends Controller
             'generalMenu' => $generalMenu
         ));
     }
-    public function connexionPannelAction(Request $request)
+    public function connexionPannelAction()
     {
         $authenticationUtils = $this->get('security.authentication_utils');
         return $this->render('CoreBundle:Menu:connexionPannel.html.twig', array(

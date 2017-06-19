@@ -15,15 +15,39 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
      * on crée une liste des noms d'utilisateur
      * @var array
      */
-    private $userTable = [
-        "Robin",
-        "Audric",
-        "Eude",
-        "Giselle",
-        "JeanLucDeLaCroix",
-        "Marc",
-        "Jérémy",
-        "Lucien"
+    private $usersTable = [
+        [
+            'name' => 'Robin',
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+            'name' => "Audric",
+        'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+            'name' => "Eude",
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+            'name' => "Giselle",
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+            'name' => "JeanLucDeLaCroix",
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+            'name' =>  "Marc",
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+            'name' =>   "Jérémy",
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+            'name' => "Lucien",
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
 ];
     //on commencera les fixtures avec celle la
     public function getOrder()
@@ -34,18 +58,19 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         //on boucle sur les noms d'utilisateurs
-        foreach($this->userTable as $i => $username ) {
+        foreach($this->usersTable as $userTable ) {
            // on instancie un User puis on l'hydrate de valeur de test
-            $Userlist[$i] = new User();
-            $Userlist[$i]->setUsername($username);
-            $Userlist[$i]->setPassword('0');
-            $Userlist[$i]->setSalt('');
-            $Userlist[$i]->setRoles(['ROLE_USER']);
-            $Userlist[$i]->setEncryptedPrivateAsymKey("");
-            $Userlist[$i]->setPublicAsymKey("");
-            $Userlist[$i]->setName($Userlist[$i]->getUsername());
+            $Userlist = new User();
+            $Userlist->setUsername($userTable['name']);
+            $Userlist->setDescription($userTable['description']);
+            $Userlist->setPassword('0');
+            $Userlist->setSalt('');
+            $Userlist->setRoles(['ROLE_USER']);
+            $Userlist->setEncryptedPrivateAsymKey("");
+            $Userlist->setPublicAsymKey("");
+            $Userlist->setName($Userlist->getUsername());
             //on persite chaque utilisateur créé
-            $manager->persist($Userlist[$i]);
+            $manager->persist($Userlist);
         }
         //on lance la requete vers la bdd
         $manager->flush();

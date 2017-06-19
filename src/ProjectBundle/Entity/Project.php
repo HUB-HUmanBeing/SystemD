@@ -16,14 +16,6 @@ use UserBundle\Entity\User;
 class Project extends CommunicatingEntity
 {
 
-
-    /**
-     * la description générale du projet
-     * @var string
-     * @ORM\Column(name="description", type="text")
-     */
-    private $description;
-
     /**
      * lien vers l'entité/table reliant les utilisateurs au projet
      * si un projet est suprimé la relation avec ses utilisateurs aussi donc persistance en cascade de ce coté
@@ -88,20 +80,6 @@ class Project extends CommunicatingEntity
         return $this->id;
     }
 
-    /**
-     * @param string $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
 
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
 }
 

@@ -35,6 +35,13 @@ abstract class CommunicatingEntity
     protected $name;
 
     /**
+     * la description générale du projet
+     * @var string
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
      * cette clef est générée puis chiffrée coté client avec le mot de passe utilisateur
      * elle permet de déchiffrer les clef symétriques des contenus partagés
      * @var string
@@ -130,6 +137,22 @@ abstract class CommunicatingEntity
     public function getPublicAsymKey()
     {
         return $this->publicAsymKey;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
 
