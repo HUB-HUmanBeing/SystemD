@@ -27,17 +27,18 @@ class MenuController extends Controller
             ['path'=>'logout','title'=>'déconnexion']
             )
         ;
-        $messageSubMenu = $basicSubMenu;
         //sous menu des projet
-        $projectSubmenu = array('path'=>'user_projects','title'=>'Mes projets et invitations');
+        $projectSubmenu = array();
+        $projectSubmenu[] = ['path'=>'user_projects' , 'title'=>'Mes projets et invitations'];
         //on boucle sur les projets utilisateurs
-        foreach ($currentUser->getUserProjects() as $userProjects){
-            $project = $userProjects->getProject();
+        foreach ($currentUser->getUserProjects() as $userProject){
+            $project = $userProject->getProject();
             $projectSubmenu[] = [
                 'path'=>'project_mainpage',
                 'id'=>$project->getId(),
                 'title'=>$project->getName()
             ];
+
         }
         //on construit le menu général avec toutes ces infos
         $generalMenu = array(
@@ -54,7 +55,7 @@ class MenuController extends Controller
             'messenger' => array(
                 'title'=> 'messagerie',
                 'iconUrl'=> 'img/icon/message_icon.png',
-                'subMenu' => $messageSubMenu
+                'subMenu' => $basicSubMenu
             ),
             'project' => array(
                 'title'=> 'Mes Projets',

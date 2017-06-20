@@ -1,0 +1,35 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+    Projets et invitations
+{% endblock %}
+{% block body_header %}
+    <h1>Mes Projets et Invitations</h1>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-4 col-md-push-8">
+        <h4>Nouvelles invitations</h4>
+            {% for invitation in invitations%}
+                {% if invitation.status == 0 %}
+                        <h5><a href="{{ path( 'project_mainpage' , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a></h5>
+                        <p>{{ invitation.content }}</p>
+                        <div class="row">
+                            {#todo rendre ca valide#}
+                            <button class="btn btn-success col-sm-6">rejoindre le projet</button>
+                            <button class="btn btn-danger col-sm-6">décliner l'invitation</button>
+                        </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-sm-8 col-sm-pull-4">
+            {% for userProjet in userProjects %}
+                <div class="col-sm-4">
+                    <a href="{{ path('project_mainpage' , { 'id' : userProjet.project.id}) }}">
+                        <img src="{{ asset('img/icon/project_icon.png') }}" alt="" class="img-responsive">
+                        <h4>{{ userProjet.project.name }}</h4>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

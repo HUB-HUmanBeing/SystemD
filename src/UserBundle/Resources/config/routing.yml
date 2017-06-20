@@ -14,7 +14,7 @@ user_mainpage:
     requirements:
             id: \d+
 
-#page permettant de lister l'ensemble de ses projets et de voir les invitations recues
+#page permettant de lister l'ensemble de ses projets et de voir les invitations reçues
 user_projects:
     path:     /projects
     defaults: { _controller: UserBundle:User:invitationsProjects}

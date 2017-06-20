@@ -11,14 +11,5 @@
             <h3>présentation</h3>
                 <p>{{ user.description }}</p>
         </div>
-        <div class="col-sm-4">
-            <h3>Projets</h3>
-            <ul>
-            {% for userProjet in user.userProjects %}
-                <li><a href="{{ path('project_mainpage' , { 'id' : userProjet.project.id}) }}">{{ userProjet.project.name }}</a></li>
-                
-            {% endfor %}
-            </ul>
-        </div>
     </div>
 {% endblock %}

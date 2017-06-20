@@ -45,10 +45,13 @@ class UserController extends Controller
     //renvoie vers la page permettant de visualiser les membres d'un projet et
     public function invitationsProjectsAction(Request $request)
     {
-        $em = $this->getDoctrine()->getRepository('UserBundle:User');
-        $user = $em->find($id);
-        return $this->render('UserBundle:Default:invitationProject', array(
-            'user' => $user
+        $currentUser = $this->getUser() ;
+        //on récupere les projets de
+        $userProjects = $currentUser->getUserProjects();
+        $invitations = $currentUser->getInvitations();//todo : c'est pas tres propre car je vais choper toutes les invitations alors que ya besoin de récuperer seulement celles avec le status à 0
+        return $this->render('@User/Default/invitationProject.html.twig', array(
+            'userProjects' => $userProjects,
+            'invitations' => $invitations,
         ));
     }
 }
