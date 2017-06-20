@@ -1,0 +1,40 @@
+{% extends "::base.html.twig" %}
+{% block body_header %}
+    <h1>Invitations recues</h1>
+{% endblock %}
+{% block body %}
+    <h4>Nouvelles invitations</h4>
+    {%  for invitation in newInvitations%}
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{ path( project_mainpage , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a>
+                <span class="text-muted"> le {{ invitation.buildAt|date("d/m/Y") }}</span>
+            </div>
+            <div class="col-md-6">
+                {#todo rendre ca valide#}
+                <button class="btn btn-success">rejoindre le projet</button>
+                <button class="btn btn-danger">décliner l'invitation</button>
+            </div>
+        </div>
+    {% endfor %}
+    <hr>
+    <h4>Invitations déclinées</h4>
+    {%  for invitation in newInvitations%}
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{ path( project_mainpage , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a>
+                <span class="text-muted"> le {{ invitation.buildAt|date("d/m/Y") }}</span>
+            </div>
+        </div>
+    {% endfor %}
+    <hr>
+    <h4>Invitations Acceptées</h4>
+    {%  for invitation in newInvitations%}
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{ path( project_mainpage , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a>
+                <span class="text-muted"> le {{ invitation.buildAt|date("d/m/Y") }}</span>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

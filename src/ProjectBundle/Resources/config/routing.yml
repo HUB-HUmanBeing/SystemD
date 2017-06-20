@@ -3,3 +3,8 @@ project_mainpage:
     defaults: { _controller: ProjectBundle:Default:mainPage }
     requirements:
             id: \d+
+project_invitation:
+    path:     /{id}/project_invitation
+    defaults: { _controller: ProjectBundle:Invitation:listForProject}
+    requirements:
+                id: \d+

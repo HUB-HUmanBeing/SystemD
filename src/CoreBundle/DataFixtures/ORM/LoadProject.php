@@ -71,6 +71,7 @@ class LoadProject extends AbstractFixture implements OrderedFixtureInterface
             //on persiste chaque projet crées
             $manager->persist($ProjectList);
         }
+
         //on flush le tout
         $manager->flush();
     }

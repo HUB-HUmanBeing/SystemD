@@ -5,3 +5,9 @@ sign_in:
 user_mainpage:
     path: /{id}
     defaults: { _controller: UserBundle:User:mainpage}
+    requirements:
+            id: \d+
+
+user_invitation:
+    path:     /user_invitation
+    defaults: { _controller: ProjectBundle:Invitation:listForUser}

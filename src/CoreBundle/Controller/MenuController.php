@@ -27,8 +27,10 @@ class MenuController extends Controller
             ['path'=>'logout','title'=>'déconnexion']
             )
         ;
+        $messageSubMenu = $basicSubMenu;
+        $messageSubMenu[] =['path'=>'user_invitation','title'=>'Invitations projet'] ;
         //sous menu des projet
-        $projectSubmenu = array();
+        $projectSubmenu = [];
         //on boucle sur les projets utilisateurs
         foreach ($currentUser->getUserProjects() as $userProjects){
             $project = $userProjects->getProject();
@@ -53,7 +55,7 @@ class MenuController extends Controller
             'messenger' => array(
                 'title'=> 'messagerie',
                 'iconUrl'=> 'img/icon/message_icon.png',
-                'subMenu' => $basicSubMenu
+                'subMenu' => $messageSubMenu
             ),
             'project' => array(
                 'title'=> 'Mes Projets',

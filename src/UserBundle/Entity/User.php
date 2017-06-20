@@ -6,6 +6,7 @@ namespace UserBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use HUB\CryptoMessengerBundle\Entity\CommunicatingEntity;
+use ProjectBundle\Entity\Invitation;
 use ProjectBundle\Entity\UserProject;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -53,7 +54,13 @@ class User extends CommunicatingEntity implements UserInterface
      *
      * @ORM\Column(name="roles", type="array")
      */
-    private $roles = array( "USER_ROLE");
+    private $roles = array( "ROLE_USER");
+
+    /**
+     * @ORM\OneToMany(targetEntity="ProjectBundle\Entity\Invitation", mappedBy="user")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $invitations;
 
     /**
      * @ORM\OneToMany(targetEntity="ProjectBundle\Entity\UserProject", mappedBy="user")
@@ -64,6 +71,7 @@ class User extends CommunicatingEntity implements UserInterface
     public function __construct()
     {
         $this->userProjects = new ArrayCollection();
+        $this->invitations = new ArrayCollection();
     }
 
     public function eraseCredentials()
@@ -217,5 +225,31 @@ class User extends CommunicatingEntity implements UserInterface
     {
         $this->hashedEmail = $hashedEmail;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getInvitations()
+    {
+        return $this->invitations;
+    }
+
+    public function replyInvitation(Invitation $invitation, $is_accepted, $reply)
+    {
+        $invitation->setReply($reply);
+        if($is_accepted){
+           $invitation->setStatus(1);
+           $project=$invitation->getProject()->addUser($this, $invitation->getEncryptedSymKey() );
+        }
+
+    }
+    /**
+     * @param mixed $invitations
+     */
+    public function setInvitations($invitations)
+    {
+        $this->invitations = $invitations;
+    }
+
 }
 

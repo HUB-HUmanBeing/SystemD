@@ -7,7 +7,6 @@ $(document).ready(function () {
     headroom.init();
     var is_hidden = true;
     $('#general-menu-hamburger').click(function () {
-
         if(is_hidden) {
             $('#general-menu').css("display", "none").removeClass("hidden-xs")
                 .slideDown();

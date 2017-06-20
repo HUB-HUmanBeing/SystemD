@@ -21,14 +21,20 @@ CSS DU HEADER - MENU
     width: auto;
     padding: 5px;
 }
+.mini-bar{
+    background-color: rgba(225, 225, 225, 0.7);
+    height: 10px ;
+
+}
+.menu-container{
+    background-color: rgba(225, 225, 225, 0.7);
+    padding: 10px ;
+    border-bottom-left-radius: 20px;
+}
 .general-header{
     position: fixed;
     width: 100%;
-    background-color: rgba(225, 225, 225, 0.7);
     z-index: 10;
-}
-.general-header nav{
-    margin: 10px ;
 }
 .headroom--pinned {
     display: block;
@@ -46,8 +52,12 @@ CSS DU HEADER - MENU
 .headroom--unpinned {
     transform: translateY(-100%);
 }
-.header-height{
+.header-height-xs{
     height: 70px;
+    margin-bottom: 5px;
+}
+.header-height-sm{
+    height: 10px;
     margin-bottom: 5px;
 }
 

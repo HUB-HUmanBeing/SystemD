@@ -2,38 +2,40 @@
 <header class="header-height general-header">
     <nav class="container-fluid ">
         <div class="row">
-            <div class="col-xs-6">
-                {% if app.user is defined and app.user is not null%}
-                    <div class="row">
-                        <div class="col-xs-6 visible-xs-inline-block">
-                            <button type="button" class="btn btn-default  navbar-brand" id="general-menu-hamburger">
-                                <img src="{{ asset('img/icon/menu_icon.png') }}" alt="menu">
-                            </button>
-                        </div>
-                        <div class="col-xs-6 visible-xs">
-                            <a href="#" class="navbar-brand btn btn-default"><img src="{{ asset('img/icon/agenda_icon.png') }}" alt="agenda"></a>
-                        </div>
-                    </div>
-                {% endif %}
+            <div class="col-sm-10 hidden-xs mini-bar">
+                <div class=" container-fluid"></div>
+                {##}
             </div>
-            <div class="col-xs-6 col-sm-2 col-sm-offset-4">
+            <div class="col-sm-2 menu-container">
                 <div class="row">
-                    <form class="col-xs-6 col-sm-9" role="search">
-                        <div class="input-group row">
-                            <input type="text" class="form-control hide" placeholder="Search">
-                            <span class="input-group center-block ">
-                                <button type="submit" class="btn btn-default navbar-brand" >
-                                    <img  src="{{ asset('img/icon/search_icon.png') }}" alt="search icon">
-                                </button>
-                            </span>
+                    <div class="col-xs-6 visible-xs">
+                        {% if app.user is defined and app.user is not null%}
+                            <div class="row">
+                                <div class="col-xs-6 inline-block">
+                                    <button type="button" class="btn btn-default  navbar-brand" id="general-menu-hamburger">
+                                        <img src="{{ asset('img/icon/menu_icon.png') }}" alt="menu">
+                                    </button>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="#" class="navbar-brand btn btn-default"><img src="{{ asset('img/icon/agenda_icon.png') }}" alt="agenda"></a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-6 col-sm-12">
+                        <div class="col-xs-6 ">
+                            <a href="#" class="navbar-brand btn btn-default"><img src="{{ asset('img/icon/search_icon.png') }}" alt="agenda"></a>
                         </div>
-                    </form>
-                        <a class="navbar-brand col-xs-6 col-sm-3" href="{{ path('homepage') }}">
+                        <a class="navbar-brand col-xs-6" href="{{ path('homepage') }}">
                             <img class="btn btn-default center-block" src="{{ asset('img/icon/hub_logo.png') }}" alt="HUB - HUmanBeing homepage">
                         </a>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 </header>
-<div class="header-height"></div>
+<div class="header-height-xs visible-xs">
+</div>
+<div class="header-height-sm invisible-xs">
+</div>

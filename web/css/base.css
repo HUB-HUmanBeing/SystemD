@@ -1,3 +1,6 @@
 /****************************
 CSS POUR LE TEMPLATE DE BASE
  ******************************/
+.body-header{
+    min-height: 60px;
+}
