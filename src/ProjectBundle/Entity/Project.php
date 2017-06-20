@@ -31,10 +31,50 @@ class Project extends CommunicatingEntity
     private $invitations;
 
 
+    /**
+     * Project constructor.
+     */
     public function __construct()
     {
         $this->userProjects = new ArrayCollection();
         $this->invitations = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEncryptedPrivateAsymKey()
+    {
+        return $this->encryptedPrivateAsymKey;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublicAsymKey()
+    {
+        return $this->publicAsymKey;
     }
 
     /**
@@ -79,7 +119,6 @@ class Project extends CommunicatingEntity
     }
     /**
      * Get id
-     *
      * @return int
      */
     public function getId()
@@ -93,12 +132,11 @@ class Project extends CommunicatingEntity
      */
     private function addInvitation(Invitation $invitation)
     {
-        $this->userProjects[] = $invitation;
-        $invitation->setProject($this);
+        $this->invitations[] = $invitation;
     }
 
     /**
-     * permet de suprimer une relation et donc de sortir un utilisateur du projet
+     * permet de suprimer une relation et donc d'annuler une invitation
      * @param Invitation $invitation
      */
     public function removeInvitation(Invitation $invitation)
@@ -110,11 +148,12 @@ class Project extends CommunicatingEntity
      * créer une invitation
      * @param User $user
      * @param string $content
+     * @param string $encryptedSymKey
      */
-    public function buildInvitation(User $user, $content )
+    public function buildInvitation(User $user, $content, $encryptedSymKey )
     {
         //on hydrate la table de jointure avec toutes les infos nécessaires
-        $invitation= new Invitation($user , $this , $content);
+        $invitation= new Invitation($user , $this , $content, $encryptedSymKey);
         //puis on ajoute la réference a la table de jointure dans notre arraycollection
         $this->addInvitation($invitation);
     }

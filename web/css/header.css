@@ -21,41 +21,51 @@ CSS DU HEADER - MENU
     width: auto;
     padding: 5px;
 }
+
 .mini-bar{
     background-color: rgba(225, 225, 225, 0.7);
     height: 10px ;
 
 }
+
 .menu-container{
     background-color: rgba(225, 225, 225, 0.7);
     padding: 10px ;
     border-bottom-left-radius: 20px;
 }
+
 .general-header{
     position: fixed;
     width: 100%;
     z-index: 10;
 }
+
 .headroom--pinned {
     display: block;
 }
+
 .headroom--unpinned {
     display: none;
 }
+
 .general-header {
     will-change: transform;
     transition: transform 200ms linear;
 }
+
 .headroom--pinned {
     transform: translateY(0%);
 }
+
 .headroom--unpinned {
     transform: translateY(-100%);
 }
+
 .header-height-xs{
     height: 70px;
     margin-bottom: 5px;
 }
+
 .header-height-sm{
     height: 10px;
     margin-bottom: 5px;

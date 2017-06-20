@@ -15,6 +15,7 @@ class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}
+     * construction du formulaire d' inscription
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

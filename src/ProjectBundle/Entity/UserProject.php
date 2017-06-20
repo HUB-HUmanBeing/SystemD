@@ -53,6 +53,13 @@ class UserProject
      */
     private $roles;
 
+    /**
+     * UserProject constructor.
+     * @param User $user
+     * @param Project $project
+     * @param $encryptedSymKey
+     * @param array $roles
+     */
     public function __construct(User $user, Project $project, $encryptedSymKey, array $roles )
     {
         $this->setUser($user);
@@ -63,9 +70,7 @@ class UserProject
 
     /**
      * Set encryptedSymKey
-     *
      * @param string $encryptedSymKey
-     *
      * @return UserProject
      */
     public function setEncryptedSymKey($encryptedSymKey)
@@ -77,7 +82,6 @@ class UserProject
 
     /**
      * Get encryptedSymKey
-     *
      * @return string
      */
     public function getEncryptedSymKey()
@@ -87,9 +91,7 @@ class UserProject
 
     /**
      * Set isContentUnread
-     *
      * @param boolean $isContentUnread
-     *
      * @return UserProject
      */
     public function setIsContentUnread($isContentUnread)
@@ -101,7 +103,6 @@ class UserProject
 
     /**
      * Get isContentUnread
-     *
      * @return bool
      */
     public function getIsContentUnread()
@@ -111,9 +112,7 @@ class UserProject
 
     /**
      * Set roles
-     *
-     * @param string $roles
-     *
+     * @param array $roles
      * @return UserProject
      */
     public function setRoles($roles)
@@ -125,7 +124,6 @@ class UserProject
 
     /**
      * Get roles
-     *
      * @return string
      */
     public function getRoles()

@@ -28,9 +28,8 @@ class MenuController extends Controller
             )
         ;
         $messageSubMenu = $basicSubMenu;
-        $messageSubMenu[] =['path'=>'user_invitation','title'=>'Invitations projet'] ;
         //sous menu des projet
-        $projectSubmenu = [];
+        $projectSubmenu = array('path'=>'user_projects','title'=>'Mes projets et invitations');
         //on boucle sur les projets utilisateurs
         foreach ($currentUser->getUserProjects() as $userProjects){
             $project = $userProjects->getProject();
@@ -78,6 +77,7 @@ class MenuController extends Controller
             'generalMenu' => $generalMenu
         ));
     }
+    //gere la petite fenetre de connexion et ses erreurs
     public function connexionPannelAction()
     {
         $authenticationUtils = $this->get('security.authentication_utils');

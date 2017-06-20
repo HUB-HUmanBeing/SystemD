@@ -39,7 +39,7 @@ abstract class CommunicatingEntity
      * @var string
      * @ORM\Column(name="description", type="text")
      */
-    private $description;
+    protected $description;
 
     /**
      * cette clef est générée puis chiffrée coté client avec le mot de passe utilisateur

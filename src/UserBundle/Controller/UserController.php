@@ -9,6 +9,7 @@ use UserBundle\Form\UserType;
 
 class UserController extends Controller
 {
+    //permet d'envoyer le formulaire de création ou de créer un nouvel  utilisateur si la methode est de type post
     public function addAction(Request $request)
     {
         $user =new User();
@@ -19,9 +20,9 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'Bienvenu parmis les utilisateurs d\'HUmanBeing');
+            $request->getSession()->getFlashBag()->add('notice', 'Bienvenue parmi les utilisateurs d\'HUmanBeing');
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage');//quant c'est fait, on renvoie vers
         }
 
         return $this->render('UserBundle:Default:signIn.html.twig', array(
@@ -30,11 +31,23 @@ class UserController extends Controller
         ));
 
     }
+
+    //renvoie vers la page principale d'un projet en fonction de son id
     public function mainpageAction($id , Request $request)
     {
         $em = $this->getDoctrine()->getRepository('UserBundle:User');
         $user = $em->find($id);
         return $this->render('UserBundle:Default:userMainpage.html.twig', array(
+            'user' => $user
+        ));
+    }
+
+    //renvoie vers la page permettant de visualiser les membres d'un projet et
+    public function invitationsProjectsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getRepository('UserBundle:User');
+        $user = $em->find($id);
+        return $this->render('UserBundle:Default:invitationProject', array(
             'user' => $user
         ));
     }

@@ -3,6 +3,7 @@
 namespace ProjectBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -20,5 +21,19 @@ class DefaultController extends Controller
                 'project'=> $project
             )
         );
+    }
+    //TODO : écrire le controller
+    // renvoie la page des membres d'un projet  et le panneau d'envoi d'invitation d'un utilisateur
+    public function membersAction($id, Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('ProjectBundle:Project')->find($id);
+        return $this->render();
+    }
+
+    //permet de gérer l'envoi et la reception du formulaire d'invitation
+    private function addinvitation(Request $request){
+
     }
 }

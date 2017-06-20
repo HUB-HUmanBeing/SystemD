@@ -1,10 +1,13 @@
+#page principale d'un projet
 project_mainpage:
     path:     /{id}
     defaults: { _controller: ProjectBundle:Default:mainPage }
     requirements:
             id: \d+
-project_invitation:
-    path:     /{id}/project_invitation
-    defaults: { _controller: ProjectBundle:Invitation:listForProject}
+
+#page des membres d'un projet, permet aussi l'ajout de nouveaux membres
+project_members:
+    path:     /{id}/members
+    defaults: { _controller: ProjectBundle:Default:members}
     requirements:
                 id: \d+

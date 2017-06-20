@@ -1,14 +1,17 @@
-{% extends "::base.html.twig" %}{#todo : faire des fixtures pour tester#}
+{% extends "::base.html.twig" %}
+{% block title %}
+    Mes projets et invitations
+{% endblock %}
 {% block body_header %}
     <h1>Invitations recues</h1>
 {% endblock %}
 {% block body %}
     <h4>Nouvelles invitations</h4>
-    {%  for invitation in newInvitations%}
+    {%  for invitation in invitations.newInvitations%}
         <div class="row">
 
-                <h5><a href="{{ path( project_mainpage , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a></h5>
-                <span class="text-muted"> le {{ invitation.buildAt|date("d/m/Y") }}</span>
+            <h5><a href="{{ path( project_mainpage , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a></h5>
+            <span class="text-muted"> le {{ invitation.buildAt|date("d/m/Y") }}</span>
             <p class="col-md-8">
                 {{ invitation.content }}
             </p>
@@ -21,7 +24,7 @@
     {% endfor %}
     <hr>
     <h4>Invitations déclinées</h4>
-    {%  for invitation in newInvitations%}
+    {%  for invitation in invitations.newInvitations%}
         <div class="row">
             <div class="col-md-6">
                 <a href="{{ path( project_mainpage , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a>
@@ -31,7 +34,7 @@
     {% endfor %}
     <hr>
     <h4>Invitations Acceptées</h4>
-    {%  for invitation in newInvitations%}
+    {%  for invitation in invitations.newInvitations%}
         <div class="row">
             <div class="col-md-6">
                 <a href="{{ path( project_mainpage , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a>

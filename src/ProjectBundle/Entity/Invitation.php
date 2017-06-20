@@ -7,13 +7,14 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Invitation
- *
+ * cette classe gere l'invitation envoyée par un projet vers un utilisateur
+ * On a choisi de mettre cette classe dans le projectbundle puisque la plus
+ * grande part des actions sont des actions effectuées par le projet (meme si c'est un peu le bordel pour tout suivre
  * @ORM\Table(name="invitation")
  * @ORM\Entity(repositoryClass="ProjectBundle\Repository\InvitationRepository")
  */
 class Invitation
 {
-
     /**
      * id de l'utilisateur
      * @ORM\ID
@@ -30,13 +31,13 @@ class Invitation
 
     /**
      * clef symétrique du projet chifrée avec la clef publique de l'utilisateur coté navigateur
-     * @ORM\Column(name="EncryptedSymKey", type="string", length=255)
+     * @ORM\Column(name="encrypted_sym_key", type="string", length=255)
      */
-    private $EncryptedSymKey;
+    private $encryptedSymKey;
 
     /**
      * @var string
-     *
+     * message d'invitation définit lors de l'envoi de l'invitation
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -47,37 +48,34 @@ class Invitation
      *
      * @ORM\Column(name="status", type="integer")
      */
-    private $status = 0;
+    private $status;
 
     /**
      * @var string
-     *
+     *message de réponse émis par l'utilisateur lorsqu'il envoie sa réponse
      * @ORM\Column(name="reply", type="text", nullable=true)
      */
     private $reply;
 
     /**
-     * @var DateTime
-     *
-     * @ORM\Column(name="send_at", type="datetime")
+     * Invitation constructor.
+     * @param $user
+     * @param $project
+     * @param $content
+     * @param $encryptedSymKey
      */
-    private $sendAt;
-
-
-
-public function __construct($user , $project, $content)
+    public function __construct($user , $project, $content, $encryptedSymKey)
 {
-    $this->setUser($user);
-    $this->setUser($project);
-    $this->setUser($content);
-    $this->sendAt = new DateTime();
+    $this->user  = $user ;
+    $this->project = $project ;
+    $this->content = $content ;
+    $this->status = 0 ;//par défault, le status est "pas de réponse"
+    $this->encryptedSymKey= $encryptedSymKey;
 }
 
     /**
      * Set content
-     *
      * @param string $content
-     *
      * @return Invitation
      */
     public function setContent($content)
@@ -89,7 +87,6 @@ public function __construct($user , $project, $content)
 
     /**
      * Get content
-     *
      * @return string
      */
     public function getContent()
@@ -99,9 +96,7 @@ public function __construct($user , $project, $content)
 
     /**
      * Set status
-     *
      * @param string $status
-     *
      * @return Invitation
      */
     public function setStatus($status)
@@ -113,7 +108,6 @@ public function __construct($user , $project, $content)
 
     /**
      * Get status
-     *
      * @return string
      */
     public function getStatus()
@@ -123,9 +117,7 @@ public function __construct($user , $project, $content)
 
     /**
      * Set reply
-     *
      * @param string $reply
-     *
      * @return Invitation
      */
     public function setReply($reply)
@@ -137,7 +129,6 @@ public function __construct($user , $project, $content)
 
     /**
      * Get reply
-     *
      * @return string
      */
     public function getReply()
@@ -182,23 +173,15 @@ public function __construct($user , $project, $content)
      */
     public function getEncryptedSymKey()
     {
-        return $this->EncryptedSymKey;
+        return $this->encryptedSymKey;
     }
 
     /**
-     * @param mixed $EncryptedSymKey
+     * @param mixed $encryptedSymKey
      */
-    public function setEncryptedSymKey($EncryptedSymKey)
+    public function setEncryptedSymKey($encryptedSymKey)
     {
-        $this->EncryptedSymKey = $EncryptedSymKey;
-    }
-
-    /**
-     * @return DateTime
-     */
-    public function getSendAt()
-    {
-        return $this->sendAt;
+        $this->encryptedSymKey = $encryptedSymKey;
     }
 }
 

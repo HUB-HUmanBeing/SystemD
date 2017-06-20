@@ -9,10 +9,9 @@ class InvitationController extends Controller
 {
     /**
      * renvoie vers la liste des invitations recues par l' utilisateur courant
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return array
      */
-    public function listForUserAction(Request $request)
+    public function listForUser()
     {
         $repository = $this
             ->getDoctrine()
@@ -23,10 +22,12 @@ class InvitationController extends Controller
         $acceptedInvitations = $repository->invitationsByStatus($userId, 1, false) ;
         $declinedInvitations= $repository->invitationsByStatus($userId, 2, false) ;
 
-        return $this->render('UserBundle:Invitation:list.html.twig', array(
-                'newInvitations' => $newInvitations , 'acceptedInvitations' => $acceptedInvitations, 'declinedInvitations' => $declinedInvitations
-        ));
-
+        $invitations = array(
+                'newInvitations' => $newInvitations ,
+            'acceptedInvitations' => $acceptedInvitations,
+            'declinedInvitations' => $declinedInvitations
+        );
+    return $invitations;
     }
 
     /**
@@ -34,10 +35,9 @@ class InvitationController extends Controller
      * a des utilisateurs par un projet de l'id indiqué
      * @param $id
      * id du projet
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return array
      */
-    public function listForProjectAction($id, Request $request)
+    public function listForProject($id)
     {
         $repository = $this
             ->getDoctrine()
@@ -45,11 +45,14 @@ class InvitationController extends Controller
             ->getRepository('ProjectBundle:Invitation');
 
         $newInvitations =$repository->invitationsByStatus($id, 0, false) ;
-        $accepted_invitations = $repository->invitationsByStatus($id, 1, false) ;
-        $declined_invitations= $repository->invitationsByStatus($id, 2, false) ;
-        return $this->render('UserBundle:Invitation:list.html.twig', array(
-            'invitations' => [
-                'newInvitations' => $newInvitations , 'accepted_invitations' => $accepted_invitations, 'declined_invitations' => $declined_invitations]
-        ));
+        $acceptedInvitations = $repository->invitationsByStatus($id, 1, false) ;
+        $declinedInvitations= $repository->invitationsByStatus($id, 2, false) ;
+
+            $invitations = array(
+                'newInvitations' => $newInvitations ,
+                'acceptedInvitations' => $acceptedInvitations,
+                'declinedInvitations' => $declinedInvitations
+            );
+        return $invitations;
     }
 }

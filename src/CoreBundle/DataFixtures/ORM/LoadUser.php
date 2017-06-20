@@ -12,7 +12,7 @@ use UserBundle\Entity\User;
 class LoadUser extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
-     * on crée une liste des noms d'utilisateur
+     * on crée une liste des noms d'utilisateur (12)
      * @var array
      */
     private $usersTable = [
@@ -48,7 +48,23 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
             'name' => "Lucien",
             'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
         ],
-];
+        [
+            'name' => "Emilie",
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+            'name' => "Patrick",
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+            'name' => "Yves",
+            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+        ],
+        [
+        'name' => "Camille",
+        'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
+         ],
+    ];
     //on commencera les fixtures avec celle la
     public function getOrder()
     {
