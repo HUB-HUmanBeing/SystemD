@@ -1,30 +1,38 @@
-<div class="panel-group " id="accordion">
-    {% for key, menuItem in generalMenu %}
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-{{ loop.index }}" class="row">
-                        <span class="col-md-4 navbar-brand"><img src="{{ asset(menuItem.iconUrl) }}"></span>
-                        <h5 class="col-md-8">{{ menuItem.title }}</h5>
-                    </a>
-                </h4>
-            </div>
-            <div id="collapse-{{ loop.index }}" class="panel-collapse collapse ">
-                <div class="panel-body">
-                    <div class="list-group sub-menu-{{ key }}">
-                        {% for subMenuItem in menuItem.subMenu%}
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-11">
+        <div class="general-menu-container">
+            <div class="panel-group " id="accordion">
+                {% for key, menuItem in generalMenu %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-{{ loop.index }}" class="row">
+                                    <span class="col-md-4 navbar-brand"><img src="{{ asset(menuItem.iconUrl) }}"></span>
+                                    <h5 class="col-md-8">{{ menuItem.title }}</h5>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse-{{ loop.index }}" class="panel-collapse collapse ">
+                            <div class="panel-body">
+                                <div class="list-group sub-menu-{{ key }}">
+                                    {% for subMenuItem in menuItem.subMenu%}
 
-                            <a href="{%  if subMenuItem.id is defined%}
-                            {{ path(subMenuItem.path , {'id' : subMenuItem.id })}}
-                            {% else %}
-                            {{ path(subMenuItem.path) }}
-                            {% endif %}" class="list-group-item">
-                                <small>{{ subMenuItem.title }}</small>
-                            </a>
-                        {% endfor %}
+                                        <a href="{%  if subMenuItem.id is defined%}
+                                        {{ path(subMenuItem.path , {'id' : subMenuItem.id })}}
+                                        {% else %}
+                                        {{ path(subMenuItem.path) }}
+                                        {% endif %}" class="list-group-item">
+                                            <small>{{ subMenuItem.title }}</small>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
-    {% endfor %}
+    </div>
 </div>

@@ -68,19 +68,24 @@ class User extends CommunicatingEntity implements UserInterface
      */
     private $userProjects;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->userProjects = new ArrayCollection();
         $this->invitations = new ArrayCollection();
     }
 
+    /**
+     *
+     */
     public function eraseCredentials()
     {
     }
 
     /**
      * Get id
-     *
      * @return int
      */
     public function getId()
@@ -90,9 +95,7 @@ class User extends CommunicatingEntity implements UserInterface
 
     /**
      * Set username
-     *
      * @param string $username
-     *
      * @return User
      */
     public function setUsername($username)
@@ -101,6 +104,11 @@ class User extends CommunicatingEntity implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName($name)
     {
         $this->name = $name;
@@ -110,7 +118,6 @@ class User extends CommunicatingEntity implements UserInterface
 
     /**
      * Get username
-     *
      * @return string
      */
     public function getUsername()
@@ -120,9 +127,7 @@ class User extends CommunicatingEntity implements UserInterface
 
     /**
      * Set password
-     *
      * @param string $password
-     *
      * @return User
      */
     public function setPassword($password)
@@ -134,7 +139,6 @@ class User extends CommunicatingEntity implements UserInterface
 
     /**
      * Get password
-     *
      * @return string
      */
     public function getPassword()
@@ -144,9 +148,7 @@ class User extends CommunicatingEntity implements UserInterface
 
     /**
      * Set salt
-     *
      * @param string $salt
-     *
      * @return User
      */
     public function setSalt($salt)
@@ -158,7 +160,6 @@ class User extends CommunicatingEntity implements UserInterface
 
     /**
      * Get salt
-     *
      * @return string
      */
     public function getSalt()
@@ -168,9 +169,7 @@ class User extends CommunicatingEntity implements UserInterface
 
     /**
      * Set roles
-     *
      * @param array $roles
-     *
      * @return User
      */
     public function setRoles($roles)
@@ -182,7 +181,6 @@ class User extends CommunicatingEntity implements UserInterface
 
     /**
      * Get roles
-     *
      * @return array
      */
     public function getRoles()
@@ -190,12 +188,18 @@ class User extends CommunicatingEntity implements UserInterface
         return $this->roles;
     }
 
+    /**
+     * @param UserProject $userProject
+     */
     public function addUserProject(UserProject $userProject)
     {
         $this->userProjects[] = $userProject;
 
     }
 
+    /**
+     * @param UserProject $userProject
+     */
     public function removeUserProject(UserProject $userProject)
     {
         $this->userProjects->removeElement($userProject);
@@ -234,6 +238,11 @@ class User extends CommunicatingEntity implements UserInterface
         return $this->invitations;
     }
 
+    /**
+     * @param Invitation $invitation
+     * @param $is_accepted
+     * @param $reply
+     */
     public function replyInvitation(Invitation $invitation, $is_accepted, $reply)
     {
         $invitation->setReply($reply);

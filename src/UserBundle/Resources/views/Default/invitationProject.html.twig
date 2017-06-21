@@ -7,21 +7,22 @@
 {% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-sm-4 col-md-push-8">
+        <div class="col-sm-3 col-md-push-9">
         <h4>Nouvelles invitations</h4>
             {% for invitation in invitations%}
                 {% if invitation.status == 0 %}
                         <h5><a href="{{ path( 'project_mainpage' , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a></h5>
                         <p>{{ invitation.content }}</p>
-                        <div class="row">
+                        <div class="">
                             {#todo rendre ca valide#}
-                            <button class="btn btn-success col-sm-6">rejoindre le projet</button>
-                            <button class="btn btn-danger col-sm-6">décliner l'invitation</button>
+                            <button class="btn btn-success col-sm-6 btn-sm">rejoindre le projet</button>
+                            <button class="btn btn-danger col-sm-6 btn-sm
+">décliner l'invitation</button>
                         </div>
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="col-sm-8 col-sm-pull-4">
+        <div class="col-sm-9 col-sm-pull-3">
             {% for userProjet in userProjects %}
                 <div class="col-sm-4">
                     <a href="{{ path('project_mainpage' , { 'id' : userProjet.project.id}) }}">

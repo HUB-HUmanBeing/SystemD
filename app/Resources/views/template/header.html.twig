@@ -39,3 +39,12 @@
 </div>
 <div class="header-height-sm invisible-xs">
 </div>
+{% for label, flashes in app.session.flashbag.all %}
+    {% for flash in flashes %}
+        <div class="alert alert-{{ label }}">
+            {{ flash }}
+        </div>
+    {% endfor %}
+{% endfor %}
+<div class="invisible-xs invisible-sm margin-header">
+</div>

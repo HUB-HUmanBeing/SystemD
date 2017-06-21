@@ -4,9 +4,9 @@ CSS DU MENU GENERAL
 .genral_menu nav{
     padding: 0;
 }
-
 .genral_menu .panel-group{
     padding: 0;
+    margin : 5px;
 }
 
 .genral_menu .panel-heading{
@@ -23,6 +23,7 @@ CSS DU MENU GENERAL
 
 .genral_menu .panel-body{
     padding: 5px;
+
 }
 
 

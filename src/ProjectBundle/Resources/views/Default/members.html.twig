@@ -1,0 +1,30 @@
+{% extends 'ProjectBundle:templates:ProjectGeneralTemplate.html.twig' %}
+{% block projectName %}
+    {{ project.name }}
+{% endblock %}
+{% block isMemberPage %}active{% endblock %}
+{% block body %}
+    <div class="row">
+
+        <div class="col-sd-5">
+            <ul>
+                {% for member in members %}
+                    
+                    <li><a href="{{ path('user_mainpage', { 'id' : member.user.id}) }}"><h5>{{ member.user.name }}</h5></a></li>
+                {% endfor %}
+            </ul>
+
+        </div>
+        <div class="col-sd-7 row">
+            {% for invitation in invitations %}
+                <div class="col-md-6">
+                    <h5>{{ invitation.user.name }}</h5>
+                    {% if invitation.status == 1 %}
+                        <h5><a href="{{ path( 'project_mainpage' , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a></h5>
+                        <p>{{ invitation.reply }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -15,32 +15,14 @@ class LoadProject extends AbstractFixture implements OrderedFixtureInterface
      * attribut pour créer des nouveaux projets
      */
     private $projectTable = [
-        [
-            'name' => 'Potager Collectif',
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => 'piece de theatre',
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => 'rammassage des déchets de la riviere',
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => 'organisation d\'une soirée concert',
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => 'cantine solidaire',
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => 'HUmanBeing',
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ]
+        ['name' => 'Potager Collectif'],
+        ['name' => 'piece de theatre'],
+        ['name' => 'rammassage des déchets de la riviere'],
+        ['name' => 'organisation d\'une soirée concert'],
+        ['name' => 'cantine solidaire'],
+        ['name' => 'HUmanBeing']
     ];
-
+    private $description = 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatumDebitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum';
     //message d'invitation a envoyer
     private $invitMessage ="onsectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptat";
     /*
@@ -63,7 +45,7 @@ class LoadProject extends AbstractFixture implements OrderedFixtureInterface
             $Project->setEncryptedPrivateAsymKey('');
             $Project->setPublicAsymKey('');
             $Project->setName($projectData['name']);
-            $Project->setDescription($projectData['description']);
+            $Project->setDescription($this->description);
             //on mélange les utilisateurs puis on les ajoute au projet, en mettant le premier comme administrateur
             shuffle($users);
             $Project->addUser($users[0], "",  ["admin"]);

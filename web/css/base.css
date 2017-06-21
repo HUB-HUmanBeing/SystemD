@@ -1,6 +1,16 @@
 /****************************
 CSS POUR LE TEMPLATE DE BASE
  ******************************/
+.body-header *{
+margin-top: 0;
+}
 .body-header{
-    min-height: 60px;
+    height: 60px;
+}
+.body-header h1{
+    font-size: 25px;
+}
+.general-footer{
+    position: relative;
+    bottom: 0;
 }

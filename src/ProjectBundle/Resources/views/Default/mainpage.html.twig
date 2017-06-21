@@ -1,22 +1,13 @@
-{% extends '::base.html.twig' %}
-{% block title %}
+{% extends 'ProjectBundle:templates:ProjectGeneralTemplate.html.twig' %}
+{% block projectName %}
     {{ project.name }}
 {% endblock %}
+{% block isHomePage %}active{% endblock %}
 {% block body %}
-<h2>{{ project.name }}</h2>
-    <hr>
-    <div class="row">
-        <div class="col-sm-8">
+<div class="row">
+        <div class="col-md-8">
             <h3>Description</h3>
             <p>{{ project.description }}</p>
         </div>
-        <div class="col-sm-4">
-            <h3>Liste des membres</h3>
-            <ul>
-            {% for userProject in project.getUserProjects %}
-                <li><a href="{{ path('user_mainpage' , { 'id' : userProject.user.id}) }}">{{ userProject.user.name }}</a></li>
-            {% endfor %}
-            </ul>
-        </div>
-    </div>
+</div>
 {% endblock %}

@@ -1,5 +1,5 @@
 <?php
-
+// todo renommer en projectcontroller
 namespace ProjectBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,7 +29,13 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository('ProjectBundle:Project')->find($id);
-        return $this->render();
+        $invitation = $project->getInvitations();
+        $members = $project->getUserProjects();
+        return $this->render('@Project/Default/members.html.twig', array(
+            "project"=> $project,
+            "members"=> $members,
+            "invitations"=> $invitation
+        ));
     }
 
     //permet de gérer l'envoi et la reception du formulaire d'invitation
