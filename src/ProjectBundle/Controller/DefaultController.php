@@ -28,12 +28,12 @@ class DefaultController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $project = $em->getRepository('ProjectBundle:Project')->find($id);
-        $invitation = $project->getInvitations();
-        $members = $project->getUserProjects();
+        $project = $em->getRepository('ProjectBundle:Project')->find($id);//récupération du projet
+        $invitation = $project->getInvitations();//récupération des invitations liées
+        $userProjects = $project->getUserProjects();//récupération de la table de jointure des utilisateurs liés
         return $this->render('@Project/Default/members.html.twig', array(
             "project"=> $project,
-            "members"=> $members,
+            "userProjects"=> $userProjects,
             "invitations"=> $invitation
         ));
     }

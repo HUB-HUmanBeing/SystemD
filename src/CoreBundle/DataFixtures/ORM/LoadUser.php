@@ -7,7 +7,9 @@ namespace BlogBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+
 use UserBundle\Entity\User;
+
 
 class LoadUser extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -16,55 +18,21 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
      * @var array
      */
     private $usersTable = [
-        [
-            'name' => 'Robin',
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => "Audric",
-        'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => "Eude",
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => "Giselle",
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => "JeanLucDeLaCroix",
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' =>  "Marc",
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' =>   "Jérémy",
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => "Lucien",
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => "Emilie",
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => "Patrick",
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-            'name' => "Yves",
-            'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-        ],
-        [
-        'name' => "Camille",
-        'description' => 'lLorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus error minus unde vitae. Debitis dolore eligendi ipsa quam sit tempora ullam. Ea molestias nobis officiis sit sunt veritatis voluptatum?'
-         ],
+
+        ['name' => 'Robin'],
+        ['name' => "Audric"],
+        ['name' => "Eude"],
+        ['name' => "Giselle"],
+        [ 'name' => "JeanLucDeLaCroix"],
+        ['name' =>  "Marc"],
+        ['name' =>   "Jérémy"],
+        ['name' => "Lucien"],
+        ['name' => "Emilie"],
+        ['name' => "Patrick"],
+        ['name' => "Yves"]
     ];
+    private $description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi architecto assumenda aut dignissimos, dolor ducimus eum ipsam laudantium minima optio possimus provident quas similique soluta, sunt vel voluptas voluptatem!";
+
     //on commencera les fixtures avec celle la
     public function getOrder()
     {
@@ -76,17 +44,18 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
         //on boucle sur les noms d'utilisateurs
         foreach($this->usersTable as $userTable ) {
            // on instancie un User puis on l'hydrate de valeur de test
-            $Userlist = new User();
-            $Userlist->setUsername($userTable['name']);
-            $Userlist->setDescription($userTable['description']);
-            $Userlist->setPassword('0');
-            $Userlist->setSalt('');
-            $Userlist->setRoles(['ROLE_USER']);
-            $Userlist->setEncryptedPrivateAsymKey("");
-            $Userlist->setPublicAsymKey("");
-            $Userlist->setName($Userlist->getUsername());
+            $user = new User();
+            $user->setUsername($userTable['name']);
+            $user->setDescription($this->description);
+
+            $user->setSalt('');
+            $user->setPassword('0');
+            $user->setRoles(['ROLE_USER']);
+            $user->setEncryptedPrivateAsymKey("");
+            $user->setPublicAsymKey("");
+            $user->setName($user->getUsername());
             //on persite chaque utilisateur créé
-            $manager->persist($Userlist);
+            $manager->persist($user);
         }
         //on lance la requete vers la bdd
         $manager->flush();

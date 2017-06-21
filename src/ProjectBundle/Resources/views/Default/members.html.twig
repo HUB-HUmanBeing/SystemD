@@ -6,21 +6,16 @@
 {% block body %}
     <div class="row">
 
-        <div class="col-sd-5">
-            <ul>
-                {% for member in members %}
-                    
-                    <li><a href="{{ path('user_mainpage', { 'id' : member.user.id}) }}"><h5>{{ member.user.name }}</h5></a></li>
-                {% endfor %}
-            </ul>
-
+        <div class="col-sm-6">
+                    {% for userProject in userProjects %}
+                        {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : userProject.User} %}
+                    {% endfor %}
         </div>
-        <div class="col-sd-7 row">
+        <div class="col-sm-6 row">
             {% for invitation in invitations %}
                 <div class="col-md-6">
-                    <h5>{{ invitation.user.name }}</h5>
-                    {% if invitation.status == 1 %}
-                        <h5><a href="{{ path( 'project_mainpage' , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a></h5>
+                    {% if invitation.status == 0 %}
+                        {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : invitation.user} %}
                         <p>{{ invitation.reply }}</p>
                     </div>
                 {% endif %}
