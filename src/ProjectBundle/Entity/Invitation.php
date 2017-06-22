@@ -57,21 +57,6 @@ class Invitation
      */
     private $reply;
 
-    /**
-     * Invitation constructor.
-     * @param $user
-     * @param $project
-     * @param $content
-     * @param $encryptedSymKey
-     */
-    public function __construct($user , $project, $content, $encryptedSymKey)
-{
-    $this->user  = $user ;
-    $this->project = $project ;
-    $this->content = $content ;
-    $this->status = 0 ;//par défault, le status est "pas de réponse"
-    $this->encryptedSymKey= $encryptedSymKey;
-}
 
     /**
      * Set content

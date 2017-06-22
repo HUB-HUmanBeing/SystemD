@@ -7,40 +7,40 @@
 {% endblock %}
 {% block body_header %}
     <div class="row">
-        <div class="col-sm-2 invisible-xs">
+        <div class="col-md-2 hidden-xs hidden-sm">
             <a href="{{ path('project_mainpage', {'id' : project.id})}}">
             <img src="{% block projectImgUrl %}{{ asset('img/icon/project_icon.png') }}{% endblock %}" alt="" class="img-responsive">
             </a>
         </div>
-        <div class="col-sm-10">
+        <div class="col-md-10">
             <a href="{{ path('project_mainpage', {'id' : project.id})}}">
                 <h1 class="body-header-title">{%  block projectName %}{%  endblock %}</h1>
             </a>
-            {# todo : rajouter la condition "il faut que l'utilisateur fasse parti du projet pour acceder a ce menu #}
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="{% block isHomePage %}{% endblock %}">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
-                    <a href="{{ path('project_mainpage', {'id' : project.id})}}"><span class="glyphicon glyphicon-home"></span></a>
-                </li>
-                <li class="{% block isMemberPage %}{% endblock %}">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
-                    <a href="{{ path('project_members', {'id': project.id}) }}">Membres du projet</a>
-                </li>
-                <li class="{% block is3 %}{% endblock %}">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
-                    <a href="#">option n°3</a>
-                </li>
-                <li class="{% block is4 %}{% endblock %}">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
-                    <a href="#">option numéro 4</a>
-                </li>
-            </ul>
         </div>
     </div>
 
 {% endblock %}
-{% block body %}
-    <div class="row">
-        <div class="col-md-8">
-            <h3>Description</h3>
-            <p>{{ project.description }}</p>
+    {% block body %}
+        <div class="col-md-10 col-md-offset-2">
+            {# todo : rajouter la condition "il faut que l'utilisateur fasse parti du projet pour acceder a ce menu #}
+            <ul class="nav nav-tabs row" role="tablist">
+                <li class="{% block isHomePage %}{% endblock %} ">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
+                    <a href="{{ path('project_mainpage', {'id' : project.id})}}"><span class="glyphicon glyphicon-home"></span></a>
+                </li>
+                <li class="{% block isMemberPage %}{% endblock %} ">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
+                    <a href="{{ path('project_members', {'id': project.id}) }}">Membres du projet</a>
+                </li>
+                <li class="{% block is3 %}{% endblock %} ">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
+                    <a href="#">option n°3</a>
+                </li>
+                <li class="{% block is4 %}{% endblock %} ">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
+                    <a href="#">option numéro 4</a>
+                </li>
+            </ul>
         </div>
-    </div>
-{% endblock %}
+        <div class="container-fluid">
+            {% block body_project %}
+            {% endblock %}
+        </div>
+    {% endblock %}
 

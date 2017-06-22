@@ -153,9 +153,15 @@ class Project extends CommunicatingEntity
     public function buildInvitation(User $user, $content, $encryptedSymKey )
     {
         //on hydrate la table de jointure avec toutes les infos nécessaires
-        $invitation= new Invitation($user , $this , $content, $encryptedSymKey);
+        $invitation= new Invitation();
+        $invitation->setUser($user );
+        $invitation->setProject($this);
+        $invitation->setContent($content);
+        $invitation->setStatus(0);
+        $invitation->setEncryptedSymKey($encryptedSymKey);
         //puis on ajoute la réference a la table de jointure dans notre arraycollection
         $this->addInvitation($invitation);
+
     }
 
     /**

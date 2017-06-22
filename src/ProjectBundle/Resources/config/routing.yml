@@ -11,3 +11,9 @@ project_members:
     defaults: { _controller: ProjectBundle:Default:members}
     requirements:
                 id: \d+
+
+add_user_invitation:
+    path:     /{id}/adduser
+    defaults: { _controller: ProjectBundle:Default:addInvitation}
+    requirements:
+                id: \d+

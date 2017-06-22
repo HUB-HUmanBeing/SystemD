@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal-body">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal', 'action' : path('add_user_invitation' , {'id' : id}) } }) }}
+    {{ form_errors(form) }}
+    <label for="username">entrez le nom d'utilisateur</label>
+    <input type="text" name="username" id="username">
+                        {{ form_row(form.content) }}
+    {{ form_widget(form.encryptedSymKey, {attr : {"value" : "0"}}) }}
+    {{ form_rest(form) }}
+    {{ form_widget(form.Inviter, {'attr': {'class': 'btn btn-default'}}) }}
+
+
+
+    {{ form_end(form) }}
+</div>
+

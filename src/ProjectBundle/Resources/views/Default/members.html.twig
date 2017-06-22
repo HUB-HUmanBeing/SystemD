@@ -3,23 +3,51 @@
     {{ project.name }}
 {% endblock %}
 {% block isMemberPage %}active{% endblock %}
-{% block body %}
-    <div class="row">
-
-        <div class="col-sm-6">
-                    {% for userProject in userProjects %}
-                        {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : userProject.User} %}
+{% block body_project %}
+    <h4>liste des membres du projet</h4>
+        {% for userProject in userProjects %}
+            <div class="row">
+                <div class="col-sm-4">
+                {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : userProject.User} %}
+                </div>
+                <div class="col-sm-8">
+                    {%  for role in userProject.roles %}
+                        <p>{{ role }}</p>
                     {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    <hr>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#invit_form">
+        Inviter un utilisateur a rejoindre le projet
+    </button>
+    <div class="modal fade" id="invit_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Inviter un nouveau membre</h4>
+                    {{ render(controller('ProjectBundle:Default:addInvitation' , { 'project' : project , 'initialRequest' : initialRequest })) }}
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6 row">
-            {% for invitation in invitations %}
-                <div class="col-md-6">
-                    {% if invitation.status == 0 %}
-                        {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : invitation.user} %}
-                        <p>{{ invitation.reply }}</p>
-                    </div>
+    </div>
+    <div class="col-md-6">
+    <h4>Invitations en attente de réponse</h4>
+        {% for invitation in invitations %}
+                {% if invitation.status == 0 %}
+                    {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : invitation.user} %}
+                    <p>{{ invitation.reply }}</p>
                 {% endif %}
-            {% endfor %}
-        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-6">
+        <h4>Invitations en déclinées</h4>
+        {% for invitation in invitations %}
+            {% if invitation.status == 2 %}
+                {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : invitation.user} %}
+                <p>{{ invitation.reply }}</p>
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}

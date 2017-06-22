@@ -52,8 +52,14 @@ class LoadProject extends AbstractFixture implements OrderedFixtureInterface
             for ($i=1; $i<4; $i++){
                 $Project->addUser($users[$i],"");
             }
-            for($i=4;$i<10;$i++){
+            for($i=4;$i<8;$i++){
                 $Project->buildInvitation($users[$i], $this->invitMessage, "0");
+        }
+        foreach($Project->getInvitations() as $i => $invitation){
+                if($i%2 == 0){
+                    $invitation->setStatus(2);
+                    $invitation->setReply('non merci, ca ne m\'interesse pas trop');
+                }
         }
             //on persiste chaque projet crées
             $manager->persist($Project);

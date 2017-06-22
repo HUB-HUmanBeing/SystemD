@@ -14,3 +14,6 @@ margin-top: 0;
     position: relative;
     bottom: 0;
 }
+.main-container{
+    min-height: 100vh;
+}
