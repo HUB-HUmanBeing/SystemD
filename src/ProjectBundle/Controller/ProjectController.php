@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use ProjectBundle\Form\InvitType;
 use ProjectBundle\Entity\Project;
 
-class DefaultController extends Controller
+class ProjectController extends Controller
 {
     /**
      * action permetant de récuperer les infos nécessaires a l'affichage de la page "vitrine" de chaques
@@ -19,7 +19,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository('ProjectBundle:Project')->find($id);
-        return $this->render('@Project/Default/mainpage.html.twig',
+        return $this->render('@Project/Project/mainpage.html.twig',
             array(
                 'project'=> $project
             )
@@ -33,7 +33,7 @@ class DefaultController extends Controller
         $project = $em->getRepository('ProjectBundle:Project')->find($id);//récupération du projet
         $invitation = $project->getInvitations();//récupération des invitations liées
         $userProjects = $project->getUserProjects();//récupération de la table de jointure des utilisateurs liés
-        return $this->render('@Project/Default/members.html.twig', array(
+        return $this->render('@Project/Project/members.html.twig', array(
             "project"=> $project,
             "userProjects"=> $userProjects,
             "invitations"=> $invitation,

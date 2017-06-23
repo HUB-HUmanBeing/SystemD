@@ -1,19 +1,19 @@
 #page principale d'un projet
 project_mainpage:
     path:     /{id}
-    defaults: { _controller: ProjectBundle:Default:mainPage }
+    defaults: { _controller: ProjectBundle:Project:mainPage }
     requirements:
             id: \d+
 
 #page des membres d'un projet, permet aussi l'ajout de nouveaux membres
 project_members:
     path:     /{id}/members
-    defaults: { _controller: ProjectBundle:Default:members}
+    defaults: { _controller: ProjectBundle:Project:members}
     requirements:
                 id: \d+
 
 add_user_invitation:
     path:     /{id}/adduser
-    defaults: { _controller: ProjectBundle:Default:addInvitation}
+    defaults: { _controller: ProjectBundle:Project:addInvitation}
     requirements:
                 id: \d+
