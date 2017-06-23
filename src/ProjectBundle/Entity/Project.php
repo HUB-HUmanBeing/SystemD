@@ -100,9 +100,11 @@ class Project extends CommunicatingEntity
      * ajouter un utilisateur a un projet
      * @param User $user
      * @param $encryptedSymKey
-     * @param array $roles
+     * @param integer $roles
+     * 0 =>admin
+     * 1=>membre
      */
-    public function addUser(User $user, $encryptedSymKey ,$roles = ["member"])
+    public function addUser(User $user, $encryptedSymKey ,$roles = 1)
     {
         //on hydrate la table de jointure avec toutes les infos nécessaires
         $userProject= new UserProject($user , $this , $encryptedSymKey , $roles);

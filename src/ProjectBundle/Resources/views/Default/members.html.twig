@@ -11,9 +11,11 @@
                 {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : userProject.User} %}
                 </div>
                 <div class="col-sm-8">
-                    {%  for role in userProject.roles %}
-                        <p>{{ role }}</p>
-                    {% endfor %}
+                    {%  if userProject.roles == 0 %}
+                        <p>Administrateur du projet</p>
+                    {% else %}
+                        <p>Membre du projet</p>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

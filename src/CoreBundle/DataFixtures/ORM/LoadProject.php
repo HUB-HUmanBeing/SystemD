@@ -48,7 +48,7 @@ class LoadProject extends AbstractFixture implements OrderedFixtureInterface
             $Project->setDescription($this->description);
             //on mélange les utilisateurs puis on les ajoute au projet, en mettant le premier comme administrateur
             shuffle($users);
-            $Project->addUser($users[0], "",  ["admin"]);
+            $Project->addUser($users[0], "",  0);
             for ($i=1; $i<4; $i++){
                 $Project->addUser($users[$i],"");
             }

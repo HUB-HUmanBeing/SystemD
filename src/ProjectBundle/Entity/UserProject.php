@@ -46,10 +46,14 @@ class UserProject
     private $isContentUnread = false;
 
     /**
-     * permet d'affecter des roles aux differents utilisateurs, par défault, le role de base est "member"
-     * @var string
+     * permet d'affecter des roles aux differents utilisateurs,
+     * 0 => administrateur
+     * 1 => member
      *
-     * @ORM\Column(name="roles", type="array")
+     * par défault, le role de base est "member" donc $roles = 1
+     * @var int
+     *
+     * @ORM\Column(name="roles", type="integer")
      */
     private $roles;
 
@@ -58,9 +62,9 @@ class UserProject
      * @param User $user
      * @param Project $project
      * @param $encryptedSymKey
-     * @param array $roles
+     * @param int $roles
      */
-    public function __construct(User $user, Project $project, $encryptedSymKey, array $roles )
+    public function __construct(User $user, Project $project, $encryptedSymKey, $roles)
     {
         $this->setUser($user);
         $this->setProject($project);
@@ -110,10 +114,10 @@ class UserProject
         return $this->isContentUnread;
     }
 
+
     /**
-     * Set roles
-     * @param array $roles
-     * @return UserProject
+     * @param int $roles
+     * @return $this
      */
     public function setRoles($roles)
     {
@@ -124,7 +128,7 @@ class UserProject
 
     /**
      * Get roles
-     * @return string
+     * @return int
      */
     public function getRoles()
     {
