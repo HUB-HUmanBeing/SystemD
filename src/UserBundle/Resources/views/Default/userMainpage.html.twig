@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-7">
             <button class="btn btn-primary" data-toggle="modal" data-target="#invit_form">
-                Inviter cet utilisateur à rejoindre vos projets
+                Inviter cet utilisateur à rejoindre l'un vos projets
             </button>
             <div class="modal fade" id="invit_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -19,7 +19,7 @@
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                             </button>
-                            <h4 class="modal-title" id="myModalLabel">Inviter {{ user.username }}</h4>
+                            <h3 class="modal-title" id="myModalLabel">Inviter {{ user.username }}</h3>
                             {# todo : trouver un moyen pour que ca soit moins gourmand et plus efficace#}
                             <div class="panel-group" id="accordion">
                             {% for userProject in app.user.userProjects %}
@@ -27,7 +27,7 @@
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ userProject.project.id }}">
-                                                inviter {{ user.username }} à rejoindre le projet "{{ userProject.project.name }}"
+                                                Inviter <strong>{{ user.username }}</strong> à rejoindre le projet <strong>"{{ userProject.project.name }}"</strong>
                                             </a>
                                         </h4>
                                     </div>

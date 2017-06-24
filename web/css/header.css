@@ -49,16 +49,18 @@ CSS DU HEADER - MENU
 }
 
 .general-header {
-    will-change: transform;
-    transition: transform 200ms linear;
+
 }
 
 .headroom--pinned {
     transform: translateY(0%);
+
 }
 
 .headroom--unpinned {
     transform: translateY(-100%);
+    will-change: transform;
+    transition: transform 200ms linear;
 }
 
 .header-height-xs{

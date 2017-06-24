@@ -19,12 +19,12 @@
         {% include "template/header.html.twig" %}
         <div class="container-fluid row main-container">
                 {% if app.user is defined and app.user is not null%}
-                    <nav class="col-sm-3 col-md-2 hidden-xs genral_menu "id="general-menu">
+                    <nav class="col-sm-3 col-md-2 hidden-xs general_menu " id="general-menu">
                             {{ render(controller('CoreBundle:Menu:generalMenu', { 'originalRequest' : app.request })) }}
                     </nav>
 
                 {% else  %}
-                <nav class="col-sm-3 col-md-2 genral_menu" >
+                <nav class="col-sm-3 col-md-2 general_menu" >
                     {{ render(controller('CoreBundle:Menu:connexionPannel')) }}
                 </nav>
                 {% endif %}

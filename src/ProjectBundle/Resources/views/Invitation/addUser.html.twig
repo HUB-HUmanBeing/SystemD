@@ -8,7 +8,7 @@
         <input type="text" name="username" id="username" class="hidden" value="{{ username }}">
     {% endif %}
     {{ form_row(form.content) }}
-    {{ form_widget(form.encryptedSymKey, {attr : { "value" : "0","class" : "hidden"}}) }}
+    {{ form_widget(form.encryptedSymKey, {attr : { "value" : "0","class" : "hidden"}}) }}{#la value sera générée en JAVASCRIPT#}
     {{ form_rest(form) }}
     {{ form_widget(form.Inviter, {'attr': {'class': 'btn btn-default'}}) }}
     {{ form_end(form) }}

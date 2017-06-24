@@ -1,27 +1,28 @@
 /********************************
 CSS DU MENU GENERAL
 *********************************/
-.genral_menu nav{
+.general_menu nav{
     padding: 0;
 }
-.genral_menu .panel-group{
+.general_menu .panel-group{
     padding: 0;
     margin : 5px;
 }
 
-.genral_menu .panel-heading{
+.general_menu .panel-heading{
     padding: 0;
 }
-.genral_menu .sub-menu-project{
+.general_menu .sub-menu-project{
     max-height: 200px;
     overflow-y: scroll;
 }
-.genral_menu a{
+.general_menu a{
     margin: 0;
 
 }
 
-.genral_menu .panel-body{
+
+.general_menu .panel-body{
     padding: 5px;
 
 }

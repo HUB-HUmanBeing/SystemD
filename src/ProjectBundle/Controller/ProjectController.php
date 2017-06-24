@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ProjectBundle\Form\InvitType;
 use ProjectBundle\Entity\Project;
-use UserBundle\Entity\User;
+
 
 class ProjectController extends Controller
 {
@@ -46,11 +46,10 @@ class ProjectController extends Controller
     public function addInvitationAction( Project $project, Request $request, $username = null){
         //si post ca ajoute l'invit et ca renvoie vers la page membres
         //si get : ca renvoie juste le form
-        dump($username);
         //todo rajouter la sécurisation : que les admins peuvent le faire
         $invitation =new Invitation();
-        //on crée un drapeau pour savoir si on va devoir créer un champ nom
-        // dans le formulaire d'invitation ou si l'utilisateur a ajouter est déja défini contextualement
+        //on crée un drapeau pour savoir si on va devoir cacher ou non le champs d'ajout d'utilisateur dans le
+        // formulaire suivant si on est dans la situation inviter depuis la page projet ou inviter depuis la page utilisateur
         $usernameFieldRequired = $username ? false : true;
         //on cre le formulaire
         $form = $this->get('form.factory')->create(InvitType::class, $invitation);
@@ -64,7 +63,7 @@ class ProjectController extends Controller
 
             $invitation->setStatus(0);
             $userRepository = $this->getDoctrine()->getRepository('UserBundle:User');
-            //si ya pas d'utilisateur définit en attribut, on le crée a en recherchant a partir de l'input 'username'
+            //on définit l'utilisateur à ajouter a partir de l'input du formulaire
             $user = $userRepository->findOneBy(array('username' => $request->get('username')));
             //todo arreter et renvoyer une erreur si l'utilisateur existe déja dans la table invitation
             $invitation->setUser($user);
@@ -73,10 +72,10 @@ class ProjectController extends Controller
             $em->flush();
 
             $request->getSession()->getFlashBag()->add('notice', 'l\'invitation a été envoyé!');
-
-            return $this->redirectToRoute('project_members', array('id' => $project->getId()));//quant c'est fait, on renvoie vers
+            //on renvoie l'utilisateur vers la page du projet
+            return $this->redirectToRoute('project_members', array('id' => $project->getId()));
         }
-
+        //si la requete est en get, en envoie le formulaire
         return $this->render('ProjectBundle:Invitation:addUser.html.twig', array(
             'form' => $form->createView(),//on crée la vue associée a notre formulaire
             'id' => $project->getId(),
