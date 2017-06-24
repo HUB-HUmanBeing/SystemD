@@ -38,7 +38,8 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getRepository('UserBundle:User');
         $user = $em->find($id);
         return $this->render('UserBundle:Default:userMainpage.html.twig', array(
-            'user' => $user
+            'user' => $user,
+            'initialRequest' => $request
         ));
     }
 

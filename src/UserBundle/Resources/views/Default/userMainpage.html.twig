@@ -3,8 +3,38 @@
     {{ user.name }}
 {% endblock %}
 {% block body %}
-    <h2>{{  user.name }}</h2>
-    <h5>{{ user.username}}</h5>
+    <div class="row">
+        <div class="col-sm-5">
+            <h2>{{  user.name }}</h2>
+            <h5>{{ user.username}}</h5>
+        </div>
+        <div class="col-sm-7">
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#invit_form">
+                Inviter cet utilisateur à rejoindre vos projets
+            </button>
+            <div class="modal fade" id="invit_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Inviter {{ user.username }}</h4>
+                            {# todo : trouver un moyen pour que ca soit moins gourmand et plus efficace#}
+                            {% for userProject in app.user.userProjects %}
+                                <h4>inviter {{ user.username }} à rejoindre le projet "{{ userProject.project.name }}"</h4>
+                            {{ render(controller('ProjectBundle:Project:addInvitation' ,{
+                                'username' : user.username,
+                                'project' : userProject.project ,
+                                'initialRequest' : initialRequest,
+                                 })) }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr>
     <div class="row">
         <div class="col-sm-8">

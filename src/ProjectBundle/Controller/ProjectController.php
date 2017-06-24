@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ProjectBundle\Form\InvitType;
 use ProjectBundle\Entity\Project;
+use UserBundle\Entity\User;
 
 class ProjectController extends Controller
 {
@@ -42,19 +43,28 @@ class ProjectController extends Controller
     }
 
     //permet de gérer l'envoi et la reception du formulaire d'invitation
-    public function addInvitationAction( Project $project, Request $request){
+    public function addInvitationAction( Project $project, Request $request, $username = null){
         //si post ca ajoute l'invit et ca renvoie vers la page membres
         //si get : ca renvoie juste le form
+        dump($username);
         //todo rajouter la sécurisation : que les admins peuvent le faire
         $invitation =new Invitation();
-
+        //on crée un drapeau pour savoir si on va devoir créer un champ nom
+        // dans le formulaire d'invitation ou si l'utilisateur a ajouter est déja défini contextualement
+        $usernameFieldRequired = $username ? false : true;
+        //on cre le formulaire
         $form = $this->get('form.factory')->create(InvitType::class, $invitation);
 
+        //si on réceptionne la requete
         if ($request->isMethod('POST')) {
+            //on remplit le form avec les variables du $_POST
             $form->handleRequest($request);
+            //on définit le projet avec le projet passé en parametre
             $invitation->setProject($project);
+
             $invitation->setStatus(0);
             $userRepository = $this->getDoctrine()->getRepository('UserBundle:User');
+            //si ya pas d'utilisateur définit en attribut, on le crée a en recherchant a partir de l'input 'username'
             $user = $userRepository->findOneBy(array('username' => $request->get('username')));
             //todo arreter et renvoyer une erreur si l'utilisateur existe déja dans la table invitation
             $invitation->setUser($user);
@@ -68,8 +78,10 @@ class ProjectController extends Controller
         }
 
         return $this->render('ProjectBundle:Invitation:addUser.html.twig', array(
-            'form' => $form->createView(),
-            'id' => $project->getId()
+            'form' => $form->createView(),//on crée la vue associée a notre formulaire
+            'id' => $project->getId(),
+            'username' => $username,
+            'usernameFieldRequired' => $usernameFieldRequired
         ));
     }
 }
