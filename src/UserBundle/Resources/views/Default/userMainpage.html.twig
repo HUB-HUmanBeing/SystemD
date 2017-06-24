@@ -9,7 +9,7 @@
             <h5>{{ user.username}}</h5>
         </div>
         <div class="col-sm-7">
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#invit_form">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#invit_form">
                 Inviter cet utilisateur à rejoindre vos projets
             </button>
             <div class="modal fade" id="invit_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -21,14 +21,28 @@
                             </button>
                             <h4 class="modal-title" id="myModalLabel">Inviter {{ user.username }}</h4>
                             {# todo : trouver un moyen pour que ca soit moins gourmand et plus efficace#}
+                            <div class="panel-group" id="accordion">
                             {% for userProject in app.user.userProjects %}
-                                <h4>inviter {{ user.username }} à rejoindre le projet "{{ userProject.project.name }}"</h4>
-                            {{ render(controller('ProjectBundle:Project:addInvitation' ,{
-                                'username' : user.username,
-                                'project' : userProject.project ,
-                                'initialRequest' : initialRequest,
-                                 })) }}
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ userProject.project.id }}">
+                                                inviter {{ user.username }} à rejoindre le projet "{{ userProject.project.name }}"
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse{{ userProject.project.id}}" class="panel-collapse collapse ">
+                                        <div class="panel-body">
+                                            {{ render(controller('ProjectBundle:Project:addInvitation' ,{
+                                                'username' : user.username,
+                                                'project' : userProject.project ,
+                                                'initialRequest' : initialRequest,
+                                            })) }}
+                                        </div>
+                                    </div>
+                                </div>
                             {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>

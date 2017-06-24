@@ -2,18 +2,15 @@
     {{ form_start(form, {'attr': {'class': 'form-horizontal', 'action' : path('add_user_invitation' , {'id' : id}) } }) }}
     {{ form_errors(form) }}
     {% if usernameFieldRequired %}
-    <label for="username">entrez le nom d'utilisateur</label>
-    <input type="text" name="username" id="username">
-        {% else %}
-            <input type="text" name="username" id="username" class="invisible" value="{{ username }}">
+        <label for="username">entrez le nom d'utilisateur</label>
+        <input type="text" name="username" id="username">
+    {% else %}
+        <input type="text" name="username" id="username" class="hidden" value="{{ username }}">
     {% endif %}
     {{ form_row(form.content) }}
-    {{ form_widget(form.encryptedSymKey, {attr : {"value" : "0"}}) }}
+    {{ form_widget(form.encryptedSymKey, {attr : { "value" : "0","class" : "hidden"}}) }}
     {{ form_rest(form) }}
     {{ form_widget(form.Inviter, {'attr': {'class': 'btn btn-default'}}) }}
-
-
-
     {{ form_end(form) }}
 </div>
 
