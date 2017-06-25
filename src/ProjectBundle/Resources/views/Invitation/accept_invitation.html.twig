@@ -1,0 +1,15 @@
+<div class="modal-body">
+    {{ form_start(form, {'attr': {
+        'class': 'form-horizontal',
+        'action' : path('accept_invitation' ,{
+            'project_id' : project_id ,
+            'user_id' : user_id
+        }
+        ) }
+    })
+    }}
+
+    {{ form_rest(form) }}
+    <input type="submit" value="Rejoindre le projet !" class="btn btn-success" />
+    {{ form_end(form) }}
+</div>

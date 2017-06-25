@@ -24,3 +24,17 @@ delete_invitation:
     requirements:
                 project_id: \d+
                 user_id: \d+
+
+accept_invitation:
+    path:     /{project_id}/accept-invitation/{user_id}
+    defaults: { _controller: ProjectBundle:Invitation:acceptInvitation}
+    requirements:
+                project_id: \d+
+                user_id: \d+
+
+decline_invitation:
+    path:     /{project_id}/decline-invitation/{user_id}
+    defaults: { _controller: ProjectBundle:Invitation:declineInvitation}
+    requirements:
+                project_id: \d+
+                user_id: \d+

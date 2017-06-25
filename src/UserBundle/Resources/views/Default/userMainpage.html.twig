@@ -1,12 +1,11 @@
 {% extends "::base.html.twig" %}
 {% block title %}
-    {{ user.name }}
+    {{ user.username }}
 {% endblock %}
 {% block body %}
     <div class="row">
         <div class="col-sm-5">
-            <h2>{{  user.name }}</h2>
-            <h5>{{ user.username}}</h5>
+            <h2>{{ user.username}}</h2>
         </div>
         <div class="col-sm-7">
             <button class="btn btn-primary" data-toggle="modal" data-target="#invit_form">

@@ -57,7 +57,7 @@ class InvitationController extends Controller
     public function deleteInvitationAction($project_id, $user_id, Request $request)
     {
         $form = $this->get('form.factory')->create();
-        if($request->isMethod('POST')){
+        if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
             $em = $this->getDoctrine()->getManager();
             $project = $em->getRepository('ProjectBundle:Project')->find($project_id);
             $user = $em->getRepository('UserBundle:User')->find($user_id);
@@ -74,6 +74,60 @@ class InvitationController extends Controller
 
         }
         return $this->render('ProjectBundle:Invitation:delete_invitation.html.twig', array(
+            'form' => $form->createView(),//on crée la vue associée a notre formulaire
+            'project_id' => $project_id,
+            'user_id' => $user_id
+        ));
+    }
+//todo voir si on peu pas faire plus simple en donnant une id à l'invitation pour la retrouver simplement
+//todo sécuriser
+    public function acceptInvitationAction($project_id, $user_id, Request $request)
+    {
+        $form = $this->get('form.factory')->create();
+        if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $project = $em->getRepository('ProjectBundle:Project')->find($project_id);
+            $user = $em->getRepository('UserBundle:User')->find($user_id);
+            foreach ($project->getInvitations() as $invitation ){
+                if($invitation->getUser() == $user){
+                    $encryptedSymKey = $invitation->getEncryptedSymKey();
+                    $invitation->setStatus(1);
+                    $em->persist($invitation);
+                }
+            }
+            $project->addUser($user, $encryptedSymKey);
+            $em->persist($project);
+            $em->flush();
+            $request->getSession()->getFlashBag()->add('notice', 'Vous faites désormais partie de l\'équipe  du projet "' . $project->getName() . '" !');
+            //on renvoie l'utilisateur vers la page du projet
+            return $this->redirectToRoute('project_members', array('id' => $project->getId()));
+        }
+        return $this->render('ProjectBundle:Invitation:accept_invitation.html.twig', array(
+            'form' => $form->createView(),//on crée la vue associée a notre formulaire
+            'project_id' => $project_id,
+            'user_id' => $user_id
+        ));
+    }
+    public function declineInvitationAction($project_id, $user_id, Request $request)
+    {
+        $form = $this->get('form.factory')->create();
+        if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $project = $em->getRepository('ProjectBundle:Project')->find($project_id);
+            $user = $em->getRepository('UserBundle:User')->find($user_id);
+            foreach ($project->getInvitations() as $invitation ){
+                if($invitation->getUser() == $user){
+                    $invitation->setStatus(2);
+                    $invitation->setReply($request->get('reply'));
+                    $em->persist($invitation);
+                    $em->flush();
+                }
+            }
+            $request->getSession()->getFlashBag()->add('notice', 'l\'invitation a bien été déclinée');
+            //on renvoie l'utilisateur vers la page du projet
+            return $this->redirectToRoute('user_mainpage', array('id' => $user->getId()));
+        }
+        return $this->render('ProjectBundle:Invitation:decline_invitation.html.twig', array(
             'form' => $form->createView(),//on crée la vue associée a notre formulaire
             'project_id' => $project_id,
             'user_id' => $user_id

@@ -9,14 +9,49 @@
     <div class="row">
         <div class="col-sm-3 col-md-push-9">
         <h4>Nouvelles invitations</h4>
-            {% for invitation in invitations%}
+            {% for i, invitation in invitations%}
                 {% if invitation.status == 0 %}
-                        <h5><a href="{{ path( 'project_mainpage' , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a></h5>
+                    <hr>
+                        <h4><a href="{{ path( 'project_mainpage' , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a></h4>
                         <p>{{ invitation.content }}</p>
                         <div class="">
                             {#todo rendre ca valide#}
-                            <button class="btn btn-success col-sm-6 btn-sm">rejoindre le projet</button>
-                            <button class="btn btn-danger col-sm-6 btn-sm">décliner l'invitation</button>
+                            <button class="btn btn-success col-sm-6 btn-sm" data-toggle="modal" data-target="#accept_form_{{ i }}">
+                                Rejoindre le projet
+                            </button>
+                            <div class="modal fade" id="accept_form_{{ i }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                Rejoindre le projet <a href="{{ path( 'project_mainpage' , {'id': invitation.project.id}) }}">
+                                                    {{ invitation.project.name }}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        {{ render(controller('ProjectBundle:Invitation:acceptInvitation' , { 'project_id' : invitation.project.id , 'user_id' : app.user.id })) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger col-sm-6 btn-sm" data-toggle="modal" data-target="#decline_form_{{ i }}">
+                                Décliner l'invitation
+                            </button>
+                            <div class="modal fade" id="decline_form_{{ i }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                Décliner l'invitation à rejoindre le projet <a href="{{ path( 'project_mainpage' , {'id': invitation.project.id}) }}">
+                                                    {{ invitation.project.name }}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        {{ render(controller('ProjectBundle:Invitation:declineInvitation' , { 'project_id' : invitation.project.id , 'user_id' : app.user.id  })) }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                 {% endif %}
             {% endfor %}

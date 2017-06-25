@@ -81,7 +81,7 @@ class Invitation
     }
 
     /**
-     * Set status
+     * Set status de l'invitation : sans réponse => 0 , acceptée => 1 , refusée => 2
      * @param string $status
      * @return Invitation
      */
