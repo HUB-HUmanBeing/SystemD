@@ -14,6 +14,13 @@ project_members:
 
 add_user_invitation:
     path:     /{id}/adduser
-    defaults: { _controller: ProjectBundle:Project:addInvitation}
+    defaults: { _controller: ProjectBundle:Invitation:addInvitation}
     requirements:
                 id: \d+
+
+delete_invitation:
+    path:     /{project_id}/delete-invitation/{user_id}
+    defaults: { _controller: ProjectBundle:Invitation:deleteInvitation}
+    requirements:
+                project_id: \d+
+                user_id: \d+

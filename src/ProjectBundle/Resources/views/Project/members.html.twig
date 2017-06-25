@@ -29,22 +29,38 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="myModalLabel">Inviter un nouveau membre</h4>
-                    {{ render(controller('ProjectBundle:Project:addInvitation' , { 'project' : project , 'initialRequest' : initialRequest })) }}
                 </div>
+                    {{ render(controller('ProjectBundle:Invitation:addInvitation' , { 'project' : project , 'initialRequest' : initialRequest })) }}
             </div>
         </div>
     </div>
+    <hr>
     <div class="col-md-6">
     <h4>Invitations en attente de réponse</h4>
         {% for invitation in invitations %}
                 {% if invitation.status == 0 %}
                     {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : invitation.user} %}
-                    <p>{{ invitation.reply }}</p>
+                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_invit_form">
+                        Annuler l'invitation
+                    </button>
+                    <div class="modal fade bs-example-modal-sm" id="delete_invit_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Annuler l'invitation envoyée à {{ invitation.user.username }}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {{ render(controller('ProjectBundle:Invitation:deleteInvitation' , { 'project_id' : invitation.project.id , 'user_id' : invitation.user.id , 'initialRequest' : initialRequest })) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
         {% endfor %}
     </div>
     <div class="col-md-6">
-        <h4>Invitations en déclinées</h4>
+        <h4>Invitations déclinées</h4>
         {% for invitation in invitations %}
             {% if invitation.status == 2 %}
                 {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : invitation.user} %}

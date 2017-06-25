@@ -138,7 +138,7 @@ class Project extends CommunicatingEntity
     }
 
     /**
-     * permet de suprimer une relation et donc d'annuler une invitation
+     * permet de suprimer une relation de type invitation
      * @param Invitation $invitation
      */
     public function removeInvitation(Invitation $invitation)
@@ -163,7 +163,6 @@ class Project extends CommunicatingEntity
         $invitation->setEncryptedSymKey($encryptedSymKey);
         //puis on ajoute la réference a la table de jointure dans notre arraycollection
         $this->addInvitation($invitation);
-
     }
 
     /**
