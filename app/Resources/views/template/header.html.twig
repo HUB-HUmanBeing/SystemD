@@ -11,7 +11,7 @@
                         {% if app.user is defined and app.user is not null%}
                             <div class="row">
                                 <div class="col-xs-6 inline-block">
-                                    <button type="button" class="btn btn-default  navbar-brand" id="general-menu-hamburger">
+                                    <button type="button" class="btn btn-default  navbar-brand" onclick="window.top.window.scrollTo(0,0);" id="general-menu-hamburger">
                                         <img src="{{ asset('img/icon/menu_icon.png') }}" alt="menu">
                                     </button>
                                 </div>
