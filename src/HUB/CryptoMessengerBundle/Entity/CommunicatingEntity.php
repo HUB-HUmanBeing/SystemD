@@ -24,15 +24,7 @@ abstract class CommunicatingEntity
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
-    /**
-     * le name est un attribut commun aux users et au projets, il précise le nom d'usage d'un utilisateur ou le nom courant d'un projet.
-     * il est modifiable
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    protected $name;
+
 
     /**
      * la description générale du projet
@@ -68,34 +60,8 @@ abstract class CommunicatingEntity
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return CommunicatingEntity
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * Set encryptedPrivateAsymKey
-     *
      * @param string $encryptedPrivateAsymKey
-     *
      * @return CommunicatingEntity
      */
     public function setEncryptedPrivateAsymKey($encryptedPrivateAsymKey)
@@ -107,7 +73,6 @@ abstract class CommunicatingEntity
 
     /**
      * Get encryptedPrivateAsymKey
-     *
      * @return string
      */
     public function getencryptedPrivateAsymKey()
@@ -117,9 +82,7 @@ abstract class CommunicatingEntity
 
     /**
      * Set publicAsymKey
-     *
      * @param string $publicAsymKey
-     *
      * @return CommunicatingEntity
      */
     public function setPublicAsymKey($publicAsymKey)
@@ -131,7 +94,6 @@ abstract class CommunicatingEntity
 
     /**
      * Get publicAsymKey
-     *
      * @return string
      */
     public function getPublicAsymKey()

@@ -16,6 +16,13 @@ use UserBundle\Entity\User;
 class Project extends CommunicatingEntity
 {
     /**
+     *  il précise le nom  d'un projet.
+     * @var string
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
      * lien vers l'entité/table reliant les utilisateurs au projet
      * si un projet est suprimé la relation avec ses utilisateurs aussi donc persistance en cascade de ce coté
      * @ORM\OneToMany(targetEntity="ProjectBundle\Entity\UserProject", mappedBy="project", cascade={"persist"})

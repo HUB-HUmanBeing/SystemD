@@ -33,7 +33,7 @@
                                     </div>
                                     <div id="collapse{{ userProject.project.id}}" class="panel-collapse collapse ">
                                         <div class="panel-body">
-                                            {{ render(controller('ProjectBundle:Project:addInvitation' ,{
+                                            {{ render(controller('ProjectBundle:Invitation:addInvitation' ,{
                                                 'username' : user.username,
                                                 'project' : userProject.project ,
                                                 'initialRequest' : initialRequest,

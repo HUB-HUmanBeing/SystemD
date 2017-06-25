@@ -53,7 +53,6 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
             $user->setRoles(['ROLE_USER']);
             $user->setEncryptedPrivateAsymKey("");
             $user->setPublicAsymKey("");
-            $user->setName($user->getUsername());
             //on persite chaque utilisateur créé
             $manager->persist($user);
         }

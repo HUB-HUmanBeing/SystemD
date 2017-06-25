@@ -29,7 +29,6 @@ class UserType extends AbstractType
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'répétez le Password'),
             ))
-            ->add('name', TextType::class)
             ->add('description' , TextareaType::class)
             ->add('encryptedPrivateAsymKey',TextType::class)
             ->add('publicAsymKey', TextType::class)
