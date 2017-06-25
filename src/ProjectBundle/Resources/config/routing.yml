@@ -19,22 +19,20 @@ add_user_invitation:
                 id: \d+
 
 delete_invitation:
-    path:     /{project_id}/delete-invitation/{user_id}
+    path:     /delete-invitation/{invitation_id}
     defaults: { _controller: ProjectBundle:Invitation:deleteInvitation}
     requirements:
-                project_id: \d+
-                user_id: \d+
+                invitation_id: \d+
 
 accept_invitation:
-    path:     /{project_id}/accept-invitation/{user_id}
+    path:     /accept-invitation/{invitation_id}
     defaults: { _controller: ProjectBundle:Invitation:acceptInvitation}
     requirements:
-                project_id: \d+
-                user_id: \d+
+                invitation_id: \d+
+
 
 decline_invitation:
-    path:     /{project_id}/decline-invitation/{user_id}
+    path:     /decline-invitation/{invitation_id}
     defaults: { _controller: ProjectBundle:Invitation:declineInvitation}
     requirements:
-                project_id: \d+
-                user_id: \d+
+                invitation_id: \d+

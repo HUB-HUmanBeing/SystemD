@@ -51,7 +51,7 @@
                                     <h4 class="modal-title" id="myModalLabel">Annuler l'invitation envoyée à {{ invitation.user.username }}</h4>
                                 </div>
                                 <div class="modal-body">
-                                    {{ render(controller('ProjectBundle:Invitation:deleteInvitation' , { 'project_id' : invitation.project.id , 'user_id' : invitation.user.id , 'initialRequest' : initialRequest })) }}
+                                    {{ render(controller('ProjectBundle:Invitation:deleteInvitation' , { 'invitation_id' : invitation.id , 'initialRequest' : initialRequest })) }}
                                 </div>
                             </div>
                         </div>

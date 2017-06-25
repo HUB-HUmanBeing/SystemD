@@ -17,15 +17,20 @@ use UserBundle\Entity\User;
 class Invitation
 {
     /**
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * id de l'utilisateur
-     * @ORM\ID
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitations")
      */
     private $user;
 
     /**
      * id du projet
-     * @ORM\ID
      * @ORM\ManyToOne(targetEntity="ProjectBundle\Entity\Project", inversedBy="invitations")
      */
     private $project;
@@ -58,6 +63,13 @@ class Invitation
      */
     private $reply;
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set content

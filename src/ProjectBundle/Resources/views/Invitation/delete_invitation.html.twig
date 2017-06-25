@@ -1,11 +1,7 @@
 <div class="modal-body">
     {{ form_start(form, {'attr': {
                     'class': 'form-horizontal',
-                    'action' : path('delete_invitation' ,{
-                                        'project_id' : project_id ,
-                                        'user_id' : user_id
-                        }
-                 ) }
+                    'action' : path('delete_invitation' ,{'invitation_id' : invitation_id}) }
             })
     }}
     {{ form_rest(form) }}

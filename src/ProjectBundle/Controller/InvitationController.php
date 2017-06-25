@@ -54,113 +54,94 @@ class InvitationController extends Controller
         ));
     }
 
-    //todo voir si on peu pas faire plus simple en donnant une id à l'invitation pour la retrouver simplement
-    public function deleteInvitationAction($project_id, $user_id, Request $request)
+    public function deleteInvitationAction( $invitation_id , Request $request)
     {
         //todo verifier que c'est l'admin du projet
         //on crée un formulaire vide pour les crsf
         $form = $this->get('form.factory')->create();
         //si on recoit la requete de methode post et qu'elle est valide (crsf ok)
         if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
-            //on récupere l'utilisateur et le projet a partir de leurs id.
+            //on récupere l'invitation à partir de son id
             $em = $this->getDoctrine()->getManager();
-            $project = $em->getRepository('ProjectBundle:Project')->find($project_id);
-            $user = $em->getRepository('UserBundle:User')->find($user_id);
-            //on boucle sur les invitations jusqu'a ce qu'on trouve la bonne
-            foreach ($project->getInvitations() as $invitation){
-                if($invitation->getUser() == $user){
-                    //on la remove
-                    $em->remove($invitation);
-                    //puis on sauvegarde le tout
-                    $em->flush();
-                }
-            }
+            $invitation = $em->getRepository('ProjectBundle:Invitation')->find($invitation_id);
+            //on la remove
+            $em->remove($invitation);
+            //puis on sauvegarde le tout
+            $em->flush();
             //on revoie une confirmation
             $request->getSession()->getFlashBag()->add('notice', 'l\'invitation a été annulée');
             //on renvoie l'utilisateur vers la page du projet
-            return $this->redirectToRoute('project_members', array('id' => $project->getId()));
+            return $this->redirectToRoute('project_members', array('id' => $invitation->getProject()->getId()));
 
 
         }
         //si c'est en get on renvoie juste vers la vue affichant le formulaire de supression
         return $this->render('ProjectBundle:Invitation:delete_invitation.html.twig', array(
             'form' => $form->createView(),//on crée la vue associée a notre formulaire
-            'project_id' => $project_id,
-            'user_id' => $user_id
+            'invitation_id' => $invitation_id
         ));
     }
-//todo voir si on peu pas faire plus simple en donnant une id à l'invitation pour la retrouver simplement
+
 //todo sécuriser
-    public function acceptInvitationAction($project_id, $user_id, Request $request)
+    public function acceptInvitationAction( $invitation_id , Request $request)
     {
         //on crée un formulaire vide pour les crsf
         $form = $this->get('form.factory')->create();
         //si on recoit la requete de methode post et qu'elle est valide (crsf ok)
         if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
-            //on récupere l'utilisateur et le projet a partir de leurs id.
+            //on récupere l'invitation à partir de son id
             $em = $this->getDoctrine()->getManager();
-            $project = $em->getRepository('ProjectBundle:Project')->find($project_id);
-            $user = $em->getRepository('UserBundle:User')->find($user_id);
-            //on boucle sur les invitations jusqu'a ce qu'on trouve la bonne
-            foreach ($project->getInvitations() as $invitation ){
-                if($invitation->getUser() == $user){
-                    //on récupere la clef symetrique du projet chifrée avec la clef publique de l'utilisateur
-                    $encryptedSymKey = $invitation->getEncryptedSymKey();
-                    //on passe le statut de l'invitation à acceptée => 1
-                    $invitation->setStatus(1);
-                    //puis on sauvegarde le tout
-                    $em->persist($invitation);
-                }
-            }
+            $invitation = $em->getRepository('ProjectBundle:Invitation')->find($invitation_id);
+            //on chope le projet associé
+            $project = $invitation->getProject();
+            //on récupere la clef symetrique du projet chifrée avec la clef publique de l'utilisateur
+            $encryptedSymKey = $invitation->getEncryptedSymKey();
+            //on passe le statut de l'invitation à acceptée => 1
+            $invitation->setStatus(1);
+            //puis on sauvegarde le tout
+            $em->persist($invitation);
             //on ajoute l'utilisateur au projet
-            $project->addUser($user, $encryptedSymKey);
+            $project->addUser($invitation->getUser() , $encryptedSymKey);
             //puis on sauvegarde le tout
             $em->persist($project);
             $em->flush();
             //on revoie une confirmation
             $request->getSession()->getFlashBag()->add('notice', 'Vous faites désormais partie de l\'équipe  du projet "' . $project->getName() . '" !');
             //on renvoie l'utilisateur vers la page du projet
-            return $this->redirectToRoute('project_members', array('id' => $project->getId()));
+            return $this->redirectToRoute('project_members', array( 'id' => $invitation->getProject()->getId()));
         }
+
         //si on est en get on renvoie vers la vue du formulaire d'acceptation de l'invitation
         return $this->render('ProjectBundle:Invitation:accept_invitation.html.twig', array(
             'form' => $form->createView(),//on crée la vue associée a notre formulaire
-            'project_id' => $project_id,
-            'user_id' => $user_id
+            'invitation_id' => $invitation_id
         ));
     }
-//todo voir si on peu pas faire plus simple en donnant une id à l'invitation pour la retrouver simplement
-    public function declineInvitationAction($project_id, $user_id, Request $request)
+
+    public function declineInvitationAction($invitation_id, Request $request)
     {
         //on crée un formulaire vide pour les crsf
         $form = $this->get('form.factory')->create();
         //si on recoit la requete de methode post et qu'elle est valide (crsf ok)
         if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
-            //on récupere l'utilisateur et le projet a partir de leurs id.
+            //on récupere l'invitation à partir de son id
             $em = $this->getDoctrine()->getManager();
-            $project = $em->getRepository('ProjectBundle:Project')->find($project_id);
-            $user = $em->getRepository('UserBundle:User')->find($user_id);
-            //on boucle sur les invitations jusqu'a ce qu'on trouve la bonne
-            foreach ($project->getInvitations() as $invitation ){
-                if($invitation->getUser() == $user){
-                    //on passe son statut à 2 => déclinée
-                    $invitation->setStatus(2);
-                    //on met dans l'attribut reply la réponse passée par l'utilisateur au champ reply
-                    $invitation->setReply($request->get('reply'));
-                    //puis on sauvegarde le tout
-                    $em->persist($invitation);
-                    $em->flush();
-                }
-            }
+            $invitation = $em->getRepository('ProjectBundle:Invitation')->find($invitation_id);
+            //on passe son statut à 2 => déclinée
+            $invitation->setStatus(2);
+            //on met dans l'attribut reply la réponse passée par l'utilisateur au champ reply
+            $invitation->setReply($request->get('reply'));
+            //puis on sauvegarde le tout
+            $em->persist($invitation);
+            $em->flush();
             //on revoie une confirmation
             $request->getSession()->getFlashBag()->add('notice', 'l\'invitation a bien été déclinée');
             //on renvoie l'utilisateur vers la page du projet
-            return $this->redirectToRoute('user_mainpage', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_mainpage', array('id' => $this->getUser()->getId()));
         }
         return $this->render('ProjectBundle:Invitation:decline_invitation.html.twig', array(
             'form' => $form->createView(),//on crée la vue associée a notre formulaire
-            'project_id' => $project_id,
-            'user_id' => $user_id
+            'invitation_id' => $invitation_id
         ));
     }
 }

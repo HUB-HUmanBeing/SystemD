@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-push-9">
         <h4>Nouvelles invitations</h4>
-            {% for i, invitation in invitations%}
+            {% for i, invitation in invitations %}
                 {% if invitation.status == 0 %}
                     <hr>
                         <h4><a href="{{ path( 'project_mainpage' , {'id': invitation.project.id}) }}">{{ invitation.project.name }}</a></h4>
@@ -30,7 +30,7 @@
                                                 </a>
                                             </h4>
                                         </div>
-                                        {{ render(controller('ProjectBundle:Invitation:acceptInvitation' , { 'project_id' : invitation.project.id , 'user_id' : app.user.id })) }}
+                                        {{ render(controller('ProjectBundle:Invitation:acceptInvitation' , { 'invitation_id' : invitation.id })) }}
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +48,8 @@
                                                 </a>
                                             </h4>
                                         </div>
-                                        {{ render(controller('ProjectBundle:Invitation:declineInvitation' , { 'project_id' : invitation.project.id , 'user_id' : app.user.id  })) }}
+
+                                        {{ render(controller('ProjectBundle:Invitation:declineInvitation' , { 'invitation_id' : invitation.id  })) }}
                                     </div>
                                 </div>
                             </div>

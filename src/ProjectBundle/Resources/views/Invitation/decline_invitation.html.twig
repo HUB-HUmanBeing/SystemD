@@ -1,12 +1,7 @@
 <div class="modal-body">
     {{ form_start(form, {'attr': {
         'class': 'form-horizontal',
-        'action' : path('decline_invitation' ,{
-            'project_id' : project_id ,
-            'user_id' : user_id
-        }
-        ) }
-    })
+        'action' : path('decline_invitation' ,{'invitation_id' : invitation_id}) }})
     }}
     <textarea name="reply" id=""  rows="4" class="form-control"></textarea>
     {{ form_rest(form) }}
