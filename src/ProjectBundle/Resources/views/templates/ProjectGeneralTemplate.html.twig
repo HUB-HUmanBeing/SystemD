@@ -28,7 +28,7 @@
                     <a href="{{ path('project_mainpage', {'id' : project.id})}}"><span class="glyphicon glyphicon-home"></span></a>
                 </li>
                 <li class="{% block isMemberPage %}{% endblock %} ">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
-                    <a href="{{ path('project_members', {'id': project.id}) }}">Membres du projet</a>
+                    <a href="{{ path('project_members', {'id': project.id}) }}"><span class="glyphicon glyphicon-user"> Membres</span></a>
                 </li>
                 <li class="{% block is3 %}{% endblock %} ">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
                     <a href="#">option n°3</a>
