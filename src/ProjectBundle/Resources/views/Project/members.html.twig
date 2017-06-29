@@ -11,7 +11,7 @@
                 <div class="col-sm-4 col-xs-6">
                 {% include 'UserBundle:miniTemplate:miniUser.html.twig' with { 'user' : userProject.User} %}
                 {%  if userProject.roles == 0 %}
-                    <p>Administrateur du projet</p>
+                    <p>Administre le projet</p>
                 {% else %}
                     <p>Membre du projet</p>
                 {% endif %}

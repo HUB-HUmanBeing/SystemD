@@ -15,15 +15,21 @@ use UserBundle\Entity\User;
 class UserProject
 {
     /**
+     * @ORM\Column(name="id", type="bigint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
      * id de l'utilisateur
-     * @ORM\ID
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="userProjects")
      */
     private $user;
 
     /**
      * id du projet
-     * @ORM\ID
      * @ORM\ManyToOne(targetEntity="ProjectBundle\Entity\Project", inversedBy="userProjects", cascade={"persist"})
      */
     private $project;
@@ -46,16 +52,16 @@ class UserProject
     private $isContentUnread = false;
 
     /**
-     * permet d'affecter des roles aux differents utilisateurs,
+     * permet d'affecter un role aux differents utilisateurs,
      * 0 => administrateur
      * 1 => member
      *
      * par défault, le role de base est "member" donc $roles = 1
      * @var int
      *
-     * @ORM\Column(name="roles", type="integer")
+     * @ORM\Column(name="role", type="integer")
      */
-    private $roles;
+    private $role;
 
     /**
      * UserProject constructor.
@@ -82,6 +88,22 @@ class UserProject
         $this->encryptedSymKey = $encryptedSymKey;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -116,12 +138,12 @@ class UserProject
 
 
     /**
-     * @param int $roles
+     * @param int $role
      * @return $this
      */
-    public function setRoles($roles)
+    public function setRole($role)
     {
-        $this->roles = $roles;
+        $this->role = $role;
 
         return $this;
     }
@@ -130,9 +152,9 @@ class UserProject
      * Get roles
      * @return int
      */
-    public function getRoles()
+    public function getRole()
     {
-        return $this->roles;
+        return $this->role;
     }
 
     /**
