@@ -2,5 +2,4 @@ services:
     project.ProjectAuth:
         class: ProjectBundle\Services\ProjectAuth
         arguments:
-            - "@service_container"
-            - "@router"
+            - "@security.token_storage"

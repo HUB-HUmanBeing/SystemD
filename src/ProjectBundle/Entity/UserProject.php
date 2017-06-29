@@ -68,14 +68,14 @@ class UserProject
      * @param User $user
      * @param Project $project
      * @param $encryptedSymKey
-     * @param int $roles
+     * @param int $role
      */
-    public function __construct(User $user, Project $project, $encryptedSymKey, $roles)
+    public function __construct(User $user, Project $project, $encryptedSymKey, $role)
     {
         $this->setUser($user);
         $this->setProject($project);
         $this->setEncryptedSymKey($encryptedSymKey);
-        $this->setRoles($roles);
+        $this->setRole($role);
     }
 
     /**

@@ -1,62 +1,87 @@
 <?php
 namespace ProjectBundle\Services;
 use ProjectBundle\Entity\Project;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
- * Created by PhpStorm.
- * User: banquo
- * Date: 29/06/17
- * Time: 15:23
+ * Class ProjectAuth
+ * @package ProjectBundle\Services
  */
 class ProjectAuth
 {
-    private $container;
+    //utile pour faire l'injection de dépendence
+    private $tokenStorage;
 
-    public function __construct(ContainerInterface $container)
+    //on ajoute au constructeur le tokenStorage qu'on a déclaré en argument du service
+    public function __construct(TokenStorage $tokenStorage)
     {
-        $this->container = $container;
+        $this->tokenStorage = $tokenStorage;
     }
 
+    /**
+     * @return mixed
+     */
     private function getUser()
     {
-        return $this->container->get('security.context')->getToken()->getUser();
+        return $this->tokenStorage->getToken()->getUser();
     }
 
+    /**
+     * renvoie true si l'utilisateur courant est membre ou admin du projet
+     * @param Project $project
+     * @return bool
+     */
     public function isMemberAuth(Project $project)
     {
-        if( $this->getUser()->getUserProjects()->contains($project)){
+        if( $this->getUserRole($project) >= 0){
             return true;
         }else{
-            return $this->projectAuthError();
+            $this->projectAuthError("Seuls Membres du projet ont accès à ces fonctionnalités");
+            return false;
         }
 
     }
 
+    /**
+     * renvoie true si l'utilisateur courant est membre ou admin du projet
+     * @param Project $project
+     * @return bool
+     */
     public function isAdminAuth(Project $project)
     {
-        if( $this->userRole($project) == 0){
+        if( $this->getUserRole($project) === 0){
             return true;
         }else{
-            return $this->projectAuthError();
+            $this->projectAuthError("Seuls les Administrateurs du projet ont accès à ces fonctionnalités");
+            return false;
         }
 
 
     }
 
-    public function userRole(Project $project){
-        $userProjects = $this->getUser()->getUserProjects();
-        $userRole = null;
+    /**
+     * renvoie l'int correspondant au role de l'utilisateur, 0=>admin , 1 =>membre , -1 pour non authentifié
+     * @param Project $project
+     * @return int
+     */
+    public function getUserRole(Project $project){
+        $userProjects = $project->getUserProjects();
+        $userRole = -1;
         foreach ($userProjects as $userProject){
-            if( $userProject.getProject() == $project ){
+            if( $userProject->getUser() == $this->getUser() ){
                 $userRole = $userProject->getRole();
             }
         }
         return $userRole;
     }
-    private function projectAuthError()
-    {
 
+    /**
+     * @param $message
+     */
+    private function projectAuthError($message)
+    {
+        throw new AccessDeniedException($message);
     }
 
 }

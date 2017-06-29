@@ -17,6 +17,7 @@ class InvitationController extends Controller
         //si post ca ajoute l'invit et ca renvoie vers la page membres
         //si get : ca renvoie juste le form
         //todo rajouter la sécurisation : que les admins peuvent le faire
+        dump($this->get('project.ProjectAuth')->isMemberAuth($project));
         $invitation =new Invitation();
         //on crée un drapeau pour savoir si on va devoir cacher ou non le champs d'ajout d'utilisateur dans le
         // formulaire suivant si on est dans la situation inviter depuis la page projet ou inviter depuis la page utilisateur
@@ -57,6 +58,7 @@ class InvitationController extends Controller
     public function deleteInvitationAction( $invitation_id , Request $request)
     {
         //todo verifier que c'est l'admin du projet
+
         //on crée un formulaire vide pour les crsf
         $form = $this->get('form.factory')->create();
         //si on recoit la requete de methode post et qu'elle est valide (crsf ok)
