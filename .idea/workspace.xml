@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fde2a55-588d-4908-ae85-40f578be73c2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ProjectBundle/Form/ProjectType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ProjectBundle/Resources/views/Project/newProject.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/template/header.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/template/header.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ProjectBundle/Controller/InvitationController.php" afterPath="$PROJECT_DIR$/src/ProjectBundle/Controller/InvitationController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ProjectBundle/Controller/ProjectController.php" afterPath="$PROJECT_DIR$/src/ProjectBundle/Controller/ProjectController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ProjectBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/ProjectBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Controller/SecurityController.php" afterPath="$PROJECT_DIR$/src/UserBundle/Controller/SecurityController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/UserBundle/Controller/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Resources/views/Default/invitationProject.html.twig" afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/Default/invitationProject.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserBundle/Resources/views/Default/signIn.html.twig" afterPath="$PROJECT_DIR$/src/UserBundle/Resources/views/Default/signIn.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,10 +69,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newProject.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="newProject.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ProjectBundle/Resources/views/Project/newProject.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
+            <state relative-caret-position="780">
               <caret line="30" column="49" lean-forward="false" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
               <folding />
             </state>
@@ -98,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProjectController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ProjectBundle/Controller/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="962">
-              <caret line="55" column="60" lean-forward="false" selection-start-line="55" selection-start-column="60" selection-end-line="55" selection-end-column="60" />
+            <state relative-caret-position="571">
+              <caret line="64" column="74" lean-forward="false" selection-start-line="64" selection-start-column="74" selection-end-line="64" selection-end-column="74" />
               <folding>
                 <element signature="e#44#77#0#PHP" expanded="true" />
               </folding>
@@ -187,11 +178,11 @@
         <option value="$PROJECT_DIR$/src/UserBundle/Resources/views/Default/signIn.html.twig" />
         <option value="$PROJECT_DIR$/src/ProjectBundle/Form/ProjectType.php" />
         <option value="$PROJECT_DIR$/src/ProjectBundle/Resources/views/Project/newProject.html.twig" />
-        <option value="$PROJECT_DIR$/src/ProjectBundle/Controller/ProjectController.php" />
         <option value="$PROJECT_DIR$/src/ProjectBundle/Controller/InvitationController.php" />
         <option value="$PROJECT_DIR$/src/UserBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/UserBundle/Controller/SecurityController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/template/header.html.twig" />
+        <option value="$PROJECT_DIR$/src/ProjectBundle/Controller/ProjectController.php" />
       </list>
     </option>
   </component>
@@ -707,7 +698,7 @@
       <workItem from="1498750476073" duration="12167000" />
       <workItem from="1498804971574" duration="11490000" />
       <workItem from="1498822898654" duration="1877000" />
-      <workItem from="1498837846132" duration="5600000" />
+      <workItem from="1498837846132" duration="6657000" />
     </task>
     <task id="LOCAL-00001" summary="ajout d'invitation ok">
       <created>1498163529579</created>
@@ -828,11 +819,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498838149117</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="créer un nouveau projet">
+      <created>1498843513549</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1498843513549</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96694000" />
+    <option name="totallyTimeSpent" value="97751000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -910,7 +908,8 @@
     <MESSAGE value="premier jet du service projectAuth" />
     <MESSAGE value="service projectAuth fonctionnel" />
     <MESSAGE value="service projectAuth fonctionnel, service userSécurity crée, contolleurs updatés, vues complétes" />
-    <option name="LAST_COMMIT_MESSAGE" value="service projectAuth fonctionnel, service userSécurity crée, contolleurs updatés, vues complétes" />
+    <MESSAGE value="créer un nouveau projet" />
+    <option name="LAST_COMMIT_MESSAGE" value="créer un nouveau projet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1242,16 +1241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ProjectBundle/Controller/ProjectController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="962">
-          <caret line="55" column="60" lean-forward="false" selection-start-line="55" selection-start-column="60" selection-end-line="55" selection-end-column="60" />
-          <folding>
-            <element signature="e#44#77#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ProjectBundle/Controller/InvitationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1846">
@@ -1302,9 +1291,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ProjectBundle/Resources/views/Project/newProject.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
+        <state relative-caret-position="780">
           <caret line="30" column="49" lean-forward="false" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ProjectBundle/Controller/ProjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="64" column="74" lean-forward="false" selection-start-line="64" selection-start-column="74" selection-end-line="64" selection-end-column="74" />
+          <folding>
+            <element signature="e#44#77#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

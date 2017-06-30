@@ -44,20 +44,25 @@ class ProjectController extends Controller
         ));
     }
     public function newProjectAction(Request $request){
-
+        //on génere un nouveau projet
         $Project = new Project();
+        //on va chercher le formulaire
         $form = $this->get('form.factory')->create(ProjectType::class, $Project);
+        //si la requete est de type post et si le formulaire est valide (crsf etc)
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            //on ajoute l'utilisateur venant de créer le projet comme admin (role => 0)
+            // et on lui donne la clef symétrique du projet chifrée avec sa clef publique
             $Project->addUser( $this->getUser(), $request->get('encryptedSymKey'), 0);
+            //on persiste le tout
             $em = $this->getDoctrine()->getManager();
             $em->persist($Project);
             $em->flush();
-
+            //on renvoie une confirmation dans le flash-bag
             $request->getSession()->getFlashBag()->add('info', 'Votre Projet à bien été créé !');
-
-            return $this->redirectToRoute('project_mainpage' , array('id' => $Project->getId()));//quant c'est fait, on renvoie vers
+            //quant c'est fait, on renvoie vers la page d'aceuil du projet
+            return $this->redirectToRoute('project_mainpage' , array('id' => $Project->getId()));
         }
-
+        //si on est en get on envoie juste le formulaire de nouveau projet
         return $this->render('ProjectBundle:Project:newProject.html.twig', array(
             'form' => $form->createView(),
             'path' => $this->generateUrl('new_project'),
