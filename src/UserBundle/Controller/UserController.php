@@ -20,7 +20,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'Bienvenue parmi les utilisateurs d\'HUmanBeing');
+            $request->getSession()->getFlashBag()->add('info', 'Bienvenue parmi les utilisateurs d\'HUmanBeing');
 
             return $this->redirectToRoute('homepage');//quant c'est fait, on renvoie vers
         }

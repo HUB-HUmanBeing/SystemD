@@ -57,6 +57,21 @@
             {% endfor %}
         </div>
         <div class="col-sm-9 col-sm-pull-3">
+            <a class="btn btn-standard btn-block btn-sm" data-toggle="modal" data-target="#new-project">
+
+                <h3 ><i class="glyphicon glyphicon-plus-sign"></i> Créer un Nouveau projet</h3>
+            </a>
+            <div class="modal fade" id="new-project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Quitter</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Créer un Nouveau projet</h4>
+                        </div>
+                        {{ render(controller( 'ProjectBundle:Project:newProject' , { 'originalRequest' : app.request })) }}
+                    </div>
+                </div>
+            </div>
             {% for userProjet in userProjects %}
                 <div class="col-sm-3">
                     <a href="{{ path('project_mainpage' , { 'id' : userProjet.project.id}) }}">

@@ -40,8 +40,10 @@
 </div>
 {% for label, flashes in app.session.flashbag.all %}
     {% for flash in flashes %}
-        <div class="alert alert-{{ label }}">
-            {{ flash }}
+        <div class="row">
+            <div class="alert alert-{{ label }} col-sm-9">
+                {{ flash }}
+            </div>
         </div>
     {% endfor %}
 {% endfor %}

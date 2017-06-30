@@ -12,7 +12,7 @@ class SecurityController extends Controller
     {
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+            $request->getSession()->getFlashBag()->add('info', 'Bienvenue su HUB-HUmanBeing !');
             return $this->redirectToRoute('homepage');
         }
 

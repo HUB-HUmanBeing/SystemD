@@ -36,3 +36,7 @@ decline_invitation:
     defaults: { _controller: ProjectBundle:Invitation:declineInvitation}
     requirements:
                 invitation_id: \d+
+
+new_project:
+    path:   /project/new
+    defaults: { _controller: ProjectBundle:Project:newProject}

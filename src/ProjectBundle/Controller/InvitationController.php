@@ -42,7 +42,7 @@ class InvitationController extends Controller
             $em->persist($invitation);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'l\'invitation a été envoyé!');
+            $request->getSession()->getFlashBag()->add('info', 'l\'invitation a été envoyé!');
             //on renvoie l'utilisateur vers la page du projet
             return $this->redirectToRoute('project_members', array('id' => $project->getId()));
         }
@@ -73,7 +73,7 @@ class InvitationController extends Controller
             //puis on sauvegarde le tout
             $em->flush();
             //on revoie une confirmation
-            $request->getSession()->getFlashBag()->add('notice', 'l\'invitation a été annulée');
+            $request->getSession()->getFlashBag()->add('info', 'l\'invitation a été annulée');
             //on renvoie l'utilisateur vers la page du projet
             return $this->redirectToRoute('project_members', array('id' => $invitation->getProject()->getId()));
         }
