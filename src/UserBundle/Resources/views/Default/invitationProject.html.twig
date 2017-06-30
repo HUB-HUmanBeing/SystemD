@@ -7,7 +7,7 @@
 {% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-sm-3 col-md-push-9">
+        <div class="col-sm-3 col-sm-push-9">
         <h4>Nouvelles invitations</h4>
             {% for i, invitation in invitations %}
                 {% if invitation.status == 0 %}
@@ -59,7 +59,7 @@
         </div>
         <div class="col-sm-9 col-sm-pull-3">
             {% for userProjet in userProjects %}
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <a href="{{ path('project_mainpage' , { 'id' : userProjet.project.id}) }}">
                         <img src="{{ asset('img/icon/project_icon.png') }}" alt="" class="img-responsive">
                         <h4>{{ userProjet.project.name }}</h4>

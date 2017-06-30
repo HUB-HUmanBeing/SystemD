@@ -22,6 +22,9 @@
                             {# todo : trouver un moyen pour que ca soit moins gourmand et plus efficace#}
                             <div class="panel-group" id="accordion">
                             {% for userProject in app.user.userProjects %}
+                                {% if userProject.Role == 0 %}
+
+
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
@@ -40,6 +43,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% endif %}
                             {% endfor %}
                             </div>
                         </div>

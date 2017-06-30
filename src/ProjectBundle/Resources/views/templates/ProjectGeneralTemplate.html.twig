@@ -21,6 +21,7 @@
 
 {% endblock %}
     {% block body %}
+        {% if UserRoleInProject >= 0 %}
         <div class="col-md-10 col-md-offset-2">
             {# todo : rajouter la condition "il faut que l'utilisateur fasse parti du projet pour acceder a ce menu #}
             <ul class="nav nav-tabs row" role="tablist">
@@ -38,6 +39,7 @@
                 </li>
             </ul>
         </div>
+        {% endif %}
         <div class="container-fluid">
             {% block body_project %}
             {% endblock %}

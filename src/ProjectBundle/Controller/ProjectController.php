@@ -21,7 +21,8 @@ class ProjectController extends Controller
         $project = $em->getRepository('ProjectBundle:Project')->find($id);
         return $this->render('@Project/Project/mainpage.html.twig',
             array(
-                'project'=> $project
+                'project'=> $project,
+                'UserRoleInProject' => $this->get('project.ProjectAuth')->getUserRole($project)
             )
         );
     }
@@ -37,7 +38,8 @@ class ProjectController extends Controller
             "project"=> $project,
             "userProjects"=> $userProjects,
             "invitations"=> $invitation,
-            "initialRequest" =>$request
+            "initialRequest" =>$request,
+            'UserRoleInProject' => $this->get('project.ProjectAuth')->getUserRole($project)
         ));
     }
 }

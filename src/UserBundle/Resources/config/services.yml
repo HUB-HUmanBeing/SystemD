@@ -1,4 +1,6 @@
 services:
-#    user.example:
-#        class: UserBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    user.userSecurity:
+        class: UserBundle\Services\UserSecurity
+        arguments:
+            - "@security.token_storage"
+            - "@security.authorization_checker"

@@ -13,11 +13,12 @@ class InvitationController extends Controller
 {
 
     //permet de gérer l'envoi et la reception du formulaire d'invitation
+    //si post ca ajoute l'invit et ca renvoie vers la page membres
+    //si get : ca renvoie juste le form
     public function addInvitationAction( Project $project, Request $request, $username = null){
-        //si post ca ajoute l'invit et ca renvoie vers la page membres
-        //si get : ca renvoie juste le form
-        //todo rajouter la sécurisation : que les admins peuvent le faire
-        dump($this->get('project.ProjectAuth')->isMemberAuth($project));
+
+        // sécurisation : que les admins peuvent le faire
+        $this->get('project.ProjectAuth')->adminAuthCheck($project);
         $invitation =new Invitation();
         //on crée un drapeau pour savoir si on va devoir cacher ou non le champs d'ajout d'utilisateur dans le
         // formulaire suivant si on est dans la situation inviter depuis la page projet ou inviter depuis la page utilisateur
@@ -57,15 +58,17 @@ class InvitationController extends Controller
 
     public function deleteInvitationAction( $invitation_id , Request $request)
     {
-        //todo verifier que c'est l'admin du projet
-
+        $em = $this->getDoctrine()->getManager();
+        //on récupere l'invitation à partir de son id
+        $invitation = $em->getRepository('ProjectBundle:Invitation')->find($invitation_id);
+        // on récupere le projet
+        $project = $invitation->getProject();
+        //on peut alors vérifier que c'est bien un'admin du projet
+        $this->get('project.ProjectAuth')->adminAuthCheck($project);
         //on crée un formulaire vide pour les crsf
         $form = $this->get('form.factory')->create();
         //si on recoit la requete de methode post et qu'elle est valide (crsf ok)
         if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
-            //on récupere l'invitation à partir de son id
-            $em = $this->getDoctrine()->getManager();
-            $invitation = $em->getRepository('ProjectBundle:Invitation')->find($invitation_id);
             //on la remove
             $em->remove($invitation);
             //puis on sauvegarde le tout
@@ -74,8 +77,6 @@ class InvitationController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'l\'invitation a été annulée');
             //on renvoie l'utilisateur vers la page du projet
             return $this->redirectToRoute('project_members', array('id' => $invitation->getProject()->getId()));
-
-
         }
         //si c'est en get on renvoie juste vers la vue affichant le formulaire de supression
         return $this->render('ProjectBundle:Invitation:delete_invitation.html.twig', array(
@@ -84,9 +85,9 @@ class InvitationController extends Controller
         ));
     }
 
-//todo sécuriser
     public function acceptInvitationAction( $invitation_id , Request $request)
     {
+
         //on crée un formulaire vide pour les crsf
         $form = $this->get('form.factory')->create();
         //si on recoit la requete de methode post et qu'elle est valide (crsf ok)
@@ -94,6 +95,8 @@ class InvitationController extends Controller
             //on récupere l'invitation à partir de son id
             $em = $this->getDoctrine()->getManager();
             $invitation = $em->getRepository('ProjectBundle:Invitation')->find($invitation_id);
+            //on chek que l'user courant est bien celui qui a recu l'invitation grace a notre service
+            $this->get('user.userSecurity')->isThisUserCheck($invitation->getUser());
             //on chope le projet associé
             $project = $invitation->getProject();
             //on récupere la clef symetrique du projet chifrée avec la clef publique de l'utilisateur
@@ -129,6 +132,8 @@ class InvitationController extends Controller
             //on récupere l'invitation à partir de son id
             $em = $this->getDoctrine()->getManager();
             $invitation = $em->getRepository('ProjectBundle:Invitation')->find($invitation_id);
+            //on chek que l'user courant est bien celui qui a recu l'invitation grace a notre service
+            $this->get('user.userSecurity')->isThisUserCheck($invitation->getUser());
             //on passe son statut à 2 => déclinée
             $invitation->setStatus(2);
             //on met dans l'attribut reply la réponse passée par l'utilisateur au champ reply
