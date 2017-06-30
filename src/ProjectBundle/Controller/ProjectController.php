@@ -1,5 +1,4 @@
 <?php
-// todo renommer en projectcontroller
 namespace ProjectBundle\Controller;
 
 

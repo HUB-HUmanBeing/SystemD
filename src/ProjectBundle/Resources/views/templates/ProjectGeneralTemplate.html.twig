@@ -23,7 +23,6 @@
     {% block body %}
         {% if UserRoleInProject >= 0 %}
         <div class="col-md-10 col-md-offset-2">
-            {# todo : rajouter la condition "il faut que l'utilisateur fasse parti du projet pour acceder a ce menu #}
             <ul class="nav nav-tabs row" role="tablist">
                 <li class="{% block isHomePage %}{% endblock %} ">{# ce block permet de rendre l'onglet actif suivant la vue sur laquelle on est#}
                     <a href="{{ path('project_mainpage', {'id' : project.id})}}"><span class="glyphicon glyphicon-home"></span></a>

@@ -8,9 +8,11 @@
 {% block body %}
     <div class="row">
         <div class="col-sm-7">
+            {% if app.user != user %}
             <button class="btn btn-primary" data-toggle="modal" data-target="#invit_form">
                 Inviter cet utilisateur à rejoindre l'un vos projets
             </button>
+            {% endif %}
             <div class="modal fade" id="invit_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
