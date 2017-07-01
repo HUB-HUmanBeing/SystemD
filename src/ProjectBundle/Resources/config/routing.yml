@@ -1,3 +1,5 @@
+#toutes ces routes sont préfixées avec /project
+
 #page principale d'un projet
 project_mainpage:
     path:     /{id}
@@ -12,31 +14,35 @@ project_members:
     requirements:
                 id: \d+
 
+#sert pour envoyer le formulaire d'envoi d'invitation
 add_user_invitation:
     path:     /{id}/adduser
     defaults: { _controller: ProjectBundle:Invitation:addInvitation}
     requirements:
                 id: \d+
 
+#sert pour envoyer le formulaire d'anulation d'invitation
 delete_invitation:
     path:     /delete-invitation/{invitation_id}
     defaults: { _controller: ProjectBundle:Invitation:deleteInvitation}
     requirements:
                 invitation_id: \d+
 
+#sert pour envoyer le formulaire d'acceptation d'invitation
 accept_invitation:
     path:     /accept-invitation/{invitation_id}
     defaults: { _controller: ProjectBundle:Invitation:acceptInvitation}
     requirements:
                 invitation_id: \d+
 
-
+#sert pour envoyer le formulaire de déclination d'invitation
 decline_invitation:
     path:     /decline-invitation/{invitation_id}
     defaults: { _controller: ProjectBundle:Invitation:declineInvitation}
     requirements:
                 invitation_id: \d+
 
+#sert pour l'envoi du formulaire de nouveau projet
 new_project:
     path:   /project/new
     defaults: { _controller: ProjectBundle:Project:newProject}
