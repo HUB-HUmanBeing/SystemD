@@ -5,9 +5,28 @@
 {% block isHomePage %}active{% endblock %}
 {% block body_project %}
 <div class="row">
-        <div class="col-md-8">
+        <div class="row">
             <h3>Description</h3>
-            <p>{{ project.description }}</p>
+            <p class=" col-sm-11">{{ project.description }}</p>
+            {% if UserRoleInProject == 0 %}
+                <div>
+                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edit_form">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </button>
+                    <div class="modal fade" id="edit_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Edition des informations du projet {{ project.name }}</h4>
+                                </div>
+                                {{ render(controller('ProjectBundle:Project:editInfo' , { 'project_id' : project.id , 'initialRequest' : initialRequest })) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endif %}
         </div>
 </div>
 {% endblock %}
