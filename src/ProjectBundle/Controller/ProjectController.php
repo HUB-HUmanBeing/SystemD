@@ -68,4 +68,25 @@ class ProjectController extends Controller
             'path' => $this->generateUrl('new_project'),
         ));
     }
+
+    public function editInfoAction($project_id , Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Project = $em->getRepository('ProjectBundle:Project')->find($project_id);
+        $form = $this->get('form.factory')->create(ProjectType::class, $Project);
+        //si la requete est de type post et si le formulaire est valide (crsf etc)
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            //on persiste le tout
+            $em->persist($Project);
+            $em->flush();
+            //on renvoie une confirmation dans le flash-bag
+            $request->getSession()->getFlashBag()->add('info', 'Les informations du projet ont été mises à jour');
+            //quant c'est fait, on renvoie vers la page d'aceuil du projet
+            return $this->redirectToRoute('project_mainpage' , array('id' => $project_id));
+        }
+        return $this->render('ProjectBundle:Project:newProject.html.twig', array(
+            'form' => $form->createView(),
+            'path' => $this->generateUrl('edit_project_info', array('project_id' => $project_id)),
+        ));
+    }
 }

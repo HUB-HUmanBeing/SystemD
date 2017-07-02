@@ -46,3 +46,9 @@ decline_invitation:
 new_project:
     path:   /project/new
     defaults: { _controller: ProjectBundle:Project:newProject}
+
+edit_project_info:
+    path: /project/{project_id}/edit
+    defaults: { _controller: ProjectBundle:Project:editInfo}
+        requirements:
+                    id: \d+
