@@ -2,6 +2,7 @@
 
 namespace UserBundle\Form;
 
+use Doctrine\DBAL\Types\FloatType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -32,9 +33,12 @@ class UserType extends AbstractType
             ->add('description' , TextareaType::class)
             ->add('encryptedPrivateAsymKey',TextType::class)
             ->add('publicAsymKey', TextType::class)
+            ->add('lat', FloatType::class)
+            ->add('lon', FloatType::class)
+            ->add('city', TextType::class)
+            ->add('country', TextType::class)
             ->add('save', SubmitType::class)
         ;
-
     }
     
     /**

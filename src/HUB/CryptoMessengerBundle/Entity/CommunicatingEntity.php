@@ -3,6 +3,7 @@
 namespace HUB\CryptoMessengerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use HUB\GeolocBundle\Entity\GeolocalizedEntity;
 
 /**
  * cette entité est le parent a partir duquel héritent les enfants projets et utilisateurs
@@ -14,18 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"user" = "UserBundle\Entity\User", "project" = "ProjectBundle\Entity\Project"})
  */
-abstract class CommunicatingEntity
+abstract class CommunicatingEntity extends GeolocalizedEntity
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="bigint")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-
     /**
      * la description générale du projet
      * @var string

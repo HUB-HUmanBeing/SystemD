@@ -4,6 +4,7 @@
 namespace BlogBundle\DataFixtures\ORM;
 
 
+use BlogBundle\DataFixtures\ORM\LoadUser;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -11,6 +12,14 @@ use ProjectBundle\Entity\Project;
 
 class LoadProject extends AbstractFixture implements OrderedFixtureInterface
 {
+    private $geoloc;
+
+    //on vient hydrater géoloc avec le tableau qu'on a définit dans load user
+    public function __construct()
+    {
+        $this->geoloc = LoadUser::getGeoloc();
+    }
+
     /*
      * attribut pour créer des nouveaux projets
      */
@@ -46,6 +55,12 @@ class LoadProject extends AbstractFixture implements OrderedFixtureInterface
             $Project->setPublicAsymKey('');
             $Project->setName($projectData['name']);
             $Project->setDescription($this->description);
+            //on localise nos projets
+            shuffle($this->geoloc);
+            $Project->setLat($this->geoloc[0]['lat']);
+            $Project->setLon($this->geoloc[0]['lon']);
+            $Project->setCity($this->geoloc[0]['city']);
+            $Project->setCountry($this->geoloc[0]['country']);
             //on mélange les utilisateurs puis on les ajoute au projet, en mettant le premier comme administrateur
             shuffle($users);
             $Project->addUser($users[0], "",  0);

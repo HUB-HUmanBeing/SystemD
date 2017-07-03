@@ -2,6 +2,7 @@
 
 namespace ProjectBundle\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use HUB\CryptoMessengerBundle\Entity\CommunicatingEntity;
@@ -126,14 +127,7 @@ class Project extends CommunicatingEntity
     {
         return $this->userProjects;
     }
-    /**
-     * Get id
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+
 
     /**
      * cette fonction est en private car on va demander plutot d'ajouter un utilisateur

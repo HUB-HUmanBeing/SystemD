@@ -1,3 +1,7 @@
+hub_geoloc:
+    resource: "@HUBGeolocBundle/Resources/config/routing.yml"
+    prefix:   /geoloc
+
 hub_crypto_messenger:
     resource: "@HUBCryptoMessengerBundle/Resources/config/routing.yml"
     prefix:   /message

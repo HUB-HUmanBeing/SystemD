@@ -84,14 +84,6 @@ class User extends CommunicatingEntity implements UserInterface
     {
     }
 
-    /**
-     * Get id
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set username
