@@ -10,6 +10,7 @@
             'css/base.css'
             'css/header.css'
             'css/general_menu.css'
+            'js/framework/leaflet/leaflet.css'
         filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
@@ -49,8 +50,11 @@
                 'js/framework/jquery-ui.min.js'
                 'js/framework/bootstrap.min.js'
                 'js/framework/headroom.js'
+                'js/framework/leaflet/leaflet.js'
+                'js/framework/leaflet/leaflet-src.js'
                 'js/header.js'
                 'js/general_menu.js'
+                'js/geoloc_add.js'
             %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}

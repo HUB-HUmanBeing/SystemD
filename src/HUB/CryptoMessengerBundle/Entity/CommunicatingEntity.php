@@ -42,13 +42,6 @@ abstract class CommunicatingEntity extends GeolocalizedEntity
      */
     protected $publicAsymKey;
 
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set encryptedPrivateAsymKey

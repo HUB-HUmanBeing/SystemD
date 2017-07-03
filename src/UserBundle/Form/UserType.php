@@ -33,10 +33,10 @@ class UserType extends AbstractType
             ->add('description' , TextareaType::class)
             ->add('encryptedPrivateAsymKey',TextType::class)
             ->add('publicAsymKey', TextType::class)
-            ->add('lat', FloatType::class)
-            ->add('lon', FloatType::class)
-            ->add('city', TextType::class)
-            ->add('country', TextType::class)
+            ->add('lat', TextType::class, array('required' => false, 'attr' =>['id' =>'lat']))
+            ->add('lon', TextType::class, array('required' => false, 'attr' =>['id' =>'lon']))
+            ->add('city', TextType::class, array('required' => false, 'attr' =>['id' =>'city']))
+            ->add('country', TextType::class, array('required' => false, 'attr' =>['id' =>'country']))
             ->add('save', SubmitType::class)
         ;
     }
