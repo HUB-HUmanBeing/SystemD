@@ -3,7 +3,8 @@
     {{ user.username }}
 {% endblock %}
 {% block body_header %}
-    <h2>{{ user.username}}</h2>
+    <div class="row"></div>
+    <h2 class="col-sm-9">{{ user.username}}<h3 class="right">{{ user.city }} <small>{{ user.country }}</small></h3>
 {% endblock %}
 {% block body %}
     <div class="row">
