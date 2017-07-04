@@ -10,9 +10,8 @@ Jusqu'ici, les projets collaboratifs ainsi que les pratiques de partages et de g
 Vous avez deux solutions pour le faire :
 
 1. Via Git, en clonant ce dépôt ;
-2. Via le téléchargement du code source en une archive ZIP, à cette adresse : https://github.com/winzou/mooc-symfony/archive/master.zip
+2. Via le téléchargement du code source en une archive ZIP.
 
-*Attention, le code est divisé en plusieurs branches `iteration-XX`. Sur la branche `master` vous n'avez que le tout début du cours, n'hésitez pas à [changer de branche](https://github.com/winzou/mooc-symfony/branches) !*
 
 ## 2. Définir vos paramètres d'application
 Pour ne pas qu'on se partage tous nos mots de passe, le fichier `app/config/parameters.yml` est ignoré dans ce dépôt. A la place, vous avez le fichier `parameters.yml.dist` que vous devez renommer (enlevez le `.dist`) et modifier.
