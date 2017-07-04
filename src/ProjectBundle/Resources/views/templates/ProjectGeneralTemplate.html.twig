@@ -16,6 +16,11 @@
             <a href="{{ path('project_mainpage', {'id' : project.id})}}">
                 <h1 class="body-header-title">{%  block projectName %}{%  endblock %}</h1>
             </a>
+            {% if (app.user.lat and project.lat) %}
+                {{ render(controller('CoreBundle:Geoloc:geolocProject', { 'Project': project })) }}
+                {% else %}
+                <h4>{{ project.city }} <small>{{ project.country }}</small></h4>
+            {% endif %}
         </div>
     </div>
 

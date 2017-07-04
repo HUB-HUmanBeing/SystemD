@@ -4,7 +4,10 @@
 {% endblock %}
 {% block body_header %}
     <div class="row"></div>
-    <h2 class="col-sm-9">{{ user.username}}<h3 class="right">{{ user.city }} <small>{{ user.country }}</small></h3>
+    <h2 class="col-sm-9">{{ user.username}}</h2>
+    {% if (app.user != user) and (app.user.lat and user.lat) %}
+        <h4 class="col-sm-3">{{ render(controller('CoreBundle:Geoloc:geolocUser', { 'User': user })) }}km</h4>
+    {% endif %}
 {% endblock %}
 {% block body %}
     <div class="row">

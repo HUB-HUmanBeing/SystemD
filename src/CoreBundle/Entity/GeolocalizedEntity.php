@@ -1,6 +1,6 @@
 <?php
 
-namespace HUB\GeolocBundle\Entity;
+namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,12 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
  * GeolocalizedEntity
  *
  * @ORM\Table
- * @ORM\Entity(repositoryClass="HUB\GeolocBundle\Repository\GeolocalizedEntityRepository")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\GeolocalizedEntityRepository")
 * la stratégie pour representer cela en base de donnée est de type joined ce qui entraine Trois tables distinctes
 * @ORM\InheritanceType("JOINED")
 * on pourra déterminer si la communicating entity est un user ou un projet a partir de la collone type dans la bdd
 * @ORM\DiscriminatorColumn(name="type", type="string")
-* @ORM\DiscriminatorMap({"communicating" = "HUB\CryptoMessengerBundle\Entity\CommunicatingEntity"})
+* @ORM\DiscriminatorMap({"communicating" = "CoreBundle\Entity\CommunicatingEntity"})
  */
 abstract class GeolocalizedEntity
 {

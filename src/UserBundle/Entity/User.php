@@ -5,7 +5,7 @@ namespace UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use HUB\CryptoMessengerBundle\Entity\CommunicatingEntity;
+use CoreBundle\Entity\CommunicatingEntity;
 use ProjectBundle\Entity\Invitation;
 use ProjectBundle\Entity\UserProject;
 use Symfony\Component\Security\Core\User\UserInterface;

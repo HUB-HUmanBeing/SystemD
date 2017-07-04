@@ -1,6 +1,6 @@
 <?php
 
-namespace HUB\CryptoMessengerBundle\Repository;
+namespace CoreBundle\Repository;
 
 /**
  * CommunicatingEntityRepository

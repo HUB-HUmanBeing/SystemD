@@ -19,8 +19,6 @@ class AppKernel extends Kernel
             new UserBundle\UserBundle(),
             new CoreBundle\CoreBundle(),
             new ProjectBundle\ProjectBundle(),
-            new HUB\CryptoMessengerBundle\HUBCryptoMessengerBundle(),
-            new HUB\GeolocBundle\HUBGeolocBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

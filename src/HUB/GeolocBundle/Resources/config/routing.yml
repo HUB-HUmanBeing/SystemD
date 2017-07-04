@@ -1,3 +1,0 @@
-hub_geoloc_homepage:
-    path:     /
-    defaults: { _controller: HUBGeolocBundle:Default:index }

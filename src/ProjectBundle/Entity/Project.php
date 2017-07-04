@@ -5,7 +5,7 @@ namespace ProjectBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use HUB\CryptoMessengerBundle\Entity\CommunicatingEntity;
+use CoreBundle\Entity\CommunicatingEntity;
 use UserBundle\Entity\User;
 
 /**

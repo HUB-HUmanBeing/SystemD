@@ -1,9 +1,9 @@
 <?php
 
-namespace HUB\CryptoMessengerBundle\Entity;
+namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use HUB\GeolocBundle\Entity\GeolocalizedEntity;
+use CoreBundle\Entity\GeolocalizedEntity;
 
 /**
  * cette entité est le parent a partir duquel héritent les enfants projets et utilisateurs

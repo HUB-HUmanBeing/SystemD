@@ -1,6 +1,6 @@
 <?php
 
-namespace HUB\GeolocBundle\Repository;
+namespace CoreBundle\Repository;
 
 /**
  * GeolocalizedEntityRepository
