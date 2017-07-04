@@ -1,7 +1,7 @@
 HUmanBeing
 ==========
 
-#Plate forme web de projets collaboratifs non marchands et de partage à modération horizontale
+# Plate forme web de projets collaboratifs non marchands et de partage à modération horizontale
 
 Jusqu'ici, les projets collaboratifs ainsi que les pratiques de partages et de gratuité ont été limités par l'étroitesse de nos réseaux relationnels. Cette plate-forme web met en lien une communauté mondiale d'utilisateurs sur la base de leurs compétences et de leurs envies à travers la possibilité de collaborer à des projets proposés par chacun d'eux. Elle offre aussi un support organisationnel et un système permettant le partage des ressources de chacun, ainsi que le partage de celles produites par les projets, le tout modéré horizontalement par la communauté d'utilisateurs.
 
