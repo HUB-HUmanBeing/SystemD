@@ -43,9 +43,6 @@ $(function() {
           $('#user_country').val(country);
           //on fait s'afficher la carte
           initmap(lat, lon, city);
-
       });
-
   });
-
 });
