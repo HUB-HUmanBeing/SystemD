@@ -41,6 +41,11 @@ $(function() {
           $('#user_lon').val(lon);
           $('#user_city').val(city);
           $('#user_country').val(country);
+          //on fait la meme chose si on est face a un projet
+          $('#project_lat').val(lat);
+          $('#project_lon').val(lon);
+          $('#project_city').val(city);
+          $('#project_country').val(country);
           //on fait s'afficher la carte
           initmap(lat, lon, city);
       });

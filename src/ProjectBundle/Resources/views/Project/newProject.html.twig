@@ -19,6 +19,29 @@
                     </div>
                 </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion-signin" href="#collapse-step3">
+                            Etape 2 : Localisation
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-step3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            {# todo faire en sorte que ca continue de marcher en https#}
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <input type="text" id="user_adress" class="form-control" placeholder="Entrez le nom de votre ville">
+                                </div>
+                                <button class="btn btn-default col-xs-4" id="search">rechercher ma ville</button>
+                            </div>
+                            <div id="user_mapid" class="map"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal-footer">
