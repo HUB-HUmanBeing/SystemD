@@ -1,4 +1,4 @@
-<button class="btn btn-primary" data-toggle="modal" data-target="#project_geoloc">
+<button class="btn btn-primary" data-toggle="modal" data-target="#project_geoloc" id="show_city">
     {{ project.city }} <small>{{ project.country }}</small> à {{ distance }}km <i class="glyphicon glyphicon-map-marker"></i>
 </button>
 
@@ -10,12 +10,10 @@
                 <h4 class="modal-title" id="myModalLabel">{{ project.name }}</h4>
             </div>
             <div class="modal-body">
-                <div class="map">ici on affichera la carte avec les coordonées suivantes qu'on passera en hidden</div>
+                <div id="user_mapid">ici on affichera la carte avec les coordonées suivantes qu'on passera en hidden</div>
                 <div id="project_lat">{{ project.lat }}</div>
                 <div id="project_lon">{{ project.lon }}</div>
-                <div id="current_user_lat">{{  app.user.lat }}</div>
-                <div id="current_user_lat">{{  app.user.lon }}</div>
-                <div id="project_name">{{  project.name }}</div>
+                <div id="project_city">{{  project.city }}</div>
             </div>
         </div>
     </div>

@@ -20,7 +20,6 @@ $(function() {
       map.addLayer(osm);
 
   }
-  var is_map = false;
 
   //au click sur le bouton rechercher ma ville
   $("#search").click(function() {
@@ -50,4 +49,13 @@ $(function() {
           initmap(lat, lon, city);
       });
   });
+
+    $('#show_city').click(function () {
+        var project_lat = $('#project_lat').html();
+        var project_lon = $('#project_lon').html();
+        var project_city = $('#project_city').html();
+
+        initmap(project_lat, project_lon, project_city);
+        console.log(project_lat);
+    })
 });
