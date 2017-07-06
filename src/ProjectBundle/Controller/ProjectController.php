@@ -117,4 +117,30 @@ class ProjectController extends Controller
             'path' => $this->generateUrl('edit_project_info', array('project_id' => $project_id)),
         ));
     }
+
+    public function upgradeRoleAction($project_id, $userProject_id,  Request $request)
+    {
+        //on crée un formulaire vide pour les crsf
+        $form = $this->get('form.factory')->create();
+        //si on recoit la requete de methode post et qu'elle est valide (crsf ok)
+        if($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $Project = $em->getRepository('ProjectBundle:Project')->find($project_id);
+            //on peut alors vérifie que c'est bien un'admin du projet
+            $this->get('project.ProjectAuth')->adminAuthCheck($Project);
+            $UserProject = $em->getRepository('ProjectBundle:UserProject')->find($userProject_id);
+            dump($UserProject);
+            $UserProject->setRole(0);
+            $em->persist($UserProject);
+            $em->flush();
+            return $this->redirectToRoute('project_members', array(
+                'id'=>$project_id
+            ));
+        }
+            return $this->render('ProjectBundle:Project:upgrade_role.html.twig', array(
+                'form' => $form->createView(),//on crée la vue associée a notre formulaire
+                'project_id' => $project_id,
+                'userProject_id' => $userProject_id
+            ));
+    }
 }

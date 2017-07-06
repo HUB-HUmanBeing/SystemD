@@ -52,3 +52,10 @@ edit_project_info:
     defaults: { _controller: ProjectBundle:Project:editInfo}
     requirements:
             project_id: \d+
+
+upgrade_role:
+    path: /project/{project_id}/upgrade_role/{userProject_id}
+    defaults: { _controller: ProjectBundle:Project:upgradeRole}
+    requirements:
+            project_id: \d+
+            user_id: \d+

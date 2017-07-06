@@ -1,0 +1,10 @@
+<div class="modal-body">
+    {{ form_start(form, {'attr': {
+        'class': 'form-horizontal',
+        'action' : path('upgrade_role' ,{'project_id' : project_id ,'userProject_id' : userProject_id}) }
+    })
+    }}
+    {{ form_rest(form) }}
+    <input type="submit" value="Donner les droits" class="btn btn-success" />
+    {{ form_end(form) }}
+</div>

@@ -13,7 +13,26 @@
                 {%  if userProject.role == 0 %}
                     <p>Administre le projet</p>
                 {% else %}
-                    <p>Membre du projet</p>
+                    <p>Membre du projet
+                    {% if UserRoleInProject == 0 %}
+                        <button class="btn btn-info btn-xm" data-toggle="modal" data-target="#upgrade_role_form-{{ userProject.id }}"><i class="glyphicon glyphicon-arrow-up"></i></button>
+                        </p></div>
+                        <div class="modal fade bs-example-modal-sm " id="upgrade_role_form-{{ userProject.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">donner à {{ userProject.user.username }} les droits d'administration sur le projet</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{ render(controller('ProjectBundle:Project:upgradeRole' , { 'project_id' : userProject.project.id , 'userProject_id' : userProject.id , 'initialRequest' : initialRequest })) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        </p></div>
+                    {% endif %}
                 {% endif %}
                 </div>
 

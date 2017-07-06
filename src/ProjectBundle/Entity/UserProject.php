@@ -99,14 +99,6 @@ class UserProject
     }
 
     /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
      * Get encryptedSymKey
      * @return string
      */
