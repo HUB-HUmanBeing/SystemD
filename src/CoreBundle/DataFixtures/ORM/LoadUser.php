@@ -16,16 +16,16 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
 
     //tableau des lieux on le déclare en statique pour pouvoir le réutiliser dans les fixtures des projets
     private static $geoloc = array(
-        ['lat' => 44.1251672,
-        'lon' => 4.0554226,
+        ['lat' => 44.1253665,
+        'lon' => 4.0852818,
         'city' => 'Alès',
         'country' => 'France'],
-        ['lat' => 44.0541049,
-            'lon' => 3.9414446,
+        ['lat' => 44.0545668,
+            'lon' => 3.9857082,
             'city' => 'Anduze',
             'country' => 'France'],
-        ['lat' => 44.1610863,
-            'lon' => 4.5717224,
+        ['lat' => 44.160481,
+            'lon' => 4.6235831,
             'city' => 'Bagnols sur cèze',
             'country' => 'France'],
         ['lat' => null,

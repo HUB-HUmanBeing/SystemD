@@ -49,7 +49,9 @@ $(function() {
           initmap(lat, lon, city);
       });
   });
-
+    //fonction pour afficher la pin et la carte sur la vue des projets
+    //l'evenement correspond au click sur le bouton définit sur le projectGeneralTemplate
+    //todo : de manière inexplicable, la carte s'affiche qu'a moitié, la moitié droite reste grisée...
     $('#show_city').click(function () {
         var project_lat = $('#project_lat').html();
         var project_lon = $('#project_lon').html();
