@@ -129,7 +129,6 @@ class ProjectController extends Controller
             //on peut alors vérifie que c'est bien un'admin du projet
             $this->get('project.ProjectAuth')->adminAuthCheck($Project);
             $UserProject = $em->getRepository('ProjectBundle:UserProject')->find($userProject_id);
-            dump($UserProject);
             $UserProject->setRole(0);
             $em->persist($UserProject);
             $em->flush();
