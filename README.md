@@ -14,7 +14,7 @@ Vous avez deux solutions pour le faire :
 
 
 ## 2. Définir vos paramètres d'application
-Pour ne pas qu'on se partage tous nos mots de passe, le fichier `app/config/parameters.yml` est ignoré dans ce dépôt. A la place, vous avez le fichier `parameters.yml.dist` que vous devez renommer (enlevez le `.dist`) et modifier.
+Pour ne pas qu'on se partage tous nos mots de passe, le fichier `app/config/parameters.yml` est ignoré dans ce dépôt. A la place, vous avez le fichier `parameters.yml.dist` que vous devez copier puis renommer (enlevez le `.dist`) et modifier.(il faut garder malgré tout le `parameters.yml.dist` initial dans le dossier)
 
 ## 3. Télécharger les vendors
 Avec Composer bien évidemment :
@@ -36,4 +36,8 @@ Enfin, éventuellement, ajoutez les fixtures :
 
 
 ## c'est pret !
-le mieux pour tester est encore de se connecter avec le login "Giselle" et le mdp "0", mais sinon tout les utilisateurs fictifs ont le mdp "0" si vous souhaitez observer les changements d'etats et les interactions depuis d'autres point de vues
+Le plus simple pour pouvoir aller voir le site est encore de le lancer avec la commande : 
+
+    php bin/console server:start
+    
+le mieux pour tester est de se connecter avec le login "Giselle" et le mdp "0", mais sinon tout les utilisateurs fictifs ont le mdp "0" si vous souhaitez observer les changements d'etats et les interactions depuis d'autres point de vues
