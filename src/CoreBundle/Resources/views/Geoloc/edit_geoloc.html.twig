@@ -24,7 +24,10 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
         {{ form_widget(form.save, {'attr': {'class': 'btn btn-default' , 'value' : 'mettre à jour la position'}}) }}
-
+        {{ form_widget(form.lon, {'attr': {'id': 'project_lon' }}) }}
+        {{ form_widget(form.lat, {'attr': {'id': 'project_lat' }}) }}
+        {{ form_widget(form.city, {'attr': {'id': 'project_city' }}) }}
+        {{ form_widget(form.country, {'attr': {'id': 'project_country' }}) }}
     </div>
     {{ form_widget(form._token) }}
     {{ form_end(form) }}
