@@ -5,3 +5,9 @@ homepage:
 work_in_progress:
     path:     /wip
     defaults: { _controller: CoreBundle:Default:workInProgress }
+
+edit_geoloc_project:
+    path: /project/{project_id}/edit
+    defaults: { _controller: ProjectBundle:Project:editInfo}
+    requirements:
+            project_id: \d+

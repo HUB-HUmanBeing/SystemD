@@ -44,17 +44,17 @@ decline_invitation:
 
 #sert pour l'envoi du formulaire de nouveau projet
 new_project:
-    path:   /project/new
+    path:   /new
     defaults: { _controller: ProjectBundle:Project:newProject}
 
 edit_project_info:
-    path: /project/{project_id}/edit
+    path: /{project_id}/edit
     defaults: { _controller: ProjectBundle:Project:editInfo}
     requirements:
             project_id: \d+
 
 upgrade_role:
-    path: /project/{project_id}/upgrade_role/{userProject_id}
+    path: /{project_id}/upgrade_role/{userProject_id}
     defaults: { _controller: ProjectBundle:Project:upgradeRole}
     requirements:
             project_id: \d+

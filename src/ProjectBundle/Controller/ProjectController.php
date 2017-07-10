@@ -5,6 +5,7 @@ namespace ProjectBundle\Controller;
 use ProjectBundle\Entity\Project;
 use ProjectBundle\Form\ProjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -111,6 +112,7 @@ class ProjectController extends Controller
             //quant c'est fait, on renvoie vers la page d'aceuil du projet
             return $this->redirectToRoute('project_mainpage' , array('id' => $project_id));
         }
+        //si on est juste en get on renvoie simplement le formulaire d'edition
         return $this->render('ProjectBundle:Project:editInfo.html.twig', array(
             'form' => $form->createView(),
             'project_name' =>$Project->getName(),
@@ -125,21 +127,30 @@ class ProjectController extends Controller
         //si on recoit la requete de methode post et qu'elle est valide (crsf ok)
         if($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            //on récupère le projet
             $Project = $em->getRepository('ProjectBundle:Project')->find($project_id);
             //on peut alors vérifie que c'est bien un'admin du projet
             $this->get('project.ProjectAuth')->adminAuthCheck($Project);
+            //on récupère l'userproject
             $UserProject = $em->getRepository('ProjectBundle:UserProject')->find($userProject_id);
+            //on lui passe le role d'admin = 0
             $UserProject->setRole(0);
+            //puis on enregistre le tout
             $em->persist($UserProject);
             $em->flush();
+            //et on renvoie vers la page membre du projet
             return $this->redirectToRoute('project_members', array(
                 'id'=>$project_id
             ));
         }
+            //sinon on envoie le formulaire
             return $this->render('ProjectBundle:Project:upgrade_role.html.twig', array(
                 'form' => $form->createView(),//on crée la vue associée a notre formulaire
                 'project_id' => $project_id,
                 'userProject_id' => $userProject_id
             ));
     }
+
+
+
 }
