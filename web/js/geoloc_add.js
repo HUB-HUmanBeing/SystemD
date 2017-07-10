@@ -8,6 +8,7 @@ $(function() {
       var map = L.map('user_mapid').setView([lat, lon], 13);
       // create the tile layer with correct attribution
       var osmUrl = 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
+      console.log(lat);
       var osmAttrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>';
       var osm = new L.TileLayer(osmUrl, {
           maxZoom: 19,
@@ -30,7 +31,7 @@ $(function() {
       var url = "http://nominatim.openstreetmap.org/search/" + address.replace(" " , "&") + "?format=json&addressdetails=1&limit=1";
       $.getJSON(url, function(data) {
           //on parse la reponse data
-          console.log(data);
+          console.log(data[0]);
           var lat = data[0].lat;
           var lon = data[0].lon;
           var city = data[0].address.city;
@@ -45,6 +46,11 @@ $(function() {
           $('#project_lon').val(lon);
           $('#project_city').val(city);
           $('#project_country').val(country);
+          //on fait la meme chose si on est face a un form d'edition de la géoloc
+          $('#form_lat').val(lat);
+          $('#form_lon').val(lon);
+          $('#form_city').val(city);
+          $('#form_country').val(country);
           //on fait s'afficher la carte
           initmap(lat, lon, city);
       });
