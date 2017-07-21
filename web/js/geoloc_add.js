@@ -25,6 +25,7 @@ $(function() {
   //au click sur le bouton rechercher ma ville
   $("#search").click(function() {
 //todo l'adresse ne se met pas a jour si on change d'avis
+      this.preventDefault();
       //on récupere la valeur de la ville rentrée par l'utilisateur
       var address = $("#user_adress").val();
       //on envoie une requete à l'api nominatim (on remplace les accents par des &)
@@ -59,6 +60,7 @@ $(function() {
     //l'evenement correspond au click sur le bouton définit sur le projectGeneralTemplate
     //todo : de manière inexplicable, la carte s'affiche qu'a moitié, la moitié droite reste grisée...
     $('#show_city').click(function () {
+        this.preventDefault();
         var project_lat = $('#project_lat').html();
         var project_lon = $('#project_lon').html();
         var project_city = $('#project_city').html();
