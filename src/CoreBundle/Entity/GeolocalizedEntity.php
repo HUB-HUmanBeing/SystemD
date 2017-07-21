@@ -24,34 +24,34 @@ abstract class GeolocalizedEntity
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var float
      *
      * @ORM\Column(name="lon", type="float", nullable=true)
      */
-    private $lon;
+    protected $lon;
 
     /**
      * @var float
      *
      * @ORM\Column(name="lat", type="float", nullable=true)
      */
-    private $lat;
+    protected $lat;
 
     /**
      * @var int
      * @ORM\Column(name="city", type="string", nullable=true)
      */
-    private $city;
+    protected $city;
 
 
     /**
      * @var int
      * @ORM\Column(name="country", type="string", nullable=true)
      */
-    private $country;
+    protected $country;
     /**
      * Get id
      *

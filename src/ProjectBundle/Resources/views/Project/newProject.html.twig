@@ -55,8 +55,8 @@
         {{ form_widget(form.encryptedPrivateAsymKey, {attr : {"value" : "0"}}) }}
 
         {{ form_widget(form.publicAsymKey, {attr : {"value" : "0"}}) }}
-
+        {{ form_rest(form) }}
     </div>
-{{ form_rest(form) }}
+
 {{ form_end(form) }}
 </div>
