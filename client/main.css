@@ -19,3 +19,33 @@
 * {
     font-family: 'Questrial', sans-serif;
 }
+/******************
+COULEURS
+ ***********************/
+
+/*****BACKGROUNDS****/
+.red-hub-background{
+    background-color: #C83737;
+}
+
+.dark-blue-hub-background{
+    background-color: #28415B;
+}
+
+.light-blue-hub-background{
+    background-color: #217DBB;
+}
+
+.green-hub-background{
+    background-color: #008966;
+}
+
+.yelow-hub-background{
+    background-color: #C87F0A;
+}
+
+/******COULEUR POLICES******/
+
+.light-grey-police{
+    color: #DBDBDB;
+}
