@@ -1,6 +1,0 @@
-services:
-    core.geoloc:
-        class: CoreBundle\Services\Geoloc
-        arguments:
-                - "@security.token_storage"
-#

@@ -1,0 +1,32 @@
+<template name="layout">
+    <nav class="col-sm-2">
+        <div class="header">
+            {{>asideHeader}}
+            {{#unless currentUser }}
+                {{> loginButtons}}
+            {{/unless}}
+        </div>
+            {{# if currentUser }}
+                <nav class="col-sm-3 col-md-2 hidden-xs general_menu " id="general-menu">
+                    {{! render(controller('CoreBundle:Menu:generalMenu', { 'originalRequest' : app.request })) }}
+                    <ul>
+                        <li>tgsrts</li>
+                        <li>gsegrfsdgf</li>
+                        <li>sgsdgsdfg</li>
+                        <li>sgfsdgsdfg</li>
+                        <li>sdgfsdgsfg</li>
+                        <li>sdfgsdgsfg</li>
+                        <li>fsdfgsdfgfs</li>
+                        <li>gsgfsgsgf</li>
+                    </ul>
+                </nav>
+            {{/ if }}
+    </nav>
+        <main class="col-sm-9 col-md-10">
+            {{> errors}}
+            {{> yield}}
+        </main>
+    <footer class="general-footer">
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+    </footer>
+</template>
