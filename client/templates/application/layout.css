@@ -1,6 +1,13 @@
 body{
     width: 100%;
 }
-.aside-menu{
-    width: 230px;
+/********** Footer Collé pour materialize *********/
+.main-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
 }
