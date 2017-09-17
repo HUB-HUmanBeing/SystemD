@@ -1,0 +1,20 @@
+<template name="menu">
+<ul class="collapsible" data-collapsible="accordion" id="general-menu">
+    <li>zeff</li>
+    <li>sdfdwsf</li>
+    {{#each menuItem in menuItems}}
+        <li class="{{menuItem.color}}">
+            <div class="collapsible-header  row">
+                <div class="col s3">
+                    <img src="/images/icon/{{menuItem.image}}" alt="{{menuItem.name}}" class="responsive-img small-margin">
+                </div>
+                <div class="col s9"><h6>{{menuItem.name}}</h6></div>
+            </div>
+            <div class="collapsible-body">
+              {{>subMenu menuItem}}
+            </div>
+        </li>
+    {{/each}}
+</ul>
+</template>
+

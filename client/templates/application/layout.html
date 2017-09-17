@@ -1,18 +1,28 @@
 <template name="layout">
-    <body>
-    {{#if isDesktop }}
-        {{>desktopMenu}}
-    {{else}}
+
+    {{#unless isDesktop }}
+
         {{> slideMenu}}
-    {{/if}}
-    <div class="main-container">
+    {{/unless}}
+    <div class="main-container col l10 xl11 grey darken-4">
         <main class="">
+<div class="row">
+    {{#if isDesktop }}
+        <div class="col l2 xl1 menu-container">
+            {{>menu}}
+        </div>
+
+    {{/if}}
             {{> errors}}
+    <div class="col l10 xl11 offset-l2 offset-xl1">
             {{> yield}}
-        </main>
-    <footer class="page-footer">
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
-    </footer>
+</div>
     </div>
-    </body>
+        </main>
+    <footer class="page-footer black">
+        <a  class="small-margin" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+    </footer>
+
+    </div>
+
 </template>

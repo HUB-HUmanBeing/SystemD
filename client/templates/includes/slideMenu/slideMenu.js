@@ -11,7 +11,8 @@ Template.slideMenu.onCreated(function () {
 });
 
 Template.slideMenu.onRendered(function () {
-    //animation du slide-menu de matérialize
+    //animation du slide-menu de matérializemeteor
+
     $('.button-collapse').sideNav({
         menuWidth: 300, // Default is 300
         edge: 'left', // Choose the horizontal origin

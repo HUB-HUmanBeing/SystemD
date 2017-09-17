@@ -11,3 +11,9 @@ body{
 main {
     flex: 1 0 auto;
 }
+
+.menu-container{
+    position: fixed !important;
+    left: 0;
+    top: 0;
+}
