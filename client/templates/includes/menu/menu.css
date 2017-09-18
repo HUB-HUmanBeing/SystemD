@@ -1,3 +1,18 @@
 #general-menu{
     height: 100vh !important;
 }
+#general-menu a{
+    color: lightgray;
+}
+ #general-menu .collapsible-header{
+    margin: 20px 0 0 0 !important;
+}
+.maj-title{
+    font-weight: 600;
+}
+.menu-item{
+    border-radius: 0 5px 5px 0 ;
+}
+.left-color{
+    height: 100% auto;
+}

@@ -9,7 +9,7 @@ Template.menu.helpers({
             // },
             color:"green",
             image: "user_icon.png",
-            subMenuItems:[
+            subMenu:[
                 {
                     id : "logout",
                     name : "déconnexion",
@@ -67,7 +67,7 @@ Template.menu.helpers({
         {
             id: "projects",
             name :"Mes Projets",
-            color:"red darken-4",
+            color:"red",
             image: "project_icon.png",
             subMenu:[
                 {

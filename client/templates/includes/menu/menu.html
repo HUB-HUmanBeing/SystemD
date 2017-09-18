@@ -1,16 +1,40 @@
 <template name="menu">
-<ul class="collapsible" data-collapsible="accordion" id="general-menu">
-    <li>zeff</li>
-    <li>sdfdwsf</li>
-    {{#each menuItem in menuItems}}
-        <li class="{{menuItem.color}}">
-            <div class="collapsible-header  row">
-                <div class="col s3">
-                    <img src="/images/icon/{{menuItem.image}}" alt="{{menuItem.name}}" class="responsive-img small-margin">
-                </div>
-                <div class="col s9"><h6>{{menuItem.name}}</h6></div>
+<ul class="collapsible no-margin dark-grey" data-collapsible="accordion" id="general-menu">
+    {{!icone du site +lien vers l'acceuil}}
+    <li>
+        <a href="{{pathFor home}}" class=" row  no-padding dark-grey waves-effect waves-light " >
+            <div class="col s2 m3 l4 no-padding">
+                <img src="/images/icon/hub_icon.png" alt="HUmanBeing" class="responsive-img small-margin no-padding">
             </div>
-            <div class="collapsible-body">
+            <div class="col s10 m9 l8 valign-wrapper"><h5 class=""><span class="maj-title">HU</span>man<span class="maj-title">B</span>eing</h5></div>
+        </a>
+    </li>
+    {{!formulaire de recherche}}
+    <li>
+        <form action="" name="search-form" class="row">
+            <div class="col s1 m2 no-padding small-margin">
+                <img src="/images/icon/search_icon.png" alt="search" class="responsive-img small-margin no-padding red circle">
+            </div>
+            <div class="input-field row no-padding no-margin s10 m9 col">
+
+                <input id="icon_prefix" type="text" class="validate no-margin" name="search">
+                <label for="icon_prefix ">Rechercher</label>
+            </div>
+        </form>
+    </li>
+    {{!on boucle sur les items du menu}}
+    {{#each menuItem in menuItems}}
+        <li class="">
+
+
+                <div class="collapsible-header {{menuItem.color}} waves-effect waves-light row no-padding menu-item col s11 xl10">
+                    <div class="col s2 m3 no-padding valign-wrapper">
+                        <img src="/images/icon/{{menuItem.image}}" alt="{{menuItem.name}}" class="responsive-img small-margin no-padding">
+                    </div>
+                    <div class="col s9 m8 valign-wrapper"><h6 class="center-align">{{menuItem.name}}</h6></div>
+                </div>
+
+            <div class="collapsible-body no-padding dark-grey">
               {{>subMenu menuItem}}
             </div>
         </li>
