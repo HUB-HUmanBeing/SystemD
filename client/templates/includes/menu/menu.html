@@ -1,44 +1,46 @@
 <template name="menu">
-<ul class="collapsible no-margin dark-grey" data-collapsible="accordion" id="general-menu">
-    {{!icone du site +lien vers l'acceuil}}
-    <li>
-        <a href="{{pathFor home}}" class=" row  no-padding dark-grey waves-effect waves-light " >
-            <div class="col s2 m3 l4 no-padding">
-                <img src="/images/icon/hub_icon.png" alt="HUmanBeing" class="responsive-img small-margin no-padding">
-            </div>
-            <div class="col s10 m9 l8 valign-wrapper"><h5 class=""><span class="maj-title">HU</span>man<span class="maj-title">B</span>eing</h5></div>
-        </a>
-    </li>
-    {{!formulaire de recherche}}
-    <li>
-        <form action="" name="search-form" class="row">
-            <div class="col s1 m2 no-padding small-margin">
-                <img src="/images/icon/search_icon.png" alt="search" class="responsive-img small-margin no-padding red circle">
-            </div>
-            <div class="input-field row no-padding no-margin s10 m9 col">
-
-                <input id="icon_prefix" type="text" class="validate no-margin" name="search">
-                <label for="icon_prefix ">Rechercher</label>
-            </div>
-        </form>
-    </li>
-    {{!on boucle sur les items du menu}}
-    {{#each menuItem in menuItems}}
-        <li class="">
-
-
-                <div class="collapsible-header {{menuItem.color}}  row no-padding menu-item col s12 ">
-                    <div class="col s2 m3 no-padding valign-wrapper">
-                        <img src="/images/icon/{{menuItem.image}}" alt="{{menuItem.name}}" class="responsive-img small-margin no-padding">
-                    </div>
-                    <div class="col s10 m9 valign-wrapper"><h6 class="center-align">{{menuItem.name}}</h6></div>
+    <ul class="collapsible no-margin dark-grey general-menu " data-collapsible="accordion" id="">
+        {{!icone du site +lien vers l'acceuil}}
+        <li>
+            <a href="{{pathFor home}}" class=" row no-margin no-padding dark-grey waves-effect waves-light title-block" >
+                <div class="col s2 m3 l4 no-padding">
+                    <img src="/images/icon/hub_icon.png" alt="HUmanBeing" class="responsive-img small-margin no-padding">
                 </div>
-
-            <div class="collapsible-body no-padding dark-grey">
-              {{>subMenu menuItem}}
-            </div>
+                <div class="col s10 m9 l8 valign-wrapper"><h6 class="hub-title"><span class="maj-title">HU</span>man<span class="maj-title">B</span>eing</h6></div>
+            </a>
         </li>
-    {{/each}}
-</ul>
+        {{!formulaire de recherche}}
+        <li>
+            <form action="" name="search-form" class="row no-margin">
+                <div class="col s2 no-padding small-margin">
+                    <img src="/images/icon/search_icon.png" alt="search" class="responsive-img small-margin no-padding red circle">
+                </div>
+                <div class="input-field row no-padding no-margin s9 col">
+
+                    <input id="icon_prefix" type="text" class="validate no-margin" name="search">
+                    <label for="icon_prefix ">Rechercher</label>
+                </div>
+            </form>
+        </li>
+        {{#unless currentUser}}
+            {{>loginMenu}}
+        {{else}}
+            {{!on boucle sur les items du menu}}
+            {{#each menuItem in menuItems}}
+                <li class="">
+                        <div class="collapsible-header {{menuItem.color}} waves-effect waves-light  row no-padding menu-item col s12 ">
+                            <div class="col s2 m3 no-padding valign-wrapper">
+                                <img src="/images/icon/{{menuItem.image}}" alt="{{menuItem.name}}" class="responsive-img small-margin no-padding">
+                            </div>
+                            <div class="col s10 m9 valign-wrapper"><h6 class="center-align">{{menuItem.name}}</h6></div>
+                        </div>
+                    <div class="collapsible-body no-padding dark-grey row no-margin">
+                      {{>subMenu menuItem}}
+                    </div>
+                </li>
+            {{/each}}
+        {{/unless}}
+    </ul>
+
 </template>
 

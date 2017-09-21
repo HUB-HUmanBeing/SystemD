@@ -1,0 +1,9 @@
+<template name="subMenu">
+    <ul class="dark-grey sub-menu col s12">
+        {{#each subMenuItem in subMenu}}
+            <li class="small-margin ">
+                <a href="#" class="" {{subMenuItem.id}}>{{subMenuItem.name}}</a>
+            </li>
+        {{/each}}
+    </ul>
+</template>

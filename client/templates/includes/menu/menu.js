@@ -15,12 +15,12 @@ Template.menu.helpers({
                     name : "déconnexion",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
             ]
         },
@@ -31,16 +31,16 @@ Template.menu.helpers({
             image: "message_icon.png",
             subMenu:[
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
             ]
         },
@@ -51,16 +51,16 @@ Template.menu.helpers({
             image: "agenda_icon.png",
             subMenu:[
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
             ]
         },
@@ -71,16 +71,16 @@ Template.menu.helpers({
             image: "project_icon.png",
             subMenu:[
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
             ]
         },
@@ -91,16 +91,16 @@ Template.menu.helpers({
             image: "sharing_icon.png",
             subMenu:[
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
             ]
         },
@@ -111,19 +111,19 @@ Template.menu.helpers({
             image: "moderation_icon.png",
             subMenu:[
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
                 {
-                    id : "lorem ipsum",
-                    name : "lorem ipsum",
+                    id : "lorem",
+                    name : "lorem",
                 },
             ]
-        },
+        }
     ]
 
 
@@ -131,6 +131,9 @@ Template.menu.helpers({
 
 Template.menu.events({
     //add your events here
+    'click [logout]' : function () {
+        Accounts.logout();
+    }
 });
 
 Template.menu.onCreated(function () {

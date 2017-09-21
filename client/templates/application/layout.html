@@ -1,27 +1,23 @@
 <template name="layout">
-
     {{#unless isDesktop }}
-
         {{> slideMenu}}
     {{/unless}}
-    <div class="main-container col l10  grey darken-4">
-        <main class="">
-<div class="row">
-    {{#if isDesktop }}
-        <div class="col l2  menu-container no-margin dark-grey">
-            {{>menu}}
-        </div>
 
-    {{/if}}
-            {{> errors}}
-    <div class="col l10 xl11 offset-l2 offset-xl1">
-            {{> yield}}
-</div>
-    </div>
+    <div class="main-container meteor grey darken-4">
+        <main class="flex">
+            {{#if isDesktop }}
+                <div class="menu-container no-margin dark-grey scrollbar">
+                    {{>menu}}
+                </div>
+                <aside class="menu-container-space">
+                </aside>
+            {{/if}}
+            <div class=" flex1 yield-content">
+                    {{> errors}}
+
+                    {{> yield}}
+            </div>
         </main>
-    <footer class="page-footer black">
-        <a  class="small-margin" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
-    </footer>
 
     </div>
 

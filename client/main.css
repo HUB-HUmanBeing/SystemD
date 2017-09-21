@@ -40,3 +40,47 @@ UTILITAIRES
 .no-padding {
     padding: 0 !important;
 }
+.flex{
+    display: flex !important;
+}
+.flex-auto{
+    flex: auto !important;
+}
+
+/***********************
+SCROLLBAR
+ ************************/
+.scrollbar{
+    overflow: scroll;
+}
+.scrollbar::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+.scrollbar::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+    background: #363636;
+    border: 0px none #ffffff;
+    border-radius: 52px;
+}
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #424242;
+}
+.scrollbar::-webkit-scrollbar-thumb:active {
+    background: #000000;
+}
+.scrollbar::-webkit-scrollbar-track {
+    background: #111111;
+    border: 0px none #ffffff;
+    border-radius: 0px;
+}
+
+.scrollbar::-webkit-scrollbar-track:active {
+    background: #131313;
+}
+.scrollbar::-webkit-scrollbar-corner {
+    background: transparent;
+}

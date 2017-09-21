@@ -9,16 +9,23 @@ body{
 
 }
 
-main {
-    flex: 1 0 auto;
-}
-
 .menu-container{
     position: fixed !important;
     left: 0;
     top: 0;
-    padding:  0 20px 0 0 !important;
+
+    width: 200px !important;
+
 }
+
 .menu-container *{
     border: none !important;
+}
+
+.menu-container-space{
+    width: 200px !important;
+    float: left;
+}
+.yield-content{
+
 }
