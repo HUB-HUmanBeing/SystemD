@@ -10,8 +10,8 @@
 /******************
 COULEURS
  ***********************/
-.dark-grey{
-    background-color: #141414;
+.dark-grey, input{
+    background-color: #141414 !important;
 }
 /*****BACKGROUNDS****/
 .trame{
@@ -29,22 +29,32 @@ COULEURS
 /****************************
 UTILITAIRES
  */
-
-.small-margin{
-    margin: 5px !important;
-
-}
 .no-margin{
     margin: 0 !important;
+}
+.small-margin{
+    margin: 5px !important;
+}
+
+.small-padding{
+    padding: 10px !important;
 }
 .no-padding {
     padding: 0 !important;
 }
+.padding-l-r{
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+}
+
 .flex{
     display: flex !important;
 }
 .flex-auto{
     flex: auto !important;
+}
+.small-info{
+    font-size: smaller !important;
 }
 
 /***********************
@@ -83,4 +93,35 @@ SCROLLBAR
 }
 .scrollbar::-webkit-scrollbar-corner {
     background: transparent;
+}
+
+/***************
+FORM
+ ****************/
+.input-field input[type=text].valid, .input-field input[type=password].invalid {
+    background-color: #141414 !important;
+    border-bottom: 1px solid #C87F0A !important;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.input-field input[type=text].invalid , .input-field input[type=password].invalid {
+    background-color: #141414 !important;
+    border-bottom: 1px solid #D62C1A !important;
+    box-shadow: 0 1px 0 0 #000;
+}
+.btn-validation{
+    padding: 0 50px 0 50px !important;
+}
+input{
+    color: #DBDBDB;
+}
+
+/*input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {*/
+    /*background-color: #141414 !important;*/
+    /*background-image: none;*/
+    /*color:#DBDBDB;*/
+/*}*/
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #3f3f3f inset !important;
 }

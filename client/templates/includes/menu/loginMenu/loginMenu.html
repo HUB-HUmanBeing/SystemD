@@ -1,3 +1,67 @@
 <template name="loginMenu">
-
+    <li class="">
+        <div class="collapsible-header green waves-effect waves-light  row no-padding menu-item col s12">
+            <div class="col s2 m3 no-padding valign-wrapper">
+                <img src="/images/icon/user_icon.png" alt="user_icon" class="responsive-img small-margin no-padding">
+            </div>
+            <div class="col s10 m9 valign-wrapper"><h6 class="center-align">Connexion</h6></div>
+        </div>
+        <div class="collapsible-body no-padding dark-grey row no-margin">
+            <form login class="" autocomplete="nope">
+                <div class="row small-padding no-margin">
+                    <div class="input-field dark-grey s10">
+                        <input type="text" class="validate dark-grey no-margin " id="username" name="username"  required>
+                        <label for="username">Nom d'utilisateur</label>
+                    </div>
+                </div>
+                <div class="row small-padding no-margin">
+                    <div class="input-field s10">
+                        <input type="password" class="validate dark-grey no-margin" id="password" name="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row small-padding no-margin">
+                    <div class="center-align">
+                        <button class="btn-large green waves-light waves-effect btn-validation"><i class="material-icons ">done</i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </li>
+    <li class="">
+        <div class="collapsible-header orange waves-effect waves-light row no-padding menu-item col s12">
+            <div class="col s2 m3 no-padding valign-wrapper">
+                <img src="/images/icon/signin_icon.png" alt="signin_icon" class="responsive-img small-margin no-padding">
+            </div>
+            <div class="col s10 m9 valign-wrapper"><h6 class="center-align">Inscription</h6></div>
+        </div>
+        <div class="collapsible-body no-padding dark-grey row no-margin">
+            <form signin class="" autocomplete="nope">
+                <div class="row small-padding no-margin">
+                    <div class="input-field dark-grey s10">
+                        <input type="text" class="validate dark-grey no-margin" id="username" name="username" maxlength="40" data-length="40" required>
+                        <label for="username">Nom d'utilisateur</label>
+                    </div>
+                </div>
+                <div class="row small-padding no-margin">
+                    <div class="input-field s10">
+                        <input type="password" class="validate dark-grey no-margin" id="signin-password" password name="password" required >
+                        <label for="password" >Password</label>
+                    </div>
+                </div>
+                <div class="row small-padding no-margin">
+                    <div class="input-field s10">
+                        <input type="password" class="validate dark-grey no-margin padding-l-r" password-repeat id="password-repeat" required >
+                        <label for="password-repeat" >Répetez le Password</label>
+                    </div>
+                </div>
+                <p class="red-text small-margin small-info">{{passwordError}}</p>
+                <div class="row small-padding no-margin">
+                    <div class="center-align">
+                        <button class="btn-large orange waves-light waves-effect btn-validation"><i class="material-icons ">done</i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </li>
 </template>

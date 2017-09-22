@@ -2,20 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee6cf95f-588b-4503-94ea-5a1931b328a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/includes/menu/subMenu/subMenu.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/includes/menu/subMenu.html" afterPath="$PROJECT_DIR$/client/templates/includes/menu/subMenu/subMenu.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/includes/menu/subMenu.js" afterPath="$PROJECT_DIR$/client/templates/includes/menu/subMenu/subMenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/icon/signin_icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/lib/autofill.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/includes/errors.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/includes/errors.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/main.css" afterPath="$PROJECT_DIR$/client/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/application/layout.css" afterPath="$PROJECT_DIR$/client/templates/application/layout.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/application/layout.html" afterPath="$PROJECT_DIR$/client/templates/application/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/home.html" afterPath="$PROJECT_DIR$/client/templates/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/menu/menu.css" afterPath="$PROJECT_DIR$/client/templates/includes/menu/menu.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.html" afterPath="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js" afterPath="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/menu/menu.html" afterPath="$PROJECT_DIR$/client/templates/includes/menu/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/menu/menu.js" afterPath="$PROJECT_DIR$/client/templates/includes/menu/menu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/slideMenu/slideMenu.html" afterPath="$PROJECT_DIR$/client/templates/includes/slideMenu/slideMenu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/fixture.js" afterPath="$PROJECT_DIR$/server/fixture.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,14 +33,14 @@
     <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.693044">
+    <splitter split-orientation="horizontal" split-proportion="0.25526485">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/main.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2210">
-                  <caret line="85" column="1" lean-forward="false" selection-start-line="85" selection-start-column="1" selection-end-line="85" selection-end-column="1" />
+                <state relative-caret-position="385">
+                  <caret line="108" column="29" lean-forward="false" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -51,8 +49,38 @@
           <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/application/layout.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="192">
-                  <caret line="8" column="72" lean-forward="false" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
+                <state relative-caret-position="364">
+                  <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="loginMenu.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="437">
+                  <caret line="26" column="42" lean-forward="true" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="fixture.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/fixture.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="234">
+                  <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="loginMenu.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -71,8 +99,8 @@
           <file leaf-file-name="menu.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/menu.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-182">
-                  <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+                <state relative-caret-position="364">
+                  <caret line="14" column="60" lean-forward="true" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
                   <folding />
                 </state>
               </provider>
@@ -88,7 +116,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="subMenu.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="subMenu.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/subMenu/subMenu.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="26">
@@ -98,50 +126,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="subMenu.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/subMenu/subMenu.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/home.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="26">
-                  <caret line="1" column="132" lean-forward="false" selection-start-line="1" selection-start-column="132" selection-end-line="1" selection-end-column="132" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="layout.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/application/layout.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="546">
-                  <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file leaf-file-name="layout.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/application/layout.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
-                  <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="menu.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/menu.css">
               <provider selected="true" editor-type-id="text-editor">
@@ -152,21 +140,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="loginMenu.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="loginMenu.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="loginMenu.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="1378">
+                  <caret line="53" column="94" lean-forward="false" selection-start-line="53" selection-start-column="94" selection-end-line="53" selection-end-column="94" />
                   <folding />
                 </state>
               </provider>
@@ -179,16 +157,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Meteor HTML File" />
         <option value="Meteor JS File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>::</find>
       <find>ipsum</find>
+      <find>::</find>
     </findStrings>
     <replaceStrings>
       <replace>scrollbar::</replace>
@@ -200,13 +178,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/templates/posts/post_edit.js" />
-        <option value="$PROJECT_DIR$/server/fixture.js" />
-        <option value="$PROJECT_DIR$/server/publication.js" />
         <option value="$PROJECT_DIR$/lib/permissions.js" />
         <option value="$PROJECT_DIR$/client/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/client/templates/includes/header.js" />
-        <option value="$PROJECT_DIR$/client/templates/includes/errors.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/loading.html" />
         <option value="$PROJECT_DIR$/lib/router.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/header.html" />
@@ -239,18 +213,22 @@
         <option value="$PROJECT_DIR$/client/templates/includes/desktop_menu/menu.html" />
         <option value="$PROJECT_DIR$/client/templates/includes/menu/subMenu.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/menu/subMenu.html" />
-        <option value="$PROJECT_DIR$/client/templates/application/layout.html" />
-        <option value="$PROJECT_DIR$/client/main.css" />
         <option value="$PROJECT_DIR$/client/templates/home.html" />
         <option value="$PROJECT_DIR$/client/templates/includes/menu/subMenu/subMenu.css" />
         <option value="$PROJECT_DIR$/client/templates/application/layout.css" />
         <option value="$PROJECT_DIR$/client/templates/includes/menu/menu.css" />
-        <option value="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.html" />
-        <option value="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/menu/menu.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/slideMenu/slideMenu.html" />
-        <option value="$PROJECT_DIR$/client/templates/includes/menu/menu.html" />
         <option value="$PROJECT_DIR$/client/templates/includes/menu/subMenu/subMenu.html" />
+        <option value="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.css" />
+        <option value="$PROJECT_DIR$/client/templates/includes/menu/menu.html" />
+        <option value="$PROJECT_DIR$/server/fixture.js" />
+        <option value="$PROJECT_DIR$/client/templates/includes/errors.js" />
+        <option value="$PROJECT_DIR$/client/templates/application/layout.html" />
+        <option value="$PROJECT_DIR$/client/lib/autofill.js" />
+        <option value="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js" />
+        <option value="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.html" />
+        <option value="$PROJECT_DIR$/client/main.css" />
       </list>
     </option>
   </component>
@@ -294,6 +272,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -310,53 +289,7 @@
               <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
               <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="loginMenu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="subMenu" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
@@ -398,7 +331,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -407,23 +339,23 @@
     <property name="HbShouldOpenHtmlAsHb" value="enabled" />
     <property name="js.meteor.project" value="true" />
     <property name="js.meteor.library.was.enabled" value="true" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images/icon" />
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/client" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/templates/includes/menu/subMenu" />
       <recent name="$PROJECT_DIR$/public/images/trame" />
       <recent name="$PROJECT_DIR$/client/templates/includes/aside_header" />
       <recent name="$PROJECT_DIR$/public/images/icon" />
       <recent name="$PROJECT_DIR$/client/templates/includes" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/images" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/client" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/client/stylesheets" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -483,7 +415,9 @@
       <workItem from="1505720374230" duration="20412000" />
       <workItem from="1505803947262" duration="3117000" />
       <workItem from="1505978425888" duration="754000" />
-      <workItem from="1505982740930" duration="10931000" />
+      <workItem from="1505982740930" duration="17860000" />
+      <workItem from="1506021002088" duration="4240000" />
+      <workItem from="1506063204135" duration="11637000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1504190004057</created>
@@ -576,25 +510,32 @@
       <option name="project" value="LOCAL" />
       <updated>1505827013649</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="debut du menu">
+      <created>1505998949192</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1505998949192</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131854000" />
+    <option name="totallyTimeSpent" value="154660000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1922" height="1086" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19259259" sideWeight="0.501845" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17395888" sideWeight="0.50490886" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19259259" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17395888" sideWeight="0.49509117" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19259259" sideWeight="0.49815497" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17395888" sideWeight="0.49509117" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -604,9 +545,30 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19259259" sideWeight="0.501845" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17395888" sideWeight="0.50490886" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19259259" sideWeight="0.49815497" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17395888" sideWeight="0.49509117" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -629,56 +591,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/images/icon/agenda_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/cadre_bouton.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/menu_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/message_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/project_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/moderation_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/search_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/settings_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/user_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/sharing_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/includes/header/headroom.js" />
     <entry file="file://$PROJECT_DIR$/client/stylesheets/base.css" />
     <entry file="file://$PROJECT_DIR$/client/stylesheets/bootstrap_darkly.css" />
@@ -723,13 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/errors.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -750,16 +655,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/hub_logo.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/icon/hub_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE">
@@ -794,7 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -816,7 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -824,7 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="1" column="132" lean-forward="false" selection-start-line="1" selection-start-column="132" selection-end-line="1" selection-end-column="132" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -832,54 +724,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/application/layout.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/menu.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2210">
-          <caret line="85" column="1" lean-forward="false" selection-start-line="85" selection-start-column="1" selection-end-line="85" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/application/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="72" lean-forward="false" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
+        <state relative-caret-position="234">
+          <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -900,18 +751,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-182">
-          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/subMenu/subMenu.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="1" column="43" lean-forward="true" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/menu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="14" column="60" lean-forward="true" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/fixture.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/errors.js" />
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/errors.html" />
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/icon/hub_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/icon/hub_logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/icon/menu_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/icon/project_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/icon/signin_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/icon/settings_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/icon/message_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/icon/sharing_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/lib/autofill.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/application/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="26" column="42" lean-forward="true" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1378">
+          <caret line="53" column="94" lean-forward="false" selection-start-line="53" selection-start-column="94" selection-end-line="53" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="108" column="29" lean-forward="false" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="29" />
           <folding />
         </state>
       </provider>
