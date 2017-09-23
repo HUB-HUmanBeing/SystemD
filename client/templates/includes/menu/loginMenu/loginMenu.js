@@ -12,7 +12,7 @@ Template.loginMenu.events({
         let username = event.target.username.value;
         let password = event.target.password.value;
         Meteor.loginWithPassword(username, password, function (error) {
-            Materialize.toast(error.message, 666000, 'red')();
+            Materialize.toast(error.message, 6000, 'red')();
         });
     },
 
@@ -29,11 +29,30 @@ Template.loginMenu.events({
         } else {
             errorMessage = "Les Passwords ne sont pas identiques"
         }
-        console.log(errorMessage);
         instance.passwordError.set(errorMessage)
     },
     'submit [signin]': function (event, instance) {
-        event.preventDefault()
+        event.preventDefault();
+        let password = event.target.password.value;
+        let passwordRepeat = event.target.passwordRepeat.value;
+        if(passwordRepeat === password){
+            let userAttribute = {
+                username : event.target.username.value,
+                password : password
+            };
+            Meteor.call('createNewUser', userAttribute, function (error, result) {
+                if(error){
+                    Materialize.toast(error.message, 6000, 'red')
+                }else{
+                    Router.go("userSelfProfile");
+                    Materialize.toast(error.message, 6000, 'red')
+                }
+
+            } )
+        }else{
+            instance.passwordError.set("Le formulaire n'est pas valide");
+        }
+
     }
 });
 
