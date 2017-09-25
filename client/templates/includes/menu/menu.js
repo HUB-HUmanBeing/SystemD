@@ -3,24 +3,29 @@ Template.menu.helpers({
     menuItems : [
         {
             id: "user",
-            name : "Marc",
-            // name : function () {
-            //     return Meteor.user().username;
-            // },
+            name : function () {
+              return Meteor.user().username;
+            },
             color:"green",
             image: "user_icon.png",
             subMenu:[
+
+                {
+                    id : "userSelfProfile",
+                    name : "Mon profil",
+                    path : "userSelfProfile",
+                    icon: "person"
+                },
+                {
+                    id : "lorem",
+                    name : "lorem",
+                    path: "workInProgress"
+                },
                 {
                     id : "logout",
-                    name : "déconnexion",
-                },
-                {
-                    id : "lorem",
-                    name : "lorem",
-                },
-                {
-                    id : "lorem",
-                    name : "lorem",
+                    name : "Déconnexion",
+                    path: "home",
+                    icon: "exit_to_app"
                 },
             ]
         },
@@ -33,14 +38,17 @@ Template.menu.helpers({
                 {
                     id : "lorem",
                     name : "lorem",
+                path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
             ]
         },
@@ -53,14 +61,17 @@ Template.menu.helpers({
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
             ]
         },
@@ -73,14 +84,17 @@ Template.menu.helpers({
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
             ]
         },
@@ -93,14 +107,17 @@ Template.menu.helpers({
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
             ]
         },
@@ -113,20 +130,21 @@ Template.menu.helpers({
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
                 {
                     id : "lorem",
                     name : "lorem",
+                    path: "workInProgress"
                 },
             ]
         }
     ]
-
-
 });
 
 Template.menu.events({

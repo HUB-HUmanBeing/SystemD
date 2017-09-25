@@ -1,12 +1,12 @@
 <template name="menu">
     <ul class="collapsible no-margin dark-grey general-menu " data-collapsible="accordion" id="">
         {{!icone du site +lien vers l'acceuil}}
-        <li>
-            <a href="{{pathFor home}}" class=" row no-margin no-padding dark-grey waves-effect waves-light title-block" >
-                <div class="col s2 m3 l4 no-padding">
-                    <img src="/images/icon/hub_icon.png" alt="HUmanBeing" class="responsive-img small-margin no-padding">
+        <li class="title-block">
+            <a href="{{pathFor home}}" class=" flex no-margin no-padding dark-grey waves-effect waves-light title-block" >
+                <div class="  no-padding small-margin hub-logo">
+                    <img src="/images/icon/hub_icon.png" alt="HUmanBeing" class="responsive-img  no-padding ">
                 </div>
-                <div class="col s10 m9 l8 valign-wrapper"><h6 class="hub-title"><span class="maj-title">HU</span>man<span class="maj-title">B</span>eing</h6></div>
+                <div class="flex-auto valign-wrapper"><h1 class="hub-title"><span class="">HU</span>man<span class="maj-title">B</span>eing</h1></div>
             </a>
         </li>
         {{!formulaire de recherche}}
@@ -28,11 +28,11 @@
             {{!on boucle sur les items du menu}}
             {{#each menuItem in menuItems}}
                 <li class="">
-                        <div class="collapsible-header {{menuItem.color}} waves-effect waves-light  row no-padding menu-item col s12 ">
-                            <div class="col s2 m3 no-padding valign-wrapper">
+                        <div class="collapsible-header waves-effect waves-light  row no-padding menu-item col s12 {{menuItem.color}} darken-1">
+                            <div class="col s2 m3 no-padding valign-wrapper  ">
                                 <img src="/images/icon/{{menuItem.image}}" alt="{{menuItem.name}}" class="responsive-img small-margin no-padding">
                             </div>
-                            <div class="col s10 m9 valign-wrapper"><h6 class="center-align">{{menuItem.name}}</h6></div>
+                            <div class="col s10 m9 valign-wrapper "><h6 class="center-align">{{menuItem.name}}</h6></div>
                         </div>
                     <div class="collapsible-body no-padding dark-grey row no-margin">
                       {{>subMenu menuItem}}

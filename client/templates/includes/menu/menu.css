@@ -13,10 +13,14 @@
     border-radius: 0 5px 5px 0 ;
 }
 .hub-title {
-    font-size: 15px !important;
+    font-size: 150% !important;
     margin-top: 15px !important;
 
 }
+.hub-logo{
+    width: 70px !important;
+    height: 70px !important;
+}
 .title-block{
-    height: 65px !important;
+    height: 75px !important;
 }

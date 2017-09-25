@@ -15,10 +15,6 @@ Template.loginMenu.events({
             Materialize.toast(error.message, 6000, 'red')();
         });
     },
-
-    'keypress [password]': function () {
-
-    },
     'keyup [password-repeat]': function (event, instance) {
         let password = $('#signin-password').val();
         let passwordRepeat = $('#password-repeat').val()
@@ -35,19 +31,21 @@ Template.loginMenu.events({
         event.preventDefault();
         let password = event.target.password.value;
         let passwordRepeat = event.target.passwordRepeat.value;
+        let username = event.target.username.value();
         if(passwordRepeat === password){
             let userAttribute = {
-                username : event.target.username.value,
+                username : username,
                 password : password
             };
             Meteor.call('createNewUser', userAttribute, function (error, result) {
                 if(error){
                     Materialize.toast(error.message, 6000, 'red')
                 }else{
-                    Router.go("userSelfProfile");
-                    Materialize.toast(error.message, 6000, 'red')
+                    Meteor.loginWithPassword(username, password, function (error) {
+                        Router.go("userSelfProfile");
+                        Materialize.toast("Bienvenue sur HUmanBeing", 6000, 'green')
+                    });
                 }
-
             } )
         }else{
             instance.passwordError.set("Le formulaire n'est pas valide");
