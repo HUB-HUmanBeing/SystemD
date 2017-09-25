@@ -19,7 +19,6 @@ Template.loginMenu.events({
         let password = $('#signin-password').val();
         let passwordRepeat = $('#password-repeat').val()
         let errorMessage;
-        console.log(passwordRepeat);
         if (passwordRepeat === password) {
             errorMessage = ""
         } else {
@@ -29,26 +28,30 @@ Template.loginMenu.events({
     },
     'submit [signin]': function (event, instance) {
         event.preventDefault();
-        let password = event.target.password.value;
-        let passwordRepeat = event.target.passwordRepeat.value;
-        let username = event.target.username.value();
-        if(passwordRepeat === password){
-            let userAttribute = {
-                username : username,
-                password : password
-            };
-            Meteor.call('createNewUser', userAttribute, function (error, result) {
-                if(error){
-                    Materialize.toast(error.message, 6000, 'red')
-                }else{
-                    Meteor.loginWithPassword(username, password, function (error) {
-                        Router.go("userSelfProfile");
-                        Materialize.toast("Bienvenue sur HUmanBeing", 6000, 'green')
-                    });
-                }
-            } )
+        if(instance.passwordError.get() === ""){
+            let password = event.target.password.value;
+            let passwordRepeat = event.target.passwordRepeat.value;
+            let username = event.target.signinUsername.value;
+            if(passwordRepeat === password){
+                let userAttribute = {
+                    username : username,
+                    password : password
+                };
+                Meteor.call('createNewUser', userAttribute, function (error, result) {
+                    if(error){
+                        Materialize.toast(error.message, 6000, 'red')
+                    }else{
+                        Meteor.loginWithPassword(username, password, function (error) {
+                            Router.go("userSelfProfile");
+                            Materialize.toast("Bienvenue sur HUmanBeing", 6000, 'green')
+                        });
+                    }
+                } )
+            }else{
+                instance.passwordError.set("Le formulaire n'est pas valide");
+            }
         }else{
-            instance.passwordError.set("Le formulaire n'est pas valide");
+            Materialize.toast("Le formulaire d'inscription n'est pas valide", 6000, 'red')
         }
 
     }
@@ -57,6 +60,7 @@ Template.loginMenu.events({
 Template.loginMenu.onCreated(function () {
     //add your statement here
     this.passwordError = new ReactiveVar()
+
 });
 
 Template.loginMenu.onRendered(function () {

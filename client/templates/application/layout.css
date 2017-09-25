@@ -26,6 +26,6 @@ body{
     width: 200px !important;
     float: left;
 }
-.yield-content{
-
+.yield-content, .yield-content *{
+ color: lightgray !important;
 }

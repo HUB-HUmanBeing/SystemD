@@ -98,6 +98,10 @@ SCROLLBAR
 /***************
 FORM
  ****************/
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default){
+    border-bottom: 1px solid #9e9e9e !important;
+}
 .input-field input[type=text].valid, .input-field input[type=password].invalid {
     background-color: #141414 !important;
     border-bottom: 1px solid #C87F0A !important;
