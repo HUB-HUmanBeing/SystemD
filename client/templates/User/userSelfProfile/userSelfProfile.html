@@ -1,13 +1,25 @@
 <template name="userSelfProfile">
-    <div class="row">
-        <div class="col m4">
-
+    <div class="row small-margin small-padding">
+        <div class="col m3">
+           <h4 class="truncate">{{currentUser.username}}</h4>
         </div>
-        <div class="col m8">
+        <div class="col m9">
             <div class="row">
-
+                <form class="col s12" updateDescription>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{#if isEditingFlags.description}}
+                                <i class="material-icons prefix rounded waves-effect waves-light blue-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="enregister" saveDescriptionBtn>file_download</i>
+                            {{else}}
+                                <i class="material-icons prefix waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="éditer"  editDescriptionBtn >mode_edit</i>
+                            {{/if}}
+                            <textarea  class="materialize-textarea validate " data-length="1000" value="{{description}}" id="description" descriptionText></textarea>
+                            <label for="description">Description</label>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-je m'appele : {{currentUser.username}}
+
 </template>

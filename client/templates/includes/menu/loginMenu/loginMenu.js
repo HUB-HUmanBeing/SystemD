@@ -12,7 +12,9 @@ Template.loginMenu.events({
         let username = event.target.username.value;
         let password = event.target.password.value;
         Meteor.loginWithPassword(username, password, function (error) {
-            Materialize.toast(error.message, 6000, 'red')();
+            if(error.message){
+                Materialize.toast(error.message, 6000, 'red')();
+            }
         });
     },
     'keyup [password-repeat]': function (event, instance) {

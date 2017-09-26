@@ -1,11 +1,6 @@
 if(Meteor.users.find().count() === 0) {
-    Accounts.createUser({
+    Meteor.call('createNewUser',{
         username: "robin",
-        email: "caramaschi@hotmail.com",
-        password:"123456",
-        profile: {
-            firstName: "robin",
-            lastName: "caramaschi",
-        }
+        password:"123456"
     });
 }
