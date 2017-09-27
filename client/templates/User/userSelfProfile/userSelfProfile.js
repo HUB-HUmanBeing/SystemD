@@ -22,10 +22,12 @@ Template.userSelfProfile.events({
 
     },
     'submit [updateDescription], click [saveDescriptionBtn]' : function (event, instance) {
-        Meteor.call('updateSelfProfile', {
-            fieldName :"description",
-            value : $('#description').val()}
-            ,function (error) {
+
+        let value = $('#description').val();
+        Meteor.call('updateSelfProfile',
+            "description",
+            {description : value},
+            function (error) {
             if(error){
                 Materialize.toast(error.message, 6000, 'red')
             }
