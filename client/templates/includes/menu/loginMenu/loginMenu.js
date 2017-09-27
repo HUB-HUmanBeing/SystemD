@@ -1,58 +1,76 @@
 Template.loginMenu.helpers({
-    //add you helpers here
-    passwordError: function () {
-        return Template.instance().passwordError.get()
+    //ce helper contients les message d'erreurs eventuels du formulaire de signin
+    errorText: function () {
+        return Template.instance().errorText.get()
     }
 });
 
 Template.loginMenu.events({
-    //add your events here
+    //soumission du form de login
     'submit [login]': function (event) {
         event.preventDefault();
+        //on récupère les valeurs du formulaire
         let username = event.target.username.value;
         let password = event.target.password.value;
+        //on soumet le login
         Meteor.loginWithPassword(username, password, function (error) {
-            if(error.message){
+           // si il y a une erreur, on "toast" le message d'erreur
+            if (error.message) {
                 Materialize.toast(error.message, 6000, 'red')();
             }
         });
     },
+    //quant on remplit le repeat password
     'keyup [password-repeat]': function (event, instance) {
+        //on ecupere les valeurs
         let password = $('#signin-password').val();
         let passwordRepeat = $('#password-repeat').val()
         let errorMessage;
+        //si elles sont identiques on vire le message d'erreur
         if (passwordRepeat === password) {
             errorMessage = ""
         } else {
+            //sinon on indique l'erreur
             errorMessage = "Les Passwords ne sont pas identiques"
-        }
-        instance.passwordError.set(errorMessage)
+        }//et on met a jour la réactive var
+        instance.errorText.set(errorMessage)
     },
+    //à l'envoi du formulaire d'inscription
     'submit [signin]': function (event, instance) {
         event.preventDefault();
-        if(instance.passwordError.get() === ""){
+        //on commence par checker qu'il n'y a pas d'erreur
+        if (instance.errorText.get() === "") {
+            //on récupere les valeurs du form
             let password = event.target.password.value;
             let passwordRepeat = event.target.passwordRepeat.value;
             let username = event.target.signinUsername.value;
-            if(passwordRepeat === password){
+            //on verifie bien que les mots de passe dont identiques
+            if (passwordRepeat === password) {
+                //on préformate l'objet a envoyer
                 let userAttribute = {
-                    username : username,
-                    password : password
+                    username: username,
+                    password: password
                 };
+                //et on passe par une meteor method
                 Meteor.call('createNewUser', userAttribute, function (error, result) {
-                    if(error){
+                    //si ca échoue on renvoie l'erreur en toast
+                    if (error) {
                         Materialize.toast(error.message, 6000, 'red')
-                    }else{
+                    } else {
+                        //si tout va bien on redirige vers la page pour completer le profil
                         Meteor.loginWithPassword(username, password, function (error) {
                             Router.go("userSelfProfile");
+                            //et on toast un petit message de bienvenue
                             Materialize.toast("Bienvenue sur HUmanBeing", 6000, 'green')
                         });
                     }
-                } )
-            }else{
-                instance.passwordError.set("Le formulaire n'est pas valide");
+                })
+                //sinon on renvoie un message d'erreur
+            } else {
+                instance.errorText.set("Le formulaire n'est pas valide");
             }
-        }else{
+            // sinon, on toast que le form est invalide
+        } else {
             Materialize.toast("Le formulaire d'inscription n'est pas valide", 6000, 'red')
         }
 
@@ -61,12 +79,12 @@ Template.loginMenu.events({
 
 Template.loginMenu.onCreated(function () {
     //add your statement here
-    this.passwordError = new ReactiveVar()
+    this.errorText = new ReactiveVar()
 
 });
 
 Template.loginMenu.onRendered(function () {
-    //add your statement here
+    //on initialise le compteur de caractères de matérialize
     $('input').characterCounter();
 });
 

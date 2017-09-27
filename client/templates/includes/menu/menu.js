@@ -1,5 +1,5 @@
 Template.menu.helpers({
-    //add you helpers here
+    //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
     menuItems : [
         {
             id: "user",
@@ -148,7 +148,7 @@ Template.menu.helpers({
 });
 
 Template.menu.events({
-    //add your events here
+    //gestion du bouton logout
     'click [logout]' : function () {
         Accounts.logout();
     }
@@ -159,7 +159,7 @@ Template.menu.onCreated(function () {
 });
 
 Template.menu.onRendered(function () {
-    //add your statement here
+    //initialisation des accordéons
     $('.collapsible').collapsible();
 });
 
