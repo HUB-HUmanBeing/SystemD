@@ -1,0 +1,34 @@
+<template name="userSelfLocation">
+    <h6>localisation</h6>
+    <div class="row">
+        {{#if and city country}}
+            <p>{{city}}, <b>{{country}}</b></p>
+        {{else}}
+            <p class="orange-text">vous n'avez pas encore renseigné votre position</p>
+        {{/if}}
+        <div class="col s6">
+            <div class="center-align tooltipped waves-effect waves-light " data-position="bottom" data-delay="50"
+                 data-tooltip="rechercher une position" useSearchForm>
+                <span class="material-icons ">search</span>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="center-align tooltipped waves-effect waves-light " data-position="bottom" data-delay="50"
+                 data-tooltip="Utiliser ma position actuelle" useUserPosition>
+                <span class="material-icons ">person_pin</span>
+            </div>
+        </div>
+    </div>
+    {{#if useSearchForm}}
+        <div class="row">
+            <form class="col s12">
+                    <div class="input-field">
+                        <i class="material-icons prefix tooltipped waves-effect waves-light " data-position="bottom" data-delay="50"
+                           data-tooltip="saisir un nom de ville, un code postal, un pays">map</i>
+                        <input id="icon_prefix" type="text" class="" >
+                        <label for="icon_prefix">localisation</label>
+                    </div>
+            </form>
+        </div>
+    {{/if}}
+</template>

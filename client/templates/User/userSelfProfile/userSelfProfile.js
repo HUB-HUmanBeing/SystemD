@@ -40,6 +40,8 @@ Template.userSelfProfile.events({
             //si ca marche pas, on renvoie l'erreur par toast
             if(error){
                 Materialize.toast(error.message, 6000, 'red')
+            }else {
+                Materialize.toast("la description à été mise à jour", 6000, 'green')
             }
         })
     },

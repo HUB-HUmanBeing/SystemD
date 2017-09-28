@@ -8,7 +8,7 @@
 /******************
 COULEURS
  ***********************/
-.dark-grey, input{
+.dark-grey{
     background-color: #141414 !important;
 }
 /*****BACKGROUNDS****/
@@ -101,13 +101,13 @@ input[type=password]:not(.browser-default){
     border-bottom: 1px solid #9e9e9e !important;
 }
 .input-field input[type=text].valid, .input-field input[type=password].invalid {
-    background-color: #141414 !important;
+    background-color: transparent !important;
     border-bottom: 1px solid #C87F0A !important;
     box-shadow: 0 1px 0 0 #000;
 }
 /* invalid color */
 .input-field input[type=text].invalid , .input-field input[type=password].invalid {
-    background-color: #141414 !important;
+    background-color: transparent !important;
     border-bottom: 1px solid #D62C1A !important;
     box-shadow: 0 1px 0 0 #000;
 }
