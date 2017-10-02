@@ -1,6 +1,6 @@
 <template name="userSelfLocation">
     <h6>localisation</h6>
-    <div class="row">
+    <div class="row no-margin">
         {{#if and city country}}
             <p>{{city}}, <b>{{country}}</b></p>
         {{else}}
@@ -20,15 +20,27 @@
         </div>
     </div>
     {{#if useSearchForm}}
-        <div class="row">
+        <div class="row no-margin">
             <form class="col s12">
-                    <div class="input-field">
-                        <i class="material-icons prefix tooltipped waves-effect waves-light " data-position="bottom" data-delay="50"
+                    <div class="input-field ">
+                        <i class="material-icons prefix tooltipped waves-effect waves-light tiny" data-position="bottom" data-delay="50"
                            data-tooltip="saisir un nom de ville, un code postal, un pays">map</i>
-                        <input id="icon_prefix" type="text" class="" >
-                        <label for="icon_prefix">localisation</label>
+                        <input id="icon_prefix " type="text" class="location-search-field" >
+                        <label for="icon_prefix">Entrez votre ville</label>
                     </div>
             </form>
+            {{#if searchResults}}
+                {{#each searchResult in searchResults}}
+                    {{#if and searchResult.address.city searchResult.address.country}}
+                    <div class="row no-margin">
+                        <span class="col s10">
+                            {{searchResult.address.city}}, <b>{{searchResult.address.country}}</b>
+                        </span>
+                        <span class="col s2"><span class="material-icons waves-effect waves-light" id="addresschoice-{{@index}}" chooseAddress>done</span></span>
+                    </div>
+                        {{/if}}
+                {{/each}}
+            {{/if}}
         </div>
     {{/if}}
 </template>

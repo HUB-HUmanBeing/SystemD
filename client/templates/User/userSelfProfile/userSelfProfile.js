@@ -37,13 +37,15 @@ Template.userSelfProfile.events({
             "description",
             {description : value},
             function (error) {
-            //si ca marche pas, on renvoie l'erreur par toast
-            if(error){
-                Materialize.toast(error.message, 6000, 'red')
-            }else {
-                Materialize.toast("la description à été mise à jour", 6000, 'green')
+
+                //si ca marche pas, on renvoie l'erreur par toast
+                if(error){
+                    Materialize.toast(error, 6000, 'red')
+                }else {
+                    Materialize.toast("la description à été mise à jour", 6000, 'green')
+                }
             }
-        })
+        )
     },
     //quant on sort du champs
     'focusout [descriptionText]' : function (event, instance) {
@@ -76,6 +78,7 @@ this.description = new ReactiveVar("");
 Template.userSelfProfile.onRendered(function () {
     //au rendu on active les infobulles
     $('.tooltipped').tooltip({delay: 50});
+    $('#description').trigger('autoresize');
 });
 
 Template.userSelfProfile.onDestroyed(function () {

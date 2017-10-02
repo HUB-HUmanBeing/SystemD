@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee6cf95f-588b-4503-94ea-5a1931b328a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/main.css" afterPath="$PROJECT_DIR$/client/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html" afterPath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.html" afterPath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.js" afterPath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.js" afterPath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/collections/Users/UsersMethods.js" afterPath="$PROJECT_DIR$/lib/collections/Users/UsersMethods.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/collections/Users/UsersShema.js" afterPath="$PROJECT_DIR$/lib/collections/Users/UsersShema.js" />
@@ -29,44 +27,44 @@
     <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6547543">
+    <splitter split-orientation="horizontal" split-proportion="0.45692405">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="userSelfProfile.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-390">
-                  <caret line="45" column="10" lean-forward="false" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
+                <state relative-caret-position="2080">
+                  <caret line="80" column="19" lean-forward="false" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="userSelfLocation.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.js">
+          <file leaf-file-name="userSelfProfile.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="156">
-                  <caret line="6" column="57" lean-forward="true" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
+                  <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="UsersMethods.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="UsersMethods.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/collections/Users/UsersMethods.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="222">
-                  <caret line="46" column="20" lean-forward="false" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
+                <state relative-caret-position="234">
+                  <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="userSelfLocation.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="userSelfLocation.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="78">
-                  <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+                <state relative-caret-position="316">
+                  <caret line="36" column="62" lean-forward="false" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="94" />
                   <folding />
                 </state>
               </provider>
@@ -75,12 +73,22 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file leaf-file-name="UsersShema.js" pinned="false" current-in-tab="true">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="UsersShema.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lib/collections/Users/UsersShema.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1170">
-                  <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+                <state relative-caret-position="52">
+                  <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="12" selection-end-column="3" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="userSelfLocation.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="486">
+                  <caret line="102" column="3" lean-forward="true" selection-start-line="102" selection-start-column="3" selection-end-line="102" selection-end-column="3" />
                   <folding />
                 </state>
               </provider>
@@ -164,8 +172,8 @@
         <option value="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html" />
         <option value="$PROJECT_DIR$/client/main.css" />
         <option value="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.js" />
-        <option value="$PROJECT_DIR$/lib/collections/Users/UsersShema.js" />
         <option value="$PROJECT_DIR$/lib/collections/Users/UsersMethods.js" />
+        <option value="$PROJECT_DIR$/lib/collections/Users/UsersShema.js" />
         <option value="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.html" />
         <option value="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.js" />
       </list>
@@ -211,7 +219,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -311,10 +318,16 @@
               <item name="collections" type="462c0819:PsiDirectoryNode" />
               <item name="Users" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -407,7 +420,9 @@
       <workItem from="1506321923755" duration="15108000" />
       <workItem from="1506409238846" duration="16216000" />
       <workItem from="1506499034391" duration="18573000" />
-      <workItem from="1506581400799" duration="18938000" />
+      <workItem from="1506581400799" duration="20919000" />
+      <workItem from="1506673172835" duration="7095000" />
+      <workItem from="1506930790062" duration="5802000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1504190004057</created>
@@ -556,11 +571,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506524523590</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="localisation inversée fonctionnelle a partir de la fonction géoloc, mais encore buggé">
+      <created>1506608626961</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1506608626961</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237516000" />
+    <option name="totallyTimeSpent" value="252394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1922" height="1086" extended-state="6" />
@@ -570,10 +592,10 @@
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19259259" sideWeight="0.501845" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17395888" sideWeight="0.50490886" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17395888" sideWeight="0.50490886" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44761905" sideWeight="0.49815497" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16825397" sideWeight="0.49815497" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17395888" sideWeight="0.49509117" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -628,7 +650,8 @@
     <MESSAGE value="signIn OK" />
     <MESSAGE value="update description toujours buggé" />
     <MESSAGE value="edit profile débuggé, commit de sécurité avant refactoring/commentaires" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit profile débuggé, commit de sécurité avant refactoring/commentaires" />
+    <MESSAGE value="localisation inversée fonctionnelle a partir de la fonction géoloc, mais encore buggé" />
+    <option name="LAST_COMMIT_MESSAGE" value="localisation inversée fonctionnelle a partir de la fonction géoloc, mais encore buggé" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -776,7 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="604">
           <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -813,7 +835,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -828,7 +849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -850,7 +870,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,7 +877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -866,7 +884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -874,7 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2288">
           <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -882,7 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -890,7 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-832">
           <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -898,7 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="61" column="26" lean-forward="false" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -910,42 +923,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/collections/Users/UsersShema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-390">
-          <caret line="45" column="10" lean-forward="false" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
+        <state relative-caret-position="2080">
+          <caret line="80" column="19" lean-forward="false" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.html">
+    <entry file="file://$PROJECT_DIR$/lib/collections/Users/UsersShema.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="57" lean-forward="true" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
+        <state relative-caret-position="52">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="12" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/collections/Users/UsersMethods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="46" column="20" lean-forward="false" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
+        <state relative-caret-position="234">
+          <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="36" column="62" lean-forward="false" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="102" column="3" lean-forward="true" selection-start-line="102" selection-start-column="3" selection-end-line="102" selection-end-column="3" />
           <folding />
         </state>
       </provider>
