@@ -36,7 +36,8 @@
                         <span class="col s10">
                             {{searchResult.address.city}}, <b>{{searchResult.address.country}}</b>
                         </span>
-                        <span class="col s2"><span class="material-icons waves-effect waves-light" id="addresschoice-{{@index}}" chooseAddress>done</span></span>
+                        <span class="col s2"><span class="material-icons waves-effect waves-light tooltipped" id="addresschoice-{{@index}}" data-position="bottom" data-delay="50"
+                           data-tooltip="Selectionner cette ville" chooseAddress>pin_drop</span></span>
                     </div>
                         {{/if}}
                 {{/each}}

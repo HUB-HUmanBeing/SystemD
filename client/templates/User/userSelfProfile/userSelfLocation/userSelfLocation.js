@@ -72,6 +72,9 @@ Template.userSelfLocation.events({
                                 Materialize.toast("Ce service est momentanément indisponible", 6000, "red")
                             }
                             instance.searchResults.set(result.data)
+                            Meteor.setTimeout(function () {
+                                $('.tooltipped').tooltip({delay: 50});
+                            }, 100)
                         })
                 }
             }, 750)
