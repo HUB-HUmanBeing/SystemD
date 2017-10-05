@@ -1,3 +1,5 @@
+import User from '/imports/classes/User'
+
 Template.userSelfProfile.helpers({
     //areactivevar comprenant le message de description
     description : function () {
@@ -32,20 +34,19 @@ Template.userSelfProfile.events({
     'submit [updateDescription], click [saveDescriptionBtn]' : function (event, instance) {
         //on récupere la valeur du champ
         let value = $('#description').val();
-        //et on apelle la methode d'update avec deux arguments : le champs a modifier, ert l'objet qu'on envoie
-        Meteor.call('updateSelfProfile',
-            "description",
-            {description : value},
-            function (error) {
-
-                //si ca marche pas, on renvoie l'erreur par toast
-                if(error){
-                    Materialize.toast(error, 6000, 'red')
-                }else {
-                    Materialize.toast("la description à été mise à jour", 6000, 'green')
-                }
+        //on instancie et hydrate l'objet User
+        let currentUser = User.findOne(Meteor.userId());
+        currentUser.callMethod(
+            'updateDescription',
+            value,
+            (error, result) =>{
+            //si ca marche pas, on renvoie l'erreur par toast
+            if(error){
+                Materialize.toast(error, 6000, 'red')
+            }else {
+                Materialize.toast("la description à été mise à jour", 6000, 'green')
             }
-        )
+        })
     },
     //quant on sort du champs
     'focusout [descriptionText]' : function (event, instance) {
@@ -65,7 +66,7 @@ Template.userSelfProfile.events({
 
 Template.userSelfProfile.onCreated(function () {
     //on recupere les valeurs des champs qu'on passe dans les reactivevar
-    let description = Meteor.user().profile.public.description;
+    let description = Meteor.user().profile.description;
 this.description = new ReactiveVar("");
     this.description.set(description);
     //on initialise le tableau des flags
