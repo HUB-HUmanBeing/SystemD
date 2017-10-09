@@ -1,7 +1,7 @@
 <template name="userSelfProfile">
     <div class="row small-margin small-padding">
         <div class="col m3">
-           <h4 class="truncate">{{currentUser.username}}</h4>
+           <h4 class="truncate">{{currentUser.username}} <span class="badge tooltipped {{completedColor completed}}" data-position="bottom" data-delay="50" data-tooltip="votre profil est complété à {{completed}}%">{{completed}}%</span> </h4>
             <div class="row">
                 <div class="col s12">
                     {{>userSelfLocation}}
@@ -18,7 +18,7 @@
                             {{else}}
                                 <i class="material-icons prefix waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="éditer"  editDescriptionBtn >mode_edit</i>
                             {{/if}}
-                            <textarea  class="materialize-textarea " data-length="1000" value="{{description}}" id="description" descriptionText></textarea>
+                            <textarea  class="materialize-textarea " data-length="1000" value="{{currentUser.profile.description}}" id="description" descriptionText></textarea>
                             <label for="description" class="active">Description</label>
                         </div>
                     </div>

@@ -1,3 +1,9 @@
+import User from '/imports/classes/User'
+
+/************************************
+ * Helpers du template
+ ********************************/
+
 Template.userSelfLocation.helpers({
     //add you helpers here
     //booléen pour afficher ou non le formulaie
@@ -6,19 +12,25 @@ Template.userSelfLocation.helpers({
     },
     //deux petits helpers qui evitent qu'il y ait trop de code dans le template
     city: function () {
-        return Meteor.user().profile.public.location.city
+        return Meteor.user().profile.location.city
     },
     country: function () {
-        return Meteor.user().profile.public.location.country
+        return Meteor.user().profile.location.country
     },
     //contient les data qui ressortent de la recherche via nominatim
-    searchResults : function () {
+    searchResults: function () {
         return Template.instance().searchResults.get();
     }
 });
 
+/************************************
+ * Evenements du template
+ ********************************/
+
 Template.userSelfLocation.events({
-    //affichage du formulaire au click
+    /**************************
+     * affichage du formulaire au click
+     **************************/
     'click [useSearchForm]': function (event, instance) {
         //on affiche le searchform
         instance.useSearchForm.set(!instance.useSearchForm.get());
@@ -30,7 +42,9 @@ Template.userSelfLocation.events({
             $('.tooltipped').tooltip({delay: 50});
         }, 200)
     },
-    //utilisation des donées de localisation
+    /**********************************************
+     * utilisation des donées de localisation
+     *********************************************/
     'click [useUserPosition] ': function (event, instance) {
         //on referme le formulaire de rcherche
         instance.useSearchForm.set(false);
@@ -51,18 +65,20 @@ Template.userSelfLocation.events({
                     //si c'est bon
                 } else if (result) {
                     let address = result.data.address;
-                    //on formate un json a renvoyer a la methode
-                    let profileAddress = {
-                        lat: parseFloat(latLng.lat),
-                        lng: parseFloat(latLng.lng),
-                        city: address.town,
-                        country: address.country
-                    };
+                    //on formate le tableau a renvoyer a la methode
+                    let attribute = [
+                        parseFloat(latLng.lat),
+                        parseFloat(latLng.lng),
+                        address.town,
+                        address.country
+                    ];
+                    //on instancie la classe user avec notre utilisateur courant
+                    let currentUser = User.findOne(Meteor.userId())
                     //et on utilise la méthode
-                    Meteor.call('updateSelfLocation',
-                        profileAddress,
-                        function (error) {
-                        //on renvoie le resutat de l'opération a l'utilisateur
+                    currentUser.applyMethod('updateSelfLocation',
+                        attribute,
+                        function (error, result) {
+                            //on renvoie le resutat de l'opération a l'utilisateur
                             if (error) {
                                 Materialize.toast(error.message, 6000, "red")
                             } else {
@@ -73,31 +89,33 @@ Template.userSelfLocation.events({
             }
         )
     },
-    //"autocomplétion de la saisie de l'adresse utilisateur
-    'keyup .location-search-field, submit form' : function (event, instance) {
+    /*****************************************
+     *  "autocomplétion" de la saisie de l'adresse utilisateur
+     ******************************************/
+    'keyup .location-search-field, submit form': function (event, instance) {
         event.preventDefault();
         //on recupere la ville rentrée par l'utilisateur
         let addressContent = $('.location-search-field').val();
         //on commence à faire tourner qu'apres 3 caractères rentrés
-        if(addressContent.length >= 4){
+        if (addressContent.length >= 4) {
             //on memorise le timestamp de l'event
             instance.lastKeyUpTime.set(event.timeStamp);
             //le bloc qui suit est dans un retardateur afin de ne pas surcharger inutilement l'api nominatim
             Meteor.setTimeout(function () {
                 //on check que c'est bien levent de la derniere lettre rentrée par l'utilisateur, afin que la suite ne se fasse que pour le dernier vent listé
-                if(instance.lastKeyUpTime.get() === event.timeStamp){
+                if (instance.lastKeyUpTime.get() === event.timeStamp) {
                     //on remplace les espaces par des "&"
-                    let query = addressContent.replace(new RegExp(' ', 'g'),"&");
+                    let query = addressContent.replace(new RegExp(' ', 'g'), "&");
                     //puis on fait la requete a nominatim
                     HTTP.call("GET",
                         "http://nominatim.openstreetmap.org/search/" + query + "?format=json&limit=5&addressdetails=1",
                         function (error, result) {
-                        //en cas d'erreur on renvoie une info à l'utilisateur
-                            if (error){
+                            //en cas d'erreur on renvoie une info à l'utilisateur
+                            if (error) {
                                 Materialize.toast("Ce service est momentanément indisponible", 6000, "red")
                             }
                             //sinon, on renvoie les differents choix possibles via la réactive var
-                            else{
+                            else {
                                 instance.searchResults.set(result.data)
                                 //et on active les bulles d'infos pour ce bloc qui s'est ajouté au dom
                                 Meteor.setTimeout(function () {
@@ -106,37 +124,43 @@ Template.userSelfLocation.events({
                             }
                         })
                 }
-            }, 750)
+            }, 650)
         }
     },
-    //lorqu'on selectionne une des villes proposées
-    'click [chooseAddress]' : function (event, instance) {
+    /*************************************
+     * lorqu'on selectionne une des villes proposées
+     *****************************************/
+    'click [chooseAddress]': function (event, instance) {
         //on récupere l'id du bouton cliqué (ajouté par le template
         let choosenAddressId = event.currentTarget.id.substr(-1, 1);
         //on en déduit l'adresse selectionné telle que récupérée dans les données de l'api nominatim
         let choosenAddress = instance.searchResults.get()[choosenAddressId];
-        //on formate le json a envoyer a la methode
-        let profileAddress = {
-            lat: parseFloat(choosenAddress.lat),
-            lng: parseFloat(choosenAddress.lon),
-            city: choosenAddress.address.city,
-            country: choosenAddress.address.country
-        };
+        //on formate le tableau a envoyer a la methode
+        let attribute = [
+            parseFloat(choosenAddress.lat),
+            parseFloat(choosenAddress.lon),
+            choosenAddress.address.city,
+            choosenAddress.address.country
+        ];
+        //on instancie la classe User avec l'utilisateur courant
+        let currentUser = User.findOne(Meteor.userId());
         //puis on lance la methode
-        Meteor.call('updateSelfLocation',
-            profileAddress,
-            function (error) {
-                console.log(error)
+        currentUser.applyMethod('updateSelfLocation',
+            attribute,
+            function (error, result) {
+                //on renvoie le resutat de l'opération a l'utilisateur
                 if (error) {
                     Materialize.toast(error.message, 6000, "red")
                 } else {
-                    //si c'est bon on renvoie un message de succes
                     Materialize.toast("Votre position a été mise à jour", 6000, "green")
-                    //et on clos le formulaire
+                    //on clos le formulaire de recherche
                     instance.useSearchForm.set(false)
+                    //on réinitialise le tableau des réponses de nominatim
+                    instance.searchResults.set([])
                     //on enleve les infobulles
                     $('.tooltipped').tooltip('remove');
-                    //et on les remets apres
+                    //et on les remets apres un court délai (pour eviter que ne reste affichée
+                    // celle qui etait en hover au moment du click)
                     Meteor.setTimeout(function () {
                         $('.tooltipped').tooltip({delay: 50});
                     }, 100)

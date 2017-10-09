@@ -1,13 +1,12 @@
 import User from '/imports/classes/User'
 
 Template.userSelfProfile.helpers({
-    //areactivevar comprenant le message de description
-    description : function () {
-        return Template.instance().description.get()
-    },
     //reactive-var comprenant un tableau de toutes les propriétés editable et leur état dans l'interface true =>en edition; false =>pas en edition
     isEditingFlags : function () {
         return Template.instance().isEditingFlags.get()
+    },
+    completed : function () {
+        return User.findOne(Meteor.userId()).completed();
     }
 });
 
@@ -65,10 +64,6 @@ Template.userSelfProfile.events({
 });
 
 Template.userSelfProfile.onCreated(function () {
-    //on recupere les valeurs des champs qu'on passe dans les reactivevar
-    let description = Meteor.user().profile.description;
-this.description = new ReactiveVar("");
-    this.description.set(description);
     //on initialise le tableau des flags
     this.isEditingFlags = new ReactiveVar({
         description : false

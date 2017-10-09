@@ -1,9 +1,8 @@
-//sont définis ici la classe user et sa sous classe profile
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
 
-const Profile = Class.create({
-    name: 'Profile',
+const PublicInfo = Class.create({
+    name: 'PublicInfo',
     fields: {
         description: {
             type: String,
@@ -24,24 +23,42 @@ const Profile = Class.create({
     },
 });
 
-
-const User = Class.create({
-    name: 'User',
-    collection: Meteor.users,
+const Member = Class.create({
+    name: 'Member',
     fields: {
-        emails: {
-            type: [String],
+        user_id : String,
+        username : String,
+        joinAt : {
+            type : Date,
+            immutable: true,
+            default : function () {
+                return new Date()
+            }
+        },
+        role : {
+            type : [String],
+            default : "member"
+        }
+
+    },
+});
+
+const Project = Class.create({
+    name: 'Project',
+    collection: Projects,
+    fields: {
+        members : {
+            type : [Member],
             default: function () {
                 return [];
             }
         },
-        services: Object,
         createdAt: {
             type : Date,
-            immutable: true
+            default: new Date()
         },
-        profile: {
-            type: Profile,
+        publicInfo: {
+            type: publicInfo,
             default: function () {
                 return {};
             }
@@ -49,12 +66,12 @@ const User = Class.create({
 
     },
     helpers: {
-        //helper pour indiquer le pourcentage de complétion du profil
+        //helper pour indiquer le pourcentage de complétion du projet
         completed() {
             //on liste ici les champs du profil faisant parti du ratio
             let fieldsToComplete = [
-                this.profile.description,
-                this.profile.location.lat
+                this.publicInfo.description,
+                this.publicInfo.location.lat
             ];
             //on initialise
             let completed = 0;
@@ -70,22 +87,10 @@ const User = Class.create({
         }
     },
     meteorMethods: {
-        //modification de la description utilisateur
-        updateDescription(value) {
-            this.profile.description = value;
-            return this.save()
-
-        },
-        //changement de la position de l'utilisateur
-        updateSelfLocation(lat, lng, city, country) {
-            this.profile.location.lat = lat;
-            this.profile.location.lng = lng;
-            this.profile.location.city = city;
-            this.profile.location.country = country;
-            return this.save()
-        }
 
     }
 });
 
-export default User;
+
+
+export default Project;
