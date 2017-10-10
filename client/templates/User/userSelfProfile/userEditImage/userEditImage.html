@@ -1,0 +1,35 @@
+<template name="userEditImage">
+    <div class="row">
+        <div class="col s12 ">
+            <img class="responsive-img" src="{{imageUrl}}">
+            <button class="btn-floating dark-grey  waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="modifier l'avatar"  editImgBtn>
+                <i class="material-icons" >mode_edit</i>
+            </button>
+        </div>
+    </div>
+    {{#if editingImg}}
+        <form action="#">
+            <div class="file-field input-field">
+                <div class="btn orange waves-effect waves-light">
+                    <span > <i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Choisissez un fichier à uploader">add</i></span>
+                    <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+        </form>
+
+            <div id="imgPreview" class="modal">
+                <div class="modal-content">
+                    <img class="responsive-img" src="{{urlPreview}}">
+                    fseffqzefqzefq
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
+
+    {{/if}}
+</template>

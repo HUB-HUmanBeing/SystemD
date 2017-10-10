@@ -15,6 +15,14 @@ const Profile = Class.create({
                 }
             ],
         },
+        imgUrl: {
+            type: String,
+            default: function () {
+                return '/images/icon/user_icon.png'
+            },
+            // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+            // ,
+        },
         location: {
             type: Location,
             default: function () {
@@ -37,7 +45,7 @@ const User = Class.create({
         },
         services: Object,
         createdAt: {
-            type : Date,
+            type: Date,
             immutable: true
         },
         profile: {
@@ -54,13 +62,19 @@ const User = Class.create({
             //on liste ici les champs du profil faisant parti du ratio
             let fieldsToComplete = [
                 this.profile.description,
-                this.profile.location.lat
+                this.profile.location.lat,
+                this.profile.imgUrl
             ];
             //on initialise
             let completed = 0;
             //on incrémente a chaque fois qu'un champs n'est pas invalide
             _.each(fieldsToComplete, function (field) {
-                if (!(field === undefined || field === "" || field === 0)) {
+                if (!(
+                        field === undefined ||
+                        field === "" ||
+                        field === 0 ||
+                        field === '/images/icon/user_icon.png')
+                ) {
                     completed += 1
                 }
             });

@@ -58,7 +58,7 @@ const Project = Class.create({
             default: new Date()
         },
         publicInfo: {
-            type: publicInfo,
+            type: PublicInfo,
             default: function () {
                 return {};
             }
