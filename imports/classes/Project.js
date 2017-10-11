@@ -47,6 +47,20 @@ const Project = Class.create({
     name: 'Project',
     collection: Projects,
     fields: {
+        name: {
+            type : String,
+            validator: [
+                {
+                    type: 'maxLength',
+                    param: 50
+                },
+                {
+                    type: 'minLength',
+                    param: 5
+                }
+            ],
+
+        },
         members : {
             type : [Member],
             default: function () {
@@ -87,7 +101,17 @@ const Project = Class.create({
         }
     },
     meteorMethods: {
-
+        'createProject' : function (projectName) {
+            this.name = projectName;
+            this.member.push(
+                {
+                    user_id: Meteor.userId().userId,
+                    username: Meteor.user().username,
+                    role: ['member', 'admin']
+                }
+            );
+            this.save()
+        }
     }
 });
 

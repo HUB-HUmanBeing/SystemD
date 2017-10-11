@@ -96,6 +96,12 @@ Template.menu.helpers({
                     name : "lorem",
                     path: "workInProgress"
                 },
+                {
+                    id : "newProject",
+                    name : "Nouveau Projet",
+                    path: "#",
+                    icon : "add_box"
+                },
             ]
         },
         {
@@ -115,9 +121,10 @@ Template.menu.helpers({
                     path: "workInProgress"
                 },
                 {
-                    id : "lorem",
-                    name : "lorem",
-                    path: "workInProgress"
+                    id : "new-project",
+                    name : "Nouveau Projet",
+                    path: "#",
+                    icon : "add_box"
                 },
             ]
         },
@@ -151,6 +158,10 @@ Template.menu.events({
     //gestion du bouton logout
     'click [logout]' : function () {
         Accounts.logout();
+    },
+    'click [newProject]' : function () {
+        $('.new-project-modal').modal();
+        $('.new-project-modal').modal('open');
     }
 });
 

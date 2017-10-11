@@ -2,7 +2,7 @@
     <ul class="collapsible no-margin dark-grey general-menu " data-collapsible="accordion" id="">
         {{!icone du site +lien vers l'acceuil}}
         <li class="title-block">
-            <a href="{{pathFor home}}" class=" flex no-margin no-padding dark-grey waves-effect waves-light title-block" >
+            <a href="{{pathFor 'home'}}" class=" flex no-margin no-padding dark-grey waves-effect waves-light title-block" >
                 <div class="  no-padding small-margin hub-logo">
                     <img src="/images/icon/hub_icon.png" alt="HUmanBeing" class="responsive-img  no-padding ">
                 </div>
@@ -41,6 +41,5 @@
             {{/each}}
         {{/unless}}
     </ul>
-
 </template>
 
