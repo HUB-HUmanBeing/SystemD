@@ -24,7 +24,13 @@ Vous avez deux solutions pour le faire :
     $ meteor
     
 à la racine du projet, elle se chargera d'installer les dépendences et de lancer un serveur interne
+si il y a une erreur, instalet le paquet manquant à l'aide de la ligne de commande  :
 
+    meteor npm install --save babel-runtim
+    
+puis relancer le serveur avec :
+
+    $ meteor
 ## 4. C'est prêt !
 
 Vous pouverz ensuite visionner l'avancement du travail sur en vous rendent à l'adresse suivante :
