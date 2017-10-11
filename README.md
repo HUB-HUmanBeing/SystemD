@@ -1,3 +1,5 @@
+![](http://img15.hostingpics.net/pics/421242aquarelleHUBV1.gif)
+
 HUmanBeing
 ==========
 
@@ -23,7 +25,7 @@ Vous avez deux solutions pour le faire :
     
 à la racine du projet, elle se chargera d'installer les dépendences et de lancer un serveur interne
 
-## 3. C'est prêt !
+## 4. C'est prêt !
 
 Vous pouverz ensuite visionner l'avancement du travail sur en vous rendent à l'adresse suivante :
         
