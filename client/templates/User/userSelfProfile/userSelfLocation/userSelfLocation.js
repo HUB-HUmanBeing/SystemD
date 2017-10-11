@@ -94,6 +94,14 @@ Template.userSelfLocation.events({
                             if (error) {
                                 Materialize.toast(error.message, 6000, "red")
                             } else {
+                                instance.editingLocation.set(false)
+                                //on enleve les infobulles
+                                $('.tooltipped').tooltip('remove');
+                                //et on les remets apres un court délai (pour eviter que ne reste affichée
+                                // celle qui etait en hover au moment du click)
+                                Meteor.setTimeout(function () {
+                                    $('.tooltipped').tooltip({delay: 50});
+                                }, 100)
                                 Materialize.toast("Votre position a été mise à jour", 6000, "green")
                             }
                         })
@@ -165,6 +173,7 @@ Template.userSelfLocation.events({
                     Materialize.toast(error.message, 6000, "red")
                 } else {
                     Materialize.toast("Votre position a été mise à jour", 6000, "green")
+                    instance.editingLocation.set(false)
                     //on clos le formulaire de recherche
                     instance.useSearchForm.set(false)
                     //on réinitialise le tableau des réponses de nominatim

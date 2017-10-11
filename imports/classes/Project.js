@@ -1,5 +1,7 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
+import Projects from '/lib/collections/Projects'
+
 
 const PublicInfo = Class.create({
     name: 'PublicInfo',
@@ -28,16 +30,16 @@ const Member = Class.create({
     fields: {
         user_id : String,
         username : String,
-        joinAt : {
-            type : Date,
-            immutable: true,
-            default : function () {
-                return new Date()
-            }
-        },
-        role : {
+        // joinAt : {
+        //     type : Date,
+        //     immutable: true,
+        //     default : function () {
+        //         return new Date()
+        //     }
+        // },
+        roles : {
             type : [String],
-            default : "member"
+            default : ["member"]
         }
 
     },
@@ -48,7 +50,7 @@ const Project = Class.create({
     collection: Projects,
     fields: {
         name: {
-            type : String,
+            type: String,
             validator: [
                 {
                     type: 'maxLength',
@@ -61,14 +63,14 @@ const Project = Class.create({
             ],
 
         },
-        members : {
-            type : [Member],
+        members: {
+            type: [Member],
             default: function () {
                 return [];
             }
         },
         createdAt: {
-            type : Date,
+            type: Date,
             default: new Date()
         },
         publicInfo: {
@@ -101,20 +103,19 @@ const Project = Class.create({
         }
     },
     meteorMethods: {
-        'createProject' : function (projectName) {
+        'createProject': function (projectName) {
+            // let alreadyExist = Projects.find({name: projectName}).count
+            // check(alreadyExist, 0);
             this.name = projectName;
-            this.member.push(
-                {
-                    user_id: Meteor.userId().userId,
+            this.members.push( {
+                    user_id: Meteor.userId(),
                     username: Meteor.user().username,
-                    role: ['member', 'admin']
-                }
-            );
-            this.save()
+                    roles: ['member', 'admin']
+                });
+            return this.save();
+
         }
     }
-});
+})
 
-
-
-export default Project;
+export default Project

@@ -17,11 +17,6 @@ Template.menu.helpers({
                     icon: "person"
                 },
                 {
-                    id : "lorem",
-                    name : "lorem",
-                    path: "workInProgress"
-                },
-                {
                     id : "logout",
                     name : "Déconnexion",
                     path: "home",
@@ -120,12 +115,7 @@ Template.menu.helpers({
                     name : "lorem",
                     path: "workInProgress"
                 },
-                {
-                    id : "new-project",
-                    name : "Nouveau Projet",
-                    path: "#",
-                    icon : "add_box"
-                },
+
             ]
         },
         {
