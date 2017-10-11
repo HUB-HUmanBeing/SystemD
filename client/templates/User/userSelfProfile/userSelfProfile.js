@@ -36,8 +36,8 @@ Template.userSelfProfile.events({
         //on instancie et hydrate l'objet User
         let currentUser = User.findOne(Meteor.userId());
         currentUser.callMethod(
-            'updateDescription',
-            value,
+            'updateProfileItem',
+            "description", value,
             (error, result) =>{
             //si ca marche pas, on renvoie l'erreur par toast
             if(error){

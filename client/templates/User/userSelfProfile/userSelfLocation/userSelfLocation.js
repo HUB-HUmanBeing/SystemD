@@ -20,6 +20,9 @@ Template.userSelfLocation.helpers({
     //contient les data qui ressortent de la recherche via nominatim
     searchResults: function () {
         return Template.instance().searchResults.get();
+    },
+    editingLocation: function () {
+        return Template.instance().editingLocation.get();
     }
 });
 
@@ -28,6 +31,15 @@ Template.userSelfLocation.helpers({
  ********************************/
 
 Template.userSelfLocation.events({
+    'click [editLocation]' : function (event, instance) {
+        instance.editingLocation.set(!instance.editingLocation.get());
+        //on vire les petites infobulles
+        $('.tooltipped').tooltip('remove');
+        Meteor.setTimeout(function () {
+            //on afficle les bulles d'infos insérées dans le dom
+            $('.tooltipped').tooltip({delay: 50});
+        }, 200)
+    },
     /**************************
      * affichage du formulaire au click
      **************************/
@@ -178,6 +190,7 @@ Template.userSelfLocation.onCreated(function () {
     this.searchResults = new ReactiveVar();
     //chek de la derniere touche pressée pour eviter la surcharge de nominatim
     this.lastKeyUpTime = new ReactiveVar()
+    this.editingLocation = new ReactiveVar(false)
 });
 
 Template.userSelfLocation.onRendered(function () {

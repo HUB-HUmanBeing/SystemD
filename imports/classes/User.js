@@ -85,18 +85,22 @@ const User = Class.create({
     },
     meteorMethods: {
         //modification de la description utilisateur
-        updateDescription(value) {
-            this.profile.description = value;
-            return this.save()
-
+        updateProfileItem(key , value) {
+            check(key, String);
+            if(this._id === Meteor.userId()) {
+                this.profile[key] = value;
+                return this.save()
+            }
         },
         //changement de la position de l'utilisateur
         updateSelfLocation(lat, lng, city, country) {
-            this.profile.location.lat = lat;
-            this.profile.location.lng = lng;
-            this.profile.location.city = city;
-            this.profile.location.country = country;
-            return this.save()
+            if(this._id === Meteor.userId()){
+                this.profile.location.lat = lat;
+                this.profile.location.lng = lng;
+                this.profile.location.city = city;
+                this.profile.location.country = country;
+                return this.save()
+            }
         }
 
     }

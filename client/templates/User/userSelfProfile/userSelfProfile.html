@@ -1,31 +1,53 @@
 <template name="userSelfProfile">
     <div class="row small-margin small-padding">
         <div class="col m3">
-           <h4 class="truncate">{{currentUser.username}} <span class="badge tooltipped {{completedColor completed}}" data-position="bottom" data-delay="50" data-tooltip="votre profil est complété à {{completed}}%">{{completed}}%</span> </h4>
+            <h4 class="truncate">{{currentUser.username}}
+                <span class="badge tooltipped {{completedColor completed}}"
+                      data-position="bottom" data-delay="50"
+                      data-tooltip="votre profil est complété à {{completed}}%">
+                    {{completed}}%
+                </span>
+            </h4>
+            <hr>
+            <br>
             <div class="row">
-                <div class="col s12">
+                <div class="col s12" >
                     {{>userEditImage}}
                 </div>
+                <hr>
+                <br>
                 <div class="col s12">
                     {{>userSelfLocation}}
                 </div>
+                <hr>
+                <br>
             </div>
         </div>
         <div class="col m9">
             <div class="row">
-                <form class="col s12" updateDescription>
+                <form class="col m10" updateDescription>
                     <div class="row">
                         <div class="input-field col s12">
-                            {{#if isEditingFlags.description}}
-                                <i class="material-icons prefix rounded waves-effect waves-light blue-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="enregister" saveDescriptionBtn>file_download</i>
-                            {{else}}
-                                <i class="material-icons prefix waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="éditer"  editDescriptionBtn >mode_edit</i>
-                            {{/if}}
-                            <textarea  class="materialize-textarea " data-length="1000" value="{{currentUser.profile.description}}" id="description" descriptionText></textarea>
+
+                            <textarea class="materialize-textarea " data-length="1000"
+                                      value="{{currentUser.profile.description}}" id="description"
+                                      descriptionText></textarea>
                             <label for="description" class="active">Description</label>
                         </div>
                     </div>
                 </form>
+                <div class="col s1">
+                    <button class="btn-floating dark-grey  waves-effect waves-light ">
+                        {{#if isEditingFlags.description}}
+                            <i class="material-icons blue-text tooltipped"
+                               data-position="bottom" data-delay="50" data-tooltip="enregister" saveDescriptionBtn>file_download</i>
+                        {{else}}
+                            <i class="material-icons tooltipped"
+                               data-position="bottom" data-delay="50" data-tooltip="éditer" editDescriptionBtn>mode_edit</i>
+                        {{/if}}
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>
