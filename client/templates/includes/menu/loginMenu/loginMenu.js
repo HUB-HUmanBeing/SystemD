@@ -15,7 +15,7 @@ Template.loginMenu.events({
         //on soumet le login
         Meteor.loginWithPassword(username, password, function (error) {
            // si il y a une erreur, on "toast" le message d'erreur
-            if (error.message) {
+            if (error) {
                 Materialize.toast(error.message, 6000, 'red')();
             }
         });

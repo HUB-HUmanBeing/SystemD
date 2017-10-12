@@ -16,7 +16,9 @@
                             <i class="material-icons">add_box</i></button>
                     </div>
                 </form>
-                <p class="red-text">{{errorMessage}}</p>
+                {{#if errorMessage}}
+                    <p class="red-text"><i class="material-icons">error</i>{{errorMessage}}</p>
+                {{/if}}
             </div>
         </div>
     </div>

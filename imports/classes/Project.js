@@ -104,32 +104,39 @@ const Project = Class.create({
         }
     },
     meteorMethods: {
+        /*****************************
+         * methode de creation d'un nouveau projet
+         * @param projectName String
+         *******************************/
         'createProject': function (projectName) {
+            //on verifie que le nom n'est pas déja pris
             let alreadyExist = Projects.find({name: projectName}).count()
             check(alreadyExist, 0);
+            //on check que l'utilisateur est bien connecté
+            check(Meteor.userId(), String)
+            //on modifie le nom
             this.name = projectName;
+            //on rajoute l'utilisateur courant comme admin du projet
             this.members.push({
                 user_id: Meteor.userId(),
                 username: Meteor.user().username,
                 roles: ['member', 'admin']
             });
-
-            let projectId = this.save(function (err, id) {
+            //on sauvegarde le projet, puis
+           return this.save(function (err, id) {
+               //si ya pas d'erreur
                 if (!err) {
+                    //on recupere l'objet astronomy de l'utilisateur courant
                     let user = User.findOne(Meteor.userId());
-
+                    //on ajoute le projet créé
                     user.profile.projects.push({
                         project_id: id,
                         name: projectName
                     });
-                    user.save();
-                    return projectId
+                    //et on sauvegarde
+                    user.save()
                 }
             });
-
-
-
-
         }
     }
 })
