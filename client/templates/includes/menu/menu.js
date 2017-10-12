@@ -1,24 +1,24 @@
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
-    menuItems : [
+    menuItems: [
         {
             id: "user",
-            name : function () {
-              return Meteor.user().username;
+            name: function () {
+                return Meteor.user().username;
             },
-            color:"green",
+            color: "green",
             image: "user_icon.png",
-            subMenu:[
+            subMenu: [
 
                 {
-                    id : "userSelfProfile",
-                    name : "Mon profil",
-                    path : "userSelfProfile",
+                    id: "userSelfProfile",
+                    name: "Mon profil",
+                    path: "userSelfProfile",
                     icon: "person"
                 },
                 {
-                    id : "logout",
-                    name : "Déconnexion",
+                    id: "logout",
+                    name: "Déconnexion",
                     path: "home",
                     icon: "exit_to_app"
                 },
@@ -26,93 +26,87 @@ Template.menu.helpers({
         },
         {
             id: "message",
-            name : "Messagerie",
-            color:"orange",
+            name: "Messagerie",
+            color: "orange",
             image: "message_icon.png",
-            subMenu:[
+            subMenu: [
                 {
-                    id : "lorem",
-                    name : "lorem",
-                path: "workInProgress"
-                },
-                {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
                 {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
+                    path: "workInProgress"
+                },
+                {
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
             ]
         },
         {
             id: "Agenda",
-            name :"Agenda",
-            color:"blue",
+            name: "Agenda",
+            color: "blue",
             image: "agenda_icon.png",
-            subMenu:[
+            subMenu: [
                 {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
                 {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
                 {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
             ]
         },
         {
             id: "projects",
-            name :"Mes Projets",
-            color:"red",
+            name: "Mes Projets",
+            color: "red",
             image: "project_icon.png",
-            subMenu:[
-                {
-                    id : "lorem",
-                    name : "lorem",
-                    path: "workInProgress"
-                },
-                {
-                    id : "lorem",
-                    name : "lorem",
-                    path: "workInProgress"
-                },
-                {
-                    id : "lorem",
-                    name : "lorem",
-                    path: "workInProgress"
-                },
-                {
-                    id : "newProject",
-                    name : "Nouveau Projet",
+            subMenu: function () {
+                let items = [];
+                Meteor.user().profile.projects.forEach(function (project) {
+                    items.push({
+                        id: project.project_id,
+                        name: project.name,
+                        path: "projectMainPage",
+                    })
+                });
+                items.push({
+                    id: "newProject",
+                    name: "Nouveau Projet",
                     path: "#",
-                    icon : "add_box"
-                },
-            ]
+                    icon: "add_box"
+                });
+                return items
+            },
         },
         {
             id: "sharing",
-            name : "Partage",
-            color:"purple",
+            name: "Partage",
+            color: "purple",
             image: "sharing_icon.png",
-            subMenu:[
+            subMenu: [
                 {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
                 {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
 
@@ -120,23 +114,23 @@ Template.menu.helpers({
         },
         {
             id: "moderation",
-            name : "Modération",
-            color:"yellow",
+            name: "Modération",
+            color: "yellow",
             image: "moderation_icon.png",
-            subMenu:[
+            subMenu: [
                 {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
                 {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
                 {
-                    id : "lorem",
-                    name : "lorem",
+                    id: "lorem",
+                    name: "lorem",
                     path: "workInProgress"
                 },
             ]
@@ -146,10 +140,10 @@ Template.menu.helpers({
 
 Template.menu.events({
     //gestion du bouton logout
-    'click [logout]' : function () {
+    'click [logout]': function () {
         Accounts.logout();
     },
-    'click [newProject]' : function () {
+    'click [newProject]': function () {
         $('.new-project-modal').modal();
         $('.new-project-modal').modal('open');
     }

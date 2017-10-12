@@ -1,6 +1,7 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
 import Projects from '/lib/collections/Projects'
+import User from '/imports/classes/User'
 
 
 const PublicInfo = Class.create({
@@ -28,8 +29,8 @@ const PublicInfo = Class.create({
 const Member = Class.create({
     name: 'Member',
     fields: {
-        user_id : String,
-        username : String,
+        user_id: String,
+        username: String,
         // joinAt : {
         //     type : Date,
         //     immutable: true,
@@ -37,9 +38,9 @@ const Member = Class.create({
         //         return new Date()
         //     }
         // },
-        roles : {
-            type : [String],
-            default : ["member"]
+        roles: {
+            type: [String],
+            default: ["member"]
         }
 
     },
@@ -104,15 +105,30 @@ const Project = Class.create({
     },
     meteorMethods: {
         'createProject': function (projectName) {
-            // let alreadyExist = Projects.find({name: projectName}).count
-            // check(alreadyExist, 0);
+            let alreadyExist = Projects.find({name: projectName}).count()
+            check(alreadyExist, 0);
             this.name = projectName;
-            this.members.push( {
-                    user_id: Meteor.userId(),
-                    username: Meteor.user().username,
-                    roles: ['member', 'admin']
-                });
-            return this.save();
+            this.members.push({
+                user_id: Meteor.userId(),
+                username: Meteor.user().username,
+                roles: ['member', 'admin']
+            });
+
+            let projectId = this.save(function (err, id) {
+                if (!err) {
+                    let user = User.findOne(Meteor.userId());
+
+                    user.profile.projects.push({
+                        project_id: id,
+                        name: projectName
+                    });
+                    user.save();
+                    return projectId
+                }
+            });
+
+
+
 
         }
     }

@@ -2,6 +2,14 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
 
+const UserProject = Class.create({
+    name: 'UserProject',
+    fields: {
+        project_id : String,
+        name : String,
+    },
+});
+
 const Profile = Class.create({
     name: 'Profile',
     fields: {
@@ -27,6 +35,12 @@ const Profile = Class.create({
             type: Location,
             default: function () {
                 return {}
+            }
+        },
+        projects : {
+            type : [UserProject],
+            default: function () {
+                return [];
             }
         }
     },
