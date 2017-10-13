@@ -1,0 +1,20 @@
+<template name="contextualMenu">
+    <div class="row dark-grey">
+        <div class="col s12 m4 l3">
+            <h5>
+                {{#if isDesktop}}
+                    <img src="/images/icon/{{menuItem.image}}" alt="" class="responsive-img small-margin no-padding">
+                {{/if}}
+                {{contextualTitle}}test</h5>
+        </div>
+        <div class="col s12 m6 l9 no-margin no-padding">
+
+            <ul class="tabs dark-grey">
+                <li class="tab col s3"><a href="#test1">Test 1</a></li>
+                <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
+                <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
+                <li class="tab col s3"><a href="#test4">Test 4</a></li>
+            </ul>
+        </div>
+    </div>
+</template>
