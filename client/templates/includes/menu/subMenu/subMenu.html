@@ -2,11 +2,19 @@
     <ul class="dark-grey sub-menu col s12">
         {{#each subMenuItem in subMenu}}
             <li class="small-margin ">
+                {{#if subMenuItem.pathData}}
+                    <a href="{{pathFor subMenuItem.path data= subMenuItem.pathData }}" class="" {{subMenuItem.id}}>
+                        {{#if subMenuItem.icon}}
+                            <i class="material-icons tiny">{{subMenuItem.icon}}</i>
+                        {{/if}}
+                        {{subMenuItem.name}}</a>
+                    {{else}}
                 <a href="{{pathFor subMenuItem.path}}" class="" {{subMenuItem.id}}>
                     {{#if subMenuItem.icon}}
                     <i class="material-icons tiny">{{subMenuItem.icon}}</i>
                     {{/if}}
                     {{subMenuItem.name}}</a>
+                {{/if}}
             </li>
         {{/each}}
     </ul>

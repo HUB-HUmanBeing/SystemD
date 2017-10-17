@@ -1,0 +1,5 @@
+.contextual-menu-margin:after{
+    content: "";
+    display: block;
+    padding-bottom: 120%;
+}

@@ -17,6 +17,14 @@ const PublicInfo = Class.create({
                 }
             ],
         },
+        imgUrl: {
+            type: String,
+            default: function () {
+                return '/images/icon/project_icon.png'
+            },
+            // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+            // ,
+        },
         location: {
             type: Location,
             default: function () {

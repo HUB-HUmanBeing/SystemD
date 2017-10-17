@@ -1,10 +1,8 @@
 Template.contextualMenu.helpers({
     //add you helpers here
-    contextualTitle : function () {
-arborescenceStructure().forEach(function (item) {
-    
-})
-    }
+
+
+
 });
 
 Template.contextualMenu.events({

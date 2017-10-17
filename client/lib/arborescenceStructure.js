@@ -24,9 +24,35 @@ arborescenceStructure = function () {
             ]
         },
         {
+            id: "project",
+            name: "Mes Projets",
+            color: "orange",
+            image: "project_icon.png",
+            subMenu: function () {
+                let items = [];
+                Meteor.user().profile.projects.forEach(function (project) {
+                    items.push({
+                        id: project.project_id,
+                        name: project.name,
+                        path: "projectMainPage",
+                        pathData : function () {
+                            return { _id : project.project_id}
+                        }
+                    })
+                });
+                items.push({
+                    id: "newProject",
+                    name: "Nouveau Projet",
+                    path: "#",
+                    icon: "add_box"
+                });
+                return items
+            },
+        },
+        {
             id: "message",
             name: "Messagerie",
-            color: "orange",
+            color: "blue",
             image: "message_icon.png",
             subMenu: [
                 {
@@ -49,7 +75,7 @@ arborescenceStructure = function () {
         {
             id: "agenda",
             name: "Agenda",
-            color: "blue",
+            color: "red",
             image: "agenda_icon.png",
             subMenu: [
                 {
@@ -68,29 +94,6 @@ arborescenceStructure = function () {
                     path: "workInProgress"
                 },
             ]
-        },
-        {
-            id: "projects",
-            name: "Mes Projets",
-            color: "red",
-            image: "project_icon.png",
-            subMenu: function () {
-                let items = [];
-                Meteor.user().profile.projects.forEach(function (project) {
-                    items.push({
-                        id: project.project_id,
-                        name: project.name,
-                        path: "projectMainPage",
-                    })
-                });
-                items.push({
-                    id: "newProject",
-                    name: "Nouveau Projet",
-                    path: "#",
-                    icon: "add_box"
-                });
-                return items
-            },
         },
         {
             id: "sharing",
