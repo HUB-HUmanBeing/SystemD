@@ -1,5 +1,8 @@
 Template.projectMainPage.helpers({
     //add you helpers here
+    project : function(){
+        return Template.instance().data.fetch()[0]
+    }
 });
 
 Template.projectMainPage.events({

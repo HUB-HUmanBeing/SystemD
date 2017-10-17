@@ -1,0 +1,28 @@
+<template name="contextualMenuTitle">
+
+    <div class="col s12 m5 l6 row  no-margin">
+        {{#unless isDesktop}}
+            <div class="col s2 m2 no-padding contextual-menu-margin"> </div>
+            <div class="col s10 m10 center-align valign-wrapper">
+
+                <a redirectToSectionHome> <h5 class="center-align">
+                    {{title}}</h5>
+
+                    <i class="material-icons pin-bottom">
+                        {{icon}}
+                    </i>
+                </a>
+            </div>
+        {{else}}
+            <div class="col s12">
+                <a redirectToSectionHome ><h5 class="center-align">
+                    {{title}}</h5>
+
+                    <i class="material-icons pin-bottom">
+                        {{icon}}
+                    </i>
+                </a>
+            </div>
+        {{/unless}}
+    </div>
+</template>

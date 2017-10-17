@@ -139,12 +139,25 @@ const Project = Class.create({
                     //on ajoute le projet créé
                     user.profile.projects.push({
                         project_id: id,
-                        name: projectName
+                        name: projectName,
+                        roles : ['member', 'admin']
                     });
                     //et on sauvegarde
                     user.save()
                 }
             });
+        },
+        /*******************************
+         * Methode renvoyant le role de l'utilisateur courant dans le projet
+         */
+        'currentUserRole' : function () {
+            let roles = []
+            this.members.forEach(function (member) {
+                if(Meteor.userId() === member.user_id){
+                   roles = member.roles
+                }
+            })
+            return roles
         }
     }
 })

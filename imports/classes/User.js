@@ -7,6 +7,10 @@ const UserProject = Class.create({
     fields: {
         project_id : String,
         name : String,
+        roles: {
+            type: [String],
+            default: ["member"]
+        }
     },
 });
 
