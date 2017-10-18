@@ -11,6 +11,9 @@ COULEURS
 .dark-grey{
     background-color: #141414 !important;
 }
+.orange-border{
+    border: 2px solid #C87F0A !important;
+}
 /*****BACKGROUNDS****/
 .trame{
     background-image: url("/images/trame/trame4-black.png");

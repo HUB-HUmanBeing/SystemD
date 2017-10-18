@@ -2,32 +2,68 @@ import User from '/imports/classes/Project';
 
 Template.projectMenu.helpers({
     //add you helpers here
-    title : function () {
+    title: function () {
         return Template.instance().data.project.name
     },
-    color : 'orange',
-    imgUrl : function () {
-        return  Template.instance().data.project.publicInfo.imgUrl
+    contextualHomepage : function () {
+        return 'projectMainPage'
     },
-    icon : function () {
-        icon =""
-       Meteor.user().profile.projects.forEach(function (userProject) {
-           if(userProject.project_id){
-               if(_.contains(userProject.roles, "admin")){
-                   icon= 'verified_user'
-               }else if(_.contains(userProject.roles, "member")){
-                    icon = 'perm_identity'
-               }
-           }
-       })
+    color: function () {
+        return 'orange'
+    },
+    imgUrl: function () {
+        let url = Template.instance().data.project.publicInfo.imgUrl;
+        if (url !== "/images/icon/project_icon.png") {
+            return Imgur.toThumbnail(url, Imgur.SMALL_THUMBNAIL)
+        } else {
+            return url
+        }
+    },
+    icon: function () {
+        icon = "";
+        tooltip = "";
+        Meteor.user().profile.projects.forEach(function (userProject) {
+            if (userProject.project_id) {
+                if (_.contains(userProject.roles, "admin")) {
+                    icon = 'verified_user';
+                    Template.instance().tooltip.set("vous etes administrateur de ce projet");
+
+                } else if (_.contains(userProject.roles, "member")) {
+                    icon = 'perm_identity';
+                    Template.instance().tooltip.set("vous etes membre de ce projet");
+                }
+            }
+        });
         return icon
     },
-    path :function () {
-        return "projectMainPage"
-    } ,
+    tooltip: function () {
+        return Template.instance().tooltip.get()
+    },
+    path: function () {
+        return Router.path("projectMainPage", {_id: Template.instance().data.project._id})
+    },
+    navBarItems: function () {
+        let projectId = Template.instance().data.project._id
+        let navBarItems = [
+            {
+                title: "Admin",
+                color : "orange",
+                routeName : "adminProject",
+                path: function () {
+                    return Router.path("adminProject", {_id: projectId})
+                }
+            },
+            {
+                title: "Membres",
+                color: "orange",
+                routeName : 'membersProject',
+                path: function () {
+                    return Router.path('membersProject', {_id: projectId})
+                }
+            }
 
-    pathData : function(){
-        return Template.instance().data.project._id
+        ]
+        return navBarItems
     }
 
 
@@ -39,7 +75,7 @@ Template.projectMenu.events({
 });
 
 Template.projectMenu.onCreated(function () {
-
+    this.tooltip = new ReactiveVar()
 
 });
 

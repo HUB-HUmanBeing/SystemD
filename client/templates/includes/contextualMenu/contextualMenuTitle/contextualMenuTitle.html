@@ -1,26 +1,39 @@
 <template name="contextualMenuTitle">
 
-    <div class="col s12 m5 l6 row  no-margin">
+    <div class="col s12 m5 l5 xl6 row  no-margin">
         {{#unless isDesktop}}
-            <div class="col s2 m2 no-padding contextual-menu-margin"> </div>
-            <div class="col s10 m10 center-align valign-wrapper">
-
-                <a redirectToSectionHome> <h5 class="center-align">
-                    {{title}}</h5>
-
-                    <i class="material-icons pin-bottom">
-                        {{icon}}
-                    </i>
+            <div class="col s2 m2 no-padding contextual-menu-margin"></div>
+            <div class="col s10 m10  ">
+                <a class="center-align" href="{{path}}">
+                    <h5 class="">
+                        <img src="{{imgUrl}}" alt="" class="circle img-circle {{color}}-border">
+                        {{#if isActiveRoute name = contextualHomepage}}
+                            <span class="{{color}}-text">{{title}}</span>
+                        {{else}}
+                            {{title}}
+                        {{/if}}
+                        <i class="material-icons pin-bottom {{color}}-text">
+                            {{icon}}
+                        </i>
+                    </h5>
                 </a>
             </div>
         {{else}}
             <div class="col s12">
-                <a redirectToSectionHome ><h5 class="center-align">
-                    {{title}}</h5>
-
-                    <i class="material-icons pin-bottom">
-                        {{icon}}
-                    </i>
+                <a class="center-align" href="{{path}}">
+                    <h5 class="">
+                        <img src="{{imgUrl}}" alt="" class="circle img-circle {{color}}-border">
+                        {{#if isActiveRoute name = contextualHomepage}}
+                            <span class="{{color}}-text">{{title}}</span>
+                        {{else}}
+                            {{title}}
+                        {{/if}}
+                        <i class="material-icons pin-bottom {{color}}-text tooltipped"
+                           data-position="bottom" data-delay="50"
+                           data-tooltip="{{tooltip}}">
+                            {{icon}}
+                        </i>
+                    </h5>
                 </a>
             </div>
         {{/unless}}
