@@ -4,17 +4,14 @@
     {{/unless}}
 
     <div class="main-container meteor grey darken-4">
-        <main class="flex">
+        <main class="">
             {{#if isDesktop }}
                 <div class="menu-container no-margin dark-grey scrollbar">
                     {{>menu}}
                 </div>
-                <aside class="menu-container-space">
-                </aside>
+
             {{/if}}
-            <div class=" flex-auto yield-content">
-
-
+            <div class=" yield-content {{#if isDesktop }} yield-content-desktop {{/if}} ">
                 <div class="row">
                     <div class="col s12 no-padding">
                         {{> yield}}

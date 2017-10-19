@@ -14,17 +14,23 @@ body{
     left: 0;
     top: 0;
 
-    width: 200px !important;
+    width: 210px !important;
 
 }
-
+.left-padding{
+    padding-left: 30px !important;
+}
 .menu-container *{
     border: none !important;
+
 }
 
-.menu-container-space{
-    width: 200px !important;
-    float: left;
+#menu-container-space{
+    width: 210px !important;
+
+}
+.yield-content-desktop{
+    margin-left: 210px !important;
 }
 .yield-content, .yield-content *{
  color: lightgray !important;

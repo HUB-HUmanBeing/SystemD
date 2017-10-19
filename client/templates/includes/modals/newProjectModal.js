@@ -66,7 +66,7 @@ Template.newProjectModal.events({
                         //on ferme la fenetre formulaire
                         $('.new-project-modal').modal('close');
                         //pui on redirige vers la page du projet nouvellement créé
-                        Router.go('projectMainPage' , { _id : result})
+                        Router.go('adminProject' , { _id : result})
                     }
                 })
         }

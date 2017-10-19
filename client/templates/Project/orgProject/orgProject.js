@@ -1,23 +1,23 @@
-Template.membersProject.helpers({
+Template.orgProject.helpers({
     //add you helpers here
     project : function(){
         return Template.instance().data.fetch()[0]
     }
 });
 
-Template.membersProject.events({
+Template.orgProject.events({
     //add your events here
 });
 
-Template.membersProject.onCreated(function () {
+Template.orgProject.onCreated(function () {
     //add your statement here
 });
 
-Template.membersProject.onRendered(function () {
+Template.orgProject.onRendered(function () {
     //add your statement here
 });
 
-Template.membersProject.onDestroyed(function () {
+Template.orgProject.onDestroyed(function () {
     //add your statement here
 });
 

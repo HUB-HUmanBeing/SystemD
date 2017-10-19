@@ -1,12 +1,14 @@
 <template name="contextualNavBarItem">
 
     <li class="tab col s3 ">
-        <a href="{{path}}">
-            {{#if isActiveRoute name = routeName}}
-                <span class="{{color}}-text">{{title}}</span>
-            {{else}}
-                {{title}}
-            {{/if}}
+        <a href="{{path}}" class="small-padding">
+            <b>
+                {{#if isActiveRoute name = routeName}}
+                    <span class="{{color}}-text">{{title}}</span>
+                {{else}}
+                    {{title}}
+                {{/if}}
+            </b>
         </a>
     </li>
 </template>
