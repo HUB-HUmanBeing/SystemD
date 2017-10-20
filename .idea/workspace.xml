@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5a62698-57f1-43be-9153-b541ccd1ca9b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/userEditImage/userEditImage.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/userEditImage/userEditImage.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.html" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfLocation/userSelfLocation.js" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/userSelfLocation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userEditImage/userEditImage.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userEditImage/userEditImage.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/userSelfLocation/userSelfLocation.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/Project/adminProject/adminProject.js" afterPath="$PROJECT_DIR$/client/templates/Project/adminProject/adminProject.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html" afterPath="$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html" afterPath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js" afterPath="$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/classes/Project.js" afterPath="$PROJECT_DIR$/imports/classes/Project.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,20 +31,10 @@
     <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.5747724">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="editProjectInfo.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="156">
-                  <caret line="6" column="45" lean-forward="false" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="editProjectInfo.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="editProjectInfo.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
@@ -55,63 +44,81 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="editLocation.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="234">
+                  <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="userSelfProfile.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-338">
-                  <caret line="2" column="28" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="2" selection-end-column="28" />
+                <state relative-caret-position="208">
+                  <caret line="8" column="23" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="8" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="editImage.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.html">
+          <file leaf-file-name="editLocation.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                <state relative-caret-position="286">
+                  <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="editImage.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#40#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Project.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Project.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/imports/classes/Project.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="327">
-                  <caret line="166" column="14" lean-forward="false" selection-start-line="166" selection-start-column="14" selection-end-line="166" selection-end-column="14" />
+                <state relative-caret-position="509">
+                  <caret line="187" column="30" lean-forward="false" selection-start-line="187" selection-start-column="30" selection-end-line="187" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="User.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/imports/classes/User.js">
+          <file leaf-file-name="projectMainPage.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMainPage.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-572">
-                  <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="14" />
+                <state relative-caret-position="78">
+                  <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="adminProject.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/adminProject.js">
+          <file leaf-file-name="projectMenu.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="468">
-                  <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+                <state relative-caret-position="260">
+                  <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="62" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="projectMenu.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-52">
+                  <caret line="1" column="39" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="adminProject.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/adminProject.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="182">
+                  <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
                   <folding />
                 </state>
               </provider>
@@ -120,8 +127,8 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file leaf-file-name="editImage.html" pinned="false" current-in-tab="true">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="editImage.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="156">
@@ -136,6 +143,48 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
                   <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="editImage.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="104">
+                  <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="6" selection-end-column="6" />
+                  <folding>
+                    <element signature="e#0#40#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="User.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/imports/classes/User.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2465">
+                  <caret line="115" column="21" lean-forward="false" selection-start-line="115" selection-start-column="21" selection-end-line="115" selection-end-column="21" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Location.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/imports/classes/Location.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-387">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="userSelfProfile.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -159,10 +208,12 @@
       <find>contextualData</find>
       <find>userSelf</find>
       <find>userEdit</find>
+      <find>profile</find>
     </findStrings>
     <replaceStrings>
       <replace>projectToolbarData</replace>
       <replace>edit</replace>
+      <replace>publicInfo</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -171,8 +222,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/templates/includes/modals/newProjectModal.html" />
-        <option value="$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js" />
         <option value="$PROJECT_DIR$/lib/methods/projectMethods.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/menu/menu.js" />
         <option value="$PROJECT_DIR$/client/lib/arborescenceStructure.js" />
@@ -199,7 +248,6 @@
         <option value="$PROJECT_DIR$/client/templates/includes/contextualMenu/contextualMenuTitle/contextualMenuTitle.html" />
         <option value="$PROJECT_DIR$/client/templates/includes/contextualMenu/contextualNavBarItem/contextualNavBarItem.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/modals/newProjectModal.js" />
-        <option value="$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js" />
         <option value="$PROJECT_DIR$/lib/router.js" />
         <option value="$PROJECT_DIR$/client/templates/Project/orgProject/orgProject.html" />
         <option value="$PROJECT_DIR$/client/templates/Project/orgProject/orgProject.js" />
@@ -214,14 +262,17 @@
         <option value="$PROJECT_DIR$/client/templates/Project/adminProject/adminProject.html" />
         <option value="$PROJECT_DIR$/client/templates/application/workInProgress.html" />
         <option value="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/userSelfLocation.html" />
-        <option value="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/userSelfLocation.js" />
         <option value="$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html" />
         <option value="$PROJECT_DIR$/client/templates/includes/editModules/editImage/userEditImage.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.html" />
-        <option value="$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html" />
         <option value="$PROJECT_DIR$/client/templates/Project/adminProject/adminProject.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js" />
+        <option value="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/userSelfLocation.js" />
+        <option value="$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html" />
+        <option value="$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js" />
         <option value="$PROJECT_DIR$/imports/classes/Project.js" />
+        <option value="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js" />
+        <option value="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html" />
       </list>
     </option>
   </component>
@@ -260,6 +311,27 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="HUmanBeing" type="cbb8eebc:String" user="HUmanBeing" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="HUmanBeing" type="cbb8eebc:String" user="HUmanBeing" />
+              <item name=".idea" type="cbb8eebc:String" user=".idea" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="HUmanBeing" type="cbb8eebc:String" user="HUmanBeing" />
+              <item name=".meteor" type="cbb8eebc:String" user=".meteor" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -372,6 +444,14 @@
               <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="projectMenu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -414,27 +494,6 @@
               <item name="HUmanBeing" type="b2602c69:ProjectViewProjectNode" />
               <item name="HUmanBeing" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="HUmanBeing" type="cbb8eebc:String" user="HUmanBeing" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="HUmanBeing" type="cbb8eebc:String" user="HUmanBeing" />
-              <item name=".idea" type="cbb8eebc:String" user=".idea" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="HUmanBeing" type="cbb8eebc:String" user="HUmanBeing" />
-              <item name=".meteor" type="cbb8eebc:String" user=".meteor" />
             </path>
           </expand>
           <select />
@@ -502,7 +561,8 @@
       <workItem from="1508310734148" duration="14490000" />
       <workItem from="1508337522829" duration="1296000" />
       <workItem from="1508398962473" duration="13777000" />
-      <workItem from="1508482528684" duration="11793000" />
+      <workItem from="1508482528684" duration="11887000" />
+      <workItem from="1508500922991" duration="3409000" />
     </task>
     <task id="LOCAL-00001" summary="tentative de reparation du git">
       <created>1507755638927</created>
@@ -588,11 +648,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508425062747</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="edit image projet tjrs buggé">
+      <created>1508495675736</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1508495675737</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121388000" />
+    <option name="totallyTimeSpent" value="124891000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1922" height="1086" extended-state="6" />
@@ -602,8 +669,8 @@
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910052" sideWeight="0.501845" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910052" sideWeight="0.49815497" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910052" sideWeight="0.49815497" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21164021" sideWeight="0.4960464" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18924618" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -658,20 +725,14 @@
     <MESSAGE value="debut de confection du menu contextuel" />
     <MESSAGE value="commit avant refactor du routeur" />
     <MESSAGE value="mise en place du menu contextuel, début" />
-    <option name="LAST_COMMIT_MESSAGE" value="mise en place du menu contextuel, début" />
+    <MESSAGE value="edit image projet tjrs buggé" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit image projet tjrs buggé" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/collections/UsersMethods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/includes/contextualMenu/contextualMenuTitle/contextualMenu.js" />
     <entry file="file://$PROJECT_DIR$/client/templates/includes/menu/loginMenu/loginMenu.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -751,14 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMainPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -794,7 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="1" column="16" lean-forward="false" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -809,7 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="832">
           <caret line="32" column="146" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="146" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -817,15 +868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="13" column="58" lean-forward="false" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="39" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -841,15 +883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
           <caret line="13" column="29" lean-forward="false" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="68" column="33" lean-forward="false" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -857,14 +890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMainPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="4" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -877,19 +902,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/userSelfLocation/userSelfLocation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="35" column="71" lean-forward="false" selection-start-line="35" selection-start-column="71" selection-end-line="35" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/userSelfLocation/userSelfLocation.html" />
     <entry file="file://$PROJECT_DIR$/client/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="549">
           <caret line="133" column="6" lean-forward="false" selection-start-line="133" selection-start-column="6" selection-end-line="133" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -897,7 +914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="41" column="14" lean-forward="false" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,36 +921,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/userSelfLocation/userSelfLocation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="165" column="56" lean-forward="false" selection-start-line="165" selection-start-column="56" selection-end-line="165" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/userSelfLocation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="201" column="49" lean-forward="false" selection-start-line="201" selection-start-column="49" selection-end-line="201" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/userSelfLocation/userSelfLocation.js" />
     <entry file="file://$PROJECT_DIR$/server/fixture.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -943,10 +933,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="36" column="49" lean-forward="false" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/adminProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMainPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="3" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/imports/classes/User.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-572">
-          <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="14" />
+        <state relative-caret-position="2465">
+          <caret line="115" column="21" lean-forward="false" selection-start-line="115" selection-start-column="21" selection-end-line="115" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/classes/Location.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-387">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMainPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/classes/Project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="187" column="30" lean-forward="false" selection-start-line="187" selection-start-column="30" selection-end-line="187" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="23" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-52">
+          <caret line="1" column="39" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -959,22 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-338">
-          <caret line="2" column="28" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="2" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -983,44 +1063,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html">
+    <entry file="file://$PROJECT_DIR$/client/templates/User/userSelfProfile/userSelfProfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="45" lean-forward="false" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/adminProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/classes/Project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="166" column="14" lean-forward="false" selection-start-line="166" selection-start-column="14" selection-end-line="166" selection-end-column="14" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

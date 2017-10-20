@@ -151,7 +151,7 @@ const Project = Class.create({
             check(userId, String);
             let isMember = false
             this.members.forEach((member) => {
-                if (member.id === Meteor.userId()) {
+                if (member.user_id === Meteor.userId()) {
                     isMember = true
                 }
             })
@@ -161,7 +161,7 @@ const Project = Class.create({
             check(userId, String);
             let isAdmin = false
             this.members.forEach((member) => {
-                if (member.id === Meteor.userId() && member.roles.contains("admin")) {
+                if (member.user_id === userId && member.roles.includes("admin")) {
                     isAdmin = true
                 }
             })
@@ -171,10 +171,21 @@ const Project = Class.create({
 
             check(key, String);
             check(this.isAdmin(Meteor.userId()), true)
-            if (this.isAdmin(Meteor.userId())) {
-                this.publicInfo[key] = value;
-                return this.save()
-            }
+
+            this.publicInfo[key] = value;
+            return this.save()
+
+
+        },
+        updateProjectLocation(lat, lng, city, country) {
+
+            check(this.isAdmin(Meteor.userId()), true)
+
+            this.publicInfo.location.lat = lat;
+            this.publicInfo.location.lng = lng;
+            this.publicInfo.location.city = city;
+            this.publicInfo.location.country = country;
+            return this.save()
 
         }
     }

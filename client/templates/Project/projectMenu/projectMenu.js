@@ -29,13 +29,15 @@ Template.projectMenu.helpers({
     },
     //icone a affficher apres le nom de projet, indiquant le role de l'utilisateur
     icon: function () {
-        project= Template.instance().data
-        icon = "";
-        tooltip = "";
+        let project= Template.instance().data
+        let icon = "";
+        let tooltip = "";
         //on boucle sur les projets de l'utilisateur courant
         Meteor.user().profile.projects.forEach(function (userProject) {
             //si il est dedans
-            if (userProject.project_id === project.project_id ) {
+
+            if (userProject.project_id === project.project._id ) {
+
                 //et que le tableau des roles coontiens admin
                 if (_.contains(userProject.roles, "admin")) {
                     //on choisi l'icone correspondante et on passe l'info a une réactive var

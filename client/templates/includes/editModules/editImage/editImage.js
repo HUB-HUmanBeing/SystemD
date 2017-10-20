@@ -103,7 +103,7 @@ Template.editImage.events({
                     }
                 })
         }else if(instance.owner.get() === "project"){
-            currentProject = Project.findOne(Template.instance().data.projectId);
+            let currentProject = Project.findOne(Template.instance().data.projectId);
             //puis on lui applique la methode
 
             currentProject.callMethod(
