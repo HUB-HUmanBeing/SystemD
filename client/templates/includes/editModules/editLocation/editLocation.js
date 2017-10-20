@@ -15,18 +15,18 @@ Template.editLocation.helpers({
     },
     //deux petits helpers qui evitent qu'il y ait trop de code dans le template
     city: function () {
-        if(Template.instance().owner.get() === "user"){
-             return Meteor.user().profile.location.city
-        }else if(Template.instance().owner.get() === "project"){
+        if (Template.instance().owner.get() === "user") {
+            return Meteor.user().profile.location.city
+        } else if (Template.instance().owner.get() === "project") {
             let currentProject = Project.findOne(Template.instance().data.projectId);
             return currentProject.publicInfo.location.city
         }
 
     },
     country: function () {
-        if(Template.instance().owner.get() === "user"){
+        if (Template.instance().owner.get() === "user") {
             return Meteor.user().profile.location.country
-        }else if(Template.instance().owner.get() === "project"){
+        } else if (Template.instance().owner.get() === "project") {
             let currentProject = Project.findOne(Template.instance().data.projectId);
             return currentProject.publicInfo.location.country
         }
@@ -120,7 +120,7 @@ Template.editLocation.events({
                                     Materialize.toast("Votre position a été mise à jour", 6000, "green")
                                 }
                             })
-                    }else if(instance.owner.get() === "project"){
+                    } else if (instance.owner.get() === "project") {
                         let currentProject = Project.findOne(instance.data.projectId);
                         //puis on lui applique la methode
 
@@ -204,28 +204,53 @@ Template.editLocation.events({
         //on instancie la classe User avec l'utilisateur courant
         let currentUser = User.findOne(Meteor.userId());
         //puis on lance la methode
-        currentUser.applyMethod('updateSelfLocation',
-            attribute,
-            function (error, result) {
-                //on renvoie le resutat de l'opération a l'utilisateur
-                if (error) {
-                    Materialize.toast(error.message, 6000, "red")
-                } else {
-                    Materialize.toast("Votre position a été mise à jour", 6000, "green")
-                    instance.editingLocation.set(false)
-                    //on clos le formulaire de recherche
-                    instance.useSearchForm.set(false)
-                    //on réinitialise le tableau des réponses de nominatim
-                    instance.searchResults.set([])
-                    //on enleve les infobulles
-                    $('.tooltipped').tooltip('remove');
-                    //et on les remets apres un court délai (pour eviter que ne reste affichée
-                    // celle qui etait en hover au moment du click)
-                    Meteor.setTimeout(function () {
-                        $('.tooltipped').tooltip({delay: 50});
-                    }, 100)
-                }
-            })
+        if (instance.owner.get() === "user") {
+            currentUser.applyMethod('updateSelfLocation',
+                attribute,
+                function (error, result) {
+                    //on renvoie le resutat de l'opération a l'utilisateur
+                    if (error) {
+                        Materialize.toast(error.message, 6000, "red")
+                    } else {
+                        Materialize.toast("Votre position a été mise à jour", 6000, "green")
+                        instance.editingLocation.set(false)
+                        //on clos le formulaire de recherche
+                        instance.useSearchForm.set(false)
+                        //on réinitialise le tableau des réponses de nominatim
+                        instance.searchResults.set([])
+                        //on enleve les infobulles
+                        $('.tooltipped').tooltip('remove');
+                        //et on les remets apres un court délai (pour eviter que ne reste affichée
+                        // celle qui etait en hover au moment du click)
+                        Meteor.setTimeout(function () {
+                            $('.tooltipped').tooltip({delay: 50});
+                        }, 100)
+                    }
+                })
+        } else if (instance.owner.get() === "project") {
+            let currentProject = Project.findOne(instance.data.projectId);
+            //puis on lui applique la methode
+
+            currentProject.applyMethod('updateProjectLocation',
+                attribute,
+                function (error, result) {
+                    //on renvoie le resutat de l'opération a l'utilisateur
+                    if (error) {
+                        Materialize.toast(error.message, 6000, "red")
+                    } else {
+                        instance.editingLocation.set(false)
+                        //on enleve les infobulles
+                        $('.tooltipped').tooltip('remove');
+                        //et on les remets apres un court délai (pour eviter que ne reste affichée
+                        // celle qui etait en hover au moment du click)
+                        Meteor.setTimeout(function () {
+                            $('.tooltipped').tooltip({delay: 50});
+                        }, 100)
+                        Materialize.toast("La localisation du projet à été mise à jour", 6000, "green")
+                    }
+                })
+
+        }
     }
 });
 

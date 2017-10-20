@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5a62698-57f1-43be-9153-b541ccd1ca9b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userEditImage/userEditImage.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/User/userSelfProfile/userEditImage/userEditImage.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/userSelfLocation/userSelfLocation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/userSelfLocation.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html" afterPath="$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js" afterPath="$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editImage/editImage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/classes/Project.js" afterPath="$PROJECT_DIR$/imports/classes/Project.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js" afterPath="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,7 +27,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.5747724">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="editProjectInfo.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="editProjectInfo.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
@@ -44,11 +37,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="editLocation.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="editLocation.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+                <state relative-caret-position="367">
+                  <caret line="208" column="26" lean-forward="true" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -271,8 +264,8 @@
         <option value="$PROJECT_DIR$/client/templates/Project/adminProject/editProjectInfo/editProjectInfo.html" />
         <option value="$PROJECT_DIR$/client/templates/Project/projectMenu/projectMenu.js" />
         <option value="$PROJECT_DIR$/imports/classes/Project.js" />
-        <option value="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js" />
         <option value="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html" />
+        <option value="$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js" />
       </list>
     </option>
   </component>
@@ -562,7 +555,7 @@
       <workItem from="1508337522829" duration="1296000" />
       <workItem from="1508398962473" duration="13777000" />
       <workItem from="1508482528684" duration="11887000" />
-      <workItem from="1508500922991" duration="3409000" />
+      <workItem from="1508500922991" duration="3615000" />
     </task>
     <task id="LOCAL-00001" summary="tentative de reparation du git">
       <created>1507755638927</created>
@@ -655,11 +648,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508495675737</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="edit image et edit location des projets débuggés et fonctionnelle:)">
+      <created>1508504387181</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1508504387181</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124891000" />
+    <option name="totallyTimeSpent" value="125097000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1922" height="1086" extended-state="6" />
@@ -726,7 +726,8 @@
     <MESSAGE value="commit avant refactor du routeur" />
     <MESSAGE value="mise en place du menu contextuel, début" />
     <MESSAGE value="edit image projet tjrs buggé" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit image projet tjrs buggé" />
+    <MESSAGE value="edit image et edit location des projets débuggés et fonctionnelle:)" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit image et edit location des projets débuggés et fonctionnelle:)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1015,14 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -1067,6 +1060,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/includes/editModules/editLocation/editLocation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="208" column="26" lean-forward="true" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
           <folding />
         </state>
       </provider>
