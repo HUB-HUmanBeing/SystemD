@@ -15,7 +15,9 @@ Template.adminProject.onCreated(function () {
 
 Template.adminProject.onRendered(function () {
     //add your statement here
-    $('.swipable').tabs({ 'swipeable': true });
+    $('.swipable').tabs(
+      // { 'swipeable': true }
+        );
 });
 
 Template.adminProject.onDestroyed(function () {

@@ -1,10 +1,10 @@
 import User from '/imports/classes/User'
-
+import Project from '/imports/classes/Project'
 /************************************
  * Helpers du template
  ********************************/
 
-Template.userSelfLocation.helpers({
+Template.editLocation.helpers({
     //add you helpers here
     //booléen pour afficher ou non le formulaie
     useSearchForm: function () {
@@ -30,7 +30,7 @@ Template.userSelfLocation.helpers({
  * Evenements du template
  ********************************/
 
-Template.userSelfLocation.events({
+Template.editLocation.events({
     'click [editLocation]' : function (event, instance) {
         instance.editingLocation.set(!instance.editingLocation.get());
         //on vire les petites infobulles
@@ -190,7 +190,7 @@ Template.userSelfLocation.events({
     }
 });
 
-Template.userSelfLocation.onCreated(function () {
+Template.editLocation.onCreated(function () {
     //booléen pour l'affichage du formulaire
     this.useSearchForm = new ReactiveVar(false);
     //compteur d'erreur
@@ -202,11 +202,11 @@ Template.userSelfLocation.onCreated(function () {
     this.editingLocation = new ReactiveVar(false)
 });
 
-Template.userSelfLocation.onRendered(function () {
+Template.editLocation.onRendered(function () {
     //initialisation des bulles d'info
     $('.tooltipped').tooltip({delay: 50});
 });
 
-Template.userSelfLocation.onDestroyed(function () {
+Template.editLocation.onDestroyed(function () {
     //add your statement here
 });

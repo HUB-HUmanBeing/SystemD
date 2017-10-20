@@ -131,8 +131,8 @@ const Project = Class.create({
                 roles: ['member', 'admin']
             });
             //on sauvegarde le projet, puis
-           return this.save(function (err, id) {
-               //si ya pas d'erreur
+            return this.save(function (err, id) {
+                //si ya pas d'erreur
                 if (!err) {
                     //on recupere l'objet astronomy de l'utilisateur courant
                     let user = User.findOne(Meteor.userId());
@@ -140,26 +140,44 @@ const Project = Class.create({
                     user.profile.projects.push({
                         project_id: id,
                         name: projectName,
-                        roles : ['member', 'admin']
+                        roles: ['member', 'admin']
                     });
                     //et on sauvegarde
                     user.save()
                 }
             });
         },
-        /*******************************
-         * Methode renvoyant le role de l'utilisateur courant dans le projet
-         */
-        'currentUserRole' : function () {
-            let roles = []
-            this.members.forEach(function (member) {
-                if(Meteor.userId() === member.user_id){
-                   roles = member.roles
+        isMember(userId) {
+            check(userId, String);
+            let isMember = false
+            this.members.forEach((member) => {
+                if (member.id === Meteor.userId()) {
+                    isMember = true
                 }
             })
-            return roles
+            return isMember
+        },
+        isAdmin(userId) {
+            check(userId, String);
+            let isAdmin = false
+            this.members.forEach((member) => {
+                if (member.id === Meteor.userId() && member.roles.contains("admin")) {
+                    isAdmin = true
+                }
+            })
+            return isAdmin
+        },
+        updateInfoItem(key, value) {
+
+            check(key, String);
+            check(this.isAdmin(Meteor.userId()), true)
+            if (this.isAdmin(Meteor.userId())) {
+                this.publicInfo[key] = value;
+                return this.save()
+            }
+
         }
     }
-})
+});
 
 export default Project

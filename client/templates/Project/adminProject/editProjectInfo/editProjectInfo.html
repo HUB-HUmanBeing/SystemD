@@ -1,3 +1,20 @@
 <template name="editProjectInfo">
-
+    <div class="row small-margin small-padding">
+        <div class="col m3">
+            <div class="row">
+                <div class="col s12">
+                    {{> editImage
+                            owner = "project"
+                            projectId = project._id}}
+                </div>
+                <hr>
+                <br>
+                <div class="col s12">
+                    {{>editLocation owner = "project"}}
+                </div>
+                <hr>
+                <br>
+            </div>
+        </div>
+    </div>
 </template>
