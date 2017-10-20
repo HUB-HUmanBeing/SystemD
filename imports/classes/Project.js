@@ -147,6 +147,12 @@ const Project = Class.create({
                 }
             });
         },
+        /***************
+         * verifie que l'utilisateur est membre du projet
+         * @param userId
+         * @returns {boolean}
+         */
+
         isMember(userId) {
             check(userId, String);
             let isMember = false
@@ -157,6 +163,11 @@ const Project = Class.create({
             })
             return isMember
         },
+        /*****************************
+         * return true si l'utilisateur est membre du projet
+         * @param userId
+         * @returns {boolean}
+         */
         isAdmin(userId) {
             check(userId, String);
             let isAdmin = false
@@ -167,20 +178,30 @@ const Project = Class.create({
             })
             return isAdmin
         },
+        /*********************************
+         * modifie dynamiquement les info de la partie publique
+         * @param key
+         * @param value
+         */
         updateInfoItem(key, value) {
-
+            //on check que l'utilisateur est bien admin du projet
             check(key, String);
             check(this.isAdmin(Meteor.userId()), true)
-
             this.publicInfo[key] = value;
             return this.save()
 
 
         },
+        /**********************************
+         * modifie la localisation du projet
+         * @param lat
+         * @param lng
+         * @param city
+         * @param country
+         */
         updateProjectLocation(lat, lng, city, country) {
-
+            //on check que l'utilisateur est bien admin du projet
             check(this.isAdmin(Meteor.userId()), true)
-
             this.publicInfo.location.lat = lat;
             this.publicInfo.location.lng = lng;
             this.publicInfo.location.city = city;

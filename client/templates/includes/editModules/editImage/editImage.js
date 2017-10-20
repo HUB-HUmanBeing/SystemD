@@ -2,6 +2,7 @@ import User from '/imports/classes/User'
 import Project from '/imports/classes/Project'
 
 Template.editImage.helpers({
+    //helper pour verifier si c'est une instance de type projet ou de type user
     owner: function () {
         return Template.instance().owner.get()
     },
@@ -79,8 +80,9 @@ Template.editImage.events({
      * Si l'utilisateur valide la preview
      ************************************/
     'click [validateNewImage]': function (event, instance) {
-        //on instancie notre objet useur avec les valeurs du currentUser
+        //si on est dans l'instance appelée par l'utilisateur
         if (instance.owner.get() === "user") {
+            //on instancie notre objet useur avec les valeurs du currentUser
             currentUser = User.findOne(Meteor.userId());
             //puis on lui applique la methode
             currentUser.callMethod(
@@ -102,7 +104,9 @@ Template.editImage.events({
                         instance.editingImg.set(false)
                     }
                 })
+            //si on est dans l'instance de type projet
         }else if(instance.owner.get() === "project"){
+            //on instancie le projet
             let currentProject = Project.findOne(Template.instance().data.projectId);
             //puis on lui applique la methode
 
@@ -131,8 +135,9 @@ Template.editImage.events({
 });
 
 Template.editImage.onCreated(function () {
-    //add your statement here
+    //boolen pour savoir si l'utilisateur a cliqué sur l'edition de l'image
     this.editingImg = new ReactiveVar(false)
+    //boolen pour savoir si l'on doit ouvrir la fenetre modale
     this.urlPreview = new ReactiveVar(false)
     this.owner = new ReactiveVar(Template.instance().data.owner)
 });

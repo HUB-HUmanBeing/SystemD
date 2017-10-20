@@ -3,7 +3,7 @@
         <div class="col s12 no-padding">
             {{>projectMenu project = project}}
         </div>
-        <div class="col s12 no-padding">
+        <div class="col s12 xl10 offset-xl1 no-padding">
             <div class="row ">
                 <div class="col s12 grey darken-4 no-padding">
                     <ul class="tabs swipable grey darken-4">
@@ -12,9 +12,9 @@
                         <li class="tab col s4 "><a href="#blog">Blog</a></li>
                     </ul>
                 </div>
-                <div id="edit-project-info" class="col s12">{{>editProjectInfo project=project}}</div>
-                <div id="members" class="col s12">{{>workInProgress}}</div>
-                <div id="blog" class="col s12">{{>workInProgress}}</div>
+                <div id="edit-project-info" class="col s12 no-padding">{{>editProjectInfo project=project}}</div>
+                <div id="members" class="col s12 no-padding">{{>workInProgress}}</div>
+                <div id="blog" class="col s12 no-padding">{{>workInProgress}}</div>
             </div>
         </div>
     </div>

@@ -239,6 +239,10 @@ Template.editLocation.events({
                         Materialize.toast(error.message, 6000, "red")
                     } else {
                         instance.editingLocation.set(false)
+                        //on clos le formulaire de recherche
+                        instance.useSearchForm.set(false)
+                        //on réinitialise le tableau des réponses de nominatim
+                        instance.searchResults.set([])
                         //on enleve les infobulles
                         $('.tooltipped').tooltip('remove');
                         //et on les remets apres un court délai (pour eviter que ne reste affichée
