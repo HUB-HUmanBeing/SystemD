@@ -1,0 +1,28 @@
+<template name="editDescription">
+
+    <div class="row">
+        <form class="col m10" updateDescription>
+            <div class="row">
+                <div class="input-field col s12">
+
+                            <textarea class="materialize-textarea " data-length="1000"
+                                      value="{{description}}" id="description"
+                                      descriptionText></textarea>
+                    <label for="description" class="active">Description</label>
+                </div>
+            </div>
+        </form>
+        <div class="col s1">
+            <button class="btn-floating dark-grey  waves-effect waves-light ">
+                {{#if isEditingFlags.description}}
+                    <i class="material-icons blue-text tooltipped"
+                       data-position="bottom" data-delay="50" data-tooltip="enregister" saveDescriptionBtn>file_download</i>
+                {{else}}
+                    <i class="material-icons tooltipped"
+                       data-position="bottom" data-delay="50" data-tooltip="éditer" editDescriptionBtn>mode_edit</i>
+                {{/if}}
+            </button>
+        </div>
+
+    </div>
+</template>

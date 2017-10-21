@@ -83,7 +83,7 @@ Template.editImage.events({
         //si on est dans l'instance appelée par l'utilisateur
         if (instance.owner.get() === "user") {
             //on instancie notre objet useur avec les valeurs du currentUser
-            currentUser = User.findOne(Meteor.userId());
+            let currentUser = User.findOne(Meteor.userId());
             //puis on lui applique la methode
             currentUser.callMethod(
                 'updateProfileItem',
