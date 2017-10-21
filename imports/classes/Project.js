@@ -96,14 +96,17 @@ const Project = Class.create({
             //on liste ici les champs du profil faisant parti du ratio
             let fieldsToComplete = [
                 this.publicInfo.description,
-                this.publicInfo.location.lat
+                this.publicInfo.location.lat,
+                this.publicInfo.imgUrl
             ];
             //on initialise
             let completed = 0;
             //on incrémente a chaque fois qu'un champs n'est pas invalide
-            _.each(fieldsToComplete, function (field) {
-                if (!(field === undefined || field === "" || field === 0)) {
+            fieldsToComplete.forEach(function (field) {
+                console.log(field)
+                if (!(field === null || field === undefined || field === "" || field === 0 || field === "/images/icon/project_icon.png")) {
                     completed += 1
+
                 }
             });
             //on retourne le résultat divisé par le nombre d'element à checker,

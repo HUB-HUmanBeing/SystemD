@@ -2,6 +2,10 @@ Template.adminProject.helpers({
     //add you helpers here
     project : function(){
         return Template.instance().data.fetch()[0]
+    },
+    completed : function () {
+        return Template.instance().data.fetch()[0].completed()
+
     }
 });
 

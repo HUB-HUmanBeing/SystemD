@@ -7,8 +7,16 @@
             <div class="row ">
                 <div class="col s12 grey darken-4 no-padding">
                     <ul class="tabs swipable grey darken-4">
-                        <li class="tab col s4"><a  href="#edit-project-info">Edit-info</a></li>
-                        <li class="tab col s4"><a  href="#members">Membres</a></li>
+                        <li class="tab col s4">
+                            <a href="#edit-project-info">Informations
+                                <span class=" tooltipped {{completedColor completed}}-text"
+                                      data-position="bottom" data-delay="50"
+                                      data-tooltip="Les infos du projet sont complétés à {{completed}}%">
+                                    {{completed}}%
+                                </span>
+                            </a>
+                        </li>
+                        <li class="tab col s4"><a href="#members">Membres</a></li>
                         <li class="tab col s4 "><a href="#blog">Blog</a></li>
                     </ul>
                 </div>
