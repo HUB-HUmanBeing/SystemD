@@ -70,7 +70,6 @@ const Project = Class.create({
                     param: 5
                 }
             ],
-
         },
         members: {
             type: [Member],

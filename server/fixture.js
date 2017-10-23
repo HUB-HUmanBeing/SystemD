@@ -1,6 +1,9 @@
-if(Meteor.users.find().count() === 0) {
-    Meteor.call('createNewUser',{
-        username: "robin",
-        password:"123456"
-    });
-}
+if (Meteor.users.find().count() === 0) {
+    let usernames = ["robin", "coralie", "eve la plus belle", "noemie", "audric",];
+    usernames.forEach(function (username) {
+        Meteor.call('createNewUser', {
+            username: username,
+            password: "123456"
+        })
+    })
+};
