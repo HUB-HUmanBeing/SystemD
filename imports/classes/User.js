@@ -61,6 +61,9 @@ const User = Class.create({
                 return [];
             }
         },
+        username: {
+          type: String
+        },
         services: Object,
         createdAt: {
             type: Date,
@@ -99,6 +102,21 @@ const User = Class.create({
             //on retourne le résultat divisé par le nombre d'element à checker,
             // le tout multiplié par 100 pour l'avoir en pourcentage
             return parseInt((completed / fieldsToComplete.length) * 100)
+        },
+        /*************************
+         * renvoie la distance vis a vis de l'utilisateur courant
+         * @returns {Number}
+         */
+        distance() {
+            let distance = new Haversine(
+                this.profile.location.lat,
+                this.profile.location.lng,
+                Meteor.user().profile.location.lat,
+                Meteor.user().profile.location.lng);
+            return parseInt(distance.kilometers)
+        },
+        nbOfProjects() {
+            return this.profile.projects.length
         }
     },
     meteorMethods: {
@@ -118,6 +136,12 @@ const User = Class.create({
                 this.profile.location.city = city;
                 this.profile.location.country = country;
                 return this.save()
+            }
+        },
+        computedInfo() {
+            return {
+                nbOfProjects : this.nbOfProjects(),
+                distance : this.distance()
             }
         }
 

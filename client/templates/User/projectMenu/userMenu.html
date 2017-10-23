@@ -1,0 +1,24 @@
+<template name="userMenu">
+    <div class="row dark-grey no-margin">
+        {{>contextualMenuTitle
+                title=title
+                contextualHomepage = contextualHomepage
+                color = color
+                imgUrl = imgUrl
+                path = path
+        }}
+
+
+        <div class="col s12 m7 l7 xl6 no-margin no-padding ">
+
+            <ul class="tabs dark-grey pin-bottom">
+                {{#if navBarItems}}
+                    {{#each navBarItem in navBarItems}}
+                        {{>contextualNavBarItem navBarItem}}
+                    {{/each}}
+                {{/if}}
+
+            </ul>
+        </div>
+    </div>
+</template>
