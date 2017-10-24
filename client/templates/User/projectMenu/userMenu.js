@@ -6,6 +6,9 @@ import User from '/imports/classes/User';
  */
 Template.userMenu.helpers({
     //titre affiché
+    userId : function () {
+        return Template.instance().data.user._id
+    },
     title: function () {
 
         return Template.instance().data.user.username
@@ -49,6 +52,9 @@ Template.userMenu.helpers({
             ]
             return navBarItems
         }
+    },
+    showNavbar : function () {
+        return Meteor.userId() === Template.instance().data.user._id
     }
 
 
@@ -65,6 +71,7 @@ Template.projectMenu.onCreated(function () {
 
 Template.projectMenu.onRendered(function () {
     //add your statement here
+
 });
 
 Template.projectMenu.onDestroyed(function () {

@@ -134,3 +134,7 @@ input:-webkit-autofill {
 .tabs .indicator{
     background-color: lightgray;
 }
+
+.inline-block{
+    display: inline-block !important;
+}

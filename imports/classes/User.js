@@ -108,11 +108,13 @@ const User = Class.create({
          * @returns {Number}
          */
         distance() {
+                let that = this
             let distance = new Haversine(
-                this.profile.location.lat,
-                this.profile.location.lng,
+                that.profile.location.lat,
+                that.profile.location.lng,
                 Meteor.user().profile.location.lat,
                 Meteor.user().profile.location.lng);
+
             return parseInt(distance.kilometers)
         },
         nbOfProjects() {
@@ -137,14 +139,7 @@ const User = Class.create({
                 this.profile.location.country = country;
                 return this.save()
             }
-        },
-        computedInfo() {
-            return {
-                nbOfProjects : this.nbOfProjects(),
-                distance : this.distance()
-            }
         }
-
     }
 });
 

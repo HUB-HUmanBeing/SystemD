@@ -102,7 +102,6 @@ const Project = Class.create({
             let completed = 0;
             //on incrémente a chaque fois qu'un champs n'est pas invalide
             fieldsToComplete.forEach(function (field) {
-                console.log(field)
                 if (!(field === null || field === undefined || field === "" || field === 0 || field === "/images/icon/project_icon.png")) {
                     completed += 1
 
