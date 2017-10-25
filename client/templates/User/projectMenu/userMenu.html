@@ -7,8 +7,8 @@
                 imgUrl = imgUrl
                 path = path
         }}
-    {{#if navBarItems}}
-        <div class="col s12 m7 l7 xl6 no-margin no-padding ">
+        {{#if navBarItems}}
+            <div class="col s12 m7 l7 xl6 no-margin no-padding ">
 
 
                 <ul class="tabs dark-grey pin-bottom">
@@ -16,11 +16,14 @@
                         {{>contextualNavBarItem navBarItem}}
                     {{/each}}
                 </ul>
-        </div>
-            {{else}}
-                {{>userMenuBtns name=title}}
+            </div>
+        {{else}}
+            {{>userMenuBtns
+                    userId = userId
+                    name = title
+            }}
 
-            {{/if}}
+        {{/if}}
 
     </div>
 </template>

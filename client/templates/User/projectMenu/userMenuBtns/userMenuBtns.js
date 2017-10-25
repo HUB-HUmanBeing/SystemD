@@ -24,6 +24,9 @@ Template.userMenuBtns.events({
         Meteor.setTimeout(function () {
             $('.collapsible').collapsible();
         }, 150)
+    },
+    "click [projectName] a" : function (event) {
+        event.preventDefault()
     }
 });
 

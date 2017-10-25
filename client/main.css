@@ -14,6 +14,9 @@ COULEURS
 .orange-border{
     border: 2px solid #C87F0A !important;
 }
+.green-border{
+    border: 2px solid #4CAF50 !important;
+}
 /*****BACKGROUNDS****/
 .trame{
     background-image: url("/images/trame/trame4-black.png");
@@ -117,6 +120,7 @@ input[type=password]:not(.browser-default){
 .btn-validation{
     padding: 0 50px 0 50px !important;
 }
+
 input{
     color: #DBDBDB;
 }
@@ -141,6 +145,17 @@ input:-webkit-autofill {
 .relative{
     position: relative !important;
 }
+.absolute{
+    position : absolute !important;
+}
 .fixed-modal{
     position: fixed !important;
+}
+.miniature img{
+
+    height: 2.5em !important;
+}
+.miniature span{
+    position: relative;
+    bottom: 1em !important;
 }

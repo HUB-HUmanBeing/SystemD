@@ -21,29 +21,24 @@
         </ul>
     </div>
 
-    <div id="" class="modal left-align invite-to-projects-modal  grey darken-4 scrollbar fixed-modal " style="overflow-x: hidden !important;">
+    <div id="" class="modal left-align invite-to-projects-modal  grey darken-4 scrollbar fixed-modal "
+         style="overflow-x: hidden !important;">
         <div class="modal-content">
             <ul class="collapsible popout" data-collapsible="accordion">
                 <h5>Inviter {{name}} à rejoindre un de vos projets</h5>
                 {{#each project in adminProjects}}
                     <li class="">
-                        <div class="collapsible-header dark-grey">
-                                {{> miniature
-                                        _id = project.project_id
-                                        type = "project"}}
+                        <div class="collapsible-header dark-grey" projectName>
+                            {{> miniature
+                                    _id = project.project_id
+                                    type = "project"}}
                         </div>
                         <div class="collapsible-body dark-grey ">
-                            <div class="row">
-                                <form class="col s12">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <textarea id="textarea1" class="materialize-textarea" placeholder="vous pouvez accompagner votre invitation d'un message"></textarea>
-
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
+                            {{> inviteProjectForm
+                                    project = project
+                                    username = name
+                                    userId = userId
+                            }}
                         </div>
                     </li>
                 {{/each}}

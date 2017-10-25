@@ -2,6 +2,36 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
 
+const UserInvitation = Class.create({
+    name: 'UserInvitation',
+    fields: {
+        project_id: String,
+        invitationMessage: {
+            type: String,
+            default: "",
+            validator: [
+                {
+                    type: 'maxLength',
+                    param: 1000
+                }
+            ],
+        },
+        sendAt: {
+            type: Date,
+            default: function () {
+                return new Date()
+            }
+        },
+        status: {
+            type: String,
+            default: function () {
+                return "waiting"
+            }
+        }
+    },
+});
+
+
 const UserProject = Class.create({
     name: 'UserProject',
     fields: {
@@ -46,8 +76,15 @@ const Profile = Class.create({
             default: function () {
                 return [];
             }
+        },
+        invitations: {
+            type: [UserInvitation],
+            default: function () {
+                return [];
+            }
         }
     },
+
 });
 
 
@@ -62,7 +99,8 @@ const User = Class.create({
             }
         },
         username: {
-            type: String
+            type: String,
+            immutable: true
         },
         services: Object,
         createdAt: {

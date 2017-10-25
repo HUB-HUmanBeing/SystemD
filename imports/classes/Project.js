@@ -54,6 +54,46 @@ const Member = Class.create({
     },
 });
 
+const ProjectInvitation = Class.create({
+    name: 'ProjectInvitation',
+    fields: {
+        user_id: String,
+        invitationMessage: {
+            type: String,
+            default: "",
+            validator: [
+                {
+                    type: 'maxLength',
+                    param: 1000
+                }
+            ],
+        },
+        sendAt: {
+            type: Date,
+            default: function () {
+                return new Date()
+            }
+        },
+        adminId: String,
+        status: {
+            type: String,
+            default: function () {
+                return "waiting"
+            }
+        },
+        answerMessage: {
+            type: String,
+            default: "",
+            validator: [
+                {
+                    type: 'maxLength',
+                    param: 1000
+                }
+            ],
+        }
+    },
+});
+
 const Project = Class.create({
     name: 'Project',
     collection: Projects,
@@ -85,6 +125,12 @@ const Project = Class.create({
             type: PublicInfo,
             default: function () {
                 return {};
+            }
+        },
+        invitations: {
+            type: [ProjectInvitation],
+            default: function () {
+                return [];
             }
         }
 
@@ -119,10 +165,10 @@ const Project = Class.create({
          *******************************/
         'createProject': function (projectName) {
             //on verifie que le nom n'est pas déja pris
-            let alreadyExist = Projects.find({name: projectName}).count()
+            let alreadyExist = Projects.find({name: projectName}).count();
             check(alreadyExist, 0);
             //on check que l'utilisateur est bien connecté
-            check(Meteor.userId(), String)
+            check(Meteor.userId(), String);
             //on modifie le nom
             this.name = projectName;
             //on rajoute l'utilisateur courant comme admin du projet
@@ -156,7 +202,7 @@ const Project = Class.create({
 
         isMember(userId) {
             check(userId, String);
-            let isMember = false
+            let isMember = false;
             this.members.forEach((member) => {
                 if (member.user_id === Meteor.userId()) {
                     isMember = true
@@ -208,6 +254,40 @@ const Project = Class.create({
             this.publicInfo.location.city = city;
             this.publicInfo.location.country = country;
             return this.save()
+
+        },
+        /**************************
+         * methode d'invitation d'un nouvel utilisateur a rejoindre le projet
+         * @param userId
+         * @param invitationMessage
+         */
+        inviteUser(userId, invitationMessage) {
+            //on check que l'utilisateur qu'on veut ajouter existe
+            let invitedUser = User.findOne({_id: userId});
+            check(invitedUser, User);
+            //on check que l'utilisateur qui fait la demande est admin du projet'
+            let adminId = Meteor.userId();
+            check(this.isAdmin(adminId), true);
+
+            //on insère l'invitation dans le tableau d'invitations de l'objet courant
+            this.invitations.push({
+                adminId: adminId,
+                invitationMessage: invitationMessage,
+                user_id: userId
+            });
+            //on enregistre, et si tout se passe bien
+            this.save(function (err) {
+                if (!err) {
+                    //on insère l'invitation dans l'instance de l'utilisateur
+                    console.log(invitedUser)
+                    invitedUser.invitations.push({
+                        project_id: this._id,
+                        invitationMessage: invitationMessage
+                    });
+                    //puis on sauvegarde
+                    user.save()
+                }
+            })
 
         }
     }
