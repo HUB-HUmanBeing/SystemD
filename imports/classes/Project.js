@@ -174,6 +174,7 @@ const Project = Class.create({
             //on rajoute l'utilisateur courant comme admin du projet
             this.members.push({
                 user_id: Meteor.userId(),
+
                 username: Meteor.user().username,
                 roles: ['member', 'admin']
             });
