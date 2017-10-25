@@ -141,3 +141,6 @@ input:-webkit-autofill {
 .relative{
     position: relative !important;
 }
+.fixed-modal{
+    position: fixed !important;
+}

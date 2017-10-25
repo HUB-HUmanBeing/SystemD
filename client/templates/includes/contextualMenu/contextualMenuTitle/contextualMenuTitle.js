@@ -5,7 +5,6 @@ Template.contextualMenuTitle.helpers({
 Template.contextualMenuTitle.events({
     //add your events here
     'click [redirectToSectionHome]' : function (event, instance) {
-        dump(instance.data.path)
         Router.go(instance.data.path, {_id : instance.data.pathData})
     }
 });

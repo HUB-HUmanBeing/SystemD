@@ -7,42 +7,53 @@
             <li class="inline-block small-margin">
                 <a class="btn-floating blue tooltipped waves-effect waves-light" data-position="bottom"
                    data-delay="50" data-tooltip="Contacter">
-                    <i class="material-icons  grey-text text-darken-3">mail_outline</i>
+                    <i class="material-icons  grey-text text-darken-4">mail_outline</i>
                 </a>
             </li>
             <li class="inline-block small-margin">
                 <a class="btn-floating orange tooltipped waves-effect waves-light" inviteToProjects
                    data-position="bottom"
                    data-delay="50" data-tooltip="Ajouter à un projet dont vous êtes l'admin">
-                    <i class="material-icons  grey-text text-darken-3">group_add</i>
+                    <i class="material-icons  grey-text text-darken-4">group_add</i>
                 </a>
-                <div id="" class="modal left-align invite-to-projects-modal dark-grey">
-                    <div class="modal-content">
-                        <ul class="collapsible popout" data-collapsible="accordion">
-                            {{#each project in adminProjects}}
-                                <li class="">
-                                    <div class="collapsible-header dark-grey">
-                                        <h5>
-                                            {{> miniature
-                                                    _id = project.project_id
-                                                    type = project}}
-                                        </h5>
-                                    </div>
-                                    <div class="collapsible-body "><span>Lorem ipsum dolor sit amet.</span></div>
-                                </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                    <div class="modal-footer dark-grey">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">
-                            <i class="material-icons">close</i>
-                        </a>
-                    </div>
-                </div>
+
             </li>
         </ul>
     </div>
 
+    <div id="" class="modal left-align invite-to-projects-modal  grey darken-4 scrollbar fixed-modal " style="overflow-x: hidden !important;">
+        <div class="modal-content">
+            <ul class="collapsible popout" data-collapsible="accordion">
+                <h5>Inviter {{name}} à rejoindre un de vos projets</h5>
+                {{#each project in adminProjects}}
+                    <li class="">
+                        <div class="collapsible-header dark-grey">
+                                {{> miniature
+                                        _id = project.project_id
+                                        type = "project"}}
+                        </div>
+                        <div class="collapsible-body dark-grey ">
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="textarea1" class="materialize-textarea" placeholder="vous pouvez accompagner votre invitation d'un message"></textarea>
 
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="modal-footer grey darken-4">
+            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+    </div>
 
 </template>
