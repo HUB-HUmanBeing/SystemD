@@ -1,22 +1,25 @@
 <template name="userMenuBtns">
-    <div class="row no-margin">
-        <div class="col l6">
-            <ul class="right-align">
-                <li class="inline-block small-margin">
-                    <a class="btn-floating blue tooltipped waves-effect waves-light" data-position="bottom"
-                       data-delay="50" data-tooltip="Contacter">
-                        <i class="material-icons  grey-text text-darken-3">mail_outline</i>
-                    </a>
-                </li>
-                <li class="inline-block small-margin">
-                    <a class="btn-floating orange tooltipped waves-effect waves-light" inviteToProjects data-position="bottom"
-                       data-delay="50" data-tooltip="Ajouter à un projet dont vous êtes l'admin">
-                        <i class="material-icons  grey-text text-darken-3">group_add</i>
-                    </a>
-                    <div id="" class="modal left-align invite-to-projects-modal dark-grey">
-                        <div class="modal-content">
-                            <ul class="collapsible popout" data-collapsible="accordion">
-                                {{#each project in adminProjects}}
+    <div class="fixed-action-btn horizontal click-to-toggle fab-menu-btn">
+        <a class="btn-floating btn-large green waves-effect waves-light">
+            <i class="material-icons  ">more</i>
+        </a>
+        <ul class="right-align">
+            <li class="inline-block small-margin">
+                <a class="btn-floating blue tooltipped waves-effect waves-light" data-position="bottom"
+                   data-delay="50" data-tooltip="Contacter">
+                    <i class="material-icons  grey-text text-darken-3">mail_outline</i>
+                </a>
+            </li>
+            <li class="inline-block small-margin">
+                <a class="btn-floating orange tooltipped waves-effect waves-light" inviteToProjects
+                   data-position="bottom"
+                   data-delay="50" data-tooltip="Ajouter à un projet dont vous êtes l'admin">
+                    <i class="material-icons  grey-text text-darken-3">group_add</i>
+                </a>
+                <div id="" class="modal left-align invite-to-projects-modal dark-grey">
+                    <div class="modal-content">
+                        <ul class="collapsible popout" data-collapsible="accordion">
+                            {{#each project in adminProjects}}
                                 <li class="">
                                     <div class="collapsible-header dark-grey">
                                         <h5>
@@ -27,18 +30,19 @@
                                     </div>
                                     <div class="collapsible-body "><span>Lorem ipsum dolor sit amet.</span></div>
                                 </li>
-                                {{/each}}
-                            </ul>
-                        </div>
-                        <div class="modal-footer dark-grey">
-                            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">
-                                <i class="material-icons">close</i>
-                            </a>
-                        </div>
+                            {{/each}}
+                        </ul>
                     </div>
-                </li>
-            </ul>
-        </div>
+                    <div class="modal-footer dark-grey">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">
+                            <i class="material-icons">close</i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
+
+
 
 </template>

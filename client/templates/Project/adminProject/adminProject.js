@@ -1,8 +1,9 @@
 Template.adminProject.helpers({
-    //add you helpers here
+    //pour renvoyer vers l'enfant les infos du projet courant
     project : function(){
         return Template.instance().data.fetch()[0]
     },
+    //
     completed : function () {
         return Template.instance().data.fetch()[0].completed()
 

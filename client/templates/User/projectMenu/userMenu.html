@@ -1,5 +1,5 @@
 <template name="userMenu">
-    <div class="row dark-grey ">
+    <div class="row dark-grey relative">
         {{>contextualMenuTitle
                 title=title
                 contextualHomepage = contextualHomepage
@@ -7,19 +7,20 @@
                 imgUrl = imgUrl
                 path = path
         }}
-
+    {{#if navBarItems}}
         <div class="col s12 m7 l7 xl6 no-margin no-padding ">
 
-            {{#if navBarItems}}
+
                 <ul class="tabs dark-grey pin-bottom">
                     {{#each navBarItem in navBarItems}}
                         {{>contextualNavBarItem navBarItem}}
                     {{/each}}
                 </ul>
+        </div>
             {{else}}
                 {{>userMenuBtns }}
 
             {{/if}}
-        </div>
+
     </div>
 </template>

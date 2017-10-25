@@ -7,3 +7,18 @@
     height: 1.4em;
 
 }
+.contextual-menu-title{
+    height: 75px !important;
+}
+.fab-menu-btn{
+    position: absolute !important;
+    right: 24px !important;
+    left: auto !important;
+    width: 60px !important;
+    bottom: -35px !important;
+    height: 60px;
+}
+.fab-menu-btn>a{
+    position: relative !important;
+
+}

@@ -53,6 +53,7 @@ Template.userMenu.helpers({
             return navBarItems
         }
     },
+    //helper verifiant si on doit aficher la navbar ou les boutons d'interaction
     showNavbar : function () {
         return Meteor.userId() === Template.instance().data.user._id
     }

@@ -1,11 +1,13 @@
 Template.userMenuBtns.helpers({
-    //add you helpers here
+    //renvoie la liste des projets ou l'utilisateur courant est admin
     adminProjects: function () {
+        //on recupere tout les projets de l'utilisateur
         let currentUserProjects = Meteor.user().profile.projects
         let adminProjects = []
+        //pour chacuns, on check si l'utilisateur est admin
         currentUserProjects.forEach(project => {
             if(project.roles.includes("admin")){
-                //project.imgUrl = Project.findOne({_id : project.project_id}).publicInfo.imgUrll
+                //et on ajoute au tableau repose a envoyer
                 adminProjects.push(project)
             }
         })
@@ -14,9 +16,10 @@ Template.userMenuBtns.helpers({
 });
 
 Template.userMenuBtns.events({
-    //add your events here
+    //au click sur le bouton d'invitation
     "click [inviteToProjects]": function (event, instance) {
         $('.modal').modal();
+        //on ouvre la fenetre modale puis on active le menu accordéon
         $('.invite-to-projects-modal').modal('open');
         Meteor.setTimeout(function () {
             $('.collapsible').collapsible();
@@ -29,7 +32,7 @@ Template.userMenuBtns.onCreated(function () {
 });
 
 Template.userMenuBtns.onRendered(function () {
-    //add your statement here
+    //on active les infobulles
     $('.tooltipped').tooltip({delay: 50});
     $('.modal').modal();
 });

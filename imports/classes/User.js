@@ -5,8 +5,8 @@ import Location from '/imports/classes/Location'
 const UserProject = Class.create({
     name: 'UserProject',
     fields: {
-        project_id : String,
-        name : String,
+        project_id: String,
+        name: String,
         roles: {
             type: [String],
             default: ["member"]
@@ -41,8 +41,8 @@ const Profile = Class.create({
                 return {}
             }
         },
-        projects : {
-            type : [UserProject],
+        projects: {
+            type: [UserProject],
             default: function () {
                 return [];
             }
@@ -62,7 +62,7 @@ const User = Class.create({
             }
         },
         username: {
-          type: String
+            type: String
         },
         services: Object,
         createdAt: {
@@ -106,9 +106,9 @@ const User = Class.create({
         /*************************
          * renvoie la distance vis a vis de l'utilisateur courant
          * @returns {Number}
-         */
+         ****************************/
         distance() {
-                let that = this
+            let that = this
             let distance = new Haversine(
                 that.profile.location.lat,
                 that.profile.location.lng,
@@ -117,22 +117,26 @@ const User = Class.create({
 
             return parseInt(distance.kilometers)
         },
+        /***************
+         *renvoie le nombre de projet d'un utilisateur
+         * @returns {Number}
+         *********************/
         nbOfProjects() {
             return this.profile.projects.length
         }
     },
     meteorMethods: {
         //modification de la description utilisateur
-        updateProfileItem(key , value) {
+        updateProfileItem(key, value) {
             check(key, String);
-            if(this._id === Meteor.userId()) {
+            if (this._id === Meteor.userId()) {
                 this.profile[key] = value;
                 return this.save()
             }
         },
         //changement de la position de l'utilisateur
         updateSelfLocation(lat, lng, city, country) {
-            if(this._id === Meteor.userId()){
+            if (this._id === Meteor.userId()) {
                 this.profile.location.lat = lat;
                 this.profile.location.lng = lng;
                 this.profile.location.city = city;
