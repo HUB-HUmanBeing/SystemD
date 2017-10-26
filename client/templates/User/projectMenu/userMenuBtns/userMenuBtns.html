@@ -1,7 +1,8 @@
 <template name="userMenuBtns">
     <div class="fixed-action-btn horizontal click-to-toggle fab-menu-btn">
-        <a class="btn-floating btn-large green waves-effect waves-light">
-            <i class="material-icons  ">more</i>
+        <a class="btn-floating btn-large green waves-effect waves-light tooltipped " data-position="bottom"
+           data-delay="50" data-tooltip="Interagir">
+            <i class="material-icons grey-text text-darken-4">chevron_left</i>
         </a>
         <ul class="right-align">
             <li class="inline-block small-margin">
@@ -28,7 +29,7 @@
                 <h5>Inviter {{name}} à rejoindre un de vos projets</h5>
                 {{#each project in adminProjects}}
                     <li class="">
-                        <div class="collapsible-header dark-grey" projectName>
+                        <div class="collapsible-header trame-texture" projectName>
                             {{> miniature
                                     _id = project.project_id
                                     type = "project"}}

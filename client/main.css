@@ -21,6 +21,11 @@ COULEURS
     border: 2px solid #4CAF50 !important;
 }
 /*****BACKGROUNDS****/
+.trame-texture{
+    background-image: url("/images/trame/trame4-black.png");
+    background-color: #1c1c1c !important;
+    background-size: cover;
+}
 .trame-box{
     background-image: url("/images/trame/trame4-black.png");
     background-color: #1c1c1c !important;
@@ -184,4 +189,16 @@ input:-webkit-autofill {
     position: absolute;
     top : 10px;
     right: -19px;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #404040 !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #404040 !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #404040 !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: #404040 !important;
 }
