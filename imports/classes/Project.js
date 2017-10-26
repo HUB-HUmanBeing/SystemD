@@ -179,6 +179,15 @@ const Project = Class.create({
                 })
             }
             return isInvitable
+        },
+        relativeDistance(){
+            let distance = new Haversine(
+                this.publicInfo.location.lat,
+                this.publicInfo.location.lng,
+                Meteor.user().profile.location.lat,
+                Meteor.user().profile.location.lng);
+
+            return parseInt(distance.kilometers)
         }
     },
     meteorMethods: {

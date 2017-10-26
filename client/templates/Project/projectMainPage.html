@@ -3,8 +3,53 @@
         <div class="col s12 no-padding">
             {{>projectMenu project = project}}
         </div>
-        <div class="col s12">
-            <h1>projet</h1>
+        <div class="col s12 xl8 offset-xl1">
+            <div class="row">
+                <div class="col s12 m3">
+                    <div class="row">
+                        <div class="col s12 trame-box">
+                            <img class="responsive-img " src="{{project.publicInfo.imgUrl}}">
+                            <p><i class="material-icons tiny">location_on</i>
+                                {{#if project.publicInfo.location.city}}
+                                    {{project.publicInfo.location.city}}, {{project.publicInfo.location.country}}  {{relativeDistance}}
+                                {{else}}
+                                    position non renseignée
+                                {{/if}}
+                            </p>
+                            <p><i class="material-icons tiny">group_work</i> {{numberOfMembers}} </p>
+                        </div>
+                        <div class="col s12 trame-box">
+                                <h6>catégories</h6>
+                                {{>workInProgress}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m9">
+                    <div class="row no-margin">
+                        <div class="col s12 trame-box">
+                            <p class="no-margin">
+                                {{#if project.publicInfo.description}}
+                                    {{ project.publicInfo.description}}
+                                {{else}}
+                                    <i>la description de l'utilisateur n'est pas encore renseignée</i>
+                                {{/if}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row no-margin">
+                        <div class="col s12 trame-box">
+                            <h6>Articles du blog du projet</h6>
+                            {{>workInProgress}}
+                        </div>
+                    </div>
+                    <div class="row no-margin">
+                        <div class="col s12 trame-box">
+                            <h6>Articles du blog du projet</h6>
+                            {{>workInProgress}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

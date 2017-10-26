@@ -1,8 +1,8 @@
 <template name="menu">
     <ul class="collapsible no-margin dark-grey general-menu " data-collapsible="accordion" id="">
         {{!icone du site +lien vers l'acceuil}}
-        <li class="title-block">
-            <a href="{{pathFor 'home'}}" class=" flex no-margin no-padding dark-grey waves-effect waves-light col s12 relative" >
+        <li class="title-block" style="height: 75px !important;">
+            <a href="{{pathFor 'home'}}" class=" flex no-margin no-padding dark-grey waves-effect waves-light col s12 relative" style="height: 75px !important;">
                 <div class="  no-padding small-margin " style="width: 70px !important ; height: 70px ">
                     <img src="/images/icon/hub_icon.png" alt="HUmanBeing" class="responsive-img  no-padding " style="position: static !important; z-index:1000 !important; width: 70px ; height: 70px ">
                 </div>
@@ -11,11 +11,11 @@
         </li>
         {{!formulaire de recherche}}
         <li>
-            <form action="" name="search-form" class="row no-margin">
-                <div class="col s2 no-padding small-margin">
-                    <img src="/images/icon/search_icon.png" alt="search" class="responsive-img small-margin no-padding  ">
+            <form action="" name="search-form" class="row no-margin valign-wrapper">
+                <div class="col s2 no-padding small-margin ">
+                    <img src="/images/icon/search_icon.png" alt="search" class=" small-margin no-padding  " style="height : 25px; widht: 25px; ">
                 </div>
-                <div class="input-field row no-padding small-margin s8 col">
+                <div class="input-field row no-padding small-margin s8 col valign-wrapper">
 
                     <input id="icon_prefix" type="text" class="validate no-margin" name="search" placeholder="Rechercher">
 

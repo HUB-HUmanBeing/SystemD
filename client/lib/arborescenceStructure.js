@@ -16,6 +16,12 @@ arborescenceStructure = function () {
                     icon: "person"
                 },
                 {
+                    id: "userSelfProject",
+                    name: "Mes Projets",
+                    path: "userSelfProjects",
+                    icon: "group_work"
+                },
+                {
                     id: "logout",
                     name: "Déconnexion",
                     path: "home",
@@ -35,6 +41,7 @@ arborescenceStructure = function () {
                         id: project.project_id,
                         name: project.name,
                         path: "projectMainPage",
+                        icon: "arrow_forward",
                         pathData : function () {
                             return { _id : project.project_id}
                         }

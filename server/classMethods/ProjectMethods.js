@@ -39,6 +39,18 @@ Project.extend({
                 }
             })
 
+        },
+        /*******************************
+         * renvoie le nombre d'utilisateurs participant au projet
+         * @return Number
+         */
+        numberOfMembers() {
+            //on recupere l'object utilisateur complet (car en théorie l'utilisateur
+            // courant n'a que l'objet amputé des info non publiées)
+            project= Project.findOne(this._id)
+            //et on renvoie le nombre de membres -1 car il y a la valeur {} par default
+            return project.members.length - 1
+
         }
     }
 })
