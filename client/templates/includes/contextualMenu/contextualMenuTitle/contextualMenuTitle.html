@@ -4,14 +4,14 @@
             <div class="col s2 m2 no-padding contextual-menu-margin"></div>
             <div class="col s10 m10  miniature">
                 <a class="center-align" href="{{path}}">
-                    <h5 class=" ">
+                    <h5 class=" truncate">
                         <img src="{{imgUrl}}" alt="" class="circle img-circle {{color}}-border">
                         {{#if isActiveRoute name = contextualHomepage}}
-                            <span class="{{color}}-text">{{title}}<i class="material-icons pin-bottom {{color}}-text">
+                            <span class="{{color}}-text ">{{title}}<i class="material-icons pin-bottom {{color}}-text">
                                 {{icon}}
                             </i></span>
                         {{else}}
-                            <span>{{title}}<i class="material-icons pin-bottom {{color}}-text">
+                            <span >{{title}}<i class="material-icons pin-bottom {{color}}-text">
                                 {{icon}}
                             </i></span>
                         {{/if}}
@@ -20,14 +20,14 @@
                 </a>
             </div>
         {{else}}
-            <div class="col s12">
-                <a class="center-align" href="{{path}}">
-                    <h5 class="">
+            <div class="col s12 ">
+                <a class="center-align " href="{{path}}">
+                    <h5 class="truncate">
                         <img src="{{imgUrl}}" alt="" class="circle img-circle {{color}}-border">
                         {{#if isActiveRoute name = contextualHomepage}}
-                            <span class="{{color}}-text">{{title}}</span>
+                            <span class="{{color}}-text " >{{title}}</span>
                         {{else}}
-                            {{title}}
+                            <span >{{title}}</span>
                         {{/if}}
                         <i class="material-icons pin-bottom {{color}}-text tooltipped"
                            data-position="bottom" data-delay="50"

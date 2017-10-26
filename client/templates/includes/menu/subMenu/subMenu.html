@@ -3,13 +3,13 @@
         {{#each subMenuItem in subMenu}}
             <li class="small-margin ">
                 {{#if subMenuItem.pathData}}
-                    <a href="{{pathFor subMenuItem.path data= subMenuItem.pathData }}" class="valign-wrapper" {{subMenuItem.id}}>
+                    <a href="{{pathFor subMenuItem.path data= subMenuItem.pathData }}" class="valign-wrapper truncate" {{subMenuItem.id}}>
                         {{#if subMenuItem.icon}}
                             <i class="material-icons tiny {{color}}-text">{{subMenuItem.icon}}</i>
                         {{/if}}
                         {{subMenuItem.name}}</a>
                 {{else}}
-                    <a href="{{pathFor subMenuItem.path}}" class="valign-wrapper" {{subMenuItem.id}}>
+                    <a href="{{pathFor subMenuItem.path}}" class="valign-wrapper truncate" {{subMenuItem.id}}>
                         {{#if subMenuItem.icon}}
                             <i class="material-icons tiny {{color}}-text">{{subMenuItem.icon}}</i>
                         {{/if}}

@@ -1,0 +1,35 @@
+<template name="userInvitation">
+    <div class="row no-margin">
+        <div class="col s12 ">
+            {{>miniature
+                    _id = project_id
+                    type = "project"}}
+            <i class="grey-text darken-1">envoyé le {{date}}</i>
+            <div class="small-margin small-padding medium-dark-grey ">
+                {{invitationMessage}}
+
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <button class="btn-floating btn-large waves-effect waves-light green tooltipped"
+                            data-position="bottom" data-delay="50"
+                            data-tooltip="Rejoindre le projet"
+                            style="">
+                        <i class="material-icons">done</i>
+                    </button>
+                </div>
+                <div class="col s6">
+                    <button class="btn-floating btn-large waves-effect waves-light red tooltipped"
+                            data-position="bottom"
+                            data-delay="50" data-tooltip="Décliner l'invitation"
+                            style="">
+                        <i class="material-icons">clear</i>
+                    </button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</template>

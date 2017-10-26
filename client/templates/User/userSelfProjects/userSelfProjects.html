@@ -4,6 +4,67 @@
             {{>userMenu user = currentUser}}
         </div>
         <div class="col s12 xl10 offset-xl1 no-padding">
-        </div>
-    </div>
+            <div class="row">
+                <div class="col s12 m7">
+                    <div class="trame-box ">
+                        <h5 class="center-align">Mes Projets</h5>
+                        <div class="row">
+                            <div class="col s12">
+                                <h6>Administrateur</h6>
+                                <br>
+                                <div class="row no-margin">
+                                    {{#each project in adminProjects}}
+                                        <div class="col s12 m6">
+                                            {{>miniature
+                                                    _id = project.project_id
+                                                    type = "project"}}
+                                        </div>
+
+
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <h6>Membre</h6>
+                                <div class="row no-margin">
+                                    {{#each project in memberProjects}}
+                                        <div class="col s12 m6">
+                                            {{>miniature
+                                                    _id = project.project_id
+                                                    type = "project"}}
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col s12 m5">
+                    {{#each invitation in invitations}}
+                        <div class="row no-margin">
+                            <div class="col s12 no-padding">
+                                <div class="trame-box relative">
+                                    {{>userInvitation invitation}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                    <div class="row no-margin">
+                        <div class="col s12 no-padding">
+                            <div class="trame-box ">
+                                <h6>Rechercher des projets par catégorie et distance</h6>
+                                {{>workInProgress}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+                </div>
+
+            </div>
 </template>
