@@ -156,6 +156,29 @@ const Project = Class.create({
             //on retourne le résultat divisé par le nombre d'element à checker,
             // le tout multiplié par 100 pour l'avoir en pourcentage
             return parseInt((completed / fieldsToComplete.length) * 100)
+        },
+        /****************************
+         * verifie qu'un utilisateur est invitable dans un projet
+         * @param userId
+         * @returns {boolean}
+         ********************************************************/
+        isInvitableUser(userId){
+            check(userId, String)
+            //on check que c'est bien un admin qui fait la demande
+            check(this.isAdmin(Meteor.userId()), true)
+            //on verifie que l'utilisateur n'est pas déja membre
+            let isInvitable = true;
+            if(this.isMember(userId)){
+                isInvitable = false
+            }else{
+                //et qu'il n'a pas déja une invitation en attente
+                this.invitations.forEach((invitation)=>{
+                    if(invitation.user_id === userId && invitation.status === 'waiting'){
+                        isInvitable = false
+                    }
+                })
+            }
+            return isInvitable
         }
     },
     meteorMethods: {
@@ -255,40 +278,6 @@ const Project = Class.create({
             this.publicInfo.location.city = city;
             this.publicInfo.location.country = country;
             return this.save()
-
-        },
-        /**************************
-         * methode d'invitation d'un nouvel utilisateur a rejoindre le projet
-         * @param userId
-         * @param invitationMessage
-         */
-        inviteUser(userId, invitationMessage) {
-            //on check que l'utilisateur qu'on veut ajouter existe
-            let invitedUser = User.findOne({_id: userId});
-            check(invitedUser, User);
-            //on check que l'utilisateur qui fait la demande est admin du projet'
-            let adminId = Meteor.userId();
-            check(this.isAdmin(adminId), true);
-
-            //on insère l'invitation dans le tableau d'invitations de l'objet courant
-            this.invitations.push({
-                adminId: adminId,
-                invitationMessage: invitationMessage,
-                user_id: userId
-            });
-            //on enregistre, et si tout se passe bien
-            this.save(function (err) {
-                if (!err) {
-                    //on insère l'invitation dans l'instance de l'utilisateur
-                    console.log(invitedUser)
-                    invitedUser.invitations.push({
-                        project_id: this._id,
-                        invitationMessage: invitationMessage
-                    });
-                    //puis on sauvegarde
-                    user.save()
-                }
-            })
 
         }
     }
