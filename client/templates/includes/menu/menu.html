@@ -13,7 +13,7 @@
         <li>
             <form action="" name="search-form" class="row no-margin">
                 <div class="col s2 no-padding small-margin">
-                    <img src="/images/icon/search_icon.png" alt="search" class="responsive-img small-margin no-padding red circle">
+                    <img src="/images/icon/search_icon.png" alt="search" class="responsive-img small-margin no-padding  ">
                 </div>
                 <div class="input-field row no-padding small-margin s8 col">
 
@@ -28,15 +28,18 @@
             {{!on boucle sur les items du menu}}
             {{#each menuItem in menuItems}}
                 <li class="">
-                        <div class="collapsible-header waves-effect waves-light  row no-padding menu-item col s12 {{menuItem.color}} darken-1">
-                            <div class="col s2 m3 no-padding valign-wrapper  ">
-                                <img src="/images/icon/{{menuItem.image}}" alt="{{menuItem.name}}" class="responsive-img small-margin no-padding">
+
+                        <div class="collapsible-header waves-effect waves-light  row no-padding menu-item col s12 flex">
+                            <div class=" no-padding valign-wrapper {{menuItem.color}} darken-1 square-icon">
+                                <img src="/images/icon/{{menuItem.image}}" alt="{{menuItem.name}}" class="responsive-img  " style="z-index: 100">
                             </div>
-                            <div class="col s10 m9 valign-wrapper "><h6 class="center-align">{{menuItem.name}}</h6></div>
+                            <div class="flex-auto valign-wrapper"><h6 class="center-align {{menuItem.color}}-text " style="padding-left: 10px">{{menuItem.name}}</h6></div>
                         </div>
-                    <div class="collapsible-body no-padding dark-grey row no-margin">
-                      {{>subMenu menuItem}}
+                    <div class="collapsible-body no-padding  row no-margin medium-dark-grey">
+                      {{>subMenu menuItem
+                      color = color}}
                     </div>
+
                 </li>
             {{/each}}
         {{/unless}}

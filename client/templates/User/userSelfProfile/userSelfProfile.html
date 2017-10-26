@@ -5,31 +5,34 @@
         </div>
         <div class="col s12 xl10 offset-xl1 no-padding">
             <div class="row small-margin small-padding">
-                <div class="col m3">
-                    <p>votre profil est complété à
+                <div class="col m4">
+                    <p class="trame-box">votre profil est complété à
                         <span class="tooltipped {{completedColor completed}}-text"
                               data-position="bottom" data-delay="50"
                               data-tooltip="votre profil est complété à {{completed}}%">
-                    {{completed}}%
-                </span>
+                            {{completed}}%
+                         </span>
                     </p>
-                    <hr>
-                    <br>
+
                     <div class="row">
-                        <div class="col s12">
-                            {{>editImage owner = "user"}}
+                        <div class="col s12 no-padding">
+                            <div class="trame-box relative">
+                                {{>editImage owner = "user"}}
+                            </div>
+
                         </div>
-                        <hr>
-                        <br>
-                        <div class="col s12">
-                            {{>editLocation owner = "user"}}
+
+                        <div class="col s12 no-padding ">
+                            <div class="trame-box relative">
+                                {{>editLocation owner = "user"}}
+                            </div>
                         </div>
-                        <hr>
-                        <br>
                     </div>
                 </div>
-                <div class="col s12 m9">
-                    {{> editDescription owner = "user"}}
+                <div class="col s12 m8 no-padding">
+                    <div class="trame-box relative">
+                        {{> editDescription owner = "user"}}
+                    </div>
                 </div>
             </div>
         </div>

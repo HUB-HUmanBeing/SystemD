@@ -11,6 +11,9 @@ COULEURS
 .dark-grey{
     background-color: #141414 !important;
 }
+.medium-dark-grey{
+    background-color: #1c1c1c !important;
+}
 .orange-border{
     border: 2px solid #C87F0A !important;
 }
@@ -18,10 +21,28 @@ COULEURS
     border: 2px solid #4CAF50 !important;
 }
 /*****BACKGROUNDS****/
-.trame{
+.trame-box{
     background-image: url("/images/trame/trame4-black.png");
+    background-color: #1c1c1c !important;
     background-size: cover;
-    opacity: 0.5;
+    padding: 15px !important;
+    margin: 10px 10px 10px  10px !important;
+    border-radius: 5px !important;
+    -webkit-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+    -moz-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+    box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+
+}
+.trame-box-vertical{
+    background-image: url("/images/trame/trame4-black-vertical.png");
+    background-color: #1c1c1c !important;
+    background-size: cover;
+    padding: 15px !important;
+    margin: 10px 10px 10px  10px !important;
+    border-radius: 5px !important;
+    -webkit-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+    -moz-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+    box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
 }
 
 /******COULEUR POLICES******/
@@ -158,4 +179,9 @@ input:-webkit-autofill {
 .miniature span{
     position: relative;
     bottom: 1em !important;
+}
+.top-right-btn{
+    position: absolute;
+    top : 10px;
+    right: -19px;
 }

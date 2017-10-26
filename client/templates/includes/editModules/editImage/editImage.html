@@ -1,25 +1,29 @@
 <template name="editImage">
-    <div class="row">
-        <div class="col s12 row">
-            <img class="responsive-img col s10" src="{{imageUrl}}">
-            <div class="col s1">
-    {{#if editingImg}}
-        <button class="btn-floating dark-grey  waves-effect waves-light" editImgBtn>
-            <i class="material-icons">close</i>
-        </button>
-    {{else}}
+<div class="row">
+    <div class="col s12 row no-padding no-margin">
+        <img class="responsive-img col s12" src="{{imageUrl}}">
 
-                <button class="btn-floating dark-grey  waves-effect waves-light tooltipped" data-position="bottom"
-                        data-delay="50" data-tooltip="{{#if eq owner "user"}}modifier votre avatar{{else}}modifier l'avatar du projet{{/if}}" editImgBtn>
-                    <i class="material-icons">mode_edit</i>
-                </button>
+        {{#if editingImg}}
+            <button class="btn-floating dark-grey top-right-btn waves-effect waves-light" editImgBtn>
+                <i class="material-icons">close</i>
+            </button>
+        {{else}}
 
-    {{/if}}
-        </div>
-        </div>
+            <button class="btn-floating dark-grey top-right-btn  waves-effect waves-light tooltipped"
+                    data-position="bottom"
+                    data-delay="50" data-tooltip="{{#if eq owner
+                                                        "user"}}modifier votre avatar{{else}}modifier l'avatar du projet{{/if}}"
+                    editImgBtn>
+                <i class="material-icons">mode_edit</i>
+            </button>
+
+        {{/if}}
+
+    </div>
     </div>
     {{#if editingImg}}
-        <form action="#" class="dark-grey small-padding">
+        <div class="row">
+        <form action="#" class=" small-padding col s12">
             <p>Uploader une image</p>
             <div class="file-field input-field">
                 <div class="btn orange waves-effect waves-light">
@@ -32,7 +36,8 @@
                 </div>
             </div>
         </form>
-        <br>
+        </div>
+
 
         <div id="imgPreview" class="modal dark-grey modal-fixed-footer ">
             <div class="modal-content">

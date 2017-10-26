@@ -5,26 +5,30 @@
 
         <div class="col m4">
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 no-padding">
+                    <div class="trame-box-vertical relative">
                     {{> editImage
                             owner = "project"
                             projectId = project._id}}
+                    </div>
                 </div>
-                <hr>
-                <br>
-                <div class="col s12">
+
+                <div class="col s12 no-padding">
+                    <div class="trame-box relative">
                     {{>editLocation
                             owner = "project"
                             projectId = project._id}}
+                    </div>
                 </div>
-                <hr>
-                <br>
+
             </div>
         </div>
-        <div class="col m8">
+        <div class="col m8 no-padding">
+            <div class="trame-box relative">
             {{>editDescription
                     owner = "project"
                     projectId = project._id}}
+            </div>
         </div>
     </div>
 </template>
