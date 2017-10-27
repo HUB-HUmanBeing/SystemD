@@ -174,6 +174,7 @@ const User = Class.create({
         },
         //changement de la position de l'utilisateur
         updateSelfLocation(lat, lng, city, country) {
+            //on verifie que c'est bien l'utilisateur courant qui fait la demande pour lui meme
             if (this._id === Meteor.userId()) {
                 this.profile.location.lat = lat;
                 this.profile.location.lng = lng;

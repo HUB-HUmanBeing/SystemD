@@ -47,19 +47,11 @@ User.extend({
                             //lorsqu'on trouve celle qui concerne l'utilisateur et qui est en attente
                             if(projectInvitation.user_id === user._id && projectInvitation.status === "waiting"){
                                 //on passe son status à décliné
-                                console.log(j)
-                                console.log(declineMessage)
                                 project.invitations[j].status = "declined"
-                                console.log(project.invitations[j].status)
                                 //on renseigne le champs informant des raisons de ce refus
                                 project.invitations[j].answerMessage = declineMessage
-                                console.log(project.invitations[j].answerMessage)
                                 //enfin on sauvegarde
-                                project.save(function (err, id) {
-                                    console.log(err)
-                                    console.log(id)
-                                })
-                                console.log('la deuxieme marche')
+                                project.save()
                             }
                         })
                     })
