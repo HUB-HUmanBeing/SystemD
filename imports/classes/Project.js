@@ -103,11 +103,11 @@ const Project = Class.create({
             validator: [
                 {
                     type: 'maxLength',
-                    param: 50
+                    param: 30
                 },
                 {
                     type: 'minLength',
-                    param: 5
+                    param: 3
                 }
             ],
         },
@@ -157,30 +157,63 @@ const Project = Class.create({
             // le tout multiplié par 100 pour l'avoir en pourcentage
             return parseInt((completed / fieldsToComplete.length) * 100)
         },
+        /*****************************
+         * return true si l'utilisateur est membre du projet
+         * @param userId
+         * @returns {boolean}
+         */
+        isAdmin(userId) {
+            check(userId, String);
+            let isAdmin = false
+            this.members.forEach((member) => {
+                if (member.user_id === userId && member.roles.includes("admin")) {
+                    isAdmin = true
+                }
+            })
+            return isAdmin
+        },
         /****************************
          * verifie qu'un utilisateur est invitable dans un projet
          * @param userId
          * @returns {boolean}
          ********************************************************/
-        isInvitableUser(userId){
+        isInvitableUser(userId) {
             check(userId, String)
             //on check que c'est bien un admin qui fait la demande
-            check(this.isAdmin(Meteor.userId()), true)
             //on verifie que l'utilisateur n'est pas déja membre
             let isInvitable = true;
-            if(this.isMember(userId)){
+            if (this.isMember(userId)) {
                 isInvitable = false
-            }else{
+            } else {
                 //et qu'il n'a pas déja une invitation en attente
-                this.invitations.forEach((invitation)=>{
-                    if(invitation.user_id === userId && invitation.status === 'waiting'){
+                this.invitations.forEach((invitation) => {
+                    if (invitation.user_id === userId && invitation.status === 'waiting') {
                         isInvitable = false
                     }
                 })
             }
             return isInvitable
         },
-        relativeDistance(){
+        /***************
+         * verifie que l'utilisateur est membre du projet
+         * @param userId
+         * @returns {boolean}
+         */
+        isMember(userId) {
+            check(userId, String);
+            let isMember = false;
+            this.members.forEach((member) => {
+                if (member.user_id === userId) {
+                    isMember = true
+                }
+            })
+            return isMember
+        },
+        /*************************
+         * renvoie la distance relative entre l'utilisateur courant et un projet
+         * @returns {Number}
+         */
+        relativeDistance() {
             let distance = new Haversine(
                 this.publicInfo.location.lat,
                 this.publicInfo.location.lng,
@@ -227,42 +260,8 @@ const Project = Class.create({
                 }
             });
         },
-        /***************
-         * verifie que l'utilisateur est membre du projet
-         * @param userId
-         * @returns {boolean}
-         */
 
-        isMember(userId) {
-            check(userId, String);
-            let isMember = false;
-            this.members.forEach((member) => {
-                if (member.user_id === Meteor.userId()) {
-                    isMember = true
-                }
-            })
-            return isMember
-        },
-        /*****************************
-         * return true si l'utilisateur est membre du projet
-         * @param userId
-         * @returns {boolean}
-         */
-        isAdmin(userId) {
-            check(userId, String);
-            let isAdmin = false
-            this.members.forEach((member) => {
-                if (member.user_id === userId && member.roles.includes("admin")) {
-                    isAdmin = true
-                }
-            })
-            return isAdmin
-        },
-        /*********************************
-         * modifie dynamiquement les info de la partie publique
-         * @param key
-         * @param value
-         */
+
         updateInfoItem(key, value) {
             //on check que l'utilisateur est bien admin du projet
             check(key, String);
@@ -288,7 +287,7 @@ const Project = Class.create({
             this.publicInfo.location.country = country;
             return this.save()
 
-        }
+        },
     }
 });
 

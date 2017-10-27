@@ -12,6 +12,7 @@ Project.extend({
         inviteUser(userId, invitationMessage) {
             //on check que l'utilisateur qu'on veut ajouter existe
             let invitedUser = User.findOne({_id: userId});
+
             check(invitedUser, User);
             //on vérifie que l'invitation est valide
             check(this.isInvitableUser(userId), true)

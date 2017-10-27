@@ -4,8 +4,11 @@ Template.inviteProjectForm.helpers({
     //on verifie que l'utilisateur peut etre invité
     isInvitable : function () {
         let userId = Template.instance().data.userId;
-        let project = Project.findOne({_id : iTemplate.instance().data.project.project_id});
-        return project.isInvitableUser(userId)
+
+        let project = Project.findOne({_id : Template.instance().data.project.project_id});
+        if(project){
+            return project.isInvitableUser(userId)
+        }
     }
 });
 
