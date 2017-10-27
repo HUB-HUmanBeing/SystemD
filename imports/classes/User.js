@@ -1,6 +1,7 @@
 //sont définis ici la classe user et sa sous classe profile
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
+import Project from '/imports/classes/Project'
 
 const UserInvitation = Class.create({
     name: 'UserInvitation',
@@ -62,8 +63,7 @@ const Profile = Class.create({
             default: function () {
                 return '/images/icon/user_icon.png'
             },
-            // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
-            // ,
+            // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)// ,
         },
         location: {
             type: Location,
@@ -182,9 +182,7 @@ const User = Class.create({
                 return this.save()
             }
         },
-        declineInvitation(projectId, declineMessage) {
 
-        }
     }
 });
 

@@ -6,4 +6,6 @@ import User from '/imports/classes/User';
 import Project from '/imports/classes/Project';
 Meteor.startup(() => {
   // code to run on server at startup
+    Accounts.removeDefaultRateLimit();
+
 });
