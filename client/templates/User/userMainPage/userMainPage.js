@@ -39,6 +39,7 @@ Template.userMainPage.onCreated(function () {
         {distance : 0,
         nbOfProjects : 0}
     )
+    dump(this.computedInfo)
     //on recupere l'utilisateur courant'
     user = User.findOne(Template.instance().data.fetch()[0]._id)
     //puis on appele la methode renvoyant les info

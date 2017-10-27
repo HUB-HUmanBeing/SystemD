@@ -9,27 +9,56 @@
                 {{invitationMessage}}
 
             </div>
-            <div class="row">
-                <div class="col s6">
-                    <button class="btn-floating btn-large waves-effect waves-light green tooltipped"
+            <div class="row no-margin">
+                <div class="col s12 no-padding right-align">
+                    <a class=" waves-effect waves-green  tooltipped small-margin"
                             data-position="bottom" data-delay="50"
                             data-tooltip="Rejoindre le projet"
-                            style="">
-                        <i class="material-icons">done</i>
-                    </button>
-                </div>
-                <div class="col s6">
-                    <button class="btn-floating btn-large waves-effect waves-light red tooltipped"
+                            style=""
+                            joinProject>
+                        <i class="material-icons green-text">done</i>
+                    </a>
+                    <a href="#decline-{{project_id}}"
+                            class=" waves-effect waves-red modal-trigger tooltipped small-margin"
                             data-position="bottom"
                             data-delay="50" data-tooltip="Décliner l'invitation"
                             style="">
-                        <i class="material-icons">clear</i>
-                    </button>
+                        <i class="material-icons red-text">clear</i>
+                    </a>
+                    <div id="decline-{{project_id}}" class="modal left-align modal-fixed-footer dark-grey">
+                        <div class="modal-content">
+                            <h5>Décliner l'invitation à rejoindre le projet</h5><span class="right-align">{{>miniature
+                                _id = project_id
+                                type = "project"}}</span>
+                            <form class="col s12 " declineInvit>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="InswerInvitationMessage" class="materialize-textarea no-margin"></textarea>
+                                        <label for="textarea">accompagner votre refus d'un message</label>
+                                    </div>
+                                    <div class="col s12 relative">
+                                        <button class="btn-floating waves-effect waves-light red right-align tooltipped absolute"
+                                                style="right: 10px; top: -27px;"
+                                                data-position="bottom" data-delay="50"
+                                                data-tooltip="décliner l'invitation" type="submit"
+                                                name="action">
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer dark-grey">
+                            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat tooltipped "
+                               style="right: 10px; top: -27px;"
+                               data-position="bottom" data-delay="50"
+                               data-tooltip="Annuler">
+                                <i class="material-icons">clear</i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </template>

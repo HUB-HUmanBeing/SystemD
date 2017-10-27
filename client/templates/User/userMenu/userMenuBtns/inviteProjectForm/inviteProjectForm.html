@@ -1,7 +1,7 @@
 <template name="inviteProjectForm">
     <div class="row">
         {{#if isInvitable}}
-            <form class="col s12">
+            <form class="col s12 ">
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="invitationMessage" class="materialize-textarea no-margin"></textarea>
@@ -19,7 +19,7 @@
                 </div>
             </form>
             {{else}}
-            <p><b>{{username}}</b> est déja invité ou membre du projet <b>{{project.name}}</b></p>
+            <p class="orange-text"><b>{{username}}</b> est déja invité ou membre du projet <b>{{project.name}}</b></p>
         {{/if}}
     </div>
 </template>

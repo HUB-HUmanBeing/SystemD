@@ -21,7 +21,7 @@ if (Meteor.users.find().count() === 0) {
             }
         },
         {
-            username: "noëmie",
+            username: "noemie",
             img: "https://i.imgur.com/TvenST3.jpg",
             location: {
                 lat: 44.0545668,
@@ -40,7 +40,7 @@ if (Meteor.users.find().count() === 0) {
             }
         },
         {
-            username: "jérémy",
+            username: "jeremy",
             img: "",
             location: {
                 lat: 44.2102417,

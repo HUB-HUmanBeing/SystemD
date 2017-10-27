@@ -181,6 +181,9 @@ const User = Class.create({
                 this.profile.location.country = country;
                 return this.save()
             }
+        },
+        declineInvitation(projectId, declineMessage) {
+
         }
     }
 });
