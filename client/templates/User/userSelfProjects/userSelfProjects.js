@@ -1,11 +1,31 @@
 Template.userSelfProjects.helpers({
     //renvoie les projets administrés par l'utilisateur
     adminProjects: function () {
-        return Template.instance().adminProjects.get()
+        //on récupere les projets de l'utilisateur
+        let projects = Meteor.user().profile.projects
+        let adminProjects = []
+        //on parcours les projets de l'utilisateur courant
+        projects.forEach(function (project) {
+            //et on choisi ceux ou l'utilisateur est admin
+            if (project.roles.includes("admin")) {
+                adminProjects.push(project)
+            }
+        })
+        return adminProjects
     },
     //renvoie les projets ou l'utilisateur n'est pas membre
     memberProjects: function () {
-        return Template.instance().memberProjects.get()
+        //on récupere les projets de l'utilisateur
+        let projects = Meteor.user().profile.projects
+        let memberProjects = []
+        //on parcours les projets de l'utilisateur courant
+        projects.forEach(function (project) {
+            //et on choisit ceux ou l'utilisateur n'est pas admin
+            if (!project.roles.includes("admin")) {
+                memberProjects.push(project)
+            }
+        })
+       return memberProjects
     },
     //renvoie les invitations en attente de l'utilisateur ou false
     waitingInvitations: function () {
@@ -47,25 +67,7 @@ Template.userSelfProjects.events({
 
 //a la création du template
 Template.userSelfProjects.onCreated(function () {
-    //séparations des projets entre projets où l'on
-    // est administrateur et ceux ou l'on est simple membre
 
-    //on récupere les projets de l'utilisateur
-    let projects = Meteor.user().profile.projects
-    let adminProjects = []
-    let memberProjects = []
-    //on parcours les projets de l'utilisateur courant
-    projects.forEach(function (project) {
-        //et on les trie
-        if (project.roles.includes("admin")) {
-            adminProjects.push(project)
-        } else {
-            memberProjects.push(project)
-        }
-    })
-    //enfin, on les insere dans les réactive-var
-    this.adminProjects = new ReactiveVar(adminProjects)
-    this.memberProjects = new ReactiveVar(memberProjects)
 });
 
 Template.userSelfProjects.onRendered(function () {

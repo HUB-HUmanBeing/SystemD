@@ -55,7 +55,7 @@ Template.editDescription.events({
                 (error, result) => {
                     //si ca marche pas, on renvoie l'erreur par toast
                     if (error) {
-                        Materialize.toast(error, 6000, 'red')
+                        Materialize.toast("une erreur s'est produite", 4000, 'red')
                     } else {
                         Materialize.toast("la description à été mise à jour", 6000, 'green')
                     }
@@ -71,7 +71,7 @@ Template.editDescription.events({
                 (error, result) => {
                     //si ca marche pas, on renvoie l'erreur par toast
                     if (error) {
-                        Materialize.toast(error, 6000, 'red')
+                        Materialize.toast("une erreur s'est produite", 4000, 'red')
                     } else {
                         Materialize.toast("la description à été mise à jour", 6000, 'green')
                     }

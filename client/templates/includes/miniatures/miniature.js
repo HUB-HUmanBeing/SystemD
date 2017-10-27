@@ -35,7 +35,7 @@ Template.miniature.helpers({
                 }
             }
             //sinon = en attendant le chargement, on renvoie le logo du site
-        }else{
+        } else {
             return "/images/icon/loading.png"
         }
     },
@@ -49,7 +49,7 @@ Template.miniature.helpers({
             } else if (type === "user") {
                 return Template.instance().user.get().username
             }
-        }else{
+        } else {
             return '.....'
         }
     },
@@ -82,26 +82,21 @@ Template.miniature.onCreated(function () {
     this.project = new ReactiveVar("");
     this.user = new ReactiveVar("");
 
-    //on check le type
-    if (type === "project") {
-        //on lance un autorun pour attendre le retour d'info complémentaires qu'on cherche a obtenir par la suscription
-        this.autorun(function () {
-            let handle = Meteor.subscribe('singleProject', id)
-            //quant c'est pret, on rempli la réactive var
-            if (handle.ready()) {
+    //on lance un autorun pour attendre le retour d'info complémentaires qu'on cherche a obtenir par la suscription
+    this.autorun(function () {
+        let handle = Meteor.subscribe('miniature', id, type)
+        //quant c'est pret, on rempli la réactive var
+        if (handle.ready()) {
+            if (type === "project") {
+                Template.instance().project.set(Project.findOne({_id: id}))
+            } else if (type === "user") {
                 Template.instance().project.set(Project.findOne({_id: id}))
             }
-        })
-    } else if (type === "user") {
-        //on lance un autorun pour attendre le retour d'info complémentaires qu'on cherche a obtenir par la suscription
-        this.autorun(function () {
-            let handle = Meteor.subscribe('userPublicInfo', id)
-            //quant c'est pret, on rempli la réactive var
-            if (handle.ready()) {
-                Template.instance().user.set(User.findOne({_id: id}))
-            }
-        })
-    }
+
+        }
+    })
+
+
 });
 
 Template.miniature.onRendered(function () {

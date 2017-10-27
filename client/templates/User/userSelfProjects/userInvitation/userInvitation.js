@@ -19,7 +19,7 @@ Template.userInvitation.events({
         currentUser.callMethod('acceptInvitation', instance.data.project_id, (error)=>{
             //on donne un feedback a l'utilisateur
             if (error) {
-                Materialize.toast(error, 6000, 'red')
+                Materialize.toast("une erreur s'est produite", 4000, 'red')
             } else {
                 //on toast un feedback a l'utilisateur
                 Materialize.toast("Vous faites désormais parti des membres du projet", 6000, 'green')
@@ -45,7 +45,7 @@ Template.userInvitation.events({
             (error) =>{
                 //on donne un feedback a l'utilisateur
                 if (error) {
-                    Materialize.toast(error, 6000, 'red')
+                    Materialize.toast("une erreur s'est produite", 4000, 'red')
                 } else {
                     //on toast un feedback a l'utilisateur
                     Materialize.toast("vous avez décliné l'invitation", 6000, 'orange')

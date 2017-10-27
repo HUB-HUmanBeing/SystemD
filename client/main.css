@@ -23,6 +23,12 @@ COULEURS
 .green-border{
     border: 2px solid #4CAF50 !important;
 }
+.hover-orange:hover *{
+    color: #C87F0A !important;
+}
+.hover-green:hover *{
+    color: #4CAF50 !important;
+}
 /*****BACKGROUNDS****/
 .trame-texture{
     background-image: url("/images/trame/trame4-black.png");
