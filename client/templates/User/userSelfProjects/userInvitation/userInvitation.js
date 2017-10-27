@@ -8,6 +8,24 @@ Template.userInvitation.helpers({
 });
 
 Template.userInvitation.events({
+    /*****************************
+     * Accepter l'invitation à rejoindre le projet
+     */
+    'click [joinProject]' : function (event, instance) {
+        event.preventDefault()
+        //on instancie la classe user d'astronomy
+        let currentUser = User.findOne(Meteor.userId())
+        //on apelle la methode d'acceptation d'une invitaation
+        currentUser.callMethod('acceptInvitation', instance.data.project_id, (error)=>{
+            //on donne un feedback a l'utilisateur
+            if (error) {
+                Materialize.toast(error, 6000, 'red')
+            } else {
+                //on toast un feedback a l'utilisateur
+                Materialize.toast("Vous faites désormais parti des membres du projet", 6000, 'green')
+            }
+        })
+    },
     /*********************************
      * action d'un utilisateur pour décliner une invitation de la part d'un projet
      * @param event

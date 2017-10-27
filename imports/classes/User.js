@@ -37,6 +37,7 @@ const UserProject = Class.create({
     name: 'UserProject',
     fields: {
         project_id: String,
+        //on garde le nom, ce qui évite une subscription pour le menu latéral
         name: String,
         roles: {
             type: [String],
