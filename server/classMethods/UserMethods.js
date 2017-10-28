@@ -47,11 +47,8 @@ User.extend({
                             //lorsqu'on trouve celle qui concerne l'utilisateur et qui est en attente
                             //(sécurité : si l'utilidateur n'est pas dans le tableau des invités ca ne sonctionne pas)
                             if (projectInvitation.user_id === user._id && projectInvitation.status === "waiting") {
-                                //on supprime l'invitation du tableau
-                                project.invitations.splice(j)
-                                project.members.push({
-                                    user_id: Meteor.userId()
-                                });
+                                //on passe le status de l'invitation a acceptée
+                                project.invitations.status = "accepted";
                                 //enfin on sauvegarde
                                 project.save()
                             }
