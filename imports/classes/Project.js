@@ -19,9 +19,7 @@ const PublicInfo = Class.create({
         },
         imgUrl: {
             type: String,
-            default: function () {
-                return '/images/icon/project_icon.png'
-            },
+            default: '/images/icon/project_icon.png'
             // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
             // ,
         },
@@ -76,9 +74,7 @@ const ProjectInvitation = Class.create({
         adminId: String,
         status: {
             type: String,
-            default: function () {
-                return "waiting"
-            }
+            default: "waiting"
         },
         answerMessage: {
             type: String,
@@ -168,7 +164,7 @@ const Project = Class.create({
                 if (member.user_id === userId && member.roles.includes("admin")) {
                     isAdmin = true
                 }
-            })
+            });
             return isAdmin
         },
         /****************************
@@ -177,7 +173,7 @@ const Project = Class.create({
          * @returns {boolean}
          ********************************************************/
         isInvitableUser(userId) {
-            check(userId, String)
+            check(userId, String);
             //on check que c'est bien un admin qui fait la demande
             //on verifie que l'utilisateur n'est pas déja membre
             let isInvitable = true;
