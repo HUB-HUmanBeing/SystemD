@@ -41,7 +41,8 @@ Template.inviteProjectForm.events({
 });
 
 Template.inviteProjectForm.onCreated(function () {
-    //add your statement here
+    //on souscris aux projets pour pouvoir récuperer leur liste de membres
+    Meteor.subscribe('singleProject',Template.instance().data.project.project_id )
 
 });
 

@@ -1,7 +1,7 @@
 <template name="editImage">
-<div class="row">
+<div class="row no-margin">
     <div class="col s12 row no-padding no-margin">
-        <img class="responsive-img col s12" src="{{imageUrl}}">
+        <img class="responsive-img col s12 no-padding" src="{{imageUrl}}">
 
         {{#if editingImg}}
             <button class="btn-floating dark-grey top-right-btn waves-effect waves-light" editImgBtn>
@@ -22,8 +22,8 @@
     </div>
     </div>
     {{#if editingImg}}
-        <div class="row">
-        <form action="#" class=" small-padding col s12">
+        <div class="row no-margin">
+        <form action="#" class=" no-padding col s12">
             <p>Uploader une image</p>
             <div class="file-field input-field">
                 <div class="btn orange waves-effect waves-light">

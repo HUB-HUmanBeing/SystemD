@@ -3,106 +3,125 @@
         <div class="col s12 no-padding">
             {{>userMenu user = currentUser}}
         </div>
-        <div class="col s12 xl10 offset-xl1 no-padding">
+        <div class="col s12 xl10 offset-xl1">
             <div class="row">
                 <div class="col s12 m7">
-                    <div class="trame-box ">
-                        <h5 class="center-align">Mes Projets</h5>
-                        <div class="row">
-                            <div class="col s12">
-                                <h6>Administrateur</h6>
-                                <br>
-                                <div class="row no-margin">
-                                    {{#each project in adminProjects}}
-                                        <div class="col s12 m6">
-                                            {{>miniature
-                                                    _id = project.project_id
-                                                    type = "project"}}
+                    <div class="row">
+                        <div class="card trame-box ">
+                            <div class="card-content">
+                                <span class="card-title">Mes Projets</span>
+                                <div class="col s12">
+                                    <h6>Administrateur</h6>
+                                    <br>
+                                    <div class="row">
+                                        {{#each project in adminProjects}}
+                                            <div class="col s12 m6">
+                                                {{>miniature
+                                                        _id = project.project_id
+                                                        type = "project"}}
+                                            </div>
+
+
+                                        {{/each}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <h6>Membre</h6>
+                                        <br>
+                                        <div class="row no-margin">
+                                            {{#each project in memberProjects}}
+                                                <div class="col s12 m6 n">
+                                                    {{>miniature
+                                                            _id = project.project_id
+                                                            type = "project"}}
+                                                </div>
+                                            {{/each}}
                                         </div>
-
-
-                                    {{/each}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col s12">
-                                <h6>Membre</h6>
-                                <div class="row no-margin">
-                                    {{#each project in memberProjects}}
-                                        <div class="col s12 m6">
-                                            {{>miniature
-                                                    _id = project.project_id
-                                                    type = "project"}}
-                                        </div>
-                                    {{/each}}
-                                </div>
-                            </div>
-                        </div>
-
-
                     </div>
                 </div>
                 <div class="col s12 m5 ">
                     {{#if waitingInvitations}}
-                    <div class="trame-box">
-                        <div class="trame-box-header">
-                            <h5>Invitations en attente</h5>
-
-                        </div>
-                        {{#each invitation in waitingInvitations}}
-                            <div class="row">
-                                <div class="col s12 small-padding darken-grey">
-
-                                        {{>userInvitation invitation}}
-
-
-
-                                </div>
-                            </div>
-                        {{/each}}
-                    </div>
-                    {{/if}}
-                    {{#if declinedInvitations}}
-                        <ul class="collapsible trame-box" data-collapsible="accordion" style="border: none !important;">
-
-                                <li>
-                                    <div class="collapsible-header" style="background-color: inherit; border: none !important;">
-                                        <h5>Invitations Déclinées <i class="material-icons ">arrow_drop_down</i></h5>
-
-                                    </div>
-                                    <div class="collapsible-body no-padding" style="border: none !important;">
-                                    {{#each invitation in declinedInvitations}}
-                                        <div class="row  darken-grey small-padding">
-                                            <div class="col s12  ">
-                                                <div class="row no-margin ">
-                                                    <div class="col s8 no-padding">
-                                                        {{>miniature
-                                                                _id = invitation.project_id
-                                                                type = "project"}}
-                                                    </div>
-                                                    <div class="col s4 no-padding">
-                                                        <p class="right-align no-padding no-margin">
-                                                            <i class="grey-text darken-1 small-info right-align">le {{invitation.date}}</i>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    {{invitation.invitationMessage}}
+                        <div class="row">
+                            <div class="col s12 ">
+                                <div class="card trame-box ">
+                                    <div class="card-content">
+                                        <span class="card-title">Invitations en attente</span>
+                                        {{#each invitation in waitingInvitations}}
+                                            <div class="row">
+                                                <div class="col s12 no-padding ">
+                                                    {{>userInvitation invitation}}
                                                 </div>
                                             </div>
-                                        </div>
-                                    {{/each}}
+                                        {{/each}}
                                     </div>
-                                </li>
-
-                        </ul>
+                                </div>
+                            </div>
+                        </div>
                     {{/if}}
-                    <div class="row no-margin">
-                        <div class="col s12 no-padding">
-                            <div class="trame-box ">
-                                <h6>Rechercher des projets par catégorie et distance</h6>
-                                {{>workInProgress}}
+                    {{#if declinedInvitations}}
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card trame-box ">
+                                    <div class="card-content">
+                                        <ul class="collapsible no-margin" data-collapsible="accordion" style="border: none !important;">
+
+                                            <li>
+                                                <div class="collapsible-header card-title"
+                                                     style=" border: none !important;">
+                                                    <div class="row no-margin">
+                                                        <div class="col s10 no-padding">
+                                                            Invitations Déclinées
+                                                        </div>
+                                                        <div class="col s2">
+                                                            <i class="material-icons ">arrow_drop_down</i>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="collapsible-body no-padding" style="border: none !important;">
+                                                    {{#each invitation in declinedInvitations}}
+                                                        <div class="row">
+                                                            <div class="col s12  ">
+                                                                <div class="row no-margin ">
+                                                                    <div class="col s8 no-padding">
+                                                                        {{>miniature
+                                                                                _id = invitation.project_id
+                                                                                type = "project"}}
+                                                                    </div>
+                                                                    <div class="col s4 valign-wrapper">
+                                                                        <p class="right-align">
+                                                                            <i class="grey-text darken-1 small-info right-align">le {{invitation.date}}</i>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    {{invitation.invitationMessage}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {{/each}}
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {{/if}}
+                    <div class="row ">
+                        <div class="col s12">
+                            <div class="card trame-box ">
+                                <div class="card-content">
+                                    <span class="card-title">Rechercher des projets par catégorie et distance</span>
+                                    {{>workInProgress}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -110,5 +129,4 @@
             </div>
         </div>
     </div>
-
 </template>

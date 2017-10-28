@@ -35,7 +35,8 @@ Meteor.publish('userPublicInfo', function (id) {
 });
 
 /******************************************
- *pour les projets, si l'utilisateur courant est admin, on lui renvoi tout, sinon, on renvoie que les infos publiques
+ *pour les projets, si l'utilisateur courant est admin,
+ * on lui renvoi tout, sinon, on renvoie que les infos publiques
  **********************************/
 Meteor.publish('singleProject', function (id) {
     check(id, String);

@@ -9,14 +9,14 @@
                     <div class="row">
                         <div class="col s12 trame-box">
                             <img class="responsive-img " src="{{project.publicInfo.imgUrl}}">
-                            <p><i class="material-icons tiny">location_on</i>
+                            <p class="valign-wrapper"><i class="material-icons tiny">location_on</i>
                                 {{#if project.publicInfo.location.city}}
                                     {{project.publicInfo.location.city}}, {{project.publicInfo.location.country}}  {{relativeDistance}}
                                 {{else}}
                                     position non renseignée
                                 {{/if}}
                             </p>
-                            <p><i class="material-icons tiny">group_work</i> {{numberOfMembers}} </p>
+                            <p class="valign-wrapper"><i class="material-icons tiny">people </i> {{numberOfMembers}} </p>
                         </div>
                         <div class="col s12 trame-box">
                                 <h6>catégories</h6>

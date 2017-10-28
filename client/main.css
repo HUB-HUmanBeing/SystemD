@@ -39,24 +39,11 @@ COULEURS
     background-image: url("/images/trame/trame4-black.png");
     background-color: #1c1c1c !important;
     background-size: cover;
-    padding: 15px !important;
-    margin: 10px 10px 10px  10px !important;
-    border-radius: 5px !important;
+
     -webkit-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
     -moz-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
     box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
 
-}
-.trame-box-vertical{
-    background-image: url("/images/trame/trame4-black-vertical.png");
-    background-color: #1c1c1c !important;
-    background-size: cover;
-    padding: 15px !important;
-    margin: 10px 10px 10px  10px !important;
-    border-radius: 5px !important;
-    -webkit-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
-    -moz-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
-    box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
 }
 
 /******COULEUR POLICES******/
@@ -196,9 +183,9 @@ input:-webkit-autofill {
 }
 .top-right-btn{
     position: absolute;
-    top : 10px;
-    right: -19px;
-}
+    top : 25px;
+    right: -15px;
+    }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #404040 !important;
 }
@@ -210,4 +197,17 @@ input:-webkit-autofill {
 }
 :-moz-placeholder { /* Firefox 18- */
     color: #404040 !important;
+}
+.card{
+    margin: 0 !important;
+
+}
+.card-content{
+    padding: 20px !important;
+}
+.card-title{
+    background-color: rgba(0, 0, 0, 0.12);
+    margin: -20px -20px 20px -20px !important;
+    padding: 7px 10px 7px 10px;
+    font-size: 1.05em !important;
 }
