@@ -41,7 +41,6 @@ arborescenceStructure = function () {
                         id: project.project_id,
                         name: project.name,
                         path: "projectMainPage",
-                        icon: "arrow_forward",
                         pathData : function () {
                             return { _id : project.project_id}
                         }
