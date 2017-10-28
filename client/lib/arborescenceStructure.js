@@ -1,9 +1,15 @@
+import User from '/imports/classes/User';
+
 arborescenceStructure = function () {
+
+    //On récupère les données de l'utilisateur actuel
+    let currentUser = Meteor.user();
+
     return [
         {
             id: "user",
             name: function () {
-                return Meteor.user().username;
+                return currentUser.username;
             },
             color: "green",
             image: "user_icon.png",
@@ -35,25 +41,7 @@ arborescenceStructure = function () {
             color: "orange",
             image: "project_icon.png",
             subMenu: function () {
-                let items = [];
-                Meteor.user().profile.projects.forEach(function (project) {
-                    items.push({
-                        id: project.project_id,
-                        name: project.name,
-                        path: "projectMainPage",
-                        icon: "arrow_forward",
-                        pathData : function () {
-                            return { _id : project.project_id}
-                        }
-                    })
-                });
-                items.push({
-                    id: "newProject",
-                    name: "Nouveau Projet",
-                    path: "#",
-                    icon: "add_box"
-                });
-                return items
+                    return User.findOne(currentUser._id).projectsData();
             },
         },
         {
@@ -145,4 +133,4 @@ arborescenceStructure = function () {
             ]
         }
     ]
-}
+};
