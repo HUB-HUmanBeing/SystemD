@@ -173,7 +173,6 @@ const User = Class.create({
                     id: project.project_id,
                     name: project.name,
                     path: "projectMainPage",
-                    icon: "arrow_forward",
                     pathData : { _id : project.project_id}
                 })
             });

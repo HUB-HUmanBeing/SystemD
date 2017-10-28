@@ -48,11 +48,8 @@ User.extend({
                             //lorsqu'on trouve celle qui concerne l'utilisateur et qui est en attente
                             //(sécurité : si l'utilisateur n'est pas dans le tableau des invités ça ne fonctionne pas)
                             if (projectInvitation.user_id === user._id && projectInvitation.status === "waiting") {
-                                //on supprime l'invitation du tableau
-                                project.invitations.splice(j);
-                                project.members.push({
-                                    user_id: currentUserId
-                                });
+                                //on passe le status de l'invitation a acceptée
+                                project.invitations.status = "accepted";
                                 //enfin on sauvegarde
                                 project.save()
                             }
