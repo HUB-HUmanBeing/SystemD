@@ -182,7 +182,6 @@ const User = Class.create({
                 id: "newProject",
                 name: "Nouveau Projet",
                 path: "#",
-                icon: "add_box"
             });
             return items
         },
