@@ -163,7 +163,7 @@ const Project = Class.create({
          */
         isAdmin(userId) {
             check(userId, String);
-            let isAdmin = false
+            let isAdmin = false;
             this.members.forEach((member) => {
                 if (member.user_id === userId && member.roles.includes("admin")) {
                     isAdmin = true
@@ -205,7 +205,7 @@ const Project = Class.create({
                 if (member.user_id === userId) {
                     isMember = true
                 }
-            })
+            });
             return isMember
         },
         /*************************
@@ -213,11 +213,12 @@ const Project = Class.create({
          * @returns {Number}
          */
         relativeDistance() {
+            let currentUserLocation = Meteor.user().profile.location;
             let distance = new Haversine(
                 this.publicInfo.location.lat,
                 this.publicInfo.location.lng,
-                Meteor.user().profile.location.lat,
-                Meteor.user().profile.location.lng);
+                currentUserLocation.lat,
+                currentUserLocation.lng);
 
             return parseInt(distance.kilometers)
         }
@@ -264,7 +265,7 @@ const Project = Class.create({
         updateInfoItem(key, value) {
             //on check que l'utilisateur est bien admin du projet
             check(key, String);
-            check(this.isAdmin(Meteor.userId()), true)
+            check(this.isAdmin(Meteor.userId()), true);
             this.publicInfo[key] = value;
             return this.save()
 
@@ -279,7 +280,7 @@ const Project = Class.create({
          */
         updateProjectLocation(lat, lng, city, country) {
             //on check que l'utilisateur est bien admin du projet
-            check(this.isAdmin(Meteor.userId()), true)
+            check(this.isAdmin(Meteor.userId()), true);
             this.publicInfo.location.lat = lat;
             this.publicInfo.location.lng = lng;
             this.publicInfo.location.city = city;

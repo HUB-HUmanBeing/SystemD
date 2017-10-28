@@ -8,9 +8,10 @@ Template.editImage.helpers({
     },
     //lien vers l'url de l'image stockée en base
     imageUrl: function () {
-        if(Template.instance().owner.get() === "user"){
+        let owner = Template.instance().owner.get();
+        if(owner === "user"){
             return Meteor.user().profile.imgUrl
-        }else if(Template.instance().owner.get() === "project"){
+        }else if(owner === "project"){
             let currentProject = Project.findOne(Template.instance().data.projectId);
             return currentProject.publicInfo.imgUrl
         }
@@ -52,11 +53,11 @@ Template.editImage.events({
         Meteor.setTimeout(function () {
             $('.modal').modal();
             $('#imgPreview').modal('open')
-        }, 100)
+        }, 100);
         //on redimentionne l'image
         Resizer.resize(file, {width: 200, height: 200, cropSquare: true}, function (err, file) {
             //recuperation du fichier en base64
-            var reader = new window.FileReader();
+            let reader = new window.FileReader();
             reader.readAsDataURL(file);
             //quant c'est bon, on continue
             reader.onloadend = function () {
@@ -80,8 +81,9 @@ Template.editImage.events({
      * Si l'utilisateur valide la preview
      ************************************/
     'click [validateNewImage]': function (event, instance) {
+        let owner = instance.owner.get();
         //si on est dans l'instance appelée par l'utilisateur
-        if (instance.owner.get() === "user") {
+        if (owner === "user") {
             //on instancie notre objet useur avec les valeurs du currentUser
             let currentUser = User.findOne(Meteor.userId());
             //puis on lui applique la methode
@@ -91,21 +93,21 @@ Template.editImage.events({
                 (error, result) => {
                     //si ca marche pas, on renvoie l'erreur par toast
                     if (error) {
-                        Materialize.toast("une erreur s'est produite", 4000, 'red')
+                        Materialize.toast("une erreur s'est produite", 4000, 'red');
                     } else {
                         //sinon, on toast un feedback a l'utilisateur
-                        Materialize.toast("l'avatar à été mis à jour", 6000, 'green')
+                        Materialize.toast("l'avatar à été mis à jour", 6000, 'green');
                         //on reinitialise la preview
-                        instance.urlPreview.set("")
+                        instance.urlPreview.set("");
                         //on ferme la fenetre modale
                         $('.modal').modal('close');
-                        $('#imgPreview').modal('close')
+                        $('#imgPreview').modal('close');
                         //on ferme le panneau d'edition
                         instance.editingImg.set(false)
                     }
                 })
             //si on est dans l'instance de type projet
-        }else if(instance.owner.get() === "project"){
+        }else if(owner === "project"){
             //on instancie le projet
             let currentProject = Project.findOne(Template.instance().data.projectId);
             //puis on lui applique la methode
@@ -119,13 +121,13 @@ Template.editImage.events({
                         Materialize.toast("une erreur s'est produite", 4000, 'red')
                     } else {
                         //sinon, on toast un feedback a l'utilisateur
-                        Materialize.toast("l'avatar à été mis à jour", 6000, 'green')
+                        Materialize.toast("l'avatar à été mis à jour", 6000, 'green');
                         //on reinitialise la preview
-                        instance.urlPreview.set("")
+                        instance.urlPreview.set("");
 
                         //on ferme la fenetre modale
                         $('.modal').modal('close');
-                        $('#imgPreview').modal('close')
+                        $('#imgPreview').modal('close');
                         //on ferme le panneau d'edition
                         instance.editingImg.set(false)
                     }
@@ -136,9 +138,9 @@ Template.editImage.events({
 
 Template.editImage.onCreated(function () {
     //boolen pour savoir si l'utilisateur a cliqué sur l'edition de l'image
-    this.editingImg = new ReactiveVar(false)
+    this.editingImg = new ReactiveVar(false);
     //boolen pour savoir si l'on doit ouvrir la fenetre modale
-    this.urlPreview = new ReactiveVar(false)
+    this.urlPreview = new ReactiveVar(false);
     this.owner = new ReactiveVar(Template.instance().data.owner)
 });
 

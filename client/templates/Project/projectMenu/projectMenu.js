@@ -1,4 +1,4 @@
-import User from '/imports/classes/Project';
+//import User from '/imports/classes/Project';
 
 /********************************
  * ensemble des helpers permettant de renvoyer des
@@ -27,9 +27,9 @@ Template.projectMenu.helpers({
             return url
         }
     },
-    //icone a affficher apres le nom de projet, indiquant le role de l'utilisateur
+    //icone a afficher apres le nom de projet, indiquant le role de l'utilisateur
     icon: function () {
-        let project= Template.instance().data
+        let project= Template.instance().data;
         let icon = "";
         let tooltip = "";
         //on boucle sur les projets de l'utilisateur courant
@@ -57,13 +57,13 @@ Template.projectMenu.helpers({
     tooltip: function () {
         return Template.instance().tooltip.get()
     },
-    //on transmet le path  vers lequel ca doir renvoyer
+    //on transmet le path  vers lequel ça doir renvoyer
     path: function () {
         return Router.path("projectMainPage", {_id: Template.instance().data.project._id})
     },
     //tableau des elements a renvoyer a la barre de navigation
     navBarItems: function () {
-        let projectId = Template.instance().data.project._id
+        let projectId = Template.instance().data.project._id;
         let navBarItems = [
             {
                 title: "Gestion",
@@ -82,7 +82,7 @@ Template.projectMenu.helpers({
                 }
             }
 
-        ]
+        ];
         return navBarItems
     }
 
@@ -95,7 +95,7 @@ Template.projectMenu.events({
 });
 
 Template.projectMenu.onCreated(function () {
-    this.tooltip = new ReactiveVar()
+    this.tooltip = new ReactiveVar();
 
 });
 
