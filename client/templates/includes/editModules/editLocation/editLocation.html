@@ -1,8 +1,7 @@
 <template name="editLocation">
     <div class="row no-margin">
-        <div class="row">
-            <div class="col s10">
-                <h6>localisation</h6>
+        <div class="row no-margin">
+            <div class="col s10 no-padding">
                 {{#if and city country}}
                     <p>{{city}}, <b>{{country}}</b></p>
                 {{else}}
@@ -22,18 +21,18 @@
 
         </div>
         {{#if editingLocation}}
-            <div class="  row">
-                <div class="col s4 offset-s1 small-padding dark-grey center-align">
-                    <div class=" tooltipped waves-effect waves-light " data-position="bottom" data-delay="50"
+            <div class="  row no-margin" style="padding-top: 20px">
+                <div class="col s4 offset-s1 small-padding y center-align">
+                    <button class="btn-floating relative dark-grey tooltipped waves-effect waves-light " data-position="bottom" data-delay="50"
                          data-tooltip="rechercher une position" useSearchForm>
-                        <span class="material-icons ">search</span>
-                    </div>
+                        <i class="material-icons ">search</i>
+                    </button>
                 </div>
-                <div class="col s4 offset-s2 small-padding dark-grey center-align">
-                    <div class=" tooltipped waves-effect waves-light " data-position="bottom" data-delay="50"
+                <div class="col s4 offset-s2 small-padding  center-align">
+                    <button class="btn-floating relative dark-grey tooltipped waves-effect waves-light " data-position="bottom" data-delay="50"
                          data-tooltip="Utiliser ma position actuelle" useUserPosition>
-                        <span class="material-icons ">person_pin_circle</span>
-                    </div>
+                        <i class="material-icons ">person_pin_circle</i>
+                    </button>
                 </div>
 
                 {{#if useSearchForm}}
@@ -49,9 +48,11 @@
                             </div>
                         </form>
                         {{#if searchResults}}
+                            <p class="small-info grey-text darken-1" >Veuillez choisir votre localité</p>
                             {{#each searchResult in searchResults}}
                                 {{#if and searchResult.address.city searchResult.address.country}}
-                                    <div class="row no-margin">
+                                    <div class="row no-margin" style="padding-top: 20px">
+
                                         <span class="col s10">
                                             {{searchResult.address.city}}, <b>{{searchResult.address.country}}</b>
                                         </span>

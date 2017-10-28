@@ -86,7 +86,8 @@ Template.editLocation.events({
                         Materialize.Toast("La géolocalisation a échouée", 6000, "red")
                     } else {
                         instance.geolocErrorCounter.set(1)
-                        Materialize.Toast("Veillez réessayer de vous localiser", 6000, "blue")
+                        console.log("test")
+                        Materialize.Toast("Veillez réessayer de vous localiser", 6000, "orange")
                     }
                     //si c'est bon
                 } else if (result) {

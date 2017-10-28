@@ -49,7 +49,7 @@ Project.extend({
             // courant n'a que l'objet amputé des info non publiées)
             project= Project.findOne(this._id)
             //et on renvoie le nombre de membres -1 car il y a la valeur {} par default
-            return project.members.length - 1
+            return project.members.length
 
         }
     }

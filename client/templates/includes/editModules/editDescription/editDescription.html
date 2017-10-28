@@ -2,7 +2,7 @@
 
 
         <form class=" " updateDescription>
-            <div class="row">
+            <div class="row no-margin">
                 <div class="input-field col s12">
                     {{#unless description}}
                         <textarea class="materialize-textarea" data-length="1000"
@@ -13,14 +13,13 @@
                                   value="{{description}}" id="description"
                                   descriptionText></textarea>
                     {{/unless}}
-                    <label for="description" class="active">Description</label>
                 </div>
             </div>
         </form>
 
         <button class="btn-floating top-right-btn dark-grey  waves-effect waves-light ">
             {{#if isEditingFlags.description}}
-                <i class="material-icons blue-text tooltipped"
+                <i class="material-icons green-text tooltipped"
                    data-position="bottom" data-delay="50" data-tooltip="enregister"
                    saveDescriptionBtn>file_download</i>
             {{else}}

@@ -3,35 +3,54 @@
         <div class="col s12 no-padding">
             {{>userMenu user = currentUser}}
         </div>
-        <div class="col s12 xl10 offset-xl1 no-padding">
-            <div class="row small-margin small-padding">
-                <div class="col m4">
-                    <p class="trame-box">votre profil est complété à
-                        <span class="tooltipped {{completedColor completed}}-text"
-                              data-position="bottom" data-delay="50"
-                              data-tooltip="votre profil est complété à {{completed}}%">
-                            {{completed}}%
-                         </span>
-                    </p>
-
+        <div class="col s12 xl10 offset-xl1">
+            <div class="row">
+                <div class="col m4 no-padding">
                     <div class="row">
-                        <div class="col s12 no-padding">
-                            <div class="trame-box relative">
-                                {{>editImage owner = "user"}}
-                            </div>
-
-                        </div>
-
-                        <div class="col s12 no-padding ">
-                            <div class="trame-box relative">
-                                {{>editLocation owner = "user"}}
+                        <div class="col s12 ">
+                            <div class="card trame-box ">
+                                <div class="card-content">
+                                    votre profil est complété à
+                                    <span class="tooltipped {{completedColor completed}}-text"
+                                          data-position="bottom" data-delay="50"
+                                          data-tooltip="votre profil est complété à {{completed}}%">
+                                        {{completed}}%
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col s12 ">
+                            <div class="card trame-box relative">
+                                <div class="card-content">
+                                    <span class="card-title">Avatar</span>
+
+                                    {{>editImage owner = "user"}}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 ">
+                            <div class="card trame-box relative">
+                                <div class="card-content">
+                                    <span class="card-title">Localisation</span>
+
+                                    {{>editLocation owner = "user"}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="col s12 m8 no-padding">
-                    <div class="trame-box relative">
-                        {{> editDescription owner = "user"}}
+                <div class="col s12 m8 ">
+                    <div class="card trame-box relative">
+                        <div class="card-content">
+                            <span class="card-title">description</span>
+                            {{> editDescription owner = "user"}}
+                        </div>
                     </div>
                 </div>
             </div>

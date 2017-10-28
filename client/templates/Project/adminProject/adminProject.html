@@ -3,23 +3,28 @@
         <div class="col s12 no-padding">
             {{>projectMenu project = project}}
         </div>
-        <div class="col s12 xl10 offset-xl1 no-padding">
+        <div class="col s12 xl10 offset-xl1 no-padding" style="padding-top: -20px">
             <div class="row ">
-                <div class="col s12  darken-4 no-padding">
-                    <ul class="tabs swipable grey darken-4">
-                        <li class="tab col s4">
-                            <a href="#edit-project-info">Informations
-                                <span class=" tooltipped {{completedColor completed}}-text"
-                                      data-position="bottom" data-delay="50"
-                                      data-tooltip="Les infos du projet sont complétés à {{completed}}%">
+                <div class="col s12 no-padding">
+                    <div class="row">
+                        <div class="col s12  darken-4 no-padding">
+                            <ul class="tabs swipable grey darken-4">
+                                <li class="tab col s4">
+                                    <a href="#edit-project-info">Informations
+                                        <span class=" tooltipped {{completedColor completed}}-text"
+                                              data-position="bottom" data-delay="50"
+                                              data-tooltip="Les infos du projet sont complétés à {{completed}}%">
                                     {{completed}}%
                                 </span>
-                            </a>
-                        </li>
-                        <li class="tab col s4"><a href="#members">Membres</a></li>
-                        <li class="tab col s4 "><a href="#blog">Blog</a></li>
-                    </ul>
+                                    </a>
+                                </li>
+                                <li class="tab col s4"><a href="#members">Membres</a></li>
+                                <li class="tab col s4 "><a href="#blog">Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
                 <div id="edit-project-info" class="col s12 no-padding">{{>editProjectInfo project=project}}</div>
                 <div id="members" class="col s12 no-padding">{{>workInProgress}}</div>
                 <div id="blog" class="col s12 no-padding">{{>workInProgress}}</div>

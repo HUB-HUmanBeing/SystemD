@@ -7,37 +7,54 @@
             <div class="row">
                 <div class="col s12 m3">
                     <div class="row">
-                        <div class="col s12 trame-box">
-                            <img class="responsive-img " src="{{user.profile.imgUrl}}">
-                            <p><i class="material-icons tiny">location_on</i> {{computedInfo.distanceField}}</p>
-                            <p><i class="material-icons tiny">group_work</i> {{computedInfo.projectField}}</p>
+                        <div class="col s12 no-padding">
+                            <div class="card trame-box ">
+                                <div class="card-content">
+                                    <span class="card-title">Infos</span>
+                                    <img class="responsive-img " src="{{user.profile.imgUrl}}">
+                                    <p>
+                                        <i class="material-icons tiny">location_on</i> {{computedInfo.distanceField}}
+                                    </p>
+                                    <p>
+                                        <i class="material-icons tiny">group_work</i> {{computedInfo.projectField}}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m9">
+                <div class="col s12 m9 no-padding">
                     <div class="row">
-                        <div class="col s12 trame-box">
-                            <p class="no-margin">
-                                {{#if user.profile.description}}
-                                    {{ user.profile.description}}
-                                {{else}}
-                                    <i>la description de l'utilisateur n'est pas encore renseignée</i>
-                                {{/if}}
-                            </p>
+                        <div class="col s12 ">
+                            <div class="card trame-box ">
+                                <div class="card-content">
+                                    <span class="card-title">Description</span>
+                                    <p class="no-margin">
+                                        {{#if user.profile.description}}
+                                            {{ user.profile.description}}
+                                        {{else}}
+                                            <i>la description de l'utilisateur n'est pas encore renseignée</i>
+                                        {{/if}}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12 m6 no-padding">
-                            <div class="trame-box">
-                                <h6>Compétences :</h6>
-                                {{>workInProgress}}
+                        <div class="col s12 m6 ">
+                            <div class="card trame-box ">
+                                <div class="card-content">
+                                    <span class="card-title">Compétences</span>
+                                    {{>workInProgress}}
+                                </div>
                             </div>
-
                         </div>
                         <div class="col s12 m6 ">
-                            <div class="trame-box">
-                            <h6>Interessé par les projets de type :</h6>
-                            {{>workInProgress}}
+                            <div class="card trame-box">
+                                <div class="card-content">
+                                    <span class="card-title">Interessé par les projets de type</span>
+                                    {{>workInProgress}}
+                                </div>
                             </div>
                         </div>
                     </div>
