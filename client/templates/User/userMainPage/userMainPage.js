@@ -7,7 +7,7 @@ Template.userMainPage.helpers({
     },
     //on met en forme les infos calculés sur l'utilisateur afin qu'elles soient bien présentées
     computedInfo: function () {
-        let computedInfo = Template.instance().computedInfo.get()
+        let computedInfo = Template.instance().computedInfo.get();
         //participation a un projet
         if (isNaN(computedInfo.nbOfProjects) || computedInfo.nbOfProjects === 0) {
             computedInfo.projectField = "Ne participe à aucun projet"
@@ -35,12 +35,12 @@ Template.userMainPage.events({
 
 Template.userMainPage.onCreated(function () {
     //on donne des valeurs par défault avant de lancer la methode
-    this.computedInfo = new ReactiveVar(
-        {distance : 0,
+    this.computedInfo = new ReactiveVar({
+        distance : 0,
         nbOfProjects : 0}
-    )
+    );
     //on recupere l'utilisateur courant'
-    user = User.findOne(Template.instance().data.fetch()[0]._id)
+    let user = User.findOne(Template.instance().data.fetch()[0]._id);
     //puis on appele la methode renvoyant les info
     user.callMethod('computedInfo', (error, result) => {
         //et on remplit la reactive var

@@ -19,9 +19,7 @@ const PublicInfo = Class.create({
         },
         imgUrl: {
             type: String,
-            default: function () {
-                return '/images/icon/project_icon.png'
-            },
+            default: '/images/icon/project_icon.png'
             // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
             // ,
         },
@@ -76,9 +74,7 @@ const ProjectInvitation = Class.create({
         adminId: String,
         status: {
             type: String,
-            default: function () {
-                return "waiting"
-            }
+            default: "waiting"
         },
         answerMessage: {
             type: String,
@@ -163,12 +159,12 @@ const Project = Class.create({
          */
         isAdmin(userId) {
             check(userId, String);
-            let isAdmin = false
+            let isAdmin = false;
             this.members.forEach((member) => {
                 if (member.user_id === userId && member.roles.includes("admin")) {
                     isAdmin = true
                 }
-            })
+            });
             return isAdmin
         },
         /****************************
@@ -177,7 +173,7 @@ const Project = Class.create({
          * @returns {boolean}
          ********************************************************/
         isInvitableUser(userId) {
-            check(userId, String)
+            check(userId, String);
             //on check que c'est bien un admin qui fait la demande
             //on verifie que l'utilisateur n'est pas déja membre
             let isInvitable = true;
@@ -205,7 +201,7 @@ const Project = Class.create({
                 if (member.user_id === userId) {
                     isMember = true
                 }
-            })
+            });
             return isMember
         },
         /*************************
@@ -213,11 +209,12 @@ const Project = Class.create({
          * @returns {Number}
          */
         relativeDistance() {
+            let currentUserLocation = Meteor.user().profile.location;
             let distance = new Haversine(
                 this.publicInfo.location.lat,
                 this.publicInfo.location.lng,
-                Meteor.user().profile.location.lat,
-                Meteor.user().profile.location.lng);
+                currentUserLocation.lat,
+                currentUserLocation.lng);
 
             return parseInt(distance.kilometers)
         }
@@ -264,7 +261,7 @@ const Project = Class.create({
         updateInfoItem(key, value) {
             //on check que l'utilisateur est bien admin du projet
             check(key, String);
-            check(this.isAdmin(Meteor.userId()), true)
+            check(this.isAdmin(Meteor.userId()), true);
             this.publicInfo[key] = value;
             return this.save()
 
@@ -279,7 +276,7 @@ const Project = Class.create({
          */
         updateProjectLocation(lat, lng, city, country) {
             //on check que l'utilisateur est bien admin du projet
-            check(this.isAdmin(Meteor.userId()), true)
+            check(this.isAdmin(Meteor.userId()), true);
             this.publicInfo.location.lat = lat;
             this.publicInfo.location.lng = lng;
             this.publicInfo.location.city = city;

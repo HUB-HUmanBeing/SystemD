@@ -25,9 +25,7 @@ const UserInvitation = Class.create({
         },
         status: {
             type: String,
-            default: function () {
-                return "waiting"
-            }
+            default: "waiting"
         }
     },
 });
@@ -147,12 +145,13 @@ const User = Class.create({
          * @returns {Number}
          ****************************/
         distance() {
-            let that = this;
+            let currentUserLocation = Meteor.user().profile.location;
             let distance = new Haversine(
-                that.profile.location.lat,
-                that.profile.location.lng,
-                Meteor.user().profile.location.lat,
-                Meteor.user().profile.location.lng);
+                this.profile.location.lat,
+                this.profile.location.lng,
+                currentUserLocation.lat,
+                currentUserLocation.lng
+            );
 
             return parseInt(distance.kilometers)
         },
