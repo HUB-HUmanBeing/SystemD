@@ -1,7 +1,7 @@
 //sont définis ici la classe user et sa sous classe profile
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
-import Project from '/imports/classes/Project'
+// import Project from '/imports/classes/Project'
 
 const UserInvitation = Class.create({
     name: 'UserInvitation',
@@ -147,7 +147,7 @@ const User = Class.create({
          * @returns {Number}
          ****************************/
         distance() {
-            let that = this
+            let that = this;
             let distance = new Haversine(
                 that.profile.location.lat,
                 that.profile.location.lng,
@@ -162,7 +162,30 @@ const User = Class.create({
          *********************/
         nbOfProjects() {
             return this.profile.projects.length
-        }
+        },
+        /**
+         * Renvoie une liste comprenant les propriétés du/des projets d'un utilisateur.
+         * @returns {Array}
+         */
+        projectsData() {
+            let items = [];
+            this.profile.projects.forEach(function (project) {
+                items.push({
+                    id: project.project_id,
+                    name: project.name,
+                    path: "projectMainPage",
+                    icon: "arrow_forward",
+                    pathData : { _id : project.project_id}
+                })
+            });
+            items.push({
+                id: "newProject",
+                name: "Nouveau Projet",
+                path: "#",
+                icon: "add_box"
+            });
+            return items
+        },
     },
     meteorMethods: {
         //modification de la description utilisateur
