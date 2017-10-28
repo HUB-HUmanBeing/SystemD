@@ -22,9 +22,9 @@
         </ul>
     </div>
 
-    <div id="" class="modal left-align invite-to-projects-modal  grey darken-4 scrollbar fixed-modal "
+    <div id="" class="modal left-align invite-to-projects-modal  grey darken-4  fixed-modal "
          style="overflow-x: hidden !important;">
-        <div class="modal-content">
+        <div class="modal-content scrollbar" style="overflow: scroll">
             <ul class="collapsible popout" data-collapsible="accordion">
                 <h5>Inviter {{name}} à rejoindre un de vos projets</h5>
                 {{#each project in adminProjects}}
@@ -45,8 +45,8 @@
                 {{/each}}
             </ul>
         </div>
-        <div class="modal-footer grey darken-4">
-            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">
+        <div class="modal-footer grey darken-4 ">
+            <a href="#!" class="modal-action modal-close waves-effect waves-light ">
                 <i class="material-icons">close</i>
             </a>
         </div>

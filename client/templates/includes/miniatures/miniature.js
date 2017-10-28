@@ -3,6 +3,7 @@ import Project from '/imports/classes/Project'
 
 Template.miniature.helpers({
     //add you helpers here
+    //helper permettant de renvoyer la couleur du helpeur a afficher
     color: function () {
         let type = Template.instance().data.type;
         if (type === "project") {
@@ -11,7 +12,9 @@ Template.miniature.helpers({
             return "green"
         }
     },
+    //helpeur permettant de renvoyer l'url de l'image a afficher
     imgUrl: function () {
+        //on ne l'execute que si les données sont chargées dans les réactivevar
         if (Template.instance().project.get() || Template.instance().user.get()) {
             let type = Template.instance().data.type;
             if (type === "project") {
@@ -31,9 +34,14 @@ Template.miniature.helpers({
                     return url
                 }
             }
+            //sinon = en attendant le chargement, on renvoie le logo du site
+        } else {
+            return "/images/icon/loading.png"
         }
     },
+    //helpeur contenant le nom affiché
     name: function () {
+        //si le chargement est terminé, on renvoie le nom en fonction du type
         if (Template.instance().project.get() || Template.instance().user.get()) {
             let type = Template.instance().data.type;
             if (type === "project") {
@@ -41,8 +49,11 @@ Template.miniature.helpers({
             } else if (type === "user") {
                 return Template.instance().user.get().username
             }
+        } else {
+            return '.....'
         }
     },
+    //lien vers la main page du projet ou de l'user en fonction du type
     path: function () {
         if (Template.instance().project.get() || Template.instance().user.get()) {
             let type = Template.instance().data.type;
@@ -59,28 +70,33 @@ Template.miniature.events({
     //add your events here
 });
 
+//à la création du template,
+//on doit récupérer les info complémentaire pour afficher correctement notre vignette
 Template.miniature.onCreated(function () {
-    //add your statement here
+
+    //on récupere les valeurs passées en argument lors de l'appel du template
     let type = Template.instance().data.type;
     let id = Template.instance().data._id
+
+    //on crée deux réactive var pour acceuilir le contenu
     this.project = new ReactiveVar("");
     this.user = new ReactiveVar("");
 
-    if (type === "project") {
-        this.autorun(function () {
-            let handle = Meteor.subscribe('singleProject', id)
-            if (handle.ready()) {
+    //on lance un autorun pour attendre le retour d'info complémentaires qu'on cherche a obtenir par la suscription
+    this.autorun(function () {
+        let handle = Meteor.subscribe('miniature', id, type)
+        //quant c'est pret, on rempli la réactive var
+        if (handle.ready()) {
+            if (type === "project") {
+                Template.instance().project.set(Project.findOne({_id: id}))
+            } else if (type === "user") {
                 Template.instance().project.set(Project.findOne({_id: id}))
             }
-        })
-    } else if (type === "user") {
-        this.autorun(function () {
-            let handle = Meteor.subscribe('userPublicInfo', id)
-            if (handle.ready()) {
-                Template.instance().user.set(User.findOne({_id: id}))
-            }
-        })
-    }
+
+        }
+    })
+
+
 });
 
 Template.miniature.onRendered(function () {

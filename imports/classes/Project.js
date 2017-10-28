@@ -38,14 +38,13 @@ const Member = Class.create({
     name: 'Member',
     fields: {
         user_id: String,
-        username: String,
-        // joinAt : {
-        //     type : Date,
-        //     immutable: true,
-        //     default : function () {
-        //         return new Date()
-        //     }
-        // },
+        joinAt : {
+            type : Date,
+            immutable: true,
+            default : function () {
+                return new Date()
+            }
+        },
         roles: {
             type: [String],
             default: ["member"]

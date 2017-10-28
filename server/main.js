@@ -5,5 +5,7 @@ import { Class } from 'meteor/jagi:astronomy';
 import User from '/imports/classes/User';
 import Project from '/imports/classes/Project';
 Meteor.startup(() => {
-  // code to run on server at startup
+  // Todo a enlever avant la publication, evite le spam mais genere des bugs lorsqu'on teste vite
+    Accounts.removeDefaultRateLimit();
+
 });

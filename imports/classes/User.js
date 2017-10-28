@@ -1,6 +1,7 @@
 //sont définis ici la classe user et sa sous classe profile
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
+import Project from '/imports/classes/Project'
 
 const UserInvitation = Class.create({
     name: 'UserInvitation',
@@ -36,6 +37,7 @@ const UserProject = Class.create({
     name: 'UserProject',
     fields: {
         project_id: String,
+        //on garde le nom, ce qui évite une subscription pour le menu latéral
         name: String,
         roles: {
             type: [String],
@@ -62,8 +64,7 @@ const Profile = Class.create({
             default: function () {
                 return '/images/icon/user_icon.png'
             },
-            // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
-            // ,
+            // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)// ,
         },
         location: {
             type: Location,
@@ -174,6 +175,7 @@ const User = Class.create({
         },
         //changement de la position de l'utilisateur
         updateSelfLocation(lat, lng, city, country) {
+            //on verifie que c'est bien l'utilisateur courant qui fait la demande pour lui meme
             if (this._id === Meteor.userId()) {
                 this.profile.location.lat = lat;
                 this.profile.location.lng = lng;
@@ -182,9 +184,7 @@ const User = Class.create({
                 return this.save()
             }
         },
-        declineInvitation(projectId, declineMessage) {
 
-        }
     }
 });
 

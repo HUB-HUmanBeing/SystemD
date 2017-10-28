@@ -43,16 +43,61 @@
 
                     </div>
                 </div>
-                <div class="col s12 m5">
-                    {{#each invitation in invitations}}
-                        <div class="row no-margin">
-                            <div class="col s12 no-padding">
-                                <div class="trame-box relative">
-                                    {{>userInvitation invitation}}
+                <div class="col s12 m5 ">
+                    {{#if waitingInvitations}}
+                    <div class="trame-box">
+                        <div class="trame-box-header">
+                            <h5>Invitations en attente</h5>
+
+                        </div>
+                        {{#each invitation in waitingInvitations}}
+                            <div class="row">
+                                <div class="col s12 small-padding darken-grey">
+
+                                        {{>userInvitation invitation}}
+
+
+
                                 </div>
                             </div>
-                        </div>
-                    {{/each}}
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                    {{#if declinedInvitations}}
+                        <ul class="collapsible trame-box" data-collapsible="accordion" style="border: none !important;">
+
+                                <li>
+                                    <div class="collapsible-header" style="background-color: inherit; border: none !important;">
+                                        <h5>Invitations Déclinées <i class="material-icons ">arrow_drop_down</i></h5>
+
+                                    </div>
+                                    <div class="collapsible-body no-padding" style="border: none !important;">
+                                    {{#each invitation in declinedInvitations}}
+                                        <div class="row  darken-grey small-padding">
+                                            <div class="col s12  ">
+                                                <div class="row no-margin ">
+                                                    <div class="col s8 no-padding">
+                                                        {{>miniature
+                                                                _id = invitation.project_id
+                                                                type = "project"}}
+                                                    </div>
+                                                    <div class="col s4 no-padding">
+                                                        <p class="right-align no-padding no-margin">
+                                                            <i class="grey-text darken-1 small-info right-align">le {{invitation.date}}</i>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    {{invitation.invitationMessage}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                    </div>
+                                </li>
+
+                        </ul>
+                    {{/if}}
                     <div class="row no-margin">
                         <div class="col s12 no-padding">
                             <div class="trame-box ">
@@ -62,9 +107,8 @@
                         </div>
                     </div>
                 </div>
-
-                </div>
-                </div>
-
             </div>
+        </div>
+    </div>
+
 </template>

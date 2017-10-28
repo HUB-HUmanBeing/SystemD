@@ -24,7 +24,7 @@ Template.inviteProjectForm.events({
         //on appele la methode d'invitation
         project.callMethod('inviteUser', userId, invitationMessage, (error) => {
                 if (error) {
-                    Materialize.toast(error, 6000, 'red')
+                    Materialize.toast("une erreur s'est produite", 4000, 'red')
                 } else {
                     //si c'est bon, on ferme la modale
                     $('.invite-to-projects-modal').modal('close');
