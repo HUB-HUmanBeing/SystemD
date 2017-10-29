@@ -7,15 +7,50 @@ Template.adminProject.helpers({
     completed : function () {
         return Template.instance().data.fetch()[0].completed()
 
+    },
+    //permet de savoir quelle page doit etre affichée, afin d'eviter d'avoir a charger tout le html des 3 tabs
+    currentTab : function () {
+        return Template.instance().currentTab.get()
+    },
+    isAdmin : function () {
+        return Template.instance().isAdmin.get()
     }
+
 });
 
 Template.adminProject.events({
     //add your events here
+    'click [switchTab]' : function (event, instance) {
+        //on recupere le href de la tab cliquée
+        let clickedTabHref = event.currentTarget.href
+        //on extrait la page demandée (tout les caractères apres le #
+        let currentTab = clickedTabHref.substr(clickedTabHref.indexOf("#") + 1)
+ //et on passe le résultat dans la réactive var
+        instance.currentTab.set(currentTab)
+
+
+    }
 });
 
 Template.adminProject.onCreated(function () {
     //add your statement here
+    this.currentTab = new ReactiveVar("edit")
+
+    //réactive var ppour savoir si l'utilisateur courant est admin
+    this.isAdmin = new ReactiveVar(false);
+    //on parcours les projets de l'utilisateur courant
+    Meteor.user().profile.projects.forEach((project)=>{
+        //lorsqu'on est dans le bon projet et que l'utilisateur est admin
+        if(Template.instance().data.fetch()[0]._id === project.project_id && project.roles.includes("admin")){
+            //on change la réactive var
+            this.isAdmin.set(true);
+        }
+        else {
+            //sinon, on en profite pour mettre la page sur membres
+            this.currentTab.set("members")
+        }
+    })
+
 });
 
 Template.adminProject.onRendered(function () {
