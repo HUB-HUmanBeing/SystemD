@@ -4023,7 +4023,7 @@ nav ul a span.badge {
   }
 }
 
-@media only screen and (min-width: 1301px) {
+@media only screen and (min-width: 1284px) {
   .row .col.xl1 {
     width: 8.3333333333%;
     margin-left: auto;

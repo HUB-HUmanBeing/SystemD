@@ -29,8 +29,7 @@
                     </div>
                 </div>
                 <div id="edit" class="col s12 no-padding">{{#if eq currentTab "edit"}}{{>editProjectInfo project=project}}{{/if}}</div>
-                <div id="members" class="col s12 no-padding">{{#if
-                        currentTab = "members"}}{{>workInProgress}}{{/if}}</div>
+                <div id="members" class="col s12 no-padding">{{#if eq currentTab "members"}}{{>members project}}{{/if}}</div>
                 <div id="blog" class="col s12 no-padding">{{#if eq currentTab "blog"}}{{>workInProgress}}{{/if}}</div>
             </div>
         </div>

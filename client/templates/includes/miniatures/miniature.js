@@ -26,7 +26,8 @@ Template.miniature.helpers({
                     return url
                 }
             } else if (type === "user") {
-                let url = Template.instance().user.get().profile.imgUrl()
+
+                let url = Template.instance().user.get().profile.imgUrl
                 //si c'est pas l'image par défault, on fais une requete de miniature vers l'api d'imgur
                 if (url !== "/images/icon/user_icon.png") {
                     return Imgur.toThumbnail(url, Imgur.SMALL_THUMBNAIL)
@@ -76,7 +77,7 @@ Template.miniature.onCreated(function () {
 
     //on récupere les valeurs passées en argument lors de l'appel du template
     let type = Template.instance().data.type;
-    let id = Template.instance().data._id
+    let id = Template.instance().data._id;
 
     //on crée deux réactive var pour acceuilir le contenu
     this.project = new ReactiveVar("");
@@ -90,9 +91,8 @@ Template.miniature.onCreated(function () {
             if (type === "project") {
                 Template.instance().project.set(Project.findOne({_id: id}))
             } else if (type === "user") {
-                Template.instance().project.set(Project.findOne({_id: id}))
+                Template.instance().user.set(User.findOne({_id: id}))
             }
-
         }
     })
 

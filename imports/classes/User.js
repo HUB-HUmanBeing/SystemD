@@ -101,9 +101,15 @@ const User = Class.create({
             type: String,
             immutable: true
         },
-        services: Object,
+        services: {
+            type :Object,
+            optional : true
+        },
         createdAt: {
             type: Date,
+            default: function () {
+                return new Date()
+            },
             immutable: true
         },
         profile: {
@@ -146,13 +152,17 @@ const User = Class.create({
          ****************************/
         distance() {
             let currentUserLocation = Meteor.user().profile.location;
-            let distance = new Haversine(
-                that.profile.location.lonLat[1],
-                that.profile.location.lonLat[0],
-                Meteor.user().profile.location.lat,
-                Meteor.user().profile.location.lng);
+            if(this.profile.location.lonLat && currentUserLocation.lonLat){
+                let distance = new Haversine(
+                    this.profile.location.lonLat[1],
+                    this.profile.location.lonLat[0],
+                    currentUserLocation.lonLat[1],
+                    currentUserLocation.lonLat[0]);
 
-            return parseInt(distance.kilometers)
+                return parseInt(distance.kilometers)
+            }else{
+                return null
+            }
         },
         /***************
          *renvoie le nombre de projet d'un utilisateur
@@ -185,25 +195,7 @@ const User = Class.create({
         },
     },
     meteorMethods: {
-        //modification de la description utilisateur
-        updateProfileItem(key, value) {
-            check(key, String);
-            if (this._id === Meteor.userId()) {
-                this.profile[key] = value;
-                return this.save()
-            }
-        },
-        //changement de la position de l'utilisateur
-        updateSelfLocation(lat, lng, city, country) {
-            //on verifie que c'est bien l'utilisateur courant qui fait la demande pour lui meme
-            if (this._id === Meteor.userId()) {
-                this.profile.location.lat = lat;
-                this.profile.location.lng = lng;
-                this.profile.location.city = city;
-                this.profile.location.country = country;
-                return this.save()
-            }
-        },
+
 
     }
 });
