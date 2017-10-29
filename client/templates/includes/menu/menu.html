@@ -6,7 +6,7 @@
                 <div class="  no-padding small-margin " style="width: 70px !important ; height: 70px ">
                     <img src="/images/icon/hub_icon.png" alt="HUmanBeing" class="responsive-img  no-padding " style="position: static !important; z-index:1000 !important; width: 70px ; height: 70px ">
                 </div>
-                <div class="flex-auto  absolute" style="bottom: 0; right: 0"><h6 style="font-size: 17px !important;"><span class="">HU</span>man<span class="maj-title">B</span>eing</h6></div>
+                <div class="flex-auto  absolute" style="bottom: 0; right: 0"><h6 class="hover-white" style="font-size: 17px !important;"><span class="hover-white">HU</span>man<span class="maj-title hover-white">B</span>eing</h6></div>
             </a>
         </li>
         {{!formulaire de recherche}}
@@ -33,8 +33,9 @@
                             <div class=" no-padding valign-wrapper {{menuItem.color}} darken-1 square-icon">
                                 <img src="/images/icon/{{menuItem.image}}" alt="{{menuItem.name}}" class="responsive-img  " style="z-index: 100">
                             </div>
-                            <div class="flex-auto valign-wrapper">
-                                <spann class="center-align {{menuItem.color}}-text font-title" style="padding-left: 10px; ">{{menuItem.name}}</spann></div>
+                            <div class="flex-auto valign-wrapper hover-{{menuItem.color}}">
+                                <span class="center-align  light-grey-police font-title" style="padding-left: 10px; ">{{menuItem.name}}</span>
+                            </div>
                         </div>
                     <div class="collapsible-body no-padding  row no-margin medium-dark-grey">
                       {{>subMenu menuItem

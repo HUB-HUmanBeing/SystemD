@@ -1,14 +1,17 @@
 import {Class} from 'meteor/jagi:astronomy';
+
 const Location = Class.create({
     name: "Location",
     fields: {
-        lat: {
-            type: Number,
-            optional: true
-        },
-        lng: {
-            type: Number,
-            optional: true
+        lonLat: {
+            type: [Number],
+            optional: true,
+            validator: [
+                {
+                    type: 'length',
+                    param: 2
+                }
+            ],
         },
         city: {
             type: String,

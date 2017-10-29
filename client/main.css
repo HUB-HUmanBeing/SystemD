@@ -26,11 +26,26 @@ COULEURS
 .green-border{
     border: 2px solid #4CAF50 !important;
 }
+.hover-white:hover *{
+    color: white !important;
+}
 .hover-orange:hover *{
     color: #C87F0A !important;
 }
 .hover-green:hover *{
     color: #4CAF50 !important;
+}
+.hover-blue-grey:hover *{
+    color: #546E7A !important;
+}
+.hover-red:hover *{
+    color: #E53935 !important;
+}
+.hover-purpule:hover *{
+    color: #8E24AA !important;
+}
+.hover-amber:hover *{
+    color: #FFB300 !important;
 }
 /*****BACKGROUNDS****/
 .trame-texture{
@@ -140,9 +155,6 @@ input[type=password]:not(.browser-default){
     background-color: transparent !important;
     border-bottom: 1px solid #D62C1A !important;
     box-shadow: 0 1px 0 0 #000;
-}
-.btn-validation{
-    padding: 0 50px 0 50px !important;
 }
 
 input{

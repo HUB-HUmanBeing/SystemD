@@ -38,10 +38,10 @@ const Member = Class.create({
     name: 'Member',
     fields: {
         user_id: String,
-        joinAt : {
-            type : Date,
+        joinAt: {
+            type: Date,
             immutable: true,
-            default : function () {
+            default: function () {
                 return new Date()
             }
         },
@@ -134,13 +134,23 @@ const Project = Class.create({
         }
 
     },
+    indexes: {
+        name: {
+            fields: {
+                name: "text"
+            },
+            options: {
+                unique: true
+            }
+        }
+    },
     helpers: {
         //helper pour indiquer le pourcentage de complétion du projet
         completed() {
             //on liste ici les champs du profil faisant parti du ratio
             let fieldsToComplete = [
                 this.publicInfo.description,
-                this.publicInfo.location.lat,
+                this.publicInfo.location.lonLat,
                 this.publicInfo.imgUrl
             ];
             //on initialise
@@ -214,8 +224,8 @@ const Project = Class.create({
          */
         relativeDistance() {
             let distance = new Haversine(
-                this.publicInfo.location.lat,
-                this.publicInfo.location.lng,
+                this.publicInfo.location.lonLat[1],
+                this.publicInfo.location.lonLat[0],
                 Meteor.user().profile.location.lat,
                 Meteor.user().profile.location.lng);
 
@@ -264,9 +274,9 @@ const Project = Class.create({
         updateInfoItem(key, value) {
             //on check que l'utilisateur est bien admin du projet
             check(key, String);
-            check(this.isAdmin(Meteor.userId()), true)
+            check(this.isAdmin(Meteor.userId()), true);
             this.publicInfo[key] = value;
-            return this.save()
+            return this.save();
 
 
         },
@@ -279,9 +289,9 @@ const Project = Class.create({
          */
         updateProjectLocation(lat, lng, city, country) {
             //on check que l'utilisateur est bien admin du projet
-            check(this.isAdmin(Meteor.userId()), true)
-            this.publicInfo.location.lat = lat;
-            this.publicInfo.location.lng = lng;
+            check(this.isAdmin(Meteor.userId()), true);
+            this.publicInfo.location.lonLat = [lng, lat];
+
             this.publicInfo.location.city = city;
             this.publicInfo.location.country = country;
             return this.save()

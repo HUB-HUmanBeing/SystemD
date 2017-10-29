@@ -122,7 +122,7 @@ const User = Class.create({
             //on liste ici les champs du profil faisant parti du ratio
             let fieldsToComplete = [
                 this.profile.description,
-                this.profile.location.lat,
+                this.profile.location.lonLat,
                 this.profile.imgUrl
             ];
             //on initialise
@@ -149,8 +149,8 @@ const User = Class.create({
         distance() {
             let that = this;
             let distance = new Haversine(
-                that.profile.location.lat,
-                that.profile.location.lng,
+                that.profile.location.lonLat[1],
+                that.profile.location.lonLat[0],
                 Meteor.user().profile.location.lat,
                 Meteor.user().profile.location.lng);
 
@@ -199,8 +199,7 @@ const User = Class.create({
         updateSelfLocation(lat, lng, city, country) {
             //on verifie que c'est bien l'utilisateur courant qui fait la demande pour lui meme
             if (this._id === Meteor.userId()) {
-                this.profile.location.lat = lat;
-                this.profile.location.lng = lng;
+                this.profile.location.lonLat = [lng, lat];
                 this.profile.location.city = city;
                 this.profile.location.country = country;
                 return this.save()
