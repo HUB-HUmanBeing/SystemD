@@ -19,9 +19,7 @@ const PublicInfo = Class.create({
         },
         imgUrl: {
             type: String,
-            default: function () {
-                return '/images/icon/project_icon.png'
-            },
+            default: '/images/icon/project_icon.png'
             // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
             // ,
         },
@@ -38,10 +36,10 @@ const Member = Class.create({
     name: 'Member',
     fields: {
         user_id: String,
-        joinAt: {
-            type: Date,
+        joinAt : {
+            type : Date,
             immutable: true,
-            default: function () {
+            default : function () {
                 return new Date()
             }
         },
@@ -76,9 +74,7 @@ const ProjectInvitation = Class.create({
         adminId: String,
         status: {
             type: String,
-            default: function () {
-                return "waiting"
-            }
+            default: "waiting"
         },
         answerMessage: {
             type: String,
@@ -134,23 +130,13 @@ const Project = Class.create({
         }
 
     },
-    indexes: {
-        name: {
-            fields: {
-                name: "text"
-            },
-            options: {
-                unique: true
-            }
-        }
-    },
     helpers: {
         //helper pour indiquer le pourcentage de complétion du projet
         completed() {
             //on liste ici les champs du profil faisant parti du ratio
             let fieldsToComplete = [
                 this.publicInfo.description,
-                this.publicInfo.location.lonLat,
+                this.publicInfo.location.lat,
                 this.publicInfo.imgUrl
             ];
             //on initialise
@@ -173,12 +159,12 @@ const Project = Class.create({
          */
         isAdmin(userId) {
             check(userId, String);
-            let isAdmin = false
+            let isAdmin = false;
             this.members.forEach((member) => {
                 if (member.user_id === userId && member.roles.includes("admin")) {
                     isAdmin = true
                 }
-            })
+            });
             return isAdmin
         },
         /****************************
@@ -187,7 +173,7 @@ const Project = Class.create({
          * @returns {boolean}
          ********************************************************/
         isInvitableUser(userId) {
-            check(userId, String)
+            check(userId, String);
             //on check que c'est bien un admin qui fait la demande
             //on verifie que l'utilisateur n'est pas déja membre
             let isInvitable = true;
@@ -215,7 +201,7 @@ const Project = Class.create({
                 if (member.user_id === userId) {
                     isMember = true
                 }
-            })
+            });
             return isMember
         },
         /*************************
@@ -223,11 +209,12 @@ const Project = Class.create({
          * @returns {Number}
          */
         relativeDistance() {
+            let currentUserLocation = Meteor.user().profile.location;
             let distance = new Haversine(
-                this.publicInfo.location.lonLat[1],
-                this.publicInfo.location.lonLat[0],
-                Meteor.user().profile.location.lat,
-                Meteor.user().profile.location.lng);
+                this.publicInfo.location.lat,
+                this.publicInfo.location.lng,
+                currentUserLocation.lat,
+                currentUserLocation.lng);
 
             return parseInt(distance.kilometers)
         }
@@ -276,7 +263,7 @@ const Project = Class.create({
             check(key, String);
             check(this.isAdmin(Meteor.userId()), true);
             this.publicInfo[key] = value;
-            return this.save();
+            return this.save()
 
 
         },
@@ -290,8 +277,8 @@ const Project = Class.create({
         updateProjectLocation(lat, lng, city, country) {
             //on check que l'utilisateur est bien admin du projet
             check(this.isAdmin(Meteor.userId()), true);
-            this.publicInfo.location.lonLat = [lng, lat];
-
+            this.publicInfo.location.lat = lat;
+            this.publicInfo.location.lng = lng;
             this.publicInfo.location.city = city;
             this.publicInfo.location.country = country;
             return this.save()

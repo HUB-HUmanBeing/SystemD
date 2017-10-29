@@ -25,9 +25,7 @@ const UserInvitation = Class.create({
         },
         status: {
             type: String,
-            default: function () {
-                return "waiting"
-            }
+            default: "waiting"
         }
     },
 });
@@ -147,7 +145,7 @@ const User = Class.create({
          * @returns {Number}
          ****************************/
         distance() {
-            let that = this;
+            let currentUserLocation = Meteor.user().profile.location;
             let distance = new Haversine(
                 that.profile.location.lonLat[1],
                 that.profile.location.lonLat[0],
@@ -199,7 +197,8 @@ const User = Class.create({
         updateSelfLocation(lat, lng, city, country) {
             //on verifie que c'est bien l'utilisateur courant qui fait la demande pour lui meme
             if (this._id === Meteor.userId()) {
-                this.profile.location.lonLat = [lng, lat];
+                this.profile.location.lat = lat;
+                this.profile.location.lng = lng;
                 this.profile.location.city = city;
                 this.profile.location.country = country;
                 return this.save()
