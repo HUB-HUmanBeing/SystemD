@@ -211,8 +211,7 @@ const Project = Class.create({
         relativeDistance() {
             let currentUserLocation = Meteor.user().profile.location;
             let distance = new Haversine(
-                this.publicInfo.location.lat,
-                this.publicInfo.location.lng,
+                this.publicInfo.location.lonLat[0],
                 currentUserLocation.lat,
                 currentUserLocation.lng);
 
