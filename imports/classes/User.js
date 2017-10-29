@@ -59,9 +59,8 @@ const Profile = Class.create({
         },
         imgUrl: {
             type: String,
-            default: function () {
-                return '/images/icon/user_icon.png'
-            },
+            default: '/images/icon/user_icon.png'
+
             // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)// ,
         },
         location: {
@@ -147,11 +146,11 @@ const User = Class.create({
         distance() {
             let currentUserLocation = Meteor.user().profile.location;
             let distance = new Haversine(
-                that.profile.location.lonLat[1],
-                that.profile.location.lonLat[0],
-                Meteor.user().profile.location.lat,
-                Meteor.user().profile.location.lng);
-
+                this.profile.location.lonLat[1],
+                this.profile.location.lonLat[0],
+                currentUserLocation.lat,
+                currentUserLocation.lng
+            );
             return parseInt(distance.kilometers)
         },
         /***************
@@ -172,7 +171,7 @@ const User = Class.create({
                     id: project.project_id,
                     name: project.name,
                     path: "projectMainPage",
-                    pathData : { _id : project.project_id}
+                    pathData: {_id: project.project_id}
                 })
             });
             items.push({
