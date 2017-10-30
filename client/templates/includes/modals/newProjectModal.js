@@ -19,7 +19,7 @@ Template.newProjectModal.events({
         //on recupere la valeur entrée par l'utilisateur
         let projectName = event.target.value;
         //si la longueur est bonne
-        if (projectName.length >= 5) {
+        if (projectName.length >= 4 && projectName.length <= 30) {
             //on garde en memoir le timestamp du dernier keyup
             instance.lastKeyUpTime.set(event.timeStamp);
             //on attends un peu
@@ -30,16 +30,19 @@ Template.newProjectModal.events({
                     Meteor.call('isProjectExists', projectName, function (error, result) {
                         //si c'est bon en eface les message d'erreur et le disabled
                         if (result) {
-                            instance.errorMessage.set("")
-                            instance.disabled.set("")
+                            instance.errorMessage.set("");
+                            instance.disabled.set("");
                             //sinon on le remet et on revoie le message d'erreur
                         } else {
                             instance.errorMessage.set('Le projet "' + projectName + '" existe déja');
-                            instance.disabled.set("disabled")
+                            instance.disabled.set("disabled");
                         }
                     })
                 }
             }, 350)
+        } else {
+            instance.errorMessage.set('Le nom du projet doit faire entre 5 et 30 caractères');
+            instance.disabled.set("disabled");
         }
     },
     /******************************
@@ -53,22 +56,24 @@ Template.newProjectModal.events({
             let projectName = $('#new-project-name').val();
             //on instancie la classe projet avec un nouvel element
             let newProject = new Project();
-            //et on appelle dessus une de ses methodes
             newProject.callMethod('createProject',
                 projectName,
                 function (error, result) {
                     //on renvoie eventuellement l'erreur
                     if (error) {
-                        Materialize.toast(error.message, 6000, "red")
+                        Materialize.toast("Une erreur s'est produite", 6000, "red")
                         //si c'es bon,on toast un feedback a l'utilisateur
                     } else {
-                        Materialize.toast('Le Projet " ' + projectName + ' "à bien été créé', 6000, "green")
+                        Materialize.toast('Le Projet " ' + projectName + ' "à bien été créé', 6000, "green");
                         //on ferme la fenetre formulaire
                         $('.new-project-modal').modal('close');
                         //pui on redirige vers la page du projet nouvellement créé
                         Router.go('adminProject' , { _id : result})
                     }
                 })
+
+            //et on appelle dessus une de ses methodes
+
         }
     }
 });

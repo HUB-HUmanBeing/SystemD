@@ -36,7 +36,7 @@ const Member = Class.create({
     name: 'Member',
     fields: {
         user_id: String,
-        joinAt : {
+        joinedAt: {
             type : Date,
             immutable: true,
             default : function () {
@@ -51,7 +51,6 @@ const Member = Class.create({
     },
 });
 
-
 const Project = Class.create({
     name: 'Project',
     collection: Projects,
@@ -61,11 +60,12 @@ const Project = Class.create({
             validators: [
                 {
                     type: 'maxLength',
-                    param: 30
+                    param: 40
                 },
                 {
                     type: 'minLength',
-                    param: 3
+                    param: 4,
+                    message: 'Project name is too short'
                 }
             ],
         },
@@ -77,7 +77,10 @@ const Project = Class.create({
         },
         createdAt: {
             type: Date,
-            default: new Date()
+            default: function () {
+                return new Date()
+            },
+            immutable: true
         },
         publicInfo: {
             type: PublicInfo,
@@ -187,8 +190,6 @@ const Project = Class.create({
                 return null
             }
         }
-    },
-    meteorMethods: {
     }
 });
 

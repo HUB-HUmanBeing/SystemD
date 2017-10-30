@@ -59,9 +59,8 @@ const Profile = Class.create({
         },
         imgUrl: {
             type: String,
-            default: function () {
-                return '/images/icon/user_icon.png'
-            },
+            default: '/images/icon/user_icon.png'
+
             // validator: Validators.regexp(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)// ,
         },
         location: {
@@ -152,6 +151,7 @@ const User = Class.create({
          ****************************/
         distance() {
             let currentUserLocation = Meteor.user().profile.location;
+
             if(this.profile.location.lonLat && currentUserLocation.lonLat){
                 let distance = new Haversine(
                     this.profile.location.lonLat[1],
@@ -163,6 +163,7 @@ const User = Class.create({
             }else{
                 return null
             }
+
         },
         /***************
          *renvoie le nombre de projet d'un utilisateur
@@ -178,7 +179,7 @@ const User = Class.create({
         projectsData() {
             let items = [];
             this.profile.projects.forEach(function (project) {
-                let icon = project.roles.includes("admin")? "verified_user": "perm_identity"
+                let icon = project.roles.includes("admin") ? "verified_user" : "perm_identity";
                 items.push({
                     id: project.project_id,
                     name: project.name,

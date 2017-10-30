@@ -24,6 +24,7 @@ User.extend({
             check(key, String);
             if (this._id === Meteor.userId()) {
                 this.profile[key] = value;
+
                 return this.save()
             }
         },

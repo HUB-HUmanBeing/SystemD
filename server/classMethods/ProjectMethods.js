@@ -2,6 +2,7 @@ import Project from '/imports/classes/Project'
 import ProjectInvitation from '/imports/classes/ProjectInvitation'
 import User from '/imports/classes/User';
 import Projects from '/lib/collections/Projects'
+import {ValidationError} from 'meteor/jagi:astronomy';
 
 Project.extend({
     meteorMethods: {
@@ -21,26 +22,36 @@ Project.extend({
             //on rajoute l'utilisateur courant comme admin du projet
             this.members.push({
                 user_id: Meteor.userId(),
-
                 username: Meteor.user().username,
                 roles: ['member', 'admin']
             });
-            //on sauvegarde le projet, puis
-            return this.save(function (err, id) {
-                //si ya pas d'erreur
-                if (!err) {
-                    //on recupere l'objet astronomy de l'utilisateur courant
-                    let user = User.findOne(Meteor.userId());
-                    //on ajoute le projet créé
-                    user.profile.projects.push({
-                        project_id: id,
-                        name: projectName,
-                        roles: ['member', 'admin']
+
+            //On véfirie la validité de la valeur du champ "name" avec les validators de la classe.
+            this.validate({
+                fields: ['name']
+            }, (err) => {
+                //Si la valeur n'est pas valide, on arrète la méthode en renvoyant une Meteor.error.
+                if (ValidationError.is(err)) {
+                    throw new Meteor.Error();
+                } else {
+                    // sinon on sauvegarde le projet, puis
+                    return this.save(function (err, id) {
+                        //si il n'y a pas d'erreur
+                        if (!err) {
+                            //on recupere l'objet astronomy de l'utilisateur actuel
+                            let user = User.findOne(Meteor.userId());
+                            //on ajoute le projet créé
+                            user.profile.projects.push({
+                                project_id: id,
+                                name: projectName,
+                                roles: ['member', 'admin']
+                            });
+                            //et on sauvegarde
+                            user.save()
+                        }
                     });
-                    //et on sauvegarde
-                    user.save()
                 }
-            });
+            })
         },
 
 
@@ -63,7 +74,7 @@ Project.extend({
         updateProjectLocation(lat, lng, city, country) {
             //on check que l'utilisateur est bien admin du projet
             check(this.isAdmin(Meteor.userId()), true);
-            this.publicInfo.location.lonLat = [lng, lat]
+            this.publicInfo.location.lonLat = [lng, lat];
             this.publicInfo.location.city = city;
             this.publicInfo.location.country = country;
             return this.save()
@@ -79,7 +90,7 @@ Project.extend({
             let invitedUser = User.findOne({_id: userId});
             check(invitedUser, User);
             //on vérifie que l'invitation est valide
-            check(this.isInvitableUser(userId), true)
+            check(this.isInvitableUser(userId), true);
             //on check que l'utilisateur qui fait la demande est admin du projet'
             let adminId = Meteor.userId();
             check(this.isAdmin(adminId), true);
@@ -153,10 +164,12 @@ Project.extend({
         numberOfMembers() {
             //on recupere l'object utilisateur complet (car en théorie l'utilisateur
             // courant n'a que l'objet amputé des info non publiées)
-            project = Project.findOne(this._id)
+
+            project = Project.findOne(this._id);
+
             //et on renvoie le nombre de membres -1 car il y a la valeur {} par default
             return project.members.length
 
         }
     }
-})
+});
