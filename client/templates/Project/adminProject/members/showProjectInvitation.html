@@ -1,0 +1,35 @@
+<template name="showProjectInvitation">
+    <div class="row">
+        <div class="col s12  ">
+            <div class="row no-margin ">
+                <div class="col s9 no-padding">
+                    {{>miniature
+                            _id = invitation.user_id
+                            type = "user"}}
+                </div>
+                {{#if isAdmin}}
+                    <div class="col s3 valign-wrapper">
+                        {{>clearInvitationProject
+                                invitation=invitation
+                                project= currentProject
+                                requireConfirmation = requireConfirmation}}
+
+                    </div>
+                {{/if}}
+            </div>
+            <div class="row">
+                <p class="right-align no-margin no-padding">
+                    <i class="grey-text darken-1 small-info right-align">le {{localeDate
+                            invitation.sendAt}}</i>
+                </p>
+                <p class="small-info">
+                    {{invitation.invitationMessage}}
+                </p>
+                {{#if invitation.answerMessage}}
+                    <p class="orange-text ">L'utilisateur vous a répondu</p>
+                    <p class="small-info">{{invitation.answerMessage}}</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>

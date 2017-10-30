@@ -10,16 +10,17 @@
                 tooltip = tooltip
         }}
 
+        {{#if isMember}}
+            <div class="col s12 m7 l7 xl6 no-margin no-padding ">
 
-        <div class="col s12 m7 l7 xl6 no-margin no-padding ">
-
-            <ul class="tabs dark-grey pin-bottom">
-                {{#each navBarItem in navBarItems}}
-                    {{>contextualNavBarItem navBarItem}}
-                {{/each}}
+                <ul class="tabs dark-grey pin-bottom">
+                    {{#each navBarItem in navBarItems}}
+                        {{>contextualNavBarItem navBarItem}}
+                    {{/each}}
 
 
-            </ul>
-        </div>
+                </ul>
+            </div>
+        {{/if}}
     </div>
 </template>

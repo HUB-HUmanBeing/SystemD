@@ -1,4 +1,4 @@
-//import User from '/imports/classes/Project';
+import Project from '/imports/classes/Project'
 
 /********************************
  * ensemble des helpers permettant de renvoyer des
@@ -84,6 +84,20 @@ Template.projectMenu.helpers({
 
         ];
         return navBarItems
+    },
+    //true si l'utilisateur est membre du projet
+    isMember : function () {
+        //on le crée a false
+        let isMember= false;
+        //on parcoure les projets de l'utilisateur
+        Meteor.user().profile.projects.forEach((project)=>{
+            //si le projet est dedans
+            if(project.project_id === Template.instance().data.project._id){
+                //on la passe a true
+                isMember=true;
+            }
+        });
+        return isMember;
     }
 
 
@@ -96,6 +110,8 @@ Template.projectMenu.events({
 
 Template.projectMenu.onCreated(function () {
     this.tooltip = new ReactiveVar();
+
+
 
 });
 
