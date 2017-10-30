@@ -37,7 +37,8 @@ Template.members.helpers({
         //on parcours ses invitations
         invitations.forEach((invitation) => {
             if (invitation.status === "waiting") {
-                //et on les insere dans le tableau réponse si elles valident la condition
+                //et on les insere dans le tableau réponse si elles valident la condition (en bidouillant la date)
+                invitation.date = invitation.sendAt.toLocaleDateString()
                 waitingInvitations.push(invitation)
             }
         })
@@ -50,7 +51,7 @@ Template.members.helpers({
         let declinedInvitations = []
         //on parcours ses invitations
         invitations.forEach((invitation) => {
-            //et on les insere dans le tableau réponse si elles valident la condition
+            //et on les insere dans le tableau réponse si elles valident la condition(en bidouillant la date)
             if (invitation.status === "declined") {
                 invitation.date = invitation.sendAt.toLocaleDateString()
                 declinedInvitations.push(invitation)

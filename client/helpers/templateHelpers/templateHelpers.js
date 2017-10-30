@@ -7,3 +7,7 @@ Template.registerHelper('completedColor', function(completed){
         return "green"
     }
 })
+
+Template.registerHelper('length', function(array){
+        return array.length
+})

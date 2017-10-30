@@ -41,16 +41,17 @@ Template.adminProject.onCreated(function () {
     //on parcours les projets de l'utilisateur courant
     Meteor.user().profile.projects.forEach((project)=>{
         //lorsqu'on est dans le bon projet et que l'utilisateur est admin
-        if(Template.instance().data.fetch()[0]._id === project.project_id
-            && project.roles.includes("admin")){
-            //on change la réactive var
-            Template.instance().currentTab.set("edit")
-            Template.instance().isAdmin.set(true);
+        if(Template.instance().data.fetch()[0]._id === project.project_id){
+            if( project.roles.includes("admin")){
+                //on change la réactive var
+                Template.instance().currentTab.set("edit")
+                Template.instance().isAdmin.set(true);
+            }else {
+                //sinon, on en profite pour mettre la page sur membres
+                Template.instance().currentTab.set("members")
+            }
         }
-        else {
-            //sinon, on en profite pour mettre la page sur membres
-            Template.instance().currentTab.set("members")
-        }
+
     })
 
 });

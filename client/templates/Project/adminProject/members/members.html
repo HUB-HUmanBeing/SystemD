@@ -40,21 +40,62 @@
         <div class="col s12 m5 ">
             {{#if waitingInvitations}}
                 <div class="row">
-                    <div class="col s12 ">
+                    <div class="col s12">
                         <div class="card trame-box ">
                             <div class="card-content">
-                                <span class="card-title">Invitations en attente</span>
-                                {{#each invitation in waitingInvitations}}
-                                    <div class="row">
-                                        <div class="col s12 no-padding ">
-                                            {{>userInvitation invitation}}
+                                <ul class="collapsible no-margin" data-collapsible="accordion" style="border: none !important;">
+
+                                    <li>
+                                        <div class="collapsible-header card-title"
+                                             style=" border: none !important;">
+                                            <div class="row no-margin">
+                                                <div class="col s10 no-padding">
+                                                    Invitations en attente ({{length waitingInvitations}})
+                                                </div>
+                                                <div class="col s2">
+                                                    <i class="material-icons ">arrow_drop_down</i>
+                                                </div>
+                                            </div>
+
+
                                         </div>
-                                    </div>
-                                {{/each}}
+                                        <div class="collapsible-body no-padding" style="border: none !important;">
+                                            {{#each invitation in waitingInvitations}}
+                                                <div class="row">
+                                                    <div class="col s12  ">
+                                                        <div class="row no-margin ">
+                                                            <div class="col s9 no-padding">
+                                                                {{>miniature
+                                                                        _id = invitation.user_id
+                                                                        type = "user"}}
+                                                            </div>
+                                                            <div class="col s3 valign-wrapper">
+                                                                <a href="#delete-{{project_id}}"
+                                                                   class=" waves-effect waves-red modal-trigger tooltipped "
+                                                                   data-position="bottom"
+                                                                   data-delay="50" data-tooltip="Annuler l'invitation"
+                                                                   style="">
+                                                                    <i class="material-icons red-text">clear</i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <p class="right-align no-margin no-padding">
+                                                            <i class="grey-text darken-1 small-info right-align">le {{invitation.date}}</i>
+                                                        </p>
+                                                            {{invitation.invitationMessage}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+
             {{/if}}
             {{#if declinedInvitations}}
                 <div class="row">
@@ -84,8 +125,8 @@
                                                         <div class="row no-margin ">
                                                             <div class="col s8 no-padding">
                                                                 {{>miniature
-                                                                        _id = invitation.project_id
-                                                                        type = "project"}}
+                                                                        _id = invitation.user_id
+                                                                        type = "user"}}
                                                             </div>
                                                             <div class="col s4 valign-wrapper">
                                                                 <p class="right-align">
@@ -106,7 +147,6 @@
                         </div>
                     </div>
                 </div>
-
             {{/if}}
             <div class="row ">
                 <div class="col s12">
