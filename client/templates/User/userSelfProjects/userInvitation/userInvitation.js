@@ -23,6 +23,15 @@ Template.userInvitation.events({
             } else {
                 //on toast un feedback a l'utilisateur
                 Materialize.toast("Vous faites désormais parti des membres du projet", 6000, 'green')
+                $('.tooltipped').tooltip('remove');
+                //et on les remets apres un court délai (pour eviter que ne reste affichée
+                // celle qui etait en hover au moment du click)
+                Meteor.setTimeout(function () {
+                    $('.tooltipped').tooltip({delay: 50});
+                }, 100)
+                //et on redirige vers la page du projet qu'on vient de joindre
+                Router.go('adminProject' , { _id : instance.data.project_id})
+
             }
         })
     },
@@ -47,10 +56,19 @@ Template.userInvitation.events({
                 if (error) {
                     Materialize.toast("une erreur s'est produite", 4000, 'red')
                 } else {
+
                     //on toast un feedback a l'utilisateur
                     Materialize.toast("vous avez décliné l'invitation", 6000, 'orange')
+                    $('.tooltipped').tooltip('remove');
+                    //et on les remets apres un court délai (pour eviter que ne reste affichée
+                    // celle qui etait en hover au moment du click)
                     //on ferme la fenetre modale
                     $('.modal').modal('close')
+                    Meteor.setTimeout(function () {
+                        $('.tooltipped').tooltip({delay: 50});
+                    }, 100)
+
+
                 }
 
         })

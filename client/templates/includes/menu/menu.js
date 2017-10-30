@@ -9,6 +9,7 @@ Template.menu.events({
     //gestion du bouton logout
     'click [logout]': function () {
         Accounts.logout();
+        Router.go("home")
     },
     'click [newProject]': function () {
         $('.new-project-modal').modal();

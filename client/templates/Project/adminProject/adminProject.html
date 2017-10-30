@@ -9,25 +9,28 @@
                     <div class="row">
                         <div class="col s12  darken-4 no-padding">
                             <ul class="tabs swipable grey darken-4">
-                                <li class="tab col s4">
-                                    <a href="#edit-project-info">Informations
-                                        <span class=" tooltipped {{completedColor completed}}-text"
-                                              data-position="bottom" data-delay="50"
-                                              data-tooltip="Les infos du projet sont complétés à {{completed}}%">
-                                    {{completed}}%
-                                </span>
-                                    </a>
-                                </li>
-                                <li class="tab col s4"><a href="#members">Membres</a></li>
-                                <li class="tab col s4 "><a href="#blog">Blog</a></li>
+                                {{#if isAdmin}}
+                                    <li class="tab col s4">
+                                        <a href="#edit" switchTab>Informations
+                                            <span class=" tooltipped {{completedColor completed}}-text"
+                                                  data-position="bottom" data-delay="50"
+                                                  data-tooltip="Les infos du projet sont complétés à {{completed}}%">
+                                                {{completed}}%
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="tab col s4"><a href="#members" switchTab>Membres</a></li>
+                                    <li class="tab col s4 "><a href="#blog" switchTab>Blog</a></li>
+                                {{else}}
+                                    <li class="tab col s12"><a href="#members" switchTab>Membres</a></li>
+                                {{/if}}
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                <div id="edit-project-info" class="col s12 no-padding">{{>editProjectInfo project=project}}</div>
-                <div id="members" class="col s12 no-padding">{{>workInProgress}}</div>
-                <div id="blog" class="col s12 no-padding">{{>workInProgress}}</div>
+                <div id="edit" class="col s12 no-padding">{{#if eq currentTab "edit"}}{{>editProjectInfo project=project}}{{/if}}</div>
+                <div id="members" class="col s12 no-padding">{{#if eq currentTab "members"}}{{>members project}}{{/if}}</div>
+                <div id="blog" class="col s12 no-padding">{{#if eq currentTab "blog"}}{{>workInProgress}}{{/if}}</div>
             </div>
         </div>
     </div>

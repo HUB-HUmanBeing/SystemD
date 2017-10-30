@@ -94,8 +94,9 @@ Template.editLocation.events({
                     let address = result.data.address;
                     //on formate le tableau a renvoyer a la methode
                     let attribute = [
-                        parseFloat(latLng.lat),
-                        parseFloat(latLng.lng),
+                        //on arrondi a deux décimales pour ne pas stocker en base des info dont la précision ne sont pas nécessaire
+                        Math.round(parseFloat(latLng.lat) * 100) / 100,
+                        Math.round(parseFloat(latLng.lng) * 100) / 100,
                         address.town,
                         address.country
                     ];

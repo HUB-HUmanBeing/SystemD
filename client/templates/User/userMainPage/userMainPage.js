@@ -17,7 +17,7 @@ Template.userMainPage.helpers({
             computedInfo.projectField = "Participe à " + computedInfo.nbOfProjects + " projets"
         }
         //distance relative
-        if (isNaN(computedInfo.distance)) {
+        if (!computedInfo.distance) {
             computedInfo.distanceField = "position non renseignée"
         } else if (computedInfo.distance <= 1) {
             computedInfo.distanceField = "à moins de 2 kilometres"

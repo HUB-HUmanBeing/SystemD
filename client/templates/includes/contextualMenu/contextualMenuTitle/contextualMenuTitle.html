@@ -1,42 +1,38 @@
 <template name="contextualMenuTitle">
-    <div class="col s12 m5 l5 xl6 row  no-margin contextual-menu-title">
-        {{#unless isDesktop}}
-            <div class="col s2 m2 no-padding contextual-menu-margin"></div>
-            <div class="col s10 m10  miniature">
-                <a class="center-align" href="{{path}}">
-                    <h5 class=" truncate">
-                        <img src="{{imgUrl}}" alt="" class="circle img-circle {{color}}-border">
-                        {{#if isActiveRoute name = contextualHomepage}}
-                            <span class="{{color}}-text ">{{title}}<i class="material-icons pin-bottom {{color}}-text">
-                                {{icon}}
-                            </i></span>
-                        {{else}}
-                            <span >{{title}}<i class="material-icons pin-bottom {{color}}-text">
-                                {{icon}}
-                            </i></span>
-                        {{/if}}
+    <div class="col s12 m5 l5 xl6 row no-margin no-padding contextual-menu-title valign-wrapper ">
 
-                    </h5>
-                </a>
-            </div>
-        {{else}}
-            <div class="col s12 ">
-                <a class="center-align " href="{{path}}">
-                    <h5 class="truncate">
-                        <img src="{{imgUrl}}" alt="" class="circle img-circle {{color}}-border">
-                        {{#if isActiveRoute name = contextualHomepage}}
-                            <span class="{{color}}-text " >{{title}}</span>
-                        {{else}}
-                            <span >{{title}}</span>
-                        {{/if}}
-                        <i class="material-icons pin-bottom {{color}}-text tooltipped"
-                           data-position="bottom" data-delay="50"
-                           data-tooltip="{{tooltip}}">
-                            {{icon}}
-                        </i>
-                    </h5>
-                </a>
+        <div class="row  no-margin {{#unless isDesktop}}flex{{/unless}}"
+             style="width:100% !important;">
+
+        {{#unless isDesktop}}
+            <div class="col s2 m2 no-padding contextual-menu-margin " style="width : 80px !important;">
             </div>
         {{/unless}}
+            <div class="row no-margin miniature valign-wrapper
+                 {{#unless isDesktop}}flex-auto{{/unless}}"
+                 style="width:100% !important;">
+                <div class="col s12  no-padding valign-wrapper center-align"
+                     style="width:100% !important;">
+                    <div class="" style="margin: 0 auto !important;">
+                    <a class="truncate hover-{{color}}" href="{{path}}" style="display: inline!important;{{#unless isDesktop}}font-size: 19px{{else}} font-size: 23px {{/unless}}">
+
+                        <img src="{{imgUrl}}" alt="" class="circle img-circle {{color}}-border">
+                        <span class="
+                                {{#if isActiveRoute name = contextualHomepage}}
+                            {{color}}-text
+                                {{/if}}"
+                        >
+                            {{title}}
+                        </span>
+                    </a>
+                    <i class="material-icons {{color}}-text relative tooltipped"
+                       data-position="bottom" data-delay="50"
+                       data-tooltip="{{tooltip}}" style="{{#unless isDesktop}}top: -12px ; {{else}}top : -18px ;{{/unless}} left: 4px ;">
+                        {{icon}}
+                    </i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

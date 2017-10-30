@@ -41,7 +41,7 @@ Meteor.publish('userPublicInfo', function (id) {
 Meteor.publish('singleProject', function (id) {
     check(id, String);
     let currentProject =  Project.find({_id: id});
-    if(currentProject.fetch()[0].isAdmin(Meteor.userId())){
+    if(currentProject.fetch()[0].isMember(Meteor.userId())){
         return currentProject
     }else{
         return Project.find({_id: id},

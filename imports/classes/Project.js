@@ -1,7 +1,6 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
 import Projects from '/lib/collections/Projects'
-import User from '/imports/classes/User'
 
 
 const PublicInfo = Class.create({
@@ -210,79 +209,22 @@ const Project = Class.create({
          */
         relativeDistance() {
             let currentUserLocation = Meteor.user().profile.location;
+
+            if(this.publicInfo.location && currentUserLocation){
+
             let distance = new Haversine(
+                this.publicInfo.location.lonLat[1],
                 this.publicInfo.location.lonLat[0],
-                currentUserLocation.lat,
-                currentUserLocation.lng);
+                currentUserLocation.lonLat[1],
+                currentUserLocation.lonLat[0]);
 
             return parseInt(distance.kilometers)
+            }else{
+                return null
+            }
         }
     },
     meteorMethods: {
-        /*****************************
-         * methode de creation d'un nouveau projet
-         * @param projectName String
-         *******************************/
-        'createProject': function (projectName) {
-            //on verifie que le nom n'est pas déja pris
-            let alreadyExist = Projects.find({name: projectName}).count();
-            check(alreadyExist, 0);
-            //on check que l'utilisateur est bien connecté
-            check(Meteor.userId(), String);
-            //on modifie le nom
-            this.name = projectName;
-            //on rajoute l'utilisateur courant comme admin du projet
-            this.members.push({
-                user_id: Meteor.userId(),
-
-                username: Meteor.user().username,
-                roles: ['member', 'admin']
-            });
-            //on sauvegarde le projet, puis
-            return this.save(function (err, id) {
-                //si ya pas d'erreur
-                if (!err) {
-                    //on recupere l'objet astronomy de l'utilisateur courant
-                    let user = User.findOne(Meteor.userId());
-                    //on ajoute le projet créé
-                    user.profile.projects.push({
-                        project_id: id,
-                        name: projectName,
-                        roles: ['member', 'admin']
-                    });
-                    //et on sauvegarde
-                    user.save()
-                }
-            });
-        },
-
-
-        updateInfoItem(key, value) {
-            //on check que l'utilisateur est bien admin du projet
-            check(key, String);
-            check(this.isAdmin(Meteor.userId()), true);
-            this.publicInfo[key] = value;
-            return this.save()
-
-
-        },
-        /**********************************
-         * modifie la localisation du projet
-         * @param lat
-         * @param lng
-         * @param city
-         * @param country
-         */
-        updateProjectLocation(lat, lng, city, country) {
-            //on check que l'utilisateur est bien admin du projet
-            check(this.isAdmin(Meteor.userId()), true);
-            this.publicInfo.location.lat = lat;
-            this.publicInfo.location.lng = lng;
-            this.publicInfo.location.city = city;
-            this.publicInfo.location.country = country;
-            return this.save()
-
-        },
     }
 });
 

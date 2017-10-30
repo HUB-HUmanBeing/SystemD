@@ -19,6 +19,24 @@ User.extend({
                 distance: user.distance()
             }
         },
+        //modification de la description utilisateur
+        updateProfileItem(key, value) {
+            check(key, String);
+            if (this._id === Meteor.userId()) {
+                this.profile[key] = value;
+                return this.save()
+            }
+        },
+        //changement de la position de l'utilisateur
+        updateSelfLocation(lat, lng, city, country) {
+            //on verifie que c'est bien l'utilisateur courant qui fait la demande pour lui meme
+            if (this._id === Meteor.userId()) {
+                this.profile.location.lonLat = [lng,lat];
+                this.profile.location.city = city;
+                this.profile.location.country = country;
+                return this.save()
+            }
+        },
         /**********************************
          * Methode d'acceptation d'une invitation a se joindre a un projet
          * @param projectId
@@ -44,12 +62,14 @@ User.extend({
                     user.save(function () {
                         //dans le callback,
                         //on parcours les invitations émises
-                        project.invitations.forEach((projectInvitation, j) => {
+                        project.invitations.forEach((projectInvitation) => {
                             //lorsqu'on trouve celle qui concerne l'utilisateur et qui est en attente
                             //(sécurité : si l'utilisateur n'est pas dans le tableau des invités ça ne fonctionne pas)
                             if (projectInvitation.user_id === user._id && projectInvitation.status === "waiting") {
                                 //on passe le status de l'invitation a acceptée
-                                project.invitations.status = "accepted";
+                                projectInvitation.status = "accepted";
+                                //et on ajoute l'utilisateur a la liste des membres du projet
+                                project.members.push({user_id : user._id})
                                 //enfin on sauvegarde
                                 project.save()
                             }
