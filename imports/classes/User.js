@@ -10,7 +10,7 @@ const UserInvitation = Class.create({
         invitationMessage: {
             type: String,
             default: "",
-            validator: [
+            validators: [
                 {
                     type: 'maxLength',
                     param: 1000
@@ -50,7 +50,7 @@ const Profile = Class.create({
         description: {
             type: String,
             optional: true,
-            validator: [
+            validators: [
                 {
                     type: 'maxLength',
                     param: 1000

@@ -1,4 +1,10 @@
 Template.members.helpers({
+    isAdmin : function () {
+        return Template.instance().data.isAdmin(Meteor.userId())
+    },
+    currentProject : function () {
+        return Template.instance().data
+    },
     //add you helpers here
     //renvoie les projets administrés par l'utilisateur
     projectAdmins: function () {
@@ -37,13 +43,11 @@ Template.members.helpers({
         //on parcours ses invitations
         invitations.forEach((invitation) => {
             if (invitation.status === "waiting") {
-                //et on les insere dans le tableau réponse si elles valident la condition (en bidouillant la date)
-                invitation.date = invitation.sendAt.toLocaleDateString()
+                //et on les insere dans le tableau réponse si elles valident la condition
                 waitingInvitations.push(invitation)
             }
         })
         return waitingInvitations.length !== 0 ? waitingInvitations : false
-
     },
     //renvoie les invitations déclinées par l'utilisateur
     declinedInvitations: function () {
@@ -53,7 +57,6 @@ Template.members.helpers({
         invitations.forEach((invitation) => {
             //et on les insere dans le tableau réponse si elles valident la condition(en bidouillant la date)
             if (invitation.status === "declined") {
-                invitation.date = invitation.sendAt.toLocaleDateString()
                 declinedInvitations.push(invitation)
             }
         })

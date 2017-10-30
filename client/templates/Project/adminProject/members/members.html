@@ -43,7 +43,8 @@
                     <div class="col s12">
                         <div class="card trame-box ">
                             <div class="card-content">
-                                <ul class="collapsible no-margin" data-collapsible="accordion" style="border: none !important;">
+                                <ul class="collapsible no-margin" data-collapsible="accordion"
+                                    style="border: none !important;">
 
                                     <li>
                                         <div class="collapsible-header card-title"
@@ -69,20 +70,21 @@
                                                                         _id = invitation.user_id
                                                                         type = "user"}}
                                                             </div>
-                                                            <div class="col s3 valign-wrapper">
-                                                                <a href="#delete-{{project_id}}"
-                                                                   class=" waves-effect waves-red modal-trigger tooltipped "
-                                                                   data-position="bottom"
-                                                                   data-delay="50" data-tooltip="Annuler l'invitation"
-                                                                   style="">
-                                                                    <i class="material-icons red-text">clear</i>
-                                                                </a>
-                                                            </div>
+                                                            {{#if isAdmin}}
+                                                                <div class="col s3 valign-wrapper">
+                                                                    {{>clearInvitationProject
+                                                                            invitation=invitation
+                                                                            project= currentProject
+                                                                            requireConfirmation = true}}
+
+                                                                </div>
+                                                            {{/if}}
                                                         </div>
                                                         <div class="row">
                                                             <p class="right-align no-margin no-padding">
-                                                            <i class="grey-text darken-1 small-info right-align">le {{invitation.date}}</i>
-                                                        </p>
+                                                                <i class="grey-text darken-1 small-info right-align">le {{localeDate
+                                                                        invitation.sendAt}}</i>
+                                                            </p>
                                                             {{invitation.invitationMessage}}
                                                         </div>
                                                     </div>
@@ -102,7 +104,8 @@
                     <div class="col s12">
                         <div class="card trame-box ">
                             <div class="card-content">
-                                <ul class="collapsible no-margin" data-collapsible="accordion" style="border: none !important;">
+                                <ul class="collapsible no-margin" data-collapsible="accordion"
+                                    style="border: none !important;">
 
                                     <li>
                                         <div class="collapsible-header card-title"
@@ -130,7 +133,8 @@
                                                             </div>
                                                             <div class="col s4 valign-wrapper">
                                                                 <p class="right-align">
-                                                                    <i class="grey-text darken-1 small-info right-align">le {{invitation.date}}</i>
+                                                                    <i class="grey-text darken-1 small-info right-align">le {{localeDate
+                                                                            invitation.sendAt}}</i>
                                                                 </p>
                                                             </div>
                                                         </div>

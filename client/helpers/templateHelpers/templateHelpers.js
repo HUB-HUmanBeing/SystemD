@@ -11,3 +11,7 @@ Template.registerHelper('completedColor', function(completed){
 Template.registerHelper('length', function(array){
         return array.length
 })
+
+Template.registerHelper('localeDate', function(date){
+    return date.toLocaleDateString()
+})
