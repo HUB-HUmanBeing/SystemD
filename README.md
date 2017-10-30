@@ -15,25 +15,25 @@ Vous avez deux solutions pour le faire :
 1. Via Git, en clonant ce dépôt ;
 2. Via le téléchargement du code source en une archive ZIP.
 
-## 2. Instalation de MeteorJS
+## 2. Installation de MeteorJS
    https://www.meteor.com/install
    
 ## 3. Lancer le serveur interne de Meteor
-   utiliser la comande
+   utiliser la commande
    
     $ meteor
     
-à la racine du projet, elle se chargera d'installer les dépendences et de lancer un serveur interne
-si il y a une erreur, instalet le paquet manquant à l'aide de la ligne de commande  :
+à la racine du projet, elle se chargera d'installer les dépendances et de lancer un serveur interne
+s'il y a une erreur, installer le paquet manquant à l'aide de la ligne de commande  :
 
-    meteor npm install --save babel-runtim
+    meteor npm install --save babel-runtime
     
 puis relancer le serveur avec :
 
     $ meteor
 ## 4. C'est prêt !
 
-Vous pouverz ensuite visionner l'avancement du travail sur en vous rendent à l'adresse suivante :
+Vous pouvez ensuite visionner l'avancement du travail en vous rendant à l'adresse suivante :
         
  `http://localhost:3000/
    
