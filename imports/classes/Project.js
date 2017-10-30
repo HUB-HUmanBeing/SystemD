@@ -1,4 +1,5 @@
 import {Class} from 'meteor/jagi:astronomy';
+import ProjectInvitation from '/imports/classes/ProjectInvitation'
 import Location from '/imports/classes/Location'
 import Projects from '/lib/collections/Projects'
 
@@ -9,7 +10,7 @@ const PublicInfo = Class.create({
         description: {
             type: String,
             optional: true,
-            validator: [
+            validators: [
                 {
                     type: 'maxLength',
                     param: 1000
@@ -47,45 +48,6 @@ const Member = Class.create({
             default: ["member"]
         }
 
-    },
-});
-
-const ProjectInvitation = Class.create({
-    name: 'ProjectInvitation',
-    fields: {
-        user_id: String,
-        invitationMessage: {
-            type: String,
-            default: "",
-            validators: [
-                {
-                    type: 'maxLength',
-                    param: 1000
-                }
-            ],
-        },
-        sentAt: {
-            type: Date,
-            default: function () {
-                return new Date()
-            },
-            immutable: true
-        },
-        adminId: String,
-        status: {
-            type: String,
-            default: "waiting"
-        },
-        answerMessage: {
-            type: String,
-            default: "",
-            validators: [
-                {
-                    type: 'maxLength',
-                    param: 1000
-                }
-            ],
-        }
     },
 });
 

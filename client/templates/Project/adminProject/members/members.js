@@ -1,4 +1,12 @@
 Template.members.helpers({
+
+    //booléen , renvoie true si l'utilisaateur est admin du projet
+    isAdmin : function () {
+        return Template.instance().data.isAdmin(Meteor.userId())
+    },
+    currentProject : function () {
+        return Template.instance().data
+    },
     //add you helpers here
     //renvoie les projets administrés par l'utilisateur
     projectAdmins: function () {
@@ -42,7 +50,6 @@ Template.members.helpers({
             }
         });
         return waitingInvitations.length !== 0 ? waitingInvitations : false
-
     },
     //renvoie les invitations déclinées par l'utilisateur
     declinedInvitations: function () {
@@ -50,9 +57,8 @@ Template.members.helpers({
         let declinedInvitations = [];
         //on parcours ses invitations
         invitations.forEach((invitation) => {
-            //et on les insere dans le tableau réponse si elles valident la condition
+            //et on les insere dans le tableau réponse si elles valident la condition(en bidouillant la date)
             if (invitation.status === "declined") {
-                invitation.date = invitation.sentAt.toLocaleDateString();
                 declinedInvitations.push(invitation)
             }
         });
@@ -61,6 +67,22 @@ Template.members.helpers({
             $('.collapsible').collapsible()
         }, 100);
         return declinedInvitations.length !== 0 ? declinedInvitations : false
+    },
+    acceptedInvitations: function () {
+        let invitations = Template.instance().data.invitations
+        let acceptedInvitations = []
+        //on parcours ses invitations
+        invitations.forEach((invitation) => {
+            //et on les insere dans le tableau réponse si elles valident la condition(en bidouillant la date)
+            if (invitation.status === "accepted") {
+                acceptedInvitations.push(invitation)
+            }
+        })
+        //on active l'accordéon avec un peu de latence pour etre sur qu'ils soient dans le dom
+        Meteor.setTimeout(function () {
+            $('.collapsible').collapsible()
+        }, 100)
+        return acceptedInvitations.length !== 0 ? acceptedInvitations : false
     }
 });
 

@@ -1,4 +1,5 @@
 import Project from '/imports/classes/Project'
+import ProjectInvitation from '/imports/classes/ProjectInvitation'
 import User from '/imports/classes/User';
 import Projects from '/lib/collections/Projects'
 import {ValidationError} from 'meteor/jagi:astronomy';
@@ -102,7 +103,7 @@ Project.extend({
             });
             //on enregistre, et si tout se passe bien
             this.save((err) => {
-
+                console.log(err)
                 if (!err) {
                     //on insère l'invitation dans l'instance de l'utilisateur
                     invitedUser.profile.invitations.push({
@@ -113,7 +114,48 @@ Project.extend({
                     invitedUser.save()
                 }
             })
+        },
+        /*****************************************
+         * Methode de suppression d'une invitation dans le tableau des invitations,
+         * elle la supprime aussi du tableau user
+         * @param invitation
+         */
+        deleteInvitation(invitation) {
+            //on verifie que l'invitation envoyée par le client est bien valide
+            check(invitation, ProjectInvitation);
+            //On check que l'utilisateur qui appele la methode est bien un admin du projet
+            check(this.isAdmin(Meteor.userId()), true);
+            //on récupere les données de l'utilisateur concerné par l'invitation
+            let user = User.findOne({_id: invitation.user_id});
 
+            //on parcoure les invitations du projet
+            this.invitations.forEach((projectSideInvitation, i) => {
+                //lorsqu'on trouve la bonne
+                if (user._id === projectSideInvitation.user_id) {
+                    //on l'enleve du tableau des invitations
+                    this.invitations.splice(i)
+                    //puis on enregistre
+                    this.save((err) => {
+                        //si l'enregistrement s'est bien passé et si l'invitation etait "en attente"
+                        // on va la supprimer aussi du coté user
+                        if(!err){
+                            //on verifie qu'elle etait en attente
+                            if (projectSideInvitation.status === "waiting") {
+                                //on parcoure les invitations de l'utilisateur
+                                user.profile.invitations.forEach((userSideInvitation, j)=>{
+                                    //si c'est la bonne ET si elle est en attente
+                                    if(userSideInvitation.project_id=== this._id && userSideInvitation.status === "waiting"){
+                                        //on la retire du tableau des invitations de l'utilisateur
+                                        user.profile.invitations.splice(j)
+                                        //et on sauvegarde
+                                        user.save()
+                                    }
+                                })
+                            }
+                        }
+                    })
+                }
+            });
         },
         /*******************************
          * renvoie le nombre d'utilisateurs participant au projet
@@ -122,7 +164,9 @@ Project.extend({
         numberOfMembers() {
             //on recupere l'object utilisateur complet (car en théorie l'utilisateur
             // courant n'a que l'objet amputé des info non publiées)
+
             project = Project.findOne(this._id);
+
             //et on renvoie le nombre de membres -1 car il y a la valeur {} par default
             return project.members.length
 

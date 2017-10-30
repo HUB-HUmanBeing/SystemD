@@ -6,7 +6,7 @@ const Location = Class.create({
         lonLat: {
             type: [Number],
             optional: true,
-            validator: [
+            validators: [
                 {
                     type: 'length',
                     param: 2
@@ -15,7 +15,7 @@ const Location = Class.create({
         },
         city: {
             type: String,
-            validator: [
+            validators: [
                 {
                     type: 'maxLength',
                     param: 100
@@ -25,7 +25,7 @@ const Location = Class.create({
         },
         country: {
             type: String,
-            validator: [
+            validators: [
                 {
                     type: 'maxLength',
                     param: 100
