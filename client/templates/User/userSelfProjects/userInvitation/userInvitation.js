@@ -3,7 +3,7 @@ import User from '/imports/classes/User'
 Template.userInvitation.helpers({
     //helpeur pour formater la date
     date : function () {
-        return Template.instance().data.sentAt.toLocaleDateString()
+        return Template.instance().data.sentAt
     }
 });
 

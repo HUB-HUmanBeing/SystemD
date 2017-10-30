@@ -17,7 +17,7 @@ const UserInvitation = Class.create({
                 }
             ],
         },
-        sendAt: {
+        sentAt: {
             type: Date,
             default: function () {
                 return new Date()

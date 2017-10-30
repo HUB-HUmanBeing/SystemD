@@ -4,32 +4,33 @@ Template.members.helpers({
     isAdmin : function () {
         return Template.instance().data.isAdmin(Meteor.userId())
     },
+    //renvoie le projet courant
     currentProject : function () {
         return Template.instance().data
     },
     //add you helpers here
-    //renvoie les projets administrés par l'utilisateur
+    //renvoie les admins du projet
     projectAdmins: function () {
         //on récupere les projets de l'utilisateur
 
         let members = Template.instance().data.members;
 
         let projectAdmins = [];
-        //on parcours les projets de l'utilisateur courant
+        //on parcours les membres du projet
         members.forEach(function (member) {
-            //et on choisi ceux ou l'utilisateur est admin
+            //et on choisi ceux ou le membre est admin
             if (member.roles.includes("admin")) {
                 projectAdmins.push(member)
             }
         });
         return projectAdmins
     },
-    //renvoie les projets ou l'utilisateur n'est pas membre
+    //renvoie les simples membres du projet
     projectMembers: function () {
-        //on récupere les projets de l'utilisateur
+        //on récupere les membres du projet
         let members = Template.instance().data.members;
         let projectMembers = [];
-        //on parcours les projets de l'utilisateur courant
+        //on parcours les membres du projet
         members.forEach(function (member) {
             //et on choisit ceux ou l'utilisateur n'est pas admin
             if (!member.roles.includes("admin")) {
@@ -38,8 +39,9 @@ Template.members.helpers({
         });
         return projectMembers
     },
-    //renvoie les invitations en attente de l'utilisateur ou false
+    //renvoie les invitations en attente
     waitingInvitations: function () {
+        //on récupere les invitations du projet
         let invitations = Template.instance().data.invitations;
         let waitingInvitations = [];
         //on parcours ses invitations
@@ -53,6 +55,7 @@ Template.members.helpers({
     },
     //renvoie les invitations déclinées par l'utilisateur
     declinedInvitations: function () {
+        //on récupere les invitations du projet
         let invitations = Template.instance().data.invitations;
         let declinedInvitations = [];
         //on parcours ses invitations
@@ -68,6 +71,7 @@ Template.members.helpers({
         }, 100);
         return declinedInvitations.length !== 0 ? declinedInvitations : false
     },
+    //
     acceptedInvitations: function () {
         let invitations = Template.instance().data.invitations
         let acceptedInvitations = []
