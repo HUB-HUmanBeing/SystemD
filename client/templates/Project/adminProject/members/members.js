@@ -65,6 +65,22 @@ Template.members.helpers({
             $('.collapsible').collapsible()
         }, 100)
         return declinedInvitations.length !== 0 ? declinedInvitations : false
+    },
+    acceptedInvitations: function () {
+        let invitations = Template.instance().data.invitations
+        let acceptedInvitations = []
+        //on parcours ses invitations
+        invitations.forEach((invitation) => {
+            //et on les insere dans le tableau réponse si elles valident la condition(en bidouillant la date)
+            if (invitation.status === "accepted") {
+                acceptedInvitations.push(invitation)
+            }
+        })
+        //on active l'accordéon avec un peu de latence pour etre sur qu'ils soient dans le dom
+        Meteor.setTimeout(function () {
+            $('.collapsible').collapsible()
+        }, 100)
+        return acceptedInvitations.length !== 0 ? acceptedInvitations : false
     }
 });
 

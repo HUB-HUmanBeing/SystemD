@@ -85,7 +85,13 @@
                                                                 <i class="grey-text darken-1 small-info right-align">le {{localeDate
                                                                         invitation.sendAt}}</i>
                                                             </p>
-                                                            {{invitation.invitationMessage}}
+                                                            <p class="small-info">
+                                                                {{invitation.invitationMessage}}
+                                                            </p>
+                                                            {{#if invitation.answerMessage}}
+                                                                <p class="orange-text ">L'utilisateur vous a répondu</p>
+                                                                <p class="small-info">{{invitation.answerMessage}}</p>
+                                                            {{/if}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -112,7 +118,73 @@
                                              style=" border: none !important;">
                                             <div class="row no-margin">
                                                 <div class="col s10 no-padding">
-                                                    Invitations Déclinées
+                                                    Invitations déclinées
+                                                    <div class="col s2">
+                                                        <i class="material-icons ">arrow_drop_down</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            </div>
+                                            <div class="collapsible-body no-padding" style="border: none !important;">
+                                                {{#each invitation in declinedInvitations}}
+                                                    <div class="row">
+                                                        <div class="col s12  ">
+                                                            <div class="row no-margin ">
+                                                                <div class="col s9 no-padding">
+                                                                    {{>miniature
+                                                                            _id = invitation.user_id
+                                                                            type = "user"}}
+                                                                </div>
+                                                                {{#if isAdmin}}
+                                                                    <div class="col s3 valign-wrapper">
+                                                                        {{>clearInvitationProject
+                                                                                invitation=invitation
+                                                                                project= currentProject
+                                                                                requireConfirmation = true}}
+
+                                                                    </div>
+                                                                {{/if}}
+                                                            </div>
+                                                            <div class="row">
+                                                                <p class="right-align no-margin no-padding">
+                                                                    <i class="grey-text darken-1 small-info right-align">le {{localeDate
+                                                                            invitation.sendAt}}</i>
+                                                                </p>
+                                                                <p class="small-info">
+                                                                    {{invitation.invitationMessage}}
+                                                                </p>
+                                                                {{#if invitation.answerMessage}}
+                                                                    <p class="orange-text ">L'utilisateur vous a répondu</p>
+                                                                    <p class="small-info">{{invitation.answerMessage}}</p>
+                                                                {{/if}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {{/each}}
+                                            </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {{/if}}
+            {{#if acceptedInvitations}}
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card trame-box ">
+                            <div class="card-content">
+                                <ul class="collapsible no-margin" data-collapsible="accordion"
+                                    style="border: none !important;">
+
+                                    <li>
+                                        <div class="collapsible-header card-title"
+                                             style=" border: none !important;">
+                                            <div class="row no-margin">
+                                                <div class="col s10 no-padding">
+                                                    Invitations Acceptées ({{length acceptedInvitations}})
                                                 </div>
                                                 <div class="col s2">
                                                     <i class="material-icons ">arrow_drop_down</i>
@@ -122,24 +194,37 @@
 
                                         </div>
                                         <div class="collapsible-body no-padding" style="border: none !important;">
-                                            {{#each invitation in declinedInvitations}}
+                                            {{#each invitation in acceptedInvitations}}
                                                 <div class="row">
                                                     <div class="col s12  ">
                                                         <div class="row no-margin ">
-                                                            <div class="col s8 no-padding">
+                                                            <div class="col s9 no-padding">
                                                                 {{>miniature
                                                                         _id = invitation.user_id
                                                                         type = "user"}}
                                                             </div>
-                                                            <div class="col s4 valign-wrapper">
-                                                                <p class="right-align">
-                                                                    <i class="grey-text darken-1 small-info right-align">le {{localeDate
-                                                                            invitation.sendAt}}</i>
-                                                                </p>
-                                                            </div>
+                                                            {{#if isAdmin}}
+                                                                <div class="col s3 valign-wrapper">
+                                                                    {{>clearInvitationProject
+                                                                            invitation=invitation
+                                                                            project= currentProject
+                                                                            requireConfirmation = true}}
+
+                                                                </div>
+                                                            {{/if}}
                                                         </div>
                                                         <div class="row">
-                                                            {{invitation.invitationMessage}}
+                                                            <p class="right-align no-margin no-padding">
+                                                                <i class="grey-text darken-1 small-info right-align">le {{localeDate
+                                                                        invitation.sendAt}}</i>
+                                                            </p>
+                                                            <p class="small-info">
+                                                                {{invitation.invitationMessage}}
+                                                            </p>
+                                                            {{#if invitation.answerMessage}}
+                                                                <p class="orange-text ">L'utilisateur vous a répondu</p>
+                                                                <p class="small-info">{{invitation.answerMessage}}</p>
+                                                            {{/if}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -151,6 +236,7 @@
                         </div>
                     </div>
                 </div>
+
             {{/if}}
             <div class="row ">
                 <div class="col s12">
