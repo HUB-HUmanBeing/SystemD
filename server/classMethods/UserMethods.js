@@ -24,6 +24,7 @@ User.extend({
             check(key, String);
             if (this._id === Meteor.userId()) {
                 this.profile[key] = value;
+
                 return this.save()
             }
         },
@@ -69,7 +70,7 @@ User.extend({
                                 //on passe le status de l'invitation a acceptée
                                 projectInvitation.status = "accepted";
                                 //et on ajoute l'utilisateur a la liste des membres du projet
-                                project.members.push({user_id : user._id})
+                                project.members.push({user_id: user._id});
                                 //enfin on sauvegarde
                                 project.save()
                             }

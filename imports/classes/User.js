@@ -179,15 +179,13 @@ const User = Class.create({
         projectsData() {
             let items = [];
             this.profile.projects.forEach(function (project) {
-                let icon = project.roles.includes("admin")? "verified_user": "perm_identity"
+                let icon = project.roles.includes("admin") ? "verified_user" : "perm_identity";
                 items.push({
                     id: project.project_id,
                     name: project.name,
                     path: "projectMainPage",
-
                     pathData : { _id : project.project_id},
                     icon: icon
-y
                 })
             });
             items.push({

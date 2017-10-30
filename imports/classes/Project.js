@@ -35,7 +35,7 @@ const Member = Class.create({
     name: 'Member',
     fields: {
         user_id: String,
-        joinAt : {
+        joinedAt: {
             type : Date,
             immutable: true,
             default : function () {
@@ -57,18 +57,19 @@ const ProjectInvitation = Class.create({
         invitationMessage: {
             type: String,
             default: "",
-            validator: [
+            validators: [
                 {
                     type: 'maxLength',
                     param: 1000
                 }
             ],
         },
-        sendAt: {
+        sentAt: {
             type: Date,
             default: function () {
                 return new Date()
-            }
+            },
+            immutable: true
         },
         adminId: String,
         status: {
@@ -78,7 +79,7 @@ const ProjectInvitation = Class.create({
         answerMessage: {
             type: String,
             default: "",
-            validator: [
+            validators: [
                 {
                     type: 'maxLength',
                     param: 1000
@@ -94,14 +95,15 @@ const Project = Class.create({
     fields: {
         name: {
             type: String,
-            validator: [
+            validators: [
                 {
                     type: 'maxLength',
-                    param: 30
+                    param: 40
                 },
                 {
                     type: 'minLength',
-                    param: 3
+                    param: 4,
+                    message: 'Project name is too short'
                 }
             ],
         },
@@ -113,7 +115,10 @@ const Project = Class.create({
         },
         createdAt: {
             type: Date,
-            default: new Date()
+            default: function () {
+                return new Date()
+            },
+            immutable: true
         },
         publicInfo: {
             type: PublicInfo,
@@ -223,8 +228,6 @@ const Project = Class.create({
                 return null
             }
         }
-    },
-    meteorMethods: {
     }
 });
 
