@@ -1,4 +1,6 @@
 Template.members.helpers({
+
+    //booléen , renvoie true si l'utilisaateur est admin du projet
     isAdmin : function () {
         return Template.instance().data.isAdmin(Meteor.userId())
     },
