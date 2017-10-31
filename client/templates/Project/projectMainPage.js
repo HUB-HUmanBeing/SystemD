@@ -5,7 +5,7 @@ Template.projectMainPage.helpers({
     },
     relativeDistance: function () {
         let distance = Template.instance().data.fetch()[0].relativeDistance()
-        return ( distance || distance ===0) ? "( " + distance + " km )" : "sef " ;
+        return ( distance || distance ===0) ? "( " + distance + " km )" : "" ;
 
     },
     numberOfMembers: function () {
