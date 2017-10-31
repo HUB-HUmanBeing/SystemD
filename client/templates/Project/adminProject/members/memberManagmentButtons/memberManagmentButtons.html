@@ -1,0 +1,24 @@
+<template name="memberManagmentButtons">
+        <div class="fixed-action-btn horizontal click-to-toggle static" >
+            <a class="btn-floating relative dark-grey waves-effect waves-light ">
+                <i class="material-icons grey-text darken-2">settings</i>
+            </a>
+            <ul class="right-align">
+                <li class="inline-block " style="margin: 0 5px 0 0 !important;">
+                    <a class="btn-floating relative dark-grey tooltipped waves-effect waves-green"
+                       data-position="bottom" data-delay="50"
+                       data-tooltip="donner les droits d'administration" giveAdminRights>
+                        <i class="material-icons  green-text tiny">verified_user</i>
+                    </a>
+                </li>
+                <li class="inline-block " style="margin: 0 5px 0 0 !important;">
+                    <a class="btn-floating btn-flat dark-grey tooltipped waves-effect waves-red"
+                       data-position="bottom"
+                       data-delay="50" data-tooltip="retirer l'utilisateur du projet" kickMember>
+                        <i class="material-icons red-text ">clear</i>
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+</template>

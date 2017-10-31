@@ -54,7 +54,8 @@ User.extend({
                 //on trouve celle émise par le projet ET en attente
                 if (userInvitation.project_id === projectId && userInvitation.status === "waiting") {
                     //on supprime l'invitation du tableau
-                    user.profile.invitations.splice(i);
+                    user.profile.invitations.splice(i,1);
+                    //et on rajoute le projet au tableau projet
                     user.profile.projects.push({
                         project_id: projectId,
                         name : project.name

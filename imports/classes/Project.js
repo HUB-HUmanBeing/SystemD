@@ -1,5 +1,6 @@
 import {Class} from 'meteor/jagi:astronomy';
 import ProjectInvitation from '/imports/classes/ProjectInvitation'
+import Member from '/imports/classes/Member'
 import Location from '/imports/classes/Location'
 import Projects from '/lib/collections/Projects'
 
@@ -29,25 +30,6 @@ const PublicInfo = Class.create({
                 return {}
             }
         }
-    },
-});
-
-const Member = Class.create({
-    name: 'Member',
-    fields: {
-        user_id: String,
-        joinedAt: {
-            type : Date,
-            immutable: true,
-            default : function () {
-                return new Date()
-            }
-        },
-        roles: {
-            type: [String],
-            default: ["member"]
-        }
-
     },
 });
 

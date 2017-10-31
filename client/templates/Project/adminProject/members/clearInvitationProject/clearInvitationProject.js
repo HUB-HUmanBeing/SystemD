@@ -5,14 +5,18 @@ Template.clearInvitationProject.helpers({
 });
 
 Template.clearInvitationProject.events({
+    //methode de suppression d'une invitation
     'click [clearInvitation]': function (event, instance) {
         event.preventDefault();
+        //on recupere l'invitation et le projet courant
         let invitation = instance.data.invitation;
         let currentProject = instance.data.project;
+        //puis on appele la methode de déletion d'une invitation
         currentProject.callMethod(
             'deleteInvitation',
             invitation,
             (error, result) => {
+                //et on renvoie un feed-back a l'utilisateur
                 if (!error) {
                     if (error) {
                         Materialize.toast("une erreur s'est produite", 4000, 'red')

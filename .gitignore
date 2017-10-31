@@ -3,5 +3,5 @@ node_modules/
 .DS_Store
 .idea/
 .idea/workspace.xmls
-
+package-lock.json
 .idea/tasks.xml.idea

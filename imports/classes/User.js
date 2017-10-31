@@ -91,10 +91,8 @@ const User = Class.create({
     collection: Meteor.users,
     fields: {
         emails: {
-            type: [String],
-            default: function () {
-                return [];
-            }
+            type: [Object],
+            optional : true
         },
         username: {
             type: String,
@@ -104,13 +102,7 @@ const User = Class.create({
             type :Object,
             optional : true
         },
-        createdAt: {
-            type: Date,
-            default: function () {
-                return new Date()
-            },
-            immutable: true
-        },
+        createdAt: Date,
         profile: {
             type: Profile,
             default: function () {
@@ -203,4 +195,14 @@ const User = Class.create({
     }
 });
 
+if (Meteor.isServer) {
+    User.extend({
+        fields: {
+            services: {
+                type : Object,
+                optional : true
+            }
+        }
+    });
+}
 export default User;

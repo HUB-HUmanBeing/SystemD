@@ -1,4 +1,5 @@
 import Project from '/imports/classes/Project'
+import Member from '/imports/classes/Member'
 import ProjectInvitation from '/imports/classes/ProjectInvitation'
 import User from '/imports/classes/User';
 import Projects from '/lib/collections/Projects'
@@ -12,9 +13,14 @@ Project.extend({
          * @param projectName String
          *******************************/
         'createProject': function (projectName) {
+            //on verifie que le nom est bien une string
+            check(projectName, String)
             //on verifie que le nom n'est pas déja pris
             let alreadyExist = Projects.find({name: projectName}).count();
             check(alreadyExist, 0);
+            //et qu'il fait entre 4 et 40 caractères
+            let validName = projectName.length >= 4 && projectName.length <= 40;
+            check(validName, true)
             //on check que l'utilisateur est bien connecté
             check(Meteor.userId(), String);
             //on modifie le nom
@@ -25,15 +31,6 @@ Project.extend({
                 username: Meteor.user().username,
                 roles: ['member', 'admin']
             });
-
-            //On véfirie la validité de la valeur du champ "name" avec les validators de la classe.
-            this.validate({
-                fields: ['name']
-            }, (err) => {
-                //Si la valeur n'est pas valide, on arrète la méthode en renvoyant une Meteor.error.
-                if (ValidationError.is(err)) {
-                    throw new Meteor.Error();
-                } else {
                     // sinon on sauvegarde le projet, puis
                     return this.save(function (err, id) {
                         //si il n'y a pas d'erreur
@@ -50,8 +47,7 @@ Project.extend({
                             user.save()
                         }
                     });
-                }
-            })
+
         },
 
 
@@ -103,7 +99,6 @@ Project.extend({
             });
             //on enregistre, et si tout se passe bien
             this.save((err) => {
-                console.log(err)
                 if (!err) {
                     //on insère l'invitation dans l'instance de l'utilisateur
                     invitedUser.profile.invitations.push({
@@ -133,20 +128,20 @@ Project.extend({
                 //lorsqu'on trouve la bonne
                 if (user._id === projectSideInvitation.user_id) {
                     //on l'enleve du tableau des invitations
-                    this.invitations.splice(i)
+                    this.invitations.splice(i,1)
                     //puis on enregistre
                     this.save((err) => {
                         //si l'enregistrement s'est bien passé et si l'invitation etait "en attente"
                         // on va la supprimer aussi du coté user
-                        if(!err){
+                        if (!err) {
                             //on verifie qu'elle etait en attente
                             if (projectSideInvitation.status === "waiting") {
                                 //on parcoure les invitations de l'utilisateur
-                                user.profile.invitations.forEach((userSideInvitation, j)=>{
+                                user.profile.invitations.forEach((userSideInvitation, j) => {
                                     //si c'est la bonne ET si elle est en attente
-                                    if(userSideInvitation.project_id=== this._id && userSideInvitation.status === "waiting"){
+                                    if (userSideInvitation.project_id === this._id && userSideInvitation.status === "waiting") {
                                         //on la retire du tableau des invitations de l'utilisateur
-                                        user.profile.invitations.splice(j)
+                                        user.profile.invitations.splice(j,1)
                                         //et on sauvegarde
                                         user.save()
                                     }
@@ -157,6 +152,72 @@ Project.extend({
                 }
             });
         },
+        giveAdminRights(memberId) {
+            //On check que l'utilisateur qui appele la methode est bien un admin du projet
+            check(this.isAdmin(Meteor.userId()), true);
+            check(memberId, String);
+            //on récupere les données de l'utilisateur concerné par l'invitation
+            let user = User.findOne({_id: memberId});
+            //on parcoure les membres du projet
+            this.members.forEach((member) => {
+                //lorsqu'on trouve le bon
+                if (member.user_id === memberId) {
+                    //on ajoute le role admin
+                    member.roles.push("admin")
+                    //puis on sauvegarde
+                    this.save((err) => {
+                        //si la sauvegarde s'est bien passée
+                        if (!err) {
+                            //on parcoure ensuite les projets de l'utilisateur
+                            user.profile.projects.forEach((project) => {
+                                //lorsqu'on trouve le bon
+                                if(project.project_id === this._id){
+                                    //on ajoute le role admin
+                                    project.status.roles.push("admin")
+                                    //puis on sauvegarde
+                                    project.save()
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        },
+
+        kickMember(memberId) {
+            //On check que l'utilisateur qui appele la methode est bien un admin du projet
+            check(this.isAdmin(Meteor.userId()), true);
+            //on verifie que l'entrée est bien du type member
+            check(memberId, String);
+            //on récupere les données de l'utilisateur concerné par l'invitation
+            let user = User.findOne({_id: memberId});
+            //on parcoure les membres du projet
+            this.members.forEach((member,i) => {
+                //lorsqu'on trouve le bon
+                if (member.user_id === memberId) {
+                    //on retire le membre du tableau des membres
+                    this.members.splice(i,1);
+                    //puis on sauvegarde
+                    this.save((err) => {
+                        //si la sauvegarde s'est bien passée
+                        if (!err) {
+                            //on parcoure ensuite les projets de l'utilisateur
+                            user.profile.projects.forEach((project,j) => {
+                                //lorsqu'on trouve le bon
+                                if(project.project_id === this._id){
+                                    //on retire le projet du tableau des projet
+                                    user.profile.projects.splice(j,1);
+                                    //puis on sauvegarde
+                                    project.save()
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+
+        },
+
         /*******************************
          * renvoie le nombre d'utilisateurs participant au projet
          * @return Number
@@ -165,7 +226,7 @@ Project.extend({
             //on recupere l'object utilisateur complet (car en théorie l'utilisateur
             // courant n'a que l'objet amputé des info non publiées)
 
-            project = Project.findOne(this._id);
+            let project = Project.findOne(this._id);
 
             //et on renvoie le nombre de membres -1 car il y a la valeur {} par default
             return project.members.length

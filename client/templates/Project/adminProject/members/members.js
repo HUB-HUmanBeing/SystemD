@@ -71,13 +71,13 @@ Template.members.helpers({
         }, 100);
         return declinedInvitations.length !== 0 ? declinedInvitations : false
     },
-    //
+    // liste des invitations accéptées par les utilisateurs
     acceptedInvitations: function () {
         let invitations = Template.instance().data.invitations
         let acceptedInvitations = []
-        //on parcours ses invitations
+        //on parcours les invitations du projet
         invitations.forEach((invitation) => {
-            //et on les insere dans le tableau réponse si elles valident la condition(en bidouillant la date)
+            //et on les insere dans le tableau réponse si elles valident la condition
             if (invitation.status === "accepted") {
                 acceptedInvitations.push(invitation)
             }

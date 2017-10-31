@@ -178,6 +178,9 @@ input:-webkit-autofill {
 .inline-block{
     display: inline-block !important;
 }
+.static{
+    position: static !important;
+}
 .relative{
     position: relative !important;
 }

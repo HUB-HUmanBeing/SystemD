@@ -28,6 +28,11 @@ Template.inviteProjectForm.events({
                 } else {
                     //si c'est bon, on ferme la modale
                     $('.invite-to-projects-modal').modal('close');
+                    $('.tooltipped').tooltip('remove');
+                    //puis on reactive les infobulles apres un delai
+                    Meteor.setTimeout(function () {
+                        $('.tooltipped').tooltip({delay: 50})
+                    }, 500)
                     //puis on "toast" un feedback à l'utilisateur
                     Materialize.toast(
                         instance.data.username +
