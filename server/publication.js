@@ -41,7 +41,8 @@ Meteor.publish('userPublicInfo', function (id) {
 Meteor.publish('singleProject', function (id) {
     check(id, String);
     let currentProject =  Project.find({_id: id});
-    if(currentProject.fetch()[0].isMember(Meteor.userId())){
+    let currentUser = Meteor.userId();
+    if (currentUser && currentProject.fetch()[0].isMember(currentUser)) {
         return currentProject
     }else{
         return Project.find({_id: id},
@@ -50,7 +51,6 @@ Meteor.publish('singleProject', function (id) {
                     //liste des champs non renvoyés
                     createdAt: 0,
                     members: 0,
-                    services: 0,
                     invitations : 0
                 }
             })
