@@ -47,7 +47,7 @@ arborescenceStructure = function () {
         {
             id: "message",
             name: "Messagerie",
-            color: "blue-grey",
+            color: "teal",
             image: "message_icon.png",
             subMenu: [
                 {
@@ -93,7 +93,7 @@ arborescenceStructure = function () {
         {
             id: "sharing",
             name: "Partage",
-            color: "purple",
+            color: "deep-purple",
             image: "sharing_icon.png",
             subMenu: [
                 {
