@@ -20,11 +20,23 @@ Template.loginMenu.events({
             }
         });
     },
+    'keyup [username]' : function (event, instance) {
+        let signinUsername = $('#signinUsername').val();
+        let errorMessage;
+        //si elles sont identiques on vire le message d'erreur
+        if (signinUsername.length <=5 || signinUsername.length>35) {
+            errorMessage = "le nom d'utilisateur doit comporter entre 5 et 35 caractères"
+        } else {
+            //sinon on indique l'erreur
+            errorMessage = ""
+        }//et on met a jour la réactive var
+        instance.errorText.set(errorMessage)
+    },
     //quant on remplit le repeat password
     'keyup [password-repeat]': function (event, instance) {
         //on ecupere les valeurs
         let password = $('#signin-password').val();
-        let passwordRepeat = $('#password-repeat').val()
+        let passwordRepeat = $('#password-repeat').val();
         let errorMessage;
         //si elles sont identiques on vire le message d'erreur
         if (passwordRepeat === password) {
