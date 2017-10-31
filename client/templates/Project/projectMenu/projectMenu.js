@@ -10,7 +10,7 @@ Template.projectMenu.helpers({
         return Template.instance().data.project.name
     },
     //nom de la page pour pouvoir utiliser le "is active path"
-    contextualHomepage : function () {
+    contextualHomepage: function () {
         return 'projectMainPage'
     },
     //couleur du sous menu
@@ -29,28 +29,31 @@ Template.projectMenu.helpers({
     },
     //icone a afficher apres le nom de projet, indiquant le role de l'utilisateur
     icon: function () {
-        let project= Template.instance().data;
+        let project = Template.instance().data;
         let icon = "";
         let tooltip = "";
-        //on boucle sur les projets de l'utilisateur courant
-        Meteor.user().profile.projects.forEach(function (userProject) {
-            //si il est dedans
+        let currentUser = Meteor.user()
+        if (currentUser) {
+            //on boucle sur les projets de l'utilisateur courant
+            Meteor.user().profile.projects.forEach(function (userProject) {
+                //si il est dedans
 
-            if (userProject.project_id === project.project._id ) {
+                if (userProject.project_id === project.project._id) {
 
-                //et que le tableau des roles coontiens admin
-                if (_.contains(userProject.roles, "admin")) {
-                    //on choisi l'icone correspondante et on passe l'info a une réactive var
-                    icon = 'verified_user';
-                    Template.instance().tooltip.set("vous etes administrateur de ce projet");
-                //si il est membre
-                } else if (_.contains(userProject.roles, "member")) {
-                    //on choisi l'icone correspondante et on passe l'info a une réactive var
-                    icon = 'perm_identity';
-                    Template.instance().tooltip.set("vous etes membre de ce projet");
+                    //et que le tableau des roles coontiens admin
+                    if (_.contains(userProject.roles, "admin")) {
+                        //on choisi l'icone correspondante et on passe l'info a une réactive var
+                        icon = 'verified_user';
+                        Template.instance().tooltip.set("vous etes administrateur de ce projet");
+                        //si il est membre
+                    } else if (_.contains(userProject.roles, "member")) {
+                        //on choisi l'icone correspondante et on passe l'info a une réactive var
+                        icon = 'perm_identity';
+                        Template.instance().tooltip.set("vous etes membre de ce projet");
+                    }
                 }
-            }
-        });
+            });
+        }
         return icon
     },
     //on viens renvoyer a la réactive var définie au dessus
@@ -67,8 +70,8 @@ Template.projectMenu.helpers({
         let navBarItems = [
             {
                 title: "Gestion",
-                color : "orange",
-                routeName : "adminProject",
+                color: "orange",
+                routeName: "adminProject",
                 path: function () {
                     return Router.path("adminProject", {_id: projectId})
                 }
@@ -76,7 +79,7 @@ Template.projectMenu.helpers({
             {
                 title: "Organisation",
                 color: "orange",
-                routeName : 'orgProject',
+                routeName: 'orgProject',
                 path: function () {
                     return Router.path('orgProject', {_id: projectId})
                 }
@@ -86,17 +89,22 @@ Template.projectMenu.helpers({
         return navBarItems
     },
     //true si l'utilisateur est membre du projet
-    isMember : function () {
+    isMember: function () {
         //on le crée a false
-        let isMember= false;
-        //on parcoure les projets de l'utilisateur
-        Meteor.user().profile.projects.forEach((project)=>{
-            //si le projet est dedans
-            if(project.project_id === Template.instance().data.project._id){
-                //on la passe a true
-                isMember=true;
-            }
-        });
+        let isMember = false;
+
+        let currentUser = Meteor.user()
+        if (currentUser) {
+            //on parcoure les projets de l'utilisateur
+            currentUser.profile.projects.forEach((project) => {
+                //si le projet est dedans
+                if (project.project_id === Template.instance().data.project._id) {
+                    //on la passe a true
+                    isMember = true;
+                }
+            });
+        }
+
         return isMember;
     }
 
@@ -110,7 +118,6 @@ Template.projectMenu.events({
 
 Template.projectMenu.onCreated(function () {
     this.tooltip = new ReactiveVar();
-
 
 
 });
