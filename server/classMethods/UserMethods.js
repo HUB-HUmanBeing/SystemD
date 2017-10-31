@@ -6,7 +6,7 @@ User.extend({
     meteorMethods: {
         /******************************
          * Methode utilisateur uniquement dispo coté serveur,
-         * elle renvoie a un utilisateur sa distance relative
+         * elle renvoie a un utiligit pull orogsateur sa distance relative
          * a un autre ainsi que son nombre d'utilisateur
          */
         computedInfo() {
