@@ -55,6 +55,14 @@ Template.userMenu.helpers({
                     path: function () {
                         return Router.path("userSelfProjects")
                     }
+                },
+                {
+                    title: "Mon blog",
+                    color: "green",
+                    routeName: "userSelfBlog",
+                    path: function () {
+                        return Router.path("userSelfBlog")
+                    }
                 }
 
             ]

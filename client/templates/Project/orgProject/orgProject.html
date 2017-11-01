@@ -3,8 +3,28 @@
         <div class="col s12 no-padding">
             {{>projectMenu project = project}}
         </div>
-        <div class="col s12">
-            {{>workInProgress}}
+        <div class="col s12 xl10 offset-xl1 no-padding" style="margin: -20px 0 0 0 !important;">
+            <div class="row ">
+                <div class="col s12 no-padding">
+                    <div class="row">
+                        <div class="col s12  darken-4 no-padding">
+                            <ul class="tabs swipable grey darken-4">
+
+                                <li class="tab col s4">
+                                    <a href="#forum" switchTab>Forum</a>
+                                </li>
+                                <li class="tab col s4"><a href="#agenda" switchTab>Agenda</a></li>
+                                <li class="tab col s4 "><a href="#todo" switchTab>Liste de taches</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="forum" class="col s12 no-padding">{{#if eq currentTab "forum"}}{{>workInProgress}}{{/if}}</div>
+                <div id="agenda" class="col s12 no-padding">{{#if eq currentTab
+                                                                  "agenda"}}{{>workInProgress}}{{/if}}</div>
+                <div id="todo" class="col s12 no-padding">{{#if eq currentTab "todo"}}{{>workInProgress}}{{/if}}</div>
+            </div>
         </div>
     </div>
 </template>

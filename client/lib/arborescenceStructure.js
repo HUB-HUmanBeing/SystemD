@@ -37,7 +37,7 @@ arborescenceStructure = function () {
         },
         {
             id: "project",
-            name: "Mes Projets",
+            name: "Projets",
             color: "orange",
             image: "project_icon.png",
             subMenu: function () {
