@@ -1,5 +1,4 @@
 import Project from '/imports/classes/Project'
-import Member from '/imports/classes/Member'
 import ProjectInvitation from '/imports/classes/ProjectInvitation'
 import User from '/imports/classes/User';
 import Projects from '/lib/collections/Projects'
@@ -14,13 +13,13 @@ Project.extend({
          *******************************/
         'createProject': function (projectName) {
             //on verifie que le nom est bien une string
-            check(projectName, String)
+            check(projectName, String);
             //on verifie que le nom n'est pas déja pris
             let alreadyExist = Projects.find({name: projectName}).count();
             check(alreadyExist, 0);
             //et qu'il fait entre 4 et 40 caractères
             let validName = projectName.length >= 4 && projectName.length <= 40;
-            check(validName, true)
+            check(validName, true);
             //on check que l'utilisateur est bien connecté
             check(Meteor.userId(), String);
             //on modifie le nom
@@ -31,23 +30,22 @@ Project.extend({
                 username: Meteor.user().username,
                 roles: ['member', 'admin']
             });
-                    // sinon on sauvegarde le projet, puis
-                    return this.save(function (err, id) {
-                        //si il n'y a pas d'erreur
-                        if (!err) {
-                            //on recupere l'objet astronomy de l'utilisateur actuel
-                            let user = User.findOne(Meteor.userId());
-                            //on ajoute le projet créé
-                            user.profile.projects.push({
-                                project_id: id,
-                                name: projectName,
-                                roles: ['member', 'admin']
-                            });
-                            //et on sauvegarde
-                            user.save()
-                        }
+            // sinon on sauvegarde le projet, puis
+            return this.save(function (err, id) {
+                //si il n'y a pas d'erreur
+                if (!err) {
+                    //on recupere l'objet astronomy de l'utilisateur actuel
+                    let user = User.findOne(Meteor.userId());
+                    //on ajoute le projet créé
+                    user.profile.projects.push({
+                        project_id: id,
+                        name: projectName,
+                        roles: ['member', 'admin']
                     });
-
+                    //et on sauvegarde
+                    user.save()
+                }
+            });
         },
 
 
@@ -128,7 +126,7 @@ Project.extend({
                 //lorsqu'on trouve la bonne
                 if (user._id === projectSideInvitation.user_id) {
                     //on l'enleve du tableau des invitations
-                    this.invitations.splice(i,1)
+                    this.invitations.splice(i, 1);
                     //puis on enregistre
                     this.save((err) => {
                         //si l'enregistrement s'est bien passé et si l'invitation etait "en attente"
@@ -141,7 +139,7 @@ Project.extend({
                                     //si c'est la bonne ET si elle est en attente
                                     if (userSideInvitation.project_id === this._id && userSideInvitation.status === "waiting") {
                                         //on la retire du tableau des invitations de l'utilisateur
-                                        user.profile.invitations.splice(j,1)
+                                        user.profile.invitations.splice(j, 1);
                                         //et on sauvegarde
                                         user.save()
                                     }
@@ -163,7 +161,7 @@ Project.extend({
                 //lorsqu'on trouve le bon
                 if (member.user_id === memberId) {
                     //on ajoute le role admin
-                    member.roles.push("admin")
+                    member.roles.push("admin");
                     //puis on sauvegarde
                     this.save((err) => {
                         //si la sauvegarde s'est bien passée
@@ -173,7 +171,7 @@ Project.extend({
                                 //lorsqu'on trouve le bon
                                 if(project.project_id === this._id){
                                     //on ajoute le role admin
-                                    project.status.roles.push("admin")
+                                    project.status.roles.push("admin");
                                     //puis on sauvegarde
                                     project.save()
                                 }
