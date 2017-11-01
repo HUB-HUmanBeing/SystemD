@@ -6,7 +6,7 @@ User.extend({
     meteorMethods: {
         /******************************
          * Methode utilisateur uniquement dispo coté serveur,
-         * elle renvoie a un utiligit pull orogsateur sa distance relative
+         * elle renvoie a un utilisateur sa distance relative
          * a un autre ainsi que son nombre d'utilisateur
          */
         computedInfo() {
@@ -72,7 +72,7 @@ User.extend({
                                     //on passe le status de l'invitation a acceptée
                                     projectInvitation.status = "accepted";
                                     //et on ajoute l'utilisateur a la liste des membres du projet
-                                    project.members.push({user_id : user._id})
+                                    project.members.push({user_id: user._id});
                                     //enfin on sauvegarde
                                     project.save()
                                 }
