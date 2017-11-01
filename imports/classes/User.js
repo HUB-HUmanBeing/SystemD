@@ -145,12 +145,13 @@ const User = Class.create({
             let currentUserLocation = Meteor.user().profile.location;
 
             if(this.profile.location.lonLat && currentUserLocation.lonLat){
+
                 let distance = new Haversine(
                     this.profile.location.lonLat[1],
                     this.profile.location.lonLat[0],
                     currentUserLocation.lonLat[1],
-                    currentUserLocation.lonLat[0]);
-
+                    currentUserLocation.lonLat[0]
+                );
                 return parseInt(distance.kilometers)
             }else{
                 return null

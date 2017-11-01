@@ -49,7 +49,7 @@ Template.userMenu.helpers({
                     }
                 },
                 {
-                    title: "Mes Projets",
+                    title: "Projets",
                     color: "green",
                     routeName: "userSelfProjects",
                     path: function () {
@@ -57,7 +57,7 @@ Template.userMenu.helpers({
                     }
                 },
                 {
-                    title: "Mon blog",
+                    title: "Blog",
                     color: "green",
                     routeName: "userSelfBlog",
                     path: function () {

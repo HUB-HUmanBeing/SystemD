@@ -17,12 +17,12 @@ Template.userMainPage.helpers({
             computedInfo.projectField = "Participe à " + computedInfo.nbOfProjects + " projets"
         }
         //distance relative
-        if (!computedInfo.distance) {
-            computedInfo.distanceField = "position non renseignée"
+        if (!computedInfo.distance && computedInfo.distance !== 0) {
+            computedInfo.distance = "position non renseignée"
         } else if (computedInfo.distance <= 1) {
-            computedInfo.distanceField = "à moins de 2 kilometres"
+            computedInfo.distance = "à moins de 2 kilometres"
         } else {
-            computedInfo.distanceField = computedInfo.distance + " kilometres"
+            computedInfo.distance = computedInfo.distance + " kilometres"
         }
         return computedInfo
     }
