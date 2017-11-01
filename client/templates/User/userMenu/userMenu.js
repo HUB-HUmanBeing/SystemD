@@ -49,11 +49,19 @@ Template.userMenu.helpers({
                     }
                 },
                 {
-                    title: "Mes Projets",
+                    title: "Projets",
                     color: "green",
                     routeName: "userSelfProjects",
                     path: function () {
                         return Router.path("userSelfProjects")
+                    }
+                },
+                {
+                    title: "Blog",
+                    color: "green",
+                    routeName: "userSelfBlog",
+                    path: function () {
+                        return Router.path("userSelfBlog")
                     }
                 }
 

@@ -21,6 +21,12 @@ Template.clearInvitationProject.events({
                     if (error) {
                         Materialize.toast("une erreur s'est produite", 4000, 'red')
                     } else {
+                        //on vire les infobulles (pour celle du bouton d'edition)
+                        $('.tooltipped').tooltip('remove');
+                        //on met les infobules pour le menu d'edition qui viens de poper
+                        Meteor.setTimeout(function () {
+                            $('.tooltipped').tooltip({delay: 50})
+                        }, 200);
                         Materialize.toast("l'ivitation a été supprimée", 3000, 'green')
                     }
                 }

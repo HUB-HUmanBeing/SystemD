@@ -1,5 +1,4 @@
-Template.orgProject.helpers({
-    //add you helpers here
+Template.resourcesProject.helpers({
     //pour renvoyer vers l'enfant les infos du projet courant
     project : function(){
         return Template.instance().data.fetch()[0]
@@ -10,7 +9,7 @@ Template.orgProject.helpers({
     },
 });
 
-Template.orgProject.events({
+Template.resourcesProject.events({
     //add your events here
     'click [switchTab]' : function (event, instance) {
         //on recupere le href de la tab cliquée
@@ -24,19 +23,19 @@ Template.orgProject.events({
     }
 });
 
-Template.orgProject.onCreated(function () {
+Template.resourcesProject.onCreated(function () {
     //add your statement here
-    this.currentTab = new ReactiveVar("forum")
+    this.currentTab = new ReactiveVar("shared")
 });
 
-Template.orgProject.onRendered(function () {
+Template.resourcesProject.onRendered(function () {
     //add your statement here
     $('.swipable').tabs(
         // { 'swipeable': true }
     );
 });
 
-Template.orgProject.onDestroyed(function () {
+Template.resourcesProject.onDestroyed(function () {
     //add your statement here
 });
 

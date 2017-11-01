@@ -83,6 +83,22 @@ Template.projectMenu.helpers({
                 path: function () {
                     return Router.path('orgProject', {_id: projectId})
                 }
+            },
+            {
+                title: "Ressources",
+                color: "orange",
+                routeName: 'resourcesProject',
+                path: function () {
+                    return Router.path('resourcesProject', {_id: projectId})
+                }
+            },
+            {
+                title: "Messagerie",
+                color: "orange",
+                routeName: 'messagesProject',
+                path: function () {
+                    return Router.path('messagesProject', {_id: projectId})
+                }
             }
 
         ];

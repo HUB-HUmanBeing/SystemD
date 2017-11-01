@@ -1,0 +1,24 @@
+<template name="resourcesProject">
+    <div class="row">
+        <div class="col s12 no-padding">
+            {{>projectMenu project = project}}
+        </div>
+        <div class="col s12 xl8 offset-xl1 no-padding" style="margin: -20px 0 0 0 !important;">
+            <div class="row ">
+                <div class="col s12 no-padding">
+                    <div class="row">
+                        <div class="col s12  darken-4 no-padding">
+                            <ul class="tabs swipable grey darken-4">
+                                <li class="tab col s6"><a href="#shared" switchTab>Ressources proposées</a></li>
+                                <li class="tab col s6"><a href="#needed" switchTab>Besoins en ressources</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="shared" class="col s12 no-padding">{{#if eq currentTab "shared"}}{{>workInProgress}}{{/if}}</div>
+                <div id="needed" class="col s12 no-padding">{{#if eq currentTab "needed"}}{{>workInProgress}}{{/if}}</div>
+
+            </div>
+        </div>
+    </div>
+</template>

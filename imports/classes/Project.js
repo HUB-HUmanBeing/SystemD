@@ -159,16 +159,16 @@ const Project = Class.create({
         relativeDistance() {
             let currentUserLocation = Meteor.user().profile.location;
 
-            if(this.publicInfo.location && currentUserLocation){
+            if (this.publicInfo.location && currentUserLocation[1]) {
 
-            let distance = new Haversine(
-                this.publicInfo.location.lonLat[1],
-                this.publicInfo.location.lonLat[0],
-                currentUserLocation.lonLat[1],
-                currentUserLocation.lonLat[0]);
+                let distance = new Haversine(
+                    this.publicInfo.location.lonLat[1],
+                    this.publicInfo.location.lonLat[0],
+                    currentUserLocation.lonLat[1],
+                    currentUserLocation.lonLat[0]);
 
-            return parseInt(distance.kilometers)
-            }else{
+                return parseInt(distance.kilometers)
+            } else {
                 return null
             }
         }

@@ -6,15 +6,20 @@
                     {{#unless isDesktop}}
                         <div class="col s2 m2 no-padding contextual-menu-margin"></div>
                         <div class="col s10 m10  miniature">
-                            <h6 class="center-align ">
-                                le pari d’une humanité de la collaboration et du partage
-                            </h6>
+                            <h5 class="center-align ">
+                                Le pari d’une humanité de la collaboration et du partage
+                            </h5>
                         </div>
                     {{else}}
-                        <div class="col s12 ">
-                            <h6 class="center-align ">
-                                le pari d’une humanité de la collaboration et du partage
-                            </h6>
+                        <div class="col s8 offset-s2">
+                            <h5 class="center-align ">
+                                Le pari d’une humanité de la collaboration et du partage
+                            </h5>
+                        </div>
+                        <div class="col s2 relative">
+                            {{#if isDevelopment}}
+                            {{>fixturesAndTests}}
+                            {{/if}}
                         </div>
                     {{/unless}}
                 </div>
@@ -156,4 +161,5 @@
             </div>
         </div>
     </div>
+    {{>welcomeAlphaModal}}
 </template>
