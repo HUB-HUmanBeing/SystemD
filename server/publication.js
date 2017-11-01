@@ -87,3 +87,9 @@ Meteor.publish('miniature', function (id, type) {
             })
     }
 });
+
+if(Meteor.isDevelopment){
+    Meteor.publish('AllForDev', function () {
+        return [Project.find(), User.find()]
+    } )
+}

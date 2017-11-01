@@ -1,93 +1,78 @@
-if(Meteor.isDevelopment) {
+import FixturesAndTests from"/imports/FixturesAndTests/FixturesAndTests"
 
-
-    let fixtures = {
-        users: []
-    };
-
-    var LaunchFixturesAndTests = {
-        done: false,
-        RunFixturesAndTests() {
-            ping()
-            let listFonctionsDefered = []
-            this.actionsToRun.forEach((actionToRun, i) => {
-                //on appele actionToRun en lui passant l'index
-                listFonctionsDefered[i] = actionToRun.action(actionToRun, i);
-
-            });
-            //ici, $.when.apply... permet de déterminer quand toutes les exécutions de actionsToRun,
-            //seront terminées.
-            $.when.apply($, listFonctionsDefered).then(() => {
-                this.done = true
-                console.log(this.MethodErrors)
-                console.log(this.MethodValid)
-            })
-        },
-        MethodValid: [],
-        MethodErrors: [],
-        validTests: [],
-        invalidTests: [],
-        actionsToRun: [
-            {
-                object: this,
-                name: "clearDB",
-                action(actionToRun, i) {
-                    return $.Deferred(function (defer) {
-                        Meteor.call('clearUser', (err) => {
-                            //defer.reject permet d'indiquer que l'exécution est terminé avec l'état KO
-                            //l'objet promise retournée par rechercherNbLikeAsync aura l'état "Rejected"
-                            //Dans le meme temp, on lui passe en argument l'objet Erreur
-                            if (err) {
-                                LaunchFixturesAndTests.MethodErrors.push(err)
-                                defer.reject(err);
-                                return;
-                            } else {
-                                LaunchFixturesAndTests.MethodValid.push(actionToRun.name)
-                                defer.resolve();
-                            }
-                            //defer.resolve permet d'indiquer que l'exécution est terminé avec l'état OK
-                            //l'objet promise retournée par rechercherNbLikeAsync aura l'état "Fulfilled"
-                            //Dans le meme temp, on lui passe en argument notre objet que l'on veut mettre dans listResultat
-
-
-                        });
-                    }).promise();
-                },
-                tests: [
-                    {
-                        testLabel: "",
-                        test() {
-
-                        }
-                    }
-                ]
-            }
-        ]
-    };
-
+    if (Meteor.isDevelopment) {
 
     Template.fixturesAndTests.helpers({
         //add you helpers here
+        FixturesAndTestDone: function () {
+            return Template.instance().FixturesAndTestDone.get()
+        },
+        AllSucces : function () {
+            return 0 === Template.instance().errorMethods.get().length + Template.instance().invalidTests.get().length
+        },
+        succesMethods: function () {
+            return Template.instance().succesMethods.get()
+        },
+        errorMethods: function () {
+            return Template.instance().errorMethods.get()
+        },
         invalidTests: function () {
             return Template.instance().invalidTests.get()
         },
         validTests: function () {
-            return Template.instance().invalidTests.get()
+            return Template.instance().validTests.get()
+        },
+        succesMethodslength: function () {
+            return Template.instance().succesMethods.get().length
+        },
+        errorMethodslength: function () {
+            return Template.instance().errorMethods.get().length
+        },
+        invalidTestslength: function () {
+            return Template.instance().invalidTests.get().length
+        },
+        validTestslength: function () {
+            return Template.instance().validTests.get().length
+        },
+        elapsedTime : function () {
+            return Template.instance().elapsedTime.get()
         }
     });
 
     Template.fixturesAndTests.events({
         //add your events here
-        'click [launchFixturesAndTests]': function () {
-            LaunchFixturesAndTests.RunFixturesAndTests()
-        }
+        'click [launchFixturesAndTests]': function (event, instance) {
+            Meteor.subscribe('AllForDev', {
+                onReady: function () {
+                    let startTime = new Date().getTime()
+                    FixturesAndTests.RunFixturesAndTests(() => {
+                        instance.succesMethods.set(FixturesAndTests.MethodValid)
+                        instance.errorMethods.set(FixturesAndTests.MethodErrors)
+                        instance.invalidTests.set(FixturesAndTests.invalidTests)
+                        instance.validTests.set(FixturesAndTests.validTests)
 
+                        instance.FixturesAndTestDone.set(true)
+                        let elapsedTime = new Date().getTime() - startTime
+                        instance.elapsedTime.set(elapsedTime)
+                        Meteor.setTimeout(function () {
+                                $('ul.tabs').tabs();
+                            $('ul.tabs').tabs('select_tab', 'test1');
+                            }, 100
+                        )
+                    })
+                }
+            })
+        }
     });
 
     Template.fixturesAndTests.onCreated(function () {
         //add your statement here
+        this.FixturesAndTestDone = new ReactiveVar(false)
+        this.succesMethods = new ReactiveVar([])
+        this.errorMethods = new ReactiveVar([])
         this.invalidTests = new ReactiveVar([])
         this.validTests = new ReactiveVar([])
+        this.elapsedTime = new ReactiveVar()
     });
 
     Template.fixturesAndTests.onRendered(function () {
