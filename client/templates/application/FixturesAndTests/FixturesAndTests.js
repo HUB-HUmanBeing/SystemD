@@ -1,13 +1,13 @@
-import FixturesAndTests from"/imports/FixturesAndTests/FixturesAndTests"
+import FixturesAndTests from "/imports/FixturesAndTests/FixturesAndTests"
 
-    if (Meteor.isDevelopment) {
+if (Meteor.isDevelopment) {
 
     Template.fixturesAndTests.helpers({
         //add you helpers here
         FixturesAndTestDone: function () {
             return Template.instance().FixturesAndTestDone.get()
         },
-        AllSucces : function () {
+        AllSucces: function () {
             return 0 === Template.instance().errorMethods.get().length + Template.instance().invalidTests.get().length
         },
         succesMethods: function () {
@@ -34,15 +34,21 @@ import FixturesAndTests from"/imports/FixturesAndTests/FixturesAndTests"
         validTestslength: function () {
             return Template.instance().validTests.get().length
         },
-        elapsedTime : function () {
-            return Template.instance().elapsedTime.get()
+        elapsedTime: function () {
+            let elapsedTime = Template.instance().elapsedTime.get()
+            if( elapsedTime<1000){
+                return elapsedTime.toString() + "ms"
+            }else{
+                return (elapsedTime/1000).toString() + "s"
+            }
+
         }
     });
 
     Template.fixturesAndTests.events({
         //add your events here
         'click [launchFixturesAndTests]': function (event, instance) {
-            Meteor.subscribe('AllForDev', {
+            let handler = Meteor.subscribe('AllForDev', {
                 onReady: function () {
                     let startTime = new Date().getTime()
                     FixturesAndTests.RunFixturesAndTests(() => {
@@ -54,11 +60,15 @@ import FixturesAndTests from"/imports/FixturesAndTests/FixturesAndTests"
                         instance.FixturesAndTestDone.set(true)
                         let elapsedTime = new Date().getTime() - startTime
                         instance.elapsedTime.set(elapsedTime)
+
+                        handler.stop()
                         Meteor.setTimeout(function () {
                                 $('ul.tabs').tabs();
-                            $('ul.tabs').tabs('select_tab', 'test1');
+                                $('ul.tabs').tabs('select_tab', 'test1');
                             }, 100
                         )
+
+
                     })
                 }
             })
