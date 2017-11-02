@@ -27,18 +27,19 @@ if (Meteor.isDevelopment) {
     Template.fixturesAndTests.events({
         //add your events here
         'click [clearDB]': function (event, instance) {
-
+Meteor.logout()
             let startTime = new Date().getTime()
             Meteor.call('clearDb', (err) => {
                 console.log("ok")
+                let elapsedTime = new Date().getTime() - startTime
+                instance.elapsedTime.set(elapsedTime)
                 instance.Done.set(true)
                 if (err) {
                     instance.succes.set(false)
                 } else {
                     instance.message.set("la base de donnée a été reset")
                     instance.succes.set(true)
-                    let elapsedTime = new Date().getTime() - startTime
-                    instance.elapsedTime.set(elapsedTime)
+
                 }
             })
         },
@@ -46,13 +47,29 @@ if (Meteor.isDevelopment) {
             let startTime = new Date().getTime()
             Meteor.call('launchUsersAndProjectsFixtures', (err) => {
                 instance.Done.set(true)
+                let elapsedTime = new Date().getTime() - startTime
+                instance.elapsedTime.set(elapsedTime)
                 if (err) {
                     instance.succes.set(false)
                 } else {
                     instance.message.set("des utilisateurs et leurs projets ont étés créés")
                     instance.succes.set(true)
-                    let elapsedTime = new Date().getTime() - startTime
-                    instance.elapsedTime.set(elapsedTime)
+
+                }
+            })
+        },
+        "click [LaunchMembersAndInvitFixtures]" : function (event, instance) {
+            let startTime = new Date().getTime()
+            Meteor.call('LaunchMembersAndInvitFixtures', (err) => {
+                let elapsedTime = new Date().getTime() - startTime
+                instance.elapsedTime.set(elapsedTime)
+                instance.Done.set(true)
+                if (err) {
+                    instance.succes.set(false)
+                } else {
+                    instance.message.set("des utilisateurs ont rejoint les projets et des invitations ont été émises")
+                    instance.succes.set(true)
+
                 }
             })
         }

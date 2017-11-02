@@ -48,8 +48,55 @@ if (Meteor.isDevelopment) {
                 });
             })
         },
-        SendInvitations : function(){
-            Project.find.fetch().forEach((project)=>{
+        LaunchMembersAndInvitFixtures: function () {
+            let Projects = Project.find({}, {sort: {createdAt: 1}}).fetch()
+            let Users = User.find({}, {sort: {createdAt: 1}}).fetch()
+            Projects.forEach((project, i) => {
+                project.invitations.push({
+
+                        adminId: Users[i]._id,
+                        invitationMessage: Fixtures.getRandom("lorems"),
+                        user_id: Users[Fixtures.loopId(i - 6)]._id
+                    },
+                    {
+                        adminId: Users[i]._id,
+                        invitationMessage: Fixtures.getRandom("lorems"),
+                        user_id: Users[Fixtures.loopId(i - 5)]._id
+                    }
+                );
+                project.members.push(
+                    {user_id: Users[Fixtures.loopId(i - 4)]._id},
+                    {user_id: Users[Fixtures.loopId(i - 3)]._id},
+                    {user_id: Users[Fixtures.loopId(i - 2)]._id},
+                    {user_id: Users[Fixtures.loopId(i - 1)]._id})
+                project.save()
+            })
+            Users.forEach((user, j) => {
+                user.profile.invitations.push(
+                    {
+                        project_id: Projects[Fixtures.loopId(j + 1)]._id,
+                        invitationMessage: Fixtures.getRandom("lorems")
+                    },
+                    {
+                        project_id: Projects[Fixtures.loopId(j + 2)]._id,
+                        invitationMessage: Fixtures.getRandom("lorems")
+                    });
+                user.profile.projects.push(
+                    {
+                        project_id: Projects[Fixtures.loopId(j + 3)]._id,
+                        name: Projects[Fixtures.loopId(j + 3)].name
+                    },
+                    {
+                        project_id: Projects[Fixtures.loopId(j + 4)]._id,
+                        name: Projects[Fixtures.loopId(j + 4)].name
+                    },
+                    {
+                        project_id: Projects[Fixtures.loopId(j + 5)]._id,
+                        name: Projects[Fixtures.loopId(j + 5)].name
+                    }
+                );
+                user.save()
+
             })
         }
     })
