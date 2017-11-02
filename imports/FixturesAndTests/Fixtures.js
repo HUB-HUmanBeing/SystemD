@@ -1,7 +1,7 @@
 const Fixtures = {
 
     getRandom(key) {
-        return this[Math.floor(Math.random() * (this[key].length))]
+        return this[key][Math.floor(Math.random() * (this[key].length))]
 
     },
     lorems: ["Dans la production sociale de leur existence, les hommes nouent des rapports déterminés, nécessaires, indépendants de leur volonté ; ces rapports de production correspondent à un degré donné du développement de leurs forces productives matérielles. L’ensemble de ces rapports forme la structure économique de la société, la fondation réelle sur laquelle s’élève un édifice juridique et politique, et à quoi répondent des formes déterminées de la conscience sociale. Le mode de production de la vie matérielle domine en général le développement de la vie sociale, politique et intellectuelle. Ce n’est pas la conscience des hommes qui détermine leur existence, c’est au contraire leur existence sociale qui détermine leur conscience. A un certain degré de leur développement, les forces productives matérielles de la société entrent en collision avec les rapports de production existants, ou avec les rapports de propriété au sein desquels elles s’étaient mues jusqu’alors, et qui n’en sont que l’expression juridique.",
@@ -10,7 +10,7 @@ const Fixtures = {
         "Réduits à leurs grandes lignes, les modes de production asiatique, antique, féodal et bourgeois moderne apparaissent comme des époques progressives de la formation économique de la société. Les rapports de production bourgeois sont la dernière forme antagoniste du procès social de la production. Il n’est pas question ici d’un antagonisme individuel ; nous l’entendons bien plutôt comme le produit des conditions sociales de l’existence des individus ; mais les forces productives qui se développent au sein de la société bourgeoise créent dans le même temps les conditions matérielles propres à résoudre cet antagonisme. Avec ce système social c’est donc la préhistoire de la société humaine qui se clôt.",
         ""
     ],
-    images: [
+    imgUrls: [
         "https://i.imgur.com/v7pjMbk.jpg",
         "https://i.imgur.com/TvenST3.jpg",
         "https://i.imgur.com/YgLPzXz.jpg",

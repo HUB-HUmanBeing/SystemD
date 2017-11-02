@@ -68,13 +68,12 @@ let FixturesAndTests = {
                         } else {
                             //on rajoute la methode au tableau des actions réussies
                             FixturesAndTests.MethodValid.push(this.name)
-
                             //et on passe au tests pour chaques tests
                             this.tests.forEach((test, i) => {
                                 //on réalise le test
                                 test.doTest(() => {
                                     //lorsqu'on arrive au dernier test, on renvoie defer.resolve
-                                    if (i === this.tests.length -1) {
+                                    if (i === this.tests.length - 1) {
                                         //defer.resolve permet d'indiquer que l'exécution est terminé avec l'état OK
                                         //l'objet promise retournée par rechercherNbLikeAsync aura l'état "Fulfilled"
                                         defer.resolve();
@@ -82,11 +81,14 @@ let FixturesAndTests = {
                                 })
 
                             })
+
                         }
-                    });
+                    })
+
                 }).promise(); //on renvoie bien la promise
-            },
-            //tableau des tests a réaliser concernant les données rentrées par la méthodes appelée dans l'action
+            }
+            ,
+//tableau des tests a réaliser concernant les données rentrées par la méthodes appelée dans l'action
             tests: [
                 {
                     //message qui sera renvoyé a l'écran
@@ -110,7 +112,8 @@ let FixturesAndTests = {
             //ordre de passage dans la methode principale
             milestone: 1,
             //nom sous lequel la methode sera connue
-            name: "clearProjects",
+            name:
+                "clearProjects",
             //action a réaliser qui sera exécuté dans RunFixturesAndTest
             action() {
                 //Cette fonction retoune un objet promise, c'est à dire un objet qui va permettre de déterminer
@@ -138,7 +141,7 @@ let FixturesAndTests = {
                                 //on réalise le test
                                 test.doTest(() => {
                                     //lorsqu'on arrive au dernier test, on renvoie defer.resolve
-                                    if (i === this.tests.length -1) {
+                                    if (i === this.tests.length - 1) {
                                         //defer.resolve permet d'indiquer que l'exécution est terminé avec l'état OK
                                         //l'objet promise retournée par rechercherNbLikeAsync aura l'état "Fulfilled"
                                         defer.resolve();
@@ -149,7 +152,8 @@ let FixturesAndTests = {
                         }
                     });
                 }).promise(); //on renvoie bien la promise
-            },
+            }
+            ,
             //tableau des tests a réaliser concernant les données rentrées par la méthodes appelée dans l'action
             tests: [
                 {
@@ -169,7 +173,8 @@ let FixturesAndTests = {
                     }
                 }
             ]
-        },
+        }
+        ,
     ],
 }
 

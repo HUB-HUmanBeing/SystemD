@@ -6,6 +6,7 @@ User.extend({
 //modification de la description utilisateur
         updateProfileItem(key, value) {
             check(key, String);
+            console.log(Meteor.userId())
             if (this._id === Meteor.userId()) {
                 this.profile[key] = value;
 

@@ -35,14 +35,14 @@ COULEURS
 .hover-green:hover *{
     color: #4CAF50 !important;
 }
-.hover-blue-grey:hover *{
-    color: #546E7A !important;
+.hover-deep-purple:hover *{
+    color: #5E35B1 !important;
 }
 .hover-red:hover *{
     color: #E53935 !important;
 }
-.hover-:hover *{
-    color: #8E24AA !important;
+.hover-teal:hover *{
+    color: #00897B !important;
 }
 .hover-amber:hover *{
     color: #FFB300 !important;

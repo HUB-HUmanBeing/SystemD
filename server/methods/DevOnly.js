@@ -4,6 +4,7 @@ import User from '/imports/classes/User'
 if (Meteor.isDevelopment) {
     Meteor.methods({
         clearUsers: function () {
+
             User.find().fetch().forEach((user)=>{
             user.remove()
             })

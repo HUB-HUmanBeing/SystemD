@@ -61,7 +61,6 @@ if (Meteor.isDevelopment) {
                         let elapsedTime = new Date().getTime() - startTime
                         instance.elapsedTime.set(elapsedTime)
 
-                        handler.stop()
                         Meteor.setTimeout(function () {
                                 $('ul.tabs').tabs();
                                 $('ul.tabs').tabs('select_tab', 'test1');

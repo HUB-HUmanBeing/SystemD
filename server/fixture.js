@@ -41,13 +41,17 @@ if (Meteor.users.find().count() === 0) {
         userId = Meteor.call('createNewUser', {
             username: user.username,
             password: "123456"
+        },function () {
+            let createdUser = User.findOne({_id: userId});
+            createdUser.profile.imgUrl = user.img;
+            createdUser.profile.description = lorem;
+            createdUser.save(function () {
+                
+            })
         });
 
-        let createdUser = User.findOne({_id: userId});
-        createdUser.profile.imgUrl = user.img;
-        createdUser.profile.description = lorem;
-
-        createdUser.save()
+       
+        
 
     })
 }
