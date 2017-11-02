@@ -8,6 +8,11 @@
 .font-title{
     font-size: 14px ; font-weight: 700 ;  Text-Transform: Uppercase;
 }
+.small-text{
+    font-size: 0.95em;
+    text-align: justify;
+
+}
 /******************
 COULEURS
  ***********************/

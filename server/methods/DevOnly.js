@@ -7,10 +7,14 @@ if (Meteor.isDevelopment) {
         clearDb: function () {
             console.log("ok")
             User.find().fetch().forEach((user) => {
-                user.remove()
+                user.remove(function () {
+                    console.log("collection users reset")
+                })
             })
             Project.find().fetch().forEach((project) => {
-                project.remove()
+                project.remove(function () {
+                    console.log("collection projets reset")
+                })
             })
         },
         launchUsersAndProjectsFixtures: function () {

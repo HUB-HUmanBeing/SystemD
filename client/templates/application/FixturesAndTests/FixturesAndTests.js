@@ -19,6 +19,9 @@ if (Meteor.isDevelopment) {
             }
 
         },
+        showResults : function () {
+          return  Template.instance().showResults.get()
+        },
         message : function () {
             return Template.instance().message.get()
         }
@@ -29,8 +32,9 @@ if (Meteor.isDevelopment) {
         'click [clearDB]': function (event, instance) {
 Meteor.logout()
             let startTime = new Date().getTime()
+            instance.showResults.set(true)
             Meteor.call('clearDb', (err) => {
-                console.log("ok")
+
                 let elapsedTime = new Date().getTime() - startTime
                 instance.elapsedTime.set(elapsedTime)
                 instance.Done.set(true)
@@ -45,6 +49,7 @@ Meteor.logout()
         },
         "click [launchUsersAndProjectsFixtures]": function (event, instance) {
             let startTime = new Date().getTime()
+            instance.showResults.set(true)
             Meteor.call('launchUsersAndProjectsFixtures', (err) => {
                 instance.Done.set(true)
                 let elapsedTime = new Date().getTime() - startTime
@@ -60,6 +65,8 @@ Meteor.logout()
         },
         "click [LaunchMembersAndInvitFixtures]" : function (event, instance) {
             let startTime = new Date().getTime()
+            instance.showResults.set(true)
+            instance.Done.set(false)
             Meteor.call('LaunchMembersAndInvitFixtures', (err) => {
                 let elapsedTime = new Date().getTime() - startTime
                 instance.elapsedTime.set(elapsedTime)
@@ -77,6 +84,7 @@ Meteor.logout()
 
     Template.fixturesAndTests.onCreated(function () {
         //add your statement here
+        this.showResults= new ReactiveVar(false)
         this.Done = new ReactiveVar(false)
         this.succes = new ReactiveVar(false)
 this.message = new ReactiveVar("")

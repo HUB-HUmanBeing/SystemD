@@ -8,35 +8,41 @@
     <!-- Modal Structure -->
     <div id="resetModal" class="modal dark-grey scrollbar" style="width: 80% !important;">
         <div class="modal-content dark-grey ">
-            <h4>Tests et fixtures</h4>
-            <div class="row">
+            <h4>Réinitialisation du jeu de données</h4>
+        <div class="row">
 
-                <a class="waves-effect waves-orange btn-flat orange-text " ClearDb>
-                    Reset DB
-                </a>
-                <a class="waves-effect waves-orange btn-flat orange-text " LaunchUsersAndProjectsFixtures>
-                    Create users and Projects
-                </a>
-                <a class="waves-effect waves-orange btn-flat orange-text " LaunchMembersAndInvitFixtures>
-                    fill Projects with members and invitations
-                </a>
+            <a class="waves-effect waves-orange btn-flat orange-text " ClearDb>
+                Reset DB
+            </a>
+            <a class="waves-effect waves-orange btn-flat orange-text " LaunchUsersAndProjectsFixtures>
+                Create users and Projects
+            </a>
+            <a class="waves-effect waves-orange btn-flat orange-text " LaunchMembersAndInvitFixtures>
+                fill Projects with members and invitations
+            </a>
+
+            {{#if showResults}}
+            <div class="col s12 center-align ">
+
                 {{#if Done}}
-
-                    <div class="col s12 center-align ">
-
-
-                                <p class="{{#if succes }} green-text {{else}} red-text {{/if}}">
-                                     {{message}}( {{elapsedTime}} )
-                                </p>
-                                <p>
-                                     <i class="material-icons {{#if succes }} green-text {{else}} red-text {{/if}} medium">
-                                         {{#if succes }} check_box {{else}} clear{{/if}}
-                                     </i>
-                                </p>
-
+                    <p class="{{#if succes }} green-text {{else}} red-text {{/if}}">
+                        {{message}}( {{elapsedTime}} )
+                    </p>
+                    <p>
+                        <i class="material-icons {{#if succes }} green-text {{else}} red-text {{/if}} medium">
+                            {{#if succes }} check_box {{else}} clear{{/if}}
+                        </i>
+                    </p>
+                {{else}}
+                    <div class="relative" style="top: 50px;">
+                        {{>loading}}
                     </div>
+
                 {{/if}}
+                </div>
+            {{/if}}
             </div>
+
         </div>
         <div class="modal-footer dark-grey">
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons">clear</i></a>
