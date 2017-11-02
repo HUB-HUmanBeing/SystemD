@@ -93,7 +93,6 @@ const Project = Class.create({
             fieldsToComplete.forEach(function (field) {
                 if (!(field === null || field === undefined || field === "" || field === 0 || field === "/images/icon/project_icon.png")) {
                     completed += 1
-
                 }
             });
             //on retourne le résultat divisé par le nombre d'element à checker,
@@ -159,7 +158,7 @@ const Project = Class.create({
         relativeDistance() {
             let currentUserLocation = Meteor.user().profile.location;
 
-            if (this.publicInfo.location && currentUserLocation[1]) {
+            if (this.publicInfo.location && currentUserLocation.lonLat) {
 
                 let distance = new Haversine(
                     this.publicInfo.location.lonLat[1],
