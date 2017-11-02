@@ -1,3 +1,0 @@
-if (Meteor.isDevelopment) {
-Fixtures
-}

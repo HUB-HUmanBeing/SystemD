@@ -1,74 +1,58 @@
-import FixturesAndTests from "/imports/FixturesAndTests/FixturesAndTests"
+
 
 if (Meteor.isDevelopment) {
 
     Template.fixturesAndTests.helpers({
         //add you helpers here
-        FixturesAndTestDone: function () {
-            return Template.instance().FixturesAndTestDone.get()
+        Done: function () {
+            return Template.instance().Done.get()
         },
-        AllSucces: function () {
-            return 0 === Template.instance().errorMethods.get().length + Template.instance().invalidTests.get().length
-        },
-        succesMethods: function () {
-            return Template.instance().succesMethods.get()
-        },
-        errorMethods: function () {
-            return Template.instance().errorMethods.get()
-        },
-        invalidTests: function () {
-            return Template.instance().invalidTests.get()
-        },
-        validTests: function () {
-            return Template.instance().validTests.get()
-        },
-        succesMethodslength: function () {
-            return Template.instance().succesMethods.get().length
-        },
-        errorMethodslength: function () {
-            return Template.instance().errorMethods.get().length
-        },
-        invalidTestslength: function () {
-            return Template.instance().invalidTests.get().length
-        },
-        validTestslength: function () {
-            return Template.instance().validTests.get().length
+        succes: function () {
+            return Template.instance().succes.get()
         },
         elapsedTime: function () {
             let elapsedTime = Template.instance().elapsedTime.get()
-            if( elapsedTime<1000){
+            if (elapsedTime < 1000) {
                 return elapsedTime.toString() + "ms"
-            }else{
-                return (elapsedTime/1000).toString() + "s"
+            } else {
+                return (elapsedTime / 1000).toString() + "s"
             }
 
+        },
+        message : function () {
+            return Template.instance().message.get()
         }
     });
 
     Template.fixturesAndTests.events({
         //add your events here
-        'click [launchFixturesAndTests]': function (event, instance) {
-            let handler = Meteor.subscribe('AllForDev', {
-                onReady: function () {
-                    let startTime = new Date().getTime()
-                    FixturesAndTests.RunFixturesAndTests(() => {
-                        instance.succesMethods.set(FixturesAndTests.MethodValid)
-                        instance.errorMethods.set(FixturesAndTests.MethodErrors)
-                        instance.invalidTests.set(FixturesAndTests.invalidTests)
-                        instance.validTests.set(FixturesAndTests.validTests)
+        'click [clearDB]': function (event, instance) {
 
-                        instance.FixturesAndTestDone.set(true)
-                        let elapsedTime = new Date().getTime() - startTime
-                        instance.elapsedTime.set(elapsedTime)
-
-                        Meteor.setTimeout(function () {
-                                $('ul.tabs').tabs();
-                                $('ul.tabs').tabs('select_tab', 'test1');
-                            }, 100
-                        )
-
-
-                    })
+            let startTime = new Date().getTime()
+            Meteor.call('clearDb', (err) => {
+                console.log("ok")
+                instance.Done.set(true)
+                if (err) {
+                    instance.succes.set(false)
+                } else {
+                    instance.message.set("la base de donnée a été reset")
+                    instance.succes.set(true)
+                    let elapsedTime = new Date().getTime() - startTime
+                    instance.elapsedTime.set(elapsedTime)
+                }
+            })
+        },
+        "click [launchUsersAndProjectsFixtures]": function (event, instance) {
+            let startTime = new Date().getTime()
+            Meteor.call('launchUsersAndProjectsFixtures', (err) => {
+                instance.Done.set(true)
+                if (err) {
+                    instance.succes.set(false)
+                } else {
+                    instance.message.set("des utilisateurs et leurs projets ont étés créés")
+                    instance.succes.set(true)
+                    let elapsedTime = new Date().getTime() - startTime
+                    instance.elapsedTime.set(elapsedTime)
                 }
             })
         }
@@ -76,11 +60,9 @@ if (Meteor.isDevelopment) {
 
     Template.fixturesAndTests.onCreated(function () {
         //add your statement here
-        this.FixturesAndTestDone = new ReactiveVar(false)
-        this.succesMethods = new ReactiveVar([])
-        this.errorMethods = new ReactiveVar([])
-        this.invalidTests = new ReactiveVar([])
-        this.validTests = new ReactiveVar([])
+        this.Done = new ReactiveVar(false)
+        this.succes = new ReactiveVar(false)
+this.message = new ReactiveVar("")
         this.elapsedTime = new ReactiveVar()
     });
 

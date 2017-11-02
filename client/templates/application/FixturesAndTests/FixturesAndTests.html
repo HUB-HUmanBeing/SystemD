@@ -1,56 +1,36 @@
 <template name="fixturesAndTests">
     <!-- Modal Trigger -->
     <a class="waves-effect waves-light btn-floating modal-trigger orange tooltipped" data-position="bottom"
-       data-delay="50" data-tooltip="Lancer les fixtures et les tests" href="#fixturesAndTestsModal"
-       style="bottom: 0px; right: 10px;"><i class="material-icons grey-text text-darken-3">playlist_add_check
+       data-delay="50" data-tooltip="Reset" href="#resetModal"
+       style="bottom: 0px; right: 10px;"><i class="material-icons grey-text text-darken-3">cached
     </i></a>
 
     <!-- Modal Structure -->
-    <div id="fixturesAndTestsModal" class="modal dark-grey scrollbar" style="width: 80% !important;">
+    <div id="resetModal" class="modal dark-grey scrollbar" style="width: 80% !important;">
         <div class="modal-content dark-grey ">
             <h4>Tests et fixtures</h4>
             <div class="row">
 
-                <a class="waves-effect waves-orange btn-flat orange-text " LaunchFixturesAndTests>
-                    Lancer les fixtures et les tests
+                <a class="waves-effect waves-orange btn-flat orange-text " ClearDb>
+                    Reset DB
                 </a>
-
-                {{#if FixturesAndTestDone}}
+                <a class="waves-effect waves-orange btn-flat orange-text " LaunchUsersAndProjectsFixtures>
+                    Launch Fixtures
+                </a>
+                {{#if Done}}
 
                     <div class="col s12 center-align ">
-                        <span style="display: inline-block">
-                            <span class="valign-wrapper">
-                                <i class="material-icons {{#if AllSucces }} green-text {{else}} red-text {{/if}} medium">
-                                   {{#if AllSucces }} check_box {{else}} clear{{/if}}
-                                </i>
-                                <span class="{{#if AllSucces }} green-text {{else}} red-text {{/if}}">
-                                    ( {{elapsedTime}} )
-                                </span>
-                            </span>
-                        </span>
 
 
-                    </div>
+                                <p class="{{#if succes }} green-text {{else}} red-text {{/if}}">
+                                     {{message}}( {{elapsedTime}} )
+                                </p>
+                                <p>
+                                     <i class="material-icons {{#if succes }} green-text {{else}} red-text {{/if}} medium">
+                                         {{#if succes }} check_box {{else}} clear{{/if}}
+                                     </i>
+                                </p>
 
-
-                    <div class="row">
-                        <div class="col s12">
-                            <ul class="tabs dark-grey">
-                                <li class="tab col s3"><a href="#test1">Tests échoués <b
-                                        class="red-text">{{invalidTestslength}}</b></a></li>
-                                <li class="tab col s3"><a href="#test2">Tests réussis <b
-                                        class="green-text">{{validTestslength}}</b></a></li>
-                                <li class="tab col s3 "><a href="#test3">Methodes Echouées <b
-                                        class="red-text">{{errorMethodslength}}</b></a></li>
-                                <li class="tab col s3"><a href="#test4">Methodes Réussies <b
-                                        class="green-text">{{succesMethodslength}}</b></a></li>
-                            </ul>
-                        </div>
-                        <div class="row"></div>
-                        <div id="test1" class="col s12 ">{{>showTestsResults items = invalidTests }}</div>
-                        <div id="test2" class="col s12 ">{{>showTestsResults items = validTests succes = true}}</div>
-                        <div id="test3" class="col s12">{{>showTestsResults items =  errorMethods}}</div>
-                        <div id="test4" class="col s12">{{>showTestsResults items = succesMethods succes = true}}</div>
                     </div>
                 {{/if}}
             </div>
@@ -59,16 +39,4 @@
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons">clear</i></a>
         </div>
     </div>
-</template>
-
-<template name="showTestsResults">
-    {{#each item in items}}
-        <p>
-            <i class="material-icons {{#if succes }} green-text {{else}} red-text {{/if}}">
-                {{#if succes }} done {{else}} clear{{/if}}
-            </i>
-            <span class="small-info">{{item}}</span>
-        </p>
-    {{/each}}
-
 </template>
