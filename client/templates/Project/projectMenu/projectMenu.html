@@ -1,5 +1,5 @@
 <template name="projectMenu">
-    <div class="row dark-grey ">
+    <div class="row dark-grey {{#if isDesktop}}valign-wrapper{{/if}}">
         {{>contextualMenuTitle
                 title=title
                 contextualHomepage = contextualHomepage
