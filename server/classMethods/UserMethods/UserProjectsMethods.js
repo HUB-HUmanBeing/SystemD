@@ -23,7 +23,6 @@ User.extend({
                     // il y a juste a quitter le projet, ou si l'on doit aussi le fermer au passage
                     if(projectToQuit.isThereOtherAdminsExeptCurrentUser()){
                         //on parcoure les membres du projet
-                        console.log("premier cas")
                         projectToQuit.members.forEach((member, i) => {
                             //lorsqu'on trouve l'utilisateur courant
                             if (member.user_id === currentUserId) {
@@ -34,7 +33,6 @@ User.extend({
 
                                     //si la sauvegarde s'est bien passée
                                     if (!err) {
-                                        console.log("premier cas")
                                         //on parcoure ensuite les projets de notre instance d'utilisateur appelée
                                         this.profile.projects.forEach((project, j) => {
                                             //lorsqu'on trouve le projet correspondant a celui qu'on veut retirer
@@ -42,7 +40,6 @@ User.extend({
                                                 //on retire le projet du tableau des projet
                                                 this.profile.projects.splice(j, 1);
                                                 //puis on sauvegarde
-                                                console.log('pret a sauvegarder')
                                                 this.save()
                                             }
                                         })
@@ -52,7 +49,6 @@ User.extend({
                         })
                     //sinon, c'est qu'on doit supprimer le projet
                     }else if(projectToQuit.isDeletable()){
-                        console.log("deuxieme cas")
                         //on appelle alors la methode correspondant a la suppression de projet
                         projectToQuit.callMethod("deleteProject")
                     }

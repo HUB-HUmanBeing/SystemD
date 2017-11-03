@@ -75,80 +75,84 @@ Template.editLocation.events({
         //on referme le formulaire de rcherche
         instance.useSearchForm.set(false);
         //on recupere les données de l'utilisateur
-        let latLng = Geolocation.latLng();
-        //requette http vers l'api de nominatim pour recuperer le nom de la ville a partir des coordonnées
-        HTTP.call("GET",
-            "http://nominatim.openstreetmap.org/reverse?format=json&lat=" + latLng.lat + "&lon=" + latLng.lng + "&zoom=18&addressdetails=1",
-            function (error, result) {
-                //si ya erreur on verifie que c'est pas la premier fois ( pour pas renvoyer une erreur au premier essai
-                if (error) {
-                    if (instance.geolocErrorCounter.get() > 1) {
-                        Materialize.Toast("La géolocalisation a échouée", 6000, "red")
-                    } else {
-                        instance.geolocErrorCounter.set(1)
-                        console.log("test")
-                        Materialize.Toast("Veillez réessayer de vous localiser", 6000, "orange")
-                    }
-                    //si c'est bon
-                } else if (result) {
-                    let address = result.data.address;
-                    //on formate le tableau a renvoyer a la methode
-                    let attribute = [
-                        //on arrondi a deux décimales pour ne pas stocker en base des info dont la précision ne sont pas nécessaire
-                        Math.round(parseFloat(latLng.lat) * 100) / 100,
-                        Math.round(parseFloat(latLng.lng) * 100) / 100,
-                        address.town,
-                        address.country
-                    ];
-                    //on instancie la classe user avec notre utilisateur courant
-                    if (instance.owner.get() === "user") {
-                        let currentUser = User.findOne(Meteor.userId())
-                        //et on utilise la méthode
-                        currentUser.applyMethod('updateSelfLocation',
-                            attribute,
-                            function (error, result) {
-                                //on renvoie le resutat de l'opération a l'utilisateur
-                                if (error) {
-                                    Materialize.toast(error.message, 6000, "red")
-                                } else {
-                                    instance.editingLocation.set(false)
-                                    //on enleve les infobulles
-                                    $('.tooltipped').tooltip('remove');
-                                    //et on les remets apres un court délai (pour eviter que ne reste affichée
-                                    // celle qui etait en hover au moment du click)
-                                    Meteor.setTimeout(function () {
-                                        $('.tooltipped').tooltip({delay: 50});
-                                    }, 100)
-                                    Materialize.toast("Votre position a été mise à jour", 6000, "green")
-                                }
-                            })
-                    } else if (instance.owner.get() === "project") {
-                        let currentProject = Project.findOne(instance.data.projectId);
-                        //puis on lui applique la methode
+        instance.autorun(function () {
+            let latLng = Geolocation.latLng();
+            if (latLng) {
+                //requette http vers l'api de nominatim pour recuperer le nom de la ville a partir des coordonnées
+                HTTP.call("GET",
+                    "http://nominatim.openstreetmap.org/reverse?format=json&lat=" + latLng.lat + "&lon=" + latLng.lng + "&zoom=18&addressdetails=1",
+                    function (error, result) {
+                        //si ya erreur on verifie que c'est pas la premier fois ( pour pas renvoyer une erreur au premier essai
+                        if (error) {
+                            if (instance.geolocErrorCounter.get() > 1) {
+                                Materialize.Toast("La géolocalisation a échouée", 6000, "red")
+                            } else {
+                                instance.geolocErrorCounter.set(1)
+                                console.log("test")
+                                Materialize.Toast("Veillez réessayer de vous localiser", 6000, "orange")
+                            }
+                            //si c'est bon
+                        } else if (result) {
+                            let address = result.data.address;
+                            //on formate le tableau a renvoyer a la methode
+                            let attribute = [
+                                //on arrondi a deux décimales pour ne pas stocker en base des info dont la précision ne sont pas nécessaire
+                                Math.round(parseFloat(latLng.lat) * 100) / 100,
+                                Math.round(parseFloat(latLng.lng) * 100) / 100,
+                                address.town,
+                                address.country
+                            ];
+                            //on instancie la classe user avec notre utilisateur courant
+                            if (instance.owner.get() === "user") {
+                                let currentUser = User.findOne(Meteor.userId())
+                                //et on utilise la méthode
+                                currentUser.applyMethod('updateSelfLocation',
+                                    attribute,
+                                    function (error, result) {
+                                        //on renvoie le resutat de l'opération a l'utilisateur
+                                        if (error) {
+                                            Materialize.toast(error.message, 6000, "red")
+                                        } else {
+                                            instance.editingLocation.set(false)
+                                            //on enleve les infobulles
+                                            $('.tooltipped').tooltip('remove');
+                                            //et on les remets apres un court délai (pour eviter que ne reste affichée
+                                            // celle qui etait en hover au moment du click)
+                                            Meteor.setTimeout(function () {
+                                                $('.tooltipped').tooltip({delay: 50});
+                                            }, 100)
+                                            Materialize.toast("Votre position a été mise à jour", 6000, "green")
+                                        }
+                                    })
+                            } else if (instance.owner.get() === "project") {
+                                let currentProject = Project.findOne(instance.data.projectId);
+                                //puis on lui applique la methode
 
-                        currentProject.applyMethod('updateProjectLocation',
-                            attribute,
-                            function (error, result) {
-                                //on renvoie le resutat de l'opération a l'utilisateur
-                                if (error) {
-                                    Materialize.toast(error.message, 6000, "red")
-                                } else {
-                                    instance.editingLocation.set(false)
-                                    //on enleve les infobulles
-                                    $('.tooltipped').tooltip('remove');
-                                    //et on les remets apres un court délai (pour eviter que ne reste affichée
-                                    // celle qui etait en hover au moment du click)
-                                    Meteor.setTimeout(function () {
-                                        $('.tooltipped').tooltip({delay: 50});
-                                    }, 100)
-                                    Materialize.toast("La localisation du projet à été mise à jour", 6000, "green")
-                                }
-                            })
+                                currentProject.applyMethod('updateProjectLocation',
+                                    attribute,
+                                    function (error, result) {
+                                        //on renvoie le resutat de l'opération a l'utilisateur
+                                        if (error) {
+                                            Materialize.toast(error.message, 6000, "red")
+                                        } else {
+                                            instance.editingLocation.set(false)
+                                            //on enleve les infobulles
+                                            $('.tooltipped').tooltip('remove');
+                                            //et on les remets apres un court délai (pour eviter que ne reste affichée
+                                            // celle qui etait en hover au moment du click)
+                                            Meteor.setTimeout(function () {
+                                                $('.tooltipped').tooltip({delay: 50});
+                                            }, 100)
+                                            Materialize.toast("La localisation du projet à été mise à jour", 6000, "green")
+                                        }
+                                    })
 
+                            }
+                        }
                     }
-                }
+                )
             }
-        )
+        })
     },
     /*****************************************
      *  "autocomplétion" de la saisie de l'adresse utilisateur
