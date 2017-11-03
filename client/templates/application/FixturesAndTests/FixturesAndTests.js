@@ -1,15 +1,15 @@
-
-
 if (Meteor.isDevelopment) {
 
     Template.fixturesAndTests.helpers({
-        //add you helpers here
+        //true si l'opération a été effectuée
         Done: function () {
             return Template.instance().Done.get()
         },
+        //true si l'opération est réussie
         succes: function () {
             return Template.instance().succes.get()
         },
+        //durée de l'opération
         elapsedTime: function () {
             let elapsedTime = Template.instance().elapsedTime.get()
             if (elapsedTime < 1000) {
@@ -19,64 +19,97 @@ if (Meteor.isDevelopment) {
             }
 
         },
-        showResults : function () {
-          return  Template.instance().showResults.get()
+        //ouverture du anneau de retour
+        showResults: function () {
+            return Template.instance().showResults.get()
         },
-        message : function () {
+        //renvoie l'intitulé de l'opération effectué
+        message: function () {
             return Template.instance().message.get()
         }
     });
 
     Template.fixturesAndTests.events({
-        //add your events here
+        //action de mise a zéro de la BDB
         'click [clearDB]': function (event, instance) {
-Meteor.logout()
+            //on se déconnecte
+            Meteor.logout()
+            //on mémorise le début de l'opération
             let startTime = new Date().getTime()
-            instance.showResults.set(true)
-            Meteor.call('clearDb', (err) => {
-
-                let elapsedTime = new Date().getTime() - startTime
-                instance.elapsedTime.set(elapsedTime)
-                instance.Done.set(true)
-                if (err) {
-                    instance.succes.set(false)
-                } else {
-                    instance.message.set("la base de donnée a été reset")
-                    instance.succes.set(true)
-
-                }
-            })
-        },
-        "click [launchUsersAndProjectsFixtures]": function (event, instance) {
-            let startTime = new Date().getTime()
-            instance.showResults.set(true)
-            Meteor.call('launchUsersAndProjectsFixtures', (err) => {
-                instance.Done.set(true)
-                let elapsedTime = new Date().getTime() - startTime
-                instance.elapsedTime.set(elapsedTime)
-                if (err) {
-                    instance.succes.set(false)
-                } else {
-                    instance.message.set("des utilisateurs et leurs projets ont étés créés")
-                    instance.succes.set(true)
-
-                }
-            })
-        },
-        "click [LaunchMembersAndInvitFixtures]" : function (event, instance) {
-            let startTime = new Date().getTime()
+            //on ouvre le panneau de retour
             instance.showResults.set(true)
             instance.Done.set(false)
-            Meteor.call('LaunchMembersAndInvitFixtures', (err) => {
+            //on appele la methode de nettoyage de la bdd
+            Meteor.call('clearDb', (err) => {
+                //quant c'est fait
+                //on renseigne sur le temps écoulé
                 let elapsedTime = new Date().getTime() - startTime
                 instance.elapsedTime.set(elapsedTime)
+                //on renseigne que l'opération est finie
                 instance.Done.set(true)
+                //on indique l'opération essayée
+                instance.message.set("reset de la base de données")
+                //si il y a echec
                 if (err) {
+                    //on passe succes a false
                     instance.succes.set(false)
                 } else {
-                    instance.message.set("des utilisateurs ont rejoint les projets et des invitations ont été émises")
+                    //sinon on rensigne du success
                     instance.succes.set(true)
 
+                }
+            })
+        },
+        //action de création des utilisateurs et de leurs projets
+        "click [launchUsersAndProjectsFixtures]": function (event, instance) {
+            //on mémorise le début de l'opération
+            let startTime = new Date().getTime()
+            //on ouvre le panneau de retour
+            instance.showResults.set(true)
+            instance.Done.set(false)
+            //on appelle la méthode de création des user et de leurs projets
+            Meteor.call('launchUsersAndProjectsFixtures', (err) => {
+                //on renseigne que l'opération est finie
+                instance.Done.set(true)
+                //on renseigne sur le temps écoulé
+                let elapsedTime = new Date().getTime() - startTime
+                instance.elapsedTime.set(elapsedTime)
+                //on indique l'opération essayée
+                instance.message.set("Création des utilisateurs et de leurs projets")
+                //si il y a echec
+                if (err) {
+                    //on passe succes a false
+                    instance.succes.set(false)
+                } else {
+                    //sinon on rensigne du success
+                    instance.succes.set(true)
+
+                }
+            })
+        },
+        //ajout de membres et d'invitations
+        "click [LaunchMembersAndInvitFixtures]": function (event, instance) {
+            //on mémorise le début de l'opération
+            let startTime = new Date().getTime()
+            //on ouvre le panneau de retour
+            instance.showResults.set(true)
+            instance.Done.set(false)
+            //on appele la methode d'ajout de membres et d'invitations
+            Meteor.call('LaunchMembersAndInvitFixtures', (err) => {
+                //on renseigne sur le temps écoulé
+                let elapsedTime = new Date().getTime() - startTime
+                instance.elapsedTime.set(elapsedTime)
+                //on renseigne que l'opération est finie
+                instance.Done.set(true)
+                //on indique l'opération essayée
+                instance.message.set("ajout de membres et d'invitations")
+                //si il y a echec
+                if (err) {
+                    //on passe succes a false
+                    instance.succes.set(false)
+                } else {
+                    //sinon on rensigne du success
+                    instance.succes.set(true)
                 }
             })
         }
@@ -84,10 +117,10 @@ Meteor.logout()
 
     Template.fixturesAndTests.onCreated(function () {
         //add your statement here
-        this.showResults= new ReactiveVar(false)
+        this.showResults = new ReactiveVar(false)
         this.Done = new ReactiveVar(false)
         this.succes = new ReactiveVar(false)
-this.message = new ReactiveVar("")
+        this.message = new ReactiveVar("")
         this.elapsedTime = new ReactiveVar()
     });
 

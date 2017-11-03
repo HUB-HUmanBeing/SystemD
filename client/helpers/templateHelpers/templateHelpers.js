@@ -9,7 +9,6 @@ Template.registerHelper('completedColor', function(completed){
 })
 
 Template.registerHelper('length', function(array){
-    console.log(array.length)
         return array.length
 })
 

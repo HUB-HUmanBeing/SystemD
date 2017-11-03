@@ -52,7 +52,9 @@
                                         {{#each invitation in waitingInvitations}}
                                             <div class="row">
                                                 <div class="col s12 no-padding ">
-                                                    {{>userInvitation invitation}}
+                                                    {{>userInvitation
+                                                            invitation =invitation
+                                                            declined = false}}
                                                 </div>
                                             </div>
                                         {{/each}}
@@ -66,7 +68,8 @@
                             <div class="col s12">
                                 <div class="card trame-box ">
                                     <div class="card-content">
-                                        <ul class="collapsible no-margin" data-collapsible="accordion" style="border: none !important;">
+                                        <ul class="collapsible no-margin" data-collapsible="accordion"
+                                            style="border: none !important;">
 
                                             <li>
                                                 <div class="collapsible-header card-title"
@@ -82,25 +85,14 @@
 
 
                                                 </div>
-                                                <div class="collapsible-body no-padding" style="border: none !important;">
+                                                <div class="collapsible-body no-padding"
+                                                     style="border: none !important;">
                                                     {{#each invitation in declinedInvitations}}
                                                         <div class="row">
-                                                            <div class="col s12  ">
-                                                                <div class="row no-margin ">
-                                                                    <div class="col s8 no-padding">
-                                                                        {{>miniature
-                                                                                _id = invitation.project_id
-                                                                                type = "project"}}
-                                                                    </div>
-                                                                    <div class="col s4 valign-wrapper">
-                                                                        <p class="right-align">
-                                                                            <i class="grey-text darken-1 small-info right-align">le {{localeDate invitation.sentAt}}</i>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    {{invitation.invitationMessage}}
-                                                                </div>
+                                                            <div class="col s12 no-padding ">
+                                                                {{>userInvitation
+                                                                        invitation = invitation
+                                                                        declined = true}}
                                                             </div>
                                                         </div>
                                                     {{/each}}

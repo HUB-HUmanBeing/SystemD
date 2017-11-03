@@ -90,5 +90,27 @@ User.extend({
                 }
             })
         },
+        /**********************************
+         * Methode de suppression d'une invitation déclinée
+         * @param projectId
+         ********************************/
+        deleteInvitation(projectId) {
+            check(projectId, String);
+            let currentUserId = Meteor.userId();
+            let user = User.findOne(currentUserId);
+            // on récupere le projet concerné
+            let project = Project.findOne({_id: projectId});
+            //on parcours le tableau des invitations recues
+            user.profile.invitations.forEach((userInvitation, i) => {
+
+                //on trouve celle émise par le projet ET en attente
+                if (userInvitation.project_id === projectId && userInvitation.status === "declined") {
+                    //on supprime l'invitation du tableau
+                    user.profile.invitations.splice(i, 1);
+                    //on sauvegarde
+                    user.save()
+                }
+            })
+        },
     }
 })

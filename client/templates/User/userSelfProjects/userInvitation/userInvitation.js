@@ -3,7 +3,7 @@ import User from '/imports/classes/User'
 Template.userInvitation.helpers({
     //helpeur pour formater la date
     date : function () {
-        return Template.instance().data.sentAt
+        return Template.instance().data.invitation.sentAt
     }
 });
 
@@ -16,7 +16,7 @@ Template.userInvitation.events({
         //on instancie la classe user d'astronomy
         let currentUser = User.findOne(Meteor.userId());
         //on apelle la methode d'acceptation d'une invitaation
-        currentUser.callMethod('acceptInvitation', instance.data.project_id, (error)=>{
+        currentUser.callMethod('acceptInvitation', instance.data.invitation.project_id, (error)=>{
             //on donne un feedback a l'utilisateur
             if (error) {
                 Materialize.toast("une erreur s'est produite", 4000, 'red')
@@ -30,7 +30,7 @@ Template.userInvitation.events({
                     $('.tooltipped').tooltip({delay: 50});
                 }, 100);
                 //et on redirige vers la page du projet qu'on vient de joindre
-                Router.go('adminProject' , { _id : instance.data.project_id})
+                Router.go('adminProject' , { _id : instance.data.invitation.project_id})
 
             }
         })
@@ -49,7 +49,7 @@ Template.userInvitation.events({
         //on appele la methode décliner l'invitation
         currentUser.callMethod(
             'declineInvitation',
-            instance.data.project_id,
+            instance.data.invitation.project_id,
             declineMessage,
             (error) =>{
                 //on donne un feedback a l'utilisateur
@@ -72,7 +72,32 @@ Template.userInvitation.events({
                 }
 
         })
-    }
+    },
+    /*****************************
+     * Accepter l'invitation à rejoindre le projet
+     */
+    'click [deleteInvitation]' : function (event, instance) {
+        event.preventDefault();
+
+        //on instancie la classe user d'astronomy
+        let currentUser = User.findOne(Meteor.userId());
+        //on apelle la methode d'acceptation d'une invitaation
+        currentUser.callMethod('deleteInvitation', instance.data.invitation.project_id, (error)=>{
+            //on donne un feedback a l'utilisateur
+            if (error) {
+                Materialize.toast("une erreur s'est produite", 4000, 'red')
+            } else {
+                //on toast un feedback a l'utilisateur
+                Materialize.toast("Invitation retirée", 6000, 'orange');
+                $('.tooltipped').tooltip('remove');
+                //et on les remets apres un court délai (pour eviter que ne reste affichée
+                // celle qui etait en hover au moment du click)
+                Meteor.setTimeout(function () {
+                    $('.tooltipped').tooltip({delay: 50});
+                }, 100);
+            }
+        })
+    },
 });
 
 Template.userInvitation.onCreated(function () {

@@ -4,8 +4,7 @@ Template.projectMainPage.helpers({
         return Template.currentData();
     },
     relativeDistance: function () {
-
-        let distance = Template.instance().data.fetch()[0].relativeDistance()
+        let distance = Template.instance().data.relativeDistance()
         return ( distance || distance ===0) ? "( " + distance + " km )" : "" ;
 
 

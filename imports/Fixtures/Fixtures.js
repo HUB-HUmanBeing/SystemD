@@ -1,9 +1,18 @@
+/************************
+ * Object Fixture utilisé pour la génération aléatoire de fixtures
+ * @type {{getRandom: (function(*): *), lorems: [string,string,string,string,string,string,string], imgUrls: [string,string,string,string,string,string,string,string,string], locations: [null,null,null,null,null], loopId: (function(*)), usernames: [string,string,string,string,string,string,string,string,string,string], password: string}}
+ */
 const Fixtures = {
-
-    getRandom(key) {
-        return this[key][Math.floor(Math.random() * (this[key].length))]
+    /***********
+     * permet d'avoir un retour aléatoire sur le type de fixtures demandé
+     * @param key String
+     * @returns {*}
+     */
+    getRandom(keyName) {
+        return this[keyName][Math.floor(Math.random() * (this[keyName].length))]
 
     },
+    //(Contribution à la critique de l’économie politique, Avant propos, trad. fr. in Karl Marx, Philosophie], Gallimard, folio « essais », p. 488-489)
     lorems: ["Dans la production sociale de leur existence, les hommes nouent des rapports déterminés, nécessaires, indépendants de leur volonté ; ces rapports de production correspondent à un degré donné du développement de leurs forces productives matérielles. L’ensemble de ces rapports forme la structure économique de la société, la fondation réelle sur laquelle s’élève un édifice juridique et politique, et à quoi répondent des formes déterminées de la conscience sociale. Le mode de production de la vie matérielle domine en général le développement de la vie sociale, politique et intellectuelle. Ce n’est pas la conscience des hommes qui détermine leur existence, c’est au contraire leur existence sociale qui détermine leur conscience.",
         " A un certain degré de leur développement, les forces productives matérielles de la société entrent en collision avec les rapports de production existants, ou avec les rapports de propriété au sein desquels elles s’étaient mues jusqu’alors, et qui n’en sont que l’expression juridique.",
         " Hier encore formes de développement des forces productives, ces conditions se changent en de lourdes entraves. Alors commence un ère de révolution sociale. Le changement dans les fondations économiques s’accompagne d’un bouleversement plus ou moins rapide dans tout cet énorme édifice. Quand on considère ces bouleversements, il faut toujours distinguer deux ordres de choses. Il y a le bouleversement matériel des conditions de production économique. On doit le constater dans l’esprit de rigueur des sciences naturelles. Mais il y a aussi les formes juridiques, politiques, religieuses, artistiques, philosophiques, bref les formes idéologiques, dans lesquelles les hommes prennent conscience de ce conflit et le poussent jusqu’au bout.",
@@ -50,6 +59,8 @@ const Fixtures = {
             country: "France"
         }
     ],
+    //permet de faire rouler l'index comme si les utilisateurs etaient en cercle, ainsi meme si
+    // l'utilisateur est le premier, on peut demander celui qui est à l'index "-2" par rappor a lui
     loopId(index) {
         if (index < 0) {
             return index + this.usernames.length
@@ -63,6 +74,6 @@ const Fixtures = {
         "robin", "noemie", "audric", "jeremy", "batman", "lenka", "patrick", "marco", "blandine", "karl marx"
     ],
     password: "123456"
-}
+};
 
 export default Fixtures
