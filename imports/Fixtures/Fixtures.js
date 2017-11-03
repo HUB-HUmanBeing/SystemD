@@ -18,7 +18,10 @@ const Fixtures = {
         "https://i.imgur.com/YgLPzXz.jpg",
         "https://i.imgur.com/jzSS8tz.jpg",
         "https://i.imgur.com/ljWqZ4W.jpg",
-        "https://i.imgur.com/WxstNvO.jpg"
+        "https://i.imgur.com/WxstNvO.jpg",
+        "https://i.imgur.com/Rf9bBBa.jpg",
+        "https://i.imgur.com/oYCgIP1.jpg",
+        "https://i.imgur.com/zNrO9dk.jpg"
     ],
     locations: [
         {

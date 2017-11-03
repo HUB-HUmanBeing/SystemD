@@ -45,37 +45,40 @@ Template.editDescription.events({
     'submit [updateDescription], click [saveDescriptionBtn]': function (event, instance) {
         //on récupere la valeur du champ
         let value = $('#description').val();
-        //on instancie et hydrate l'objet User
-        if (instance.owner.get() === "user") {
-            let currentUser = User.findOne(Meteor.userId());
-            currentUser.callMethod(
-                'updateProfileItem',
-                "description",
-                value,
-                (error, result) => {
-                    //si ca marche pas, on renvoie l'erreur par toast
-                    if (error) {
-                        Materialize.toast("une erreur s'est produite", 4000, 'red')
-                    } else {
-                        Materialize.toast("la description à été mise à jour", 6000, 'green')
-                    }
-                })
-        } else if (instance.owner.get() === "project") {
-            let currentProject = Project.findOne(instance.data.projectId);
-            //puis on lui applique la methode
+        //on verifie que la valeur as bien changé par rapport a la valeur existante
+        if (value !== instance.initialText) {
+            //on instancie et hydrate l'objet User
+            if (instance.owner.get() === "user") {
+                let currentUser = User.findOne(Meteor.userId());
+                currentUser.callMethod(
+                    'updateProfileItem',
+                    "description",
+                    value,
+                    (error, result) => {
+                        //si ca marche pas, on renvoie l'erreur par toast
+                        if (error) {
+                            Materialize.toast("une erreur s'est produite", 4000, 'red')
+                        } else {
+                            Materialize.toast("la description à été mise à jour", 6000, 'green')
+                        }
+                    })
+            } else if (instance.owner.get() === "project") {
+                let currentProject = Project.findOne(instance.data.projectId);
+                //puis on lui applique la methode
 
-            currentProject.callMethod(
-                'updateInfoItem',
-                "description",
-                value,
-                (error, result) => {
-                    //si ca marche pas, on renvoie l'erreur par toast
-                    if (error) {
-                        Materialize.toast("une erreur s'est produite", 4000, 'red')
-                    } else {
-                        Materialize.toast("la description à été mise à jour", 6000, 'green')
-                    }
-                })
+                currentProject.callMethod(
+                    'updateInfoItem',
+                    "description",
+                    value,
+                    (error, result) => {
+                        //si ca marche pas, on renvoie l'erreur par toast
+                        if (error) {
+                            Materialize.toast("une erreur s'est produite", 4000, 'red')
+                        } else {
+                            Materialize.toast("la description à été mise à jour", 6000, 'green')
+                        }
+                    })
+            }
         }
     },
     //quant on sort du champs
@@ -99,6 +102,13 @@ Template.editDescription.events({
 
 Template.editDescription.onCreated(function () {
     //add your statement here
+    if (Template.instance().data.owner === "user") {
+        this.initialText = Meteor.user().profile.description
+    } else if (Template.instance().data.owner === "project") {
+        let currentProject = Project.findOne(Template.instance().data.projectId)
+        this.initialText = currentProject.publicInfo.description
+    }
+
     //on initialise le tableau des flags
     this.isEditingFlags = new ReactiveVar({
         description: false
