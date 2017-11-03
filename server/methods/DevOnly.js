@@ -12,15 +12,13 @@ if (Meteor.isDevelopment) {
         clearDb: function () {
             console.log("ok")
             User.find().fetch().forEach((user) => {
-                user.remove(function () {
-                    console.log("collection users reset")
-                })
+                user.remove()
             })
+            console.log("collection users reset")
             Project.find().fetch().forEach((project) => {
-                project.remove(function () {
-                    console.log("collection projets reset")
-                })
+                project.remove()
             })
+            console.log("collection projets reset")
         },
         /******************************
          * Création des utilisateurs et de leurs Projets

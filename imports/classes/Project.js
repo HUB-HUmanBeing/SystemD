@@ -84,7 +84,7 @@ const Project = Class.create({
             //on liste ici les champs du profil faisant parti du ratio
             let fieldsToComplete = [
                 this.publicInfo.description,
-                this.publicInfo.location.lat,
+                this.publicInfo.location.lonLat,
                 this.publicInfo.imgUrl
             ];
             //on initialise
@@ -170,6 +170,21 @@ const Project = Class.create({
             } else {
                 return null
             }
+        },
+        /****************************
+         * renvoie true si toutes les conditions a remplir pour supprimer un projet sont réunies :
+         * ------> 1 seul membre administrateur du projet
+         * ------> pas d'invitations
+         * @returns {*|boolean}
+         */
+        isDeletable(){
+            let isWaitingInvitations = false;
+            this.invitations.forEach((invitation)=>{
+                if( invitation.status === "waiting"){
+                    isWaitingInvitations = true
+                }
+            })
+            return this.isAdmin(Meteor.userId())&& this.members.length === 1 && !isWaitingInvitations
         }
     }
 });

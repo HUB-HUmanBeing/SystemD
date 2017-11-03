@@ -39,7 +39,7 @@ const Fixtures = {
             country: "France"
         },
         {
-            lonLat: [44.08, 44.12],
+            lonLat: [4.08, 44.12],
             city: "Alès",
             country: "France"
         },

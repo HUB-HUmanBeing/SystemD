@@ -29,15 +29,83 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col s12 no-padding">
+                            <div class="card trame-box relative">
+                                <div class="card-content">
+                                    <span class="card-title">Catégories</span>
+                                    {{>workInProgress}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col s12 m8 ">
-                    <div class="card trame-box relative">
-                        <div class="card-content">
-                            <span class="card-title">description</span>
-                            {{>editDescription
-                                    owner = "project"
-                                    projectId = project._id}}
+                    <div class="row">
+                        <div class="col s12 no-padding">
+                            <div class="card trame-box relative">
+                                <div class="card-content">
+                                    <span class="card-title">description</span>
+                                    {{>editDescription
+                                            owner = "project"
+                                            projectId = project._id}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 no-padding">
+                            <div class="card trame-box relative">
+                                <div class="card-content">
+                                    <ul class="collapsible no-margin" data-collapsible="accordion"
+                                        style="border: none !important;">
+
+                                        <li>
+                                            <div class="collapsible-header card-title"
+                                                 style=" border: none !important;">
+                                                <div class="row no-margin">
+                                                    <div class="col s10 no-padding">
+                                                        Administration du projet
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <i class="material-icons ">arrow_drop_down</i>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="collapsible-body no-padding"
+                                                 style="border: none !important;">
+                                                <a class="waves-effect waves-light btn-flat red-text modal-trigger" href="#delete-project-modal">Supprimer le projet</a>
+
+                                                <!-- Modal Structure -->
+                                                <div id="delete-project-modal" class="modal dark-grey">
+                                                    <div class="modal-content dark-grey">
+                                                        <h4 class="red-text">Supprimer le projet "{{project.name}}"</h4>
+                                                        {{#if isDeletable}}
+                                                            {{else}}
+                                                            <div class="row">
+                                                                <p><b>Le projet ne peut etre supprimé</b> vous devez au préalable :</p>
+                                                                <ul style="margin-left: 30px">
+                                                                    <li>- Retirer tout les membres du projet</li>
+                                                                    <li>- Annuler toutes les invitations en cours</li>
+                                                                </ul>
+                                                            </div>
+
+                                                            {{/if}}
+                                                        <div class="row  center-align">
+                                                            <a class="btn {{#if isDeletable}} red {{else}} disabled {{/if}}" deleteProject>Supprimer le projet</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer dark-grey">
+                                                        <a class="modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons">clear</i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
