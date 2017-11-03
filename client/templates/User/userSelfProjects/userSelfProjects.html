@@ -10,33 +10,40 @@
                         <div class="card trame-box ">
                             <div class="card-content">
                                 <span class="card-title">Mes Projets</span>
-                                <div class="col s12">
-                                    <h6>Administrateur</h6>
-                                    <br>
-                                    <div class="row">
-                                        {{#each project in adminProjects}}
-                                            <div class="col s12 m6">
-                                                {{>miniature
-                                                        _id = project.project_id
-                                                        type = "project"}}
-                                            </div>
-                                        {{/each}}
-                                    </div>
-                                </div>
                                 <div class="row">
-                                    <div class="col s12">
-                                        <h6>Membre</h6>
-                                        <br>
-                                        <div class="row no-margin">
-                                            {{#each project in memberProjects}}
-                                                <div class="col s12 m6 n">
+                                        <p class="small-info">Avec le status d'administrateur du projet</p>
+                                        {{#each project in adminProjects}}
+                                            <div class="row small-margin">
+                                                <div class="col s10 no-padding">
                                                     {{>miniature
                                                             _id = project.project_id
                                                             type = "project"}}
                                                 </div>
+                                                <div class="col s2 right-align relative">
+                                                    {{>projectManagmentButton
+                                                            project = project}}
+                                                </div>
+                                            </div>
+                                        {{/each}}
+                                </div>
+                                <div class="row">
+                                        <p class="small-info">Avec le status de membre du projet</p>
+
+                                            {{#each project in memberProjects}}
+                                                <div class="row small-margin">
+                                                    <div class="col s10 no-padding">
+                                                        {{>miniature
+                                                                _id = project.project_id
+                                                                type = "project"}}
+                                                    </div>
+                                                    <div class="col s2 right-align relative">
+                                                        {{>projectManagmentButton
+                                                                project = project}}
+                                                    </div>
+                                                </div>
                                             {{/each}}
-                                        </div>
-                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -76,7 +83,8 @@
                                                      style=" border: none !important;">
                                                     <div class="row no-margin">
                                                         <div class="col s10 no-padding">
-                                                            Invitations Déclinées ({{length declinedInvitations}})
+                                                            Invitations Déclinées ({{length
+                                                                declinedInvitations}})
                                                         </div>
                                                         <div class="col s2">
                                                             <i class="material-icons ">arrow_drop_down</i>

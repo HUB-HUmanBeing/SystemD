@@ -10,7 +10,6 @@ if (Meteor.isDevelopment) {
          * Nettoyage de la base de donnée
          */
         clearDb: function () {
-            console.log("ok")
             User.find().fetch().forEach((user) => {
                 user.remove()
             })

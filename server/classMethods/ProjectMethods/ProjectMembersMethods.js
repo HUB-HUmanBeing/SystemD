@@ -36,11 +36,14 @@ Project.extend({
                 }
             })
         },
-
+        /***********************************
+         * methode de suppression d'un membre du projet
+         * @param memberId
+         */
         kickMember(memberId) {
             //On check que l'utilisateur qui appele la methode est bien un admin du projet
             check(this.isAdmin(Meteor.userId()), true);
-            //on verifie que l'entrée est bien du type member
+            //on verifie que l'entrée est bien du type string
             check(memberId, String);
             let currentProjectId = this._id;
             //on récupere les données de l'utilisateur concerné par l'invitation
@@ -70,5 +73,33 @@ Project.extend({
                 }
             })
         },
+        /**********************************************
+         * Methode permettant de savoir si un utilisateur peut quitter le projet.
+         * doit remplir les conditions :
+         * --------->un admin autre que lui restant apres son depart
+         * ---------> sinon, les memes conditions que si c'etait une suppression de projet
+         *
+         * On fait le choix de l'écrire sous forme de méthode plutot que sous forme d'helpeur
+         * car elle doit etre appelée depuis une page ou l'on a pas souscrit a
+         * toutes les infos nécessaires (membres et invitations)
+         * @return Boolean
+         *******************************/
+        canCurrentUserQuit(projectId) {
+            let project = Project.findOne({_id : projectId})
+            //on récupere l'utilisateur courant
+            let currentUserId = Meteor.userId()
+            //on check qu'il soit membre
+
+            check(project.isMember(currentUserId), true)
+            //si il y a d'autres admins, l'utilisateur peut quiter sans soucis
+            if(project.isThereOtherAdminsExeptCurrentUser()){
+                return true
+                //sinon, on renvoie le resultat de l'helpeur "isDeletable",
+                // puisque nous serons ammenés a supprimer le projet
+            }else{
+                return project.isDeletable()
+            }
+
+        }
     }
 })

@@ -13,10 +13,14 @@ Template.userSelfProfile.helpers({
 Template.userSelfProfile.events({
     //aaction de suppression definitive d'un compte utilisateur
     'click [deleteUserAccount]': function () {
+        console.log("ok")
         //on récupere l'utilisateur courant
-        let currentProject = User.findOne({_id: Meteor.userId()})
+        let currentUser = User.findOne({_id: Meteor.userId()})
+        $('.modal').modal('close');
+        //on redirige vers la page des projets utilisateurs
+        Router.go('home')
         //on appele la methode de suppression
-        currentProject.callMethod(
+        currentUser.callMethod(
             'deleteUserAccount',
             (error) => {
                 //si ca marche pas, on renvoie l'erreur par toast
@@ -26,10 +30,7 @@ Template.userSelfProfile.events({
                     //sinon, on toast le succes,
                     Materialize.toast("Votre compte utilisateur à été définitivement supprimé", 6000, 'green')
                     //on ferme la modal
-                    $('.modal').modal('close');
-                    Meteor.logout()
-                    //on redirige vers la page des projets utilisateurs
-                    Router.go('home')
+
                 }
             })
     }

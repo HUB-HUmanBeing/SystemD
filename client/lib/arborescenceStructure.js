@@ -28,6 +28,12 @@ arborescenceStructure = function () {
                     icon: "group_work"
                 },
                 {
+                    id: "userSelfBlog",
+                    name: "Mon Blog",
+                    path: "userSelfBlog",
+                    icon: "library_books"
+                },
+                {
                     id: "logout",
                     name: "Déconnexion",
                     path: "home",
