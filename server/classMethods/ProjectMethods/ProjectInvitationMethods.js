@@ -23,7 +23,6 @@ Project.extend({
 
             //on insère l'invitation dans le tableau d'invitations de l'objet courant
             this.invitations.push({
-                adminId: adminId,
                 invitationMessage: invitationMessage,
                 user_id: userId
             });

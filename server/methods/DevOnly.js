@@ -1,6 +1,8 @@
 import Project from '/imports/classes/Project'
 import User from '/imports/classes/User'
 import Fixtures from '/imports/Fixtures/Fixtures'
+import Projects from '/lib/collections/Projects'
+
 /****************************************
  * Toutes les méthodes ci dessous sont utiles pour la création et le renouvellement de jeux de données de test
  */
@@ -10,14 +12,16 @@ if (Meteor.isDevelopment) {
          * Nettoyage de la base de donnée
          */
         clearDb: function () {
-            User.find().fetch().forEach((user) => {
-                user.remove()
+            Meteor.users.remove({},function () {
+                console.log("collection users reset")
             })
-            console.log("collection users reset")
-            Project.find().fetch().forEach((project) => {
-                project.remove()
+
+
+            Projects.remove({},function () {
+                console.log("collection projets reset")
             })
-            console.log("collection projets reset")
+
+
         },
         /******************************
          * Création des utilisateurs et de leurs Projets
@@ -81,12 +85,12 @@ if (Meteor.isDevelopment) {
                 //on invite les deux utilisateurs situés a 1 et 2 crans sur la droite
                 project.invitations.push({
 
-                        adminId: Users[i]._id,
+                        adminUsername: Users[i].username,
                         invitationMessage: Fixtures.getRandom("lorems"),
                         user_id: Users[Fixtures.loopId(i +1)]._id
                     },
                     {
-                        adminId: Users[i]._id,
+                        adminUsername: Users[i].username,
                         invitationMessage: Fixtures.getRandom("lorems"),
                         user_id: Users[Fixtures.loopId(i +2)]._id
                     }
