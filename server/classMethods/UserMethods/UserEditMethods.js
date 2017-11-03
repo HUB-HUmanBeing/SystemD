@@ -22,5 +22,17 @@ User.extend({
                 return this.save()
             }
         },
+        /******************************
+         * Methode de suppression d'un compte Utilisateur
+         */
+        deleteProject(){
+            //on check que l'utilisateur est bien l'e propriétaire
+            check(Meteor.userId(), this._id);
+            //on check que le compte utilisateur est bien supprimable
+            check(this.isDeletable(), true)
+            //on supprime le compte
+            this.remove()
+
+        }
     }
 })

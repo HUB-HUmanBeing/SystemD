@@ -189,6 +189,21 @@ const User = Class.create({
             });
             return items
         },
+        /****************************
+         * renvoie true si toutes les conditions a remplir pour supprimer le compte utilisateur sont réunies :
+         * ------> membre d'aucun projet
+         * ------> pas d'invitations en cours
+         * @returns {*|boolean}
+         */
+        isDeletable(){
+            let isWaitingInvitations = false;
+            this.profile.invitations.forEach((invitation)=>{
+                if( invitation.status === "waiting"){
+                    isWaitingInvitations = true
+                }
+            })
+            return this.profile.projects.length === 0 && !isWaitingInvitations
+        }
     },
     meteorMethods: {
 

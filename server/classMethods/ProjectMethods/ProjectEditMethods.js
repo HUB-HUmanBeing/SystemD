@@ -31,5 +31,28 @@ Project.extend({
             return this.save()
 
         },
+        /******************************
+         * Methode de suppression d'un projet
+         */
+        deleteProject(){
+            //on check que l'utilisateur est admin du projet
+            check(this.isAdmin(Meteor.userId()), true);
+            //on check que le projet est bien supprimable
+            check(this.isDeletable(), true)
+            //on instancie l'admin
+            let admin = User.findOne({_id :  Meteor.userId()});
+            //on boucle sur les projets de l'utilisateur
+            admin.profile.projects.forEach((project, i )=>{
+                if(project.project_id === this._id){
+                    admin.profile.projects.splice(i, 1)
+                    admin.save((err)=>{
+                        if(!err){
+                            this.remove()
+                        }
+                    })
+                }
+            })
+
+        }
     }
 })

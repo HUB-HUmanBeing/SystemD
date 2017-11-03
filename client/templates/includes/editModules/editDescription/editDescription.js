@@ -59,6 +59,7 @@ Template.editDescription.events({
                         if (error) {
                             Materialize.toast("une erreur s'est produite", 4000, 'red')
                         } else {
+                            instance.initialText = value
                             Materialize.toast("la description à été mise à jour", 6000, 'green')
                         }
                     })
@@ -75,6 +76,7 @@ Template.editDescription.events({
                         if (error) {
                             Materialize.toast("une erreur s'est produite", 4000, 'red')
                         } else {
+                            instance.initialText = value
                             Materialize.toast("la description à été mise à jour", 6000, 'green')
                         }
                     })
@@ -103,7 +105,8 @@ Template.editDescription.events({
 Template.editDescription.onCreated(function () {
     //add your statement here
     if (Template.instance().data.owner === "user") {
-        this.initialText = Meteor.user().profile.description
+        currentUser = Meteor.user()
+        this.initialText = currentUser.profile.description
     } else if (Template.instance().data.owner === "project") {
         let currentProject = Project.findOne(Template.instance().data.projectId)
         this.initialText = currentProject.publicInfo.description
