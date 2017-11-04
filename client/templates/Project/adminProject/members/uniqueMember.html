@@ -1,0 +1,36 @@
+<template name="uniqueMember">
+    <div class="col s12 no-padding">
+        <div class="row no-margin">
+            <div class="col s8 no-padding">
+                {{>miniature
+                        _id = member.user_id
+                        type = "user"}}
+            </div>
+            <div class="col s2 relative center-align valign-wrapper">
+            {{#if isAdmin}}
+                    {{#unless inProjectAdmins}}
+                        {{>memberManagmentButtons
+                                member = member
+                                currentProject = currentProject}}
+                    {{else}}
+                        {{#if eq currentUserId member.user_id}}
+                            {{>projectManagmentButton
+                                    project = currentProject}}
+                        {{/if}}
+                    {{/unless}}
+            {{else}}
+                    {{#if eq currentUserId member.user_id}}
+                        {{>projectManagmentButton
+                                project = currentProject}}
+                    {{/if}}
+            {{/if}}
+            </div>
+            <div class="col s2  right-align">
+                <span class="small-info">depuis le {{localeDate member.joinedAt}}</span>
+            </div>
+
+
+        </div>
+
+    </div>
+</template>

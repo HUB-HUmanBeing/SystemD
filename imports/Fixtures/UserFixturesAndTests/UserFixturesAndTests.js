@@ -1,0 +1,3 @@
+if (Meteor.isDevelopment) {
+Fixtures
+}

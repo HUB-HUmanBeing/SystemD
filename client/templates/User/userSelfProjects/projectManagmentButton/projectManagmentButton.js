@@ -49,6 +49,7 @@ Template.projectManagmentButton.events({
                     Materialize.toast('vous avez quitté le projet "' + instance.data.project.name + '"', 6000, 'green')
                     //on ferme la modal
                     $('.modal').modal('close');
+                    Router.go("userSelfProjects")
                 }
             })
     }
