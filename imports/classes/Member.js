@@ -5,7 +5,6 @@ const Member = Class.create({
         user_id: String,
         joinedAt: {
             type : Date,
-            immutable: true,
             default : function () {
                 return new Date()
             }

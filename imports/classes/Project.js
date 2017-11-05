@@ -61,8 +61,7 @@ const Project = Class.create({
             type: Date,
             default: function () {
                 return new Date()
-            },
-            immutable: true
+            }
         },
         publicInfo: {
             type: PublicInfo,

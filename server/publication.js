@@ -6,7 +6,7 @@ import User from '/imports/classes/User';
  **********************************/
 Meteor.publish('UserPrivateInfo', function (id) {
     check(id, String);
-    if (id === Meteor.userId())
+    if (id === this.userId)
         return Meteor.users.find(id);
 });
 
@@ -15,7 +15,8 @@ Meteor.publish('UserPrivateInfo', function (id) {
  **********************************/
 Meteor.publish('userPublicInfo', function (id) {
     check(id, String);
-    if(id !== Meteor.userId()) {
+    userId = this.userId
+    if(id !== userId) {
         return User.find({_id: id},
             {
                 //liste des champs non renvoyés
@@ -29,7 +30,7 @@ Meteor.publish('userPublicInfo', function (id) {
                 }
             })
         //sinon, on renvoie tout
-    }else if(id === Meteor.userId()){
+    }else if(id === userId){
         return Meteor.users.find(id);
     }
 });
@@ -41,7 +42,7 @@ Meteor.publish('userPublicInfo', function (id) {
 Meteor.publish('singleProject', function (id) {
     check(id, String);
     let currentProject =  Project.find({_id: id});
-    let currentUser = Meteor.userId();
+    let currentUser = this.userId;
     if (currentUser && currentProject.fetch()[0].isMember(currentUser)) {
         return currentProject
     }else{
@@ -71,6 +72,7 @@ Meteor.publish('miniature', function (id, type) {
                     "profile.location": 0,
                     "profile.projects": 0,
                     "profile.description" : 0,
+                    "profile.notifications" : 0,
                 }
             })
     }else if(type === "project"){

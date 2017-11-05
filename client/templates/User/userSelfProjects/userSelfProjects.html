@@ -12,6 +12,7 @@
                                 <span class="card-title">Mes Projets</span>
                                 <div class="row">
                                         <p class="small-info">Avec le status d'administrateur du projet</p>
+                                    {{#if adminProjects}}
                                         {{#each project in adminProjects}}
                                             <div class="row small-margin">
                                                 <div class="col s10 no-padding">
@@ -25,10 +26,13 @@
                                                 </div>
                                             </div>
                                         {{/each}}
+                                    {{else}}
+                                        Vous n'administrez actuellement aucun projets
+                                    {{/if}}
                                 </div>
                                 <div class="row">
                                         <p class="small-info">Avec le status de membre du projet</p>
-
+    {{#if memberProjects}}
                                             {{#each project in memberProjects}}
                                                 <div class="row small-margin">
                                                     <div class="col s10 no-padding">
@@ -42,8 +46,9 @@
                                                     </div>
                                                 </div>
                                             {{/each}}
-
-
+                                        {{else}}
+                                            Vous n'êtes actuellement membre d'aucun projet
+                                        {{/if}}
                                 </div>
                             </div>
                         </div>
@@ -55,7 +60,7 @@
                             <div class="col s12 ">
                                 <div class="card trame-box ">
                                     <div class="card-content">
-                                        <span class="card-title">Invitations en attente</span>
+                                        <span class="card-title green-text">Invitations en attente</span>
                                         {{#each invitation in waitingInvitations}}
                                             <div class="row">
                                                 <div class="col s12 no-padding ">

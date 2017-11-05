@@ -29,6 +29,7 @@
             {{#each menuItem in menuItems}}
                 <li class="relative">
                     {{>notificationBubble
+                        itemId = menuItem.id
                             color = menuItem.color
                             notifications = menuItem.notifications
                     }}

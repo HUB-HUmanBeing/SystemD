@@ -126,6 +126,16 @@ if (Meteor.isDevelopment) {
             Users.forEach((user, j) => {
                 //l'utilisateur est donc l'invité des projets situés a un et deux crans sur sa gauche
                 // (dessinez un cercle avec 6 points si c'est pas clair)
+                //en remplissant son tableau de notifications avec ce message
+                user.profile.notifications.push({
+                    content: 'Invitation du projet "'  + Projects[Fixtures.loopId(j - 1)].name + '"',
+                    type :  "project",
+                    path :  Router.path("userSelfProjects")
+                },{
+                    content: 'Invitation du projet "'  + Projects[Fixtures.loopId(j - 2)].name + '"',
+                    type :  "project",
+                    path :  Router.path("userSelfProjects")
+                });
                 user.profile.invitations.push(
                     {
                         project_id: Projects[Fixtures.loopId(j - 1)]._id,
@@ -135,6 +145,7 @@ if (Meteor.isDevelopment) {
                         project_id: Projects[Fixtures.loopId(j - 2)]._id,
                         invitationMessage: Fixtures.getRandom("lorems")
                     });
+
                 //l'utilisateur est donc membre des projets situés a 1,2 et 3  crans sur sa droite
                 // (dessinez un cercle avec 6 points si c'est pas clair)
                 user.profile.projects.push(

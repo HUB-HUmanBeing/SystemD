@@ -16,8 +16,7 @@ const Notification = Class.create({
             type: Date,
             default: function () {
                 return new Date()
-            },
-            immutable: true
+            }
         }
     },
 });

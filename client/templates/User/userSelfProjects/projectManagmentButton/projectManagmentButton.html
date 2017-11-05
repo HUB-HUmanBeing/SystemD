@@ -3,8 +3,8 @@
         <a class="btn-floating relative dark-grey waves-effect waves-light ">
             <i class="material-icons grey-text darken-2">settings</i>
         </a>
-        <ul class="right-align">
-            <li class="inline-block " style="margin: 0 5px 0 0 !important;">
+        <ul class="right-align" >
+            <li class="inline-block " style="margin: 0 {{#unless isDesktop}}-25px{{else}}5px{{/unless}} 0 0 !important;">
                 <a href="#quit{{project.project_id}}"
                    class="btn-floating btn-flat dark-grey tooltipped waves-effect waves-red modal-trigger"
                    data-position="bottom"

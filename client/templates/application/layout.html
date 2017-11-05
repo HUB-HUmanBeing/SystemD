@@ -20,7 +20,10 @@
 
             </div>
         </main>
+        {{#if currentUser}}
         {{>newProjectModal}}
+        {{>notifModal}}
+        {{/if}}
     </div>
 
 </template>
