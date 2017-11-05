@@ -9,10 +9,12 @@ const Notification = Class.create({
         type: String,
         //url vers laquelle doit pointer le lien
         path: {
-            type : String,
-            default : "home"
+            type: String,
+            default: function () {
+                return Router.path("home")
+            }
         },
-        sendAt :  {
+        sendAt: {
             type: Date,
             default: function () {
                 return new Date()

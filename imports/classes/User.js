@@ -109,7 +109,12 @@ const User = Class.create({
             type: Object,
             optional: true
         },
-        createdAt: Date,
+        createdAt: {
+            type: Date,
+            default: function () {
+                return new Date()
+            }
+        },
         profile: {
             type: Profile,
             default: function () {

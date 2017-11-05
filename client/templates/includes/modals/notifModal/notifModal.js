@@ -29,6 +29,7 @@ Template.notifModal.helpers({
                     formatedNotifs.push({
                         content: notification.content,
                         path: notification.path,
+                        type : notification.type,
                         //on aura une durée par raport a maintenant
                         delay: new Date().getTime() - notification.sendAt.getTime(),
                         nbOccurrence: 1
@@ -54,6 +55,7 @@ Template.notifModal.helpers({
                             formatedNotifs.push({
                                 content: notification.content,
                                 path: notification.path,
+                                type : notification.type,
                                 delay: new Date().getTime() - notification.sendAt.getTime(),
                                 nbOccurrence: 1
                             })
@@ -62,6 +64,7 @@ Template.notifModal.helpers({
                 }
             })
         }
+        Session.set("formatedNotifsLength", formatedNotifs.length)
         return formatedNotifs
     }
 });
