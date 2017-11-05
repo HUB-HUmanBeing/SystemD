@@ -26,7 +26,14 @@ Project.extend({
                                 //lorsqu'on trouve le bon
                                 if (project.project_id === currentProjectId) {
                                     //on ajoute le role admin
-                                    project.status.roles.push("admin")
+                                    project.roles.push("admin")
+                                    //on "envoie" une notification a l'utilisateur pour l'informer de ce changement de role
+                                    //en remplissant son tableau de notifications avec ce message
+                                    user.profile.notifications.push({
+                                        content: 'Vous etes désormais Admin du projet "' + this.name + '"',
+                                        type: "project",
+                                        path: Router.path("adminProject", {_id : this._id})
+                                    });
                                     //puis on sauvegarde
                                     user.save()
                                 }
@@ -65,6 +72,12 @@ Project.extend({
                                     //on retire le projet du tableau des projet
                                     user.profile.projects.splice(j, 1);
                                     //puis on sauvegarde
+                                    //on "envoie" une notification a l'utilisateur pour l'informer de ce changement de role
+                                    //en remplissant son tableau de notifications avec ce message
+                                    user.profile.notifications.push({
+                                        content: 'Vous ne faites plus partie des membres du projet "' + this.name + '"',
+                                        type: "user"
+                                    });
                                     user.save()
                                 }
                             })
@@ -85,18 +98,18 @@ Project.extend({
          * @return Boolean
          *******************************/
         canCurrentUserQuit(projectId) {
-            let project = Project.findOne({_id : projectId})
+            let project = Project.findOne({_id: projectId})
             //on récupere l'utilisateur courant
             let currentUserId = Meteor.userId()
             //on check qu'il soit membre
 
             check(project.isMember(currentUserId), true)
             //si il y a d'autres admins, l'utilisateur peut quiter sans soucis
-            if(project.isThereOtherAdminsExeptCurrentUser()){
+            if (project.isThereOtherAdminsExeptCurrentUser()) {
                 return true
                 //sinon, on renvoie le resultat de l'helpeur "isDeletable",
                 // puisque nous serons ammenés a supprimer le projet
-            }else{
+            } else {
                 return project.isDeletable()
             }
 

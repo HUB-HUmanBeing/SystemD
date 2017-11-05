@@ -1,0 +1,40 @@
+<template name="notificationBubble">
+    {{#if notifications}}
+        <span class="absolute valign-wrapper  notif-bubble z-depth-2 tooltipped  modal-trigger" href="#modal1"
+              data-position="bottom" data-delay="50" data-tooltip="I am a tooltip" openNotif>
+            <span class="{{color}}-text  font-title center-align relative">
+                {{length notifications}}
+            </span>
+        </span>
+
+    {{#if openNotif}}
+    <div id="modal1" class="modal">
+    <div class="modal-content">
+        {{#if isPhone}}
+            <div class="fixed notif-container " style="transform: scaleX(1) !important;width: 100vw">
+
+            </div>
+        {{else}}
+            <div class="notif-container">
+               {{#if isTablet}}
+                       <div class="notif-box relative" style="top : 75px; left : 300px; width: 300px">
+
+                       </div>
+                   {{else}}
+                        <div class="notif-box " style="top : 75px; left : 300px ; width: 300px; z-index: 1001">
+                            <ul class="collection">
+                                <li class="collection-item dismissable"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                                <li class="collection-item dismissable"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                                <li class="collection-item dismissable"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                                <li class="collection-item dismissable"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                            </ul>
+                        </div>
+                   {{/if}}
+            </div>
+        {{/if}}
+    </div>
+    </div>
+    {{/if}}
+
+    {{/if}}
+</template>

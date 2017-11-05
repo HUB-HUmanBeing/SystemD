@@ -1,6 +1,7 @@
 //sont définis ici la classe user et sa sous classe profile
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
+import Notification from '/imports/classes/Notification'
 // import Project from '/imports/classes/Project'
 
 const UserInvitation = Class.create({
@@ -80,6 +81,12 @@ const Profile = Class.create({
             default: function () {
                 return [];
             }
+        },
+        notifications: {
+            type: [Notification],
+            default: function () {
+                return [];
+            }
         }
     },
 
@@ -92,15 +99,15 @@ const User = Class.create({
     fields: {
         emails: {
             type: [Object],
-            optional : true
+            optional: true
         },
         username: {
             type: String,
             immutable: true
         },
         services: {
-            type :Object,
-            optional : true
+            type: Object,
+            optional: true
         },
         createdAt: Date,
         profile: {
@@ -144,7 +151,7 @@ const User = Class.create({
         distance() {
             let currentUserLocation = Meteor.user().profile.location;
 
-            if(this.profile.location.lonLat && currentUserLocation.lonLat){
+            if (this.profile.location.lonLat && currentUserLocation.lonLat) {
 
                 let distance = new Haversine(
                     this.profile.location.lonLat[1],
@@ -153,7 +160,7 @@ const User = Class.create({
                     currentUserLocation.lonLat[0]
                 );
                 return parseInt(distance.kilometers)
-            }else{
+            } else {
                 return null
             }
 
@@ -177,7 +184,7 @@ const User = Class.create({
                     id: project.project_id,
                     name: project.name,
                     path: "projectMainPage",
-                    pathData : { _id : project.project_id},
+                    pathData: {_id: project.project_id},
                     icon: icon
                 })
             });
@@ -195,28 +202,25 @@ const User = Class.create({
          * ------> pas d'invitations en cours
          * @returns {*|boolean}
          */
-        isDeletable(){
+        isDeletable() {
             let isWaitingInvitations = false;
-            this.profile.invitations.forEach((invitation)=>{
-                if( invitation.status === "waiting"){
+            this.profile.invitations.forEach((invitation) => {
+                if (invitation.status === "waiting") {
                     isWaitingInvitations = true
                 }
             })
             return this.profile.projects.length === 0 && !isWaitingInvitations
         }
     },
-    meteorMethods: {
-
-
-    }
+    meteorMethods: {}
 });
 
 if (Meteor.isServer) {
     User.extend({
         fields: {
             services: {
-                type : Object,
-                optional : true
+                type: Object,
+                optional: true
             }
         }
     });

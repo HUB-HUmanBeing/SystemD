@@ -34,6 +34,9 @@ if (Meteor.isDevelopment) {
                     password: Fixtures.password
                     //dans le callBack
                 }, function (err, createdUserId) {
+                    if(err){
+                        console.log("erreur", err)
+                    }
                     //on récupere leur id
                     let createdUser = User.findOne({_id: createdUserId});
                     //on ajoute image, texte de description, position géographique
@@ -41,8 +44,11 @@ if (Meteor.isDevelopment) {
                     createdUser.profile.description = Fixtures.getRandom("lorems");
                     createdUser.profile.location = Fixtures.getRandom("locations");
                     //on sauvegarde,
-                    createdUser.save(function () {
+                    createdUser.save(function (err) {
                         //dans le callback
+                        if(err){
+                            console.log("erreur", err)
+                        }
                         //on crée un nouveau projet
                         let createdProject = new Project
                         //on lui attribue un nom, une image, une description, une position
@@ -58,6 +64,9 @@ if (Meteor.isDevelopment) {
                         })
                         //on sauvegarde
                         createdProject.save((err, projectId) => {
+                            if(err){
+                                console.log("erreur", err)
+                            }
                             //dans le callback, on rajoute le projet dans la liste des projets de l'utilisateur
                             createdUser.profile.projects.push({
                                 project_id: projectId,
@@ -65,7 +74,11 @@ if (Meteor.isDevelopment) {
                                 roles: ['member', 'admin']
                             });
                             //et on sauvegarde
-                            createdUser.save()
+                            createdUser.save((err)=>{
+                                if(err){
+                                    console.log("erreur", err)
+                                }
+                            })
                         })
                     })
                 });
@@ -102,7 +115,11 @@ if (Meteor.isDevelopment) {
                     {user_id: Users[Fixtures.loopId(i - 2)]._id},
                     {user_id: Users[Fixtures.loopId(i - 1)]._id})
                 //on sauvegarde
-                project.save()
+                project.save((err)=>{
+                    if(err){
+                        console.log("erreur", err)
+                    }
+                })
             })
 
             //maintenant, pour chaque utilisateur
@@ -135,7 +152,11 @@ if (Meteor.isDevelopment) {
                     }
                 );
                 //on sauvegarde
-                user.save()
+                user.save((err)=>{
+                    if(err){
+                        console.log("erreur", err)
+                    }
+                })
 
             })
         }

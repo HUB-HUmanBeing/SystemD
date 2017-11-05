@@ -44,6 +44,9 @@ Template.userSelfProfile.onCreated(function () {
 Template.userSelfProfile.onRendered(function () {
     $('.modal').modal();
     $('.collapsible').collapsible();
+    $('.swipable').tabs(
+        // { 'swipeable': true }
+    );
 });
 
 Template.userSelfProfile.onDestroyed(function () {

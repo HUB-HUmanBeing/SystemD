@@ -109,7 +109,7 @@ UTILITAIRES
 SCROLLBAR
  ************************/
 .scrollbar{
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .scrollbar::-webkit-scrollbar {
     width: 7px;
