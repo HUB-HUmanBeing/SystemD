@@ -3,15 +3,14 @@
                             {{#if isPhone}}
                                 phone-notif-modal
                             {{else}}
-        {{#if isTablet}}
+                                {{#if isTablet}}
                                      tablet-notif-modal
                                 {{else}}
                                      desktop-notif-modal
                                 {{/if}}
-    {{/if}}
+                            {{/if}}
                             ">
-
-        {{!à l'ouverture on restyle pour l'ocasion les fenetres modales}}
+        {{#if openNotifPannel}}
             <div class="modal-content " style="background-color: transparent !important;">
                 <div class="notif-box " >
                     <ul class="collection " id="notif-list" style=" margin: 0 !important; border: none !important;">
@@ -19,13 +18,12 @@
                             {{>notifItem
                                     formatedNotif = formatedNotif
                                     color = color
-                            length = length
                             }}
                         {{/each}}
 
                     </ul>
                 </div>
             </div>
-
+        {{/if}}
     </div>
 </template>

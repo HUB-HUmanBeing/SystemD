@@ -1,4 +1,7 @@
 Template.notifModal.helpers({
+    openNotifPannel : function () {
+        return(Session.get("openNotifPannel"))
+    },
     //add you helpers here
     formatedNotifs : function () {
         //on récupere le type de notif qu'on doit afficher
@@ -20,8 +23,11 @@ Template.notifModal.helpers({
                 notifications.push(notif)
             }
         })
+
         //si ce tableau contient des notifications
         if(notifications !== []) {
+            //on leur associera aussi un id, afin de pouvoir retrouver
+            let id = 0
             //on boucle sur le tableau des notifications
             notifications.forEach((notification, i) => {
                 //on push dans tout les cas dans le tableau de résultats la premiere notification que l'on formatte:
@@ -30,10 +36,13 @@ Template.notifModal.helpers({
                         content: notification.content,
                         path: notification.path,
                         type : notification.type,
+                        id : "swipable-notif-" + id.toString(),
                         //on aura une durée par raport a maintenant
                         delay: new Date().getTime() - notification.sendAt.getTime(),
                         nbOccurrence: 1
                     })
+                    //on incrémente l'id
+                    id++
                     //puis, si c'est pas la premiere itération
                 } else {
                     //on boucle sur le tableau des notifications formatées
@@ -56,14 +65,20 @@ Template.notifModal.helpers({
                                 content: notification.content,
                                 path: notification.path,
                                 type : notification.type,
+                                id : "swipable-notif-"+ id.toString(),
                                 delay: new Date().getTime() - notification.sendAt.getTime(),
                                 nbOccurrence: 1
                             })
+                            //on incrémente l'id
+                            id++
                         }
                     })
                 }
             })
         }
+        //les notifs en cours,on en aura besoin pour le comportement swipable
+        Session.set("formatedNotifs", formatedNotifs)
+        //nombre total de notif du type en cours
         Session.set("formatedNotifsLength", formatedNotifs.length)
         return formatedNotifs
     }
