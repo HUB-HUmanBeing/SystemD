@@ -4,7 +4,7 @@ Template.projectMainPage.helpers({
         return Template.currentData();
     },
     relativeDistance: function () {
-        let distance = Template.instance().data.relativeDistance()
+        let distance = Template.currentData().relativeDistance();
         return ( distance || distance ===0) ? "( " + distance + " km )" : "" ;
 
 
@@ -31,7 +31,6 @@ Template.projectMainPage.onCreated(function () {
 
 Template.projectMainPage.onRendered(function () {
     //add your statement here
-    console.log(Template.instance().firstNode);
     $(Template.instance().firstNode).css('opacity', '1');
 });
 
