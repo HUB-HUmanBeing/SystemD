@@ -3,11 +3,11 @@ import User from '/imports/classes/User';
 Template.userMainPage.helpers({
     //on recupere l'utilisateur courant
     user: function () {
-        return Template.instance().data.fetch()[0]
+        return Template.currentData();
     },
     //on met en forme les infos calculés sur l'utilisateur afin qu'elles soient bien présentées
     computedInfo: function () {
-        let computedInfo = Template.instance().computedInfo.get();
+        let computedInfo = this.computedInfo.get();
         //participation a un projet
         if (isNaN(computedInfo.nbOfProjects) || computedInfo.nbOfProjects === 0) {
             computedInfo.projectField = "Ne participe à aucun projet"

@@ -41,7 +41,7 @@ Template.adminProject.onCreated(function () {
     //on parcours les projets de l'utilisateur courant
     Meteor.user().profile.projects.forEach((project)=>{
         //lorsqu'on est dans le bon projet et que l'utilisateur est admin
-        if(Template.instance().data.fetch()[0]._id === project.project_id){
+        if(Template.currentData()._id === project.project_id){
             if( project.roles.includes("admin")){
                 //on change la réactive var
                 Template.instance().currentTab.set("edit")
