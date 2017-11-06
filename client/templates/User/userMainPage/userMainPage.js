@@ -40,17 +40,12 @@ Template.userMainPage.onCreated(function () {
         nbOfProjects : 0}
     );
     //on recupere l'utilisateur courant'
-    let info = Template.currentData()._id;
-    (async (info) => {
-        const User = await import('/imports/classes/User');
-        let user = User.default.findOne(info);
-        //puis on appele la methode renvoyant les info
-        user.callMethod('computedInfo', (error, result) => {
-            //et on remplit la reactive var
-            this.computedInfo.set(result)
-        })
-    })(info);
-
+    let user = User.findOne(Template.instance().data.fetch()[0]._id);
+    //puis on appele la methode renvoyant les info
+    user.callMethod('computedInfo', (error, result) => {
+        //et on remplit la reactive var
+        this.computedInfo.set(result)
+    })
 });
 
 Template.userMainPage.onRendered(function () {
