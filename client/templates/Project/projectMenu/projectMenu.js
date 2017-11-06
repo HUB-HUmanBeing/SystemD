@@ -1,5 +1,3 @@
-import Project from '/imports/classes/Project'
-
 /********************************
  * ensemble des helpers permettant de renvoyer des
  * valeurs particulières au menu contextuel
@@ -7,7 +5,7 @@ import Project from '/imports/classes/Project'
 Template.projectMenu.helpers({
     //titre affiché
     title: function () {
-        return Template.instance().data.project.name
+        return Template.currentData().project.name
     },
     //nom de la page pour pouvoir utiliser le "is active path"
     contextualHomepage: function () {
@@ -31,11 +29,10 @@ Template.projectMenu.helpers({
     icon: function () {
         let project = Template.instance().data;
         let icon = "";
-        let tooltip = "";
-        let currentUser = Meteor.user()
+        let currentUser = Meteor.user();
         if (currentUser) {
             //on boucle sur les projets de l'utilisateur courant
-            Meteor.user().profile.projects.forEach(function (userProject) {
+            currentUser.profile.projects.forEach(function (userProject) {
                 //si il est dedans
 
                 if (userProject.project_id === project.project._id) {
@@ -109,12 +106,12 @@ Template.projectMenu.helpers({
         //on le crée a false
         let isMember = false;
 
-        let currentUser = Meteor.user()
+        let currentUser = Meteor.user();
         if (currentUser) {
             //on parcoure les projets de l'utilisateur
             currentUser.profile.projects.forEach((project) => {
                 //si le projet est dedans
-                if (project.project_id === Template.instance().data.project._id) {
+                if (project.project_id === Template.currentData().project._id) {
                     //on la passe a true
                     isMember = true;
                 }
