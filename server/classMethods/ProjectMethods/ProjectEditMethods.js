@@ -1,6 +1,5 @@
 import Project from '/imports/classes/Project'
 import User from '/imports/classes/User';
-import Projects from '/lib/collections/Projects'
 import {ValidationError} from 'meteor/jagi:astronomy';
 
 Project.extend({
@@ -31,5 +30,6 @@ Project.extend({
             return this.save()
 
         },
+
     }
 })

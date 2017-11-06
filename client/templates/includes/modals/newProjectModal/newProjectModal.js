@@ -15,7 +15,7 @@ Template.newProjectModal.events({
     /************************************
      * verification que le nom de projet est disponible
      ************************************/
-    'keyup input': function (event, instance) {
+    'keyup input, touchend input': function (event, instance) {
         //on recupere la valeur entrée par l'utilisateur
         let projectName = event.target.value;
         //si la longueur est bonne

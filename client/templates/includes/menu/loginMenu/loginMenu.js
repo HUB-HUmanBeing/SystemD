@@ -20,7 +20,7 @@ Template.loginMenu.events({
             }
         });
     },
-    'keyup [username]' : function (event, instance) {
+    'keyup [username], touchend [username]' : function (event, instance) {
         let signinUsername = $('#signinUsername').val();
         let errorMessage;
         //si elles sont identiques on vire le message d'erreur
@@ -33,7 +33,7 @@ Template.loginMenu.events({
         instance.errorText.set(errorMessage)
     },
     //quant on remplit le repeat password
-    'keyup [password-repeat]': function (event, instance) {
+    'keyup [password-repeat], touchend [password-repeat]': function (event, instance) {
         //on ecupere les valeurs
         let password = $('#signin-password').val();
         let passwordRepeat = $('#password-repeat').val();

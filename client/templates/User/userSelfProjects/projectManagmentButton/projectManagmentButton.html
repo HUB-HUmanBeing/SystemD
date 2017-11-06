@@ -1,0 +1,55 @@
+<template name="projectManagmentButton">
+    <div class="fixed-action-btn horizontal static">
+        <a class="btn-floating relative dark-grey waves-effect waves-light ">
+            <i class="material-icons grey-text darken-2">settings</i>
+        </a>
+        <ul class="right-align" >
+            <li class="inline-block " style="margin: 0 {{#unless isDesktop}}-25px{{else}}5px{{/unless}} 0 0 !important;">
+                <a href="#quit{{project.project_id}}"
+                   class="btn-floating btn-flat dark-grey tooltipped waves-effect waves-red modal-trigger"
+                   data-position="bottom"
+                   data-delay="50" data-tooltip="Quitter le projet" showQuitProjectModal>
+                    <i class="material-icons red-text ">exit_to_app</i>
+                </a>
+
+            </li>
+        </ul>
+    </div>
+
+    <div id="quit{{project.project_id}}" class="modal scrollbar dark-grey fixed">
+        <div class="modal-content left-align dark-grey">
+            <h5 class="red-text">Quiter le projet "{{project.name}}"</h5>
+            <br>
+            {{#if isQuitableMethodDone}}
+                {{#unless isQuitable}}
+                    <div class="row">
+                        <p><b>Vous ne pouvez pas quitter le projet "{{project.name}}"</b> vous devez au préalable :</p>
+                        <ul style="margin-left: 30px">
+                            <li>- Designer un Nouvel Administrateur pour le projet</li>
+                            <li><br><b>OU</b></li>
+                            <li><br>- Retirer tout les membres du projet</li>
+                            <li>- Annuler toutes les invitations en cours</li>
+
+                        </ul>
+                    </div>
+
+                {{/unless}}
+                <div class="row  center-align">
+                    <a class="btn  {{#if isQuitable}} red waves-effect waves-light {{else}} disabled {{/if}}"
+                       QuitProject>Quitter le projet</a>
+                </div>
+            {{else}}
+                <div class="row">
+                    {{>loading}}
+                </div>
+            {{/if}}
+        </div>
+        <div class="modal-footer dark-grey">
+
+            <a class="modal-action modal-close waves-effect waves-light btn-flat ">
+                <i
+                        class="material-icons">clear</i>
+            </a>
+        </div>
+    </div>
+</template>

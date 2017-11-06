@@ -20,7 +20,12 @@ const ProjectInvitation = Class.create({
                 return new Date()
             }
         },
-        adminId: String,
+        adminUsername: {
+            type : String,
+            default : function () {
+                return Meteor.user().username
+            }
+        },
         status: {
             type: String,
             default: "waiting"

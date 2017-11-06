@@ -1,6 +1,8 @@
 import Project from '/imports/classes/Project'
 import User from '/imports/classes/User'
 import Fixtures from '/imports/Fixtures/Fixtures'
+import Projects from '/lib/collections/Projects'
+
 /****************************************
  * Toutes les méthodes ci dessous sont utiles pour la création et le renouvellement de jeux de données de test
  */
@@ -10,15 +12,16 @@ if (Meteor.isDevelopment) {
          * Nettoyage de la base de donnée
          */
         clearDb: function () {
-            console.log("ok")
-            User.find().fetch().forEach((user) => {
-                user.remove()
+            Meteor.users.remove({},function () {
+                console.log("collection users reset")
             })
-            console.log("collection users reset")
-            Project.find().fetch().forEach((project) => {
-                project.remove()
+
+
+            Projects.remove({},function () {
+                console.log("collection projets reset")
             })
-            console.log("collection projets reset")
+
+
         },
         /******************************
          * Création des utilisateurs et de leurs Projets
@@ -31,6 +34,9 @@ if (Meteor.isDevelopment) {
                     password: Fixtures.password
                     //dans le callBack
                 }, function (err, createdUserId) {
+                    if(err){
+                        console.log("erreur", err)
+                    }
                     //on récupere leur id
                     let createdUser = User.findOne({_id: createdUserId});
                     //on ajoute image, texte de description, position géographique
@@ -38,8 +44,11 @@ if (Meteor.isDevelopment) {
                     createdUser.profile.description = Fixtures.getRandom("lorems");
                     createdUser.profile.location = Fixtures.getRandom("locations");
                     //on sauvegarde,
-                    createdUser.save(function () {
+                    createdUser.save(function (err) {
                         //dans le callback
+                        if(err){
+                            console.log("erreur", err)
+                        }
                         //on crée un nouveau projet
                         let createdProject = new Project
                         //on lui attribue un nom, une image, une description, une position
@@ -55,6 +64,9 @@ if (Meteor.isDevelopment) {
                         })
                         //on sauvegarde
                         createdProject.save((err, projectId) => {
+                            if(err){
+                                console.log("erreur", err)
+                            }
                             //dans le callback, on rajoute le projet dans la liste des projets de l'utilisateur
                             createdUser.profile.projects.push({
                                 project_id: projectId,
@@ -62,7 +74,11 @@ if (Meteor.isDevelopment) {
                                 roles: ['member', 'admin']
                             });
                             //et on sauvegarde
-                            createdUser.save()
+                            createdUser.save((err)=>{
+                                if(err){
+                                    console.log("erreur", err)
+                                }
+                            })
                         })
                     })
                 });
@@ -82,12 +98,12 @@ if (Meteor.isDevelopment) {
                 //on invite les deux utilisateurs situés a 1 et 2 crans sur la droite
                 project.invitations.push({
 
-                        adminId: Users[i]._id,
+                        adminUsername: Users[i].username,
                         invitationMessage: Fixtures.getRandom("lorems"),
                         user_id: Users[Fixtures.loopId(i +1)]._id
                     },
                     {
-                        adminId: Users[i]._id,
+                        adminUsername: Users[i].username,
                         invitationMessage: Fixtures.getRandom("lorems"),
                         user_id: Users[Fixtures.loopId(i +2)]._id
                     }
@@ -99,13 +115,27 @@ if (Meteor.isDevelopment) {
                     {user_id: Users[Fixtures.loopId(i - 2)]._id},
                     {user_id: Users[Fixtures.loopId(i - 1)]._id})
                 //on sauvegarde
-                project.save()
+                project.save((err)=>{
+                    if(err){
+                        console.log("erreur", err)
+                    }
+                })
             })
 
             //maintenant, pour chaque utilisateur
             Users.forEach((user, j) => {
                 //l'utilisateur est donc l'invité des projets situés a un et deux crans sur sa gauche
                 // (dessinez un cercle avec 6 points si c'est pas clair)
+                //en remplissant son tableau de notifications avec ce message
+                user.profile.notifications.push({
+                    content: 'Invitation du projet "'  + Projects[Fixtures.loopId(j - 1)].name + '"',
+                    type :  "project",
+                    path :  Router.path("userSelfProjects")
+                },{
+                    content: 'Invitation du projet "'  + Projects[Fixtures.loopId(j - 2)].name + '"',
+                    type :  "project",
+                    path :  Router.path("userSelfProjects")
+                });
                 user.profile.invitations.push(
                     {
                         project_id: Projects[Fixtures.loopId(j - 1)]._id,
@@ -115,6 +145,7 @@ if (Meteor.isDevelopment) {
                         project_id: Projects[Fixtures.loopId(j - 2)]._id,
                         invitationMessage: Fixtures.getRandom("lorems")
                     });
+
                 //l'utilisateur est donc membre des projets situés a 1,2 et 3  crans sur sa droite
                 // (dessinez un cercle avec 6 points si c'est pas clair)
                 user.profile.projects.push(
@@ -132,7 +163,11 @@ if (Meteor.isDevelopment) {
                     }
                 );
                 //on sauvegarde
-                user.save()
+                user.save((err)=>{
+                    if(err){
+                        console.log("erreur", err)
+                    }
+                })
 
             })
         }

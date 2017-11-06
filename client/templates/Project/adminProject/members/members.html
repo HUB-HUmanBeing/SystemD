@@ -12,22 +12,11 @@
                                     <br>
                                     <div class="row">
                                         {{#each member in projectAdmins}}
-                                            <div class="col s12 no-padding">
-                                                <div class="row no-margin">
-                                                    <div class="col s10 no-padding">
-                                                        {{>miniature
-                                                                _id = member.user_id
-                                                                type = "user"}}
-                                                    </div>
+                                            {{>uniqueMember member = member
+                                                    isAdmin = isAdmin
+                                                    currentProject = currentProject
+                                            inProjectAdmins = true}}
 
-
-                                                    <div class="col s2  right-align">
-                                                        <span class="small-info">depuis le {{localeDate
-                                                                member.joinedAt}}</span>
-                                                    </div>
-                                                </div>
-
-                                            </div>
                                         {{/each}}
                                     </div>
                                 </div>
@@ -37,34 +26,10 @@
                                         <br>
                                         <div class="row no-margin">
                                             {{#each member in projectMembers}}
-                                                <div class="col s12 no-padding">
-                                                    <div class="row no-margin">
-                                                        <div class="col s8 no-padding">
-                                                            {{>miniature
-                                                                    _id = member.user_id
-                                                                    type = "user"}}
-                                                        </div>
-                                                        {{#if isAdmin}}
-                                                            <div class="col s2 relative center-align valign-wrapper">
-                                                                {{>memberManagmentButtons
-                                                                        member = member
-                                                                        currentProject = currentProject}}
-                                                            </div>
-                                                            <div class="col s2  right-align">
-                                                        <span class="small-info">depuis le {{localeDate
-                                                                member.joinedAt}}</span>
-                                                            </div>
-                                                        {{else}}
+                                                {{>uniqueMember member = member
+                                                        isAdmin = isAdmin
+                                                currentProject = currentProject}}
 
-                                                            <div class="col s2 offset-s2 right-align">
-                                                        <span class="small-info">depuis le {{localeDate
-                                                                member.joinedAt}}</span>
-                                                            </div>
-                                                        {{/if}}
-
-                                                    </div>
-
-                                                </div>
                                             {{/each}}
                                         </div>
                                     </div>

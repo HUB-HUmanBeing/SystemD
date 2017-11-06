@@ -23,7 +23,6 @@ Project.extend({
 
             //on insère l'invitation dans le tableau d'invitations de l'objet courant
             this.invitations.push({
-                adminId: adminId,
                 invitationMessage: invitationMessage,
                 user_id: userId
             });
@@ -34,6 +33,13 @@ Project.extend({
                     invitedUser.profile.invitations.push({
                         project_id: this._id,
                         invitationMessage: invitationMessage
+                    });
+                    //on "envoie" une notification a l'utilisateur pour l'informer de cette invitation
+                    //en remplissant son tableau de notifications avec ce message
+                    invitedUser.profile.notifications.push({
+                        content: 'Invitation du projet "'  + this.name + '"',
+                        type :  "project",
+                        path :  Router.path("userSelfProjects")
                     });
                     //puis on sauvegarde
                     invitedUser.save()
@@ -72,6 +78,11 @@ Project.extend({
                                     if (userSideInvitation.project_id === this._id && userSideInvitation.status === "waiting") {
                                         //on la retire du tableau des invitations de l'utilisateur
                                         user.profile.invitations.splice(j, 1)
+                                        //on envoie une notificationa l'utilisateur
+                                        user.profile.notifications.push({
+                                        content: "Bienvenue sur HUmanBeing",
+                                            type: "user"
+                                    })
                                         //et on sauvegarde
                                         user.save()
                                     }

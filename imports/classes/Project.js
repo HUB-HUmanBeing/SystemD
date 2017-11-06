@@ -61,8 +61,7 @@ const Project = Class.create({
             type: Date,
             default: function () {
                 return new Date()
-            },
-            immutable: true
+            }
         },
         publicInfo: {
             type: PublicInfo,
@@ -177,15 +176,33 @@ const Project = Class.create({
          * ------> pas d'invitations
          * @returns {*|boolean}
          */
-        isDeletable(){
+        isDeletable() {
             let isWaitingInvitations = false;
-            this.invitations.forEach((invitation)=>{
-                if( invitation.status === "waiting"){
+            this.invitations.forEach((invitation) => {
+                if (invitation.status === "waiting") {
                     isWaitingInvitations = true
                 }
             })
-            return this.isAdmin(Meteor.userId())&& this.members.length === 1 && !isWaitingInvitations
+            return this.isAdmin(Meteor.userId()) && this.members.length === 1 && !isWaitingInvitations
+        },
+        /*******************************
+         *  helpeur utilisé lorsqu'on qu'un utilisateur souhaite quitter un projet
+         */
+        isThereOtherAdminsExeptCurrentUser() {
+            let currentUserId = Meteor.userId();
+            //on initialise un compteur d'admins autre que l'utilisateur courant
+            let numberOfAdminsExeptMe = 0;
+            //on boucle sur les membres du projet
+            this.members.forEach((member) => {
+                //si on en trouve qui sont admins sans etre l'utilisateur courant
+                if (member.roles.includes("admin") && member.user_id !== currentUserId) {
+                    numberOfAdminsExeptMe++;
+                }
+            })
+            return numberOfAdminsExeptMe > 0
         }
+
+
     }
 });
 

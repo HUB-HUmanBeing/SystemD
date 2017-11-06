@@ -1,9 +1,18 @@
 import User from '/imports/classes/User';
 
 arborescenceStructure = function () {
-
     //On récupère les données de l'utilisateur actuel
     let currentUser = Meteor.user();
+    //petit utilitaire nous permettant de trier les notifications de l'utilisateur par type
+    let notifications = function (type) {
+        let notif = [];
+        currentUser.profile.notifications.forEach((notification)=>{
+            if(notification.type === type){
+                notif.push(notification)
+            }
+        })
+        return notif
+    }
 
     return [
         {
@@ -13,6 +22,9 @@ arborescenceStructure = function () {
             },
             color: "green",
             image: "user_icon.png",
+            notifications : function () {
+                return notifications("user")
+            },
             subMenu: [
 
                 {
@@ -28,6 +40,12 @@ arborescenceStructure = function () {
                     icon: "group_work"
                 },
                 {
+                    id: "userSelfBlog",
+                    name: "Mon Blog",
+                    path: "userSelfBlog",
+                    icon: "library_books"
+                },
+                {
                     id: "logout",
                     name: "Déconnexion",
                     path: "home",
@@ -40,6 +58,9 @@ arborescenceStructure = function () {
             name: "Projets",
             color: "orange",
             image: "project_icon.png",
+            notifications : function () {
+                return notifications("project")
+            },
             subMenu: function () {
                     return User.findOne(currentUser._id).projectsData();
             },
@@ -49,6 +70,9 @@ arborescenceStructure = function () {
             name: "Messagerie",
             color: "teal",
             image: "message_icon.png",
+            notifications : function () {
+                return notifications("message")
+            },
             subMenu: [
                 {
                     id: "lorem",
@@ -72,6 +96,9 @@ arborescenceStructure = function () {
             name: "Agenda",
             color: "red",
             image: "agenda_icon.png",
+            notifications : function () {
+                return notifications("agenda")
+            },
             subMenu: [
                 {
                     id: "lorem",
@@ -95,6 +122,9 @@ arborescenceStructure = function () {
             name: "Partage",
             color: "deep-purple",
             image: "sharing_icon.png",
+            notifications : function () {
+                return notifications("sharing")
+            },
             subMenu: [
                 {
                     id: "lorem",
@@ -114,6 +144,9 @@ arborescenceStructure = function () {
             name: "Modération",
             color: "amber",
             image: "moderation_icon.png",
+            notifications : function () {
+                return notifications("moderation")
+            },
             subMenu: [
                 {
                     id: "lorem",

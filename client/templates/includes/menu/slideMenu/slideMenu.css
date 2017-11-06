@@ -7,11 +7,11 @@
     position: fixed ;
     top:5px;
     left: 5px;
-    z-index: 2000 !important;
+    z-index: 500 !important;
 }
 
 #slide-out{
-    z-index: 2100 !important;
+    z-index: 1000 !important;
 }
 .margintop{
     margin: 0!important;

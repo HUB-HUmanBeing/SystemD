@@ -1,3 +1,4 @@
+import Project from '/imports/classes/Project'
 Template.members.helpers({
 
     //booléen , renvoie true si l'utilisaateur est admin du projet
@@ -6,7 +7,9 @@ Template.members.helpers({
     },
     //renvoie le projet courant
     currentProject : function () {
-        return Template.instance().data
+        let currentProject = Template.instance().data
+        currentProject.project_id = currentProject._id
+        return currentProject
     },
     //add you helpers here
     //renvoie les admins du projet

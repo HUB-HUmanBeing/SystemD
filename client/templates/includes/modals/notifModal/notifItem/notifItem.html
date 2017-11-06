@@ -1,0 +1,21 @@
+<template name="notifItem">
+    <li class="collection-item dismissable dismissable-notif dark-grey" id="{{formatedNotif.id}}" style="border-radius: 3px">
+        <div class="row no-margin notif-item {{color}}-border valign-wrapper">
+            <div class="col s10 ">
+                <a href="{{formatedNotif.path}}" class="light-grey-police small-text" redirect>
+                    {{nullIfOne formatedNotif.nbOccurrence}}
+                    {{formatedNotif.content}}
+                    <p class="right-align no-margin no-padding">
+                        <i class="small-info grey-text">{{formatDuration formatedNotif.delay}}</i>
+                    </p>
+                </a>
+            </div>
+            <div class="col s2 ">
+                <a class="btn-flat no-padding">
+                    <i class="material-icons grey-text" deleteNotif>clear</i>
+                </a>
+            </div>
+
+        </div>
+    </li>
+</template>

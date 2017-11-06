@@ -31,9 +31,19 @@ COULEURS
 .green-border{
     border: 2px solid #4CAF50 !important;
 }
-.hover-white:hover *{
-    color: white !important;
+.deep-purple-border{
+    border: 2px solid #5E35B1 !important;
 }
+.red-border{
+    border: 2px solid #E53935 !important;
+}
+.teal-border{
+    border: 2px solid #00897B !important;
+}
+.amber-border{
+    border: 2px solid #FFB300 !important;
+}
+
 .hover-orange:hover *{
     color: #C87F0A !important;
 }
@@ -51,6 +61,27 @@ COULEURS
 }
 .hover-amber:hover *{
     color: #FFB300 !important;
+}
+.hover-dark-grey:hover *{
+    color: #1c1c1c !important;
+}
+.hover-bg-orange:hover{
+    background-color: #C87F0A !important;
+}
+.hover-bg-green:hover {
+    background-color: #4CAF50 !important;
+}
+.hover-bg-deep-purple:hover{
+    background-color: #5E35B1 !important;
+}
+.hover-bg-red:hover {
+    background-color: #E53935 !important;
+}
+.hover-bg-teal:hover {
+    background-color: #00897B !important;
+}
+.hover-bg-amber:hover {
+    background-color: #FFB300 !important;
 }
 /*****BACKGROUNDS****/
 .trame-texture{
@@ -109,7 +140,7 @@ UTILITAIRES
 SCROLLBAR
  ************************/
 .scrollbar{
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .scrollbar::-webkit-scrollbar {
     width: 7px;

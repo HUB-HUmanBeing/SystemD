@@ -1,7 +1,7 @@
 <template name="contextualNavBarItem">
 
-    <li class="tab col s3 ">
-        <a href="{{path}}" class="">
+    <li class="tab col s3 no-padding ">
+        <a href="{{path}}" class="" style="padding: 0 4px 0 4px !important;">
             <b>
                 {{#if isActiveRoute name = routeName}}
                     <span class="{{color}}-text">{{title}}</span>

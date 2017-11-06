@@ -31,6 +31,11 @@ Meteor.methods({
         if(userId){
            // on recupere les données de cet user pour hydrater une instance de la classe User
             newUser = User.findOne(userId);
+            //on rajoute une notif de bienvenue
+            newUser.profile.notifications.push({
+                content: "Bienvenue sur HUmanBeing",
+                type: "user"
+            })
             //puis on la sauvegarde, mettant ainsi en base l'utilisateur créé avec tous les champs nécessaires stoqués
             newUser.save();
         }

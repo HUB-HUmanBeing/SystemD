@@ -9,9 +9,11 @@ Template.editProjectInfo.helpers({
 });
 
 Template.editProjectInfo.events({
-    //add your events here
-    'click [deleteProject]' : function (event, instance) {
-        let currentProject = Project.findOne({_id : Template.instance().data.project._id})
+    //aaction de suppression definitive d'un projet
+    'click [deleteProject]': function () {
+        //on récupere le projet courant
+        let currentProject = Project.findOne({_id: Template.instance().data.project._id})
+        //on appele la methode de suppression
         currentProject.callMethod(
             'deleteProject',
             (error) => {
@@ -19,7 +21,12 @@ Template.editProjectInfo.events({
                 if (error) {
                     Materialize.toast("une erreur s'est produite", 4000, 'red')
                 } else {
+                    //sinon, on toast le succes,
                     Materialize.toast("Le projet à été définitivement supprimé", 6000, 'green')
+                    //on ferme la modal
+                    $('.modal').modal('close');
+                    //on redirige vers la page des projets utilisateurs
+                    Router.go('userSelfProjects')
                 }
             })
     }

@@ -39,16 +39,16 @@
         </div>
 
 
-        <div id="imgPreview" class="modal dark-grey modal-fixed-footer ">
-            <div class="modal-content">
-                <div class="row">
+        <div id="imgPreview" class="modal dark-grey ">
+            <div class="modal-content dark-grey">
+                <div class="row no-margin">
                     {{#if urlPreview}}
                         <div class="center-align">
                             <img class="responsive-img center-align" src="{{urlPreview}}">
                         </div>
                     {{else}}
                         <div class="center-align">
-                            {{>spinner}}
+                            {{>loading}}
                         </div>
                     {{/if}}
                 </div>

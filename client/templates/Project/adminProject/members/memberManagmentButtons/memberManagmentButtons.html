@@ -1,5 +1,5 @@
 <template name="memberManagmentButtons">
-    <div class="fixed-action-btn horizontal click-to-toggle static">
+    <div class="fixed-action-btn horizontal static">
         <a class="btn-floating relative dark-grey waves-effect waves-light ">
             <i class="material-icons grey-text darken-2">settings</i>
         </a>
@@ -8,7 +8,7 @@
                 <a href="#giveAdminRights{{member.user_id}}"
                    class="btn-floating relative dark-grey tooltipped waves-effect waves-green modal-trigger"
                    data-position="bottom" data-delay="50"
-                   data-tooltip="donner les droits d'administration">
+                   data-tooltip="Donner les droits d'administration">
                     <i class="material-icons  green-text tiny">verified_user</i>
                 </a>
 
@@ -18,7 +18,7 @@
                 <a href="#kick{{member.user_id}}"
                    class="btn-floating btn-flat dark-grey tooltipped waves-effect waves-red modal-trigger"
                    data-position="bottom"
-                   data-delay="50" data-tooltip="retirer l'utilisateur du projet">
+                   data-delay="50" data-tooltip="Retirer l'utilisateur du projet">
                     <i class="material-icons red-text ">clear</i>
                 </a>
 
@@ -26,9 +26,9 @@
         </ul>
     </div>
 
-    <div id="kick{{member.user_id}}" class="modal dark-grey fixed">
-        <div class="modal-content left-align">
-            <h5>retirer l'utilisateur des membres du projet</h5>
+    <div id="kick{{member.user_id}}" class="modal dark-grey fixed scrollbar">
+        <div class="modal-content left-align dark-grey">
+            <h5>Retirer l'utilisateur des membres du projet</h5>
             <div class="row no-margin">
                 <div class="col s12  ">
                     <div class="row no-margin ">
@@ -42,14 +42,14 @@
             </div>
         </div>
         <div class="modal-footer dark-grey">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat green-text "
+            <a  class="modal-action modal-close waves-effect waves-green btn-flat green-text "
                kickMember>Confirmer</a>
-            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat ">Annuler</a>
+            <a  class="modal-action modal-close waves-effect waves-light btn-flat ">Annuler</a>
         </div>
     </div>
 
-    <div id="giveAdminRights{{member.user_id}}" class="modal dark-grey fixed">
-        <div class="modal-content left-align">
+    <div id="giveAdminRights{{member.user_id}}" class="modal dark-grey fixed scrollbar">
+        <div class="modal-content left-align dark-grey">
             <h5>donner les droits d'administration</h5>
             <div class="row no-margin">
                 <div class="col s12  ">
@@ -64,9 +64,9 @@
             </div>
         </div>
         <div class="modal-footer dark-grey">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat green-text "
+            <a  class="modal-action modal-close waves-effect waves-green btn-flat green-text "
                giveAdminRights>Confirmer</a>
-            <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat ">Annuler</a>
+            <a  class="modal-action modal-close waves-effect waves-light btn-flat ">Annuler</a>
         </div>
     </div>
 </template>
