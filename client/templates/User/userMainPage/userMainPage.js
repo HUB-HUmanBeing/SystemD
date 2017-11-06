@@ -1,4 +1,4 @@
-
+import User from '/imports/classes/User';
 
 Template.userMainPage.helpers({
     //on recupere l'utilisateur courant
