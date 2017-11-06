@@ -24,16 +24,25 @@ Template.registerHelper('onlyZeroToNine', function(number){
     return number>9? "+" :number;
 })
 
+//prends en entrée soit une durée en ms, soit un objet de type date
 Template.registerHelper('formatDuration', function(duration){
-    if(duration<900000){//15min
-        return "quelques minutes"
-    }else if(duration<3600000){ //1h
-        return "moins d'une heure"
-    }else if(duration<86400000){ //jour
-        return "moins d'un jour"
-    }else if(duration<604800000){ //une semaine
-        return "moins d'une semaine"
-    }else if(duration<9628000000){ //un mois
-        return "moins d'un mois"
+    //si c'est pas un nombre (et donc que c'est une date
+    if(typeof duration !== 'number'){
+        //on calcule la durée
+        duration = new Date().getTime() - duration.getTime()
     }
+if(duration/9628000000 > 1){
+        return "il y a plus d'un mois";
+}else if(parseInt(duration/86400000) >=1){
+     let plurial = parseInt(duration/86400000)===1?"":"s";
+    return  parseInt(duration/86400000) + "jour"+ plurial;
+}else if(parseInt(duration/3600000) >=1){
+    let plurial = parseInt(duration/3600000)===1?"":"s";
+    return  parseInt(duration/3600000) + "heure"+ plurial;
+}else if(parseInt(duration/60000) >1){
+    let plurial = parseInt(duration/60000)===1?"":"s";
+    return parseInt(duration/60000) + "minute"+ plurial;
+}else{
+    return 'quelques secondes'
+}
 })

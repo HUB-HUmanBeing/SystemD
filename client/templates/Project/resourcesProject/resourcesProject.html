@@ -15,8 +15,12 @@
                         </div>
                     </div>
                 </div>
-                <div id="shared" class="col s12 no-padding">{{#if eq currentTab "shared"}}{{>workInProgress}}{{/if}}</div>
-                <div id="needed" class="col s12 no-padding">{{#if eq currentTab "needed"}}{{>workInProgress}}{{/if}}</div>
+                <div id="shared" class="col s12 no-padding">{{#if eq currentTab "shared"}}
+                    {{>workInProgress content = "d'ajouter des ressources que le projet produit au partage avec d'autres projets ou directement a des utilisateurs"}}
+                {{/if}}</div>
+                <div id="needed" class="col s12 no-padding">{{#if eq currentTab "needed"}}
+                    {{>workInProgress content = "de rechercher des ressources dont le projet a besoin pour son fonctionnement"}}{{/if}}
+                </div>
 
             </div>
         </div>

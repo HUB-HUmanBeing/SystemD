@@ -2,6 +2,9 @@ Template.loginMenu.helpers({
     //ce helper contients les message d'erreurs eventuels du formulaire de signin
     errorText: function () {
         return Template.instance().errorText.get()
+    },
+    pulse : function () {
+        return Template.instance().pulse.get()
     }
 });
 
@@ -24,7 +27,7 @@ Template.loginMenu.events({
         let signinUsername = $('#signinUsername').val();
         let errorMessage;
         //si elles sont identiques on vire le message d'erreur
-        if (signinUsername.length <=5 || signinUsername.length>35) {
+        if (signinUsername.length <5 || signinUsername.length>35) {
             errorMessage = "le nom d'utilisateur doit comporter entre 5 et 35 caractères"
         } else {
             //sinon on indique l'erreur
@@ -92,12 +95,16 @@ Template.loginMenu.events({
 Template.loginMenu.onCreated(function () {
     //add your statement here
     this.errorText = new ReactiveVar()
-
+    this.pulse = new ReactiveVar(true)
+    Meteor.setTimeout(()=>{
+        this.pulse.set(false)
+    },7000)
 });
 
 Template.loginMenu.onRendered(function () {
     //on initialise le compteur de caractères de matérialize
     $('input').characterCounter();
+
 });
 
 Template.loginMenu.onDestroyed(function () {

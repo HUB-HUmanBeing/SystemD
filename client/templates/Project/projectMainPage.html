@@ -12,7 +12,7 @@
                                 <div class="card-content">
                                     <span class="card-title">Infos</span>
                                     <img class="responsive-img " src="{{project.publicInfo.imgUrl}}">
-                                    <p class="valign-wrapper"><i class="material-icons tiny">location_on</i>
+                                    <p class="valign-wrapper"><i class="material-icons tiny small-padding" >location_on</i>
                                         {{#if project.publicInfo.location.city}}
                                             {{project.publicInfo.location.city}}
                                             , {{project.publicInfo.location.country}}  {{relativeDistance}}
@@ -20,8 +20,8 @@
                                             <span></span>position non renseignée
                                         {{/if}}
                                     </p>
-                                    <p class="valign-wrapper"><i
-                                            class="material-icons tiny">people </i> {{numberOfMembers}} </p>
+                                    <p class="valign-wrapper no-padding"><i
+                                            class="material-icons tiny small-padding">people </i> {{numberOfMembers}} </p>
                                 </div>
                             </div>
                         </div>
@@ -30,8 +30,8 @@
                         <div class="col s12 no-padding">
                             <div class="card trame-box ">
                                 <div class="card-content">
-                                    <span class="card-title">Categories</span>
-                                    {{>workInProgress}}
+                                    <span class="card-title">Types d'activités</span>
+                                    {{>workInProgress content = "de visualiser les domaines d'activités du projet"}}
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                             <div class="card trame-box ">
                                 <div class="card-content">
                                     <span class="card-title">Description</span>
-                                    <p class="no-margin">
+                                    <p class="no-margin formattedText" >
                                         {{#if project.publicInfo.description}}
                                             {{ project.publicInfo.description}}
                                         {{else}}

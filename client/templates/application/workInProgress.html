@@ -6,9 +6,14 @@
             </div>
         </div>
         <div class="col s9  small-padding">
-            <h6 class="no-margin grey-text lighten-1 ">
+            <h6 class="amber-text  text-lighten-2  ">
                 Cette fonctionnalité n'est pas encore acessible
             </h6>
+            <br>
+            {{#if content}}
+                <i class="amber-text text-lighten-2">elle permettra :</i>
+            <p class="small-text grey-text "><i>{{content}}</i></p>
+            {{/if}}
         </div>
 
 </div>

@@ -20,10 +20,13 @@
                         </div>
                     </div>
                 </div>
-                <div id="forum" class="col s12 no-padding">{{#if eq currentTab "forum"}}{{>workInProgress}}{{/if}}</div>
-                <div id="agenda" class="col s12 no-padding">{{#if eq currentTab
-                                                                  "agenda"}}{{>workInProgress}}{{/if}}</div>
-                <div id="todo" class="col s12 no-padding">{{#if eq currentTab "todo"}}{{>workInProgress}}{{/if}}</div>
+                <div id="forum" class="col s12 no-padding">{{#if eq currentTab "forum"}}
+                    {{>workInProgress content = "aux utilisateurs du projet de pouvoir discuter et d'organiser ces discussions en differents topics (discussions chiffrée)"}}{{/if}}
+                </div>
+                <div id="agenda" class="col s12 no-padding">{{#if eq currentTab "agenda"}}
+                    {{>workInProgress content = "aux utilisateurs du projet de visualiser l'agenda du projet et touts les evenements et temps d'activité, il offrira a l'utilisateur la possibilité de pouvoir s'inscrire sur ces dates, et de voir son agenda personnel synchronisé avec ceux des projets par taches ou il s'est inscrit (chiffré)"}}{{/if}}</div>
+                <div id="todo" class="col s12 no-padding">{{#if eq currentTab "todo"}}
+                    {{>workInProgress content = "permetra la création de nouvelles taches, leur tri, leur suivi, et leurs assignation aux membres du projet (chiffré)"}}{{/if}}</div>
             </div>
         </div>
     </div>

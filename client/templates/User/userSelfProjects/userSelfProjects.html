@@ -11,7 +11,7 @@
                             <div class="card-content">
                                 <span class="card-title">Mes Projets</span>
                                 <div class="row">
-                                        <p class="small-info">Avec le status d'administrateur du projet</p>
+                                        <p class="small-info">Avec le statut d'administrateur</p>
                                     {{#if adminProjects}}
                                         {{#each project in adminProjects}}
                                             <div class="row small-margin">
@@ -31,7 +31,7 @@
                                     {{/if}}
                                 </div>
                                 <div class="row">
-                                        <p class="small-info">Avec le status de membre du projet</p>
+                                        <p class="small-info">Avec le statut de membre</p>
     {{#if memberProjects}}
                                             {{#each project in memberProjects}}
                                                 <div class="row small-margin">
@@ -122,8 +122,9 @@
                         <div class="col s12">
                             <div class="card trame-box ">
                                 <div class="card-content">
-                                    <span class="card-title">Rechercher des projets par catégorie et distance</span>
-                                    {{>workInProgress}}
+                                    <span class="card-title">Rechercher des projets</span>
+                                    {{>workInProgress
+                                            content= "de rechercher des projets par type d'activié et distance, puis dans le futur, par compétences recherchée par le projet"}}
                                 </div>
                             </div>
                         </div>

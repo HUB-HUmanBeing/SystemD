@@ -268,3 +268,9 @@ input:-webkit-autofill {
     font-size: 1.1em !important;
 }
 
+.formattedText a{
+    color: rgba(255, 199, 88, 0.78) !important;
+}
+.formattedText a:hover{
+    text-decoration: underline !important;
+}

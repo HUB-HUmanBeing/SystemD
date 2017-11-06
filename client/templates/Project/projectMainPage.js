@@ -29,6 +29,7 @@ Template.projectMainPage.onCreated(function () {
 Template.projectMainPage.onRendered(function () {
     //add your statement here
     $(Template.instance().firstNode).css('opacity', '1');
+    Textarea.unformatBySelector(".formattedText")
 });
 
 Template.projectMainPage.onDestroyed(function () {

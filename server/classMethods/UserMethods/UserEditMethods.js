@@ -8,7 +8,6 @@ User.extend({
             check(key, String);
             check(this._id ,Meteor.userId())
                 this.profile[key] = value;
-
                 return this.save()
 
         },

@@ -11,7 +11,7 @@
                             <div class="card trame-box ">
                                 <div class="card-content">
                                     <span class="card-title">Infos</span>
-                                    <img class="responsive-img " src="{{user.profile.imgUrl}}">
+                                    <img class="responsive-img col s12" src="{{user.profile.imgUrl}}">
                                     <p>
                                         <i class="material-icons tiny">location_on</i> {{computedInfo.distance}}
                                     </p>
@@ -26,8 +26,8 @@
                         <div class="col s12 ">
                             <div class="card trame-box">
                                 <div class="card-content">
-                                    <span class="card-title">Centres d'interêt</span>
-                                    {{>workInProgress}}
+                                    <span class="card-title">Intéret pour</span>
+                                    {{>workInProgress content= "de visualiser rapidement les types d'activités qui peuvent interesser cet utilisateur"}}
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                             <div class="card trame-box ">
                                 <div class="card-content">
                                     <span class="card-title">Description</span>
-                                    <p class="no-margin">
+                                    <p class="no-margin formattedText">
                                         {{#if user.profile.description}}
                                             {{ user.profile.description}}
                                         {{else}}
@@ -55,7 +55,7 @@
                             <div class="card trame-box ">
                                 <div class="card-content">
                                     <span class="card-title">Compétences</span>
-                                    {{>workInProgress}}
+                                    {{>workInProgress content = "de visualiser les compétences de l'utilisateur"}}
                                 </div>
                             </div>
                         </div>
