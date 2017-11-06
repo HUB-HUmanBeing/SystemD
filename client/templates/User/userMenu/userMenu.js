@@ -7,11 +7,12 @@ import User from '/imports/classes/User';
 Template.userMenu.helpers({
     //titre affiché
     userId : function () {
-        return Template.instance().data.user._id
+        console.log(Template.currentData().user);
+        return Template.currentData()._id
     },
     title: function () {
 
-        return Template.instance().data.user.username
+        return Template.currentData().username
     },
     //nom de la page pour pouvoir utiliser le "is active path"
     contextualHomepage : function () {
@@ -23,7 +24,8 @@ Template.userMenu.helpers({
     },
     //image a faire afficher
     imgUrl: function () {
-        let url = Template.instance().data.user.profile.imgUrl;
+        console.log(Template.currentData().user.profile.imgUrl);
+        let url = Template.currentData().user.profile.imgUrl;
         //si c'est pas l'image par défault, on fais une requete de miniature vers l'api d'imgur
         if (url !== "/images/icon/user_icon.png") {
             return Imgur.toThumbnail(url, Imgur.SMALL_THUMBNAIL)
@@ -33,11 +35,11 @@ Template.userMenu.helpers({
     },
     //on transmet le path  vers lequel ca doir renvoyer
     path: function () {
-        return Router.path("userMainPage", {_id: Template.instance().data.user._id})
+        return Router.path("userMainPage", {_id: Template.currentData().user._id})
     },
     //tableau des elements a renvoyer a la barre de navigation
     navBarItems: function () {
-        if(Template.instance().data.user._id === Meteor.userId()) {
+        if(Template.currentData().user._id === Meteor.userId()) {
 
             let navBarItems = [
                 {
@@ -71,7 +73,7 @@ Template.userMenu.helpers({
     },
     //helper verifiant si on doit aficher la navbar ou les boutons d'interaction
     showNavbar : function () {
-        return Meteor.userId() === Template.instance().data.user._id
+        return Meteor.userId() === Template.instance().user._id
     }
 
 

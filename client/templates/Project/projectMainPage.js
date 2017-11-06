@@ -31,6 +31,7 @@ Template.projectMainPage.onCreated(function () {
 
 Template.projectMainPage.onRendered(function () {
     //add your statement here
+    console.log(Template.instance().firstNode);
     $(Template.instance().firstNode).css('opacity', '1');
 });
 

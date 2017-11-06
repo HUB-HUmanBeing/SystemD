@@ -1,13 +1,13 @@
-import User from '/imports/classes/User';
+
 
 Template.userMainPage.helpers({
     //on recupere l'utilisateur courant
     user: function () {
-        return Template.instance().data.fetch()[0]
+        return Template.currentData();
     },
     //on met en forme les infos calculés sur l'utilisateur afin qu'elles soient bien présentées
     computedInfo: function () {
-        let computedInfo = Template.instance().computedInfo.get();
+        let computedInfo = this.computedInfo.get();
         //participation a un projet
         if (isNaN(computedInfo.nbOfProjects) || computedInfo.nbOfProjects === 0) {
             computedInfo.projectField = "Ne participe à aucun projet"
@@ -40,12 +40,17 @@ Template.userMainPage.onCreated(function () {
         nbOfProjects : 0}
     );
     //on recupere l'utilisateur courant'
-    let user = User.findOne(Template.instance().data.fetch()[0]._id);
-    //puis on appele la methode renvoyant les info
-    user.callMethod('computedInfo', (error, result) => {
-        //et on remplit la reactive var
-        this.computedInfo.set(result)
-    })
+    let info = Template.currentData()._id;
+    (async (info) => {
+        const User = await import('/imports/classes/User');
+        let user = User.default.findOne(info);
+        //puis on appele la methode renvoyant les info
+        user.callMethod('computedInfo', (error, result) => {
+            //et on remplit la reactive var
+            this.computedInfo.set(result)
+        })
+    })(info);
+
 });
 
 Template.userMainPage.onRendered(function () {
