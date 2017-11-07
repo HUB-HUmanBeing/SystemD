@@ -1,11 +1,105 @@
 <template name="editPost">
+    <link rel="stylesheet" href="/css/medium-editor.css">
 
-<div class="postcontainer relative">
-    <div class="imageContainer absolute">
+    <div class="row relative">
+        <div class="col s12 no-padding">
+            <div class="col s12 {{#unless isImageWide }}m4{{else}} no-padding{{/unless}}  relative"
+                 style="{{#unless isPhone}}{{#unless
+                         isImageWide}}padding: 0 20px 0px 0  !important;{{/unless}}{{/unless}}">
+                {{#if imageLoading}}
+                    <div class="absolute" style="opacity : 0.9 ; height: 100%; width: 100%">
+                        {{>loading}}
+                    </div>
+                {{/if}}
+                <img class="responsive-img " src="{{postImage}}">
+                <div class="fixed-action-btn horizontal fab-menu-btn"
+                     style="top:-15px; right:10px !important; ">
+                    <a class="btn-floating valign-wrapper btn-large dark-grey waves-effect
+                shadow waves-light tooltipped hover-bg-orange"
+                       data-position="bottom"
+                       data-delay="50" data-tooltip="Modifier l'image"
+                    >
+                        <span><i class="material-icons light-grey-police">edit</i></span>
+                    </a>
+                    <ul class="right-align">
+                        <li class="inline-block small-margin">
+                            <a class="btn-floating orange tooltipped shadow waves-effect waves-light"
+                               data-position="bottom"
+                               data-delay="50" data-tooltip="image réduite" smallImage>
 
+                                <i class="material-icons  grey-text text-darken-4">featured_video</i>
+
+                            </a>
+                            <input type="file" id="small-image-input" class="hidden absolute" smallImageInput>
+                        </li>
+                        <li class="inline-block small-margin">
+                            <a class="btn-floating orange tooltipped  shadow waves-effect waves-light" largeImage
+                               data-position="bottom"
+                               data-delay="50" data-tooltip="image large">
+                                <i class="material-icons  grey-text text-darken-4">crop_5_4</i>
+                            </a>
+                            <input type="file" id="large-image-input" class="hidden absolute" largeImageInput>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {{#if isImageWide }}
+                <div class="row absolute" style="width: 100%">
+                    <div class="col s12" style="opacity: 0.6; background-color: #0e0e0e;padding: 22px 15px 0 15px !important;">
+
+                        <h5 class="white-text " contenteditable="true" style="margin:0 !important; " id="post-tile">
+                            titre de l'articles fefsefsefsesefeesf
+                            efseseef</h5>
+
+                    </div>
+                </div>
+
+            {{else}}
+                <div class="col s12 m8" >
+                    <h5 class="small-margin text-shadow" contenteditable="true" id="post-title">
+                        titre de l'articles fefsefsefsesefeesf
+                        efseseef</h5>
+                    <div class="right-align">
+                        <i class="small-info small-margin white-text" >
+                            le {{localeDate date}}
+                        </i>
+                    </div>
+                </div>
+            {{/if}}
+
+            <p class="text edit-post editable puce-list formattedText" style="text-align: justify" id="post-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ad dignissimos fuga, maxime molestiae nostrum officiis quaerat
+                ratione repudiandae ut vitae. Accusamus aliquid asperiores distinctio
+                enim fuga illo impedit non vero?
+                lorem |br|
+                orem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ad dignissimos fuga, maxime molestiae nostrum officiis quaerat
+                ratione repudiandae ut vitae. Accusamus aliquid asperiores distinctio
+                enim fuga illo impedit non vero?
+                lorem |br|
+                orem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ad dignissimos fuga, maxime molestiae nostrum officiis quaerat
+                ratione repudiandae ut vitae. Accusamus aliquid asperiores distinctio
+                enim fuga illo impedit non vero?
+                lorem |br|
+                orem ipsum dolor sit amet, consectetur adipisicing elit.
+                Ad dignissimos fuga, maxime molestiae nostrum officiis quaerat
+                ratione repudiandae ut vitae. Accusamus aliquid asperiores distinctio
+                enim fuga illo impedit non vero?
+                lorem
+            </p>
+        </div>
+        <a class="btn-floating valign-wrapper btn-large orange grey-text text-darken-4 waves-effect
+        shadow waves-light tooltipped green hover-bg-orange absolute"
+           style="bottom: -70px !important; right:-35px !important;"
+           data-position="bottom"
+           data-delay="50" data-tooltip="Publier l'article"
+           Publish
+
+        >
+            <span><i class="material-icons light-grey-police">send</i></span>
+        </a>
     </div>
-    <div class="textContainer">
 
-    </div>
-</div>
 </template>

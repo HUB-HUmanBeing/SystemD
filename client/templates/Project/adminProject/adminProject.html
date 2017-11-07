@@ -37,14 +37,23 @@
                     <div id="blog" class="col s12 no-padding">
                         {{#if eq currentTab "blog"}}
                             {{>newBlogPost
+                                    isEditing = false
                                     type="project"
                                     id= project._id
                             }}
                         {{/if}}
                     </div>
+                    <div id="members" class="col s12 no-padding">{{#if eq currentTab
+                                                                       "members"}}
+                        {{>members project}}
+                    {{/if}}
+                    </div>
                 {{else}}
                     <div id="members" class="col s12 no-padding">{{#if eq currentTab
-                                                                       "members"}}{{>members project}}{{/if}}</div>
+                                                                       "members"}}
+                        {{>members project}}
+                    {{/if}}
+                    </div>
                 {{/if}}
             </div>
         </div>
