@@ -13,14 +13,14 @@ Template.editDescription.helpers({
         return Template.instance().owner.get()
     },
     description: function () {
-        let formatedText
+        let formatedText = "";
         if (Template.instance().owner.get() === "user") {
-            formatedText = Meteor.user().profile.description
+            formatedText = Meteor.user().profile.description;
         } else if (Template.instance().owner.get() === "project") {
-            let currentProject = Project.findOne(Template.instance().data.projectId)
-            formatedText =  currentProject.publicInfo.description
+            let currentProject = Project.findOne(Template.instance().data.projectId);
+            formatedText =  currentProject.publicInfo.description;
         }
-    return Textarea.unformatForInputVal(formatedText)
+    return formatedText
     }
 });
 
@@ -64,10 +64,15 @@ Template.editDescription.events({
                         if (error) {
                             Materialize.toast("une erreur s'est produite", 4000, 'red')
                         } else {
+                            //on nettoie la div de son contenu
                             $('#description').html("");
                             instance.initialText = value
+                            //on attends que tout soit chargé
                             Meteor.setTimeout(function () {
+                                //on utilise la fonction pour déformatter le texte
+                                // stoké en base et remplacer les blises "gentilles" par du vrai html
                                 Textarea.unformatBySelector('.formattedText')
+                                //et on reset le medium editor
                                 editor = new MediumEditor('.editable', MediumEditorOptions)
                             }, 50)
 
@@ -89,10 +94,12 @@ Template.editDescription.events({
                         } else {
                             $('#description').html("");
                             instance.initialText = value
+                            //on attend un peu que le dom soit chargé
                             Meteor.setTimeout(function () {
+                                //on utilise la fonction pour déformatter le texte stoké en base et remplacer les blises "gentilles" par du vrai html
                                 Textarea.unformatBySelector('.formattedText')
                                 editor = new MediumEditor('.editable', MediumEditorOptions)
-                            }, 50)
+                            }, 30)
 
                             Materialize.toast("la description à été mise à jour", 6000, 'green')
                         }
@@ -141,6 +148,7 @@ Template.editDescription.onRendered(function () {
     //add your statement here
     //au rendu on active les infobulles
     $('.tooltipped').tooltip({delay: 50});
+    //on utilise la fonction pour déformatter le texte stoké en base et remplacer les blises "gentilles" par du vrai html
     Textarea.unformatBySelector('.formattedText')
     let editor = new MediumEditor('.editable', MediumEditorOptions)
 });

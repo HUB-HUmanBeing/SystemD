@@ -6,34 +6,34 @@ import Post from '/imports/classes/Post'
 
 Template.editPost.helpers({
     //add you helpers here
-    postImage : function () {
+    postImage: function () {
         return Template.instance().postImage.get()
     },
-    isImageWide : function () {
+    isImageWide: function () {
         return Template.instance().isImageWide.get()
     },
-    imageLoading : function () {
+    imageLoading: function () {
         return Template.instance().imageLoading.get()
     },
-    date : function () {
+    date: function () {
         return Template.instance().date.get()
     },
-    postContent : function () {
-        if(Template.instance().postContent){
+    postContent: function () {
+        if (Template.instance().postContent) {
             return Template.instance().postContent
-        }else{
+        } else {
             return ""
         }
 
     },
     postTitle: function () {
-        if(Template.instance().postTitle){
+        if (Template.instance().postTitle) {
             return Template.instance().postTitle
-        }else{
-            if(Template.currentData().type === "project"){
-                return 'Article du projet "'+ Template.instance().project.get().name +'"'
-            }else{
-                return 'Article de '+ Meteor.user().username +''
+        } else {
+            if (Template.currentData().type === "project") {
+                return 'Article du projet "' + Template.instance().project.get().name + '"'
+            } else {
+                return 'Article de ' + Meteor.user().username + ''
             }
         }
     }
@@ -66,8 +66,8 @@ Template.editPost.events({
                     }, function (error, data) {
                         //on passe le resultat dans la reactivevar
                         instance.postImage.set(data.link)
-                    instance.imageLoading.set(false)
-                            instance.isImageWide.set(false)
+                        instance.imageLoading.set(false)
+                        instance.isImageWide.set(false)
                     }
                 )
             }
@@ -93,22 +93,28 @@ Template.editPost.events({
                     }, function (error, data) {
                         //on passe le resultat dans la reactivevar
                         instance.postImage.set(data.link)
-                    instance.isImageWide.set(true)
-                    instance.imageLoading.set(false)
+                        instance.isImageWide.set(true)
+                        instance.imageLoading.set(false)
                     }
                 )
             }
 
         })
     },
-    'click [publish]' : function (event, instance) {
-        let postImageUrl= instance.postImage.get()
-        let postContent =  $('#post-content').html()
-        let isImageWide= instance.isImageWide.get()
+    'click [publish]': function (event, instance) {
+
+
+        let isProject = Template.currentData().type === "projet";
+        let author_id = isProject ? Template.currentData().id : Meteor.userId();
+        let title = $('#post-title').val();
+        let content = Textarea.formatBeforeSave($('#post-content').html());
+        let isImageWide = instance.isImageWide.get();
+        let postImageUrl = instance.postImage.get();
+
         console.log(postContent)
-        console.log(Textarea.formatBeforeSave(postContent))
-let newPost = new Post()
-        newPost.callMethod(
+
+        let newPost = new Post()
+        newPost.callMethod('createPost',
             postContent,
             (error, result) => {
                 //si ca marche pas, on renvoie l'erreur par toast
@@ -135,18 +141,18 @@ Template.editPost.onCreated(function () {
     this.imageLoading = new ReactiveVar(false)
     let postImage = "/images/hub"
     let type = Template.currentData().type;
-    if(type === "user"){
-        if(!Template.currentData().isEditing){
-             postImage = Meteor.user().profile.imgUrl
-        }else{
+    if (type === "user") {
+        if (!Template.currentData().isEditing) {
+            postImage = Meteor.user().profile.imgUrl
+        } else {
 
         }
-    }else if(type=== "project"){
-        let project=Project.findOne(Template.currentData().id);
+    } else if (type === "project") {
+        let project = Project.findOne(Template.currentData().id);
         this.project = new ReactiveVar(project);
-        if(!Template.currentData().isEditing) {
+        if (!Template.currentData().isEditing) {
             postImage = project.publicInfo.imgUrl
-        }else{
+        } else {
 
         }
     }
