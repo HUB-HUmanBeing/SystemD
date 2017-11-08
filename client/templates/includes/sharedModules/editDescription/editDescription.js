@@ -1,5 +1,7 @@
 import User from '/imports/classes/User'
 import Project from '/imports/classes/Project'
+import MediumEditor from 'medium-editor'
+import MediumEditorOptions from '/imports/MediumEditor/MediumEditorOptions'
 
 Template.editDescription.helpers({
     //add you helpers here
@@ -44,11 +46,10 @@ Template.editDescription.events({
 
     },
     //à la soumission du formulaire
-    'submit [updateDescription], click [saveDescriptionBtn]': function (event, instance) {
+    'click [saveDescriptionBtn]': function (event, instance) {
         //on récupere la valeur du champ
-        let value = $('#description').val();
-        value = Textarea.beforeSave(value)
-console.log(value)
+        let value = $('#description').html();
+        value = Textarea.formatBeforeSave(value)
         //on verifie que la valeur as bien changé par rapport a la valeur existante
         if (value !== instance.initialText) {
             //on instancie et hydrate l'objet User
@@ -129,6 +130,8 @@ Template.editDescription.onRendered(function () {
     //au rendu on active les infobulles
     $('.tooltipped').tooltip({delay: 50});
     $('#description').trigger('autoresize');
+    Textarea.unformatBySelector('.formattedText')
+    const editor = new MediumEditor('.editable', MediumEditorOptions)
 });
 
 Template.editDescription.onDestroyed(function () {

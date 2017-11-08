@@ -3,7 +3,7 @@ const MediumEditorOptions = {
     placeholder: {
         /* This example includes the default options for placeholder,
            if nothing is passed this is what it used */
-        text: "Rédigez le contenu de l'article ici"
+        text: "Entrez le texte ici"
     },
     imageDragging : false,
     autoLink: true,

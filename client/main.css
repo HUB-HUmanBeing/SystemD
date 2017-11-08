@@ -289,6 +289,5 @@ input:-webkit-autofill {
     margin-left: 55px !important;
 }
 .formattedText ul li{
-    color: rgba(255, 199, 88, 0.78) !important;
     list-style-type: disc !important;
 }

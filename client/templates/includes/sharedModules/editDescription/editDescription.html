@@ -1,31 +1,30 @@
 <template name="editDescription">
+    <link rel="stylesheet" href="/css/medium-editor.css">
 
 
-        <form class=" " updateDescription>
-            <div class="row no-margin">
-                <div class="input-field col s12">
-                    {{#unless description}}
-                        <textarea class="materialize-textarea" data-length="1000"
-                                  placeholder="pas encore renseigné" id="description"
-                                  descriptionText></textarea>
-                    {{else}}
-                        <textarea class="materialize-textarea " data-length="1000"
-                                  value="{{description}}" id="description"
-                                  descriptionText></textarea>
-                    {{/unless}}
-                </div>
-            </div>
-        </form>
-
-        <a href="#" class="btn-floating top-right-btn dark-grey  waves-effect waves-light ">
-            {{#if isEditingFlags.description}}
-
-                <i class="material-icons green-text tooltipped"
-                   data-position="bottom" data-delay="50" data-tooltip="enregister"
-                   saveDescriptionBtn>file_download</i>
+    <div class="row no-margin">
+        <div class=" col s12 no-padding">
+            {{#unless description}}
+                <p class=" editable puce-list formattedText" contenteditable="true" data-length="1000"
+                   id="description"
+                   descriptionText></p>
             {{else}}
-                <i class="material-icons tooltipped "
-                   data-position="bottom" data-delay="50" data-tooltip="éditer" editDescriptionBtn>mode_edit</i>
-            {{/if}}
-        </a>
+                <p class=" editable puce-list formattedText" contenteditable="true" data-length="1000"
+                   id="description"
+                   descriptionText>{{description}} </p>
+            {{/unless}}
+        </div>
+    </div>
+
+    <a href="#" class="btn-floating top-right-btn dark-grey  waves-effect waves-light ">
+        {{#if isEditingFlags.description}}
+
+            <i class="material-icons green-text tooltipped"
+               data-position="bottom" data-delay="50" data-tooltip="enregister"
+               saveDescriptionBtn>file_download</i>
+        {{else}}
+            <i class="material-icons tooltipped "
+               data-position="bottom" data-delay="50" data-tooltip="éditer" editDescriptionBtn>mode_edit</i>
+        {{/if}}
+    </a>
 </template>

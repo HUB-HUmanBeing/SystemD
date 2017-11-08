@@ -86,6 +86,7 @@ Template.editPost.events({
         let postContent =  $('#post-content').html()
         let isImageWide= instance.isImageWide.get()
         console.log(postContent)
+        console.log(Textarea.formatBeforeSave(postContent))
     }
 });
 

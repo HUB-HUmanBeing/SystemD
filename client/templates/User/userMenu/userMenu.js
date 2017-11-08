@@ -7,11 +7,12 @@ import User from '/imports/classes/User';
 Template.userMenu.helpers({
     //titre affiché
     userId : function () {
-        return Template.currentData()._id
+        return Template.currentData().user._id
     },
     title: function () {
 
-        return Template.currentData().username
+
+        return Template.currentData().user.username
     },
     //nom de la page pour pouvoir utiliser le "is active path"
     contextualHomepage : function () {
@@ -71,7 +72,7 @@ Template.userMenu.helpers({
     },
     //helper verifiant si on doit aficher la navbar ou les boutons d'interaction
     showNavbar : function () {
-        return Meteor.userId() === Template.instance().user._id
+        return Meteor.userId() === Template.currentData().user._id
     }
 
 
