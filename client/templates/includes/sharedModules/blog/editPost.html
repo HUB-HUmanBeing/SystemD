@@ -46,7 +46,7 @@
             {{#if isImageWide }}
                 <div class="row absolute" style="width: 100%">
                     <div class="col s12" style="opacity: 0.6; background-color: #0e0e0e;padding: 22px 15px 0 15px !important;">
-                        <h5 class="white-text " contenteditable="true" style="margin:0 !important; " id="post-title">
+                        <h5 class="white-text editable-title " contenteditable="true" style="margin:0 !important; " id="post-title">
                             {{postTitle}}
                         </h5>
                     </div>
@@ -58,7 +58,7 @@
                 </div>
             {{else}}
                 <div class="col s12 m8" >
-                    <h5 class="small-margin text-shadow" contenteditable="true" id="post-title">
+                    <h5 class="small-margin editable-title" contenteditable="true" id="post-title">
                         {{postTitle}}
                     </h5>
                     <div class="right-align">
@@ -68,12 +68,12 @@
                     </div>
                 </div>
             {{/if}}
-            <div class="text edit-post editable puce-list formattedText" style="text-align: justify ; min-height: 200px !important;" id="post-content">
+            <div class="text edit-post editable puce-list formattedText" style="text-align: justify ; min-height: 200px !important; {{#unless isImageWide}}margin-top : 70px!important;{{/unless}}" id="post-content">
                 {{postContent}}
             </div>
         </div>
-        <a class="btn-floating valign-wrapper btn-large orange grey-text text-darken-4 waves-effect
-        shadow waves-light tooltipped green hover-bg-orange absolute"
+        <a class="btn-floating valign-wrapper btn-large  {{#if isProject }}orange{{else}}green{{/if}} grey-text text-darken-4 waves-effect
+        shadow waves-light tooltipped  hover-bg-orange absolute"
            style="bottom: -70px !important; right:-35px !important;"
            data-position="bottom"
            data-delay="50" data-tooltip="Publier l'article"

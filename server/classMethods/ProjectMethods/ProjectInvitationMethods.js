@@ -1,7 +1,7 @@
 import Project from '/imports/classes/Project'
 import ProjectInvitation from '/imports/classes/ProjectInvitation'
 import User from '/imports/classes/User';
-import {ValidationError} from 'meteor/jagi:astronomy';
+
 
 Project.extend({
     meteorMethods: {
@@ -37,9 +37,9 @@ Project.extend({
                     //on "envoie" une notification a l'utilisateur pour l'informer de cette invitation
                     //en remplissant son tableau de notifications avec ce message
                     invitedUser.profile.notifications.push({
-                        content: 'Invitation du projet "'  + this.name + '"',
-                        type :  "project",
-                        path :  Router.path("userSelfProjects")
+                        content: 'Invitation du projet "' + this.name + '"',
+                        type: "project",
+                        path: Router.path("userSelfProjects")
                     });
                     //puis on sauvegarde
                     invitedUser.save()
@@ -49,15 +49,14 @@ Project.extend({
         /*****************************************
          * Methode de suppression d'une invitation dans le tableau des invitations,
          * elle la supprime aussi du tableau user
-         * @param invitation
          */
-        deleteInvitation(invitation) {
-            //on verifie que l'invitation envoyée par le client est bien valide
-            check(invitation, ProjectInvitation);
+        deleteInvitation(user_id) {
+            //on verifie que l'id est bien valide
+            check(user_id, String);
             //On check que l'utilisateur qui appele la methode est bien un admin du projet
             check(this.isAdmin(Meteor.userId()), true);
             //on récupere les données de l'utilisateur concerné par l'invitation
-            let user = User.findOne({_id: invitation.user_id});
+            let user = User.findOne({_id: user_id});
 
             //on parcoure les invitations du projet
             this.invitations.forEach((projectSideInvitation, i) => {
@@ -80,11 +79,12 @@ Project.extend({
                                         user.profile.invitations.splice(j, 1)
                                         //on envoie une notificationa l'utilisateur
                                         user.profile.notifications.push({
-                                        content: "Bienvenue sur HUmanBeing",
-                                            type: "user"
-                                    })
+                                        content: "L'invitation à rejoindre le projet \""+ this.name + '" à été annulée',
+                                            type: "project",
+                                            path: Router.path("userSelfProjects")
+                                    }),
                                         //et on sauvegarde
-                                        user.save()
+                                        user.save();
                                     }
                                 })
                             }
@@ -94,4 +94,4 @@ Project.extend({
             });
         }
     }
-})
+});
