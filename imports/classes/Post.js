@@ -4,8 +4,8 @@ import Posts from '/lib/collections/Posts'
 /******************************
  * Classe des articles de blog
  **************************/
-const Posts = Class.create({
-    name: 'Posts',
+const Post = Class.create({
+    name: 'Post',
     collection: Posts,
     fields: {
         pinned: {//permet a l'utilisateur d'epingler en haut de son fil un article
@@ -53,10 +53,12 @@ const Posts = Class.create({
                 }
             ],
         },
-        isImageWide : {
+        isImageWide: {
             type: Boolean,
-            default:false
+            default: false
         },
-        imageUrl : String
+        imageUrl: String
     }
-}
+})
+
+export default Post

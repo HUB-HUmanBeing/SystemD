@@ -2,6 +2,7 @@ import MediumEditor from 'medium-editor'
 import MediumEditorOptions from '/imports/MediumEditor/MediumEditorOptions'
 import User from '/imports/classes/User'
 import Project from '/imports/classes/Project'
+import Post from '/imports/classes/Post'
 
 Template.editPost.helpers({
     //add you helpers here
@@ -16,6 +17,25 @@ Template.editPost.helpers({
     },
     date : function () {
         return Template.instance().date.get()
+    },
+    postContent : function () {
+        if(Template.instance().postContent){
+            return Template.instance().postContent
+        }else{
+            return ""
+        }
+
+    },
+    postTitle: function () {
+        if(Template.instance().postTitle){
+            return Template.instance().postTitle
+        }else{
+            if(Template.currentData().type === "project"){
+                return 'Article du projet "'+ Template.instance().project.get().name +'"'
+            }else{
+                return 'Article de '+ Meteor.user().username +''
+            }
+        }
     }
 });
 
@@ -87,6 +107,24 @@ Template.editPost.events({
         let isImageWide= instance.isImageWide.get()
         console.log(postContent)
         console.log(Textarea.formatBeforeSave(postContent))
+let newPost = new Post()
+        newPost.callMethod(
+            postContent,
+            (error, result) => {
+                //si ca marche pas, on renvoie l'erreur par toast
+                if (error) {
+                    Materialize.toast("une erreur s'est produite", 4000, 'red')
+                } else {
+                    $('#description').html("");
+                    instance.initialText = value
+                    Meteor.setTimeout(function () {
+                        Textarea.unformatBySelector('.formattedText')
+                        editor = new MediumEditor('.editable', MediumEditorOptions)
+                    }, 50)
+
+                    Materialize.toast("l'article a été publié", 6000, 'green')
+                }
+            })
     }
 });
 
@@ -108,7 +146,6 @@ Template.editPost.onCreated(function () {
         this.project = new ReactiveVar(project);
         if(!Template.currentData().isEditing) {
             postImage = project.publicInfo.imgUrl
-
         }else{
 
         }

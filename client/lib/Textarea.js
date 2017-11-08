@@ -59,13 +59,12 @@ Textarea = {
         htmlRegex: /<\/u>/gi,
         inDb: '|§u|',
         inDbRegex: /\|§u\|/gi
+    }, {//todo regex un peu buggé, ne marche pas en fin de phrase
+        html: '<a href="$1">$2</a>',
+        htmlRegex: /<a href="(http:\/\/[^\s]+)">(.+)<\/a>/gi,
+        inDb: '|a href="$1"|$2|§a|',
+        inDbRegex: /\|a href="(http:\/\/[^\s]+)"\|(.+)\|§a\|/gi
     },
-        {
-            html: '<a href="$1">$2</a>',
-            htmlRegex: /<a href="(http:\/\/[^\s]+)">(.+)<\/a>/gi,
-            inDb: '|a href="$1"|$2|§a|',
-            inDbRegex: /\|a href="(http:\/\/[^\s]+)"\|(.+)\|§a\|/gi
-        },
     ],
     //action aexecuter avant la sauvegarde en bdd, on crée des balises br entre pipe comme code pour demander le retour a la ligne
     formatBeforeSave: function (text) {
@@ -73,7 +72,6 @@ Textarea = {
             text = text.replace(tag.htmlRegex, tag.inDb)
         })
         return text
-
     },
     //action remplacant les balise de mise en base par des vrais br, et de mettre en balise anchor les liens eventuels,
     //à appeler au onrendered des balises concernées
@@ -84,7 +82,7 @@ Textarea = {
         })
         //et on remplace aussi les urls stockées en dur pa des liens
         $(jQuerySelector).html(text
-            //.replace(/(http:\/\/[^\s]+)/gi, '<a href="$1">$1</a>')
+            .replace(/[\s](http:\/\/[^\s]+)[\s]/gi, '<a href="$1">$1</a>')
         );
     },
     //action pour reformater a l'identique le texte lorsqu'on passe en mode edition de textarea

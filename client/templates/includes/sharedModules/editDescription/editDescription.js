@@ -64,7 +64,13 @@ Template.editDescription.events({
                         if (error) {
                             Materialize.toast("une erreur s'est produite", 4000, 'red')
                         } else {
+                            $('#description').html("");
                             instance.initialText = value
+                            Meteor.setTimeout(function () {
+                                Textarea.unformatBySelector('.formattedText')
+                                editor = new MediumEditor('.editable', MediumEditorOptions)
+                            }, 50)
+
                             Materialize.toast("la description à été mise à jour", 6000, 'green')
                         }
                     })
@@ -81,7 +87,13 @@ Template.editDescription.events({
                         if (error) {
                             Materialize.toast("une erreur s'est produite", 4000, 'red')
                         } else {
+                            $('#description').html("");
                             instance.initialText = value
+                            Meteor.setTimeout(function () {
+                                Textarea.unformatBySelector('.formattedText')
+                                editor = new MediumEditor('.editable', MediumEditorOptions)
+                            }, 50)
+
                             Materialize.toast("la description à été mise à jour", 6000, 'green')
                         }
                     })
@@ -129,9 +141,8 @@ Template.editDescription.onRendered(function () {
     //add your statement here
     //au rendu on active les infobulles
     $('.tooltipped').tooltip({delay: 50});
-    $('#description').trigger('autoresize');
     Textarea.unformatBySelector('.formattedText')
-    const editor = new MediumEditor('.editable', MediumEditorOptions)
+    let editor = new MediumEditor('.editable', MediumEditorOptions)
 });
 
 Template.editDescription.onDestroyed(function () {

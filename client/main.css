@@ -291,3 +291,6 @@ input:-webkit-autofill {
 .formattedText ul li{
     list-style-type: disc !important;
 }
+.editable::after{
+    position: static!important;
+}
