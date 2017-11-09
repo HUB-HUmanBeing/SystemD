@@ -140,12 +140,7 @@ Template.editDescription.onCreated(function () {
     this.isEditingFlags = new ReactiveVar({
         description: false
     });
-<<<<<<< HEAD:client/templates/includes/sharedModules/editDescription/editDescription.js
-    this.owner = new ReactiveVar(Template.instance().data.owner)
-
-=======
   this.owner = new ReactiveVar(Template.currentData().owner)
->>>>>>> f9b149da135c5cd4dd24980830f50c10d4c19086:client/templates/includes/editModules/editDescription/editDescription.js
 });
 
 Template.editDescription.onRendered(function () {

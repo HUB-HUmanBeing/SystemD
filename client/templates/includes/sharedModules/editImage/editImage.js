@@ -138,11 +138,8 @@ Template.editImage.onCreated(function () {
     this.editingImg = new ReactiveVar(false);
     //boolen pour savoir si l'on doit ouvrir la fenetre modale
     this.urlPreview = new ReactiveVar(false);
-<<<<<<< HEAD:client/templates/includes/sharedModules/editImage/editImage.js
-    this.owner = new ReactiveVar(Template.currentData().owner)
-=======
+
   this.owner = new ReactiveVar(Template.currentData().owner)
->>>>>>> f9b149da135c5cd4dd24980830f50c10d4c19086:client/templates/includes/editModules/editImage/editImage.js
 });
 
 Template.editImage.onRendered(function () {
