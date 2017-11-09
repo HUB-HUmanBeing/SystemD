@@ -18,7 +18,7 @@ Template.editLocation.helpers({
         if (Template.instance().owner.get() === "user") {
             return Meteor.user().profile.location.city
         } else if (Template.instance().owner.get() === "project") {
-            let currentProject = Project.findOne(Template.instance().data.projectId);
+          let currentProject = Project.findOne(Template.currentData().projectId)
             return currentProject.publicInfo.location.city
         }
 
@@ -27,7 +27,7 @@ Template.editLocation.helpers({
         if (Template.instance().owner.get() === "user") {
             return Meteor.user().profile.location.country
         } else if (Template.instance().owner.get() === "project") {
-            let currentProject = Project.findOne(Template.instance().data.projectId);
+          let currentProject = Project.findOne(Template.currentData().projectId)
             return currentProject.publicInfo.location.country
         }
     },
@@ -85,11 +85,11 @@ Template.editLocation.events({
                         //si ya erreur on verifie que c'est pas la premier fois ( pour pas renvoyer une erreur au premier essai
                         if (error) {
                             if (instance.geolocErrorCounter.get() > 1) {
-                                Materialize.Toast("La géolocalisation a échouée", 6000, "red")
+                              Materialize.Toast('La géolocalisation a échouée', 6000, 'red')
                             } else {
                                 instance.geolocErrorCounter.set(1)
-                                console.log("test")
-                                Materialize.Toast("Veillez réessayer de vous localiser", 6000, "orange")
+                              console.log('test')
+                              Materialize.Toast('Veillez réessayer de vous localiser', 6000, 'orange')
                             }
                             //si c'est bon
                         } else if (result) {
@@ -104,7 +104,7 @@ Template.editLocation.events({
                             ];
                             //on instancie la classe user avec notre utilisateur courant
                             if (instance.owner.get() === "user") {
-                                let currentUser = User.findOne(Meteor.userId())
+                              const currentUser = User.findOne(Meteor.userId())
                                 //et on utilise la méthode
                                 currentUser.applyMethod('updateSelfLocation',
                                     attribute,
@@ -113,7 +113,7 @@ Template.editLocation.events({
                                         if (error) {
                                             Materialize.toast(error.message, 6000, "red")
                                         } else {
-                                            instance.editingLocation.set(false)
+                                          instance.editingLocation.set(false)
                                             //on enleve les infobulles
                                             $('.tooltipped').tooltip('remove');
                                             //et on les remets apres un court délai (pour eviter que ne reste affichée
@@ -121,7 +121,7 @@ Template.editLocation.events({
                                             Meteor.setTimeout(function () {
                                                 $('.tooltipped').tooltip({delay: 50});
                                             }, 100)
-                                            Materialize.toast("Votre position a été mise à jour", 6000, "green")
+                                          Materialize.toast('Votre position a été mise à jour', 6000, 'green')
                                         }
                                     })
                             } else if (instance.owner.get() === "project") {
@@ -133,7 +133,7 @@ Template.editLocation.events({
                                     function (error, result) {
                                         //on renvoie le resutat de l'opération a l'utilisateur
                                         if (error) {
-                                            Materialize.toast(error.message, 6000, "red")
+                                          Materialize.toast(error.message, 6000, 'red')
                                         } else {
                                             instance.editingLocation.set(false)
                                             //on enleve les infobulles
@@ -143,7 +143,7 @@ Template.editLocation.events({
                                             Meteor.setTimeout(function () {
                                                 $('.tooltipped').tooltip({delay: 50});
                                             }, 100)
-                                            Materialize.toast("La localisation du projet à été mise à jour", 6000, "green")
+                                          Materialize.toast('La localisation du projet à été mise à jour', 6000, 'green')
                                         }
                                     })
 
@@ -177,11 +177,11 @@ Template.editLocation.events({
                         function (error, result) {
                             //en cas d'erreur on renvoie une info à l'utilisateur
                             if (error) {
-                                Materialize.toast("Ce service est momentanément indisponible", 6000, "red")
+                              Materialize.toast('Ce service est momentanément indisponible', 6000, 'red')
                             }
                             //sinon, on renvoie les differents choix possibles via la réactive var
                             else {
-                                instance.searchResults.set(result.data)
+                              instance.searchResults.set(result.data)
                                 //et on active les bulles d'infos pour ce bloc qui s'est ajouté au dom
                                 Meteor.setTimeout(function () {
                                     $('.tooltipped').tooltip({delay: 50});
@@ -208,7 +208,7 @@ Template.editLocation.events({
             choosenAddress.address.country
         ];
         //on instancie la classe User avec l'utilisateur courant
-        let currentUser = User.findOne(Meteor.userId());
+      const currentUser = User.findOne(Meteor.userId())
         //puis on lance la methode
         if (instance.owner.get() === "user") {
             currentUser.applyMethod('updateSelfLocation',
@@ -216,14 +216,14 @@ Template.editLocation.events({
                 function (error, result) {
                     //on renvoie le resutat de l'opération a l'utilisateur
                     if (error) {
-                        Materialize.toast(error.message, 6000, "red")
+                      Materialize.toast(error.message, 6000, 'red')
                     } else {
-                        Materialize.toast("Votre position a été mise à jour", 6000, "green")
-                        instance.editingLocation.set(false)
+                      Materialize.toast('Votre position a été mise à jour', 6000, 'green')
+                      instance.editingLocation.set(false)
                         //on clos le formulaire de recherche
-                        instance.useSearchForm.set(false)
+                      instance.useSearchForm.set(false)
                         //on réinitialise le tableau des réponses de nominatim
-                        instance.searchResults.set([])
+                      instance.searchResults.set([])
                         //on enleve les infobulles
                         $('.tooltipped').tooltip('remove');
                         //et on les remets apres un court délai (pour eviter que ne reste affichée
@@ -244,11 +244,11 @@ Template.editLocation.events({
                     if (error) {
                         Materialize.toast(error.message, 6000, "red")
                     } else {
-                        instance.editingLocation.set(false)
+                      instance.editingLocation.set(false)
                         //on clos le formulaire de recherche
-                        instance.useSearchForm.set(false)
+                      instance.useSearchForm.set(false)
                         //on réinitialise le tableau des réponses de nominatim
-                        instance.searchResults.set([])
+                      instance.searchResults.set([])
                         //on enleve les infobulles
                         $('.tooltipped').tooltip('remove');
                         //et on les remets apres un court délai (pour eviter que ne reste affichée
@@ -256,7 +256,7 @@ Template.editLocation.events({
                         Meteor.setTimeout(function () {
                             $('.tooltipped').tooltip({delay: 50});
                         }, 100)
-                        Materialize.toast("La localisation du projet à été mise à jour", 6000, "green")
+                      Materialize.toast('La localisation du projet à été mise à jour', 6000, 'green')
                     }
                 })
 
@@ -272,9 +272,9 @@ Template.editLocation.onCreated(function () {
     //resultats de l'api nominatim
     this.searchResults = new ReactiveVar();
     //chek de la derniere touche pressée pour eviter la surcharge de nominatim
-    this.lastKeyUpTime = new ReactiveVar()
-    this.editingLocation = new ReactiveVar(false)
-    this.owner = new ReactiveVar(Template.instance().data.owner)
+  this.lastKeyUpTime = new ReactiveVar()
+  this.editingLocation = new ReactiveVar(false)
+  this.owner = new ReactiveVar(Template.currentData().owner)
 });
 
 Template.editLocation.onRendered(function () {

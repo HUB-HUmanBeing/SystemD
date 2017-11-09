@@ -51,22 +51,59 @@
 //     });
 // };
 
-describe('Sign in', function () {
+describe('Sign in @watch', function () {
 
-    describe("I'm on HumanBeing", function () {
-        it("should display the website @watch", function () {
-            browser.url('http://localhost:3000');
-            let url = browser.getUrl();
-            expect(url).to.be.equal('http://localhost:3000/');
-        });
+  before(function() {
+    let userNumber = server.execute(function () {
+      Meteor.call('clearDb');
+      console.log('counting...'); // displays in Meteor's console
+      return Meteor.users.find().fetch().length;
+    });
+    expect(userNumber).to.equal(0);
+  });
+
+  describe("I'm on HumanBeing", function () {
+    it("should display the website", function () {
+      browser.url('http://localhost:3000');
+      let url = browser.getUrl();
+      expect(url).to.equal('http://localhost:3000/');
+    });
+  });
+
+  describe("I click on the connexion button", function () {
+    it("should open the connexion accordion", function () {
+      browser.click('#inscription');
+    });
+  });
+
+  describe("I enter my username and password", function () {
+
+    it("should register me", function () {
+      browser.waitForExist('#signinUsername', 3000);
+      browser.setValue('#signinUsername', 'jeremy');
+      browser.setValue('#signin-password', 123456);
+      browser.setValue('#password-repeat', 123456);
+      browser.click('form[signin] .btn-validation');
     });
 
-    describe("I click on the connexion button", function () {
-        it("should open the connexion accordion  @watch", function () {
-            browser.moveToObject('ul li:nth-child(4)');
-            browser.click('ul li:nth-child(4)');
-        });
+    it("should redirect me", function() {
+      browser.waitUntil(function () {
+        return browser.getUrl() === "http://localhost:3000/user/my_profile"
+      }, 4000, 'some text');
     });
 
+    it("should display my username in the first button on the left menu", function() {
+      let username = browser.getText("#user div span");
+      expect(username).to.equal("JEREMY");
+
+      it("should push the user in the collection", function(){
+        let user = server.execute(function () {
+          return Meteor.users.findOne({"username":"jeremy"});
+        });
+        expect(user.username).to.equal("jeremy");
+      })
+
+    });
+  });
 });
 

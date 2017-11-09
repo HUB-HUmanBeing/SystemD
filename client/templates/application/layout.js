@@ -1,6 +1,7 @@
 Template.layout.helpers({
     //add you helpers here
     contextualData : function () {
+
         let currentRouteArray = document.location.href.split("/");
         let contextualData = {}
         arborescenceStructure().forEach(function (item) {

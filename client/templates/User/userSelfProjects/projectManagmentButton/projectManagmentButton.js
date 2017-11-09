@@ -35,7 +35,7 @@ Template.projectManagmentButton.events({
     //lorsque l'utilisateur clique sur quitter le projet
     'click [QuitProject]': function (event, instance) {
         //on récupere le projet courant
-        let currentUser = User.findOne({_id: Meteor.userId()})
+      const currentUser = User.findOne({_id: Meteor.userId()})
         //on appele la methode de suppression
         currentUser.callMethod(
             'quitProject',

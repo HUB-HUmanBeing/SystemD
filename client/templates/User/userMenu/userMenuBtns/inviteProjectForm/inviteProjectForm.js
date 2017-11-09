@@ -3,9 +3,9 @@ import Project from '/imports/classes/Project'
 Template.inviteProjectForm.helpers({
     //on verifie que l'utilisateur peut etre invité
     isInvitable : function () {
-        let userId = Template.instance().data.userId;
+      let userId = Template.currentData().userId
 
-        let project = Project.findOne({_id : Template.instance().data.project.project_id});
+      let project = Project.findOne({_id: Template.currentData().project.project_id})
         if(project){
             return project.isInvitableUser(userId)
         }
@@ -47,7 +47,7 @@ Template.inviteProjectForm.events({
 
 Template.inviteProjectForm.onCreated(function () {
     //on souscris aux projets pour pouvoir récuperer leur liste de membres
-    Meteor.subscribe('singleProject',Template.instance().data.project.project_id )
+  Meteor.subscribe('singleProject', Template.currentData().project.project_id)
 
 });
 

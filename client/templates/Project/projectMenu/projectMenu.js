@@ -17,7 +17,7 @@ Template.projectMenu.helpers({
     },
     //image a faire afficher
     imgUrl: function () {
-        let url = Template.instance().data.project.publicInfo.imgUrl;
+      let url = Template.currentData().project.publicInfo.imgUrl
         //si c'est pas l'image par défault, on fais une requete de miniature vers l'api d'imgur
         if (url !== "/images/icon/project_icon.png") {
             return Imgur.toThumbnail(url, Imgur.SMALL_THUMBNAIL)
@@ -27,9 +27,9 @@ Template.projectMenu.helpers({
     },
     //icone a afficher apres le nom de projet, indiquant le role de l'utilisateur
     icon: function () {
-        let project = Template.instance().data;
+      let project = Template.currentData()
         let icon = "";
-        let currentUser = Meteor.user();
+      const currentUser = Meteor.user()
         if (currentUser) {
             //on boucle sur les projets de l'utilisateur courant
             currentUser.profile.projects.forEach(function (userProject) {
@@ -59,11 +59,11 @@ Template.projectMenu.helpers({
     },
     //on transmet le path  vers lequel ça doir renvoyer
     path: function () {
-        return Router.path("projectMainPage", {_id: Template.instance().data.project._id})
+      return Router.path('projectMainPage', {_id: Template.currentData().project._id})
     },
     //tableau des elements a renvoyer a la barre de navigation
     navBarItems: function () {
-        let projectId = Template.instance().data.project._id;
+      let projectId = Template.currentData().project._id
         let navBarItems = [
             {
                 title: "Gestion",
@@ -106,7 +106,7 @@ Template.projectMenu.helpers({
         //on le crée a false
         let isMember = false;
 
-        let currentUser = Meteor.user();
+      const currentUser = Meteor.user()
         if (currentUser) {
             //on parcoure les projets de l'utilisateur
             currentUser.profile.projects.forEach((project) => {

@@ -2,7 +2,6 @@
     <ul class=" sub-menu col s12 small-padding">
         {{#each subMenuItem in subMenu}}
             <li class="small-margin hover-{{color}}">
-
                 <a href="{{#if subMenuItem.pathData}}
                             {{pathFor subMenuItem.path data= subMenuItem.pathData }}
                         {{else}}
@@ -18,7 +17,8 @@
                         arrow_right
                     {{/if}}
                         </i>
-                    {{subMenuItem.name}}</span>
+
+                       {{subMenuItem.name}}</span>
                 </a>
 
 
