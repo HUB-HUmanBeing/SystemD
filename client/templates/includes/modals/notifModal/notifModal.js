@@ -1,9 +1,9 @@
 Template.notifModal.helpers({
-    openNotifPannel : function () {
-        return(Session.get("openNotifPannel"))
+    openNotifPannel: function () {
+        return (Session.get("openNotifPannel"))
     },
     //add you helpers here
-    formatedNotifs : function () {
+    formatedNotifs: function () {
         //on récupere le type de notif qu'on doit afficher
         NotificationsCurrentType = Session.get("formatedNotifsType")
         //puis on va les formatter pour regrouper les notifications
@@ -18,14 +18,14 @@ Template.notifModal.helpers({
         let notifications = [];
         //on recupere et trie les notifications en choisisant celles qu'on veut formatter
         // c'est sur, cest notif ont été formattées ailleurs, mais bon en les re-récupérant, on a l'assurance que les données dedans soient réactives
-        Meteor.user().profile.notifications.forEach((notif)=>{
-            if(notif.type === NotificationsCurrentType  ){
+        Meteor.user().profile.notifications.forEach((notif) => {
+            if (notif.type === NotificationsCurrentType) {
                 notifications.push(notif)
             }
         })
 
         //si ce tableau contient des notifications
-        if(notifications !== []) {
+        if (notifications !== []) {
             //on leur associera aussi un id, afin de pouvoir retrouver
             let id = 0
             //on boucle sur le tableau des notifications
@@ -35,8 +35,8 @@ Template.notifModal.helpers({
                     formatedNotifs.push({
                         content: notification.content,
                         path: notification.path,
-                        type : notification.type,
-                        id : "swipable-notif-" + id.toString(),
+                        type: notification.type,
+                        id: "swipable-notif-" + id.toString(),
                         //on aura une durée par raport a maintenant
                         delay: new Date().getTime() - notification.sendAt.getTime(),
                         nbOccurrence: 1
@@ -45,34 +45,40 @@ Template.notifModal.helpers({
                     id++
                     //puis, si c'est pas la premiere itération
                 } else {
+                    //on va chercher a savoir si une notif similaire est déja dans la tables
+                    //on crée un drapeau a false
+                    let notifFoundInFormattedNotif = false
                     //on boucle sur le tableau des notifications formatées
                     formatedNotifs.forEach((formatedNotif) => {
                         //si on a déja une notif similaire : meme notif et meme path
-                        if (formatedNotifs.content === notification.content
-                            && formatedNotifs.path === notification.path) {
+                        if (formatedNotif.content === notification.content
+                            && formatedNotif.path === notification.path) {
+                            notifFoundInFormattedNotif = true
                             //on incrémente le nombre d'occurence
                             formatedNotif.nbOccurrence++
                             //on garde ensuite la date de la plus récente :
                             //on calcule le délai de la notification sur laquelle on boucle
-                            delayOfCurrent = new Date().getTime() - notification.sendAt.getTime()
+                            let delayOfCurrent = new Date().getTime() - notification.sendAt.getTime()
                             //si il est plus petit
                             if (delayOfCurrent < formatedNotif.delay) {
                                 //on lui assigne la valeur
                                 formatedNotif.delay = delayOfCurrent
                             }
-                        } else { //si c'est l premiere fois qu'on voit passer cette notif
-                            formatedNotifs.push({
-                                content: notification.content,
-                                path: notification.path,
-                                type : notification.type,
-                                id : "swipable-notif-"+ id.toString(),
-                                delay: new Date().getTime() - notification.sendAt.getTime(),
-                                nbOccurrence: 1
-                            })
-                            //on incrémente l'id
-                            id++
                         }
                     })
+                    if (!notifFoundInFormattedNotif) { //si c'est l premiere fois qu'on voit passer cette notif
+                        formatedNotifs.push({
+                            content: notification.content,
+                            path: notification.path,
+                            type: notification.type,
+                            id: "swipable-notif-" + id.toString(),
+                            delay: new Date().getTime() - notification.sendAt.getTime(),
+                            nbOccurrence: 1
+                        })
+                        //on incrémente l'id
+                        id++
+                    }
+
                 }
             })
         }

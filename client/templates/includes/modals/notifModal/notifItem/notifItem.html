@@ -3,7 +3,7 @@
         <div class="row no-margin notif-item {{color}}-border valign-wrapper">
             <div class="col s10 ">
                 <a href="{{formatedNotif.path}}" class="light-grey-police small-text" redirect>
-                    {{nullIfOne formatedNotif.nbOccurrence}}
+                    <b style="font-size: 1.2em" class="{{color}}-text">{{nullIfOne formatedNotif.nbOccurrence}}</b>
                     {{formatedNotif.content}}
                     <p class="right-align no-margin no-padding">
                         <i class="small-info grey-text">il y a {{formatDuration formatedNotif.delay}}</i>

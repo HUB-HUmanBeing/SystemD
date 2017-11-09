@@ -17,7 +17,7 @@ Template.registerHelper('localeDate', function(date){
 })
 
 Template.registerHelper('nullIfOne', function(number){
-    return number<=1 ? " " :number;
+    return number<=1 ? "" : number+ " - ";
 })
 
 Template.registerHelper('onlyZeroToNine', function(number){
