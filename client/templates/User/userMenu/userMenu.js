@@ -1,5 +1,3 @@
-import User from '/imports/classes/User';
-
 /********************************
  * ensemble des helpers permettant de renvoyer des
  * valeurs particulières au menu contextuel
@@ -7,7 +5,6 @@ import User from '/imports/classes/User';
 Template.userMenu.helpers({
     //titre affiché
     userId : function () {
-        console.log(Template.currentData().user);
         return Template.currentData()._id
     },
     title: function () {
@@ -24,7 +21,6 @@ Template.userMenu.helpers({
     },
     //image a faire afficher
     imgUrl: function () {
-        console.log(Template.currentData().user.profile.imgUrl);
         let url = Template.currentData().user.profile.imgUrl;
         //si c'est pas l'image par défault, on fais une requete de miniature vers l'api d'imgur
         if (url !== "/images/icon/user_icon.png") {

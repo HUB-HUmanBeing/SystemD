@@ -154,7 +154,7 @@ const User = Class.create({
          * @returns {Number}
          ****************************/
         distance() {
-            let currentUserLocation = Meteor.user().profile.location;
+          const currentUserLocation = Meteor.user().profile.location
 
             if (this.profile.location.lonLat && currentUserLocation.lonLat) {
 

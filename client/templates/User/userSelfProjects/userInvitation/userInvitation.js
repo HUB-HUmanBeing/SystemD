@@ -3,7 +3,7 @@ import User from '/imports/classes/User'
 Template.userInvitation.helpers({
     //helpeur pour formater la date
     date : function () {
-        return Template.instance().data.invitation.sentAt
+      return Template.currentData().invitation.sentAt
     }
 });
 
@@ -14,7 +14,7 @@ Template.userInvitation.events({
     'click [joinProject]' : function (event, instance) {
         event.preventDefault();
         //on instancie la classe user d'astronomy
-        let currentUser = User.findOne(Meteor.userId());
+      const currentUser = User.findOne(Meteor.userId())
         //on apelle la methode d'acceptation d'une invitaation
         currentUser.callMethod('acceptInvitation', instance.data.invitation.project_id, (error)=>{
             //on donne un feedback a l'utilisateur
@@ -45,7 +45,7 @@ Template.userInvitation.events({
         //on récupere la valeur du message de refus
         let declineMessage = event.currentTarget.declineMessage.value;
         //on instancie notre utilisateur
-        let currentUser = User.findOne(Meteor.userId());
+      const currentUser = User.findOne(Meteor.userId())
         //on appele la methode décliner l'invitation
         currentUser.callMethod(
             'declineInvitation',
@@ -80,7 +80,7 @@ Template.userInvitation.events({
         event.preventDefault();
 
         //on instancie la classe user d'astronomy
-        let currentUser = User.findOne(Meteor.userId());
+      const currentUser = User.findOne(Meteor.userId())
         //on apelle la methode d'acceptation d'une invitaation
         currentUser.callMethod('deleteInvitation', instance.data.invitation.project_id, (error)=>{
             //on donne un feedback a l'utilisateur

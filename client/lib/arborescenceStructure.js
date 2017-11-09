@@ -2,7 +2,7 @@ import User from '/imports/classes/User';
 
 arborescenceStructure = function () {
     //On récupère les données de l'utilisateur actuel
-    let currentUser = Meteor.user();
+  const currentUser = Meteor.user()
     //petit utilitaire nous permettant de trier les notifications de l'utilisateur par type
     let notifications = function (type) {
         let notif = [];

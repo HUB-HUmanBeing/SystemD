@@ -40,7 +40,7 @@ Template.userMainPage.onCreated(function () {
         nbOfProjects : 0}
     );
     //on recupere l'utilisateur courant'
-    let user = User.findOne(Template.instance().data.fetch()[0]._id);
+  let user = User.findOne(Template.currentData().fetch()[0]._id)
     //puis on appele la methode renvoyant les info
     user.callMethod('computedInfo', (error, result) => {
         //et on remplit la reactive var

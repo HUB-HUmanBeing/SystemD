@@ -10,7 +10,7 @@ User.extend({
          ********************************/
         acceptInvitation(projectId) {
             check(projectId, String);
-            let currentUserId = Meteor.userId();
+          const currentUserId = Meteor.userId()
             let user = User.findOne(currentUserId);
             // on récupere le projet concerné
             let project = Project.findOne({_id: projectId});
@@ -96,10 +96,10 @@ User.extend({
          ********************************/
         deleteInvitation(projectId) {
             check(projectId, String);
-            let currentUserId = Meteor.userId();
+          const currentUserId = Meteor.userId()
             let user = User.findOne(currentUserId);
             // on récupere le projet concerné
-            let project = Project.findOne({_id: projectId});
+          // let project = Project.findOne({_id: projectId});
             //on parcours le tableau des invitations recues
             user.profile.invitations.forEach((userInvitation, i) => {
 

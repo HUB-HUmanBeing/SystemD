@@ -12,7 +12,7 @@ Template.editImage.helpers({
         if(owner === "user"){
             return Meteor.user().profile.imgUrl
         }else if(owner === "project"){
-            let currentProject = Project.findOne(Template.instance().data.projectId);
+          let currentProject = Project.findOne(Template.currentData().projectId)
             return currentProject.publicInfo.imgUrl
         }
 
@@ -85,7 +85,7 @@ Template.editImage.events({
         //si on est dans l'instance appelée par l'utilisateur
         if (owner === "user") {
             //on instancie notre objet useur avec les valeurs du currentUser
-            let currentUser = User.findOne(Meteor.userId());
+          const currentUser = User.findOne(Meteor.userId())
             //puis on lui applique la methode
             currentUser.callMethod(
                 'updateProfileItem',
@@ -109,7 +109,7 @@ Template.editImage.events({
             //si on est dans l'instance de type projet
         }else if(owner === "project"){
             //on instancie le projet
-            let currentProject = Project.findOne(Template.instance().data.projectId);
+          let currentProject = Project.findOne(Template.currentData().projectId)
             //puis on lui applique la methode
 
             currentProject.callMethod(
@@ -141,7 +141,7 @@ Template.editImage.onCreated(function () {
     this.editingImg = new ReactiveVar(false);
     //boolen pour savoir si l'on doit ouvrir la fenetre modale
     this.urlPreview = new ReactiveVar(false);
-    this.owner = new ReactiveVar(Template.instance().data.owner)
+  this.owner = new ReactiveVar(Template.currentData().owner)
 });
 
 Template.editImage.onRendered(function () {
@@ -151,4 +151,3 @@ Template.editImage.onRendered(function () {
 Template.editImage.onDestroyed(function () {
     //add your statement here
 });
-

@@ -14,7 +14,7 @@ Template.editDescription.helpers({
         if (Template.instance().owner.get() === "user") {
             return Meteor.user().profile.description
         } else if (Template.instance().owner.get() === "project") {
-            let currentProject = Project.findOne(Template.instance().data.projectId)
+          let currentProject = Project.findOne(Template.currentData().projectId)
             return currentProject.publicInfo.description
         }
     }
@@ -49,7 +49,7 @@ Template.editDescription.events({
         if (value !== instance.initialText) {
             //on instancie et hydrate l'objet User
             if (instance.owner.get() === "user") {
-                let currentUser = User.findOne(Meteor.userId());
+              const currentUser = User.findOne(Meteor.userId())
                 currentUser.callMethod(
                     'updateProfileItem',
                     "description",
@@ -104,11 +104,11 @@ Template.editDescription.events({
 
 Template.editDescription.onCreated(function () {
     //add your statement here
-    if (Template.instance().data.owner === "user") {
+  if (Template.currentData().owner === 'user') {
         currentUser = Meteor.user()
         this.initialText = currentUser.profile.description
-    } else if (Template.instance().data.owner === "project") {
-        let currentProject = Project.findOne(Template.instance().data.projectId)
+  } else if (Template.currentData().owner === 'project') {
+    let currentProject = Project.findOne(Template.currentData().projectId)
         this.initialText = currentProject.publicInfo.description
     }
 
@@ -116,7 +116,7 @@ Template.editDescription.onCreated(function () {
     this.isEditingFlags = new ReactiveVar({
         description: false
     });
-    this.owner = new ReactiveVar(Template.instance().data.owner)
+  this.owner = new ReactiveVar(Template.currentData().owner)
 });
 
 Template.editDescription.onRendered(function () {

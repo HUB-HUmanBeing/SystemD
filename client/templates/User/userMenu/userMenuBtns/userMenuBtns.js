@@ -2,7 +2,7 @@ Template.userMenuBtns.helpers({
     //renvoie la liste des projets ou l'utilisateur courant est admin
     adminProjects: function () {
         //on recupere tout les projets de l'utilisateur
-        let currentUserProjects = Meteor.user().profile.projects
+      const currentUserProjects = Meteor.user().profile.projects
         let adminProjects = []
         //pour chacuns, on check si l'utilisateur est admin
         currentUserProjects.forEach(project => {
@@ -17,7 +17,7 @@ Template.userMenuBtns.helpers({
 
 Template.userMenuBtns.events({
     //au click sur le bouton d'invitation
-    "click [inviteToProjects]": function (event, instance) {
+  'click [inviteToProjects]': function () {
         $('.modal').modal();
         //on ouvre la fenetre modale puis on active le menu accordéon
         $('.invite-to-projects-modal').modal('open');

@@ -47,8 +47,6 @@ Template.userSelfProfile.onRendered(() => {
   $('.swipable').tabs(
     // { 'swipeable': true }
   );
-  console.log(Template.instance());
-  console.log(Template.currentData());
 });
 
 Template.userSelfProfile.onDestroyed(() => {

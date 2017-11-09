@@ -1,13 +1,12 @@
-import Project from '/imports/classes/Project'
 Template.members.helpers({
 
     //booléen , renvoie true si l'utilisaateur est admin du projet
     isAdmin : function () {
-        return Template.instance().data.isAdmin(Meteor.userId())
+      return Template.currentData().isAdmin(Meteor.userId())
     },
     //renvoie le projet courant
     currentProject : function () {
-        let currentProject = Template.instance().data
+      let currentProject = Template.currentData()
         currentProject.project_id = currentProject._id
         return currentProject
     },
@@ -16,7 +15,7 @@ Template.members.helpers({
     projectAdmins: function () {
         //on récupere les projets de l'utilisateur
 
-        let members = Template.instance().data.members;
+      let members = Template.currentData().members
 
         let projectAdmins = [];
         //on parcours les membres du projet
@@ -31,7 +30,7 @@ Template.members.helpers({
     //renvoie les simples membres du projet
     projectMembers: function () {
         //on récupere les membres du projet
-        let members = Template.instance().data.members;
+      let members = Template.currentData().members
         let projectMembers = [];
         //on parcours les membres du projet
         members.forEach(function (member) {
@@ -45,7 +44,7 @@ Template.members.helpers({
     //renvoie les invitations en attente
     waitingInvitations: function () {
         //on récupere les invitations du projet
-        let invitations = Template.instance().data.invitations;
+      let invitations = Template.currentData().invitations
         let waitingInvitations = [];
         //on parcours ses invitations
         invitations.forEach((invitation) => {
@@ -59,7 +58,7 @@ Template.members.helpers({
     //renvoie les invitations déclinées par l'utilisateur
     declinedInvitations: function () {
         //on récupere les invitations du projet
-        let invitations = Template.instance().data.invitations;
+      let invitations = Template.currentData().invitations
         let declinedInvitations = [];
         //on parcours ses invitations
         invitations.forEach((invitation) => {
@@ -76,7 +75,7 @@ Template.members.helpers({
     },
     // liste des invitations accéptées par les utilisateurs
     acceptedInvitations: function () {
-        let invitations = Template.instance().data.invitations
+      let invitations = Template.currentData().invitations
         let acceptedInvitations = []
         //on parcours les invitations du projet
         invitations.forEach((invitation) => {

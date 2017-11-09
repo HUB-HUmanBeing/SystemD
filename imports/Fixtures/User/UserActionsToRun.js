@@ -1,7 +1,6 @@
 import Fixtures from "/imports/FixturesAndTests/Fixtures"
 import FixturesAndTests from '/imports/FixturesAndTests/FixturesAndTests'
 import User from '/imports/classes/User'
-import Project from '/imports/classes/Project'
 
 const UserActionsToRun = [
     {
@@ -23,29 +22,24 @@ const UserActionsToRun = [
                                 if (err) {
                                     FixturesAndTests.MethodErrors.push(this.name + " createUser")
                                     defer.reject(err);
-                                    return;
+
                                 } else {
                                     Meteor.loginWithPassword(username, Fixtures.password, () => {
-                                        console.log(Meteor.userId())
-
-
-                                        let currentUser = User.findOne({_id: Meteor.userId()})
-
-                                        console.log(Meteor.userId())
+                                      const currentUser = User.findOne({_id: Meteor.userId()})
                                         currentUser.callMethod('updateProfileItem', "imgUrl", Fixtures.getRandom("imgUrls"), (err) => {
 
                                             if (err) {
 
                                                 FixturesAndTests.MethodErrors.push(this.name + " AddImage")
                                                 defer.reject(err);
-                                                return;
+
                                             } else {
                                                 currentUser.callMethod('updateProfileItem', 'description', Fixtures.getRandom("lorems"), (err) => {
 
                                                     if (err) {
                                                         FixturesAndTests.MethodErrors.push(this.name + " AddImage")
                                                         defer.reject(err);
-                                                        return;
+
                                                     } else {
 
                                                         if (k === Fixtures.usernames.length - 1) {
