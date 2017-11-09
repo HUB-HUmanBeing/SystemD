@@ -5,7 +5,7 @@ import Project from '/imports/classes/Project';
 User.extend({
     meteorMethods: {
         quitProject(projectId) {
-            let currentUserId = Meteor.userId()
+          const currentUserId = Meteor.userId()
                 //on check que l'instance d'User est bien celle de l'utilisateur courant
             check(this._id, currentUserId)
             //on verifie que l'entrée est bien du type string

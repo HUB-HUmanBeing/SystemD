@@ -1,5 +1,3 @@
-import User from '/imports/classes/User';
-
 /********************************
  * ensemble des helpers permettant de renvoyer des
  * valeurs particulières au menu contextuel

@@ -3,7 +3,7 @@ import Project from '/imports/classes/Project'
 Template.editProjectInfo.helpers({
     //add you helpers here
     isDeletable : function () {
-        let project = Project.findOne({_id : Template.instance().data.project._id})
+      let project = Project.findOne({_id: Template.currentData().project._id})
         return project.isDeletable()
     }
 });
@@ -12,7 +12,7 @@ Template.editProjectInfo.events({
     //aaction de suppression definitive d'un projet
     'click [deleteProject]': function () {
         //on récupere le projet courant
-        let currentProject = Project.findOne({_id: Template.instance().data.project._id})
+      let currentProject = Project.findOne({_id: Template.currentData().project._id})
         //on appele la methode de suppression
         currentProject.callMethod(
             'deleteProject',

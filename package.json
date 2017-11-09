@@ -2,7 +2,8 @@
   "name": "micro",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
@@ -10,5 +11,8 @@
     "imports": "^1.0.0",
     "medium-editor": "^5.23.2",
     "meteor-node-stubs": "~0.2.4"
+  },
+  "devDependencies": {
+    "chimp": "^0.50.2"
   }
 }

@@ -100,7 +100,7 @@ Project.extend({
         canCurrentUserQuit(projectId) {
             let project = Project.findOne({_id: projectId})
             //on récupere l'utilisateur courant
-            let currentUserId = Meteor.userId()
+          const currentUserId = Meteor.userId()
             //on check qu'il soit membre
 
             check(project.isMember(currentUserId), true)

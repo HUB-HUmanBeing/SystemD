@@ -17,8 +17,8 @@ Template.editDescription.helpers({
         if (Template.instance().owner.get() === "user") {
             formatedText = Meteor.user().profile.description;
         } else if (Template.instance().owner.get() === "project") {
-            let currentProject = Project.findOne(Template.instance().data.projectId);
-            formatedText =  currentProject.publicInfo.description;
+          let currentProject = Project.findOne(Template.currentData().projectId)
+            return currentProject.publicInfo.description
         }
     return formatedText
     }
@@ -54,7 +54,7 @@ Template.editDescription.events({
         if (value !== instance.initialText) {
             //on instancie et hydrate l'objet User
             if (instance.owner.get() === "user") {
-                let currentUser = User.findOne(Meteor.userId());
+              const currentUser = User.findOne(Meteor.userId())
                 currentUser.callMethod(
                     'updateProfileItem',
                     "description",
@@ -128,11 +128,11 @@ Template.editDescription.events({
 
 Template.editDescription.onCreated(function () {
     //add your statement here
-    if (Template.instance().data.owner === "user") {
+  if (Template.currentData().owner === 'user') {
         currentUser = Meteor.user()
         this.initialText = currentUser.profile.description
-    } else if (Template.instance().data.owner === "project") {
-        let currentProject = Project.findOne(Template.instance().data.projectId)
+  } else if (Template.currentData().owner === 'project') {
+    let currentProject = Project.findOne(Template.currentData().projectId)
         this.initialText = currentProject.publicInfo.description
     }
 
@@ -140,8 +140,12 @@ Template.editDescription.onCreated(function () {
     this.isEditingFlags = new ReactiveVar({
         description: false
     });
+<<<<<<< HEAD:client/templates/includes/sharedModules/editDescription/editDescription.js
     this.owner = new ReactiveVar(Template.instance().data.owner)
 
+=======
+  this.owner = new ReactiveVar(Template.currentData().owner)
+>>>>>>> f9b149da135c5cd4dd24980830f50c10d4c19086:client/templates/includes/editModules/editDescription/editDescription.js
 });
 
 Template.editDescription.onRendered(function () {
