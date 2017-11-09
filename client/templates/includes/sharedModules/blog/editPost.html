@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="/css/medium-editor.css">
 
     <div class="row relative">
-        <div class="col s12 no-padding" >
+        <div class="col s12 no-padding">
             <div class="col s12 {{#unless isImageWide }}m4{{else}} no-padding{{/unless}}  relative"
                  style="{{#unless isPhone}}{{#unless
                          isImageWide}}padding: 0 20px 0px 0  !important;{{/unless}}{{/unless}}">
@@ -45,41 +45,61 @@
             </div>
             {{#if isImageWide }}
                 <div class="row absolute" style="width: 100%">
-                    <div class="col s12" style="opacity: 0.6; background-color: #0e0e0e;padding: 22px 15px 0 15px !important;">
-                        <h5 class="white-text editable-title " contenteditable="true" style="margin:0 !important; " id="post-title">
+                    <div class="col s12"
+                         style="opacity: 0.7; background-color: #0e0e0e;padding: 22px 15px 0 15px !important;">
+                        <h5 class="white-text editable-title " contenteditable="true" style="margin:0 !important; "
+                            id="post-title">
                             {{postTitle}}
                         </h5>
-                    </div>
-                    <div class="right-align">
-                        <i class="small-info small-margin white-text" >
-                            le {{localeDate date}}
-                        </i>
+
+                        <div class="right-align">
+                            <i class="small-info small-margin white-text">
+                                le {{localeDate date}}
+                            </i>
+                        </div>
                     </div>
                 </div>
+
             {{else}}
-                <div class="col s12 m8" >
+                <div class="col s12 m8">
                     <h5 class="small-margin editable-title" contenteditable="true" id="post-title">
                         {{postTitle}}
                     </h5>
                     <div class="right-align">
-                        <i class="small-info small-margin white-text" >
+                        <i class="small-info small-margin white-text">
                             le {{localeDate date}}
                         </i>
                     </div>
                 </div>
+                <div class="text edit-post editable puce-list formattedText"
+                     style="text-align: justify ; min-height: 200px !important;
+                     margin-top : 70px!important;"
+                     id="post-content">
+                    {{postContent}}
+                </div>
             {{/if}}
-            <div class="text edit-post editable puce-list formattedText" style="text-align: justify ; min-height: 200px !important; {{#unless isImageWide}}margin-top : 70px!important;{{/unless}}" id="post-content">
-                {{postContent}}
-            </div>
+
         </div>
-        <a class="btn-floating valign-wrapper btn-large  {{#if isProject }}orange{{else}}green{{/if}} grey-text text-darken-4 waves-effect
-        shadow waves-light tooltipped  hover-bg-orange absolute"
+        {{#if isImageWide}}
+            <div class="row no-margin">
+                <div class="col s12 no-padding">
+                    <div class="text edit-post editable puce-list formattedText"
+                         style="text-align: justify ; min-height: 40px !important; "
+                         id="post-content">
+                        {{postContent}}
+                    </div>
+                </div>
+            </div>
+
+        {{/if}}
+        <a class="btn-floating valign-wrapper btn-large   dark-grey waves-effect
+        shadow waves-light tooltipped  hover-bg-{{#if isProject }}orange{{else}}green{{/if}} hover-dark-grey absolute"
            style="bottom: -70px !important; right:-35px !important;"
            data-position="bottom"
            data-delay="50" data-tooltip="Publier l'article"
            Publish
         >
-            <span><i class="material-icons light-grey-police">send</i></span>
+            <span><i class="material-icons {{#if isProject }}orange-text{{else}}green-text{{/if}}">send</i></span>
         </a>
     </div>
 

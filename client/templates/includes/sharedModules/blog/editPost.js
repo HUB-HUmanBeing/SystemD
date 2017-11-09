@@ -67,6 +67,10 @@ Template.editPost.events({
                         instance.postImage.set(data.link)
                         instance.imageLoading.set(false)
                         instance.isImageWide.set(false)
+                    Meteor.setTimeout(()=>{
+                        new MediumEditor('.editable-title', MediumEditorOptionsTitle)
+                        new MediumEditor('.editable', MediumEditorOptions)
+                    },50)
                     }
                 )
             }
@@ -94,6 +98,11 @@ Template.editPost.events({
                         instance.postImage.set(data.link)
                         instance.isImageWide.set(true)
                         instance.imageLoading.set(false)
+                    Meteor.setTimeout(()=>{
+                        new MediumEditor('.editable-title', MediumEditorOptionsTitle)
+                        new MediumEditor('.editable', MediumEditorOptions)
+                    },50)
+
                     }
                 )
             }
@@ -158,8 +167,8 @@ Template.editPost.onRendered(function () {
     //add your statement here
     //Textarea.unformatBySelector(".edit-post")
 
-    const editor = new MediumEditor('.editable', MediumEditorOptions)
-    const editorTitle = new MediumEditor('.editable-title', MediumEditorOptionsTitle)
+    new MediumEditor('.editable', MediumEditorOptions)
+    new MediumEditor('.editable-title', MediumEditorOptionsTitle)
     $('.tooltipped').tooltip({delay: 50});
     Textarea.unformatBySelector('.formattedText')
 });

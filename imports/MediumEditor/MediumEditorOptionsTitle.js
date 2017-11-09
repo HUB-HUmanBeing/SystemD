@@ -3,7 +3,7 @@ const MediumEditorOptionsTitle = {
     placeholder: {
         /* This example includes the default options for placeholder,
            if nothing is passed this is what it used */
-        text: "Donner un titre à l'article?"
+        text: "Titre de l'article"
     },
     imageDragging : false,
     autoLink: true,

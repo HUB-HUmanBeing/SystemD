@@ -19,7 +19,7 @@ Textarea = {
         html: '</ul>',
         htmlRegex: /<\/ul>/gi,
         inDb: '|§ul|',
-        inDbRegex: /\|§p\|/gi
+        inDbRegex: /\|§ul\|/gi
     }, {
         html: '<li>',
         htmlRegex: /<li>/gi,
@@ -62,9 +62,9 @@ Textarea = {
         inDbRegex: /\|§u\|/gi
     }, {
         html: '<a href="$1">$2</a>',
-        htmlRegex: /<a href="(http:\/\/[^\s]+)">([^<>]+)<\/a>/gi,
+        htmlRegex: /<a href="(https?:\/\/[^\s<>]+)">([^<>]+)<\/a>/gi,
         inDb: '|a href="$1"|$2|§a|',
-        inDbRegex: /\|a href="(http:\/\/[^\s]+)"\|([^<>]+)\|§a\|/gi
+        inDbRegex: /\|a href="(https?:\/\/[^\s<>]+)"\|([^<>]+)\|§a\|/gi
     },
     ],
     //action a executer avant la sauvegarde en bdd,
