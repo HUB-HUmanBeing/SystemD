@@ -48,9 +48,11 @@ Template.editPost.events({
     },
     //TODO : virer les metadatas des images
     'change [smallImageInput]': function (event, instance) {
+        instance.titleEditor.destroy()
+        instance.contentEditor.destroy()
         instance.imageLoading.set(true)
         let file = event.currentTarget.files[0];
-        Resizer.resize(file, {width: 200, height: 200, cropSquare: true}, function (err, file) {
+        Resizer.resize(file, {width: 350, height: 350, cropSquare: true}, function (err, file) {
             //recuperation du fichier en base64
             let reader = new window.FileReader();
             reader.readAsDataURL(file);
@@ -68,8 +70,8 @@ Template.editPost.events({
                         instance.imageLoading.set(false)
                         instance.isImageWide.set(false)
                     Meteor.setTimeout(()=>{
-                        new MediumEditor('.editable-title', MediumEditorOptionsTitle)
-                        new MediumEditor('.editable', MediumEditorOptions)
+                        instance.titleEditor= new MediumEditor('.editable-title', MediumEditorOptionsTitle)
+                        instance.contentEditor=new MediumEditor('.editable', MediumEditorOptions)
                     },50)
                     }
                 )
@@ -79,9 +81,11 @@ Template.editPost.events({
     },
 //TODO : virer les metadatas des images
     'change [largeImageInput]': function (event, instance) {
+        instance.titleEditor.destroy()
+        instance.contentEditor.destroy()
         instance.imageLoading.set(true)
         let file = event.currentTarget.files[0];
-        Resizer.resize(file, {width: 700, height: 200, cropSquare: false}, function (err, file) {
+        Resizer.resize(file, {width: 700, height: 350, cropSquare: false}, function (err, file) {
             //recuperation du fichier en base64
             let reader = new window.FileReader();
             reader.readAsDataURL(file);
@@ -99,8 +103,8 @@ Template.editPost.events({
                         instance.isImageWide.set(true)
                         instance.imageLoading.set(false)
                     Meteor.setTimeout(()=>{
-                        new MediumEditor('.editable-title', MediumEditorOptionsTitle)
-                        new MediumEditor('.editable', MediumEditorOptions)
+                       instance.titleEditor= new MediumEditor('.editable-title', MediumEditorOptionsTitle)
+                        instance.contentEditor=new MediumEditor('.editable', MediumEditorOptions)
                     },50)
 
                     }
@@ -167,13 +171,15 @@ Template.editPost.onRendered(function () {
     //add your statement here
     //Textarea.unformatBySelector(".edit-post")
 
-    new MediumEditor('.editable', MediumEditorOptions)
-    new MediumEditor('.editable-title', MediumEditorOptionsTitle)
+    this.contentEditor = new MediumEditor('.editable', MediumEditorOptions)
+    this.titleEditor = new MediumEditor('.editable-title', MediumEditorOptionsTitle)
     $('.tooltipped').tooltip({delay: 50});
     Textarea.unformatBySelector('.formattedText')
 });
 
 Template.editPost.onDestroyed(function () {
     //add your statement here
+    this.titleEditor.destroy()
+    this.contentEditor.destroy()
 });
 

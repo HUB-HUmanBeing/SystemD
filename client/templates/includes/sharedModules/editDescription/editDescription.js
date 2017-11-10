@@ -129,7 +129,7 @@ Template.editDescription.events({
 Template.editDescription.onCreated(function () {
     //add your statement here
   if (Template.currentData().owner === 'user') {
-        currentUser = Meteor.user()
+        let currentUser = Meteor.user()
         this.initialText = currentUser.profile.description
   } else if (Template.currentData().owner === 'project') {
     let currentProject = Project.findOne(Template.currentData().projectId)
@@ -149,10 +149,10 @@ Template.editDescription.onRendered(function () {
     $('.tooltipped').tooltip({delay: 50});
     //on utilise la fonction pour déformatter le texte stoké en base et remplacer les blises "gentilles" par du vrai html
     Textarea.unformatBySelector('.formattedText')
-    let editor = new MediumEditor('.editable', MediumEditorOptions)
+    this.editor = new MediumEditor('.editable', MediumEditorOptions)
 });
 
 Template.editDescription.onDestroyed(function () {
-    //add your statement here
+    this.editor.remove()
 });
 

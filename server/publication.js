@@ -1,5 +1,6 @@
 import Project from '/imports/classes/Project';
 import User from '/imports/classes/User';
+import Posts from '/lib/collections/Posts';
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -26,12 +27,19 @@ Meteor.publish('userPublicInfo', function (id) {
                     services: 0,
                     "profile.location": 0,
                     "profile.projects": 0,
-                    "profile.invitations" : 0
+                    "profile.invitations" : 0,
+                    "profile.notifications" : 0,
                 }
             })
         //sinon, on renvoie tout
     }else if(id === userId){
-        return Meteor.users.find(id);
+        return Meteor.users.find({_id : id},{
+            fields : {
+                createdAt: 0,
+                emails : 0,
+                services : 0
+            }
+        });
     }
 });
 
@@ -88,6 +96,9 @@ Meteor.publish('miniature', function (id, type) {
                 }
             })
     }
+});
+Meteor.publish('posts', function () {
+    return Posts.find()
 });
 
 if(Meteor.isDevelopment){
