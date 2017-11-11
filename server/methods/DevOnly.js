@@ -185,7 +185,7 @@ if (Meteor.isDevelopment) {
             let Users = User.find({}).fetch()
             //pour chaque projet
             Projects.forEach((project) => {
-                for (let k = 0; k < 3; k++) {
+                for (let k = 0; k < 5; k++) {
                     let post = new Post
                     post.isProject = true;
                     post.author_id = project._id;
@@ -199,14 +199,14 @@ if (Meteor.isDevelopment) {
             })
             //maintenant, pour chaque utilisateur
             Users.forEach((user) => {
-                for (let k = 0; k < 3; k++) {
+                for (let k = 0; k < 5; k++) {
                     let post = new Post
 
                     post.isProject = false;
 
                     post.author_id = user._id;
                     post.lonLat = user.profile.location.lonLat;
-                    post.title = 'Article de "' + user.name + '" n°' + k;
+                    post.title = 'Article de ' + user.username + ' n°' + k;
                     post.content = Fixtures.getRandom("postLorems");
                     post.isImageWide = k % 2 === 0;//on en met un sur deux en imageWide
                     post.imageUrl = k % 2 === 0 ? Fixtures.getRandom("wideImgUrls") : Fixtures.getRandom("imgUrls");

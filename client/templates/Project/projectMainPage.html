@@ -57,11 +57,16 @@
                     </div>
                     <div class="row ">
                         <div class="col s12 ">
+                            <div class="card trame-box ">
+                                <div class="card-content">
+                                    <span class="card-title">Derniers articles</span>
                                 {{>postList
                                         isProject = true
                                         editAllowed = isOwner
                                         author_id = project._id
                                 }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

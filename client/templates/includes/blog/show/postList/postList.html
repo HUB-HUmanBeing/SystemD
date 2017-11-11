@@ -8,8 +8,15 @@ editAllowed : Bollean // est ce que l'utilisateur est admin du projet ou
             lui meme si on est en version page principale d'utilisateur
 author_id : id de l'auteur des post
 }}
+    {{#if focusPost}}
+        {{>postItem
+                post = focusPost
+                editAllowed = editAllowed}}
+    {{/if}}
     {{#each post in posts}}
-        {{post.content}}
+        {{> postItem
+                post = post
+                editAllowed = editAllowed}}
     {{/each}}
-    {{> infiniteScroll }}
+    {{! > infiniteScroll }}
 </template>
