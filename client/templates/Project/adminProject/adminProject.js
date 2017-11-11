@@ -27,8 +27,6 @@ Template.adminProject.events({
         let currentTab = clickedTabHref.substr(clickedTabHref.indexOf("#") + 1);
  //et on passe le résultat dans la réactive var
         instance.currentTab.set(currentTab)
-
-
     }
 });
 

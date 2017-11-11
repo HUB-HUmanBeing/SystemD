@@ -52,7 +52,7 @@ Template.editImage.events({
             $('#imgPreview').modal('open')
         }, 100);
         //on redimentionne l'image
-        Resizer.resize(file, {width: 200, height: 200, cropSquare: true}, function (err, file) {
+        Resizer.resize(file, {width: 350, height: 350, cropSquare: true}, function (err, file) {
             //recuperation du fichier en base64
             let reader = new window.FileReader();
             reader.readAsDataURL(file);

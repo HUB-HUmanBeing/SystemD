@@ -2,6 +2,8 @@ import Project from '/imports/classes/Project'
 import User from '/imports/classes/User'
 import Fixtures from '/imports/Fixtures/Fixtures'
 import Projects from '/lib/collections/Projects'
+import Posts from '/lib/collections/Posts'
+import Post from '/imports/classes/Post'
 
 /****************************************
  * Toutes les méthodes ci dessous sont utiles pour la création et le renouvellement de jeux de données de test
@@ -12,15 +14,17 @@ if (Meteor.isDevelopment) {
          * Nettoyage de la base de donnée
          */
         clearDb: function () {
-            Meteor.users.remove({},function () {
+            Meteor.users.remove({}, function () {
                 console.log("collection users reset")
             })
 
 
-            Projects.remove({},function () {
+            Projects.remove({}, function () {
                 console.log("collection projets reset")
             })
-
+            Posts.remove({}, function () {
+                console.log("collection posts reset")
+            })
 
         },
         /******************************
@@ -34,7 +38,7 @@ if (Meteor.isDevelopment) {
                     password: Fixtures.password
                     //dans le callBack
                 }, function (err, createdUserId) {
-                    if(err){
+                    if (err) {
                         console.log("erreur", err)
                     }
                     //on récupere leur id
@@ -46,7 +50,7 @@ if (Meteor.isDevelopment) {
                     //on sauvegarde,
                     createdUser.save(function (err) {
                         //dans le callback
-                        if(err){
+                        if (err) {
                             console.log("erreur", err)
                         }
                         //on crée un nouveau projet
@@ -64,7 +68,7 @@ if (Meteor.isDevelopment) {
                         })
                         //on sauvegarde
                         createdProject.save((err, projectId) => {
-                            if(err){
+                            if (err) {
                                 console.log("erreur", err)
                             }
                             //dans le callback, on rajoute le projet dans la liste des projets de l'utilisateur
@@ -74,8 +78,8 @@ if (Meteor.isDevelopment) {
                                 roles: ['member', 'admin']
                             });
                             //et on sauvegarde
-                            createdUser.save((err)=>{
-                                if(err){
+                            createdUser.save((err) => {
+                                if (err) {
                                     console.log("erreur", err)
                                 }
                             })
@@ -100,12 +104,12 @@ if (Meteor.isDevelopment) {
 
                         adminUsername: Users[i].username,
                         invitationMessage: Fixtures.getRandom("lorems"),
-                        user_id: Users[Fixtures.loopId(i +1)]._id
+                        user_id: Users[Fixtures.loopId(i + 1)]._id
                     },
                     {
                         adminUsername: Users[i].username,
                         invitationMessage: Fixtures.getRandom("lorems"),
-                        user_id: Users[Fixtures.loopId(i +2)]._id
+                        user_id: Users[Fixtures.loopId(i + 2)]._id
                     }
                 );
                 //on ajoute les utilisateurs situées a 4,3,2, et 1 crans sur la gauche
@@ -115,8 +119,8 @@ if (Meteor.isDevelopment) {
                     {user_id: Users[Fixtures.loopId(i - 2)]._id},
                     {user_id: Users[Fixtures.loopId(i - 1)]._id})
                 //on sauvegarde
-                project.save((err)=>{
-                    if(err){
+                project.save((err) => {
+                    if (err) {
                         console.log("erreur", err)
                     }
                 })
@@ -128,13 +132,13 @@ if (Meteor.isDevelopment) {
                 // (dessinez un cercle avec 6 points si c'est pas clair)
                 //en remplissant son tableau de notifications avec ce message
                 user.profile.notifications.push({
-                    content: 'Invitation du projet "'  + Projects[Fixtures.loopId(j - 1)].name + '"',
-                    type :  "project",
-                    path :  Router.path("userSelfProjects")
-                },{
-                    content: 'Invitation du projet "'  + Projects[Fixtures.loopId(j - 2)].name + '"',
-                    type :  "project",
-                    path :  Router.path("userSelfProjects")
+                    content: 'Invitation du projet "' + Projects[Fixtures.loopId(j - 1)].name + '"',
+                    type: "project",
+                    path: Router.path("userSelfProjects")
+                }, {
+                    content: 'Invitation du projet "' + Projects[Fixtures.loopId(j - 2)].name + '"',
+                    type: "project",
+                    path: Router.path("userSelfProjects")
                 });
                 user.profile.invitations.push(
                     {
@@ -163,12 +167,51 @@ if (Meteor.isDevelopment) {
                     }
                 );
                 //on sauvegarde
-                user.save((err)=>{
-                    if(err){
+                user.save((err) => {
+                    if (err) {
                         console.log("erreur", err)
                     }
                 })
 
+            })
+        },
+        /*************************
+         * action de creation d'une grosse volée de post
+         * @constructor
+         */
+        LaunchBlogPostsFixtures: function () {
+            //on récupere tout les projets et utilisateurs qu'on trie par date de création pour les avoir dans le meme ordre
+            let Projects = Project.find({}).fetch()
+            let Users = User.find({}).fetch()
+            //pour chaque projet
+            Projects.forEach((project) => {
+                for (let k = 0; k < 3; k++) {
+                    let post = new Post
+                    post.isProject = true;
+                    post.author_id = project._id;
+                    post.lonLat = project.publicInfo.location.lonLat;
+                    post.title = 'Article du projet "' + project.name + '" n°' + k;
+                    post.content = Fixtures.getRandom("postLorems");
+                    post.isImageWide = k % 2 === 0;
+                    post.imageUrl = k % 2 === 0 ? Fixtures.getRandom("wideImgUrls") : Fixtures.getRandom("imgUrls");
+                    post.save()
+                }
+            })
+            //maintenant, pour chaque utilisateur
+            Users.forEach((user) => {
+                for (let k = 0; k < 3; k++) {
+                    let post = new Post
+
+                    post.isProject = false;
+
+                    post.author_id = user._id;
+                    post.lonLat = user.profile.location.lonLat;
+                    post.title = 'Article de "' + user.name + '" n°' + k;
+                    post.content = Fixtures.getRandom("postLorems");
+                    post.isImageWide = k % 2 === 0;//on en met un sur deux en imageWide
+                    post.imageUrl = k % 2 === 0 ? Fixtures.getRandom("wideImgUrls") : Fixtures.getRandom("imgUrls");
+                    post.save()
+                }
             })
         }
     })

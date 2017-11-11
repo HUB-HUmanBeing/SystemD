@@ -62,9 +62,9 @@ Textarea = {
         inDbRegex: /\|§u\|/gi
     }, {
         html: '<a href="$1">$2</a>',
-        htmlRegex: /<a href="(https?:\/\/[^\s<>]+)">([^<>]+)<\/a>/gi,
+        htmlRegex: /<a href="(https?:\/\/[^\s<>'"]+)">([^\s<>'"]+)<\/a>/gi,
         inDb: '|a href="$1"|$2|§a|',
-        inDbRegex: /\|a href="(https?:\/\/[^\s<>]+)"\|([^<>]+)\|§a\|/gi
+        inDbRegex: /\|a href="(https?:\/\/[^\s<>'"]+)"\|([^\s<>'"]+)\|§a\|/gi
     },
     ],
     //action a executer avant la sauvegarde en bdd,
@@ -87,7 +87,7 @@ Textarea = {
         })
         //et on remplace aussi les urls stockées en dur pa des liens pour etre sympa avec les utilisateurs
         $(jQuerySelector).html(text
-            .replace(/[\s](http:\/\/[^\s]+)[\s]/gi, '<a href="$1">$1</a>')
+            .replace(/[\s](https?:\/\/[^\s<>'"]+)[\s]/gi, '<a href="$1">$1</a>')
         );
     },
     //action pour reformater a l'identique le texte lorsqu'on passe en mode edition de textarea

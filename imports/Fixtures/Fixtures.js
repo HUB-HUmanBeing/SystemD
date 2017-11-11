@@ -21,17 +21,33 @@ const Fixtures = {
         "Réduits à leurs grandes lignes, les modes de production asiatique, antique, féodal et bourgeois moderne apparaissent comme des époques progressives de la formation économique de la société. Les rapports de production bourgeois sont la dernière forme antagoniste du procès social de la production. Il n’est pas question ici d’un antagonisme individuel ; nous l’entendons bien plutôt comme le produit des conditions sociales de l’existence des individus ; mais les forces productives qui se développent au sein de la société bourgeoise créent dans le même temps les conditions matérielles propres à résoudre cet antagonisme. Avec ce système social c’est donc la préhistoire de la société humaine qui se clôt.",
         ""
     ],
+    postLorems:["Même dans ses tout derniers efforts, la critique allemande n'a pas quitté le terrain de la philosophie. Bien loin d'examiner ses bases philosophiques générales, toutes les questions sans exception qu'elle s'est posées ont jailli au contraire du sol d'un système philosophique déterminé, le système hégélien. Ce n'est pas seulement dans leurs réponses, mais bien déjà dans les questions elles-mêmes qu'il y avait une mystification. Cette dépendance de Hegel est la raison pour laquelle vous ne trouverez pas un seul de ces modernes critiques qui ait seulement tenté de faire une critique d'ensemble du système hégélien, bien que chacun jure avec force qu'il a dépassé Hegel. La polémique qu'ils mènent contre Hegel et entre eux se borne à ceci : chacun isole un aspect du système hégélien et le tourne à la fois contre le système tout entier et contre les aspects isolés par les autres. On commença par choisir des catégories hégéliennes pures, non falsifiées, telles que la substance, la Conscience de soi, plus tard on profana ces catégories par des termes plus temporels tels que le Genre, l'Unique, l'Homme, etc.",
+        "On peut distinguer les hommes des animaux par la conscience, par la religion et par tout ce que l'on voudra. Eux-mêmes commencent à se distinguer des animaux dès qu'ils commencent à produire leurs moyens d'existence, pas en avant qui est la conséquence même de leur organisation corporelle. En produisant leurs moyens d'existence, les hommes produisent indirectement leur vie matérielle elle-même.",
+        "On peut distinguer les hommes des animaux par la conscience, par la religion et par tout ce que l'on voudra. Eux-mêmes commencent à se distinguer des animaux dès qu'ils commencent à produire leurs moyens d'existence, pas en avant qui est la conséquence même de leur organisation corporelle. En produisant leurs moyens d'existence, les hommes produisent indirectement leur vie matérielle elle-même.",
+        "La façon dont les hommes produisent leurs moyens d'existence, dépend d'abord de la nature des moyens d'existence déjà donnés et qu'il leur faut reproduire. Il ne faut pas considérer ce mode de production de ce seul point de vue, à savoir qu'il est la reproduction de l'existence physique des individus. Il représente au contraire déjà un mode déterminé de l'activité de ces individus, une façon déterminée de manifester leur vie, un mode de vie déterminé. La façon dont les individus manifestent leur vie reflète très exactement ce qu'ils sont. Ce qu'ils sont coïncide donc avec leur production, aussi bien avec ce qu'ils produisent qu'avec la façon dont ils le produisent. Ce que sont les individus dépend donc des conditions matérielles de leur production.",
+        "A l'encontre de la philosophie allemande qui descend du ciel sur la terre, c'est de la terre au ciel que l'on monte ici. Autrement dit, on ne part pas de ce que les hommes disent, s'imaginent, se représentent, ni non plus de ce qu'ils sont dans les paroles, la pensée, l'imagination et la représentation d'autrui, pour aboutir ensuite aux hommes en chair et en os; non, on part des hommes dans leur activité réelle, c'est à partir de leur processus de vie réel que l'on représente aussi le développement des reflets et des échos idéologiques de ce processus vital. Et même les fantasmagories dans le cerveau humain sont des sublimations résultant nécessairement du processus de leur vie matérielle que l'on peut constater empiriquement et qui repose sur des bases matérielles. De ce fait, la morale, la religion, la métaphysique et tout le reste de l'idéologie, ainsi que les formes de conscience qui leur correspondent, perdent aussitôt toute apparence d'autonomie. Elles n'ont pas d'histoire, elles n'ont pas de développement; ce sont au contraire les hommes qui, en développant leur production matérielle et leurs rapports matériels, transforment, avec cette réalité qui leur est propre, et leur pensée et les produits de leur pensée. Ce n'est pas la conscience qui détermine la vie, mais la vie qui détermine la conscience. Dans la première façon de considérer les choses, on part de la conscience comme étant l'individu vivant, dans la seconde façon, qui correspond à la vie réelle, on part des individus réels et vivants eux-mêmes et l'on considère la conscience uniquement comme leur conscience.",
+        "Cette façon de considérer les choses n'est pas dépourvue de présuppositions. Elle part des prémisses réelles et ne les abandonne pas un seul instant. Ces prémisses, ce sont les hommes, non pas isolés et figés, de quelque manière imaginaire, mais saisis dans leur processus de développement réel dans des conditions déterminées, développement visible empiriquement. Dès que l'on représente ce processus d'activité vitale, l'histoire cesse d'être une collection de faits sans vie, comme chez les empiristes, qui sont eux-mêmes encore abstraits, ou l'action imaginaire de sujets imaginaires, comme chez les idéalistes."
+
+    ],
     imgUrls: [
-        "https://i.imgur.com/v7pjMbk.jpg",
-        "https://i.imgur.com/TvenST3.jpg",
-        "https://i.imgur.com/YgLPzXz.jpg",
-        "https://i.imgur.com/jzSS8tz.jpg",
-        "https://i.imgur.com/ljWqZ4W.jpg",
+       "https://i.imgur.com/vuNjnFR.jpg",
+        "https://i.imgur.com/QJDUkIO.jpg",
+        "https://i.imgur.com/DdvEyeL.jpg",
         "https://i.imgur.com/WxstNvO.jpg",
-        "https://i.imgur.com/Rf9bBBa.jpg",
-        "https://i.imgur.com/oYCgIP1.jpg",
-        "https://i.imgur.com/zNrO9dk.jpg",
-        "https://i.imgur.com/MXjitdi.jpg"
+        "https://i.imgur.com/cSalghw.jpg",
+        "https://i.imgur.com/Y2ePs2Q.jpg",
+        "https://i.imgur.com/9Uc0GPK.jpg"
+
+
+    ],
+    wideImgUrls: [
+        "https://i.imgur.com/rt8UCE7.jpg",
+        "https://i.imgur.com/MbhpYcl.jpg",
+        "https://i.imgur.com/oiodLkh.jpg",
+        "https://i.imgur.com/IjRqdU4.jpg",
+        "https://i.imgur.com/tRYaPUP.jpg",
+        "https://i.imgur.com/rt8UCE7.jpg",
+        "https://i.imgur.com/IXED805.jpg"
     ],
     locations: [
         {

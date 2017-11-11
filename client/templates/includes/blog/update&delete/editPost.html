@@ -1,9 +1,16 @@
 <template name="editPost">
+    {{!
+    Template d'edition des articles de blog, il faut lui transmettre
+
+    isEditing = Boolean //verifie si on est en mode création ou édition
+    type = project ou user  //verifie si on est avec un projet ou un utilisateur
+    id = String //id du projet ou de l'utilisateur
+    }}
     <link rel="stylesheet" href="/css/medium-editor.css">
 
     <div class="row relative">
         <div class="col s12 no-padding">
-            <div class="col s12 {{#unless isImageWide }}m4{{else}} no-padding{{/unless}}  relative"
+            <div class="col s12 {{#unless or isPhone isImageWide }}m4{{else}} no-padding{{/unless}}  relative"
                  style="{{#unless isPhone}}{{#unless
                          isImageWide}}padding: 0 20px 0px 0  !important;{{/unless}}{{/unless}}">
                 {{#if imageLoading}}
@@ -32,6 +39,7 @@
                             </a>
                             <input type="file" id="small-image-input" class="hidden absolute" smallImageInput>
                         </li>
+                        {{#unless isPhone}}
                         <li class="inline-block small-margin">
                             <a class="btn-floating orange tooltipped  shadow waves-effect waves-light" largeImage
                                data-position="bottom"
@@ -40,10 +48,11 @@
                             </a>
                             <input type="file" id="large-image-input" class="hidden absolute" largeImageInput>
                         </li>
+                        {{/unless}}
                     </ul>
                 </div>
             </div>
-            {{#if isImageWide }}
+            {{#if or isImageWide isPhone }}
                 <div class="row absolute" style="width: 100%">
                     <div class="col s12"
                          style="opacity: 0.7; background-color: #0e0e0e;padding: 22px 15px 0 15px !important;">
@@ -80,7 +89,7 @@
             {{/if}}
 
         </div>
-        {{#if isImageWide}}
+        {{#if or isImageWide isPhone}}
             <div class="row no-margin">
                 <div class="col s12 no-padding">
                     <div class="text edit-post editable puce-list formattedText"
@@ -92,7 +101,7 @@
             </div>
 
         {{/if}}
-        <a class="btn-floating valign-wrapper btn-large   dark-grey waves-effect
+        <a class="btn-floating valign-wrapper btn-large dark-grey waves-effect
         shadow waves-light tooltipped  hover-bg-{{#if isProject }}orange{{else}}green{{/if}} hover-dark-grey absolute"
            style="bottom: -70px !important; right:-35px !important;"
            data-position="bottom"
