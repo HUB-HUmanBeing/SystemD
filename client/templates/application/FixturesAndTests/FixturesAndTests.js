@@ -131,7 +131,7 @@ if (Meteor.isDevelopment) {
                 //on renseigne que l'opération est finie
                 instance.Done.set(true)
                 //on indique l'opération essayée
-                instance.message.set("ajout de membres et d'invitations")
+                instance.message.set("ajout d'article de blog projet et user")
                 //si il y a echec
                 if (err) {
                     console.log(err)

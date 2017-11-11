@@ -97,9 +97,21 @@ Meteor.publish('miniature', function (id, type) {
             })
     }
 });
-Meteor.publish('posts', function () {
-    return Posts.find()
+Meteor.publish('PostsInfinite', function (limit, query) {
+
+    check(limit, Number);
+    check(query, Object)
+    // Assign safe values to a new object after they have been validated
+    return Posts.find({isProject : query}, {
+        limit: limit,
+        // Using sort here is necessary to continue to use the Oplog Observe Driver!
+        // https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver
+        sort: {
+            createdAt: 1
+        }
+    });
 });
+
 
 if(Meteor.isDevelopment){
     Meteor.publish('AllForDev', function () {

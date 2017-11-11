@@ -2,6 +2,7 @@ import Project from '/imports/classes/Project'
 import User from '/imports/classes/User'
 import Fixtures from '/imports/Fixtures/Fixtures'
 import Projects from '/lib/collections/Projects'
+import Posts from '/lib/collections/Posts'
 import Post from '/imports/classes/Post'
 
 /****************************************
@@ -21,7 +22,9 @@ if (Meteor.isDevelopment) {
             Projects.remove({}, function () {
                 console.log("collection projets reset")
             })
-
+            Posts.remove({}, function () {
+                console.log("collection posts reset")
+            })
 
         },
         /******************************
@@ -173,20 +176,18 @@ if (Meteor.isDevelopment) {
             })
         },
         /*************************
-         * action de remplissage des projets avec des utilisateurs et des invitations
+         * action de creation d'une grosse volée de post
          * @constructor
          */
         LaunchBlogPostsFixtures: function () {
             //on récupere tout les projets et utilisateurs qu'on trie par date de création pour les avoir dans le meme ordre
-            let Projects = Project.find({}, {sort: {createdAt: 1}}).fetch()
-            let Users = User.find({}, {sort: {createdAt: 1}}).fetch()
+            let Projects = Project.find({}).fetch()
+            let Users = User.find({}).fetch()
             //pour chaque projet
-            Projects.forEach((project, i) => {
+            Projects.forEach((project) => {
                 for (let k = 0; k < 3; k++) {
                     let post = new Post
-
                     post.isProject = true;
-
                     post.author_id = project._id;
                     post.lonLat = project.publicInfo.location.lonLat;
                     post.title = 'Article du projet "' + project.name + '" n°' + k;
@@ -197,7 +198,7 @@ if (Meteor.isDevelopment) {
                 }
             })
             //maintenant, pour chaque utilisateur
-            Users.forEach((user, j) => {
+            Users.forEach((user) => {
                 for (let k = 0; k < 3; k++) {
                     let post = new Post
 
@@ -207,7 +208,7 @@ if (Meteor.isDevelopment) {
                     post.lonLat = user.profile.location.lonLat;
                     post.title = 'Article de "' + user.name + '" n°' + k;
                     post.content = Fixtures.getRandom("postLorems");
-                    post.isImageWide = k % 2 === 0;
+                    post.isImageWide = k % 2 === 0;//on en met un sur deux en imageWide
                     post.imageUrl = k % 2 === 0 ? Fixtures.getRandom("wideImgUrls") : Fixtures.getRandom("imgUrls");
                     post.save()
                 }

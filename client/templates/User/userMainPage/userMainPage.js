@@ -5,6 +5,9 @@ Template.userMainPage.helpers({
     user: function () {
         return Template.currentData();
     },
+    isOwner: function () {
+       return Template.currentData()._id === Meteor.userId()
+    },
     //on met en forme les infos calculés sur l'utilisateur afin qu'elles soient bien présentées
     computedInfo: function () {
         let computedInfo = Template.instance().computedInfo.get();

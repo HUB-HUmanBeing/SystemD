@@ -3,6 +3,16 @@ Template.projectMainPage.helpers({
     project: function () {
         return Template.currentData();
     },
+    isAdmin: function () {
+        let isAdmin = false
+        Meteor.user().profile.projects.forEach((userProject)=>{
+            if(userProject.project_id === Template.currentData()._id
+                && userProject.roles.includes("admin")){
+                isAdmin = true
+            }
+        });
+        return isAdmin
+    },
     relativeDistance: function () {
         let distance = Template.currentData().relativeDistance();
         return ( distance || distance ===0) ? "( " + distance + " km )" : "" ;

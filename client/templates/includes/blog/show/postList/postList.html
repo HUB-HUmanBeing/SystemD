@@ -7,8 +7,9 @@ isProject : Bollean // est-ce qu'on est sur la pag
 editAllowed : Bollean // est ce que l'utilisateur est admin du projet ou
             lui meme si on est en version page principale d'utilisateur
 author_id : id de l'auteur des post
-
-
 }}
-
+    {{#each post in posts}}
+        {{post.content}}
+    {{/each}}
+    {{> infiniteScroll }}
 </template>
