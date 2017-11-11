@@ -101,6 +101,8 @@ Meteor.publish('PostsInfinite', function (limit, query) {
 
     check(limit, Number);
     check(query, Object)
+    check(query.isProject, Boolean)
+    check(query.author_id, String)
     // Assign safe values to a new object after they have been validated
     return Posts.find({isProject : query}, {
         limit: limit,
