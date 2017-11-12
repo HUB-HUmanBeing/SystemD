@@ -4,7 +4,7 @@ Template.home.helpers({
         return Meteor.isDevelopment;
     },
     isRobin() {
-        if(Meteor.userId()){
+        if(Meteor.user()){
             return Meteor.user().username === "robin"
         }
         }
