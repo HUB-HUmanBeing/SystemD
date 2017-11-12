@@ -34,6 +34,15 @@ Template.orgProject.onRendered(function () {
     $('.swipable').tabs(
         // { 'swipeable': true }
     );
+
+  $(Template.instance().firstNode).velocity({
+    opacity: 1
+  }, {
+      duration: 500,
+      begin: function(element) {
+          $(element).css("opacity",0);
+      }
+  });
 });
 
 Template.orgProject.onDestroyed(function () {
