@@ -8,23 +8,10 @@
             <div class="fixed-action-btn horizontal fab-menu-btn"
                  style="top:-25px; right:-5px !important; ">
                 <a class="btn-floating valign-wrapper btn-large dark-grey waves-effect
-                shadow waves-light tooltipped hover-bg-{{colorByType type}}"
-                   data-position="bottom"
-                   data-delay="50" data-tooltip="Actions sur l'article"
-                >
+                shadow waves-light hover-bg-{{colorByType type}}">
                     <span><i class="material-icons light-grey-police">more_horiz</i></span>
                 </a>
                 <ul class="right-align">
-                    <li class="inline-block small-margin">
-                        <a class="btn-floating {{colorByType type}} tooltipped shadow waves-effect waves-light"
-                           data-position="bottom"
-                           data-delay="50" data-tooltip="Editer" editPost>
-
-                            <i class="material-icons  grey-text text-darken-4">edit</i>
-
-                        </a>
-                    </li>
-
                     <li class="inline-block small-margin">
                         <a class="btn-floating red tooltipped  shadow waves-effect waves-light"
                            data-position="bottom"
@@ -32,7 +19,13 @@
                             <i class="material-icons  grey-text text-darken-4">clear</i>
                         </a>
                     </li>
-
+                    <li class="inline-block small-margin">
+                        <a class="btn-floating {{colorByType type}} tooltipped shadow waves-effect waves-light"
+                           data-position="bottom"
+                           data-delay="50" data-tooltip="Editer" editPost>
+                            <i class="material-icons  grey-text text-darken-4">edit</i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         {{/if}}

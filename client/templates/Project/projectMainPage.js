@@ -6,6 +6,7 @@ Template.projectMainPage.helpers({
     isAdmin: function () {
         let isAdmin = false
         Meteor.user().profile.projects.forEach((userProject)=>{
+
             if(userProject.project_id === Template.currentData()._id
                 && userProject.roles.includes("admin")){
                 isAdmin = true

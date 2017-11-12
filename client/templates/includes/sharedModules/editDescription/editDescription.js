@@ -153,6 +153,6 @@ Template.editDescription.onRendered(function () {
 });
 
 Template.editDescription.onDestroyed(function () {
-    this.editor.remove()
+    this.editor.destroy()
 });
 

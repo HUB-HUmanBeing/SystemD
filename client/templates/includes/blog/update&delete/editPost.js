@@ -128,8 +128,8 @@ Template.editPost.events({
     //quant on clique sur publier
     'click [publish]': function (event, instance) {
         //on récupere toutes les valeurs de l'article
-        let isProject = Template.currentData().type === "projet";
-        let author_id = isProject ? Template.currentData().id : Meteor.userId();
+        let isProject = instance.data.type === "project";
+        let author_id = isProject ? instance.data.id : Meteor.userId();
         let title = $('#post-title').html();
         let content = Textarea.formatBeforeSave($('#post-content').html());
         let isImageWide = instance.isImageWide.get();
@@ -141,7 +141,7 @@ Template.editPost.events({
         //et on lance la méthode de création
         newPost.applyMethod('createPost',
             postArray,
-            (error) => {
+            (error, result) => {
                 //si ca marche pas, on renvoie l'erreur par toast
                 if (error) {
                     Materialize.toast("une erreur s'est produite", 4000, 'red')
@@ -150,7 +150,8 @@ Template.editPost.events({
                     //on détruit les editeur wisywig
                     instance.titleEditor.destroy()
                     instance.contentEditor.destroy()
-                    //todo : redirection à faire
+                   let routeName = instance.data.type + "MainPage";
+                    Router.go(routeName,{_id : author_id}, {query : "focus=" + result})
                 }
             })
     }
@@ -205,7 +206,12 @@ Template.editPost.onRendered(function () {
 });
 
 Template.editPost.onDestroyed(function () {
-    //add your statement here
+    //on enlève les tooltips
+    $('.tooltipped').tooltip('remove');
+    //puis on reactive les infobulles apres un delai
+    Meteor.setTimeout(function () {
+        $('.tooltipped').tooltip({delay: 50})
+    }, 100)
     this.titleEditor.destroy()
     this.contentEditor.destroy()
 });

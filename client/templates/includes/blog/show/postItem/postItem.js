@@ -1,3 +1,5 @@
+import Post from '/imports/classes/Post'
+
 Template.postItem.helpers({
     //add you helpers here
     type : function () {
@@ -27,6 +29,17 @@ Template.postItem.events({
     },
     'click [showComments]' : function (event, instance) {
         instance.showComments.set(!instance.showComments.get())
+    },
+    'click [deletePost]' : function (event, instance) {
+        let post = Post.findOne( {_id : instance.data.post._id})
+        post.callMethod('deletePost', (error)=>{
+            //si ca marche pas, on renvoie l'erreur par toast
+            if (error) {
+                Materialize.toast("une erreur s'est produite", 4000, 'red')
+            } else {
+                Materialize.toast("l'article a été supprimé", 6000, 'orange')
+            }
+        })
     }
 });
 
