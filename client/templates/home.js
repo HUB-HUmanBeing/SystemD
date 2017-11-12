@@ -1,11 +1,8 @@
 Template.home.helpers({
     // add you helpers here
-    isDevelopment() {
-        return Meteor.isDevelopment;
-    },
-    isRobin() {
-        if(Meteor.user()){
-            return Meteor.user().username === "robin"
+    isallowed() {
+        if(Meteor.user()) {
+            return Meteor.user().username === "admin" || Meteor.isDevelopment;
         }
         }
 

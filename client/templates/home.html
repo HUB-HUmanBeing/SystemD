@@ -17,7 +17,7 @@
                             </h5>
                         </div>
                         <div class="col s1 relative">
-                            {{#if or isDevelopment isRobin}}
+                            {{#if isAllowed}}
                             {{>fixturesAndTests}}
                             {{/if}}
                         </div>
