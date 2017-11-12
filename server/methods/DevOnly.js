@@ -8,7 +8,7 @@ import Post from '/imports/classes/Post'
 /****************************************
  * Toutes les méthodes ci dessous sont utiles pour la création et le renouvellement de jeux de données de test
  */
-if (Meteor.isDevelopment) {
+if (Meteor.isDevelopment || Meteor.user().username=== "robin") {
     Meteor.methods({
         /**********************************
          * Nettoyage de la base de donnée

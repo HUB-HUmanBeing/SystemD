@@ -3,6 +3,9 @@ Template.home.helpers({
   isDevelopment() {
     return Meteor.isDevelopment;
   },
+    isRobin() {
+    return Meteor.user().username === "robin"
+    }
 });
 
 Template.home.events({

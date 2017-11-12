@@ -148,7 +148,7 @@ Template.editDescription.onRendered(function () {
     //au rendu on active les infobulles
     $('.tooltipped').tooltip({delay: 50});
     //on utilise la fonction pour déformatter le texte stoké en base et remplacer les blises "gentilles" par du vrai html
-  Textarea.unformatBySelector('.formattedText');
+  Textarea.unformatBySelector('#edit-description .formattedText');
     this.editor = new MediumEditor('.editable', MediumEditorOptions)
 });
 

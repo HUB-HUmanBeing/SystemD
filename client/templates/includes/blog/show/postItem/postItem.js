@@ -52,6 +52,9 @@ Template.postItem.onCreated(function () {
 Template.postItem.onRendered(function () {
     //add your statement here
     $('.tooltipped').tooltip({delay: 50});
+    let selector= '#post-'+Template.currentData().post._id+' #post-content'
+    
+    Textarea.unformatBySelector(selector)
 });
 
 Template.postItem.onDestroyed(function () {

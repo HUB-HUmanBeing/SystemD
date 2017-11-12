@@ -45,7 +45,7 @@ Template.postList.onCreated(function () {
 
                         $('html, body').animate({
                             scrollTop: $("#post-"+pathQuery.focus).offset().top
-                        }, 500);
+                        }, 300);
                         $('#post-'+pathQuery.focus+' #open-post').click()
                 },50)
             }

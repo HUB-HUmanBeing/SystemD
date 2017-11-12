@@ -1,4 +1,3 @@
-if (Meteor.isDevelopment) {
 
     Template.fixturesAndTests.helpers({
         //true si l'opération a été effectuée
@@ -163,4 +162,3 @@ if (Meteor.isDevelopment) {
     Template.fixturesAndTests.onDestroyed(function () {
         //add your statement here
     });
-}
