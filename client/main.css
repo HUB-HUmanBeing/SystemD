@@ -229,13 +229,17 @@ input:-webkit-autofill {
 .fixed-modal{
     position: fixed !important;
 }
+.miniature{
+    margin: 5px 0 ;
+}
 .miniature img{
 
     height: 2.5em !important;
+    vertical-align: middle !important;
 }
 .miniature span{
     position: relative;
-    bottom: 1em !important;
+    vertical-align: middle !important;
 }
 .text-shadow{
     text-shadow: 0px 0px 2px #000000 !important;
@@ -293,4 +297,35 @@ input:-webkit-autofill {
 }
 .editable::after{
     position: static!important;
+}
+.img-max-width{
+    width : 100% !important;
+    height: auto !important;
+}
+.post-container{
+    overflow-y: hidden;
+
+}
+.post-height-by-media{
+    height: 110vw;
+}
+@media only screen and (min-width: 601px) {
+    .post-height-by-media{
+        height: 23vw;
+    }
+}
+@media only screen and (min-width: 993px) {
+    .post-height-by-media{
+        height: 18vw;
+    }
+}
+@media only screen and (min-width: 1284px) {
+    .post-height-by-media{
+        max-height: 13vw;
+    }
+}
+
+.center{
+    vertical-align: middle !important;
+    margin: auto !important;
 }

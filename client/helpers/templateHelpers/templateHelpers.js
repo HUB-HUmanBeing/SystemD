@@ -46,3 +46,12 @@ if(duration/9628000000 > 1){
     return 'quelques secondes'
 }
 })
+
+//renvoie la couleur associée au type
+Template.registerHelper('colorByType', function(type){
+    if( type === "project"){
+        return "orange"
+    }else if( type === "user"){
+        return "green"
+    }
+})

@@ -102,19 +102,25 @@ Meteor.publish('miniature', function (id, type) {
 });
 Meteor.publish('PostsInfinite', function (limit, query) {
 
-  check(limit, Number);
-  check(query, Object);
-  check(query.isProject, Boolean);
-  check(query.author_id, String);
-  // Assign safe values to a new object after they have been validated
-  return Posts.find({isProject: query}, {
-    limit: limit,
-    // Using sort here is necessary to continue to use the Oplog Observe Driver!
-    // https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver
-    sort: {
-      createdAt: 1
-    }
-  });
+    check(limit, Number);
+    check(query, Object)
+    check(query.isProject, Boolean)
+    check(query.author_id, String)
+    // Assign safe values to a new object after they have been validated
+    return Posts.find({isProject : query.isProject, author_id : query.author_id}, {
+        limit: limit,
+        // Using sort here is necessary to continue to use the Oplog Observe Driver!
+        // https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver
+        sort: {
+            createdAt: -1
+        }
+    });
+});
+
+Meteor.publish('singlePost', function (id) {
+    check(id, String)
+    // Assign safe values to a new object after they have been validated
+    return Posts.find({_id : id});
 });
 
 
