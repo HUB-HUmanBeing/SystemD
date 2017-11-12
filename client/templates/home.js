@@ -2,8 +2,9 @@ Template.home.helpers({
     // add you helpers here
     isallowed() {
         if(Meteor.user()) {
-            return Meteor.user().username === "admin" || Meteor.isDevelopment;
+            let isAdmin= Meteor.user().username === "admin"
         }
+        return isAdmin || Meteor.isDevelopment;
         }
 
 });
