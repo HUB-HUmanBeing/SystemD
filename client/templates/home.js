@@ -1,8 +1,9 @@
 Template.home.helpers({
     // add you helpers here
-    isallowed() {
+    isAllowed() {
+        let isAdmin = false
         if(Meteor.user()) {
-            let isAdmin= Meteor.user().username === "admin"
+             isAdmin= Meteor.user().username === "admin"
         }
         return isAdmin || Meteor.isDevelopment;
         }
