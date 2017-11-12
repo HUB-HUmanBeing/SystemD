@@ -63,10 +63,5 @@ Template.adminProject.onRendered(function () {
 
 Template.adminProject.onDestroyed(function () {
     //add your statement here
-  $(Template.instance().firstNode).velocity({
-    opacity: 0
-  }, {
-    duration: 500
-  });
 });
 
