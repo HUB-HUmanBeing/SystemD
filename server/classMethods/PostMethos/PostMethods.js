@@ -50,13 +50,14 @@ Post.extend({
          * Action de supression d'un post
          */
         deletePost() {
-            //on verifie que l'utilisateur qui fait la demande est soit admin du projet soit
+            //on verifie que l'utilisateur qui fait la demande est soit admin du projet soit l'auteur du post
             if (this.isProject) {
                 let project = Project.findOne({_id: this.author_id})
                 check(project.isAdmin(Meteor.userId()), true)
             }else{
                 check(this.author_id, Meteor.userId())
             }
+            //et on le supprime
             return this.remove()
         }
     }

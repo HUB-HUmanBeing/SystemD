@@ -160,10 +160,10 @@ Template.editPost.events({
 Template.editPost.onCreated(function () {
     //a la création du template
     //on initialise les réactive var
-    this.isImageWide = new ReactiveVar(false)
-    let date = new Date()
-    this.imageLoading = new ReactiveVar(false)
-    let postImage = "/images/hub_logo.png"
+    this.isImageWide = new ReactiveVar(false);
+    let date = new Date();
+    this.imageLoading = new ReactiveVar(false);
+    let postImage = "/images/hub_logo.png";
     let type = Template.currentData().type;
     //si on est avec un utilisateur qui edite don blog
     if (type === "user") {
@@ -211,8 +211,8 @@ Template.editPost.onDestroyed(function () {
     //puis on reactive les infobulles apres un delai
     Meteor.setTimeout(function () {
         $('.tooltipped').tooltip({delay: 50})
-    }, 100)
-    this.titleEditor.destroy()
+    }, 100);
+    this.titleEditor.destroy();
     this.contentEditor.destroy()
 });
 
