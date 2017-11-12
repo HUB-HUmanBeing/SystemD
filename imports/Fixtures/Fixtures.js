@@ -88,7 +88,7 @@ const Fixtures = {
         }
     },
     usernames: [
-        "robin", "noemie", "audric", "jeremy", "batman", "lenka", "patrick", "marco", "blandine", "test"
+        "robin", "noemie", "audric", "jeremy", "batman", "lenka", "patrick", "marco", "blandine", "humanbeing"
     ],
     password: "123456"
 };

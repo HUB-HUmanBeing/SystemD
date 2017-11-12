@@ -4,8 +4,11 @@ Template.home.helpers({
         return Meteor.isDevelopment;
     },
     isRobin() {
-        return Meteor.user().username === "robin"
-    }
+        if(Meteor.userId()){
+            return Meteor.user().username === "robin"
+        }
+        }
+
 });
 
 Template.home.events({
