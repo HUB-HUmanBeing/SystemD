@@ -10,6 +10,9 @@
 
     <div class="row relative" id="editPost{{#if isEditing}}-{{post_id}}{{/if}}"
     style="{{#if isEditing}}!important; padding: 3px !important; background-color: rgba(255,255,255,0.1){{/if}}">
+            {{>infoBubble
+                    content = "selectionner le contenu de l'article pour le mettre en page"
+            }}
         <div class="col s12 no-padding">
             <div class="col s12 {{#unless or isPhone isImageWide }}m4{{else}} no-padding{{/unless}}  relative"
                  style="{{#unless isPhone}}{{#unless

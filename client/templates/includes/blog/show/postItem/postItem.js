@@ -1,48 +1,63 @@
 import Post from '/imports/classes/Post'
 
 Template.postItem.helpers({
-    //add you helpers here
+    //renvoie le type de l'article visioné
     type : function () {
         return Template.currentData().post.isProject? "project" : "user"
     },
+    //renvoie le lien vers la page ou s'affiche l'article
     path: function () {
         let post = Template.currentData().post
         let route= post.isProject? "projectMainPage" : "userMainPage"
         return Router.path(route, {_id : post.author_id},{query : "focus="+post._id})
     },
+    //true si l'article est ouvert
     isOpen : function () {
         return Template.instance().isOpen.get()
     },
+    //true si l'on doit afficher les commentaires
     showComments : function () {
         return Template.instance().showComments.get()
     },
+    //true si l'on doit switcher sur le template d'edition
     editionMode : function () {
         return Template.instance().editionMode.get()
     }
 });
 
 Template.postItem.events({
-    //add your events here
+    //ouvrir/refermer l'article
     'click [toggleWideArticle] , touch [toggleWideArticle]' : function (event, instance) {
 
-        instance.isOpen.set(!instance.isOpen.get())
+        let isOpen =instance.isOpen.get()
+
+        //on réinitialise les tooltips
         resetTooltips()
-        if(instance.isOpen.get()=== false){
+        //si l'article etait ouvert
+        if(isOpen=== true){
+            //on remonte au haut de l'article
             $('html, body').animate({
                 scrollTop: $("#post-"+instance.data.post._id).offset().top
             }, 600);
         }
+        //on passe isOpen a l'inverse de sa valeur actuelle
+        instance.isOpen.set(!isOpen)
     },
+    //action pour ouvrir un article au clic dessus
     'click [openWideArticle], touch[openWideArticle]' : function (event, instance) {
         instance.isOpen.set(true)
         resetTooltips()
         return true
     },
+    //action pour afficher les commentaires
     'click [showComments]' : function (event, instance) {
         instance.showComments.set(!instance.showComments.get())
     },
+    //action de supression d'un article
     'click [deletePost]' : function (event, instance) {
+        //on récupère le post
         let post = Post.findOne( {_id : instance.data.post._id})
+        //et on applique la méthode
         post.callMethod('deletePost', (error)=>{
             //si ca marche pas, on renvoie l'erreur par toast
             if (error) {
@@ -53,6 +68,7 @@ Template.postItem.events({
             }
         })
     },
+    //switch sur le template d'edition
     'click [editPost]' : function (event, instance) {
         instance.editionMode.set(true)
         resetTooltips()
@@ -60,7 +76,7 @@ Template.postItem.events({
 });
 
 Template.postItem.onCreated(function () {
-    //add your statement here
+    //initialisation des réactiveVar nécessaires
     this.isOpen = new ReactiveVar(false)
     this.showComments = new ReactiveVar(false)
     this.editionMode = new ReactiveVar(false)
@@ -69,8 +85,8 @@ Template.postItem.onCreated(function () {
 Template.postItem.onRendered(function () {
     //add your statement here
     resetTooltips()
+    //déformatage du post
     let selector= '#post-'+Template.currentData().post._id+' #post-content'
-    
     Textarea.unformatBySelector(selector)
 });
 

@@ -2,8 +2,17 @@
     {{!infobulle éclairant l'utilisateur sur le fonctionnement de l'appli
     nécessite :
     content = String //le contenu qu'on souhaite afficher
+    position =  relative, topRight, bottomLeft,bottomRight //par défault en haut a gauche
     }}
 
-
-
+    <a class="btn-floating waves-effect waves-light tooltipped more-dark-grey {{#if eq position "relative"}}relative{{else}}absolute{{/if}}"
+       data-position="bottom" data-delay="350"
+       style="
+           {{#if eq position "topRight"}} top : -15px !important; right:-15px !important;{{/if}}
+           {{#if eq position "bottomLeft"}} bottom : -15px !important; left:-15px !important;{{/if}}
+           {{#if eq position "bottomRight"}} bottom : -15px !important; right : -15px !important{{/if}}
+           {{#unless position }} top : -15px !important; left : -15px !important{{/unless}}"
+       data-tooltip="{{content}}">
+        <i class="material-icons grey-text text-darken-3 ">help_outline</i>
+    </a>
 </template>

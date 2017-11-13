@@ -75,14 +75,16 @@ Template.miniature.events({
 //on doit récupérer les info complémentaire pour afficher correctement notre vignette
 Template.miniature.onCreated(function () {
     Tracker.autorun(() => {
-        //on récupere les valeurs passées en argument lors de l'appel du template
-      let type = Template.currentData().type
-      let id = Template.currentData()._id
+
+
 
         //on crée deux réactive var pour acceuilir le contenu
         this.project = new ReactiveVar("");
         this.user = new ReactiveVar("");
-        if (type && id) {
+        if (this.data._id && this.data.type) {
+            //on récupere les valeurs passées en argument lors de l'appel du template
+            let type = this.data.type
+            let id = this.data._id
             //on lance un autorun pour attendre le retour d'info complémentaires qu'on cherche a obtenir par la suscription
             this.autorun(function () {
                 let handle = Meteor.subscribe('miniature', id, type)

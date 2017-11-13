@@ -1,5 +1,8 @@
+//doc du médium editor : https://github.com/yabwe/medium-editor
+
 const MediumEditorOptionsTitle = {
     disableExtraSpace: true,
+    disableReturn:true,
     placeholder: {
         /* This example includes the default options for placeholder,
            if nothing is passed this is what it used */

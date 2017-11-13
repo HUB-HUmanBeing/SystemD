@@ -10,7 +10,7 @@
                         <div class="card trame-box ">
                             <div class="card-content">
                                 <span class="card-title">Mes Projets</span>
-                                <div class="row">
+                                <div class="row no-margin">
                                         <p class="small-info">Avec le statut d'administrateur</p>
                                     {{#if adminProjects}}
                                         {{#each project in adminProjects}}
@@ -30,6 +30,7 @@
                                         Vous n'administrez actuellement aucun projets
                                     {{/if}}
                                 </div>
+                                <div class="hr"></div>
                                 <div class="row">
                                         <p class="small-info">Avec le statut de membre</p>
     {{#if memberProjects}}
@@ -49,6 +50,7 @@
                                         {{else}}
                                             Vous n'êtes actuellement membre d'aucun projet
                                         {{/if}}
+                                    <div class="hr"></div>
                                 </div>
                             </div>
                         </div>
@@ -69,6 +71,7 @@
                                                             declined = false}}
                                                 </div>
                                             </div>
+                                            <div class="hr"></div>
                                         {{/each}}
                                     </div>
                                 </div>

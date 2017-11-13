@@ -10,7 +10,7 @@
                                 <div class="col s12">
                                     <h6>Administrateurs</h6>
                                     <br>
-                                    <div class="row">
+                                    <div class="row no-margin">
                                         {{#each member in projectAdmins}}
                                             {{>uniqueMember member = member
                                                     isAdmin = isAdmin
@@ -19,8 +19,10 @@
 
                                         {{/each}}
                                     </div>
+                                    <div class="hr"></div>
                                 </div>
-                                <div class="row">
+
+                                <div class="row no-margin">
                                     <div class="col s12">
                                         <h6>Membres</h6>
                                         <br>
@@ -34,6 +36,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="hr"></div>
                             </div>
                         </div>
                     </div>
@@ -68,6 +71,7 @@
                                                                 isAdmin = isAdmin
                                                                 currentProject = currentProject
                                                                 requireConfirmation = true}}
+                                                        <div class="hr"></div>
                                                     {{/each}}
                                                 </div>
                                             </li>
@@ -106,6 +110,7 @@
                                                                 isAdmin = isAdmin
                                                                 currentProject = currentProject
                                                                 requireConfirmation = false}}
+                                                        <div class="hr"></div>
                                                     {{/each}}
                                                 </div>
                                             </li>
@@ -145,6 +150,7 @@
                                                                 isAdmin = isAdmin
                                                                 currentProject = currentProject
                                                                 requireConfirmation = false}}
+                                                        <div class="hr"></div>
                                                     {{/each}}
                                                 </div>
                                             </li>

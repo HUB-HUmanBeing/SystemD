@@ -73,7 +73,7 @@ Textarea = {
         this.tags.forEach((tag) => {
             //et on remplace le regex par la valeur correspondante
             text = text.replace(tag.htmlRegex, tag.inDb)
-        })
+        });
         return text
     },
     //action remplacant les balise de mise en base par des vrais balise,
@@ -90,8 +90,4 @@ Textarea = {
             .replace(/[\s](https?:\/\/[^\s<>'"]+)[\s]/gi, '<a href="$1">$1</a>')
         );
     },
-    //action pour reformater a l'identique le texte lorsqu'on passe en mode edition de textarea
-    unformatForInputVal: function (formatedText) {
-        return formatedText.replace(/\|br\|/gi, '\n')
-    }
 }

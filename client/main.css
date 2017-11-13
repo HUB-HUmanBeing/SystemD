@@ -25,6 +25,9 @@ COULEURS
 .medium-dark-grey{
     background-color: #1c1c1c !important;
 }
+.more-dark-grey{
+    background-color: #191919 !important;
+}
 .orange-border{
     border: 2px solid #C87F0A !important;
 }
@@ -84,6 +87,16 @@ COULEURS
     background-color: #FFB300 !important;
 }
 /*****BACKGROUNDS****/
+.hr{
+
+width: 100%;
+    height: 20px;
+    margin: 20px 0;
+    background-image: url("/images/trame/hr.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
 .trame-texture{
     background-image: url("/images/trame/trame5.png");
     background-color: #1c1c1c !important;
@@ -282,8 +295,12 @@ input:-webkit-autofill {
     padding: 7px 10px 7px 10px;
     font-size: 1.1em !important;
 }
-
-.formattedText a{
+.post-container h5{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+}
+.formattedText a, .formattedText span{
     color: rgba(255, 199, 88, 0.78) !important;
 }
 .formattedText a:hover{
