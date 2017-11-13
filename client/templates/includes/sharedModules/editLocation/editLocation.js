@@ -48,11 +48,7 @@ Template.editLocation.events({
     'click [editLocation]': function (event, instance) {
         instance.editingLocation.set(!instance.editingLocation.get());
         //on vire les petites infobulles
-        $('.tooltipped').tooltip('remove');
-        Meteor.setTimeout(function () {
-            //on afficle les bulles d'infos insérées dans le dom
-            $('.tooltipped').tooltip({delay: 50});
-        }, 200)
+        resetTooltips()
     },
     /**************************
      * affichage du formulaire au click
@@ -114,13 +110,7 @@ Template.editLocation.events({
                                             Materialize.toast(error.message, 6000, "red")
                                         } else {
                                           instance.editingLocation.set(false)
-                                            //on enleve les infobulles
-                                            $('.tooltipped').tooltip('remove');
-                                            //et on les remets apres un court délai (pour eviter que ne reste affichée
-                                            // celle qui etait en hover au moment du click)
-                                            Meteor.setTimeout(function () {
-                                                $('.tooltipped').tooltip({delay: 50});
-                                            }, 100)
+                                            resetTooltips()
                                           Materialize.toast('Votre position a été mise à jour', 6000, 'green')
                                         }
                                     })
@@ -136,13 +126,7 @@ Template.editLocation.events({
                                           Materialize.toast(error.message, 6000, 'red')
                                         } else {
                                             instance.editingLocation.set(false)
-                                            //on enleve les infobulles
-                                            $('.tooltipped').tooltip('remove');
-                                            //et on les remets apres un court délai (pour eviter que ne reste affichée
-                                            // celle qui etait en hover au moment du click)
-                                            Meteor.setTimeout(function () {
-                                                $('.tooltipped').tooltip({delay: 50});
-                                            }, 100)
+                                            resetTooltips()
                                           Materialize.toast('La localisation du projet à été mise à jour', 6000, 'green')
                                         }
                                     })
@@ -224,13 +208,7 @@ Template.editLocation.events({
                       instance.useSearchForm.set(false)
                         //on réinitialise le tableau des réponses de nominatim
                       instance.searchResults.set([])
-                        //on enleve les infobulles
-                        $('.tooltipped').tooltip('remove');
-                        //et on les remets apres un court délai (pour eviter que ne reste affichée
-                        // celle qui etait en hover au moment du click)
-                        Meteor.setTimeout(function () {
-                            $('.tooltipped').tooltip({delay: 50});
-                        }, 100)
+                        resetTooltips()
                     }
                 })
         } else if (instance.owner.get() === "project") {
@@ -249,13 +227,7 @@ Template.editLocation.events({
                       instance.useSearchForm.set(false)
                         //on réinitialise le tableau des réponses de nominatim
                       instance.searchResults.set([])
-                        //on enleve les infobulles
-                        $('.tooltipped').tooltip('remove');
-                        //et on les remets apres un court délai (pour eviter que ne reste affichée
-                        // celle qui etait en hover au moment du click)
-                        Meteor.setTimeout(function () {
-                            $('.tooltipped').tooltip({delay: 50});
-                        }, 100)
+                        resetTooltips()
                       Materialize.toast('La localisation du projet à été mise à jour', 6000, 'green')
                     }
                 })

@@ -15,12 +15,7 @@ Template.memberManagmentButtons.events({
             if (err) {
                 Materialize.toast("une erreur s'est produite", 4000, 'red')
             } else {
-                //on vire les infobulles (pour celle du bouton d'edition)
-                $('.tooltipped').tooltip('remove');
-                //on met les infobules pour le menu d'edition qui viens de poper
-                Meteor.setTimeout(function () {
-                    $('.tooltipped').tooltip({delay: 50})
-                }, 200);
+                resetTooltips()
                 Materialize.toast("l'utilisateur est désormais administrateur du projet", 6000, 'green')
             }
         })
@@ -37,12 +32,7 @@ Template.memberManagmentButtons.events({
             if (err) {
                 Materialize.toast("une erreur s'est produite", 4000, 'red')
             } else {
-                //on vire les infobulles (pour celle du bouton d'edition)
-                $('.tooltipped').tooltip('remove');
-                //on met les infobules pour le menu d'edition qui viens de poper
-                Meteor.setTimeout(function () {
-                    $('.tooltipped').tooltip({delay: 50})
-                }, 200);
+                resetTooltips()
                 Materialize.toast("l'utilisateur à été retiré du projet", 6000, 'green')
             }
         })

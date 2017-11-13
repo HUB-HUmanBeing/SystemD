@@ -23,12 +23,7 @@ Template.userInvitation.events({
             } else {
                 //on toast un feedback a l'utilisateur
                 Materialize.toast("Vous faites désormais parti des membres du projet", 6000, 'green');
-                $('.tooltipped').tooltip('remove');
-                //et on les remets apres un court délai (pour eviter que ne reste affichée
-                // celle qui etait en hover au moment du click)
-                Meteor.setTimeout(function () {
-                    $('.tooltipped').tooltip({delay: 50});
-                }, 100);
+                resetTooltips()
                 //et on redirige vers la page du projet qu'on vient de joindre
                 Router.go('adminProject' , { _id : instance.data.invitation.project_id})
 
@@ -59,14 +54,10 @@ Template.userInvitation.events({
 
                     //on toast un feedback a l'utilisateur
                     Materialize.toast("vous avez décliné l'invitation", 6000, 'orange');
-                    $('.tooltipped').tooltip('remove');
-                    //et on les remets apres un court délai (pour eviter que ne reste affichée
-                    // celle qui etait en hover au moment du click)
+                    resetTooltips()
                     //on ferme la fenetre modale
                     $('.modal').modal('close');
-                    Meteor.setTimeout(function () {
-                        $('.tooltipped').tooltip({delay: 50});
-                    }, 100)
+
 
 
                 }
@@ -89,12 +80,7 @@ Template.userInvitation.events({
             } else {
                 //on toast un feedback a l'utilisateur
                 Materialize.toast("Invitation retirée", 6000, 'orange');
-                $('.tooltipped').tooltip('remove');
-                //et on les remets apres un court délai (pour eviter que ne reste affichée
-                // celle qui etait en hover au moment du click)
-                Meteor.setTimeout(function () {
-                    $('.tooltipped').tooltip({delay: 50});
-                }, 100);
+                resetTooltips()
             }
         })
     },

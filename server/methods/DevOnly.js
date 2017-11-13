@@ -8,7 +8,8 @@ import Post from '/imports/classes/Post'
 /****************************************
  * Toutes les méthodes ci dessous sont utiles pour la création et le renouvellement de jeux de données de test
  */
-//if (Meteor.isDevelopment || Meteor.user().username=== "robin") {
+//todo : MEGA FAILLE DE SECU, a enlever dès qu'on passe en prod!!!!
+//if (Meteor.isDevelopment || Meteor.user().username=== "admin") {
     Meteor.methods({
         /**********************************
          * Nettoyage de la base de donnée

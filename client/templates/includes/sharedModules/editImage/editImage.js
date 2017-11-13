@@ -29,14 +29,10 @@ Template.editImage.events({
      *Ouverture du formulaire d'édition
      *********************************/
     'click [editImgBtn]': function (event, instance) {
-        //on vire les infobulles (pour celle du bouton d'edition)
-        $('.tooltipped').tooltip('remove');
+        resetTooltips()
         //on passe a true le flag d'ouverture du formulaire d'upload
         $('input[type=file]').click()
-        //on met les infobules pour le menu d'edition qui viens de poper
-        Meteor.setTimeout(function () {
-            $('.tooltipped').tooltip({delay: 50})
-        }, 200)
+
     },
     /***********************************
      * à l'ajout de fichier, ouverture de la popup de preview,

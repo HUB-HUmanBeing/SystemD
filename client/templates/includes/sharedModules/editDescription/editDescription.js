@@ -27,8 +27,6 @@ Template.editDescription.helpers({
 Template.editDescription.events({
     //quant on clique sur le champ description
     'click [editDescriptionBtn], focus [descriptionText]': function (event, instance) {
-        //on vire les petites infobulles
-        $('.tooltipped').tooltip('remove');
         //on recupere le le tableau des propriétés éditées
         let flags = instance.isEditingFlags.get();
         //on passe celle qui nous interesse a true
@@ -39,10 +37,7 @@ Template.editDescription.events({
         if (event.type === 'click') {
             $('#description').focus();
         }
-        //puis on réactive les tooltips avec un petit décalage
-        Meteor.setTimeout(function () {
-            $('.tooltipped').tooltip({delay: 50})
-        }, 1000)
+        resetTooltips()
 
     },
     //à la soumission du formulaire
@@ -109,19 +104,20 @@ Template.editDescription.events({
     },
     //quant on sort du champs
     'focusout [descriptionText]': function (event, instance) {
-        //on laisse un petit temps
-        Meteor.setTimeout(function () {
-            //on enleve les infobulles
-            $('.tooltipped').tooltip('remove');
-            //on recupere puis modifie puis repush le tableau des editingflags
-            let flags = instance.isEditingFlags.get();
-            flags.description = false;
-            instance.isEditingFlags.set(flags);
-            //puis on reactive les infobulles apres un delai
+        //on récupere la valeur du champ
+        let value = $('#description').html();
+        value = Textarea.formatBeforeSave(value);
+        //on verifie que la valeur as bien changé par rapport a la valeur existante
+        if (value === instance.initialText) {
+            //on laisse un petit temps
             Meteor.setTimeout(function () {
-                $('.tooltipped').tooltip({delay: 50})
-            }, 500)
-        }, 200)
+                resetTooltips()
+                //on recupere puis modifie puis repush le tableau des editingflags
+                let flags = instance.isEditingFlags.get();
+                flags.description = false;
+                instance.isEditingFlags.set(flags);
+            }, 50)
+        }
     }
 });
 

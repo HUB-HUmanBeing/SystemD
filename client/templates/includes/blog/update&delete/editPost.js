@@ -6,7 +6,7 @@ import Post from '/imports/classes/Post'
 
 Template.editPost.helpers({
     //renvoie un boolénen
-    isProject : function(){
+    isProject: function () {
         return Template.currentData().type === "project"
     },
     //renvoie l'image illustrant l'article
@@ -27,8 +27,8 @@ Template.editPost.helpers({
     },
     // contenu du post
     postContent: function () {
-        if (Template.instance().postContent) {
-            return Template.instance().postContent
+        if (Template.currentData().isEditing) {
+            return Template.instance().post.get().content
         } else {
             return ""
         }
@@ -36,8 +36,13 @@ Template.editPost.helpers({
     },
     //titre de l'article
     postTitle: function () {
-        if (Template.instance().isEditing) {
-            return Template.instance().post.title
+        if (Template.currentData().isEditing) {
+            return Template.instance().post.get().title
+        }
+    },
+    post_id: function () {
+        if (Template.currentData().isEditing) {
+            return Template.instance().post.get()._id
         }
     }
 });
@@ -79,11 +84,11 @@ Template.editPost.events({
                         instance.postImage.set(data.link)
                         instance.imageLoading.set(false)
                         instance.isImageWide.set(false)
-                    //apres un court temps, on relance l'éditeur wysiwig
-                    Meteor.setTimeout(()=>{
-                        instance.titleEditor= new MediumEditor('.editable-title', MediumEditorOptionsTitle)
-                        instance.contentEditor=new MediumEditor('.editable', MediumEditorOptions)
-                    },50)
+                        //apres un court temps, on relance l'éditeur wysiwig
+                        Meteor.setTimeout(() => {
+                            instance.titleEditor = new MediumEditor('.editable-title', MediumEditorOptionsTitle)
+                            instance.contentEditor = new MediumEditor('.editable', MediumEditorOptions)
+                        }, 50)
                     }
                 )
             }
@@ -114,10 +119,10 @@ Template.editPost.events({
                         instance.postImage.set(data.link)
                         instance.isImageWide.set(true)
                         instance.imageLoading.set(false)
-                    Meteor.setTimeout(()=>{
-                       instance.titleEditor= new MediumEditor('.editable-title', MediumEditorOptionsTitle)
-                        instance.contentEditor=new MediumEditor('.editable', MediumEditorOptions)
-                    },50)
+                        Meteor.setTimeout(() => {
+                            instance.titleEditor = new MediumEditor('.editable-title', MediumEditorOptionsTitle)
+                            instance.contentEditor = new MediumEditor('.editable', MediumEditorOptions)
+                        }, 50)
 
                     }
                 )
@@ -134,8 +139,8 @@ Template.editPost.events({
         let content = Textarea.formatBeforeSave($('#post-content').html());
         let isImageWide = instance.isImageWide.get();
         let postImageUrl = instance.postImage.get();
-    //on passe toutes ces valeurs dans un tableau
-        let postArray = [isProject,author_id,title,content,isImageWide,postImageUrl];
+        //on passe toutes ces valeurs dans un tableau
+        let postArray = [isProject, author_id, title, content, isImageWide, postImageUrl];
         //on créee le post
         let newPost = new Post()
         //et on lance la méthode de création
@@ -150,8 +155,34 @@ Template.editPost.events({
                     //on détruit les editeur wisywig
                     instance.titleEditor.destroy()
                     instance.contentEditor.destroy()
-                   let routeName = instance.data.type + "MainPage";
-                    Router.go(routeName,{_id : author_id}, {query : "focus=" + result})
+                    let routeName = instance.data.type + "MainPage";
+                    Router.go(routeName, {_id: author_id}, {query: "focus=" + result})
+                }
+            })
+    },
+    //quant on clique sur publier
+    'click [EditPost]': function (event, instance) {
+        let post = Post.findOne(instance.post.get()._id)
+        //on récupere toutes les valeurs de l'article
+         post.title = $('#editPost-' + post._id + ' #post-title').html();
+        post.content = Textarea.formatBeforeSave($('#editPost-' + post._id + ' #post-content').html());
+        post.isImageWide = instance.isImageWide.get();
+        post.ImageUrl = instance.postImage.get();
+
+        //et on lance la méthode de création
+        post.applyMethod('editPost',
+            (error, result) => {
+                //si ca marche pas, on renvoie l'erreur par toast
+                if (error) {
+                    Materialize.toast("une erreur s'est produite", 4000, 'red')
+                } else {
+                    Materialize.toast("l'article a été édité", 6000, 'green')
+                    resetTooltips();
+                    //on détruit les editeur wisywig
+                    instance.titleEditor.destroy()
+                    instance.contentEditor.destroy()
+                    let routeName = instance.data.type + "MainPage";
+                    Router.go(routeName, {_id: author_id}, {query: "focus=" + result})
                 }
             })
     }
@@ -171,24 +202,25 @@ Template.editPost.onCreated(function () {
         if (!Template.currentData().isEditing) {
             //on part avec l'image de l'utilisateur
             postImage = Meteor.user().profile.imgUrl
-        } else {
-            this.isImageWide.set(Template.currentData().post.isWideImage)
-            postImage = Template.currentData().post.imgUrl
         }
         //si on est coté projet
     } else if (type === "project") {
         //si on est en mode édition
         if (!Template.currentData().isEditing) {
             //on récupere le projet
-            let project = Project.findOne(Template.currentData().id);
-            this.project = project;
-            postImage = project.publicInfo.imgUrl
-        } else {
-
+            this.project = Project.findOne(Template.currentData().id);
         }
     }
+    if (Template.currentData().isEditing) {
+        let post = Template.currentData().post;
+        this.post = new ReactiveVar(post);
+        date = post.createdAt;
+        postImage = post.imageUrl;
+        this.isImageWide.set(post.isImageWide);
+
+    }
     //on remplit les réactive var avec les données
-    this.postImage = new ReactiveVar(postImage)
+    this.postImage = new ReactiveVar(postImage);
     this.date = new ReactiveVar(date)
 });
 
@@ -200,18 +232,13 @@ Template.editPost.onRendered(function () {
     //on active les tooltip
     $('.tooltipped').tooltip({delay: 50});
     //on déformatte le contenu du post (si on est en mode edition
-    if (Template.currentData().isEditing){
-        Textarea.unformatBySelector('.formattedText')
+    if (Template.currentData().isEditing) {
+        Textarea.unformatBySelector('#editPost .formattedText')
     }
 });
 
 Template.editPost.onDestroyed(function () {
-    //on enlève les tooltips
-    $('.tooltipped').tooltip('remove');
-    //puis on reactive les infobulles apres un delai
-    Meteor.setTimeout(function () {
-        $('.tooltipped').tooltip({delay: 50})
-    }, 100);
+    resetTooltips()
     this.titleEditor.destroy();
     this.contentEditor.destroy()
 });

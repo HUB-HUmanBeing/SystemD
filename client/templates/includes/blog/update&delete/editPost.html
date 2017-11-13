@@ -8,7 +8,8 @@
     }}
     <link rel="stylesheet" href="/css/medium-editor.css">
 
-    <div class="row relative">
+    <div class="row relative" id="editPost{{#if isEditing}}-{{post_id}}{{/if}}"
+    style="{{#if isEditing}}!important; padding: 3px !important; background-color: rgba(255,255,255,0.1){{/if}}">
         <div class="col s12 no-padding">
             <div class="col s12 {{#unless or isPhone isImageWide }}m4{{else}} no-padding{{/unless}}  relative"
                  style="{{#unless isPhone}}{{#unless
@@ -26,7 +27,8 @@
                        data-position="bottom"
                        data-delay="50" data-tooltip="Modifier l'image"
                     >
-                        <span><i class="material-icons light-grey-police">edit</i></span>
+                        <span><i class="material-icons light-grey-police">photo_size_select_actual
+</i></span>
                     </a>
                     <ul class="right-align">
                         <li class="inline-block small-margin">
@@ -101,6 +103,7 @@
             </div>
 
         {{/if}}
+        {{#unless isEditing}}
         <a class="btn-floating valign-wrapper btn-large dark-grey waves-effect
         shadow waves-light tooltipped  hover-bg-{{#if isProject }}orange{{else}}green{{/if}} hover-dark-grey absolute"
            style="bottom: -70px !important; right:-35px !important;"
@@ -110,6 +113,21 @@
         >
             <span><i class="material-icons {{#if isProject }}orange-text{{else}}green-text{{/if}}">send</i></span>
         </a>
+            {{else}}
+            <div class=" center-align" style="padding: 20px !important;">
+
+                <a class="btn-floating valign-wrapper btn-large dark-grey waves-effect static
+        shadow waves-light tooltipped  hover-bg-{{#if isProject }}orange{{else}}green{{/if}} hover-dark-grey"
+                   style=""
+                   data-position="bottom"
+                   data-delay="50" data-tooltip="Enregistrer les modifications"
+                   EditPost
+                >
+                    <span><i class="material-icons {{#if isProject }}orange-text{{else}}green-text{{/if}}">done</i></span>
+                </a>
+            </div>
+
+        {{/unless}}
     </div>
 
 </template>

@@ -16,12 +16,21 @@ Template.postItem.helpers({
     showComments : function () {
         return Template.instance().showComments.get()
     },
+    editionMode : function () {
+        return Template.instance().editionMode.get()
+    }
 });
 
 Template.postItem.events({
     //add your events here
     'click [toggleWideArticle] , touch [toggleWideArticle]' : function (event, instance) {
+
         instance.isOpen.set(!instance.isOpen.get())
+        if(instance.isOpen.get()=== false){
+            $('html, body').animate({
+                scrollTop: $("#post-"+instance.data.post._id).offset().top
+            }, 600);
+        }
     },
     'click [openWideArticle], touch[openWideArticle]' : function (event, instance) {
         instance.isOpen.set(true)
@@ -38,8 +47,13 @@ Template.postItem.events({
                 Materialize.toast("une erreur s'est produite", 4000, 'red')
             } else {
                 Materialize.toast("l'article a été supprimé", 6000, 'orange')
+                resetTooltips()
             }
         })
+    },
+    'click [editPost]' : function (event, instance) {
+        instance.editionMode.set(true)
+        resetTooltips()
     }
 });
 
@@ -47,18 +61,18 @@ Template.postItem.onCreated(function () {
     //add your statement here
     this.isOpen = new ReactiveVar(false)
     this.showComments = new ReactiveVar(false)
+    this.editionMode = new ReactiveVar(false)
 });
 
 Template.postItem.onRendered(function () {
     //add your statement here
-    $('.tooltipped').tooltip({delay: 50});
+    resetTooltips()
     let selector= '#post-'+Template.currentData().post._id+' #post-content'
     
     Textarea.unformatBySelector(selector)
 });
 
 Template.postItem.onDestroyed(function () {
-    //add your statement here
-    $('.tooltipped').tooltip({delay: 50});
+    resetTooltips()
 });
 

@@ -53,7 +53,7 @@ Template.userMainPage.onCreated(function () {
 
 Template.userMainPage.onRendered(function () {
     //add your statement here
-    Textarea.unformatBySelector(".formattedText")
+    Textarea.unformatBySelector("#description .formattedText")
 });
 
 Template.userMainPage.onDestroyed(function () {

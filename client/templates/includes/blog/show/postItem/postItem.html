@@ -3,129 +3,140 @@
     post = cursor (non fetché)
     editAllowed
     }}
-    <div class="row relative no-margin" id="post-{{post._id}}">
-        {{#if editAllowed}}
-            <div class="fixed-action-btn horizontal fab-menu-btn"
-                 style="top:-25px; right:-5px !important; ">
-                <a class="btn-floating valign-wrapper btn-large dark-grey waves-effect
+    {{#if editionMode}}
+        {{>editPost isEditing = true
+        type = type
+        id = post.author_id
+        post = post}}
+    {{else}}
+        <div class="row relative no-margin" id="post-{{post._id}}">
+            {{#if editAllowed}}
+                <div class="fixed-action-btn horizontal fab-menu-btn"
+                     style="top:-25px; right:-5px !important; ">
+                    <a class="btn-floating valign-wrapper btn-large dark-grey waves-effect
                 shadow waves-light hover-bg-{{colorByType type}}">
-                    <span><i class="material-icons light-grey-police">more_horiz</i></span>
-                </a>
-                <ul class="right-align">
-                    <li class="inline-block small-margin">
-                        <a class="btn-floating red tooltipped  shadow waves-effect waves-light"
-                           data-position="bottom"
-                           data-delay="50" data-tooltip="Supprimer" deletePost>
-                            <i class="material-icons  grey-text text-darken-4">clear</i>
-                        </a>
-                    </li>
-                    <li class="inline-block small-margin">
-                        <a class="btn-floating {{colorByType type}} tooltipped shadow waves-effect waves-light"
-                           data-position="bottom"
-                           data-delay="50" data-tooltip="Editer" editPost>
-                            <i class="material-icons  grey-text text-darken-4">edit</i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        {{/if}}
-        <div class="post-container {{#unless isOpen}} post-height-by-media {{/unless}}" id="open-post" openWideArticle>
-            <div class="col s12 no-padding">
-                <div class="row">
-                    <div class="col s12 {{#unless or isPhone
-                                                  post.isImageWide }}m4{{else}} no-padding{{/unless}}  relative"
+                        <span><i class="material-icons light-grey-police">more_horiz</i></span>
+                    </a>
+                    <ul class="right-align">
+                        <li class="inline-block small-margin">
+                            <a class="btn-floating hover-bg-red tooltipped dark-grey shadow waves-effect waves-light"
+                               data-position="bottom"
+                               data-delay="50" data-tooltip="Supprimer" deletePost>
+                                <i class="material-icons  hover-dark-grey light-grey-police">clear</i>
+                            </a>
+                        </li>
+                        <li class="inline-block small-margin">
+                            <a class="btn-floating hover-bg-{{colorByType
+                                    type}} dark-grey tooltipped shadow waves-effect waves-light"
+                               data-position="bottom"
+                               data-delay="50" data-tooltip="Editer" editPost>
+                                <i class="material-icons  hover-dark-grey light-grey-police">edit</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            {{/if}}
+            <div class="post-container {{#unless isOpen}} post-height-by-media {{/unless}}" id="open-post"
+                 openWideArticle>
+                <div class="col s12 no-padding">
+                    <div class="row">
+                        <div class="col s12 {{#unless or isPhone
+                                                      post.isImageWide }}m4{{else}} no-padding{{/unless}}  relative"
 
-                         style="{{#unless or post.isImageWide isPhone }}padding: 0 20px 0px 0  !important;{{/unless}}"
-                    >
-                        <img class="img-max-width"
+                             style="{{#unless or post.isImageWide
+                                              isPhone }}padding: 0 20px 0px 0  !important;{{/unless}}"
+                        >
+                            <img class="img-max-width"
 
-                             src="{{post.imageUrl}}">
-                    </div>
-                    {{#if or post.isImageWide isPhone }}
-                        <div class="row absolute" style="width: 100%">
-                            <div class="col s12"
-                                 style="opacity: 0.7; background-color: #0e0e0e;padding: 22px 15px 0 15px !important;">
-                                <h5 class="white-text  " style="margin:0 !important; "
-                                    id="post-title">
-                                    <a href="{{path}}" class="tooltipped "
+                                 src="{{post.imageUrl}}">
+                        </div>
+                        {{#if or post.isImageWide isPhone }}
+                            <div class="row absolute" style="width: 100%">
+                                <div class="col s12"
+                                     style="opacity: 0.7; background-color: #0e0e0e;padding: 22px 15px 0 15px !important;">
+                                    <h5 class="white-text  " style="margin:0 !important; "
+                                        id="post-title">
+                                        <a href="{{path}}" class="tooltipped "
+                                           data-position="bottom"
+                                           data-delay="350"
+                                           data-tooltip="lire l'article sur la page{{#if
+                                                   isProject}} du projet{{else}} de l'auteur{{/if}}">{{post.title}}</a>
+                                    </h5>
+
+                                    <div class="right-align">
+                                        <i class="small-info small-margin white-text">
+                                            le {{localeDate post.createdAt}}
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {{else}}
+                            <div class="col s12 m8">
+                                <h5 class="small-margin " id="post-title">
+                                    <a href="{{path}}" class="tooltipped right-align"
                                        data-position="bottom"
                                        data-delay="350"
                                        data-tooltip="lire l'article sur la page{{#if
-                                               isProject}} du projet{{else}} de l'auteur{{/if}}">{{post.title}}</a>
+                                               isProject}} du projet{{else}} de l'auteur{{/if}}">
+                                        {{post.title}}
+                                    </a>
                                 </h5>
-
                                 <div class="right-align">
                                     <i class="small-info small-margin white-text">
                                         le {{localeDate post.createdAt}}
                                     </i>
                                 </div>
                             </div>
-                        </div>
-
-                    {{else}}
-                        <div class="col s12 m8">
-                            <h5 class="small-margin " id="post-title">
-                                <a href="{{path}}" class="tooltipped right-align"
-                                   data-position="bottom"
-                                   data-delay="350"
-                                   data-tooltip="lire l'article sur la page{{#if
-                                           isProject}} du projet{{else}} de l'auteur{{/if}}">
-                                    {{post.title}}
-                                </a>
-                            </h5>
-                            <div class="right-align">
-                                <i class="small-info small-margin white-text">
-                                    le {{localeDate post.createdAt}}
-                                </i>
+                            <div class="text  puce-list formattedText"
+                                 style="text-align: justify ;"
+                                 id="post-content">
+                                {{post.content}}
                             </div>
-                        </div>
-                        <div class="text  puce-list formattedText"
-                             style="text-align: justify ;"
-                             id="post-content">
-                            {{post.content}}
-                        </div>
-                    {{/if}}
-                </div>
-            </div>
-            {{#if or post.isImageWide isPhone}}
-                <div class="row">
-                    <div class="col s12 no-padding">
-                        <div class="text  puce-list formattedText"
-                             style="text-align: justify ; min-height: 40px !important; "
-                             id="post-content">
-                            {{post.content}}
-                        </div>
+                        {{/if}}
                     </div>
                 </div>
+                {{#if or post.isImageWide isPhone}}
+                    <div class="row">
+                        <div class="col s12 no-padding">
+                            <div class="text  puce-list formattedText"
+                                 style="text-align: justify ; min-height: 40px !important; "
+                                 id="post-content">
+                                {{post.content}}
+                            </div>
+                        </div>
+                    </div>
 
-            {{/if}}
-        </div>
-        <div class="row no-margin valign-wrapper">
-            <div class="col s5 no-padding">
-                {{>miniature
-                        _id = post.author_id
-                        type = type}}
+                {{/if}}
             </div>
-            <div class="col s2 no-padding waves-effect waves-light center " toggleWideArticle>
-                <a class=" center ">
-                    <i class="material-icons small center">{{#if isOpen}}
-                        keyboard_arrow_up{{else}}keyboard_arrow_down{{/if}}</i>
-                </a>
-            </div>
-            <div class="col s5 no-padding ">
-                <div class="right-align relative" style="bottom :  -5px !important;">
-                    <a href="" showComments>
-                        <span class="font-title  small-margin relative" style="bottom: 2px">4 </span>
-                        <i class="material-icons tiny">sms</i>
+            <div class="row no-margin valign-wrapper">
+                <div class="col s5 no-padding">
+                    {{>miniature
+                            _id = post.author_id
+                            type = type}}
+                </div>
+                <div class="col s2 no-padding waves-effect waves-light center " toggleWideArticle>
+                    <a class=" center ">
+                        <i class="material-icons small center">{{#if isOpen}}
+                            keyboard_arrow_up{{else}}keyboard_arrow_down{{/if}}</i>
                     </a>
                 </div>
+                <div class="col s5 no-padding ">
+                    <div class="right-align relative" style="bottom :  -5px !important;">
+                        <a href="" showComments>
+                            <span class="font-title  small-margin relative" style="bottom: 2px">4 </span>
+                            <i class="material-icons tiny">sms</i>
+                        </a>
+                    </div>
+                </div>
             </div>
+            {{# if showComments}}
+                <div class="row">
+                    {{>workInProgress content = "affichage des commentaires de l'article"}}
+                </div>
+            {{/if}}
+
         </div>
-        {{# if showComments}}
-            <div class="row">
-                {{>workInProgress content = "affichage des commentaires de l'article"}}
-            </div>
-        {{/if}}
-        <hr style="margin: 30px 0">
-    </div>
+    {{/if}}
+    <hr style="margin: 30px 0">
 </template>
