@@ -162,15 +162,16 @@ Template.editPost.events({
     },
     //quant on clique sur publier
     'click [EditPost]': function (event, instance) {
+        //on instancie notre classe avec le post
         let post = Post.findOne(instance.post.get()._id)
-        //on récupere toutes les valeurs de l'article
+        //on récupere toutes les valeurs de l'article et on les modifie sur notre instance de post
          post.title = $('#editPost-' + post._id + ' #post-title').html();
         post.content = Textarea.formatBeforeSave($('#editPost-' + post._id + ' #post-content').html());
         post.isImageWide = instance.isImageWide.get();
         post.ImageUrl = instance.postImage.get();
 
-        //et on lance la méthode de création
-        post.applyMethod('editPost',
+        //et on lance la méthode d'edition
+        post.callMethod('editPost',
             (error, result) => {
                 //si ca marche pas, on renvoie l'erreur par toast
                 if (error) {
@@ -181,8 +182,13 @@ Template.editPost.events({
                     //on détruit les editeur wisywig
                     instance.titleEditor.destroy()
                     instance.contentEditor.destroy()
-                    let routeName = instance.data.type + "MainPage";
-                    Router.go(routeName, {_id: author_id}, {query: "focus=" + result})
+                    instance.view.parentView.parentView.parentView.templateInstance().editionMode.set(false)
+                    Meteor.setTimeout(function () {
+                        $('html, body').animate({
+                            scrollTop: $("#post-"+instance.data.post._id).offset().top
+                        }, 600);
+                        Textarea.unformatBySelector("#post-"+instance.data.post._id+ " .formattedText")
+                    },50)
                 }
             })
     }
@@ -233,7 +239,7 @@ Template.editPost.onRendered(function () {
     $('.tooltipped').tooltip({delay: 50});
     //on déformatte le contenu du post (si on est en mode edition
     if (Template.currentData().isEditing) {
-        Textarea.unformatBySelector('#editPost .formattedText')
+        Textarea.unformatBySelector('#editPost-'+Template.instance().post.get()._id+' .formattedText')
     }
 });
 

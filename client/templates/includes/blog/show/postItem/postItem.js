@@ -26,6 +26,7 @@ Template.postItem.events({
     'click [toggleWideArticle] , touch [toggleWideArticle]' : function (event, instance) {
 
         instance.isOpen.set(!instance.isOpen.get())
+        resetTooltips()
         if(instance.isOpen.get()=== false){
             $('html, body').animate({
                 scrollTop: $("#post-"+instance.data.post._id).offset().top
@@ -34,6 +35,7 @@ Template.postItem.events({
     },
     'click [openWideArticle], touch[openWideArticle]' : function (event, instance) {
         instance.isOpen.set(true)
+        resetTooltips()
         return true
     },
     'click [showComments]' : function (event, instance) {

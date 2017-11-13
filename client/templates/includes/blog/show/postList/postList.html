@@ -14,9 +14,13 @@ author_id : id de l'auteur des post
                 editAllowed = editAllowed}}
     {{/if}}
     {{#each post in posts}}
-        {{> postItem
+        {{#if  eq  indexWhenIncreaseLimit @index}}
+            <div id="increaseLimit"></div>
+            {{/if}}
+    {{> postItem
                 post = post
                 editAllowed = editAllowed}}
+
     {{/each}}
     {{! > infiniteScroll }}
 </template>
