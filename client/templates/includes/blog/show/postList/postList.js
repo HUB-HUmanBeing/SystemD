@@ -35,6 +35,7 @@ Template.postList.events({
 });
 
 Template.postList.onCreated(function () {
+    Session.set("EditedPostId", false)
     //on initialise la limite de post à appeler
     this.limit = new ReactiveVar(10);
     //on récupere les valeurs passées en argument lors de l'appel du template
@@ -104,7 +105,7 @@ Template.postList.onRendered(function () {
 
             this.limit.set(this.limit.get()+10)
             //si on l'a pas déja fait
-            alreadyTrigger=true
+            alreadyTrigger=true;
             //
             Meteor.setTimeout(function () {
                 alreadyTrigger = false
@@ -115,5 +116,7 @@ Template.postList.onRendered(function () {
 
 Template.postList.onDestroyed(function () {
     //add your statement here
+    Session.set("EditedPostId", false)
+    $(window).off("scroll")
 });
 

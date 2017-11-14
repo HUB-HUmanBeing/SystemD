@@ -76,6 +76,12 @@ const Profile = Class.create({
                 return [];
             }
         },
+        followedAuthors: {
+            type: [String],
+            default: function () {
+                return [];
+            }
+        },
         invitations: {
             type: [UserInvitation],
             default: function () {

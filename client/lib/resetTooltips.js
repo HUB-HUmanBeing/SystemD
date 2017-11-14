@@ -19,5 +19,4 @@ resetTooltips = function () {
         }, 100);
     }
     //on enlève les tooltips
-
 }

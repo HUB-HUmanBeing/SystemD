@@ -23,6 +23,7 @@ const Post = Class.create({
                     param: 2
                 }
             ],
+            index: "2dsphere",
         },
         createdAt: {
             type: Date,

@@ -44,6 +44,9 @@ Template.editPost.helpers({
         if (Template.currentData().isEditing) {
             return Template.instance().post.get()._id
         }
+    },
+    noChange : function () {
+        return Template.instance().noChange.get()
     }
 });
 
@@ -84,6 +87,7 @@ Template.editPost.events({
                         instance.postImage.set(data.link)
                         instance.imageLoading.set(false)
                         instance.isImageWide.set(false)
+                    instance.noChange.set(false)
                         //apres un court temps, on relance l'éditeur wysiwig
                         Meteor.setTimeout(() => {
                             instance.titleEditor = new MediumEditor('.editable-title', MediumEditorOptionsTitle)
@@ -119,9 +123,15 @@ Template.editPost.events({
                         instance.postImage.set(data.link)
                         instance.isImageWide.set(true)
                         instance.imageLoading.set(false)
+                    instance.noChange.set(false)
                         Meteor.setTimeout(() => {
                             instance.titleEditor = new MediumEditor('.editable-title', MediumEditorOptionsTitle)
                             instance.contentEditor = new MediumEditor('.editable', MediumEditorOptions)
+                            if (instance.data.isEditing) {
+                                Textarea.unformatBySelector('#editPost-'+Template.instance().post.get()._id+' .formattedText')
+                            }else{
+                                Textarea.unformatBySelector('.editable')
+                            }
                         }, 50)
 
                     }
@@ -129,6 +139,9 @@ Template.editPost.events({
             }
 
         })
+    },
+    'keyup #post-content, keyup #postTitle' :function (event, instance) {
+        instance.noChange.set(false)
     },
     //quant on clique sur publier
     'click [publish]': function (event, instance) {
@@ -182,7 +195,7 @@ Template.editPost.events({
                     //on détruit les editeur wisywig
                     instance.titleEditor.destroy()
                     instance.contentEditor.destroy()
-                    instance.view.parentView.parentView.parentView.templateInstance().editionMode.set(false)
+                    Session.set("EditedPostId" , false)
                     Meteor.setTimeout(function () {
                         $('html, body').animate({
                             scrollTop: $("#post-"+instance.data.post._id).offset().top
@@ -195,7 +208,7 @@ Template.editPost.events({
 });
 
 Template.editPost.onCreated(function () {
-    //a la création du template
+    this.noChange = new ReactiveVar(true)
     //on initialise les réactive var
     this.isImageWide = new ReactiveVar(false);
     let date = new Date();

@@ -18,7 +18,7 @@
                         </div>
                         <div class="col s1 relative">
                             {{#if isAllowed}}
-                            {{>fixturesAndTests}}
+                                {{>fixturesAndTests}}
                             {{/if}}
                         </div>
                     {{/unless}}
@@ -34,7 +34,8 @@
                                         <div class="card-content">
                                             <span class="card-title">Contacter l'équipe</span>
                                             <p><b>par mail : </b>contact@hub-humanbeing.com</p>
-                                            <p><b>github : </b><a href="https://github.com/HUB-HUmanBeing/HUmanBeing">https://github.com/HUB-HUmanBeing/HUmanBeing</a></p>
+                                            <p><b>github : </b><a href="https://github.com/HUB-HUmanBeing/HUmanBeing">https://github.com/HUB-HUmanBeing/HUmanBeing</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -52,106 +53,44 @@
                         </div>
 
                         <div class="col s12 m9 no-padding">
-                            <div class="row">
-                                <div class="col s12 ">
-                                    <div class="card trame-box ">
-                                        <div class="card-image">
-                                            <img src="images/aquarelle-hub.jpg">
+                            {{#unless currentUserId}}
+                                <div class="row">
+                                    <div class="col s12 ">
+                                        <div class="card trame-box ">
+                                            <div class="card-image">
+                                                <img src="images/aquarelle-hub.jpg">
 
-                                        </div>
-                                        <div class="card-content">
-                                            <span class="card-title">HUmanBeing</span>
-                                            <h5>Plate forme web de projets collaboratifs non marchands et de partage à
-                                                modération horizontale</h5>
-                                            <p>Jusqu'ici, les projets collaboratifs ainsi que les pratiques de partages
-                                                et de gratuité ont été limités par l'étroitesse de nos réseaux
-                                                relationnels. Cette plate-forme web met en lien une communauté mondiale
-                                                d'utilisateurs sur la base de leurs compétences et de leurs envies à
-                                                travers la possibilité de collaborer à des projets proposés par chacun
-                                                d'eux. Elle offre aussi un support organisationnel et un système
-                                                permettant le partage des ressources de chacun, ainsi que le partage de
-                                                celles produites par les projets, le tout modéré horizontalement par la
-                                                communauté d'utilisateurs.</p>
+                                            </div>
+                                            <div class="card-content">
+                                                <span class="card-title">HUmanBeing</span>
+                                                <h5>Plate forme web de projets collaboratifs non marchands et de partage
+                                                    à
+                                                    modération horizontale</h5>
+                                                <p>Jusqu'ici, les projets collaboratifs ainsi que les pratiques de
+                                                    partages
+                                                    et de gratuité ont été limités par l'étroitesse de nos réseaux
+                                                    relationnels. Cette plate-forme web met en lien une communauté
+                                                    mondiale
+                                                    d'utilisateurs sur la base de leurs compétences et de leurs envies à
+                                                    travers la possibilité de collaborer à des projets proposés par
+                                                    chacun
+                                                    d'eux. Elle offre aussi un support organisationnel et un système
+                                                    permettant le partage des ressources de chacun, ainsi que le partage
+                                                    de
+                                                    celles produites par les projets, le tout modéré horizontalement par
+                                                    la
+                                                    communauté d'utilisateurs.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            {{/unless}}
                             <div class="row ">
                                 <div class="col s12 ">
                                     <div class="card trame-box">
                                         <div class="card-content">
-                                            <span class="card-title">Article de blog</span>
-                                            {{>workInProgress}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 ">
-                                    <div class="card trame-box">
-                                        <div class="card-content">
-                                            <span class="card-title">Article de blog</span>
-                                            {{>workInProgress}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 ">
-                                    <div class="card trame-box">
-                                        <div class="card-content">
-                                            <span class="card-title">Article de blog</span>
-                                            {{>workInProgress}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 ">
-                                    <div class="card trame-box">
-                                        <div class="card-content">
-                                            <span class="card-title">Article de blog</span>
-                                            {{>workInProgress}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 ">
-                                    <div class="card trame-box">
-                                        <div class="card-content">
-                                            <span class="card-title">Article de blog</span>
-                                            {{>workInProgress}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 ">
-                                    <div class="card trame-box">
-                                        <div class="card-content">
-                                            <span class="card-title">Article de blog</span>
-                                            {{>workInProgress}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 ">
-                                    <div class="card trame-box">
-                                        <div class="card-content">
-                                            <span class="card-title">Article de blog</span>
-                                            {{>workInProgress}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="col s12 ">
-                                    <div class="card trame-box">
-                                        <div class="card-content">
-                                            <span class="card-title">Article de blog</span>
-                                            {{>workInProgress}}
+                                            <span class="card-title">Dernier Articles</span>
+                                                {{>homePostList}}
                                         </div>
                                     </div>
                                 </div>

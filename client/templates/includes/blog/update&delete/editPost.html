@@ -12,6 +12,7 @@
     style="{{#if isEditing}}!important; padding: 3px !important; background-color: rgba(255,255,255,0.1){{/if}}">
             {{>infoBubble
                     content = "selectionner le contenu de l'article pour le mettre en page"
+                position = "bottomLeft"
             }}
         <div class="col s12 no-padding">
             <div class="col s12 {{#unless or isPhone isImageWide }}m4{{else}} no-padding{{/unless}}  relative"
@@ -118,18 +119,16 @@
         </a>
             {{else}}
             <div class=" center-align" style="padding: 20px !important;">
-
                 <a class="btn-floating valign-wrapper btn-large dark-grey waves-effect static
-        shadow waves-light tooltipped  hover-bg-{{#if isProject }}orange{{else}}green{{/if}} hover-dark-grey"
+        shadow waves-light tooltipped {{#if noChange}}disabled{{/if}} hover-bg-{{#if isProject }}orange{{else}}green{{/if}} hover-dark-grey"
                    style=""
                    data-position="bottom"
                    data-delay="50" data-tooltip="Enregistrer les modifications"
                    EditPost
                 >
-                    <span><i class="material-icons {{#if isProject }}orange-text{{else}}green-text{{/if}}">done</i></span>
+                    <span><i class="material-icons {{#if noChange}}grey-text text-darken-2{{else}}{{#if isProject }}orange-text{{else}}green-text{{/if}}{{/if}}">done</i></span>
                 </a>
             </div>
-
         {{/unless}}
     </div>
 

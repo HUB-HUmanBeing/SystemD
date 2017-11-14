@@ -1,3 +1,34 @@
 <template name="homePostList">
 
+    <div class="row no-margin relative">
+         <span class="absolute" style="left: -15px; top: -5px">
+             {{>infoBubble
+                     content= "Sélectionner la distance à partir de laquelle visualiser les articles"
+                     position="relative"
+             }}
+         </span>
+        <div class=" relative" style="margin-left :25px">
+            <p class="range-field">
+                <input type="range" id="range" min="5" max="1000" value="{{range}}" range/>
+            </p>
+        </div>
+
+    </div>
+    <div class="row" style="margin: -10px 0 20px 0">
+        <p class="right-align small-info"><i>
+            {{#if range}}
+                à moins de {{range}}km
+            {{else}}
+                visuliser tout les articles
+            {{/if}}</i></p>
+    </div>
+    {{#each post in posts}}
+        {{#if  eq  indexWhenIncreaseLimit @index}}
+            <div id="increaseLimit"></div>
+        {{/if}}
+        {{> postItem
+                post = post
+                editAllowed = false}}
+
+    {{/each}}
 </template>

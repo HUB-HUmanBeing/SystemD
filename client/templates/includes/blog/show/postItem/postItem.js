@@ -21,7 +21,7 @@ Template.postItem.helpers({
     },
     //true si l'on doit switcher sur le template d'edition
     editionMode : function () {
-        return Template.instance().editionMode.get()
+        return Session.get("EditedPostId") ===Template.currentData().post._id
     }
 });
 
@@ -35,13 +35,20 @@ Template.postItem.events({
         resetTooltips()
         //si l'article etait ouvert
         if(isOpen=== true){
+           Meteor.setTimeout(()=>{
+               instance.isOpen.set(false)
+           },300)
+
+
             //on remonte au haut de l'article
             $('html, body').animate({
                 scrollTop: $("#post-"+instance.data.post._id).offset().top
-            }, 600);
+            }, 300);
+        }else{
+            instance.isOpen.set(true)
         }
         //on passe isOpen a l'inverse de sa valeur actuelle
-        instance.isOpen.set(!isOpen)
+
     },
     //action pour ouvrir un article au clic dessus
     'click [openWideArticle], touch[openWideArticle]' : function (event, instance) {
@@ -70,8 +77,8 @@ Template.postItem.events({
     },
     //switch sur le template d'edition
     'click [editPost]' : function (event, instance) {
-        instance.editionMode.set(true)
-        resetTooltips()
+        Session.set("EditedPostId" , instance.data.post._id)
+            resetTooltips()
     }
 });
 
