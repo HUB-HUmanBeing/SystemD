@@ -105,6 +105,7 @@ Meteor.publish('PostsInfinite', function (limit, query) {
     check(query, Object)
     check(query.isProject, Boolean)
     check(query.author_id, String)
+    console.log('coucou')
     // Assign safe values to a new object after they have been validated
     return Posts.find({isProject: query.isProject, author_id: query.author_id}, {
         limit: limit,
@@ -121,29 +122,41 @@ Meteor.publish('HomepagePostInfiniteSubs', function (limit, lonLat, range) {
     check(limit, Number);
     check(lonLat, [Number]);
     check(range, Number)
-    console.log(range)
+    let geo = {lonLat: {
+        "$geoWithin": {
+            "$center": [
+                lonLat,
+                range / 111.12
+            ]
+        }
+    }
+    }
+    if(range===1000){
+        geo = {}
+    }
     let userId = Meteor.userId()
-    limitDate = new Date() - 604800000 //(il y a une semaine)
-    currentUserProfile = Meteor.user().profile
+    let followedAuthors=[]
+    if(userId){
+        let currentUserProfile = Meteor.user().profile
+        followedAuthors =currentUserProfile.followedAuthors
+    }
+
+    let limitDate = new Date(new Date().setDate(new Date().getDate() - 5)) //(il y a une semaine)
+
     // // Assign safe values to a new object after they have been validated
     return Posts.find({
-            createdAt: {"$lt": limitDate},
-            author_id: {
-                "$all": currentUserProfile.followedAuthors
+            "$or": [{
+                author_id: {'$in' : followedAuthors}
             },
-            lonLat: {
-                "$geoWithin": {
-                    "$center": [
-                        lonLat,
-                        range / 111.12
-                    ]
-                }
-            }
+                {
+                    "$and": [
+                        {createdAt: {"$gte": limitDate}},
+                        geo
+                        ]
+                }]
         },
         {
             limit: limit,
-            // Using sort here is necessary to continue to use the Oplog Observe Driver!
-            // https://github.com/meteor/meteor/wiki/Oplog-Observe-Driver
             sort: {
                 createdAt: -1
             }

@@ -1,15 +1,13 @@
 <template name="homePostList">
 
-    <div class="row no-margin relative">
-         <span class="absolute" style="left: -15px; top: -5px">
-             {{>infoBubble
-                     content= "Sélectionner la distance à partir de laquelle visualiser les articles"
-                     position="relative"
-             }}
-         </span>
-        <div class=" relative" style="margin-left :25px">
+    <div class="row  relative" style="margin: -10px 0 0 0 !important;">
+        <div class=" relative" >
             <p class="range-field">
-                <input type="range" id="range" min="5" max="1000" value="{{range}}" range/>
+                <input type="range" id="range"
+                       min="5" max="1000"
+                       value="{{range}}"  class="tooltipped"
+                       data-position="bottom" data-delay="50"
+                       data-tooltip="déplacez le curseur pour ajuster la distance des articles" range/>
             </p>
         </div>
 

@@ -109,7 +109,8 @@ const User = Class.create({
         },
         username: {
             type: String,
-            immutable: true
+            immutable: true,
+            index: 'text'
         },
         services: {
             type: Object,

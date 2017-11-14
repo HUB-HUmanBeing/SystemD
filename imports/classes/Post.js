@@ -13,7 +13,10 @@ const Post = Class.create({
             default: 0
         },
         isProject: Boolean,//si c'est false, c'est que c'est un user
-        author_id: String,//correspond a l'user_id si user, project_id si projet
+        author_id: {
+            type :String,
+            index : 1
+        },//correspond a l'user_id si user, project_id si projet
         lonLat: {
             type: [Number],
             optional: true,
@@ -29,7 +32,8 @@ const Post = Class.create({
             type: Date,
             default: function () {
                 return new Date()
-            }
+            },
+            index: 1
         },
         lastEdit: {
             type: Date,

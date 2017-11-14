@@ -5,41 +5,31 @@ Template.homePostList.helpers({
     range: function () {
         return Template.instance().range.get() === 1000 ? false : Template.instance().range.get()
     },
+    //limite à partir de laquelle on doit afficher la div trigger
+    // de l'increaseLimit pour l'infiniteScroll
+    indexWhenIncreaseLimit : function () {
+        let collectedPostLength = Template.instance().collectedPostLength.get()
+        return collectedPostLength- 3
+    },
     //ensemble des posts a afficher
     posts: function () {
-        let selector = {}
-        if (Meteor.userId()) {
-            let currentUserProfile = Meteor.user().profile
-            selector = {
-                author_id: {"$all": currentUserProfile.followedAuthors},
-                "$nearSphere": {
-                    "$geometry": {
-                        type: "Point",
-                        coordinates: currentUserProfile.lonLat
-                    },
-                    "$minDistance": 0,
-                    "$maxDistance": Template.instance().range.get() * 1000
-                }
-            };
-        }
-        //puis on retourne la liste des post
-        return Posts.find(selector, {
-            sort: {
-                createdAt: -1
-            }
-        });
+     return Template.instance().posts.get()
     },
 });
 
 Template.homePostList.events({
     //add your events here
-    'input [range]': function (event, instance) {
-        instance.range.set(parseInt($('.range-field input').val()))
+    'change [range]': function (event, instance) {
+
+            instance.range.set(parseInt($('.range-field input').val()))
+
     }
 });
 
 Template.homePostList.onCreated(function () {
     //add your statement here
+
+    this.posts = new ReactiveVar()
     this.range = new ReactiveVar(200);
     this.lastVisit = new ReactiveVar()
     this.limit = new ReactiveVar(10);
@@ -78,6 +68,7 @@ Meteor.setTimeout(()=>{
             );
             //quant elle est prete, on instancie une réactive var
             if (HomepagePostInfiniteSubs.ready()) {
+                this.posts.set(Posts.find({}).fetch())
                 this.collectedPostLength.set(Posts.find({}).count())
             }
         }
@@ -88,7 +79,7 @@ Meteor.setTimeout(()=>{
 });
 
 Template.homePostList.onRendered(function () {
-
+    resetTooltips()
     //gestion de la souscription a de nouveaux posts
     let alreadyTrigger = false
     //on attache un écouteur d'evenement au scroll

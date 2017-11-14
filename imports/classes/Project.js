@@ -50,6 +50,7 @@ const Project = Class.create({
                     message: 'Project name is too short'
                 }
             ],
+            index: 'text'
         },
         members: {
             type: [Member],
