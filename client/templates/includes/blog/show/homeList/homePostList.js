@@ -58,12 +58,14 @@ Template.homePostList.onCreated(function () {
                 //sinon on passe par la fonction faisant appel a une api de localisation par ip
                 getLonLat((result) => {
                     this.lonLat.set(result);
+                    this.range.set(600);
                 });
             }
         } else {
             //sinon on passe par la fonction faisant appel a une api de localisation par ip
             getLonLat((result) => {
                 this.lonLat.set(result);
+                this.range.set(600);
             });
         }
         //on laisse un peu de temps pour laisser à l'utilisateur

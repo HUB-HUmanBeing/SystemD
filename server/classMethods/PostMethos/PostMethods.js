@@ -74,6 +74,41 @@ Post.extend({
             this.lastEdit = new Date();
             //et on le sauvegarde
             return this.save()
+        },
+        /*********************************
+         * Action de faire remonter l'article vers le haut du fil d'info d'un projet ou d'un user
+         */
+        pinUpPost() {
+            //on verifie que l'utilisateur qui fait la demande est soit admin du projet soit l'auteur du post
+            if (this.isProject) {
+                let project = Project.findOne({_id: this.author_id})
+                check(project.isAdmin(Meteor.userId()), true)
+            }else{
+                check(this.author_id, Meteor.userId())
+            }
+            //on augmente son rang dans la liste
+            this.pinned ++;
+            //et on le sauvegarde
+            return this.save()
+        },
+        /*********************************
+         * Action de faire redescendre l'article vers le bas du fil d'info d'un projet ou d'un user
+         */
+        pinDownPost() {
+            //on verifie que l'utilisateur qui fait la demande est soit admin du projet soit l'auteur du post
+            if (this.isProject) {
+                let project = Project.findOne({_id: this.author_id})
+                check(project.isAdmin(Meteor.userId()), true)
+            }else{
+                check(this.author_id, Meteor.userId())
+            }
+            //si il est pas déja en bas,
+            if( this.pinned >0){
+                this.pinned --;//on le redescend
+                //et on le sauvegarde
+                return this.save()
+            }
+
         }
     }
 });

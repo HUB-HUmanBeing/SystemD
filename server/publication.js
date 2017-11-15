@@ -115,6 +115,7 @@ Meteor.publish('PostsInfinite', function (limit, query) {
         limit: limit,
         //et on les trie par date décroissantes (les plus récents en premiers
         sort: {
+            pinned : -1,
             createdAt: -1
         }
     });
@@ -166,7 +167,7 @@ Meteor.publish('HomepagePostInfiniteSubs', function (limit, lonLat, range) {
         {
             limit: limit,//on limite la requetes a notre limite pour l'infinite scroll
             sort: {//en les triant par dates décroissantes
-                createdAt: -1
+                createdAt: -1 ,
             }
         });
 });

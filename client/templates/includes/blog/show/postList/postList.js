@@ -14,6 +14,7 @@ Template.postList.helpers({
         //puis on retourne la liste des post
         return Posts.find(selector, {
             sort: {
+                pinned:-1,
                 createdAt: -1
             }
         });

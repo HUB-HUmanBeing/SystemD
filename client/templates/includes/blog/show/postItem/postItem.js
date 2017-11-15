@@ -1,4 +1,5 @@
 import Post from '/imports/classes/Post'
+import User from '/imports/classes/User'
 
 Template.postItem.helpers({
     //renvoie le type de l'article visioné
@@ -22,6 +23,9 @@ Template.postItem.helpers({
     //true si l'on doit switcher sur le template d'edition
     editionMode : function () {
         return Session.get("EditedPostId") ===Template.currentData().post._id
+    },
+    isFollowedAuthor : function () {
+        return Meteor.user().profile.followedAuthors.includes(Template.currentData().post.author_id)
     }
 });
 
@@ -71,7 +75,6 @@ Template.postItem.events({
                 Materialize.toast("une erreur s'est produite", 4000, 'red')
             } else {
                 Materialize.toast("l'article a été supprimé", 6000, 'orange')
-                resetTooltips()
             }
         })
     },
@@ -79,6 +82,58 @@ Template.postItem.events({
     'click [editPost]' : function (event, instance) {
         Session.set("EditedPostId" , instance.data.post._id)
             resetTooltips()
+    },
+    'click [pinUp]' : function (event, instance) {
+        //on récupère le post
+        let post = Post.findOne( {_id : instance.data.post._id})
+        //et on applique la méthode
+        post.callMethod('pinUpPost', (error)=>{
+            //si ca marche pas, on renvoie l'erreur par toast
+            if (error) {
+                Materialize.toast("une erreur s'est produite", 4000, 'red')
+            } else {
+                Materialize.toast("l'article a été remonté dans le fil", 2000, 'green')
+            }
+        })
+    },
+    'click [pinDown]' : function () {
+        //on récupère le post
+        let post = Post.findOne( {_id : instance.data.post._id})
+        //et on applique la méthode
+        post.callMethod('pinDownPost', (error)=>{
+            //si ca marche pas, on renvoie l'erreur par toast
+            if (error) {
+                Materialize.toast("une erreur s'est produite", 4000, 'red')
+            } else {
+                Materialize.toast("l'article a été descendu dans le fil", 2000, 'green')
+            }
+        })
+    },
+    'click [follow]' : function (event, instance) {
+        //on récupère l'utilisateur courant
+        let user = User.findOne({_id: Meteor.userId})
+        //et on applique la méthode
+        user.callMethod('followAuthor', instance.data.post.author_id, (error) => {
+            //si ca marche pas, on renvoie l'erreur par toast
+            if (error) {
+                Materialize.toast("une erreur s'est produite", 4000, 'red')
+            } else {
+                Materialize.toast("Vous êtes désormais abonné aux articles de cet auteur", 2000, 'green')
+            }
+        })
+    },
+    'click [unFollow]' : function (event, instance) {
+        //on récupère l'utilisateur courant
+        let user = User.findOne({_id: Meteor.userId})
+        //et on applique la méthode
+        user.callMethod('unFollowAuthor', instance.data.post.author_id, (error) => {
+            //si ca marche pas, on renvoie l'erreur par toast
+            if (error) {
+                Materialize.toast("une erreur s'est produite", 4000, 'red')
+            } else {
+                Materialize.toast("Vous n'êtes plus abonné aux articles de cet auteur", 2000, 'orange')
+            }
+        })
     }
 });
 
