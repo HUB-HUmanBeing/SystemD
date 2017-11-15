@@ -25,6 +25,8 @@ Template.postItem.helpers({
         return Session.get("EditedPostId") ===Template.currentData().post._id
     },
     isFollowedAuthor : function () {
+        console.log(Meteor.user().profile.followedAuthors)
+        console.log(Template.currentData().post.author_id)
         return Meteor.user().profile.followedAuthors.includes(Template.currentData().post.author_id)
     }
 });
