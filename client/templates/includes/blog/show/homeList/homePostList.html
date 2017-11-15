@@ -1,32 +1,35 @@
 <template name="homePostList">
-
+{{!Template d'affichage du fil d'articles de la page d'acceuil}}
     <div class="row  relative" style="margin: -10px 0 0 0 !important;">
-        <div class=" relative" >
+        <div class=" relative">
             <p class="range-field">
                 <input type="range" id="range"
-                       min="5" max="1000"
-                       value="{{range}}"  class="tooltipped"
+                       min="5" max="600"
+                       value="{{range}}" class="tooltipped"
                        data-position="bottom" data-delay="50"
                        data-tooltip="déplacez le curseur pour ajuster la distance des articles" range/>
             </p>
         </div>
 
     </div>
-    <div class="row" style="margin: -10px 0 20px 0">
-        <p class="right-align small-info"><i>
-            {{#if range}}
-                à moins de {{range}}km
-            {{else}}
-                visuliser tout les articles
-            {{/if}}</i></p>
+    <div class="row " style="margin: -10px 0 5px 0">
+        <p class="right-align small-info">
+            <i>{{shownRange}}</i>
+        </p>
     </div>
-    {{#each post in posts}}
-        {{#if  eq  indexWhenIncreaseLimit @index}}
-            <div id="increaseLimit"></div>
-        {{/if}}
-        {{> postItem
-                post = post
-                editAllowed = false}}
 
-    {{/each}}
+        {{#each post in posts}}
+            {{#if  eq  indexWhenIncreaseLimit @index}}
+                <div id="increaseLimit"></div>
+            {{/if}}
+            {{> postItem
+                    post = post
+                    editAllowed = false}}
+
+        {{/each}}
+    {{#if loadingPosts}}
+        <div class="row" style="padding: 30px">
+            {{>loading}}
+        </div>
+    {{/if}}
 </template>

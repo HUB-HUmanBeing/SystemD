@@ -356,7 +356,7 @@ input[type=range]{
 /* Special styling for WebKit/Blink */
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    border-radius: 3px;
+    border-radius: 50%;
     background-color: #0e0e0e !important;
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
@@ -365,7 +365,8 @@ input[type=range]::-webkit-slider-thumb {
 /* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    border-radius: 3px;
+    border-radius: 50%;
+
     background-color: #0e0e0e !important;
     cursor: pointer;
 }

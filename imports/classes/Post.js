@@ -33,7 +33,7 @@ const Post = Class.create({
             default: function () {
                 return new Date()
             },
-            index: 1
+            index: -1
         },
         lastEdit: {
             type: Date,
