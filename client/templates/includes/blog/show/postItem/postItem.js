@@ -98,7 +98,7 @@ Template.postItem.events({
             }
         })
     },
-    'click [pinDown]' : function () {
+    'click [pinDown]' : function (event, instance) {
         //on récupère le post
         let post = Post.findOne( {_id : instance.data.post._id})
         //et on applique la méthode
@@ -113,6 +113,7 @@ Template.postItem.events({
     },
     'click [follow]' : function (event, instance) {
         //on récupère l'utilisateur courant
+        resetTooltips()
         let user = User.findOne({_id: Meteor.userId})
         //et on applique la méthode
         user.callMethod('followAuthor', instance.data.post.author_id, (error) => {
@@ -121,10 +122,12 @@ Template.postItem.events({
                 Materialize.toast("une erreur s'est produite", 4000, 'red')
             } else {
                 Materialize.toast("Vous êtes désormais abonné aux articles de cet auteur", 2000, 'green')
+
             }
         })
     },
     'click [unFollow]' : function (event, instance) {
+        resetTooltips()
         //on récupère l'utilisateur courant
         let user = User.findOne({_id: Meteor.userId})
         //et on applique la méthode
@@ -134,6 +137,7 @@ Template.postItem.events({
                 Materialize.toast("une erreur s'est produite", 4000, 'red')
             } else {
                 Materialize.toast("Vous n'êtes plus abonné aux articles de cet auteur", 2000, 'orange')
+
             }
         })
     }

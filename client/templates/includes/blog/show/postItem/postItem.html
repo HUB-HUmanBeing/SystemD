@@ -10,6 +10,7 @@
                 post = post}}
     {{else}}
         <div class="row relative no-margin" id="post-{{post._id}}">
+            {{!boutons d'édition}}
             {{#if editAllowed}}
                 <div class="fixed-action-btn horizontal fab-menu-btn"
                      style="top:-25px; right:-5px !important; ">
@@ -54,30 +55,32 @@
                     </ul>
                 </div>
             {{/if}}
+            {{!boutons suivre}}
+            {{#if currentUserId}}
+                {{#if isFollowedAuthor}}
+                    <a class="btn-floating waves-effect waves-light btn-large tooltipped transparent absolute"
+                       data-position="bottom" data-delay="350"
+                       style="top : -21px !important; left : -5px !important; box-shadow: none !important;"
+                       data-tooltip="Ne plus Suivre les articles de cet auteur" unFollow>
+
+                        <i class="material-icons  grey-text text-lighten-1">bookmark</i>
+                    </a>
+                {{else}}
+                    <a class="btn-floating waves-effect waves-light btn-large tooltipped transparent absolute"
+                       data-position="bottom" data-delay="350"
+                       style="top : -21px !important; left : -5px !important; box-shadow: none !important;"
+                       data-tooltip="Suivre les articles de cet auteur" follow>
+
+                        <i class="material-icons  "
+                           style="position :absolute; top: 0; right: 0;z-index: 200 !important; color: rgba(53,53,53,0.8) !important;">bookmark</i>
+                        <i class="material-icons grey-text text-lighten-1 "
+                           style="position :absolute; top: 0; right: 0;z-index: 201 !important;">bookmark_border</i>
+                    </a>
+                {{/if}}
+            {{/if}}
             <div class="post-container {{#unless isOpen}} post-height-by-media {{/unless}}" id="open-post"
                  openWideArticle>
-                {{#if currentUserId}}
-                    {{#if isFollowedAuthor}}
-                        <a class="btn-floating waves-effect waves-light btn-large tooltipped transparent absolute"
-                           data-position="bottom" data-delay="350"
-                           style="top : -21px !important; left : -5px !important; box-shadow: none !important;"
-                           data-tooltip="Ne plus Suivre les articles de cet auteur" unFollow>
 
-                            <i class="material-icons  grey-text text-lighten-1">bookmark</i>
-                        </a>
-                    {{else}}
-                        <a class="btn-floating waves-effect waves-light btn-large tooltipped transparent absolute"
-                           data-position="bottom" data-delay="350"
-                           style="top : -21px !important; left : -5px !important; box-shadow: none !important;"
-                           data-tooltip="Suivre les articles de cet auteur" follow>
-
-                            <i class="material-icons  "
-                               style="position :absolute; top: 0; right: 0;z-index: 200 !important; color: rgba(53,53,53,0.8) !important;">bookmark</i>
-                            <i class="material-icons grey-text text-lighten-1 "
-                               style="position :absolute; top: 0; right: 0;z-index: 201 !important;">bookmark_border</i>
-                        </a>
-                    {{/if}}
-                {{/if}}
                 <div class="col s12 no-padding">
                     <div class="row">
                         <div class="col s12 {{#unless or isPhone

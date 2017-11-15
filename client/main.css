@@ -231,7 +231,6 @@ input:-webkit-autofill {
 .material-tooltip span{
     opacity: 0.9 !important;
     font-size: 0.9em !important;
-    font-style: italic !important;
 }
 .inline-block{
     display: inline-block !important;
