@@ -18,7 +18,7 @@ Template.postItem.helpers({
     },
     //true si l'on doit afficher les commentaires
     showComments : function () {
-        return Template.instance().showComments.get()
+        return Session.get("showComments") ===Template.currentData().post._id
     },
     //true si l'on doit switcher sur le template d'edition
     editionMode : function () {
@@ -64,7 +64,7 @@ Template.postItem.events({
     },
     //action pour afficher les commentaires
     'click [showComments]' : function (event, instance) {
-        instance.showComments.set(!instance.showComments.get())
+        Session.set("showComments" , instance.data.post._id)
     },
     //action de supression d'un article
     'click [deletePost]' : function (event, instance) {

@@ -118,6 +118,7 @@ Template.postList.onRendered(function () {
 Template.postList.onDestroyed(function () {
     //add your statement here
     Session.set("EditedPostId", false)
+    Session.set("showComments", false)
     $(window).off("scroll")
 });
 

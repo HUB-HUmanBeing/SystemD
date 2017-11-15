@@ -5,6 +5,9 @@
 * {
     font-family: 'Questrial', sans-serif;
 }
+body{
+    overflow-x: hidden;
+}
 .font-title{
     font-size: 14px ; font-weight: 700 ;  Text-Transform: Uppercase;
 }

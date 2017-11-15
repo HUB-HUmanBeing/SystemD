@@ -35,13 +35,13 @@ if(duration/9628000000 > 1){
         return "il y a plus d'un mois";
 }else if(parseInt(duration/86400000) >=1){
      let plurial = parseInt(duration/86400000)===1?"":"s";
-    return  parseInt(duration/86400000) + "jour"+ plurial;
+    return  parseInt(duration/86400000) + " jour"+ plurial;
 }else if(parseInt(duration/3600000) >=1){
     let plurial = parseInt(duration/3600000)===1?"":"s";
-    return  parseInt(duration/3600000) + "heure"+ plurial;
+    return  parseInt(duration/3600000) + " heure"+ plurial;
 }else if(parseInt(duration/60000) >1){
     let plurial = parseInt(duration/60000)===1?"":"s";
-    return parseInt(duration/60000) + "minute"+ plurial;
+    return parseInt(duration/60000) + " minute"+ plurial;
 }else{
     return 'quelques secondes'
 }

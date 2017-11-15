@@ -186,15 +186,21 @@
                 <div class="col s5 no-padding ">
                     <div class="right-align relative" style="bottom :  -5px !important;">
                         <a href="" showComments>
-                            <span class="font-title  small-margin relative" style="bottom: 2px">? </span>
+                            <span class="font-title  small-margin relative"
+                                  style="bottom: 2px">{{post.nbOfComments}} </span>
                             <i class="material-icons tiny">sms</i>
                         </a>
                     </div>
                 </div>
             </div>
             {{# if showComments}}
-                <div class="row">
-                    {{>workInProgress content = "affichage des commentaires de l'article"}}
+                <div class="" style="background-color: rgba(0,0,0,0.2)">
+                    <div class="row no-margin">
+                        {{>showBlogComments post = post}}
+                    </div>
+                    <div class="row ">
+                        {{>newBlogComment post = post}}
+                    </div>
                 </div>
             {{/if}}
 

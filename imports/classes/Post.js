@@ -62,7 +62,11 @@ const Post = Class.create({
             type: Boolean,
             default: false
         },
-        imageUrl: String
+        imageUrl: String,
+        nbOfComments: {
+            type :Number,
+            default : 0
+        }
     }
 })
 
