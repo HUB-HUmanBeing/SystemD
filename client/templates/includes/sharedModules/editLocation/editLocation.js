@@ -72,7 +72,15 @@ Template.editLocation.events({
         instance.useSearchForm.set(false);
         //on recupere les données de l'utilisateur
         instance.autorun(function () {
-            let latLng = Geolocation.latLng();
+            let latLng = undefined
+            if(Meteor.isDevelopment){
+                latLng= Geolocation.latLng();
+            }else{
+                getPositionNavigator((result)=>{
+                    latLng = result
+                })
+            }
+
             if (latLng) {
                 //requette http vers l'api de nominatim pour recuperer le nom de la ville a partir des coordonnées
                 HTTP.call("GET",

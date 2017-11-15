@@ -20,5 +20,38 @@ User.extend({
             }
         },
 
+    },
+    /***********************************
+     * ajout d'un autheur a la liste des auteurs suivis
+     * @param author_id
+     */
+    followAuthor(author_id){
+        //on vérifie les arguments
+        check(author_id, String)
+        //on vérifie que l'utilisateur est bien celui qui a appelé la méthode
+        check(this._id, Meteor.userId())
+        //on ajoute l'id a la liste des auteurs suivis
+        this.profile.followedAuthors.push(author_id)
+        //puis on sauvegarde
+        this.save()
+
+    },
+    /*****************************************************
+     * retrait d'un auteur de la liste des auteurs suivis
+     * @param author_id
+     */
+    unFollowAuthor(author_id){
+        //on vérifie les arguments
+        check(author_id, String)
+        //on vérifie que l'utilisateur est bien celui qui a appelé la méthode
+        check(this._id, Meteor.userId())
+        //on ajboucle sur les id des auteurs suivis
+        this.profile.followedAuthors.forEach((followedAuthor,i)=>{
+            if(followedAuthor === author_id){
+                this.profile.followedAuthors.splice(i,1)
+            }
+        });
+        //puis on sauvegarde
+        this.save()
     }
 });
