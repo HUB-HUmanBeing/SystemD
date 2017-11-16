@@ -151,7 +151,9 @@ UTILITAIRES
 .small-info{
     font-size: smaller !important;
 }
-
+.borer-radius{
+    border-radius: 5px !important;
+}
 /***********************
 SCROLLBAR
  ************************/

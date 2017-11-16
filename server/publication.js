@@ -151,7 +151,7 @@ Meteor.publish('HomepagePostInfiniteSubs', function (limit, lonLat, range) {
     }
 
     let limitDate = new Date(new Date().setDate(new Date().getDate() - 10)) //(il y a dix jours)
-
+    //todo affiner la recherche avec des scrores sur le parametre folowed author et autre
     //puis on renvoie les resultat de la recherche
     return Posts.find({//les articles renvoyés
             "$or": [{ //sont soit

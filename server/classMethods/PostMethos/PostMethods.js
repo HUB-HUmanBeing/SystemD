@@ -104,7 +104,7 @@ Post.extend({
             }
             //si il est pas déja en bas,
             if( this.pinned >0){
-                this.pinned --;//on le redescend
+                this.pinned =0;//on le redescend
                 //et on le sauvegarde
                 return this.save()
             }

@@ -185,7 +185,10 @@
                 </div>
                 <div class="col s5 no-padding ">
                     <div class="right-align relative" style="bottom :  -5px !important;">
-                        <a href="" showComments>
+                        <a href="" class="tooltipped"
+                           data-position="bottom"
+                           data-delay="350"
+                           data-tooltip="{{#if showComments}}Refermer{{else}}Afficher les commentaires{{/if}}" showComments>
                             <span class="font-title  small-margin relative"
                                   style="bottom: 2px">{{post.nbOfComments}} </span>
                             <i class="material-icons tiny">sms</i>
@@ -194,13 +197,18 @@
                 </div>
             </div>
             {{# if showComments}}
-                <div class="" style="background-color: rgba(0,0,0,0.2)">
-                    <div class="row no-margin">
-                        {{>showBlogComments post = post}}
-                    </div>
-                    <div class="row ">
+                <div class="border-radius shadow" style="background-color: rgba(0,0,0,0.1); margin-top: 15px!important;">
+                    {{#if currentUserId}}
+                    <div class="row bodrer-radius">
                         {{>newBlogComment post = post}}
                     </div>
+                    {{else}}
+                        <p class="small-info orange">Vous devez être connecté pour commenter l'article</p>
+                    {{/if}}
+                    <div class="row no-margin border-radius">
+                        {{>showBlogComments post = post}}
+                    </div>
+
                 </div>
             {{/if}}
 

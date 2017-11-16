@@ -246,7 +246,7 @@ Template.editPost.onCreated(function () {
 Template.editPost.onRendered(function () {
     //au rendu du template
     //on initialise l'editeur wisiwig du titre et du contenu
-    this.contentEditor = new MediumEditor('.editable', MediumEditorOptions)
+    this.contentEditor = new MediumEditor('.editable-post-content', MediumEditorOptions)
     this.titleEditor = new MediumEditor('.editable-title', MediumEditorOptionsTitle)
     //on active les tooltip
     $('.tooltipped').tooltip({delay: 50});

@@ -25,8 +25,6 @@ Template.postItem.helpers({
         return Session.get("EditedPostId") ===Template.currentData().post._id
     },
     isFollowedAuthor : function () {
-        console.log(Meteor.user().profile.followedAuthors)
-        console.log(Template.currentData().post.author_id)
         return Meteor.user().profile.followedAuthors.includes(Template.currentData().post.author_id)
     }
 });
@@ -64,7 +62,12 @@ Template.postItem.events({
     },
     //action pour afficher les commentaires
     'click [showComments]' : function (event, instance) {
-        Session.set("showComments" , instance.data.post._id)
+        if(Session.get("showComments") !== instance.data.post._id){
+            Session.set("showComments" , instance.data.post._id)
+        }else{
+            Session.set("showComments" , false)
+        }
+        resetTooltips()
     },
     //action de supression d'un article
     'click [deletePost]' : function (event, instance) {
