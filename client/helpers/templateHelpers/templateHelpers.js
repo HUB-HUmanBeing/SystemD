@@ -32,7 +32,7 @@ Template.registerHelper('formatDuration', function(duration){
         duration = new Date().getTime() - duration.getTime()
     }
 if(duration/9628000000 > 1){
-        return "il y a plus d'un mois";
+        return "plus d'un mois";
 }else if(parseInt(duration/86400000) >=1){
      let plurial = parseInt(duration/86400000)===1?"":"s";
     return  parseInt(duration/86400000) + " jour"+ plurial;

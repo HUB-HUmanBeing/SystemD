@@ -11,11 +11,11 @@ Template.newBlogComment.events({
     'click [sendComment]' : function (event, instance) {
         let author_id = instance.data.post.author_id;//on va s'en servir pour envoyer une notif à l'auteur
         let isProject = instance.data.post.isProject;
-        let post_id = instance.data.post.author_id;
+        let post_id = instance.data.post._id;
         let content = Textarea.formatBeforeSave($('#comment-content').html());
 
         let newPostComment = new PostComment();
-        newPostComment.applyMethod('newComment', post_id, content, author_id,isProject, function (error) {
+        newPostComment.callMethod('newComment', post_id, content, author_id,isProject, function (error) {
             if (error) {
                 Materialize.toast("une erreur s'est produite", 4000, 'red')
             } else {

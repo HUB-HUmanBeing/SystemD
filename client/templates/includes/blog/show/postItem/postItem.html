@@ -203,12 +203,20 @@
                         {{>newBlogComment post = post}}
                     </div>
                     {{else}}
-                        <p class="small-info orange">Vous devez être connecté pour commenter l'article</p>
+                        <div class="row">
+                            <div class="col s12">
+                                <br>
+                                <p class="small-info orange-text right-align">Vous devez être connecté pour commenter l'article</p>
+                                <br>
+                            </div>
+                        </div>
+
                     {{/if}}
+                    {{#if post.nbOfComments}}
                     <div class="row no-margin border-radius">
                         {{>showBlogComments post = post}}
                     </div>
-
+                    {{/if}}
                 </div>
             {{/if}}
 

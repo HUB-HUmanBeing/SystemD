@@ -1,7 +1,7 @@
 import Project from '/imports/classes/Project';
 import User from '/imports/classes/User';
 import Posts from '/lib/collections/Posts';
-
+import PostComments from "/lib/collections/PostComments"
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -86,6 +86,8 @@ Meteor.publish('miniature', function (id, type) {
                     'profile.projects': 0,
                     'profile.description': 0,
                     'profile.notifications': 0,
+                    'profile.invitations': 0,
+                    'profile.followedAuthors': 0,
                 }
             });
     } else if (type === 'project') {
@@ -96,7 +98,8 @@ Meteor.publish('miniature', function (id, type) {
                     createdAt: 0,
                     members: 0,
                     invitations: 0,
-                    'publicInfo.location': 0
+                    'publicInfo.location': 0,
+                    'publicInfo.description': 0
                 }
             });
     }
@@ -179,6 +182,24 @@ Meteor.publish('singlePost', function (id) {
     // Assign safe values to a new object after they have been validated
     return Posts.find({_id: id});
 });
+
+/**************************************
+ * Publication des posts d'un projet ou d'un utilisateur spécifique
+ */
+Meteor.publish('CommentsInfinite', function (limit, post_id) {
+console.log('coucou')
+    check(limit, Number);
+    check(post_id, String)
+    //on renvoie les commentaires du post
+    return PostComments.find({post_id: post_id}, {
+        limit: limit,
+        //et on les trie par date décroissantes (les plus récents en premiers
+        sort: {
+            createdAt: -1
+        }
+    });
+});
+
 
 
 if (Meteor.isDevelopment) {

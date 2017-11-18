@@ -4,7 +4,7 @@ import PostComments from '/lib/collections/PostComments'
 /******************************
  * Classe des commentaires des articles de blog
  **************************/
-const Post = Class.create({
+const PostComment = Class.create({
     name: 'PostComments',
     collection: PostComments,
     fields: {
@@ -26,7 +26,7 @@ const Post = Class.create({
             validators: [
                 {
                     type: 'maxLength',
-                    param: 1000,
+                    param: 2000,
                     message: "la taille des commentaires est limitée à 1 000 caractère"
                 }
             ],
@@ -34,4 +34,4 @@ const Post = Class.create({
     }
 })
 
-export default Post
+export default PostComment

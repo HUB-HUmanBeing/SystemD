@@ -49,7 +49,9 @@ COULEURS
 .amber-border{
     border: 2px solid #FFB300 !important;
 }
-
+.hover-white:hover *{
+    color: #ebebeb !important;
+}
 .hover-orange:hover *{
     color: #C87F0A !important;
 }

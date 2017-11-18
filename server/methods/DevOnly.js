@@ -4,6 +4,9 @@ import Fixtures from '/imports/Fixtures/Fixtures'
 import Projects from '/lib/collections/Projects'
 import Posts from '/lib/collections/Posts'
 import Post from '/imports/classes/Post'
+import PostComments from '/lib/collections/PostComments'
+import PostComment from '/imports/classes/PostComment'
+
 
 /****************************************
  * Toutes les méthodes ci dessous sont utiles pour la création et le renouvellement de jeux de données de test
@@ -26,7 +29,9 @@ import Post from '/imports/classes/Post'
             Posts.remove({}, function () {
                 console.log("collection posts reset")
             })
-
+            PostComments.remove({}, function () {
+                console.log("collection postCommentss reset")
+            })
         },
         /******************************
          * Création des utilisateurs et de leurs Projets
@@ -213,6 +218,37 @@ import Post from '/imports/classes/Post'
                     post.imageUrl = k % 2 === 0 ? Fixtures.getRandom("wideImgUrls") : Fixtures.getRandom("imgUrls");
                     post.save()
                 }
+            })
+        },
+        /*************************
+         * action de creation d'une grosse volée de commentaires
+         * @constructor
+         */
+        LaunchCommentsFixtures: function () {
+            //on récupere tout les projets et utilisateurs qu'on trie par date de création pour les avoir dans le meme ordre
+            let Posts = Post.find({}).fetch()
+            let Users = User.find({}).fetch()
+            //pour chaque post
+            Posts.forEach((post) => {
+                //on définit un nombre aléatoire de commentaires entre 0 et 25
+                let nbOfComments = Math.floor(Math.random()*25)
+                //pour chacuns
+                for (let k = 0; k < nbOfComments; k++) {
+                    //on randomise le tableau des users
+                    Fixtures.shuffle(Users)
+                    //on crée un nouveau commmentaire
+                    let comment = new PostComment
+                    //on lui assigne les bonnes valeurs
+                    comment.post_id = post._id;
+                    comment.user_id = Users[0]._id;
+                    comment.username = Users[0].username;
+                    comment.content = Fixtures.getRandom('commentLorems')
+                    //et on le sauvegarde
+                    comment.save()
+                }
+                //puis on sauvegarde le nombre de commentaires associés dans l'objet post
+                post.nbOfComments = nbOfComments
+                post.save()
             })
         }
     })
