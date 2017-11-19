@@ -187,7 +187,7 @@ Meteor.publish('singlePost', function (id) {
  * Publication des posts d'un projet ou d'un utilisateur spécifique
  */
 Meteor.publish('CommentsInfinite', function (limit, post_id) {
-console.log('coucou')
+
     check(limit, Number);
     check(post_id, String)
     //on renvoie les commentaires du post

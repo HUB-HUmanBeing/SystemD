@@ -3,7 +3,7 @@ import MediumEditorOptions from '/imports/MediumEditor/MediumEditorOptions'
 import MediumEditorOptionsTitle from '/imports/MediumEditor/MediumEditorOptionsTitle'
 import Project from '/imports/classes/Project'
 import Post from '/imports/classes/Post'
-
+//todo message d'erreur si le post ou le titre n'est pas valide (trop long)
 Template.editPost.helpers({
     //renvoie un boolénen
     isProject: function () {

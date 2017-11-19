@@ -1,7 +1,7 @@
 import MediumEditor from 'medium-editor'
 import MediumEditorOptions from '/imports/MediumEditor/MediumEditorOptions'
 import PostComment from '/imports/classes/PostComment'
-
+//todo message d'erreur si le commentaire n'est pas valide (trop long)
 Template.newBlogComment.helpers({
     //add you helpers here
 });
