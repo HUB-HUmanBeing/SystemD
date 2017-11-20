@@ -397,3 +397,7 @@ input[type=range]::-ms-thumb {
     background: #000000;
     cursor: pointer;
 }
+.edit-category-item{
+    cursor: move;
+    cursor: -webkit-grabbing;
+}

@@ -1,4 +1,8 @@
 <template name="editCategories">
+    {{!Template d'edition des categories, s'appele avec
+    owner : string //project ou user, pour quelle classe ce template va bosser
+    projectId : String //id du projet si c'est un projet
+    }}
     <div class="row no-margin" id="editCategories">
         {{#if isEditing}}
             {{#if isEdited}}
@@ -34,7 +38,7 @@
             <div class="row no-margin relative" id="editCategories">
                 <ul id="chosenCategories" class="row " style="min-height: 60px;">
                     {{#each category in categories}}
-                        <li class=" col s3 m2 center-align " id="categoryItem-{{category}}">
+                        <li class=" col s3 m2 center-align edit-category-item" id="categoryItem-{{category}}">
                             {{>categoryItem id= category}}
                         </li>
                     {{/each}}
@@ -43,7 +47,7 @@
                 <i class="small-info {{categoriesLabelColor}}-text">{{categoriesLabel}} disponibles</i>
                 <ul id="unchosenCategories" class="row" style="min-height: 60px;">
                     {{#each category in unchosenCategories}}
-                        <li class="col s3 m2 center-align" id="categoryItem-{{category}}">
+                        <li class="col s3 m2 center-align edit-category-item" id="categoryItem-{{category}}">
                             {{>categoryItem id= category}}
                         </li>
                     {{/each}}
