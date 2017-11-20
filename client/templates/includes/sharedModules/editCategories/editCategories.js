@@ -11,7 +11,7 @@ Template.editCategories.helpers({
     },
     //liste des catégories de l'utilisateur(initialement)
     categories: function () {
-        return Template.instance().categories
+        return Template.instance().categories.get()
     },
     //liste des catégories non-choisies par l'utilisateur (initialement)
     unchosenCategories: function () {
@@ -84,6 +84,7 @@ Template.editCategories.events({
                 let category = parseInt(id.split('-')[1]);//on garde que la fin
                 categories.push(category);//on les rentre dans le tableau des catégories a ajouter
             });
+            console.log(categories)
             //puis on appelle la méthode
             instance.owner.callMethod(
                 methodToCall,
@@ -98,6 +99,7 @@ Template.editCategories.events({
                         //si tout est bon, on avertit l'user et on referme le panneau d'édition
                         let message = instance.isProject ? "Les types d'activités du projet " : "Vos centres d'interets"
                         Materialize.toast(message + "ont été mise à jour", 6000, 'green')
+                        instance.categories.set(categories)
                         instance.isEditing.set(false)
                         instance.isEdited.set(false)
                     }
@@ -119,11 +121,12 @@ Template.editCategories.onCreated(function () {
     //true si les catégories ont été éditées
     this.isEdited = new ReactiveVar(false)
     //catégories presentes dans la table de l'utilisateur
-    this.categories = this.isProject ? this.owner.publicInfo.categories : this.owner.profile.categories
+    let categories = this.isProject ? this.owner.publicInfo.categories : this.owner.profile.categories
+    this.categories = new ReactiveVar(categories)
     //catégories absentes
     this.unchosenCategories = []
     CategoryList.forEach((categoryObject, i) => {
-        if (!this.categories.includes(parseInt(categoryObject.id))) {
+        if (!categories.includes(parseInt(categoryObject.id))) {
             this.unchosenCategories.push(i)
         }
     })

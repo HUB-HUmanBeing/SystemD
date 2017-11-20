@@ -1,0 +1,35 @@
+<template name="projectMenuBtns">
+    {{#if currentUser}}
+        <div class="fixed-action-btn horizontal fab-menu-btn click-to-toggle">
+            <a class="btn-floating btn-large green waves-effect waves-light tooltipped " data-position="bottom"
+               data-delay="50" data-tooltip="Interagir" id="interactionBtn">
+                <i class="material-icons grey-text text-darken-4">chevron_left</i>
+            </a>
+            <ul class="right-align">
+                <li class="inline-block small-margin">
+                    <a class="btn-floating blue-grey tooltipped waves-effect waves-light" data-position="bottom"
+                       data-delay="50" data-tooltip="Contacter">
+                        <i class="material-icons  grey-text text-darken-4">mail_outline</i>
+                    </a>
+                </li>
+                <li class="inline-block small-margin">
+                    {{#if isFollowedAuthor}}
+                        <a class="btn-floating orange tooltipped waves-effect waves-light"
+                           data-position="bottom" data-delay="350"
+
+                           data-tooltip="Ne plus Suivre les articles de ce projet" unFollow>
+
+                            <i class="material-icons  grey-text text-darken-4">bookmark</i>
+                        </a>
+                    {{else}}
+                        <a class="btn-floating orange tooltipped waves-effect waves-light"
+                           data-position="bottom" data-delay="350"
+                           data-tooltip="Suivre les articles de ce projet" follow>
+                            <i class="material-icons grey-text text-darken-4" >bookmark_border</i>
+                        </a>
+                    {{/if}}
+                </li>
+            </ul>
+        </div>
+    {{/if}}
+</template>

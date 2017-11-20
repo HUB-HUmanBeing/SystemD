@@ -1,3 +1,5 @@
+import User from '/imports/classes/User'
+
 Template.userMenuBtns.helpers({
     //renvoie la liste des projets ou l'utilisateur courant est admin
     adminProjects: function () {
@@ -12,6 +14,9 @@ Template.userMenuBtns.helpers({
             }
         })
         return adminProjects
+    },
+    isFollowedAuthor : function () {
+        return Meteor.user().profile.followedAuthors.includes(Template.instance().data.userId)
     }
 });
 
@@ -27,6 +32,36 @@ Template.userMenuBtns.events({
     },
     "click [projectName] a" : function (event) {
         event.preventDefault()
+    },
+    'click [follow]' : function (event, instance) {
+        //on récupère l'utilisateur courant
+        resetTooltips()
+        let user = User.findOne({_id: Meteor.userId})
+        //et on applique la méthode
+        user.callMethod('followAuthor', instance.data.userId, (error) => {
+            //si ca marche pas, on renvoie l'erreur par toast
+            if (error) {
+                Materialize.toast("une erreur s'est produite", 4000, 'red')
+            } else {
+                Materialize.toast("Vous êtes désormais abonné aux articles de cet utilisateur", 2000, 'green')
+                $('#interactionBtn').click()
+            }
+        })
+    },
+    'click [unFollow]' : function (event, instance) {
+        resetTooltips()
+        //on récupère l'utilisateur courant
+        let user = User.findOne({_id: Meteor.userId})
+        //et on applique la méthode
+        user.callMethod('unFollowAuthor', instance.data.userId, (error) => {
+            //si ca marche pas, on renvoie l'erreur par toast
+            if (error) {
+                Materialize.toast("une erreur s'est produite", 4000, 'red')
+            } else {
+                Materialize.toast("Vous n'êtes plus abonné aux articles de cet utilisateur", 2000, 'orange')
+                $('#interactionBtn').click()
+            }
+        })
     }
 });
 

@@ -1,5 +1,5 @@
 <template name="projectMenu">
-    <div class="row dark-grey {{#if isDesktop}}valign-wrapper{{/if}}">
+    <div class="row dark-grey {{#if isDesktop}}valign-wrapper{{/if}} relative">
         {{>contextualMenuTitle
                 title=title
                 contextualHomepage = contextualHomepage
@@ -21,6 +21,11 @@
 
                 </ul>
             </div>
+            {{else}}
+            {{>projectMenuBtns
+                    projectId = project._id
+            }}
+
         {{/if}}
     </div>
 </template>
