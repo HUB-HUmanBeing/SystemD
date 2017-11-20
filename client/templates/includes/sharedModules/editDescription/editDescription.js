@@ -57,6 +57,7 @@ Template.editDescription.events({
                     (error, result) => {
                         //si ca marche pas, on renvoie l'erreur par toast
                         if (error) {
+                            console.log(error)
                             Materialize.toast("une erreur s'est produite", 4000, 'red')
                         } else {
                             //on nettoie la div de son contenu

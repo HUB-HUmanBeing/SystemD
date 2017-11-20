@@ -29,6 +29,12 @@ const PublicInfo = Class.create({
             default: function () {
                 return {}
             }
+        },
+        categories: {
+            type: [Number],
+            default: function () {
+                return [];
+            }
         }
     },
 });
@@ -156,7 +162,7 @@ const Project = Class.create({
          * @returns {Number}
          */
         relativeDistance() {
-          const currentUserLocation = Meteor.user().profile.location
+            const currentUserLocation = Meteor.user().profile.location
 
             if (this.publicInfo.location && currentUserLocation.lonLat) {
 
@@ -190,7 +196,7 @@ const Project = Class.create({
          *  helpeur utilisé lorsqu'on qu'un utilisateur souhaite quitter un projet
          */
         isThereOtherAdminsExeptCurrentUser() {
-          const currentUserId = Meteor.userId()
+            const currentUserId = Meteor.userId()
             //on initialise un compteur d'admins autre que l'utilisateur courant
             let numberOfAdminsExeptMe = 0;
             //on boucle sur les membres du projet

@@ -53,6 +53,17 @@ import PostComment from '/imports/classes/PostComment'
                     createdUser.profile.imgUrl = Fixtures.getRandom("imgUrls");
                     createdUser.profile.description = Fixtures.getRandom("lorems");
                     createdUser.profile.location = Fixtures.getRandom("locations");
+                    //chaque user receoit entre 0 et 10 categories aléatoires
+                    let nbOhCategories = Math.floor(Math.random()*10)
+                    let categories = [];
+                    for(let i = 0; i<nbOhCategories; i++){
+                       let newCategory=Math.floor(Math.random()*20)
+                        if(!categories.includes(newCategory)){
+                            categories.push(newCategory)
+                        }
+
+                    }
+                    createdUser.profile.categories = categories;
                     //on sauvegarde,
                     createdUser.save(function (err) {
                         //dans le callback
@@ -66,6 +77,17 @@ import PostComment from '/imports/classes/PostComment'
                         createdProject.publicInfo.imgUrl = Fixtures.getRandom("imgUrls");
                         createdProject.publicInfo.description = Fixtures.getRandom("lorems");
                         createdProject.publicInfo.location = Fixtures.getRandom("locations")
+                        //chaque Projet receoit entre 0 et 10 categories aléatoires
+                        let nbOhCategories = Math.floor(Math.random()*10)
+                        let categories = [];
+                        for(let i = 0; i<nbOhCategories; i++){
+                            let newCategory=Math.floor(Math.random()*20)
+                            if(!categories.includes(newCategory)){
+                                categories.push(newCategory)
+                            }
+
+                        }
+                        createdProject.publicInfo.categories = categories;
                         //on rajoute l'utilisateur courant comme admin du projet
                         createdProject.members.push({
                             user_id: createdUserId,

@@ -93,6 +93,12 @@ const Profile = Class.create({
             default: function () {
                 return [];
             }
+        },
+        categories:{
+            type: [Number],
+            default: function () {
+                return [];
+            }
         }
     },
 

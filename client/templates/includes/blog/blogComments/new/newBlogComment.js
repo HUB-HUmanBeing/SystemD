@@ -1,5 +1,5 @@
 import MediumEditor from 'medium-editor'
-import MediumEditorOptions from '/imports/MediumEditor/MediumEditorOptions'
+import MediumEditorOptionsComment from '/imports/MediumEditor/MediumEditorOptionsComment'
 import PostComment from '/imports/classes/PostComment'
 //todo message d'erreur si le commentaire n'est pas valide (trop long)
 Template.newBlogComment.helpers({
@@ -28,14 +28,11 @@ Template.newBlogComment.events({
 });
 
 Template.newBlogComment.onCreated(function () {
-    //add your statement here
-    this.commentEditor = new MediumEditor('.commentEditor', MediumEditorOptions)
+
 });
 
 Template.newBlogComment.onRendered(function () {
-
-        this.commentEditor = new MediumEditor('.commentEditor', MediumEditorOptions)
-
+        this.commentEditor = new MediumEditor('.commentEditor', MediumEditorOptionsComment)
 });
 
 Template.newBlogComment.onDestroyed(function () {

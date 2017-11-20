@@ -8,11 +8,12 @@ Project.extend({
         updateInfoItem(key, value) {
             //on check que l'utilisateur est bien admin du projet
             check(key, String);
-            check(this.isAdmin(Meteor.userId()), true);
-            this.publicInfo[key] = value;
-            return this.save()
+            if(key === "description" || key=== "categories"||key=== "imgUrl") {
+                check(this.isAdmin(Meteor.userId()), true);
+                this.publicInfo[key] = value;
+                return this.save()
 
-
+            }
         },
         /**********************************
          * modifie la localisation du projet

@@ -6,9 +6,12 @@ User.extend({
 //modification de la description utilisateur
         updateProfileItem(key, value) {
             check(key, String);
-            check(this._id ,Meteor.userId())
+            if(key === "description" || key=== "categories" || key === "imgUrl"){
+                check(this._id ,Meteor.userId())
                 this.profile[key] = value;
                 return this.save()
+            }
+
 
         },
 //changement de la position de l'utilisateur

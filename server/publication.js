@@ -30,6 +30,7 @@ Meteor.publish('userPublicInfo', function (id) {
                     'profile.projects': 0,
                     'profile.invitations': 0,
                     'profile.notifications': 0,
+                    'profile.followedAuthors': 0,
                 }
             });
         //sinon, on renvoie tout
@@ -55,17 +56,18 @@ Meteor.publish('singleProject', function (id) {
         const currentUserId = this.userId;
         if (currentUserId && currentProject.fetch()[0].isMember(currentUserId)) {
             return currentProject;
+
+        } else {
+            return Project.find({_id: id},
+                {
+                    fields: {
+                        //liste des champs non renvoyés
+                        createdAt: 0,
+                        members: 0,
+                        invitations: 0
+                    }
+                });
         }
-    } else {
-        return Project.find({_id: id},
-            {
-                fields: {
-                    //liste des champs non renvoyés
-                    createdAt: 0,
-                    members: 0,
-                    invitations: 0
-                }
-            });
     }
 });
 /***************************************
@@ -118,7 +120,7 @@ Meteor.publish('PostsInfinite', function (limit, query) {
         limit: limit,
         //et on les trie par date décroissantes (les plus récents en premiers
         sort: {
-            pinned : -1,
+            pinned: -1,
             createdAt: -1
         }
     });
@@ -133,24 +135,26 @@ Meteor.publish('HomepagePostInfiniteSubs', function (limit, lonLat, range) {
     check(range, Number)
     //on décrit le selecteur géo
     let geo
-    if(range===600){ //si le curseur etait au max, on passe le selecteur a tout (vu qu'on l'applique dans un $and)
+    if (range === 600) { //si le curseur etait au max, on passe le selecteur a tout (vu qu'on l'applique dans un $and)
         geo = {}
-    }else{
-        geo = {lonLat: {
-            "$geoWithin": {
-                "$center": [
-                    lonLat,
-                    range / 111.12
-                ]
+    } else {
+        geo = {
+            lonLat: {
+                "$geoWithin": {
+                    "$center": [
+                        lonLat,
+                        range / 111.12
+                    ]
+                }
             }
-        }}
+        }
     }
     //verification des auteurs suivis
     let userId = Meteor.userId()
-    let followedAuthors=[]
-    if(userId){
+    let followedAuthors = []
+    if (userId) {
         let currentUserProfile = Meteor.user().profile
-        followedAuthors =currentUserProfile.followedAuthors
+        followedAuthors = currentUserProfile.followedAuthors
     }
 
     let limitDate = new Date(new Date().setDate(new Date().getDate() - 10)) //(il y a dix jours)
@@ -158,19 +162,19 @@ Meteor.publish('HomepagePostInfiniteSubs', function (limit, lonLat, range) {
     //puis on renvoie les resultat de la recherche
     return Posts.find({//les articles renvoyés
             "$or": [{ //sont soit
-                author_id: {'$in' : followedAuthors}//ceux dont l'auteur fait partie des auteurs suivis
+                author_id: {'$in': followedAuthors}//ceux dont l'auteur fait partie des auteurs suivis
             },//soit
                 {
                     "$and": [ //validant simultanément les deux conditions suivantes
                         {createdAt: {"$gte": limitDate}},//crées avant la date limite
                         geo//validant les conditions géographiques
-                        ]
+                    ]
                 }]
         },
         {
             limit: limit,//on limite la requetes a notre limite pour l'infinite scroll
             sort: {//en les triant par dates décroissantes
-                createdAt: -1 ,
+                createdAt: -1,
             }
         });
 });
@@ -199,7 +203,6 @@ Meteor.publish('CommentsInfinite', function (limit, post_id) {
         }
     });
 });
-
 
 
 if (Meteor.isDevelopment) {
