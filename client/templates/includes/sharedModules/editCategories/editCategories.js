@@ -108,13 +108,19 @@ Template.editCategories.events({
 });
 
 Template.editCategories.onCreated(function () {
-    //add your statement here
+    //true si c'est un projet
     this.isProject = Template.currentData().owner === "project"
+    //id du projet ou de l'utilisateur courant
     this.id = this.isProject ? Template.currentData().projectId : Meteor.userId()
+    //instance de la classe user ou projet qui beneficie du template
     this.owner = this.isProject ? Project.findOne({_id: this.id}) : User.findOne({_id: this.id})
+    //true si on est en mode édition
     this.isEditing = new ReactiveVar(false)
+    //true si les catégories ont été éditées
     this.isEdited = new ReactiveVar(false)
+    //catégories presentes dans la table de l'utilisateur
     this.categories = this.isProject ? this.owner.publicInfo.categories : this.owner.profile.categories
+    //catégories absentes
     this.unchosenCategories = []
     CategoryList.forEach((categoryObject, i) => {
         if (!this.categories.includes(parseInt(categoryObject.id))) {
