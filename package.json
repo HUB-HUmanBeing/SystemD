@@ -10,7 +10,8 @@
     "bcrypt": "^1.0.3",
     "imports": "^1.0.0",
     "medium-editor": "^5.23.2",
-    "meteor-node-stubs": "~0.2.4"
+    "meteor-node-stubs": "~0.2.4",
+    "sortablejs": "^1.7.0"
   },
   "devDependencies": {
     "chimp": "^0.50.2"

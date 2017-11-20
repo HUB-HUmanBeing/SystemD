@@ -143,7 +143,7 @@ Template.editDescription.onCreated(function () {
 Template.editDescription.onRendered(function () {
     //add your statement here
     //au rendu on active les infobulles
-    $('.tooltipped').tooltip({delay: 50});
+    resetTooltips();
     //on utilise la fonction pour déformatter le texte stoké en base et remplacer les blises "gentilles" par du vrai html
   Textarea.unformatBySelector('#edit-description .formattedText');
     this.editor = new MediumEditor('.editable', MediumEditorOptions)
@@ -151,5 +151,6 @@ Template.editDescription.onRendered(function () {
 
 Template.editDescription.onDestroyed(function () {
   this.editor.destroy();
+    resetTooltips();
 });
 

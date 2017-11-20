@@ -49,16 +49,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col s12 ">
-                                    <div class="card trame-box ">
-                                        <div class="card-content">
-                                            <span class="card-title">Centres d'interêt</span>
-                                            {{>workInProgress content="d'ajouter et d'editer les types d'activités qui peuvent l'interesser"}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
 
                         </div>
                         <div class="col s12 m8 ">
@@ -72,6 +63,19 @@
                                             {{> editDescription owner = "user"}}
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 relative">
+                                    <div class="card trame-box ">
+                                        <div class="card-content">
+                                            <span class="card-title">Mes centres d'interêt</span>
+                                            {{>editCategories owner = user}}
+                                        </div>
+                                    </div>
+                                    {{>infoBubble
+                                            position="bottomLeft"
+                                            content ="Vos centres d'interets permettent aux utilisateurs et aux projets de pouvoir effectuer des recherches ciblébées et de visualiser plus simplement votre profil"}}
                                 </div>
                             </div>
                             <div class="row ">

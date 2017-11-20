@@ -50,7 +50,7 @@ COULEURS
     border: 2px solid #FFB300 !important;
 }
 .light-grey-border{
-    border: 1px solid #DBDBDB !important;
+    border: 1px solid #b8b8b8 !important;
 }
 .hover-white:hover *{
     color: #ebebeb !important;
@@ -237,6 +237,7 @@ input:-webkit-autofill {
 .material-tooltip{
     opacity: 0.9 !important;
     padding: 10px 15px !important;
+    max-width: 35em !important;
 }
 .material-tooltip span{
     opacity: 0.9 !important;
