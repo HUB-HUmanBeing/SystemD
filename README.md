@@ -26,7 +26,8 @@ Vous avez deux solutions pour le faire :
 à la racine du projet, elle se chargera d'installer les dépendances et de lancer un serveur interne
 s'il y a une erreur, installer le paquet manquant à l'aide de la ligne de commande  :
 
-    meteor npm install --save babel-runtime
+   meteor npm install --save medium-editor sortablejs
+
     
 puis relancer le serveur avec :
 
