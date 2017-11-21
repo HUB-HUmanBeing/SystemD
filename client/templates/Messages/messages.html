@@ -1,0 +1,26 @@
+<template name="messages">
+    <div class="row no-margin" id="userMainPage">
+        <div class="col s12 no-padding">
+            <div class="row dark-grey relative {{#if isDesktop}}valign-wrapper{{/if}}">
+                {{>contextualMenuTitle
+                        title="Messagerie"
+                        color = "teal"
+                        contextualHomepage = "messages"
+                        imgUrl = currentUser.profile.imgUrl
+                }}
+
+            </div>
+        </div>
+        <div class="col s12 xl8 offset-xl2">
+            <div class="row">
+                <div class="col m8 offset-m2">
+                    {{>workInProgress
+                            content="d'offire à l'utilisateur une visualisation en plein écran de la liste de ses conversations ainsi qu'un affichage en plein écran de la conversation sélectionnée"
+                            info="la plate forme offrira a ses utilisateurs un chiffrement end to end de leurs conversations, et l'affichage des conversations se fera plus généralement par des fenetres façon fb"}}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>

@@ -27,7 +27,10 @@
             {{#if categories.length }}
                 <div class="row center-align" style="margin: 0 0 -7px 0">
                     {{#each category in categories}}
-                        {{>categoryItem id= category}}
+                        <span class="categories-list" >
+                            {{>categoryItem id= category}}
+                        </span>
+
                     {{/each}}
                 </div>
 

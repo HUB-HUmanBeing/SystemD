@@ -1,0 +1,18 @@
+<template name="agendaMenu">
+    <div class="row dark-grey relative {{#if isDesktop}}valign-wrapper{{/if}}">
+        {{>contextualMenuTitle
+                title="Agenda"
+                contextualHomepage = contextualHomepage
+                color = "red"
+                imgUrl = currentUser.profile.imgUrl
+                path = path
+        }}
+            <div class="col s12 m7 l7 xl6 no-margin no-padding ">
+                <ul class="tabs dark-grey pin-bottom">
+                    {{#each navBarItem in navBarItems}}
+                        {{>contextualNavBarItem navBarItem}}
+                    {{/each}}
+                </ul>
+            </div>
+    </div>
+</template>

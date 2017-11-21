@@ -411,3 +411,11 @@ input[type=range]::-ms-thumb {
     cursor: move;
     cursor: -webkit-grabbing;
 }
+.categories-list{
+    padding: 2px 5px;
+}
+.categories-list img{
+    padding: 2px;
+    width: 3.4em;
+    height: 3.4em !important;
+}

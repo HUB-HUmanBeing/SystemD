@@ -59,7 +59,9 @@
                             {{#if user.profile.categories.length }}
                                 <div class="row center-align" style="margin: 0 0 -7px 0">
                                     {{#each category in user.profile.categories}}
+                                    <span class="categories-list" >
                                         {{>categoryItem id= category}}
+                                    </span>
                                     {{/each}}
                                 </div>
 

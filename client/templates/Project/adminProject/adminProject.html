@@ -6,7 +6,7 @@
                     <div class="col s12  darken-4 no-padding">
                         <ul class="tabs swipable grey darken-4">
                             {{#if isAdmin}}
-                                <li class="tab col s4">
+                                <li class="tab col s3">
                                     <a href="#edit" switchTab>Informations
                                         <span class=" tooltipped {{completedColor completed}}-text"
                                               data-position="bottom" data-delay="50"
@@ -15,10 +15,12 @@
                                             </span>
                                     </a>
                                 </li>
-                                <li class="tab col s4"><a href="#members" switchTab>Membres</a></li>
-                                <li class="tab col s4 "><a href="#blog" switchTab>Blog</a></li>
+                                <li class="tab col s3"><a href="#members" switchTab>Membres</a></li>
+                                <li class="tab col s3 "><a href="#blog" switchTab>Blog</a></li>
+                                <li class="tab col s3 "><a href="#administry" switchTab>Administration</a></li>
                             {{else}}
-                                <li class="tab col s12"><a href="#members" switchTab>Membres</a></li>
+                                <li class="tab col s6"><a href="#members" switchTab>Membres</a></li>
+                                <li class="tab col s6 "><a href="#administry" switchTab>Administration</a></li>
                             {{/if}}
                         </ul>
                     </div>
@@ -39,16 +41,28 @@
                         }}
                     {{/if}}
                 </div>
-                <div id="members" class="col s12 no-padding">{{#if eq currentTab
-                                                                   "members"}}
+                <div id="members" class="col s12 no-padding">
+                    {{#if eq currentTab "members"}}
                     {{>members project}}
                 {{/if}}
                 </div>
+                <div id="administry" class="col s12 no-padding">
+                    {{#if eq currentTab "administry"}}
+                        {{>administry project=project
+                                isAdmin=isAdmin}}
+                    {{/if}}
+                </div>
             {{else}}
-                <div id="members" class="col s12 no-padding">{{#if eq currentTab
-                                                                   "members"}}
+                <div id="members" class="col s12 no-padding">
+                    {{#if eq currentTab "members"}}
                     {{>members project}}
                 {{/if}}
+                </div>
+                <div id="administry" class="col s12 no-padding">
+                    {{#if eq currentTab "administry"}}
+                        {{>administry project=project
+                        isAdmin=isAdmin}}
+                    {{/if}}
                 </div>
             {{/if}}
         </div>

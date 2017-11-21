@@ -69,27 +69,12 @@ arborescenceStructure = function () {
             id: "message",
             name: "Messagerie",
             color: "teal",
+            path: 'messages',
             image: "message_icon.png",
             notifications : function () {
                 return notifications("message")
             },
-            subMenu: [
-                {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
-                },
-                {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
-                },
-                {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
-                },
-            ]
+            subMenu: false
         },
         {
             id: "agenda",
@@ -101,19 +86,16 @@ arborescenceStructure = function () {
             },
             subMenu: [
                 {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
+                    id: "selfCalendar",
+                    name: "Agenda",
+                    path: "selfCalendar",
+                    icon: "perm_contact_calendar"
                 },
                 {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
-                },
-                {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
+                    id: "selfTodo",
+                    name: "Liste des taches",
+                    path: "selfTodo",
+                    icon:"assignment_turned_in"
                 },
             ]
         },

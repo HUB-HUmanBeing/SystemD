@@ -80,18 +80,17 @@ Template.miniature.helpers({
     }
 });
 
+
 Template.miniature.events({
-    //add your events here
+
     'mouseenter [showCategories]' : function (event, instance) {
 
         Meteor.setTimeout(()=>{
             if($(event.currentTarget).is(':hover')){
                 instance.showCategories.set(true)
-                $(event.currentTarget).css('z-index','2000')
+                $(event.currentTarget).css('z-index','1000')
             }
-
         },350)
-
     },
     'mouseleave [showCategories]' : function (event, instance) {
         instance.showCategories.set(false)
