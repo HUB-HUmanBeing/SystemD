@@ -1,0 +1,25 @@
+<template name="moderation">
+    <div class="row no-margin" id="userMainPage">
+        <div class="col s12 no-padding">
+            <div class="row dark-grey relative {{#if isDesktop}}valign-wrapper{{/if}}">
+                {{>contextualMenuTitle
+                        title="Modération Horizontale"
+                        color = "amber"
+                        contextualHomepage = "moderation"
+                        imgUrl = currentUser.profile.imgUrl
+                }}
+            </div>
+        </div>
+        <div class="col s12 xl8 offset-xl2">
+            <div class="row">
+                <div class="col m8 offset-m2">
+                    {{>workInProgress
+                            content="d'offire à l'utilisateur la posibilité de visualiser les prodedures de modération en cours, de voter sur les diffrents opposant des utilisateurs entre eux ou des utilisateurs en conflict avec des projets"
+                            info="tout le monde pourra participer a tout les votes, mais chaun pourra aussi selectionner des criteres particuliers pour n'afficher que les procedures auxquelles il souhaitera participer"}}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>

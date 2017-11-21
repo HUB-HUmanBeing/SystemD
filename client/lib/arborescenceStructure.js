@@ -104,48 +104,22 @@ arborescenceStructure = function () {
             name: "Partage",
             color: "deep-purple",
             image: "sharing_icon.png",
+            path: "sharing",
             notifications : function () {
                 return notifications("sharing")
             },
-            subMenu: [
-                {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
-                },
-                {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
-                },
-
-            ]
+            subMenu: false
         },
         {
             id: "moderation",
             name: "Modération",
             color: "amber",
             image: "moderation_icon.png",
+            path: "moderation",
             notifications : function () {
                 return notifications("moderation")
             },
-            subMenu: [
-                {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
-                },
-                {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
-                },
-                {
-                    id: "lorem",
-                    name: "lorem",
-                    path: "workInProgress"
-                },
-            ]
+            subMenu: false
         }
     ]
 };
