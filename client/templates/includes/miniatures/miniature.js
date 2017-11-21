@@ -5,7 +5,7 @@ Template.miniature.helpers({
     //add you helpers here
     //helper permettant de renvoyer la couleur du helpeur a afficher
     color: function () {
-      let type = Template.currentData().type
+        let type = Template.currentData().type
         if (type === "project") {
             return "orange"
         } else if (type === "user") {
@@ -16,7 +16,7 @@ Template.miniature.helpers({
     imgUrl: function () {
         //on ne l'execute que si les données sont chargées dans les réactivevar
         if (Template.instance().project.get() || Template.instance().user.get()) {
-          let type = Template.currentData().type
+            let type = Template.currentData().type
             if (type === "project") {
                 let url = Template.instance().project.get().publicInfo.imgUrl;
                 //si c'est pas l'image par défault, on fais une requete de miniature vers l'api d'imgur
@@ -44,7 +44,7 @@ Template.miniature.helpers({
     name: function () {
         //si le chargement est terminé, on renvoie le nom en fonction du type
         if (Template.instance().project.get() || Template.instance().user.get()) {
-          let type = Template.currentData().type
+            let type = Template.currentData().type
             if (type === "project") {
                 return Template.instance().project.get().name
             } else if (type === "user") {
@@ -57,23 +57,52 @@ Template.miniature.helpers({
     //lien vers la main page du projet ou de l'user en fonction du type
     path: function () {
         if (Template.instance().project.get() || Template.instance().user.get()) {
-          let type = Template.currentData().type
+            let type = Template.currentData().type
             if (type === "project") {
-              return Router.path('projectMainPage', {_id: Template.currentData()._id})
+                return Router.path('projectMainPage', {_id: Template.currentData()._id})
             } else if (type === "user") {
-              return Router.path('userMainPage', {_id: Template.currentData()._id})
+                return Router.path('userMainPage', {_id: Template.currentData()._id})
             }
         }
+    },
+    categories : function () {
+        if (Template.instance().project.get() || Template.instance().user.get()) {
+            let type = Template.currentData().type
+            if (type === "project") {
+                return Template.instance().project.get().publicInfo.categories
+            } else if (type === "user") {
+                return Template.instance().user.get().profile.categories
+            }
+        }
+    },
+    showCategories : function () {
+        return Template.instance().showCategories.get()
     }
 });
 
 Template.miniature.events({
     //add your events here
+    'mouseenter [showCategories]' : function (event, instance) {
+
+        Meteor.setTimeout(()=>{
+            if($(event.currentTarget).is(':hover')){
+                instance.showCategories.set(true)
+                $(event.currentTarget).css('z-index','2000')
+            }
+
+        },350)
+
+    },
+    'mouseleave [showCategories]' : function (event, instance) {
+        instance.showCategories.set(false)
+        $(event.currentTarget).css('z-index','100')
+    },
 });
 
 //à la création du template,
 //on doit récupérer les info complémentaire pour afficher correctement notre vignette
 Template.miniature.onCreated(function () {
+    this.showCategories = new ReactiveVar(false)
     Tracker.autorun(() => {
 
 

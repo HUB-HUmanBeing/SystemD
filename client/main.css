@@ -264,13 +264,23 @@ input:-webkit-autofill {
 .miniature{
     margin: 5px 0 ;
 }
-.miniature img{
+.miniature a img{
 
     height: 2.5em !important;
     vertical-align: middle !important;
 }
 .miniature span{
     position: relative;
+    vertical-align: middle !important;
+}
+.miniature-category-container{
+
+    padding: 7px !important;
+    border-radius: 3em !important;
+    background-color: rgba(20, 20, 20, 0.71);
+}
+.miniature-category img{
+    height: 3em !important;
     vertical-align: middle !important;
 }
 .text-shadow{
