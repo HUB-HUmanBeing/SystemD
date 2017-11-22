@@ -5,7 +5,7 @@
         </div>
         <div class="col s12 xl8 offset-xl2">
             <div class="row">
-                <div class="col s12 m3">
+                <div class="col s12 m4 xl3">
                     <div class="row">
                         <div class="col s12 no-padding">
                             <div class="card trame-box ">
@@ -25,18 +25,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="categories">
                         <div class="col s12 ">
-                            <div class="card trame-box">
-                                <div class="card-content">
-                                    <span class="card-title">Compétences</span>
-                                    {{>workInProgress content= "de visualiser les compétences de l'utilisateur"}}
+                            {{#if user.profile.categories.length }}
+                                <div class="row center-align" style="margin: 0 0 -7px 0">
+                                    {{#each category in user.profile.categories}}
+                                        <span class="categories-list" >
+                                            {{>categoryItem id= category}}
+                                        </span>
+                                    {{/each}}
                                 </div>
-                            </div>
+
+                            {{else}}
+                                <i class="small-info">Centres d'interets non renseignés</i>
+                            {{/if}}
                         </div>
                     </div>
+
                 </div>
-                <div class="col s12 m9 no-padding">
+                <div class="col s12 m8 xl9 no-padding">
 
                     <div class="row" id="description">
                         <div class="col s12 ">
@@ -54,20 +61,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" id="categories">
+                    <div class="row">
                         <div class="col s12 ">
-                            {{#if user.profile.categories.length }}
-                                <div class="row center-align" style="margin: 0 0 -7px 0">
-                                    {{#each category in user.profile.categories}}
-                                    <span class="categories-list" >
-                                        {{>categoryItem id= category}}
-                                    </span>
-                                    {{/each}}
+                            <div class="card trame-box">
+                                <div class="card-content">
+                                    <span class="card-title">Compétences</span>
+                                    {{>showCompetences competences= user.profile.competences}}
                                 </div>
-
-                            {{else}}
-                                <i class="small-info">Centres d'interets non renseignés</i>
-                            {{/if}}
+                            </div>
                         </div>
                     </div>
                     <div class="row">

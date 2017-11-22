@@ -1,0 +1,44 @@
+<template name="editCompetences">
+    <div class="row no-margin" id="editCategories">
+        {{#if isEditing}}
+            {{#if isEdited}}
+                <a href="#" class="btn-floating top-right-btn dark-grey  waves-effect waves-light " saveCategoriesBtn>
+                    <i class="material-icons green-text tooltipped"
+                       data-position="bottom" data-delay="50"
+                       data-tooltip="enregister">file_download</i>
+                </a>
+            {{else}}
+                <a class="btn-floating dark-grey top-right-btn waves-effect waves-light" editCategoriesBtn>
+                    <i class="material-icons">close</i>
+                </a>
+            {{/if}}
+        {{else}}
+            <a href="#" class="btn-floating top-right-btn dark-grey  waves-effect waves-light " editCategoriesBtn>
+                <i class="material-icons tooltipped "
+                   data-position="bottom" data-delay="50"
+                   data-tooltip="éditer">mode_edit</i>
+            </a>
+        {{/if}}
+        {{#unless isEditing}}
+            {{#if hydratedCompetences.length}}
+                {{#each competence in hydratedCompetences}}
+                    <div class="chip">
+                        {{competence.frenchName}}
+                    </div>
+                {{/each}}
+            {{else}}
+                <i class="small-info">Compétences non renseignées</i>
+            {{/if}}
+        {{else}}
+            <div class="chips">
+            </div>
+
+        {{/unless}}
+
+    </div>
+    {{#if isEditing}}
+    {{>infoBubble
+            position="bottomLeft"
+            content ="Vos Co"}}
+{{/if}}
+</template>

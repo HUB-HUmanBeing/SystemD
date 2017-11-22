@@ -6,6 +6,7 @@ import Posts from '/lib/collections/Posts'
 import Post from '/imports/classes/Post'
 import PostComments from '/lib/collections/PostComments'
 import PostComment from '/imports/classes/PostComment'
+import Competences from "../../lib/collections/Competences";
 
 
 /****************************************
@@ -54,16 +55,26 @@ import PostComment from '/imports/classes/PostComment'
                     createdUser.profile.description = Fixtures.getRandom("lorems");
                     createdUser.profile.location = Fixtures.getRandom("locations");
                     //chaque user receoit entre 0 et 10 categories aléatoires
-                    let nbOhCategories = Math.floor(Math.random()*10)
+                    let nbOfCategories = Math.floor(Math.random()*10)
+                    //ajout d'un nombre aléatoire de centre d'interet
                     let categories = [];
-                    for(let i = 0; i<nbOhCategories; i++){
+                    for(let i = 0; i<nbOfCategories; i++){
                        let newCategory=Math.floor(Math.random()*20)
                         if(!categories.includes(newCategory)){
                             categories.push(newCategory)
                         }
-
                     }
                     createdUser.profile.categories = categories;
+                    //ajout d'un nombre aléatoire de compétences
+                    let nbOfCompetences = Math.floor(Math.random()*10)
+                    let competences = [];
+                    let totalCompetences= Competences.find({}).count()
+                    for(let i = 0; i<nbOfCompetences; i++){
+                        let newCompetence=Math.floor(Math.random()*totalCompetences)
+                       competences.push(newCompetence)
+                    }
+                    createdUser.profile.competences = competences;
+
                     //on sauvegarde,
                     createdUser.save(function (err) {
                         //dans le callback

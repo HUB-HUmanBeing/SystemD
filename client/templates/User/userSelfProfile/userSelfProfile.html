@@ -53,6 +53,16 @@
 
                         </div>
                         <div class="col s12 m8 ">
+                            <div class="row ">
+                                <div class="col s12 ">
+                                    <div class="card trame-box">
+                                        <div class="card-content">
+                                            <span class="card-title">Modifier mes compétences</span>
+                                            {{>editCompetences}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col s12">
                                     <div class="card trame-box relative">
@@ -73,21 +83,10 @@
                                             {{>editCategories owner = user}}
                                         </div>
                                     </div>
-                                    {{>infoBubble
-                                            position="bottomLeft"
-                                            content ="Vos centres d'interets permettent aux utilisateurs et aux projets de pouvoir effectuer des recherches ciblébées et de visualiser plus simplement votre profil"}}
+
                                 </div>
                             </div>
-                            <div class="row ">
-                                <div class="col s12 ">
-                                    <div class="card trame-box">
-                                        <div class="card-content">
-                                            <span class="card-title">Modifier mes compétences</span>
-                                            {{>workInProgress content="d'ajouter et d'editer ses comptences"}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 

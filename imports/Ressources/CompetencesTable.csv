@@ -1,0 +1,514 @@
+A,,,"AGRICULTURE ET PÊCHE, ESPACES NATURELS ET ESPACES VERTS, SOINS AUX ANIMAUX"
+A,11,,Engins agricoles et forestiers
+A,11,01,Conduite d'engins agricoles et forestiers
+A,12,,Espaces naturels et espaces verts
+A,12,01,Bûcheronnage et élagage
+A,12,02,Entretien des espaces naturels
+A,12,03,Entretien des espaces verts
+A,12,04,Protection du patrimoine naturel
+A,12,05,Sylviculture
+A,13,,Etudes et assistance technique
+A,13,01,Conseil et assistance technique en agriculture
+A,13,02,Contrôle et diagnostic technique en agriculture
+A,13,03,Ingénierie en agriculture et environnement naturel
+A,14,,Production
+A,14,01,Aide agricole de production fruitière ou viticole
+A,14,02,Aide agricole de production légumière ou végétale
+A,14,03,Aide d'élevage agricole et aquacole
+A,14,04,Aquaculture
+A,14,05,Arboriculture et viticulture
+A,14,06,Encadrement équipage de la pêche
+A,14,07,Élevage bovin ou équin
+A,14,08,Élevage d'animaux sauvages ou de compagnie
+A,14,09,Élevage de lapins et volailles
+A,14,10,Élevage ovin ou caprin
+A,14,11,Élevage porcin
+A,14,12,Fabrication et affinage de fromages
+A,14,13,Fermentation de boissons alcoolisées
+A,14,14,Horticulture et maraîchage
+A,14,15,Equipage de la pêche
+A,14,16,"Polyculture, élevage"
+A,14,17,Saliculture
+A,15,,Soins aux animaux
+A,15,01,Aide aux soins animaux
+A,15,02,Podologie animale
+A,15,03,Toilettage des animaux
+A,15,04,Santé animale
+B,,,ARTS ET FACONNAGE D'OUVRAGES D'ART
+B,11,,Arts plastiques
+B,11,01,Création en arts plastiques
+B,12,,Céramique
+B,12,01,Réalisation d'objets décoratifs et utilitaires en céramique et matériaux de synthèse
+B,13,,Décoration
+B,13,01,Décoration d'espaces de vente et d'exposition
+B,13,02,Décoration d'objets d'art et artisanaux
+B,13,03,Gravure - ciselure
+B,14,,Fibres et papier
+B,14,01,"Réalisation d'objets en lianes, fibres et brins végétaux"
+B,14,02,Reliure et restauration de livres et archives
+B,15,,Instruments de musique
+B,15,01,Fabrication et réparation d'instruments de musique
+B,16,,"Métal, verre, bijouterie et horlogerie"
+B,16,01,Métallerie d'art
+B,16,02,Réalisation d'objets artistiques et fonctionnels en verre
+B,16,03,"Réalisation d'ouvrages en bijouterie, joaillerie et orfèvrerie"
+B,16,04,Réparation - montage en systèmes horlogers
+B,17,,Taxidermie
+B,17,01,Conservation et reconstitution d'espèces animales
+B,18,,Tissu et cuirs
+B,18,01,Réalisation d'articles de chapellerie
+B,18,02,Réalisation d'articles en cuir et matériaux souples (hors vêtement)
+B,18,03,Réalisation de vêtements sur mesure ou en petite série
+B,18,04,Réalisation d'ouvrages d'art en fils
+B,18,05,Stylisme
+B,18,06,Tapisserie - décoration en ameublement
+D,,,"COMMERCE, VENTE ET GRANDE DISTRIBUTION"
+D,11,,Commerce alimentaire et métiers de bouche
+D,11,01,Boucherie
+D,11,02,Boulangerie - viennoiserie
+D,11,03,Charcuterie - traiteur
+D,11,04,"Pâtisserie, confiserie, chocolaterie et glacerie"
+D,11,05,Poissonnerie
+D,11,06,Vente en alimentation
+D,12,02,Coiffure
+D,12,03,Hydrothérapie
+D,12,04,Location de véhicules ou de matériel de loisirs
+D,12,05,Nettoyage d'articles textiles ou cuirs
+D,12,06,Réparation d'articles en cuir et matériaux souples
+D,12,07,Retouches en habillement
+D,12,08,Soins esthétiques et corporels
+E,,,"COMMUNICATION, MEDIA ET MULTIMEDIA"
+E,11,,Edition et communication
+E,11,01,Animation de site multimédia
+E,11,02,"Ecriture d'ouvrages, de livres"
+E,11,03,Communication
+E,11,04,Conception de contenus multimédias
+E,11,05,Coordination d'édition
+E,11,06,Journalisme et information média
+E,11,07,Organisation d'évènementiel
+E,11,08,"Traduction, interprétariat"
+E,12,,Images et sons
+E,12,01,Photographie
+E,12,02,Production en laboratoire cinématographique
+E,12,03,Production en laboratoire photographique
+E,12,04,Projection cinéma
+E,12,05,Réalisation de contenus multimédias
+E,13,,Industries graphiques
+E,13,01,Conduite de machines d'impression
+E,13,02,Conduite de machines de façonnage routage
+E,13,03,Encadrement des industries graphiques
+E,13,04,Façonnage et routage
+E,13,05,Préparation et correction en édition et presse
+E,13,06,Prépresse
+E,13,07,Reprographie
+E,13,08,Intervention technique en industrie graphique
+E,14,,Publicité
+E,14,01,Développement et promotion publicitaire
+E,14,02,Élaboration de plan média
+F,,,"CONSTRUCTION, BÂTIMENT ET TRAVAUX PUBLICS"
+F,11,,Conception et études
+F,11,01,Architecture du BTP
+F,11,02,Conception - aménagement d'espaces intérieurs
+F,11,03,Contrôle et diagnostic technique du bâtiment
+F,11,04,Dessin BTP
+F,11,05,Études géologiques
+F,11,06,Ingénierie et études du BTP
+F,11,07,Mesures topographiques
+F,11,08,Métré de la construction
+F,12,,Conduite et encadrement de chantier - travaux
+F,12,01,Conduite de travaux du BTP
+F,12,02,Direction de chantier du BTP
+F,12,03,Direction et ingénierie d'exploitation de gisements et de carrières
+F,12,04,Sécurité et protection santé du BTP
+F,13,,Engins de chantier
+F,13,01,Conduite de grue
+F,13,02,Conduite d'engins de terrassement et de carrière
+F,14,,Extraction
+F,14,01,Extraction liquide et gazeuse
+F,14,02,Extraction solide
+F,15,,Montage de structures
+F,15,01,Montage de structures et de charpentes bois
+F,15,02,Montage de structures métalliques
+F,15,03,Réalisation - installation d'ossatures bois
+F,16,,Second oeuvre
+F,16,01,"Application et décoration en plâtre, stuc et staff"
+F,16,02,Électricité bâtiment
+F,16,03,Installation d'équipements sanitaires et thermiques
+F,16,04,Montage d'agencements
+F,16,05,Montage de réseaux électriques et télécoms
+F,16,06,Peinture en bâtiment
+F,16,07,Pose de fermetures menuisées
+F,16,08,Pose de revêtements rigides
+F,16,09,Pose de revêtements souples
+F,16,10,Pose et restauration de couvertures
+F,16,11,Réalisation et restauration de façades
+F,16,12,Taille et décoration de pierres
+F,16,13,Travaux d'étanchéité et d'isolation
+F,17,,Travaux et gros oeuvre
+F,17,01,Construction en béton
+F,17,02,Construction de routes et voies
+F,17,03,Maçonnerie
+F,17,04,Préparation du gros oeuvre et des travaux publics
+F,17,05,Pose de canalisations
+F,17,06,Préfabrication en béton industriel
+G,,,HÔTELLERIE- RESTAURATION TOURISME LOISIRS ET ANIMATION
+G,11,,Accueil et promotion touristique
+G,11,01,Accueil touristique
+G,11,02,Promotion du tourisme local
+G,12,,Animation d'activités de loisirs
+G,12,01,"Accompagnement de voyages, d'activités culturelles ou sportives"
+G,12,02,Animation d'activités culturelles ou ludiques
+G,12,03,Animation de loisirs auprès d'enfants ou d'adolescents
+G,12,04,Éducation en activités sportives
+G,16,,Production culinaire
+G,16,01,Management du personnel de cuisine
+G,16,02,Personnel de cuisine
+G,16,04,Fabrication de crêpes ou pizzas
+G,16,05,Plonge en restauration
+G,17,03,Réception en hôtellerie
+G,18,,Service
+G,18,01,"Café, bar brasserie"
+G,18,02,Management du service en restauration
+G,18,03,Service en restauration
+G,18,04,Sommellerie
+H,,,INDUSTRIE
+H,1,,Etudes et supports techniques à l'industrie
+H,12,,"Conception, recherche, études et développement"
+H,12,01,Expertise technique couleur en industrie
+H,12,02,Conception et dessin de produits électriques et électroniques
+H,12,03,Conception et dessin produits mécaniques
+H,12,04,Design industriel
+H,12,05,Études - modèles en industrie des matériaux souples
+H,12,06,"Management et ingénierie études, recherche et développement industriel"
+H,12,07,Rédaction technique
+H,12,08,Intervention technique en études et conception en automatisme
+H,12,09,Intervention technique en études et développement électronique
+H,12,10,"Intervention technique en études, recherche et développement"
+H,13,,Hygiène Sécurité Environnement -HSE- industriels
+H,13,01,Inspection de conformité
+H,13,02,Management et ingénierie Hygiène Sécurité Environnement -HSE- industriels
+H,13,03,Intervention technique en Hygiène Sécurité Environnement -HSE- industriel
+H,14,,Méthodes et gestion industrielles
+H,14,01,Management et ingénierie gestion industrielle et logistique
+H,14,02,Management et ingénierie méthodes et industrialisation
+H,14,03,Intervention technique en gestion industrielle et logistique
+H,14,04,Intervention technique en méthodes et industrialisation
+H,15,,Qualité et analyses industrielles
+H,15,01,Direction de laboratoire d'analyse industrielle
+H,15,02,Management et ingénierie qualité industrielle
+H,15,03,Intervention technique en laboratoire d'analyse industrielle
+H,15,04,Intervention technique en contrôle essai qualité en électricité et électronique
+H,15,05,Intervention technique en formulation et analyse sensorielle
+H,15,06,Intervention technique qualité en mécanique et travail des métaux
+H,2,,Production industrielle
+H,21,,Alimentaire
+H,21,01,Abattage et découpe des viandes
+H,21,02,Conduite d'équipement de production alimentaire
+H,22,,Bois
+H,22,01,Assemblage d'ouvrages en bois
+H,22,02,Conduite d'équipement de fabrication de l'ameublement et du bois
+H,22,03,Conduite d'installation de production de panneaux bois
+H,22,04,Encadrement des industries de l'ameublement et du bois
+H,22,05,Première transformation de bois d'oeuvre
+H,22,06,Réalisation de menuiserie bois et tonnellerie
+H,22,07,Réalisation de meubles en bois
+H,22,08,Réalisation d'ouvrages décoratifs en bois
+H,22,09,Intervention technique en ameublement et bois
+H,23,,Chimie et pharmacie
+H,23,01,Conduite d'équipement de production chimique ou pharmaceutique
+H,24,,Cuir et textile
+H,24,01,"Assemblage - montage d'articles en cuirs, peaux"
+H,24,02,Assemblage - montage de vêtements et produits textiles
+H,24,03,Conduite de machine de fabrication de produits textiles
+H,24,04,Conduite de machine de production et transformation des fils
+H,24,05,Conduite de machine de textiles nontissés
+H,24,06,Conduite de machine de traitement textile
+H,24,07,Conduite de machine de transformation et de finition des cuirs et peaux
+H,24,08,Conduite de machine d'impression textile
+H,24,09,"Coupe cuir, textile et matériaux souples"
+H,24,10,"Mise en forme, repassage et finitions en industrie textile"
+H,24,11,Montage de prototype cuir et matériaux souples
+H,24,12,Patronnage - gradation
+H,24,13,"Préparation de fils, montage de métiers textiles"
+H,24,14,Préparation et finition d'articles en cuir et matériaux souples
+H,24,15,Contrôle en industrie du cuir et du textile
+H,25,,"Direction, encadrement et pilotage de fabrication et production industrielles"
+H,25,01,Encadrement de production de matériel électrique et électronique
+H,25,02,Management et ingénierie de production
+H,25,03,Pilotage d'unité élémentaire de production mécanique ou de travail des métaux
+H,25,04,Encadrement d'équipe en industrie de transformation
+H,25,05,Encadrement d'équipe ou d'atelier en matériaux souples
+H,26,,Electronique et électricité
+H,26,01,Bobinage électrique
+H,26,02,Câblage électrique et électromécanique
+H,26,03,"Conduite d'installation automatisée de production électrique, électronique et microélectronique"
+H,26,04,Montage de produits électriques et électroniques
+H,26,05,Montage et câblage électronique
+H,27,,Energie
+H,27,01,Pilotage d'installation énergétique et pétrochimique
+H,28,,"Matériaux de construction, céramique et verre"
+H,28,01,Conduite d'équipement de transformation du verre
+H,28,02,Conduite d'installation de production de matériaux de construction
+H,28,03,Façonnage et émaillage en industrie céramique
+H,28,04,"Pilotage de centrale à béton prêt à l'emploi, ciment, enrobés et granulats"
+H,28,05,Pilotage d'installation de production verrière
+H,29,,"Mécanique, travail des métaux et outillage"
+H,29,01,Ajustement et montage de fabrication
+H,29,02,Chaudronnerie - tôlerie
+H,29,03,Conduite d'équipement d'usinage
+H,29,04,Conduite d'équipement de déformation des métaux
+H,29,05,Conduite d'équipement de formage et découpage des matériaux
+H,29,06,Conduite d'installation automatisée ou robotisée de fabrication mécanique
+H,29,07,Conduite d'installation de production des métaux
+H,29,08,Modelage de matériaux non métalliques
+H,29,09,Montage-assemblage mécanique
+H,29,10,Moulage sable
+H,29,11,Réalisation de structures métalliques
+H,29,12,Réglage d'équipement de production industrielle
+H,29,13,Soudage manuel
+H,29,14,Réalisation et montage en tuyauterie
+H,31,,Papier et carton
+H,31,01,Conduite d'équipement de fabrication de papier ou de carton
+H,31,02,Conduite d'installation de pâte à papier
+H,32,,"Plastique, caoutchouc"
+H,32,01,Conduite d'équipement de formage des plastiques et caoutchoucs
+H,32,02,Réglage d'équipement de formage des plastiques et caoutchoucs
+H,32,03,Fabrication de pièces en matériaux composites
+H,33,,Préparation et conditionnement
+H,33,01,Conduite d'équipement de conditionnement
+H,33,02,"Opérations manuelles d'assemblage, tri ou emballage"
+H,33,03,"Préparation de matières et produits industriels (broyage, mélange, ...)"
+H,34,,Traitements thermiques et traitements de surfaces
+H,34,01,Conduite de traitement d'abrasion de surface
+H,34,02,Conduite de traitement par dépôt de surface
+H,34,03,Conduite de traitement thermique
+H,34,04,Peinture industrielle
+I,,,INSTALLATION ET MAINTENANCE
+I,11,,Encadrement
+I,11,01,Direction et ingénierie en entretien infrastructure et bâti
+I,11,02,Management et ingénierie de maintenance industrielle
+I,11,03,Supervision d'entretien et gestion de véhicules
+I,12,,Entretien technique
+I,12,01,Entretien d'affichage et mobilier urbain
+I,12,02,Entretien et surveillance du tracé routier
+I,12,03,Maintenance des bâtiments et des locaux
+I,13,,"Equipements de production, équipements collectifs"
+I,13,01,Installation et maintenance d'ascenseurs
+I,13,02,Installation et maintenance d'automatismes
+I,13,03,Installation et maintenance de distributeurs automatiques
+I,13,04,Installation et maintenance d'équipements industriels et d'exploitation
+I,13,05,Installation et maintenance électronique
+I,13,06,"Installation et maintenance en froid, conditionnement d'air"
+I,13,07,Installation et maintenance télécoms et courants faibles
+I,13,08,Maintenance d'installation de chauffage
+I,13,09,Maintenance électrique
+I,13,10,Maintenance mécanique industrielle
+I,14,,Equipements domestiques et informatique
+I,14,01,Maintenance informatique et bureautique
+I,14,02,Réparation de biens électrodomestiques
+I,15,,Travaux d'accès difficile
+I,15,01,Intervention en grande hauteur
+I,15,02,Intervention en milieu subaquatique
+I,15,03,Intervention en milieux et produits nocifs
+I,16,,"Véhicules, engins, aéronefs"
+I,16,01,Installation et maintenance en nautisme
+I,16,02,Maintenance d'aéronefs
+I,16,03,"Maintenance d'engins de chantier, levage, manutention et de machines agricoles"
+I,16,04,Mécanique automobile et entretien de véhicules
+I,16,05,Mécanique de marine
+I,16,06,Réparation de carrosserie
+I,16,07,"Réparation de cycles, motocycles et motoculteurs de loisirs"
+J,,,SANTE
+J,11,,Praticiens médicaux
+J,11,01,Médecine de prévention
+J,11,02,Médecine généraliste et spécialisée
+J,11,03,Médecine dentaire
+J,11,04,Suivi de la grossesse et de l'accouchement
+J,12,,Praticiens médico-techniques
+J,12,01,Biologie médicale
+J,12,02,Pharmacie
+J,13,,Professionnels médico-techniques
+J,13,01,Personnel polyvalent des services hospitaliers
+J,13,02,Analyses médicales
+J,13,03,Assistance médico-technique
+J,13,04,Aide en puériculture
+J,13,05,Conduite de véhicules sanitaires
+J,13,06,Imagerie médicale
+J,13,07,Préparation en pharmacie
+J,14,,Rééducation et appareillage
+J,14,01,Audioprothèses
+J,14,02,Diététique
+J,14,03,Ergothérapie
+J,14,04,Kinésithérapie
+J,14,05,Optique - lunetterie
+J,14,06,Orthophonie
+J,14,07,Orthoptique
+J,14,08,Ostéopathie et chiropraxie
+J,14,09,Pédicurie et podologie
+J,14,10,Prothèses dentaires
+J,14,11,Prothèses et orthèses
+J,14,12,Rééducation en psychomotricité
+J,15,,Soins paramédicaux
+J,15,01,"Soins d'hygiène, de confort du patient"
+J,15,02,Coordination de services médicaux ou paramédicaux
+J,15,03,Soins infirmiers spécialisés en anesthésie
+J,15,04,Soins infirmiers spécialisés en bloc opératoire
+J,15,05,Soins infirmiers spécialisés en prévention
+J,15,06,Soins infirmiers généralistes
+J,15,07,Soins infirmiers spécialisés en puériculture
+K,,,SERVICES A LA PERSONNE ET A LA COLLECTIVITE
+K,11,,Accompagnement de la personne
+K,11,01,Accompagnement et médiation familiale
+K,11,02,Aide aux bénéficiaires d'une mesure de protection juridique
+K,11,03,Développement personnel et bien-être de la personne
+K,11,04,Psychologie
+K,12,,"Action sociale, socio-éducative et socio-culturelle"
+K,12,01,Action sociale
+K,12,02,Éducation de jeunes enfants
+K,12,03,Encadrement technique en insertion professionnelle
+K,12,04,Médiation sociale et facilitation de la vie en société
+K,12,05,Information sociale
+K,12,06,Intervention socioculturelle
+K,12,07,Intervention socioéducative
+K,13,,Aide à la vie quotidienne
+K,13,01,Accompagnement médicosocial
+K,13,02,Assistance auprès d'adultes
+K,13,03,Assistance auprès d'enfants
+K,13,04,Services domestiques
+K,13,05,Intervention sociale et familiale
+K,14,,Conception et mise en oeuvre des politiques publiques
+K,14,02,Conseil en Santé Publique
+K,14,03,"Management de structure de santé, sociale ou pénitentiaire"
+K,16,,Culture et gestion documentaire
+K,16,01,Gestion de l'information et de la documentation
+K,16,02,Gestion de patrimoine culturel
+K,17,05,Sécurité civile et secours
+K,18,02,Développement local
+K,19,03,Défense et conseil juridique
+K,19,04,Magistrature
+K,21,02,Coordination pédagogique
+K,21,04,Éducation et surveillance au sein d'établissements d'enseignement
+K,21,05,Enseignement artistique
+K,21,06,Enseignement des écoles
+K,21,07,Enseignement général du second degré
+K,21,08,Enseignement supérieur
+K,21,09,Enseignement technique et professionnel
+K,21,10,Formation en conduite de véhicules
+K,21,11,Formation professionnelle
+K,21,12,Orientation scolaire et professionnelle
+K,22,,Nettoyage et propreté industriels
+K,22,01,Blanchisserie industrielle
+K,22,02,Lavage de vitres
+K,22,03,Management et inspection en propreté de locaux
+K,22,04,Nettoyage de locaux
+K,23,,Propreté et environnement urbain
+K,23,01,Distribution et assainissement d'eau
+K,23,02,Management et inspection en environnement urbain
+K,23,03,Nettoyage des espaces urbains
+K,23,04,Revalorisation de produits industriels
+K,23,05,Salubrité et traitement de nuisibles
+K,23,06,Supervision d'exploitation éco-industrielle
+K,24,,Recherche
+K,24,01,Recherche en sciences de l'homme et de la société
+K,24,02,"Recherche en sciences de l'univers, de la matière et du vivant"
+K,25,,Sécurité privée
+K,25,01,Gardiennage de locaux
+K,25,02,Management de sécurité privée
+K,25,03,Sécurité et surveillance privées
+K,26,,Services funéraires
+K,26,01,Conduite d'opérations funéraires
+K,26,02,Conseil en services funéraires
+K,26,03,Thanatopraxie
+L,,,SPECTACLE
+L,11,,Animation de spectacles
+L,11,01,Animation musicale et scénique
+L,11,02,Mannequinat et pose artistique
+L,11,03,Présentation de spectacles ou d'émissions
+L,12,,Artistes - interprètes du spectacle
+L,12,01,Danse
+L,12,02,Musique et chant
+L,12,03,Art dramatique
+L,12,04,Arts du cirque et arts visuels
+L,13,,Conception et production de spectacles
+L,13,01,Mise en scène de spectacles vivants
+L,13,02,"Production et administration spectacle, cinéma et audiovisuel"
+L,13,03,Promotion d'artistes et de spectacles
+L,13,04,Réalisation cinématographique et audiovisuelle
+L,14,,Sport professionnel
+L,14,01,Sportif professionnel
+L,15,,Techniciens du spectacle
+L,15,01,Coiffure et maquillage spectacle
+L,15,02,Costume et habillage spectacle
+L,15,03,Décor et accessoires spectacle
+L,15,04,Éclairage spectacle
+L,15,05,Image cinématographique et télévisuelle
+L,15,06,Machinerie spectacle
+L,15,07,Montage audiovisuel et post-production
+L,15,08,Prise de son et sonorisation
+L,15,09,Régie générale
+L,15,10,Films d'animation et effets spéciaux
+M,,,SUPPORT AU PROJETS
+M,16,,Secrétariat et assistance
+M,16,01,Accueil et renseignements
+M,16,02,Opérations administratives
+M,16,05,Assistanat technique et administratif
+M,16,06,Saisie de données
+M,16,07,Secrétariat
+M,16,09,Secrétariat et assistanat médical ou médico-social
+M,18,,Systèmes d'information et de télécommunication
+M,18,01,Administration de systèmes d'information
+M,18,02,Expertise et support en systèmes d'information
+M,18,03,Direction des systèmes d'information
+M,18,04,Études et développement de réseaux de télécoms
+M,18,05,Études et développement informatique
+M,18,06,Conseil et maîtrise d'ouvrage en systèmes d'information
+M,18,07,Exploitation de systèmes de communication 
+M,18,09,Information météorologique
+M,18,10,Production et exploitation de systèmes d'information
+N,,,TRANSPORT ET LOGISTIQUE
+N,1,,Logistique
+N,11,,"Magasinage, manutention des charges et déménagement"
+N,11,01,Conduite d'engins de déplacement des charges
+N,11,02,Déménagement
+N,11,03,Magasinage et préparation de commandes
+N,11,04,Manoeuvre et conduite d'engins lourds de manutention
+N,11,05,Manutention manuelle de charges
+N,12,,Organisation de la circulation des ressources
+N,12,01,Affrètement transport
+N,12,02,Gestion des opérations de circulation internationale des ressources
+N,13,,Personnel d'encadrement
+N,13,01,Conception et organisation de la chaîne logistique
+N,13,02,Direction de site logistique
+N,13,03,Intervention technique d'exploitation logistique
+N,2,,Transport aérien et activités aéroportuaires
+N,21,,Personnel navigant du transport aérien
+N,21,02,Pilotage et navigation technique aérienne
+N,22,,Personnel sédentaire du transport aérien
+N,22,01,Personnel d'escale aéroportuaire
+N,22,02,Contrôle de la navigation aérienne
+N,22,03,Exploitation des pistes aéroportuaires
+N,22,04,Préparation des vols
+N,22,05,Direction d'escale et exploitation aéroportuaire
+N,3,,Transport maritime et fluvial et activités portuaires
+N,31,,Personnel navigant du transport maritime et fluvial
+N,31,01,Encadrement de la navigation maritime
+N,31,02,Equipage de la navigation maritime
+N,31,03,Navigation fluviale
+N,32,,Personnel sédentaire du transport maritime et fluvial
+N,32,01,Exploitation des opérations portuaires et du transport maritime
+N,32,02,Exploitation du transport fluvial
+N,32,03,Manutention portuaire
+N,4,,Transport terrestre
+N,41,,Personnel de conduite du transport routier
+N,41,01,Conduite de transport de marchandises sur longue distance
+N,41,02,Conduite de transport de particuliers
+N,41,03,Conduite de transport en commun sur route
+N,41,04,Courses et livraisons express
+N,41,05,Conduite et livraison par tournées sur courte distance
+N,43,,Personnel navigant du transport terrestre
+N,43,01,Conduite sur rails
+N,43,02,Contrôle des transports en commun
+N,44,,Personnel sédentaire du transport ferroviaire et réseau filo guidé
+N,44,01,Circulation du réseau ferré
+N,44,02,Exploitation et manoeuvre des remontées mécaniques
+N,44,03,Manoeuvre du réseau ferré

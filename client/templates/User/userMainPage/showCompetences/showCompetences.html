@@ -1,0 +1,15 @@
+<template name="showCompetences">
+    {{!template de visualisation des compétences d'un utilisateur
+    arguments d'appel :
+    competences = [Number]
+    }}
+    {{#if hydratedCompetences.length}}
+        {{#each competence in hydratedCompetences}}
+            <div class="chip">
+                {{competence.frenchName}}
+            </div>
+        {{/each}}
+    {{else}}
+        <i class="small-info">Compétences non renseignées</i>
+    {{/if}}
+</template>

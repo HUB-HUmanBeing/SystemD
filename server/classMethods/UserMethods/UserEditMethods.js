@@ -11,8 +11,6 @@ User.extend({
                 this.profile[key] = value;
                 return this.save()
             }
-
-
         },
 //changement de la position de l'utilisateur
         updateSelfLocation(lat, lng, city, country) {

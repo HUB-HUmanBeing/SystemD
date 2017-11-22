@@ -2,6 +2,7 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
 import Notification from '/imports/classes/Notification'
+
 // import Project from '/imports/classes/Project'
 
 const UserInvitation = Class.create({
@@ -95,6 +96,12 @@ const Profile = Class.create({
             }
         },
         categories:{
+            type: [Number],
+            default: function () {
+                return [];
+            }
+        },
+        competences:{
             type: [Number],
             default: function () {
                 return [];
