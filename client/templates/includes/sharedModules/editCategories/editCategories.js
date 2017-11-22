@@ -84,7 +84,6 @@ Template.editCategories.events({
                 let category = parseInt(id.split('-')[1]);//on garde que la fin
                 categories.push(category);//on les rentre dans le tableau des catégories a ajouter
             });
-            console.log(categories)
             //puis on appelle la méthode
             instance.owner.callMethod(
                 methodToCall,

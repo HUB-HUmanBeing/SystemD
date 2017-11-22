@@ -91,13 +91,19 @@ const Project = Class.create({
             let fieldsToComplete = [
                 this.publicInfo.description,
                 this.publicInfo.location.lonLat,
-                this.publicInfo.imgUrl
+                this.publicInfo.imgUrl,
+                this.publicInfo.categories
             ];
             //on initialise
             let completed = 0;
             //on incrémente a chaque fois qu'un champs n'est pas invalide
             fieldsToComplete.forEach(function (field) {
-                if (!(field === null || field === undefined || field === "" || field === 0 || field === "/images/icon/project_icon.png")) {
+                if (!(field === null
+                        || field === undefined
+                        || field === ""
+                        || field === 0
+                        || field === "/images/icon/project_icon.png"
+                    ||field.length === 0)) {
                     completed += 1
                 }
             });

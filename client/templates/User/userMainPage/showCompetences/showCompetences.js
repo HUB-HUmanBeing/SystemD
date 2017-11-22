@@ -20,7 +20,7 @@ CompetenceInstance.callMethod('getCompetencesByLanguage', 'french',(err,result)=
     if(!err){
         let hydratedCompetences = []
         result.forEach((competenceItem)=>{
-            if(userCompetences.includes(competenceItem.code)){
+            if(userCompetences.includes(competenceItem.index)){
                 hydratedCompetences.push(competenceItem)
             }
         })

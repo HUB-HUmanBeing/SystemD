@@ -55,7 +55,7 @@ import Competences from "../../lib/collections/Competences";
                     createdUser.profile.description = Fixtures.getRandom("lorems");
                     createdUser.profile.location = Fixtures.getRandom("locations");
                     //chaque user receoit entre 0 et 10 categories aléatoires
-                    let nbOfCategories = Math.floor(Math.random()*10)
+                    let nbOfCategories = Math.floor(Math.random()*9)+2
                     //ajout d'un nombre aléatoire de centre d'interet
                     let categories = [];
                     for(let i = 0; i<nbOfCategories; i++){

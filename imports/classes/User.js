@@ -150,17 +150,21 @@ const User = Class.create({
             let fieldsToComplete = [
                 this.profile.description,
                 this.profile.location.lonLat,
-                this.profile.imgUrl
+                this.profile.imgUrl,
+                this.profile.categories,
+                this.profile.competences
             ];
             //on initialise
             let completed = 0;
             //on incrémente a chaque fois qu'un champs n'est pas invalide
-            _.each(fieldsToComplete, function (field) {
+            fieldsToComplete.forEach((field)=> {
+
                 if (!(
                         field === undefined ||
                         field === "" ||
                         field === 0 ||
-                        field === '/images/icon/user_icon.png')
+                        field === '/images/icon/user_icon.png'||
+                    field.length === 0)
                 ) {
                     completed += 1
                 }

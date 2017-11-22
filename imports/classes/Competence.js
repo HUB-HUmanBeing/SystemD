@@ -8,10 +8,9 @@ const Competence = Class.create({
     name: 'Competence',
     collection: Competences,
     fields: {
-        code: Number,
+        index: Number,
         frenchName: {
             type: String,
-            index: 'text'
         },
         category:{ //nous permettra de classer les compétences dans le
            type: String

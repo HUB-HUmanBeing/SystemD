@@ -375,6 +375,9 @@ input:-webkit-autofill {
     vertical-align: middle !important;
     margin: auto !important;
 }
+.justify{
+    text-align: justify;
+}
 input[type=range]{
     border: none !important;
     background-color: #000000 !important;
@@ -425,8 +428,7 @@ input[type=range]::-ms-thumb {
 }
 
 .autocomplete-content{
-    background-color: rgba(20, 20, 20, 0.64) !important;
-
+    background-color: rgba(20, 20, 20, 0.95) !important;
 }
 .autocomplete-content li *{
     margin:  0 !important;
