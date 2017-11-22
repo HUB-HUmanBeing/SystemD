@@ -1,4 +1,5 @@
 ﻿let CompetenceTableUnformatted = [
+
  {
    "FIELD1": "A",
    "FIELD2": null,
