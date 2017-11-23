@@ -8,25 +8,30 @@ import CompetencesSubCategories from '/lib/collections/CompetencesSubCategories'
  */
 Competence.extend({
     meteorMethods: {
-
+        /************************************
+         * Renvoie un objet avec les compétences et leurs catégories
+         * @param language
+         * @returns {{competences: any, competencesCategories: any, competencesSubCategories: any}}
+         */
         getCompetencesByLanguage(language) {
             check(language, String)
             let fields = {}
             if (language === "french") {
                 fields = {}
             }
-            return Competences.find({}, {fields: fields, sort: {index: 1}}).fetch()
-        },
-        getCompetencesCatByLanguage(language) {
-            check(language, String)
-            let fields = {}
-            if (language === "french") {
-                fields = {}
-            }
             return {
+                competences : Competences.find({}, {fields: fields, sort: {index: 1}}).fetch(),
                 competencesCategories: CompetencesCategories.find({}, {fields: fields, sort: {index: 1}}).fetch(),
                 competencesSubCategories: CompetencesSubCategories.find({}, {fields: fields, sort: {index: 1}}).fetch(),
             }
+        },
+        /**************************************
+         * creation d'une nouvelle compétence
+         */
+        addNewCompetence(){
+            check(Meteor.userId(), String)
+            this.index= Competences.find({}).count()
+            this.save()
         }
     }
 })

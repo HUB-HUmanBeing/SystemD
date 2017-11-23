@@ -427,13 +427,13 @@ input[type=range]::-ms-thumb {
 
 }
 
-.autocomplete-content{
+.dropdown-content{
     background-color: rgba(20, 20, 20, 0.95) !important;
 }
-.autocomplete-content li *{
+.dropdown-content li *{
     margin:  0 !important;
 }
-.autocomplete-content * {
+.dropdown-content * {
    font-size: 0.95em !important;
 }
 .autocomplete-content li:hover, .autocomplete-content .active{

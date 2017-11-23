@@ -19,7 +19,7 @@ Template.showCompetences.onCreated(function () {
 CompetenceInstance.callMethod('getCompetencesByLanguage', 'french',(err,result)=>{
     if(!err){
         let hydratedCompetences = []
-        result.forEach((competenceItem)=>{
+        result.competences.forEach((competenceItem)=>{
             if(userCompetences.includes(competenceItem.index)){
                 hydratedCompetences.push(competenceItem)
             }
