@@ -34,6 +34,7 @@ CompetenceInstance.callMethod('getCompetencesByLanguage', 'french',(err,result)=
         })
         this.hydratedCompetences.set(hydratedCompetences)
         console.log(sortCompetences("french",hydratedCompetences ,this.competencesCategories, this.competencesSubCategories ))
+
     }
 })
 
