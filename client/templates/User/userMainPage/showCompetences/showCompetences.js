@@ -1,7 +1,7 @@
 import Competence from '/imports/classes/Competence'
 
 Template.showCompetences.helpers({
-    //add you helpers here
+    //
     hydratedCompetences : function () {
         return Template.instance().hydratedCompetences.get()
     }
@@ -13,18 +13,27 @@ Template.showCompetences.events({
 
 Template.showCompetences.onCreated(function () {
     //add your statement here
+
     this.hydratedCompetences = new ReactiveVar([])
     let userCompetences = this.data.competences
     let CompetenceInstance = new Competence
 CompetenceInstance.callMethod('getCompetencesByLanguage', 'french',(err,result)=>{
-    if(!err){
+    if (!err) {//si ya pas d'erreur dans la requete
         let hydratedCompetences = []
-        result.competences.forEach((competenceItem)=>{
-            if(userCompetences.includes(competenceItem.index)){
+        //on recupere les resultats pour les mettres dans l'instance et pouvoir les recuperer plus tard
+        this.competencesTable = result.competences
+        this.competencesCategories = result.competencesCategories
+        this.competencesSubCategories = result.competencesSubCategories
+        //on boucle sur le tableau de competence
+        this.competencesTable.forEach((competenceItem) => {
+            //si elles sont dans les competences de l'user,
+            if (Meteor.user().profile.competences.includes(competenceItem.index)) {
+                //on les enregistre dans le tableau
                 hydratedCompetences.push(competenceItem)
             }
         })
         this.hydratedCompetences.set(hydratedCompetences)
+        console.log(sortCompetences("french",hydratedCompetences ,this.competencesCategories, this.competencesSubCategories ))
     }
 })
 
