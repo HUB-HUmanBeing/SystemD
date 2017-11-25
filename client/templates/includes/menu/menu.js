@@ -14,11 +14,23 @@ Template.menu.events({
     'click [newProject]': function () {
         $('.new-project-modal').modal();
         $('.new-project-modal').modal('open');
+    },
+    'submit [searchForm], click [searchBtn]' : function (event, instance) {
+        event.preventDefault()
+        let userInput = document.getElementById("generalSearchInput").value
+        Session.set('openSearchModal', true)
+        Session.set('searchedInput', userInput)
+        $('.search-modal').modal({
+                complete: function() {
+                    Session.set('searchedInput', false)
+                    Session.set('openSearchModal', false)} // Callback for Modal close
+            }
+        );
+        $('.search-modal').modal('open')
     }
 });
 
 Template.menu.onCreated(function () {
-    //add your statement here
 });
 
 Template.menu.onRendered(function () {

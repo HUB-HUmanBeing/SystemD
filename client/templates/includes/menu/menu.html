@@ -17,14 +17,14 @@
         </li>
         {{!formulaire de recherche}}
         <li>
-            <form action="" name="search-form" class="row no-margin valign-wrapper">
-                <div class="col s2 no-padding small-margin ">
+            <form action="" name="search-form" class="row no-margin valign-wrapper" searchForm>
+                <a class="btn-flat col s2 no-padding small-margin " searchBtn>
                     <img src="/images/icon/search_icon.png" alt="search" class=" small-margin no-padding  "
-                         style="height : 25px; widht: 25px; ">
-                </div>
+                         style="height : 25px; widht: 25px; " >
+                </a>
                 <div class="input-field row no-padding small-margin s8 col valign-wrapper">
 
-                    <input id="icon_prefix" type="text" class="validate no-margin" name="search"
+                    <input id="generalSearchInput" type="text" class="validate no-margin" name="search"
                            placeholder="Rechercher">
 
                 </div>
@@ -78,5 +78,6 @@
             {{/each}}
         {{/unless}}
     </ul>
+
 </template>
 

@@ -90,6 +90,7 @@ Meteor.publish('miniature', function (id, type) {
                     'profile.notifications': 0,
                     'profile.invitations': 0,
                     'profile.followedAuthors': 0,
+                    'profile.competences': 0,
                 }
             });
     } else if (type === 'project') {
@@ -204,9 +205,3 @@ Meteor.publish('CommentsInfinite', function (limit, post_id) {
     });
 });
 
-
-if (Meteor.isDevelopment) {
-    Meteor.publish('AllForDev', function () {
-        return [Project.find(), User.find()];
-    });
-}

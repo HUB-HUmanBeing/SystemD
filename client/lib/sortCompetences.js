@@ -24,7 +24,7 @@ sortCompetences = function (language, competences, categories, subCategories) {
         //on récupere le nom correspondant au code de la catégorie
         categories.forEach((category) => {
             if (category.index === competence.category) {
-                categoryName = category[name]
+                categoryName = category[name].toUpperCase()
             }
         })
         //on récupere le nom correspondant au code de la sousCategorie

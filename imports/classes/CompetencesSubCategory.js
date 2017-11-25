@@ -12,7 +12,7 @@ const CompetencesSubCategory = Class.create({
         frenchName: {
             type: String,
         },
-        category:{ //nous permettra de classer les compétences dans le
+        category:{ //nous permettra de classer les compétences dans la vue
             type: String
         },
     }

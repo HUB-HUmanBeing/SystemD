@@ -227,7 +227,9 @@ Template.editPost.onCreated(function () {
         //si on est en mode édition
         if (!Template.currentData().isEditing) {
             //on récupere le projet
+
             this.project = Project.findOne(Template.currentData().id);
+            postImage = this.project.publicInfo.imgUrl
         }
     }
     if (Template.currentData().isEditing) {
