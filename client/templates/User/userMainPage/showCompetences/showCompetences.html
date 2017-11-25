@@ -3,10 +3,17 @@
     arguments d'appel :
     competences = [Number]
     }}
-    {{#if hydratedCompetences.length}}
-        {{#each competence in hydratedCompetences}}
-            <div class="chip">
-                {{competence.frenchName}}
+    {{#if sortedCompetences.length}}
+        {{#each category in sortedCompetences}}
+            <div class="row no-margin">
+                <p class=" small-info small-margin">{{category.categoryName}}</p>
+                {{#each competence in category.competences}}
+                <div class="chip tooltipped "
+                     data-position="bottom" data-delay="350"
+                     data-tooltip="{{competence.subCategoryName}}">
+                    {{competence.competenceName}}
+                </div>
+                {{/each}}
             </div>
         {{/each}}
     {{else}}

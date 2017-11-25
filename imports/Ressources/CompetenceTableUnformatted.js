@@ -1,3227 +1,2863 @@
 ﻿let CompetenceTableUnformatted = [
-
- {
-   "FIELD1": "A",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "AGRICULTURE ET PÊCHE, ESPACES NATURELS ET ESPACES VERTS, SOINS AUX ANIMAUX"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Engins agricoles et forestiers"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Conduite d'engins agricoles et forestiers"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Espaces naturels et espaces verts"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Bûcheronnage et élagage"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Entretien des espaces naturels"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 12,
-   "FIELD3": 3,
-   "FIELD4": "Entretien des espaces verts"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 12,
-   "FIELD3": 4,
-   "FIELD4": "Protection du patrimoine naturel"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 12,
-   "FIELD3": 5,
-   "FIELD4": "Sylviculture"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Etudes et assistance technique"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Conseil et assistance technique en agriculture"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Contrôle et diagnostic technique en agriculture"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 13,
-   "FIELD3": 3,
-   "FIELD4": "Ingénierie en agriculture et environnement naturel"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": null,
-   "FIELD4": "Production"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 1,
-   "FIELD4": "Aide agricole de production fruitière ou viticole"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 2,
-   "FIELD4": "Aide agricole de production légumière ou végétale"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 3,
-   "FIELD4": "Aide d'élevage agricole et aquacole"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 4,
-   "FIELD4": "Aquaculture"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 5,
-   "FIELD4": "Arboriculture et viticulture"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 6,
-   "FIELD4": "Encadrement équipage de la pêche"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 7,
-   "FIELD4": "Élevage bovin ou équin"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 8,
-   "FIELD4": "Élevage d'animaux sauvages ou de compagnie"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 9,
-   "FIELD4": "Élevage de lapins et volailles"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 10,
-   "FIELD4": "Élevage ovin ou caprin"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 11,
-   "FIELD4": "Élevage porcin"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 12,
-   "FIELD4": "Fabrication et affinage de fromages"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 13,
-   "FIELD4": "Fermentation de boissons alcoolisées"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 14,
-   "FIELD4": "Horticulture et maraîchage"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 15,
-   "FIELD4": "Equipage de la pêche"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 16,
-   "FIELD4": "Polyculture, élevage"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 14,
-   "FIELD3": 17,
-   "FIELD4": "Saliculture"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 15,
-   "FIELD3": null,
-   "FIELD4": "Soins aux animaux"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 15,
-   "FIELD3": 1,
-   "FIELD4": "Aide aux soins animaux"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 15,
-   "FIELD3": 2,
-   "FIELD4": "Podologie animale"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 15,
-   "FIELD3": 3,
-   "FIELD4": "Toilettage des animaux"
- },
- {
-   "FIELD1": "A",
-   "FIELD2": 15,
-   "FIELD3": 4,
-   "FIELD4": "Santé animale"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "ARTS ET FACONNAGE D'OUVRAGES D'ART"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Arts plastiques"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Création en arts plastiques"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Céramique"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Réalisation d'objets décoratifs et utilitaires en céramique et matériaux de synthèse"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Décoration"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Décoration d'espaces de vente et d'exposition"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Décoration d'objets d'art et artisanaux"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 13,
-   "FIELD3": 3,
-   "FIELD4": "Gravure - ciselure"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 14,
-   "FIELD3": null,
-   "FIELD4": "Fibres et papier"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 14,
-   "FIELD3": 1,
-   "FIELD4": "Réalisation d'objets en lianes, fibres et brins végétaux"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 14,
-   "FIELD3": 2,
-   "FIELD4": "Reliure et restauration de livres et archives"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 15,
-   "FIELD3": null,
-   "FIELD4": "Instruments de musique"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 15,
-   "FIELD3": 1,
-   "FIELD4": "Fabrication et réparation d'instruments de musique"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 16,
-   "FIELD3": null,
-   "FIELD4": "Métal, verre, bijouterie et horlogerie"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 16,
-   "FIELD3": 1,
-   "FIELD4": "Métallerie d'art"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 16,
-   "FIELD3": 2,
-   "FIELD4": "Réalisation d'objets artistiques et fonctionnels en verre"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 16,
-   "FIELD3": 3,
-   "FIELD4": "Réalisation d'ouvrages en bijouterie, joaillerie et orfèvrerie"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 16,
-   "FIELD3": 4,
-   "FIELD4": "Réparation - montage en systèmes horlogers"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 17,
-   "FIELD3": null,
-   "FIELD4": "Taxidermie"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 17,
-   "FIELD3": 1,
-   "FIELD4": "Conservation et reconstitution d'espèces animales"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 18,
-   "FIELD3": null,
-   "FIELD4": "Tissu et cuirs"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 18,
-   "FIELD3": 1,
-   "FIELD4": "Réalisation d'articles de chapellerie"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 18,
-   "FIELD3": 2,
-   "FIELD4": "Réalisation d'articles en cuir et matériaux souples (hors vêtement)"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 18,
-   "FIELD3": 3,
-   "FIELD4": "Réalisation de vêtements sur mesure ou en petite série"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 18,
-   "FIELD3": 4,
-   "FIELD4": "Réalisation d'ouvrages d'art en fils"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 18,
-   "FIELD3": 5,
-   "FIELD4": "Stylisme"
- },
- {
-   "FIELD1": "B",
-   "FIELD2": 18,
-   "FIELD3": 6,
-   "FIELD4": "Tapisserie - décoration en ameublement"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "COMMERCE, VENTE ET GRANDE DISTRIBUTION"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Commerce alimentaire et métiers de bouche"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Boucherie"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Boulangerie - viennoiserie"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 11,
-   "FIELD3": 3,
-   "FIELD4": "Charcuterie - traiteur"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 11,
-   "FIELD3": 4,
-   "FIELD4": "Pâtisserie, confiserie, chocolaterie et glacerie"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 11,
-   "FIELD3": 5,
-   "FIELD4": "Poissonnerie"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 11,
-   "FIELD3": 6,
-   "FIELD4": "Vente en alimentation"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Coiffure"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 12,
-   "FIELD3": 3,
-   "FIELD4": "Hydrothérapie"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 12,
-   "FIELD3": 4,
-   "FIELD4": "Location de véhicules ou de matériel de loisirs"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 12,
-   "FIELD3": 5,
-   "FIELD4": "Nettoyage d'articles textiles ou cuirs"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 12,
-   "FIELD3": 6,
-   "FIELD4": "Réparation d'articles en cuir et matériaux souples"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 12,
-   "FIELD3": 7,
-   "FIELD4": "Retouches en habillement"
- },
- {
-   "FIELD1": "D",
-   "FIELD2": 12,
-   "FIELD3": 8,
-   "FIELD4": "Soins esthétiques et corporels"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "COMMUNICATION, MEDIA ET MULTIMEDIA"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Edition et communication"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Animation de site multimédia"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Ecriture d'ouvrages, de livres"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 11,
-   "FIELD3": 3,
-   "FIELD4": "Communication"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 11,
-   "FIELD3": 4,
-   "FIELD4": "Conception de contenus multimédias"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 11,
-   "FIELD3": 5,
-   "FIELD4": "Coordination d'édition"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 11,
-   "FIELD3": 6,
-   "FIELD4": "Journalisme et information média"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 11,
-   "FIELD3": 7,
-   "FIELD4": "Organisation d'évènementiel"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 11,
-   "FIELD3": 8,
-   "FIELD4": "Traduction, interprétariat"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Images et sons"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Photographie"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Production en laboratoire cinématographique"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 12,
-   "FIELD3": 3,
-   "FIELD4": "Production en laboratoire photographique"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 12,
-   "FIELD3": 4,
-   "FIELD4": "Projection cinéma"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 12,
-   "FIELD3": 5,
-   "FIELD4": "Réalisation de contenus multimédias"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Industries graphiques"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Conduite de machines d'impression"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Conduite de machines de façonnage routage"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 13,
-   "FIELD3": 3,
-   "FIELD4": "Encadrement des industries graphiques"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 13,
-   "FIELD3": 4,
-   "FIELD4": "Façonnage et routage"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 13,
-   "FIELD3": 5,
-   "FIELD4": "Préparation et correction en édition et presse"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 13,
-   "FIELD3": 6,
-   "FIELD4": "Prépresse"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 13,
-   "FIELD3": 7,
-   "FIELD4": "Reprographie"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 13,
-   "FIELD3": 8,
-   "FIELD4": "Intervention technique en industrie graphique"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 14,
-   "FIELD3": null,
-   "FIELD4": "Publicité"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 14,
-   "FIELD3": 1,
-   "FIELD4": "Développement et promotion publicitaire"
- },
- {
-   "FIELD1": "E",
-   "FIELD2": 14,
-   "FIELD3": 2,
-   "FIELD4": "Élaboration de plan média"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "CONSTRUCTION, BÂTIMENT ET TRAVAUX PUBLICS"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Conception et études"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Architecture du BTP"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Conception - aménagement d'espaces intérieurs"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 11,
-   "FIELD3": 3,
-   "FIELD4": "Contrôle et diagnostic technique du bâtiment"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 11,
-   "FIELD3": 4,
-   "FIELD4": "Dessin BTP"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 11,
-   "FIELD3": 5,
-   "FIELD4": "Études géologiques"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 11,
-   "FIELD3": 6,
-   "FIELD4": "Ingénierie et études du BTP"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 11,
-   "FIELD3": 7,
-   "FIELD4": "Mesures topographiques"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 11,
-   "FIELD3": 8,
-   "FIELD4": "Métré de la construction"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Conduite et encadrement de chantier - travaux"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Conduite de travaux du BTP"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Direction de chantier du BTP"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 12,
-   "FIELD3": 3,
-   "FIELD4": "Direction et ingénierie d'exploitation de gisements et de carrières"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 12,
-   "FIELD3": 4,
-   "FIELD4": "Sécurité et protection santé du BTP"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Engins de chantier"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Conduite de grue"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Conduite d'engins de terrassement et de carrière"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 14,
-   "FIELD3": null,
-   "FIELD4": "Extraction"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 14,
-   "FIELD3": 1,
-   "FIELD4": "Extraction liquide et gazeuse"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 14,
-   "FIELD3": 2,
-   "FIELD4": "Extraction solide"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 15,
-   "FIELD3": null,
-   "FIELD4": "Montage de structures"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 15,
-   "FIELD3": 1,
-   "FIELD4": "Montage de structures et de charpentes bois"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 15,
-   "FIELD3": 2,
-   "FIELD4": "Montage de structures métalliques"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 15,
-   "FIELD3": 3,
-   "FIELD4": "Réalisation - installation d'ossatures bois"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": null,
-   "FIELD4": "Second oeuvre"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 1,
-   "FIELD4": "Application et décoration en plâtre, stuc et staff"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 2,
-   "FIELD4": "Électricité bâtiment"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 3,
-   "FIELD4": "Installation d'équipements sanitaires et thermiques"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 4,
-   "FIELD4": "Montage d'agencements"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 5,
-   "FIELD4": "Montage de réseaux électriques et télécoms"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 6,
-   "FIELD4": "Peinture en bâtiment"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 7,
-   "FIELD4": "Pose de fermetures menuisées"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 8,
-   "FIELD4": "Pose de revêtements rigides"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 9,
-   "FIELD4": "Pose de revêtements souples"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 10,
-   "FIELD4": "Pose et restauration de couvertures"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 11,
-   "FIELD4": "Réalisation et restauration de façades"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 12,
-   "FIELD4": "Taille et décoration de pierres"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 16,
-   "FIELD3": 13,
-   "FIELD4": "Travaux d'étanchéité et d'isolation"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 17,
-   "FIELD3": null,
-   "FIELD4": "Travaux et gros oeuvre"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 17,
-   "FIELD3": 1,
-   "FIELD4": "Construction en béton"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 17,
-   "FIELD3": 2,
-   "FIELD4": "Construction de routes et voies"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 17,
-   "FIELD3": 3,
-   "FIELD4": "Maçonnerie"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 17,
-   "FIELD3": 4,
-   "FIELD4": "Préparation du gros oeuvre et des travaux publics"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 17,
-   "FIELD3": 5,
-   "FIELD4": "Pose de canalisations"
- },
- {
-   "FIELD1": "F",
-   "FIELD2": 17,
-   "FIELD3": 6,
-   "FIELD4": "Préfabrication en béton industriel"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "HÔTELLERIE- RESTAURATION TOURISME LOISIRS ET ANIMATION"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Accueil et promotion touristique"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Accueil touristique"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Promotion du tourisme local"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Animation d'activités de loisirs"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Accompagnement de voyages, d'activités culturelles ou sportives"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Animation d'activités culturelles ou ludiques"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 12,
-   "FIELD3": 3,
-   "FIELD4": "Animation de loisirs auprès d'enfants ou d'adolescents"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 12,
-   "FIELD3": 4,
-   "FIELD4": "Éducation en activités sportives"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 16,
-   "FIELD3": null,
-   "FIELD4": "Production culinaire"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 16,
-   "FIELD3": 1,
-   "FIELD4": "Management du personnel de cuisine"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 16,
-   "FIELD3": 2,
-   "FIELD4": "Personnel de cuisine"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 16,
-   "FIELD3": 4,
-   "FIELD4": "Fabrication de crêpes ou pizzas"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 16,
-   "FIELD3": 5,
-   "FIELD4": "Plonge en restauration"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 17,
-   "FIELD3": 3,
-   "FIELD4": "Réception en hôtellerie"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 18,
-   "FIELD3": null,
-   "FIELD4": "Service"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 18,
-   "FIELD3": 1,
-   "FIELD4": "Café, bar brasserie"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 18,
-   "FIELD3": 2,
-   "FIELD4": "Management du service en restauration"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 18,
-   "FIELD3": 3,
-   "FIELD4": "Service en restauration"
- },
- {
-   "FIELD1": "G",
-   "FIELD2": 18,
-   "FIELD3": 4,
-   "FIELD4": "Sommellerie"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "INDUSTRIE"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 1,
-   "FIELD3": null,
-   "FIELD4": "Etudes et supports techniques à l'industrie"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Conception, recherche, études et développement"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Expertise technique couleur en industrie"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Conception et dessin de produits électriques et électroniques"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 3,
-   "FIELD4": "Conception et dessin produits mécaniques"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 4,
-   "FIELD4": "Design industriel"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 5,
-   "FIELD4": "Études - modèles en industrie des matériaux souples"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 6,
-   "FIELD4": "Management et ingénierie études, recherche et développement industriel"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 7,
-   "FIELD4": "Rédaction technique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 8,
-   "FIELD4": "Intervention technique en études et conception en automatisme"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 9,
-   "FIELD4": "Intervention technique en études et développement électronique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 12,
-   "FIELD3": 10,
-   "FIELD4": "Intervention technique en études, recherche et développement"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Hygiène Sécurité Environnement -HSE- industriels"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Inspection de conformité"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Management et ingénierie Hygiène Sécurité Environnement -HSE- industriels"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 13,
-   "FIELD3": 3,
-   "FIELD4": "Intervention technique en Hygiène Sécurité Environnement -HSE- industriel"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 14,
-   "FIELD3": null,
-   "FIELD4": "Méthodes et gestion industrielles"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 14,
-   "FIELD3": 1,
-   "FIELD4": "Management et ingénierie gestion industrielle et logistique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 14,
-   "FIELD3": 2,
-   "FIELD4": "Management et ingénierie méthodes et industrialisation"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 14,
-   "FIELD3": 3,
-   "FIELD4": "Intervention technique en gestion industrielle et logistique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 14,
-   "FIELD3": 4,
-   "FIELD4": "Intervention technique en méthodes et industrialisation"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 15,
-   "FIELD3": null,
-   "FIELD4": "Qualité et analyses industrielles"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 15,
-   "FIELD3": 1,
-   "FIELD4": "Direction de laboratoire d'analyse industrielle"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 15,
-   "FIELD3": 2,
-   "FIELD4": "Management et ingénierie qualité industrielle"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 15,
-   "FIELD3": 3,
-   "FIELD4": "Intervention technique en laboratoire d'analyse industrielle"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 15,
-   "FIELD3": 4,
-   "FIELD4": "Intervention technique en contrôle essai qualité en électricité et électronique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 15,
-   "FIELD3": 5,
-   "FIELD4": "Intervention technique en formulation et analyse sensorielle"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 15,
-   "FIELD3": 6,
-   "FIELD4": "Intervention technique qualité en mécanique et travail des métaux"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 2,
-   "FIELD3": null,
-   "FIELD4": "Production industrielle"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 21,
-   "FIELD3": null,
-   "FIELD4": "Alimentaire"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 21,
-   "FIELD3": 1,
-   "FIELD4": "Abattage et découpe des viandes"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 21,
-   "FIELD3": 2,
-   "FIELD4": "Conduite d'équipement de production alimentaire"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": null,
-   "FIELD4": "Bois"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": 1,
-   "FIELD4": "Assemblage d'ouvrages en bois"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": 2,
-   "FIELD4": "Conduite d'équipement de fabrication de l'ameublement et du bois"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": 3,
-   "FIELD4": "Conduite d'installation de production de panneaux bois"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": 4,
-   "FIELD4": "Encadrement des industries de l'ameublement et du bois"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": 5,
-   "FIELD4": "Première transformation de bois d'oeuvre"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": 6,
-   "FIELD4": "Réalisation de menuiserie bois et tonnellerie"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": 7,
-   "FIELD4": "Réalisation de meubles en bois"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": 8,
-   "FIELD4": "Réalisation d'ouvrages décoratifs en bois"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 22,
-   "FIELD3": 9,
-   "FIELD4": "Intervention technique en ameublement et bois"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 23,
-   "FIELD3": null,
-   "FIELD4": "Chimie et pharmacie"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 23,
-   "FIELD3": 1,
-   "FIELD4": "Conduite d'équipement de production chimique ou pharmaceutique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": null,
-   "FIELD4": "Cuir et textile"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 1,
-   "FIELD4": "Assemblage - montage d'articles en cuirs, peaux"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 2,
-   "FIELD4": "Assemblage - montage de vêtements et produits textiles"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 3,
-   "FIELD4": "Conduite de machine de fabrication de produits textiles"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 4,
-   "FIELD4": "Conduite de machine de production et transformation des fils"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 5,
-   "FIELD4": "Conduite de machine de textiles nontissés"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 6,
-   "FIELD4": "Conduite de machine de traitement textile"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 7,
-   "FIELD4": "Conduite de machine de transformation et de finition des cuirs et peaux"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 8,
-   "FIELD4": "Conduite de machine d'impression textile"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 9,
-   "FIELD4": "Coupe cuir, textile et matériaux souples"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 10,
-   "FIELD4": "Mise en forme, repassage et finitions en industrie textile"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 11,
-   "FIELD4": "Montage de prototype cuir et matériaux souples"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 12,
-   "FIELD4": "Patronnage - gradation"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 13,
-   "FIELD4": "Préparation de fils, montage de métiers textiles"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 14,
-   "FIELD4": "Préparation et finition d'articles en cuir et matériaux souples"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 24,
-   "FIELD3": 15,
-   "FIELD4": "Contrôle en industrie du cuir et du textile"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 25,
-   "FIELD3": null,
-   "FIELD4": "Direction, encadrement et pilotage de fabrication et production industrielles"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 25,
-   "FIELD3": 1,
-   "FIELD4": "Encadrement de production de matériel électrique et électronique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 25,
-   "FIELD3": 2,
-   "FIELD4": "Management et ingénierie de production"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 25,
-   "FIELD3": 3,
-   "FIELD4": "Pilotage d'unité élémentaire de production mécanique ou de travail des métaux"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 25,
-   "FIELD3": 4,
-   "FIELD4": "Encadrement d'équipe en industrie de transformation"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 25,
-   "FIELD3": 5,
-   "FIELD4": "Encadrement d'équipe ou d'atelier en matériaux souples"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 26,
-   "FIELD3": null,
-   "FIELD4": "Electronique et électricité"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 26,
-   "FIELD3": 1,
-   "FIELD4": "Bobinage électrique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 26,
-   "FIELD3": 2,
-   "FIELD4": "Câblage électrique et électromécanique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 26,
-   "FIELD3": 3,
-   "FIELD4": "Conduite d'installation automatisée de production électrique, électronique et microélectronique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 26,
-   "FIELD3": 4,
-   "FIELD4": "Montage de produits électriques et électroniques"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 26,
-   "FIELD3": 5,
-   "FIELD4": "Montage et câblage électronique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 27,
-   "FIELD3": null,
-   "FIELD4": "Energie"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 27,
-   "FIELD3": 1,
-   "FIELD4": "Pilotage d'installation énergétique et pétrochimique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 28,
-   "FIELD3": null,
-   "FIELD4": "Matériaux de construction, céramique et verre"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 28,
-   "FIELD3": 1,
-   "FIELD4": "Conduite d'équipement de transformation du verre"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 28,
-   "FIELD3": 2,
-   "FIELD4": "Conduite d'installation de production de matériaux de construction"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 28,
-   "FIELD3": 3,
-   "FIELD4": "Façonnage et émaillage en industrie céramique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 28,
-   "FIELD3": 4,
-   "FIELD4": "Pilotage de centrale à béton prêt à l'emploi, ciment, enrobés et granulats"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 28,
-   "FIELD3": 5,
-   "FIELD4": "Pilotage d'installation de production verrière"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": null,
-   "FIELD4": "Mécanique, travail des métaux et outillage"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 1,
-   "FIELD4": "Ajustement et montage de fabrication"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 2,
-   "FIELD4": "Chaudronnerie - tôlerie"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 3,
-   "FIELD4": "Conduite d'équipement d'usinage"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 4,
-   "FIELD4": "Conduite d'équipement de déformation des métaux"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 5,
-   "FIELD4": "Conduite d'équipement de formage et découpage des matériaux"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 6,
-   "FIELD4": "Conduite d'installation automatisée ou robotisée de fabrication mécanique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 7,
-   "FIELD4": "Conduite d'installation de production des métaux"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 8,
-   "FIELD4": "Modelage de matériaux non métalliques"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 9,
-   "FIELD4": "Montage-assemblage mécanique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 10,
-   "FIELD4": "Moulage sable"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 11,
-   "FIELD4": "Réalisation de structures métalliques"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 12,
-   "FIELD4": "Réglage d'équipement de production industrielle"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 13,
-   "FIELD4": "Soudage manuel"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 29,
-   "FIELD3": 14,
-   "FIELD4": "Réalisation et montage en tuyauterie"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 31,
-   "FIELD3": null,
-   "FIELD4": "Papier et carton"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 31,
-   "FIELD3": 1,
-   "FIELD4": "Conduite d'équipement de fabrication de papier ou de carton"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 31,
-   "FIELD3": 2,
-   "FIELD4": "Conduite d'installation de pâte à papier"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 32,
-   "FIELD3": null,
-   "FIELD4": "Plastique, caoutchouc"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 32,
-   "FIELD3": 1,
-   "FIELD4": "Conduite d'équipement de formage des plastiques et caoutchoucs"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 32,
-   "FIELD3": 2,
-   "FIELD4": "Réglage d'équipement de formage des plastiques et caoutchoucs"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 32,
-   "FIELD3": 3,
-   "FIELD4": "Fabrication de pièces en matériaux composites"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 33,
-   "FIELD3": null,
-   "FIELD4": "Préparation et conditionnement"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 33,
-   "FIELD3": 1,
-   "FIELD4": "Conduite d'équipement de conditionnement"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 33,
-   "FIELD3": 2,
-   "FIELD4": "Opérations manuelles d'assemblage, tri ou emballage"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 33,
-   "FIELD3": 3,
-   "FIELD4": "Préparation de matières et produits industriels (broyage, mélange, ...)"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 34,
-   "FIELD3": null,
-   "FIELD4": "Traitements thermiques et traitements de surfaces"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 34,
-   "FIELD3": 1,
-   "FIELD4": "Conduite de traitement d'abrasion de surface"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 34,
-   "FIELD3": 2,
-   "FIELD4": "Conduite de traitement par dépôt de surface"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 34,
-   "FIELD3": 3,
-   "FIELD4": "Conduite de traitement thermique"
- },
- {
-   "FIELD1": "H",
-   "FIELD2": 34,
-   "FIELD3": 4,
-   "FIELD4": "Peinture industrielle"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "INSTALLATION ET MAINTENANCE"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Encadrement"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Direction et ingénierie en entretien infrastructure et bâti"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Management et ingénierie de maintenance industrielle"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 11,
-   "FIELD3": 3,
-   "FIELD4": "Supervision d'entretien et gestion de véhicules"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Entretien technique"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Entretien d'affichage et mobilier urbain"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Entretien et surveillance du tracé routier"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 12,
-   "FIELD3": 3,
-   "FIELD4": "Maintenance des bâtiments et des locaux"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Equipements de production, équipements collectifs"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Installation et maintenance d'ascenseurs"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Installation et maintenance d'automatismes"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 3,
-   "FIELD4": "Installation et maintenance de distributeurs automatiques"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 4,
-   "FIELD4": "Installation et maintenance d'équipements industriels et d'exploitation"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 5,
-   "FIELD4": "Installation et maintenance électronique"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 6,
-   "FIELD4": "Installation et maintenance en froid, conditionnement d'air"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 7,
-   "FIELD4": "Installation et maintenance télécoms et courants faibles"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 8,
-   "FIELD4": "Maintenance d'installation de chauffage"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 9,
-   "FIELD4": "Maintenance électrique"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 13,
-   "FIELD3": 10,
-   "FIELD4": "Maintenance mécanique industrielle"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 14,
-   "FIELD3": null,
-   "FIELD4": "Equipements domestiques et informatique"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 14,
-   "FIELD3": 1,
-   "FIELD4": "Maintenance informatique et bureautique"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 14,
-   "FIELD3": 2,
-   "FIELD4": "Réparation de biens électrodomestiques"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 15,
-   "FIELD3": null,
-   "FIELD4": "Travaux d'accès difficile"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 15,
-   "FIELD3": 1,
-   "FIELD4": "Intervention en grande hauteur"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 15,
-   "FIELD3": 2,
-   "FIELD4": "Intervention en milieu subaquatique"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 15,
-   "FIELD3": 3,
-   "FIELD4": "Intervention en milieux et produits nocifs"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 16,
-   "FIELD3": null,
-   "FIELD4": "Véhicules, engins, aéronefs"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 16,
-   "FIELD3": 1,
-   "FIELD4": "Installation et maintenance en nautisme"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 16,
-   "FIELD3": 2,
-   "FIELD4": "Maintenance d'aéronefs"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 16,
-   "FIELD3": 3,
-   "FIELD4": "Maintenance d'engins de chantier, levage, manutention et de machines agricoles"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 16,
-   "FIELD3": 4,
-   "FIELD4": "Mécanique automobile et entretien de véhicules"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 16,
-   "FIELD3": 5,
-   "FIELD4": "Mécanique de marine"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 16,
-   "FIELD3": 6,
-   "FIELD4": "Réparation de carrosserie"
- },
- {
-   "FIELD1": "I",
-   "FIELD2": 16,
-   "FIELD3": 7,
-   "FIELD4": "Réparation de cycles, motocycles et motoculteurs de loisirs"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "SANTE"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Praticiens médicaux"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Médecine de prévention"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Médecine généraliste et spécialisée"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 11,
-   "FIELD3": 3,
-   "FIELD4": "Médecine dentaire"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 11,
-   "FIELD3": 4,
-   "FIELD4": "Suivi de la grossesse et de l'accouchement"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Praticiens médico-techniques"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Biologie médicale"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Pharmacie"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Professionnels médico-techniques"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Personnel polyvalent des services hospitaliers"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Analyses médicales"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 13,
-   "FIELD3": 3,
-   "FIELD4": "Assistance médico-technique"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 13,
-   "FIELD3": 4,
-   "FIELD4": "Aide en puériculture"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 13,
-   "FIELD3": 5,
-   "FIELD4": "Conduite de véhicules sanitaires"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 13,
-   "FIELD3": 6,
-   "FIELD4": "Imagerie médicale"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 13,
-   "FIELD3": 7,
-   "FIELD4": "Préparation en pharmacie"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": null,
-   "FIELD4": "Rééducation et appareillage"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 1,
-   "FIELD4": "Audioprothèses"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 2,
-   "FIELD4": "Diététique"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 3,
-   "FIELD4": "Ergothérapie"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 4,
-   "FIELD4": "Kinésithérapie"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 5,
-   "FIELD4": "Optique - lunetterie"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 6,
-   "FIELD4": "Orthophonie"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 7,
-   "FIELD4": "Orthoptique"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 8,
-   "FIELD4": "Ostéopathie et chiropraxie"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 9,
-   "FIELD4": "Pédicurie et podologie"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 10,
-   "FIELD4": "Prothèses dentaires"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 11,
-   "FIELD4": "Prothèses et orthèses"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 14,
-   "FIELD3": 12,
-   "FIELD4": "Rééducation en psychomotricité"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 15,
-   "FIELD3": null,
-   "FIELD4": "Soins paramédicaux"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 15,
-   "FIELD3": 1,
-   "FIELD4": "Soins d'hygiène, de confort du patient"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 15,
-   "FIELD3": 2,
-   "FIELD4": "Coordination de services médicaux ou paramédicaux"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 15,
-   "FIELD3": 3,
-   "FIELD4": "Soins infirmiers spécialisés en anesthésie"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 15,
-   "FIELD3": 4,
-   "FIELD4": "Soins infirmiers spécialisés en bloc opératoire"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 15,
-   "FIELD3": 5,
-   "FIELD4": "Soins infirmiers spécialisés en prévention"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 15,
-   "FIELD3": 6,
-   "FIELD4": "Soins infirmiers généralistes"
- },
- {
-   "FIELD1": "J",
-   "FIELD2": 15,
-   "FIELD3": 7,
-   "FIELD4": "Soins infirmiers spécialisés en puériculture"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "SERVICES A LA PERSONNE ET A LA COLLECTIVITE"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Accompagnement de la personne"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Accompagnement et médiation familiale"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Aide aux bénéficiaires d'une mesure de protection juridique"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 11,
-   "FIELD3": 3,
-   "FIELD4": "Développement personnel et bien-être de la personne"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 11,
-   "FIELD3": 4,
-   "FIELD4": "Psychologie"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Action sociale, socio-éducative et socio-culturelle"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Action sociale"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Éducation de jeunes enfants"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 12,
-   "FIELD3": 3,
-   "FIELD4": "Encadrement technique en insertion professionnelle"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 12,
-   "FIELD3": 4,
-   "FIELD4": "Médiation sociale et facilitation de la vie en société"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 12,
-   "FIELD3": 5,
-   "FIELD4": "Information sociale"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 12,
-   "FIELD3": 6,
-   "FIELD4": "Intervention socioculturelle"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 12,
-   "FIELD3": 7,
-   "FIELD4": "Intervention socioéducative"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Aide à la vie quotidienne"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Accompagnement médicosocial"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Assistance auprès d'adultes"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 13,
-   "FIELD3": 3,
-   "FIELD4": "Assistance auprès d'enfants"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 13,
-   "FIELD3": 4,
-   "FIELD4": "Services domestiques"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 13,
-   "FIELD3": 5,
-   "FIELD4": "Intervention sociale et familiale"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 14,
-   "FIELD3": null,
-   "FIELD4": "Conception et mise en oeuvre des politiques publiques"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 14,
-   "FIELD3": 2,
-   "FIELD4": "Conseil en Santé Publique"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 14,
-   "FIELD3": 3,
-   "FIELD4": "Management de structure de santé, sociale ou pénitentiaire"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 16,
-   "FIELD3": null,
-   "FIELD4": "Culture et gestion documentaire"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 16,
-   "FIELD3": 1,
-   "FIELD4": "Gestion de l'information et de la documentation"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 16,
-   "FIELD3": 2,
-   "FIELD4": "Gestion de patrimoine culturel"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 17,
-   "FIELD3": 5,
-   "FIELD4": "Sécurité civile et secours"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 18,
-   "FIELD3": 2,
-   "FIELD4": "Développement local"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 19,
-   "FIELD3": 3,
-   "FIELD4": "Défense et conseil juridique"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 19,
-   "FIELD3": 4,
-   "FIELD4": "Magistrature"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 2,
-   "FIELD4": "Coordination pédagogique"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 4,
-   "FIELD4": "Éducation et surveillance au sein d'établissements d'enseignement"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 5,
-   "FIELD4": "Enseignement artistique"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 6,
-   "FIELD4": "Enseignement des écoles"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 7,
-   "FIELD4": "Enseignement général du second degré"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 8,
-   "FIELD4": "Enseignement supérieur"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 9,
-   "FIELD4": "Enseignement technique et professionnel"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 10,
-   "FIELD4": "Formation en conduite de véhicules"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 11,
-   "FIELD4": "Formation professionnelle"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 21,
-   "FIELD3": 12,
-   "FIELD4": "Orientation scolaire et professionnelle"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 22,
-   "FIELD3": null,
-   "FIELD4": "Nettoyage et propreté industriels"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 22,
-   "FIELD3": 1,
-   "FIELD4": "Blanchisserie industrielle"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 22,
-   "FIELD3": 2,
-   "FIELD4": "Lavage de vitres"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 22,
-   "FIELD3": 3,
-   "FIELD4": "Management et inspection en propreté de locaux"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 22,
-   "FIELD3": 4,
-   "FIELD4": "Nettoyage de locaux"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 23,
-   "FIELD3": null,
-   "FIELD4": "Propreté et environnement urbain"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 23,
-   "FIELD3": 1,
-   "FIELD4": "Distribution et assainissement d'eau"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 23,
-   "FIELD3": 2,
-   "FIELD4": "Management et inspection en environnement urbain"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 23,
-   "FIELD3": 3,
-   "FIELD4": "Nettoyage des espaces urbains"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 23,
-   "FIELD3": 4,
-   "FIELD4": "Revalorisation de produits industriels"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 23,
-   "FIELD3": 5,
-   "FIELD4": "Salubrité et traitement de nuisibles"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 23,
-   "FIELD3": 6,
-   "FIELD4": "Supervision d'exploitation éco-industrielle"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 24,
-   "FIELD3": null,
-   "FIELD4": "Recherche"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 24,
-   "FIELD3": 1,
-   "FIELD4": "Recherche en sciences de l'homme et de la société"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 24,
-   "FIELD3": 2,
-   "FIELD4": "Recherche en sciences de l'univers, de la matière et du vivant"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 25,
-   "FIELD3": null,
-   "FIELD4": "Sécurité privée"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 25,
-   "FIELD3": 1,
-   "FIELD4": "Gardiennage de locaux"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 25,
-   "FIELD3": 2,
-   "FIELD4": "Management de sécurité privée"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 25,
-   "FIELD3": 3,
-   "FIELD4": "Sécurité et surveillance privées"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 26,
-   "FIELD3": null,
-   "FIELD4": "Services funéraires"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 26,
-   "FIELD3": 1,
-   "FIELD4": "Conduite d'opérations funéraires"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 26,
-   "FIELD3": 2,
-   "FIELD4": "Conseil en services funéraires"
- },
- {
-   "FIELD1": "K",
-   "FIELD2": 26,
-   "FIELD3": 3,
-   "FIELD4": "Thanatopraxie"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "SPECTACLE"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Animation de spectacles"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Animation musicale et scénique"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Mannequinat et pose artistique"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 11,
-   "FIELD3": 3,
-   "FIELD4": "Présentation de spectacles ou d'émissions"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Artistes - interprètes du spectacle"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Danse"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Musique et chant"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 12,
-   "FIELD3": 3,
-   "FIELD4": "Art dramatique"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 12,
-   "FIELD3": 4,
-   "FIELD4": "Arts du cirque et arts visuels"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Conception et production de spectacles"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Mise en scène de spectacles vivants"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Production et administration spectacle, cinéma et audiovisuel"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 13,
-   "FIELD3": 3,
-   "FIELD4": "Promotion d'artistes et de spectacles"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 13,
-   "FIELD3": 4,
-   "FIELD4": "Réalisation cinématographique et audiovisuelle"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 14,
-   "FIELD3": null,
-   "FIELD4": "Sport professionnel"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 14,
-   "FIELD3": 1,
-   "FIELD4": "Sportif professionnel"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": null,
-   "FIELD4": "Techniciens du spectacle"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 1,
-   "FIELD4": "Coiffure et maquillage spectacle"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 2,
-   "FIELD4": "Costume et habillage spectacle"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 3,
-   "FIELD4": "Décor et accessoires spectacle"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 4,
-   "FIELD4": "Éclairage spectacle"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 5,
-   "FIELD4": "Image cinématographique et télévisuelle"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 6,
-   "FIELD4": "Machinerie spectacle"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 7,
-   "FIELD4": "Montage audiovisuel et post-production"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 8,
-   "FIELD4": "Prise de son et sonorisation"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 9,
-   "FIELD4": "Régie générale"
- },
- {
-   "FIELD1": "L",
-   "FIELD2": 15,
-   "FIELD3": 10,
-   "FIELD4": "Films d'animation et effets spéciaux"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "SUPPORT A L'ENTREPRISE"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Achats"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Achats"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Direction des achats"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 14,
-   "FIELD3": 3,
-   "FIELD4": "Études et prospectives socio-économiques"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 14,
-   "FIELD3": 4,
-   "FIELD4": "Management et gestion d'enquêtes"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 15,
-   "FIELD3": null,
-   "FIELD4": "Ressources humaines"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 15,
-   "FIELD3": 1,
-   "FIELD4": "Assistanat en ressources humaines"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 15,
-   "FIELD3": 2,
-   "FIELD4": "Développement des ressources humaines"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 15,
-   "FIELD3": 3,
-   "FIELD4": "Management des ressources humaines"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": null,
-   "FIELD4": "Secrétariat et assistance"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": 1,
-   "FIELD4": "Accueil et renseignements"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": 2,
-   "FIELD4": "Opérations administratives"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": 3,
-   "FIELD4": "Distribution de documents"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": 4,
-   "FIELD4": "Assistanat de direction"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": 5,
-   "FIELD4": "Assistanat technique et administratif"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": 6,
-   "FIELD4": "Saisie de données"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": 7,
-   "FIELD4": "Secrétariat"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": 8,
-   "FIELD4": "Secrétariat comptable"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 16,
-   "FIELD3": 9,
-   "FIELD4": "Secrétariat et assistanat médical ou médico-social"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 17,
-   "FIELD3": 1,
-   "FIELD4": "Administration des ventes"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 17,
-   "FIELD3": 2,
-   "FIELD4": "Analyse de tendance"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 17,
-   "FIELD3": 3,
-   "FIELD4": "Management et gestion de produit"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 17,
-   "FIELD3": 4,
-   "FIELD4": "Management relation clientèle"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 17,
-   "FIELD3": 5,
-   "FIELD4": "Marketing"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 17,
-   "FIELD3": 6,
-   "FIELD4": "Promotion des ventes"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": null,
-   "FIELD4": "Systèmes d'information et de télécommunication"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": 1,
-   "FIELD4": "Administration de systèmes d'information"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": 2,
-   "FIELD4": "Expertise et support en systèmes d'information"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": 3,
-   "FIELD4": "Direction des systèmes d'information"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": 4,
-   "FIELD4": "Études et développement de réseaux de télécoms"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": 5,
-   "FIELD4": "Études et développement informatique"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": 6,
-   "FIELD4": "Conseil et maîtrise d'ouvrage en systèmes d'information"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": 7,
-   "FIELD4": "Exploitation de systèmes de communication "
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": 9,
-   "FIELD4": "Information météorologique"
- },
- {
-   "FIELD1": "M",
-   "FIELD2": 18,
-   "FIELD3": 10,
-   "FIELD4": "Production et exploitation de systèmes d'information"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": null,
-   "FIELD3": null,
-   "FIELD4": "TRANSPORT ET LOGISTIQUE"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 1,
-   "FIELD3": null,
-   "FIELD4": "Logistique"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 11,
-   "FIELD3": null,
-   "FIELD4": "Magasinage, manutention des charges et déménagement"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 11,
-   "FIELD3": 1,
-   "FIELD4": "Conduite d'engins de déplacement des charges"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 11,
-   "FIELD3": 2,
-   "FIELD4": "Déménagement"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 11,
-   "FIELD3": 3,
-   "FIELD4": "Magasinage et préparation de commandes"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 11,
-   "FIELD3": 4,
-   "FIELD4": "Manoeuvre et conduite d'engins lourds de manutention"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 11,
-   "FIELD3": 5,
-   "FIELD4": "Manutention manuelle de charges"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 12,
-   "FIELD3": null,
-   "FIELD4": "Organisation de la circulation des marchandises"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 12,
-   "FIELD3": 1,
-   "FIELD4": "Affrètement transport"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 12,
-   "FIELD3": 2,
-   "FIELD4": "Gestion des opérations de circulation internationale des marchandises"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 13,
-   "FIELD3": null,
-   "FIELD4": "Personnel d'encadrement"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 13,
-   "FIELD3": 1,
-   "FIELD4": "Conception et organisation de la chaîne logistique"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 13,
-   "FIELD3": 2,
-   "FIELD4": "Direction de site logistique"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 13,
-   "FIELD3": 3,
-   "FIELD4": "Intervention technique d'exploitation logistique"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 2,
-   "FIELD3": null,
-   "FIELD4": "Transport aérien et activités aéroportuaires"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 21,
-   "FIELD3": null,
-   "FIELD4": "Personnel navigant du transport aérien"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 21,
-   "FIELD3": 2,
-   "FIELD4": "Pilotage et navigation technique aérienne"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 22,
-   "FIELD3": null,
-   "FIELD4": "Personnel sédentaire du transport aérien"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 22,
-   "FIELD3": 1,
-   "FIELD4": "Personnel d'escale aéroportuaire"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 22,
-   "FIELD3": 2,
-   "FIELD4": "Contrôle de la navigation aérienne"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 22,
-   "FIELD3": 3,
-   "FIELD4": "Exploitation des pistes aéroportuaires"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 22,
-   "FIELD3": 4,
-   "FIELD4": "Préparation des vols"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 22,
-   "FIELD3": 5,
-   "FIELD4": "Direction d'escale et exploitation aéroportuaire"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 3,
-   "FIELD3": null,
-   "FIELD4": "Transport maritime et fluvial et activités portuaires"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 31,
-   "FIELD3": null,
-   "FIELD4": "Personnel navigant du transport maritime et fluvial"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 31,
-   "FIELD3": 1,
-   "FIELD4": "Encadrement de la navigation maritime"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 31,
-   "FIELD3": 2,
-   "FIELD4": "Equipage de la navigation maritime"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 31,
-   "FIELD3": 3,
-   "FIELD4": "Navigation fluviale"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 32,
-   "FIELD3": null,
-   "FIELD4": "Personnel sédentaire du transport maritime et fluvial"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 32,
-   "FIELD3": 1,
-   "FIELD4": "Exploitation des opérations portuaires et du transport maritime"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 32,
-   "FIELD3": 2,
-   "FIELD4": "Exploitation du transport fluvial"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 32,
-   "FIELD3": 3,
-   "FIELD4": "Manutention portuaire"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 4,
-   "FIELD3": null,
-   "FIELD4": "Transport terrestre"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 41,
-   "FIELD3": null,
-   "FIELD4": "Personnel de conduite du transport routier"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 41,
-   "FIELD3": 1,
-   "FIELD4": "Conduite de transport de marchandises sur longue distance"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 41,
-   "FIELD3": 2,
-   "FIELD4": "Conduite de transport de particuliers"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 41,
-   "FIELD3": 3,
-   "FIELD4": "Conduite de transport en commun sur route"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 41,
-   "FIELD3": 4,
-   "FIELD4": "Courses et livraisons express"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 41,
-   "FIELD3": 5,
-   "FIELD4": "Conduite et livraison par tournées sur courte distance"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 42,
-   "FIELD3": null,
-   "FIELD4": "Personnel d'encadrement du transport routier"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 42,
-   "FIELD3": 1,
-   "FIELD4": "Direction d'exploitation des transports routiers de marchandises"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 42,
-   "FIELD3": 2,
-   "FIELD4": "Direction d'exploitation des transports routiers de personnes"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 42,
-   "FIELD3": 3,
-   "FIELD4": "Intervention technique d'exploitation des transports routiers de marchandises"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 42,
-   "FIELD3": 4,
-   "FIELD4": "Intervention technique d'exploitation des transports routiers de personnes"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 43,
-   "FIELD3": null,
-   "FIELD4": "Personnel navigant du transport terrestre"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 43,
-   "FIELD3": 1,
-   "FIELD4": "Conduite sur rails"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 43,
-   "FIELD3": 2,
-   "FIELD4": "Contrôle des transports en commun"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 44,
-   "FIELD3": null,
-   "FIELD4": "Personnel sédentaire du transport ferroviaire et réseau filo guidé"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 44,
-   "FIELD3": 1,
-   "FIELD4": "Circulation du réseau ferré"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 44,
-   "FIELD3": 2,
-   "FIELD4": "Exploitation et manoeuvre des remontées mécaniques"
- },
- {
-   "FIELD1": "N",
-   "FIELD2": 44,
-   "FIELD3": 3,
-   "FIELD4": "Manoeuvre du réseau ferré"
- }
+    {
+        "column0": "A",
+        "column3": "AGRICULTURE, élevage, PÊCHE, ESPACES NATURELS"
+    },
+    {
+        "column0": "A",
+        "column1": 11,
+        "column3": "Engins agricoles et forestiers"
+    },
+    {
+        "column0": "A",
+        "column1": 11,
+        "column2": 1,
+        "column3": "Conduite d'engins agricoles et forestiers"
+    },
+    {
+        "column0": "A",
+        "column1": 12,
+        "column3": "Espaces naturels et espaces verts"
+    },
+    {
+        "column0": "A",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Bûcheronnage et élagage"
+    },
+    {
+        "column0": "A",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Entretien des espaces naturels"
+    },
+    {
+        "column0": "A",
+        "column1": 12,
+        "column2": 3,
+        "column3": "Entretien des espaces verts"
+    },
+    {
+        "column0": "A",
+        "column1": 12,
+        "column2": 4,
+        "column3": "Protection du patrimoine naturel"
+    },
+    {
+        "column0": "A",
+        "column1": 12,
+        "column2": 5,
+        "column3": "Sylviculture"
+    },
+    {
+        "column0": "A",
+        "column1": 13,
+        "column3": "Etudes et assistance technique"
+    },
+    {
+        "column0": "A",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Conseil et assistance technique en agriculture"
+    },
+    {
+        "column0": "A",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Contrôle et diagnostic technique en agriculture"
+    },
+    {
+        "column0": "A",
+        "column1": 13,
+        "column2": 3,
+        "column3": "Ingénierie en agriculture et environnement naturel"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column3": "Production"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 1,
+        "column3": "Aide agricole de production fruitière ou viticole"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 2,
+        "column3": "Aide agricole de production légumière ou végétale"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 3,
+        "column3": "Aide d'élevage agricole et aquacole"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 4,
+        "column3": "Aquaculture"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 5,
+        "column3": "Arboriculture et viticulture"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 6,
+        "column3": "Encadrement équipage de la pêche"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 7,
+        "column3": "Élevage bovin ou équin"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 8,
+        "column3": "Élevage d'animaux sauvages ou de compagnie"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 9,
+        "column3": "Élevage de lapins et volailles"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 10,
+        "column3": "Élevage ovin ou caprin"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 11,
+        "column3": "Élevage porcin"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 12,
+        "column3": "Fabrication et affinage de fromages"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 13,
+        "column3": "Fermentation de boissons alcoolisées"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 14,
+        "column3": "Horticulture et maraîchage"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 15,
+        "column3": "Equipage de la pêche"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 16,
+        "column3": "Polyculture, élevage"
+    },
+    {
+        "column0": "A",
+        "column1": 14,
+        "column2": 17,
+        "column3": "Saliculture"
+    },
+    {
+        "column0": "A",
+        "column1": 15,
+        "column3": "Soins aux animaux"
+    },
+    {
+        "column0": "A",
+        "column1": 15,
+        "column2": 1,
+        "column3": "Aide aux soins animaux"
+    },
+    {
+        "column0": "A",
+        "column1": 15,
+        "column2": 2,
+        "column3": "Podologie animale"
+    },
+    {
+        "column0": "A",
+        "column1": 15,
+        "column2": 3,
+        "column3": "Toilettage des animaux"
+    },
+    {
+        "column0": "A",
+        "column1": 15,
+        "column2": 4,
+        "column3": "Santé animale"
+    },
+    {
+        "column0": "B",
+        "column3": "ARTS"
+    },
+    {
+        "column0": "B",
+        "column1": 11,
+        "column3": "Arts plastiques"
+    },
+    {
+        "column0": "B",
+        "column1": 11,
+        "column2": 1,
+        "column3": "Création en arts plastiques"
+    },
+    {
+        "column0": "B",
+        "column1": 12,
+        "column3": "Céramique"
+    },
+    {
+        "column0": "B",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Réalisation d'objets décoratifs et utilitaires en céramique et matériaux de synthèse"
+    },
+    {
+        "column0": "B",
+        "column1": 13,
+        "column3": "Décoration"
+    },
+    {
+        "column0": "B",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Décoration d'espaces de vente et d'exposition"
+    },
+    {
+        "column0": "B",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Décoration d'objets d'art et artisanaux"
+    },
+    {
+        "column0": "B",
+        "column1": 13,
+        "column2": 3,
+        "column3": "Gravure - ciselure"
+    },
+    {
+        "column0": "B",
+        "column1": 14,
+        "column3": "Fibres et papier"
+    },
+    {
+        "column0": "B",
+        "column1": 14,
+        "column2": 1,
+        "column3": "Réalisation d'objets en lianes, fibres et brins végétaux"
+    },
+    {
+        "column0": "B",
+        "column1": 14,
+        "column2": 2,
+        "column3": "Reliure et restauration de livres et archives"
+    },
+    {
+        "column0": "B",
+        "column1": 15,
+        "column3": "Instruments de musique"
+    },
+    {
+        "column0": "B",
+        "column1": 15,
+        "column2": 1,
+        "column3": "Fabrication et réparation d'instruments de musique"
+    },
+    {
+        "column0": "B",
+        "column1": 16,
+        "column3": "Métal, verre, bijouterie et horlogerie"
+    },
+    {
+        "column0": "B",
+        "column1": 16,
+        "column2": 1,
+        "column3": "Métallerie d'art"
+    },
+    {
+        "column0": "B",
+        "column1": 16,
+        "column2": 2,
+        "column3": "Réalisation d'objets artistiques et fonctionnels en verre"
+    },
+    {
+        "column0": "B",
+        "column1": 16,
+        "column2": 3,
+        "column3": "Réalisation d'ouvrages en bijouterie, joaillerie et orfèvrerie"
+    },
+    {
+        "column0": "B",
+        "column1": 16,
+        "column2": 4,
+        "column3": "Réparation - montage en systèmes horlogers"
+    },
+    {
+        "column0": "B",
+        "column1": 17,
+        "column3": "Taxidermie"
+    },
+    {
+        "column0": "B",
+        "column1": 17,
+        "column2": 1,
+        "column3": "Conservation et reconstitution d'espèces animales"
+    },
+    {
+        "column0": "B",
+        "column1": 18,
+        "column3": "Tissu et cuirs"
+    },
+    {
+        "column0": "B",
+        "column1": 18,
+        "column2": 1,
+        "column3": "Réalisation d'articles de chapellerie"
+    },
+    {
+        "column0": "B",
+        "column1": 18,
+        "column2": 2,
+        "column3": "Réalisation d'articles en cuir et matériaux souples (hors vêtement)"
+    },
+    {
+        "column0": "B",
+        "column1": 18,
+        "column2": 3,
+        "column3": "Réalisation de vêtements sur mesure ou en petite série"
+    },
+    {
+        "column0": "B",
+        "column1": 18,
+        "column2": 4,
+        "column3": "Réalisation d'ouvrages d'art en fils"
+    },
+    {
+        "column0": "B",
+        "column1": 18,
+        "column2": 5,
+        "column3": "Stylisme"
+    },
+    {
+        "column0": "B",
+        "column1": 18,
+        "column2": 6,
+        "column3": "Tapisserie - décoration en ameublement"
+    },
+    {
+        "column0": "D",
+        "column3": "Services et DISTRIBUTION"
+    },
+    {
+        "column0": "D",
+        "column1": 11,
+        "column3": "Alimentaire"
+    },
+    {
+        "column0": "D",
+        "column1": 11,
+        "column2": 1,
+        "column3": "Boucherie"
+    },
+    {
+        "column0": "D",
+        "column1": 11,
+        "column2": 2,
+        "column3": "Boulangerie - viennoiserie"
+    },
+    {
+        "column0": "D",
+        "column1": 11,
+        "column2": 3,
+        "column3": "Charcuterie - traiteur"
+    },
+    {
+        "column0": "D",
+        "column1": 11,
+        "column2": 4,
+        "column3": "Pâtisserie, confiserie, chocolaterie et glacerie"
+    },
+    {
+        "column0": "D",
+        "column1": 11,
+        "column2": 5,
+        "column3": "Poissonnerie"
+    },
+    {
+        "column0": "D",
+        "column1": 11,
+        "column2": 6,
+        "column3": "Vente en alimentation"
+    },
+    {
+        "column0": "D",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Coiffure"
+    },
+    {
+        "column0": "D",
+        "column1": 12,
+        "column2": 3,
+        "column3": "Hydrothérapie"
+    },
+    {
+        "column0": "D",
+        "column1": 12,
+        "column2": 4,
+        "column3": "Location de véhicules ou de matériel de loisirs"
+    },
+    {
+        "column0": "D",
+        "column1": 12,
+        "column2": 5,
+        "column3": "Nettoyage d'articles textiles ou cuirs"
+    },
+    {
+        "column0": "D",
+        "column1": 12,
+        "column2": 6,
+        "column3": "Réparation d'articles en cuir et matériaux souples"
+    },
+    {
+        "column0": "D",
+        "column1": 12,
+        "column2": 7,
+        "column3": "Retouches en habillement"
+    },
+    {
+        "column0": "D",
+        "column1": 12,
+        "column2": 8,
+        "column3": "Soins esthétiques et corporels"
+    },
+    {
+        "column0": "E",
+        "column3": "COMMUNICATION, MEDIA ET MULTIMEDIA"
+    },
+    {
+        "column0": "E",
+        "column1": 11,
+        "column3": "Edition et communication"
+    },
+    {
+        "column0": "E",
+        "column1": 11,
+        "column2": 1,
+        "column3": "Animation de site multimédia"
+    },
+    {
+        "column0": "E",
+        "column1": 11,
+        "column2": 2,
+        "column3": "Ecriture d'ouvrages, de livres"
+    },
+    {
+        "column0": "E",
+        "column1": 11,
+        "column2": 3,
+        "column3": "Communication"
+    },
+    {
+        "column0": "E",
+        "column1": 11,
+        "column2": 4,
+        "column3": "Conception de contenus multimédias"
+    },
+    {
+        "column0": "E",
+        "column1": 11,
+        "column2": 5,
+        "column3": "Coordination d'édition"
+    },
+    {
+        "column0": "E",
+        "column1": 11,
+        "column2": 6,
+        "column3": "Journalisme et information média"
+    },
+    {
+        "column0": "E",
+        "column1": 11,
+        "column2": 7,
+        "column3": "Organisation d'évènementiel"
+    },
+    {
+        "column0": "E",
+        "column1": 11,
+        "column2": 8,
+        "column3": "Traduction, interprétariat"
+    },
+    {
+        "column0": "E",
+        "column1": 12,
+        "column3": "Images et sons"
+    },
+    {
+        "column0": "E",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Photographie"
+    },
+    {
+        "column0": "E",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Production en laboratoire cinématographique"
+    },
+    {
+        "column0": "E",
+        "column1": 12,
+        "column2": 3,
+        "column3": "Production en laboratoire photographique"
+    },
+    {
+        "column0": "E",
+        "column1": 12,
+        "column2": 4,
+        "column3": "Projection cinéma"
+    },
+    {
+        "column0": "E",
+        "column1": 12,
+        "column2": 5,
+        "column3": "Réalisation de contenus multimédias"
+    },
+    {
+        "column0": "E",
+        "column1": 13,
+        "column3": "Industries graphiques"
+    },
+    {
+        "column0": "E",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Conduite de machines d'impression"
+    },
+    {
+        "column0": "E",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Conduite de machines de façonnage routage"
+    },
+    {
+        "column0": "E",
+        "column1": 13,
+        "column2": 3,
+        "column3": "Encadrement des industries graphiques"
+    },
+    {
+        "column0": "E",
+        "column1": 13,
+        "column2": 4,
+        "column3": "Façonnage et routage"
+    },
+    {
+        "column0": "E",
+        "column1": 13,
+        "column2": 5,
+        "column3": "Préparation et correction en édition et presse"
+    },
+    {
+        "column0": "E",
+        "column1": 13,
+        "column2": 6,
+        "column3": "Prépresse"
+    },
+    {
+        "column0": "E",
+        "column1": 13,
+        "column2": 7,
+        "column3": "Reprographie"
+    },
+    {
+        "column0": "E",
+        "column1": 13,
+        "column2": 8,
+        "column3": "Intervention technique en industrie graphique"
+    },
+    {
+        "column0": "F",
+        "column3": "CONSTRUCTION, BÂTIMENT ET TRAVAUX PUBLICS"
+    },
+    {
+        "column0": "F",
+        "column1": 11,
+        "column3": "Conception et études"
+    },
+    {
+        "column0": "F",
+        "column1": 11,
+        "column2": 1,
+        "column3": "Architecture du BTP"
+    },
+    {
+        "column0": "F",
+        "column1": 11,
+        "column2": 2,
+        "column3": "Conception - aménagement d'espaces intérieurs"
+    },
+    {
+        "column0": "F",
+        "column1": 11,
+        "column2": 3,
+        "column3": "Contrôle et diagnostic technique du bâtiment"
+    },
+    {
+        "column0": "F",
+        "column1": 11,
+        "column2": 4,
+        "column3": "Dessin BTP"
+    },
+    {
+        "column0": "F",
+        "column1": 11,
+        "column2": 5,
+        "column3": "Études géologiques"
+    },
+    {
+        "column0": "F",
+        "column1": 11,
+        "column2": 6,
+        "column3": "Ingénierie et études du BTP"
+    },
+    {
+        "column0": "F",
+        "column1": 11,
+        "column2": 7,
+        "column3": "Mesures topographiques"
+    },
+    {
+        "column0": "F",
+        "column1": 11,
+        "column2": 8,
+        "column3": "Métré de la construction"
+    },
+    {
+        "column0": "F",
+        "column1": 12,
+        "column3": "Conduite et encadrement de chantier - travaux"
+    },
+    {
+        "column0": "F",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Conduite de travaux du BTP"
+    },
+    {
+        "column0": "F",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Direction de chantier du BTP"
+    },
+    {
+        "column0": "F",
+        "column1": 12,
+        "column2": 3,
+        "column3": "Direction et ingénierie d'exploitation de gisements et de carrières"
+    },
+    {
+        "column0": "F",
+        "column1": 12,
+        "column2": 4,
+        "column3": "Sécurité et protection santé du BTP"
+    },
+    {
+        "column0": "F",
+        "column1": 13,
+        "column3": "Engins de chantier"
+    },
+    {
+        "column0": "F",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Conduite de grue"
+    },
+    {
+        "column0": "F",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Conduite d'engins de terrassement et de carrière"
+    },
+    {
+        "column0": "F",
+        "column1": 14,
+        "column3": "Extraction"
+    },
+    {
+        "column0": "F",
+        "column1": 14,
+        "column2": 1,
+        "column3": "Extraction liquide et gazeuse"
+    },
+    {
+        "column0": "F",
+        "column1": 14,
+        "column2": 2,
+        "column3": "Extraction solide"
+    },
+    {
+        "column0": "F",
+        "column1": 15,
+        "column3": "Montage de structures"
+    },
+    {
+        "column0": "F",
+        "column1": 15,
+        "column2": 1,
+        "column3": "Montage de structures et de charpentes bois"
+    },
+    {
+        "column0": "F",
+        "column1": 15,
+        "column2": 2,
+        "column3": "Montage de structures métalliques"
+    },
+    {
+        "column0": "F",
+        "column1": 15,
+        "column2": 3,
+        "column3": "Réalisation - installation d'ossatures bois"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column3": "Second oeuvre"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 1,
+        "column3": "Application et décoration en plâtre, stuc et staff"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 2,
+        "column3": "Électricité bâtiment"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 3,
+        "column3": "Installation d'équipements sanitaires et thermiques"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 4,
+        "column3": "Montage d'agencements"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 5,
+        "column3": "Montage de réseaux électriques et télécoms"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 6,
+        "column3": "Peinture en bâtiment"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 7,
+        "column3": "Pose de fermetures menuisées"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 8,
+        "column3": "Pose de revêtements rigides"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 9,
+        "column3": "Pose de revêtements souples"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 10,
+        "column3": "Pose et restauration de couvertures"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 11,
+        "column3": "Réalisation et restauration de façades"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 12,
+        "column3": "Taille et décoration de pierres"
+    },
+    {
+        "column0": "F",
+        "column1": 16,
+        "column2": 13,
+        "column3": "Travaux d'étanchéité et d'isolation"
+    },
+    {
+        "column0": "F",
+        "column1": 17,
+        "column3": "Travaux et gros oeuvre"
+    },
+    {
+        "column0": "F",
+        "column1": 17,
+        "column2": 1,
+        "column3": "Construction en béton"
+    },
+    {
+        "column0": "F",
+        "column1": 17,
+        "column2": 2,
+        "column3": "Construction de routes et voies"
+    },
+    {
+        "column0": "F",
+        "column1": 17,
+        "column2": 3,
+        "column3": "Maçonnerie"
+    },
+    {
+        "column0": "F",
+        "column1": 17,
+        "column2": 4,
+        "column3": "Préparation du gros oeuvre et des travaux publics"
+    },
+    {
+        "column0": "F",
+        "column1": 17,
+        "column2": 5,
+        "column3": "Pose de canalisations"
+    },
+    {
+        "column0": "F",
+        "column1": 17,
+        "column2": 6,
+        "column3": "Préfabrication en béton industriel"
+    },
+    {
+        "column0": "P",
+        "column1": 12,
+        "column3": "Animation d'activités de loisirs"
+    },
+    {
+        "column0": "P",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Accompagnement de voyages, d'activités culturelles ou sportives"
+    },
+    {
+        "column0": "P",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Animation d'activités culturelles ou ludiques"
+    },
+    {
+        "column0": "P",
+        "column1": 12,
+        "column2": 3,
+        "column3": "Animation de loisirs auprès d'enfants ou d'adolescents"
+    },
+    {
+        "column0": "P",
+        "column1": 12,
+        "column2": 4,
+        "column3": "Éducation en activités sportives"
+    },
+    {
+        "column0": "P",
+        "column1": 16,
+        "column3": "Production culinaire"
+    },
+    {
+        "column0": "P",
+        "column1": 16,
+        "column2": 1,
+        "column3": "Management du personnel de cuisine"
+    },
+    {
+        "column0": "P",
+        "column1": 16,
+        "column2": 2,
+        "column3": "Personnel de cuisine"
+    },
+    {
+        "column0": "P",
+        "column1": 16,
+        "column2": 4,
+        "column3": "Fabrication de crêpes ou pizzas"
+    },
+    {
+        "column0": "P",
+        "column1": 16,
+        "column2": 5,
+        "column3": "Plonge en restauration"
+    },
+    {
+        "column0": "P",
+        "column1": 17,
+        "column2": 3,
+        "column3": "Réception en hôtellerie"
+    },
+    {
+        "column0": "P",
+        "column1": 18,
+        "column3": "Service"
+    },
+    {
+        "column0": "P",
+        "column1": 18,
+        "column2": 1,
+        "column3": "Café, bar brasserie"
+    },
+    {
+        "column0": "P",
+        "column1": 18,
+        "column2": 3,
+        "column3": "Service en restauration"
+    },
+    {
+        "column0": "P",
+        "column1": 18,
+        "column2": 4,
+        "column3": "Sommellerie"
+    },
+    {
+        "column0": "H",
+        "column3": "Etudes et supports techniques à l'industrie"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column3": "Conception, recherche, études et développement"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Expertise technique couleur en industrie"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Conception et dessin de produits électriques et électroniques"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 3,
+        "column3": "Conception et dessin produits mécaniques"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 4,
+        "column3": "Design industriel"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 5,
+        "column3": "Études - modèles en industrie des matériaux souples"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 6,
+        "column3": "Management et ingénierie études, recherche et développement industriel"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 7,
+        "column3": "Rédaction technique"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 8,
+        "column3": "Intervention technique en études et conception en automatisme"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 9,
+        "column3": "Intervention technique en études et développement électronique"
+    },
+    {
+        "column0": "H",
+        "column1": 12,
+        "column2": 10,
+        "column3": "Intervention technique en études, recherche et développement"
+    },
+    {
+        "column0": "H",
+        "column1": 13,
+        "column3": "Hygiène Sécurité Environnement -HSE- industriels"
+    },
+    {
+        "column0": "H",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Inspection de conformité"
+    },
+    {
+        "column0": "H",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Management et ingénierie Hygiène Sécurité Environnement -HSE- industriels"
+    },
+    {
+        "column0": "H",
+        "column1": 13,
+        "column2": 3,
+        "column3": "Intervention technique en Hygiène Sécurité Environnement -HSE- industriel"
+    },
+    {
+        "column0": "H",
+        "column1": 14,
+        "column3": "Méthodes et gestion industrielles"
+    },
+    {
+        "column0": "H",
+        "column1": 14,
+        "column2": 1,
+        "column3": "Management et ingénierie gestion industrielle et logistique"
+    },
+    {
+        "column0": "H",
+        "column1": 14,
+        "column2": 2,
+        "column3": "Management et ingénierie méthodes et industrialisation"
+    },
+    {
+        "column0": "H",
+        "column1": 14,
+        "column2": 3,
+        "column3": "Intervention technique en gestion industrielle et logistique"
+    },
+    {
+        "column0": "H",
+        "column1": 14,
+        "column2": 4,
+        "column3": "Intervention technique en méthodes et industrialisation"
+    },
+    {
+        "column0": "H",
+        "column1": 15,
+        "column3": "Qualité et analyses industrielles"
+    },
+    {
+        "column0": "H",
+        "column1": 15,
+        "column2": 1,
+        "column3": "Direction de laboratoire d'analyse industrielle"
+    },
+    {
+        "column0": "H",
+        "column1": 15,
+        "column2": 2,
+        "column3": "Management et ingénierie qualité industrielle"
+    },
+    {
+        "column0": "H",
+        "column1": 15,
+        "column2": 3,
+        "column3": "Intervention technique en laboratoire d'analyse industrielle"
+    },
+    {
+        "column0": "H",
+        "column1": 15,
+        "column2": 4,
+        "column3": "Intervention technique en contrôle essai qualité en électricité et électronique"
+    },
+    {
+        "column0": "H",
+        "column1": 15,
+        "column2": 5,
+        "column3": "Intervention technique en formulation et analyse sensorielle"
+    },
+    {
+        "column0": "H",
+        "column1": 15,
+        "column2": 6,
+        "column3": "Intervention technique qualité en mécanique et travail des métaux"
+    },
+    {
+        "column0": "P",
+        "column3": "Production industrielle"
+    },
+    {
+        "column0": "P",
+        "column1": 21,
+        "column3": "Alimentaire"
+    },
+    {
+        "column0": "P",
+        "column1": 21,
+        "column2": 1,
+        "column3": "Abattage et découpe des viandes"
+    },
+    {
+        "column0": "P",
+        "column1": 21,
+        "column2": 2,
+        "column3": "Conduite d'équipement de production alimentaire"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column3": "Bois"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column2": 1,
+        "column3": "Assemblage d'ouvrages en bois"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column2": 2,
+        "column3": "Conduite d'équipement de fabrication de l'ameublement et du bois"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column2": 3,
+        "column3": "Conduite d'installation de production de panneaux bois"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column2": 4,
+        "column3": "Encadrement des industries de l'ameublement et du bois"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column2": 5,
+        "column3": "Première transformation de bois d'oeuvre"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column2": 6,
+        "column3": "Réalisation de menuiserie bois et tonnellerie"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column2": 7,
+        "column3": "Réalisation de meubles en bois"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column2": 8,
+        "column3": "Réalisation d'ouvrages décoratifs en bois"
+    },
+    {
+        "column0": "P",
+        "column1": 22,
+        "column2": 9,
+        "column3": "Intervention technique en ameublement et bois"
+    },
+    {
+        "column0": "P",
+        "column1": 23,
+        "column3": "Chimie et pharmacie"
+    },
+    {
+        "column0": "P",
+        "column1": 23,
+        "column2": 1,
+        "column3": "Conduite d'équipement de production chimique ou pharmaceutique"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column3": "Cuir et textile"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 1,
+        "column3": "Assemblage - montage d'articles en cuirs, peaux"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 2,
+        "column3": "Assemblage - montage de vêtements et produits textiles"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 3,
+        "column3": "Conduite de machine de fabrication de produits textiles"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 4,
+        "column3": "Conduite de machine de production et transformation des fils"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 5,
+        "column3": "Conduite de machine de textiles nontissés"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 6,
+        "column3": "Conduite de machine de traitement textile"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 7,
+        "column3": "Conduite de machine de transformation et de finition des cuirs et peaux"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 8,
+        "column3": "Conduite de machine d'impression textile"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 9,
+        "column3": "Coupe cuir, textile et matériaux souples"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 10,
+        "column3": "Mise en forme, repassage et finitions en industrie textile"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 11,
+        "column3": "Montage de prototype cuir et matériaux souples"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 12,
+        "column3": "Patronnage - gradation"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 13,
+        "column3": "Préparation de fils, montage de métiers textiles"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 14,
+        "column3": "Préparation et finition d'articles en cuir et matériaux souples"
+    },
+    {
+        "column0": "P",
+        "column1": 24,
+        "column2": 15,
+        "column3": "Contrôle en industrie du cuir et du textile"
+    },
+    {
+        "column0": "P",
+        "column1": 25,
+        "column3": "Direction, encadrement et pilotage de fabrication et production industrielles"
+    },
+    {
+        "column0": "P",
+        "column1": 25,
+        "column2": 1,
+        "column3": "Encadrement de production de matériel électrique et électronique"
+    },
+    {
+        "column0": "P",
+        "column1": 25,
+        "column2": 2,
+        "column3": "Management et ingénierie de production"
+    },
+    {
+        "column0": "P",
+        "column1": 25,
+        "column2": 3,
+        "column3": "Pilotage d'unité élémentaire de production mécanique ou de travail des métaux"
+    },
+    {
+        "column0": "P",
+        "column1": 25,
+        "column2": 4,
+        "column3": "Encadrement d'équipe en industrie de transformation"
+    },
+    {
+        "column0": "P",
+        "column1": 25,
+        "column2": 5,
+        "column3": "Encadrement d'équipe ou d'atelier en matériaux souples"
+    },
+    {
+        "column0": "P",
+        "column1": 26,
+        "column3": "Electronique et électricité"
+    },
+    {
+        "column0": "P",
+        "column1": 26,
+        "column2": 1,
+        "column3": "Bobinage électrique"
+    },
+    {
+        "column0": "P",
+        "column1": 26,
+        "column2": 2,
+        "column3": "Câblage électrique et électromécanique"
+    },
+    {
+        "column0": "P",
+        "column1": 26,
+        "column2": 3,
+        "column3": "Conduite d'installation automatisée de production électrique, électronique et microélectronique"
+    },
+    {
+        "column0": "P",
+        "column1": 26,
+        "column2": 4,
+        "column3": "Montage de produits électriques et électroniques"
+    },
+    {
+        "column0": "P",
+        "column1": 26,
+        "column2": 5,
+        "column3": "Montage et câblage électronique"
+    },
+    {
+        "column0": "P",
+        "column1": 27,
+        "column3": "Energie"
+    },
+    {
+        "column0": "P",
+        "column1": 27,
+        "column2": 1,
+        "column3": "Pilotage d'installation énergétique et pétrochimique"
+    },
+    {
+        "column0": "P",
+        "column1": 28,
+        "column3": "Matériaux de construction, céramique et verre"
+    },
+    {
+        "column0": "P",
+        "column1": 28,
+        "column2": 1,
+        "column3": "Conduite d'équipement de transformation du verre"
+    },
+    {
+        "column0": "P",
+        "column1": 28,
+        "column2": 2,
+        "column3": "Conduite d'installation de production de matériaux de construction"
+    },
+    {
+        "column0": "P",
+        "column1": 28,
+        "column2": 3,
+        "column3": "Façonnage et émaillage en industrie céramique"
+    },
+    {
+        "column0": "P",
+        "column1": 28,
+        "column2": 4,
+        "column3": "Pilotage de centrale à béton prêt à l'emploi, ciment, enrobés et granulats"
+    },
+    {
+        "column0": "P",
+        "column1": 28,
+        "column2": 5,
+        "column3": "Pilotage d'installation de production verrière"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column3": "Mécanique, travail des métaux et outillage"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 1,
+        "column3": "Ajustement et montage de fabrication"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 2,
+        "column3": "Chaudronnerie - tôlerie"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 3,
+        "column3": "Conduite d'équipement d'usinage"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 4,
+        "column3": "Conduite d'équipement de déformation des métaux"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 5,
+        "column3": "Conduite d'équipement de formage et découpage des matériaux"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 6,
+        "column3": "Conduite d'installation automatisée ou robotisée de fabrication mécanique"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 7,
+        "column3": "Conduite d'installation de production des métaux"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 8,
+        "column3": "Modelage de matériaux non métalliques"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 9,
+        "column3": "Montage-assemblage mécanique"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 10,
+        "column3": "Moulage sable"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 11,
+        "column3": "Réalisation de structures métalliques"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 12,
+        "column3": "Réglage d'équipement de production industrielle"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 13,
+        "column3": "Soudage manuel"
+    },
+    {
+        "column0": "P",
+        "column1": 29,
+        "column2": 14,
+        "column3": "Réalisation et montage en tuyauterie"
+    },
+    {
+        "column0": "P",
+        "column1": 31,
+        "column3": "Papier et carton"
+    },
+    {
+        "column0": "P",
+        "column1": 31,
+        "column2": 1,
+        "column3": "Conduite d'équipement de fabrication de papier ou de carton"
+    },
+    {
+        "column0": "P",
+        "column1": 31,
+        "column2": 2,
+        "column3": "Conduite d'installation de pâte à papier"
+    },
+    {
+        "column0": "P",
+        "column1": 32,
+        "column3": "Plastique, caoutchouc"
+    },
+    {
+        "column0": "P",
+        "column1": 32,
+        "column2": 1,
+        "column3": "Conduite d'équipement de formage des plastiques et caoutchoucs"
+    },
+    {
+        "column0": "P",
+        "column1": 32,
+        "column2": 2,
+        "column3": "Réglage d'équipement de formage des plastiques et caoutchoucs"
+    },
+    {
+        "column0": "P",
+        "column1": 32,
+        "column2": 3,
+        "column3": "Fabrication de pièces en matériaux composites"
+    },
+    {
+        "column0": "P",
+        "column1": 33,
+        "column3": "Préparation et conditionnement"
+    },
+    {
+        "column0": "P",
+        "column1": 33,
+        "column2": 1,
+        "column3": "Conduite d'équipement de conditionnement"
+    },
+    {
+        "column0": "P",
+        "column1": 33,
+        "column2": 2,
+        "column3": "Opérations manuelles d'assemblage, tri ou emballage"
+    },
+    {
+        "column0": "P",
+        "column1": 33,
+        "column2": 3,
+        "column3": "Préparation de matières et produits industriels (broyage, mélange, ...)"
+    },
+    {
+        "column0": "P",
+        "column1": 34,
+        "column3": "Traitements thermiques et traitements de surfaces"
+    },
+    {
+        "column0": "P",
+        "column1": 34,
+        "column2": 1,
+        "column3": "Conduite de traitement d'abrasion de surface"
+    },
+    {
+        "column0": "P",
+        "column1": 34,
+        "column2": 2,
+        "column3": "Conduite de traitement par dépôt de surface"
+    },
+    {
+        "column0": "P",
+        "column1": 34,
+        "column2": 3,
+        "column3": "Conduite de traitement thermique"
+    },
+    {
+        "column0": "P",
+        "column1": 34,
+        "column2": 4,
+        "column3": "Peinture industrielle"
+    },
+    {
+        "column0": "I",
+        "column3": "INSTALLATION ET MAINTENANCE"
+    },
+    {
+        "column0": "I",
+        "column1": 12,
+        "column3": "Entretien technique"
+    },
+    {
+        "column0": "I",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Entretien et surveillance du tracé routier"
+    },
+    {
+        "column0": "I",
+        "column1": 12,
+        "column2": 3,
+        "column3": "Maintenance des bâtiments et des locaux"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column3": "Equipements de production, équipements collectifs"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Installation et maintenance d'ascenseurs"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Installation et maintenance d'automatismes"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column2": 4,
+        "column3": "Installation et maintenance d'équipements industriels et d'exploitation"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column2": 5,
+        "column3": "Installation et maintenance électronique"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column2": 6,
+        "column3": "Installation et maintenance en froid, conditionnement d'air"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column2": 7,
+        "column3": "Installation et maintenance télécoms et courants faibles"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column2": 8,
+        "column3": "Maintenance d'installation de chauffage"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column2": 9,
+        "column3": "Maintenance électrique"
+    },
+    {
+        "column0": "I",
+        "column1": 13,
+        "column2": 10,
+        "column3": "Maintenance mécanique industrielle"
+    },
+    {
+        "column0": "I",
+        "column1": 14,
+        "column3": "Equipements domestiques et informatique"
+    },
+    {
+        "column0": "I",
+        "column1": 14,
+        "column2": 1,
+        "column3": "Maintenance informatique et bureautique"
+    },
+    {
+        "column0": "I",
+        "column1": 14,
+        "column2": 2,
+        "column3": "Réparation de biens électrodomestiques"
+    },
+    {
+        "column0": "I",
+        "column1": 15,
+        "column3": "Travaux d'accès difficile"
+    },
+    {
+        "column0": "I",
+        "column1": 15,
+        "column2": 1,
+        "column3": "Intervention en grande hauteur"
+    },
+    {
+        "column0": "I",
+        "column1": 15,
+        "column2": 2,
+        "column3": "Intervention en milieu subaquatique"
+    },
+    {
+        "column0": "I",
+        "column1": 15,
+        "column2": 3,
+        "column3": "Intervention en milieux et produits nocifs"
+    },
+    {
+        "column0": "I",
+        "column1": 16,
+        "column3": "Véhicules, engins, aéronefs"
+    },
+    {
+        "column0": "I",
+        "column1": 16,
+        "column2": 1,
+        "column3": "Installation et maintenance en nautisme"
+    },
+    {
+        "column0": "I",
+        "column1": 16,
+        "column2": 2,
+        "column3": "Maintenance d'aéronefs"
+    },
+    {
+        "column0": "I",
+        "column1": 16,
+        "column2": 3,
+        "column3": "Maintenance d'engins de chantier, levage, manutention et de machines agricoles"
+    },
+    {
+        "column0": "I",
+        "column1": 16,
+        "column2": 4,
+        "column3": "Mécanique automobile et entretien de véhicules"
+    },
+    {
+        "column0": "I",
+        "column1": 16,
+        "column2": 5,
+        "column3": "Mécanique de marine"
+    },
+    {
+        "column0": "I",
+        "column1": 16,
+        "column2": 6,
+        "column3": "Réparation de carrosserie"
+    },
+    {
+        "column0": "I",
+        "column1": 16,
+        "column2": 7,
+        "column3": "Réparation de cycles, motocycles et motoculteurs de loisirs"
+    },
+    {
+        "column0": "J",
+        "column3": "SANTE"
+    },
+    {
+        "column0": "J",
+        "column1": 11,
+        "column3": "Praticiens médicaux"
+    },
+    {
+        "column0": "J",
+        "column1": 11,
+        "column2": 1,
+        "column3": "Médecine de prévention"
+    },
+    {
+        "column0": "J",
+        "column1": 11,
+        "column2": 2,
+        "column3": "Médecine généraliste et spécialisée"
+    },
+    {
+        "column0": "J",
+        "column1": 11,
+        "column2": 3,
+        "column3": "Médecine dentaire"
+    },
+    {
+        "column0": "J",
+        "column1": 11,
+        "column2": 4,
+        "column3": "Suivi de la grossesse et de l'accouchement"
+    },
+    {
+        "column0": "J",
+        "column1": 12,
+        "column3": "Praticiens médico-techniques"
+    },
+    {
+        "column0": "J",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Biologie médicale"
+    },
+    {
+        "column0": "J",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Pharmacie"
+    },
+    {
+        "column0": "J",
+        "column1": 13,
+        "column3": "Professionnels médico-techniques"
+    },
+    {
+        "column0": "J",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Personnel polyvalent des services hospitaliers"
+    },
+    {
+        "column0": "J",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Analyses médicales"
+    },
+    {
+        "column0": "J",
+        "column1": 13,
+        "column2": 3,
+        "column3": "Assistance médico-technique"
+    },
+    {
+        "column0": "J",
+        "column1": 13,
+        "column2": 4,
+        "column3": "Aide en puériculture"
+    },
+    {
+        "column0": "J",
+        "column1": 13,
+        "column2": 5,
+        "column3": "Conduite de véhicules sanitaires"
+    },
+    {
+        "column0": "J",
+        "column1": 13,
+        "column2": 6,
+        "column3": "Imagerie médicale"
+    },
+    {
+        "column0": "J",
+        "column1": 13,
+        "column2": 7,
+        "column3": "Préparation en pharmacie"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column3": "Rééducation et appareillage"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 1,
+        "column3": "Audioprothèses"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 2,
+        "column3": "Diététique"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 3,
+        "column3": "Ergothérapie"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 4,
+        "column3": "Kinésithérapie"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 5,
+        "column3": "Optique - lunetterie"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 6,
+        "column3": "Orthophonie"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 7,
+        "column3": "Orthoptique"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 8,
+        "column3": "Ostéopathie et chiropraxie"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 9,
+        "column3": "Pédicurie et podologie"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 10,
+        "column3": "Prothèses dentaires"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 11,
+        "column3": "Prothèses et orthèses"
+    },
+    {
+        "column0": "J",
+        "column1": 14,
+        "column2": 12,
+        "column3": "Rééducation en psychomotricité"
+    },
+    {
+        "column0": "J",
+        "column1": 15,
+        "column3": "Soins paramédicaux"
+    },
+    {
+        "column0": "J",
+        "column1": 15,
+        "column2": 1,
+        "column3": "Soins d'hygiène, de confort du patient"
+    },
+    {
+        "column0": "J",
+        "column1": 15,
+        "column2": 2,
+        "column3": "Coordination de services médicaux ou paramédicaux"
+    },
+    {
+        "column0": "J",
+        "column1": 15,
+        "column2": 3,
+        "column3": "Soins infirmiers spécialisés en anesthésie"
+    },
+    {
+        "column0": "J",
+        "column1": 15,
+        "column2": 4,
+        "column3": "Soins infirmiers spécialisés en bloc opératoire"
+    },
+    {
+        "column0": "J",
+        "column1": 15,
+        "column2": 5,
+        "column3": "Soins infirmiers spécialisés en prévention"
+    },
+    {
+        "column0": "J",
+        "column1": 15,
+        "column2": 6,
+        "column3": "Soins infirmiers généralistes"
+    },
+    {
+        "column0": "J",
+        "column1": 15,
+        "column2": 7,
+        "column3": "Soins infirmiers spécialisés en puériculture"
+    },
+    {
+        "column0": "K",
+        "column3": "SERVICES A LA PERSONNE ET A LA COLLECTIVITE"
+    },
+    {
+        "column0": "K",
+        "column1": 11,
+        "column3": "Accompagnement de la personne"
+    },
+    {
+        "column0": "K",
+        "column1": 11,
+        "column2": 1,
+        "column3": "Accompagnement et médiation familiale"
+    },
+    {
+        "column0": "K",
+        "column1": 11,
+        "column2": 2,
+        "column3": "Aide aux bénéficiaires d'une mesure de protection juridique"
+    },
+    {
+        "column0": "K",
+        "column1": 11,
+        "column2": 3,
+        "column3": "Développement personnel et bien-être de la personne"
+    },
+    {
+        "column0": "K",
+        "column1": 11,
+        "column2": 4,
+        "column3": "Psychologie"
+    },
+    {
+        "column0": "K",
+        "column1": 12,
+        "column3": "Action sociale, socio-éducative et socio-culturelle"
+    },
+    {
+        "column0": "K",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Action sociale"
+    },
+    {
+        "column0": "K",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Éducation de jeunes enfants"
+    },
+    {
+        "column0": "K",
+        "column1": 12,
+        "column2": 3,
+        "column3": "Encadrement technique en insertion professionnelle"
+    },
+    {
+        "column0": "K",
+        "column1": 12,
+        "column2": 4,
+        "column3": "Médiation sociale et facilitation de la vie en société"
+    },
+    {
+        "column0": "K",
+        "column1": 12,
+        "column2": 5,
+        "column3": "Information sociale"
+    },
+    {
+        "column0": "K",
+        "column1": 12,
+        "column2": 6,
+        "column3": "Intervention socioculturelle"
+    },
+    {
+        "column0": "K",
+        "column1": 12,
+        "column2": 7,
+        "column3": "Intervention socioéducative"
+    },
+    {
+        "column0": "K",
+        "column1": 13,
+        "column3": "Aide à la vie quotidienne"
+    },
+    {
+        "column0": "K",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Accompagnement médicosocial"
+    },
+    {
+        "column0": "K",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Assistance auprès d'adultes"
+    },
+    {
+        "column0": "K",
+        "column1": 13,
+        "column2": 3,
+        "column3": "Assistance auprès d'enfants"
+    },
+    {
+        "column0": "K",
+        "column1": 13,
+        "column2": 4,
+        "column3": "Services domestiques"
+    },
+    {
+        "column0": "K",
+        "column1": 13,
+        "column2": 5,
+        "column3": "Intervention sociale et familiale"
+    },
+    {
+        "column0": "K",
+        "column1": 14,
+        "column3": "Conception et mise en oeuvre des politiques publiques"
+    },
+    {
+        "column0": "K",
+        "column1": 14,
+        "column2": 2,
+        "column3": "Conseil en Santé Publique"
+    },
+    {
+        "column0": "K",
+        "column1": 14,
+        "column2": 3,
+        "column3": "Management de structure de santé, sociale ou pénitentiaire"
+    },
+    {
+        "column0": "K",
+        "column1": 16,
+        "column3": "Culture et gestion documentaire"
+    },
+    {
+        "column0": "K",
+        "column1": 16,
+        "column2": 1,
+        "column3": "Gestion de l'information et de la documentation"
+    },
+    {
+        "column0": "K",
+        "column1": 16,
+        "column2": 2,
+        "column3": "Gestion de patrimoine culturel"
+    },
+    {
+        "column0": "K",
+        "column1": 17,
+        "column2": 5,
+        "column3": "Sécurité civile et secours"
+    },
+    {
+        "column0": "K",
+        "column1": 18,
+        "column2": 2,
+        "column3": "Développement local"
+    },
+    {
+        "column0": "K",
+        "column1": 19,
+        "column3": "Défense et conseil juridique"
+    },
+    {
+        "column0": "K",
+        "column1": 19,
+        "column2": 3,
+        "column3": "Défense et conseil juridique"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 2,
+        "column3": "Coordination pédagogique"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 4,
+        "column3": "Éducation et surveillance au sein d'établissements d'enseignement"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 5,
+        "column3": "Enseignement artistique"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 6,
+        "column3": "Enseignement des écoles"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 7,
+        "column3": "Enseignement général du second degré"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 8,
+        "column3": "Enseignement supérieur"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 9,
+        "column3": "Enseignement technique et professionnel"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 10,
+        "column3": "Formation en conduite de véhicules"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 11,
+        "column3": "Formation professionnelle"
+    },
+    {
+        "column0": "K",
+        "column1": 21,
+        "column2": 12,
+        "column3": "Orientation scolaire et professionnelle"
+    },
+    {
+        "column0": "K",
+        "column1": 22,
+        "column3": "Nettoyage et propreté industriels"
+    },
+    {
+        "column0": "K",
+        "column1": 22,
+        "column2": 1,
+        "column3": "Blanchisserie industrielle"
+    },
+    {
+        "column0": "K",
+        "column1": 22,
+        "column2": 2,
+        "column3": "Lavage de vitres"
+    },
+    {
+        "column0": "K",
+        "column1": 22,
+        "column2": 3,
+        "column3": "Management et inspection en propreté de locaux"
+    },
+    {
+        "column0": "K",
+        "column1": 22,
+        "column2": 4,
+        "column3": "Nettoyage de locaux"
+    },
+    {
+        "column0": "K",
+        "column1": 23,
+        "column3": "Propreté et environnement urbain"
+    },
+    {
+        "column0": "K",
+        "column1": 23,
+        "column2": 1,
+        "column3": "Distribution et assainissement d'eau"
+    },
+    {
+        "column0": "K",
+        "column1": 23,
+        "column2": 2,
+        "column3": "Management et inspection en environnement urbain"
+    },
+    {
+        "column0": "K",
+        "column1": 23,
+        "column2": 3,
+        "column3": "Nettoyage des espaces urbains"
+    },
+    {
+        "column0": "K",
+        "column1": 23,
+        "column2": 4,
+        "column3": "Revalorisation de produits industriels"
+    },
+    {
+        "column0": "K",
+        "column1": 23,
+        "column2": 5,
+        "column3": "Salubrité et traitement de nuisibles"
+    },
+    {
+        "column0": "K",
+        "column1": 23,
+        "column2": 6,
+        "column3": "Supervision d'exploitation éco-industrielle"
+    },
+    {
+        "column0": "K",
+        "column1": 24,
+        "column3": "Recherche"
+    },
+    {
+        "column0": "K",
+        "column1": 24,
+        "column2": 1,
+        "column3": "Recherche en sciences de l'homme et de la société"
+    },
+    {
+        "column0": "K",
+        "column1": 24,
+        "column2": 2,
+        "column3": "Recherche en sciences de l'univers, de la matière et du vivant"
+    },
+    {
+        "column0": "K",
+        "column1": 26,
+        "column3": "Services funéraires"
+    },
+    {
+        "column0": "K",
+        "column1": 26,
+        "column2": 1,
+        "column3": "Conduite d'opérations funéraires"
+    },
+    {
+        "column0": "K",
+        "column1": 26,
+        "column2": 2,
+        "column3": "Conseil en services funéraires"
+    },
+    {
+        "column0": "K",
+        "column1": 26,
+        "column2": 3,
+        "column3": "Thanatopraxie"
+    },
+    {
+        "column0": "L",
+        "column3": "SPECTACLE"
+    },
+    {
+        "column0": "L",
+        "column1": 11,
+        "column3": "Animation de spectacles"
+    },
+    {
+        "column0": "L",
+        "column1": 11,
+        "column2": 1,
+        "column3": "Animation musicale et scénique"
+    },
+    {
+        "column0": "L",
+        "column1": 11,
+        "column2": 2,
+        "column3": "Mannequinat et pose artistique"
+    },
+    {
+        "column0": "L",
+        "column1": 11,
+        "column2": 3,
+        "column3": "Présentation de spectacles ou d'émissions"
+    },
+    {
+        "column0": "L",
+        "column1": 12,
+        "column3": "Artistes - interprètes du spectacle"
+    },
+    {
+        "column0": "L",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Danse"
+    },
+    {
+        "column0": "L",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Musique et chant"
+    },
+    {
+        "column0": "L",
+        "column1": 12,
+        "column2": 3,
+        "column3": "Art dramatique"
+    },
+    {
+        "column0": "L",
+        "column1": 12,
+        "column2": 4,
+        "column3": "Arts du cirque et arts visuels"
+    },
+    {
+        "column0": "L",
+        "column1": 13,
+        "column3": "Conception et production de spectacles"
+    },
+    {
+        "column0": "L",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Mise en scène de spectacles vivants"
+    },
+    {
+        "column0": "L",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Production et administration spectacle, cinéma et audiovisuel"
+    },
+    {
+        "column0": "L",
+        "column1": 13,
+        "column2": 3,
+        "column3": "Promotion d'artistes et de spectacles"
+    },
+    {
+        "column0": "L",
+        "column1": 13,
+        "column2": 4,
+        "column3": "Réalisation cinématographique et audiovisuelle"
+    },
+    {
+        "column0": "L",
+        "column1": 14,
+        "column3": "Sport professionnel"
+    },
+    {
+        "column0": "L",
+        "column1": 14,
+        "column2": 1,
+        "column3": "Sportif professionnel"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column3": "Techniciens du spectacle"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 1,
+        "column3": "Coiffure et maquillage spectacle"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 2,
+        "column3": "Costume et habillage spectacle"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 3,
+        "column3": "Décor et accessoires spectacle"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 4,
+        "column3": "Éclairage spectacle"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 5,
+        "column3": "Image cinématographique et télévisuelle"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 6,
+        "column3": "Machinerie spectacle"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 7,
+        "column3": "Montage audiovisuel et post-production"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 8,
+        "column3": "Prise de son et sonorisation"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 9,
+        "column3": "Régie générale"
+    },
+    {
+        "column0": "L",
+        "column1": 15,
+        "column2": 10,
+        "column3": "Films d'animation et effets spéciaux"
+    },
+    {
+        "column0": "M",
+        "column3": "SUPPORT AU PROJETS"
+    },
+    {
+        "column0": "M",
+        "column1": 16,
+        "column3": "Secrétariat et assistance"
+    },
+    {
+        "column0": "M",
+        "column1": 16,
+        "column2": 1,
+        "column3": "Accueil et renseignements"
+    },
+    {
+        "column0": "M",
+        "column1": 16,
+        "column2": 2,
+        "column3": "Opérations administratives"
+    },
+    {
+        "column0": "M",
+        "column1": 16,
+        "column2": 5,
+        "column3": "Assistanat technique et administratif"
+    },
+    {
+        "column0": "M",
+        "column1": 16,
+        "column2": 6,
+        "column3": "Saisie de données"
+    },
+    {
+        "column0": "M",
+        "column1": 16,
+        "column2": 7,
+        "column3": "Secrétariat"
+    },
+    {
+        "column0": "M",
+        "column1": 16,
+        "column2": 9,
+        "column3": "Secrétariat et assistanat médical ou médico-social"
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column3": "Systèmes d'information et de télécommunication"
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column2": 1,
+        "column3": "Administration de systèmes d'information"
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column2": 2,
+        "column3": "Expertise et support en systèmes d'information"
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column2": 3,
+        "column3": "Direction des systèmes d'information"
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column2": 4,
+        "column3": "Études et développement de réseaux de télécoms"
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column2": 5,
+        "column3": "Études et développement informatique"
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column2": 6,
+        "column3": "Conseil et maîtrise d'ouvrage en systèmes d'information"
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column2": 7,
+        "column3": "Exploitation de systèmes de communication "
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column2": 9,
+        "column3": "Information météorologique"
+    },
+    {
+        "column0": "M",
+        "column1": 18,
+        "column2": 10,
+        "column3": "Production et exploitation de systèmes d'information"
+    },
+    {
+        "column0": "N",
+        "column3": "TRANSPORT ET LOGISTIQUE"
+    },
+    {
+        "column0": "N",
+        "column1": 1,
+        "column3": "Logistique"
+    },
+    {
+        "column0": "N",
+        "column1": 11,
+        "column3": "Magasinage, manutention des charges et déménagement"
+    },
+    {
+        "column0": "N",
+        "column1": 11,
+        "column2": 1,
+        "column3": "Conduite d'engins de déplacement des charges"
+    },
+    {
+        "column0": "N",
+        "column1": 11,
+        "column2": 2,
+        "column3": "Déménagement"
+    },
+    {
+        "column0": "N",
+        "column1": 11,
+        "column2": 3,
+        "column3": "Magasinage et préparation de commandes"
+    },
+    {
+        "column0": "N",
+        "column1": 11,
+        "column2": 4,
+        "column3": "Manoeuvre et conduite d'engins lourds de manutention"
+    },
+    {
+        "column0": "N",
+        "column1": 11,
+        "column2": 5,
+        "column3": "Manutention manuelle de charges"
+    },
+    {
+        "column0": "N",
+        "column1": 12,
+        "column3": "Organisation de la circulation des ressources"
+    },
+    {
+        "column0": "N",
+        "column1": 12,
+        "column2": 1,
+        "column3": "Affrètement transport"
+    },
+    {
+        "column0": "N",
+        "column1": 12,
+        "column2": 2,
+        "column3": "Gestion des opérations de circulation internationale des ressources"
+    },
+    {
+        "column0": "N",
+        "column1": 13,
+        "column3": "Personnel d'encadrement"
+    },
+    {
+        "column0": "N",
+        "column1": 13,
+        "column2": 1,
+        "column3": "Conception et organisation de la chaîne logistique"
+    },
+    {
+        "column0": "N",
+        "column1": 13,
+        "column2": 2,
+        "column3": "Direction de site logistique"
+    },
+    {
+        "column0": "N",
+        "column1": 13,
+        "column2": 3,
+        "column3": "Intervention technique d'exploitation logistique"
+    },
+    {
+        "column0": "N",
+        "column1": 2,
+        "column3": "Transport aérien et activités aéroportuaires"
+    },
+    {
+        "column0": "N",
+        "column1": 21,
+        "column3": "Personnel navigant du transport aérien"
+    },
+    {
+        "column0": "N",
+        "column1": 21,
+        "column2": 2,
+        "column3": "Pilotage et navigation technique aérienne"
+    },
+    {
+        "column0": "N",
+        "column1": 22,
+        "column3": "Personnel sédentaire du transport aérien"
+    },
+    {
+        "column0": "N",
+        "column1": 22,
+        "column2": 1,
+        "column3": "Personnel d'escale aéroportuaire"
+    },
+    {
+        "column0": "N",
+        "column1": 22,
+        "column2": 2,
+        "column3": "Contrôle de la navigation aérienne"
+    },
+    {
+        "column0": "N",
+        "column1": 22,
+        "column2": 3,
+        "column3": "Exploitation des pistes aéroportuaires"
+    },
+    {
+        "column0": "N",
+        "column1": 22,
+        "column2": 4,
+        "column3": "Préparation des vols"
+    },
+    {
+        "column0": "N",
+        "column1": 22,
+        "column2": 5,
+        "column3": "Direction d'escale et exploitation aéroportuaire"
+    },
+    {
+        "column0": "N",
+        "column1": 3,
+        "column3": "Transport maritime et fluvial et activités portuaires"
+    },
+    {
+        "column0": "N",
+        "column1": 31,
+        "column3": "Personnel navigant du transport maritime et fluvial"
+    },
+    {
+        "column0": "N",
+        "column1": 31,
+        "column2": 1,
+        "column3": "Encadrement de la navigation maritime"
+    },
+    {
+        "column0": "N",
+        "column1": 31,
+        "column2": 2,
+        "column3": "Equipage de la navigation maritime"
+    },
+    {
+        "column0": "N",
+        "column1": 31,
+        "column2": 3,
+        "column3": "Navigation fluviale"
+    },
+    {
+        "column0": "N",
+        "column1": 32,
+        "column3": "Personnel sédentaire du transport maritime et fluvial"
+    },
+    {
+        "column0": "N",
+        "column1": 32,
+        "column2": 1,
+        "column3": "Exploitation des opérations portuaires et du transport maritime"
+    },
+    {
+        "column0": "N",
+        "column1": 32,
+        "column2": 2,
+        "column3": "Exploitation du transport fluvial"
+    },
+    {
+        "column0": "N",
+        "column1": 32,
+        "column2": 3,
+        "column3": "Manutention portuaire"
+    },
+    {
+        "column0": "N",
+        "column1": 4,
+        "column3": "Transport terrestre"
+    },
+    {
+        "column0": "N",
+        "column1": 41,
+        "column3": "Personnel de conduite du transport routier"
+    },
+    {
+        "column0": "N",
+        "column1": 41,
+        "column2": 1,
+        "column3": "Conduite de transport de marchandises sur longue distance"
+    },
+    {
+        "column0": "N",
+        "column1": 41,
+        "column2": 2,
+        "column3": "Conduite de transport de particuliers"
+    },
+    {
+        "column0": "N",
+        "column1": 41,
+        "column2": 3,
+        "column3": "Conduite de transport en commun sur route"
+    },
+    {
+        "column0": "N",
+        "column1": 41,
+        "column2": 4,
+        "column3": "Courses et livraisons express"
+    },
+    {
+        "column0": "N",
+        "column1": 41,
+        "column2": 5,
+        "column3": "Conduite et livraison par tournées sur courte distance"
+    },
+    {
+        "column0": "N",
+        "column1": 43,
+        "column3": "Personnel navigant du transport terrestre"
+    },
+    {
+        "column0": "N",
+        "column1": 43,
+        "column2": 1,
+        "column3": "Conduite sur rails"
+    },
+    {
+        "column0": "N",
+        "column1": 43,
+        "column2": 2,
+        "column3": "Contrôle des transports en commun"
+    },
+    {
+        "column0": "N",
+        "column1": 44,
+        "column3": "Personnel sédentaire du transport ferroviaire et réseau filo guidé"
+    },
+    {
+        "column0": "N",
+        "column1": 44,
+        "column2": 1,
+        "column3": "Circulation du réseau ferré"
+    },
+    {
+        "column0": "N",
+        "column1": 44,
+        "column2": 2,
+        "column3": "Exploitation et manoeuvre des remontées mécaniques"
+    },
+    {
+        "column0": "N",
+        "column1": 44,
+        "column2": 3,
+        "column3": "Manoeuvre du réseau ferré"
+    }
 ]
 
 export default CompetenceTableUnformatted

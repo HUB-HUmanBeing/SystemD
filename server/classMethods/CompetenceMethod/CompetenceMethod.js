@@ -31,8 +31,8 @@ Competence.extend({
         addNewCompetence(){
             check(Meteor.userId(), String)
             //on check qu'elle a bien des catégories et sousCatégories valides
-            check(CompetencesCategories.find({index : this.category}).count() , 1)
-            check(CompetencesSubCategories.find({index : this.subCategory}).count() , 1)
+            check(!!CompetencesCategories.find({index : this.category}).count() , true)
+            check(!!CompetencesSubCategories.find({index : this.subCategory}).count() , true)
             this.index= Competences.find({}).count()
             this.save()
         }

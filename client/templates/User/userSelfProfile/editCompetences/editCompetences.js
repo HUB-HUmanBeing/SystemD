@@ -6,6 +6,15 @@ Template.editCompetences.helpers({
     hydratedCompetences: function () {
         return Template.instance().hydratedCompetences.get()
     },
+    sortedCompetences: function () {
+        resetTooltips()
+        return sortCompetences("french",
+            Template.instance().hydratedCompetences.get(),
+            Template.instance().competencesCategories,
+            Template.instance().competencesSubCategories)
+
+
+    },
     //true si le template est en mode édition
     isEditing: function () {
         return Template.instance().isEditing.get()

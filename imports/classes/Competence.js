@@ -16,7 +16,7 @@ const Competence = Class.create({
            type: String
         },
         subCategory:{
-            type: Number
+            type: String
         }
     }
 })

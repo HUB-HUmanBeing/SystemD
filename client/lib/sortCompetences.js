@@ -16,6 +16,7 @@ sortCompetences = function (language, competences, categories, subCategories) {
     let sortedCompetences = []
     //pour chacunes des compétences de l'utilisateur
     competences.forEach((competence) => {
+
         //on initialise les données qu'on rensignera
         let competenceName = competence[name]
         let categoryName = ""

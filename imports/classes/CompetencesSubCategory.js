@@ -8,7 +8,7 @@ const CompetencesSubCategory = Class.create({
     name: 'CompetencesSubCategory',
     collection: CompetencesSubCategories,
     fields: {
-        index: Number,
+        index: String,
         frenchName: {
             type: String,
         },

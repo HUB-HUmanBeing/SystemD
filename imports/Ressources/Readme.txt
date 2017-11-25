@@ -5,6 +5,6 @@ une première ébauche d'une table "épurée" de tout les métiers en liens avec
 mais il est clair que ce tableau serait a retravailler.
 
 il a été converti en json grace au site :
-http://www.convertcsv.com/csv-to-json.htm
+https://www.freeformatter.com/csv-to-json-converter.html#ad-output
 
 c'est sur le json formaté par ce site que notre code travaillera
