@@ -9,62 +9,188 @@
         <form class="col s12 no-padding no-margin">
             {{#if eq callingFrom "menu"}}
                 <div class="row">
-                    <div class="input-field col s12 no-padding">
+                    <div class="row" style="margin: 0 0 -15px 0 !important;">
+                        <div class=" col s12 no-padding">
+                            <i>Par nom {{#if eq type "user"}}d'utilisateur{{else}}de projet{{/if}}</i>
+                        </div>
+                    </div>
+                    <div class="input-field col s10 offset-s1 no-padding">
                         <input value="{{name}}" placeholder="Recherche globale" id="name" type="text">
-                        <label for="first_name">Nom</label>
                     </div>
                 </div>
             {{/if}}
             <div class="{{#unless moreSearchTools}}hidden absolute{{/unless}}">
                 {{#if currentUserId}}
-                    <div class="row  relative" style="margin: -10px 0 0 0 !important;">
-                        <div class=" relative">
-                            <p class="range-field">
-                                <input type="range" id="range"
-                                       min="5" max="150"
-                                       value="{{range}}" class="tooltipped"
-                                       data-position="bottom" data-delay="50"
-                                       data-tooltip="déplacez le curseur pour ajuster la distance de recherche" range/>
-                            </p>
+                    <div class="row no-margin">
+                        <div class=" col s12 no-padding">
+                            <i>Par Distance :</i>
                         </div>
-
                     </div>
-                    <div class="row " style="margin: -10px 0 5px 0">
-                        <p class="right-align small-info">
-                            <i>{{shownRange}}</i>
-                        </p>
+                    <div class="row no-margin">
+                        <div class="col s10 offset-s1 no-padding">
+                            <div class="row  relative" style="margin: -10px 0 0 0 !important;">
+                                <div class=" relative">
+                                    <p class="range-field">
+                                        <input type="range" id="range"
+                                               min="5" max="150"
+                                               value="{{range}}" class="tooltipped"
+                                               data-position="bottom" data-delay="50"
+                                               data-tooltip="déplacez le curseur pour ajuster la distance de recherche"
+                                               range/>
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="row " style="margin: -10px 0 20px 0">
+                                <p class="right-align small-info">
+                                    <i>{{shownRange}}</i>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 {{/if}}
                 <div class="row">
-                    <div class="col s12 input-field  ">
-                        <select chooseCategory id="chosenCategory" multiple>
-                            <option value="" disabled selected>
-                                Choisir</option>
-                            {{#each cat in categories}}
-                                {{#unless isInArray cat.id ownerCategories}}
-                                    <option value="{{cat.id}}"
-                                            data-icon="{{cat.img}}"
-                                            class="circle">
-                                        {{cat.label}}
-                                    </option>
-                                {{else}}
-                                    <option value="{{cat.id}}"
-                                            data-icon="{{cat.img}}"
-                                            class="circle"
-                                            selected>
-                                        {{cat.label}}
-                                    </option>
-                                {{/unless}}>
-                            {{/each}}
-                        </select>
-                        <label>{{#if eq type "user"}}Centres d'interets{{else}}Types d'activités{{/if}}</label>
+                    <div class=" col s10 no-padding">
+                        <i>Par {{#if eq type "user"}}centres d'interets{{else}}types d'activités{{/if}} :</i>
+                    </div>
+                    <div class="switch col s2 no-padding">
+                        <label>
+                            {{#if byCategories}}
+                                <input type="checkbox" checked byCategories>
+                            {{else}}
+                                <input type="checkbox" byCategories>
+                            {{/if}}
+                            <span class="lever"></span>
+                        </label>
+                    </div>
+                    {{#if byCategories}}
+                        <div class="col s10 offset-s1 input-field  no-padding">
+                            <select chooseCategory id="chosenCategory" multiple>
+                                <option value="all" disabled selected>
+                                    Uniquement avec...
+                                </option>
+                                {{#each cat in categories}}
+                                    {{#unless isInArray cat.id ownerCategories}}
+                                        <option value="{{cat.id}}"
+                                                data-icon="{{cat.img}}"
+                                                class="circle">
+                                            {{cat.label}}
+                                        </option>
+                                    {{else}}
+                                        <option value="{{cat.id}}"
+                                                data-icon="{{cat.img}}"
+                                                class="circle"
+                                                selected>
+                                            {{cat.label}}
+                                        </option>
+                                    {{/unless}}>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                    {{/if}}
+                </div>
+                {{#if eq type "user"}}
+                    <div class="row">
+                        <div class="row">
+                            <div class=" col s10 no-padding">
+                                <i>Par compétences :</i>
+                            </div>
+                            <div class="switch col s2 no-padding">
+                                <label>
+                                    {{#if byCompetences}}
+                                        <input type="checkbox" id="byCompetences" checked byCompetences>
+                                    {{else}}
+                                        <input type="checkbox" id="byCompetences" byCompetences>
+                                    {{/if}}
+                                    <span class="lever"></span>
+                                </label>
+                            </div>
+                        </div>
+                        {{#if byCompetences}}
+                            <div class="row" style="margin: 15px 30px 10px 30px !important;">
+                                <p class="orange-text small-info justify">
+                                    Selectionnez la compétence ou l'ensemble de compétences recherchées, puis cliquez sur ajouter
+                                </p>
+                            </div>
+
+                            <div class="col s10 offset-s1  no-padding">
+                                <div class="row">
+                                    <div class="col s12 ">
+                                        <p class="small-info" style="margin-left: -20px !important;"><i>categories de compétences</i></p>
+                                        <select chooseCategory id="chosenCategory">
+                                            <option value="" disabled selected>Choisissez une catégorie</option>
+                                            {{#each cat in competenceCategories}}
+                                                <option value="{{cat.index}}">{{cat.frenchName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    {{#if shownSubCategories.length}}
+                                        <div class="col s12 ">
+                                            <p class="small-info" style="margin-left: -20px !important;"><i>sous_categories de compétences</i></p>
+                                            <select chooseSubCategory id="chosenSubCategory">
+                                                <option value="all"  selected>Toutes</option>
+                                                {{#each cat in shownSubCategories}}
+                                                    <option value="{{cat.index}}">{{cat.frenchName}}</option>
+                                                {{/each}}
+                                            </select>
+                                            <label>Sous-catégorie</label>
+                                        </div>
+                                        {{#if shownCompetences.length}}
+                                            <div class="col s12 ">
+                                                <p class="small-info" style="margin-left: -20px !important;"><i>competences</i></p>
+                                                <select chooseCompetence id="chosenCompetence">
+                                                    <option value="all" selected>Toutes</option>
+                                                    {{#each competence in shownCompetences}}
+                                                        <option value="{{competence.index}}">{{competence.frenchName}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                        {{/if}}
+                                        <div class="row">
+                                            <div class="center-align">
+                                                <a class="btn btn-block waves-effect  waves-light dark-grey hover-dark-grey hover-bg-orange"
+                                                   AddCompetence>
+                                                    <span class="orange-text">Ajouter à la recherche</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            {{#if competencesResults.length}}
+                                <div class="col s10 offset-s1">
+                                    {{#each item in formattedCompetencesResults}}
+                                        {{/each}}
+                                </div>
+                            {{/if}}
+                        {{/if}}
+                    </div>
+                {{/if}}
+                <div class="row ">
+                    <div class="center-align">
+                        <a class="btn btn-block waves-effect  waves-light dark-grey hover-dark-grey hover-bg-orange"
+                           searchBtn>
+                            <span class="orange-text">Rechercher</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-<div class="row no-margin">
 
-</div>
-    <div class="hr relative" style="margin: 0 !important;"><a class="btn- dark-grey absolute"><i class="material-icons">keyboard_arrow_down</i></a></div>
+    {{#unless moreSearchTools}}
+        <div class="hr relative" style="margin: 0 !important;">
+            <a class="btn-floating btn-large waves-effect waves-light grey darken-2 absolute tooltipped "
+               data-position="bottom" data-delay="350"
+               data-tooltip="Recherche avancée"
+               style="right : -10px; bottom: -20px "
+               moreSearchTools>
+                <i class="material-icons grey-text text-darken-4" style="font-size: 2.5rem !important;">keyboard_arrow_down</i>
+            </a>
+        </div>
+    {{else}}
+        <div class="hr relative" style="margin: 0 !important;">
+        </div>
+    {{/unless}}
 </template>

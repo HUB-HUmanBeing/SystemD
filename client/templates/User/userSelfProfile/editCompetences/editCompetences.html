@@ -49,7 +49,7 @@
             <div id="addCompetencesModal" class="modal modal-fixed-footer dark-grey ">
                 <div class="modal-content dark-grey scrollbar">
                     <div class="row">
-                        <h5 class="center-align orange-text">{{newCompetence}}</h5>
+
                         <div class="col s12 xl6 offset-xl3 relative ">
                             <p class="center-align" style="margin:0 10px 20px 10px!important;">
                                 <i class="justify small-info orange-text">La compétence que vous souhaitez indiquer
@@ -60,6 +60,7 @@
                                     position="bottomRight"
                                     content= "l'enregistrement des compétences permet un meilleur référencement de celles ci, et rends la mise en lien des utilisateurs et des projets plus efficace"}}
                         </div>
+                        <h5 class="center-align orange-text">{{newCompetence}}</h5>
                     </div>
                     <div class="row">
                         <div class="col s12 m6 input-field  {{#unless shownSubCategories.length}}offset-m3{{/unless}}">
@@ -85,7 +86,9 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m6 offset-m3">
-                            <a class="btn btn-block  orange {{#unless readyToAddCompetence}}disabled{{/unless}}" addNewCompetence>Ajouter{{#unless isPhone}} la compétence{{/unless}}</a>
+                            <a class="btn btn-block waves-effect orange-text waves-light dark-grey hover-dark-grey hover-bg-orange {{#unless readyToAddCompetence}}disabled{{/unless}}" addNewCompetence>
+                                <span >Ajouter{{#unless isPhone}} la compétence{{/unless}}</span>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -293,4 +293,5 @@ Template.editCompetences.onRendered(function () {
 
 Template.editCompetences.onDestroyed(function () {
     //add your statement here
+    $('select').material_select('destroy');
 });
