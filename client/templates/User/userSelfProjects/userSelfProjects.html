@@ -55,6 +55,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row ">
+                        <div class="col s12">
+                            <div class="card trame-box ">
+                                <div class="card-content">
+                                    <span class="card-title">Rechercher des projets</span>
+                                    {{>searchTool
+                                            type = "project"
+                                            callingFrom = "userProjects"
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col s12 m5 ">
                     {{#if waitingInvitations}}
@@ -121,17 +134,7 @@
                         </div>
 
                     {{/if}}
-                    <div class="row ">
-                        <div class="col s12">
-                            <div class="card trame-box ">
-                                <div class="card-content">
-                                    <span class="card-title">Rechercher des projets</span>
-                                    {{>workInProgress
-                                            content= "de rechercher des projets par type d'activié et distance, puis dans le futur, par compétences recherchée par le projet"}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

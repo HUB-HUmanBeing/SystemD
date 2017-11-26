@@ -30,7 +30,7 @@ if (Competences.find().count() === 0) {
         }else{//enfin, si ca n'as pas matché aux deux précedente, c'est que c'est une categorie generale
             let competencesCategory = new CompetencesCategory
             competencesCategory.index=unformattedLine.column0
-            competencesCategory.frenchName = unformattedLine.column3
+            competencesCategory.frenchName = unformattedLine.column3.toUpperCase()
             //puis on la sauvegarde
             competencesCategory.save()
         }

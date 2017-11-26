@@ -1,15 +1,30 @@
 Template.searchModal.helpers({
-    searchedInput : function () {
+    isSearchingUser: function () {
+        return Template.instance().isSearchingUser.get()
+    },
+    searchedInput: function () {
         return Session.get("searchedInput")
     },
-    openSearchModal : function () {
+    openSearchModal: function () {
+        let isSearchingUser = Template.instance().isSearchingUser
+        if (Session.get("openSearchModal")) {
+            Meteor.setTimeout(() => {
+                $('.swipable').tabs(
+                    {
+                        onShow(param) {
+                            if (param.selector.split('#')[1] === "searchUserTab") {
+                                isSearchingUser.set(true)
 
-        if(Session.get("openSearchModal")){
-          Meteor.setTimeout( ()=>{
-              $('.swipable').tabs(
-                  // { 'swipeable': true }
-              );
-          },50)
+                            } else if (param.selector.split('#')[1] === "searchProjectTab") {
+                                isSearchingUser.set(false)
+                            }
+                        }
+                    }
+                );
+                Meteor.setTimeout(() => {
+                    $('#searchUserTabSelector').click()
+                }, 150)
+            }, 150)
         }
         return Session.get("openSearchModal")
     }
@@ -21,13 +36,10 @@ Template.searchModal.events({
 
 Template.searchModal.onCreated(function () {
     //add your statement here
+    this.isSearchingUser = new ReactiveVar(true)
 });
 
 Template.searchModal.onRendered(function () {
-    //add your statement here
-    $('.swipable').tabs(
-        // { 'swipeable': true }
-    );
 });
 
 Template.searchModal.onDestroyed(function () {

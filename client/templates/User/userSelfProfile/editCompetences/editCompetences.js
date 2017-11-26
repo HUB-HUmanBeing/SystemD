@@ -204,7 +204,7 @@ Template.editCompetences.events({
         //on vient récuperer toutes les valeurs
         let newCompetenceFrenchName = instance.newCompetence.get();
         let newCompetenceCategory = $('#chosenCategory').val()
-        let newCompetenceSubCategory = parseInt($('#chosenSubCategory').val())
+        let newCompetenceSubCategory = $('#chosenSubCategory').val()
 
         //on crée une nouvelle compétence
         let newCompetence = new Competence;

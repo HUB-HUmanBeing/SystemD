@@ -1,0 +1,70 @@
+<template name="searchTool">
+    {{! Template de recherche
+    est appelé avec
+    name = String //nom entré dans la barre de recherche si il y en a un
+    type = String // "projet" ou "user",  type d'entité recherchée
+    callingFrom = String //userProjects , menu , projectMembers
+    }}
+    <div class="row no-margin">
+        <form class="col s12 no-padding no-margin">
+            {{#if eq callingFrom "menu"}}
+                <div class="row">
+                    <div class="input-field col s12 no-padding">
+                        <input value="{{name}}" placeholder="Recherche globale" id="name" type="text">
+                        <label for="first_name">Nom</label>
+                    </div>
+                </div>
+            {{/if}}
+            <div class="{{#unless moreSearchTools}}hidden absolute{{/unless}}">
+                {{#if currentUserId}}
+                    <div class="row  relative" style="margin: -10px 0 0 0 !important;">
+                        <div class=" relative">
+                            <p class="range-field">
+                                <input type="range" id="range"
+                                       min="5" max="150"
+                                       value="{{range}}" class="tooltipped"
+                                       data-position="bottom" data-delay="50"
+                                       data-tooltip="déplacez le curseur pour ajuster la distance de recherche" range/>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="row " style="margin: -10px 0 5px 0">
+                        <p class="right-align small-info">
+                            <i>{{shownRange}}</i>
+                        </p>
+                    </div>
+                {{/if}}
+                <div class="row">
+                    <div class="col s12 input-field  ">
+                        <select chooseCategory id="chosenCategory" multiple>
+                            <option value="" disabled selected>
+                                Choisir</option>
+                            {{#each cat in categories}}
+                                {{#unless isInArray cat.id ownerCategories}}
+                                    <option value="{{cat.id}}"
+                                            data-icon="{{cat.img}}"
+                                            class="circle">
+                                        {{cat.label}}
+                                    </option>
+                                {{else}}
+                                    <option value="{{cat.id}}"
+                                            data-icon="{{cat.img}}"
+                                            class="circle"
+                                            selected>
+                                        {{cat.label}}
+                                    </option>
+                                {{/unless}}>
+                            {{/each}}
+                        </select>
+                        <label>{{#if eq type "user"}}Centres d'interets{{else}}Types d'activités{{/if}}</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+<div class="row no-margin">
+
+</div>
+    <div class="hr relative" style="margin: 0 !important;"><a class="btn- dark-grey absolute"><i class="material-icons">keyboard_arrow_down</i></a></div>
+</template>

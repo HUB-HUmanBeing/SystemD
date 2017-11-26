@@ -55,3 +55,8 @@ Template.registerHelper('colorByType', function(type){
         return "green"
     }
 })
+
+
+Template.registerHelper('isInArray', function(element, array){
+    return array.includes(element)
+})

@@ -15,7 +15,8 @@
                                             {{>uniqueMember member = member
                                                     isAdmin = isAdmin
                                                     currentProject = currentProject
-                                            inProjectAdmins = true}}
+                                                    isProjectAdmins = true
+                                            }}
 
                                         {{/each}}
                                     </div>
@@ -30,7 +31,7 @@
                                             {{#each member in projectMembers}}
                                                 {{>uniqueMember member = member
                                                         isAdmin = isAdmin
-                                                currentProject = currentProject}}
+                                                        currentProject = currentProject}}
 
                                             {{/each}}
                                         </div>
@@ -161,16 +162,23 @@
                         </div>
 
                     {{/if}}
-                    <div class="row ">
-                        <div class="col s12">
-                            <div class="card trame-box ">
-                                <div class="card-content">
-                                    <span class="card-title">Rechercher des utilisateurs par catégorie et distance</span>
-                                    {{>workInProgress content = "de rechercher des utilisateurs par compétences, en affichant les plus proches et ceux dont les centres d'interet se rapprochent du projet"}}
+                    {{#if isAdmin}}
+                        <div class="row ">
+                            <div class="col s12">
+                                <div class="card trame-box ">
+                                    <div class="card-content">
+                                        <span class="card-title">Rechercher des utilisateurs</span>
+                                        {{>searchTool
+                                                name = searchedInput
+                                                type = "user"
+                                                callingFrom = "projectMembers"
+                                            project = currentProject
+                                        }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {{/if}}
                 </div>
             </div>
         </div>
