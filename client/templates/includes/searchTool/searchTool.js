@@ -4,10 +4,10 @@ Template.searchTool.helpers({
     /***********************************
      * utilitaires du formulaires
      */
-    moreSearchTools : function () {
+    moreSearchTools: function () {
         return Template.instance().moreSearchTools.get()
     },
-    validForm : function () {
+    validForm: function () {
         return Template.instance().validForm.get()
     },
     /************************
@@ -21,33 +21,33 @@ Template.searchTool.helpers({
     shownRange: function () {
         return Template.instance().range.get() === 150 ?
             "Rechercher Partout" :
-            'à moins de '+Template.instance().range.get()+'km'
+            'à moins de ' + Template.instance().range.get() + 'km'
     },
     /***********************************************
      * gestion du choix de catégories
      */
-    categories : function () {
+    categories: function () {
         return CategoryList
     },
-    ownerCategories : function () {
+    ownerCategories: function () {
         let ownerCategories = []
         let owner = Template.instance().data.callingFrom
 
-        if(owner === "userProjects" ){
+        if (owner === "userProjects") {
             ownerCategories = Meteor.user().profile.categories
-        }else if(owner === "projectMembers"){
+        } else if (owner === "projectMembers") {
             ownerCategories = Template.instance().data.project.publicInfo.categories
         }
         return ownerCategories
     },
 
-    byCategories : function () {
+    byCategories: function () {
         return Template.instance().byCategories.get()
     },
     /****************************************
      * helpeurs liées au choix des compétences
      */
-    byCompetences : function () {
+    byCompetences: function () {
         return Template.instance().byCompetences.get()
     },
     //tableau des grandes catégories
@@ -62,35 +62,56 @@ Template.searchTool.helpers({
     shownCompetences: function () {
         return Template.instance().shownCompetences.get()
     },
-    competencesResults : function () {
+    competencesResults: function () {
+        console.log(Template.instance().competencesResults.get())
         return Template.instance().competencesResults.get()
     },
-    formattedCompetencesResults : function () {
-        let instance =Template.instance()
+    formattedCompetencesResults: function () {
+        let instance = Template.instance()
         let results = instance.competencesResults.get()
         let formattedResults = []
-        console.log(results)
-        results.forEach((result,i)=>{
+        results.forEach((result, i) => {
             let formattedResult = ""
-            instance.competencesCategories.get().forEach((category)=>{
-                if(category.index === result.category){
-                    formattedResult += category.frenchName
+            instance.competencesCategories.get().forEach((cat) => {
+                if (cat.index === result.category) {
+                    if (cat.frenchName.length > 13) {
+                        formattedResult += cat.frenchName.substring(0, 10) + "... > "
+                    } else {
+                        formattedResult += cat.frenchName+ " > "
+                    }
                 }
             })
-            if(result.subCat && result.subCategory !== "all"){
-                instance.competencesSubCategories.get().forEach((competence)=>{})
-                if(result.subCat && result.subCategory !== "all") {
-                    instance.competencesTable.get().forEach((competence) => {
+            if (result.subCategory && result.subCategory !== "all") {
+                instance.competencesSubCategories.get().forEach((subCat) => {
+                    if (subCat.index === result.subCategory) {
+                        if (subCat.frenchName.length > 17) {
+                            formattedResult += subCat.frenchName.substring(0, 14) + "... > "
+                        } else {
+                            formattedResult += subCat.frenchName+ " > "
+                        }
+                    }
+                })
+                if (result.competence && result.competence !== "all") {
+                    instance.competencesTable.get().forEach((comp) => {
+                        if (comp.index === result.competence) {
+                            console.log(comp)
+                            if (comp.frenchName.length > 20) {
+                                formattedResult += comp.frenchName.substring(0, 17) + "... "
+                            } else {
+                                formattedResult += comp.frenchName
+                            }
+                        }
                     })
-                }else{
-
+                } else {
+                    formattedResult += "Toutes"
                 }
-            }else{
-
+            } else {
+                formattedResult += "Toutes"
             }
-
-
-            formattedResults.push(formattedResult)
+            formattedResults.push({
+                index: i,
+                content: formattedResult
+            })
         })
         return formattedResults
     }
@@ -103,17 +124,19 @@ Template.searchTool.events({
         //on passe la nouvelle valeur dans la réactive var
         instance.range.set(parseInt($('.range-field input').val()))
     },
-    'click [moreSearchTools]':function (event, instance) {
+    'click [moreSearchTools]': function (event, instance) {
         instance.moreSearchTools.set(true)
         resetTooltips()
     },
-    'click [byCategories]':function (event, instance) {
+    'click [byCategories]': function (event, instance) {
         instance.byCategories.set(!instance.byCategories.get())
-        Meteor.setTimeout(()=>{$('#chosenCategory').material_select();},100)
+        Meteor.setTimeout(() => {
+            $('#chosenCategory').material_select();
+        }, 100)
     },
-    'click [byCompetences]':function (event, instance) {
+    'click [byCompetences]': function (event, instance) {
         instance.byCompetences.set(!instance.byCompetences.get())
-        if(instance.byCompetences.get()){
+        if (instance.byCompetences.get()) {
             let CompetenceInstance = new Competence
             CompetenceInstance.callMethod('getCompetencesByLanguage', 'french', (err, result) => {
                 if (!err) {//si ya pas d'erreur dans la requete
@@ -123,10 +146,10 @@ Template.searchTool.events({
                     instance.competencesSubCategories.set(result.competencesSubCategories)
                 }
             })
-            Meteor.setTimeout(()=>{
+            Meteor.setTimeout(() => {
                 $('select').material_select();
                 Materialize.updateTextFields();
-                },100)
+            }, 100)
 
         }
     },
@@ -161,7 +184,6 @@ Template.searchTool.events({
             }
         })
         //et on les passe dans la réactive var
-        console.log(shownCompetences)
         instance.shownCompetences.set(shownCompetences)
         //puis on reinitialise les selects apres avoir laissé le temps que le second soit dans le dom
         Meteor.setTimeout(() => {
@@ -169,27 +191,38 @@ Template.searchTool.events({
             Materialize.updateTextFields();
         }, 50)
     },
-    'click [addCompetence]' : function (event, instance) {
+    'click [addCompetence]': function (event, instance) {
+        let competencesResults =instance.competencesResults.get()
         event.preventDefault()
-        let toAdd = {category : $('#chosenCategory').val(),
-        subCategory : $('#chosenSubCategory').val(),
-        competence :  $('#chosenCompetence').val()}
-        console.log(toAdd)
-        instance.competencesResults.set(instance.competencesResults.get().push(toAdd))
+        let toAdd = {
+            category: $('#chosenCategory').val(),
+            subCategory: $('#chosenSubCategory').val(),
+            competence: parseInt($('#chosenCompetence').val())
+        }
+        competencesResults.push(toAdd)
+        instance.competencesResults.set(competencesResults)
+        instance.shownSubCategories.set([])
+        instance.shownCompetences.set([])
+    },
+    'click [clearCompetenceChoice]' : function (event, instance) {
+        let results =instance.competencesResults.get()
+        let index = event.currentTarget.id
+        results.splice(index,1)
+        instance.competencesResults.set(results)
     }
 });
 
 Template.searchTool.onCreated(function () {
     //add your statement here
-    let range = this.data.callingFrom === "menu"? 150 : 30;
+    let range = this.data.callingFrom === "menu" ? 150 : 30;
     this.range = new ReactiveVar(range);
     this.moreSearchTools = new ReactiveVar(this.data.callingFrom !== "menu");
     this.byCategories = new ReactiveVar(false)
     this.byCompetences = new ReactiveVar(false)
     this.validForm = new ReactiveVar(true)
-    this.competencesTable= new ReactiveVar([])
-    this.competencesCategories= new ReactiveVar([])
-    this.competencesSubCategories= new ReactiveVar([])
+    this.competencesTable = new ReactiveVar([])
+    this.competencesCategories = new ReactiveVar([])
+    this.competencesSubCategories = new ReactiveVar([])
     this.shownSubCategories = new ReactiveVar([])
     this.shownCompetences = new ReactiveVar([])
     this.competencesResults = new ReactiveVar([])
@@ -198,11 +231,11 @@ Template.searchTool.onCreated(function () {
 Template.searchTool.onRendered(function () {
     //add your statement here
     $('#chosenCategory').material_select();
-    Meteor.setTimeout(()=>{
+    Meteor.setTimeout(() => {
         Materialize.updateTextFields();
         resetTooltips()
         $('select').material_select();
-    },150)
+    }, 150)
 
 });
 

@@ -108,60 +108,79 @@
                             </div>
                         </div>
                         {{#if byCompetences}}
+
                             <div class="row" style="margin: 15px 30px 10px 30px !important;">
                                 <p class="orange-text small-info justify">
-                                    Selectionnez la compétence ou l'ensemble de compétences recherchées, puis cliquez sur ajouter
+                                    Selectionnez la compétence ou l'ensemble de compétences recherchées, puis cliquez
+                                    sur ajouter
                                 </p>
                             </div>
-
-                            <div class="col s10 offset-s1  no-padding">
-                                <div class="row">
-                                    <div class="col s12 ">
-                                        <p class="small-info" style="margin-left: -20px !important;"><i>categories de compétences</i></p>
-                                        <select chooseCategory id="chosenCategory">
-                                            <option value="" disabled selected>Choisissez une catégorie</option>
-                                            {{#each cat in competenceCategories}}
-                                                <option value="{{cat.index}}">{{cat.frenchName}}</option>
-                                            {{/each}}
-                                        </select>
-                                    </div>
-                                    {{#if shownSubCategories.length}}
+                            <div class="row no-margin">
+                                <div class="col s10 offset-s1  no-padding">
+                                    <div class="row">
                                         <div class="col s12 ">
-                                            <p class="small-info" style="margin-left: -20px !important;"><i>sous_categories de compétences</i></p>
-                                            <select chooseSubCategory id="chosenSubCategory">
-                                                <option value="all"  selected>Toutes</option>
-                                                {{#each cat in shownSubCategories}}
+                                            <p class="small-info" style="margin-left: -20px !important;"><i>categories
+                                                de compétences</i></p>
+                                            <select chooseCategory id="chosenCategory">
+                                                <option value="" disabled selected>Choisissez une catégorie</option>
+                                                {{#each cat in competenceCategories}}
                                                     <option value="{{cat.index}}">{{cat.frenchName}}</option>
                                                 {{/each}}
                                             </select>
-                                            <label>Sous-catégorie</label>
                                         </div>
-                                        {{#if shownCompetences.length}}
+                                        {{#if shownSubCategories.length}}
                                             <div class="col s12 ">
-                                                <p class="small-info" style="margin-left: -20px !important;"><i>competences</i></p>
-                                                <select chooseCompetence id="chosenCompetence">
+                                                <p class="small-info" style="margin-left: -20px !important;"><i>sous_categories
+                                                    de compétences</i>
+                                                </p>
+                                                <select chooseSubCategory id="chosenSubCategory">
                                                     <option value="all" selected>Toutes</option>
-                                                    {{#each competence in shownCompetences}}
-                                                        <option value="{{competence.index}}">{{competence.frenchName}}</option>
+                                                    {{#each cat in shownSubCategories}}
+                                                        <option value="{{cat.index}}">{{cat.frenchName}}</option>
                                                     {{/each}}
                                                 </select>
+                                                <label>Sous-catégorie</label>
+                                            </div>
+                                            {{#if shownCompetences.length}}
+                                                <div class="col s12 ">
+                                                    <p class="small-info" style="margin-left: -20px !important;"><i>competences</i>
+                                                    </p>
+                                                    <select chooseCompetence id="chosenCompetence">
+                                                        <option value="all" selected>Toutes</option>
+                                                        {{#each competence in shownCompetences}}
+                                                            <option value="{{competence.index}}">{{competence.frenchName}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            {{/if}}
+                                            <div class="row">
+                                                <div class="center-align">
+                                                    <a class="btn btn-block waves-effect  waves-light dark-grey hover-dark-grey hover-bg-orange"
+                                                       AddCompetence>
+                                                        <span class="orange-text">Ajouter un critère</span>
+                                                    </a>
+                                                </div>
                                             </div>
                                         {{/if}}
-                                        <div class="row">
-                                            <div class="center-align">
-                                                <a class="btn btn-block waves-effect  waves-light dark-grey hover-dark-grey hover-bg-orange"
-                                                   AddCompetence>
-                                                    <span class="orange-text">Ajouter à la recherche</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    {{/if}}
+                                    </div>
                                 </div>
                             </div>
+
                             {{#if competencesResults.length}}
-                                <div class="col s10 offset-s1">
+                                <div class="row">
+
                                     {{#each item in formattedCompetencesResults}}
-                                        {{/each}}
+                                        <div class="row small-margin small-padding dark-grey shadow"
+                                             style="border-radius: 15px">
+                                            <div class="col s11 no-padding valign-wrapper">
+                                                <p class="no-padding" style="margin: 0.2em 0 0 10px !important">{{item.content}}</p>
+                                            </div>
+                                            <div class="col s1 no-padding" style="height: 24px !important;"><a href="" class="orange-text right-align no-padding"
+                                                                   id="item.index" clearCompetenceChoice><i
+                                                    class="material-icons no-padding" >clear</i></a></div>
+                                        </div>
+                                    {{/each}}
+
                                 </div>
                             {{/if}}
                         {{/if}}
