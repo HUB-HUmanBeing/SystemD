@@ -205,3 +205,19 @@ Meteor.publish('CommentsInfinite', function (limit, post_id) {
     });
 });
 
+/**************************************
+ * Publication des posts d'un projet ou d'un utilisateur spécifique
+ */
+Meteor.publish('ResearchResultsInfinite', function (limit, searchOptions) {
+
+    check(limit, Number);
+    check(post_id, String)
+    //on renvoie les commentaires du post
+    return PostComments.find({post_id: post_id}, {
+        limit: limit,
+        //et on les trie par date décroissantes (les plus récents en premiers
+        sort: {
+            createdAt: -1
+        }
+    });
+});

@@ -63,7 +63,6 @@ Template.searchTool.helpers({
         return Template.instance().shownCompetences.get()
     },
     competencesResults: function () {
-        console.log(Template.instance().competencesResults.get())
         return Template.instance().competencesResults.get()
     },
     formattedCompetencesResults: function () {
@@ -145,11 +144,12 @@ Template.searchTool.events({
                     instance.competencesCategories.set(result.competencesCategories)
                     instance.competencesSubCategories.set(result.competencesSubCategories)
                 }
+                Meteor.setTimeout(() => {
+                    $('select').material_select();
+                    Materialize.updateTextFields();
+                }, 100)
             })
-            Meteor.setTimeout(() => {
-                $('select').material_select();
-                Materialize.updateTextFields();
-            }, 100)
+
 
         }
     },
@@ -209,11 +209,24 @@ Template.searchTool.events({
         let index = event.currentTarget.id
         results.splice(index,1)
         instance.competencesResults.set(results)
+    },
+    'click [searchBtn]' : function (event, instance) {
+        let searchOptions = {
+            isProject : instance.data.type === "project",
+            name : $('#researchedName').val(),
+            range : instance.range.get(),
+            categories : instance.byCategories.get()?$('#chosenCategory').val() : null,
+            competences : instance.byCompetences.get()? instance.competencesResults.get() : null,
+
+        }
+        Meteor.subscribe('ResearchResultsInfinite', instance.limit.get(), searchOptions)
+        console.log(searchOptions)
     }
 });
 
 Template.searchTool.onCreated(function () {
     //add your statement here
+    let limit = new ReactiveVar(5)
     let range = this.data.callingFrom === "menu" ? 150 : 30;
     this.range = new ReactiveVar(range);
     this.moreSearchTools = new ReactiveVar(this.data.callingFrom !== "menu");
