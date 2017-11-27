@@ -211,13 +211,52 @@ Meteor.publish('CommentsInfinite', function (limit, post_id) {
 Meteor.publish('ResearchResultsInfinite', function (limit, searchOptions) {
 
     check(limit, Number);
-    check(post_id, String)
-    //on renvoie les commentaires du post
-    return PostComments.find({post_id: post_id}, {
-        limit: limit,
-        //et on les trie par date décroissantes (les plus récents en premiers
-        sort: {
-            createdAt: -1
+    check(searchOptions, Object)
+    check(searchOptions.isProject, Boolean)
+    if (searchOptions.isProject) {
+
+        let geo
+        if (range === 600) { //si le curseur etait au max, on passe le selecteur a tout (vu qu'on l'applique dans un $and)
+            geo = {}
+        } else {
+            geo = {
+                lonLat: {
+                    "$geoWithin": {
+                        "$center": [
+                            lonLat,
+                            range / 111.12
+                        ]
+                    }
+                }
+            }
         }
-    });
+        //verification des auteurs suivis
+        let userId = Meteor.userId()
+        let followedAuthors = []
+        if (userId) {
+            let currentUserProfile = Meteor.user().profile
+            followedAuthors = currentUserProfile.followedAuthors
+        }
+
+        let limitDate = new Date(new Date().setDate(new Date().getDate() - 10)) //(il y a dix jours)
+        //todo affiner la recherche avec des scrores sur le parametre folowed author et autre
+        //puis on renvoie les resultat de la recherche
+        return Posts.find({//les articles renvoyés
+                "$or": [{ //sont soit
+                    author_id: {'$in': followedAuthors}//ceux dont l'auteur fait partie des auteurs suivis
+                },//soit
+                    {
+                        "$and": [ //validant simultanément les deux conditions suivantes
+                            {createdAt: {"$gte": limitDate}},//crées avant la date limite
+                            geo//validant les conditions géographiques
+                        ]
+                    }]
+            },
+            {
+                limit: limit,//on limite la requetes a notre limite pour l'infinite scroll
+                sort: {//en les triant par dates décroissantes
+                    createdAt: -1,
+                }
+            });
+    }
 });

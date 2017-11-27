@@ -23,6 +23,9 @@ Template.searchTool.helpers({
             "Rechercher Partout" :
             'à moins de ' + Template.instance().range.get() + 'km'
     },
+    rangeCenter : function () {
+        return Template.instance().rangeCenter
+    },
     /***********************************************
      * gestion du choix de catégories
      */
@@ -215,6 +218,7 @@ Template.searchTool.events({
             isProject : instance.data.type === "project",
             name : $('#researchedName').val(),
             range : instance.range.get(),
+            rangeCenter : instance.rangeCenter,
             categories : instance.byCategories.get()?$('#chosenCategory').val() : null,
             competences : instance.byCompetences.get()? instance.competencesResults.get() : null,
 
@@ -228,6 +232,11 @@ Template.searchTool.onCreated(function () {
     //add your statement here
     let limit = new ReactiveVar(5)
     let range = this.data.callingFrom === "menu" ? 150 : 30;
+    if(this.data.callingFrom === "projectMembers"){
+        this.rangeCenter = this.data.project.publicInfo.location.lonLat? this.data.project.publicInfo.location.lonLat : null
+    }else if(Meteor.userId()){
+        this.rangeCenter = Meteor.user().profile.location.lonLat?Meteor.user().profile.location.lonLat:null
+    }
     this.range = new ReactiveVar(range);
     this.moreSearchTools = new ReactiveVar(this.data.callingFrom !== "menu");
     this.byCategories = new ReactiveVar(false)

@@ -20,7 +20,7 @@
                 </div>
             {{/if}}
             <div class="{{#unless moreSearchTools}}hidden absolute{{/unless}}">
-                {{#if currentUserId}}
+                {{#if and currentUserId rangeCenter}}
                     <div class="row no-margin">
                         <div class=" col s12 no-padding">
                             <i>Par Distance :</i>
@@ -48,6 +48,13 @@
                             </div>
                         </div>
                     </div>
+                    {{else}}
+                    <div class="row " style="margin: -10px 0 20px 0">
+                        <p class="right-align small-info">
+                            <i>Vous devez etre connecté renseigner une position pour pouvoir utiliser la recherche par distance</i>
+                        </p>
+                    </div>
+
                 {{/if}}
                 <div class="row">
                     <div class=" col s10 no-padding">
