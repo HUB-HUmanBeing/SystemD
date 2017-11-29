@@ -200,7 +200,7 @@ Template.searchTool.events({
         let toAdd = {
             category: $('#chosenCategory').val(),
             subCategory: $('#chosenSubCategory').val(),
-            competence: parseInt($('#chosenCompetence').val())
+            competence: $('#chosenCompetence').val()?parseInt($('#chosenCompetence').val()):null
         }
         competencesResults.push(toAdd)
         instance.competencesResults.set(competencesResults)
@@ -214,23 +214,58 @@ Template.searchTool.events({
         instance.competencesResults.set(results)
     },
     'click [searchBtn]' : function (event, instance) {
+        let competences
+        if(instance.byCompetences.get()){
+            competences = []
+            instance.competencesResults.get().forEach((competence)=>{
+                if(competence.competence){
+                    competences.push([competence.competence])
+                }else if(competence.subCategory && competence.subCategory !== 'all'){
+                    let toPush = []
+                    instance.competencesTable.get().forEach((item)=>{
+                       if(competence.subCategory === item.subCategory){
+                           toPush.push(item.index)
+                       }
+                    })
+                    competences.push(toPush)
+                }else if(competence.category){
+                    let toPush = []
+                    instance.competencesTable.get().forEach((item)=>{
+                        if(competence.category === item.category){
+                            toPush.push(item.index)
+                        }
+                    })
+                    competences.push(toPush)
+                }
+            })
+        }
+        let categories
+        if(instance.byCategories.get()){
+            categories = []
+            $('#chosenCategory').val().forEach((cat)=>{
+                categories.push(parseInt(cat))
+            })
+        }
+
+
         let searchOptions = {
             isProject : instance.data.type === "project",
             name : $('#researchedName').val(),
             range : instance.range.get(),
             rangeCenter : instance.rangeCenter,
-            categories : instance.byCategories.get()?$('#chosenCategory').val() : null,
-            competences : instance.byCompetences.get()? instance.competencesResults.get() : null,
+            categories : categories,
+            competences : competences,
 
         }
-        Meteor.subscribe('ResearchResultsInfinite', instance.limit.get(), searchOptions)
         console.log(searchOptions)
+        Meteor.subscribe('ResearchResultsInfinite', instance.limit.get(), searchOptions)
+
     }
 });
 
 Template.searchTool.onCreated(function () {
     //add your statement here
-    let limit = new ReactiveVar(5)
+    this.limit = new ReactiveVar(10)
     let range = this.data.callingFrom === "menu" ? 150 : 30;
     if(this.data.callingFrom === "projectMembers"){
         this.rangeCenter = this.data.project.publicInfo.location.lonLat? this.data.project.publicInfo.location.lonLat : null

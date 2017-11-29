@@ -219,4 +219,19 @@
         <div class="hr relative" style="margin: 0 !important;">
         </div>
     {{/unless}}
+    <div class="col s12 showCommentContainer  ">
+        {{#each result in searchResults}}
+            {{>miniature type = type
+            id = result}}
+        {{/each}}
+        {{#if leftResults}}
+            <div class="row no-margin">
+                <div class="right-align hover-orange">
+                    <a class="btn-flat waves-orange
+                     waves-effect
+                    small-info" moreComments>suite des commentaires ({{leftComments}} restants)</a>
+                </div>
+            </div>
+        {{/if}}
+    </div>
 </template>

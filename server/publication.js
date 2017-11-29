@@ -1,5 +1,6 @@
 import Project from '/imports/classes/Project';
 import User from '/imports/classes/User';
+import Projects from '/lib/collections/Projects'
 import Posts from '/lib/collections/Posts';
 import PostComments from "/lib/collections/PostComments"
 
@@ -206,57 +207,80 @@ Meteor.publish('CommentsInfinite', function (limit, post_id) {
 });
 
 /**************************************
- * Publication des posts d'un projet ou d'un utilisateur spécifique
+ * Publication du resultat de la recherche
  */
 Meteor.publish('ResearchResultsInfinite', function (limit, searchOptions) {
 
     check(limit, Number);
     check(searchOptions, Object)
     check(searchOptions.isProject, Boolean)
-    if (searchOptions.isProject) {
+    check(searchOptions.range, Number)
 
-        let geo
-        if (range === 600) { //si le curseur etait au max, on passe le selecteur a tout (vu qu'on l'applique dans un $and)
-            geo = {}
-        } else {
-            geo = {
-                lonLat: {
-                    "$geoWithin": {
-                        "$center": [
-                            lonLat,
-                            range / 111.12
-                        ]
-                    }
+    let name = {}
+    if (searchOptions.name) {
+        check(searchOptions.name, String)
+        name = {$text: {$search: searchOptions.name}}
+    }
+
+    let geo = {}
+    if (searchOptions.range < 150) { //si le curseur etait au max, on passe le selecteur a tout (vu qu'on l'applique dans un $and)
+        geo = {
+            [searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"]: {
+                "$geoWithin": {
+                    "$center": [
+                        searchOptions.rangeCenter,
+                        searchOptions.range / 111.12
+                    ]
                 }
             }
         }
-        //verification des auteurs suivis
-        let userId = Meteor.userId()
-        let followedAuthors = []
-        if (userId) {
-            let currentUserProfile = Meteor.user().profile
-            followedAuthors = currentUserProfile.followedAuthors
-        }
+    }
 
-        let limitDate = new Date(new Date().setDate(new Date().getDate() - 10)) //(il y a dix jours)
-        //todo affiner la recherche avec des scrores sur le parametre folowed author et autre
-        //puis on renvoie les resultat de la recherche
-        return Posts.find({//les articles renvoyés
-                "$or": [{ //sont soit
-                    author_id: {'$in': followedAuthors}//ceux dont l'auteur fait partie des auteurs suivis
-                },//soit
-                    {
-                        "$and": [ //validant simultanément les deux conditions suivantes
-                            {createdAt: {"$gte": limitDate}},//crées avant la date limite
-                            geo//validant les conditions géographiques
-                        ]
-                    }]
-            },
+    let categories = {}
+    if (searchOptions.categories) {
+        check(searchOptions.categories, [Number])
+        categories = {
+            [searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"]: {
+                "$elemMatch": {"$in": searchOptions.categories}
+            }
+        }
+    }
+
+    let competences = {}
+    if (searchOptions.competences) {
+        check(searchOptions.competences, Array)
+        let competenceQueries = []
+        searchOptions.competences.forEach((competenceArray) => {
+            check(competenceArray, [Number])
+            competenceQueries.push({
+                ["profile.competences"]: {
+                    "$elemMatch": {"$in": competenceArray}
+                }
+            })
+        })
+        competences = {"$and": competenceQueries}
+    }
+    let query = {
+            "$and": [ //validant simultanément les deux conditions suivantes
+                name,//cvalidant la recherche de tyoe text sur le nom
+                geo,//validant les conditions géographiques
+                categories,
+                competences
+            ]
+        }
+        console.log(query)
+    if (searchOptions.isProject) {
+        return Projects.find(
+            query,
             {
                 limit: limit,//on limite la requetes a notre limite pour l'infinite scroll
-                sort: {//en les triant par dates décroissantes
-                    createdAt: -1,
-                }
+            });
+    } else {
+        return Meteor.users.find(
+            query,
+            {
+                limit: limit,//on limite la requetes a notre limite pour l'infinite scroll
             });
     }
-});
+
+})
