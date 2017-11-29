@@ -11,8 +11,7 @@ const Location = Class.create({
                     type: 'length',
                     param: 2
                 }
-            ],
-            index: "2dsphere"
+            ]
         },
         city: {
             type: String,

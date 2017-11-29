@@ -84,6 +84,13 @@ const Project = Class.create({
         }
 
     },
+    indexes: {
+        location : {
+            fields: {
+                "publicInfo.location.lonLat": "2dsphere"
+            }
+        }
+    },
     helpers: {
         //helper pour indiquer le pourcentage de complétion du projet
         completed() {

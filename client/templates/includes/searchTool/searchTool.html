@@ -48,10 +48,11 @@
                             </div>
                         </div>
                     </div>
-                    {{else}}
+                {{else}}
                     <div class="row " style="margin: -10px 0 20px 0">
                         <p class="right-align small-info">
-                            <i>Vous devez etre connecté renseigner une position pour pouvoir utiliser la recherche par distance</i>
+                            <i>Vous devez etre connecté renseigner une position pour pouvoir utiliser la recherche par
+                                distance</i>
                         </p>
                     </div>
 
@@ -180,11 +181,14 @@
                                         <div class="row small-margin small-padding dark-grey shadow"
                                              style="border-radius: 15px">
                                             <div class="col s11 no-padding valign-wrapper">
-                                                <p class="no-padding" style="margin: 0.2em 0 0 10px !important">{{item.content}}</p>
+                                                <p class="no-padding"
+                                                   style="margin: 0.2em 0 0 10px !important">{{item.content}}</p>
                                             </div>
-                                            <div class="col s1 no-padding" style="height: 24px !important;"><a href="" class="orange-text right-align no-padding"
-                                                                   id="item.index" clearCompetenceChoice><i
-                                                    class="material-icons no-padding" >clear</i></a></div>
+                                            <div class="col s1 no-padding" style="height: 24px !important;"><a href=""
+                                                                                                               class="orange-text right-align no-padding"
+                                                                                                               id="item.index"
+                                                                                                               clearCompetenceChoice><i
+                                                    class="material-icons no-padding">clear</i></a></div>
                                         </div>
                                     {{/each}}
 
@@ -203,7 +207,7 @@
                 </div>
             </div>
         </form>
-    </div>
+
 
     {{#unless moreSearchTools}}
         <div class="hr relative" style="margin: 0 !important;">
@@ -220,18 +224,32 @@
         </div>
     {{/unless}}
     <div class="col s12 showCommentContainer  ">
-        {{#each result in searchResults}}
-            {{>miniature type = type
-            id = result}}
-        {{/each}}
-        {{#if leftResults}}
+
+        {{#if searchResults.length}}
+            <div class="row">
+                {{#each result in searchResults}}
+                    <div class="row valign-wrapper">
+                        <div class="col s8">
+                            {{>miniature type = type
+                                    _id = result._id}}
+                        </div>
+                        <div class="col s4">
+                            <i class="small-info ">
+                                {{showDistance result.relativeDistance}}
+                            </i>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
             <div class="row no-margin">
-                <div class="right-align hover-orange">
+                <div class="center-align hover-orange">
                     <a class="btn-flat waves-orange
                      waves-effect
-                    small-info" moreComments>suite des commentaires ({{leftComments}} restants)</a>
+                    small-info" moreResults>plus de résultats</a>
                 </div>
             </div>
         {{/if}}
+    </div>
     </div>
 </template>

@@ -108,7 +108,6 @@ Post.extend({
                 //et on le sauvegarde
                 return this.save()
             }
-
         }
     }
 });

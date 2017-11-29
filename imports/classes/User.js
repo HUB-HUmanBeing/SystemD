@@ -143,6 +143,13 @@ const User = Class.create({
         }
 
     },
+    indexes: {
+        location : {
+            fields: {
+                "profile.location.lonLat": "2dsphere"
+            }
+        }
+    },
     helpers: {
         //helper pour indiquer le pourcentage de complétion du profil
         completed() {

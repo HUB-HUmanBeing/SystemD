@@ -116,6 +116,9 @@ Template.searchTool.helpers({
             })
         })
         return formattedResults
+    },
+    searchResults : function () {
+        return Template.instance().searchResults.get()
     }
 });
 
@@ -246,26 +249,43 @@ Template.searchTool.events({
                 categories.push(parseInt(cat))
             })
         }
-
-
-        let searchOptions = {
+        instance.searchOptions = {
             isProject : instance.data.type === "project",
             name : $('#researchedName').val(),
             range : instance.range.get(),
             rangeCenter : instance.rangeCenter,
             categories : categories,
             competences : competences,
-
         }
-        console.log(searchOptions)
-        Meteor.subscribe('ResearchResultsInfinite', instance.limit.get(), searchOptions)
+        instance.offsetStep = 0
+        Meteor.call('searchTool', instance.offsetStep, instance.searchOptions, (err, result)=> {
+            if(err){
+                console.log(err)
+            }else{
+                instance.searchResults.set(result)
+            }
 
+
+        })
+    },
+    'click [moreResults]' : function (event, instance) {
+        instance.offsetStep ++
+        Meteor.call('searchTool', instance.offsetStep, instance.searchOptions, (err, result)=> {
+            if(err){
+                console.log(err)
+            }else{
+                let lastResults = instance.searchResults.get()
+                instance.searchResults.set(lastResults.concat(result))
+            }
+
+
+        })
     }
 });
 
 Template.searchTool.onCreated(function () {
     //add your statement here
-    this.limit = new ReactiveVar(10)
+    this.offsetStep = 0
     let range = this.data.callingFrom === "menu" ? 150 : 30;
     if(this.data.callingFrom === "projectMembers"){
         this.rangeCenter = this.data.project.publicInfo.location.lonLat? this.data.project.publicInfo.location.lonLat : null
@@ -283,6 +303,7 @@ Template.searchTool.onCreated(function () {
     this.shownSubCategories = new ReactiveVar([])
     this.shownCompetences = new ReactiveVar([])
     this.competencesResults = new ReactiveVar([])
+    this.searchResults = new ReactiveVar([])
 });
 
 Template.searchTool.onRendered(function () {

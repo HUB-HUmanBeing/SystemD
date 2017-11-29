@@ -60,3 +60,15 @@ Template.registerHelper('colorByType', function(type){
 Template.registerHelper('isInArray', function(element, array){
     return array.includes(element)
 })
+Template.registerHelper('showDistance', function(distance) {
+
+//distance relative
+    if (!distance && distance !== 0) {
+        distance = ""
+    } else if (distance <= 1) {
+        distance = "moins de 2 km"
+    } else {
+        distance = distance + " km"
+    }
+    return distance
+})
