@@ -18,20 +18,6 @@ Meteor.methods({
             name = {$text: {$search: searchOptions.name}}
         }
 
-        let geo = {}
-        if (searchOptions.range < 150) { //si le curseur etait au max, on passe le selecteur a tout (vu qu'on l'applique dans un $and)
-            geo = {
-                [searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"]: {
-                    "$near": {
-                        "$geometry": {
-                            type: "Point",
-                            coordinates: searchOptions.rangeCenter
-
-                        }, $maxDistance: searchOptions.range * 1000
-                    }
-                }
-            }
-        }
 
         let categories = {}
         if (searchOptions.categories && searchOptions.categories.length) {
@@ -57,12 +43,29 @@ Meteor.methods({
             })
             competences = {"$and": competenceQueries}
         }
+
+        let geo = {}
+        if (searchOptions.range < 150) { //si le curseur etait au max, on passe le selecteur a tout (vu qu'on l'applique dans un $and)
+            geo = {
+                [searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"]: {
+                    "$near": {
+                        "$geometry": {
+                            type: "Point",
+                            coordinates: searchOptions.rangeCenter
+
+                        }, $maxDistance: searchOptions.range * 1000
+                    }
+                }
+            }
+        }
+
         let query = {
             "$and": [ //validant simultanément les deux conditions suivantes
                 name,//cvalidant la recherche de tyoe text sur le nom
-                geo,//validant les conditions géographiques
+
                 categories,
-                competences
+                competences,
+                geo,//validant les conditions géographiques
             ]
         }
         const currentUserLocation = Meteor.user().profile.location
