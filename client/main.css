@@ -55,6 +55,9 @@ COULEURS
 .hover-white:hover *{
     color: #ebebeb !important;
 }
+.hover-light-grey:hover *{
+    color: #b8b8b8 !important;
+}
 .hover-orange:hover *{
     color: #C87F0A !important;
 }
@@ -78,6 +81,9 @@ COULEURS
 }
 .hover-bg-orange:hover{
     background-color: #C87F0A !important;
+}
+.hover-bg-dark-grey:hover{
+    background-color: #1c1c1c !important;
 }
 .hover-bg-green:hover {
     background-color: #4CAF50 !important;
@@ -438,4 +444,11 @@ input[type=range]::-ms-thumb {
 }
 .autocomplete-content li:hover, .autocomplete-content .active{
     background-color: rgba(255, 255, 255, 0.09) !important;
+}
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #6f430a;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #C87F0A;
 }

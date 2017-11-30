@@ -15,7 +15,12 @@ Meteor.methods({
         let name = {}
         if (searchOptions.name) {
             check(searchOptions.name, String)
-            name = {$text: {$search: searchOptions.name}}
+            if (searchOptions.range < 150) {
+                name = {[searchOptions.isProject ? "name" : "users"]: searchOptions.name}
+            } else {
+                name = {$text: {$search: searchOptions.name}}
+            }
+
         }
 
 
@@ -44,31 +49,30 @@ Meteor.methods({
             competences = {"$and": competenceQueries}
         }
 
-        let geo = {}
-        if (searchOptions.range < 150) { //si le curseur etait au max, on passe le selecteur a tout (vu qu'on l'applique dans un $and)
-            geo = {
-                [searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"]: {
-                    "$near": {
-                        "$geometry": {
-                            type: "Point",
-                            coordinates: searchOptions.rangeCenter
-
-                        }, $maxDistance: searchOptions.range * 1000
-                    }
-                }
-            }
-        }
 
         let query = {
             "$and": [ //validant simultanément les deux conditions suivantes
                 name,//cvalidant la recherche de tyoe text sur le nom
-
                 categories,
                 competences,
-                geo,//validant les conditions géographiques
             ]
         }
-        const currentUserLocation = Meteor.user().profile.location
+        if (searchOptions.rangeCenter) {
+            query[searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"] = {
+                "$near": {
+                    "$geometry": {
+                        type: "Point",
+                        coordinates: searchOptions.rangeCenter
+
+                    }, $maxDistance: searchOptions.range < 150 ? searchOptions.range * 1000 : 300000000
+                }
+
+            }
+        }
+
+
+
+
         let results = []
         if (searchOptions.isProject) {
             let requestResults = Projects.find(
@@ -80,16 +84,19 @@ Meteor.methods({
 
             requestResults.forEach((item) => {
                 let relativeDistance
-
-                if (item.publicInfo.location.lonLat && currentUserLocation.lonLat) {
-                    let distance = new Haversine(
-                        item.publicInfo.location.lonLat[1],
-                        item.publicInfo.location.lonLat[0],
-                        currentUserLocation.lonLat[1],
-                        currentUserLocation.lonLat[0]
-                    );
-                    relativeDistance = parseInt(distance.kilometers)
+                if (Meteor.userId()) {
+                    const currentUserLocation = Meteor.user().profile.location
+                    if (item.publicInfo.location.lonLat && currentUserLocation.lonLat) {
+                        let distance = new Haversine(
+                            item.publicInfo.location.lonLat[1],
+                            item.publicInfo.location.lonLat[0],
+                            currentUserLocation.lonLat[1],
+                            currentUserLocation.lonLat[0]
+                        );
+                        relativeDistance = parseInt(distance.kilometers)
+                    }
                 }
+
                 results.push({
                     _id: item._id,
                     relativeDistance: relativeDistance
@@ -104,15 +111,19 @@ Meteor.methods({
                 }).fetch();
             requestResults.forEach((item) => {
                 let relativeDistance
-                if (item.profile.location.lonLat && currentUserLocation.lonLat) {
-                    let distance = new Haversine(
-                        item.profile.location.lonLat[1],
-                        item.profile.location.lonLat[0],
-                        currentUserLocation.lonLat[1],
-                        currentUserLocation.lonLat[0]
-                    );
-                    relativeDistance = parseInt(distance.kilometers)
+                if (Meteor.userId()) {
+                    const currentUserLocation = Meteor.user().profile.location
+                    if (item.profile.location.lonLat && currentUserLocation.lonLat) {
+                        let distance = new Haversine(
+                            item.profile.location.lonLat[1],
+                            item.profile.location.lonLat[0],
+                            currentUserLocation.lonLat[1],
+                            currentUserLocation.lonLat[0]
+                        );
+                        relativeDistance = parseInt(distance.kilometers)
+                    }
                 }
+
                 results.push({
                     _id: item._id,
                     relativeDistance: relativeDistance
