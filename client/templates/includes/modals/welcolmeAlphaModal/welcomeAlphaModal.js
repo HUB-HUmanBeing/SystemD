@@ -25,5 +25,6 @@ Template.welcomeAlphaModal.onRendered(function () {
 
 Template.welcomeAlphaModal.onDestroyed(function () {
     //add your statement here
+    $('.modal').modal('close');
 });
 

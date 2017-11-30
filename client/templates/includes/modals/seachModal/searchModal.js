@@ -44,5 +44,9 @@ Template.searchModal.onRendered(function () {
 
 Template.searchModal.onDestroyed(function () {
     //add your statement here
+    Meteor.setTimeout(()=>{
+        $('.modal').modal('close');
+    },50)
+
 });
 

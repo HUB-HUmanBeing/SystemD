@@ -1,88 +1,105 @@
 import Projects from '/lib/collections/Projects'
 
 Meteor.methods({
-    /**************
-     * renvoie true si le nom de projet n'existes pas
+    /****************************************************
+     * Methode permetant d'eefectuer une recherche sur le site en fonction de plusieurs parametres
+     * @param offsetStep
+     * @param searchOptions
+     * @returns {Array}
      */
     searchTool: function (offsetStep, searchOptions) {
+        //on initialise la limite
         let limit = 6
+        //on check la valeur de l'offset
         check(offsetStep, Number);
+        //et on retournera les requetes uniquement après cet offset multiplié par le nombre d'articles renvoyés a chaque fois
         let offset = limit * offsetStep
         check(searchOptions, Object)
         check(searchOptions.isProject, Boolean)
         check(searchOptions.range, Number)
-
+        //pour le nom entré par l'utilisateur
         let name = {}
         if (searchOptions.name) {
             check(searchOptions.name, String)
-            if (searchOptions.range < 150) {
-                name = {[searchOptions.isProject ? "name" : "users"]: searchOptions.name}
-            } else {
+            //on viendra chercher a partir de notre index en case insensitive
                 name = {$text: {$search: searchOptions.name}}
-            }
 
         }
-
-
+        //pour les categories
         let categories = {}
+        //si des categories ont eté ajoutées
         if (searchOptions.categories && searchOptions.categories.length) {
             check(searchOptions.categories, [Number])
+            //on crée la query qui nous permetra de les retrouver
             categories = {
                 [searchOptions.isProject ? "publicInfo.categories" : "profile.categories"]: {
                     "$elemMatch": {"$in": searchOptions.categories}
                 }
             }
         }
-
+        //pour les competences
         let competences = {}
+        //si il y en a
         if (searchOptions.competences && searchOptions.competences.length) {
             check(searchOptions.competences, Array)
             let competenceQueries = []
+            //on boucle sur les differents criteres de l'utilisateur
             searchOptions.competences.forEach((competenceArray) => {
                 check(competenceArray, [Number])
+                //et pour chacuns on fait la query necessaire qu'on push dans un tableau
                 competenceQueries.push({
                     ["profile.competences"]: {
                         "$elemMatch": {"$in": competenceArray}
                     }
                 })
             })
+            //on formatte ensuite la query finale devant vérifier tous les criteres de l'utilisateur
             competences = {"$and": competenceQueries}
         }
 
-
+        //notre requete est désormais composé des trois précedentes requetes avec un ET
         let query = {
-            "$and": [ //validant simultanément les deux conditions suivantes
-                name,//cvalidant la recherche de tyoe text sur le nom
-                categories,
+            "$and": [
+                name,
                 competences,
+                categories,
             ]
         }
+        //si on a ce qu'il faut pour faire une requete géolocalisée
         if (searchOptions.rangeCenter) {
-            query[searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"] = {
-                "$near": {
-                    "$geometry": {
-                        type: "Point",
-                        coordinates: searchOptions.rangeCenter
-
-                    }, $maxDistance: searchOptions.range < 150 ? searchOptions.range * 1000 : 300000000
+            if (searchOptions.range < 150) { //si l'utilisateur a choisi une distance limite spécifique
+                query[searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"] = {
+                    "$near": {
+                        "$geometry": {
+                            type: "Point",
+                            coordinates: searchOptions.rangeCenter
+                        }, $maxDistance: searchOptions.range * 1000
+                    }
                 }
-
+            } else if( !searchOptions.name){ //sinon, on la fait quand meme, mais sans maxDistance, ainsi, ca nous les triera par distance
+                query[searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"] = {
+                    "$near": {
+                        "$geometry": {
+                            type: "Point",
+                            coordinates: searchOptions.rangeCenter
+                        }
+                    }
+                }
             }
         }
-
-
-
-
         let results = []
+        //si l'on fait une recherche sur les projets
         if (searchOptions.isProject) {
+            //on fait un find mongoDb avec tout nos parametres
             let requestResults = Projects.find(
                 query,
                 {
                     skip: offset,
                     limit: limit,//on limite la requetes a notre limite pour l'infinite scroll
                 }).fetch()
-
+            //pour chacuns des resultats
             requestResults.forEach((item) => {
+                //on vient calculer la distance relative entre l'utilisateur et le projet
                 let relativeDistance
                 if (Meteor.userId()) {
                     const currentUserLocation = Meteor.user().profile.location
@@ -96,13 +113,17 @@ Meteor.methods({
                         relativeDistance = parseInt(distance.kilometers)
                     }
                 }
-
+                //et on ajoute au tableau de resultat l'id des projets et leur distance relative, ainsi que les infos
+                // nécessaires pour pas avoir a ffaire une nouvelle requete au moment d'aficher leur miniature
                 results.push({
                     _id: item._id,
+                    name : item.name,
+                    imgUrl : item.publicInfo.imgUrl,
+                    categories : item.publicInfo.categories,
                     relativeDistance: relativeDistance
                 })
             })
-        } else {
+        } else { //idem lorsqu'on recherche un utilisateur
             let requestResults = Meteor.users.find(
                 query,
                 {
@@ -113,7 +134,8 @@ Meteor.methods({
                 let relativeDistance
                 if (Meteor.userId()) {
                     const currentUserLocation = Meteor.user().profile.location
-                    if (item.profile.location.lonLat && currentUserLocation.lonLat) {
+                    if (item.profile.location.lonLat && currentUserLocation.lonLat) { //le calcul se fait coté serveur
+                        // pour ne pas livrer au client des coordonnées précises d'autres utilisateurs
                         let distance = new Haversine(
                             item.profile.location.lonLat[1],
                             item.profile.location.lonLat[0],
@@ -123,13 +145,16 @@ Meteor.methods({
                         relativeDistance = parseInt(distance.kilometers)
                     }
                 }
-
                 results.push({
                     _id: item._id,
+                    name : item.username,
+                    imgUrl : item.profile.imgUrl,
+                    categories : item.profile.categories,
                     relativeDistance: relativeDistance
                 })
             })
         }
+        //on finit par renvoyer les resultats
         return results
     }
 })

@@ -22,10 +22,11 @@
                         {{#unless moreSearchTools}}
                             <div class="col s2">
                                 <div class="relative">
-                                    <a class="btn-floating btn-large waves-effect waves-light dark-grey tooltipped hover-bg-orange "
+                                    <a class="btn-floating btn-large waves-effect waves-light dark-grey tooltipped hover-bg-orange hover-dark-grey"
                                        data-position="bottom" data-delay="350"
-                                       data-tooltip="Rechercher un{{#if eq type
-                                                                        "user"}} utilisateur{{else}} projet{{/if}}"
+                                       data-tooltip="Rechercher un{{#if eq type "user"}}
+                                        utilisateur{{else}} projet{{/if}}"
+                                       id="launchSearch"
                                        searchBtn>
                                         <i class="material-icons orange-text">search</i>
                                     </a>
@@ -153,7 +154,7 @@
                                             <div class="col s12 ">
                                                 <p class="small-info" style="margin-left: -20px !important;"><i>categories
                                                     de compétences</i></p>
-                                                <select chooseCategory id="chosenCategory">
+                                                <select chooseCategory id="chosenCompCategory">
                                                     <option value="init" disabled selected>Choisissez une catégorie</option>
                                                     {{#each cat in competenceCategories}}
                                                         <option value="{{cat.index}}">{{cat.frenchName}}</option>
@@ -270,7 +271,10 @@
                         <div class="row valign-wrapper">
                             <div class="col s8">
                                 {{>miniature type = type
-                                        _id = result._id}}
+                                        _id = result._id
+                                        name = result.name
+                                categories = result.categories
+                                imgUrl = result.imgUrl}}
                             </div>
                             <div class="col s4">
                                 <i class="small-info ">

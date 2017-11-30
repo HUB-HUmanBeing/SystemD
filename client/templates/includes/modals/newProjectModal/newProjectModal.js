@@ -93,5 +93,6 @@ Template.newProjectModal.onRendered(function () {
 
 Template.newProjectModal.onDestroyed(function () {
     //add your statement here
+    $('.modal').modal('close');
 });
 

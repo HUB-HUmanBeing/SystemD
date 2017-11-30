@@ -105,5 +105,6 @@ Template.notifModal.onRendered(function () {
 
 Template.notifModal.onDestroyed(function () {
     //add your statement here
+    $('.modal').modal('close');
 });
 

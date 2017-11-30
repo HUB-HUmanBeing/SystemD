@@ -65,7 +65,7 @@ Template.miniature.helpers({
             }
         }
     },
-    categories : function () {
+    categories: function () {
         if (Template.instance().project.get() || Template.instance().user.get()) {
             let type = Template.currentData().type
             if (type === "project") {
@@ -75,7 +75,7 @@ Template.miniature.helpers({
             }
         }
     },
-    showCategories : function () {
+    showCategories: function () {
         return Template.instance().showCategories.get()
     }
 });
@@ -83,18 +83,18 @@ Template.miniature.helpers({
 
 Template.miniature.events({
 
-    'mouseenter [showCategories]' : function (event, instance) {
+    'mouseenter [showCategories]': function (event, instance) {
 
-        Meteor.setTimeout(()=>{
-            if($(event.currentTarget).is(':hover')){
+        Meteor.setTimeout(() => {
+            if ($(event.currentTarget).is(':hover')) {
                 instance.showCategories.set(true)
-                $(event.currentTarget).css('z-index','1000')
+                $(event.currentTarget).css('z-index', '1000')
             }
-        },350)
+        }, 350)
     },
-    'mouseleave [showCategories]' : function (event, instance) {
+    'mouseleave [showCategories]': function (event, instance) {
         instance.showCategories.set(false)
-        $(event.currentTarget).css('z-index','100')
+        $(event.currentTarget).css('z-index', '100')
     },
 });
 
@@ -113,18 +113,43 @@ Template.miniature.onCreated(function () {
             //on récupere les valeurs passées en argument lors de l'appel du template
             let type = this.data.type
             let id = this.data._id
-            //on lance un autorun pour attendre le retour d'info complémentaires qu'on cherche a obtenir par la suscription
-            this.autorun(function () {
-                let handle = Meteor.subscribe('miniature', id, type)
-                //quant c'est pret, on rempli la réactive var
-                if (handle.ready()) {
-                    if (type === "project") {
-                        Template.instance().project.set(Project.findOne({_id: id}))
-                    } else if (type === "user") {
-                        Template.instance().user.set(User.findOne({_id: id}))
-                    }
+            //si toutes les infos sont rentrées pas besoin de faire une requete
+            if (this.data.imgUrl && this.data.categories && this.data.name) {
+                //on rempli juste les champs nécessaires pour simuler qu'on a l'objet
+                if (type === "project") {
+                    Template.instance().project.set({
+                        _id: id,
+                        name: this.data.name,
+                        publicInfo : {
+                            imgUrl : this.data.imgUrl,
+                            categories : this.data.categories
+                        }
+                    })
+                } else if (type === "user") {
+                    Template.instance().user.set({
+                        _id: id,
+                        username: this.data.name,
+                        profile : {
+                            imgUrl : this.data.imgUrl,
+                            categories : this.data.categories
+                        }
+                    })
                 }
-            })
+            } else { //si on a pas toutes les infos nécessaires pour afficher la miniature directement
+                //on lance un autorun pour attendre le retour d'info complémentaires qu'on cherche a obtenir par la suscription
+                this.autorun(function () {
+                    let handle = Meteor.subscribe('miniature', id, type)
+                    //quant c'est pret, on rempli la réactive var
+                    if (handle.ready()) {
+                        if (type === "project") {
+                            Template.instance().project.set(Project.findOne({_id: id}))
+                        } else if (type === "user") {
+                            Template.instance().user.set(User.findOne({_id: id}))
+                        }
+                    }
+                })
+            }
+
         }
 
 

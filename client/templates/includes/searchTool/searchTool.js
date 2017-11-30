@@ -237,7 +237,7 @@ Template.searchTool.events({
         let competencesResults = instance.competencesResults.get()
         event.preventDefault()
         //on récupere les valeurs des inputs selects que l'on insere dans un objet
-        let chosenCategory = $('#chosenCategory');
+        let chosenCategory = $('#chosenCompCategory');
         let toAdd = {
             index : competencesResults.length?competencesResults[competencesResults.length-1].index +1 :0 ,
             category: chosenCategory.val(),
@@ -262,22 +262,27 @@ Template.searchTool.events({
         //on recupere l'id de la div cliqué
         let index = parseInt(event.currentTarget.id.split("-")[1])
         //et on retire du tableau l'index correspondant
-        results.forEach((result)=>{
+        results.forEach((result,i)=>{
             if( result.index === index){
-                results.splice(index, 1)
+                results.splice(i, 1)
         }
         })
-
+        //puis on met le tableau dans la réactive var
         instance.competencesResults.set(results)
     },
+    //lorsque l'utilisateur lance la recherche
     'click [searchBtn], submit [searchForm]': function (event, instance) {
         event.preventDefault()
         let competences
+        //si la recherche par competence est activé
         if (instance.byCompetences.get()) {
             competences = []
+            //on boucle sur le tableau de resultats pour creer un tableau imédiatement utilisable pour faire la recherche coté serveur
             instance.competencesResults.get().forEach((competence) => {
+                //si la compétence est decrite, on la rentre directement dans un tableau a un element
                 if (competence.competence) {
                     competences.push([competence.competence])
+                    //si seule la sous catégorie est décrite, on rentre toutes les compétences associées a cette sous catégorie
                 } else if (competence.subCategory && competence.subCategory !== 'all') {
                     let toPush = []
                     instance.competencesTable.get().forEach((item) => {
@@ -286,6 +291,7 @@ Template.searchTool.events({
                         }
                     })
                     competences.push(toPush)
+                    //si seule la catégorie est choisie, on rentre toutes les competences de la categorie
                 } else if (competence.category) {
                     let toPush = []
                     instance.competencesTable.get().forEach((item) => {
@@ -298,12 +304,15 @@ Template.searchTool.events({
             })
         }
         let categories
+        // si l'utilisateur fait une recherche par centre d'interet/type d'activités
         if (instance.byCategories.get()) {
             categories = []
+            //on parse le tableau pour convertir le tout en nombre
             $('#chosenCategory').val().forEach((cat) => {
                 categories.push(parseInt(cat))
             })
         }
+        //on prepare le tableau d'options à envoyer à la requete
         instance.searchOptions = {
             isProject: instance.data.type === "project",
             name: $('#researchedName').val(),
@@ -312,47 +321,45 @@ Template.searchTool.events({
             categories: categories,
             competences: competences,
         }
-        instance.offsetStep = 0
+        instance.offsetStep = 0//on réinitialise l'offset (l'affichage de plus de resultats s'effectuera en augmentant la valeur de l'offset)
+        //on appele la methode de recherche coté serveur
         Meteor.call('searchTool', instance.offsetStep, instance.searchOptions, (err, result) => {
             if (err) {
                 console.log(err)
             } else {
-                instance.searchResults.set(result)
-                result.length < 5 ? instance.showMoreResults.set(false) : instance.showMoreResults.set(true)
-                if (instance.offsetStep === 0 && result.length === 0) {
+                //si tout se passe bien
+                instance.searchResults.set(result)//on remplit les resultats avec la réactive var
+                //on renseigne si il y a plus de résultats (si la dernière réponse etait nulle ou incomplete,
+                //  on n'affichera plus le bouton "plus de resultats
+                result.length < 6 ? instance.showMoreResults.set(false) : instance.showMoreResults.set(true)
+                if (instance.offsetStep === 0 && result.length === 0) { //si la reponse est vide, on en informe l'utilisateur
                     instance.noResult.set(true)
                 } else {
                     instance.noResult.set(false)
                 }
-
             }
-
-
         })
     },
+    //lorsqu'on clique sur plus de resultats
     'click [moreResults]': function (event, instance) {
+        //on incrémente l'offset
         instance.offsetStep++
         Meteor.call('searchTool', instance.offsetStep, instance.searchOptions, (err, result) => {
             if (err) {
                 console.log(err)
             } else {
+                //on rajoute les nouveaux résultats a la suite des précedents
                 let lastResults = instance.searchResults.get()
                 instance.searchResults.set(lastResults.concat(result))
-                result.length < 5 ? instance.showMoreResults.set(false) : instance.showMoreResults.set(true)
-                if (instance.offsetStep === 0 && result.length === 0) {
-                    instance.noResult.set(true)
-                } else {
-                    instance.noResult.set(false)
-                }
+                //et on gere de la meme manière  l'affichage du bouton "plus de résultats"
+                result.length < 6 ? instance.showMoreResults.set(false) : instance.showMoreResults.set(true)
             }
-
-
         })
     }
 });
 
 Template.searchTool.onCreated(function () {
-    //add your statement here
+    //initialisation de toutes les réactives vars utilisées par le template
     this.offsetStep = 0
     let range = this.data.callingFrom === "menu" ? 150 : 30;
     if (this.data.callingFrom === "projectMembers") {
@@ -364,7 +371,6 @@ Template.searchTool.onCreated(function () {
     this.moreSearchTools = new ReactiveVar(this.data.callingFrom !== "menu");
     this.byCategories = new ReactiveVar(false)
     this.byCompetences = new ReactiveVar(false)
-    this.validForm = new ReactiveVar(true)
     this.competencesTable = new ReactiveVar([])
     this.competencesCategories = new ReactiveVar([])
     this.competencesSubCategories = new ReactiveVar([])
@@ -384,6 +390,11 @@ Template.searchTool.onRendered(function () {
         resetTooltips()
         $('select').material_select();
     }, 150)
+    //si la recherche viens du menu et a un nom entré,
+    // on lance la recherche directement en simulant un click sur le bouton de recherche
+    if(this.data.callingFrom === "menu" && this.data.name){
+        $("#launchSearch").click()
+    }
 
 });
 
