@@ -23,7 +23,8 @@ Template.menu.events({
         $('.search-modal').modal({
                 complete: function() {
                     Session.set('searchedInput', false)
-                    Session.set('openSearchModal', false)} // Callback for Modal close
+                    Session.set('openSearchModal', false)
+                } // Callback for Modal close
             }
         );
         $('.search-modal').modal('open')

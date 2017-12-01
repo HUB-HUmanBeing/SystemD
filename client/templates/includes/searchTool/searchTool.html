@@ -91,11 +91,12 @@
                         </div>
                         {{#if byCategories}}
                             {{#if ownerCategories.length}}
-                            <div class="row" style="margin: 15px 30px 10px 30px !important;">
-                                <p class="orange-text small-info justify">
-                                    La sélection à été pré-remplie à partir {{#if eq callingFrom "projectMembers"}}des types d'activités du projet{{else}}de vos centres d'interets{{/if}}
-                                </p>
-                            </div>
+                                <div class="row" style="margin: 15px 30px 10px 30px !important;">
+                                    <p class="orange-text small-info justify">
+                                        La sélection à été pré-remplie à partir {{#if eq callingFrom "projectMembers"}}
+                                        des types d'activités du projet{{else}}de vos centres d'interets{{/if}}
+                                    </p>
+                                </div>
                             {{/if}}
                             <div class="col s10 offset-s1 input-field  no-padding">
                                 <select chooseCategory id="chosenCategory" multiple>
@@ -155,7 +156,8 @@
                                                 <p class="small-info" style="margin-left: -20px !important;"><i>categories
                                                     de compétences</i></p>
                                                 <select chooseCategory id="chosenCompCategory">
-                                                    <option value="init" disabled selected>Choisissez une catégorie</option>
+                                                    <option value="init" disabled selected>Choisissez une catégorie
+                                                    </option>
                                                     {{#each cat in competenceCategories}}
                                                         <option value="{{cat.index}}">{{cat.frenchName}}</option>
                                                     {{/each}}
@@ -232,6 +234,7 @@
                         </div>
                     {{/if}}
                     <div class="row ">
+
                         <div class="center-align">
                             <a class="btn btn-block waves-effect  waves-light dark-grey hover-dark-grey hover-bg-orange "
                                searchBtn>
@@ -257,43 +260,63 @@
             <div class="hr relative" style="margin: 0 !important;">
             </div>
         {{/unless}}
-        <div class="col s12 showCommentContainer  ">
-{{#if noResult}}
-    <div class="row" style="margin-top: 20px">
-        <div class="center-align ">
-            <h5 class="orange-text">Aucun résultat pour cette recherche</h5>
-        </div>
-    </div>
-    {{/if}}
-            {{#if searchResults.length}}
-                <div class="row">
-                    {{#each result in searchResults}}
-                        <div class="row valign-wrapper">
-                            <div class="col s8">
-                                {{>miniature type = type
-                                        _id = result._id
-                                        name = result.name
-                                categories = result.categories
-                                imgUrl = result.imgUrl}}
-                            </div>
-                            <div class="col s4">
-                                <i class="small-info ">
-                                    {{showDistance result.relativeDistance}}
-                                </i>
-                            </div>
-                        </div>
-                    {{/each}}
-                </div>
-                {{#if showMoreResults}}
-                    <div class="row no-margin">
-                        <div class="center-align hover-orange">
-                            <a class="btn-flat waves-orange
-                     waves-effect
-                    small-info" moreResults>plus de résultats</a>
+        <div class="row">
+            <div class="col s12  ">
+
+                {{#if noResult}}
+                    <div class="row" style="margin-top: 20px">
+                        <div class="center-align ">
+                            <h5 class="orange-text">Aucun résultat pour cette recherche</h5>
                         </div>
                     </div>
                 {{/if}}
-            {{/if}}
+                {{#if searchResults.length}}
+                    <div class="row ">
+                        {{#each result in searchResults}}
+                            <div class="row valign-wrapper ">
+                                <div class="col s8">
+                                    {{>miniature type = type
+                                            _id = result._id
+                                            name = result.name
+                                            categories = result.categories
+                                            imgUrl = result.imgUrl}}
+                                </div>
+                                <div class="col s4">
+                                    <i class="small-info ">
+                                        {{showDistance result.relativeDistance}}
+                                    </i>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <div class="row ">
+                        {{#if showMoreResults}}
+                            <div class="right-align hover-orange">
+                                <a class="btn-flat waves-orange  waves-effect small-info" moreResults>plus
+                                    de résultats</a>
+                            </div>
+                        {{/if}}
+                    </div>
+                    {{#if or searchResults.length noResult}}
+                        {{#if eq callingFrom "projectMembers"}}
+                            <div class="row no-margin">
+                                <div class="center-align ">
+                                    <a class="btn  waves-effect  waves-light dark-grey hover-dark-grey hover-bg-orange tooltipped"
+                                       data-position="bottom" data-delay="450"
+                                       data-tooltip="Votre recherche sera sauvegardée et sera visible des utilisateurs du site sous la forme d'une annonce "
+                                       publishSearch>
+                                        <span class="orange-text">Sauvegarder et publier</span>
+                                    </a>
+                                </div>
+                            </div>
+                            {{#if publishSearch}}
+                                {{>publishSearchModal}}
+                                {{/if}}
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            </div>
         </div>
+
     </div>
 </template>

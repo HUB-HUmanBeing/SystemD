@@ -143,6 +143,9 @@ Template.searchTool.helpers({
     //afichage ou non de l'info permettant de signaler a l'utilisateur que sa recherche n'a pas de resultats
     noResult: function () {
         return Template.instance().noResult.get()
+    },
+    publishSearch : function () {
+        return Template.instance().publishSearch.get()
     }
 });
 
@@ -239,7 +242,7 @@ Template.searchTool.events({
         //on récupere les valeurs des inputs selects que l'on insere dans un objet
         let chosenCategory = $('#chosenCompCategory');
         let toAdd = {
-            index : competencesResults.length?competencesResults[competencesResults.length-1].index +1 :0 ,
+            index: competencesResults.length ? competencesResults[competencesResults.length - 1].index + 1 : 0,
             category: chosenCategory.val(),
             subCategory: $('#chosenSubCategory').val(),
             competence: $('#chosenCompetence').val() ? parseInt($('#chosenCompetence').val()) : null
@@ -262,10 +265,10 @@ Template.searchTool.events({
         //on recupere l'id de la div cliqué
         let index = parseInt(event.currentTarget.id.split("-")[1])
         //et on retire du tableau l'index correspondant
-        results.forEach((result,i)=>{
-            if( result.index === index){
+        results.forEach((result, i) => {
+            if (result.index === index) {
                 results.splice(i, 1)
-        }
+            }
         })
         //puis on met le tableau dans la réactive var
         instance.competencesResults.set(results)
@@ -332,6 +335,7 @@ Template.searchTool.events({
                 //on renseigne si il y a plus de résultats (si la dernière réponse etait nulle ou incomplete,
                 //  on n'affichera plus le bouton "plus de resultats
                 result.length < 6 ? instance.showMoreResults.set(false) : instance.showMoreResults.set(true)
+                resetTooltips()
                 if (instance.offsetStep === 0 && result.length === 0) { //si la reponse est vide, on en informe l'utilisateur
                     instance.noResult.set(true)
                 } else {
@@ -353,8 +357,15 @@ Template.searchTool.events({
                 instance.searchResults.set(lastResults.concat(result))
                 //et on gere de la meme manière  l'affichage du bouton "plus de résultats"
                 result.length < 6 ? instance.showMoreResults.set(false) : instance.showMoreResults.set(true)
+                resetTooltips()
             }
         })
+    },
+    'click [publishSearch]': function (event, instance) {
+        instance.publishSearch.set(false)
+        Meteor.setTimeout(() => {
+            instance.publishSearch.set(true)
+        }, 100)
     }
 });
 
@@ -380,6 +391,7 @@ Template.searchTool.onCreated(function () {
     this.searchResults = new ReactiveVar([])
     this.showMoreResults = new ReactiveVar(false)
     this.noResult = new ReactiveVar(false)
+    this.publishSearch = new ReactiveVar(false)
 });
 
 Template.searchTool.onRendered(function () {
@@ -392,7 +404,7 @@ Template.searchTool.onRendered(function () {
     }, 150)
     //si la recherche viens du menu et a un nom entré,
     // on lance la recherche directement en simulant un click sur le bouton de recherche
-    if(this.data.callingFrom === "menu" && this.data.name){
+    if (this.data.callingFrom === "menu" && this.data.name) {
         $("#launchSearch").click()
     }
 

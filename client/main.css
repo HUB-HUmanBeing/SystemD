@@ -452,3 +452,7 @@ input[type=range]::-ms-thumb {
 .switch label input[type=checkbox]:checked+.lever:after {
     background-color: #C87F0A;
 }
+
+body {
+    overflow-y: scroll !important;
+}
