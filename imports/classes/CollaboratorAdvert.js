@@ -1,15 +1,24 @@
 import {Class} from 'meteor/jagi:astronomy';
 import CollaboratorAdverts from '/lib/collections/CollaboratorAdverts'
-
+import Location from '/imports/classes/Location'
 /******************************
  * Classe des Annonces de recherche de nouveaux collaborateurs
  **************************/
+const CompetencesCriterion = Class.create({
+   name: 'CompetenceCriterion' ,
+    fields : {
+       competences : {
+           type : [Number],
+           optional : true
+       }
+    }
+})
 const CollaboratorAdvert = Class.create({
     name: 'CollaboratorAdvert',
     collection: CollaboratorAdverts,
     fields: {
         location: {//permet a l'utilisateur d'epingler en haut de son fil un article
-            type: location,
+            type: Location,
             default: function () {
                 return {}
             }
@@ -47,23 +56,13 @@ const CollaboratorAdvert = Class.create({
         range: {
             type: Number,
             optional: true,
-            validators: [
-                {
-                    type: 'max',
-                    param: 150
-                },
-                {
-                    type: 'min',
-                    param: 5
-                }
-            ],
         },
         categories : {
             type: [Number],
             optional: true,
         },
-        competences :  {
-            type: [Array],
+        competencesCriteria :  {
+            type : [CompetencesCriterion],
             optional: true,
         },
         competencesLabels: {

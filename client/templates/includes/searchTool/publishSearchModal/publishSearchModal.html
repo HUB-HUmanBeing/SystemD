@@ -9,7 +9,7 @@
     }}
     <div id="publishSearchModal" class="modal modal-fixed-footer grey darken-4">
         <div class="modal-content grey darken-4 grey-text text-lighten-2 scrollbar" style="padding: 20px !important;">
-            <h5>Annonce de recherche de nouveau collaborateur</h5>
+            <h5 class="center-align orange-text">Annonce de recherche de nouveau collaborateur</h5>
             <div class="row" style="padding: 15px !important;">
                 <form class="col s12 no-padding no-margin" publishSearchModalForm>
 
@@ -20,8 +20,8 @@
                             </div>
                         </div>
                         <div class="input-field col s10 offset-s1 no-padding">
-                            <input placeholder="donner un titre à l'annonce" id="researchedName" type="text"
-                                   maxlength="70">
+                            <input placeholder="donner un titre à l'annonce" id="advertTitle" type="text"
+                                   maxlength="70" >
                         </div>
                     </div>
                     <div class="row">
@@ -31,47 +31,64 @@
                             </div>
                         </div>
                         <div class="input-field col s10 offset-s1 no-padding">
-                            <textarea id="publishSearchContent" class="materialize-textarea"></textarea>
+                            <textarea placeholder="Rédiger le texte de l'annonce ici" id="advertContent" class="materialize-textarea" maxlength="200"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="row">
+                            <div class=" col s12 no-padding">
+                                <i>Competences Recherchées</i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col col s10 offset-s1 no-padding">
+                                {{#if publishModalData.competencesLabels.length}}
+                                    {{#each label in publishModalData.competencesLabels}}
+                                        <div class="chip">{{label}}</div>
+                                    {{/each}}
+                                {{else}}
+                                    <i class="small-info">Aucun critère de compétence spécifié</i>
+                                {{/if}}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <div class=" col s12 no-padding">
+                                <i>Centres d'interets</i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" col col s10 offset-s1 no-padding">
+                                {{#if publishModalData.categories.length}}
+                                    {{#each cat in publishModalData.categories}}
+                                        {{>categoryItem id=cat}}
+                                    {{/each}}
+                                {{else}}
+                                    <i class="small-info">Aucun centres d'interets spécifié</i>
+                                {{/if}}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="center-align">
+                            <a class="btn btn-block waves-effect  waves-light dark-grey hover-dark-grey hover-bg-orange "
+                               publishBtn>
+                                <span class="orange-text">Publier</span>
+                            </a>
                         </div>
                     </div>
                 </form>
-                <div class="row">
-                    <div class="row" >
-                        <div class=" col s12 no-padding">
-                            <i>Competences Recherchées</i>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class=" col col s10 offset-s1 no-padding">
-                            {{#each label in publishModalData.competencesLabels}}
-                                <div class="chip">{{label}}</div>
-                            {{/each}}
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="row">
-                        <div class=" col s12 no-padding">
-                            <i>Centres d'interets</i>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class=" col col s10 offset-s1 no-padding">
-                            {{#each cat in publishModalData.categories}}
-                                {{>categoryItem id=cat}}
-                            {{/each}}
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
-        <div class="modal-footer grey darken-4">
-            <a class="modal-action modal-close waves-effect waves-light btn-flat ">
-                <i class="material-icons">clear</i>
-            </a>
-        </div>
+            <div class="modal-footer grey darken-4">
+                <a class="modal-action modal-close waves-effect waves-light btn-flat ">
+                    <i class="material-icons">clear</i>
+                </a>
+            </div>
 
     </div>
 </template>
