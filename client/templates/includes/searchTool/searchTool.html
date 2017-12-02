@@ -297,21 +297,25 @@
                             </div>
                         {{/if}}
                     </div>
-                    {{#if or searchResults.length noResult}}
-                        {{#if eq callingFrom "projectMembers"}}
-                            <div class="row no-margin">
-                                <div class="center-align ">
-                                    <a class="btn  waves-effect  waves-light dark-grey hover-dark-grey hover-bg-orange tooltipped"
-                                       data-position="bottom" data-delay="450"
-                                       data-tooltip="Votre recherche sera sauvegardée et sera visible des utilisateurs du site sous la forme d'une annonce "
-                                       publishSearch>
-                                        <span class="orange-text">Sauvegarder et publier</span>
-                                    </a>
-                                </div>
+
+                {{/if}}
+                {{#if or searchResults.length noResult}}
+                    {{#if eq callingFrom "projectMembers"}}
+                        <div class="row no-margin">
+                            <div class="center-align ">
+                                <a class="btn  waves-effect  waves-light dark-grey hover-dark-grey hover-bg-orange tooltipped"
+                                   data-position="bottom" data-delay="450"
+                                   data-tooltip="Votre recherche sera sauvegardée et sera visible des utilisateurs du site sous la forme d'une annonce "
+                                   publishSearch>
+                                    <span class="orange-text">Sauvegarder et publier</span>
+                                </a>
                             </div>
-                            {{#if publishSearch}}
-                                {{>publishSearchModal}}
-                                {{/if}}
+                        </div>
+                        {{#if publishSearch}}
+
+                            {{>publishSearchModal
+                                    publishModalData = publishModalData}}
+
                         {{/if}}
                     {{/if}}
                 {{/if}}

@@ -144,10 +144,51 @@ Template.searchTool.helpers({
     noResult: function () {
         return Template.instance().noResult.get()
     },
-    publishSearch : function () {
+    //si true =>
+    publishSearch: function () {
         return Template.instance().publishSearch.get()
+    },
+    publishModalData: function () {
+        let project = Template.instance().data.project
+        let searchOptions = Template.instance().searchOptions
+        let publishModalData = {
+            project_id: project._id,
+            categories: searchOptions.categories,
+            competences: searchOptions.competences,
+            range : searchOptions.range,
+            location : project.publicInfo.location
+        }
+        let unformattedCompetences = Template.instance().competencesResults.get()
+        if (unformattedCompetences.length) {
+            let competencesLabels = []
+            unformattedCompetences.forEach((competenceCriterion) => {
+                if (competenceCriterion.competence && competenceCriterion.competence !== "all") {
+                    Template.instance().competencesTable.get().forEach((comp) => {
+                        if (comp.index === competenceCriterion.competence) {
+                            competencesLabels.push(comp.frenchName)
+                        }
+                    })
+                } else if (competenceCriterion.subCategory && competenceCriterion.subCategory !== "all"){
+                    Template.instance().competencesSubCategories.get().forEach((subCat) => {
+                        if (subCat.index === competenceCriterion.subCategory) {
+                            competencesLabels.push(subCat.frenchName)
+                        }
+                    })
+                } else {
+                    Template.instance().competencesCategories.get().forEach((cat) => {
+                        if (cat.index === competenceCriterion.category) {
+                            competencesLabels.push(cat.frenchName)
+                        }
+                    })
+                }
+            })
+            publishModalData.competencesLabels = competencesLabels
+        }
+        return publishModalData
+
     }
-});
+})
+;
 
 Template.searchTool.events({
     //add your events here

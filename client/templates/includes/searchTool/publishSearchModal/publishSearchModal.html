@@ -1,17 +1,77 @@
 <template name="publishSearchModal">
-    {{! panneau de publication d'une recherche pour la rendre publique}}
-    <div id="publishSearchModal" class="modal modal-fixed-footer dark-grey">
-            <div class="modal-content dark-grey no-padding grey-text text-lighten-2 scrollbar" >
-                <div class="row">
+    {{! panneau de publication d'une recherche pour la rendre publique
+    On doit lui transmetre :
+    project_id : String //l'id du projet correspondant
+    categories : [Number] // centres d'interest user recherché
+    competences: [[Number]] // liste des competences recherchées
+    competencesLabels : [String] //liste des competences formattés pour
+    range : Number //distance de recherche en km
+    }}
+    <div id="publishSearchModal" class="modal modal-fixed-footer grey darken-4">
+        <div class="modal-content grey darken-4 grey-text text-lighten-2 scrollbar" style="padding: 20px !important;">
+            <h5>Annonce de recherche de nouveau collaborateur</h5>
+            <div class="row" style="padding: 15px !important;">
+                <form class="col s12 no-padding no-margin" publishSearchModalForm>
 
+                    <div class="row">
+                        <div class="row" style="margin: 0 0 -15px 0 !important;">
+                            <div class=" col s12 no-padding">
+                                <i>Titre de l'annonce</i>
+                            </div>
+                        </div>
+                        <div class="input-field col s10 offset-s1 no-padding">
+                            <input placeholder="donner un titre à l'annonce" id="researchedName" type="text"
+                                   maxlength="70">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row" style="margin: 0 0 -15px 0 !important;">
+                            <div class=" col s12 no-padding">
+                                <i>Contenu de l'annonce</i>
+                            </div>
+                        </div>
+                        <div class="input-field col s10 offset-s1 no-padding">
+                            <textarea id="publishSearchContent" class="materialize-textarea"></textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="row" >
+                        <div class=" col s12 no-padding">
+                            <i>Competences Recherchées</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col col s10 offset-s1 no-padding">
+                            {{#each label in publishModalData.competencesLabels}}
+                                <div class="chip">{{label}}</div>
+                            {{/each}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class=" col s12 no-padding">
+                            <i>Centres d'interets</i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col col s10 offset-s1 no-padding">
+                            {{#each cat in publishModalData.categories}}
+                                {{>categoryItem id=cat}}
+                            {{/each}}
+                        </div>
+                    </div>
 
                 </div>
             </div>
-            <div class="modal-footer dark-grey">
-                <a class="modal-action modal-close waves-effect waves-light btn-flat ">
-                    <i class="material-icons">clear</i>
-                </a>
-            </div>
+        </div>
+        <div class="modal-footer grey darken-4">
+            <a class="modal-action modal-close waves-effect waves-light btn-flat ">
+                <i class="material-icons">clear</i>
+            </a>
+        </div>
 
     </div>
 </template>
