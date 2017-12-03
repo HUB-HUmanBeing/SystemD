@@ -1,3 +1,5 @@
+import CollaboratorAdverts from "../../../../../lib/collections/CollaboratorAdverts";
+
 Template.members.helpers({
 
     //booléen , renvoie true si l'utilisaateur est admin du projet
@@ -89,6 +91,9 @@ Template.members.helpers({
             $('.collapsible').collapsible()
         }, 100)
         return acceptedInvitations.length !== 0 ? acceptedInvitations : false
+    },
+    collaboratorAdverts : function () {
+        return CollaboratorAdverts.find({project_id: Template.currentData()._id}).fetch()
     }
 });
 
@@ -98,6 +103,7 @@ Template.members.events({
 
 Template.members.onCreated(function () {
     //add your statement here
+    Meteor.subscribe('advertsByProject', this.data._id)
 });
 
 Template.members.onRendered(function () {

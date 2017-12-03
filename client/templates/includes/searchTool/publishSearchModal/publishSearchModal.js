@@ -21,7 +21,9 @@ Template.publishSearchModal.events({
         advert.content = content
         advert.location = publishModalData.location
         advert.project_id = publishModalData.project_id
-        advert.competencesCriteria = publishModalData.competences
+        publishModalData.competences.forEach((competences)=>{
+            advert.competencesCriteria.push({competences : competences})
+        })
         advert.competencesLabels = publishModalData.competencesLabels
         advert.categories = publishModalData.categories
         advert.range = publishModalData.range
@@ -34,7 +36,6 @@ Template.publishSearchModal.events({
                     console.log(error)
                     Materialize.toast("une erreur s'est produite", 4000, 'red')
                 } else {
-                    console.log(result)
                     $('#publishSearchModal').modal('close')
                     Materialize.toast("L'annonce a été publié", 6000, 'green')
                 }

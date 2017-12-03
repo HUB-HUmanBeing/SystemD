@@ -1,3 +1,6 @@
+import User from "../../../../imports/classes/User";
+import Project from "../../../../imports/classes/Project";
+import CollaboratorAdverts from '/lib/collections/CollaboratorAdverts'
 Template.projectMainPage.helpers({
     //add you helpers here
     project: function () {
@@ -21,6 +24,9 @@ Template.projectMainPage.helpers({
     numberOfMembers: function () {
         let numberOfMembers = Template.instance().numberOfMembers.get();
         return (numberOfMembers > 1) ? numberOfMembers + " membres" : numberOfMembers + " membre";
+    },
+    collaboratorAdverts : function () {
+        return CollaboratorAdverts.find({project_id: Template.currentData()._id}).fetch()
     }
 });
 
@@ -30,11 +36,15 @@ Template.projectMainPage.events({
 
 Template.projectMainPage.onCreated(function () {
     //add your statement here
+
     this.numberOfMembers = new ReactiveVar(1);
     let project = Template.currentData();
     project.callMethod('numberOfMembers', (err, result)=>{
         this.numberOfMembers.set(result);
     })
+
+       Meteor.subscribe('advertsByProject', project._id)
+
 });
 
 Template.projectMainPage.onRendered(function () {

@@ -10,8 +10,12 @@ CollaboratorAdvert.extend({
         createAdvert() {
             let project = Project.findOne({_id : this.project_id})
             check(project.isAdmin(Meteor.userId()), true)
-            console.log(this)
             return this.save()
+        },
+        removeAdvert() {
+            let project = Project.findOne({_id : this.project_id})
+            check(project.isAdmin(Meteor.userId()), true)
+            return this.remove()
         }
     }
 })

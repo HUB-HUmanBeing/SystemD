@@ -59,15 +59,21 @@ const CollaboratorAdvert = Class.create({
         },
         categories : {
             type: [Number],
-            optional: true,
+            default: function () {
+                return []
+            },
         },
         competencesCriteria :  {
             type : [CompetencesCriterion],
-            optional: true,
+            default: function () {
+                return []
+            },
         },
         competencesLabels: {
             type: [String],
-            optional: true,
+            default: function () {
+                return []
+            },
         }
     },
     indexes: {

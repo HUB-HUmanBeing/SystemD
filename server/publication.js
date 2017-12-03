@@ -3,6 +3,7 @@ import User from '/imports/classes/User';
 import Projects from '/lib/collections/Projects'
 import Posts from '/lib/collections/Posts';
 import PostComments from "/lib/collections/PostComments"
+import CollaboratorAdverts from "/lib/collections/CollaboratorAdverts";
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -205,3 +206,12 @@ Meteor.publish('CommentsInfinite', function (limit, post_id) {
         }
     });
 });
+
+/******************************
+ * publication de la liste des annonces de recrutement d'un projet
+ */
+Meteor.publish('advertsByProject', function (project_id) {
+    check(project_id, String)
+    return CollaboratorAdverts.find({project_id: project_id});
+});
+

@@ -72,3 +72,21 @@ Template.registerHelper('showDistance', function(distance) {
     }
     return distance
 })
+
+Template.registerHelper('relativeDistanceFromCoord', function (lonLat) {
+    let relativeDistance = ""
+    if (Meteor.userId()) {
+        const currentUserLocation = Meteor.user().profile.location
+        if (lonLat && currentUserLocation.lonLat) {
+            let distance = new Haversine(
+                lonLat[1],
+                lonLat[0],
+                currentUserLocation.lonLat[1],
+                currentUserLocation.lonLat[0]
+            );
+            let distanceToShow = parseInt(distance.kilometers)<2? "moins de 2" :parseInt(distance.kilometers)
+            relativeDistance = "("+ distanceToShow +"km )"
+        }
+    }
+    return relativeDistance
+})
