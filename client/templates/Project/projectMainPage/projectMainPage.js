@@ -26,7 +26,7 @@ Template.projectMainPage.helpers({
         return (numberOfMembers > 1) ? numberOfMembers + " membres" : numberOfMembers + " membre";
     },
     collaboratorAdverts : function () {
-        return CollaboratorAdverts.find({project_id: Template.currentData()._id}).fetch()
+        return CollaboratorAdverts.find({project_id: Template.currentData()._id},{sort : {createdAt : -1}}).fetch()
     }
 });
 
