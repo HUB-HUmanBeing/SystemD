@@ -17,6 +17,7 @@ Template.showCompetences.onCreated(function () {
 
     this.sortedCompetences = new ReactiveVar([])
     let CompetenceInstance = new Competence
+
     CompetenceInstance.callMethod('getCompetencesByLanguage', 'french', (err, result) => {
         if (!err) {//si ya pas d'erreur dans la requete
             let hydratedCompetences = []
@@ -36,6 +37,7 @@ Template.showCompetences.onCreated(function () {
             resetTooltips()
         }
     })
+
 
 });
 
