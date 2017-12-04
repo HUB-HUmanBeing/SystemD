@@ -27,7 +27,7 @@ Template.showCompetences.onCreated(function () {
             //on boucle sur le tableau de competence
             this.competencesTable.forEach((competenceItem) => {
                 //si elles sont dans les competences de l'user,
-                if (Meteor.user().profile.competences.includes(competenceItem.index)) {
+                if (this.data.competences.includes(competenceItem.index)) {
                     //on les enregistre dans le tableau
                     hydratedCompetences.push(competenceItem)
                 }

@@ -22,7 +22,7 @@ Meteor.methods({
         if (searchOptions.name) {
             check(searchOptions.name, String)
             //on viendra chercher a partir de notre index en case insensitive
-                name = {$text: {$search: searchOptions.name}}
+            name = {$text: {$search: searchOptions.name}}
 
         }
         //pour les categories
@@ -76,7 +76,7 @@ Meteor.methods({
                         }, $maxDistance: searchOptions.range * 1000
                     }
                 }
-            } else if( !searchOptions.name){ //sinon, on la fait quand meme, mais sans maxDistance, ainsi, ca nous les triera par distance
+            } else if (!searchOptions.name) { //sinon, on la fait quand meme, mais sans maxDistance, ainsi, ca nous les triera par distance
                 query[searchOptions.isProject ? "publicInfo.location.lonLat" : "profile.location.lonLat"] = {
                     "$near": {
                         "$geometry": {
@@ -117,9 +117,9 @@ Meteor.methods({
                 // nécessaires pour pas avoir a ffaire une nouvelle requete au moment d'aficher leur miniature
                 results.push({
                     _id: item._id,
-                    name : item.name,
-                    imgUrl : item.publicInfo.imgUrl,
-                    categories : item.publicInfo.categories,
+                    name: item.name,
+                    imgUrl: item.publicInfo.imgUrl,
+                    categories: item.publicInfo.categories,
                     relativeDistance: relativeDistance
                 })
             })
@@ -132,24 +132,40 @@ Meteor.methods({
                 }).fetch();
             requestResults.forEach((item) => {
                 let relativeDistance
-                if (Meteor.userId()) {
-                    const currentUserLocation = Meteor.user().profile.location
-                    if (item.profile.location.lonLat && currentUserLocation.lonLat) { //le calcul se fait coté serveur
+                if (searchOptions.callingFrom === "projectMembers") {
+
+                    if (item.profile.location.lonLat && searchOptions.rangeCenter[1]) { //le calcul se fait coté serveur
                         // pour ne pas livrer au client des coordonnées précises d'autres utilisateurs
                         let distance = new Haversine(
                             item.profile.location.lonLat[1],
                             item.profile.location.lonLat[0],
-                            currentUserLocation.lonLat[1],
-                            currentUserLocation.lonLat[0]
+                            searchOptions.rangeCenter[1],
+                            searchOptions.rangeCenter[0]
                         );
                         relativeDistance = parseInt(distance.kilometers)
                     }
+
+                } else {
+                    if (Meteor.userId()) {
+                        const currentUserLocation = Meteor.user().profile.location
+                        if (item.profile.location.lonLat && currentUserLocation.lonLat) { //le calcul se fait coté serveur
+                            // pour ne pas livrer au client des coordonnées précises d'autres utilisateurs
+                            let distance = new Haversine(
+                                item.profile.location.lonLat[1],
+                                item.profile.location.lonLat[0],
+                                currentUserLocation.lonLat[1],
+                                currentUserLocation.lonLat[0]
+                            );
+                            relativeDistance = parseInt(distance.kilometers)
+                        }
+                    }
                 }
+
                 results.push({
                     _id: item._id,
-                    name : item.username,
-                    imgUrl : item.profile.imgUrl,
-                    categories : item.profile.categories,
+                    name: item.username,
+                    imgUrl: item.profile.imgUrl,
+                    categories: item.profile.categories,
                     relativeDistance: relativeDistance
                 })
             })

@@ -168,7 +168,35 @@
                     instance.succes.set(true)
                 }
             })
+        },
+        //ajout d'annonce de recherche de membre
+        "click [LaunchAdvertsFixtures]": function (event, instance) {
+            //on mémorise le début de l'opération
+            let startTime = new Date().getTime()
+            //on ouvre le panneau de retour
+            instance.showResults.set(true)
+            instance.Done.set(false)
+            //on appele la methode d'ajout de membres et d'invitations
+            Meteor.call('LaunchAdvertsFixtures', (err) => {
+                //on renseigne sur le temps écoulé
+                let elapsedTime = new Date().getTime() - startTime
+                instance.elapsedTime.set(elapsedTime)
+                //on renseigne que l'opération est finie
+                instance.Done.set(true)
+                //on indique l'opération essayée
+                instance.message.set("ajout des annonces de recherche de nouveaux collaborateurs")
+                //si il y a echec
+                if (err) {
+                    console.log(err)
+                    //on passe succes a false
+                    instance.succes.set(false)
+                } else {
+                    //sinon on rensigne du success
+                    instance.succes.set(true)
+                }
+            })
         }
+
     });
 
     Template.fixturesAndTests.onCreated(function () {

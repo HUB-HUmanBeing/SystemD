@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12 xl8 offset-xl1">
+                <div class="col s12 xl8 offset-xl2">
                     <div class="row">
                         <div class="col s12 m3">
                             <div class="row">
@@ -33,9 +33,15 @@
                                     <div class="card trame-box ">
                                         <div class="card-content">
                                             <span class="card-title">Contacter l'équipe</span>
-                                            <p><b>par mail : </b>contact@hub-humanbeing.com</p>
-                                            <p><b>github : </b><a href="https://github.com/HUB-HUmanBeing/HUmanBeing">https://github.com/HUB-HUmanBeing/HUmanBeing</a>
-                                            </p>
+                                            <div class="formattedText row">
+                                                <p class="center-align"><b>par mail</b></p>
+                                                <p><a href="mailto:ontact@hub-humanbeing.com">contact@hub-humanbeing.com</a></p>
+                                                <br>
+                                                <p class="center-align"><b>github</b></p>
+                                                <p><a href="https://github.com/HUB-HUmanBeing/HUmanBeing">https://github.com/HUB-HUmanBeing/HUmanBeing</a>
+                                                </p>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -50,6 +56,18 @@
                                     </div>
                                 </div>
                             </div>
+                            {{#unless isPhone}}
+                                <div class="row ">
+                                    <div class="col s12 no-padding">
+                                        <div class="card trame-box">
+                                            <div class="card-content">
+                                                <span class="card-title">Dernières Annonces</span>
+                                                {{>homeAdvertList}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/unless}}
                         </div>
 
                         <div class="col s12 m9 no-padding">
@@ -90,7 +108,7 @@
                                     <div class="card trame-box">
                                         <div class="card-content">
                                             <span class="card-title">Dernier Articles</span>
-                                                {{>homePostList}}
+                                            {{>homePostList}}
                                         </div>
                                     </div>
                                 </div>

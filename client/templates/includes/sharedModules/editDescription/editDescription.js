@@ -17,10 +17,10 @@ Template.editDescription.helpers({
         if (Template.instance().owner.get() === "user") {
             formatedText = Meteor.user().profile.description;
         } else if (Template.instance().owner.get() === "project") {
-          let currentProject = Project.findOne(Template.currentData().projectId);
+            let currentProject = Project.findOne(Template.currentData().projectId);
             return currentProject.publicInfo.description
         }
-    return formatedText
+        return formatedText
     }
 });
 
@@ -44,12 +44,12 @@ Template.editDescription.events({
     'click [saveDescriptionBtn]': function (event, instance) {
         //on récupere la valeur du champ
         let value = $('#description').html();
-      value = Textarea.formatBeforeSave(value);
+        value = Textarea.formatBeforeSave(value);
         //on verifie que la valeur as bien changé par rapport a la valeur existante
         if (value !== instance.initialText) {
             //on instancie et hydrate l'objet User
             if (instance.owner.get() === "user") {
-              const currentUser = User.findOne(Meteor.userId());
+                const currentUser = User.findOne(Meteor.userId());
                 currentUser.callMethod(
                     'updateProfileItem',
                     "description",
@@ -62,17 +62,22 @@ Template.editDescription.events({
                         } else {
                             //on nettoie la div de son contenu
                             $('#description').html("");
-                          instance.initialText = value;
+                            instance.initialText = value;
                             //on attends que tout soit chargé
                             Meteor.setTimeout(function () {
                                 //on utilise la fonction pour déformatter le texte
                                 // stoké en base et remplacer les blises "gentilles" par du vrai html
-                              Textarea.unformatBySelector('.formattedText');
+                                Textarea.unformatBySelector('.formattedText');
                                 //et on reset le medium editor
                                 editor = new MediumEditor('.editable', MediumEditorOptions)
                             }, 50);
 
                             Materialize.toast("la description à été mise à jour", 6000, 'green')
+                            let flags = instance.isEditingFlags.get();
+                            //on passe celle qui nous interesse a true
+                            flags.description = false;
+                            //et on renvoie le tout dans la réactive var
+                            instance.isEditingFlags.set(flags);
                         }
                     })
             } else if (instance.owner.get() === "project") {
@@ -83,20 +88,24 @@ Template.editDescription.events({
                     'updateInfoItem',
                     "description",
                     value,
-                  (error) => {
+                    (error) => {
                         //si ca marche pas, on renvoie l'erreur par toast
                         if (error) {
                             Materialize.toast("une erreur s'est produite", 4000, 'red')
                         } else {
                             $('#description').html("");
-                          instance.initialText = value;
+                            instance.initialText = value;
                             //on attend un peu que le dom soit chargé
                             Meteor.setTimeout(function () {
                                 //on utilise la fonction pour déformatter le texte stoké en base et remplacer les blises "gentilles" par du vrai html
-                              Textarea.unformatBySelector('.formattedText');
+                                Textarea.unformatBySelector('.formattedText');
                                 editor = new MediumEditor('.editable', MediumEditorOptions)
                             }, 30);
-
+                            let flags = instance.isEditingFlags.get();
+                            //on passe celle qui nous interesse a true
+                            flags.description = false;
+                            //et on renvoie le tout dans la réactive var
+                            instance.isEditingFlags.set(flags);
                             Materialize.toast("la description à été mise à jour", 6000, 'green')
                         }
                     })
@@ -125,11 +134,11 @@ Template.editDescription.events({
 
 Template.editDescription.onCreated(function () {
     //add your statement here
-  if (Template.currentData().owner === 'user') {
-    let currentUser = Meteor.user();
+    if (Template.currentData().owner === 'user') {
+        let currentUser = Meteor.user();
         this.initialText = currentUser.profile.description
-  } else if (Template.currentData().owner === 'project') {
-    let currentProject = Project.findOne(Template.currentData().projectId);
+    } else if (Template.currentData().owner === 'project') {
+        let currentProject = Project.findOne(Template.currentData().projectId);
         this.initialText = currentProject.publicInfo.description
     }
 
@@ -137,7 +146,7 @@ Template.editDescription.onCreated(function () {
     this.isEditingFlags = new ReactiveVar({
         description: false
     });
-  this.owner = new ReactiveVar(Template.currentData().owner)
+    this.owner = new ReactiveVar(Template.currentData().owner)
 });
 
 Template.editDescription.onRendered(function () {
@@ -145,12 +154,12 @@ Template.editDescription.onRendered(function () {
     //au rendu on active les infobulles
     resetTooltips();
     //on utilise la fonction pour déformatter le texte stoké en base et remplacer les blises "gentilles" par du vrai html
-  Textarea.unformatBySelector('#edit-description .formattedText');
+    Textarea.unformatBySelector('#edit-description .formattedText');
     this.editor = new MediumEditor('.editable', MediumEditorOptions)
 });
 
 Template.editDescription.onDestroyed(function () {
-  this.editor.destroy();
+    this.editor.destroy();
     resetTooltips();
 });
 

@@ -6,19 +6,23 @@
     showProjectIcon : Boolean //true si l'on doit afficher la miniature du projet
     }}
     <div class="row no-margin relative">
-        <h6><b>{{#if advert.title}}{{advert.title}}{{else}}Annonce sans titre{{/if}}</b></h6>
+        <h6 style="overflow-x: hidden !important;"><b>{{#if advert.title}}{{advert.title}}{{else}}Annonce sans titre{{/if}}</b></h6>
         {{#if showProjectIcon}}
-            {{> miniature
-                    _id=advert.project_id
-                    type = "project"}}
-        {{/if}}
         <div class="row no-margin">
-            <i class="small-info">{{advert.location.city}},{{advert.location.country}} {{relativeDistanceFromCoord
-                    advert.location.lonLat}}</i>
+            <p class="right-align">
+                <i class="small-text">{{advert.location.city}},{{advert.location.country}} {{relativeDistanceFromCoord
+                        advert.location.lonLat}}</i>
+            </p>
 
         </div>
 
-        <p class="small-info">{{advert.content}}</p>
+            {{> miniature
+                    _id=advert.project_id
+                    type = "project"}}
+
+
+    {{/if}}
+        <p class="small-text justify" style="overflow-x: hidden !important;">{{advert.content}}</p>
         <div class="row">
             <div class="right-align">
                 <i class="small-info right-align">
@@ -28,9 +32,9 @@
         </div>
 
         {{#if advert.competencesLabels.length}}
-            <div class="row">
-                <p><i class="small-info" style="margin-bottom: 10px">Competences Souhaités</i></p>
-                <div class="row">
+            <div class="row no-margin">
+                <p style="margin-bottom: 15px"><i class="small-info" >Competences Souhaités</i></p>
+                <div class="row no-margin">
                     <div class=" col s12 no-padding">
                         {{#each label in advert.competencesLabels}}
                             <div class="small-padding  dark-grey shadow"
@@ -42,7 +46,7 @@
             </div>
         {{/if}}
         {{#if isAdmin}}
-            <a class="btn-floating absolute dark-grey  waves-effect waves-light " style="right: -15px; top : -10px">
+            <a class="btn-floating absolute dark-grey  waves-effect waves-light " style="right: -15px; top : -20px">
                     <i class="material-icons tooltipped "
                        data-position="bottom" data-delay="50" data-tooltip="Supprimer l'annonce" deleteAdvert>clear</i>
             </a>

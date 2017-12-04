@@ -17,7 +17,7 @@ const CollaboratorAdvert = Class.create({
     name: 'CollaboratorAdvert',
     collection: CollaboratorAdverts,
     fields: {
-        location: {//permet a l'utilisateur d'epingler en haut de son fil un article
+        location: {
             type: Location,
             default: function () {
                 return {}
@@ -31,7 +31,8 @@ const CollaboratorAdvert = Class.create({
             type: Date,
             default: function () {
                 return new Date()
-            }
+            },
+            index : -1
         },
         title: {
             type: String,
@@ -49,7 +50,7 @@ const CollaboratorAdvert = Class.create({
             validators: [
                 {
                     type: 'maxLength',
-                    param: 200,
+                    param: 300,
                 }
             ],
         },

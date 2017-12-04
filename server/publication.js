@@ -215,3 +215,38 @@ Meteor.publish('advertsByProject', function (project_id) {
     return CollaboratorAdverts.find({project_id: project_id});
 });
 
+/*****************************
+ * publication du fil d'annonce de recherche de collaborateur de la page principale
+ */
+Meteor.publish('HomepageAdvertsInfiniteSubs', function (limit, lonLat, range) {
+//on check les arguments
+    check(limit, Number);
+    check(lonLat, [Number]);
+    check(range, Number)
+    //on décrit le selecteur géo
+    let geo
+    if (range === 150) { //si le curseur etait au max, on passe le selecteur a tout (vu qu'on l'applique dans un $and)
+        geo = {}
+    } else {
+        geo = {
+            'location.lonLat': {
+                "$geoWithin": {
+                    "$center": [
+                        lonLat,
+                        range / 111.12
+                    ]
+                }
+            }
+        }
+    }
+
+    return CollaboratorAdverts.find(//les annonces renvoyés
+            geo//validant les conditions géographiques
+        ,
+        {
+            limit: limit,//on limite la requetes a notre limite pour l'infinite scroll
+            sort: {//en les triant par dates décroissantes
+                createdAt: -1,
+            }
+        });
+});

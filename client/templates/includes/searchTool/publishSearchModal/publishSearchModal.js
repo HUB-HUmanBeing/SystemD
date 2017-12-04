@@ -2,7 +2,6 @@ import CollaboratorAdvert from '/imports/classes/CollaboratorAdvert'
 
 
 Template.publishSearchModal.helpers({
-    //add you helpers here
     //liste des catégories telle qu'elle est définie dans le tableau catégoryList
     categories: function () {
         return CategoryList
@@ -10,25 +9,31 @@ Template.publishSearchModal.helpers({
 });
 
 Template.publishSearchModal.events({
-    //add your events here
+    //Au click sur publier
     'click [publishBtn], submit [publishSearchModalForm]' : function (event, instance) {
         event.preventDefault()
+        //on vient récuperer le titre et le contenu rentré par l'utilisateur
         let title = $('#advertTitle').val()
         let content = $('#advertContent').val()
+        //on crée une nouvelle annonce
         let advert = new CollaboratorAdvert()
+        //on recupere les données de l'annonces transmise par le template parent
         publishModalData = instance.data.publishModalData
+        //on remplit l'annonce avec toutes ces données
         advert.title = title
         advert.content = content
         advert.location = publishModalData.location
         advert.project_id = publishModalData.project_id
-        publishModalData.competences.forEach((competences)=>{
-            advert.competencesCriteria.push({competences : competences})
-        })
+        //on reformate un peu l'objet competences avant le le faire rentrer en base
+        if(publishModalData.competences){
+            publishModalData.competences.forEach((competences)=>{
+                advert.competencesCriteria.push({competences : competences})
+            })
+        }
         advert.competencesLabels = publishModalData.competencesLabels
         advert.categories = publishModalData.categories
         advert.range = publishModalData.range
-        console.log(advert)
-
+        //et on appele la methode de création
         advert.callMethod('createAdvert',
             (error, result) => {
                 //si ca marche pas, on renvoie l'erreur par toast
@@ -48,7 +53,7 @@ Template.publishSearchModal.onCreated(function () {
 });
 
 Template.publishSearchModal.onRendered(function () {
-    //add your statement here
+    //opérations d'initialisation de la modale et du formulaire
     $('#publishSearchModal').modal()
     Meteor.setTimeout(()=>{
         Materialize.updateTextFields();

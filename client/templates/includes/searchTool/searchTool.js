@@ -228,12 +228,76 @@ Template.searchTool.events({
                 Meteor.setTimeout(() => {
                     $('select').material_select();
                     Materialize.updateTextFields();
+                    let data = {}
+                    instance.competencesTable.get().forEach((competence)=>{
+                        data[competence.frenchName] = null
+                    })
+                    $('#autocomplete-competences').autocomplete({
+                        data: data,
+                        limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+                        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+                        onAutocomplete: function(val) {
+                            // Callback function when value is autcompleted.
+                            console.log(val)
+                            let competencesResults = instance.competencesResults.get()
+                            //on récupere les valeurs des inputs selects que l'on insere dans un objet
+                            let chosenCompetenceVal = val;
+                            let chosenCompetence ={}
+                            instance.competencesTable.get().forEach((competence)=>{
+                                if(competence.frenchName === chosenCompetenceVal){
+                                    chosenCompetence = competence
+                                }
+                            })
+                            let toAdd = {
+                                index: competencesResults.length ? competencesResults[competencesResults.length - 1].index + 1 : 0,
+                                category: chosenCompetence.category,
+                                subCategory: chosenCompetence.subCategory,
+                                competence: chosenCompetence.index
+                            }
+                            // on le push dans le tableau de resultats
+                            competencesResults.push(toAdd)
+                            //on le rentre dans la réactive var
+                            instance.competencesResults.set(competencesResults)
+                        },
+                    });
                 }, 100)
             })
         } else if (instance.byCompetences.get()) {
             Meteor.setTimeout(() => {
                 $('select').material_select();
                 Materialize.updateTextFields();
+                let data = {}
+                instance.competencesTable.get().forEach((competence)=>{
+                    data[competence.frenchName] = null
+                })
+                $('#autocomplete-competences').autocomplete({
+                    data: data,
+                    limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+                    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+                    onAutocomplete: function(val) {
+                        // Callback function when value is autcompleted.
+                        console.log(val)
+                        let competencesResults = instance.competencesResults.get()
+                        //on récupere les valeurs des inputs selects que l'on insere dans un objet
+                        let chosenCompetenceVal = val;
+                        let chosenCompetence ={}
+                        instance.competencesTable.get().forEach((competence)=>{
+                            if(competence.frenchName === chosenCompetenceval){
+                                chosenCompetence = competence
+                            }
+                        })
+                        let toAdd = {
+                            index: competencesResults.length ? competencesResults[competencesResults.length - 1].index + 1 : 0,
+                            category: chosenCompetence.category,
+                            subCategory: chosenCompetence.subCategory,
+                            competence: chosenCompetence.index
+                        }
+                        // on le push dans le tableau de resultats
+                        competencesResults.push(toAdd)
+                        //on le rentre dans la réactive var
+                        instance.competencesResults.set(competencesResults)
+                    },
+                });
             }, 100)
         }
     },
@@ -364,9 +428,11 @@ Template.searchTool.events({
             rangeCenter: instance.rangeCenter,
             categories: categories,
             competences: competences,
+            callingFrom: instance.data.callingFrom
         }
         instance.offsetStep = 0//on réinitialise l'offset (l'affichage de plus de resultats s'effectuera en augmentant la valeur de l'offset)
         //on appele la methode de recherche coté serveur
+        console.log(instance.searchOptions)
         Meteor.call('searchTool', instance.offsetStep, instance.searchOptions, (err, result) => {
             if (err) {
                 console.log(err)

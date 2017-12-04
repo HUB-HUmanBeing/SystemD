@@ -30,7 +30,7 @@ Template.homePostList.events({
     //lorsque l'utilisateur modifie la distance
     'change [range]': function (event, instance) {
         //on passe la nouvelle valeur dans la réactive var
-            instance.range.set(parseInt($('.range-field input').val()))
+            instance.range.set(parseInt($('.range-field #range').val()))
     }
 });
 

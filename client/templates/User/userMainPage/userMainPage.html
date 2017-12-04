@@ -11,16 +11,20 @@
                             <div class="card trame-box ">
                                 <div class="card-content">
                                     <span class="card-title">Infos</span>
+                                    <div class="row">
+                                        <img class="responsive-img col s12 no-padding" src="{{user.profile.imgUrl}}">
+                                    </div>
+                                    {{#if currentUserId}}
+                                        <div class="small-padding">
+                                            <p class="small-margin small-text">
+                                                <i class="material-icons tiny">location_on</i> {{computedInfo.distance}}
+                                            </p>
+                                            <p class="small-margin small-text">
+                                                <i class="material-icons tiny">group_work</i> {{computedInfo.projectField}}
+                                            </p>
+                                        </div>
 
-                                    <img class="responsive-img col s12 no-padding" src="{{user.profile.imgUrl}}">
-                                    <br>
-                                    <p class="small-margin">
-                                        <i class="material-icons tiny">location_on</i> {{computedInfo.distance}}
-                                    </p>
-                                    <p class="small-margin">
-                                        <i class="material-icons tiny">group_work</i> {{computedInfo.projectField}}
-                                    </p>
-
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>
@@ -30,7 +34,7 @@
                             {{#if user.profile.categories.length }}
                                 <div class="row center-align" style="margin: 0 0 -7px 0">
                                     {{#each category in user.profile.categories}}
-                                        <span class="categories-list" >
+                                        <span class="categories-list">
                                             {{>categoryItem id= category}}
                                         </span>
                                     {{/each}}

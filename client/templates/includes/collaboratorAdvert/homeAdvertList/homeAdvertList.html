@@ -1,3 +1,35 @@
 <template name="homeAdvertList">
+    <div class="row  relative" style="margin: -10px 0 0 0 !important;">
+        <div class=" relative">
+            <p class="range-field">
+                <input type="range" id="advert-range"
+                       min="5" max="150"
+                       value="{{range}}" class="tooltipped"
+                       data-position="bottom" data-delay="50"
+                       data-tooltip="déplacez le curseur pour ajuster la distance des annonces" range/>
+            </p>
+        </div>
 
+    </div>
+    <div class="row " style="margin: -10px 0 0 0">
+        <p class="right-align small-info">
+            <i>{{shownRange}}</i>
+        </p>
+    </div>
+    <div class="hr"></div>
+
+    {{#each advert in collaboratorAdverts}}
+        {{#if  eq  indexWhenIncreaseLimit @index}}
+            <div id="increaseAdvertLimit"></div>
+        {{/if}}
+        {{> collaboratorAdvertItem
+                advert = advert
+                showProjectIcon = true}}
+
+    {{/each}}
+    {{#if loadingAdverts}}
+        <div class="row" style="padding: 30px">
+            {{>loading}}
+        </div>
+    {{/if}}
 </template>
