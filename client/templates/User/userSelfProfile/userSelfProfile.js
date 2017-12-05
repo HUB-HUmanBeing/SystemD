@@ -48,7 +48,7 @@ Template.userSelfProfile.events({
             instance.updatePasswordError.set("")
         }
     },
-    'click [updatePassword]' : function (event, instance) {
+    'click [updatePassword], submit [updatePasswordForm]' : function (event, instance) {
         let oldPassword = $('#oldPassword').val()
         let newPassword = $('#newPassword').val()
 
