@@ -27,7 +27,7 @@ Template.loginMenu.events({
         let signinUsername = $('#signinUsername').val();
         let errorMessage;
         //si elles sont identiques on vire le message d'erreur
-        if (signinUsername.length <5 || signinUsername.length>35) {
+        if (signinUsername.length <4 || signinUsername.length>35) {
             errorMessage = "le nom d'utilisateur doit comporter entre 5 et 35 caractères"
         } else {
             //sinon on indique l'erreur

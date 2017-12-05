@@ -20,7 +20,7 @@ Meteor.methods({
             check(attribute.username, String);
             check(attribute.password, String);
             //et ensuite en longueur
-            return attribute.password.length >= 6 && attribute.username.length <= 35 && attribute.username.length >= 5;
+            return attribute.password.length >= 6 && attribute.username.length <= 35 && attribute.username.length >= 4;
         });
         //on commence par checker que les attributs passés par le client oient valides
         check(userAttributes, validAttribute);
