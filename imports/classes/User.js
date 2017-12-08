@@ -106,7 +106,9 @@ const Profile = Class.create({
             default: function () {
                 return [];
             }
-        }
+        },
+        asymPublicKey: String,
+        encryptedAsymPrivateKey: String //clef chifrée a partir du mot de passe
     },
 
 });

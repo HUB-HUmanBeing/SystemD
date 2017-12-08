@@ -1,6 +1,6 @@
 Template.layout.helpers({
     //add you helpers here
-    contextualData : function () {
+    contextualData: function () {
 
         let currentRouteArray = document.location.href.split("/");
         let contextualData = {}
@@ -28,25 +28,19 @@ Template.layout.events({
 });
 
 Template.layout.onCreated(function () {
-    //add your statement here
-let string="aaaaaaaaaaazzzzzzzzzzeeeeeeeeeerrrrrrrrrrttttttttttyyyyyyyyyyuuuuuuuuuuiiiiiiiiiiooooooooooppppppppppqqqqqqqqqqqssssssssssdddddddddd"
-    console.log(string)
-    hubCrypto.generatePublicAndPrivateKey((key)=>{
-        console.log(key)
-        hubCrypto.getExportableKey(key.privateKey, (result)=>{
-            console.log(result)
-            hubCrypto.importKey(result,(result)=>{
-                console.log(result)
-            })
+    if (Meteor.userId()) {
+        Tracker.autorun(() => {
+            if (!Session.get("AsymPrivateKey")) {
+                Meteor.setTimeout(() => {
+                    if (!Session.get("AsymPrivateKey")) {
+                        Meteor.logout()
+                    }
+                }, 100)
+            }
         })
-        // hubCrypto.encrypt_data(string, key.publicKey, (encryptedData)=>{
-        //     console.log(encryptedData)
-        //     hubCrypto.decrypt_data(encryptedData, key.privateKey, (result)=>{
-        //         console.log(result)
-        //     })
-        // })
-    })
 
+
+    }
 });
 
 Template.layout.onRendered(function () {

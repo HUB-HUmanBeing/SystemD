@@ -47,6 +47,9 @@ Meteor.methods({
                 username: username,
                 password: Fixtures.password
                 //dans le callBack
+            },{
+                asymPublicKey: Fixtures.asymPublicKey,
+                encryptedAsymPrivateKey: Fixtures.encryptedAsymPrivateKey
             }, function (err, createdUserId) {
                 if (err) {
                     console.log("erreur", err)

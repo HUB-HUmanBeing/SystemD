@@ -25,6 +25,9 @@ Template.welcomeAlphaModal.onRendered(function () {
 
 Template.welcomeAlphaModal.onDestroyed(function () {
     //add your statement here
-    $('.modal').modal('close');
+    if(!Meteor.isDevelopment){
+        $('.modal').modal('close');
+    }
+
 });
 

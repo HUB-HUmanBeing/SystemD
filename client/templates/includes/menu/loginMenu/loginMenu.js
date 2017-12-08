@@ -3,7 +3,7 @@ Template.loginMenu.helpers({
     errorText: function () {
         return Template.instance().errorText.get()
     },
-    pulse : function () {
+    pulse: function () {
         return Template.instance().pulse.get()
     }
 });
@@ -17,17 +17,21 @@ Template.loginMenu.events({
         let password = event.target.password.value;
         //on soumet le login
         Meteor.loginWithPassword(username, password, function (error) {
-           // si il y a une erreur, on "toast" le message d'erreur
+            // si il y a une erreur, on "toast" le message d'erreur
+
             if (error) {
                 Materialize.toast(error.message, 6000, 'red')();
+            }else{
+                hubCrypto.storePrivateKeyInSession(password, ()=>{
+                })
             }
         });
     },
-    'keyup [username], touchend [username]' : function (event, instance) {
+    'keyup [username], touchend [username]': function (event, instance) {
         let signinUsername = $('#signinUsername').val();
         let errorMessage;
         //si elles sont identiques on vire le message d'erreur
-        if (signinUsername.length <4 || signinUsername.length>35) {
+        if (signinUsername.length < 4 || signinUsername.length > 35) {
             errorMessage = "le nom d'utilisateur doit comporter entre 5 et 35 caractères"
         } else {
             //sinon on indique l'erreur
@@ -61,25 +65,30 @@ Template.loginMenu.events({
             let username = event.target.signinUsername.value;
             //on verifie bien que les mots de passe dont identiques
             if (passwordRepeat === password) {
-                //on préformate l'objet a envoyer
-                let userAttribute = {
-                    username: username,
-                    password: password
-                };
-                //et on passe par une meteor method
-                Meteor.call('createNewUser', userAttribute, function (error, result) {
-                    //si ca échoue on renvoie l'erreur en toast
-                    if (error) {
-                        Materialize.toast(error.message, 6000, 'red')
-                    } else {
-                        //si tout va bien on redirige vers la page pour completer le profil
-                        Meteor.loginWithPassword(username, password, function (error) {
-                            Router.go("userSelfProfile");
-                            //et on toast un petit message de bienvenue
-                            Materialize.toast("Bienvenue sur HUmanBeing", 6000, 'green')
-                        });
-                    }
+                hubCrypto.generateUserAsymKeys(password, (userAsymKeys) => {
+                    //on préformate l'objet a envoyer
+                    let userAttribute = {
+                        username: username,
+                        password: password,
+                    };
+                    //et on passe par une meteor method
+                    Meteor.call('createNewUser', userAttribute,userAsymKeys, function (error, result) {
+                        //si ca échoue on renvoie l'erreur en toast
+                        if (error) {
+                            Materialize.toast(error.message, 6000, 'red')
+                        } else {
+                            //si tout va bien on redirige vers la page pour completer le profil
+                            Meteor.loginWithPassword(username, password, function (error) {
+                                hubCrypto.storePrivateKeyInSession(password, ()=>{
+                                })
+                                Router.go("userSelfProfile");
+                                //et on toast un petit message de bienvenue
+                                Materialize.toast("Bienvenue sur HUmanBeing", 6000, 'green')
+                            });
+                        }
+                    })
                 })
+
                 //sinon on renvoie un message d'erreur
             } else {
                 instance.errorText.set("Le formulaire n'est pas valide");
@@ -96,9 +105,9 @@ Template.loginMenu.onCreated(function () {
     //add your statement here
     this.errorText = new ReactiveVar()
     this.pulse = new ReactiveVar(true)
-    Meteor.setTimeout(()=>{
+    Meteor.setTimeout(() => {
         this.pulse.set(false)
-    },7000)
+    }, 7000)
 });
 
 Template.loginMenu.onRendered(function () {

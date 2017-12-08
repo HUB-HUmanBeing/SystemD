@@ -33,6 +33,7 @@ Meteor.publish('userPublicInfo', function (id) {
                     'profile.invitations': 0,
                     'profile.notifications': 0,
                     'profile.followedAuthors': 0,
+                    'profile.encryptedAsymPrivateKey':0
                 }
             });
         //sinon, on renvoie tout
@@ -93,6 +94,7 @@ Meteor.publish('miniature', function (id, type) {
                     'profile.invitations': 0,
                     'profile.followedAuthors': 0,
                     'profile.competences': 0,
+                    'profile.encryptedAsymPrivateKey':0
                 }
             });
     } else if (type === 'project') {
