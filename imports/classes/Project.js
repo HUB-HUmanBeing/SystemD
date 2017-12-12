@@ -18,6 +18,10 @@ const PublicInfo = Class.create({
                 }
             ],
         },
+        asymPublicKey : {
+            type :String,
+            optional : true
+        },
         imgUrl: {
             type: String,
             default: '/images/icon/project_icon.png'
@@ -57,6 +61,10 @@ const Project = Class.create({
                 }
             ],
             index: 'text'
+        },
+        encryptedAsymPrivateKey : {
+            type :String,
+            optional : true
         },
         members: {
             type: [Member],

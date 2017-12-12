@@ -1,3 +1,5 @@
+import hubCrypto from '/client/lib/hubCrypto'
+
 Template.loginMenu.helpers({
     //ce helper contients les message d'erreurs eventuels du formulaire de signin
     errorText: function () {
@@ -22,7 +24,7 @@ Template.loginMenu.events({
             if (error) {
                 Materialize.toast(error.message, 6000, 'red')();
             }else{
-                hubCrypto.storePrivateKeyInSession(password, ()=>{
+                hubCrypto.decryptAndStorePrivateKeyInSession(password,username, ()=>{
                 })
             }
         });
@@ -65,7 +67,7 @@ Template.loginMenu.events({
             let username = event.target.signinUsername.value;
             //on verifie bien que les mots de passe dont identiques
             if (passwordRepeat === password) {
-                hubCrypto.generateUserAsymKeys(password, (userAsymKeys) => {
+                hubCrypto.generateUserAsymKeys(password, username, (userAsymKeys) => {
                     //on préformate l'objet a envoyer
                     let userAttribute = {
                         username: username,
@@ -79,7 +81,7 @@ Template.loginMenu.events({
                         } else {
                             //si tout va bien on redirige vers la page pour completer le profil
                             Meteor.loginWithPassword(username, password, function (error) {
-                                hubCrypto.storePrivateKeyInSession(password, ()=>{
+                                hubCrypto.decryptAndStorePrivateKeyInSession(password, ()=>{
                                 })
                                 Router.go("userSelfProfile");
                                 //et on toast un petit message de bienvenue

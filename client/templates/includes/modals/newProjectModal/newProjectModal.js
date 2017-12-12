@@ -1,4 +1,5 @@
 import Project from "/imports/classes/Project";
+import hubCrypto from '/client/lib/hubCrypto'
 
 Template.newProjectModal.helpers({
     //flag pour verifier si le formulaire est pret a l'envoi
@@ -56,27 +57,30 @@ Template.newProjectModal.events({
             let projectName = $('#new-project-name').val();
             //on instancie la classe projet avec un nouvel element
             let newProject = new Project();
-            newProject.callMethod('createProject',
-                projectName,
-                function (error, result) {
-                    //on renvoie eventuellement l'erreur
-                    if (error) {
-                        Materialize.toast("Une erreur s'est produite", 6000, "red")
-                        //si c'es bon,on toast un feedback a l'utilisateur
-                    } else {
-                        Materialize.toast('Le Projet " ' + projectName + ' "à bien été créé', 6000, "green");
-                        //on ferme la fenetre formulaire
-                        $('.new-project-modal').modal('close');
-                        //pui on redirige vers la page du projet nouvellement créé
-                        Router.go('adminProject' , { _id : result})
-                    }
-                })
+            hubCrypto.generateNewProjectBrunchOfKeys(projectName, Meteor.user().profile.asymPublicKey, (brunchOfKeys) => {
+                newProject.callMethod('createProject',
+                    projectName,
+                    brunchOfKeys,
+                    function (error, result) {
+                        //on renvoie eventuellement l'erreur
+                        if (error) {
+                            Materialize.toast("Une erreur s'est produite", 6000, "red")
+                            //si c'es bon,on toast un feedback a l'utilisateur
+                        } else {
+                            Materialize.toast('Le Projet " ' + projectName + ' "à bien été créé', 6000, "green");
+                            //on ferme la fenetre formulaire
+                            $('.new-project-modal').modal('close');
+                            //pui on redirige vers la page du projet nouvellement créé
+                            Router.go('adminProject', {_id: result})
+                        }
+                    })
 
-            //et on appelle dessus une de ses methodes
-
+            })
         }
     }
-});
+
+})
+;
 
 Template.newProjectModal.onCreated(function () {
     this.disabled = new ReactiveVar("disabled");

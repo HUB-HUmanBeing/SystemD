@@ -9,6 +9,10 @@ const UserInvitation = Class.create({
     name: 'UserInvitation',
     fields: {
         project_id: String,
+        encryptedProjectKey : {
+            type :String,
+            optional : true
+        },
         invitationMessage: {
             type: String,
             default: "",
@@ -39,6 +43,10 @@ const UserProject = Class.create({
         project_id: String,
         //on garde le nom, ce qui évite une subscription pour le menu latéral
         name: String,
+        encryptedProjectKey: {
+            type :String,
+            optional : true
+        },
         roles: {
             type: [String],
             default: ["member"]

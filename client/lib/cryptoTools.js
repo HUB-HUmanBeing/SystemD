@@ -2,17 +2,16 @@ cryptoTools = {
     //permet de recuperer l'object crypto suivant le navigateur
     crypto() {
         let crypto = window.crypto || window.msCrypto || window.webkitCrypto;
-        if(crypto.subtle) {
+        if (crypto.subtle) {
             return crypto
-        }else {
+        } else {
             console.log("API crypto Not Supported")
         }
 
     },
     //vecteur d'initialisation utilisé pour les chiffrements symetriques
-    vector(){
-        //on utilise une phrase qui sera changée au moment du remier déploiement
-        vectorPhrase = "Le pari d’une humanité de la collaboration et du partage";
+    vectorFromString(str) {
+        vectorPhrase = str + "Le pari d’une humanité de la collaboration et du partage";
         let vector = new Uint8Array(16);
         for (let iii = 0; iii < vector.length; iii++) {
             vector[iii] = vectorPhrase.charCodeAt(iii);
@@ -80,8 +79,8 @@ cryptoTools = {
 
 
     },
-    asym_encrypt_data(data, public_key_object, callback){
-        //iv: Is initialization vector. It must be 16 bytes
+    asym_encrypt_data(data, public_key_object, callback) {
+
         crypto = this.crypto()
         let encrypt_promise = this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(data));
 
@@ -128,19 +127,37 @@ cryptoTools = {
                 console.log(e);
             });
     },
-    generateSimKey(callback){
+    importPublicKey(string_private_key, callback) {
+        console.log(JSON.parse(string_private_key))
+        this.crypto().subtle.importKey(
+            "jwk",
+            JSON.parse(string_private_key),
+            {
+                name: "RSA-OAEP",
+                modulusLength: 2048,
+                publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+                hash: {name: "SHA-256"}
+            },
+            false, ["encrypt"]).then(
+            function (result) {
+                callback(result)
+            }, function (e) {
+                console.log(e);
+            });
+    },
+    //fonction permettant de generer une clef symétrique de 128 bits pour un chifrement en AES-CBC
+    generateSimKey(callback) {
         let promise_key = crypto.subtle.generateKey({name: "AES-CBC", length: 128}, true, ["encrypt", "decrypt"]);
-        promise_key.then(function(key){
+        promise_key.then(function (key) {
             callback(key);
         });
-        promise_key.catch = function(e){
+        promise_key.catch = function (e) {
             console.log(e.message);
         }
     },
+    //fonction permettant de generer une clef symétrique a partir d'un mot de passe
     generateSimKeyFromPassphrase(passphrase, callback) {
-
         this.crypto().subtle.digest({name: "SHA-256"}, this.convertStringToArrayBufferView(passphrase)).then((result) => {
-
             this.crypto().subtle.importKey("raw", result, {name: "AES-CBC"}, false, ["encrypt", "decrypt"]).then(function (e) {
                 callback(e)
             }, function (e) {
@@ -149,9 +166,12 @@ cryptoTools = {
 
         });
     },
-    sim_encrypt_data(data, simKey, callback) {
-
-        crypto.subtle.encrypt({name: "AES-CBC", iv: this.vector()}, simKey, this.convertStringToArrayBufferView(data)).then(
+    //fonction de chiffrement symétrique en AES
+    sim_encrypt_data(data, simKey, vector, callback) {
+        crypto.subtle.encrypt({
+            name: "AES-CBC",
+            iv: this.vectorFromString(vector)
+        }, simKey, this.convertStringToArrayBufferView(data)).then(
             function (result) {
                 callback(new Uint8Array(result));
             },
@@ -160,13 +180,14 @@ cryptoTools = {
             }
         );
     },
-    sim_decrypt_data(encryptedData, simKey, callback){
-        this.crypto().subtle.decrypt({name: "AES-CBC", iv: this.vector()}, simKey, encryptedData).then(
-            (result)=>{
+    //fonction de dechiffrement de données
+    sim_decrypt_data(encryptedData, simKey, vector, callback) {
+        this.crypto().subtle.decrypt({name: "AES-CBC", iv: this.vectorFromString(vector)}, simKey, encryptedData).then(
+            (result) => {
                 decrypted_data = new Uint8Array(result);
                 callback(this.convertArrayBufferViewtoString(decrypted_data));
             },
-            function(e){
+            function (e) {
                 console.log(e.message);
             }
         );
