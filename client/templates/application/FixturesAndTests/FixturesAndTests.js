@@ -210,6 +210,7 @@ Template.fixturesAndTests.onCreated(function () {
     this.succes = new ReactiveVar(false)
     this.message = new ReactiveVar("")
     this.elapsedTime = new ReactiveVar()
+    //on génére toutes les clefs nécessaires a la création des fixtures
     hubCrypto.generateUserAsymKeys("123456", "robin", (UserAsymKeys)=> {
         this.UserAsymKeys = UserAsymKeys
         hubCrypto.generateNewProjectBrunchOfKeys("projet de robin", UserAsymKeys.asymPublicKey, (brunchOfKeys) => {

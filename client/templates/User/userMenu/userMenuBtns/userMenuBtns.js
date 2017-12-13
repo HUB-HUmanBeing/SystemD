@@ -17,6 +17,9 @@ Template.userMenuBtns.helpers({
     },
     isFollowedAuthor : function () {
         return Meteor.user().profile.followedAuthors.includes(Template.instance().data.userId)
+    },
+    pulse : function () {
+        return Template.instance().pulse.get()
     }
 });
 
@@ -67,6 +70,10 @@ Template.userMenuBtns.events({
 
 Template.userMenuBtns.onCreated(function () {
     //add your statement here
+    this.pulse = new ReactiveVar(true)
+    Meteor.setTimeout(() => {
+        this.pulse.set(false)
+    }, 3000)
 });
 
 Template.userMenuBtns.onRendered(function () {

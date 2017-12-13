@@ -24,29 +24,30 @@ Template.inviteProjectForm.events({
         let project = Project.findOne({_id : instance.data.project.project_id});
         //on recupere aussi l'utilisateur a inviter
         let invitedUser = Meteor.users.findOne({_id : userId})
-        hubCrypto.generateEncryptedProjectKeyForUser(
-            hubCrypto.getProjectKey(project._id),
-            invitedUser.profile.asymPublicKey,
-            (encryptedProjectKey)=>{
-                //on appele la methode d'invitation
-                project.callMethod('inviteUser', userId, invitationMessage,encryptedProjectKey, (error) => {
-                        if (error) {
-                            Materialize.toast("une erreur s'est produite", 4000, 'red')
-                        } else {
-                            //si c'est bon, on ferme la modale
-                            $('.invite-to-projects-modal').modal('close');
-                            resetTooltips()
-                            //puis on "toast" un feedback à l'utilisateur
-                            Materialize.toast(
-                                instance.data.username +
-                                " a reçu votre invitation à rejoindre le projet " +
-                                instance.data.project.name
-                                , 6000, 'green')
+        hubCrypto.getProjectKey(project._id, (projectKey)=>{
+            hubCrypto.generateEncryptedProjectKeyForUser(
+                projectKey,
+                invitedUser.profile.asymPublicKey,
+                (encryptedProjectKey)=>{
+                    //on appele la methode d'invitation
+                    project.callMethod('inviteUser', userId, invitationMessage,encryptedProjectKey, (error) => {
+                            if (error) {
+                                Materialize.toast("une erreur s'est produite", 4000, 'red')
+                            } else {
+                                //si c'est bon, on ferme la modale
+                                $('.invite-to-projects-modal').modal('close');
+                                resetTooltips()
+                                //puis on "toast" un feedback à l'utilisateur
+                                Materialize.toast(
+                                    instance.data.username +
+                                    " a reçu votre invitation à rejoindre le projet " +
+                                    instance.data.project.name
+                                    , 6000, 'green')
+                            }
                         }
-                    }
-                )
-            })
-
+                    )
+                })
+        })
     }
 });
 

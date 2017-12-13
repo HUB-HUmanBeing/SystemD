@@ -20,7 +20,6 @@ const PublicInfo = Class.create({
         },
         asymPublicKey : {
             type :String,
-            optional : true
         },
         imgUrl: {
             type: String,
@@ -64,7 +63,6 @@ const Project = Class.create({
         },
         encryptedAsymPrivateKey : {
             type :String,
-            optional : true
         },
         members: {
             type: [Member],

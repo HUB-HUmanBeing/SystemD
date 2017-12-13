@@ -205,21 +205,22 @@ hubCrypto = {
     /********************
      * Renvoie la clef du projet demandé
      * @param projectId
-     * @returns {*}
+     * @param callback
      */
-    getProjectKey(projectId) {
-
-        let projectKey = false
-
+    getProjectKey(projectId, callback) {
+        let stringifiedProjectKey
+        let vector
         // on parcours le trousseau de clef
         Session.get("brunchOfProjectKeys").forEach((item) => {
             //lorsqu'on retrouve la bonne, on l'affecte a la variable de réponse
             if (item.project_id === projectId) {
-                projectKey = item.projectKey
+                stringifiedProjectKey = item.projectKey
+                vector=item.vector
             }
         })
-        //puis on retourne la variable réponse
-        return projectKey
+        cryptoTools.importSymKey(stringifiedProjectKey , vector, (projectKey)=>{
+            callback(projectKey)
+        } )
     },
     /*******************************
      * Action d'initialisation du trousseau de clef a la connexion

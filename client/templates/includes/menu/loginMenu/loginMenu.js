@@ -112,7 +112,7 @@ Template.loginMenu.onCreated(function () {
     this.pulse = new ReactiveVar(true)
     Meteor.setTimeout(() => {
         this.pulse.set(false)
-    }, 7000)
+    }, 5000)
 });
 
 Template.loginMenu.onRendered(function () {

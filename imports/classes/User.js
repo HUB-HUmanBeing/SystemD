@@ -11,7 +11,6 @@ const UserInvitation = Class.create({
         project_id: String,
         encryptedProjectKey : {
             type :String,
-            optional : true
         },
         invitationMessage: {
             type: String,
@@ -45,7 +44,6 @@ const UserProject = Class.create({
         name: String,
         encryptedProjectKey: {
             type :String,
-            optional : true
         },
         roles: {
             type: [String],
