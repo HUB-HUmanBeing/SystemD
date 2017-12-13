@@ -24,7 +24,8 @@ Template.loginMenu.events({
             if (error) {
                 Materialize.toast(error.message, 6000, 'red')();
             }else{
-                hubCrypto.decryptAndStorePrivateKeyInSession(password,username, ()=>{
+                hubCrypto.initCryptoSession(password,username, ()=>{
+
                 })
             }
         });
@@ -81,7 +82,9 @@ Template.loginMenu.events({
                         } else {
                             //si tout va bien on redirige vers la page pour completer le profil
                             Meteor.loginWithPassword(username, password, function (error) {
-                                hubCrypto.decryptAndStorePrivateKeyInSession(password, ()=>{
+
+                                hubCrypto.initCryptoSession(password,username, ()=>{
+
                                 })
                                 Router.go("userSelfProfile");
                                 //et on toast un petit message de bienvenue

@@ -67,11 +67,13 @@ Template.newProjectModal.events({
                             Materialize.toast("Une erreur s'est produite", 6000, "red")
                             //si c'es bon,on toast un feedback a l'utilisateur
                         } else {
-                            Materialize.toast('Le Projet " ' + projectName + ' "à bien été créé', 6000, "green");
-                            //on ferme la fenetre formulaire
-                            $('.new-project-modal').modal('close');
-                            //pui on redirige vers la page du projet nouvellement créé
-                            Router.go('adminProject', {_id: result})
+                            hubCrypto.decryptAndStoreInSesstionBrunchOfProjectKeys(()=>{
+                                Materialize.toast('Le Projet " ' + projectName + ' "à bien été créé', 6000, "green");
+                                //on ferme la fenetre formulaire
+                                $('.new-project-modal').modal('close');
+                                //pui on redirige vers la page du projet nouvellement créé
+                                Router.go('adminProject', {_id: result})
+                            })
                         }
                     })
 

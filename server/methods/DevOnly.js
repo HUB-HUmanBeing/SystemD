@@ -105,6 +105,8 @@ Meteor.methods({
 
                     }
                     createdProject.publicInfo.categories = categories;
+                    createdProject.encryptedAsymPrivateKey = Fixtures.projectEncryptedAsymPrivateKey
+                    createdProject.publicInfo.asymPublicKey = Fixtures.projectAsymPublicKey
                     //on rajoute l'utilisateur courant comme admin du projet
                     createdProject.members.push({
                         user_id: createdUserId,
@@ -120,6 +122,7 @@ Meteor.methods({
                         createdUser.profile.projects.push({
                             project_id: projectId,
                             name: createdProject.name,
+                            encryptedProjectKey : Fixtures.encryptedProjectKey ,
                             roles: ['member', 'admin']
                         });
                         //et on sauvegarde
@@ -188,11 +191,13 @@ Meteor.methods({
             user.profile.invitations.push(
                 {
                     project_id: Projects[Fixtures.loopId(j - 1)]._id,
-                    invitationMessage: Fixtures.getRandom("lorems")
+                    invitationMessage: Fixtures.getRandom("lorems"),
+                    encryptedProjectKey : Fixtures.encryptedProjectKey
                 },
                 {
                     project_id: Projects[Fixtures.loopId(j - 2)]._id,
-                    invitationMessage: Fixtures.getRandom("lorems")
+                    invitationMessage: Fixtures.getRandom("lorems"),
+                    encryptedProjectKey : Fixtures.encryptedProjectKey
                 });
 
             //l'utilisateur est donc membre des projets situés a 1,2 et 3  crans sur sa droite
@@ -200,15 +205,18 @@ Meteor.methods({
             user.profile.projects.push(
                 {
                     project_id: Projects[Fixtures.loopId(j + 1)]._id,
-                    name: Projects[Fixtures.loopId(j + 1)].name
+                    name: Projects[Fixtures.loopId(j + 1)].name,
+                    encryptedProjectKey : Fixtures.encryptedProjectKey
                 },
                 {
                     project_id: Projects[Fixtures.loopId(j + 2)]._id,
-                    name: Projects[Fixtures.loopId(j + 2)].name
+                    name: Projects[Fixtures.loopId(j + 2)].name,
+                    encryptedProjectKey : Fixtures.encryptedProjectKey
                 },
                 {
                     project_id: Projects[Fixtures.loopId(j + 3)]._id,
-                    name: Projects[Fixtures.loopId(j + 3)].name
+                    name: Projects[Fixtures.loopId(j + 3)].name,
+                    encryptedProjectKey : Fixtures.encryptedProjectKey
                 }
             );
             //on sauvegarde

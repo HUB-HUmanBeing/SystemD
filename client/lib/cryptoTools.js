@@ -99,7 +99,6 @@ cryptoTools = {
 
         decrypt_promise.then(
             (result) => {
-                decrypted_data = new Uint8Array(result);
                 callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
             },
             function (e) {
@@ -107,6 +106,7 @@ cryptoTools = {
             }
         );
     },
+    //permet de stocker en base une clef
     getExportableKey(keyObject, callback) {
         this.crypto().subtle.exportKey("jwk", keyObject).then(function (result) {
             callback(JSON.stringify(result))
@@ -114,7 +114,7 @@ cryptoTools = {
             console.log(e.message);
         });
     },
-    importKey(string_private_key, callback) {
+    importPrivateKey(string_private_key, callback) {
         this.crypto().subtle.importKey("jwk", JSON.parse(string_private_key), {
             name: "RSA-OAEP",
             modulusLength: 2048,
@@ -127,8 +127,8 @@ cryptoTools = {
                 console.log(e);
             });
     },
+    //permet de rendre utilisable la clef publique d'un utilisateur
     importPublicKey(string_private_key, callback) {
-        console.log(JSON.parse(string_private_key))
         this.crypto().subtle.importKey(
             "jwk",
             JSON.parse(string_private_key),
@@ -139,6 +139,19 @@ cryptoTools = {
                 hash: {name: "SHA-256"}
             },
             false, ["encrypt"]).then(
+            function (result) {
+                callback(result)
+            }, function (e) {
+                console.log(e);
+            });
+    },
+    //permet de rendre utilisable la clef publique d'un utilisateur
+    importSymKey(string_key,vector, callback) {
+        this.crypto().subtle.importKey(
+            "jwk",
+            JSON.parse(string_key),
+            {name: "AES-CBC", iv: vector},
+            true, ["encrypt", "decrypt"]).then(
             function (result) {
                 callback(result)
             }, function (e) {
@@ -184,11 +197,10 @@ cryptoTools = {
     sim_decrypt_data(encryptedData, simKey, vector, callback) {
         this.crypto().subtle.decrypt({name: "AES-CBC", iv: this.vectorFromString(vector)}, simKey, encryptedData).then(
             (result) => {
-                decrypted_data = new Uint8Array(result);
-                callback(this.convertArrayBufferViewtoString(decrypted_data));
+                callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
             },
             function (e) {
-                console.log(e.message);
+
             }
         );
     }
