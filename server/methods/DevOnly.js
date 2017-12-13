@@ -15,7 +15,7 @@ import CollaboratorAdvert from '/imports/classes/CollaboratorAdvert'
  * Toutes les méthodes ci dessous sont utiles pour la création et le renouvellement de jeux de données de test
  */
 //todo : MEGA FAILLE DE SECU, a enlever dès qu'on passe en prod!!!!
-//if (Meteor.isDevelopment || Meteor.user().username=== "admin") {
+if (Meteor.isDevelopment || Meteor.user().username=== "admin") {
 Meteor.methods({
     /**********************************
      * Nettoyage de la base de donnée
@@ -40,7 +40,9 @@ Meteor.methods({
     /******************************
      * Création des utilisateurs et de leurs Projets
      */
-    launchUsersAndProjectsFixtures: function () {
+    launchUsersAndProjectsFixtures: function (UserAsymKeys, brunchOfKeys) {
+        check(UserAsymKeys, Object)
+        check(brunchOfKeys, Object)
         Fixtures.usernames.forEach((username) => {
             //on crée des utilisateurs
             Meteor.call('createNewUser', {
@@ -48,8 +50,8 @@ Meteor.methods({
                 password: Fixtures.password
                 //dans le callBack
             },{
-                asymPublicKey: Fixtures.asymPublicKey,
-                encryptedAsymPrivateKey: Fixtures.encryptedAsymPrivateKey
+                asymPublicKey: UserAsymKeys.asymPublicKey,
+                encryptedAsymPrivateKey: UserAsymKeys.encryptedAsymPrivateKey
             }, function (err, createdUserId) {
                 if (err) {
                     console.log("erreur", err)
@@ -105,8 +107,8 @@ Meteor.methods({
 
                     }
                     createdProject.publicInfo.categories = categories;
-                    createdProject.encryptedAsymPrivateKey = Fixtures.projectEncryptedAsymPrivateKey
-                    createdProject.publicInfo.asymPublicKey = Fixtures.projectAsymPublicKey
+                    createdProject.encryptedAsymPrivateKey = brunchOfKeys.encryptedAsymPrivateKey
+                    createdProject.publicInfo.asymPublicKey = brunchOfKeys.projectAsymPublicKey
                     //on rajoute l'utilisateur courant comme admin du projet
                     createdProject.members.push({
                         user_id: createdUserId,
@@ -122,7 +124,7 @@ Meteor.methods({
                         createdUser.profile.projects.push({
                             project_id: projectId,
                             name: createdProject.name,
-                            encryptedProjectKey : Fixtures.encryptedProjectKey ,
+                            encryptedProjectKey : brunchOfKeys.encryptedProjectKey ,
                             roles: ['member', 'admin']
                         });
                         //et on sauvegarde
@@ -140,7 +142,8 @@ Meteor.methods({
      * action de remplissage des projets avec des utilisateurs et des invitations
      * @constructor
      */
-    LaunchMembersAndInvitFixtures: function () {
+    LaunchMembersAndInvitFixtures: function (brunchOfKeys) {
+        check(brunchOfKeys, Object)
         //on récupere tout les projets et utilisateurs qu'on trie par date de création pour les avoir dans le meme ordre
         let Projects = Project.find({}, {sort: {createdAt: 1}}).fetch()
         let Users = User.find({}, {sort: {createdAt: 1}}).fetch()
@@ -192,12 +195,12 @@ Meteor.methods({
                 {
                     project_id: Projects[Fixtures.loopId(j - 1)]._id,
                     invitationMessage: Fixtures.getRandom("lorems"),
-                    encryptedProjectKey : Fixtures.encryptedProjectKey
+                    encryptedProjectKey : brunchOfKeys.encryptedProjectKey
                 },
                 {
                     project_id: Projects[Fixtures.loopId(j - 2)]._id,
                     invitationMessage: Fixtures.getRandom("lorems"),
-                    encryptedProjectKey : Fixtures.encryptedProjectKey
+                    encryptedProjectKey : brunchOfKeys.encryptedProjectKey
                 });
 
             //l'utilisateur est donc membre des projets situés a 1,2 et 3  crans sur sa droite
@@ -206,17 +209,17 @@ Meteor.methods({
                 {
                     project_id: Projects[Fixtures.loopId(j + 1)]._id,
                     name: Projects[Fixtures.loopId(j + 1)].name,
-                    encryptedProjectKey : Fixtures.encryptedProjectKey
+                    encryptedProjectKey : brunchOfKeys.encryptedProjectKey
                 },
                 {
                     project_id: Projects[Fixtures.loopId(j + 2)]._id,
                     name: Projects[Fixtures.loopId(j + 2)].name,
-                    encryptedProjectKey : Fixtures.encryptedProjectKey
+                    encryptedProjectKey : brunchOfKeys.encryptedProjectKey
                 },
                 {
                     project_id: Projects[Fixtures.loopId(j + 3)]._id,
                     name: Projects[Fixtures.loopId(j + 3)].name,
-                    encryptedProjectKey : Fixtures.encryptedProjectKey
+                    encryptedProjectKey : brunchOfKeys.encryptedProjectKey
                 }
             );
             //on sauvegarde
@@ -325,4 +328,4 @@ Meteor.methods({
         })
     }
 })
-//}
+}

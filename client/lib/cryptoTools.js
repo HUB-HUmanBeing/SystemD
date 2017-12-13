@@ -34,23 +34,6 @@ cryptoTools = {
         }
         return str;
     },
-    //transforme un arrayBuffer en string
-    convertArrayBufferViewtoStringifiedArray(buffer) {
-        let array = [];
-        for (let iii = 0; iii < buffer.byteLength; iii++) {
-            array.push(buffer[iii]);
-        }
-        return JSON.stringify(array);
-    },
-    //transforme une string en arrayBuffer
-    convertStringifiedArrayToArrayBufferView(stringifiedArray) {
-        let array = JSON.parse(stringifiedArray)
-        let bytes = new Uint8Array(array.length);
-        for (let iii = 0; iii < array.length; iii++) {
-            bytes[iii] = array[iii];
-        }
-        return bytes;
-    },
     /**************************************************
      * génération d'un couple clef publique-clef privé contenu dans l'argument de la callback
      * @param callback avec objet key
@@ -200,7 +183,7 @@ cryptoTools = {
                 callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
             },
             function (e) {
-
+                console.log(e)
             }
         );
     }

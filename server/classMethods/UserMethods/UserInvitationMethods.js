@@ -10,7 +10,7 @@ User.extend({
          ********************************/
         acceptInvitation(projectId) {
             check(projectId, String);
-          const currentUserId = Meteor.userId()
+            const currentUserId = Meteor.userId()
             let user = User.findOne(currentUserId);
             // on récupere le projet concerné
             let project = Project.findOne({_id: projectId});
@@ -19,13 +19,15 @@ User.extend({
 
                 //on trouve celle émise par le projet ET en attente
                 if (userInvitation.project_id === projectId && userInvitation.status === "waiting") {
-                    //on supprime l'invitation du tableau
-                    user.profile.invitations.splice(i, 1);
+
                     //et on rajoute le projet au tableau projet
                     user.profile.projects.push({
                         project_id: projectId,
-                        name: project.name
+                        name: project.name,
+                        encryptedProjectKey: userInvitation.encryptedProjectKey //on transmet la clef projet
                     });
+                    //on supprime l'invitation du tableau
+                    user.profile.invitations.splice(i, 1);
                     //on sauvegarde
                     user.save(function (err) {
                         if (!err) {
@@ -67,6 +69,7 @@ User.extend({
                 if (userInvitation.project_id === projectId && userInvitation.status === "waiting") {
                     //on passe son status à "décliné"
                     user.profile.invitations[i].status = "declined";
+                    user.profile.invitations[i].encryptedProjectKey = ""
                     //on sauvegarde
                     user.save(function (err) {
                         if (!err) {
@@ -96,10 +99,10 @@ User.extend({
          ********************************/
         deleteInvitation(projectId) {
             check(projectId, String);
-          const currentUserId = Meteor.userId()
+            const currentUserId = Meteor.userId()
             let user = User.findOne(currentUserId);
             // on récupere le projet concerné
-          // let project = Project.findOne({_id: projectId});
+            // let project = Project.findOne({_id: projectId});
             //on parcours le tableau des invitations recues
             user.profile.invitations.forEach((userInvitation, i) => {
 

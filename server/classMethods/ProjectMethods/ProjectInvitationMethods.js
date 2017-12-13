@@ -83,7 +83,7 @@ Project.extend({
                                         user.profile.invitations.splice(j, 1)
                                         //on envoie une notificationa l'utilisateur
                                         user.profile.notifications.push({
-                                        content: "L'invitation à rejoindre le projet \""+ this.name + '" à été annulée',
+                                        content: "Votre invitation à rejoindre le projet \""+ this.name + '" à été annulée',
                                             type: "project",
                                             path: Router.path("userSelfProjects")
                                     }),

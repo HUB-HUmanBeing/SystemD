@@ -24,12 +24,17 @@ hubCrypto = {
                     //on exporte notre clef privée
                     cryptoTools.getExportableKey(keyObject.privateKey, (exportablePrivateKey) => {
                         //puis on la chiffre avec notre clef symétrique et en utilisant le nom d'utilisateur comme vecteur d'initialisation
-                        cryptoTools.sim_encrypt_data(exportablePrivateKey, simKey, username, (unit8encryptedPrivateKey) => {
-                            //puis on finit en mettant sous forme de string la clef privée ainsi chiffrée
-                            UserAsymKeys.encryptedAsymPrivateKey = cryptoTools.convertArrayBufferViewtoString(unit8encryptedPrivateKey)
-                            //et on la retourne en argument du callback
-                            callback(UserAsymKeys)
-                        })
+                        cryptoTools.sim_encrypt_data(
+                            exportablePrivateKey,
+                            simKey,
+                            Fixtures.usernames.includes(username) ? "" : username,
+                            (unit8encryptedPrivateKey) => {
+                                //puis on finit en mettant sous forme de string la clef privée ainsi chiffrée
+                                UserAsymKeys.encryptedAsymPrivateKey = cryptoTools.convertArrayBufferViewtoString(unit8encryptedPrivateKey)
+                                //et on la retourne en argument du callback
+                                callback(UserAsymKeys)
+                            }
+                        )
                     })
                 })
 
@@ -39,11 +44,8 @@ hubCrypto = {
     },
     //methode permettant de dechiffrer la clef privée de l'utilisateur a partir de son mot de passe
     decryptAndStorePrivateKeyInSession(password, username, callback) {
-        //si le nom d'utilisateur fait partie des utilisateurs de test, on laisse un vecteur d'initialisation vide,
-        // ce qui conduira a l'utilisation du vecteur par défaut
-        if (Fixtures.usernames.includes(username)) {
-            username = ""
-        }
+
+
         //on commence par recuperer la clef symetrique associée au password utilisateur
         cryptoTools.generateSimKeyFromPassphrase(password, (simKey) => {
             //on recupere la clef stockée en base
@@ -53,12 +55,18 @@ hubCrypto = {
             let encryptedAsymPrivateKey = cryptoTools.convertStringToArrayBufferView(StringifiedEncryptedAsymPrivateKey)
             //puis on la déchiffre avec notre clef recuperée a partir du mot de passe et en utilisant le username
             // comme vecteur d'initialisation
-            cryptoTools.sim_decrypt_data(encryptedAsymPrivateKey, simKey, username, (stringifiedAsymPrivateKey) => {
-                //on met ensuite en session la clef privée en session, il faudra penser a la réimporter a chaque nouvelle utilisation
-                Session.set("stringifiedAsymPrivateKey", stringifiedAsymPrivateKey)
-                callback()
+            cryptoTools.sim_decrypt_data(
+                encryptedAsymPrivateKey,
+                simKey,
+                //si le nom d'utilisateur fait partie des utilisateurs de test, on laisse un vecteur d'initialisation vide,
+                // ce qui conduira a l'utilisation du vecteur par défaut
+                Fixtures.usernames.includes(username) ? "" : username,
+                (stringifiedAsymPrivateKey) => {
+                    //on met ensuite en session la clef privée en session, il faudra penser a la réimporter a chaque nouvelle utilisation
+                    Session.set("stringifiedAsymPrivateKey", stringifiedAsymPrivateKey)
+                    callback()
 
-            })
+                })
         })
     },
     //cation génerant un couple de clef asymetrique et chiffrant la clef privée avec le mot de passe de l'utilisateur
@@ -76,9 +84,8 @@ hubCrypto = {
             asymPublicKey: null,
             encryptedAsymPrivateKey: null
         }
-        if (Fixtures.usernames.includes(projectName.substring(10))) {
-            projectName = ""
-        }
+
+
         //on commence par générer notre clef asymetrique
         cryptoTools.generateAsymKey((keyObject) => {
             //puis on rends exportable la clef publique que l'on donne a notre objet de réponse
@@ -87,12 +94,19 @@ hubCrypto = {
                 //on exporte notre clef privée
                 cryptoTools.getExportableKey(keyObject.privateKey, (exportablePrivateKey) => {
                     //puis on la chiffre avec notre clef symétrique et en utilisant le nom d'utilisateur comme vecteur d'initialisation
-                    cryptoTools.sim_encrypt_data(exportablePrivateKey, projectKey, projectName, (unit8encryptedPrivateKey) => {
-                        //puis on finit en mettant sous forme de string la clef privée ainsi chiffrée
-                        projectAsymKeys.encryptedAsymPrivateKey = cryptoTools.convertArrayBufferViewtoString(unit8encryptedPrivateKey)
-                        //et on la retourne en argument du callback
-                        callback(projectAsymKeys)
-                    })
+                    cryptoTools.sim_encrypt_data(
+                        exportablePrivateKey,
+                        projectKey,
+                        // pour simplifier les fixtures elles auront un vecteur d'initialisation constant
+                        //on leur passe donc une chaine de caractère vide dans le vecteurs d'initialisation
+                        //si le nom est un nom de projet <=> la fin du nom de projet est dans le tableau nom des fixture
+                        Fixtures.usernames.includes(projectName.substring(10)) ? "" : projectName,
+                        (unit8encryptedPrivateKey) => {
+                            //puis on finit en mettant sous forme de string la clef privée ainsi chiffrée
+                            projectAsymKeys.encryptedAsymPrivateKey = cryptoTools.convertArrayBufferViewtoString(unit8encryptedPrivateKey)
+                            //et on la retourne en argument du callback
+                            callback(projectAsymKeys)
+                        })
                 })
 
 
@@ -151,23 +165,35 @@ hubCrypto = {
             })
         })
     },
+    /*********************
+     * dechiffre les clef projet symetriques et les stock en session
+     * @param callback
+     *******************/
     decryptAndStoreInSesstionBrunchOfProjectKeys(callback) {
+        //on commence par récuperer la la clef privée contenue en session
         cryptoTools.importPrivateKey(Session.get("stringifiedAsymPrivateKey"), (userAsymPrivateKey) => {
             let currentUser = Meteor.user()
+            //on initialise le tableau du trousseau de clefs projet
             let brunchOfProjectKeys = []
+            //pour chaquns des projets de notre utilisateur
             currentUser.profile.projects.forEach((userProject, i) => {
+                //on viens dechiffrer la clef symétrique du projet
                 cryptoTools.asym_decrypt_data(
                     cryptoTools.convertStringToArrayBufferView(userProject.encryptedProjectKey),
                     userAsymPrivateKey,
                     (stringifiedProjectKey) => {
+                        //puis on la push dans le tableau du trousseau de clefs
                         brunchOfProjectKeys.push({
                             project_id: userProject.project_id,
                             projectKey: stringifiedProjectKey,
+                            //on passe le vecteur au passage, en se souvenant qu'on choisis le vecteur "standard" lorsqu'on est avec des fixtures
                             vector: Fixtures.usernames.includes(userProject.name.substring(10)) ? "" : userProject.name
-                    }
-                    )
+                        })
+                        //si on arrive au dernier projet
                         if (i === currentUser.profile.projects.length - 1) {
+                            //on passe le tableau en session
                             Session.set("brunchOfProjectKeys", brunchOfProjectKeys)
+                            //et on apelle la fonction de retour
                             callback()
                         }
                     })
@@ -176,17 +202,35 @@ hubCrypto = {
         })
 
     },
+    /********************
+     * Renvoie la clef du projet demandé
+     * @param projectId
+     * @returns {*}
+     */
     getProjectKey(projectId) {
-        let projectKey
+
+        let projectKey = false
+
+        // on parcours le trousseau de clef
         Session.get("brunchOfProjectKeys").forEach((item) => {
+            //lorsqu'on retrouve la bonne, on l'affecte a la variable de réponse
             if (item.project_id === projectId) {
                 projectKey = item.projectKey
             }
         })
+        //puis on retourne la variable réponse
         return projectKey
     },
+    /*******************************
+     * Action d'initialisation du trousseau de clef a la connexion
+     * @param password
+     * @param username
+     * @param callback
+     */
     initCryptoSession(password, username, callback) {
+        //on commence par déchiffrer la clef privée de notre utilisateur
         this.decryptAndStorePrivateKeyInSession(password, username, () => {
+            //puis on déchiffre les clef projets
             this.decryptAndStoreInSesstionBrunchOfProjectKeys(() => {
                 callback()
             })
