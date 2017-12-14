@@ -25,7 +25,12 @@ const Conversation = Class.create({
     name: 'Conversation',
     collection: Conversations,
     fields: {
-        messages : [ConversationMessage]
+        messages : {
+            type : [ConversationMessage],
+            default: function () {
+                return [];
+            }
+        }
     }
 })
 

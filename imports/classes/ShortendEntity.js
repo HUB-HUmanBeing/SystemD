@@ -9,7 +9,10 @@ const ShortendEntity = Class.create({
     fields: {
         speaker_id: String,
         isProject : Boolean,
-        imgUrl : String,
+        imgUrl : {
+            type :String,
+            optional : true
+        },
         name : String,
     },
 });

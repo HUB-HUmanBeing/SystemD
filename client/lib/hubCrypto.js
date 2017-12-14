@@ -202,6 +202,72 @@ hubCrypto = {
         })
 
     },
+    /***********************************
+     * gérération du trousseau de clef nécessaire a la création d'une  nouvelle conversation
+     * @param stringifiedCreatorPublicKey
+     * @param stringifiedOtherSpeakerPublicKey
+     * @param callback
+     */
+    generateNewConversationBrunchOfKeys(stringifiedCreatorPublicKey, stringifiedOtherSpeakerPublicKey, callback) {
+        //on commence par générer la clef symétrique
+        cryptoTools.generateSimKey((conversationKey) => {
+            //on chiffre la clef symetrique avec la clef publique de l'utilisateur
+            this.generateEncryptedProjectKeyForUser(
+                conversationKey,
+                stringifiedCreatorPublicKey,
+                (strigifiedEncryptedConversationKeyForCreator) => {
+                    this.generateEncryptedProjectKeyForUser(
+                        conversationKey,
+                        stringifiedOtherSpeakerPublicKey,
+                        (strigifiedEncryptedConversationKeyForOtherSpeaker) => {
+                            //on prepare le trousseau de clef
+                            let brunchOfKeys = {
+                                vector: cryptoTools.getRandomStringVector(),
+                                //clef symetrique du projet chiffrée pour l'utilisateur qui en est le créateur
+                                encryptedConversationKeyForCreator: strigifiedEncryptedConversationKeyForCreator,
+                                encryptedConversationKeyForOtherSpeaker: strigifiedEncryptedConversationKeyForOtherSpeaker
+                            }
+                            //on renvoie le trousseau dans le callback
+                            callback(brunchOfKeys)
+                        })
+                })
+        })
+    },
+    /*********************
+     * dechiffre les clef conversations symetriques et les stock en session
+     * @param callback
+     *******************/
+    decryptAndStoreInSesstionBrunchOfUserConversationKeys(callback) {
+        //on commence par récuperer la la clef privée contenue en session
+        cryptoTools.importPrivateKey(Session.get("stringifiedAsymPrivateKey"), (userAsymPrivateKey) => {
+            let currentUser = Meteor.user()
+            //on initialise le tableau du trousseau de clefs conversation
+            let BrunchOfUserConversationKeys = []
+            //pour chacune des conversations de notre utilisateur
+            currentUser.profile.conversations.forEach((conversation, i) => {
+                //on viens dechiffrer la clef symétrique de la conversation
+                cryptoTools.asym_decrypt_data(
+                    cryptoTools.convertStringToArrayBufferView(conversation.encryptedConversationKey),
+                    userAsymPrivateKey,
+                    (stringifiedConversationtKey) => {
+                        //puis on la push dans le tableau du trousseau de clefs
+                        BrunchOfUserConversationKeys.push({
+                            conversation_id: conversation.conversation_id,
+                            conversationKey: stringifiedConversationtKey,
+                            vector: conversation.vector
+                        })
+                        //si on arrive a la derniere conversation
+                        if (i === currentUser.profile.conversations.length - 1) {
+                            //on passe le tableau en session
+                            Session.set("BrunchOfUserConversationKeys", BrunchOfUserConversationKeys)
+                            //et on apelle la fonction de retour
+                            callback()
+                        }
+                    })
+            })
+        })
+    }
+    ,
     /********************
      * Renvoie la clef du projet demandé
      * @param projectId
@@ -215,13 +281,35 @@ hubCrypto = {
             //lorsqu'on retrouve la bonne, on l'affecte a la variable de réponse
             if (item.project_id === projectId) {
                 stringifiedProjectKey = item.projectKey
-                vector=item.vector
+                vector = item.vector
             }
         })
-        cryptoTools.importSymKey(stringifiedProjectKey , vector, (projectKey)=>{
+        cryptoTools.importSymKey(stringifiedProjectKey, vector, (projectKey) => {
             callback(projectKey)
-        } )
-    },
+        })
+    }
+    ,
+    /***************************
+     * Renvoie la bonne clef conversation
+     * @param conversation_id String
+     * @param callback
+     */
+    getUserConversationKey(conversation_id, callback) {
+        let stringifiedConversationKey
+        let vector
+        // on parcours le trousseau de clef
+        Session.get("brunchOfProjectKeys").forEach((item) => {
+            //lorsqu'on retrouve la bonne, on l'affecte a la variable de réponse
+            if (item.conversation_id === conversation_id) {
+                stringifiedConversationKey = item.conversationKey
+                vector = item.vector
+            }
+        })
+        cryptoTools.importSymKey(stringifiedConversationKey, vector, (conversationKey) => {
+            callback(conversationKey)
+        })
+    }
+    ,
     /*******************************
      * Action d'initialisation du trousseau de clef a la connexion
      * @param password
@@ -234,6 +322,10 @@ hubCrypto = {
             //puis on déchiffre les clef projets
             this.decryptAndStoreInSesstionBrunchOfProjectKeys(() => {
                 callback()
+            })
+            //en parallèle, on decrypte les conversations
+            this.decryptAndStoreInSesstionBrunchOfUserConversationKeys(() => {
+
             })
         })
     }

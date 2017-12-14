@@ -34,6 +34,10 @@ cryptoTools = {
         }
         return str;
     },
+    getRandomStringVector(){
+        var array = new Uint8Array(16);
+        return this.convertArrayBufferViewtoString(this.crypto().getRandomValues(array));
+    },
     /**************************************************
      * génération d'un couple clef publique-clef privé contenu dans l'argument de la callback
      * @param callback avec objet key
