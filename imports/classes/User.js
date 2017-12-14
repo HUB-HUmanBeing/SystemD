@@ -2,6 +2,7 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Location from '/imports/classes/Location'
 import Notification from '/imports/classes/Notification'
+import EntitySideConversation from "/imports/classes/EntitySideConversation";
 
 // import Project from '/imports/classes/Project'
 
@@ -85,6 +86,12 @@ const Profile = Class.create({
         },
         followedAuthors: {
             type: [String],
+            default: function () {
+                return [];
+            }
+        },
+        conversations: {
+            type: [EntitySideConversation],
             default: function () {
                 return [];
             }

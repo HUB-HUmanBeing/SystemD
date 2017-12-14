@@ -3,6 +3,7 @@ import ProjectInvitation from '/imports/classes/ProjectInvitation'
 import Member from '/imports/classes/Member'
 import Location from '/imports/classes/Location'
 import Projects from '/lib/collections/Projects'
+import EntitySideConversation from "/imports/classes/EntitySideConversation";
 
 
 const PublicInfo = Class.create({
@@ -87,7 +88,13 @@ const Project = Class.create({
             default: function () {
                 return [];
             }
-        }
+        },
+        conversations: {
+            type: [EntitySideConversation],
+            default: function () {
+                return [];
+            }
+        },
 
     },
     indexes: {
