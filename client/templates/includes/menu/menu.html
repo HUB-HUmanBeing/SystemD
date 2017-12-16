@@ -1,6 +1,6 @@
 <template name="menu">
     <ul class="collapsible no-margin dark-grey general-menu " data-collapsible="accordion"
-        style="{{#unless isDesktop}}height : 200vh !important;{{/unless}}">
+        style="{{#unless isDesktop}}height : 200vh !important;{{/unless}}" id="collapsibleMenu">
         {{!icone du site +lien vers l'acceuil}}
         <li class="title-block" style="height: 75px !important;">
             <a href="{{pathFor 'home'}}"

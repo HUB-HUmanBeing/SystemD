@@ -23,7 +23,13 @@ Template.registerHelper('nullIfOne', function(number){
 Template.registerHelper('onlyZeroToNine', function(number){
     return number>9? "+" :number;
 })
-
+Template.registerHelper('indexEq', function(index, length){
+    return index === length - 1
+})
+Template.registerHelper('xl', function(){
+    let valeur_clientWidth = document.body.clientWidth;
+    return valeur_clientWidth >1284
+})
 //prends en entrée soit une durée en ms, soit un objet de type date
 Template.registerHelper('formatDuration', function(duration){
     //si c'est pas un nombre (et donc que c'est une date

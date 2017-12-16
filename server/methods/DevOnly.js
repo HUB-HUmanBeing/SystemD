@@ -343,17 +343,19 @@ if (Meteor.isDevelopment || Meteor.user().username === "admin") {
                 //les utilisateurs et les projets sont comme "mis en rond" par l'utilisation de la fonction loopId
                 for (let j = 1; j <= 2; j++) {
                     let conversation = new Conversation()
-                    //on définit un nombre aléatoire de commentaires entre 0 et 25
+                    //on définit un nombre aléatoire de messages entre 0 et 25
                     let nbOfMessages = Math.floor(Math.random() * 30)
-                    //pour chacuns
+                    //pour chacuns on viens remplir les infos
                     for (let k = 0; k < nbOfMessages; k++) {
                         conversation.messages.push({
                             content: Fixtures.getRandom("conversationLorems"),
-                            speakerId: k % 2 === 0 ? Users[Fixtures.loopId(i + j)]._id : user._id,
+                            speakerId: k % 2 === 0 ? Users[Fixtures.loopId(i + j)]._id : user._id, //les deux utilisateurs parleront chacuns leurs tours
                             sendAt: new Date()
                         })
                     }
+                    //puis on sauvegarde la conversation
                     conversation.save((err, convId) => {
+                        //et on viens la rentrer du coté de notre user
                         user.profile.conversations.push({
                             conversation_id: convId,
                             lastRead: new Date(),
@@ -367,7 +369,9 @@ if (Meteor.isDevelopment || Meteor.user().username === "admin") {
                             vector : "",
                             encryptedConversationKey : brunchOfConvKeys.encryptedConversationKeyForCreator
                         })
+                        // quant c'est bon, on sauve
                         user.save(()=>{
+                            //et on viens renseigner en miroir chez l'autre speaker de la conversation
                             Users[Fixtures.loopId(i + j)].profile.conversations.push({
                                 conversation_id: convId,
                                 lastOtherSpeakerMessage: new Date(),

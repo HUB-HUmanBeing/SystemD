@@ -1,0 +1,24 @@
+<template name="slideMessenger">
+    <div class="dark-grey" id="slide-messenger">
+        <div id="slide-out-messenger" class="side-nav dark-grey">
+            <div class="scrollbar dark-grey">
+                {{>conversationList}}
+            </div>
+        </div>
+        <div class="col s2 m1 absolute no-padding fixed"
+             style="bottom: -5px !important; right : 10px !important ;z-index: 500 !important;">
+            <a href="#" data-activates="slide-out-messenger" class=" button-collapse-slideMessenger relative">
+                {{#if newMessagesCount}}
+                    <span class="absolute valign-wrapper  notif-message-bubble orange {{#if pulse}} pulse{{/if}}">
+                        <span class="grey-text text-darken-4 center-align relative" style="font-size: 0.8em !important;">
+                            {{onlyZeroToNine newMessagesCount}}
+                        </span>
+                    </span>
+                {{/if}}
+                <img src="/images/icon/chat.png" alt="chat" class="responsive-img">
+            </a>
+        </div>
+
+
+    </div>
+</template>

@@ -66,17 +66,6 @@ arborescenceStructure = function () {
             },
         },
         {
-            id: "message",
-            name: "Messagerie",
-            color: "teal",
-            path: 'messages',
-            image: "message_icon.png",
-            notifications : function () {
-                return notifications("message")
-            },
-            subMenu: false
-        },
-        {
             id: "agenda",
             name: "Agenda",
             color: "red",

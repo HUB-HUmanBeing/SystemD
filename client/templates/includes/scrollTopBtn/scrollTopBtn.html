@@ -1,8 +1,10 @@
 <template name="scrollTopBtn">
-    <a class="btn-floating {{#unless isPhone}}btn-large{{/unless}} waves-effect waves-light dark-grey shadow tooltipped"
-       data-position="left" data-delay="50"
-       data-tooltip="haut de page" style="position: fixed !important;right: 10px; bottom: 10px"
-       OnClick="window.location.href='#topPage'">
+    <a class="btn-floating  waves-effect waves-light dark-grey shadow tooltipped"
+       data-position="right" data-delay="50"
+       data-tooltip="haut de page" style="position: fixed !important; bottom: 10px ;{{#if isDesktop}} left: 220px; {{else}}left: 10px;{{/if}}"
+       OnClick="$('html, body').animate({
+                            scrollTop: $('#topPage').offset().top
+    }, 600);">
         <i class="material-icons">arrow_upward
     </i></a>
 </template>

@@ -2,7 +2,11 @@
     {{#unless isDesktop }}
         {{> slideMenu}}
     {{/unless}}
-
+    {{#if isPhone}}
+        {{#if currentUserId}}
+            {{> slideMessenger}}
+        {{/if}}
+    {{/if}}
     <div class="main-container meteor grey darken-4">
         <div id="topPage"></div>
         <main class="">
@@ -12,6 +16,11 @@
                 </div>
 
             {{/if}}
+            {{#unless isPhone}}
+                {{#if currentUserId}}
+                    {{>messengerContainer}}
+                {{/if}}
+            {{/unless}}
             <div class=" yield-content {{#if isDesktop }} yield-content-desktop {{/if}} ">
                 <div class="row">
                     <div class="col s12 no-padding">

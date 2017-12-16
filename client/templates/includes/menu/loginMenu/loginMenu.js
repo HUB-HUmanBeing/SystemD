@@ -118,6 +118,10 @@ Template.loginMenu.onCreated(function () {
 Template.loginMenu.onRendered(function () {
     //on initialise le compteur de caractères de matérialize
     $('input').characterCounter();
+    // Meteor.setTimeout(()=>{
+    //     $('#collapsibleMenu').collapsible('open', 2);
+    // },100)
+    $('.collapsible').collapsible();
 
 });
 

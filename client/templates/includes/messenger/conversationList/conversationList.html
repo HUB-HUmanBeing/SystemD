@@ -1,0 +1,70 @@
+<template name="conversationList">
+    <div class="row relative no-margin scrollbar" style="height: {{height}}">
+        <ul class="relative " style="{{#unless isPhone}}top : 100px !important;{{else}}top : 15px !important;{{/unless}}">
+            {{#each conversation in conversations}}
+                <li class="row no-margin">
+                    {{#if isPhone}}
+                        <div class="col s10 right-align light-grey-police">
+                            {{#each otherSpeakers in conversation.otherSpeakers}}
+                                <b>{{otherSpeakers.name}}{{#unless indexEq @index conversation.otherSpeakers.length }}, {{/unless}}</b>
+                            {{/each}}
+                        </div>
+                    {{/if}}
+                    <div class="col {{#unless isPhone}}s12{{else}}s2{{/unless}} no-padding relative {{#unless isPhone}}tooltipped{{/unless}}"
+                         data-position="left" data-delay="50"
+                         data-tooltip="{{#each otherSpeakers in conversation.otherSpeakers}}
+                             {{otherSpeakers.name}} {{#unless indexEq @index conversation.otherSpeakers.length }}, {{/unless}}
+                         {{/each}}">
+                        <div class="" style="margin-right: 7px !important;">
+                            {{>conversationNotif conversation = conversation}}
+                            {{#if gt conversation.otherSpeakers.length 1}}
+                                <span class="absolute valign-wrapper   dark-grey {{#if pulse}} pulse{{/if}}" style="
+                            z-index: 101 !important;
+                            bottom :-4px;
+                            left : 2px ;
+                            border-radius: 50%;
+                            width: 20px !important;
+                            height: 20px !important;
+                            text-align: center !important;
+                            background-color: #0e0e0e;
+                            -webkit-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+                            -moz-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+                            box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+                            cursor: pointer;">
+                        <span class="light-grey-police center-align relative"
+                              style="font-size: 0.8em !important;">
+                            <b>{{conversation.otherSpeakers.length}}</b>
+                        </span>
+                    </span>
+                            {{/if}}
+                            <img src="{{conversation.otherSpeakers.[0].imgUrl}}"
+                                 alt="" class="responsive-img circle
+                                    {{#if conversation.otherSpeakers.[0].isProject}}
+                                    orange{{else}}
+                                    green{{/if}}-border">
+                        </div>
+
+                    </div>
+
+                </li>
+            {{/each}}
+            <li class="row no-margin">
+                <div class="col s10 right-align light-grey-police">
+                    {{#if isPhone}}
+                        <b>Nouvelle conversation</b>
+                    {{/if}}
+                </div>
+                <div class="col {{#unless isPhone}}s12{{else}}s2{{/unless}} no-padding relative {{#unless isPhone}}tooltipped{{/unless}}"
+                     data-position="left" data-delay="50"
+                     data-tooltip="Nouvelle conversation">
+                    <div class="" style="margin: 10px auto 0 2px !important;">
+                        <a class="btn-floating  waves-effect waves-light green center-align" >
+                            <i class="material-icons center-align">add</i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</template>
