@@ -40,7 +40,6 @@ const Fixtures = {
         "|p|La coïncidence du changement des circonstances et de l'activité humaine ou auto-changement ne peut être considérée et comprise rationnellement qu'en tant que pratique révolutionnaire|§p|",
         "|p|Les philosophes n'ont fait qu'interpréter le monde de différentes manières, ce qui importe c'est de le transformer.|§p|",
         "|p|Le principal défaut, jusqu'ici, du matérialisme de tous les philosophes – y compris celui de Feuerbach est que l'objet, la réalité, le monde sensible n'y sont saisis que sous la forme d'objet ou d'intuition, mais non en tant qu'activité humaine concrète, en tant que pratique, de façon non subjective.|§p|",
-
     ],
     imgUrls: [
        "https://i.imgur.com/vuNjnFR.jpg",
@@ -50,8 +49,16 @@ const Fixtures = {
         "https://i.imgur.com/cSalghw.jpg",
         "https://i.imgur.com/Y2ePs2Q.jpg",
         "https://i.imgur.com/9Uc0GPK.jpg"
-
-
+    ],
+    conversationLorems : [
+        "C’est un malheur du temps que les fous guident les aveugles.",
+        "La vie n’est qu’un fantôme errant, un pauvre comédien — qui se pavane et s’agite durant son heure sur la scène — et qu’ensuite on n’entend plus ; c’est une histoire — dite par un idiot, pleine de fracas et de furie, — et qui ne signifie rien…",
+        "Maintenant que l'hiver de notre mécontentement S'est changé en été glorieux par ce soleil d'York; Et toute la nuée pesant sur ma maison Engloutie dans le sein profond de l'océan.",
+        "Disons le triste histoire de la mort des rois: les uns déposés, d'autres tués à la guerre, d'autres égorgés en dormant, tous assassinés.",
+        "Le mal recueille le mal; et l'infamie, la rétribution de l'infamie.",
+        " Que l'insomnie habite la chambre où tu couches! " ,
+        " Elle y habitera, Madame, jusqu'à ce que je couche avec vous." ,
+        "Je l'espère."
     ],
     wideImgUrls: [
         "https://i.imgur.com/rt8UCE7.jpg",

@@ -117,7 +117,7 @@ Template.postItem.events({
     'click [follow]' : function (event, instance) {
         //on récupère l'utilisateur courant
         resetTooltips()
-        let user = User.findOne({_id: Meteor.userId})
+        let user = User.findOne({_id: Meteor.userId()})
         //et on applique la méthode
         user.callMethod('followAuthor', instance.data.post.author_id, (error) => {
             //si ca marche pas, on renvoie l'erreur par toast
@@ -132,7 +132,7 @@ Template.postItem.events({
     'click [unFollow]' : function (event, instance) {
         resetTooltips()
         //on récupère l'utilisateur courant
-        let user = User.findOne({_id: Meteor.userId})
+        let user = User.findOne({_id: Meteor.userId()})
         //et on applique la méthode
         user.callMethod('unFollowAuthor', instance.data.post.author_id, (error) => {
             //si ca marche pas, on renvoie l'erreur par toast
