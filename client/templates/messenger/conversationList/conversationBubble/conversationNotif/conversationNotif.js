@@ -3,10 +3,10 @@ Template.conversationNotif.helpers({
     newMessagesCount : function () {
         let counter = 0
         let conversation = Template.instance().data.conversation
-            if(conversation.lastRead < conversation.lastOtherSpeakerMessage){
+            if(conversation.lastRead < conversation.lastOtherSpeakerMessage || !conversation.lastRead){
                 counter ++
             }
-        return 3
+        return counter
     },
 
 });

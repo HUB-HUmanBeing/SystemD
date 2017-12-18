@@ -1,4 +1,5 @@
 import hubCrypto from '/client/lib/hubCrypto'
+import Fixtures from "../../../../imports/Fixtures/Fixtures";
 
 Template.fixturesAndTests.helpers({
     //true si l'opération a été effectuée
@@ -181,14 +182,14 @@ Template.fixturesAndTests.events({
         instance.showResults.set(true)
         instance.Done.set(false)
         //on appele la methode d'ajout de membres et d'invitations
-        Meteor.call('LaunchConversationsFixtures', (err) => {
+        Meteor.call('LaunchAdvertsFixtures', (err) => {
             //on renseigne sur le temps écoulé
             let elapsedTime = new Date().getTime() - startTime
             instance.elapsedTime.set(elapsedTime)
             //on renseigne que l'opération est finie
             instance.Done.set(true)
             //on indique l'opération essayée
-            instance.message.set("ajout des Conversations")
+            instance.message.set("ajout des annonces de recherche de nouveaux collaborateurs")
             //si il y a echec
             if (err) {
                 console.log(err)
@@ -207,15 +208,16 @@ Template.fixturesAndTests.events({
         instance.showResults.set(true)
         instance.Done.set(false)
         //on appele la methode d'ajout de membres et d'invitations
-        Meteor.call('LaunchConversationsFixtures',instance.brunchOfConversationKeys, (err) => {
+        Meteor.call('LaunchConversationsFixtures',
+            instance.brunchOfConversationKeys,
+            instance.encryptedConversationLorems ,(err) => {
             //on renseigne sur le temps écoulé
             let elapsedTime = new Date().getTime() - startTime
             instance.elapsedTime.set(elapsedTime)
             //on renseigne que l'opération est finie
             instance.Done.set(true)
             //on indique l'opération essayée
-            instance.message.set("ajout des annonces de recherche de nouveaux collaborateurs")
-            //si il y a echec
+            instance.message.set("ajout des conversations")
             if (err) {
                 console.log(err)
                 //on passe succes a false
@@ -242,8 +244,14 @@ Template.fixturesAndTests.onCreated(function () {
         hubCrypto.generateNewProjectBrunchOfKeys("projet de robin", UserAsymKeys.asymPublicKey, (brunchOfKeys) => {
             this.brunchOfKeys = brunchOfKeys
         })
-        hubCrypto.generateNewConversationBrunchOfKeys(UserAsymKeys.asymPublicKey, UserAsymKeys.asymPublicKey, (brunchOfConvKey)=>{
+        hubCrypto.generateNewConversationBrunchOfKeys(UserAsymKeys.asymPublicKey, UserAsymKeys.asymPublicKey, true,(brunchOfConvKey)=>{
             this.brunchOfConversationKeys = brunchOfConvKey
+            this.encryptedConversationLorems = []
+            Fixtures.conversationLorems.forEach((lorem)=>{
+                hubCrypto.symEncryptData(lorem, brunchOfConvKey.symKey, "", (encryptedLorem)=>{
+                    this.encryptedConversationLorems.push(encryptedLorem)
+                })
+            })
         })
     })
 });

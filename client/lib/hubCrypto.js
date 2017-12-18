@@ -207,8 +207,9 @@ hubCrypto = {
      * @param stringifiedCreatorPublicKey
      * @param stringifiedOtherSpeakerPublicKey
      * @param callback
+     * @param getSymkey Boolean
      */
-    generateNewConversationBrunchOfKeys(stringifiedCreatorPublicKey, stringifiedOtherSpeakerPublicKey, callback) {
+    generateNewConversationBrunchOfKeys(stringifiedCreatorPublicKey, stringifiedOtherSpeakerPublicKey,getSymkey, callback) {
         //on commence par générer la clef symétrique
         cryptoTools.generateSimKey((conversationKey) => {
             //on chiffre la clef symetrique avec la clef publique de l'utilisateur
@@ -220,12 +221,18 @@ hubCrypto = {
                         conversationKey,
                         stringifiedOtherSpeakerPublicKey,
                         (strigifiedEncryptedConversationKeyForOtherSpeaker) => {
+                            if(getSymkey){
+
+                            }
                             //on prepare le trousseau de clef
                             let brunchOfKeys = {
                                 vector: cryptoTools.getRandomStringVector(),
                                 //clef symetrique du projet chiffrée pour l'utilisateur qui en est le créateur
                                 encryptedConversationKeyForCreator: strigifiedEncryptedConversationKeyForCreator,
                                 encryptedConversationKeyForOtherSpeaker: strigifiedEncryptedConversationKeyForOtherSpeaker
+                            }
+                            if(getSymkey){
+                                brunchOfKeys.symKey = conversationKey
                             }
                             //on renvoie le trousseau dans le callback
                             callback(brunchOfKeys)
@@ -328,7 +335,16 @@ hubCrypto = {
 
             })
         })
+    },
+    symEncryptData(string, symKey, vector, callback ){
+        cryptoTools.sim_encrypt_data(string, symKey, vector, (encryptedUnit8)=>{
+            callback(cryptoTools.convertArrayBufferViewtoString(encryptedUnit8))
+        })
+    },
+    symDecryptData(encryptedString, symKey, vector, callback ){
+        cryptoTools.sim_decrypt_data(encryptedString, symKey, vector, (string)=>{
+            callback(string)
+        })
     }
-
 }
 export default hubCrypto

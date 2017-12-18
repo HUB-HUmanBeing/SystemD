@@ -79,6 +79,7 @@ Template.userMenuBtns.events({
         hubCrypto.generateNewConversationBrunchOfKeys(
             currentUser.profile.asymPublicKey,
             otherSpeaker.profile.asymPublicKey,
+            false,
             (brunchOfKeys) => {
                 //on crée une nouvelle conversation
                 let conversation = new Conversation()

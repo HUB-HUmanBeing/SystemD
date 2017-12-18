@@ -333,8 +333,9 @@ if (Meteor.isDevelopment || Meteor.user().username === "admin") {
                 }
             })
         },
-        LaunchConversationsFixtures: function (brunchOfConvKeys) {
+        LaunchConversationsFixtures: function (brunchOfConvKeys, encryptedLorems) {
             check(brunchOfConvKeys, Object)
+            check(encryptedLorems, [String])
             //on récupere tout les projets et utilisateurs qu'on trie par date de création pour les avoir dans le meme ordre
             let Projects = Project.find({}, {sort: {createdAt: 1}}).fetch()
             let Users = User.find({}, {sort: {createdAt: 1}}).fetch()
@@ -348,7 +349,7 @@ if (Meteor.isDevelopment || Meteor.user().username === "admin") {
                     //pour chacuns on viens remplir les infos
                     for (let k = 0; k < nbOfMessages; k++) {
                         conversation.messages.push({
-                            content: Fixtures.getRandom("conversationLorems"),
+                            content: encryptedLorems[Math.floor(Math.random() * (encryptedLorems.length))],
                             speakerId: k % 2 === 0 ? Users[Fixtures.loopId(i + j)]._id : user._id, //les deux utilisateurs parleront chacuns leurs tours
                             sendAt: new Date()
                         })

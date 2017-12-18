@@ -1,0 +1,52 @@
+<template name="conversationList">
+    <div class="row relative no-margin scrollbar gradient-messenger" style="height: {{height}};overflow-x: visible !important;">
+        <ul class="relative "
+            style="{{#unless isPhone}}top : 100px !important;{{else}}top : 15px !important;{{/unless}}">
+
+            {{#each conversation in conversations}}
+                {{>conversationBubble conversation = conversation}}
+            {{/each}}
+            {{#if isPhone}}
+                <li class="row no-margin">
+                    <div class="col s10 right-align light-grey-police">
+
+                        <b>Nouvelle conversation</b>
+
+                    </div>
+
+                    <div class="col s12 no-padding relative">
+                        <div class="" style="margin: 10px auto 0 2px !important;">
+                            <a class="btn-floating  waves-effect waves-light dark-grey center-align green-border light-grey-border relative hover-bg-green hover-dark-grey"
+                               style="width: 46px !important;height: 46px !important;">
+                                <i class="material-icons center-align light-grey-police relative"
+                                   style="left: -1px !important; top: 1px !important;">add</i>
+                            </a>
+                        </div>
+                    </div>
+
+                </li>
+            {{/if}}
+            {{#unless isPhone}}
+                <li style="height: 50px"></li>
+            {{/unless}}
+        </ul>
+        {{#unless isPhone}}
+            <div class="fixed-action-btn horizontal" style="right: 10px;bottom: 10px; z-index: 630 !important; overflow-x: visible !important;">
+                <a class="btn-floating btn-large dark-grey light-grey-border">
+                    <img src="/images/icon/chat.png" alt="chat" class="responsive-img relative" style=" top :9px!important; height: 45px; width: 45px ">
+                </a>
+                <ul>
+                    <li><a class="btn-floating dark-grey tooltipped"
+        data-position="top" data-delay="50"
+        data-tooltip="Nouvelle conversation"><i class="material-icons green-text">add</i></a></li>
+                    <li><a class="btn-floating dark-grey tooltipped"
+                           data-position="top" data-delay="50"
+                           data-tooltip="Refermer"><i class="material-icons red-text">clear</i></a></li>
+
+                </ul>
+            </div>
+
+        {{/unless}}
+    </div>
+
+</template>

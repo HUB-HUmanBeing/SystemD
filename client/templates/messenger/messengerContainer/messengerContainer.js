@@ -3,7 +3,7 @@ Template.messengerContainer.helpers({
     newMessagesCount : function () {
         let counter = 0
         Meteor.user().profile.conversations.forEach((conversation)=>{
-            if(conversation.lastRead < conversation.lastOtherSpeakerMessage){
+            if(conversation.lastRead < conversation.lastOtherSpeakerMessage || !conversation.lastRead){
                 counter ++
                 Template.instance().pulse.set(true)
                 Meteor.setTimeout(()=>{
@@ -24,8 +24,11 @@ Template.messengerContainer.helpers({
 
 Template.messengerContainer.events({
     //add your events here
-    'click [toggleConversations]' : function (event, instance) {
-        instance.hideConversations.set(!instance.hideConversations.get())
+    'click [showConversations]' : function (event, instance) {
+        instance.hideConversations.set(false)
+    },
+    'click .hideConversations' : function (event, instance) {
+        instance.hideConversations.set(true)
     }
 });
 
