@@ -30,18 +30,18 @@
                 <li style="height: 50px"></li>
             {{/unless}}
         </ul>
-        {{#unless isPhone}}
+        {{#unless or isPhone xl}}
             <div class="fixed-action-btn horizontal" style="right: 10px;bottom: 10px; z-index: 630 !important; overflow-x: visible !important;">
-                <a class="btn-floating btn-large dark-grey light-grey-border">
-                    <img src="/images/icon/chat.png" alt="chat" class="responsive-img relative" style=" top :9px!important; height: 45px; width: 45px ">
+                <a class="btn-floating btn-large blue-grey shadow">
+                    <img src="/images/icon/chat-dark.png" alt="chat" class="responsive-img relative" style=" top :9px!important; height: 45px; width: 45px ">
                 </a>
                 <ul>
                     <li><a class="btn-floating dark-grey tooltipped"
         data-position="top" data-delay="50"
-        data-tooltip="Nouvelle conversation"><i class="material-icons green-text">add</i></a></li>
+        data-tooltip="Nouvelle conversation" newConversation><i class="material-icons green-text">add</i></a></li>
                     <li><a class="btn-floating dark-grey tooltipped"
                            data-position="top" data-delay="50"
-                           data-tooltip="Refermer"><i class="material-icons red-text">clear</i></a></li>
+                           data-tooltip="Refermer" closeConversations><i class="material-icons red-text">clear</i></a></li>
 
                 </ul>
             </div>

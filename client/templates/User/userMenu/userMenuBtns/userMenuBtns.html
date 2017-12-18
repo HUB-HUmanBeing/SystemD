@@ -1,6 +1,7 @@
 <template name="userMenuBtns">
     {{#if currentUser}}
-        <div class="fixed-action-btn horizontal fab-menu-btn click-to-toggle">
+        <div class="fixed-action-btn horizontal fab-menu-btn click-to-toggle"
+             style="{{#if isPhone}}right: 24px !important; {{else}}right: 55px !important;{{/if}} z-index: 200 !important;">
             <a class="btn-floating btn-large green waves-effect waves-light tooltipped {{#if pulse}}pulse{{/if}}" data-position="bottom"
                data-delay="50" data-tooltip="Interagir" id="interactionBtn">
                 <i class="material-icons grey-text text-darken-4">chevron_left</i>

@@ -17,10 +17,16 @@ Template.slideMessenger.helpers({
     pulse : function () {
         return Template.instance().pulse.get()
     },
+    openedConversation : function () {
+        return Session.get('openedConversation')
+    }
 });
 
 Template.slideMessenger.events({
     //add your events here
+    'click [closeConversationPanel]' : function (event, instance) {
+        $('.button-collapse-slideMessenger').sideNav('hide');
+    }
 });
 
 Template.slideMessenger.onCreated(function () {

@@ -1,0 +1,51 @@
+<template name="conversation">
+    <div class="row no-margin small-padding " style="background-color: rgba(0,0,0, 0.2)">
+        <div class="col s10 relative valign-wrapper" style="padding : {{#if isPhone}}15px 0 0 0 {{else}}0{{/if}}">
+            {{#if gt conversation.otherSpeakers.length 1}}
+                <span class="absolute valign-wrapper   dark-grey {{#if pulse}} pulse{{/if}}" style="
+                            z-index: 101 !important;
+                            bottom :-4px;
+                            left : 2px ;
+                            border-radius: 50%;
+                            width: 20px !important;
+                            height: 20px !important;
+                            text-align: center !important;
+                            background-color: #0e0e0e;
+                            -webkit-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+                            -moz-box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+                            box-shadow: 2px 2px 15px -2px rgba(0,0,0,0.68);
+                            cursor: pointer;">
+                        <span class="light-grey-police center-align relative"
+                              style="font-size: 0.8em !important;">
+                            <b>{{conversation.otherSpeakers.length}}</b>
+                        </span>
+                    </span>
+            {{/if}}
+            <img src="{{conversation.otherSpeakers.[0].imgUrl}}"
+                 alt="" class="responsive-img circle
+                                    {{#if conversation.otherSpeakers.[0].isProject}}
+                                    orange{{else}}
+                                    green{{/if}}-border" style="width: 46px !important; height: 46px !important;">
+
+            {{#each otherSpeaker in conversation.otherSpeakers}}
+                <a class="light-grey-police small-padding
+                    {{#if otherSpeaker.isProject}}hover-orange{{else}}hover-green{{/if}}"
+                   href="{{#if otherSpeaker.isProject}}
+                    {{pathFor route='projectMainPage' data=otherSpeaker.speaker_id}}
+                {{else}}
+                    {{pathFor route='userMainPage' data=otherSpeaker.speaker_id}}
+                {{/if}}">
+                    <b>{{otherSpeaker.name}}</b>
+                </a>
+                {{#unless indexEq @index conversation.otherSpeakers.length }}
+                    , {{/unless}}
+
+            {{/each}}
+        </div>
+        <div class="col s2 relative no-padding">
+            <a href="" class="relative" style="left: 25px !important;"  closeConversation>
+                <i class="material-icons light-grey-police">clear</i>
+            </a>
+        </div>
+    </div>
+</template>

@@ -1,23 +1,26 @@
 <template name="messengerContainer">
     {{#unless xl}}
-<div class="fixed {{#if showConversations}}displaynone{{/if}}" style="right: 10px; bottom: 10px; z-index: 600">
-    {{#if newMessagesCount}}
-        <span class="absolute valign-wrapper  notif-message-bubble orange {{#if pulse}} pulse{{/if}}">
+        <div class="fixed {{#if showConversations}}displaynone{{/if}}" style="right: 10px; bottom: 10px; z-index: 600">
+            {{#if newMessagesCount}}
+                <span class="absolute valign-wrapper  notif-message-bubble orange {{#if pulse}} pulse{{/if}}">
                             <span class="grey-text text-darken-4 center-align relative"
                                   style="font-size: 0.8em !important;">
                                 {{onlyZeroToNine newMessagesCount}}
                             </span>
                         </span>
-    {{/if}}
-    <a href="" class=" btn-floating btn-large {{#if newMessagesCount}}orange-border{{/if}} tooltipped dark-grey"
-       data-position="left" data-delay="50"
-       data-tooltip="Messagerie"
-       style=" z-index: 600"
-       showConversations>
+            {{/if}}
+            <a href=""
+               class=" btn-floating btn-large {{#if newMessagesCount}}orange-border{{/if}} tooltipped blue-grey shadow"
+               data-position="left" data-delay="50"
+               data-tooltip="Messagerie"
+               style=" z-index: 600"
+               showConversations>
 
-        <img src="/images/icon/chat.png" alt="chat" class="responsive-img relative" style=" top :{{#if newMessagesCount}}7px{{else}}10px{{/if}} !important; height: 45px; width: 45px ">
-    </a>
-</div>
+                <img src="/images/icon/chat-dark.png" alt="chat-dark" class="responsive-img relative" style=" top :{{#if
+                        newMessagesCount}}7px{{else}}10px{{/if}} !important; height: 45px; width: 45px ">
+            </a>
+            <a href="" class="hideConversations fixed hidden"></a>
+        </div>
 
 
 
@@ -28,4 +31,10 @@
             {{>conversationList }}
         </div>
     {{/if}}
+    {{#if or showConversations   xl}}
+        {{#if openedConversation}}
+            {{>conversationContainer conversation = openedConversation}}
+        {{/if}}
+    {{/if}}
+
 </template>

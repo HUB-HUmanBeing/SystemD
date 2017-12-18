@@ -1,9 +1,19 @@
 <template name="slideMessenger">
     <div class="dark-grey" id="slide-messenger">
-        <div id="slide-out-messenger" class="side-nav dark-grey">
-            <div class="scrollbar dark-grey">
-                {{>conversationList}}
-            </div>
+        <div id="slide-out-messenger" class="side-nav dark-grey ">
+<div class="relative">
+    <a href="#" class="btn-floating  dark-grey btn-flat waves-effect waves-light absolute closeConversationPanel" style="left : -15px; top : 5px">
+        <i class="material-icons light-grey-police " >keyboard_arrow_right</i>
+    </a>
+</div>
+
+            {{#if openedConversation}}
+                {{>conversation conversation = openedConversation}}
+                {{else}}
+                <div class="scrollbar dark-grey">
+                    {{>conversationList}}
+                </div>
+            {{/if}}
         </div>
         <div class="col s2 m1 absolute no-padding fixed"
              style="bottom: -5px !important; right : 10px !important ;z-index: 500 !important;">

@@ -5,10 +5,8 @@ Template.messengerContainer.helpers({
         Meteor.user().profile.conversations.forEach((conversation)=>{
             if(conversation.lastRead < conversation.lastOtherSpeakerMessage || !conversation.lastRead){
                 counter ++
-                Template.instance().pulse.set(true)
-                Meteor.setTimeout(()=>{
-                    Template.instance().pulse.set(false)
-                },3000)
+                let pulse = Template.instance().pulse
+                pulse.set(true)
             }
         })
 
@@ -19,6 +17,9 @@ Template.messengerContainer.helpers({
     },
     showConversations : function () {
         return !Template.instance().hideConversations.get()
+    },
+    openedConversation : function () {
+        return Session.get('openedConversation')
     }
 });
 
