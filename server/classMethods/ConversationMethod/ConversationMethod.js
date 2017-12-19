@@ -17,6 +17,14 @@ Conversation.extend({
         newConversation(shortendCreator, shortendOtherSpeaker, brunchOfKeys) {
             //on commence par checker touts les arguments passés a la methode
             check(shortendCreator, ShortenedEntity)
+            //on check qu'on est bien avec l'admin du projet ou le proprietaire du compte user
+            if(shortendCreator.isProject){
+                let projectCreator = Project.findOne({_id : shortendCreator.speaker_id})
+                check(projectCreator.isAdmin(Meteor.userId()))
+            }else{
+                check(shortendCreator.speaker_id, Meteor.userId())
+            }
+
             check(shortendOtherSpeaker, ShortenedEntity)
             check(brunchOfKeys, Object)
             check(brunchOfKeys.vector, String)

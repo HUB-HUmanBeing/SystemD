@@ -1,14 +1,17 @@
 Template.messengerContainer.helpers({
-    //add you helpers here
+    //compteur des nouveaux messages
     newMessagesCount : function () {
         let counter = 0
         Meteor.user().profile.conversations.forEach((conversation)=>{
-            if(conversation.lastRead < conversation.lastOtherSpeakerMessage || !conversation.lastRead){
-                counter ++
-                let pulse = Template.instance().pulse
-                pulse.set(true)
-            }
+            counter += conversation.unreadMessage
         })
+        if(counter){
+            let pulse = Template.instance().pulse
+            pulse.set(true)
+            Meteor.setTimeout(()=>{
+                pulse.set(false)
+            },3000)
+        }
 
         return counter
     },

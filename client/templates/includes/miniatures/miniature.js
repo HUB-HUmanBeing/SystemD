@@ -90,7 +90,7 @@ Template.miniature.events({
                 instance.showCategories.set(true)
                 $(event.currentTarget).css('z-index', '1000')
             }
-        }, 350)
+        }, 500)
     },
     'mouseleave [showCategories]': function (event, instance) {
         instance.showCategories.set(false)

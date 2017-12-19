@@ -253,10 +253,14 @@ Meteor.publish('HomepageAdvertsInfiniteSubs', function (limit, lonLat, range) {
             }
         });
 });
-
+/**************************
+ * publication des messages de la messagerie
+ */
 Meteor.publish("MessagesInfinite",  function (convId, limit) {
     check(convId, String)
     check(limit, Number)
-    return Conversations.find({_id : convId},{'messages' : {"$slice" : -limit}})
+    console.log(limit)
+    return Conversations.find({_id : convId},{fields : {'messages' : {"$slice" : -limit}}}) //probablement encore buggé...
+
 
 })

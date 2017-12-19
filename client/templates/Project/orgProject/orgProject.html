@@ -17,7 +17,8 @@
                 </div>
             </div>
             <div id="forum" class="col s12 no-padding">{{#if eq currentTab "forum"}}
-                {{>workInProgress content = "aux utilisateurs du projet de pouvoir discuter et d'organiser ces discussions en differents topics (discussions chiffrée)"}}{{/if}}
+                {{>workInProgress content = "aux utilisateurs du projet de pouvoir discuter et d'organiser ces discussions en differents topics (discussions chiffrée)"
+                info = "Un forum thématique permetra aux membre des projets de créer de nouvelles discussions thématiques, et meme, dans l'idéal, d'offrir un 'pad' ou une feuille de calcul en édition partagée"}}{{/if}}
             </div>
             <div id="agenda" class="col s12 no-padding">{{#if eq currentTab "agenda"}}
                 {{>workInProgress content = "aux utilisateurs du projet de visualiser l'agenda du projet et touts les evenements et temps d'activité, il offrira a l'utilisateur la possibilité de pouvoir s'inscrire sur ces dates, et de voir son agenda personnel synchronisé avec ceux des projets par taches ou il s'est inscrit (chiffré)"}}{{/if}}</div>

@@ -1,6 +1,9 @@
 <template name="conversation">
+    {{! template d'affichage d'une conversation, il est le meme pour la version mobile et desktop
+    il s'appelle avec :
+    conversation: Object // la conversation telle qu'elle existe dans le document user}}
     <div class="flex" style=" height: 100% !important; flex-direction: column">
-        <div class="row no-margin small-padding " style="background-color: rgba(0,0,0, 0.2)">
+        <div class="row no-margin small-padding " style="background-color: rgba(0,0,0, 0.2); border-radius: 3px 3px 0 0 !important;">
             <div class="col s10 relative valign-wrapper" style="padding : {{#if isPhone}}15px 0 0 0 {{else}}0{{/if}}">
                 {{#if gt conversation.otherSpeakers.length 1}}
                     <span class="absolute valign-wrapper   dark-grey {{#if pulse}} pulse{{/if}}" style="
@@ -50,7 +53,10 @@
             </div>
         </div>
         <div class="row no-margin light-grey-police flex-auto " style="padding: 0 5px; overflow-y: hidden" >
-            <div class="scrollbar" style="height: 100%">
+            <div class="scrollbar " id="chatMessages{{conversation.conversation_id}}" style="height: 275px">
+                <div class="row no-margin center-align ">
+                    <a href="" class="waves-effect waves-light center-align btn-flat blue-grey-text" moreMessages>Plus de messages</a>
+                </div>
                 {{#each message in messages}}
                     <div class="grey darken-4 small-padding borer-radius shadow {{#unless eq message.speakerId  currentUserId}}tooltipped{{/unless}}"
                          data-position="bottom" data-delay="50"
@@ -59,9 +65,29 @@
                         <p class="no-margin small-info">{{message.content}}</p>
                     </div>
                 {{/each}}
+                <div class="" style="height: 50px !important;"></div>
             </div>
 
              </div>
+        <div class="row no-margin " style=" border-radius: 0 0 3px 3px !important; height: 100px">
+            <form chat>
+                <div class="relative borer-radius shadow"
+                     style="
+         background-color: rgba(255,255,255,0.05);
+         min-height: 80px; padding: 5px 0px 5px 5px !important; margin: 10px">
+                    <div class="text editable no-padding no-margin puce-list formattedText chatEditor small-info light-grey-police scrollbar"
+                         style="text-align: justify; height : 70px!important; "
+                         id="chat-content{{conversation.conversation_id}}">
+                    </div>
+                    <a class="btn-floating waves-effect waves-light  tooltipped dark-grey  absolute shadow hover-orange "
+                       data-position="bottom" data-delay="350"
+                       style="top : -25px !important; right : {{#unless isPhone}}-32px{{else}}10px{{/unless}} !important;"
+                       data-tooltip="envoyer" sendChat>
+                        <i class="material-icons  blue-grey-text  ">send</i>
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
 
 </template>

@@ -337,11 +337,13 @@ hubCrypto = {
             })
         })
     },
+    //chiffrement de données avec une clef symétrique et un vecteur determiné
     symEncryptData(string, symKey, vector, callback ){
         cryptoTools.sim_encrypt_data(string, symKey, vector, (encryptedUnit8)=>{
             callback(cryptoTools.convertArrayBufferViewtoString(encryptedUnit8))
         })
     },
+    //dechiffrement de données avec la clef symetrique et le vecteur d'encryption
     symDecryptData(encryptedString, symKey, vector, callback ){
         cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(encryptedString), symKey, vector, (string)=>{
             callback(string)

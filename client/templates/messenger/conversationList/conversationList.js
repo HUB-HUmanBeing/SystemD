@@ -1,23 +1,13 @@
 Template.conversationList.helpers({
     //add you helpers here
     conversations : function () {
+        //on récupere les conversation de l'utilisateur
         let conversations = Meteor.user().profile.conversations
-        let sortedConversations = []
-
+        //et on les trie afin que celles avec des nouveaux messages arrivent en haut
         conversations.sort((a,b)=>{
-            if(a.lastOtherSpeakerMessage && b.lastOtherSpeakerMessage ){
-                return a.lastOtherSpeakerMessage - b.lastOtherSpeakerMessage;
-            }
+                return b.unreadMessage - a.unreadMessage;
         })
-        conversations.forEach((conversation)=>{
-            if(conversation.lastRead < conversation.lastOtherSpeakerMessage || !conversation.lastRead){
-                sortedConversations.unshift(conversation)
-
-            }else{
-                sortedConversations.push(conversation)
-            }
-        })
-        return sortedConversations
+        return conversations
     },
     height : function () {
         let valeur_clientWidth = document.body.clientWidth

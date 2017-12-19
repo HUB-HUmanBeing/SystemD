@@ -30,24 +30,12 @@
     {{#if or showConversations   xl}}
         {{#if openedConversations.length}}
             <div class="fixed" style="right : 70px; bottom: 0 ;z-index: 600">
-                {{#if and xl openedConversations.[2]}}
-                    <div class=" shadow dark-grey borer-radius inline-block"
+                {{#each openedConversation in openedConversations}}
+                    <div class=" shadow dark-grey borer-radius inline-block blue-grey-border"
                          style="margin: 10px !important;z-index: 600 !important; width: 300px; height :450px;  bottom: 10px; opacity: 0.98">
-                        {{>conversation conversation = openedConversations.[2]}}
+                        {{>conversation conversation = openedConversation}}
                     </div>
-                {{/if}}
-                {{#if openedConversations.[1]}}
-                    <div class=" shadow dark-grey borer-radius inline-block"
-                         style="margin: 10px !important;z-index: 600 !important; width: 300px; height :450px;  bottom: 10px; opacity: 0.98">
-                        {{>conversation conversation = openedConversations.[1]}}
-                    </div>
-                {{/if}}
-                {{#if openedConversations.[0]}}
-                    <div class=" shadow dark-grey borer-radius inline-block"
-                         style="margin: 10px !important;z-index: 600 !important; width: 300px; height :450px;  bottom: 10px; opacity: 0.98">
-                        {{>conversation conversation = openedConversations.[0]}}
-                    </div>
-                {{/if}}
+                {{/each}}
             </div>
         {{/if}}
     {{/if}}

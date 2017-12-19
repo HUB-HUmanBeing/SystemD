@@ -359,8 +359,7 @@ if (Meteor.isDevelopment || Meteor.user().username === "admin") {
                         //et on viens la rentrer du coté de notre user
                         user.profile.conversations.push({
                             conversation_id: convId,
-                            lastRead: new Date(),
-                            lastOtherSpeakerMessage: new Date(),
+                            unreadMessage : Math.floor(Math.random() * (3)),
                             otherSpeakers: [{
                                 speaker_id:  Users[Fixtures.loopId(i + j)]._id,
                                 isProject : false,
@@ -375,8 +374,7 @@ if (Meteor.isDevelopment || Meteor.user().username === "admin") {
                             //et on viens renseigner en miroir chez l'autre speaker de la conversation
                             Users[Fixtures.loopId(i + j)].profile.conversations.push({
                                 conversation_id: convId,
-                                lastOtherSpeakerMessage: new Date(),
-                                lastRead: new Date(),
+                                unreadMessage : Math.floor(Math.random() * (3)),
                                 otherSpeakers: [{
                                     speaker_id:  user._id,
                                     isProject : false,

@@ -3,15 +3,14 @@ Template.slideMessenger.helpers({
     newMessagesCount : function () {
         let counter = 0
         Meteor.user().profile.conversations.forEach((conversation)=>{
-            if(conversation.lastRead < conversation.lastOtherSpeakerMessage){
-                counter ++
-                Template.instance().pulse.set(true)
-                Meteor.setTimeout(()=>{
-                    Template.instance().pulse.set(false)
-                },3000)
-            }
+                counter += conversation.unreadMessage
         })
-
+        if(counter){
+            Template.instance().pulse.set(true)
+            Meteor.setTimeout(()=>{
+                Template.instance().pulse.set(false)
+            },3000)
+        }
         return counter
     },
     pulse : function () {

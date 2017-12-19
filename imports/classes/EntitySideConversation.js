@@ -10,13 +10,9 @@ const EntitySideConversation = Class.create({
     name: 'EntitySideConversation',
     fields: {
         conversation_id: String,
-        lastRead: {
-            type : Date,
-            optional : true
-        },
-        lastOtherSpeakerMessage: {
-            type : Date,
-            optional : true
+        unreadMessage : {
+            type : Number,
+            default : 0
         },
         otherSpeakers: {
             type: [ShortendEntity],
