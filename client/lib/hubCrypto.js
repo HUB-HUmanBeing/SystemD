@@ -305,7 +305,7 @@ hubCrypto = {
         let stringifiedConversationKey
         let vector
         // on parcours le trousseau de clef
-        Session.get("brunchOfProjectKeys").forEach((item) => {
+        Session.get("BrunchOfUserConversationKeys").forEach((item) => {
             //lorsqu'on retrouve la bonne, on l'affecte a la variable de réponse
             if (item.conversation_id === conversation_id) {
                 stringifiedConversationKey = item.conversationKey
@@ -313,7 +313,8 @@ hubCrypto = {
             }
         })
         cryptoTools.importSymKey(stringifiedConversationKey, vector, (conversationKey) => {
-            callback(conversationKey)
+
+            callback(conversationKey,vector)
         })
     }
     ,
@@ -342,7 +343,7 @@ hubCrypto = {
         })
     },
     symDecryptData(encryptedString, symKey, vector, callback ){
-        cryptoTools.sim_decrypt_data(encryptedString, symKey, vector, (string)=>{
+        cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(encryptedString), symKey, vector, (string)=>{
             callback(string)
         })
     }

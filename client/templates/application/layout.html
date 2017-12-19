@@ -23,8 +23,16 @@
             {{/unless}}
             <div class=" yield-content {{#if isDesktop }} yield-content-desktop {{/if}} ">
                 <div class="row">
-                    <div class="col s12 no-padding">
-                        {{> yield}}
+                    <div class="col s12 no-padding flex">
+                        <div class="flex-auto">
+                            {{> yield}}
+                        </div>
+                        {{#if openConversationPannel}}
+                            <div class="dark-grey" style="height: 75px; min-width: 25px">
+
+                            </div>
+
+                        {{/if}}
                     </div>
                 </div>
                 {{>searchModal}}

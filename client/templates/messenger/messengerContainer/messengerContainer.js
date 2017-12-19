@@ -18,8 +18,8 @@ Template.messengerContainer.helpers({
     showConversations : function () {
         return !Template.instance().hideConversations.get()
     },
-    openedConversation : function () {
-        return Session.get('openedConversation')
+    openedConversations : function () {
+        return Session.get('openedConversations')
     }
 });
 
@@ -27,9 +27,11 @@ Template.messengerContainer.events({
     //add your events here
     'click [showConversations]' : function (event, instance) {
         instance.hideConversations.set(false)
+        Session.set('openConversationPannel', true)
     },
     'click .hideConversations' : function (event, instance) {
         instance.hideConversations.set(true)
+        Session.set('openConversationPannel', false)
     }
 });
 

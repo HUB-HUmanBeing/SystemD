@@ -18,7 +18,7 @@ Template.slideMessenger.helpers({
         return Template.instance().pulse.get()
     },
     openedConversation : function () {
-        return Session.get('openedConversation')
+        return Session.get('openedConversations')[0]
     }
 });
 

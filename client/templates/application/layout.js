@@ -20,6 +20,12 @@ Template.layout.helpers({
         } else {
             return {}
         }
+    },
+    openConversationPannel : function () {
+        let valeur_clientWidth = document.body.clientWidth
+        if(!Meteor.Device.isPhone() &&(valeur_clientWidth >1284 || valeur_clientWidth >601)){
+            return Session.get('openConversationPannel')
+        }
     }
 });
 

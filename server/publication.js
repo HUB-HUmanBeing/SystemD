@@ -4,6 +4,7 @@ import Projects from '/lib/collections/Projects'
 import Posts from '/lib/collections/Posts';
 import PostComments from "/lib/collections/PostComments"
 import CollaboratorAdverts from "/lib/collections/CollaboratorAdverts";
+import Conversations from "../lib/collections/Conversations";
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -252,3 +253,10 @@ Meteor.publish('HomepageAdvertsInfiniteSubs', function (limit, lonLat, range) {
             }
         });
 });
+
+Meteor.publish("MessagesInfinite",  function (convId, limit) {
+    check(convId, String)
+    check(limit, Number)
+    return Conversations.find({_id : convId},{'messages' : {"$slice" : -limit}})
+
+})

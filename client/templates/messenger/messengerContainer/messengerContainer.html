@@ -21,10 +21,6 @@
             </a>
             <a href="" class="hideConversations fixed hidden"></a>
         </div>
-
-
-
-
     {{/unless}}
     {{#if or xl showConversations}}
         <div class="messengerContainer" style="width :{{#if isPhone}} 300px{{else}}60px{{/if}}">
@@ -32,8 +28,27 @@
         </div>
     {{/if}}
     {{#if or showConversations   xl}}
-        {{#if openedConversation}}
-            {{>conversationContainer conversation = openedConversation}}
+        {{#if openedConversations.length}}
+            <div class="fixed" style="right : 70px; bottom: 0 ;z-index: 600">
+                {{#if and xl openedConversations.[2]}}
+                    <div class=" shadow dark-grey borer-radius inline-block"
+                         style="margin: 10px !important;z-index: 600 !important; width: 300px; height :450px;  bottom: 10px; opacity: 0.98">
+                        {{>conversation conversation = openedConversations.[2]}}
+                    </div>
+                {{/if}}
+                {{#if openedConversations.[1]}}
+                    <div class=" shadow dark-grey borer-radius inline-block"
+                         style="margin: 10px !important;z-index: 600 !important; width: 300px; height :450px;  bottom: 10px; opacity: 0.98">
+                        {{>conversation conversation = openedConversations.[1]}}
+                    </div>
+                {{/if}}
+                {{#if openedConversations.[0]}}
+                    <div class=" shadow dark-grey borer-radius inline-block"
+                         style="margin: 10px !important;z-index: 600 !important; width: 300px; height :450px;  bottom: 10px; opacity: 0.98">
+                        {{>conversation conversation = openedConversations.[0]}}
+                    </div>
+                {{/if}}
+            </div>
         {{/if}}
     {{/if}}
 
