@@ -44,7 +44,7 @@ Conversation.extend({
                         otherSpeakers  : [],
                         encryptedConversationKey : brunchOfKeys.encryptedConversationKeyForOtherSpeaker
                     }
-                    entitySideConversation.otherSpeakers.push(shortendOtherSpeaker)//on ajoute aussi un speaker a la conversation
+                    entitySideConversation.otherSpeakers.push(shortendCreator)//on ajoute aussi un speaker a la conversation
                     //si c'est un projet
                     if(shortendOtherSpeaker.isProject){
                         //on le recupere
@@ -89,7 +89,38 @@ Conversation.extend({
 
                 }
             })
+        },
+        newMessage(encryptedMessage, otherSpeakers) {
+            check(encryptedMessage, String)
+            check(otherSpeakers, Array)
+            this.messages.unshift({
+                content : encryptedMessage,
+                speakerId : Meteor.userId()
+            })
+            this.save((err)=>{
+                if(!err){
+                    otherSpeakers.forEach((otherSpeaker)=>{
+                        check(otherSpeaker, ShortenedEntity)
+                        if(otherSpeaker.isProject){
+                            let project = Project.findOne({_id : otherSpeaker.speaker_id})
+                            project.conversations.forEach((conv,i)=>{
+                                if(conv.conversation_id === this._id){
+                                    project.conversations[i].unreadMessage ++
+                                }
+                            })
+                            project.save()
+                        }else{
+                            let user = User.findOne({_id : otherSpeaker.speaker_id})
+                            user.profile.conversations.forEach((conv,i)=>{
+                                if(conv.conversation_id === this._id){
+                                    user.profile.conversations[i].unreadMessage ++
+                                }
+                            })
+                            user.save()
+                        }
+                    })
+                }
+            })
         }
-
     }
 })

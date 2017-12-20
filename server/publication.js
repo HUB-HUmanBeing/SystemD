@@ -259,8 +259,7 @@ Meteor.publish('HomepageAdvertsInfiniteSubs', function (limit, lonLat, range) {
 Meteor.publish("MessagesInfinite",  function (convId, limit) {
     check(convId, String)
     check(limit, Number)
-    console.log(limit)
-    return Conversations.find({_id : convId},{fields : {'messages' : {"$slice" : -limit}}}) //probablement encore buggé...
+    return Conversations.find({_id : convId},{fields : {'messages' : {"$slice" : limit}}}) //probablement encore buggé...
 
 
 })

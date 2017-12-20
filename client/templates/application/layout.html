@@ -11,8 +11,9 @@
         <div id="topPage"></div>
         <main class="">
             {{#if isDesktop }}
-                <div class="menu-container no-margin dark-grey scrollbar">
+                <div class="menu-container no-margin dark-grey scrollbar ">
                     {{>menu}}
+                    <img src="/images/icon/licence.png" alt="" class="absolute" style="bottom: 0; left: 0; z-index: 700">
                 </div>
 
             {{/if}}
@@ -36,6 +37,7 @@
                     </div>
                 </div>
                 {{>searchModal}}
+
             </div>
 
         </main>
