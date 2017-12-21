@@ -42,13 +42,17 @@ Template.userMainPage.onCreated(function () {
         distance : 0,
         nbOfProjects : 0}
     );
-    //on recupere l'utilisateur courant'
-    let user = User.findOne(Template.currentData()._id);
-    //puis on appele la methode renvoyant les info
-    user.callMethod('computedInfo', (error, result) => {
-        //et on remplit la reactive var
-        this.computedInfo.set(result)
-    })
+    if(Meteor.userId()){
+        //on recupere l'utilisateur courant'
+        let user = User.findOne(Template.currentData()._id);
+        console.log(user)
+        //puis on appele la methode renvoyant les info
+        user.callMethod('computedInfo', (error, result) => {
+            console.log(result)
+            //et on remplit la reactive var
+            this.computedInfo.set(result)
+        })
+    }
 });
 
 Template.userMainPage.onRendered(function () {

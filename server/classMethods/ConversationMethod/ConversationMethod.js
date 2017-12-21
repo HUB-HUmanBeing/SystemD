@@ -68,7 +68,7 @@ Conversation.extend({
                                 conversation_id: conversation_id,
                                 vector : brunchOfKeys.vector,
                                 otherSpeakers  : [],
-                                encryptedConversationKey : brunchOfKeys.encryptedConversationKeyForOtherSpeaker
+                                encryptedConversationKey : brunchOfKeys.encryptedConversationKeyForCreator
                             }
                             entitySideConversation.otherSpeakers.push(shortendOtherSpeaker)
                             if(shortendCreator.isProject){

@@ -432,7 +432,6 @@ Template.searchTool.events({
         }
         instance.offsetStep = 0//on réinitialise l'offset (l'affichage de plus de resultats s'effectuera en augmentant la valeur de l'offset)
         //on appele la methode de recherche coté serveur
-        console.log(instance.searchOptions)
         Meteor.call('searchTool', instance.offsetStep, instance.searchOptions, (err, result) => {
             if (err) {
                 console.log(err)

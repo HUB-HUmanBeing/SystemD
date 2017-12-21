@@ -54,7 +54,7 @@ COULEURS
     border: 1px solid #b8b8b8 !important;
 }
 .blue-grey-border{
-    border: 2px solid rgba(96, 125, 139, 0.33) !important;
+    border: 2px solid rgba(96, 125, 139, 0.73) !important;
 }
 .hover-white:hover *{
     color: #ebebeb !important;

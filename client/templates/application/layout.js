@@ -34,18 +34,17 @@ Template.layout.events({
 });
 
 Template.layout.onCreated(function () {
+    //on verifie si on a besoin ou pas d'obliger l'utilisateur a se reconnecter pour redonner son mot de passe
     if (Meteor.userId()) {
         Tracker.autorun(() => {
-            if (!Session.get("AsymPrivateKey")) {
+            if (!Session.get("stringifiedAsymPrivateKey")) {
                 Meteor.setTimeout(() => {
-                    if (!Session.get("AsymPrivateKey")) {
+                    if (!Session.get("stringifiedAsymPrivateKey")) {
                         Meteor.logout()
                     }
-                }, 100)
+                }, 50)
             }
         })
-
-
     }
 });
 

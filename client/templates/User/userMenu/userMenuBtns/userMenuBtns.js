@@ -102,6 +102,8 @@ Template.userMenuBtns.events({
                         Materialize.toast("une erreur s'est produite", 4000, 'red')
                     } else {
                         $('#interactionBtn').click()
+                        hubCrypto.decryptAndStoreInSesstionBrunchOfUserConversationKeys(() => {
+                        })
                     }
                 })
             }

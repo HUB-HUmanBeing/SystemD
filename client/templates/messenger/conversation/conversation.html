@@ -3,7 +3,8 @@
     il s'appelle avec :
     conversation: Object // la conversation telle qu'elle existe dans le document user}}
     <div class="flex" style=" height: 100% !important; flex-direction: column">
-        <div class="row no-margin small-padding " style="background-color: rgba(0,0,0, 0.2); border-radius: 3px 3px 0 0 !important;">
+        <div class="row no-margin small-padding "
+             style="background-color: rgba(0,0,0, 0.2); border-radius: 3px 3px 0 0 !important;">
             <div class="col s10 relative valign-wrapper" style="padding : {{#if isPhone}}15px 0 0 0 {{else}}0{{/if}}">
                 {{#if gt conversation.otherSpeakers.length 1}}
                     <span class="absolute valign-wrapper   dark-grey {{#if pulse}} pulse{{/if}}" style="
@@ -52,23 +53,24 @@
                 </a>
             </div>
         </div>
-        <div class="row no-margin light-grey-police flex-auto " style="padding: 0 5px; overflow-y: hidden" >
-            <div class="scrollbar " id="chatMessages{{conversation.conversation_id}}" style="height: 275px; margin-right: 5px">
+        <div class="row no-margin light-grey-police flex-auto " style="padding: 0 5px; overflow-y: hidden">
+            <div class="scrollbar " id="chatMessages{{conversation.conversation_id}}"
+                 style="height: 275px; margin-right: 5px">
                 <div class="row no-margin center-align ">
-                    <a href="" class="waves-effect waves-light center-align btn-flat blue-grey-text" moreMessages>Plus de messages</a>
+                    <a href="" class="waves-effect waves-light center-align btn-flat blue-grey-text" moreMessages>Plus
+                        de messages</a>
                 </div>
-                {{#each message in messages}}
-                    <div class="grey darken-4 small-padding borer-radius shadow {{#unless eq message.speakerId  currentUserId}}tooltipped{{/unless}}"
-                         data-position="{{#if isPhone}}bottom{{else}}left{{/if}}" data-delay="50"
-                         data-tooltip="{{message.speakerName}}, il y a {{formatDuration message.sendAt}}"
-                         style=" width: 80%; margin:{{#if eq message.speakerId  currentUserId}}5px 5px 0 auto{{else}}5px auto 0 5px{{/if}}">
-                        <p class="no-margin small-info">{{message.content}}</p>
-                    </div>
+                {{#each encryptedMessage in messages}}
+                    {{>message
+                            encryptedMessage = encryptedMessage
+                            convKey = convKey
+                            conversation = conversation
+                    }}
                 {{/each}}
                 <div class="" style="height: 50px !important;"></div>
             </div>
 
-             </div>
+        </div>
         <div class="row no-margin " style=" border-radius: 0 0 3px 3px !important; height: 100px">
             <form chat>
                 <div class="relative borer-radius shadow"
@@ -81,7 +83,8 @@
                     </div>
                     <a class="btn-floating waves-effect waves-light relative tooltipped dark-grey  absolute shadow hover-orange blue-grey-border"
                        data-position="bottom" data-delay="350"
-                       style="top : -25px !important; right : {{#unless isPhone}}-30px{{else}}10px{{/unless}} !important;"
+                       style="top : -25px !important; right : {{#unless
+                               isPhone}}-30px{{else}}10px{{/unless}} !important;"
                        data-tooltip="envoyer" sendChat>
                         <i class="material-icons  blue-grey-text relative " style="top : -2px">send</i>
                     </a>

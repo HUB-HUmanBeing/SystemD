@@ -23,7 +23,8 @@
             <div id="agenda" class="col s12 no-padding">{{#if eq currentTab "agenda"}}
                 {{>workInProgress content = "aux utilisateurs du projet de visualiser l'agenda du projet et touts les evenements et temps d'activité, il offrira a l'utilisateur la possibilité de pouvoir s'inscrire sur ces dates, et de voir son agenda personnel synchronisé avec ceux des projets par taches ou il s'est inscrit (chiffré)"}}{{/if}}</div>
             <div id="todo" class="col s12 no-padding">{{#if eq currentTab "todo"}}
-                {{>workInProgress content = "permetra la création de nouvelles taches, leur tri, leur suivi, et leurs assignation aux membres du projet (chiffré)"}}{{/if}}</div>
+                {{>workInProgress content = "permetra la création de nouvelles taches, leur tri, leur suivi, et leurs assignation aux membres du projet (chiffré)"
+                info = "chacune des taches pourra offrir la fonctionnalité de  générer un équivalent de framadate afin que les utilisateurs puissent s'en servir pour caler une réunion, un temps de travail particulier. Lorsque les taches seront calées dans le temps, elles figureront dans l'agenda du projet ainsi que dans les agenda perso des utilisateurs"}}{{/if}}</div>
         </div>
     </div>
 </template>
