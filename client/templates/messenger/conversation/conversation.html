@@ -61,11 +61,14 @@
                         de messages</a>
                 </div>
                 {{#each encryptedMessage in messages}}
-                    {{>message
-                            encryptedMessage = encryptedMessage
-                            convKey = convKey
-                            conversation = conversation
-                    }}
+                    {{#if convKey}}
+                        {{>message
+                                encryptedMessage = encryptedMessage
+                                convKey = convKey
+                                conversation = conversation
+                                index = @index
+                        }}
+                    {{/if}}
                 {{/each}}
                 <div class="" style="height: 50px !important;"></div>
             </div>

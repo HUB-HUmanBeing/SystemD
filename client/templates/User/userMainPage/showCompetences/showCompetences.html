@@ -6,9 +6,9 @@
     {{#if sortedCompetences.length}}
         {{#each category in sortedCompetences}}
             <div class="row no-margin">
-                <p class=" small-info small-margin">{{category.categoryName}}</p>
+                <p class=" small-info small-margin ">{{category.categoryName}}</p>
                 {{#each competence in category.competences}}
-                <div class="chip tooltipped "
+                <div class="chip tooltipped green-text"
                      data-position="bottom" data-delay="350"
                      data-tooltip="{{competence.subCategoryName}}">
                     {{competence.competenceName}}

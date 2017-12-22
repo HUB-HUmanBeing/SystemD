@@ -31,7 +31,7 @@ Conversation.extend({
             check(brunchOfKeys.encryptedConversationKeyForCreator, String)
             check(brunchOfKeys.encryptedConversationKeyForOtherSpeaker, String)
             //puis on sauvegarde la conversation encore vide pour recuperer son Id
-            this.save((err,conversation_id)=>{
+            return this.save((err,conversation_id)=>{
                 if(err){
                     console.log(err)
                 }else{//si tout se passe bien
@@ -57,7 +57,7 @@ Conversation.extend({
                         otherSpeaker.profile.conversations.push(entitySideConversation)
                     }
                     //puis on sauvegarde
-                    otherSpeaker.save((err)=>{
+                     otherSpeaker.save((err)=>{
                         if(err){
                             console.log(err)
                         }else{
@@ -91,25 +91,39 @@ Conversation.extend({
             })
         },
         newMessage(encryptedMessage, otherSpeakers) {
+            //on commence par checker les arguments
             check(encryptedMessage, String)
             check(otherSpeakers, Array)
+            //on push le message en haut du tableau des nouveaux messages
             this.messages.unshift({
                 content : encryptedMessage,
                 speakerId : Meteor.userId()
             })
+
+            //puis on l'enregistre
             this.save((err)=>{
                 if(!err){
+                    //si ya pas d'erreur, on viens, pour chacuns des membres de la conversation
                     otherSpeakers.forEach((otherSpeaker)=>{
-                        check(otherSpeaker, ShortenedEntity)
+                        //verifier le type
+                        check(otherSpeaker.speaker_id, String)
+                        check(otherSpeaker.isProject, Boolean)
+                        check(otherSpeaker.imgUrl, String)
+                        check(otherSpeaker.name, String)
+                        //si c'est un projet
                         if(otherSpeaker.isProject){
+                            //on viens recuperer le projet
                             let project = Project.findOne({_id : otherSpeaker.speaker_id})
+                            //puis on viens retrouver sa conversation
                             project.conversations.forEach((conv,i)=>{
                                 if(conv.conversation_id === this._id){
+                                    //et on rajoute 1 message non lu
                                     project.conversations[i].unreadMessage ++
                                 }
                             })
+                            //et on sauvegarde
                             project.save()
-                        }else{
+                        }else{//si c'est un utilisateur, on fait la meme manip
                             let user = User.findOne({_id : otherSpeaker.speaker_id})
                             user.profile.conversations.forEach((conv,i)=>{
                                 if(conv.conversation_id === this._id){
@@ -119,6 +133,8 @@ Conversation.extend({
                             user.save()
                         }
                     })
+                }else{
+                    console.log(err)
                 }
             })
         }

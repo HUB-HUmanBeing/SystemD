@@ -7,10 +7,17 @@ import MediumEditorOptionsChat from "/imports/MediumEditor/MediumEditorOptionsCh
 Template.conversation.helpers({
     //liste des messages de la conversation
     messages: function () {
-        return Conversation.findOne({_id: Template.instance().data.conversation.conversation_id}).messages
+        let conv = Conversation.findOne({_id: Template.instance().data.conversation.conversation_id})
+        if(conv && conv.messages){
+                return conv.messages.reverse()
+        }else{
+            return []
+        }
+
     },
+    //objet contenant la clef symétrique de la conversation ainsi que le vecteur d'initialisation
     convKey: function () {
-        return Template.instance().convKey
+        return Template.instance().convKey.get()
     },
 });
 
@@ -33,22 +40,26 @@ Template.conversation.events({
         }, 50)
     },
     'click [moreMessages]': function (event, instance) {
-        instance.limit.set(instance.limit.get() + 15)
+        instance.autoScrollingIsActive = false
+        Meteor.setTimeout(()=>{
+            instance.autoScrollingIsActive = true
+        },1000)
+        instance.limit.set(instance.limit.get() + 2)
     },
     'click [sendChat] , submit [chat]': function (event, instance) {
         let convId = instance.data.conversation.conversation_id
         let content = Textarea.formatBeforeSave($('#chat-content' + convId).html());
         let userConversation = instance.data.conversation;
-        let otherSpeakers = userConversation.otherSpeakers
-        hubCrypto.symEncryptData(content, instance.convKey, instance.vector, (encryptedContent) => {
-            instance.conversation.callMethod('newMessage', encryptedContent, otherSpeakers, (err) => {
+        let otherSpeakers =  userConversation.otherSpeakers
+        let conv = Conversation.findOne({_id : convId})
+        hubCrypto.symEncryptData(content, instance.convKey.get().convKey, instance.convKey.get().vector, (encryptedContent) => {
+            conv.callMethod('newMessage', encryptedContent, otherSpeakers, (err) => {
                 if (err) {
                     console.log(err)
                     Materialize.toast("une erreur s'est produite", 4000, 'red');
                 }
             })
         })
-        console.log(content)
     }
 });
 
@@ -57,6 +68,7 @@ Template.conversation.onCreated(function () {
     let userConversation = this.data.conversation;
     this.convId = userConversation.conversation_id
     this.autoScrollingIsActive = false;
+    this.convKey = new ReactiveVar()
     this.scrollToBottom = (duration) => {
         Meteor.setTimeout(() => {
             let messageWindow = $('#chatMessages' + this.convId);
@@ -67,14 +79,14 @@ Template.conversation.onCreated(function () {
     }
     hubCrypto.getUserConversationKey(this.convId, (convKey, vector) => {
             //pour chacuns des messages
-            this.convKey = {
+            this.convKey.set( {
                 convKey: convKey,
                 vector: vector
-            }
+            })
         }
     )
     //on initialise la limite de messages à appeler
-    this.limit = new ReactiveVar(15);
+    this.limit = new ReactiveVar(2);
     Tracker.autorun(() => {
         //on lance la subscription
         let messagesSubs = Meteor.subscribe('MessagesInfinite', userConversation.conversation_id, this.limit.get());
@@ -94,7 +106,10 @@ Template.conversation.onCreated(function () {
 
 Template.conversation.onRendered(function () {
     //add your statement here
-    this.chatEditor = new MediumEditor('.chatEditor', MediumEditorOptionsChat)
+    Meteor.setTimeout(()=>{
+        this.chatEditor = new MediumEditor('.chatEditor', MediumEditorOptionsChat)
+    },100)
+
     if (this.autoScrollingIsActive) {
         this.scrollToBottom(250);
     }

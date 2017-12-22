@@ -3,11 +3,12 @@
 s'appele avec
 message : Object //object contenant le contenu chiffré du message ainsi que l'auteur et la date
 convKey : Object la clef déchifré et le vecteur pour le déchiffrement
+index : number
 }}
-    <div class="grey darken-4 small-padding borer-radius shadow tooltipped"
+    <div class="grey darken-4 small-padding borer-radius shadow tooltipped trame-texture"
          data-position="{{#if isPhone}}bottom{{else}}{{#unless eq message.speakerId  currentUserId}}right{{else}}left{{/unless}}{{/if}}" data-delay="500"
-         data-tooltip="{{#unless eq message.speakerId  currentUserId}}{{message.speakerName}}, {{/unless}}il y a {{formatDuration message.sendAt}}"
+         data-tooltip="{{#unless eq message.speakerId  currentUserId}}{{message.speakerName}}, {{/unless}}{{#if message.sendAt}}il y a {{formatDuration message.sendAt}}{{/if}}"
          style=" width: 80%; margin:{{#if eq message.speakerId  currentUserId}}5px 5px 0 auto{{else}}5px auto 0 5px{{/if}}">
-        <p class="no-margin small-info blue-grey-text text-lighten-2 justify puce-list formattedText">{{message.content}}</p>
+        <p class="chat-message no-margin small-info blue-grey-text text-lighten-2 justify puce-list formattedText" id="message-{{conversation.conversation_id}}-{{index}}">{{message.content}}</p>
     </div>
 </template>

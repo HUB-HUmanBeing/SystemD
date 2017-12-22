@@ -1,3 +1,5 @@
+import hubCrypto from "../../../lib/hubCrypto";
+
 Template.conversationList.helpers({
     //add you helpers here
     conversations : function () {
@@ -34,6 +36,8 @@ Template.conversationList.onCreated(function () {
 
 Template.conversationList.onRendered(function () {
     //add your statement here
+    hubCrypto.decryptAndStoreInSesstionBrunchOfUserConversationKeys(() => {
+    })
     resetTooltips()
 });
 

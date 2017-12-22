@@ -16,7 +16,7 @@ const MediumEditorOptionsChat = {
         allowMultiParagraphSelection: true,
         buttons: ['bold', 'italic', 'underline', 'anchor'],
         diffLeft: 0,
-        diffTop: 0,
+        diffTop: -10,
         firstButtonClass: 'medium-editor-button-first',
         lastButtonClass: 'medium-editor-button-last',
         standardizeSelectionStart: false,

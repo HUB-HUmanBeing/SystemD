@@ -96,14 +96,18 @@ Template.userMenuBtns.events({
                 shortenedOtherSpeakerEntity.imgUrl = otherSpeaker.profile.imgUrl
                 shortenedOtherSpeakerEntity.speaker_id = otherSpeaker._id
                 //et on applique la méthode
-                conversation.callMethod('newConversation', shortenedCreatorEntity, shortenedOtherSpeakerEntity, brunchOfKeys, (error) => {
+                conversation.callMethod('newConversation', shortenedCreatorEntity, shortenedOtherSpeakerEntity, brunchOfKeys, (error,result) => {
                     //si ca marche pas, on renvoie l'erreur par toast
                     if (error) {
                         Materialize.toast("une erreur s'est produite", 4000, 'red')
                     } else {
+                        console.log(result)
                         $('#interactionBtn').click()
-                        hubCrypto.decryptAndStoreInSesstionBrunchOfUserConversationKeys(() => {
-                        })
+                        $('#showConversationsButton').click()
+                        Meteor.setTimeout(()=>{
+                            $('#conversationBubble-'+result).click()
+                        },100)
+
                     }
                 })
             }

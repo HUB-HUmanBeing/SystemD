@@ -1,5 +1,5 @@
 <template name="conversationBubble">
-        <li class="row no-margin" OpenConversation>
+        <li class="row no-margin" id="conversationBubble-{{conversation.conversation_id}}" OpenConversation>
             {{#if isPhone}}
                 <div class="col s10 right-align light-grey-police">
                     {{#each otherSpeakers in conversation.otherSpeakers}}

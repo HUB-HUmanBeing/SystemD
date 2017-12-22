@@ -513,3 +513,6 @@ body {
 .chatEditor p{
     margin: 0 0 0 5px !important;
 }
+.chat-message p{
+    margin: 0 0 3px 0!important;
+}

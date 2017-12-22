@@ -79,7 +79,9 @@ Textarea = {
     //action remplacant les balise de mise en base par des vrais balise,
     // à appeler au on rendered des balises concernées
     unformatBySelector: function (jQuerySelector) {
+
         let text = $(jQuerySelector).text();
+
         //on parcours toutes nos balises
         this.tags.forEach((tag) => {
             //et on remplace les fausse balises par des vraies balises
