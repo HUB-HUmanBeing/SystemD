@@ -3,14 +3,21 @@ import hubCrypto from '/client/lib/hubCrypto'
 import User from "/imports/classes/User";
 import MediumEditor from "medium-editor";
 import MediumEditorOptionsChat from "/imports/MediumEditor/MediumEditorOptionsChat";
+import ConversationMessages from "/lib/collections/ConversationMessages";
 
 Template.conversation.helpers({
     //liste des messages de la conversation
     messages: function () {
-        let conv = Conversation.findOne({_id: Template.instance().data.conversation.conversation_id})
-        if(conv && conv.messages){
-                return conv.messages.reverse()
-        }else{
+        let messages = ConversationMessages.find(
+            {conversation_id: Template.instance().data.conversation.conversation_id},
+            {
+                sort: {
+                    sendAt: -1
+                }
+            }).fetch()
+        if (messages) {
+            return messages.reverse()
+        } else {
             return []
         }
 
@@ -41,22 +48,41 @@ Template.conversation.events({
     },
     'click [moreMessages]': function (event, instance) {
         instance.autoScrollingIsActive = false
-        Meteor.setTimeout(()=>{
+        instance.isRequestingForHistory = true
+        Meteor.setTimeout(() => {
+            instance.isRequestingForHistory = false
             instance.autoScrollingIsActive = true
+        }, 1000)
+        Meteor.setTimeout(()=>{
+            console.log($("#chat-" + instance.convId + "-message-" + (instance.step - 1)).offset())
+            console.log($("#chat-" + instance.convId + "-message-" + (instance.step - 1)).offset().top)
+             $('#chatMessages' + instance.convId).animate({
+              scrollTop: $("#chat-" + instance.convId + "-message-6"/* + (instance.step - 1)*/).offset().top
+             },'slow');
         },1000)
-        instance.limit.set(instance.limit.get() + 2)
+
+        instance.limit.set(instance.limit.get() + instance.step)
     },
     'click [sendChat] , submit [chat]': function (event, instance) {
         let convId = instance.data.conversation.conversation_id
         let content = Textarea.formatBeforeSave($('#chat-content' + convId).html());
         let userConversation = instance.data.conversation;
-        let otherSpeakers =  userConversation.otherSpeakers
-        let conv = Conversation.findOne({_id : convId})
+        let otherSpeakers = userConversation.otherSpeakers
+        let conv = new Conversation()
         hubCrypto.symEncryptData(content, instance.convKey.get().convKey, instance.convKey.get().vector, (encryptedContent) => {
-            conv.callMethod('newMessage', encryptedContent, otherSpeakers, (err) => {
+            conv.callMethod('newMessage', convId, encryptedContent, otherSpeakers, (err) => {
                 if (err) {
                     console.log(err)
                     Materialize.toast("une erreur s'est produite", 4000, 'red');
+                } else {
+                    $('#chat-content' + convId).html("")
+                    let messagesSubs = Meteor.subscribe('MessagesInfinite', instance.data.conversation.conversation_id, instance.limit.get());
+                    //lorsqu'elle est prete
+                    if (messagesSubs.ready()) {
+                        Meteor.setTimeout(() => {
+                            instance.scrollToBottom(250);
+                        }, 50)
+                    }
                 }
             })
         })
@@ -68,6 +94,7 @@ Template.conversation.onCreated(function () {
     let userConversation = this.data.conversation;
     this.convId = userConversation.conversation_id
     this.autoScrollingIsActive = false;
+    this.isRequestingForHistory = false
     this.convKey = new ReactiveVar()
     this.scrollToBottom = (duration) => {
         Meteor.setTimeout(() => {
@@ -79,26 +106,27 @@ Template.conversation.onCreated(function () {
     }
     hubCrypto.getUserConversationKey(this.convId, (convKey, vector) => {
             //pour chacuns des messages
-            this.convKey.set( {
+            this.convKey.set({
                 convKey: convKey,
                 vector: vector
             })
         }
     )
-    //on initialise la limite de messages à appeler
-    this.limit = new ReactiveVar(2);
+    //on initialise la limite de messages à appeler et par paquet de combien on va les appeler par la suite
+    this.step = 5
+    this.limit = new ReactiveVar(this.step);
+
     Tracker.autorun(() => {
         //on lance la subscription
         let messagesSubs = Meteor.subscribe('MessagesInfinite', userConversation.conversation_id, this.limit.get());
         //lorsqu'elle est prete
-        if (messagesSubs.ready()) {
+        if (messagesSubs.ready() && !this.isRequestingForHistory) {
             let user = new User
             if (userConversation.unreadMessage > 0) {
                 user.callMethod('conversationRead', this.convId)
             }
             Meteor.setTimeout(() => {
-                this.scrollToBottom();
-                this.autoScrollingIsActive = true;
+                    this.scrollToBottom(250);
             }, 50)
         }
     })
@@ -106,13 +134,16 @@ Template.conversation.onCreated(function () {
 
 Template.conversation.onRendered(function () {
     //add your statement here
-    Meteor.setTimeout(()=>{
-        this.chatEditor = new MediumEditor('.chatEditor', MediumEditorOptionsChat)
-    },100)
 
-    if (this.autoScrollingIsActive) {
-        this.scrollToBottom(250);
+    if (!this.isRequestingForHistory) {
+        Meteor.setTimeout(() => {
+            this.chatEditor = new MediumEditor('.chatEditor', MediumEditorOptionsChat)
+        }, 100)
+        if (this.autoScrollingIsActive) {
+            this.scrollToBottom(250);
+        }
     }
+
 
 });
 

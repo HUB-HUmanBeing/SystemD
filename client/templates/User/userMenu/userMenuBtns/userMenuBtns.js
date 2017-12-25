@@ -72,7 +72,7 @@ Template.userMenuBtns.events({
     'click [newConversation]': function (event, instance) {
         resetTooltips()
         //on récupère l'utilisateur courant
-        let currentUser = User.findOne({_id: Meteor.userId})
+        let currentUser = Meteor.user()
         //on recupere l'autre
         let otherSpeaker = User.findOne({_id: instance.data.userId})
 
@@ -100,19 +100,19 @@ Template.userMenuBtns.events({
                     //si ca marche pas, on renvoie l'erreur par toast
                     if (error) {
                         Materialize.toast("une erreur s'est produite", 4000, 'red')
-                    } else {
-                        console.log(result)
+                    } else {//si tout s'est bien passé
+                        //on simule un click sur le bouton d'interaction pour le refermer
                         $('#interactionBtn').click()
+                        //on simule un click sur le bouton d'affichage de la liste de conversations
                         $('#showConversationsButton').click()
                         Meteor.setTimeout(()=>{
+                            //apres un certain laps de temps, on
                             $('#conversationBubble-'+result).click()
-                        },100)
-
+                        },500)
                     }
                 })
             }
         )
-
     }
 });
 

@@ -12,6 +12,8 @@ import CollaboratorAdvert from '/imports/classes/CollaboratorAdvert'
 import Conversation from "/imports/classes/Conversation";
 import Conversations from "../../lib/collections/Conversations";
 import ShortendEntity from "../../imports/classes/ShortendEntity";
+import ConversationMessages from "../../lib/collections/ConversationMessages";
+import ConversationMessage from "../../imports/classes/ConversationMessage";
 
 
 /****************************************
@@ -40,7 +42,10 @@ if (Meteor.isDevelopment || Meteor.user().username === "admin") {
                 console.log("collection CollaboratorAdverts reset")
             })
             Conversations.remove({}, function () {
-                console.log("collection Conversation reset")
+                console.log("collection Conversations reset")
+            })
+            ConversationMessages.remove({}, function () {
+                console.log("collection ConversationMessages reset")
             })
         },
         /******************************
@@ -344,18 +349,21 @@ if (Meteor.isDevelopment || Meteor.user().username === "admin") {
                 //les utilisateurs et les projets sont comme "mis en rond" par l'utilisation de la fonction loopId
                 for (let j = 1; j <= 2; j++) {
                     let conversation = new Conversation()
-                    //on définit un nombre aléatoire de messages entre 0 et 25
-                    let nbOfMessages = Math.floor(Math.random() * 30)
-                    //pour chacuns on viens remplir les infos
-                    for (let k = 0; k < nbOfMessages; k++) {
-                        conversation.messages.push({
-                            content: encryptedLorems[Math.floor(Math.random() * (encryptedLorems.length))],
-                            speakerId: k % 2 === 0 ? Users[Fixtures.loopId(i + j)]._id : user._id, //les deux utilisateurs parleront chacuns leurs tours
-                            sendAt: new Date()
-                        })
-                    }
+
                     //puis on sauvegarde la conversation
                     conversation.save((err, convId) => {
+                        //on définit un nombre aléatoire de messages entre 0 et 25
+                        let nbOfMessages = Math.floor(Math.random() * 30)
+                        //pour chacuns on viens remplir les infos
+                        for (let k = 0; k < nbOfMessages; k++) {
+                            message = new ConversationMessage()
+                            message.conversation_id = convId
+                            message.content= encryptedLorems[Math.floor(Math.random() * (encryptedLorems.length))]
+                                message.speakerId= k % 2 === 0 ? Users[Fixtures.loopId(i + j)]._id : user._id //les deux utilisateurs parleront chacuns leurs tours
+                                message.sendAt= new Date()
+                            message.save()
+
+                        }
                         //et on viens la rentrer du coté de notre user
                         user.profile.conversations.push({
                             conversation_id: convId,

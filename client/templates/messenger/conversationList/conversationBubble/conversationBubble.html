@@ -12,7 +12,7 @@
                  data-tooltip="{{#each otherSpeakers in conversation.otherSpeakers}}
                      {{otherSpeakers.name}} {{#unless indexEq @index conversation.otherSpeakers.length }}, {{/unless}}
                  {{/each}}">
-                <div class="" style="margin-right: 7px !important;">
+                <div class="" style="margin-right: 7px !important; ">
                     {{>conversationNotif conversation = conversation}}
                     {{#if gt conversation.otherSpeakers.length 1}}
                         <span class="absolute valign-wrapper   dark-grey {{#if pulse}} pulse{{/if}}" style="
@@ -38,7 +38,7 @@
                          alt="" class="responsive-img circle
                                     {{#if conversation.otherSpeakers.[0].isProject}}
                                     orange{{else}}
-                                    green{{/if}}-border">
+                                    green{{/if}}-border" style="cursor: pointer">
                 </div>
 
             </div>

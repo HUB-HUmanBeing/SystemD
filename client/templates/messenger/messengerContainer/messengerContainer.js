@@ -22,7 +22,7 @@ Template.messengerContainer.helpers({
         return !Template.instance().hideConversations.get()
     },
     openedConversations : function () {
-        return Session.get('openedConversations')
+        return Session.get('openedConversations')?Session.get('openedConversations').reverse() : []
     }
 });
 

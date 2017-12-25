@@ -5,6 +5,7 @@ import Posts from '/lib/collections/Posts';
 import PostComments from "/lib/collections/PostComments"
 import CollaboratorAdverts from "/lib/collections/CollaboratorAdverts";
 import Conversations from "../lib/collections/Conversations";
+import ConversationMessages from "../lib/collections/ConversationMessages";
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -34,7 +35,7 @@ Meteor.publish('userPublicInfo', function (id) {
                     'profile.invitations': 0,
                     'profile.notifications': 0,
                     'profile.followedAuthors': 0,
-                    'profile.encryptedAsymPrivateKey':0
+                    'profile.encryptedAsymPrivateKey': 0
                 }
             });
         //sinon, on renvoie tout
@@ -95,7 +96,7 @@ Meteor.publish('miniature', function (id, type) {
                     'profile.invitations': 0,
                     'profile.followedAuthors': 0,
                     'profile.competences': 0,
-                    'profile.encryptedAsymPrivateKey':0
+                    'profile.encryptedAsymPrivateKey': 0
                 }
             });
     } else if (type === 'project') {
@@ -244,7 +245,7 @@ Meteor.publish('HomepageAdvertsInfiniteSubs', function (limit, lonLat, range) {
     }
 
     return CollaboratorAdverts.find(//les annonces renvoyés
-            geo//validant les conditions géographiques
+        geo//validant les conditions géographiques
         ,
         {
             limit: limit,//on limite la requetes a notre limite pour l'infinite scroll
@@ -256,11 +257,19 @@ Meteor.publish('HomepageAdvertsInfiniteSubs', function (limit, lonLat, range) {
 /**************************
  * publication des messages de la messagerie
  */
-Meteor.publish("MessagesInfinite",  function (convId, limit) {
+Meteor.publish("MessagesInfinite", function (convId, limit) {
     check(convId, String)
     check(limit, Number)
 
-    return Conversations.find({_id : convId},{fields : {'messages' : {"$slice" : limit}}}) //probablement encore buggé...
+    return ConversationMessages.find(
+        {conversation_id: convId},
+        {
+            limit: limit,
+            //et on les trie par date décroissantes (les plus récents en premiers
+            sort: {
+                sendAt: -1
+            }
+        }) //probablement encore buggé...
 
 
 })
