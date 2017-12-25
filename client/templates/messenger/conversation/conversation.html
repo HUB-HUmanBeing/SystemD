@@ -2,6 +2,7 @@
     {{! template d'affichage d'une conversation, il est le meme pour la version mobile et desktop
     il s'appelle avec :
     conversation: Object // la conversation telle qu'elle existe dans le document user}}
+    <div id="conv-{{conversation.conversation_id}}"></div>
     <div class="flex" style=" height: 100% !important; flex-direction: column">
         <div class="row no-margin small-padding "
              style="background-color: rgba(0,0,0, 0.2); border-radius: 3px 3px 0 0 !important;">
@@ -56,10 +57,20 @@
         <div class="row no-margin light-grey-police flex-auto " style="padding: 0 5px; overflow-y: hidden">
             <div class="scrollbar " id="chatMessages{{conversation.conversation_id}}"
                  style="height: 275px; margin-right: 5px">
-                <div class="row no-margin center-align ">
+
+                <div class="row center-align " style="margin: 20px 0 !important;">
+                    {{#unless noMoreMessageToFind}}
                     <a href="" class="waves-effect waves-light center-align btn-flat blue-grey-text" moreMessages>Plus
                         de messages</a>
+                        {{else}}
+                        <div class="" style="height: 36px !important;">
+                            {{#if gt messages.length 6}}
+                                    <span class="small-info blue-grey-text">La conversation à débuté le {{localeDate messages.[0].sendAt}}</span>
+                            {{/if}}
+                        </div>
+                    {{/unless}}
                 </div>
+
                 {{#each encryptedMessage in messages}}
                     {{#if convKey}}
                         {{>message

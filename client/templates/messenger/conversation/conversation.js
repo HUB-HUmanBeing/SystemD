@@ -15,7 +15,12 @@ Template.conversation.helpers({
                     sendAt: -1
                 }
             }).fetch()
-        if (messages) {
+        if (messages.length) {
+            if(
+                messages.length
+                < Template.instance().limit.get()){
+                Template.instance().noMoreMessageToFind.set(true)
+            }
             return messages.reverse()
         } else {
             return []
@@ -26,6 +31,9 @@ Template.conversation.helpers({
     convKey: function () {
         return Template.instance().convKey.get()
     },
+    noMoreMessageToFind : function () {
+        return Template.instance().noMoreMessageToFind.get()
+    }
 });
 
 Template.conversation.events({
@@ -54,12 +62,12 @@ Template.conversation.events({
             instance.autoScrollingIsActive = true
         }, 1000)
         Meteor.setTimeout(()=>{
-            console.log($("#chat-" + instance.convId + "-message-" + (instance.step - 1)).offset())
-            console.log($("#chat-" + instance.convId + "-message-" + (instance.step - 1)).offset().top)
+
+            let height = $("#chat-" + instance.convId + "-message-" + (instance.step +1)).offset().top - ($("#conv-" + instance.convId ).offset().top + 200)
              $('#chatMessages' + instance.convId).animate({
-              scrollTop: $("#chat-" + instance.convId + "-message-6"/* + (instance.step - 1)*/).offset().top
-             },'slow');
-        },1000)
+              scrollTop: height
+             },0);
+        },150)
 
         instance.limit.set(instance.limit.get() + instance.step)
     },
@@ -91,6 +99,7 @@ Template.conversation.events({
 
 Template.conversation.onCreated(function () {
     //on récupere les valeurs passées en argument lors de l'appel du template
+    this.noMoreMessageToFind= new ReactiveVar(false)
     let userConversation = this.data.conversation;
     this.convId = userConversation.conversation_id
     this.autoScrollingIsActive = false;
@@ -113,7 +122,7 @@ Template.conversation.onCreated(function () {
         }
     )
     //on initialise la limite de messages à appeler et par paquet de combien on va les appeler par la suite
-    this.step = 5
+    this.step = 12
     this.limit = new ReactiveVar(this.step);
 
     Tracker.autorun(() => {

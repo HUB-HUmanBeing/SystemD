@@ -39,6 +39,7 @@ Template.message.onCreated(function () {
 Template.message.onRendered(function () {
     //add your statement here
     resetTooltips()
+    //petite fonction pour déformater les messages formatés en base de donnée
     Meteor.setTimeout(()=>{
         let selector= '#message-'+this.data.conversation.conversation_id+'-'+this.data.index
         Textarea.unformatBySelector(selector)
