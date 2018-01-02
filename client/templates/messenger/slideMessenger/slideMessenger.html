@@ -1,12 +1,35 @@
 <template name="slideMessenger">
     <div class="dark-grey" id="slide-messenger">
         <div id="slide-out-messenger" class="side-nav dark-grey ">
+            <div class="row no-margin blue-grey darken-3" style="height: 70px">
+                <div class="col s2 relative">
+                    <a href=""
+                       class="btn-floating  transparent btn-flat waves-effect waves-light absolute closeConversationPanel"
+                       style="left : -15px; top : 5px">
+                        <i class="material-icons light-grey-police ">keyboard_arrow_right</i>
+                    </a>
+                </div>
+                <div class="col s6 valign-wrapper">
+                    <h5 class="light-grey-police right-align valign-wrapper">Messagerie</h5>
+                </div>
+                <div class="col s4 no-padding">
+                    <a href="" class="relative">
+                        {{#if newMessagesCount}}
+                            <span class="absolute valign-wrapper  notif-message-bubble orange {{#if pulse}} pulse{{/if}}">
+                    <span class="grey-text text-darken-4 center-align relative"
+                          style="font-size: 0.8em !important;">
+                        {{onlyZeroToNine newMessagesCount}}
+                    </span>
+                </span>
+                        {{/if}}
+                        <img src="/images/icon/chat.png" alt="chat" class="responsive-img small-margin">
+                    </a>
+                </div>
+
+
+            </div>
             <div class="relative">
-                <a href=""
-                   class="btn-floating  dark-grey btn-flat waves-effect waves-light absolute closeConversationPanel"
-                   style="left : -15px; top : 5px">
-                    <i class="material-icons light-grey-police ">keyboard_arrow_right</i>
-                </a>
+
             </div>
 
             {{#if openedConversation}}
