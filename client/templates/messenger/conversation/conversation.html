@@ -56,8 +56,7 @@
         </div>
         <div class="row no-margin light-grey-police flex-auto " style="padding: 0 5px; overflow-y: hidden">
             <div class="scrollbar " id="chatMessages{{conversation.conversation_id}}"
-                 style="height: 275px; margin-right: 5px">
-
+                 style="{{#if isPhone}}height: {{phoneHeight}}px;{{else}}height: 275px{{/if}}; margin-right: 5px">
                 <div class="row center-align " style="margin: 20px 0 !important;">
                     {{#unless noMoreMessageToFind}}
                     <a href="" class="waves-effect waves-light center-align btn-flat blue-grey-text" moreMessages>Plus
@@ -70,7 +69,6 @@
                         </div>
                     {{/unless}}
                 </div>
-
                 {{#each encryptedMessage in messages}}
                     {{#if convKey}}
                         {{>message
@@ -83,20 +81,19 @@
                 {{/each}}
                 <div class="" style="height: 50px !important;"></div>
             </div>
-
         </div>
+        <link rel="stylesheet" href="/css/medium-editor.css">
         <div class="row no-margin " style=" border-radius: 0 0 3px 3px !important; height: 100px">
             <form chat>
-                <div class="relative borer-radius shadow"
+                <div class="relative borer-radius shadow blue-grey darken-4"
                      style="
-         background-color: rgba(255,255,255,0.05);
          min-height: 80px; padding: 5px 0px 5px 5px !important; margin: 5px 10px 10px 10px">
                     <div class="text editable no-padding no-margin puce-list formattedText chatEditor small-info light-grey-police scrollbar"
                          style="text-align: justify; height : 70px!important; "
                          id="chat-content{{conversation.conversation_id}}">
                     </div>
                     <a class="btn-floating waves-effect waves-light relative tooltipped dark-grey  absolute shadow hover-orange blue-grey-border"
-                       data-position="bottom" data-delay="350"
+                       data-position="left" data-delay="350"
                        style="top : -25px !important; right : {{#unless
                                isPhone}}-30px{{else}}10px{{/unless}} !important;"
                        data-tooltip="envoyer" sendChat>

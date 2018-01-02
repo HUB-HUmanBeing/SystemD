@@ -5,10 +5,10 @@ message : Object //object contenant le contenu chiffré du message ainsi que l'a
 convKey : Object la clef déchifré et le vecteur pour le déchiffrement
 index : number
 }}
-    <div class="grey darken-4 small-padding borer-radius shadow tooltipped "
+    <div class=" {{#if eq message.speakerId  currentUserId}}blue-grey{{else}}grey{{/if}} darken-4 small-padding borer-radius shadow {{#if isDesktop}}tooltipped {{/if}}"
          data-position="{{#if isPhone}}bottom{{else}}{{#unless eq message.speakerId  currentUserId}}right{{else}}left{{/unless}}{{/if}}" data-delay="500"
          data-tooltip="{{#unless eq message.speakerId  currentUserId}}{{message.speakerName}}, {{/unless}}{{#if message.sendAt}}il y a {{formatDuration message.sendAt}}{{/if}}"
-         style=" width: 80%; margin:{{#if eq message.speakerId  currentUserId}}5px 5px 0 auto{{else}}5px auto 0 5px{{/if}}"
+         style=" width: 80%; margin:{{#if eq message.speakerId  currentUserId}}7px 7px 0 auto{{else}}7px auto 0 7px{{/if}}"
     id ="chat-{{conversation.conversation_id}}-message-{{index}}">
         <p class="chat-message no-margin small-info blue-grey-text text-lighten-2 justify puce-list formattedText" id="message-{{conversation.conversation_id}}-{{index}}">{{message.content}}</p>
     </div>
