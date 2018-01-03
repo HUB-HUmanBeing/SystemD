@@ -476,7 +476,6 @@ body {
 
 .notif-message-bubble{
     z-index: 610 !important;
-    top : -5px;
     right : -5px ;
     border-radius: 50%;
     width: 23px !important;

@@ -4,9 +4,9 @@
     conversation: Object // la conversation telle qu'elle existe dans le document user}}
     <div id="conv-{{conversation.conversation_id}}"></div>
     <div class="flex" style=" height: 100% !important; flex-direction: column">
-        <div class="row no-margin small-padding "
+        <div class="row no-margin small-padding shadow"
              style="background-color: rgba(0,0,0, 0.2); border-radius: 3px 3px 0 0 !important;">
-            <div class="col s10 relative valign-wrapper" style="padding : {{#if isPhone}}15px 0 0 0 {{else}}0{{/if}}">
+            <div class="col s10 relative valign-wrapper no-padding" >
                 {{#if gt conversation.otherSpeakers.length 1}}
                     <span class="absolute valign-wrapper   dark-grey {{#if pulse}} pulse{{/if}}" style="
                             z-index: 101 !important;
@@ -49,7 +49,7 @@
                 {{/each}}
             </div>
             <div class="col s2 relative no-padding">
-                <a href="" class="relative" style="left: 25px !important;" closeConversation>
+                <a href="" class="relative" style="{{#if isPhone}}left: -5px ; top : 15px !important;{{else}}left:25px !important;{{/if}} " closeConversation>
                     <i class="material-icons light-grey-police">clear</i>
                 </a>
             </div>
@@ -94,10 +94,9 @@
                     </div>
                     <a class="btn-floating waves-effect waves-light relative tooltipped dark-grey  absolute shadow hover-orange blue-grey-border"
                        data-position="left" data-delay="350"
-                       style="top : -25px !important; right : {{#unless
-                               isPhone}}-30px{{else}}10px{{/unless}} !important;"
+                       style="top : -25px !important; {{#unless isPhone}}right : -30px  !important;{{else}}right : -5px !important; height: 50px !important; width: 50px !important;{{/unless}}"
                        data-tooltip="envoyer" sendChat>
-                        <i class="material-icons  blue-grey-text relative " style="top : -2px">send</i>
+                        <i class="material-icons  blue-grey-text relative " style="{{#if isPhone}} left: -15px !important;top : 1px; {{else}}top : -2px; {{/if}}">send</i>
                     </a>
                 </div>
             </form>

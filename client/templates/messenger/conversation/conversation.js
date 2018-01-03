@@ -42,7 +42,7 @@ Template.conversation.helpers({
         return Template.instance().noMoreMessageToFind.get()
     },
     phoneHeight : function () {
-        return $(window).height() - 150;
+        return $(window).height() - 240;
     }
 });
 

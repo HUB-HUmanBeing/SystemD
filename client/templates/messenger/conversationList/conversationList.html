@@ -1,51 +1,67 @@
 <template name="conversationList">
-    <div class="row relative no-margin scrollbar" style="height: {{height}};overflow-x: visible !important;">
+    <div class="row relative no-margin scrollbar" style="height: {{height}};overflow-x: hidden !important;">
         <ul class="relative "
             style="{{#unless isPhone}}top : 100px !important;{{else}}top : 15px !important;{{/unless}}">
 
             {{#each conversation in conversations}}
                 {{>conversationBubble conversation = conversation}}
             {{/each}}
-            {{#if isPhone}}
-                <li class="row no-margin">
+            <li class="row " newConversation style="margin: 15px 0 0 0 !important;">
+                {{#if isPhone}}
                     <div class="col s10 right-align light-grey-police">
 
                         <b>Nouvelle conversation</b>
 
                     </div>
-
-                    <div class="col s12 no-padding relative">
-                        <div class="" style="margin: 10px auto 0 2px !important;">
-                            <a class="btn-floating  waves-effect waves-light dark-grey center-align green-border light-grey-border relative hover-bg-green hover-dark-grey"
-                               style="width: 46px !important;height: 46px !important;">
-                                <i class="material-icons center-align light-grey-police relative"
-                                   style="left: -1px !important; top: 1px !important;">add</i>
-                            </a>
-                        </div>
+                {{/if}}
+                <div class="col {{#unless isPhone}}s12{{else}}s2{{/unless}} no-padding relative {{#unless
+                        isPhone}}tooltipped{{/unless}}"
+                     data-position="left" data-delay="50"
+                     data-tooltip="Nouvelle conversation">
+                    <div class="" style="margin: 0px auto 0 2px !important;">
+                        <a class="btn-floating  waves-effect waves-light blue-grey center-align  relative "
+                           style="{{#if
+                                   isPhone}}width: 40px !important;height: 40px !important;{{else}}width: 46px !important;height: 46px !important;{{/if}}">
+                            <i class="material-icons center-align grey-text text-darken-4 relative"
+                               style="{{#if
+                                       isPhone}}left : -15px !important;top: -2px !important;{{else}}top: 3px !important;{{/if}}">add</i>
+                        </a>
                     </div>
+                </div>
 
-                </li>
-            {{/if}}
+            </li>
+
             {{#unless isPhone}}
                 <li style="height: 50px"></li>
             {{/unless}}
         </ul>
+
+        <div id="new-conversation-modal" class="modal dark-grey">
+            {{#if newConversation}}
+                {{>newConversationModal}}
+            {{/if}}
+        </div>
         {{#unless or isPhone xl}}
-            <div class="fixed-action-btn horizontal" style="right: 10px;bottom: 10px; z-index: 630 !important; overflow-x: visible !important;">
+            <div class="fixed-action-btn horizontal"
+                 style="right: 10px;bottom: 10px; z-index: 630 !important; overflow-x: visible !important;">
                 <a class="btn-floating btn-large blue-grey shadow" closeConversations>
-                    <img src="/images/icon/chat-dark.png" alt="chat" class="responsive-img relative" style=" top :9px!important; height: 45px; width: 45px ">
+                    <img src="/images/icon/chat-dark.png" alt="chat" class="responsive-img relative"
+                         style=" top :9px!important; height: 45px; width: 45px ">
                 </a>
                 <ul>
-                    <li><a class="btn-floating dark-grey tooltipped"
+                    <li>
+                        <a class="btn-floating dark-grey tooltipped"
                            data-position="top" data-delay="50"
-                           data-tooltip="La messagerie de HUmanBeing est chiffrée end-to-end, la sécurité de la conversation dépends de la force des mots de passe des utilisateurs participants à la discussion. Il est donc conseillé d'avoir un mot de passe fort afin de préserver non seulement la confidentialité de vos données, mais aussi celles partagées avec vous par d'autres utilisateurs." closeConversations><i class="material-icons grey-text text-darken-3">help_outline</i></a></li>
-
-                    <li><a class="btn-floating dark-grey tooltipped"
-        data-position="top" data-delay="50"
-        data-tooltip="Nouvelle conversation" newConversation><i class="material-icons green-text">add</i></a></li>
-                    <li><a class="btn-floating dark-grey tooltipped"
+                           data-tooltip="La messagerie de HUmanBeing est chiffrée, la sécurité de la conversation dépends de la force des mots de passe des utilisateurs participants à la discussion. Il est donc conseillé d'avoir un mot de passe fort afin de préserver non seulement la confidentialité de vos données, mais aussi celles partagées avec vous par d'autres utilisateurs.">
+                            <i class="material-icons grey-text text-darken-3">help_outline</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn-floating dark-grey tooltipped"
                            data-position="top" data-delay="50"
-                           data-tooltip="Refermer" closeConversations><i class="material-icons red-text">clear</i></a></li>
+                           data-tooltip="Refermer" closeConversations><i class="material-icons red-text">clear</i>
+                        </a>
+                    </li>
 
                 </ul>
             </div>

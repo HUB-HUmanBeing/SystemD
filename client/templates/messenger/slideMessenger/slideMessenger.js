@@ -6,9 +6,10 @@ Template.slideMessenger.helpers({
                 counter += conversation.unreadMessage
         })
         if(counter){
-            Template.instance().pulse.set(true)
+            let instance =Template.instance()
+            instance.pulse.set(true)
             Meteor.setTimeout(()=>{
-                Template.instance().pulse.set(false)
+                instance.pulse.set(false)
             },3000)
         }
         return counter
@@ -17,14 +18,22 @@ Template.slideMessenger.helpers({
         return Template.instance().pulse.get()
     },
     openedConversation : function () {
-        return Session.get('openedConversations')[0]
+        let currentConv = Session.get('openedConversations')
+
+        return currentConv? currentConv[0] : false;
+    },
+    phoneHeight : function () {
+        return $(window).height() - 60;
     }
 });
 
 Template.slideMessenger.events({
     //add your events here
-    'click [closeConversationPanel]' : function (event, instance) {
+    'click [closeConversationPanel]' : function () {
         $('.button-collapse-slideMessenger').sideNav('hide');
+    },
+    'click [closeCurrentConversation]' : function () {
+        Session.set("openedConversations", [])
     }
 });
 
@@ -38,7 +47,7 @@ Template.slideMessenger.onRendered(function () {
     $('.button-collapse-slideMessenger').sideNav({
         menuWidth: 300, // Default is 300
         edge: 'right', // Choose the horizontal origin
-        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
         draggable: true // Choose whether you can drag to open on touch screens
     });
 });
