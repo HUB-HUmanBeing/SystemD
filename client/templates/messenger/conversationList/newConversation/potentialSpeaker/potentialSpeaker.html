@@ -1,0 +1,21 @@
+<template name="potentialSpeaker">
+{{! template permettant l'afichage d'un resultat de recherche
+s'apelle avec
+item : Object //objet comportant tout ce qui est nécessaire
+type : String // user ou projet
+}}
+    <div class="row valign-wrapper no-margin hover-bg-light-grey" newConversation>
+        <div class="col s8">
+            {{>miniature type = type
+                    _id = item._id
+                    name = item.name
+                    categories = item.categories
+                    imgUrl = item.imgUrl}}
+        </div>
+        <div class="col s4">
+            <i class="small-info ">
+                {{showDistance item.relativeDistance}}
+            </i>
+        </div>
+    </div>
+</template>

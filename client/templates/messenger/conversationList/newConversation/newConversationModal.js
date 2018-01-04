@@ -3,7 +3,7 @@ import UsersIndex from '/lib/collections/User'
 Template.newConversationModal.helpers({
     //add you helpers here
     results : function () {
-        return Template.instance().results
+        return Template.instance().results.get()
     }
 });
 
@@ -26,11 +26,13 @@ Template.newConversationModal.events({
                         if (error) {
                              console.log(error)
                         } else {
-                            instance.results = result
+                            instance.results.set(result)
                         }
                     })
                 }
             }, 350)
+        }else{
+            instance.results.set(false)
         }
     },
 });
@@ -39,7 +41,7 @@ Template.newConversationModal.onCreated(function () {
     //add your statement here
     //chek de la derniere touche pressée pour eviter la surcharge de requetes
     this.lastKeyUpTime = new ReactiveVar();
-    this.results = new ReactiveVar({})
+    this.results = new ReactiveVar(false)
 });
 
 Template.newConversationModal.onRendered(function () {

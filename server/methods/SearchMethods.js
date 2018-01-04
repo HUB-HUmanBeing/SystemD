@@ -187,7 +187,6 @@ Meteor.methods({
                 'profile.invitations': 0,
                 'profile.followedAuthors': 0,
                 'profile.competences': 0,
-                'profile.categories': 0,
                 'profile.encryptedAsymPrivateKey': 0,
                 'profile.conversations':0
             },
@@ -215,6 +214,7 @@ Meteor.methods({
                 name: user.username,
                 imgUrl: user.profile.imgUrl,
                 asymPublicKey: user.profile.asymPublicKey,
+                categories : user.profile.categories,
                 relativeDistance: relativeDistance
             })
         })
@@ -249,7 +249,8 @@ Meteor.methods({
                 _id: project._id,
                 name: project.name,
                 imgUrl: project.publicInfo.imgUrl,
-                asymPublicKey: project.asymPublicKey,
+                asymPublicKey: project.publicInfo.asymPublicKey,
+                categories : project.publicInfo.categories,
                 relativeDistance: relativeDistance
             })
         })

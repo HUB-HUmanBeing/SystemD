@@ -89,6 +89,9 @@ COULEURS
 .hover-bg-dark-grey:hover{
     background-color: #1c1c1c !important;
 }
+.hover-bg-light-grey:hover{
+    background-color: #212121;
+}
 .hover-bg-green:hover {
     background-color: #4CAF50 !important;
 }

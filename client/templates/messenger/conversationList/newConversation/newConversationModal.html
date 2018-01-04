@@ -1,7 +1,7 @@
 <template name="newConversationModal">
     <div id="new-conversation-modal" class="modal dark-grey" style="z-index: 2000">
         <div class="modal-content dark-grey">
-            <h5 class="light-grey-police">Nouvelle Conversation</h5>
+            <h5 class="orange-text center-align">Nouvelle Conversation</h5>
 
             <form class="col s12" SearchForConv>
                 <div class="col m10">
@@ -11,11 +11,47 @@
                     </div>
                 </div>
             </form>
+
+            {{#if results}}
+
+                <div class="row">
+                    <div class="light-grey-police col s12">
+                        <p class="center-align">
+                            {{#if or results.users.length results.projects.length}}
+                                Resultats de la recherche pour <b>{{results.searched}}</b>
+                            {{else}}
+                                Aucun résultat pour <b>{{results.searched}}</b>
+                            {{/if}}
+                        </p>
+                        <div class="hr"></div>
+                        <div class="row">
+                            {{#if results.users.length}}
+                                <div class="col s12 l6">
+                                    <h5 class="center-align">Utilisateurs</h5>
+                                    <div class="row no-margin">
+                                        {{#each user in results.users}}
+                                            {{>potentialSpeaker item = user
+                                            type = "user"}}
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            {{/if}}
+                            {{#if results.projects.length}}
+                                <div class="col s12 l6">
+                                    <h5 class="center-align">Projets</h5>
+                                    <div class="row no-margin">
+                                        {{#each project in results.projects}}
+                                            {{>potentialSpeaker item = project
+                                                    type = "project"}}
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
         </div>
-        {{#if results}}
-        <p>Resultats de la recherche pour {{results.searched}}</p>
-            <p></p>
-        {{/if}}
         <div class="modal-footer dark-grey">
             <a class="modal-action modal-close waves-effect waves-green btn-flat">
                 <i class="material-icons">clear</i>
