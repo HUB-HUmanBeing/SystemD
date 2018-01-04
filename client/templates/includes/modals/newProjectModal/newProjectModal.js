@@ -93,7 +93,7 @@ Template.newProjectModal.onCreated(function () {
 
 Template.newProjectModal.onRendered(function () {
     //initialisation des infobulles
-    $('.tooltipped').tooltip({delay: 50});
+    resetTooltips()
 
 });
 

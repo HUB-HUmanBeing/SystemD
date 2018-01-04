@@ -110,11 +110,14 @@ Template.conversation.events({
                         //et on relance une souscription pour récuperer le dernier message
                         let messagesSubs = Meteor.subscribe('MessagesInfinite', instance.data.conversation.conversation_id, instance.limit.get());
                         //lorsqu'elle est prete, on scroll au bas de page
-                        if (messagesSubs.ready()) {
-                            Meteor.setTimeout(() => {
-                                instance.scrollToBottom(250);
-                            }, 50)
-                        }
+                        Tracker.autorun(()=>{
+                            if (messagesSubs.ready()) {
+                                Meteor.setTimeout(() => {
+                                    instance.scrollToBottom(250);
+                                }, 200)
+                            }
+                        })
+
                     }
                 })
             })

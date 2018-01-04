@@ -172,5 +172,93 @@ Meteor.methods({
         }
         //on finit par renvoyer les resultats
         return results
+    },
+    NewConvSearch : function (name) {
+        check(name , String)
+        const currentUserLocation = Meteor.user().profile.location
+        let users = Meteor.users.find({$text: {$search: name}}, {
+            //liste des champs non renvoyés
+            fields: {
+                emails: 0,
+                services: 0,
+                'profile.projects': 0,
+                'profile.description': 0,
+                'profile.notifications': 0,
+                'profile.invitations': 0,
+                'profile.followedAuthors': 0,
+                'profile.competences': 0,
+                'profile.categories': 0,
+                'profile.encryptedAsymPrivateKey': 0,
+                'profile.conversations':0
+            },
+            limit: 5,//on limite la requetes a 5 réponses
+            sort: {//en les triant par dates décroissantes
+                createdAt: -1,
+            }
+        }).fetch()
+
+        let usersResults = []
+        users.forEach((user)=>{
+            let relativeDistance
+            if (user.profile.location.lonLat && currentUserLocation.lonLat) { //le calcul se fait coté serveur
+                // pour ne pas livrer au client des coordonnées précises d'autres utilisateurs
+                let distance = new Haversine(
+                    user.profile.location.lonLat[1],
+                    user.profile.location.lonLat[0],
+                    currentUserLocation.lonLat[1],
+                    currentUserLocation.lonLat[0]
+                );
+                relativeDistance = parseInt(distance.kilometers)
+            }
+            usersResults.push({
+                _id: user._id,
+                name: user.username,
+                imgUrl: user.profile.imgUrl,
+                asymPublicKey: user.profile.asymPublicKey,
+                relativeDistance: relativeDistance
+            })
+        })
+
+        let projects = Projects.find({$text: {$search: name}}, {
+            //liste des champs non renvoyés
+            fields: {
+                createdAt: 0,
+                members: 0,
+                invitations: 0,
+                conversations : 0
+            },
+            limit: 5,//on limite la requetes a 5 réponse
+            sort: {//en les triant par dates décroissantes
+                createdAt: -1,
+            }
+        }).fetch()
+        let projectsResults = []
+        projects.forEach((project)=>{
+            let relativeDistance
+            if (project.publicInfo.location.lonLat && currentUserLocation.lonLat) { //le calcul se fait coté serveur
+                // pour ne pas livrer au client des coordonnées précises d'autres utilisateurs
+                let distance = new Haversine(
+                    project.publicInfo.location.lonLat[1],
+                    project.publicInfo.location.lonLat[0],
+                    currentUserLocation.lonLat[1],
+                    currentUserLocation.lonLat[0]
+                );
+                relativeDistance = parseInt(distance.kilometers)
+            }
+            projectsResults.push({
+                _id: project._id,
+                name: project.name,
+                imgUrl: project.publicInfo.imgUrl,
+                asymPublicKey: project.asymPublicKey,
+                relativeDistance: relativeDistance
+            })
+        })
+
+        return  {
+            searched :  name,
+            users : usersResults,
+            projects : projectsResults
+        }
+
     }
 })

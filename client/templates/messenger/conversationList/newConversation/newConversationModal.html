@@ -1,0 +1,25 @@
+<template name="newConversationModal">
+    <div id="new-conversation-modal" class="modal dark-grey" style="z-index: 2000">
+        <div class="modal-content dark-grey">
+            <h5 class="light-grey-police">Nouvelle Conversation</h5>
+
+            <form class="col s12" SearchForConv>
+                <div class="col m10">
+                    <div class="input-field">
+                        <input placeholder="" id="new-conv-name" type="text" maxlength="50" minlength="3">
+                        <label for="first_name">Nom du projet ou de l'utilisateur</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {{#if results}}
+        <p>Resultats de la recherche pour {{results.searched}}</p>
+            <p></p>
+        {{/if}}
+        <div class="modal-footer dark-grey">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat">
+                <i class="material-icons">clear</i>
+            </a>
+        </div>
+    </div>
+</template>

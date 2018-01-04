@@ -19,9 +19,6 @@ Template.conversationList.helpers({
             return toString(document.body.clientHeight -75) + "px"
         }
     },
-    newConversation : function () {
-        return Template.instance().newConversation.get()
-    }
 });
 
 Template.conversationList.events({
@@ -32,20 +29,18 @@ Template.conversationList.events({
         resetTooltips()
     },
     'click [newConversation]' : function (event, instance) {
-        instance.newConversation.set(true)
         $('#new-conversation-modal').modal('open')
     }
 });
 
 Template.conversationList.onCreated(function () {
     //add your statement here
-    this.newConversation = new ReactiveVar(false)
 
 });
 
 Template.conversationList.onRendered(function () {
     //add your statement here
-    $('#new-conversation-modal').modal()
+
     hubCrypto.decryptAndStoreInSesstionBrunchOfUserConversationKeys(() => {
     })
     resetTooltips()
