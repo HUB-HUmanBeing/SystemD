@@ -105,6 +105,8 @@ Template.userMenuBtns.events({
                         $('#interactionBtn').click()
                         //on simule un click sur le bouton d'affichage de la liste de conversations
                         $('#showConversationsButton').click()
+                        hubCrypto.decryptAndStoreInSesstionBrunchOfUserConversationKeys(() => {
+                        })
                         Meteor.setTimeout(()=>{
                             //apres un certain laps de temps, on
                             $('#conversationBubble-'+result).click()
