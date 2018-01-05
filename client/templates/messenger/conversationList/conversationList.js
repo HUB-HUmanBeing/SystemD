@@ -35,12 +35,19 @@ Template.conversationList.events({
 
 Template.conversationList.onCreated(function () {
     //add your statement here
+    let otherSpeakers = []
+    Meteor.user().profile.conversations.forEach((conv)=>{
+        conv.otherSpeakers.forEach((user)=>{
+            otherSpeakers.push(user.speaker_id)
+        })
+    })
+    Meteor.subscribe('userPresence', otherSpeakers)
+
 
 });
 
 Template.conversationList.onRendered(function () {
     //add your statement here
-
     hubCrypto.decryptAndStoreInSesstionBrunchOfUserConversationKeys(() => {
     })
     resetTooltips()

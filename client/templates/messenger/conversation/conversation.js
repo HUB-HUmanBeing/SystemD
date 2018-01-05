@@ -43,6 +43,17 @@ Template.conversation.helpers({
     },
     phoneHeight : function () {
         return $(window).height() - 240;
+    },
+    isPresent : function () {
+        let otherSpeakers = []
+        Template.instance().data.conversation.otherSpeakers.forEach((user)=>{
+            otherSpeakers.push(user.speaker_id)
+        })
+        return presences.find({
+            userId: {
+                $in: otherSpeakers
+            }
+        }).count()
     }
 });
 
