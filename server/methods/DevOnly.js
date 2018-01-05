@@ -47,6 +47,9 @@ if (Meteor.isDevelopment || Meteor.user().username === "admin") {
             ConversationMessages.remove({}, function () {
                 console.log("collection ConversationMessages reset")
             })
+            presences.remove({}, function () {
+                console.log("collection presences reset")
+            })
         },
         /******************************
          * Création des utilisateurs et de leurs Projets
