@@ -2,15 +2,17 @@
     <div id="new-conversation-modal" class="modal dark-grey" style="z-index: 2000">
         <div class="modal-content dark-grey">
             <h5 class="orange-text center-align">Nouvelle Conversation</h5>
+<div class="row no-margin">
+    <form class="col s12 m8 offset-m2 " SearchForConv>
+        <div class="">
+            <div class="input-field">
+                <input placeholder="" id="new-conv-name" type="text" maxlength="50" minlength="3">
+                <label for="first_name">Nom du projet ou de l'utilisateur</label>
+            </div>
+        </div>
+    </form>
+</div>
 
-            <form class="col s12" SearchForConv>
-                <div class="col m10">
-                    <div class="input-field">
-                        <input placeholder="" id="new-conv-name" type="text" maxlength="50" minlength="3">
-                        <label for="first_name">Nom du projet ou de l'utilisateur</label>
-                    </div>
-                </div>
-            </form>
 
             {{#if results}}
 

@@ -173,10 +173,15 @@ Template.conversation.onCreated(function () {
         if (messagesSubs.ready() && !this.isRequestingForHistory) {
             let user = new User
             //si il y avais des messages non-lus, on appelle la méthode permettant de dire que la conversation à bien été vue
-            if (userConversation.unreadMessage > 0) {
-                user.callMethod('conversationRead', this.convId)
-            }
+
             Meteor.setTimeout(() => {
+                if (userConversation.unreadMessage > 0) {
+                    user.callMethod('conversationRead', this.convId)
+                }
+            },200)
+
+            Meteor.setTimeout(() => {
+
                 this.scrollToBottom(250);
             }, 50)
         }

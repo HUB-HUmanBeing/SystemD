@@ -84,8 +84,14 @@ Template.editCategories.events({
                 let category = parseInt(id.split('-')[1]);//on garde que la fin
                 categories.push(category);//on les rentre dans le tableau des catégories a ajouter
             });
+            let owner
+            if(instance.isProject){
+                owner= Project.findOne(instance.id)
+            }else{
+                owner= User.findOne(instance.id)
+            }
             //puis on appelle la méthode
-            instance.owner.callMethod(
+            owner.callMethod(
                 methodToCall,
                 "categories",
                 categories,

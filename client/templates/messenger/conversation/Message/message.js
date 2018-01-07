@@ -43,7 +43,7 @@ Template.message.onRendered(function () {
     Meteor.setTimeout(()=>{
         let selector= '#message-'+this.data.conversation.conversation_id+'-'+this.data.index
         Textarea.unformatBySelector(selector)
-    }, 50)
+    }, 100)
 
 });
 
