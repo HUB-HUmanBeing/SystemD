@@ -2,14 +2,23 @@ Template.conversationBubble.helpers({
     //add you helpers here
     isPresent : function () {
         let otherSpeakers = []
-            Template.instance().data.conversation.otherSpeakers.forEach((user)=>{
-                otherSpeakers.push(user.speaker_id)
+            Template.instance().data.conversation.otherSpeakers.forEach((speaker)=>{
+                otherSpeakers.push(speaker.speaker_id)
             })
         return presences.find({
             userId: {
                 $in: otherSpeakers
             }
         }).count()
+    },
+    showPresence : function () {
+        let showPresence = false
+        Template.instance().data.conversation.otherSpeakers.forEach((speaker)=>{
+            if(!speaker.isProject){
+                showPresence = true
+            }
+        })
+        return showPresence
     }
 });
 

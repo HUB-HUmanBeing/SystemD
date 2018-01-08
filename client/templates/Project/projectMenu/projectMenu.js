@@ -63,14 +63,15 @@ Template.projectMenu.helpers({
     },
     //tableau des elements a renvoyer a la barre de navigation
     navBarItems: function () {
-      let projectId = Template.currentData().project._id
+
+        let project = Template.currentData().project
         let navBarItems = [
             {
                 title: "Gestion",
                 color: "orange",
                 routeName: "adminProject",
                 path: function () {
-                    return Router.path("adminProject", {_id: projectId})
+                    return Router.path("adminProject", {_id: project._id})
                 }
             },
             {
@@ -78,7 +79,7 @@ Template.projectMenu.helpers({
                 color: "orange",
                 routeName: 'orgProject',
                 path: function () {
-                    return Router.path('orgProject', {_id: projectId})
+                    return Router.path('orgProject', {_id: project._id})
                 }
             },
             {
@@ -86,7 +87,7 @@ Template.projectMenu.helpers({
                 color: "orange",
                 routeName: 'resourcesProject',
                 path: function () {
-                    return Router.path('resourcesProject', {_id: projectId})
+                    return Router.path('resourcesProject', {_id: project._id})
                 }
             },
             {
@@ -94,7 +95,17 @@ Template.projectMenu.helpers({
                 color: "orange",
                 routeName: 'messagesProject',
                 path: function () {
-                    return Router.path('messagesProject', {_id: projectId})
+                    return Router.path('messagesProject', {_id: project._id})
+                },
+                notif: {
+                    value : ()=>{
+                        let counter = 0
+                        project.conversations.forEach((conversation)=>{
+                            counter += conversation.unreadMessage
+                        })
+                        return counter
+                    },
+                    text : "le projet a reçu de nouveaux messages"
                 }
             }
 

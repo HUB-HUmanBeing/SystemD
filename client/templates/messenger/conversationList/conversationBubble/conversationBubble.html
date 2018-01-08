@@ -15,8 +15,10 @@
                  {{otherSpeakers.name}} {{#unless indexEq @index conversation.otherSpeakers.length }}, {{/unless}}
              {{/each}}">
             <div class="" style="margin-right: 7px !important; ">
+    {{#if  showPresence}}
                     <span class="absolute valign-wrapper circle  notif-presence {{#if isPresent}}green {{else}} light-grey-border grey darken-2{{/if}}">
                     </span>
+    {{/if}}
                 {{>conversationNotif conversation = conversation}}
                 {{#if gt conversation.otherSpeakers.length 1}}
                     <span class="absolute valign-wrapper   dark-grey {{#if pulse}} pulse{{/if}}" style="

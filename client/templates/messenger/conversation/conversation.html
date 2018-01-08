@@ -32,8 +32,10 @@
                                     {{#if conversation.otherSpeakers.[0].isProject}}
                                     orange{{else}}
                                     green{{/if}}-border" style="width: 46px !important; height: 46px !important;">
+                {{#if showPresence}}
                 <span class="absolute valign-wrapper circle  notif-presence-conv {{#if isPresent}}green {{else}} light-grey-border grey darken-2{{/if}}">
                     </span>
+                {{/if}}
 
                 {{#each otherSpeaker in conversation.otherSpeakers}}
                     <a class="light-grey-police small-padding

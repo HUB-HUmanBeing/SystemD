@@ -69,7 +69,9 @@ Meteor.publish('singleProject', function (id) {
                         //liste des champs non renvoyés
                         createdAt: 0,
                         members: 0,
-                        invitations: 0
+                        invitations: 0,
+                        conversations : 0,
+                        encryptedAsymPrivateKey : 0
                     }
                 });
         }

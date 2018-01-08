@@ -123,7 +123,7 @@ Template.userMenuBtns.onCreated(function () {
     this.pulse = new ReactiveVar(true)
     Meteor.setTimeout(() => {
         this.pulse.set(false)
-    }, 3000)
+    }, 5000)
 });
 
 Template.userMenuBtns.onRendered(function () {

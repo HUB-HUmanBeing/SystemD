@@ -206,10 +206,10 @@ hubCrypto = {
      * gérération du trousseau de clef nécessaire a la création d'une  nouvelle conversation
      * @param stringifiedCreatorPublicKey
      * @param stringifiedOtherSpeakerPublicKey
-     * @param callback
      * @param getSymkey Boolean
+     * @param callback
      */
-    generateNewConversationBrunchOfKeys(stringifiedCreatorPublicKey, stringifiedOtherSpeakerPublicKey,getSymkey, callback) {
+    generateNewConversationBrunchOfKeys(stringifiedCreatorPublicKey, stringifiedOtherSpeakerPublicKey, getSymkey, callback) {
         //on commence par générer la clef symétrique
         cryptoTools.generateSimKey((conversationKey) => {
             //on chiffre la clef symetrique avec la clef publique de l'utilisateur
@@ -221,9 +221,6 @@ hubCrypto = {
                         conversationKey,
                         stringifiedOtherSpeakerPublicKey,
                         (strigifiedEncryptedConversationKeyForOtherSpeaker) => {
-                            if(getSymkey){
-
-                            }
                             //on prepare le trousseau de clef
                             let brunchOfKeys = {
                                 vector: cryptoTools.getRandomStringVector(),
@@ -231,7 +228,7 @@ hubCrypto = {
                                 encryptedConversationKeyForCreator: strigifiedEncryptedConversationKeyForCreator,
                                 encryptedConversationKeyForOtherSpeaker: strigifiedEncryptedConversationKeyForOtherSpeaker
                             }
-                            if(getSymkey){
+                            if (getSymkey) {
                                 brunchOfKeys.symKey = conversationKey
                             }
                             //on renvoie le trousseau dans le callback
@@ -273,8 +270,7 @@ hubCrypto = {
                     })
             })
         })
-    }
-    ,
+    },
     /********************
      * Renvoie la clef du projet demandé
      * @param projectId
@@ -294,8 +290,28 @@ hubCrypto = {
         cryptoTools.importSymKey(stringifiedProjectKey, vector, (projectKey) => {
             callback(projectKey)
         })
-    }
-    ,
+    },
+    /************************************
+     * Action permettant de recuperer la clef privée d'un projet prete a l'emploi
+     * @param project
+     * @param callback
+     */
+    getProjectAsymPrivateKey(project, callback) {
+        this.getProjectKey(project._id, (projectKey) => {
+            cryptoTools.sim_decrypt_data(
+                cryptoTools.convertStringToArrayBufferView(project.encryptedAsymPrivateKey),
+                projectKey,
+                // pour simplifier les fixtures elles auront un vecteur d'initialisation constant
+                //on leur passe donc une chaine de caractère vide dans le vecteurs d'initialisation
+                //si le nom est un nom de projet <=> la fin du nom de projet est dans le tableau nom des fixture
+                Fixtures.usernames.includes(project.name.substring(10)) ? "" : project.name,
+                (stringifiedPrivateKey) => {
+                    cryptoTools.importPrivateKey(stringifiedPrivateKey, (projectAsymPrivateKey) => {
+                        callback(projectAsymPrivateKey)
+                    })
+                })
+        })
+    },
     /***************************
      * Renvoie la bonne clef conversation
      * @param conversation_id String
@@ -314,7 +330,7 @@ hubCrypto = {
         })
         cryptoTools.importSymKey(stringifiedConversationKey, vector, (conversationKey) => {
 
-            callback(conversationKey,vector)
+            callback(conversationKey, vector)
         })
     }
     ,
@@ -336,17 +352,55 @@ hubCrypto = {
 
             })
         })
-    },
+    }
+    ,
     //chiffrement de données avec une clef symétrique et un vecteur determiné
-    symEncryptData(string, symKey, vector, callback ){
-        cryptoTools.sim_encrypt_data(string, symKey, vector, (encryptedUnit8)=>{
+    symEncryptData(string, symKey, vector, callback) {
+        cryptoTools.sim_encrypt_data(string, symKey, vector, (encryptedUnit8) => {
             callback(cryptoTools.convertArrayBufferViewtoString(encryptedUnit8))
         })
-    },
+    }
+    ,
     //dechiffrement de données avec la clef symetrique et le vecteur d'encryption
-    symDecryptData(encryptedString, symKey, vector, callback ){
-        cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(encryptedString), symKey, vector, (string)=>{
+    symDecryptData(encryptedString, symKey, vector, callback) {
+        cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(encryptedString), symKey, vector, (string) => {
             callback(string)
+        })
+    }
+    ,
+    /*********************************************
+     * Action permettant de mettre en session toutes les clef conversations d'un projet
+     * @param project
+     * @param callback
+     */
+    decryptAndStoreInSesstionBrunchOfProjectConversationKeys(project, callback) {
+        //on récupere la clef privée du projet
+        this.getProjectAsymPrivateKey(project, (projectAsymPrivateKey) => {
+            let currentUser = Meteor.user()
+            //on initialise le tableau du trousseau de clefs conversation
+            let BrunchOfProjectConversationKeys = []
+            //pour chacune des conversations de notre projet
+            project.conversations.forEach((conversation, i) => {
+                //on viens dechiffrer la clef symétrique de la conversation
+                cryptoTools.asym_decrypt_data(
+                    cryptoTools.convertStringToArrayBufferView(conversation.encryptedConversationKey),
+                    projectAsymPrivateKey,
+                    (stringifiedConversationtKey) => {
+                        //puis on la push dans le tableau du trousseau de clefs
+                        BrunchOfProjectConversationKeys.push({
+                            conversation_id: conversation.conversation_id,
+                            conversationKey: stringifiedConversationtKey,
+                            vector: conversation.vector
+                        })
+                        //si on arrive a la derniere conversation
+                        if (i === project.conversations.length - 1) {
+                            //on passe le tableau en session
+                            Session.set("BrunchOfProjectConversationKeys", BrunchOfProjectConversationKeys)
+                            //et on apelle la fonction de retour
+                            callback()
+                        }
+                    })
+            })
         })
     }
 }

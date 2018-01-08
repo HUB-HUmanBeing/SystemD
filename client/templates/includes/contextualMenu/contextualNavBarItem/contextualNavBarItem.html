@@ -1,14 +1,24 @@
 <template name="contextualNavBarItem">
 
-    <li class="tab col s3 no-padding ">
+    <li class="tab col s3 no-padding relative">
         <a href="{{path}}" class="" style="padding: 0 4px 0 4px !important;">
             <b>
+
                 {{#if isActiveRoute name = routeName}}
-                    <span class="{{color}}-text">{{title}}</span>
+                    <span class="{{color}}-text">{{title}} </span>
                 {{else}}
                     {{title}}
                 {{/if}}
+                {{#if gt notif.value 0}}
+
+                 <span class=" center-align relative tooltipped"
+                      data-position="bottom" data-delay="450"
+                      data-tooltip="{{notif.text}}" >
+                <b class="{{color}}-text">{{onlyZeroToNine notif.value}}</b>
+            </span>
+            {{/if}}
             </b>
         </a>
+
     </li>
 </template>
