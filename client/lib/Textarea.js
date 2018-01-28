@@ -21,6 +21,7 @@ Textarea = {
         inDb: '|§ul|',
         inDbRegex: /\|§ul\|/gi
     }, {
+
         html: '<li>',
         htmlRegex: /<li>/gi,
         inDb: '|li|',
