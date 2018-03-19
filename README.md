@@ -5,8 +5,6 @@ HUmanBeing
 
 ## Voir la vidéo de présentation :
 ## https://www.youtube.com/watch?v=HNxRGuFSfZ0
-==========
-
 
 ## Plate forme web de projets collaboratifs non marchands et de partage à modération horizontale
 
