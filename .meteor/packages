@@ -23,7 +23,6 @@ session@1.1.7
 accounts-password@1.5.0
 audit-argument-checks@1.0.7
 check@1.2.5
-materialize:materialize
 mystor:device-detection
 accounts-base@1.4.0
 mdg:geolocation
@@ -43,3 +42,5 @@ zodiase:check
 xolvio:backdoor
 staringatlights:infinite-scroll
 3stack:presence
+fourseven:scss
+materialize:materialize
