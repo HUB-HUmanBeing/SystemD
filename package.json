@@ -6,12 +6,14 @@
     "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests"
   },
   "dependencies": {
+    "@babel/runtime": "^7.1.2",
     "babel-runtime": "^6.26.0",
     "bcrypt": "^1.0.3",
     "imports": "^1.0.0",
     "medium-editor": "^5.23.2",
     "meteor-node-stubs": "~0.2.4",
-    "sortablejs": "^1.7.0"
+    "sortablejs": "^1.7.0",
+    "fibers": "~1.0.15"
   },
   "devDependencies": {
     "chimp": "^0.50.2"
