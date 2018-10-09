@@ -128,10 +128,9 @@ thinksoftware:image-resize-client@1.0.0
 tracker@1.2.0
 ui@1.0.13
 underscore@1.0.10
-universe:utilities@2.3.3
+universe:utilities@2.0.9
 universe:utilities-blaze@1.5.2
 url@1.2.0
-veganworld:haversine@0.0.1
 webapp@1.7.0
 webapp-hashing@1.0.9
 xolvio:backdoor@0.2.1

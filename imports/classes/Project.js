@@ -192,11 +192,9 @@ const Project = Class.create({
 
             if (this.publicInfo.location && currentUserLocation.lonLat) {
 
-                let distance = new Haversine(
-                    this.publicInfo.location.lonLat[1],
-                    this.publicInfo.location.lonLat[0],
-                    currentUserLocation.lonLat[1],
-                    currentUserLocation.lonLat[0]);
+                let distance = calculateDistance(
+                    this.publicInfo.location.lonLat,
+                    currentUserLocation.lonLat);
 
                 return parseInt(distance.kilometers)
             } else {

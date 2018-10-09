@@ -84,11 +84,9 @@ Template.registerHelper('relativeDistanceFromCoord', function (lonLat) {
     if (Meteor.userId()) {
         const currentUserLocation = Meteor.user().profile.location
         if (lonLat && currentUserLocation.lonLat) {
-            let distance = new Haversine(
-                lonLat[1],
-                lonLat[0],
-                currentUserLocation.lonLat[1],
-                currentUserLocation.lonLat[0]
+            let distance = calculateDistance(
+                lonLat,
+                currentUserLocation.lonLat
             );
             let distanceToShow = parseInt(distance.kilometers)<2? "moins de 2" :parseInt(distance.kilometers)
             relativeDistance = "("+ distanceToShow +"km )"

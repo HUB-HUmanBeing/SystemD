@@ -104,11 +104,9 @@ Meteor.methods({
                 if (Meteor.userId()) {
                     const currentUserLocation = Meteor.user().profile.location
                     if (item.publicInfo.location.lonLat && currentUserLocation.lonLat) {
-                        let distance = new Haversine(
-                            item.publicInfo.location.lonLat[1],
-                            item.publicInfo.location.lonLat[0],
-                            currentUserLocation.lonLat[1],
-                            currentUserLocation.lonLat[0]
+                        let distance = calculateDistance(
+                            item.publicInfo.location.lonLat,
+                            currentUserLocation.lonLat
                         );
                         relativeDistance = parseInt(distance.kilometers)
                     }
@@ -136,11 +134,9 @@ Meteor.methods({
 
                     if (item.profile.location.lonLat && searchOptions.rangeCenter[1]) { //le calcul se fait coté serveur
                         // pour ne pas livrer au client des coordonnées précises d'autres utilisateurs
-                        let distance = new Haversine(
-                            item.profile.location.lonLat[1],
-                            item.profile.location.lonLat[0],
-                            searchOptions.rangeCenter[1],
-                            searchOptions.rangeCenter[0]
+                        let distance = calculateDistance(
+                            item.profile.location.lonLat,
+                            searchOptions.rangeCenter
                         );
                         relativeDistance = parseInt(distance.kilometers)
                     }
@@ -150,11 +146,9 @@ Meteor.methods({
                         const currentUserLocation = Meteor.user().profile.location
                         if (item.profile.location.lonLat && currentUserLocation.lonLat) { //le calcul se fait coté serveur
                             // pour ne pas livrer au client des coordonnées précises d'autres utilisateurs
-                            let distance = new Haversine(
-                                item.profile.location.lonLat[1],
-                                item.profile.location.lonLat[0],
-                                currentUserLocation.lonLat[1],
-                                currentUserLocation.lonLat[0]
+                            let distance = calculateDistance(
+                                item.profile.location.lonLat,
+                                currentUserLocation.lonLat
                             );
                             relativeDistance = parseInt(distance.kilometers)
                         }
@@ -201,11 +195,9 @@ Meteor.methods({
             let relativeDistance
             if (user.profile.location.lonLat && currentUserLocation.lonLat) { //le calcul se fait coté serveur
                 // pour ne pas livrer au client des coordonnées précises d'autres utilisateurs
-                let distance = new Haversine(
-                    user.profile.location.lonLat[1],
-                    user.profile.location.lonLat[0],
-                    currentUserLocation.lonLat[1],
-                    currentUserLocation.lonLat[0]
+                let distance = calculateDistance(
+                    user.profile.location.lonLat,
+                    currentUserLocation.lonLat
                 );
                 relativeDistance = parseInt(distance.kilometers)
             }
@@ -237,11 +229,9 @@ Meteor.methods({
             let relativeDistance
             if (project.publicInfo.location.lonLat && currentUserLocation.lonLat) { //le calcul se fait coté serveur
                 // pour ne pas livrer au client des coordonnées précises d'autres utilisateurs
-                let distance = new Haversine(
-                    project.publicInfo.location.lonLat[1],
-                    project.publicInfo.location.lonLat[0],
-                    currentUserLocation.lonLat[1],
-                    currentUserLocation.lonLat[0]
+                let distance = calculateDistance(
+                    project.publicInfo.location.lonLat,
+                    currentUserLocation.lonLat
                 );
                 relativeDistance = parseInt(distance.kilometers)
             }

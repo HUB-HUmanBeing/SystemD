@@ -8,12 +8,13 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "babel-runtime": "^6.26.0",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^2.0.1",
+    "fibers": "^3.0.0",
     "imports": "^1.0.0",
     "medium-editor": "^5.23.2",
     "meteor-node-stubs": "~0.2.4",
-    "sortablejs": "^1.7.0",
-    "fibers": "~1.0.15"
+    "npm": "^6.4.1",
+    "sortablejs": "^1.7.0"
   },
   "devDependencies": {
     "chimp": "^0.50.2"

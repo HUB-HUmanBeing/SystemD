@@ -204,11 +204,9 @@ const User = Class.create({
 
             if (this.profile.location.lonLat && currentUserLocation.lonLat) {
 
-                let distance = new Haversine(
-                    this.profile.location.lonLat[1],
-                    this.profile.location.lonLat[0],
-                    currentUserLocation.lonLat[1],
-                    currentUserLocation.lonLat[0]
+                let distance = calculateDistance(
+                    this.profile.location.lonLat,
+                    currentUserLocation.lonLat
                 );
                 return parseInt(distance.kilometers)
             } else {
