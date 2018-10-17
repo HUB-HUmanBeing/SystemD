@@ -44,6 +44,6 @@ puis relancer le serveur avec :
 
 Vous pouvez ensuite visionner l'avancement du travail en vous rendant à l'adresse suivante :
         
- `http://localhost:3000/
+ `http://localhost:3000/`
    
    

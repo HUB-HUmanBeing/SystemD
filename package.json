@@ -11,7 +11,7 @@
     "bcrypt": "^2.0.1",
     "fibers": "^3.0.0",
     "imports": "^1.0.0",
-    "medium-editor": "^5.23.2",
+    "medium-editor": "^5.23.3",
     "meteor-node-stubs": "~0.2.4",
     "npm": "^6.4.1",
     "sortablejs": "^1.7.0"
