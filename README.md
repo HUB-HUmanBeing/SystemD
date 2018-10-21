@@ -28,7 +28,9 @@ node :
 
     $ sudo apt-get install nodejs
 
-meteor : https://www.meteor.com/install
+meteor : 
+
+    $curl https://install.meteor.com/ | sh
  
 ## 3. Lancer le serveur interne de Meteor (Ubuntu)
 pour uploader les paquets et lancer le serveur, utiliser la commande
@@ -47,6 +49,6 @@ enfin, lancez le serveur de dev avec :
 
 Vous pouvez ensuite visionner l'avancement du travail en vous rendant à l'adresse suivante :
         
- `http://localhost:3000/`
+ http://localhost:3000/
    
    
