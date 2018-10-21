@@ -23,23 +23,26 @@ Vous avez deux solutions pour le faire :
 1. Via Git, en clonant ce dépôt ;
 2. Via le téléchargement du code source en une archive ZIP.
 
-## 2. Installation de MeteorJS
-   https://www.meteor.com/install
+## 2. Installation de MeteorJS et de node js (Ubuntu)
+node :  
+
+    $ sudo apt-get install nodejs
+
+meteor : https://www.meteor.com/install
+ 
+## 3. Lancer le serveur interne de Meteor (Ubuntu)
+pour uploader les paquets et lancer le serveur, utiliser la commande
    
-## 3. Lancer le serveur interne de Meteor
-   utiliser la commande
+    $ meteor npm install
+
+si ca bug, lancer :
+
+    $ sudo apt-get install g++ build-essential`
+   
+enfin, lancez le serveur de dev avec :
    
     $ meteor
     
-à la racine du projet, elle se chargera d'installer les dépendances et de lancer un serveur interne
-s'il y a une erreur, installer le paquet manquant à l'aide de la ligne de commande  :
-
-   meteor npm install --save medium-editor sortablejs
-
-    
-puis relancer le serveur avec :
-
-    $ meteor
 ## 4. C'est prêt !
 
 Vous pouvez ensuite visionner l'avancement du travail en vous rendant à l'adresse suivante :
