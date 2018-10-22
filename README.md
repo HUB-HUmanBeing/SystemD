@@ -13,7 +13,7 @@ Jusqu'ici, les projets collaboratifs ainsi que les pratiques de partages et de g
 plus d'info sur : http://hub-humanbeing.com/
 
 Pour un premier apercu :
-# https://hub-humanbeing.herokuapp.com
+# https://humanbeing.meteorapp.com/
 
 
 # Installation
