@@ -1,0 +1,35 @@
+<template name="showcaseTitle">
+    <div class="row no-margin">
+        <div class="row no-margin">
+            <img class="no-margin" style="width: 100%; height: auto" src="images/aquarelle-hub.jpg" >
+        </div>
+        <div class="row orange no-margin">
+            <h5 class="center-align grey-text text-darken-4 no-margin" style="padding: 30px;">Donnons des ailes aux projets alternatifs non-marchands</h5>
+            <div class="row no-margin center-align">
+
+                {{#each aim in aimsArray}}
+
+                        <div class="col s4">
+                            <div class="icon-block center-align" style="text-align: center; width: 100%">
+
+                                    <img class="center center-align" src="{{aim.imgUrl}}"/>
+                                <h4 class="  center-align grey-text text-darken-4" >
+                                    {{aim.title}}
+                                </h4>
+                                <p class="  center-align grey-text text-darken-4" >
+                                    {{aim.text}}
+                                </p>
+                            </div>
+                        </div>
+
+
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</template>
