@@ -8,8 +8,13 @@ Template.menu.helpers({
 Template.menu.events({
     //gestion du bouton logout
     'click [logout]': function () {
-        Accounts.logout();
-        Router.go("home")
+        Object.keys(Session.keys).forEach(function(key){ Session.set(key, undefined); })
+        Session.keys = {}
+        Accounts.logout(()=>{
+            Router.go("home")
+            // window.location.reload()
+        });
+
     },
     'click [newProject]': function () {
         $('.new-project-modal').modal();
