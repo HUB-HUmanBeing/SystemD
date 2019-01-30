@@ -1,7 +1,1 @@
 node_modules/
-# file: ~/.gitignore_global
-.DS_Store
-.idea/
-.idea/workspace.xmls
-settings.json
-.idea/tasks.xml.idea
