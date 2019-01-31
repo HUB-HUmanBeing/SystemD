@@ -1,0 +1,18 @@
+#search-btn{
+    width: 25px;
+    height: 25px;
+}
+
+#static-group{
+    position: fixed ;
+    top:5px;
+    left: 5px;
+    z-index: 500 !important;
+}
+
+#slide-out{
+    z-index: 1000 !important;
+}
+.margintop{
+    margin: 0!important;
+}

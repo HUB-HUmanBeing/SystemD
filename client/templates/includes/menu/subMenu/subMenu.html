@@ -1,0 +1,28 @@
+<template name="subMenu">
+    <ul class=" sub-menu col s12 small-padding">
+        {{#each subMenuItem in subMenu}}
+            <li class="small-margin hover-{{color}}">
+                <a href="{{#if subMenuItem.pathData}}
+                            {{pathFor subMenuItem.path data= subMenuItem.pathData }}
+                        {{else}}
+                            {{pathFor subMenuItem.path}}
+                        {{/if}}"
+                   class="valign-wrapper truncate"  {{subMenuItem.id}}>
+                   <span class="valign-wrapper">
+
+                        <i class="material-icons tiny {{color}}-text" style="margin-right: 3px">
+                            {{#if subMenuItem.icon}}
+                                {{subMenuItem.icon}}
+                        {{else}}
+                        arrow_right
+                    {{/if}}
+                        </i>
+
+                       {{subMenuItem.name}}</span>
+                </a>
+
+
+            </li>
+        {{/each}}
+    </ul>
+</template>

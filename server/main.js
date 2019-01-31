@@ -1,4 +1,9 @@
-// Server entry point, imports all server code
+import { Meteor } from 'meteor/meteor';
 
-import '/imports/startup/server';
-import '/imports/startup/both';
+//pour que les meteor methds décrites dans les classes marchent, il faut penser a inclure les classes utilisées ici
+import { Class } from 'meteor/jagi:astronomy';
+Meteor.startup(() => {
+  if(Meteor.isDevelopment){
+      Accounts.removeDefaultRateLimit();
+  }
+});

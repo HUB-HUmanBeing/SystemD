@@ -19,7 +19,19 @@ shell-server@0.4.0            # Server-side component of the `meteor shell` comm
 
 kadira:flow-router      # FlowRouter is a very simple router for Meteor
 kadira:blaze-layout     # Layout manager for blaze (works well with FlowRouter)
-less@2.8.0                    # Leaner CSS language
 
 meteortesting:mocha               # A package for writing and running your meteor app and package tests with mocha
 johanbrook:publication-collector  # Test a Meteor publication by collecting its output
+
+babrahams:constellation
+accounts-password
+fourseven:scss
+session
+check
+jquery
+accounts-base
+universe:utilities-blaze
+jagi:astronomy
+mystor:device-detection
+materialize:materialize
+ostrio:templatehelpers

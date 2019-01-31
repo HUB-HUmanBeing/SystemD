@@ -1,0 +1,28 @@
+<template name="layout">
+    {{#if compare isDesktop '!&' currentUserId  }}
+        {{> slideMenu}}
+    {{/if}}
+
+    <div class="main-container meteor grey darken-4">
+        <div id="topPage"></div>
+        <main class="">
+            {{#if compare isDesktop '&&' currentUserId }}
+                <div class="menu-container no-margin dark-grey scrollbar ">
+                    {{>menu}}
+                    <img src="/images/icon/licence.png" alt="" class="absolute" style="bottom: 0; left: 0; z-index: 700">
+                </div>
+            {{/if}}
+
+            <div class=" yield-content {{#if isDesktop }} yield-content-desktop {{/if}} ">
+                <div class="row">
+                    <div class="col s12 no-padding flex">
+                        <div class="flex-auto">
+                            {{> Template.dynamic template=main}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</template>
