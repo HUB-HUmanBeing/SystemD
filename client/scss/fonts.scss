@@ -43,12 +43,40 @@
     src: $src;
   }
 }
-@include font-face(ShortStack, '/fonts/ShortStack-Regular');
+@include font-face(Rough, '/fonts/WC_RoughTrad');
 @include font-face(Questrial, '/fonts/Questrial-Regular');
 body{
   font-family: 'Questrial', sans-serif;
 }
 
 .hand-police{
-  font-family: 'Short Stack', cursive;
+  font-family: 'Rough', cursive;
+}
+
+
+@include font-face('Material Icons', '/iconfont/MaterialIcons-Regular')
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }

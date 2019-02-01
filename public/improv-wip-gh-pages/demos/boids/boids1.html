@@ -1,0 +1,60 @@
+<!doctype>
+<html>
+<head>
+	<title>boids!</title>
+	<link rel="stylesheet" type="text/css" href="../../dist/improv-default.css">
+	<link rel="stylesheet" type="text/css" href="boids.css">
+	<style> #instructions{ width:260px; min-height:0; } </style>
+</head>
+<body>
+
+<svg id="model"></svg>
+
+<div id="instructions">
+A "boid" is like a bird, but worse.
+Let's make a flock of {NUMBER count: min=0,max=100} boids,
+and paint 'em all {CHOOSE color: black, red, blue, random colors}!
+</div>
+
+</body>
+</html>
+
+<!-- IMPROV.JS -->
+<script src="../../dist/improv.js"></script>
+<script src="../../dist/improv-widgets.js"></script>
+
+<!-- Boid Stuff -->
+<script src="snap.svg-min.js"></script>
+<script src="mouse.js"></script>
+<script src="scroll.js"></script>
+<script src="boids.js"></script>
+<script src="boids-improv.js"></script>
+
+<!-- Test -->
+<script>
+
+// This model's data!
+var Sim = {
+	model: {
+		"count":50,
+		"color":"black",
+
+		// the behavior of the boids
+		// don't worry about this line, it's just a data dump
+		"actions":[{"type":"move","amount":5},{"type":"steer","direction":"t","target":"f","turn":5},{"type":"if_close","radius":20,"target":"b","actions":[{"type":"steer","direction":"a","target":"c","turn":10}]},{"type":"if_close","radius":100,"target":"m","actions":[{"type":"steer","direction":"a","target":"m","turn":10}]}]
+
+	}
+};
+
+// How to respond to Sim.model being edited
+Improv.listen(Sim.model,"count",function(value){
+	init(); // re-initialize whole model
+});
+Improv.listen(Sim.model,"color",function(value){
+	updateColors(); // update every boid's color
+});
+
+// Let's edit Sim.model!
+Improv.edit(Sim.model,"#instructions");
+
+</script>

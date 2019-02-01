@@ -1,0 +1,80 @@
+<!doctype>
+<html>
+<head>
+	<title>boids!</title>
+	<link rel="stylesheet" type="text/css" href="../../dist/improv-default.css">
+	<link rel="stylesheet" type="text/css" href="boids.css">
+</head>
+<body>
+
+<svg id="model"></svg>
+
+<div id="instructions" style="display : none">
+<h3>Program your own flock</h3>
+Let's make a flock of {NUMBER count: min=0,max=100} boids,
+and paint 'em all {CHOOSE color: black, red, blue, random colors}!
+
+Also, every "tick", each boid does this:
+{ACTIONS actions}
+</div>
+
+</body>
+</html>
+
+<!-- Core Code -->
+<script src="../../dist/improv.js"></script>
+<script src="../../dist/improv-widgets.js"></script>
+
+<!-- Boid Stuff -->
+<script src="snap.svg-min.js"></script>
+<script src="mouse.js"></script>
+<script src="scroll.js"></script>
+<script src="boids.js"></script>
+<script src="boids-improv.js"></script>
+
+<!-- Test -->
+<script>
+
+// This model's data!
+var Sim = {
+	model: {
+		"count": parseInt(window.innerWidth /12)>150 ? 150 :parseInt(window.innerWidth /12),
+		"color":"black",
+
+		// the behavior of the boids
+		// don't worry about this line, it's just a data dump
+		"actions":[
+		    {"type":"move","amount":5},
+            {"type":"steer","direction":"t","target":"m","turn":2},
+            {"type":"if_close","radius":128,"target":"m","actions":
+                        [
+                            {"type":"steer","direction":"a","target":"f","turn":5}
+                        ]
+            },
+            {"type":"if_close","radius":50,"target":"b","actions":
+                        [
+                            {"type":"steer","direction":"a","target":"f","turn":1}
+                        ]
+            }
+            ,
+            {"type":"if_close","radius":200,"target":"b","actions":
+                        [
+                            {"type":"steer","direction":"t","target":"f","turn":0.5}
+                        ]
+            }
+        ]
+	}
+};
+
+// How to respond to Sim.model being edited
+Improv.listen(Sim.model,"count",function(value){
+	init(); // re-initialize whole model
+});
+Improv.listen(Sim.model,"color",function(value){
+	updateColors(); // update every boid's color
+});
+
+// Let's edit Sim.model!
+Improv.edit(Sim.model,"#instructions");
+
+</script>

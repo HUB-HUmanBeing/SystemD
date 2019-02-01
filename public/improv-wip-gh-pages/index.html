@@ -1,0 +1,124 @@
+<!doctype>
+<html>
+<head>
+	
+	<!-- Meta -->
+	<title>Improv.js</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<!--link rel="icon" type="image/png" href="/favicon.png"-->
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="styles/index.css">
+
+</head>
+<body>
+<div id="content">
+
+<h1 style="margin-bottom:0px">Improv.js <span style="font-weight:100; font-size:0.8em">[WIP]<span></h1>
+<p>a tool to make tools to make <a href="http://explorableexplanations.com/">explorable explanations</a></p>
+
+<hr/>
+
+<p>Let's say you have a model of a complex system.
+And you want others to be able to play around with it, explore the system, change its rules, maybe even create their <em>own</em> models with it! Well, that's an incredibly specific goal to have, but hey, you're in luck.</p>
+
+<p><strong>Improv</strong> lets you write words normally like this...</p>
+
+<pre><code>A "boid" is like a bird, but worse.
+Let's make a flock of {NUMBER count: min=0,max=100} boids,
+and paint 'em all {CHOOSE color: black, red, blue, random colors}!
+</code></pre>
+
+<p>...which will get you something like this:</p>
+
+<iframe src="demos/boids/boids1.html" class="feature" width="960" height="320">
+</iframe>
+
+<p>But wait, there's more!
+Besides sliding numbers and selecting from dropdowns,
+Improv also has the ability to let your readers "re-program" the system itself, without having to touch the messy code itself, without fear of breaking everything.</p>
+
+<p>Here's how. Again, you start with regular writing:</p>
+
+<pre><code>Let's make a flock of {NUMBER count: min=0,max=100} boids,
+and paint 'em all {CHOOSE color: black, red, blue, random colors}!
+
+Also, every "tick", each boid does this:
+{ACTIONS actions}
+</code></pre>
+
+<p>Notice the <code>{ACTIONS actions}</code> at the end. That's where your reader will get to live-edit the behavior of the system! Somewhere else, you have to define what "actions" an object in your system can do, and what parameters can be changed. Like so:</p>
+
+<pre><code>Improv.actions.move = {
+    short: "Move forward...",
+    editor: "Move forward by {NUMBER amount: min=0,max=50} pixels",
+    act: function(boid,options){
+        // code to make the boid move by [options.amount] pixels
+    }
+};
+</code></pre>
+
+<p>Here's another one:</p>
+
+<pre><code>Improv.actions.if_close = {
+    short: "If close to...",
+    editor: "If I'm within {NUMBER radius: min=0,max=500} pixels of "+
+             "{CHOOSE target: the mouse, another boid}, then..."+
+             "{ACTIONS actions}",
+    act: function(boid,options){
+        // code using options.radius, options.target &amp; options.actions
+    }
+};
+</code></pre>
+
+<p>Notice <code>{ACTIONS actions}</code> is there <em>again.</em>
+This lets your reader make sub-actions for that action! Like my mama always said, recursion is its own reward.
+Finally, all that will give you something like this:</p>
+
+<iframe src="demos/boids/boids2.html" class="feature" width="960" height="640">
+</iframe>
+
+<p>Now you can make all kinds of flocks! But while boids are cool, <del>they aren't very useful.</del> (actually, <a href="https://en.wikipedia.org/wiki/Boids">boids</a> are often used in game AI, movie CGI, and swarm robotics. If I extended this demo a bit more, maybe I could create a pretty useful, designer-friendly boid "scripting" tool???)</p>
+
+<p>Luckily, because Improv is <em>independent</em> of the kind of model you give it, both authors and readers can use Improv to live-edit all kinds of things! Such as:</p>
+
+<ul>
+<li><strong>Simulation:</strong> agent-based models, cellular automata, complex networks, markov chains, stocks and flows, mathematical models</li>
+<li><strong>Journalism:</strong> interactive data visualizations</li>
+<li><strong>Education:</strong> learning about systems, learning programming (as a way of thinking, not rote-memorizing syntax)</li>
+<li><strong>Misc Cool Stuff:</strong> design tools for videogames, procedural art</li>
+</ul>
+
+<p>Whatever it is, I'm excited to see what <em>you</em> can make with Improv. This tool, that makes tools, that make explorable explanations... that can make us into more active learners, more critical thinkers, better citizens of our shared world.</p>
+
+<hr />
+
+<a class="button" href="https://github.com/ncase/improv-wip/archive/gh-pages.zip">
+<div>Download Improv.js</div>
+</a>
+
+<br>
+
+<p><strong>An Even Simpler Demo:</strong> <a href="https://github.com/ncase/improv-wip/blob/gh-pages/demos/basic/basic.html#L1">42 lines of code</a> &rarr; <a href="http://ncase.me/improv-wip/demos/basic/basic.html">The Stretchy Crayon Box</a></p>
+
+<p><strong>How To Use Improv.js:</strong> <a href="https://github.com/ncase/improv-wip/blob/gh-pages/HowToUse.md">WIP Documentation</a></p>
+
+<hr />
+
+<h2>TO DO:</h2>
+
+<ul>
+<li><strong>Actually make tools with this.</strong>  <br/>
+I mean, that's the whole reason I made this, because it was getting tedious re-implementing the same "live editing" features over and over again. (I'm personally interested in using Improv to make a tool to simulate complex networks &amp; agent-based models)</li>
+<li><strong>Support for variables &amp; objects.</strong> <br/>
+Once Improv can do variables, <em>then</em> it'll have real power. I'm thinking specifically of Complex Adaptive Systems – CAS need agents with varying properties, hence, it needs variables.</li>
+<li><strong>More Widgets.</strong>  <br/>
+Right now, the only "Widgets" are NUMBER, CHOOSE, and ACTIONS. It could use more. What about free-form text? What about graphical widgets, like a bell-curve-manipulator to choose your own probability distribution? Or what about <em>output</em> widgets, like graphs to show the state of the system?</li>
+</ul>
+
+</body>
+
+</div>
+</body>
+</html>

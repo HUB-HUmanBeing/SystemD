@@ -1,0 +1,42 @@
+<!doctype>
+<html>
+<head>
+	<title>the most basic</title>
+	<link rel="stylesheet" type="text/css" href="../../dist/improv-default.css">
+</head>
+<body>
+	<div id="box"></div>
+	<div id="editor">
+	Let's make our box
+	{NUMBER width: min=1,max=500} pixels wide,
+	{NUMBER height: min=1,max=500} pixels tall,
+	and let's color it
+	{CHOOSE color: red, orange, yellow, green, blue, purple, black}
+	</div>
+</body>
+</html>
+
+<!-- IMPROV.JS -->
+<script src="../../dist/improv.js"></script>
+<script src="../../dist/improv-widgets.js"></script>
+<script>
+
+// The data!
+var data = { width:50, height:50, color:"red" };
+
+// Render box
+var box = document.getElementById("box");
+function renderBox(){
+	box.style.width = data.width;
+	box.style.height = data.height;
+	box.style.background = data.color;
+}
+renderBox();
+
+// How to respond to box_data being edited - just re-render it
+Improv.listen(data,renderBox);
+
+// Let's edit that data!
+Improv.edit(data,"#editor");
+
+</script>

@@ -1,0 +1,64 @@
+@import "{}/client/scss/variables.scss";
+
+
+#landingTitle {
+  background: linear-gradient(45deg, $main-bg 0%, $contrasted-bg 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefefd+0,aebf76+100 */
+  .bg-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    img{
+
+      height: auto;
+      padding: 50px 50px 50px 50px;
+      max-width: 80%;
+      width: calc(100vh - 64px);
+      position: absolute;
+      right: 0;
+      bottom:0;
+    }
+  }
+  .btn-large{
+    border: 2px solid $focus-color;
+    font-size: 120%;
+    position: absolute;
+    bottom: -75px;
+    left: -5px;
+    background-color: transparent;
+  }
+  .btn-large:focus, .btn-large:hover{
+    background-color: $contrasted-bg !important;
+  }
+  .titleContainer{
+    position: absolute;
+    width: 600px;
+    max-width: calc(100vh - 60px);
+    z-index: 4;
+    margin: 7vh 30px 150px 5vw;
+    h1{
+      font-size: 10vh ;
+    }
+    .subtitleContainer{
+      transition: left 0.5s ease-in-out ;
+      position:relative;
+      left:0;
+      max-width: calc(100vw - 40px);
+      padding-left: 15px;
+      border-left: 5px solid $focus-color;
+      h3{
+        font-weight: lighter;
+      }
+    }
+  }
+  .titleContainer:hover {
+    .subtitleContainer{
+      opacity: 1;
+      left: 10px !important;
+    }
+  }
+
+}

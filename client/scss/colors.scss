@@ -1,39 +1,36 @@
-element{
-  --main-bg: #263238;
-  --contrasted-bg: #1E272C;
-  --light-bg : #2E3C43 ;
-  --lighter-bg: #314549;
-  --main-color: #C3CEE3;
-  --plus-color: #ffffff;
-  --focus-color: #E79627;
-  --minus-color: #AFB1B3;
-  --info-color: #7A8387;
-}
+@import "variables.scss";
+
 .main-bg{
-  background-color: var(--main-bg);
+  background-color: $main-bg;
 }
 .contrasted-bg{
-  background-color: var(--contrasted-bg);
+  background-color: $contrasted-bg;
 }
 .light-bg{
-  background-color: var(--light-bg) ;
+  background-color: $light-bg ;
 }
 .lighter-bg{
-  background-color:var(--lighter-bg);
+  background-color:$lighter-bg;
+}
+.focus-bg{
+  color: $focus-color;
 }
 
 .main-color, .main-color *{
- color: var(--main-color);
+ color: $main-color;
 }
 .plus-color, .plus-color *{
- color: var(--plus-color);
+ color: $plus-color;
 }
 .focus-color, .focus-color *{
-  color: var(--focus-color);
+  color: $focus-color;
 }
 .minus-color, .minus-color *{
-color: var(--minus-color);
+color: $minus-color;
 }
 .info-color, .info-color *{
- color: var(--info-color);
+ color: $info-color;
+}
+.contrasted-color{
+  background-color: $contrasted-bg;
 }

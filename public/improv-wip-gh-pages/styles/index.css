@@ -1,0 +1,70 @@
+body{
+	margin:0;
+
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: 100;
+	font-size: 20px;
+	line-height: 1.4em;
+
+    overflow-x: hidden; /* HACK */
+
+	background: #fff;
+    
+}
+
+#content{
+	width:640px;
+	margin: 80px auto;
+	text-align: justify;
+}
+
+.feature{
+    width: 960px;
+    position: relative;
+    left: -160px;
+}
+
+iframe.feature{
+    border:1px solid #ddd;
+    margin: 20px 0;
+}
+
+pre{
+	background: #333;
+    color: #fff;
+    padding: 15px;
+    font-size: 14px;
+    width: 610px;
+    border-radius: 10px;
+    line-height: 1.3em;
+}
+
+hr{
+	border:none;
+	border-bottom: 3px dashed #ddd;
+}
+
+.button{
+	text-decoration: none;
+}
+.button > div{
+	margin-top: 20px;
+    padding: 15px 25px;
+    color: #ddd;
+    background: #444;
+    border-radius: 10px;
+    font-size: 30px;
+    display: inline-block;
+    position: relative;
+    top:0px;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+
+}
+.button:hover > div{
+	background: #666;
+	top:-3px;
+}

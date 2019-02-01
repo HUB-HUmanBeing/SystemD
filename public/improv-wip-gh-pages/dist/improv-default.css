@@ -1,0 +1,69 @@
+/* Scrubbing Numbers */
+.improv_scrub{
+	font-weight: bold;
+	border-bottom: 1px dashed #000;
+	cursor: col-resize;
+}
+
+/* Lists, yo. */
+.improv_list{
+	margin: 0;
+	padding-left: 40px;
+	position: relative;
+	margin-top: 1.5em;
+}
+.improv_list li{
+	margin-bottom: 10px;
+	position: relative;
+}
+
+/* Lists inside yo lists, yo. */
+.improv_list ol{ margin-top: 0; }
+.improv_list ol{ list-style-type: lower-alpha; }
+.improv_list ol ol{ list-style-type: lower-roman; }
+
+/* The "+new" button actually has a hidden <select> thing */
+.improv_list_new{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left:20px;
+	position: relative;
+	height: 25px;
+}
+.improv_list_new > div{
+	position: absolute;
+	width: 50px;
+	height: 20px;
+	font-size: 16px;
+	border: 1px solid #bbb;
+	border-radius: 10px;
+	text-align: center;
+	color: #aaa;
+	line-height: 20px;
+}
+.improv_list_new > select{
+	width: 52px;
+	font-size: 500px;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+
+/* The delete button */
+.improv_delete_button{
+	
+	position: absolute;
+    left: -50px;
+    top: 4px;
+
+	width: 1.2em;
+    height: 1em;
+    line-height: 1em;
+    text-align: center;
+
+	color:#bbb;
+	cursor: pointer;
+
+}
+

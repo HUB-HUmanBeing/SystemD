@@ -1,9 +1,49 @@
-.landing-page{
-  .landingHead{
+@import "{}/client/scss/variables.scss";
 
+.landingHead{
+  nav{
+    height: 64px;
+    ul{
+      a:hover{
+        color: $focus-color;
+      }
+    }
   }
-  .landing-section{
-      min-height: 100vh;
-    border-bottom: 5px solid red;
+  .brand-logo{
+    margin: 0 20px;
+    img{
+      width:64px;
+      height:64px;
+      padding:5px;
+    }
   }
 }
+.landing-page{
+  .landing-section{
+    position: relative;
+    min-height: calc(100vh );
+    .nextSlideBtn{
+      position: absolute;
+      bottom: 40px;
+      width : 60px;
+      height:60px;
+      border-radius:50%;
+      right: 40px;
+      background-color: $light-bg;
+      opacity: 0.5;
+      .material-icons{
+        position: relative;
+        left:0px;
+        top: 0px;
+
+      }
+    }
+    .nextSlideBtn:hover{
+      opacity: 0.9;
+    }
+  }
+
+
+}
+
+

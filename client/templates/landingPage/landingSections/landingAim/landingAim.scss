@@ -1,0 +1,35 @@
+@import "{}/client/scss/variables.scss";
+
+
+#landingAim{
+  background-color: $contrasted-bg;
+  .container{
+
+    padding-top: 64px;
+  }
+  .ways{
+    padding-left: 20px;
+  }
+  .collapsible-header{
+    border-bottom: 2px solid $focus-color;
+    background-color: $main-bg !important;
+    .logoContainer{
+      position: relative
+    }
+    img{
+background-color: $contrasted-bg;
+      position: absolute; left: -35px;
+      height: 40px !important;
+      width: 40px !important;
+      border-radius: 50%;
+      border: 2px solid $focus-color;
+    }
+    h5{
+      font-size: 1.3em;
+      padding-left: 15px;
+    }
+  }
+.collapsible-body{
+  border-bottom: none;
+}
+}
