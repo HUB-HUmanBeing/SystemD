@@ -9,7 +9,7 @@ Jusqu'ici, les projets collaboratifs ainsi que les pratiques de partages et de g
 
 
 Pour un premier apercu :
-## https://humanbeing.meteorapp.com/
+## http://systemd.meteorapp.com/
 
 
 # Installation
