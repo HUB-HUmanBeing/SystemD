@@ -1,4 +1,3 @@
-git![](http://img15.hostingpics.net/pics/421242aquarelleHUBV1.gif)
 
 SystemD
 ==========
@@ -10,7 +9,7 @@ Jusqu'ici, les projets collaboratifs ainsi que les pratiques de partages et de g
 
 
 Pour un premier apercu :
-## https://humanbeing.meteorapp.com/
+## http://systemd.meteorapp.com/
 
 
 # Installation
