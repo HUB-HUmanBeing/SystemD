@@ -1,20 +1,20 @@
 <template name="landingPage">
     {{>landingHead}}
-
-    <div class="landing-page main-bg">
-        <div id="landingTitle" class="landing-section">
+    {{>birdsBg}}
+    <div class="landing-page main-bg" style="margin-top: -64px;">
+        <div id="landingTitle" class="landing-section gradiant">
             {{>landingTitle}}
         </div>
         <div id="landingAim" class="landing-section">
             {{>landingAim}}
         </div>
-        <div id="landingPlus" class="landing-section">
+        <div id="landingPlus" class="landing-section gradiant bird-background">
             {{>landingPlus}}
         </div>
-        <div id="landingTools" class="landing-section">
+        <div id="landingTools" class="landing-section contrasted-bg">
             {{>landingTools}}
         </div>
-        <div id="landingRoadmap" class="landing-section">
+        <div id="landingRoadmap" class="landing-section bird-background">
             {{>landingRoadmap}}
         </div>
     </div>

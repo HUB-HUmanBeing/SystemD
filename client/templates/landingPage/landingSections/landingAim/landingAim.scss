@@ -3,30 +3,42 @@
 
 #landingAim{
   background-color: $contrasted-bg;
+  .card{
+    margin-bottom: 50px;
+  }
+  .card-content p, .collapsible li{
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
   .container{
 
-    padding-top: 64px;
+    padding: calc(50vh - 300px) 0;
   }
   .ways{
-    padding-left: 20px;
+    padding-left: 30px;
+    h6{
+        font-size: 1.4em;
+      margin-bottom: 30px;
+    }
   }
+
   .collapsible-header{
-    border-bottom: 2px solid $focus-color;
+    border-bottom: 1px solid $focus-color;
     background-color: $main-bg !important;
     .logoContainer{
       position: relative
     }
     img{
 background-color: $contrasted-bg;
-      position: absolute; left: -35px;
-      height: 40px !important;
-      width: 40px !important;
+      position: absolute; left: -45px;
+      height: 60px !important;
+      width: 60px !important;
       border-radius: 50%;
       border: 2px solid $focus-color;
     }
     h5{
       font-size: 1.3em;
-      padding-left: 15px;
+      padding-left: 25px;
     }
   }
 .collapsible-body{

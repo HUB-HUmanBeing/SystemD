@@ -1,3 +1,6 @@
+@import "{}/client/scss/variables.scss";
+
+// POSITIONNEMENT
 .no-margin{
   margin: 0 !important;
 }
@@ -15,10 +18,34 @@
   padding-left: 7px !important;
   padding-right: 7px !important;
 }
+.full-height{
 
+  height: 100% !important;
+}
 .flex{
   display: flex !important;
 }
 .flex-auto{
   flex: auto !important;
+}
+.relative{
+  position: relative;
+}
+.absolute{
+  position: absolute;
+}
+//Backgrounds et textures
+.gradiant{
+  background: linear-gradient(45deg, $main-bg 0%, $contrasted-bg 100%);
+}
+.shadow{
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+
+}
+.bird-background{
+  background-image: url("images/trame/empty_birds_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }

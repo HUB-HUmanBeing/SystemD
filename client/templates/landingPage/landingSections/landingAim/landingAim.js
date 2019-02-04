@@ -12,6 +12,15 @@ Template.landingAim.onCreated(function () {
 
 Template.landingAim.onRendered(function () {
     $('.collapsible').collapsible();
+    let options = [
+        {selector: '.collapsible li', offset: 300, callback: (el)=> {
+                $('.collapsible li').css('opacity', 1)
+            } },
+        {selector: '.card-content p', offset: 100, callback: function() {
+                $('.card-content p').css('opacity', 1)
+            } },
+    ];
+    Materialize.scrollFire(options);
 });
 
 Template.landingAim.onDestroyed(function () {

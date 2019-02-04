@@ -1,12 +1,14 @@
 <template name="landingTitle">
-    {{>birdsBg}}
+
     <div class="bg-logo">
         <img src="/images/icon/systemd-biglogo-grey.png" alt="" >
     </div>
+    {{#if isDesktop}}
     <a href="#landingAim" class="nextSlideBtn waves-effect waves-light info-color">
         <i class="material-icons medium">
             arrow_downward</i>
     </a>
+        {{/if}}
 
     <div class="titleContainer main-color">
         <h1 class="hand-police ">
@@ -15,9 +17,9 @@
         <div class="subtitleContainer">
             <h3 class=" flow-text focus-color">Plateforme chiffrée de projets collaboratifs non-marchands</h3>
             <p>Crééz des projets, invitez vos amis, et profitez ensemble des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif</p>
-            {{#unless currentUserId}}
-            <a href="" class="center-align waves-effect waves-light btn-large focus-color "><i class=" material-icons left">account_circle</i>Rejoindre</a>
-            {{/unless}}
+            <!--{{#unless currentUserId}}-->
+            <!--<a href="" class="center-align waves-effect waves-light btn-large focus-color "><i class=" material-icons left">account_circle</i>Rejoindre</a>-->
+            <!--{{/unless}}-->
         </div>
       </div>
 

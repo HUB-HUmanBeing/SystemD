@@ -1,0 +1,48 @@
+<template name="landingTools">
+<div class="container">
+
+
+    <div class="row main-color ">
+        <div class="col m7 tools">
+            <div class="row" >
+                <div class="col s6">
+                    <h6 class="valign-wrapper"><i class="material-icons">view_comfy</i>AGENDA PARTAGÉ</h6>
+                    <p>Pour vous permettre de planifier avec votre collectif les prochains évènements de votre projet.</p>
+                </div>
+                <div class="col s6">
+                    <h6 class="valign-wrapper"><i class="material-icons">format_list_bulleted</i>LISTES DE TACHES</h6>
+                    <p>Pour pouvoir voir d'un coup d'oeuil l'avancement du travail, et inviter les participants à s'inscrire de manière active.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <h6 class=" valign-wrapper"><i class="material-icons">chat</i>FORUM DE DISCUSSIONS</h6>
+                    <p>Communiquer ensemble, par thématiques ou de manière générale afin de pouvoir faire circuler l'information de manière efficace.</p>
+                </div>
+                <div class="col s6">
+                    <h6 class=" valign-wrapper"><i class="material-icons">extension</i>DES OUTILS MODULAIRES</h6>
+                    <p>Cartes interactives, planning méthode agile, et d'autres outils développés peu à peu viendront completer vos projets de manière modulaire.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col m5">
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/trame/bird_detail.png">
+                </div>
+                <div class="card-content main-bg main-color ">
+                    <h5 class="hand-police main-color center-align">DES OUTILS SIMPLES ET SÉCURISÉS</h5>
+                    <p>Des outils d'organisations ergonomiques pour une prise en main rapide, et dont les contenus sont entièrement chiffrés pour une confidentialité optimale</p>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {{#if isDesktop}}
+        <a href="#landingRoadmap" class="nextSlideBtn waves-effect waves-light info-color">
+            <i class="material-icons medium">
+                arrow_downward</i>
+        </a>
+    {{/if}}
+</template>

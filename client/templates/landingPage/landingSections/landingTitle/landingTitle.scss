@@ -2,7 +2,7 @@
 
 
 #landingTitle {
-  background: linear-gradient(45deg, $main-bg 0%, $contrasted-bg 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefefd+0,aebf76+100 */
   .bg-logo {
     position: absolute;
@@ -38,7 +38,7 @@
     width: 600px;
     max-width: calc(100vh - 60px);
     z-index: 4;
-    margin: 7vh 30px 150px 5vw;
+    margin: 21vh 30px 122px 5vw;
     h1{
       font-size: 10vh ;
     }

@@ -1,54 +1,60 @@
 <template name="landingAim">
 <div class="container">
-    <div class="row section">
+    <div class="row no-margin">
         <div class="col m6">
             <div class="card">
                 <div class="card-image">
                     <img src="images/fond bulles.jpg">
                     <span class="card-title hand-police focus-color">NOTRE OBJECTIF :</span>
                 </div>
-                <div class="card-content main-bg main-color">
-                    <p>Favoriser le non-marchand et le collaboratif afin qu'ils puissent se dévelloper grace aux outils du numériques en réseau</p>
-                    <p>Créer un outil qui accompagne la transition d'une société de l'argent en faillite à un mode de production basé sur la collaboration et le partage</p>
+                <div class="card-content main-bg main-color ">
+                    <p>Favoriser le non-marchand et le collaboratif afin qu'ils puissent se dévelloper grace aux outils du numériques en réseau.</p>
+                    <p>Créer un outil qui accompagne la transition d'une société de l'argent en faillite à un mode de production basé sur la collaboration et le partage.</p>
                 </div>
             </div>
         </div>
         <div class="col m6 ways">
-            <h6 class="center-align main-color">3 PHASES DE DEVELOPEMENT</h6>
+            <h6 class="center-align main-color">TROIS PHASES DE DEVELOPEMENT</h6>
             <ul class="collapsible popout contrasted-bg" data-collapsible="accordion">
                 <li class="contrasted-bg">
                     <div class="collapsible-header active ">
                         <div class="valign-wrapper logoContainer">
-                            <img src="images/categories/construction.png" alt="" class="">
+                            <img src="images/categories/construction.png" alt="" class="shadow">
                         </div>
 
                         <h5 class="main-color valign-wrapper">Créer un outil de gestion de projet ouvert à tous</h5>
                     </div>
-                    <div class="collapsible-body main-color"><span>Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet</span></div>
+                    <div class="collapsible-body main-color gradiant"><span>Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet.</span></div>
                 </li>
                 <li class="contrasted-bg">
                     <div class="collapsible-header ">
                         <div class="valign-wrapper logoContainer">
-                            <img src="images/categories/logistic_and_transport.png" alt="" class="">
+                            <img src="images/categories/logistic_and_transport.png" alt="" class="shadow">
                         </div>
 
-                        <h5 class="main-color valign-wrapper">Faire de SystemD un réseau social du projet non-marchand</h5>
+                        <h5 class="main-color valign-wrapper">Faire de SystemD le réseau social du projet non-marchand</h5>
                     </div>
-                    <div class="collapsible-body main-color"><span>Rajouter à la plateforme une interface pour lister ses compétences et centres d'interets et pouvoir ainsi faire se rencontrer les porteurs de projets non-marchands et les bonnes volontés</span></div>
+                    <div class="collapsible-body main-color gradiant"><span>Création des interfaces faisant de la plateforme un espace de rencontre et de circulation des utilisateurs sur différents projets : Recherche géolocalisée par compétences-centres d'intérets, messagerie chiffrée, blogs partagés, etc.</span></div>
                 </li>
                 <li class="contrasted-bg">
                 <div class="collapsible-header ">
                     <div class="valign-wrapper logoContainer">
-                        <img src="images/categories/solidarity.png" alt="" class="">
+                        <img src="images/categories/solidarity.png" alt="" class="shadow">
                     </div>
 
                     <h5 class="main-color valign-wrapper">Dévelloper un réseau de gratuité et de partage</h5>
                 </div>
-                <div class="collapsible-body main-color"><span>Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet</span></div>
+                <div class="collapsible-body main-color gradiant"><span>Permettre à chaque utilisateur et chaque projets de mettre en partage les ressources qu'ils produisent afin de pouvoir réaliser une circulation non-marchande de grande ampleur</span></div>
             </li>
             </ul>
 
         </div>
     </div>
+    {{#if isDesktop}}
+        <a href="#landingPlus" class="nextSlideBtn waves-effect waves-light info-color">
+            <i class="material-icons medium">
+                arrow_downward</i>
+        </a>
+    {{/if}}
 </div>
 </template>

@@ -1,0 +1,21 @@
+@import "{}/client/scss/variables.scss";
+
+#landingTools{
+  .container{
+    padding: calc(50vh - 210px) 0;
+    .tools{
+      .material-icons{
+        font-size: 3em;
+        color: $focus-color;
+        margin: 0 10px 0 -10px;
+      }
+      p{
+        padding-left: 10px;
+        border-left: 3px solid $focus-color;
+      }
+    }
+    .card-image{
+      background-color: #a0681b;
+    }
+  }
+}

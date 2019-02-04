@@ -1,0 +1,32 @@
+<template name="landingPlus">
+
+    <div class="container ">
+        <div class="row">
+            <div class="col m4 center-align">
+                <img src="images/categories/militancy.png" alt="" class="contrasted-bg shadow">
+                <h3 class="hand-police main-color">ANONYME</h3>
+                <p class="main-color ">Connectez vous avec un pseudo, pas besoin de renseigner son adresse e-mail, utilisez tor-browser pour encore plus d'anonymat</p>
+
+            </div>
+            <div class="col m4 center-align">
+                <img src="images/categories/childcare.png" alt="" class="contrasted-bg shadow">
+                <h3 class="hand-police main-color">GRATUIT</h3>
+                <p class="main-color ">Comment imaginer autrement une plate-forme dont l'objectif est la promotion des rapports sociaux non-marchands</p>
+
+            </div>
+            <div class="col m4 center-align">
+                <img src="images/categories/digital.png" alt="" class="contrasted-bg shadow">
+                <h3 class="hand-police main-color">CHIFFRÉ</h3>
+                <p class="main-color ">Les contenus que vous partagez, ainsi que la liste des projets auxquels vous participez sont chiffrés "end-to-end"  </p>
+
+            </div>
+        </div>
+    </div>
+
+    {{#if isDesktop}}
+        <a href="#landingTools" class="nextSlideBtn waves-effect waves-light info-color">
+            <i class="material-icons medium">
+                arrow_downward</i>
+        </a>
+    {{/if}}
+</template>
