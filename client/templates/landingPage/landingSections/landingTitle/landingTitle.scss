@@ -1,27 +1,27 @@
 @import "{}/client/scss/variables.scss";
 
+.bg-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  img{
 
+    height: auto;
+    padding: 50px 50px 50px 50px;
+    max-width: 80%;
+    width: calc(100vh - 64px);
+    position: absolute;
+    right: 0;
+    bottom:0;
+  }
+}
 #landingTitle {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefefd+0,aebf76+100 */
-  .bg-logo {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
-    img{
 
-      height: auto;
-      padding: 50px 50px 50px 50px;
-      max-width: 80%;
-      width: calc(100vh - 64px);
-      position: absolute;
-      right: 0;
-      bottom:0;
-    }
-  }
   .btn-large{
     border: 2px solid $focus-color;
     font-size: 120%;

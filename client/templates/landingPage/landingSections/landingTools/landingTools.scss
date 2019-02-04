@@ -10,12 +10,32 @@
         margin: 0 10px 0 -10px;
       }
       p{
+        transition: color .5s, left 0.5s ease-in-out, border-left 0.5s, padding-left 0.5s, margin-left 0.5s;
         padding-left: 10px;
-        border-left: 3px solid $focus-color;
+        border-left: 3px solid $blue-highlight-color;
       }
+      p:hover{
+        color : $plus-color;
+        border-left: 10px solid $focus-color;
+        margin-left: -3px;
+        padding-left: 6px
+      }
+      h6{
+        color : $plus-color;
+        font-size: 1.2em;
+      }
+
     }
+
     .card-image{
       background-color: #a0681b;
+    }
+    .card{
+      transition: box-shadow .5s, background-color .5s;
+    }
+    .card:hover{
+      background-color: $lighter-bg;
+      box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
     }
   }
 }

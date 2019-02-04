@@ -7,23 +7,32 @@
     ul{
       margin: 5px;
       padding: 15px;
+      transition: box-shadow .5s, background-color .5s, margin .5s, padding .5s;
+      background-color: $light-bg;
 
-      background-color: $contrasted-bg;
+
       h5{
         color: $focus-color;
       }
+    }
+    ul:hover{
+      background-color: $lighter-bg;
+      padding: 20px;
+      margin: 0px;
+      box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
     }
     li{
       margin-top: 10px;
       position: relative;
       left:0;
-      transition: left 0.3s ease-in-out;
+      transition: left 0.5s ease-in-out, border-left 0.5s;
       padding-left: 10px;
-
-      border-left: 3px solid $focus-color;
+      color: $minus-color;
+      border-left: 3px solid $blue-highlight-color;
     }
     li:hover{
-      left: 10px;
+      border-left: 10px solid $focus-color;
+      color: $plus-color;
     }
   }
 }

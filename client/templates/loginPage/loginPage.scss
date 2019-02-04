@@ -1,0 +1,24 @@
+@import "{}/client/scss/variables.scss";
+
+#loginPage{
+  position: relative;
+  min-height: calc(100vh );
+
+  .login-form-container{
+    background-color: rgba($contrasted-bg, 0.8);
+      margin-top: 15vh;
+    position: relative;
+    z-index: 10;
+  }
+}
+#loginForm{
+  .tab a{
+    font-size: 1.2em;
+    color: $focus-color !important;
+
+  }
+  .indicator{
+    background-color: $focus-color;
+    height: 3px;
+  }
+}
