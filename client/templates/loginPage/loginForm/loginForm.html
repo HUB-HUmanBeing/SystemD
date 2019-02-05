@@ -1,5 +1,5 @@
 <template name="loginForm">
-    <div class="row" id="loginForm">
+    <div class="row " id="loginForm">
         <div class="col s12">
             <ul class="tabs tabs-fixed-width transparent focus-color">
 
@@ -8,37 +8,89 @@
             </ul>
         </div>
         <div id="login" class="col s12">
-
-        </div>
-        <div id="signin" class="col s12">
-            <form action="#" id="signInForm">
+            <form action="#" id="loginForm">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix  main-color">account_circle</i>
-                        <input id="signinUsername" type="text" class="validate">
-                        <label for="signinUsername">Nom d'utilisateur</label>
+                        <input id="loginUsername" type="text" class="validate">
+                        <label for="loginUsername">Nom d'utilisateur</label>
 
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix main-color">security</i>
-                        <input id="signinPassword" type="password" class="validate">
-                        <label for="signinPassword">Mot de passe</label>
+                        <input id="loginPassword" type="password" class="validate">
+                        <label for="loginPassword">Mot de passe</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix  main-color">verified_user</i>
-                        <input id="signinPassword" type="password" class="validate">
-                        <label for="signinPassword">Répéter le mot de passe</label>
-                    </div>
+                    <a href="#" class="btn center-align">Connexion</a>
                 </div>
-                <div class="row">
-                    <a href="#" class="btn center-align">S'ENREGISTRER</a>
-                </div>
-
             </form>
+        </div>
+        <div id="signin" class="col s12 ">
+            <div class="carousel carousel-slider " data-indicators="true">
+                <div class="carousel-item  main-color signinInfo" href="#one!">
+                    <div class="row">
+                        <div class="col s12 ">
+                            <p>System-D accompagne vos projets en vous offrant un espace de travail collaboratif gratuit et entièrement chiffré "end-to-end". </p>
+                            <p>Cela signifie que personne d'autre que vous et les personnes participant au meme projet pourront déchiffrer et lire les contenus que vous postez, pas même les créateurs de cette plate-forme.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                            <a class="btn waves-effect waves-light " next><i class="material-icons right">arrow_forward</i>Suivant</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item  main-color signinInfo" href="two">
+                    <div class="row">
+                        <div class="col s12 ">
+                            <p>D'autre part System-D preserve l'Anonymat de ses utilisateurs : pas d'adresse mail requise ni d'informations personnelles. Nous n'auront aucun moyen de Vous aider si vous oubliez votre mot de passe</p>
+                            <p>Ainsi, il est recommandé de :</p>
+                            <ul>
+                                <li>Choissir un mot de passe fort</li>
+                                <li>Noter le mot de passe choisi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                            <a class="btn waves-effect waves-light " next><i class="material-icons right">arrow_forward</i>Passer à l'inscription</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item main-color" href="#three!">
+                    <form action="#" id="signInForm">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix  main-color">account_circle</i>
+                                <input id="signinUsername" type="text" class="validate">
+                                <label for="signinUsername">Choisir un nom d'utilisateur</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix main-color">security</i>
+                                <input id="signinPassword" type="password" class="validate">
+                                <label for="signinPassword">Choisir un mot de passe</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix  main-color">verified_user</i>
+                                <input id="signinPassword" type="password" class="validate">
+                                <label for="signinPassword">Répéter le mot de passe</label>
+                            </div>
+                        </div>
+                        <div class="row right-align">
+                            <a href="#" class="btn center-align">S'ENREGISTRER</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
 
 
         </div>

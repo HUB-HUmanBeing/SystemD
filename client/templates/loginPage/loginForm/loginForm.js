@@ -4,6 +4,9 @@ Template.loginForm.helpers({
 
 Template.loginForm.events({
     //add your events here
+    'click [next] , touch [next]' : function (event, instance) {
+        $('.carousel').carousel('next');
+    }
 });
 
 Template.loginForm.onCreated(function () {
@@ -15,7 +18,7 @@ Template.loginForm.onRendered(function () {
     window.setTimeout(()=>{
         Materialize.updateTextFields();
     },1500)
-
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
 });
 
 Template.loginForm.onDestroyed(function () {

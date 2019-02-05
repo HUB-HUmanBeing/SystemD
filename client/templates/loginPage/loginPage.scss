@@ -2,11 +2,13 @@
 
 #loginPage{
   position: relative;
-  min-height: calc(100vh );
-
+  min-height: 100vh ;
+  .container{
+    padding: 50px 0;
+  }
   .login-form-container{
     background-color: rgba($contrasted-bg, 0.8);
-      margin-top: 15vh;
+
     position: relative;
     z-index: 10;
   }
@@ -20,5 +22,16 @@
   .indicator{
     background-color: $focus-color;
     height: 3px;
+  }
+}
+#signin{
+  .carousel-item{
+    padding: 15px;
+  }
+  .signinInfo{
+
+  }
+  .indicator-item{
+    margin: 0 4px;
   }
 }
