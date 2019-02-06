@@ -13,7 +13,7 @@ Template.landingAim.onCreated(function () {
 Template.landingAim.onRendered(function () {
     $('.collapsible').collapsible();
     let options = [
-        {selector: '.collapsible li', offset: 300, callback: (el)=> {
+        {selector: '.collapsible li', offset: 200, callback: (el)=> {
                 $('.collapsible li').css('opacity', 1)
             } },
         {selector: '.card-content p', offset: 100, callback: function() {

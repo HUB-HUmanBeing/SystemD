@@ -5,7 +5,7 @@
   .container {
     padding: calc(50vh - 210px) 0;
     ul{
-      margin: 5px;
+      margin: 5px 5px 40px 5px;
       padding: 15px;
       transition: box-shadow .5s, background-color .5s, margin .5s, padding .5s;
       background-color: $light-bg;

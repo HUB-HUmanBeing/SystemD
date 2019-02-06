@@ -36,9 +36,9 @@
   .titleContainer{
     position: absolute;
     width: 600px;
-    max-width: calc(100vh - 60px);
+    max-width: calc(100vw - 60px);
     z-index: 4;
-    margin: 21vh 30px 122px 5vw;
+    margin: 21vh auto 122px 30px;
     h1{
       font-size: 10vh ;
     }

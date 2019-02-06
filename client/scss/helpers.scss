@@ -49,3 +49,38 @@
   background-size: cover;
   background-attachment: fixed;
 }
+
+
+//textStyles
+.infoQuotes{
+  transition: color .5s, left 0.5s ease-in-out, border-left 0.5s, padding-left 0.5s, margin-left 0.5s;
+  padding-left: 10px;
+  border-left: 3px solid $blue-highlight-color;
+}
+.infoQuotes:hover{
+  color : $plus-color;
+  border-left: 10px solid $focus-color;
+  margin-left: -3px;
+  padding-left: 6px
+}
+
+.btnStandard{
+  background-color: transparent !important;
+  border: 2px solid $blue-highlight-color !important;
+  .material-icons{
+    color: $blue-highlight-color !important;
+    transition: color 0.5s
+  }
+
+  color: $plus-color !important;
+  transition: color 0.5s, border 0.5s;
+}
+.btnStandard:hover, .btnStandard:focus{
+  .material-icons {
+    color: $focus-color !important;
+  }
+
+  border: 2px solid $focus-color !important;
+}
+
+//f

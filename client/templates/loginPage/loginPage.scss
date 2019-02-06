@@ -3,14 +3,18 @@
 #loginPage{
   position: relative;
   min-height: 100vh ;
-  .container{
-    padding: 50px 0;
-  }
+ .bg-logo{
+ }
   .login-form-container{
     background-color: rgba($contrasted-bg, 0.8);
-
+    max-width: 90%;
+    width: 500px;
+    margin-top: 10vh;
+    left: 50%;
+    transform:translate(-50%, 0);
     position: relative;
     z-index: 10;
+    padding: 10px;
   }
 }
 #loginForm{
@@ -25,13 +29,34 @@
   }
 }
 #signin{
-  .carousel-item{
-    padding: 15px;
+  overflow: hidden;
+  .customCarousel{
+    width: 300%;
+    transition: left .5s ease-in;
+    position: relative;
+    display: flex;
+  }
+  .customCarousel-item{
+    flex: 1;
+    padding: 15px 15px 35px 15px;
+  }
+  customCarousel-indicators{
+
   }
   .signinInfo{
 
   }
   .indicator-item{
     margin: 0 4px;
+
+  }
+  h6{
+
+    span{
+      padding: 5px;
+      font-size: 1.2em;
+    }
+
+    margin-left: 30px;
   }
 }
