@@ -1,28 +1,64 @@
 <template name="signinForm">
-    <form action="#" id="signInForm">
+    <form action="#" id="signinForm">
         <div class="row no-margin">
-            <div class="input-field col s12">
+            <div class="input-field col s12 relative">
                 <i class="material-icons prefix  main-color">account_circle</i>
-                <input id="signinUsername" type="text" class="validate">
+                <input id="signinUsername" type="text"
+                       class=" {{#if compare errors.signinUsername '==' 'valid'}}valid {{else }}{{#if
+                               errors.signinUsername}}invalid{{/if}}{{/if}}">
                 <label for="signinUsername">Choisir un nom d'utilisateur</label>
+                <div class="formErrorContainer">
+                    {{#if errors.signinUsername}}
+                        {{#each error in errors.signinUsername}}
+                            <div class="formError red-text">
+                                {{error}}
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                </div>
+
             </div>
         </div>
         <div class="row no-margin">
             <div class="input-field col s12">
                 <i class="material-icons prefix main-color">security</i>
-                <input id="signinPassword" type="password" class="validate">
+                <input id="signinPassword" type="password"
+                       class=" {{#if compare errors.signinPassword '==' 'valid'}}valid {{else }}{{#if
+                               errors.signinPassword}}invalid{{/if}}{{/if}}">
                 <label for="signinPassword">Choisir un mot de passe</label>
+                <div class="formErrorContainer">
+                    {{#if errors.signinPassword}}
+                        {{#each error in errors.signinPassword}}
+                            <div class="formError red-text">
+                                {{error}}
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                </div>
             </div>
         </div>
         <div class="row no-margin">
             <div class="input-field col s12">
                 <i class="material-icons prefix  main-color">verified_user</i>
-                <input id="signinPasswordRepeat" type="password" class="validate">
+                <input id="signinPasswordRepeat" type="password"
+                       class=" {{#if compare errors.signinPasswordRepeat '==' 'valid'}}valid {{else }}{{#if
+                               errors.signinPasswordRepeat}}invalid{{/if}}{{/if}}">
                 <label for="signinPasswordRepeat">Répéter le mot de passe</label>
+                <div class="formErrorContainer">
+                    {{#if errors.signinPasswordRepeat}}
+                        {{#each error in errors.signinPasswordRepeat}}
+                            <div class="formError red-text">
+                                {{error}}
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                </div>
             </div>
         </div>
         <div class="row center-align" style="margin: 15px 0 0 0">
-            <a href="#" class="btn  btnStandard center-align waves-effect waves-light shadow"><i class="material-icons right">account_circle</i>Créer un compte</a>
+            <button href="#" class="btn  btnStandard center-align waves-effect waves-light shadow"><i
+                    class="material-icons right">account_circle</i>Créer un compte
+            </button>
         </div>
     </form>
 </template>

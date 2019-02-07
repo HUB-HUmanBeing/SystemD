@@ -83,4 +83,12 @@
   border: 2px solid $focus-color !important;
 }
 
-//f
+//forms
+.formErrorContainer{
+  position: relative;
+  top:-13px;
+  margin: -7px 42px;
+  .formError{
+    font-size: smaller;
+  }
+}
