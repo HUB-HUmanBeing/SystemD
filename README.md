@@ -9,7 +9,7 @@ Jusqu'ici, les projets collaboratifs ainsi que les pratiques de partages et de g
 
 
 Pour un premier apercu :
-## http://systemd.meteorapp.com/
+## http://systemd.eu.meteorapp.com/
 
 
 # Installation
