@@ -4,7 +4,7 @@ const validateSigninForm = {
     checkUnicity(username, callback) {
         callback(true)
     },
-    validateSigninUsername(event, instance, callback) {
+    validateSigninUsername(event, instance) {
         let signinUsername = $('#signinUsername').val();
         let errors = instance.errors.get()
         if (signinUsername) {
@@ -36,18 +36,18 @@ const validateSigninForm = {
         const regexPassword = RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])")
         if (signinPassword) {
             if (signinPassword.length < 8) {
-                errors.signinPassword = ["votre mot de passe doit comporter au moins 8 caractères"]
+                errors.signinPassword = ["Votre mot de passe doit comporter au moins 8 caractères"]
                 instance.errors.set(errors)
             } else if (!regexPassword.test(signinPassword)) {
                 console.log('co')
-                errors.signinPassword = ["votre mot de passe doit comporter au moins une lettre majuscule, une lettre minuscule, et un chiffre"]
+                errors.signinPassword = ["Votre mot de passe doit comporter au moins une lettre majuscule, une lettre minuscule, et un chiffre"]
                 instance.errors.set(errors)
             } else {
                 errors.signinPassword = 'valid'
                 instance.errors.set(errors)
             }
         } else {
-            errors.signinPassword = ["veuillez saisir un mot de passe"]
+            errors.signinPassword = ["Veuillez saisir un mot de passe"]
             instance.errors.set(errors)
         }
     },
@@ -56,7 +56,7 @@ const validateSigninForm = {
         let signinPasswordRepeat = $('#signinPasswordRepeat').val();
         let errors = instance.errors.get()
         if (!signinPasswordRepeat) {
-            errors.signinPasswordRepeat = ["veuillez confirmer votre mot de passe"]
+            errors.signinPasswordRepeat = ["Veuillez confirmer votre mot de passe"]
             instance.errors.set(errors)
         } else if (signinPassword !== signinPasswordRepeat) {
             errors.signinPasswordRepeat = ["Les mots de passes ne sont pas identiques"]
@@ -65,6 +65,39 @@ const validateSigninForm = {
             errors.signinPasswordRepeat = 'valid'
             instance.errors.set(errors)
         }
+    },
+    isValid(instance){
+        let errors = instance.errors.get()
+        let errorList =[]
+        let isValid= true
+        let missingFields = false
+        Object.keys(errors).forEach((key)=>{
+            if(errors[key] != "valid") {
+                isValid = false
+                if(errorList.length == 0){
+                    errorList.push("Le formulaire d'inscription n'est pas valide")
+                }
+                if (errors[key].length) {
+                    errorList = [...errorList , ...errors[key]]
+                }else{
+                    missingFields = true
+
+                }
+            }
+        })
+        if(missingFields){
+            errorList.push("Il manque des informations")
+        }
+
+        if(errorList.length){
+            errorList.forEach((err,i)=>{
+                Meteor.setTimeout(()=>{
+                    Materialize.toast(err, 6000, 'red darken-3')
+                }, i*500)
+
+            })
+        }
+        return isValid
     }
 }
 
@@ -77,7 +110,7 @@ Template.signinForm.helpers({
 
 Template.signinForm.events({
     //add your events here
-    'keyup #signinUsername ': function (event, instance) {
+    'keyup #signinUsername, touchend #signinUsername , blur #signinUsername ': function (event, instance) {
         if (instance.timeout) {
             Meteor.clearTimeout(instance.timeout)
         }
@@ -103,6 +136,13 @@ Template.signinForm.events({
         }, 600)
 
     },
+    'submit #signinForm ' : function (event, instance) {
+        event.preventDefault()
+        if(validateSigninForm.isValid(instance)){
+            console.log("formulaire validé")
+        }
+
+    }
 });
 
 Template.signinForm.onCreated(function () {

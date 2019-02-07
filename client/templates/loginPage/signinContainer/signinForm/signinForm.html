@@ -5,10 +5,10 @@
                 <i class="material-icons prefix  main-color">account_circle</i>
                 <input id="signinUsername" type="text"
                        class=" {{#if compare errors.signinUsername '==' 'valid'}}valid {{else }}{{#if
-                               errors.signinUsername}}invalid{{/if}}{{/if}}">
+                               errors.signinUsername.length}}invalid{{/if}}{{/if}}">
                 <label for="signinUsername">Choisir un nom d'utilisateur</label>
                 <div class="formErrorContainer">
-                    {{#if errors.signinUsername}}
+                    {{#if isArray  errors.signinUsername}}
                         {{#each error in errors.signinUsername}}
                             <div class="formError red-text">
                                 {{error}}
@@ -24,10 +24,10 @@
                 <i class="material-icons prefix main-color">security</i>
                 <input id="signinPassword" type="password"
                        class=" {{#if compare errors.signinPassword '==' 'valid'}}valid {{else }}{{#if
-                               errors.signinPassword}}invalid{{/if}}{{/if}}">
+                               errors.signinPassword.length}}invalid{{/if}}{{/if}}">
                 <label for="signinPassword">Choisir un mot de passe</label>
                 <div class="formErrorContainer">
-                    {{#if errors.signinPassword}}
+                    {{#if isArray errors.signinPassword}}
                         {{#each error in errors.signinPassword}}
                             <div class="formError red-text">
                                 {{error}}
@@ -42,10 +42,10 @@
                 <i class="material-icons prefix  main-color">verified_user</i>
                 <input id="signinPasswordRepeat" type="password"
                        class=" {{#if compare errors.signinPasswordRepeat '==' 'valid'}}valid {{else }}{{#if
-                               errors.signinPasswordRepeat}}invalid{{/if}}{{/if}}">
+                               errors.signinPasswordRepeat.length}}invalid{{/if}}{{/if}}">
                 <label for="signinPasswordRepeat">Répéter le mot de passe</label>
                 <div class="formErrorContainer">
-                    {{#if errors.signinPasswordRepeat}}
+                    {{#if isArray  errors.signinPasswordRepeat}}
                         {{#each error in errors.signinPasswordRepeat}}
                             <div class="formError red-text">
                                 {{error}}
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="row center-align" style="margin: 15px 0 0 0">
-            <button href="#" class="btn  btnStandard center-align waves-effect waves-light shadow"><i
+            <button href="#" class="btn btnFocus center-align waves-effect waves-light shadow"><i
                     class="material-icons right">account_circle</i>Créer un compte
             </button>
         </div>

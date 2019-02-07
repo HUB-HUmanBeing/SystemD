@@ -94,3 +94,8 @@ Template.registerHelper('relativeDistanceFromCoord', function (lonLat) {
     }
     return relativeDistance
 })
+
+Template.registerHelper('isArray', function (el) {
+
+    return Array.isArray(el)
+})

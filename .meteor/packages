@@ -36,3 +36,4 @@ mystor:device-detection
 materialize:materialize
 ostrio:templatehelpers
 
+webtempest:animate

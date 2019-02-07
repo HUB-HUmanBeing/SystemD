@@ -5,6 +5,10 @@
   min-height: 100vh ;
  .bg-logo{
  }
+  iframe{
+    position: relative;
+    z-index: 0;
+  }
   .login-form-container{
     background-color: rgba($contrasted-bg, 0.8);
     max-width: 90%;
@@ -40,23 +44,18 @@
     flex: 1;
     padding: 15px 15px 35px 15px;
   }
-  customCarousel-indicators{
-
-  }
-  .signinInfo{
-
-  }
   .indicator-item{
     margin: 0 4px;
 
   }
   h6{
 
+
     span{
-      padding: 5px;
+      padding: 0px;
       font-size: 1.2em;
     }
 
-    margin-left: 30px;
+    margin-left: 0px;
   }
 }

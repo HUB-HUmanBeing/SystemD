@@ -82,6 +82,20 @@
 
   border: 2px solid $focus-color !important;
 }
+.btnFocus{
+  opacity: 0.8;
+  background-color: $focus-color !important;
+  color: $contrasted-bg !important;
+  *{
+    color: $contrasted-bg !important;
+  }
+}
+.btnFocus:hover, .btnFocus:focus {
+  opacity: 1 !important;
+  padding :2px 30px;
+  margin : -2px;
+  height: 41px;
+}
 
 //forms
 .formErrorContainer{
