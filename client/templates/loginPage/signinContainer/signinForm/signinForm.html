@@ -19,42 +19,54 @@
 
             </div>
         </div>
-        <div class="row no-margin">
-            <div class="input-field col s12">
-                <i class="material-icons prefix main-color">security</i>
-                <input id="signinPassword" type="password"
-                       class=" {{#if compare errors.signinPassword '==' 'valid'}}valid {{else }}{{#if
-                               errors.signinPassword.length}}invalid{{/if}}{{/if}}">
-                <label for="signinPassword">Choisir un mot de passe</label>
-                <div class="formErrorContainer">
-                    {{#if isArray errors.signinPassword}}
-                        {{#each error in errors.signinPassword}}
-                            <div class="formError red-text">
-                                {{error}}
-                            </div>
-                        {{/each}}
-                    {{/if}}
+        <div class="flex">
+            <div class="flex-auto">
+                <div class="row no-margin">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix main-color">security</i>
+                        <input id="signinPassword" type="password"
+                               class=" {{#if compare errors.signinPassword '==' 'valid'}}valid {{else }}{{#if
+                                       errors.signinPassword.length}}invalid{{/if}}{{/if}}">
+                        <label for="signinPassword">Choisir un mot de passe</label>
+                        <div class="formErrorContainer">
+                            {{#if isArray errors.signinPassword}}
+                                {{#each error in errors.signinPassword}}
+                                    <div class="formError red-text">
+                                        {{error}}
+                                    </div>
+                                {{/each}}
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix  main-color">verified_user</i>
+                        <input id="signinPasswordRepeat" type="password"
+                               class=" {{#if compare errors.signinPasswordRepeat '==' 'valid'}}valid {{else }}{{#if
+                                       errors.signinPasswordRepeat.length}}invalid{{/if}}{{/if}}">
+                        <label for="signinPasswordRepeat">Répéter le mot de passe</label>
+                        <div class="formErrorContainer">
+                            {{#if isArray  errors.signinPasswordRepeat}}
+                                {{#each error in errors.signinPasswordRepeat}}
+                                    <div class="formError red-text">
+                                        {{error}}
+                                    </div>
+                                {{/each}}
+                            {{/if}}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row no-margin">
-            <div class="input-field col s12">
-                <i class="material-icons prefix  main-color">verified_user</i>
-                <input id="signinPasswordRepeat" type="password"
-                       class=" {{#if compare errors.signinPasswordRepeat '==' 'valid'}}valid {{else }}{{#if
-                               errors.signinPasswordRepeat.length}}invalid{{/if}}{{/if}}">
-                <label for="signinPasswordRepeat">Répéter le mot de passe</label>
-                <div class="formErrorContainer">
-                    {{#if isArray  errors.signinPasswordRepeat}}
-                        {{#each error in errors.signinPasswordRepeat}}
-                            <div class="formError red-text">
-                                {{error}}
-                            </div>
-                        {{/each}}
-                    {{/if}}
+            <div class="circle-container " style="width: 100px">
+                <p class="center-align no-margin minus-color">Force du mot de passe</p>
+                <div class="center-align progress--circle progress--{{passwordStrength.progress}}">
+                    <div class="progress__number minus-color">{{passwordStrength.strength}}/10</div>
                 </div>
+                <!--<p  class="center-align no-margin"><b class="focus-color">minimum : 10</b></p>-->
             </div>
         </div>
+
         <div class="row center-align" style="margin: 15px 0 0 0">
             <button href="#" class="btn btnFocus center-align waves-effect waves-light shadow"><i
                     class="material-icons right">account_circle</i>Créer un compte

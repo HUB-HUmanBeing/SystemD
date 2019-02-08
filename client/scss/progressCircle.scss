@@ -1,0 +1,101 @@
+@import "variables.scss";
+//**************************
+//
+// https://codepen.io/keithpickering/pen/glkzC
+$spacing: 1rem;
+$themeColor: $focus-color;
+$backColor: $light-bg;
+$textShadow: rgba(black, 0.35) 1px 1px 1px;
+
+* { box-sizing: border-box; }
+
+
+.bars {
+  text-align: center;
+  margin-top: $spacing * 2;
+}
+
+/* Progress Bars */
+
+.progress--bar {
+  height: 1.5rem;
+  margin: $spacing;
+  background-color: $backColor;
+  &:after {
+    content: '';
+    display: block;
+    height: 100%;
+    background-color: $themeColor;
+  }
+}
+
+.progress--circle {
+  position: relative;
+  display: inline-block;
+  margin: $spacing;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: $backColor;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: $contrasted-bg;
+  }
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $themeColor;
+  }
+}
+
+.progress__number {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  line-height: 1;
+  margin-top: -0.75rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.progress--pie {
+  &:before {
+    display: none; /* Get rid of white circle for "pie chart style" meter */
+  }
+  .progress__number {
+    color: $focus-color;
+    text-shadow: $textShadow;
+  }
+}
+
+/**
+* $step is set to 5 by default, meaning you can only use percentage classes in increments of five (e.g. 25, 30, 45, 50, and so on). This helps to reduce the size of the final CSS file. If you need a number that doesn't end in 0 or 5, you can change the text percentage while rounding the class up/down to the nearest 5.
+*/
+$step: 5;
+$loops: round(100 / $step);
+$increment: 360 / $loops;
+$half: round($loops / 2);
+@for $i from 0 through $loops {
+  .progress--bar.progress--#{$i * $step}:after {
+    width: $i * $step * 1%;
+  }
+  .progress--circle.progress--#{$i * $step}:after {
+    @if $i < $half {
+      $nextDeg: 90deg + ($increment * $i);
+      background-image: linear-gradient(90deg, $backColor 50%, transparent 50%, transparent), linear-gradient($nextDeg, $themeColor 50%, $backColor 50%, $backColor);
+    }
+    @else {
+      $nextDeg: -90deg + ($increment * ($i - $half));
+      background-image: linear-gradient($nextDeg, $themeColor 50%, transparent 50%, transparent), linear-gradient(270deg, $themeColor 50%, $backColor 50%, $backColor);
+    }
+  }
+}

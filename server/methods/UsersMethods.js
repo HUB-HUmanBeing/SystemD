@@ -1,0 +1,61 @@
+import User from '/imports/classes/User'
+
+Meteor.users.deny({
+    update() { return true; }
+});
+
+/*********************************
+ * METHODES DE LA COLLECTION USERS
+ * les autres méthodes sont directement stockées dans la classe
+ **************************/
+
+Meteor.methods({
+    /**
+     * Methode permetant de vérifier si un nom d'utilisateur est déja pris
+     * @param username
+     * @returns {boolean}
+     */
+    alreadyExists(username) {
+        check(username, String)
+        return !!Accounts.findUserByUsername(username);
+    },
+    /****************************
+     * méthode de creation d'un nouvel utilisateur
+     * @param userAttributes
+     * @param key
+     */
+    createNewUser: function (userAttributes,key) {
+        //on définit notre fonction de validation
+        const validAttribute = Match.Where((attribute) => {
+            //en type
+            check(attribute.username, String);
+            check(attribute.password, String);
+
+            //et ensuite en longueur
+            return attribute.password.length >= 8 && attribute.username.length <= 40 && attribute.username.length >= 4;
+        });
+        //on commence par checker que les attributs passés par le client oient valides
+        check(userAttributes, validAttribute);
+        check(key, Object)
+        check(key.asymPublicKey, String)
+        check(key.encryptedAsymPrivateKey, String)
+        //on lance la methode de création
+
+        userId = Accounts.createUser(userAttributes);
+
+        //si elle est réussie et donc qu'elle renvoie un userID
+        if(userId){
+
+           // on recupere les données de cet user pour hydrater une instance de la classe User
+            let newUser = User.findOne(userId);
+            newUser.public.asymPublicKey = key.asymPublicKey
+            newUser.private.encryptedAsymPrivateKey = key.encryptedAsymPrivateKey
+            //puis on la sauvegarde, mettant ainsi en base l'utilisateur créé avec tous les champs nécessaires stoqués
+            newUser.save();
+
+            //on renvoie l'userId qui servira pour la redirection
+            return userId;
+        }
+
+    }
+});
