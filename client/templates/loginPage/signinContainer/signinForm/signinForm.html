@@ -58,13 +58,15 @@
                     </div>
                 </div>
             </div>
+{{#if passwordStrength.strength}}
             <div class="circle-container " style="width: 100px">
                 <p class="center-align no-margin minus-color">Force du mot de passe</p>
                 <div class="center-align progress--circle progress--{{passwordStrength.progress}}">
-                    <div class="progress__number minus-color">{{passwordStrength.strength}}/10</div>
+                    <div class="progress__number {{#if compare passwordStrength.strength '>=' 10}} green-text text-darken-2 {{else}}red-text text-darken-2{{/if}}">{{passwordStrength.strength}}/10</div>
                 </div>
                 <!--<p  class="center-align no-margin"><b class="focus-color">minimum : 10</b></p>-->
             </div>
+    {{/if}}
         </div>
 
         <div class="row center-align" style="margin: 15px 0 0 0">
