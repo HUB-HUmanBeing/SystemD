@@ -33,17 +33,17 @@ $textShadow: rgba(black, 0.35) 1px 1px 1px;
   position: relative;
   display: inline-block;
   margin: $spacing;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: $backColor;
   &:before {
     content: '';
     position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 60px;
-    height: 60px;
+    top: 3px;
+    left: 3px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     background-color: $contrasted-bg;
   }
@@ -59,12 +59,11 @@ $textShadow: rgba(black, 0.35) 1px 1px 1px;
 
 .progress__number {
   position: absolute;
-  top: 50%;
+  top: 16px;
   width: 100%;
-  line-height: 1;
-  margin-top: -0.75rem;
+
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 18px;
 }
 
 .progress--pie {

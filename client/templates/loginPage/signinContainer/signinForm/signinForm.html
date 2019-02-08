@@ -27,7 +27,7 @@
                         <input id="signinPassword" type="password"
                                class=" {{#if compare errors.signinPassword '==' 'valid'}}valid {{else }}{{#if
                                        errors.signinPassword.length}}invalid{{/if}}{{/if}}">
-                        <label for="signinPassword">Choisir un mot de passe</label>
+                        <label for="signinPassword">Mot de passe</label>
                         <div class="formErrorContainer">
                             {{#if isArray errors.signinPassword}}
                                 {{#each error in errors.signinPassword}}
@@ -45,7 +45,7 @@
                         <input id="signinPasswordRepeat" type="password"
                                class=" {{#if compare errors.signinPasswordRepeat '==' 'valid'}}valid {{else }}{{#if
                                        errors.signinPasswordRepeat.length}}invalid{{/if}}{{/if}}">
-                        <label for="signinPasswordRepeat">Répéter le mot de passe</label>
+                        <label for="signinPasswordRepeat">Répéter mot de passe</label>
                         <div class="formErrorContainer">
                             {{#if isArray  errors.signinPasswordRepeat}}
                                 {{#each error in errors.signinPasswordRepeat}}
@@ -59,10 +59,10 @@
                 </div>
             </div>
 {{#if passwordStrength.strength}}
-            <div class="circle-container " style="width: 100px">
-                <p class="center-align no-margin minus-color">Force du mot de passe</p>
-                <div class="center-align progress--circle progress--{{passwordStrength.progress}}">
-                    <div class="progress__number {{#if compare passwordStrength.strength '>=' 10}} green-text text-darken-2 {{else}}red-text text-darken-2{{/if}}">{{passwordStrength.strength}}/10</div>
+            <div class="circle-container  tooltipped" style=" {{#if isPhone}}width: 60px; padding-top: 20px {{else}}width: 100px ; padding:20px;{{/if}}" >
+                <p class="center-align  minus-color " style="font-size: 1em">Force :</p>
+                <div class="center-align  progress--circle progress--{{passwordStrength.progress}}" style="margin: 5px 0px !important;">
+                    <div class="progress__number {{#if compare passwordStrength.strength '>=' 10}} green-text text-darken-2 strong{{else}}red-text text-darken-2{{/if}}">{{passwordStrength.strength}}/10</div>
                 </div>
                 <!--<p  class="center-align no-margin"><b class="focus-color">minimum : 10</b></p>-->
             </div>

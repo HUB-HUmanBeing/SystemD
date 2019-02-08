@@ -65,11 +65,23 @@ const validateSigninForm = {
         (event, instance) {
 
         let signinPassword = $('#signinPassword').val();
-        let passwordStrength = parseInt(zxcvbn(signinPassword).guesses_log10 * 1.3)
-        let preProgress = parseInt(passwordStrength*1.5)
+        let passwordStrength = parseInt(zxcvbn(signinPassword).guesses_log10 * 1.1)
+        let preProgress = parseInt(passwordStrength*2)
         let progress = ((preProgress * 5)<100) ? (preProgress * 5) :100;
-console.log(zxcvbn(signinPassword).guesses_log10)
-            instance.passwordStrength.set({strength: passwordStrength, progress: progress})
+        instance.passwordStrength.set({strength: passwordStrength, progress: progress})
+        window.setTimeout(()=>{
+            $('.circle-container').tooltip({
+                delay: 250,
+                tooltip: `
+                <div class="password-tooltip left-align" style="max-width: 200px">
+                    <p>Le chiffrement de vos contenus sur System-D est basé sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.</p>
+                    <p class="infoQuotes">Utilisez des <b>caractères spéciaux</b>, des <b>majuscules</b> et des <b>chiffres</b> afin d'augmenter la force de votre mot de passe.</p>
+                </div>
+                `,
+                html: true,
+                position: 'left',
+            });
+        },100)
         let errors = instance.errors.get()
         if (signinPassword) {
             if (passwordStrength < 10) {
@@ -80,7 +92,7 @@ console.log(zxcvbn(signinPassword).guesses_log10)
                 instance.errors.set(errors)
             }
             let signinPasswordRepeat = $('#signinPasswordRepeat').val();
-            if (signinPasswordRepeat && signinPassword !== signinPasswordRepeat) {
+            if ( signinPassword !== signinPasswordRepeat) {
                 errors.signinPasswordRepeat = ["Les mots de passes ne sont pas identiques"]
                 instance.errors.set(errors)
             } else {
@@ -235,5 +247,6 @@ Template.signinForm.onRendered(function () {
 
 Template.signinForm.onDestroyed(function () {
     //add your statement here
+    $('.circle-container').tooltip('remove');
 });
 

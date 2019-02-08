@@ -1,61 +1,71 @@
 @import "{}/client/scss/variables.scss";
 
-#loginPage{
+#loginPage {
   position: relative;
-  min-height: 100vh ;
- .bg-logo{
- }
-  iframe{
+  min-height: 100vh;
+
+  .bg-logo {
+  }
+
+  iframe {
     position: relative;
     z-index: 0;
   }
-  .login-form-container{
+
+  .login-form-container {
     background-color: rgba($contrasted-bg, 0.8);
     max-width: 90%;
     width: 500px;
     margin-top: 10vh;
     left: 50%;
-    transform:translate(-50%, 0);
+    transform: translate(-50%, 0);
     position: relative;
     z-index: 10;
     padding: 10px;
   }
 }
-#loginForm{
-  .tab a{
+
+#loginForm {
+  .tab a {
     font-size: 1.2em;
     color: $focus-color !important;
 
   }
-  .indicator{
+
+  .indicator {
     background-color: $focus-color;
     height: 3px;
   }
 }
-#signin{
+
+#signin {
   overflow: hidden;
-  .customCarousel{
+
+  .customCarousel {
     width: 300%;
     transition: left .5s ease-in;
     position: relative;
     display: flex;
   }
-  .customCarousel-item{
+
+  .customCarousel-item {
     flex: 1;
-    padding: 15px 15px 35px 15px;
+    padding: 15px 5px 35px 10px;
   }
-  .indicator-item{
+
+  .indicator-item {
     margin: 0 4px;
-
   }
-  h6{
 
-
-    span{
+  .input-field{
+    padding: 0 ;
+  }
+  h6 {
+span {
       padding: 0px;
       font-size: 1.2em;
     }
 
-    margin-left: 0px;
+    margin-left: 15px;
   }
 }
