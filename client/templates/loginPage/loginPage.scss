@@ -26,6 +26,7 @@
 }
 
 #loginForm {
+  padding: 20px 0;
   .tab a {
     font-size: 1.2em;
     color: $focus-color !important;
@@ -57,11 +58,12 @@
     margin: 0 4px;
   }
 
-  .input-field{
-    padding: 0 ;
+  .input-field {
+    padding: 0;
   }
+
   h6 {
-span {
+    span {
       padding: 0px;
       font-size: 1.2em;
     }

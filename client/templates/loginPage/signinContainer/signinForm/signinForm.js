@@ -210,16 +210,17 @@ Template.signinForm.events({
                         Materialize.toast(error.message, 6000, 'red darken-3')
                     } else {
                         console.log(result)
-                        // //si tout va bien on redirige vers la page pour completer le profil
-                        // Meteor.loginWithPassword(username, password, function (error) {
-                        //
-                        //     hubCrypto.initCryptoSession(password,username, ()=>{
-                        //
-                        //     })
-                        //     Router.go("userSelfProfile");
-                        //     //et on toast un petit message de bienvenue
-                        //     Materialize.toast("Bienvenue sur HUmanBeing", 6000, 'green')
-                        // });
+                        //si tout va bien on redirige vers la page pour completer le profil
+                        Meteor.loginWithPassword(username, password, function (error) {
+                            //
+                            // hubCrypto.initCryptoSession(password,username, ()=>{
+                            //
+                            // })
+                            // Router.go("userSelfProfile");
+                            //et on toast un petit message de bienvenue
+                            FlowRouter.go('/')
+                            Materialize.toast("Bienvenue sur System-D", 6000, 'green darken-2')
+                        });
                     }
                 })
             })
