@@ -10,13 +10,18 @@ FlowRouter.route('/', {
 FlowRouter.route('/login', {
   name: 'App.login',
   action() {
-    BlazeLayout.render('layout', { main: 'loginPage' });
+    if(!Meteor.userId()){
+      BlazeLayout.render('noLayout', { main: 'loginPage' });
+    }else{
+      FlowRouter.go("/")
+    }
+
   },
 });
 
 
 FlowRouter.notFound = {
   action() {
-    BlazeLayout.render('layout', { main: 'notFound' });
+    BlazeLayout.render('noLayout', { main: 'notFound' });
   },
 };

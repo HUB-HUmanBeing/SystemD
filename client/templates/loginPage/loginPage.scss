@@ -3,6 +3,7 @@
 #loginPage {
   position: relative;
   min-height: 100vh;
+  height: 100%;
 
   .bg-logo {
   }
@@ -16,17 +17,20 @@
     background-color: rgba($contrasted-bg, 0.8);
     max-width: 90%;
     width: 500px;
-    margin-top: 10vh;
+    margin: 5vw 0;
     left: 50%;
     transform: translate(-50%, 0);
     position: relative;
     z-index: 10;
     padding: 10px;
+    h4{
+      margin:  2vw 0;
+    }
   }
 }
 
-#loginForm {
-  padding: 20px 0;
+#loginContainer {
+
   .tab a {
     font-size: 1.2em;
     color: $focus-color !important;
@@ -38,7 +42,9 @@
     height: 3px;
   }
 }
-
+#loginForm{
+  padding-top: 20px;
+}
 #signin {
   overflow: hidden;
 
@@ -53,21 +59,37 @@
     flex: 1;
     padding: 15px 5px 35px 10px;
   }
-
   .indicator-item {
     margin: 0 4px;
   }
-
   .input-field {
     padding: 0;
   }
-
   h6 {
     span {
       padding: 0px;
       font-size: 1.2em;
     }
-
     margin-left: 15px;
+  }
+}
+#encryptionLoader{
+  img{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid $blue-highlight-color;
+    padding: 2px;
+  }
+  .flex-auto{
+    padding: 10px;
+  }
+  .progress{
+    height: 2px;
+    background-color: $lighter-bg;
+  }
+  .determinate, .indeterminate{
+    background-color: $focus-color;
   }
 }

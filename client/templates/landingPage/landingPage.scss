@@ -3,6 +3,7 @@
 .landingHead{
   nav{
     height: 64px;
+    width: 100%;
     ul{
       a:hover{
         color: $focus-color;
@@ -19,6 +20,8 @@
   }
 }
 .landing-page{
+  width: 100%;
+  overflow-x: hidden;
   .landing-section{
     position: relative;
     min-height: calc(100vh );

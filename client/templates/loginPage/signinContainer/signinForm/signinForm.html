@@ -1,4 +1,8 @@
 <template name="signinForm">
+
+{{#if signinComplete}}
+    {{>encryptionLoader tasks=signinComplete}}
+{{else}}
     <form action="#" id="signinForm">
         <div class="row no-margin">
             <div class="input-field col s12 relative">
@@ -58,15 +62,20 @@
                     </div>
                 </div>
             </div>
-{{#if passwordStrength.strength}}
-            <div class="circle-container  tooltipped" style=" {{#if isPhone}}width: 60px; padding-top: 20px {{else}}width: 100px ; padding:20px;{{/if}}" >
-                <p class="center-align  minus-color " style="font-size: 1em">Force :</p>
-                <div class="center-align  progress--circle progress--{{passwordStrength.progress}}" style="margin: 5px 0px !important;">
-                    <div class="progress__number {{#if compare passwordStrength.strength '>=' 10}} green-text text-darken-2 strong{{else}}red-text text-darken-2{{/if}}">{{passwordStrength.strength}}/10</div>
+            {{#if passwordStrength.strength}}
+                <div class="circle-container  tooltipped"
+                     style=" {{#if isPhone}}width: 60px; padding-top: 40px {{else}}width: 100px ; padding:20px;{{/if}}">
+                    <p class="center-align  minus-color " style="font-size: 1em ; margin: 0">Force :</p>
+                    <div class="center-align  progress--circle progress--{{passwordStrength.progress}}"
+                         style="margin: 5px 0px !important;">
+                        <div class="progress__number {{#if compare passwordStrength.strength '>='
+                                                           10}} green-text text-darken-2 strong{{else}}red-text text-darken-2{{/if}}">{{passwordStrength.strength}}
+                            /10
+                        </div>
+                    </div>
+                    <!--<p  class="center-align no-margin"><b class="focus-color">minimum : 10</b></p>-->
                 </div>
-                <!--<p  class="center-align no-margin"><b class="focus-color">minimum : 10</b></p>-->
-            </div>
-    {{/if}}
+            {{/if}}
         </div>
 
         <div class="row center-align" style="margin: 15px 0 0 0">
@@ -75,4 +84,5 @@
             </button>
         </div>
     </form>
+{{/if}}
 </template>

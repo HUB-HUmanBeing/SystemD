@@ -1,0 +1,24 @@
+<template name="encryptionLoader">
+
+    <div id="encryptionLoader">
+        <div class="row" style="padding-right: 20px">
+            <ul class="center-align">
+                {{#each task in tasks}}
+                <li style="margin: 10px  ">
+                    <div class="flex">
+                        <img src="images/categories/digital.png" alt="" class="contrasted-bg shadow {{#if compare task.status '==' 'done'}}focus-border{{else}}blue-highlight-border{{/if}}" style="">
+                        <div class="flex-auto">
+                            <span style="font-size: 1.1em">{{task.name}}</span>
+                            <div class="progress">
+                                {{#if task.status}}
+                                <div class="{{#if compare task.status '==' 'loading'}}indeterminate{{else}}determinate{{/if}}" style="width: 100%"></div>
+                                {{/if}}
+                                </div>
+                        </div>
+                    </div>
+                </li>
+                    {{/each}}
+            </ul>
+        </div>
+    </div>
+</template>

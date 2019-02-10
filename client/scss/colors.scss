@@ -34,3 +34,10 @@ color: $minus-color;
 .contrasted-color{
   background-color: $contrasted-bg;
 }
+
+.focus-border{
+  border: 2px solid $focus-color;
+}
+.blue-highlight-border{
+  border: 2px solid $blue-highlight-color;
+}

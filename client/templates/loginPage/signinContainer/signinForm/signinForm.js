@@ -172,6 +172,10 @@ Template.signinForm.helpers({
     passwordStrength: function () {
         return Template.instance().passwordStrength.get()
     },
+    signinComplete: function () {
+         return Template.instance().signinComplete.get()
+
+    }
 });
 
 Template.signinForm.events({
@@ -209,18 +213,26 @@ Template.signinForm.events({
                         console.log(error, userAttribute, userAsymKeys)
                         Materialize.toast(error.message, 6000, 'red darken-3')
                     } else {
-                        console.log(result)
-                        //si tout va bien on redirige vers la page pour completer le profil
-                        Meteor.loginWithPassword(username, password, function (error) {
-                            //
-                            // hubCrypto.initCryptoSession(password,username, ()=>{
-                            //
-                            // })
-                            // Router.go("userSelfProfile");
-                            //et on toast un petit message de bienvenue
-                            FlowRouter.go('/')
-                            Materialize.toast("Bienvenue sur System-D", 6000, 'green darken-2')
-                        });
+                        instance.signinComplete.set([
+                            'Génération des clefs de chiffrement',
+                            'Création du compte utilisateur',
+                            'Initialisation d\'une nouvelle session chiffrée'
+                        ])
+                        Meteor.setTimeout(()=>{
+                            //si tout va bien on redirige vers la page pour completer le profil
+                            Meteor.loginWithPassword(username, password, function (error) {
+                                //
+                                // hubCrypto.initCryptoSession(password,username, ()=>{
+                                //
+                                // })
+                                // Router.go("userSelfProfile");
+                                //et on toast un petit message de bienvenue
+
+                                 FlowRouter.go('/')
+                                 Materialize.toast("Bienvenue sur System-D", 6000, 'green darken-2')
+                            });
+                        },3500)
+
                     }
                 })
             })
@@ -231,6 +243,7 @@ Template.signinForm.events({
 
 Template.signinForm.onCreated(function () {
     //add your statement here
+    this.signinComplete = new ReactiveVar(false)
     this.timeout = null
     this.passwordStrength = new ReactiveVar({
         strength: 0,

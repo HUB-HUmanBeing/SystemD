@@ -1,35 +1,37 @@
 <template name="menu">
-    <ul class="collapsible no-margin dark-grey general-menu " data-collapsible="accordion"
-        style="{{#unless isDesktop}}height : 200vh !important;{{/unless}}" id="collapsibleMenu">
+    <ul class="collapsible no-margin contrasted-bg general-menu shadow" data-collapsible="accordion"
+        style="{{#unless isDesktop}}height : 200vh ; z-index: 200!important;{{/unless}}" id="collapsibleMenu">
         {{!icone du site +lien vers l'acceuil}}
         <li class="title-block" style="height: 75px !important;">
             <a href="/"
                class=" flex no-margin no-padding dark-grey waves-effect waves-light col s12 relative"
                style="height: 75px !important;">
                 <div class="  no-padding small-margin " style="width: 70px !important ; height: 70px ">
-                    <img src="/images/icon/hub_icon.png" alt="HUmanBeing" class="responsive-img  no-padding "
+                    <img src="/images/icon/systemd-logo-white.png" alt="System-D" class="responsive-img  no-padding "
                          style="position: static !important; z-index:1000 !important; width: 70px ; height: 70px ">
                 </div>
-                <div class="flex-auto  absolute" style="bottom: 0; right: 0"><h6 class="hover-white"
-                                                                                 style="font-size: 17px !important;">
-                    <span class="hover-white">HU</span>man<span class="maj-title hover-white">B</span>eing</h6></div>
+                <div class="flex-auto  absolute" style="bottom: 0; right: 0"><h6 class="hand-police"
+                                                                                 style="font-size: 22px !important;">
+                    System-<span class="focus-color">D</span>
+                </h6>
+                </div>
             </a>
         </li>
         {{!formulaire de recherche}}
-        <li>
-            <form action="" name="search-form" class="row no-margin valign-wrapper" searchForm>
-                <a class="btn-flat col s2 no-padding small-margin " searchBtn>
-                    <img src="/images/icon/search_icon.png" alt="search" class=" small-margin no-padding  "
-                         style="height : 25px; widht: 25px; " >
-                </a>
-                <div class="input-field row no-padding small-margin s8 col valign-wrapper">
+        <!--<li>-->
+            <!--<form action="" name="search-form" class="row no-margin valign-wrapper" searchForm>-->
+                <!--<a class="btn-flat col s2 no-padding small-margin " searchBtn>-->
+                    <!--<img src="/images/icon/search_icon.png" alt="search" class=" small-margin no-padding  "-->
+                         <!--style="height : 25px; widht: 25px; ">-->
+                <!--</a>-->
+                <!--<div class="input-field row no-padding small-margin s8 col valign-wrapper">-->
 
-                    <input id="generalSearchInput" type="text" class="validate no-margin" name="search"
-                           placeholder="Rechercher">
+                    <!--<input id="generalSearchInput" type="text" class="validate no-margin" name="search"-->
+                           <!--placeholder="Rechercher">-->
 
-                </div>
-            </form>
-        </li>
+                <!--</div>-->
+            <!--</form>-->
+        <!--</li>-->
 
 
     </ul>
