@@ -1,3 +1,5 @@
+import * as Materialize from "meteor/materialize:materialize";
+
 cryptoTools = {
     //permet de recuperer l'object crypto suivant le navigateur
     crypto() {
@@ -6,12 +8,13 @@ cryptoTools = {
             return crypto
         } else {
             console.log("API crypto Not Supported")
+            Materialize.toast('Votre navigateur ne permet pas une connexion sécurisée',6000, 'red darken-2')
         }
 
     },
     //vecteur d'initialisation utilisé pour les chiffrements symetriques
     vectorFromString(str) {
-        vectorPhrase = str + "Le pari d’une humanité de la collaboration et du partage";
+        let vectorPhrase = str + "Le pari d’une humanité de la collaboration et du partage";
         let vector = new Uint8Array(16);
         for (let iii = 0; iii < vector.length; iii++) {
             vector[iii] = vectorPhrase.charCodeAt(iii);

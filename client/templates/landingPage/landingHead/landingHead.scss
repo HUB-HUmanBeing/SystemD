@@ -1,0 +1,22 @@
+@import "{}/client/scss/variables.scss";
+
+#landingHead{
+  nav{
+    position: relative;
+    height: 64px;
+    width: 100%;
+    ul{
+      a:hover{
+        color: $focus-color;
+      }
+    }
+  }
+  .brand-logo{
+    margin: 0 20px;
+    img{
+      width:64px;
+      height:64px;
+      padding:5px;
+    }
+  }
+}

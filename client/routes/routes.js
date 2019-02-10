@@ -3,7 +3,7 @@
 FlowRouter.route('/', {
   name: 'App.home',
   action() {
-    BlazeLayout.render('layout', { main: 'landingPage' });
+    BlazeLayout.render('layout', { main: 'landingPage', header: 'landingHead' });
   },
 });
 

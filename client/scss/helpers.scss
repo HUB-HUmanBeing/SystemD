@@ -28,6 +28,9 @@
 .flex-auto{
   flex: auto !important;
 }
+.flex-middle{
+  align-items: center;
+}
 .relative{
   position: relative;
 }
@@ -37,6 +40,9 @@
 //Backgrounds et textures
 .gradiant{
   background: linear-gradient(45deg, $main-bg 0%, $contrasted-bg 100%);
+}
+.gradiant-dark{
+  background: linear-gradient(0deg,$contrasted-bg  0%, $contrasted-plus-bg  100%);
 }
 .shadow{
   -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
@@ -105,4 +111,32 @@
   .formError{
     font-size: smaller;
   }
+}
+
+.link{
+  color: $link-color;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+.link:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.hr{
+
+  width: 100%;
+  height: 10px;
+  margin: 10px 0;
+  background-image: url("/images/trame/hr.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+.elipsis{
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

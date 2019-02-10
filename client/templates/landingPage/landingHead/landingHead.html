@@ -1,14 +1,18 @@
 <template name="landingHead">
-    <div id="landingHead" class="navbar-fixed landingHead ">
+    <div id="landingHead" class="navbar-fixed ">
         <nav class=" minus-color contrasted-bg">
             <div class="nav-wrapper ">
+                {{#unless currentUserId}}
                 <a href="/" class="brand-logo "><img src="/images/icon/systemd-logo-white.png" alt="" class="responsive-img"></a>
-                <ul class="right hide-on-med-and-down">
+{{/unless}}
+                <ul class="right hide-on-small-and-down">
                     <li><a href="/#landingAim">Objectif</a></li>
                     <li><a href="/#landingPlus">Atouts</a></li>
                     <li><a href="/#landingRoadmap">Feuille de route</a></li>
-                    <li><a href="/login">inscription/Connexion</a></li>
-
+                    <li><a href="/#landingContact">Contact</a></li>
+{{#unless currentUserId}}
+                    <li><a href="/login" style="font-weight: bold">inscription/Connexion</a></li>
+{{/unless}}
                 </ul>
             </div>
         </nav>

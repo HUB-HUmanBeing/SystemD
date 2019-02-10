@@ -1,0 +1,48 @@
+@import "{}/client/scss/variables.scss";
+
+.general-menu {
+  padding: 0 10px !important;
+  height: 100vh !important;
+  width: 100%;
+
+  .currentuser-infos {
+    .dropdown-button {
+      padding: 5px 0;
+
+      .material-icons {
+        padding: 5px;
+      }
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: $blue-highlight-color;
+    }
+
+    .elipsis {
+      font-size: 1.2em;
+    }
+
+    .dropdown-content {
+
+      border-radius: 5px;
+
+      li {
+        &:hover {
+          background-color: $lighter-bg;
+          color: $plus-color;
+
+          * {
+            color: $plus-color !important;
+          }
+        }
+
+        a {
+          color: $main-color !important;
+        }
+      }
+    }
+  }
+}

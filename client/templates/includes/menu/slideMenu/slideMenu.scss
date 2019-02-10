@@ -7,7 +7,7 @@
     position: fixed ;
     top:5px;
     left: 5px;
-    z-index: 500 !important;
+    z-index: 1000 !important;
 }
 
 #slide-out{
@@ -15,4 +15,9 @@
 }
 .margintop{
     margin: 0!important;
+}
+
+.show-menu-btn{
+    width: 60px;
+    opacity: 0.8;
 }

@@ -4,24 +4,23 @@
     {{/if}}
 
     <div class="main-container">
-        <div id="topPage"></div>
+
         <main class="">
             {{#if compare isDesktop '&&' currentUserId }}
-                <div class="menu-container no-margin dark-grey scrollbar ">
+                <div class="menu-container no-margin gradiant-dark scrollbar ">
                     {{>menu}}
-                    <img src="/images/icon/licence.png" alt="" class="absolute" style="bottom: 0; left: 0; z-index: 700">
+                    <img src="/images/icon/licence.png" alt="" class="absolute" style="bottom: 0; left: 0; z-index: 700; opacity: 0.4">
                 </div>
             {{/if}}
 
             <div class=" yield-content {{#if compare isDesktop '&&' currentUserId}} yield-content-desktop {{/if}} ">
-                <div class="row no-margin">
-                    <div class="col s12 no-padding flex">
-                        <div class="flex-auto">
-                            {{> Template.dynamic template=main}}
-                        </div>
-
-                    </div>
+                <div id="pageHeader">
+                    {{> Template.dynamic template=header}}
                 </div>
+                <div id="subHeader">
+                    {{> Template.dynamic template=subHeader}}
+                </div>
+                            {{> Template.dynamic template=main}}
             </div>
         </main>
     </div>
