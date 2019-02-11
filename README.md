@@ -5,31 +5,41 @@
 
 ## Plate forme web chiffrée de projets collaboratifs non marchands
 
-Crééz des projets, invitez vos amis, et profitez ensemble des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif
+#### Crééz des projets, invitez vos amis, et profitez ensemble des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif
 
 ### Notre Objectif : 
-Favoriser le non-marchand et le collaboratif afin qu'ils puissent se dévelloper grace aux outils du numériques en réseau.
 
-Créer un outil qui accompagne la transition d'une société de l'argent en faillite à un mode de production basé sur la collaboration et le partage.
+> Favoriser le non-marchand et le collaboratif afin qu'ils puissent se
+> dévelloper grace aux outils du numériques en réseau.
+> 
+> Créer un outil qui accompagne la transition d'une société de l'argent
+> en faillite à un mode de production basé sur la collaboration et le
+> partage.
 
 ### Un projet en trois phases :
 
 
 #### Créer un outil de gestion de projet ouvert à tous 
 
-Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet.
+> Un outil qui permettra aux différents collectifs et association de
+> s'organiser efficacement. Un outil chiffré, gratuit, open-source
+> visant à favoriser l'horizontalité dans la gestion de projet.
 
 #### Faire de SystemD le réseau social du projet non-marchand
 
-Création des interfaces faisant de la plateforme un espace de rencontre et de circulation des utilisateurs sur différents projets : Recherche géolocalisée par compétences-centres d’intérêts, messagerie chiffrée, blogs partagés, etc.
+> Création des interfaces faisant de la plateforme un espace de
+> rencontre et de circulation des utilisateurs sur différents projets :
+> Recherche géolocalisée par compétences-centres d’intérêts, messagerie
+> chiffrée, blogs partagés, etc.
 
 #### Dévelloper un réseau de gratuité et de partage
 
-Permettre à chaque utilisateur et chaque projets de mettre en partage les ressources qu'ils produisent afin de pouvoir réaliser une circulation non-marchande de grande ampleur
+> Permettre à chaque utilisateur et chaque projets de mettre en partage
+> les ressources qu'ils produisent afin de pouvoir réaliser une
+> circulation non-marchande de grande ampleur
 
 
 
-   
 ## Roadmap
 
 ### Première phase :
@@ -69,15 +79,14 @@ Permettre à chaque utilisateur et chaque projets de mettre en partage les resso
  - [ ]  Module de planning Scrum
 
 
-
-## Installation en local :
-### 1. Récupérer le code
+### Installation en local
+#### 1. Récupérer le code
 Vous avez deux solutions pour le faire :
 
 1. Via Git, en clonant ce dépôt ;
 2. Via le téléchargement du code source en une archive ZIP.
 
-### 2. Installation de MeteorJS et de node js (Ubuntu)
+#### 2. Installation de MeteorJS et de node js (Ubuntu)
 node :  
 
     $ sudo apt-get install nodejs
@@ -86,7 +95,7 @@ meteor :
 
     $curl https://install.meteor.com/ | sh
  
-### 3. Lancer le serveur interne de Meteor (Ubuntu)
+#### 3. Lancer le serveur interne de Meteor (Ubuntu)
 pour uploader les paquets et lancer le serveur, utiliser la commande
    
     $ meteor npm install
@@ -95,8 +104,9 @@ enfin, lancez le serveur de dev avec :
    
     $ meteor
     
-### 4. C'est prêt !
+#### 4. C'est prêt !
 
 Vous pouvez ensuite visionner l'avancement du travail en vous rendant à l'adresse suivante :
         
  http://localhost:3000/
+   
