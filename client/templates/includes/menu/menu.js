@@ -27,8 +27,7 @@ Template.menu.onRendered(function () {
     $('.collapsible').collapsible();
 
     $(".dropdown-button").dropdown({
-        belowOrigin: true,
-        hover:true,
+        belowOrigin: true
     });
 });
 

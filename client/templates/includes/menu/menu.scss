@@ -1,14 +1,30 @@
 @import "{}/client/scss/variables.scss";
 
 .general-menu {
-  padding: 0 10px !important;
+  padding: 0 0px !important;
   height: 100vh !important;
   width: 100%;
 
-  .currentuser-infos {
-    .dropdown-button {
-      padding: 5px 0;
+  .hr{
 
+    padding: 0 ;
+    margin: 0 10px;
+  }
+  .currentuser-infos {
+
+    .dropdown-button {
+      padding: 10px 10px;
+      cursor: pointer;
+      *{
+        transition: .3s ease-out;
+      }
+      transition: .3s ease-out;
+      &:hover{
+        background-color: $contrasted-bg;
+        *{
+          color: $plus-color;
+        }
+      }
       .material-icons {
         padding: 5px;
       }

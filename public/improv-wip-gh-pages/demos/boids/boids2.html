@@ -35,16 +35,22 @@ Also, every "tick", each boid does this:
 <!-- Test -->
 <script>
 
+    var birdNumber =window.innerWidth /18
+    if( birdNumber<50){
+        birdNumber=50
+    }else if(birdNumber>120){
+        birdNumber=120
+    }
 // This model's data!
 var Sim = {
 	model: {
-		"count": parseInt(window.innerWidth /15)>150 ? 150 :parseInt(window.innerWidth /15),
+		"count": parseInt(window.innerWidth /19)>130 ? 130 :parseInt(window.innerWidth /19),
 		"color":"black",
 
 		// the behavior of the boids
 		// don't worry about this line, it's just a data dump
 		"actions":[
-		    {"type":"move","amount":5},
+		    {"type":"move","amount":4.5},
             {"type":"steer","direction":"t","target":"m","turn":2},
             {"type":"if_close","radius":128,"target":"m","actions":
                         [
