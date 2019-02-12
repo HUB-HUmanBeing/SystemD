@@ -1,4 +1,5 @@
 import User from '/imports/classes/User'
+import {check} from "meteor/check";
 
 Meteor.users.deny({
     update() { return true; }
@@ -56,6 +57,18 @@ Meteor.methods({
             //on renvoie l'userId qui servira pour la redirection
             return userId;
         }
+
+    },
+    /******************************
+     * Methode de suppression d'un compte Utilisateur
+     */
+    deleteUserAccount :function(passwordConfirmation) {
+        check(passwordConfirmation, String)
+        check(!!Accounts._checkPassword(Meteor.user(), passwordConfirmation).error, false)
+        //on check que l'utilisateur est bien l'e propriétaire
+        let user = User.findOne(Meteor.userId())
+
+        user.remove()
 
     }
 });

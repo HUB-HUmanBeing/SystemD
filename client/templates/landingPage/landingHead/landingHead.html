@@ -2,10 +2,11 @@
     <div id="landingHead" class="navbar-fixed ">
         <nav class=" minus-color contrasted-bg">
             <div class="nav-wrapper ">
+
                 {{#unless currentUserId}}
-                <a href="/" class="brand-logo "><img src="/images/icon/systemd-logo-white.png" alt="" class="responsive-img"></a>
+                <a href="/" class="logo-site"><img src="/images/icon/systemd-logo-white.png" alt="" class="responsive-img"></a>
 {{/unless}}
-                <ul class="right hide-on-small-and-down">
+                <ul class="right hide-on-small-only">
                     <li><a href="/#landingAim">Objectif</a></li>
                     <li><a href="/#landingPlus">Atouts</a></li>
                     <li><a href="/#landingRoadmap">Feuille de route</a></li>
@@ -14,6 +15,14 @@
                     <li><a href="/login" style="font-weight: bold">inscription/Connexion</a></li>
 {{/unless}}
                 </ul>
+                {{#if isPhone}}
+                <ul class="right show-on-small">
+
+                    {{#unless currentUserId}}
+                        <li><a href="/login" style="font-weight: bold">inscription/Connexion</a></li>
+                    {{/unless}}
+                </ul>
+                   {{/if  }}
             </div>
         </nav>
     </div>

@@ -1,4 +1,3 @@
-
 import User from '/imports/classes/User';
 
 /******************************************
@@ -7,5 +6,5 @@ import User from '/imports/classes/User';
 Meteor.publish('UserPrivateInfo', function (id) {
     check(id, String);
     if (id === this.userId)
-        return Meteor.users.find(id);
+        return Meteor.users.find(id, { fields: { private: 1, public: 1, username:1 }});
 });

@@ -21,6 +21,11 @@
 
             </div>
         </div>
+        <div class="row center-align">
+            {{#unless currentUserId}}
+                <a href="/login" class="center-align waves-effect waves-light btn-large focus-color "><i class=" material-icons left">account_circle</i>Rejoindre</a>
+            {{/unless}}
+        </div>
     </div>
 
     {{#if isDesktop}}

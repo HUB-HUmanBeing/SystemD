@@ -2,7 +2,14 @@
 
 
 #landingPlus{
-
+  .btn-large{
+    border: 2px solid $focus-color;
+    font-size: 120%;
+    background-color: transparent;
+  }
+  .btn-large:focus, .btn-large:hover{
+    background-color: $contrasted-bg !important;
+  }
   .container{
     padding: calc(50vh - 150px) 0;
     overflow: hidden;

@@ -1,26 +1,28 @@
 <template name="loginForm">
+    {{#if loginComplete}}
+        {{>encryptionLoader tasks=loginComplete}}
+    {{else}}
+        <form action="#" id="loginForm" class="main-color">
+            <div class="row no-margin">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix  main-color">account_circle</i>
+                    <input id="loginUsername" type="text" class="validate main-color">
+                    <label for="loginUsername">Nom d'utilisateur</label>
 
-            <form action="#" id="loginForm" class="main-color">
-                <div class="row no-margin">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix  main-color">account_circle</i>
-                        <input id="loginUsername" type="text" class="validate main-color">
-                        <label for="loginUsername">Nom d'utilisateur</label>
-
-                    </div>
                 </div>
-                <div class="row no-margin">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix main-color">security</i>
-                        <input id="loginPassword" type="password" class="validate main-color">
-                        <label for="loginPassword">Mot de passe</label>
-                    </div>
+            </div>
+            <div class="row no-margin">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix main-color">security</i>
+                    <input id="loginPassword" type="password" class="validate main-color">
+                    <label for="loginPassword">Mot de passe</label>
                 </div>
-                <div class="row center-align" style="margin: 15px 0 0 0">
-                    <button href="#" class="btn btnFocus center-align waves-effect waves-light shadow"><i
-                            class="material-icons right">account_circle</i>Connexion
-                    </button>
-                </div>
-            </form>
-
+            </div>
+            <div class="row center-align" style="margin: 15px 0 0 0">
+                <button href="#" class="btn btnFocus center-align waves-effect waves-light shadow"><i
+                        class="material-icons right">account_circle</i>Connexion
+                </button>
+            </div>
+        </form>
+    {{/if}}
 </template>

@@ -1,5 +1,6 @@
 import hubCrypto from '/client/lib/hubCrypto'
 import zxcvbn from 'zxcvbn'
+import cryptoTools from "../../../../lib/cryptoTools";
 
 /**
  * Object in order to validate the signin form
@@ -66,10 +67,10 @@ const validateSigninForm = {
 
         let signinPassword = $('#signinPassword').val();
         let passwordStrength = parseInt(zxcvbn(signinPassword).guesses_log10 * 1.1)
-        let preProgress = parseInt(passwordStrength*2)
-        let progress = ((preProgress * 5)<100) ? (preProgress * 5) :100;
+        let preProgress = parseInt(passwordStrength * 2)
+        let progress = ((preProgress * 5) < 100) ? (preProgress * 5) : 100;
         instance.passwordStrength.set({strength: passwordStrength, progress: progress})
-        window.setTimeout(()=>{
+        window.setTimeout(() => {
             $('.circle-container').tooltip({
                 delay: 250,
                 tooltip: `
@@ -81,7 +82,7 @@ const validateSigninForm = {
                 html: true,
                 position: 'left',
             });
-        },100)
+        }, 100)
         let errors = instance.errors.get()
         if (signinPassword) {
             if (passwordStrength < 10) {
@@ -92,7 +93,7 @@ const validateSigninForm = {
                 instance.errors.set(errors)
             }
             let signinPasswordRepeat = $('#signinPasswordRepeat').val();
-            if ( signinPassword !== signinPasswordRepeat) {
+            if (signinPassword !== signinPasswordRepeat) {
                 errors.signinPasswordRepeat = ["Les mots de passes ne sont pas identiques"]
                 instance.errors.set(errors)
             } else {
@@ -173,7 +174,7 @@ Template.signinForm.helpers({
         return Template.instance().passwordStrength.get()
     },
     signinComplete: function () {
-         return Template.instance().signinComplete.get()
+        return Template.instance().signinComplete.get()
 
     }
 });
@@ -194,45 +195,57 @@ Template.signinForm.events({
     'keyup #signinPasswordRepeat , touchend #signinPasswordRepeat , blur #signinPasswordRepeat ': function (event, instance) {
         validateSigninForm.validateSigninPasswordRepeat(event, instance)
     },
+    /*****
+     * Au submit du formulaire de login
+     * @param event
+     * @param instance
+     */
     'submit #signinForm ': function (event, instance) {
         event.preventDefault()
         if (validateSigninForm.isValid(instance)) {
             let username = $('#signinUsername').val();
             let password = $('#signinPassword').val()
+            //on génére les clefs de ckiffrement
             hubCrypto.generateUserAsymKeys(password, username, (userAsymKeys) => {
                 //on préformate l'objet a envoyer
                 let userAttribute = {
                     username: username,
                     password: password,
                 };
-                //et on passe par une meteor method
-
+                //et on passe par une meteor method pour creer notre user et stocker ses clefs
                 Meteor.call('createNewUser', userAttribute, userAsymKeys, function (error, result) {
                     //si ca échoue on renvoie l'erreur en toast
                     if (error) {
                         console.log(error, userAttribute, userAsymKeys)
                         Materialize.toast(error.message, 6000, 'red darken-3')
                     } else {
+                        //ca lance le loader avec les infos de chiffrement pour l'utilisateur
                         instance.signinComplete.set([
                             'Génération des clefs de chiffrement',
                             'Création du compte utilisateur',
                             'Initialisation d\'une nouvelle session chiffrée'
                         ])
-                        Meteor.setTimeout(()=>{
-                            //si tout va bien on redirige vers la page pour completer le profil
+
+                        //on laisse les infos de chiffrement plus que de raison pour que l'utilisateur puisse bien voir
+                        Meteor.setTimeout(() => {
+
                             Meteor.loginWithPassword(username, password, function (error) {
-                                //
-                                // hubCrypto.initCryptoSession(password,username, ()=>{
-                                //
-                                // })
-                                // Router.go("userSelfProfile");
-                                //et on toast un petit message de bienvenue
+                                if(!error){//si ya pas de bug,on récupere les infos utilisateurs puis on initie une session chiffrée pour l'utilisateur
+                                    Meteor.subscribe("UserPrivateInfo", Meteor.userId(), ()=>{
+                                        cryptoTools.hash(password, (hashedPassword)=>{
+                                            window.localStorage.setItem('hashedPassword',hashedPassword)
+                                            hubCrypto.initCryptoSession(hashedPassword, username, () => {
+                                                //si tout va bien on redirige vers la page pour completer le profil
+                                                FlowRouter.go('/user-params')
+                                                Materialize.toast("Bienvenue sur System-D", 6000, 'lighter-bg')
+                                            })
+                                        })
 
-                                 FlowRouter.go('/')
-                                 Materialize.toast("Bienvenue sur System-D", 6000, 'green darken-2')
+                                    } )
+
+                                }
                             });
-                        },3500)
-
+                        }, 4500)
                     }
                 })
             })

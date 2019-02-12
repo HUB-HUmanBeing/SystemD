@@ -20,7 +20,13 @@ const Public = Class.create({
 const Private = Class.create({
     name: 'Private',
     fields: {
-        encryptedAsymPrivateKey: String //clef chifrée a partir du mot de passe
+        encryptedAsymPrivateKey: String, //clef chifrée a partir du mot de passe
+        createdAt: {
+            type: Date,
+            default: function () {
+                return new Date()
+            }
+        },
     },
 
 });
@@ -42,12 +48,6 @@ const User = Class.create({
         services: {
             type: Object,
             optional: true
-        },
-        createdAt: {
-            type: Date,
-            default: function () {
-                return new Date()
-            }
         },
         private:{
             type: Private,

@@ -7,7 +7,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.5",
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^3.0.4",
+    "croppie": "^2.6.3",
+    "jshashes": "^1.0.7",
     "meteor-node-stubs": "^0.4.1",
     "zxcvbn": "^4.4.2"
   },

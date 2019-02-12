@@ -1,6 +1,6 @@
 import * as Materialize from "meteor/materialize:materialize";
-
-cryptoTools = {
+import Hashes from "jshashes"
+const cryptoTools = {
     //permet de recuperer l'object crypto suivant le navigateur
     crypto() {
         let crypto = window.crypto || window.msCrypto || window.webkitCrypto;
@@ -190,9 +190,14 @@ cryptoTools = {
                 callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
             },
             function (e) {
-                console.log(e)
+                console.log("sym decrypt faillure", e)
             }
         );
+    },
+    hash(string, callback){
+        callback(new Hashes.SHA512().b64(string+"Ce qui distingue d'emblée le pire architecte de l'abeille la plus experte, c'est qu'il a construit la cellule dans sa tête avant de la construire dans la ruche. K. MARX"))
     }
 
 }
+
+export default cryptoTools

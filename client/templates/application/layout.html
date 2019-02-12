@@ -3,7 +3,7 @@
         {{> slideMenu}}
     {{/if}}
 
-    <div class="main-container">
+    <div class="main-container"  style="min-height: 100vh">
 
         <main class="">
             {{#if compare isDesktop '&&' currentUserId }}
@@ -13,7 +13,7 @@
                 </div>
             {{/if}}
 
-            <div class=" yield-content {{#if compare isDesktop '&&' currentUserId}} yield-content-desktop {{/if}} ">
+            <div class=" yield-content {{#if compare isDesktop '&&' currentUserId}} yield-content-desktop {{/if}} " style="min-height: 100vh">
                 <div id="pageHeader">
                     {{> Template.dynamic template=header}}
                 </div>
