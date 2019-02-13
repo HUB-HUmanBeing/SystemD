@@ -42,7 +42,7 @@
   background: linear-gradient(45deg, $main-bg 0%, $contrasted-bg 100%);
 }
 .gradiant-dark{
-  background: linear-gradient(0deg,$contrasted-bg  0%, $contrasted-plus-bg  100%);
+  background: linear-gradient(45deg,$main-bg  0%, $contrasted-bg  100%);
 }
 .shadow{
   -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
@@ -139,4 +139,10 @@
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.avatar{
+  overflow: hidden;
+  background-color: $main-color;
+  background-size: cover;
+  border-radius: 50%;
 }

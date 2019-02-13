@@ -186,6 +186,7 @@ Template.editPassword.events({
                                         Meteor.setTimeout(() => {
                                             //si tout va bien on redirige vers la page pour completer le profil
                                             instance.updatePasswordComplete.set(false)
+                                            $('editPasswordCollapse').collapsible('close', 0);
                                         }, 4000)
                                     })
                                 })
@@ -219,6 +220,7 @@ Template.editPassword.onCreated(function () {
 
 Template.editPassword.onRendered(function () {
     //add your statement here
+    $('.circle-container').tooltip();
 });
 
 Template.editPassword.onDestroyed(function () {

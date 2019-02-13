@@ -1,3 +1,5 @@
+import hubCrypto from "../../../lib/hubCrypto";
+
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
     menuItems: function () {
@@ -8,12 +10,19 @@ Template.menu.helpers({
 Template.menu.events({
     //gestion du bouton logout
     'click [logout]': function () {
-        Object.keys(Session.keys).forEach(function(key){ Session.set(key, undefined); })
-        Session.keys = {}
-        Accounts.logout(()=>{
-            FlowRouter.go('/')
-            // window.location.reload()
-        });
+
+
+            Accounts.logout(()=>{
+               Meteor.setTimeout(()=>{
+                   hubCrypto.destroyCryptoSession(()=>{
+                       Object.keys(Session.keys).forEach(function(key){ Session.set(key, undefined); })
+                       Session.keys = {}
+                       window.location.reload()
+               },50)
+
+            });
+        })
+
 
     },
 

@@ -41,6 +41,7 @@ Template.editAvatar.events({
 Template.editAvatar.onCreated(function () {
     //add your statement here
     this.croppie = null
+
 });
 
 Template.editAvatar.onRendered(function () {
@@ -53,6 +54,7 @@ Template.editAvatar.onRendered(function () {
         showZoomer: true,
         enableOrientation: true
     });
+    $('.tooltipped').tooltip({delay: 50});
 });
 
 Template.editAvatar.onDestroyed(function () {

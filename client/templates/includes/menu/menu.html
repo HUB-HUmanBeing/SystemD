@@ -6,21 +6,25 @@
                class=" waves-effect waves-light col s12 relative"
                style="padding: 15px 0 5px 0">
                 <img src="/images/icon/systemd-logo-white.png" alt="System-D" class="responsive-img  "
-                     style=" width: 65px ; height: 65px ">
+                     style=" width: 70px ; height: 70px ">
             </a>
         </div>
-        <div class="hr "></div>
+        <div style="padding: 0 10px;"><div class="hr no-margin"></div></div>
+
         <div class="currentuser-infos ">
             <div class='dropdown-button main-color ' href='#' data-activates='userOptions' style="width: 100%">
                 <div class="flex flex-middle">
                     <div class="flex-auto flex flex-middle">
-                        <img src="/images/icon/user_icon.png" alt="" class="focus-border grey lighten-3">
+                        <div class="avatar-container">
+                            {{>avatar user=currentUser}}
+                        </div>
+
                         <div class="flex-auto small-padding">
                             <div class="elipsis">{{currentUser.username}}</div>
                         </div>
                     </div>
                     <div class="">
-                        <i class="material-icons tiny">details</i>
+                        <i class="material-icons ">arrow_drop_down</i>
                     </div>
                 </div>
             </div>
@@ -31,7 +35,8 @@
             </ul>
 
         </div>
-        <div class="hr no-margin"></div>
+        <div style="padding: 0 10px;"><div class="hr no-margin"></div></div>
+
 
 
         {{!formulaire de recherche}}

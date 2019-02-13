@@ -71,27 +71,33 @@ const hubCrypto = {
     },
     //methode permettant de dechiffrer la clef privée de l'utilisateur a partir de son mot de passe
     decryptAndStorePrivateKeyInSession(hashedPassword, username, callback) {
-        //on commence par recuperer la clef symetrique associée au password utilisateur
-        cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (simKey) => {
-            //on recupere la clef stockée en base
-            let stringifiedEncryptedAsymPrivateKey = Meteor.user().private.encryptedAsymPrivateKey
-            //on converti la string en arrayBuffer
-            let encryptedAsymPrivateKey = cryptoTools.convertStringToArrayBufferView(stringifiedEncryptedAsymPrivateKey)
-            //puis on la déchiffre avec notre clef recuperée a partir du mot de passe et en utilisant le username
-            // comme vecteur d'initialisation
-            cryptoTools.sim_decrypt_data(
-                encryptedAsymPrivateKey,
-                simKey,
-                //si le nom d'utilisateur fait partie des utilisateurs de test, on laisse un vecteur d'initialisation vide,
-                // ce qui conduira a l'utilisation du vecteur par défaut
-                Fixtures.usernames.includes(username) ? "" : username,
-                (stringifiedAsymPrivateKey) => {
-                    //on met ensuite en session la clef privée en session, il faudra penser a la réimporter a chaque nouvelle utilisation
-                    Session.set("stringifiedAsymPrivateKey", stringifiedAsymPrivateKey)
-                    callback()
+        let currentUser = Meteor.user()
+        if(currentUser && currentUser.private && currentUser.private.encryptedAsymPrivateKey){
+            //on commence par recuperer la clef symetrique associée au password utilisateur
+            cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (simKey) => {
+                //on recupere la clef stockée en base
+                let stringifiedEncryptedAsymPrivateKey = Meteor.user().private.encryptedAsymPrivateKey
+                //on converti la string en arrayBuffer
+                let encryptedAsymPrivateKey = cryptoTools.convertStringToArrayBufferView(stringifiedEncryptedAsymPrivateKey)
+                //puis on la déchiffre avec notre clef recuperée a partir du mot de passe et en utilisant le username
+                // comme vecteur d'initialisation
+                cryptoTools.sim_decrypt_data(
+                    encryptedAsymPrivateKey,
+                    simKey,
+                    //si le nom d'utilisateur fait partie des utilisateurs de test, on laisse un vecteur d'initialisation vide,
+                    // ce qui conduira a l'utilisation du vecteur par défaut
+                    Fixtures.usernames.includes(username) ? "" : username,
+                    (stringifiedAsymPrivateKey) => {
+                        //on met ensuite en session la clef privée en session, il faudra penser a la réimporter a chaque nouvelle utilisation
+                        Session.set("stringifiedAsymPrivateKey", stringifiedAsymPrivateKey)
+                        callback()
 
-                })
-        })
+                    })
+            })
+        }else{
+            console.warn('unable to get currentUser.private.encryptedAsymPrivateKey')
+        }
+
     },
     /*******************************
      * Action d'initialisation du trousseau de clef a la connexion
@@ -108,7 +114,7 @@ const hubCrypto = {
         })
     },
     destroyCryptoSession(callback){
-        window.localStorage.setItem('hashedPassword', undefined)
+        window.localStorage.setItem('hashedPassword', "")
         Object.keys(Session.keys).forEach(function(key){ Session.set(key, undefined); })
         Session.keys = {}
         callback()

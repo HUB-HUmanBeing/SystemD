@@ -13,7 +13,10 @@ const Public = Class.create({
     name: 'Public',
     fields: {
         asymPublicKey: String,
-
+        avatar: {
+            type: String,
+            optional: true
+        },
     },
 
 });

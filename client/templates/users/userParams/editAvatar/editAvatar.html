@@ -1,12 +1,17 @@
 <template name="editAvatar">
-    <a class="btn-floating  waves-effect waves-light " editUserAvatarBtn><i class="material-icons">edit</i></a>
+    <div class="userAvatar">
+        {{>avatar user=currentUser}}
+    </div>
+
+
+
+    <a class="btn-floating  waves-effect waves-light tooltipped" data-position="left" data-delay="50" data-tooltip="Editer l'avatar" editUserAvatarBtn><i class="material-icons">edit</i></a>
     <input type="file" id="editUserAvatar" style="display: none">
     <div id="modalEditAvatar" class="modal light-bg main-color">
         <div class="modal-content">
             <div id="cropAvatar" ></div>
         </div>
         <div class="lighter-bg main-color modal-footer">
-            <a href="#!" class="modal-action waves-effect waves-green btn-flat" closeEditUserAvatar ><i class="material-icons right">close</i>annuler</a>
             <a href="#!" class="modal-action waves-effect waves-green btn-flat" chooseNewAvatar ><i class="material-icons right">done</i>valider</a>
         </div>
     </div>

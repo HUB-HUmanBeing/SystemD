@@ -1,68 +1,85 @@
 @import "{}/client/scss/variables.scss";
 
-#userParams{
+#userParams {
   min-height: 100vh;
   padding: 30px 0;
-  .profile-picture{
+
+  .profile-picture {
     width: 100px;
     height: 100px;
     text-align: center;
     display: inline-block;
-    img{
+
+    img {
       border-radius: 50%;
     }
-    .btn-floating{
+
+    .btn-floating {
       position: absolute;
       right: -15px;
       bottom: -15px;
       transition: 0.4s ease-out;
-      *{
+
+      * {
+        color: $plus-color;
         transition: 0.4s ease-out;
       }
+
       background-color: $light-bg;
-      opacity: .9;
-      &:hover{
+      opacity: .6;
+
+      &:hover {
         opacity: 1;
         background-color: $lighter-bg;
-        .material-icons{
+
+        .material-icons {
           color: $focus-color;
         }
-
       }
     }
-
   }
-  .collapsible{
+
+  .collapsible {
     margin-bottom: 30vh;
-    li{
+
+    li {
       box-shadow: none;
-      &.active{
-       // border: 1px solid $blue-highlight-color;
+
+      &.active {
+        // border: 1px solid $blue-highlight-color;
         background-color: $contrasted-bg;
         box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 
       }
     }
-  .collapsible-body{
-    padding: 15px;
-    border-bottom: none;
-  }
 
-    .collapsible-header{
+    .collapsible-body {
+      padding: 15px;
+      border-bottom: none;
+    }
+
+    .collapsible-header {
+      position: relative;
       box-shadow: none !important;
       transition: 0.3s ease-out;
       border: none;
       display: block;
-      padding: 14px 14px 0 14px;
+      padding: 18px 14px;
       font-size: 1.1em;
-      .hr{
+
+      .hr {
         margin: 15px 0 0 0 !important;
         display: block;
+        position: absolute;
+        width: calc(100% - 28px);
+        bottom: -5px
       }
-      &:hover{
+
+      &:hover {
         background-color: $lighter-bg !important;
       }
     }
+
     border-bottom: none;
   }
 }

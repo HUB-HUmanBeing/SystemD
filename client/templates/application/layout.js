@@ -7,18 +7,30 @@ Template.layout.events({
 });
 
 Template.layout.onCreated(function () {
-    let userId = Meteor.userId()
-    const hashedPassword = window.localStorage.getItem('hashedPassword')
-    if (userId && hashedPassword) {
-        Meteor.subscribe("UserPrivateInfo", userId, () => {
-            hubCrypto.initCryptoSession(hashedPassword, Meteor.user().username,()=>{
-            })
-        })
-    } else {
-        hubCrypto.destroyCryptoSession(() => {
 
-        })
-    }
+    Tracker.autorun(() => {
+        Meteor.setTimeout(()=>{
+            let userId = Meteor.userId()
+            const hashedPassword = window.localStorage.getItem('hashedPassword')
+            if (userId){
+                if(hashedPassword) {
+                    Meteor.subscribe("UserPrivateInfo", userId, () => {
+                        hubCrypto.initCryptoSession(hashedPassword, Meteor.user().username, () => {
+                        })
+                    })
+                }else{
+                    hubCrypto.destroyCryptoSession(() => {
+
+                    })
+                    Meteor.logout()
+                }
+            } else {
+                hubCrypto.destroyCryptoSession(() => {
+
+                })
+            }
+        },300)
+    })
 
 });
 

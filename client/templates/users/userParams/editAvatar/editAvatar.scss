@@ -1,25 +1,38 @@
 @import "{}/client/scss/variables.scss";
 
+.userAvatar {
+  svg {
+    border-radius: 50%;
+    overflow: hidden;
+  }
 
-#modalEditAvatar{
+}
+
+#modalEditAvatar {
+
   width: 320px;
   overflow: hidden;
-  .modal-content{
+
+  .modal-content {
     padding: 10px;
     position: relative;
-    .cr-boundary{
+
+    .cr-boundary {
       background-color: $main-color;
     }
-    .cr-slider-wrap{
+
+    .cr-slider-wrap {
 
       bottom: 0;
       margin: 0 auto;
     }
-    input[type=range]{
+
+    input[type=range] {
       border: none !important;
     }
   }
-  .modal-footer{
+
+  .modal-footer {
     background-color: $light-bg;
   }
 }

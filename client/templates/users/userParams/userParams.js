@@ -12,9 +12,11 @@ Template.userParams.onCreated(function () {
 
 Template.userParams.onRendered(function () {
     //add your statement here
+    $('#editPasswordCollapse').collapsible();
 });
 
 Template.userParams.onDestroyed(function () {
     //add your statement here
+    $('#editPasswordCollapse').collapsible('destroy');
 });
 

@@ -5,22 +5,18 @@
   height: 100vh !important;
   width: 100%;
 
-  .hr{
 
-    padding: 0  10px;
-    margin: 0;
-  }
   .currentuser-infos {
 
     .dropdown-button {
-      padding: 10px 10px;
+      padding: 5px 10px;
       cursor: pointer;
       *{
         transition: .3s ease-out;
       }
       transition: .3s ease-out;
       &:hover{
-        background-color: $contrasted-bg;
+        background-color: rgba($contrasted-bg, .5);
         *{
           color: $plus-color;
         }
@@ -30,10 +26,12 @@
       }
     }
 
-    img {
+    .avatar-container {
       width: 40px;
       height: 40px;
       border-radius: 50%;
+      overflow: hidden;
+
 
     }
 
@@ -42,19 +40,14 @@
     }
 
     .dropdown-content {
-
-      border-radius: 5px;
-
       li {
         &:hover {
           background-color: $lighter-bg;
           color: $plus-color;
-
           * {
             color: $plus-color !important;
           }
         }
-
         a {
           color: $main-color !important;
         }
