@@ -2,4 +2,4 @@
 
 import User from '/imports/classes/User';
 
-
+Session.set('userAvatars', {})

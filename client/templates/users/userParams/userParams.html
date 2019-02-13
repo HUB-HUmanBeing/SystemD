@@ -1,8 +1,8 @@
 <template name="userParams">
+    {{#if currentUser}}
     <div id="userParams" class=" gradiant  main-color">
         <div class="container">
             <div class="row">
-
                 <div class="col s12 m8 offset-m2 center-align">
                     <div class="row no-margin">
                         <div class="profile-picture circle focus-border shadow relative ">
@@ -14,7 +14,7 @@
                         <h5>{{currentUser.username}}</h5>
                     </div>
                 </div>
-                <div class="col s12 m8 offset-m2 ">
+                <div class="col s12 m8 offset-m2 offset-xl3 xl6">
                     <ul class="collapsible popout" id="editPasswordCollapse" data-collapsible="accordion">
                         <li>
                             <div class="collapsible-header main-color transparent"><div class="flex"><i class="material-icons focus-color">security</i>Modifier le mot de passe</div>
@@ -40,4 +40,5 @@
             </div>
         </div>
     </div>
+        {{/if}}
 </template>

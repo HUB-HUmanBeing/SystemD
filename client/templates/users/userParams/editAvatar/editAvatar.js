@@ -1,4 +1,6 @@
 import Croppie from 'croppie';
+import uploadFiles from "../../../../lib/uploadFiles";
+import avatarStore from "../../../../lib/avatarStore";
 
 Template.editAvatar.helpers({
     //add you helpers here
@@ -16,22 +18,38 @@ Template.editAvatar.events({
     },
     'change #editUserAvatar' : function (event, instance) {
         event.preventDefault()
-        $('#modalEditAvatar').modal('open');
-        let reader = new FileReader();
-        reader.onload = function (e) {
-            instance.croppie.bind({
-                url: e.target.result
-            }).then(function () {
-            });
-        }
-        reader.readAsDataURL(event.target.files[0]);
+        let el = document.getElementById('cropAvatar');
+
+        $('#modalEditAvatar').modal('open', ()=>{
+
+
+        });
+        instance.croppie= new Croppie(el, {
+            viewport: { width: 200, height: 200, type:'circle' },
+            boundary: { width: 300, height: 300 },
+            showZoomer: true,
+            enableOrientation: true
+        });
+        Meteor.setTimeout(()=>{
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                instance.croppie.bind({
+                    url: e.target.result
+                }).then(function () {
+                });
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        },300)
+
 //on button click
     },
     'click [chooseNewAvatar]' : function (event, instance) {
         event.preventDefault()
-        console.log('test')
-        instance.croppie.result({ type:'base64', size:'viewport', format:'jpeg', quality:0.6, circle:true }).then((result)=>{
-            console.log(result)
+        instance.croppie.result({ type:'blob', format:'jpeg' }).then((result)=>{
+            uploadFiles.uploadBlob(result, Meteor.userId()+'.jpg', 'user-avatars', ()=>{
+                avatarStore.updateUserAvatar(Meteor.userId())
+                $('#modalEditAvatar').modal('close');
+            })
             event.preventDefault()
         })
     }
@@ -47,20 +65,17 @@ Template.editAvatar.onCreated(function () {
 Template.editAvatar.onRendered(function () {
     //add your statement here
     $('.modal').modal({ opacity: .3,});
-    let el = document.getElementById('cropAvatar');
-    this.croppie= new Croppie(el, {
-        viewport: { width: 150, height: 150, type:'circle' },
-        boundary: { width: 300, height: 300 },
-        showZoomer: true,
-        enableOrientation: true
-    });
+
+
+
+
     $('.tooltipped').tooltip({delay: 50});
 });
 
 Template.editAvatar.onDestroyed(function () {
     //add your statement here
-    if(this.crop){
-        this.crop.destroy()
+    if(this.croppie){
+        this.croppie.destroy()
     }
 });
 

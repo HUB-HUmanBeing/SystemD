@@ -93,20 +93,33 @@ node :
 
 meteor : 
 
-    $curl https://install.meteor.com/ | sh
+    $ curl https://install.meteor.com/ | sh
  
 #### 3. Lancer le serveur interne de Meteor (Ubuntu)
 pour uploader les paquets et lancer le serveur, utiliser la commande
    
     $ meteor npm install
 
-enfin, lancez le serveur de dev avec :
-   
-    $ meteor
+#### 4. Pour lancer le serveur d'assets :
+#####a- lancer un serveur d'assets avec docker
+dans un autre terminal lancez minio avec la commande suivante :
+    $ docker run -p 9000:9000 --name system-d -e "MINIO_ACCESS_KEY=CeQueTuVeux"  -e "MINIO_SECRET_KEY=TonJoliMotDePasse" -v /mnt/data:/data  -v /mnt/config:/root/.minio minio/minio server /data
+
+#####b- copier puis renomez le fichier 'settings.template.json' à la racine en 'settings.json' et remplacer les "???" avec vos parametres
+     "minio": {
+        "endPoint": "172.17.0.2",
+        "port": 9000,
+        "MINIO_ACCESS_KEY":"CeQueTuVeux" ,
+        "MINIO_SECRET_KEY":"TonJoliMotDePasse"
+      }
+
     
 #### 4. C'est prêt !
-
+enfin, lancez le serveur de dev avec :
+   
+    $  meteor --settings settings.json
 Vous pouvez ensuite visionner l'avancement du travail en vous rendant à l'adresse suivante :
         
  http://localhost:3000/
    
+    

@@ -16,7 +16,9 @@
                 <div class="flex flex-middle">
                     <div class="flex-auto flex flex-middle">
                         <div class="avatar-container">
-                            {{>avatar user=currentUser}}
+                            {{#if currentUser}}
+                                {{>avatar user=currentUser}}
+                            {{/if}}
                         </div>
 
                         <div class="flex-auto small-padding">

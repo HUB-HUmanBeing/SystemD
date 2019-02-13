@@ -3,5 +3,11 @@
     "env": {
       "MONGO_URL": "..."
     }
+  },
+  "minio": {
+    "endPoint": "???",
+    "port": 9000,
+    "MINIO_ACCESS_KEY":"???" ,
+    "MINIO_SECRET_KEY":"???"
   }
 }

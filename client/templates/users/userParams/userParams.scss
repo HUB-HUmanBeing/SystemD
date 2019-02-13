@@ -47,7 +47,7 @@
 
       &.active {
         // border: 1px solid $blue-highlight-color;
-        background-color: $contrasted-bg;
+        background: linear-gradient(45deg,$main-bg  0%, $contrasted-bg  100%);
         box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 
       }

@@ -1,19 +1,19 @@
 import Avatars from '@dicebear/avatars';
 //https://www.npmjs.com/package/@dicebear/avatars-identicon-sprites
 import sprites from '@dicebear/avatars-identicon-sprites';
+import avatarStore from "../../../lib/avatarStore";
 
 Template.avatar.helpers({
     //add you helpers here
 
-    avatar : function () {
+    avatarSvg : function () {
         let user = Template.currentData().user
-        if(!user.public.avatar){
             let options = { padding: 0, background:'#DBDBDB'};
             let avatars = new Avatars(sprites(options));
-            return  avatars.create(user.username);
-        }else{
-            return 'user-picture'
-        }
+            return  avatars.create(user._id);
+    },
+    avatarUrl : function () {
+        return avatarStore.getUserAvatar(Template.currentData().user._id)
     }
 });
 
@@ -22,7 +22,7 @@ Template.avatar.events({
 });
 
 Template.avatar.onCreated(function () {
-    //add your statement here
+
 });
 
 Template.avatar.onRendered(function () {

@@ -1,12 +1,7 @@
 <template name="avatar">
-
-        {{#if compare user '&&' user.public}}
-            {{#if compare avatar '===' 'user-picture'}}
-                <img src="{{user.public.avatar}}" alt="" class="avatar">
+            {{#if avatarUrl}}
+                <img src="{{avatarUrl}}" alt="" class="avatar responsive-img">
             {{else}}
-                {{{avatar}}}
+                {{{avatarSvg}}}
             {{/if}}
-        {{/if}}
-
-
 </template>
