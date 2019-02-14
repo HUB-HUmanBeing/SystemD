@@ -12,7 +12,10 @@ Template.userParams.onCreated(function () {
 
 Template.userParams.onRendered(function () {
     //add your statement here
-    $('#editPasswordCollapse').collapsible();
+    Meteor.setTimeout(()=>{
+        $('#editPasswordCollapse').collapsible();
+    },200)
+
 });
 
 Template.userParams.onDestroyed(function () {

@@ -6,12 +6,7 @@ import minioTools from "../../imports/minioTools";
 
 Meteor.methods({
 
-    async getMinioUploadUrl(fileName, bucketName) {
-        check(fileName, String)
-        check(bucketName, String)
-        const result = await minioTools.client.presignedPutObject(bucketName, fileName)
-        return result
-    },
+
     async getMinioUserAvatarUrl(userId) {
 
         check(userId, String)

@@ -1,6 +1,7 @@
 import Croppie from 'croppie';
 import uploadFiles from "../../../../lib/uploadFiles";
 import avatarStore from "../../../../lib/avatarStore";
+import User from "../../../../../imports/classes/User";
 
 Template.editAvatar.helpers({
     //add you helpers here
@@ -46,11 +47,24 @@ Template.editAvatar.events({
     'click [chooseNewAvatar]' : function (event, instance) {
         event.preventDefault()
         instance.croppie.result({ type:'blob', format:'jpeg' }).then((result)=>{
-            uploadFiles.uploadBlob(result, Meteor.userId()+'.jpg', 'user-avatars', ()=>{
+            const currentUser = User.findOne(Meteor.userId())
+            uploadFiles.uploadBlob(result, Meteor.userId()+'.jpg',currentUser,  'getUpdateAvatarUrl', {},()=>{
                 avatarStore.updateUserAvatar(Meteor.userId())
                 $('#modalEditAvatar').modal('close');
             })
             event.preventDefault()
+        })
+    },
+    'click [removeAvatar]' : function (event, instance) {
+        event.preventDefault()
+        console.log('coucou')
+        const user = User.findOne(Meteor.userId())
+        user.callMethod('deleteAvatar',(err)=>{
+            if(!err){
+                avatarStore.deleteUserAvatar(Meteor.userId())
+            }else{
+                console.log(err)
+            }
         })
     }
 
