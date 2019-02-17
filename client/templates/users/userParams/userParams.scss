@@ -5,8 +5,8 @@
   padding: 30px 0;
 
   .profile-picture {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     text-align: center;
     display: inline-block;
 
@@ -20,6 +20,7 @@
 width: 30px;
       height: 30px;
       transition: 0.4s ease-out;
+      z-index: 201;
 
       .material-icons {
         position: relative;
@@ -30,7 +31,7 @@ width: 30px;
       }
 
       background-color: $light-bg;
-      opacity: .6;
+      opacity: .8;
 
       &:hover {
         opacity: 1;

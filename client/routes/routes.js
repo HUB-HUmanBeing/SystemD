@@ -20,7 +20,6 @@ FlowRouter.route('/login', {
     },
 });
 
-
 FlowRouter.notFound = {
     action() {
         BlazeLayout.render('noLayout', {main: 'notFound'});
@@ -30,7 +29,6 @@ FlowRouter.notFound = {
 function checkLoggedOrReroute(context, redirect) {
     // context is the output of `FlowRouter.current()`
     if(!Meteor.userId()){
-        console.log(context)
         redirect('/login')
     }
 }
@@ -46,3 +44,15 @@ FlowRouter.route('/user-params', {
     },
 });
 
+
+/****************
+ * ProjectRoutes
+ */
+FlowRouter.route('/new-project', {
+    name: 'App.newProject',
+    triggersEnter: [checkLoggedOrReroute],
+    action() {
+
+        BlazeLayout.render('layout', {main: 'newProject'});
+    },
+});

@@ -1,9 +1,10 @@
-import hubCrypto from "../../../lib/hubCrypto";
+import hubCrypto from "/client/lib/hubCrypto";
+
 
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
-    menuItems: function () {
-       return arborescenceStructure()
+    userProjects: function () {
+       return []
     }
 });
 
@@ -33,11 +34,12 @@ Template.menu.onCreated(function () {
 
 Template.menu.onRendered(function () {
     //initialisation des accordéons
-    $('.collapsible').collapsible();
+    Meteor.setTimeout(()=>{
+        $(".dropdown-button").dropdown({
+            belowOrigin: true
+        });
+    },400)
 
-    $(".dropdown-button").dropdown({
-        belowOrigin: true
-    });
 });
 
 Template.menu.onDestroyed(function () {

@@ -1,12 +1,12 @@
 <template name="editAvatar">
-    <div class="userAvatar">
+    <div class="userAvatar" editUserAvatarBtn>
         {{>avatar user=currentUser}}
     </div>
 
 
 
-    <a class="btn-floating  waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editer l'avatar" editUserAvatarBtn style="bottom: 27px; right: -30px"><i class="material-icons">edit</i></a>
-    <a class="btn-floating  waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Supprimer l'avatar" removeAvatar style="top: 27px; right: -30px"><i class="material-icons">close</i></a>
+    <a class="btn-floating  waves-effect waves-light tooltipped" data-position="left" data-delay="50" data-tooltip="Editer l'avatar" editUserAvatarBtn style="bottom: 47px; right: 5px"><i class="material-icons">edit</i></a>
+    <a class="btn-floating  waves-effect waves-light tooltipped" data-position="left" data-delay="50" data-tooltip="Supprimer l'avatar" removeAvatar style="top: 47px; right: 5px"><i class="material-icons">close</i></a>
     <input type="file" id="editUserAvatar" style="display: none">
     <div id="modalEditAvatar" class="modal light-bg main-color">
         <div class="modal-content">

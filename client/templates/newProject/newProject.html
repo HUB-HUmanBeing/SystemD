@@ -1,0 +1,54 @@
+<template name="newProject">
+    {{#if currentUser}}
+        <div id="newProject" class=" gradiant full-width  main-color relative ">
+            <div class="full-width" style="overflow: hidden">{{>birdsBg}}</div>
+            <div class="bg-logo">
+                <img src="/images/icon/systemd-biglogo-grey.png" alt="" >
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m8 offset-m2 center-align contrasted-bg relative" style="opacity:0.8; z-index: 10; padding: 15px; margin-top: calc(50vh - 180px)">
+                        <!--<img src="/images/icon/systemd-logo-white.png" alt="System-D" class="responsive-img  "-->
+                             <!--style=" width: 70px ; height: 70px;">-->
+
+                            <h5 class="focus-color ">Créer un projet</h5>
+
+        {{#if newProjectComplete}}
+            {{>encryptionLoader tasks=newProjectComplete}}
+        {{else}}
+                        <form action="#" id="newProjectForm">
+                            <div class="row no-margin">
+                                <div class="input-field col s12 relative">
+                                    <i class="material-icons prefix  main-color">text_fields</i>
+                                    <input id="projectName" type="text"
+                                           class=" {{#if compare errors.projectName '==' 'valid'}}valid {{else }}{{#if
+                                                   errors.projectName.length}}invalid{{/if}}{{/if}}">
+                                    <label for="projectName">Nom du projet</label>
+                                    <div class="formErrorContainer">
+                                        {{#if isArray  errors.projectName}}
+                                            {{#each error in errors.projectName}}
+                                                <div class="formError red-text">
+                                                    {{error}}
+                                                </div>
+                                            {{/each}}
+                                        {{/if}}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row no-margin right-align" style="padding: 15px 0px" >
+                                <div class="col s12">
+                                    <button href="#" class="btn btnFocus waves-effect waves-light shadow"><i
+                                            class="material-icons right">add_box</i>Créer
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+            {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {{/if}}
+</template>

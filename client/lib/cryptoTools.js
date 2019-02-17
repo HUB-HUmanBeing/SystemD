@@ -194,8 +194,9 @@ const cryptoTools = {
             }
         );
     },
+    //fonction permettant d'obtenir le hash d'une string donnée
     hash(string, callback){
-        callback(new Hashes.SHA512().b64(string+"Ce qui distingue d'emblée le pire architecte de l'abeille la plus experte, c'est qu'il a construit la cellule dans sa tête avant de la construire dans la ruche. K. MARX"))
+        callback(new Hashes.SHA512().b64(string+Meteor.settings.public.frontSalt))
     }
 
 }

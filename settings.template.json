@@ -9,5 +9,8 @@
     "port": 9000,
     "MINIO_ACCESS_KEY":"???" ,
     "MINIO_SECRET_KEY":"???"
+  },
+  "public": {
+    "frontSalt": "votre petit grain de sel"
   }
 }

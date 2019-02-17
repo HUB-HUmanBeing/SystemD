@@ -95,8 +95,8 @@ meteor :
 
     $ curl https://install.meteor.com/ | sh
  
-#### 3. Lancer le serveur interne de Meteor (Ubuntu)
-pour uploader les paquets et lancer le serveur, utiliser la commande
+#### 3. Lancer initialiser l'appli 
+pour uploader les paquets , utiliser la commande
    
     $ meteor npm install
 
@@ -122,4 +122,8 @@ Vous pouvez ensuite visionner l'avancement du travail en vous rendant à l'adres
         
  http://localhost:3000/
    
-    
+#### pour mémoire :
+commande de déploiement (rassurez vous, ca ne marche qu'en etant correctement identifié)
+
+    DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json system-d.eu.meteorapp.com
+

@@ -1,7 +1,4 @@
-#search-btn{
-    width: 25px;
-    height: 25px;
-}
+@import "{}/client/scss/variables.scss";
 
 #static-group{
     position: fixed ;
@@ -9,7 +6,9 @@
     left: 5px;
     z-index: 1000 !important;
 }
-
+.material-icons{
+    color: $main-color !important;
+}
 #slide-out{
     z-index: 1000 !important;
 }

@@ -1,7 +1,17 @@
-import axios from 'axios'
-
+/********************************
+ * Objet permetant de gérer les uploads de fichiers
+ * @type {{retrieveNewURL(*, *, *, *=, *=, *): void, blobToFile(*, *=): *, uploadFile(*=, *, *=, *): void, uploadBlob(*=, *=, *=, *=, *=, *=): void, upload(*=, *=, *=, *=, *=, *=): void}}
+ */
 const uploadFiles = {
-
+    /***************************
+     * gere l'upload d'un fichier
+     * @param file
+     * @param fileName
+     * @param entity
+     * @param method
+     * @param methodParams
+     * @param cb
+     */
     upload(file, fileName, entity, method, methodParams, cb) {
         // Retrieve a URL from our server.
         this.retrieveNewURL(file, fileName, entity, method, methodParams, url => {
@@ -9,9 +19,29 @@ const uploadFiles = {
             this.uploadFile(file, fileName, url, cb)
         })
     },
+    /****************
+     * similaire à upload, mais à partir d'un blob
+     * @param blob
+     * @param fileName
+     * @param entity
+     * @param method
+     * @param methodParams
+     * @param cb
+     */
+    uploadBlob(blob, fileName, entity, method, methodParams, cb) {
 
-//`retrieveNewURL` accepts the name of the current file and invokes the `/presignedUrl` endpoint to
-// generate a pre-signed URL for use in uploading that file:
+        const file = this.blobToFile(blob, fileName)
+        this.upload(file, fileName, entity, method, methodParams, cb)
+    },
+    /**************************
+     * Récupere sur le serveur la requete pré-signée permettant d'uploader un fichier
+     * @param file
+     * @param fileName
+     * @param entity
+     * @param method
+     * @param methodParams
+     * @param cb
+     */
     retrieveNewURL(file, fileName, entity, method, methodParams, cb) {
         entity.callMethod(method, methodParams, (err, res) => {
             if (err) {
@@ -23,18 +53,23 @@ const uploadFiles = {
 
         })
     },
-
+    /****************************
+     * transforme un blob en un fichier
+     * @param blob
+     * @param fileName
+     * @returns {File}
+     */
     blobToFile(blob, fileName) {
         return new File([new Blob([blob], {type: 'image/jpeg'})], fileName, {type: 'image/jpeg'})
 
     },
-    uploadBlob(blob, fileName, entity, method, methodParams, cb) {
-
-        const file = this.blobToFile(blob, fileName)
-        this.upload(file, fileName, entity, method, methodParams, cb)
-    },
-// ``uploadFile` accepts the current filename and the pre-signed URL. It then invokes `XMLHttpRequest()`
-// to upload this file to S3 at `play.minio.io:9000` using the URL:
+    /*************************
+     * Gere l'envoi ajax d'un fichier sur le serveur minio avec l'url signée obtenue sur le serveur meteor
+     * @param file
+     * @param fileName
+     * @param url
+     * @param cb
+     */
     uploadFile(file, fileName, url, cb) {
         var xhr = new XMLHttpRequest()
         xhr.open('PUT', url, true)

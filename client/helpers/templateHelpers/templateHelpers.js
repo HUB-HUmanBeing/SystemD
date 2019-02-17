@@ -96,6 +96,5 @@ Template.registerHelper('relativeDistanceFromCoord', function (lonLat) {
 })
 
 Template.registerHelper('isArray', function (el) {
-
     return Array.isArray(el)
 })

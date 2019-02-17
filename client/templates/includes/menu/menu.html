@@ -1,5 +1,5 @@
 <template name="menu">
-    <div class="  general-menu shadow bird-background " data-collapsible="accordion"
+    <div class="  general-menu shadow bird-background main-color" data-collapsible="accordion"
     >
         <div class="row center-align no-margin ">
             <a href="/"
@@ -9,22 +9,19 @@
                      style=" width: 70px ; height: 70px ">
             </a>
         </div>
-        <div style="padding: 0 10px;"><div class="hr no-margin"></div></div>
-
+        {{#if currentUser}}
         <div class="currentuser-infos ">
             <div class='dropdown-button main-color ' href='#' data-activates='userOptions' style="width: 100%">
-                <div class="flex flex-middle">
-                    <div class="flex-auto flex flex-middle">
-                        <div class="avatar-container">
-                            {{#if currentUser}}
-                                {{>avatar user=currentUser}}
-                            {{/if}}
-                        </div>
+                <div class="flex ">
 
-                        <div class="flex-auto small-padding">
-                            <div class="elipsis">{{currentUser.username}}</div>
-                        </div>
+                    <div class="avatar-container">
+
+                            {{>avatar user=currentUser}}
+
                     </div>
+                    <div class="elipsis flex-auto relative">{{currentUser.username}}</div>
+
+
                     <div class="">
                         <i class="material-icons ">arrow_drop_down</i>
                     </div>
@@ -32,15 +29,25 @@
             </div>
             <!-- Dropdown Structure -->
             <ul id='userOptions' class='dropdown-content light-bg main-color'>
-                <li><a href="/user-params"><i class="material-icons">settings</i>Paramètres</a></li>
-                <li><a href="#" logout><i class="material-icons">exit_to_app</i>Déconnexion</a></li>
+                <li><a href="/user-params"><i class="material-icons main-color">settings</i>Paramètres</a></li>
+                <li><a href="#" logout><i class="material-icons main-color">exit_to_app</i>Déconnexion</a></li>
             </ul>
 
         </div>
-        <div style="padding: 0 10px;"><div class="hr no-margin"></div></div>
+        <div style="padding: 0 10px;">
+            <div class="hr no-margin"></div>
+        </div>
 
+        <div class="menuProjetsContainer ">
+            {{#if userProjects.length}}
 
+                {{else}}
+                    <p class="infoQuotes " style=" margin: 15px 10px;">Vous n'etes actuellement inscrit sur aucuns projets. Vous pouvez cliquer sur le bouton ci dessous pour créer un projet ou attendre une invitation à un projet existant.</p>
+                {{/if}}
 
+            <div class="row" style="margin: 5px 10px;"><a href="/new-project" class="btn btnStandard full-width" style=" padding: 0 10px"><i class="focus-color material-icons left" style="    margin-right: 5px;">add_box</i>Créer un projet</a></div>
+        </div>
+        {{/if}}
         {{!formulaire de recherche}}
         <!--<li>-->
         <!--<form action="" name="search-form" class="row no-margin valign-wrapper" searchForm>-->

@@ -1,7 +1,23 @@
 //sont définis ici la classe user et sa sous classe profile
 import {Class} from 'meteor/jagi:astronomy';
 
-
+const ProjectUser = Class.create({
+    name: 'ProjectUser',
+    fields: {
+        asymEnc_projectId :{
+            type:String
+        },
+        asymEnc_projectName: {
+            type:String
+        },
+        asymEnc_projectSymKey:{
+            type:String
+        },
+        hashedAdminSignature: {
+            type:String
+        }
+    },
+});
 const Profile = Class.create({
     name: 'Profile',
     fields: {
@@ -9,8 +25,8 @@ const Profile = Class.create({
     },
 
 });
-const Public = Class.create({
-    name: 'Public',
+const PublicUser = Class.create({
+    name: 'PublicUser',
     fields: {
         asymPublicKey: String,
         avatar: {
@@ -20,8 +36,8 @@ const Public = Class.create({
     },
 
 });
-const Private = Class.create({
-    name: 'Private',
+const PrivateUser = Class.create({
+    name: 'PrivateUser',
     fields: {
         encryptedAsymPrivateKey: String, //clef chifrée a partir du mot de passe
         createdAt: {
@@ -30,6 +46,12 @@ const Private = Class.create({
                 return new Date()
             }
         },
+        projects:{
+            type: [ProjectUser],
+            default: function () {
+                return []
+            }
+        }
     },
 
 });
@@ -53,13 +75,13 @@ const User = Class.create({
             optional: true
         },
         private:{
-            type: Private,
+            type: PrivateUser,
             default: function () {
                 return {};
             }
         },
         public:{
-            type: Public,
+            type: PublicUser,
             default: function () {
                 return {};
             }
@@ -68,6 +90,12 @@ const User = Class.create({
             type: Profile,
             default: function () {
                 return {};
+            }
+        },
+        projects: {
+            type: [ProjectUser],
+            default: function () {
+                return [];
             }
         }
     },

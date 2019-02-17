@@ -1,0 +1,52 @@
+*********************************************
+* favicons.fr - Guide d'installation rapide *
+* version v.f.2.12							*
+*********************************************
+
+Pack Standard + Extra de favicons (pour toutes les versions actuelles des principaux navigateurs, iOS, Android et Internet Explorer 10+)
+
+* Vous pouvez ajouter plusieurs favicons à votre page Web. Pour cela, copiez l'ensemble des fichiers téléchargés à la racine de votre site Web et insérez les balises HTML suivantes dans le code source de votre page web, après la balise <head> et avant la balise </head> :
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="icon" sizes="32x32" href="favicon-32.png" type="image/png">
+<link rel="icon" sizes="64x64" href="favicon-64.png" type="image/png">
+<link rel="icon" sizes="96x96" href="favicon-96.png" type="image/png">
+<link rel="icon" sizes="196x196" href="favicon-196.png" type="image/png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+<meta name="msapplication-TileImage" content="favicon-144.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+
+* Optionnel: si vous souhaitez afficher le favicon animé, copiez le fichier animated_favicon.gif à la racine de votre site Web et insérez la balise HTML suivante dans le code source de votre page web, après la balise <head> et avant la balise </head> :
+
+<link rel="icon" href="animated_favicon.gif" type="image/gif">
+	
+* Les fichiers suivants sont inclus dans votre pack :
+
+- favicon.ico - favicon multi-resolution (16x16 to 48x48).
+- favicon.png - 16*16 fichier de favicon au format PNG.
+- favicon-32.png - 32*32 fichier de favicon au format PNG.
+- favicon-64.png - 64*64 fichier de favicon au format PNG.
+- favicon-96.png - 96*96 fichier de favicon au format PNG.
+- animated_favicon.gif - version animée du favicon au format GIF.
+- apple-touch-icon.png - 152*152 fichier de favicon au format PNG.
+- apple-touch-icon-60x60.png - 60*60 fichier de favicon au format PNG.
+- apple-touch-icon-76x76.png - 76*76 fichier de favicon au format PNG.
+- apple-touch-icon-114x114.png - 114*114 fichier de favicon au format PNG.
+- apple-touch-icon-120x120.png - 120*120 fichier de favicon au format PNG.
+- apple-touch-icon-144x144.png - 144*144 fichier de favicon au format PNG.
+- favicon-196.png - 196x196 fichier de favicon au format PNG.
+- favicon-144.png - 144*144 fichier de favicon au format PNG.
+- smalltile.png - 70*70 fichier image de favoris personnalisée pour IE11 au format PNG.
+- mediumtile.png - 150*150 fichier image de favoris personnalisée pour IE11 au format PNG.
+- largetile.png - 310*310 fichier image de favoris personnalisée pour IE11 au format PNG.
+- browserconfig.xml - fichier XML de configuration du navigateur pour définir une image de favoris par défaut sous IE11.
+- lisezmoi.txt - Ce guide d'installation rapide.
+
+Profitez bien de vos nouveaux favicons!
+www.favicons.fr

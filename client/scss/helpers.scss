@@ -29,7 +29,7 @@
   display: flex !important;
 }
 .flex-auto{
-  flex: auto !important;
+  flex: 1  !important;
 }
 .flex-middle{
   align-items: center;
@@ -55,7 +55,7 @@
 .bird-background{
   background-image: url("images/trame/empty_birds_bg.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-attachment: fixed;
 }
 
@@ -138,8 +138,9 @@
 }
 
 .elipsis{
+  display: block;
   white-space: nowrap;
-  width: 100%;
+
   overflow: hidden;
   text-overflow: ellipsis;
 }

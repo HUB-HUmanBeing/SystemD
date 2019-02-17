@@ -14,7 +14,7 @@ Template.userParams.onRendered(function () {
     //add your statement here
     Meteor.setTimeout(()=>{
         $('#editPasswordCollapse').collapsible();
-    },200)
+    },400)
 
 });
 

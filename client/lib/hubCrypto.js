@@ -6,73 +6,73 @@ import cryptoTools from "./cryptoTools"
  * @type {{generateUserAsymKeys(*=, *=, *=): void, decryptAndStorePrivateKeyInSession(*=, *=, *=): void}}
  */
 const hubCrypto = {
-    //cation génerant un couple de clef asymetrique et chiffrant la clef privée avec le mot de passe de l'utilisateur
-    //on prends l'username comme vecteur d'initialisation
+    //
+    /************************
+     * Aation génerant un couple de clef asymetrique et chiffrant la clef privée avec le mot de passe de l'utilisateur
+     * on prends l'username comme vecteur d'initialisation
+     * @param password
+     * @param username
+     * @param callback
+     */
     generateUserAsymKeys(password, username, callback) {
-        //on prepare l'objet qui sera retourné en argument du callback final
-        let UserAsymKeys = {
-            asymPublicKey: null,
-            encryptedAsymPrivateKey: null
-        }
-        cryptoTools.hash(password,(hashedPassword)=>{
-            //on commence par générer notre clef asymetrique
-            cryptoTools.generateAsymKey((keyObject) => {
-                //puis on rends exportable la clef publique que l'on donne a notre objet de réponse
-                cryptoTools.getExportableKey(keyObject.publicKey, (exportablePublicKey) => {
-                    UserAsymKeys.asymPublicKey = exportablePublicKey
-                    //on genere ensuite une clef symetrique a partir du mot de passe de l'utilisateur
-                    cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (simKey) => {
-                        //on exporte notre clef privée
-                        cryptoTools.getExportableKey(keyObject.privateKey, (exportablePrivateKey) => {
-                            //puis on la chiffre avec notre clef symétrique et en utilisant le nom d'utilisateur comme vecteur d'initialisation
-                            cryptoTools.sim_encrypt_data(
-                                exportablePrivateKey,
-                                simKey,
-                                Fixtures.usernames.includes(username) ? "" : username,
-                                (unit8encryptedPrivateKey) => {
-                                    //puis on finit en mettant sous forme de string la clef privée ainsi chiffrée
-                                    UserAsymKeys.encryptedAsymPrivateKey = cryptoTools.convertArrayBufferViewtoString(unit8encryptedPrivateKey)
-                                    //et on la retourne en argument du callback
-                                    callback(UserAsymKeys)
-                                }
-                            )
-                        })
-                    })
 
-                })
 
-            })
-        })
+        //on commence par générer notre clef asymetrique
+        cryptoTools.generateAsymKey((keyObject) => {
+            //on stringifie la clef privée
+            cryptoTools.getExportableKey(keyObject.privateKey, (exportablePrivateKey) => {
+                //on la chiffre avec le password
+                this.encryptAsymKeyWithPassword(password, exportablePrivateKey, username, (encryptedAsymPrivateKey) => {
+                    //on stringifie aussi la clef publique
+                    cryptoTools.getExportableKey(keyObject.publicKey, (exportablePublicKey) => {
+                        //on construit l'objet réponse
+                        let UserAsymKeys = {
+                            asymPublicKey: exportablePublicKey,
+                            encryptedAsymPrivateKey: encryptedAsymPrivateKey
+                        }
+                        //et on les retourne en argument du callback
+                        callback(UserAsymKeys)
 
-    },
-    encryptAsymKeyWithPassword(password, stringifiedAsymPrivateKey, username,callback){
-        cryptoTools.hash(password,(hashedPassword)=> {
-            cryptoTools.importPrivateKey(stringifiedAsymPrivateKey, (asymPrivateKey) => {
-                cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (simKey) => {
-                    //on exporte notre clef privée
-                    cryptoTools.getExportableKey(asymPrivateKey, (exportablePrivateKey) => {
-                        //puis on la chiffre avec notre clef symétrique et en utilisant le nom d'utilisateur comme vecteur d'initialisation
-                        cryptoTools.sim_encrypt_data(
-                            exportablePrivateKey,
-                            simKey,
-                            username,
-                            (unit8encryptedPrivateKey) => {
-                                //puis on finit en mettant sous forme de string la clef privée ainsi chiffrée
-                                const encryptedAsymPrivateKey = cryptoTools.convertArrayBufferViewtoString(unit8encryptedPrivateKey)
-                                //et on la retourne en argument du callback
-                                callback(encryptedAsymPrivateKey)
-                            }
-                        )
                     })
                 })
             })
         })
-
     },
-    //methode permettant de dechiffrer la clef privée de l'utilisateur a partir de son mot de passe
+    /*****************************
+     * Methode permettant de chiffrée une clef privée à partir du password (qui sera lui aussi hashé afin d'etre stocké dans le
+     * localstorage sans trop de risques, mais en evitant a l'utilisateur de se re-loguer a chaque nouvelle session
+     * @param password
+     * @param stringifiedAsymPrivateKey
+     * @param username
+     * @param callback
+     */
+    encryptAsymKeyWithPassword(password, stringifiedAsymPrivateKey, username, callback) {
+        cryptoTools.hash(password, (hashedPassword) => {
+            cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (simKey) => {
+                //puis on la chiffre avec notre clef symétrique et en utilisant le nom d'utilisateur comme vecteur d'initialisation
+                cryptoTools.sim_encrypt_data(
+                    stringifiedAsymPrivateKey,
+                    simKey,
+                    username,
+                    (unit8encryptedPrivateKey) => {
+                        //puis on finit en mettant sous forme de string la clef privée ainsi chiffrée
+                        const encryptedAsymPrivateKey = cryptoTools.convertArrayBufferViewtoString(unit8encryptedPrivateKey)
+                        //et on la retourne en argument du callback
+                        callback(encryptedAsymPrivateKey)
+                    }
+                )
+            })
+        })
+    },
+    /******************
+     * methode permettant de dechiffrer la clef privée de l'utilisateur a partir du hash de son mot de passe
+     * @param hashedPassword
+     * @param username
+     * @param callback
+     */
     decryptAndStorePrivateKeyInSession(hashedPassword, username, callback) {
         let currentUser = Meteor.user()
-        if(currentUser && currentUser.private && currentUser.private.encryptedAsymPrivateKey){
+        if (currentUser && currentUser.private && currentUser.private.encryptedAsymPrivateKey) {
             //on commence par recuperer la clef symetrique associée au password utilisateur
             cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (simKey) => {
                 //on recupere la clef stockée en base
@@ -94,7 +94,7 @@ const hubCrypto = {
 
                     })
             })
-        }else{
+        } else {
             console.warn('unable to get currentUser.private.encryptedAsymPrivateKey')
         }
 
@@ -113,9 +113,15 @@ const hubCrypto = {
 
         })
     },
-    destroyCryptoSession(callback){
+    /*****************
+     * action de destruction d'une session chiffrée
+     * @param callback
+     */
+    destroyCryptoSession(callback) {
         window.localStorage.setItem('hashedPassword', "")
-        Object.keys(Session.keys).forEach(function(key){ Session.set(key, undefined); })
+        Object.keys(Session.keys).forEach(function (key) {
+            Session.set(key, undefined);
+        })
         Session.keys = {}
         callback()
     },

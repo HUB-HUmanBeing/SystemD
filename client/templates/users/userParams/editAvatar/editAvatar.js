@@ -21,10 +21,7 @@ Template.editAvatar.events({
         event.preventDefault()
         let el = document.getElementById('cropAvatar');
 
-        $('#modalEditAvatar').modal('open', ()=>{
-
-
-        });
+        $('#modalEditAvatar').modal('open');
         instance.croppie= new Croppie(el, {
             viewport: { width: 200, height: 200, type:'circle' },
             boundary: { width: 300, height: 300 },
