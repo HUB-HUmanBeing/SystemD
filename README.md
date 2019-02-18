@@ -32,7 +32,7 @@
 > Recherche géolocalisée par compétences-centres d’intérêts, messagerie
 > chiffrée, blogs partagés, etc.
 
-#### Dévelloper un réseau de gratuité et de partage
+#### Déveloper un réseau de gratuité et de partage
 
 > Permettre à chaque utilisateur et chaque projets de mettre en partage
 > les ressources qu'ils produisent afin de pouvoir réaliser une
