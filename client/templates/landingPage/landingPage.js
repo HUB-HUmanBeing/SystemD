@@ -20,8 +20,3 @@ Template.landingPage.onRendered(() => {
 Template.landingPage.onDestroyed(() => {
     // add your statement here
 });
-
-// test of translation
-import i18n from 'meteor/universe:i18n';
-
-console.log(i18n.__('test', {name: "ma gueule!"}));

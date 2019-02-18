@@ -118,6 +118,7 @@ tracker@1.2.0
 ui@1.0.13
 underscore@1.0.10
 universe:i18n@1.20.1
+universe:i18n-blaze@1.5.1
 universe:utilities@2.0.9
 universe:utilities-blaze@1.5.2
 url@1.2.0
