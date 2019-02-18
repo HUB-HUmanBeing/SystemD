@@ -98,3 +98,17 @@ Template.registerHelper('relativeDistanceFromCoord', function (lonLat) {
 Template.registerHelper('isArray', function (el) {
     return Array.isArray(el)
 })
+
+
+// Test Translation universe:i18n
+Template.registerHelper('enTranslate', function (){
+    return {
+            aim:i18n.__('navbar.aims'),
+            feature:i18n.__('navbar.features'),
+            roadMap:i18n.__('navbar.roadMap'),
+            contact:i18n.__('navbar.contact'),
+            logIn:i18n.__('navbar.login'),
+            signUp:i18n.__('navbar.signUp'),
+            logOut:i18n.__('navbar.logout')
+            }
+})

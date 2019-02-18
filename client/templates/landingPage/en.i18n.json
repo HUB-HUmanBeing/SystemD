@@ -1,0 +1,13 @@
+{
+    "_locale": "en-US",
+    "test": "testOk {$name}",
+    "navbar": {
+      "aims": "Purposes",
+      "features": "Features",
+      "roadMap": "Road Map",
+      "contact": "Contact",
+      "login": "Login",
+      "signUp": "Sign Up",
+      "Logout": "Log Out"
+    }
+    }
