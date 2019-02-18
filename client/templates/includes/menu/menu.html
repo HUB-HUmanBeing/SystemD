@@ -11,17 +11,12 @@
         </div>
         {{#if currentUser}}
             <div class="currentuser-infos ">
-                <div class='dropdown-button main-color ' href='#' data-activates='userOptions' style="width: 100%">
-                    <div class="flex ">
-
+                <div id="userOptionsBtn" class='dropdown-button main-color ' href='#' data-activates='userOptions' style="width: 100%">
+                    <div class="flex">
                         <div class="avatar-container">
-
                             {{>avatar user=currentUser}}
-
                         </div>
                         <div class="elipsis flex-auto relative">{{currentUser.username}}</div>
-
-
                         <div class="">
                             <i class="material-icons ">arrow_drop_down</i>
                         </div>

@@ -108,11 +108,10 @@ const hubCrypto = {
                     cryptoTools.decryptObject(project, {privateKey: privateKey}, decryptedProject => {
                         decryptedProjects =[...decryptedProjects, decryptedProject]
                         if (i === encryptedProjects.length - 1) {
-                            console.log('in', decryptedProjects)
                             Meteor.setTimeout(()=>{
                                 Session.set('projects', decryptedProjects)
                                 callback()
-                                console.log(Session.get('projects'))
+
                             },300)
 
                         }

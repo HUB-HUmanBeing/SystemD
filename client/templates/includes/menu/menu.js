@@ -41,10 +41,10 @@ Template.menu.onCreated(function () {
 Template.menu.onRendered(function () {
     //initialisation des accordéons
     Meteor.setTimeout(() => {
-        $(".dropdown-button").dropdown({
+        $("#userOptionsBtn").dropdown({
             belowOrigin: true
         });
-    }, 400)
+    }, 800)
     Meteor.setTimeout(()=>{
         this.showInfo.set(true)
     },1500)

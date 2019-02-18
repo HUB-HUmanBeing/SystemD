@@ -1,0 +1,31 @@
+@import "{}/client/scss/variables.scss";
+
+#projectsList{
+  padding: 0 5px;
+  border:none;
+  box-shadow: none;
+  li{
+
+    border: none;
+    .collapsible-header{
+      padding: 5px;
+      .project-avatar{
+        width: 45px;
+        height: 45px;
+        border-radius:10px;
+        overflow: hidden;
+        border: 2px solid $blue-highlight-color;
+      }
+      border: none
+    }
+    .collapsible-body{
+      border: none
+    }
+  }
+  .active{
+    .collapsible-header{
+      border-left: 5px solid $focus-color !important;
+    }
+
+  }
+}

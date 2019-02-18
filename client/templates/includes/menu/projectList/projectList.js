@@ -1,8 +1,10 @@
 Template.projectList.helpers({
     //add you helpers here
     decryptedProjects: function () {
-        console.log(Session.get('decryptedProjects'))
-        return Session.get('decryptedProjects')
+        Meteor.setTimeout(()=>{
+            $('#projectsList').collapsible();
+        },100)
+        return Session.get('projects')
     }
 });
 

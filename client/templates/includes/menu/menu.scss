@@ -36,7 +36,7 @@
       height: 30px;
       border-radius: 50%;
       overflow: hidden;
-      border: 1px solid $focus-color;
+      border: 2px solid $focus-color;
 
     }
 
@@ -46,6 +46,11 @@
 
     .dropdown-content {
       li {
+        left: 20px;
+        min-height: 35px !important;
+        *{
+          font-size: 1.05em;
+        }
         &:hover {
           background-color: $lighter-bg;
           color: $plus-color;
@@ -54,6 +59,7 @@
           }
         }
         a {
+          padding: 10px 20px;
           color: $main-color !important;
         }
       }
