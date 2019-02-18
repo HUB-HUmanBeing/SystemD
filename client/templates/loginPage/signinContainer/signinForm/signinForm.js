@@ -206,6 +206,12 @@ Template.signinForm.events({
             let username = $('#signinUsername').val();
             let password = $('#signinPassword').val()
             //on génére les clefs de ckiffrement
+            //ca lance le loader avec les infos de chiffrement pour l'utilisateur
+            instance.signinComplete.set([
+                'Génération des clefs de chiffrement',
+                'Création du compte utilisateur',
+                'Initialisation d\'une nouvelle session chiffrée'
+            ])
             hubCrypto.generateUserAsymKeys(password, username, (userAsymKeys) => {
                 //on préformate l'objet a envoyer
                 let userAttribute = {
@@ -219,12 +225,7 @@ Template.signinForm.events({
                         console.log(error, userAttribute, userAsymKeys)
                         Materialize.toast(error.message, 6000, 'red darken-3')
                     } else {
-                        //ca lance le loader avec les infos de chiffrement pour l'utilisateur
-                        instance.signinComplete.set([
-                            'Génération des clefs de chiffrement',
-                            'Création du compte utilisateur',
-                            'Initialisation d\'une nouvelle session chiffrée'
-                        ])
+
 
                         //on laisse les infos de chiffrement plus que de raison pour que l'utilisateur puisse bien voir
                         Meteor.setTimeout(() => {
@@ -245,7 +246,7 @@ Template.signinForm.events({
 
                                 }
                             });
-                        }, 4500)
+                        }, 3000)
                     }
                 })
             })

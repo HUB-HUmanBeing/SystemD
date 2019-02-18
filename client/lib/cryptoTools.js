@@ -55,7 +55,7 @@ const cryptoTools = {
         //3. Usage of the keys. (http://www.w3.org/TR/WebCryptoAPI/#cryptokey-interface-types)
         let promise_key = crypto.subtle.generateKey({
             name: "RSA-OAEP",
-            modulusLength: 2048,
+            modulusLength: 4096,
             publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
             hash: {name: "SHA-256"}
         }, true, ["encrypt", "decrypt"]);
@@ -72,9 +72,7 @@ const cryptoTools = {
     asym_encrypt_data(data, public_key_object, callback) {
 
         crypto = this.crypto()
-        let encrypt_promise = this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(data));
-
-        encrypt_promise.then(
+        return this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(data)).then(
             function (result) {
 
                 callback(new Uint8Array(result))
@@ -150,7 +148,7 @@ const cryptoTools = {
     },
     //fonction permettant de generer une clef symétrique de 128 bits pour un chifrement en AES-CBC
     generateSimKey(callback) {
-        let promise_key = crypto.subtle.generateKey({name: "AES-CBC", length: 128}, true, ["encrypt", "decrypt"]);
+        let promise_key = crypto.subtle.generateKey({name: "AES-CBC", length: 256}, true, ["encrypt", "decrypt"]);
         promise_key.then(function (key) {
             callback(key);
         });
@@ -171,7 +169,7 @@ const cryptoTools = {
     },
     //fonction de chiffrement symétrique en AES
     sim_encrypt_data(data, simKey, vector, callback) {
-        crypto.subtle.encrypt({
+        return crypto.subtle.encrypt({
             name: "AES-CBC",
             iv: this.vectorFromString(vector)
         }, simKey, this.convertStringToArrayBufferView(data)).then(
@@ -196,9 +194,96 @@ const cryptoTools = {
     },
     //fonction permettant d'obtenir le hash d'une string donnée
     hash(string, callback){
-        callback(new Hashes.SHA512().b64(string+Meteor.settings.public.frontSalt))
-    }
+        const simpleHash = function(stringToHash, salt){
+            return(new Hashes.SHA512().b64(stringToHash+ salt))
+        }
+        let saltArray = Meteor.settings.public.frontSalt.split(' ')
+        let hash = string
+        saltArray.forEach(saltPiece=>{
+            hash = simpleHash(hash, saltPiece)
+        })
+        if (callback){
+            callback(hash)
+        }
 
+        return hash
+    },
+    generateRandomPassword(length){
+            length = length || 50
+            let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let lowercase = 'abcdefghijklmnopqrstuvwxyz';
+            let numbers = '0123456789';
+            let symbols = '$-_.+!*';
+            let all = uppercase + lowercase + numbers + symbols;
+            let password = '';
+            for (let index = 0; index < length; index++) {
+                let character = Math.floor(Math.random() * all.length);
+                password += all.substring(character, character + 1);
+            }
+            return password;
+        },
+    generateId() {
+        return Math.random().toString(36).substr(2, 16)
+    },
+    async asyncForEach(array, callback) {
+        for (let index = 0; index < array.length; index++) {
+            await callback(array[index], index, array);
+        }
+    },
+    async encryptElement(element, elementName, encryptionParams, callback ){
+        let elementType= typeof element
+        if(elementType == "string" || elementType == "number") {
+            let prefix = elementName.split('_')[0]
+            if (prefix == 'symEnc') {
+                await this.sim_encrypt_data(element, encryptionParams.simKey, encryptionParams.vector, callback)
+            }else if (prefix == 'asymEnc'){
+                await this.asym_encrypt_data(element, encryptionParams.publicKey, callback)
+            }
+        }else{
+            console.warn("'on s'occupe que des champs simples pour l'instant'")
+        }
+    },
+
+    encryptObject(object,encryptionParams , callback){
+        let encryptedObject = object
+        const encrypter = async (object,encryptionParams , callback)=>{
+            await this.asyncForEach(Object.keys(object), async (key) => {
+                await this.encryptElement(object[key],key,  encryptionParams , (encryptedData)=>{
+                    encryptedObject[key]=this.convertArrayBufferViewtoString(encryptedData)
+                })
+
+            });
+            callback(encryptedObject);
+        }
+        encrypter(object, encryptionParams , callback)
+    },
+    async decryptElement(element, elementName, encryptionParams, callback ){
+        let elementType= typeof element
+        if(elementType == "string" || elementType == "number") {
+            let prefix = elementName.split('_')[0]
+            if (prefix == 'symEnc') {
+                await this.sim_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.simKey, encryptionParams.vector, callback)
+            }else if (prefix == 'asymEnc'){
+                await this.asym_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.privateKey, callback)
+            }
+        }else{
+            console.warn("'on s'occupe que des champs simples pour l'instant'")
+        }
+    },
+    decryptObject(object,decryptionParams, callback){
+        let decryptedObject =object
+
+        const decrypter = async (object,decryptionParams , callback)=>{
+            await this.asyncForEach(Object.keys(object), async (key) => {
+                await this.decryptElement(object[key],key,  decryptionParams , (decryptedData)=>{
+                    decryptedObject[key]=decryptedData
+                })
+
+            });
+            callback(decryptedObject);
+        }
+        decrypter(object, decryptionParams , callback)
+    }
 }
 
 export default cryptoTools

@@ -9,7 +9,7 @@
   .currentuser-infos {
 
     .dropdown-button {
-      padding: 5px 10px;
+      padding: 0px 10px;
       cursor: pointer;
       *{
         transition: .3s ease-out;
@@ -22,17 +22,18 @@
         }
       }
       .elipsis{
-        padding: 10px 0px 5px 3px;
+        padding: 5px 0px 0px 5px;
         font-size: 1em;
+        margin-bottom: -10px;
       }
       .material-icons {
-        padding:  8px 0px;
+        padding:  5px 0px 0px 0px;
       }
     }
 
     .avatar-container {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       overflow: hidden;
       border: 1px solid $focus-color;

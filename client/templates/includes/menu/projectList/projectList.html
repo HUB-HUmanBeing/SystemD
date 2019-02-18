@@ -1,0 +1,11 @@
+<template name="projectList">
+    <ul id="projectsList" class="collapsible" data-collapsible="accordion">
+        {{#each project in decryptedProjects}}
+        <li>
+            <div class="collapsible-header active"><i class="material-icons">filter_drama</i>First</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+            {{/each}}
+    </ul>
+
+</template>

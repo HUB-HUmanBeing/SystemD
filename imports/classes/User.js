@@ -13,6 +13,9 @@ const ProjectUser = Class.create({
         asymEnc_projectSymKey:{
             type:String
         },
+        asymEnc_role:{
+            type: String
+        },
         hashedAdminSignature: {
             type:String
         }

@@ -4,49 +4,59 @@
         <div class="row center-align no-margin ">
             <a href="/"
                class=" waves-effect waves-light col s12 relative"
-               style="padding: 15px 0 5px 0">
+               style="padding: 15px 0 0px 0">
                 <img src="/images/icon/systemd-logo-white.png" alt="System-D" class="responsive-img  "
                      style=" width: 70px ; height: 70px ">
             </a>
         </div>
         {{#if currentUser}}
-        <div class="currentuser-infos ">
-            <div class='dropdown-button main-color ' href='#' data-activates='userOptions' style="width: 100%">
-                <div class="flex ">
+            <div class="currentuser-infos ">
+                <div class='dropdown-button main-color ' href='#' data-activates='userOptions' style="width: 100%">
+                    <div class="flex ">
 
-                    <div class="avatar-container">
+                        <div class="avatar-container">
 
                             {{>avatar user=currentUser}}
 
-                    </div>
-                    <div class="elipsis flex-auto relative">{{currentUser.username}}</div>
+                        </div>
+                        <div class="elipsis flex-auto relative">{{currentUser.username}}</div>
 
 
-                    <div class="">
-                        <i class="material-icons ">arrow_drop_down</i>
+                        <div class="">
+                            <i class="material-icons ">arrow_drop_down</i>
+                        </div>
                     </div>
                 </div>
+                <!-- Dropdown Structure -->
+                <ul id='userOptions' class='dropdown-content light-bg main-color'>
+                    <li><a href="/user-params"><i class="material-icons main-color">settings</i>Paramètres</a></li>
+                    <li><a href="#" logout><i class="material-icons main-color">exit_to_app</i>Déconnexion</a></li>
+                </ul>
+
             </div>
-            <!-- Dropdown Structure -->
-            <ul id='userOptions' class='dropdown-content light-bg main-color'>
-                <li><a href="/user-params"><i class="material-icons main-color">settings</i>Paramètres</a></li>
-                <li><a href="#" logout><i class="material-icons main-color">exit_to_app</i>Déconnexion</a></li>
-            </ul>
+            <div style="padding: 0 10px;">
+                <div class="hr no-margin"></div>
+            </div>
 
-        </div>
-        <div style="padding: 0 10px;">
-            <div class="hr no-margin"></div>
-        </div>
-
-        <div class="menuProjetsContainer ">
-            {{#if userProjects.length}}
-
+            <div class="menuProjetsContainer ">
+                {{#if showProjects}}
+                    {{#transition in="fadeIn" out="fadeOut"}}
+                    {{>projectList }}
+                    {{/transition}}
                 {{else}}
-                    <p class="infoQuotes " style=" margin: 15px 10px;">Vous n'etes actuellement inscrit sur aucuns projets. Vous pouvez cliquer sur le bouton ci dessous pour créer un projet ou attendre une invitation à un projet existant.</p>
+                    {{#if showInfo}}
+                        {{#transition in="zoomIn" out="zoomOut"}}
+                        <p class="infoQuotes " style=" margin: 15px 10px;">Vous n'etes actuellement inscrit sur aucuns
+                            projets. Vous pouvez cliquer sur le bouton ci dessous pour créer un projet ou attendre une
+                            invitation à un projet existant.</p>
+                            {{/transition}}
+                    {{/if}}
                 {{/if}}
-
-            <div class="row" style="margin: 5px 10px;"><a href="/new-project" class="btn btnStandard full-width" style=" padding: 0 10px"><i class="focus-color material-icons left" style="    margin-right: 5px;">add_box</i>Créer un projet</a></div>
-        </div>
+                <div class="row" style="margin: 5px 10px;"><a href="/new-project" class="btn btnStandard full-width"
+                                                              style=" padding: 0 10px"><i
+                        class="focus-color material-icons left" style="    margin-right: 5px;">add_box</i>Créer un
+                    projet</a></div>
+            </div>
         {{/if}}
         {{!formulaire de recherche}}
         <!--<li>-->
