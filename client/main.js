@@ -32,7 +32,13 @@ Meteor.startup(() => {
         console.log(err);
     });
 
-
-// Set namespace of templates
-    Template.landingHead.bindI18nNamespace('landingHead');
+    let TemplatesNames = [];
+    for (name of Object.keys(Template)) {
+        if (Template[name] instanceof Template) TemplatesNames.push(name);
+    }
+    TemplatesNames.forEach(name=>{
+        if(name.indexOf('_') == -1){
+            Template[name].bindI18nNamespace(name);
+        }
+    })
 })
