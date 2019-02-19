@@ -8,13 +8,21 @@ import i18n from 'meteor/universe:i18n';
 Meteor.startup(() => {
 // somewhere in the page layout (or possibly in the router?)
     function getLang() {
-        return (
+        let locale = (
             navigator.languages && navigator.languages[0] ||
             navigator.language ||
             navigator.browserLanguage ||
             navigator.userLanguage ||
             'fr-FR'
         );
+        let aviableLanguages = ['fr-FR', 'en-US']
+        let localeResult = 'en-US'
+        aviableLanguages.forEach(lang=>{
+            if(locale.split("-")[0] == lang.split("-")[0]){
+                localeResult = lang
+            }
+        })
+        return localeResult
     }
 
     i18n.setLocale(getLang()).then(() => {
