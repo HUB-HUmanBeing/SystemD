@@ -1,6 +1,4 @@
 {
-    "_locale": "en-US",
-    "landingHeadFr": {
       "aims": "Objectifs",
       "features": "Atouts",
       "roadMap": "Feuille de route",
@@ -8,5 +6,4 @@
       "login": "Connexion",
       "signUp": "Inscription",
       "Logout": "Déconnexion"
-    }
 }

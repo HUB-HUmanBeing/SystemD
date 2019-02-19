@@ -1,6 +1,4 @@
 {
-    "_locale": "",
-    "landingHeadEn": {
       "aims": "Purposes",
       "features": "Features",
       "roadMap": "Road Map",
@@ -8,6 +6,5 @@
       "login": "Login",
       "signUp": "Sign Up",
       "Logout": "Logout"
-    }
 
 }

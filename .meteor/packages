@@ -30,7 +30,6 @@ session
 check
 jquery
 accounts-base
-universe:utilities-blaze
 jagi:astronomy
 mystor:device-detection
 materialize:materialize
@@ -38,5 +37,4 @@ ostrio:templatehelpers
 
 webtempest:animate
 robinbanquo:start-loader
-universe:i18n
-universe:i18n-blaze
+tap:i18n

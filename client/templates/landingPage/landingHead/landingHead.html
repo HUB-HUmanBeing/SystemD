@@ -7,12 +7,12 @@
                 <a href="/" class="logo-site"><img src="/images/icon/systemd-logo-white.png" alt="" class="responsive-img"></a>
 {{/unless}}
                 <ul class="right hide-on-small-only">
-                    <li><a href="/#landingAim">{{__ '.aims'}}</a></li>
-                    <li><a href="/#landingPlus">{{__ '.features'}}</a></li>
-                    <li><a href="/#landingRoadmap">{{__ '.roadMap'}}</a></li>
-                    <li><a href="/#landingContact">{{__ '.contact'}}</a></li>
+                    <li><a href="/#landingAim">{{_ "aims"}}</a></li>
+                    <li><a href="/#landingPlus">{{_ "features"}}</a></li>
+                    <li><a href="/#landingRoadmap">{{_ "roadMap"}}</a></li>
+                    <li><a href="/#landingContact">{{_ "contact"}}</a></li>
 {{#unless currentUserId}}
-                    <li><a href="/login" style="font-weight: bold">{{__ '.signUp'}} // {{__ '.login'}}</a></li>
+                    <li><a href="/login" style="font-weight: bold">{{_ "signUp"}} // {{_ "login"}}</a></li>
 {{/unless}}
                 </ul>
                 {{#if isPhone}}
