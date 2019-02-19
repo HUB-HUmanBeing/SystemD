@@ -37,12 +37,10 @@
                 {{#if showProjects}}
                     {{>projectList }}
                 {{else}}
-                    {{#if showInfo}}
-                        {{#transition in="zoomIn" out="zoomOut"}}
+                    {{#if showInfo}}s
                         <p class="infoQuotes " style=" margin: 15px 10px;">Vous n'etes actuellement inscrit sur aucuns
                             projets. Vous pouvez cliquer sur le bouton ci dessous pour créer un projet ou attendre une
                             invitation à un projet existant.</p>
-                            {{/transition}}
                     {{/if}}
                 {{/if}}
                 <div class="row" style="margin: 5px 10px;"><a href="/new-project" class="btn btnStandard full-width"

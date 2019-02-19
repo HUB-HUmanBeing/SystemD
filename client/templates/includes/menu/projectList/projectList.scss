@@ -34,7 +34,7 @@
         border-radius: 0;
         padding-left: 0px;
         .collection-item{
-          border-left: 5px solid $blue-highlight-color;
+          border-left: 5px solid $focus-color;
           padding: 8px 15px;
   border-bottom: none;
           transition: 0.4s ease-out;
@@ -43,9 +43,8 @@
           }
           &:hover{
             background-color: $light-bg !important;
-            background-color: $light-bg !important;
             color: $plus-color !important;
-            border-left: 55px solid $focus-color;
+            border-left: 15px solid $focus-color;
             *{
               color: $plus-color !important;
             }
@@ -54,7 +53,7 @@
         .active{
           background-color: $light-bg !important;
           color: $plus-color !important;
-          border-left: 55px solid $focus-color;
+          border-left: 15px solid $focus-color;
           *{
             color: $plus-color !important;
           }
@@ -67,8 +66,9 @@
 
 
     .collapsible-header{
-      //border-left: 5px solid $focus-color !important;
-      background-color: $blue-highlight-color !important;
+      border-left: 5px solid $focus-color !important;
+
+      background-color: $light-bg !important;
       margin-right: -10px;
       margin-left: -5px;
       *{
