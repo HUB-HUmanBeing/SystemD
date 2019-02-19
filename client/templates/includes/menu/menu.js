@@ -1,5 +1,6 @@
 import hubCrypto from "/client/lib/hubCrypto";
-
+//https://www.npmjs.com/package/beautify-scrollbar
+import BeautifyScrollbar from 'beautify-scrollbar';
 
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus

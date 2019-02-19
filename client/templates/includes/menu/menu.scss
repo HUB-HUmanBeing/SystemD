@@ -2,9 +2,18 @@
 
 .general-menu {
   padding: 0 0px !important;
-  height: 100vh !important;
+    height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+#menuHeader{
 
+}
+  #menuProjectsContainer{
+
+    height: calc(100vh - 128px);
+padding-bottom:150px;
+  }
 
   .currentuser-infos {
 

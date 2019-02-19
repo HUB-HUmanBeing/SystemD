@@ -12,6 +12,7 @@
     "@dicebear/avatars-jdenticon-sprites": "^1.0.3",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.4",
+    "beautify-scrollbar": "^1.0.8",
     "croppie": "2.6.3",
     "jdenticon": "^2.1.1",
     "jshashes": "^1.0.7",

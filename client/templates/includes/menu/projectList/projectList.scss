@@ -22,7 +22,7 @@
       }
       &:hover{
         background-color: $main-bg !important;
-        margin-right: -10px;
+        margin-right: -5px;
         padding-right: 15px;
       }
       border: none
@@ -37,24 +37,27 @@
           border-left: 5px solid $focus-color;
           padding: 8px 15px;
   border-bottom: none;
+          color: $link-color !important;
           transition: 0.4s ease-out;
           .material-icons{
             font-size: 1.5em;
+            color: $link-color !important;
           }
           &:hover{
             background-color: $light-bg !important;
             color: $plus-color !important;
             border-left: 15px solid $focus-color;
-            *{
+            .material-icons{
               color: $plus-color !important;
             }
           }
         }
         .active{
-          background-color: $light-bg !important;
+          background: linear-gradient(to right, $focus-color 0%,rgba($light-bg, 0.65) 10%,rgba($light-bg, 0.65) 100%);
           color: $plus-color !important;
-          border-left: 15px solid $focus-color;
-          *{
+          border-left: 10px solid $focus-color;
+          padding-left: 20px;
+          .material-icons{
             color: $plus-color !important;
           }
         }
@@ -63,13 +66,13 @@
   }
   .menuProjectItem {
     &.active{
-
+    margin:10px 0 ;
 
     .collapsible-header{
       border-left: 5px solid $focus-color !important;
-
-      background-color: $light-bg !important;
-      margin-right: -10px;
+      background: linear-gradient(to right, $focus-color 0%,rgba($main-bg, 0.65) 30%,rgba($main-bg, 0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      background-color: rgba($main-bg, 0.65) !important;
+      margin-right: -5px;
       margin-left: -5px;
       *{
         color: $plus-color ;
@@ -77,11 +80,11 @@
 
     }
     .collapsible-body{
-      margin-right: -10px;
+      margin-right: -5px;
       margin-left: -5px;
 
 
-      background-color: rgba($main-bg, 0.5) !important;
+      background-color: rgba($main-bg, 0.65) !important;
     }
     }
   }
