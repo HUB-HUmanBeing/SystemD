@@ -1,6 +1,8 @@
 // Client entry point, imports all client code
 Session.set('userAvatars', {})
 
+
+
 // test of translation
 import i18n from 'meteor/universe:i18n';
 
@@ -15,6 +17,7 @@ function getLang () {
     );
 }
 
+// Set language of navigator
 i18n.setLocale(getLang()).then(() => {
     console.log(i18n.getLocale());
 }).catch((err) => {
@@ -22,8 +25,7 @@ i18n.setLocale(getLang()).then(() => {
 });
 
 
-// Set namespace of templates
-
+// Choice of i18n.json about the language
 if (i18n.getLocale() === 'fr-FR'){
     console.log('lang ok');
     Template.landingHead.bindI18nNamespace('landingHeadFr');
@@ -31,6 +33,4 @@ if (i18n.getLocale() === 'fr-FR'){
 }else{
     console.log('encore US');
     Template.landingHead.bindI18nNamespace('landingHeadEn');
-
-    
 }
