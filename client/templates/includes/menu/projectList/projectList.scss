@@ -34,9 +34,10 @@
         border-radius: 0;
         padding-left: 0px;
         .collection-item{
+          border-left: 5px solid $blue-highlight-color;
           padding: 8px 15px;
-          border:none;
-          transition: 0.3s ease-out;
+  border-bottom: none;
+          transition: 0.4s ease-out;
           .material-icons{
             font-size: 1.5em;
           }
@@ -44,7 +45,7 @@
             background-color: $light-bg !important;
             background-color: $light-bg !important;
             color: $plus-color !important;
-            border-left: 45px solid $focus-color;
+            border-left: 55px solid $focus-color;
             *{
               color: $plus-color !important;
             }
@@ -53,7 +54,7 @@
         .active{
           background-color: $light-bg !important;
           color: $plus-color !important;
-          border-left: 45px solid $focus-color;
+          border-left: 55px solid $focus-color;
           *{
             color: $plus-color !important;
           }
@@ -66,8 +67,8 @@
 
 
     .collapsible-header{
-      border-left: 5px solid $focus-color !important;
-      background-color: $main-bg !important;
+      //border-left: 5px solid $focus-color !important;
+      background-color: $blue-highlight-color !important;
       margin-right: -10px;
       margin-left: -5px;
       *{
@@ -79,7 +80,7 @@
       margin-right: -10px;
       margin-left: -5px;
 
-      border-left: 5px solid $focus-color !important;
+
       background-color: rgba($main-bg, 0.5) !important;
     }
     }

@@ -1,7 +1,8 @@
 {
   "galaxy.meteor.com": {
     "env": {
-      "MONGO_URL": "..."
+      "MONGO_URL": "...",
+      "UNIVERSE_I18N_LOCALES":"all"
     }
   },
   "minio": {
