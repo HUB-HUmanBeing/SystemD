@@ -1,6 +1,6 @@
 {
-    "_locale": "",
-    "landingHeadEn": {
+    "_locale": "en-US",
+    "landingHead": {
       "aims": "Purposes",
       "features": "Features",
       "roadMap": "Road Map",
