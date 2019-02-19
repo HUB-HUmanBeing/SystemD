@@ -1,4 +1,6 @@
 // Client entry point, imports all client code
+import {Meteor} from "meteor/meteor";
+
 Session.set('userAvatars', {})
 
 // test of translation
