@@ -35,9 +35,7 @@
 
             <div class="menuProjetsContainer ">
                 {{#if showProjects}}
-                    {{#transition in="fadeIn" out="fadeOut"}}
                     {{>projectList }}
-                    {{/transition}}
                 {{else}}
                     {{#if showInfo}}
                         {{#transition in="zoomIn" out="zoomOut"}}

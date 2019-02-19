@@ -16,16 +16,72 @@
         overflow: hidden;
         border: 2px solid $blue-highlight-color;
       }
+      .projectTitle{
+        padding: 10px 0 10px 5px;
+        font-size: 1.1em;
+      }
+      &:hover{
+        background-color: $main-bg !important;
+        margin-right: -10px;
+        padding-right: 15px;
+      }
       border: none
     }
     .collapsible-body{
-      border: none
+      border: none;
+      padding:0px;
+      .collection{
+        border-radius: 0;
+        padding-left: 0px;
+        .collection-item{
+          padding: 8px 15px;
+          border:none;
+          transition: 0.3s ease-out;
+          .material-icons{
+            font-size: 1.5em;
+          }
+          &:hover{
+            background-color: $light-bg !important;
+            background-color: $light-bg !important;
+            color: $plus-color !important;
+            border-left: 45px solid $focus-color;
+            *{
+              color: $plus-color !important;
+            }
+          }
+        }
+        .active{
+          background-color: $light-bg !important;
+          color: $plus-color !important;
+          border-left: 45px solid $focus-color;
+          *{
+            color: $plus-color !important;
+          }
+        }
+      }
     }
   }
-  .active{
+  .menuProjectItem {
+    &.active{
+
+
     .collapsible-header{
       border-left: 5px solid $focus-color !important;
-    }
+      background-color: $main-bg !important;
+      margin-right: -10px;
+      margin-left: -5px;
+      *{
+        color: $plus-color ;
+      }
 
+    }
+    .collapsible-body{
+      margin-right: -10px;
+      margin-left: -5px;
+
+      border-left: 5px solid $focus-color !important;
+      background-color: rgba($main-bg, 0.5) !important;
+    }
+    }
   }
 }

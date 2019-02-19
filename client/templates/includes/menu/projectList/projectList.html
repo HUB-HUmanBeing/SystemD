@@ -1,19 +1,26 @@
 <template name="projectList">
     <ul id="projectsList" class="collapsible transparent" data-collapsible="accordion">
         {{#each project in decryptedProjects}}
-            <li class="">
+            <li class="menuProjectItem">
                 <div class="collapsible-header transparent {{#if compare @index '==' 0}}active{{/if}}">
-                    <div class="flex">
+                    <div class="flex full-width">
                         <div class="project-avatar" style="">
                             {{>projectAvatar projectId=project.asymEnc_projectId}}
                         </div>
-                        <div class="flex-auto">
-                            <div class="elipsis"> {{project.asymEnc_projectName}}</div>
+                        <div class="flex-auto elipsis projectTitle">
+                            {{project.asymEnc_projectName}}
                         </div>
                     </div>
 
                 </div>
-                <div class="collapsible-body transparent"><span>Lorem ipsum dolor sit amet.</span></div>
+                <div class="collapsible-body transparent">
+                    <div class="collection transparent">
+                        <a href="/project/{{project.asymEnc_projectId}}/params" class="collection-item transparent active"><i class="material-icons left">chat</i>Forum</a>
+                        <a href="/project/{{project.asymEnc_projectId}}/params" class="collection-item transparent"><i class="material-icons left">view_comfy</i>Agenda</a>
+                        <a href="/project/{{project.asymEnc_projectId}}/params" class="collection-item transparent"><i class="material-icons left">format_list_bulleted</i>Taches</a>
+                        <a href="/project/{{project.asymEnc_projectId}}/params" class="collection-item transparent"><i class="material-icons left">settings</i>Paramètres</a>
+                    </div>
+                </div>
             </li>
         {{/each}}
     </ul>

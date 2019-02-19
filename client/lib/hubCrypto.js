@@ -102,7 +102,6 @@ const hubCrypto = {
     decryptAndStoreProjectListInSession(callback) {
         let encryptedProjects = Meteor.user().private.projects
         let decryptedProjects = []
-        Session.set('projects',[])
         cryptoTools.importPrivateKey(Session.get('stringifiedAsymPrivateKey'), privateKey => {
                 encryptedProjects.forEach((project, i) => {
                     cryptoTools.decryptObject(project, {privateKey: privateKey}, decryptedProject => {
@@ -112,7 +111,7 @@ const hubCrypto = {
                                 Session.set('projects', decryptedProjects)
                                 callback()
 
-                            },300)
+                            },encryptedProjects.length*100)
 
                         }
                     })
