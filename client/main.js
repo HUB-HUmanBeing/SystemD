@@ -26,13 +26,5 @@ Meteor.startup(() => {
 
 
 // Set namespace of templates
-
-    if (i18n.getLocale() === 'fr-FR') {
-        console.log('lang ok');
-        Template.landingHead.bindI18nNamespace('landingHead');
-
-    } else {
-        console.log('encore US');
-        Template.landingHead.bindI18nNamespace('landingHead');
-    }
+    Template.landingHead.bindI18nNamespace('landingHead');
 })
