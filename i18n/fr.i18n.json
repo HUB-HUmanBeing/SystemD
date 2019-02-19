@@ -1,12 +1,24 @@
 {
     "_locale": "fr-FR",
     "landingHead": {
-      "aims": "Objectifs",
-      "features": "Atouts",
-      "road Map": "Feuille de route",
-      "contact": "Contact",
-      "login": "Connexion",
-      "signUp": "Inscription",
-      "Logout": "Déconnexion"
+        "aims": "Objectifs",
+        "features": "Atouts",
+        "roadMap": "Feuille de route",
+        "contact": "Contact",
+        "login": "Connexion",
+        "signUp": "Inscription",
+        "Logout": "Déconnexion"
+    },
+    "landingAim": {
+        "ourPurpose": "NOTRE OBJECTIF",
+            "purpose": "Créer un outil qui accompagne la transition d'une société de l'argent en faillite à un mode de production basé sur la collaboration et le partage.",
+        "3DevPhases": "TROIS PHASES DE DEVELOPEMENT",
+            "createTool": "Créer un outil de gestion de projet ouvert à tous",
+                "cTool": "Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet.",
+            "doOfSystemD": "Faire de SystemD le réseau social du projet non-marchand",
+                "dOfSystD": "Création des interfaces faisant de la plateforme un espace de rencontre et de circulation des utilisateurs sur différents projets : Recherche géolocalisée par compétences-centres d'intérets, messagerie chiffrée, blogs partagés, etc.",
+            "developFreeNetwork": "Développer un réseau de gratuité et de partage",
+                "dFreeNetwork": "Permettre à chaque utilisateur et chaque projets de mettre en partage les ressources qu'ils produisent afin de pouvoir réaliser une circulation non-marchande de grande ampleur."
+
     }
 }

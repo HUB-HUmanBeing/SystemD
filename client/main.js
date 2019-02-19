@@ -5,7 +5,7 @@ Session.set('userAvatars', {})
 
 // test of translation
 import i18n from 'meteor/universe:i18n';
-Meteor.startup(() => {
+
 // somewhere in the page layout (or possibly in the router?)
     function getLang() {
         let locale = (
@@ -41,4 +41,4 @@ Meteor.startup(() => {
             Template[name].bindI18nNamespace(name);
         }
     })
-})
+

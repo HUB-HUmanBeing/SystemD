@@ -1,13 +1,25 @@
 {
     "_locale": "en-US",
     "landingHead": {
-      "aims": "Purposes",
-      "features": "Features",
-      "roadMap": "Road Map",
-      "contact": "Contact",
-      "login": "Login",
-      "signUp": "Sign Up",
-      "Logout": "Logout"
+        "aims": "Purposes",
+        "features": "Features",
+        "roadMap": "Road Map",
+        "contact": "Contact",
+        "login": "Login",
+        "signUp": "Sign Up",
+        "Logout": "Logout"
+    },
+    "landingAim": {
+        "ourPurpose": "OUR PURPOSE",
+            "purpose": "Develop a tool to support transition from a money society collapsing to a model based on the free exchange, the sharing and the collaboration between humans.",
+        "3DevPhases": "THREE PHASES OF DEVELOPMENT",
+            "createTool": "Create a tool to manage project opened to everybody.",
+                "cTool": "A tool that will enable to organize different groups and associations efficiently. A tool encrypted, free, open-source, taking aim at the 'horizontality'in the management of project.",
+            "doOfSystemD": "Make SystemD the social network of free exchange project.",
+                "dOfSystD": "Creation of interfaces to do a meeting place through differents projects: Search geolocated by skills-interests, encrypted instant messaging, shared blog, etc...",
+            "developFreeNetwork": "Develop a free and sharing network",
+                "dFreeNetwork": "Allow users and projects to share their resources in order to create a big free and non-commercial network."
+
     }
 
 }
