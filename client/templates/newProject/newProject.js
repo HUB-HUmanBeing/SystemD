@@ -113,82 +113,96 @@ Template.newProject.events({
             validateNewProjectForm.validateProjectName(event, instance)
         }, 200)
     },
+    /****************
+     * création d'un nouveau projet
+     * 1--- création des clefs projet
+     * 2--- création du premier admin
+     * 3--- envoi de la methode de création
+     * 4--- ajout du projet dans les projets de l'utilisateur
+     */
+
     'submit #newProjectForm ': function (event, instance) {
         event.preventDefault()
+        //on verifie que le formulaire est valide
         if (validateNewProjectForm.isValid(instance)) {
+            //on récupere le nom de projet saisi
             let projectName = $('#projectName').val();
+            //on lance le visuel de chargement
             instance.newProjectComplete.set([
                 'Génération des clefs de chiffrement du projet',
                 'Anonymisation de la liste de participants',
                 'Connexion chiffrée au projet'
             ])
+            //on genere un password administrateur
             let adminPassword = cryptoTools.generateRandomPassword()
-            hubCrypto.generateProjectSymKey(projectSymKey => {
-                hubCrypto.generateNewProjectBrunchOfKeys(projectName, Meteor.user().public.asymPublicKey, (projectBrunchOfKeys) => {
-
-                    let uncryptedNewMember = {
-                        memberId: cryptoTools.generateId(),
-                        role: 'admin',
-                        symEnc_userId: Meteor.userId(),
-                        symEnc_username: Meteor.user().username,
-                        symEnc_joinAtTs: Date.now(),
-                        userSignature: cryptoTools.hash(Session.get('stringifiedAsymPrivateKey') + projectName)
-                    }
-
-
-                    let encryptionParams = {
-                        simKey: projectBrunchOfKeys.projectKey,
-                        vector: projectName
-                    }
-                    cryptoTools.encryptObject(uncryptedNewMember, encryptionParams, (encryptedNewMember) => {
-                        let brunchOfKeyToSend = {
-                            asymPublicKey: projectBrunchOfKeys.projectAsymPublicKey,
-                            symEnc_AsymPrivateKey: projectBrunchOfKeys.encryptedAsymPrivateKey,
-                            hashedSymKey: cryptoTools.hash(projectBrunchOfKeys.stringifiedSymKey),
-                            hashedAdminPassword: cryptoTools.hash(adminPassword)
-                        }
-                        console.log(projectName, brunchOfKeyToSend, encryptedNewMember)
-                        Meteor.call('createProject', projectName, brunchOfKeyToSend, encryptedNewMember, (err, res) => {
-                            if (err) {
-                                console.log(err)
-                            } else {
-                                const createdProject = res.project
-                                createdProject._id = res.projectId
-
-                                let unencryptedUserProjectToAdd = {
-                                    asymEnc_projectId : createdProject._id,
-                                    asymEnc_projectName: createdProject.name,
-                                    asymEnc_projectSymKey: projectBrunchOfKeys.stringifiedSymKey,
-                                    asymEnc_role: "admin",
-                                    hashedAdminSignature:  cryptoTools.hash(Meteor.user().username + adminPassword)
-
-                                }
-                                cryptoTools.importPublicKey( Meteor.user().public.asymPublicKey, (publicKey)=>{
-                                    cryptoTools.encryptObject(unencryptedUserProjectToAdd, {publicKey: publicKey}, (userProjectToAdd)=>{
-                                        let currentUser = User.findOne(Meteor.userId())
-                                        currentUser.callMethod('addUserProject', userProjectToAdd, (err, res)=>{
-                                            if (err) {
-                                                console.log(err)
-                                            } else {
-                                                console.log(res)
-                                                FlowRouter.go('/project/'+createdProject._id)
-                                                Materialize.toast("Le projet " + projectName + " a été créé.", 6000, 'lighter-bg')
-                                                instance.newProjectComplete.set(null)
-                                            }
-                                        })
-                                    })
-                                })
+            //on genere un couple clef privée chiffrée clef publique pour le projet + clef symetrique
+            hubCrypto.generateNewProjectBrunchOfKeys(projectName, Meteor.user().public.asymPublicKey, (projectBrunchOfKeys) => {
+                //on prepare l'objet avec toutes les clef de projet a envoyer dans la methode de création
+                let brunchOfKeyToSend = {
+                    asymPublicKey: projectBrunchOfKeys.projectAsymPublicKey,
+                    symEnc_AsymPrivateKey: projectBrunchOfKeys.encryptedAsymPrivateKey,
+                    hashedSymKey: cryptoTools.hash(projectBrunchOfKeys.stringifiedSymKey),
+                    hashedAdminPassword: cryptoTools.hash(adminPassword)
+                }
+                //on genere un nouveau membre pour le projet à partir des infos de l'utilisateur courant
+                let uncryptedNewMember = {
+                    memberId: cryptoTools.generateId(),
+                    role: 'admin',
+                    symEnc_userId: Meteor.userId(),
+                    symEnc_username: Meteor.user().username,
+                    symEnc_joinAtTs: Date.now(),
+                    userSignature: cryptoTools.hash(Session.get('stringifiedAsymPrivateKey') + projectName)
+                }
+                //on prepare l'encryption param
+                let encryptionParams = {
+                    simKey: projectBrunchOfKeys.projectKey,
+                    vector: projectName
+                }
+                //on chiffre le tout avec notre super fonction
+                cryptoTools.encryptObject(uncryptedNewMember, encryptionParams, (encryptedNewMember) => {
+                    //on crée le projet en base
+                    Meteor.call('createProject', projectName, brunchOfKeyToSend, encryptedNewMember, (err, res) => {
+                        if (err) {
+                            console.log(err)
+                            //si tout va bien
+                        } else {
+                            const createdProject = res.project
+                            createdProject._id = res.projectId
+                            //on crée le projet à ajouter du coté utilisateur
+                            let unencryptedUserProjectToAdd = {
+                                asymEnc_projectId: createdProject._id,
+                                asymEnc_projectName: createdProject.name,
+                                asymEnc_projectSymKey: projectBrunchOfKeys.stringifiedSymKey,
+                                asymEnc_role: "admin",
+                                hashedAdminSignature: cryptoTools.hash(Meteor.user().username + adminPassword)
 
                             }
-                        })
+                            //on le chiffre
+                            cryptoTools.importPublicKey(Meteor.user().public.asymPublicKey, (publicKey) => {
+                                cryptoTools.encryptObject(unencryptedUserProjectToAdd, {publicKey: publicKey}, (userProjectToAdd) => {
+                                    let currentUser = User.findOne(Meteor.userId())
+                                    //et on sauvegarde ce nouveau projet dans la liste des projets de l'utilisateur
+                                    currentUser.callMethod('addUserProject', userProjectToAdd, (err, res) => {
+                                        if (err) {
+                                            console.log(err)
+                                            //si tout est bon
+                                        } else {
+                                            //on redirige
+                                            FlowRouter.go('/project/' + createdProject._id)
+                                            //on toast que tout s'est bien passé
+                                            Materialize.toast("Le projet " + projectName + " a été créé.", 6000, 'lighter-bg')
+                                            //on referme le loader
+                                            instance.newProjectComplete.set(null)
+                                        }
+                                    })
+                                })
+                            })
+
+                        }
                     })
                 })
-
             })
-
-
         }
-
     }
 });
 

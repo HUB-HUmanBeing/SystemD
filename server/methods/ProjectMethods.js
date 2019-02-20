@@ -18,6 +18,14 @@ Meteor.methods({
         const project = Project.findOne({name: projectName})
         return !!project
     },
+    /************
+     * Methode de création d'un nouveau projet
+     * On check tout et on sauvegarde
+     * @param projectName
+     * @param brunchOfKeys
+     * @param firstMember
+     * @returns {{project, projectId: (*|*|*|void)}}
+     */
     createProject(projectName, brunchOfKeys, firstMember) {
         check(projectName, String)
         const project = Project.findOne({name: projectName})
@@ -39,14 +47,11 @@ Meteor.methods({
 
         let newProject = new Project()
         newProject.name = projectName
-        console.log()
         newProject.public.asymPublicKey = brunchOfKeys.asymPublicKey
         newProject.private.symEnc_AsymPrivateKey = brunchOfKeys.symEnc_AsymPrivateKey
         newProject.private.hashedSymKey = brunchOfKeys.hashedSymKey
         newProject.private.hashedAdminPassword = brunchOfKeys.hashedAdminPassword
-
         newProject.private.members.push(firstMember)
-
         return {
             projectId : newProject.save(),
             project: newProject

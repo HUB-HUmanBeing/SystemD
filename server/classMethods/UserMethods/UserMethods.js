@@ -3,6 +3,11 @@ import {check} from "meteor/check";
 
 User.extend({
     meteorMethods: {
+        /****************
+         * methode d'ajout d'un projet a la liste des projet d'un utilisateur
+         * @param userProjectToAdd
+         * @returns {*|*|*|*|*|*|void}
+         */
         addUserProject(userProjectToAdd){
             check(userProjectToAdd,{
                 asymEnc_projectId : String,

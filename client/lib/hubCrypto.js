@@ -99,25 +99,33 @@ const hubCrypto = {
         }
 
     },
+    /*************
+     * Fonction permettant de déchiffrer la liste des projets d'un utilisateur et de stocker ces infos dans la sesssion
+     * @param callback
+     */
     decryptAndStoreProjectListInSession(callback) {
         let encryptedProjects = Meteor.user().private.projects
         let decryptedProjects = []
+        //on importe la clef privée de l'utilisateur
         cryptoTools.importPrivateKey(Session.get('stringifiedAsymPrivateKey'), privateKey => {
-                encryptedProjects.forEach((project, i) => {
-                    cryptoTools.decryptObject(project, {privateKey: privateKey}, decryptedProject => {
-                        decryptedProjects =[...decryptedProjects, decryptedProject]
-                        if (i === encryptedProjects.length - 1) {
-                            Meteor.setTimeout(()=>{
-                                Session.set('projects', decryptedProjects)
-                                callback()
-
-                            },encryptedProjects.length*100)
-
-                        }
-                    })
+            //pour chaque projet de l'utilisateur
+            encryptedProjects.forEach((project, i) => {
+                //on dechiffre l'objet
+                cryptoTools.decryptObject(project, {privateKey: privateKey}, decryptedProject => {
+                    //on le push dans le tableau de résultat
+                    decryptedProjects = [...decryptedProjects, decryptedProject]
+                    //quant on est au dernier
+                    if (i === encryptedProjects.length - 1) {
+                        //je sais pas pourquoi ca bugg, mais avec ca ca marche
+                        Meteor.setTimeout(() => {
+                            //on met les projets déchiffrés en session
+                            Session.set('projects', decryptedProjects)
+                            callback()
+                        }, encryptedProjects.length * 100)
+                    }
                 })
-            }
-        )
+            })
+        })
 
     },
     /*******************************
@@ -146,7 +154,8 @@ const hubCrypto = {
         })
         Session.keys = {}
         callback()
-    },    //cation génerant un couple de clef asymetrique et chiffrant la clef privée avec le mot de passe de l'utilisateur
+    },
+    //cation génerant un couple de clef asymetrique et chiffrant la clef privée avec le mot de passe de l'utilisateur
     //on prends l'username comme vecteur d'initialisation
     generateProjectSymKey(callback) {
         cryptoTools.generateSimKey((key) => {
@@ -161,8 +170,6 @@ const hubCrypto = {
             asymPublicKey: null,
             encryptedAsymPrivateKey: null
         }
-
-
         //on commence par générer notre clef asymetrique
         cryptoTools.generateAsymKey((keyObject) => {
             //puis on rends exportable la clef publique que l'on donne a notre objet de réponse

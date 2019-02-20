@@ -1,5 +1,6 @@
 import * as Materialize from "meteor/materialize:materialize";
 import Hashes from "jshashes"
+
 const cryptoTools = {
     //permet de recuperer l'object crypto suivant le navigateur
     crypto() {
@@ -8,7 +9,7 @@ const cryptoTools = {
             return crypto
         } else {
             console.log("API crypto Not Supported")
-            Materialize.toast('Votre navigateur ne permet pas une connexion sécurisée',6000, 'red darken-2')
+            Materialize.toast('Votre navigateur ne permet pas une connexion sécurisée', 6000, 'red darken-2')
         }
 
     },
@@ -37,7 +38,7 @@ const cryptoTools = {
         }
         return str;
     },
-    getRandomStringVector(){
+    getRandomStringVector() {
         var array = new Uint8Array(16);
         return this.convertArrayBufferViewtoString(this.crypto().getRandomValues(array));
     },
@@ -134,7 +135,7 @@ const cryptoTools = {
             });
     },
     //permet de rendre utilisable la clef publique d'un utilisateur
-    importSymKey(string_key,vector, callback) {
+    importSymKey(string_key, vector, callback) {
         this.crypto().subtle.importKey(
             "jwk",
             JSON.parse(string_key),
@@ -193,96 +194,130 @@ const cryptoTools = {
         );
     },
     //fonction permettant d'obtenir le hash d'une string donnée
-    hash(string, callback){
-        const simpleHash = function(stringToHash, salt){
-            return(new Hashes.SHA512().b64(stringToHash+ salt))
+    hash(string, callback) {
+        const simpleHash = function (stringToHash, salt) {
+            return (new Hashes.SHA512().b64(stringToHash + salt))
         }
         let saltArray = Meteor.settings.public.frontSalt.split(' ')
         let hash = string
-        saltArray.forEach(saltPiece=>{
+        saltArray.forEach(saltPiece => {
             hash = simpleHash(hash, saltPiece)
         })
-        if (callback){
+        if (callback) {
             callback(hash)
         }
-
         return hash
     },
-    generateRandomPassword(length){
-            length = length || 50
-            let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            let lowercase = 'abcdefghijklmnopqrstuvwxyz';
-            let numbers = '0123456789';
-            let symbols = '$-_.+!*';
-            let all = uppercase + lowercase + numbers + symbols;
-            let password = '';
-            for (let index = 0; index < length; index++) {
-                let character = Math.floor(Math.random() * all.length);
-                password += all.substring(character, character + 1);
-            }
-            return password;
-        },
+    //fonction permettant de générer un mot de passe aléatoire
+    generateRandomPassword(length) {
+        length = length || 50
+        let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let lowercase = 'abcdefghijklmnopqrstuvwxyz';
+        let numbers = '0123456789';
+        let symbols = '$-_.+!*';
+        let all = uppercase + lowercase + numbers + symbols;
+        let password = '';
+        for (let index = 0; index < length; index++) {
+            let character = Math.floor(Math.random() * all.length);
+            password += all.substring(character, character + 1);
+        }
+        return password;
+    },
+    //fonction générant un ID "unique"
     generateId() {
         return Math.random().toString(36).substr(2, 16)
     },
+    /**************
+     * fonction de foreach asynchrone
+     * @param array
+     * @param callback
+     * @returns {Promise<void>}
+     */
     async asyncForEach(array, callback) {
         for (let index = 0; index < array.length; index++) {
             await callback(array[index], index, array);
         }
     },
-    async encryptElement(element, elementName, encryptionParams, callback ){
-        let elementType= typeof element
-        if(elementType == "string" || elementType == "number") {
+    /***********************
+     * chiffre unelement a partir de l'encryption params si les conventions de nommage sont bonnes
+     * @param element   --- le contenu à chiffrer
+     * @param elementName --- le nom de l'element pour récuperer le préfixe
+     * @param encryptionParams  --- un objet comprenant {simkey, publicKey, vector} (pas obligé de toutes les avoir)
+     * @param callback
+     * @returns {Promise<void>}
+     */
+    async encryptElement(element, elementName, encryptionParams, callback) {
+        let elementType = typeof element
+        if (elementType == "string" || elementType == "number") {
             let prefix = elementName.split('_')[0]
             if (prefix == 'symEnc') {
                 await this.sim_encrypt_data(element, encryptionParams.simKey, encryptionParams.vector, callback)
-            }else if (prefix == 'asymEnc'){
+            } else if (prefix == 'asymEnc') {
                 await this.asym_encrypt_data(element, encryptionParams.publicKey, callback)
             }
-        }else{
+        } else {
             console.warn("'on s'occupe que des champs simples pour l'instant'")
         }
     },
-
-    encryptObject(object,encryptionParams , callback){
+    /************************
+     * fonction permettant de chiffrer tout les couples clef valeur d'un objet suivant les prefixes des clefs
+     * @param object ---l'objet a ciffrer
+     * @param encryptionParams -------les clefs
+     * @param callback ------renvoie l'objet chiffré
+     */
+    encryptObject(object, encryptionParams, callback) {
         let encryptedObject = object
-        const encrypter = async (object,encryptionParams , callback)=>{
+        const encrypter = async (object, encryptionParams, callback) => {
             await this.asyncForEach(Object.keys(object), async (key) => {
-                await this.encryptElement(object[key],key,  encryptionParams , (encryptedData)=>{
-                    encryptedObject[key]=this.convertArrayBufferViewtoString(encryptedData)
+                await this.encryptElement(object[key], key, encryptionParams, (encryptedData) => {
+                    encryptedObject[key] = this.convertArrayBufferViewtoString(encryptedData)
                 })
 
             });
             callback(encryptedObject);
         }
-        encrypter(object, encryptionParams , callback)
+        encrypter(object, encryptionParams, callback)
     },
-    async decryptElement(element, elementName, encryptionParams, callback ){
-        let elementType= typeof element
-        if(elementType == "string" || elementType == "number") {
+    /********************
+     * dechiffre un element a partir du decryption params si les conventions de nommage sont bonnes
+     * @param element   --- le contenu à dechiffrer
+     * @param elementName --- le nom de l'element pour récuperer le préfixe
+     * @param encryptionParams  --- un objet comprenant {simkey, privateKey, vector} (pas obligé de toutes les avoir)
+     * @param callback
+     * @returns {Promise<void>}
+     */
+    async decryptElement(element, elementName, encryptionParams, callback) {
+        let elementType = typeof element
+        if (elementType == "string" || elementType == "number") {
             let prefix = elementName.split('_')[0]
             if (prefix == 'symEnc') {
                 await this.sim_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.simKey, encryptionParams.vector, callback)
-            }else if (prefix == 'asymEnc'){
+            } else if (prefix == 'asymEnc') {
                 await this.asym_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.privateKey, callback)
             }
-        }else{
+        } else {
             console.warn("'on s'occupe que des champs simples pour l'instant'")
         }
     },
-    decryptObject(object,decryptionParams, callback){
-        let decryptedObject =object
+    /***************
+     * fonction permettant de dechiffrer tout les couples clef valeur d'un objet suivant les prefixes des clefs
+     * @param object ---l'objet a deciffrer
+     * @param encryptionParams -------les clefs
+     * @param callback ------renvoie l'objet dechiffré
+     */
+    decryptObject(object, decryptionParams, callback) {
+        let decryptedObject = object
 
-        const decrypter = async (object,decryptionParams , callback)=>{
+        const decrypter = async (object, decryptionParams, callback) => {
             await this.asyncForEach(Object.keys(object), async (key) => {
-                await this.decryptElement(object[key],key,  decryptionParams , (decryptedData)=>{
-                    decryptedObject[key]=decryptedData
+                await this.decryptElement(object[key], key, decryptionParams, (decryptedData) => {
+                    decryptedObject[key] = decryptedData
                 })
 
             });
             callback(decryptedObject);
         }
-        decrypter(object, decryptionParams , callback)
+        decrypter(object, decryptionParams, callback)
     }
 }
 

@@ -1,6 +1,8 @@
 @import "{}/client/scss/variables.scss";
 
+$menuFocusColor : $blue-highlight-color;
 #projectsList {
+  margin-top: -5px;
   padding: 0 5px;
   border: none;
   box-shadow: none;
@@ -11,7 +13,7 @@
 
     .collapsible-header {
       padding: 12px 5px;
-
+      transition: 0.3 ease-out;
       .project-avatar {
         width: 45px;
         height: 45px;
@@ -28,6 +30,8 @@
       }
 
       &:hover {
+        margin-left: -5px;
+        border-left: 5px solid $menuFocusColor;
         background-color: $main-bg !important;
         margin-right: -5px;
         padding-right: 15px;
@@ -49,7 +53,7 @@
         padding-left: 0px;
 
         .collection-item {
-          border-left: 5px solid $focus-color;
+          border-left: 5px solid $menuFocusColor;
           padding: 8px 15px;
           border-bottom: none;
           color: $link-color !important;
@@ -63,7 +67,7 @@
           &:hover {
             background-color: $light-bg !important;
             color: $plus-color !important;
-            border-left: 15px solid $focus-color;
+            border-left: 15px solid $menuFocusColor;
 
             .material-icons {
               color: $plus-color !important;
@@ -72,9 +76,9 @@
         }
 
         .active {
-          background: linear-gradient(to right, $focus-color 0%, rgba($light-bg, 0.65) 10%, rgba($light-bg, 0.65) 100%);
+          background: linear-gradient(to right, $menuFocusColor 0%, rgba($light-bg, 0.65) 20%, rgba($light-bg, 0.65) 100%);
           color: $plus-color !important;
-          border-left: 10px solid $focus-color;
+          border-left: 10px solid $menuFocusColor;
           padding-left: 20px;
 
           .material-icons {
@@ -90,8 +94,8 @@
       margin: 0;
 
       .collapsible-header {
-        border-left: 5px solid $focus-color !important;
-        background: linear-gradient(to right, $focus-color 0%, rgba($main-bg, 0.65) 30%, rgba($main-bg, 0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        border-left: 5px solid $menuFocusColor !important;
+        background: linear-gradient(to right, $menuFocusColor 0%, rgba($main-bg, 0.65) 20%, rgba($main-bg, 0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         background-color: rgba($main-bg, 0.65) !important;
         margin-right: -5px;
         margin-left: -5px;
