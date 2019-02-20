@@ -16,12 +16,12 @@
                 <div class="currentuser-infos ">
                     <div id="userOptionsBtn" class='dropdown-button main-color ' href='#' data-activates='userOptions'
                          style="width: 100%">
-                        <div class="flex">
-                            <div class="avatar-container">
+                        <div class="flex" style="margin-bottom: -7px">
+                            <div class="elipsis flex-auto relative">{{currentUser.username}}</div>
+                            <div class="avatar-container shadows2">
                                 {{>avatar user=currentUser}}
                             </div>
-                            <div class="elipsis flex-auto relative">{{currentUser.username}}</div>
-                            <div class="">
+                            <div class="relative">
                                 <i class="material-icons ">arrow_drop_down</i>
                             </div>
                         </div>
@@ -45,15 +45,19 @@
 
                     {{else}}
                         {{#if showInfo}}
-                            <p class="infoQuotes " style=" margin: 15px 10px;">Vous n'etes actuellement inscrit sur aucuns
-                                projets. Vous pouvez cliquer sur le bouton ci dessous pour créer un projet ou attendre une
+                            <p class="infoQuotes " style=" margin: 15px 10px;">Vous n'etes actuellement inscrit sur
+                                aucuns
+                                projets. Vous pouvez cliquer sur le bouton ci dessous pour créer un projet ou attendre
+                                une
                                 invitation à un projet existant.</p>
                         {{/if}}
                     {{/if}}
-                    <div class="row" style="margin: 5px 10px;"><a href="/new-project" class="btn btnStandard full-width"
-                                                                  style=" padding: 0 10px"><i
-                            class="focus-color material-icons left" style="    margin-right: 5px;">add_box</i>Créer un
-                        projet</a></div>
+                    <div class="row" style="margin: 15px 10px;">
+                        <a href="/new-project" class="btn btnStandard full-width"
+                           style=" padding: 0 10px"><i
+                                class="focus-color material-icons left" style="    margin-right: 5px;">add_box</i>Créer
+                            un
+                            projet</a></div>
                 </div>
             </div>
 

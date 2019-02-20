@@ -7,18 +7,25 @@
   display: flex;
   flex-direction: column;
 #menuHeader{
-
+  background: linear-gradient(to top, $contrasted-plus-bg 0%,$contrasted-bg 100%);
 }
   #menuProjectsContainer{
 
-    height: calc(100vh - 128px);
+    height: calc(100vh - 115px);
 padding-bottom:150px;
+    .menuProjectsScrollbar{
+margin-top: -5px;
+    }
   }
 
   .currentuser-infos {
-
+#userOptions{
+  position: relative;
+  z-index: 399;
+  top:115px !important;
+}
     .dropdown-button {
-      padding: 0px 10px;
+      padding: 0px 5px;
       cursor: pointer;
       *{
         transition: .3s ease-out;
@@ -27,22 +34,37 @@ padding-bottom:150px;
       &:hover{
         background-color: rgba($contrasted-bg, .5);
         *{
-          color: $plus-color;
+          color: $minus-color;
+        }
+        .elipsis{
+          width: auto;
+          opacity: 1;
         }
       }
       .elipsis{
-        padding: 5px 0px 0px 5px;
+        padding: 0px 10px 0px 0px ;
         font-size: 1em;
         margin-bottom: -10px;
+        width: 0;
+        opacity: 0;
+        transition: 0.6s ease-out;
+        text-align: right;
       }
       .material-icons {
-        padding:  5px 0px 0px 0px;
+        position: relative;
+        bottom: 0px;
+
+        left:2px;
+        padding:  0px;
+
       }
     }
 
     .avatar-container {
-      width: 30px;
-      height: 30px;
+      z-index: 400;
+      width: 50px;
+      height: 50px;
+      margin: -15px -5px -25px -5px;
       border-radius: 50%;
       overflow: hidden;
       border: 2px solid $focus-color;

@@ -8,7 +8,7 @@ Template.projectList.helpers({
         Meteor.setTimeout(()=>{
             Meteor.setTimeout(()=>{
                 let menuProjectsContainer = document.getElementById('menuProjectsContainer')
-                const bs = new BeautifyScrollbar(menuProjectsContainer);
+                Template.instance().bs = new BeautifyScrollbar(menuProjectsContainer);
             },100)
 
             $('#projectsList').collapsible();
@@ -23,6 +23,7 @@ Template.projectList.events({
 
 Template.projectList.onCreated(function () {
     //add your statement here
+this.bs =undefined
     Tracker.autorun
 });
 
@@ -32,5 +33,8 @@ Template.projectList.onRendered(function () {
 
 Template.projectList.onDestroyed(function () {
     //add your statement here
+    if(this.bs){
+        bs.destroy()
+    }
 });
 

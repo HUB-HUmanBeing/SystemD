@@ -8,7 +8,7 @@ Template.projectAvatar.helpers({
     //add you helpers here
     avatarSvg : function () {
 
-        let options = { padding: .04, background:'#314549', hues:[1, 4, 84, 36 , 200, 105, 33], colorLightness :90, grayscaleLightness:90,};
+        let options = { padding: .04, background:'#314549', hues:[1, 100, 84, 90, 36 , 200, 210, 270, 150, 350], colorLightness :40, grayscaleLightness:90,};
         let avatars = new Avatars(sprites(options));
         return  avatars.create(Template.currentData().projectId);
     },
