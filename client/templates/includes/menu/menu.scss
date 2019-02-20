@@ -2,14 +2,30 @@
 
 .general-menu {
   padding: 0 0px !important;
-  height: 100vh !important;
+    height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+#menuHeader{
+  background: linear-gradient(to top, $contrasted-plus-bg 0%,$contrasted-bg 100%);
+}
+  #menuProjectsContainer{
 
+    height: calc(100vh - 115px);
+padding-bottom:150px;
+    .menuProjectsScrollbar{
+margin-top: -5px;
+    }
+  }
 
   .currentuser-infos {
-
+#userOptions{
+  position: relative;
+  z-index: 399;
+  top:115px !important;
+}
     .dropdown-button {
-      padding: 5px 10px;
+      padding: 0px 5px;
       cursor: pointer;
       *{
         transition: .3s ease-out;
@@ -18,24 +34,40 @@
       &:hover{
         background-color: rgba($contrasted-bg, .5);
         *{
-          color: $plus-color;
+          color: $minus-color;
+        }
+        .elipsis{
+          width: auto;
+          opacity: 1;
         }
       }
       .elipsis{
-        padding: 10px 0px 5px 3px;
+        padding: 0px 10px 0px 0px ;
         font-size: 1em;
+        margin-bottom: -10px;
+        width: 0;
+        opacity: 0;
+        transition: 0.6s ease-out;
+        text-align: right;
       }
       .material-icons {
-        padding:  8px 0px;
+        position: relative;
+        bottom: 0px;
+
+        left:2px;
+        padding:  0px;
+
       }
     }
 
     .avatar-container {
-      width: 40px;
-      height: 40px;
+      z-index: 400;
+      width: 50px;
+      height: 50px;
+      margin: -15px -5px -25px -5px;
       border-radius: 50%;
       overflow: hidden;
-      border: 1px solid $focus-color;
+      border: 2px solid $focus-color;
 
     }
 
@@ -45,6 +77,11 @@
 
     .dropdown-content {
       li {
+        left: 20px;
+        min-height: 35px !important;
+        *{
+          font-size: 1.05em;
+        }
         &:hover {
           background-color: $lighter-bg;
           color: $plus-color;
@@ -53,6 +90,7 @@
           }
         }
         a {
+          padding: 10px 20px;
           color: $main-color !important;
         }
       }

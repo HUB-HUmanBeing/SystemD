@@ -1,10 +1,14 @@
 import hubCrypto from "/client/lib/hubCrypto";
-
+//https://www.npmjs.com/package/beautify-scrollbar
+import BeautifyScrollbar from 'beautify-scrollbar';
 
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
-    userProjects: function () {
-       return []
+    showProjects: function () {
+        return !!Session.get("projects").length
+    },
+    showInfo:function () {
+        return Template.instance().showInfo.get()
     }
 });
 
@@ -13,13 +17,15 @@ Template.menu.events({
     'click [logout]': function () {
 
 
-            Accounts.logout(()=>{
-               Meteor.setTimeout(()=>{
-                   hubCrypto.destroyCryptoSession(()=>{
-                       Object.keys(Session.keys).forEach(function(key){ Session.set(key, undefined); })
-                       Session.keys = {}
-                       window.location.reload()
-               },50)
+        Accounts.logout(() => {
+            Meteor.setTimeout(() => {
+                hubCrypto.destroyCryptoSession(() => {
+                    Object.keys(Session.keys).forEach(function (key) {
+                        Session.set(key, undefined);
+                    })
+                    Session.keys = {}
+                    window.location.reload()
+                }, 50)
 
             });
         })
@@ -30,15 +36,19 @@ Template.menu.events({
 });
 
 Template.menu.onCreated(function () {
+    this.showInfo = new ReactiveVar()
 });
 
 Template.menu.onRendered(function () {
     //initialisation des accordéons
-    Meteor.setTimeout(()=>{
-        $(".dropdown-button").dropdown({
+    Meteor.setTimeout(() => {
+        $("#userOptionsBtn").dropdown({
             belowOrigin: true
         });
-    },400)
+    }, 800)
+    Meteor.setTimeout(()=>{
+        this.showInfo.set(true)
+    },1500)
 
 });
 

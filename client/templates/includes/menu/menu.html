@@ -1,70 +1,66 @@
 <template name="menu">
-    <div class="  general-menu shadow bird-background main-color" data-collapsible="accordion"
+    <div class="  general-menu bird-background main-color" data-collapsible="accordion"
     >
-        <div class="row center-align no-margin ">
-            <a href="/"
-               class=" waves-effect waves-light col s12 relative"
-               style="padding: 15px 0 5px 0">
-                <img src="/images/icon/systemd-logo-white.png" alt="System-D" class="responsive-img  "
-                     style=" width: 70px ; height: 70px ">
-            </a>
-        </div>
-        {{#if currentUser}}
-        <div class="currentuser-infos ">
-            <div class='dropdown-button main-color ' href='#' data-activates='userOptions' style="width: 100%">
-                <div class="flex ">
+        <div id="menuHeader">
 
-                    <div class="avatar-container">
 
-                            {{>avatar user=currentUser}}
-
+            <div class="row center-align no-margin ">
+                <a href="/"
+                   class=" waves-effect waves-light col s12 relative"
+                   style="padding: 15px 0 0px 0">
+                    <img src="/images/icon/systemd-logo-white.png" alt="System-D" class="responsive-img  "
+                         style=" width: 70px ; height: 70px ">
+                </a>
+            </div>
+            {{#if currentUser}}
+                <div class="currentuser-infos ">
+                    <div id="userOptionsBtn" class='dropdown-button main-color ' href='#' data-activates='userOptions'
+                         style="width: 100%">
+                        <div class="flex" style="margin-bottom: -7px">
+                            <div class="elipsis flex-auto relative">{{currentUser.username}}</div>
+                            <div class="avatar-container shadows2">
+                                {{>avatar user=currentUser}}
+                            </div>
+                            <div class="relative">
+                                <i class="material-icons ">arrow_drop_down</i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="elipsis flex-auto relative">{{currentUser.username}}</div>
+                    <!-- Dropdown Structure -->
+                    <ul id='userOptions' class='dropdown-content light-bg main-color'>
+                        <li><a href="/user-params"><i class="material-icons main-color">settings</i>Paramètres</a></li>
+                        <li><a href="#" logout><i class="material-icons main-color">exit_to_app</i>Déconnexion</a></li>
+                    </ul>
 
+                </div>
+            {{/if}}
+        </div>
+        {{#if currentUserId}}
+            <div class="flex-auto">
+                <div id="menuProjectsContainer">
+                    {{#if showProjects}}
+                        <div class="menuProjectsScrollbar">
+                            {{>projectList }}
+                        </div>
 
-                    <div class="">
-                        <i class="material-icons ">arrow_drop_down</i>
+                    {{else}}
+                        {{#if showInfo}}
+                            <p class="infoQuotes " style=" margin: 25px 10px;">Vous n'etes actuellement inscrit sur
+                                aucuns
+                                projets. <br><br>Vous pouvez cliquer sur le bouton ci-dessous pour créer un projet ou attendre
+                                une
+                                invitation à un projet existant.</p>
+                        {{/if}}
+                    {{/if}}
+                    <div class="row" style="margin: 25px 10px;">
+                        <a href="/new-project" class="btn btnStandard full-width" style=" padding: 0 10px">
+                            <i class="focus-color material-icons left" style="    margin-right: 5px;">add_box</i>
+                            Nouveau projet</a>
                     </div>
                 </div>
             </div>
-            <!-- Dropdown Structure -->
-            <ul id='userOptions' class='dropdown-content light-bg main-color'>
-                <li><a href="/user-params"><i class="material-icons main-color">settings</i>Paramètres</a></li>
-                <li><a href="#" logout><i class="material-icons main-color">exit_to_app</i>Déconnexion</a></li>
-            </ul>
 
-        </div>
-        <div style="padding: 0 10px;">
-            <div class="hr no-margin"></div>
-        </div>
-
-        <div class="menuProjetsContainer ">
-            {{#if userProjects.length}}
-
-                {{else}}
-                    <p class="infoQuotes " style=" margin: 15px 10px;">Vous n'etes actuellement inscrit sur aucuns projets. Vous pouvez cliquer sur le bouton ci dessous pour créer un projet ou attendre une invitation à un projet existant.</p>
-                {{/if}}
-
-            <div class="row" style="margin: 5px 10px;"><a href="/new-project" class="btn btnStandard full-width" style=" padding: 0 10px"><i class="focus-color material-icons left" style="    margin-right: 5px;">add_box</i>Créer un projet</a></div>
-        </div>
         {{/if}}
-        {{!formulaire de recherche}}
-        <!--<li>-->
-        <!--<form action="" name="search-form" class="row no-margin valign-wrapper" searchForm>-->
-        <!--<a class="btn-flat col s2 no-padding small-margin " searchBtn>-->
-        <!--<img src="/images/icon/search_icon.png" alt="search" class=" small-margin no-padding  "-->
-        <!--style="height : 25px; widht: 25px; ">-->
-        <!--</a>-->
-        <!--<div class="input-field row no-padding small-margin s8 col valign-wrapper">-->
-
-        <!--<input id="generalSearchInput" type="text" class="validate no-margin" name="search"-->
-        <!--placeholder="Rechercher">-->
-
-        <!--</div>-->
-        <!--</form>-->
-        <!--</li>-->
-
-
     </div>
 
 </template>

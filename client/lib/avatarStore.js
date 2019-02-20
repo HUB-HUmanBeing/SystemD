@@ -14,7 +14,7 @@ const avatarStore = {
     getUserAvatar(userId) {
         let avatars = Session.get('userAvatars')
 
-        if (avatars[userId]) {
+        if (avatars && avatars[userId]) {
             return avatars[userId]
         } else {
             if (!this.inProgress[userId]) {

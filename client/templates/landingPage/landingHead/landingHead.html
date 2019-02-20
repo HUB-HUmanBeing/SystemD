@@ -4,25 +4,27 @@
             <div class="nav-wrapper ">
 
                 {{#unless currentUserId}}
-                <a href="/" class="logo-site"><img src="/images/icon/systemd-logo-white.png" alt="" class="responsive-img"></a>
-{{/unless}}
+                    <a href="/" class="logo-site"><img src="/images/icon/systemd-logo-white.png" alt=""
+                                                       class="responsive-img"></a>
+                {{/unless}}
                 <ul class="right hide-on-small-only">
                     <li><a href="/#landingAim">{{__ '.aims'}}</a></li>
                     <li><a href="/#landingPlus">{{__ '.features'}}</a></li>
                     <li><a href="/#landingRoadmap">{{__ '.roadMap'}}</a></li>
                     <li><a href="/#landingContact">{{__ '.contact'}}</a></li>
-{{#unless currentUserId}}
-                    <li><a href="/login" style="font-weight: bold">{{__ '.signUp'}} // {{__ '.login'}}</a></li>
-{{/unless}}
-                </ul>
-                {{#if isPhone}}
-                <ul class="right show-on-small">
-
                     {{#unless currentUserId}}
-                        <li><a href="/login" style="font-weight: bold">inscription/Connexion</a></li>
+                        <li><a href="/login" style="font-weight: bold">{{__ '.signUp'}} - {{__ '.login'}}</a></li>
                     {{/unless}}
                 </ul>
-                   {{/if  }}
+
+                {{#if isPhone}}
+                    <ul class="right show-on-small">
+
+                        {{#unless currentUserId}}
+                            <li><a href="/login" style="font-weight: bold">{{__ '.signUp'}} - {{__ '.login'}}</a></li>
+                        {{/unless}}
+                    </ul>
+                {{/if  }}
             </div>
         </nav>
     </div>

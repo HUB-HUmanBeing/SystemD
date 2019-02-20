@@ -1,0 +1,57 @@
+@import "../variables";
+
+.beautify-scroll-container {
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  overflow-anchor: none
+}
+
+.beautify-scroll__x-bar, .beautify-scroll__y-bar {
+  position: absolute;
+  z-index: 100;
+  background-color: transparent
+}
+
+.beautify-scroll__y-bar {
+  width: 6px;
+  top: 0;
+  right: 0
+}
+
+.beautify-scroll__x-bar {
+  height: 6px;
+  left: 0;
+  bottom: 0
+}
+
+.beautify-scroll__x-thumb, .beautify-scroll__y-thumb {
+  position: absolute;
+  border-radius: 3px;
+  background-color: rgba($minus-color,0.15);
+  opacity: 0;
+  transition: all .2s linear
+}
+
+.beautify-scroll__x-thumb:hover, .beautify-scroll__y-thumb:hover {
+  background-color: transparent;
+}
+
+.beautify-scroll__x-thumb.shown, .beautify-scroll__y-thumb.shown {
+  opacity: 1
+}
+
+.beautify-scroll__x-thumb.focus, .beautify-scroll__y-thumb.focus {
+  opacity: 1;
+  background-color: transparent;
+}
+
+.beautify-scroll__x-thumb {
+  height: 4px;
+  bottom: 0
+}
+
+.beautify-scroll__y-thumb {
+  width: 4px;
+  right: 0
+}

@@ -16,16 +16,17 @@ Template.loginForm.events({
         let username = $('#loginUsername').val();
         let password = $('#loginPassword').val()
         //on soumet le login
+        instance.loginComplete.set([
+            'Récupération et déchiffrement de la clef privée',
+            'Initialisation d\'une nouvelle session chiffrée'
+        ])
         Meteor.loginWithPassword(username, password, function (error) {
             // si il y a une erreur, on "toast" le message d'erreur
 
             if (error) {
                 Materialize.toast(error.message, 6000, 'red')();
             } else {
-                instance.loginComplete.set([
-                    'Récupération et déchiffrement de la clef privée',
-                    'Initialisation d\'une nouvelle session chiffrée'
-                ])
+
                 cryptoTools.hash(password, (hashedPassword) => {
                     window.localStorage.setItem('hashedPassword', hashedPassword)
                     hubCrypto.initCryptoSession(hashedPassword, username, () => {

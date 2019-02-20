@@ -4,7 +4,7 @@ import Projects from "/lib/collections/Project";
 const ProjectMember = Class.create({
     name: "ProjectMember",
     fields: {
-        _id: {
+        memberId: {
             type: String
         },
         role: {
@@ -16,7 +16,7 @@ const ProjectMember = Class.create({
         symEnc_userId: {
             type: String
         },
-        symEnc_joinAt: {
+        symEnc_joinAtTs: {
             type: String
         },
         userSignature: {
