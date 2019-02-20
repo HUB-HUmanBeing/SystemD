@@ -31,7 +31,7 @@ margin-top: -5px;
         transition: .3s ease-out;
       }
       transition: .3s ease-out;
-      &:hover{
+      &:hover, &.active{
         background-color: rgba($contrasted-bg, .5);
         *{
           color: $minus-color;
@@ -39,15 +39,18 @@ margin-top: -5px;
         .elipsis{
           width: auto;
           opacity: 1;
+          right: 0;
         }
       }
       .elipsis{
         padding: 0px 10px 0px 0px ;
         font-size: 1em;
         margin-bottom: -10px;
+        position: relative;
+        right: -50px;
         width: 0;
         opacity: 0;
-        transition: 0.6s ease-out;
+        transition: 0.3s ease-out;
         text-align: right;
       }
       .material-icons {
@@ -77,7 +80,6 @@ margin-top: -5px;
 
     .dropdown-content {
       li {
-        left: 20px;
         min-height: 35px !important;
         *{
           font-size: 1.05em;

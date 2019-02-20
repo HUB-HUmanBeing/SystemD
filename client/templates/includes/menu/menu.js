@@ -5,7 +5,7 @@ import BeautifyScrollbar from 'beautify-scrollbar';
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
     showProjects: function () {
-        return !!Session.get("projects").length
+        return !!Session.get("projects") && !!Session.get("projects").length
     },
     showInfo:function () {
         return Template.instance().showInfo.get()
@@ -45,10 +45,10 @@ Template.menu.onRendered(function () {
         $("#userOptionsBtn").dropdown({
             belowOrigin: true
         });
-    }, 800)
+    }, 1000)
     Meteor.setTimeout(()=>{
         this.showInfo.set(true)
-    },1500)
+    },2500)
 
 });
 

@@ -4,7 +4,7 @@
 FlowRouter.route('/', {
     name: 'App.home',
     action() {
-        BlazeLayout.render('layout', {main: 'landingPage', header: 'landingHead'});
+        BlazeLayout.render('mainLayout', {main: 'landingPage', header: 'landingHead'});
     },
 });
 
@@ -39,20 +39,7 @@ FlowRouter.route('/user-params', {
     name: 'App.userParams',
     triggersEnter: [checkLoggedOrReroute],
     action() {
-
-        BlazeLayout.render('layout', {main: 'userParams'});
+        BlazeLayout.render('mainLayout', {main: 'userParams'});
     },
 });
 
-
-/****************
- * ProjectRoutes
- */
-FlowRouter.route('/new-project', {
-    name: 'App.newProject',
-    triggersEnter: [checkLoggedOrReroute],
-    action() {
-
-        BlazeLayout.render('layout', {main: 'newProject'});
-    },
-});

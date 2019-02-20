@@ -1,0 +1,13 @@
+<template name="mainLayout">
+{{#layout}}
+    <div class=" yield-content {{#if compare isDesktop '&&' currentUserId}} yield-content-desktop {{/if}} " style="min-height: 100vh">
+        <div id="pageHeader">
+            {{> Template.dynamic template=header}}
+        </div>
+        <div id="subHeader">
+            {{> Template.dynamic template=subHeader}}
+        </div>
+        {{> Template.dynamic template=main}}
+    </div>
+    {{/layout}}
+</template>

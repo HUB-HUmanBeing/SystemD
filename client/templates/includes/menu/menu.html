@@ -47,9 +47,19 @@
                         {{#if showInfo}}
                             <p class="infoQuotes " style=" margin: 25px 10px;">Vous n'etes actuellement inscrit sur
                                 aucuns
-                                projets. <br><br>Vous pouvez cliquer sur le bouton ci-dessous pour créer un projet ou attendre
+                                projets. <br><br>Vous pouvez cliquer sur le bouton ci-dessous pour créer un projet ou
+                                attendre
                                 une
                                 invitation à un projet existant.</p>
+                        {{else}}
+                            <div class="row center-align" style=" margin: 25px 10px;">
+                                <i class="material-icons focus-color">lock</i>
+                                <p class="no-margin">Déchiffrement de la liste de vos projets.</p>
+                                <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>
+                            </div>
+
                         {{/if}}
                     {{/if}}
                     <div class="row" style="margin: 25px 10px;">
