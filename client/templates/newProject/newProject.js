@@ -111,7 +111,7 @@ Template.newProject.events({
         }
         instance.timeout = Meteor.setTimeout(() => {
             validateNewProjectForm.validateProjectName(event, instance)
-        }, 400)
+        }, 200)
     },
     'submit #newProjectForm ': function (event, instance) {
         event.preventDefault()

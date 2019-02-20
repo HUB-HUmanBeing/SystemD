@@ -8,7 +8,7 @@ Template.avatar.helpers({
 
     avatarSvg : function () {
         let user = Template.currentData().user
-            let options = { padding: 0, background:'#DBDBDB'};
+            let options = { padding: 0, background:'#165261'};
             let avatars = new Avatars(sprites(options));
             return  avatars.create(user._id);
     },
