@@ -13,7 +13,8 @@ $menuFocusColor : $blue-highlight-color;
 
     .collapsible-header {
       padding: 12px 5px;
-      transition: 0.3 ease-out;
+      transition: 0.3s ease-out;
+      position: relative;
       .project-avatar {
         width: 45px;
         height: 45px;
@@ -23,7 +24,8 @@ $menuFocusColor : $blue-highlight-color;
       }
 
       .projectTitle {
-        padding: 10px 0 10px 5px;
+        padding-left: 0.6em;
+
         font-size: 1.05em;
         color: $info-color;
         transition: 0.4s ease-out;

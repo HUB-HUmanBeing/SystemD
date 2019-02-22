@@ -47,11 +47,12 @@
         }
       }
       .active{
+
         a{
           background: linear-gradient(to bottom, $blue-highlight-color 0%,$main-bg 100%);
-          border-left: 2px solid $blue-highlight-color;
-          border-right: 2px solid $blue-highlight-color;
-          border-top: 2px solid $blue-highlight-color;
+          border-left: 2px solid $blue-highlight-color !important;
+          border-right: 2px solid $blue-highlight-color !important;
+          border-top: 2px solid $blue-highlight-color !important;
           border-bottom: none !important;
           i{
             color: $plus-color !important;
