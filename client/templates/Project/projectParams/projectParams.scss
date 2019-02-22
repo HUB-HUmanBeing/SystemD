@@ -1,0 +1,90 @@
+@import "{}/client/scss/variables.scss";
+
+#projectParams {
+  min-height: 100vh;
+  padding: 30px 0;
+
+  .profile-picture {
+    width: 160px;
+    height: 160px;
+    text-align: center;
+    display: inline-block;
+
+    img {
+      border-radius: 50%;
+    }
+
+    .btn-floating {
+
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      transition: 0.4s ease-out;
+      z-index: 201;
+
+      .material-icons {
+        position: relative;
+        top:-5px;
+        font-size: 20px;
+        color: $plus-color;
+        transition: 0.4s ease-out;
+      }
+
+      background-color: $light-bg;
+      opacity: .8;
+
+      &:hover {
+        opacity: 1;
+        background-color: $lighter-bg;
+
+        .material-icons {
+          color: $focus-color;
+        }
+      }
+    }
+  }
+
+  .collapsible {
+    margin-bottom: 30vh;
+
+    li {
+      box-shadow: none;
+
+      &.active {
+        // border: 1px solid $blue-highlight-color;
+        background: linear-gradient(45deg,$main-bg  0%, $contrasted-bg  100%);
+        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+
+      }
+    }
+
+    .collapsible-body {
+      padding: 15px;
+      border-bottom: none;
+    }
+
+    .collapsible-header {
+      position: relative;
+      box-shadow: none !important;
+      transition: 0.3s ease-out;
+      border: none;
+      display: block;
+      padding: 18px 14px;
+      font-size: 1.1em;
+
+      .hr {
+        margin: 15px 0 0 0 !important;
+        display: block;
+        position: absolute;
+        width: calc(100% - 28px);
+        bottom: -5px
+      }
+
+      &:hover {
+        background-color: $lighter-bg !important;
+      }
+    }
+
+    border-bottom: none;
+  }
+}

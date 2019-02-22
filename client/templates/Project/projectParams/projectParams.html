@@ -1,3 +1,32 @@
 <template name="projectParams">
-on est bien sur la page params {{truc}}
+
+    <div id="projectParams" class=" gradiant  main-color">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m8 offset-m2 center-align">
+
+                    <div class="row no-margin ">
+                        <div class="profile-picture circle focus-border shadow relative ">
+                            {{>editProjectAvatar currentProject=currentProject}}
+                        </div>
+                    </div>
+                    <div class="row no-margin ">
+                        <h5>{{currentProject.name}}</h5>
+                    </div>
+                </div>
+                <div class="col s12 m8 offset-m2 offset-xl3 xl6">
+                    <ul class="collapsible popout" id="editProjectCollapse" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header main-color transparent active"><div class="flex"><i class="material-icons focus-color">build</i>Options</div>
+                                <div class="hr"></div></div>
+                            <div class="collapsible-body">
+                                {{>userOptions}}
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

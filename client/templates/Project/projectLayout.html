@@ -4,18 +4,39 @@
         <div id="projectLayout"
              class=" yield-content gradiant {{#if compare isDesktop '&&' currentUserId}} yield-content-desktop {{/if}} "
              style="min-height: 100vh">
-
-            {{#if decripting}}
+            {{#if decrypting}}
                 <div class="container loader-container">
                     <div class="row no-margin">
-                        <div class="col s12 m8 offset-m2 center-align shadow contrasted-bg">
-                            {{>encryptionLoader tasks=decripting}}
+                        <div class="col s12 m10 offset-m1 l8 offset-l2 center-align shadow contrasted-bg">
+                            {{>encryptionLoader tasks=decrypting}}
                         </div>
                     </div>
                 </div>
             {{else}}
+                {{#unless isDesktop}}
+                    <nav class="projectNavbar">
+                        <div class="row no-margin topNavbar">
+                            <a href="/project/{{currentProject._id}}/home" class="flex relative ">
+                                <div class="navProjectAvatar">
+                                    {{>projectAvatar projectId=currentProject._id}}
+                                </div>
+                                <h4 class="elipsis flex-auto">
+                                    {{currentProject.name}}
+                                </h4>
+                            </a>
+                        </div>
+                        <ul class="sections flex">
+                            {{#each section in sections}}
+                                <li class="flex-auto no-padding section  {{section.isActive}}">
+                                    <a href="/project/{{currentProject._id}}/{{section.path}}"
+                                       class="waves-effect waves-light "><i class="material-icons ">{{section.icon}}</i></a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </nav>
+                {{/unless}}
+                <div class="" style="{{#unless isDesktop}}padding-top: 70px  {{/unless}}"></div>
                 {{> Template.dynamic template=main }}
-
             {{/if}}
         </div>
     {{/layout}}

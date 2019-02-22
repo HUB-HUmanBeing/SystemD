@@ -140,7 +140,7 @@ Template.newProject.events({
                 //on prepare l'objet avec toutes les clef de projet a envoyer dans la methode de création
                 let brunchOfKeyToSend = {
                     asymPublicKey: projectBrunchOfKeys.projectAsymPublicKey,
-                    symEnc_AsymPrivateKey: projectBrunchOfKeys.encryptedAsymPrivateKey,
+                    symEnc_asymPrivateKey: projectBrunchOfKeys.encryptedAsymPrivateKey,
                     hashedSymKey: cryptoTools.hash(projectBrunchOfKeys.stringifiedSymKey),
                     hashedAdminPassword: cryptoTools.hash(adminPassword)
                 }

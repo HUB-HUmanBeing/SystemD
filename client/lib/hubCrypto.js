@@ -116,7 +116,7 @@ const hubCrypto = {
                                 //on met les projets déchiffrés en session
                                 Session.set('projects', decryptedProjects)
                                 callback()
-                            }, encryptedProjects.length * 100)
+                            }, encryptedProjects.length * 150)
                         }
                     })
                 })

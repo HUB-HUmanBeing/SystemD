@@ -50,9 +50,15 @@ this.bs =undefined
     Tracker.autorun(()=>{
         FlowRouter.watchPathChange()
         let currentRoute = FlowRouter.current()
-        this.currentProjectId.set(currentRoute.params.projectId)
-        let currentSection = currentRoute.route.name.split("-")[1]
-        this.currentProjectSection.set(currentSection)
+        if(currentRoute.params.projectId){
+            window.localStorage.setItem("lastOpenedProjectId",currentRoute.params.projectId )
+            this.currentProjectId.set(currentRoute.params.projectId)
+            let currentSection = currentRoute.route.name.split("-")[1]
+            this.currentProjectSection.set(currentSection)
+        }else{
+            this.currentProjectId.set(window.localStorage.getItem("lastOpenedProjectId"))
+        }
+
     })
 
 });

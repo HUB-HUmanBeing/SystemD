@@ -27,6 +27,12 @@ FlowRouter.notFound = {
     },
 };
 
+FlowRouter.route('/403', {
+    name: 'App.login',
+    action() {
+        BlazeLayout.render('noLayout', {main: 'forbidden'});
+    },
+});
 function checkLoggedOrReroute(context, redirect) {
     // context is the output of `FlowRouter.current()`
     if(!Meteor.userId()){

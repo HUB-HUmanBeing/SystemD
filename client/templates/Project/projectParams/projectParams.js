@@ -1,5 +1,8 @@
 Template.projectParams.helpers({
     //add you helpers here
+    currentProject: function () {
+        return Project.findOne(FlowRouter.current().params.projectId)
+    }
 });
 
 Template.projectParams.events({

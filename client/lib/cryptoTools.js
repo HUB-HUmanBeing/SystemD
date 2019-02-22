@@ -289,15 +289,17 @@ const cryptoTools = {
      */
     async decryptElement(element, elementName, encryptionParams, callback) {
         let elementType = typeof element
-        if (elementType == "string" || elementType == "number") {
-            let prefix = elementName.split('_')[0]
-            if (prefix == 'symEnc') {
-                await this.sim_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.simKey, encryptionParams.vector, callback)
-            } else if (prefix == 'asymEnc') {
-                await this.asym_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.privateKey, callback)
+        if(element){
+            if (elementType == "string" || elementType == "number") {
+                let prefix = elementName.split('_')[0]
+                if (prefix == 'symEnc') {
+                    await this.sim_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.simKey, encryptionParams.vector, callback)
+                } else if (prefix == 'asymEnc') {
+                    await this.asym_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.privateKey, callback)
+                }
+            } else {
+                console.warn("'on s'occupe que des champs simples pour l'instant'")
             }
-        } else {
-            console.warn("'on s'occupe que des champs simples pour l'instant'")
         }
     },
     /***************
@@ -310,9 +312,10 @@ const cryptoTools = {
         let decryptedObject = object
 
         const decrypter = async (object, decryptionParams, callback) => {
-            await this.asyncForEach(Object.keys(object), async (key) => {
+            await this.asyncForEach(Object.keys(object), async (key,i) => {
                 await this.decryptElement(object[key], key, decryptionParams, (decryptedData) => {
                     decryptedObject[key] = decryptedData
+
                 })
 
             });

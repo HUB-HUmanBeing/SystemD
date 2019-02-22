@@ -24,7 +24,7 @@ Meteor.publish('ProjectForMembers', function (projectId, hashedSymKey) {
                     name:1,
                     public: 1,
                     "private.createdAt": 1,
-                    "private.symEnc_AsymPrivateKey":1,
+                    "private.symEnc_asymPrivateKey":1,
 
                     "private.members.memberId": 1,
                     "private.members.role": 1,

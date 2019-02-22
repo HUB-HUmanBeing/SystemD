@@ -33,7 +33,7 @@ Meteor.methods({
         check(!!project, false)
         check(brunchOfKeys, {
             asymPublicKey: String,
-            symEnc_AsymPrivateKey: String,
+            symEnc_asymPrivateKey: String,
             hashedSymKey: String,
             hashedAdminPassword:String
         })
@@ -50,7 +50,7 @@ Meteor.methods({
         let newProject = new Project()
         newProject.name = projectName
         newProject.public.asymPublicKey = brunchOfKeys.asymPublicKey
-        newProject.private.symEnc_AsymPrivateKey = brunchOfKeys.symEnc_AsymPrivateKey
+        newProject.private.symEnc_asymPrivateKey = brunchOfKeys.symEnc_asymPrivateKey
         newProject.private.hashedSymKey = brunchOfKeys.hashedSymKey
         newProject.private.hashedAdminPassword = brunchOfKeys.hashedAdminPassword
         newProject.private.members.push(firstMember)

@@ -17,5 +17,8 @@
     "tasks": "Tasks Lists",
     "maps": "Maps",
     "members": "Members"
+  },
+  "projectLayout": {
+    "decrypting1" : "Projet informations deciphering"
   }
 }

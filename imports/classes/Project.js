@@ -48,7 +48,7 @@ const ProjectPublic = Class.create({
 const ProjectPrivate = Class.create({
     name: 'ProjectPrivate',
     fields: {
-        symEnc_AsymPrivateKey: {
+        symEnc_asymPrivateKey: {
             type: String,
         },
         createdAt: {
