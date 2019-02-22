@@ -1,3 +1,22 @@
 <template name="projectLayout">
+    {{#layout}}
 
+        <div id="projectLayout"
+             class=" yield-content gradiant {{#if compare isDesktop '&&' currentUserId}} yield-content-desktop {{/if}} "
+             style="min-height: 100vh">
+
+            {{#if decripting}}
+                <div class="container loader-container">
+                    <div class="row no-margin">
+                        <div class="col s12 m8 offset-m2 center-align shadow contrasted-bg">
+                            {{>encryptionLoader tasks=decripting}}
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                {{> Template.dynamic template=main }}
+
+            {{/if}}
+        </div>
+    {{/layout}}
 </template>

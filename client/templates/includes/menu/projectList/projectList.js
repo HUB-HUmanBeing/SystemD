@@ -2,7 +2,12 @@ import BeautifyScrollbar from 'beautify-scrollbar';
 
 Template.projectList.helpers({
 
-
+    currentProjectId: function(){
+      return Template.instance().currentProjectId.get()
+    },
+    currentProjectSection: function(){
+        return Template.instance().currentProjectSection.get()
+    },
     //add you helpers here
     decryptedProjects: function () {
         Meteor.setTimeout(()=>{
@@ -18,7 +23,8 @@ Template.projectList.helpers({
             $('#projectsList').collapsible();
         },100)
         return Session.get('projects')
-    }
+    },
+
 });
 
 Template.projectList.events({
@@ -28,6 +34,16 @@ Template.projectList.events({
 Template.projectList.onCreated(function () {
     //add your statement here
 this.bs =undefined
+    this.currentProjectId = new ReactiveVar('')
+    this.currentProjectSection = new ReactiveVar('')
+
+    Tracker.autorun(()=>{
+        FlowRouter.watchPathChange()
+        let currentRoute = FlowRouter.current()
+        this.currentProjectId.set(currentRoute.params.projectId)
+        let currentSection = currentRoute.route.name.split("-")[1]
+        this.currentProjectSection.set(currentSection)
+    })
 
 });
 

@@ -25,19 +25,20 @@ Template.encryptionLoader.onRendered(function () {
     this.step= -1
    nextStep = ()=>{
        let tasks = this.tasks.get()
-        if (this.step>=0){
+        if (this.step>=0 && this.step<tasks.length-1){
             tasks[this.step].status='done'
         }
         if (this.step<tasks.length-1 ){
             tasks[this.step+1].status ="loading";
             this.step ++
-            Meteor.setTimeout(()=>{
-                nextStep()
-            },1400)
+
+                Meteor.setTimeout(()=>{
+                    nextStep()
+                },1000)
+
+
         }
-
         this.tasks.set(tasks)
-
     }
     nextStep()
 

@@ -1,5 +1,6 @@
 import * as Materialize from "meteor/materialize:materialize";
 import Hashes from "jshashes"
+import zxcvbn from 'zxcvbn'
 
 const cryptoTools = {
     //permet de recuperer l'object crypto suivant le navigateur
@@ -318,7 +319,8 @@ const cryptoTools = {
             callback(decryptedObject);
         }
         decrypter(object, decryptionParams, callback)
-    }
+    },
+    zxcvbn : zxcvbn
 }
 
 export default cryptoTools

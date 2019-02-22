@@ -1,0 +1,23 @@
+<template name="menuProject">
+    <li class="menuProjectItem">
+        <div class="collapsible-header transparent {{#if compare currentProjectId '==' project.asymEnc_projectId}}active{{/if}}">
+            <div class="flex full-width">
+                <div class="project-avatar" style="">
+                    {{>projectAvatar projectId=project.asymEnc_projectId}}
+                </div>
+                <div class="flex-auto elipsis projectTitle">
+                    {{project.asymEnc_projectName}}
+                </div>
+            </div>
+
+        </div>
+        <div class="collapsible-body transparent">
+            <div class="collection transparent">
+                {{#each section in sections}}
+
+                <a href="/project/{{project.asymEnc_projectId}}/{{section.path}}" class="collection-item transparent {{section.isActive}}"><i class="material-icons left ">{{section.icon}}</i>{{section.name}}</a>
+            {{/each}}
+             </div>
+        </div>
+    </li>
+</template>

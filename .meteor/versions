@@ -71,7 +71,7 @@ meteor-base@1.4.0
 meteorhacks:inject-initial@1.0.4
 meteorhacks:picker@1.0.3
 meteortesting:browser-tests@1.0.0
-meteortesting:mocha@1.1.1
+meteortesting:mocha@1.1.2
 meteortesting:mocha-core@1.0.1
 minifier-css@1.4.1
 minifier-js@2.4.0

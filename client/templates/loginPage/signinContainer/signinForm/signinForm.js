@@ -1,7 +1,6 @@
 import hubCrypto from '/client/lib/hubCrypto'
-import zxcvbn from 'zxcvbn'
-import cryptoTools from "../../../../lib/cryptoTools";
 
+import cryptoTools from "../../../../lib/cryptoTools";
 /**
  * Object in order to validate the signin form
  * @type {{checkUnicity(*, *): void, validateSigninPassword(*, *): void, isValid(*): *, validateSigninUsername(*, *): void, validateSigninPasswordRepeat(*, *): void}}
@@ -66,7 +65,7 @@ const validateSigninForm = {
         (event, instance) {
 
         let signinPassword = $('#signinPassword').val();
-        let passwordStrength = parseInt(zxcvbn(signinPassword).guesses_log10 * 1.1)
+        let passwordStrength = parseInt(cryptoTools.zxcvbn(signinPassword).guesses_log10 * 1.1)
         let preProgress = parseInt(passwordStrength * 2)
         let progress = ((preProgress * 5) < 100) ? (preProgress * 5) : 100;
         instance.passwordStrength.set({strength: passwordStrength, progress: progress})

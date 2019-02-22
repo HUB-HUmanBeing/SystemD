@@ -19,6 +19,7 @@ const ProjectMember = Class.create({
         symEnc_joinAtTs: {
             type: String
         },
+        // ca permet d'autentifier un membre sur le serveur: corespond a hashServer(hashClient(memberId + userPrivateKey)
         userSignature: {
             type: String
         }
@@ -105,7 +106,20 @@ const Project = Class.create({
             }
         }
     },
-    helpers: {}
+    helpers: {
+        isMember(authInfo){
+            check(authInfo , {
+                memberId : String,
+                userSignature: String
+            })
+            let member = {}
+            this.private.members.forEach(member=>{
+                if(member.memberId === authInfo.memberId){
+                    return
+                }
+            })
+        }
+    }
 
 });
 

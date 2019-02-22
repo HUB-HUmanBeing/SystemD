@@ -145,13 +145,14 @@ Template.newProject.events({
                     hashedAdminPassword: cryptoTools.hash(adminPassword)
                 }
                 //on genere un nouveau membre pour le projet à partir des infos de l'utilisateur courant
+                let newMemberId = cryptoTools.generateId()
                 let uncryptedNewMember = {
-                    memberId: cryptoTools.generateId(),
+                    memberId: newMemberId ,
                     role: 'admin',
                     symEnc_userId: Meteor.userId(),
                     symEnc_username: Meteor.user().username,
                     symEnc_joinAtTs: Date.now(),
-                    userSignature: cryptoTools.hash(Session.get('stringifiedAsymPrivateKey') + projectName)
+                    userSignature: cryptoTools.hash(Session.get(newMemberId+'stringifiedAsymPrivateKey') )
                 }
                 //on prepare l'encryption param
                 let encryptionParams = {
@@ -172,9 +173,11 @@ Template.newProject.events({
                             let unencryptedUserProjectToAdd = {
                                 asymEnc_projectId: createdProject._id,
                                 asymEnc_projectName: createdProject.name,
+                                asymEnc_memberId: newMemberId,
                                 asymEnc_projectSymKey: projectBrunchOfKeys.stringifiedSymKey,
                                 asymEnc_role: "admin",
-                                hashedAdminSignature: cryptoTools.hash(Meteor.user().username + adminPassword)
+                                //ce dernier champ sera utile pour editer le user project depuis d'
+                                hashedAdminSignature: cryptoTools.hash(newMemberId + adminPassword)
 
                             }
                             //on le chiffre
@@ -188,7 +191,7 @@ Template.newProject.events({
                                             //si tout est bon
                                         } else {
                                             //on redirige
-                                            FlowRouter.go('/project/' + createdProject._id)
+                                            FlowRouter.go('/project/' + createdProject._id +"/params")
                                             //on toast que tout s'est bien passé
                                             Materialize.toast("Le projet " + projectName + " a été créé.", 6000, 'lighter-bg')
                                             //on referme le loader

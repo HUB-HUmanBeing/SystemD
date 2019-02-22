@@ -1,0 +1,11 @@
+@import "{}/client/scss/variables.scss";
+
+#projectLayout{
+  .loader-container{
+      padding-top: calc(50vh - 70px);
+    #encryptionLoader{
+      padding: 25px 10px 0px 10px;
+    }
+  }
+}
+

@@ -1,5 +1,5 @@
 import hubCrypto from '/client/lib/hubCrypto'
-import zxcvbn from 'zxcvbn'
+
 import User from "/imports/classes/User";
 import cryptoTools from "../../../../lib/cryptoTools";
 
@@ -33,7 +33,7 @@ const validateUpdatePassword = {
         (event, instance) {
 
         let newPassword = $('#newPassword').val();
-        let passwordStrength = parseInt(zxcvbn(newPassword).guesses_log10 * 1.1)
+        let passwordStrength = parseInt(cryptoTools.zxcvbn(newPassword).guesses_log10 * 1.1)
         let preProgress = parseInt(passwordStrength * 2)
         let progress = ((preProgress * 5) < 100) ? (preProgress * 5) : 100;
         instance.passwordStrength.set({strength: passwordStrength, progress: progress})

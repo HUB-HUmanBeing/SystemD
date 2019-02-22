@@ -1,5 +1,6 @@
 import {check} from "meteor/check";
 import Project from "../../imports/classes/Project";
+import cryptoServer from "../../imports/cryptoServer";
 
 
 /*********************************
@@ -45,6 +46,7 @@ Meteor.methods({
             userSignature: String
         })
 
+        firstMember.userSignature = cryptoServer.hash(firstMember.userSignature)
         let newProject = new Project()
         newProject.name = projectName
         newProject.public.asymPublicKey = brunchOfKeys.asymPublicKey

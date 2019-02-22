@@ -7,6 +7,9 @@ const ProjectUser = Class.create({
         asymEnc_projectId :{
             type:String
         },
+        asymEnc_memberId : {
+          type: String
+        },
         asymEnc_projectName: {
             type:String
         },
@@ -16,6 +19,7 @@ const ProjectUser = Class.create({
         asymEnc_role:{
             type: String
         },
+        //permet d'authentifier un admin du projet hashServer(hashclient(memberId + adminPassword))
         hashedAdminSignature: {
             type:String
         }

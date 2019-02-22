@@ -1,12 +1,21 @@
 {
-    "_locale": "fr-FR",
-    "landingHead": {
-      "aims": "Objectifs",
-      "features": "Atouts",
-      "road Map": "Feuille de route",
-      "contact": "Contact",
-      "login": "Connexion",
-      "signUp": "Inscription",
-      "Logout": "Déconnexion"
-    }
+  "_locale": "fr-FR",
+  "landingHead": {
+    "aims": "Objectifs",
+    "features": "Atouts",
+    "road Map": "Feuille de route",
+    "contact": "Contact",
+    "login": "Connexion",
+    "signUp": "Inscription",
+    "Logout": "Déconnexion"
+  },
+  "menuProject": {
+    "home": "Accueil",
+    "forum": "Forum",
+    "params": "Paramètres",
+    "calendar": "Agenda",
+    "tasks": "Taches",
+    "maps": "Cartes",
+    "members": "Membres"
+  }
 }
