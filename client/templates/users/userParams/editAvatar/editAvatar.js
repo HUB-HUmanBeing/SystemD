@@ -1,6 +1,6 @@
 import Croppie from 'croppie';
 import uploadFiles from "../../../../lib/uploadFiles";
-import avatarStore from "../../../../lib/avatarStore";
+import avatarStore from "../../../../lib/filesStore/avatarStore";
 import User from "../../../../../imports/classes/User";
 
 Template.editAvatar.helpers({
@@ -45,7 +45,7 @@ Template.editAvatar.events({
         event.preventDefault()
         instance.croppie.result({ type:'blob', format:'jpeg' }).then((result)=>{
             const currentUser = User.findOne(Meteor.userId())
-            uploadFiles.uploadBlob(result, Meteor.userId()+'.jpg',currentUser,  'getUpdateAvatarUrl', {},()=>{
+            uploadFiles.uploadBlob(result, Meteor.userId()+'.jpg',currentUser,  'getUpdateAvatarUrl', [],()=>{
                 avatarStore.updateUserAvatar(Meteor.userId())
                 $('#modalEditAvatar').modal('close');
             })

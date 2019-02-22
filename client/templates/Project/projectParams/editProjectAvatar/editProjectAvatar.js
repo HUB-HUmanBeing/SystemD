@@ -1,7 +1,8 @@
 import Croppie from 'croppie';
 import uploadFiles from "../../../../lib/uploadFiles";
-import avatarStore from "../../../../lib/avatarStore";
-
+import hubCrypto from "../../../../lib/hubCrypto";
+import projectAvatarStore from "../../../../lib/filesStore/projectAvatarStore";
+import Project from "../../../../../imports/classes/Project";
 
 
 Template.editProjectAvatar.helpers({
@@ -11,26 +12,25 @@ Template.editProjectAvatar.helpers({
 
 Template.editProjectAvatar.events({
     //add your events here
-    'click [editUserAvatarBtn]' : function (event, instance) {
+    'click [editProjectAvatarBtn]': function (event, instance) {
         event.preventDefault()
-        $('#editUserAvatar').click()
+        $('#editProjectAvatar').click()
     },
-    'click [closeEditUserAvatar]' : function (event, instance) {
+    'click [closeEditProjectAvatar]': function (event, instance) {
 
-        $('#modalEditAvatar').modal('close');
+        $('#modalEditProjectAvatar').modal('close');
     },
-    'change #editUserAvatar' : function (event, instance) {
+    'change #editProjectAvatar': function (event, instance) {
         event.preventDefault()
         let el = document.getElementById('cropAvatar');
-
-        $('#modalEditAvatar').modal('open');
-        instance.croppie= new Croppie(el, {
-            viewport: { width: 200, height: 200, type:'circle' },
-            boundary: { width: 300, height: 300 },
+        $('#modalEditProjectAvatar').modal('open');
+        instance.croppie = new Croppie(el, {
+            viewport: {width: 200, height: 200, type: 'square'},
+            boundary: {width: 300, height: 300},
             showZoomer: true,
             enableOrientation: true
         });
-        Meteor.setTimeout(()=>{
+        Meteor.setTimeout(() => {
             let reader = new FileReader();
             reader.onload = function (e) {
                 instance.croppie.bind({
@@ -39,29 +39,28 @@ Template.editProjectAvatar.events({
                 });
             }
             reader.readAsDataURL(event.target.files[0]);
-        },300)
+        }, 300)
 
 //on button click
     },
-    'click [chooseNewAvatar]' : function (event, instance) {
+    'click [chooseNewProjectAvatar]': function (event, instance) {
         event.preventDefault()
-        instance.croppie.result({ type:'blob', format:'jpeg' }).then((result)=>{
-            const currentUser = User.findOne(Meteor.userId())
-            uploadFiles.uploadBlob(result, Meteor.userId()+'.jpg',currentUser,  'getUpdateAvatarUrl', {},()=>{
-                avatarStore.updateUserAvatar(Meteor.userId())
-                $('#modalEditAvatar').modal('close');
+        instance.croppie.result({type: 'blob', format: 'jpeg'}).then((result) => {
+            const currentProject = instance.data.currentProject
+            uploadFiles.uploadBlob(result, currentProject._id + '.jpg', currentProject, 'getUpdateProjectAvatarUrl', [hubCrypto.getAuthInfo(instance.data.currentProject._id)], () => {
+                projectAvatarStore.updateProjectAvatar(currentProject._id)
+                $('#modalEditProjectAvatar').modal('close');
             })
-            event.preventDefault()
         })
+
     },
-    'click [removeAvatar]' : function (event, instance) {
+    'click [removeProjectAvatar]': function (event, instance) {
         event.preventDefault()
-        console.log('coucou')
-        const user = User.findOne(Meteor.userId())
-        user.callMethod('deleteAvatar',(err)=>{
-            if(!err){
-                avatarStore.deleteUserAvatar(Meteor.userId())
-            }else{
+        const project = Project.findOne(instance.data.currentProject._id)
+        project.callMethod('deleteAvatar', hubCrypto.getAuthInfo(instance.data.currentProject._id), (err) => {
+            if (!err) {
+                projectAvatarStore.deleteProjectAvatar(instance.data.currentProject._id)
+            } else {
                 console.log(err)
             }
         })
@@ -70,23 +69,18 @@ Template.editProjectAvatar.events({
 });
 
 Template.editProjectAvatar.onCreated(function () {
-    //add your statement here
-    //add your statement here
-    $('.modal').modal({ opacity: .3,});
 
 
-
-
-    $('.tooltipped').tooltip({delay: 50});
 });
 
 Template.editProjectAvatar.onRendered(function () {
-    //add your statement here
+    $('#modalEditProjectAvatar').modal({opacity: .3,});
+    $('.tooltipped').tooltip({delay: 50});
 });
 
 Template.editProjectAvatar.onDestroyed(function () {
     //add your statement here
-    if(this.croppie){
+    if (this.croppie) {
         this.croppie.destroy()
     }
 });

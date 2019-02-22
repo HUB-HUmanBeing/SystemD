@@ -43,7 +43,7 @@ const uploadFiles = {
      * @param cb
      */
     retrieveNewURL(file, fileName, entity, method, methodParams, cb) {
-        entity.callMethod(method, methodParams, (err, res) => {
+        entity.callMethod(method, ...methodParams, (err, res) => {
             if (err) {
                 console.log(err)
             } else {

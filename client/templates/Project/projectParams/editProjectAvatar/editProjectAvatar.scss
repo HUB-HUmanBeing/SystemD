@@ -1,0 +1,30 @@
+@import "{}/client/scss/variables.scss";
+
+#modalEditProjectAvatar {
+
+  width: 320px;
+  overflow: hidden;
+
+  .modal-content {
+    padding: 10px;
+    position: relative;
+
+    .cr-boundary {
+      background-color: $main-color;
+    }
+
+    .cr-slider-wrap {
+
+      bottom: 0;
+      margin: 0 auto;
+    }
+
+    input[type=range] {
+      border: none !important;
+    }
+  }
+
+  .modal-footer {
+    background-color: $light-bg;
+  }
+}

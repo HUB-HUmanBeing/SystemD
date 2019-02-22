@@ -108,21 +108,7 @@ const Project = Class.create({
         }
     },
     helpers: {
-        isMember(authInfo){
-            check(authInfo , {
-                memberId : String,
-                userSignature: String
-            })
-            let member = {}
-           console.log(authInfo)
-            this.private.members.forEach(member=>{
-                if(member.memberId === authInfo.memberId){
-                    console.log( cryptoServer.hash(authInfo.userSignature), member.userSignature)
-                    return cryptoServer.hash(authInfo.userSignature) === member.userSignature
-                }
-            })
-            return false
-        }
+
     }
 
 });

@@ -1,3 +1,5 @@
+import Project from "/imports/classes/Project";
+
 Template.projectParams.helpers({
     //add you helpers here
     currentProject: function () {

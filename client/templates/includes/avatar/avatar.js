@@ -1,7 +1,7 @@
 import Avatars from '@dicebear/avatars';
 //https://www.npmjs.com/package/@dicebear/avatars-identicon-sprites
 import sprites from '@dicebear/avatars-identicon-sprites';
-import avatarStore from "../../../lib/avatarStore";
+import avatarStore from "../../../lib/filesStore/avatarStore";
 
 Template.avatar.helpers({
     //add you helpers here

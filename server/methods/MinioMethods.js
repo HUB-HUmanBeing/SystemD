@@ -17,5 +17,10 @@ Meteor.methods({
         const result = await minioTools.client.presignedGetObject('user-avatars', userId + '.jpg')
         return result
     },
+    async getMinioProjectAvatarUrl(projectId){
+        check(projectId, String)
+        const result = await minioTools.client.presignedGetObject('project-avatars', projectId + '.jpg')
+        return result
+    }
 
 });

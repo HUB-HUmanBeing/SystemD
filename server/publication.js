@@ -19,19 +19,19 @@ Meteor.publish('ProjectForMembers', function (projectId, hashedSymKey) {
     if (project.private.hashedSymKey === hashedSymKey) {
         return Projects.find({_id: projectId},
             {
-                fields: {
-                    _id:1,
-                    name:1,
-                    public: 1,
-                    "private.createdAt": 1,
-                    "private.symEnc_asymPrivateKey":1,
-
-                    "private.members.memberId": 1,
-                    "private.members.role": 1,
-                    "private.members.symEnc_username": 1,
-                    "private.members.symEnc_userId": 1,
-                    "private.members.symEnc_joinAtTs": 1,
-                }
+                // fields: {
+                //     _id:1,
+                //     name:1,
+                //     public: 1,
+                //     "private.createdAt": 1,
+                //     "private.symEnc_asymPrivateKey":1,
+                //
+                //     "private.members.memberId": 1,
+                //     "private.members.role": 1,
+                //     "private.members.symEnc_username": 1,
+                //     "private.members.symEnc_userId": 1,
+                //     "private.members.symEnc_joinAtTs": 1,
+                // }
             })
     }
 })

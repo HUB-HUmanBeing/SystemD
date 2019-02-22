@@ -82,11 +82,11 @@ const hubCrypto = {
                 //puis on la déchiffre avec notre clef recuperée a partir du mot de passe et en utilisant le username
                 // comme vecteur d'initialisation
                 cryptoTools.sim_decrypt_data(encryptedAsymPrivateKey, simKey, username, (stringifiedAsymPrivateKey) => {
-                        //on met ensuite en session la clef privée en session, il faudra penser a la réimporter a chaque nouvelle utilisation
-                        Session.set("stringifiedAsymPrivateKey", stringifiedAsymPrivateKey)
-                        callback()
+                    //on met ensuite en session la clef privée en session, il faudra penser a la réimporter a chaque nouvelle utilisation
+                    Session.set("stringifiedAsymPrivateKey", stringifiedAsymPrivateKey)
+                    callback()
 
-                    })
+                })
             })
         } else {
             console.warn('unable to get currentUser.private.encryptedAsymPrivateKey')
@@ -98,7 +98,7 @@ const hubCrypto = {
      * @param callback
      */
     decryptAndStoreProjectListInSession(callback) {
-        if(Meteor.user().private && Meteor.user().private.projects.length){
+        if (Meteor.user().private && Meteor.user().private.projects.length) {
             let encryptedProjects = Meteor.user().private.projects
             let decryptedProjects = []
             //on importe la clef privée de l'utilisateur
@@ -121,7 +121,7 @@ const hubCrypto = {
                     })
                 })
             })
-        }else{
+        } else {
             callback()
             Session.set('projects', [])
         }
@@ -269,6 +269,19 @@ const hubCrypto = {
             callback(string)
         })
     },
+    getAuthInfo(projectId) {
+        let authInfo = {
+            memberId: null,
+            userSignature: null
+        }
+        Session.get("projects").forEach(userProject => {
+            if (userProject.asymEnc_projectId === projectId) {
+                authInfo.memberId = userProject.asymEnc_memberId
+                authInfo.userSignature = cryptoTools.hash(userProject.asymEnc_memberId + Session.get("stringifiedAsymPrivateKey"))
+            }
+        })
+        return authInfo
+    }
 
 }
 export default hubCrypto

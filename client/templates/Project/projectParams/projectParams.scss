@@ -9,33 +9,35 @@
     height: 160px;
     text-align: center;
     display: inline-block;
-
+    border-radius: 20%;
+    border: 4px solid $blue-highlight-color;
+    overflow: hidden;
     img {
-      border-radius: 50%;
+
     }
 
     .btn-floating {
 
       position: absolute;
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       transition: 0.4s ease-out;
       z-index: 201;
 
       .material-icons {
         position: relative;
-        top:-5px;
+        top:-2.5px;
         font-size: 20px;
         color: $plus-color;
         transition: 0.4s ease-out;
       }
 
-      background-color: $light-bg;
-      opacity: .8;
+      background-color: $main-bg;
+      opacity: 1;
 
       &:hover {
         opacity: 1;
-        background-color: $lighter-bg;
+        background-color: $contrasted-bg;
 
         .material-icons {
           color: $focus-color;

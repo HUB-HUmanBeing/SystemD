@@ -2,6 +2,7 @@
 import {Meteor} from "meteor/meteor";
 
 Session.set('userAvatars', {})
+Session.set('projectAvatars', {})
 // test of translation
 import i18n from 'meteor/universe:i18n';
 

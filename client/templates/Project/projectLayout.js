@@ -1,5 +1,5 @@
 import cryptoTools from "../../lib/cryptoTools";
-import projectController from "../../lib/projectController";
+
 import hubCrypto from "../../lib/hubCrypto";
 import Project from "../../../imports/classes/Project";
 

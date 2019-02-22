@@ -20,6 +20,7 @@ User.extend({
          * @returns {Promise<*>}
          */
         async getUpdateAvatarUrl() {
+            check(this._id, Meteor.userId())
             const result = await minioTools.client.presignedPutObject('user-avatars', Meteor.userId() + '.jpg')
             return result
         },
@@ -28,6 +29,7 @@ User.extend({
          * @returns {Promise<*>}
          */
         async deleteAvatar() {
+            check(this._id, Meteor.userId())
             const result = await minioTools.client.removeObject('user-avatars', Meteor.userId() + '.jpg')
             return result
         }

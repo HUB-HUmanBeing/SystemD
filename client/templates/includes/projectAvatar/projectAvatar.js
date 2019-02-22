@@ -1,7 +1,8 @@
 
 import Avatars from '@dicebear/avatars';
 import sprites from '@dicebear/avatars-jdenticon-sprites';
-import avatarStore from "../../../lib/avatarStore";
+import projectAvatarStore from "../../../lib/filesStore/projectAvatarStore";
+
 
 
 Template.projectAvatar.helpers({
@@ -13,7 +14,7 @@ Template.projectAvatar.helpers({
         return  avatars.create(Template.currentData().projectId);
     },
     avatarUrl : function () {
-        //return avatarStore.getUserAvatar(Template.currentData().user._id)
+        return projectAvatarStore.getProjectAvatar(Template.currentData().projectId)
     }
 });
 

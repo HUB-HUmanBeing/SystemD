@@ -17,25 +17,25 @@
     .btn-floating {
 
       position: absolute;
-width: 30px;
-      height: 30px;
+width: 35px;
+      height: 35px;
       transition: 0.4s ease-out;
       z-index: 201;
 
       .material-icons {
         position: relative;
-        top:-5px;
+        top:-2.5px;
         font-size: 20px;
         color: $plus-color;
         transition: 0.4s ease-out;
       }
 
-      background-color: $light-bg;
-      opacity: .8;
+      background-color: $main-bg;
+      opacity: 1;
 
       &:hover {
         opacity: 1;
-        background-color: $lighter-bg;
+        background-color: $contrasted-bg;
 
         .material-icons {
           color: $focus-color;
@@ -52,7 +52,7 @@ width: 30px;
 
       &.active {
         // border: 1px solid $blue-highlight-color;
-        background: linear-gradient(45deg,$main-bg  0%, $contrasted-bg  100%);
+        background: linear-gradient(45deg, $light-bg  00%,$main-bg  100%);
         box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 
       }
