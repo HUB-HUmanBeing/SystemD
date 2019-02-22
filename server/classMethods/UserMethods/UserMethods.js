@@ -21,7 +21,7 @@ User.extend({
             })
             userProjectToAdd.hashedAdminSignature = cryptoServer.hash(userProjectToAdd.hashedAdminSignature)
             check(this._id , Meteor.userId())
-            this.private.projects.push(userProjectToAdd)
+            this.private.projects.unshift(userProjectToAdd)
             return this.save()
         }
     }

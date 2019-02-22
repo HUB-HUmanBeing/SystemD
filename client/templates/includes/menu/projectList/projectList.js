@@ -10,12 +10,22 @@ Template.projectList.helpers({
     },
     //add you helpers here
     decryptedProjects: function () {
+        let instance = Template.instance()
         Meteor.setTimeout(()=>{
+
             Meteor.setTimeout(()=>{
                 let menuProjectsContainer = document.getElementById('menuProjectsContainer')
-                if(menuProjectsContainer && Template.instance()){
+                if(menuProjectsContainer && instance){
+                    instance.bs = new BeautifyScrollbar(menuProjectsContainer);
+                    Meteor.setTimeout(()=>{
+                        if(!instance.scrollDone &&instance.currentProjectId.get()){
+                            $('#menuProjectsContainer').animate({
+                                scrollTop: $("#menuProject-" + instance.currentProjectId.get()).offset().top - 160
+                            });
+                            instance.scrollDone = true
+                        }
 
-                    Template.instance().bs = new BeautifyScrollbar(menuProjectsContainer);
+                    })
                 }
 
             },100)
@@ -54,7 +64,7 @@ Template.projectList.onRendered(function () {
 Template.projectList.onDestroyed(function () {
     //add your statement here
     if(this.bs){
-        bs.destroy()
+        this.bs.destroy()
     }
 });
 

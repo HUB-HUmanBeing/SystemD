@@ -21,6 +21,7 @@ FlowRouter.route('/login', {
 });
 
 FlowRouter.notFound = {
+    name:'notFound',
     action() {
         BlazeLayout.render('noLayout', {main: 'notFound'});
     },

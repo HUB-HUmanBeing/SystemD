@@ -1,7 +1,7 @@
-import Project from "../../../imports/classes/Project";
-import hubCrypto from "../../lib/hubCrypto";
-import cryptoTools from "../../lib/cryptoTools";
-import User from "../../../imports/classes/User";
+import Project from "../../../../imports/classes/Project";
+import hubCrypto from "/client/lib/hubCrypto";
+import cryptoTools from "/client/lib/cryptoTools";
+import User from "/imports/classes/User";
 
 const validateNewProjectForm = {
     /**

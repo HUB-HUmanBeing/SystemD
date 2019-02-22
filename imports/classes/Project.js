@@ -1,5 +1,6 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Projects from "/lib/collections/Project";
+import cryptoServer from "../cryptoServer";
 
 const ProjectMember = Class.create({
     name: "ProjectMember",
@@ -113,11 +114,14 @@ const Project = Class.create({
                 userSignature: String
             })
             let member = {}
+           console.log(authInfo)
             this.private.members.forEach(member=>{
                 if(member.memberId === authInfo.memberId){
-                    return
+                    console.log( cryptoServer.hash(authInfo.userSignature), member.userSignature)
+                    return cryptoServer.hash(authInfo.userSignature) === member.userSignature
                 }
             })
+            return false
         }
     }
 

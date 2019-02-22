@@ -8,7 +8,7 @@ function checkLoggedOrReroute(context, redirect) {
  * ProjectRoutes
  */
 FlowRouter.route('/new-project', {
-    name: 'new-project',
+    name: 'newProject',
     triggersEnter: [checkLoggedOrReroute],
     action() {
         BlazeLayout.render('mainLayout', {main: 'newProject'});
