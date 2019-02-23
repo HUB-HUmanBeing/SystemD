@@ -75,7 +75,7 @@ Template.editProjectAvatar.onCreated(function () {
 
 Template.editProjectAvatar.onRendered(function () {
     $('#modalEditProjectAvatar').modal({opacity: .3,});
-    $('.tooltipped').tooltip({delay: 50});
+    resetTooltips()
 });
 
 Template.editProjectAvatar.onDestroyed(function () {

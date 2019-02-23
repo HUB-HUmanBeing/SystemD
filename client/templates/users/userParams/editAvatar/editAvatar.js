@@ -76,11 +76,7 @@ Template.editAvatar.onCreated(function () {
 Template.editAvatar.onRendered(function () {
     //add your statement here
     $('.modal').modal({ opacity: .3,});
-
-
-
-
-    $('.tooltipped').tooltip({delay: 50});
+    resetTooltips()
 });
 
 Template.editAvatar.onDestroyed(function () {

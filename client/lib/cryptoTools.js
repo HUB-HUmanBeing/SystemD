@@ -262,7 +262,7 @@ const cryptoTools = {
     },
     /************************
      * fonction permettant de chiffrer tout les couples clef valeur d'un objet suivant les prefixes des clefs
-     * @param object ---l'objet a ciffrer
+     * @param object ---l'objet a chiffrer
      * @param encryptionParams -------les clefs
      * @param callback ------renvoie l'objet chiffré
      */
@@ -305,7 +305,7 @@ const cryptoTools = {
     /***************
      * fonction permettant de dechiffrer tout les couples clef valeur d'un objet suivant les prefixes des clefs
      * @param object ---l'objet a deciffrer
-     * @param encryptionParams -------les clefs
+     * @param decryptionParams -------les clefs
      * @param callback ------renvoie l'objet dechiffré
      */
     decryptObject(object, decryptionParams, callback) {
@@ -323,6 +323,9 @@ const cryptoTools = {
         }
         decrypter(object, decryptionParams, callback)
     },
+    /******************
+     * onstocke ici notre objet zxcvbn qui gere la difficulté des password
+     */
     zxcvbn : zxcvbn
 }
 

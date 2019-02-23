@@ -45,7 +45,7 @@ Meteor.methods({
             symEnc_joinAtTs: String,
             userSignature: String
         })
-
+        //on rehash coté serveur la signature utilisateur
         firstMember.userSignature = cryptoServer.hash(firstMember.userSignature)
         let newProject = new Project()
         newProject.name = projectName

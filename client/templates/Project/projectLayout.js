@@ -64,28 +64,37 @@ Template.projectLayout.events({
 });
 
 Template.projectLayout.onCreated(function () {
-    //add your statement here
-
+    //id du projet courant
     this.currentProjectId = new ReactiveVar('')
+    //section courante
     this.currentProjectSection = new ReactiveVar('')
+    //le projet courant
     this.currentProject = new ReactiveVar({})
+    //si rempli ca affiche un loader
     this.decrypting = new ReactiveVar()
 
+    /*********
+     * récupération et déchiffrement des infos du projet courant
+     */
     Tracker.autorun(() => {
-
+        //on commence par récuperer l'id du projet à partir de la route
         FlowRouter.watchPathChange()
         let currentRoute = FlowRouter.current()
         let currentProjectId = currentRoute.params.projectId
-
+        //on fait prompter le loader si c'est pas le projet courant
         if(this.currentProjectId.get() !== currentProjectId){
             this.decrypting.set([
                 __('projectLayout.decrypting1')
             ])
+            this.currentProjectId.set(currentProjectId)
         }
-        this.currentProjectId.set(currentProjectId)
+        //on récupere aussi la section visitée
         let currentSection = currentRoute.route.name.split("-")[1]
         this.currentProjectSection.set(currentSection)
+
+        //on récupere les userProjects de l'utilisateur
         let userProjects = Session.get("projects")
+        //on chope le bon
         if (userProjects && userProjects.length) {
             let currentUserProject = null
             userProjects.forEach(userProject => {
@@ -93,26 +102,34 @@ Template.projectLayout.onCreated(function () {
                     currentUserProject = userProject
                 }
             })
+            //si on le trouve
             if (currentUserProject) {
-
+                //on fait partir un timer afin de mesurer le temps que ca prends
                 let tsStart = Date.now()
+                //on souscrit au projet
                 Meteor.subscribe('ProjectForMembers', currentProjectId, cryptoTools.hash(currentUserProject.asymEnc_projectSymKey), () => {
                     Tracker.autorun(() => {
+                        //on find le projet
                         let currentProject = Project.findOne(currentProjectId)
                         if(currentProject){
                             this.currentProject.set(currentProject)
+                            //on recupere la clef projet
                             cryptoTools.importSymKey(currentUserProject.asymEnc_projectSymKey, currentProject.name, (simKey) => {
                                 hubCrypto.symDecryptData(currentProject.private.symEnc_asymPrivateKey, simKey, currentProject.name, (privateKey) => {
+                                    //on stocke en session les clefs ce qui sera pratique pour la suite
+                                    Session.set("currentProjectSimKey", currentUserProject.asymEnc_projectSymKey)
                                     Session.set("currentProjectPrivateKey", privateKey)
+                                    //on dechiffre les membres du projet
                                     let currentProjectMembers = []
                                     let keyParam = {simKey: simKey, vector: currentProject.name}
-
                                     currentProject.private.members.forEach((encryptedMember,i) => {
                                         cryptoTools.decryptObject(encryptedMember, keyParam, (decryptedMember)=>{
                                             currentProjectMembers.push(decryptedMember)
                                             if(i === currentProject.private.members.length-1){
                                                 Meteor.setTimeout(()=>{
+                                                    //on stocke la liste des membres en session
                                                     Session.set("currentProjectMembers", currentProjectMembers)
+                                                    //on fait fermer le loader
                                                     let duration = Date.now()-tsStart
                                                     if(duration>1000){
                                                       this.decrypting.set(false)

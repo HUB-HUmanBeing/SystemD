@@ -269,14 +269,17 @@ const hubCrypto = {
             callback(string)
         })
     },
+    //crée l'objet authinfo nécessaire à l'authentification pour editer sur un projet
     getAuthInfo(projectId) {
         let authInfo = {
             memberId: null,
             userSignature: null
         }
+        //on boucle sur la liste des userProjects
         Session.get("projects").forEach(userProject => {
             if (userProject.asymEnc_projectId === projectId) {
                 authInfo.memberId = userProject.asymEnc_memberId
+                //le hash de l'id de membre et de la clef privé utilisateur
                 authInfo.userSignature = cryptoTools.hash(userProject.asymEnc_memberId + Session.get("stringifiedAsymPrivateKey"))
             }
         })
