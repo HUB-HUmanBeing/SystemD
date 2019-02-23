@@ -5,10 +5,10 @@
 
 
     <a class="btn-floating  waves-effect waves-light tooltipped" data-position="left" data-delay="50"
-       data-tooltip="Editer l'avatar" editUserAvatarBtn style="bottom: 42px; right: 7px"><i
+       data-tooltip="{{__ ".edit"}}" editUserAvatarBtn style="bottom: 42px; right: 7px"><i
             class="material-icons">edit</i></a>
     <a class="btn-floating  waves-effect waves-light tooltipped" data-position="left" data-delay="50"
-       data-tooltip="Supprimer l'avatar" removeAvatar style="top: 42px; right: 7px"><i class="material-icons">close</i></a>
+       data-tooltip="{{__ ".delete"}}" removeAvatar style="top: 42px; right: 7px"><i class="material-icons">close</i></a>
     <input type="file" id="editUserAvatar" style="display: none">
     <div id="modalEditAvatar" class="modal light-bg main-color">
         <div class="modal-content">
@@ -16,7 +16,7 @@
         </div>
         <div class="lighter-bg main-color modal-footer">
             <a href="#!" class="modal-action waves-effect waves-green btn-flat" chooseNewAvatar><i
-                    class="material-icons right">done</i>valider</a>
+                    class="material-icons right">done</i>{{__ ".OK"}}</a>
         </div>
 
     </div>

@@ -20,5 +20,15 @@
   },
   "projectLayout": {
     "decrypting1" : "Déchiffrement des informations projet"
+  },
+  "editAvatar": {
+    "edit": "Editer l'avatar",
+    "delete": "Supprimer l'avatar",
+    "OK": "valider"
+  },
+  "editProjectAvatar": {
+    "edit": "Editer l'avatar",
+    "delete": "Supprimer l'avatar",
+    "OK": "valider"
   }
 }

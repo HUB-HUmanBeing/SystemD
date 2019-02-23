@@ -20,5 +20,15 @@
   },
   "projectLayout": {
     "decrypting1" : "Projet informations deciphering"
+  },
+  "editAvatar": {
+    "edit": "Edit avatar",
+    "delete": "Delete avatar",
+    "OK": "OK"
+  },
+  "editProjectAvatar": {
+    "edit": "Edit avatar",
+    "delete": "Delete avatar",
+    "OK": "OK"
   }
 }
