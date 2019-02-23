@@ -17,7 +17,8 @@ Template.editProjectDescription.onRendered(function () {
     //add your statement here
     resetTooltips();
     this.editor = new MediumEditor('.editable', MediumEditorOptions)
-
+    let currentProject =Template.currentData().currentProject
+    this.initialText = currentProject.public.description
 });
 
 Template.editProjectDescription.onDestroyed(function () {
