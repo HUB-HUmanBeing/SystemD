@@ -17,6 +17,9 @@ Template.projectParams.onCreated(function () {
 
 Template.projectParams.onRendered(function () {
     //add your statement here
+    Meteor.setTimeout(()=>{
+        $('#editProjectCollapse').collapsible();
+    },400)
 });
 
 Template.projectParams.onDestroyed(function () {

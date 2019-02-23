@@ -308,7 +308,7 @@ const cryptoTools = {
      * @param decryptionParams -------les clefs
      * @param callback ------renvoie l'objet dechiffré
      */
-    decryptObject(object, decryptionParams, callback) {
+    async decryptObject(object, decryptionParams, callback) {
         let decryptedObject = object
 
         const decrypter = async (object, decryptionParams, callback) => {
@@ -321,12 +321,43 @@ const cryptoTools = {
             });
             callback(decryptedObject);
         }
-        decrypter(object, decryptionParams, callback)
+        await decrypter(object, decryptionParams, callback)
+    },
+    async decryptArryOfObject(arrayOfObject, decryptionParams, callback) {
+        let decryptedArrayOfObject = []
+        await this.asyncForEach(arrayOfObject, async (object,i) => {
+            await this.decryptObject(object,decryptionParams, (decryptedObject)=>{
+                decryptedArrayOfObject.push(decryptedObject)
+                if(i=== arrayOfObject.length -1){
+                    callback(decryptedArrayOfObject)
+                }
+            })
+        })
     },
     /******************
-     * onstocke ici notre objet zxcvbn qui gere la difficulté des password
+     * on stocke ici notre objet zxcvbn qui gere la difficulté des password
      */
-    zxcvbn : zxcvbn
+    zxcvbn : zxcvbn,
+    /***************************
+     * pas très fier de celle là, elle nous permet de savoir a peu près les perf d'une machie
+     * utilisateur et de pouvoir setter les setTimeOut des fonctions de déchiffrement qui font chier puisque
+     * le Session.Set fait nimporte quoi
+     * @returns {*}
+     */
+    cryptoBenchmark(){
+        let cryptoBenchmark=window.localStorage.getItem("cryptoBenchmark")
+        if(cryptoBenchmark){
+            return cryptoBenchmark
+        }else{
+            let start= Date.now()
+            for (let i = 0; i < 150 ; i++) {
+                new Hashes.SHA512().b64("test")
+            }
+            let result = Date.now()-start
+            window.localStorage.setItem("cryptoBenchmark", result)
+            return result
+        }
+    }
 }
 
 export default cryptoTools

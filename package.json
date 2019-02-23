@@ -16,6 +16,7 @@
     "croppie": "2.6.3",
     "jdenticon": "^2.1.1",
     "jshashes": "^1.0.7",
+    "medium-editor": "^5.23.3",
     "meteor-node-stubs": "^0.4.1",
     "minio": "^7.0.5",
     "zxcvbn": "^4.4.2"

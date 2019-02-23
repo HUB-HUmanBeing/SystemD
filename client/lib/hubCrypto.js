@@ -104,21 +104,14 @@ const hubCrypto = {
             //on importe la clef privée de l'utilisateur
             cryptoTools.importPrivateKey(Session.get('stringifiedAsymPrivateKey'), privateKey => {
                 //pour chaque projet de l'utilisateur
-                encryptedProjects.forEach((project, i) => {
-                    //on dechiffre l'objet
-                    cryptoTools.decryptObject(project, {privateKey: privateKey}, decryptedProject => {
-                        //on le push dans le tableau de résultat
-                        decryptedProjects = [...decryptedProjects, decryptedProject]
-                        //quant on est au dernier
-                        if (i === encryptedProjects.length - 1) {
-                            //je sais pas pourquoi ca bugg, mais avec ca ca marche
-                            Meteor.setTimeout(() => {
-                                //on met les projets déchiffrés en session
-                                Session.set('projects', decryptedProjects)
-                                callback()
-                            }, encryptedProjects.length * 150)
-                        }
-                    })
+                cryptoTools.decryptArryOfObject(encryptedProjects, {privateKey: privateKey}, (decryptedProjects)=>{
+                    console.log( decryptedProjects)
+                    cryptoTools.cryptoBenchmark()
+                    Meteor.setTimeout(()=>{
+                        Session.set('projects', decryptedProjects)
+                    },decryptedProjects.length*cryptoTools.cryptoBenchmark())
+                      callback(decryptedProjects)
+
                 })
             })
         } else {
@@ -139,7 +132,10 @@ const hubCrypto = {
 
         window.localStorage.setItem("hashedPassword", hashedPassword)
         this.decryptAndStorePrivateKeyInSession(hashedPassword, username, () => {
-            this.decryptAndStoreProjectListInSession(() => {
+            this.decryptAndStoreProjectListInSession((decryptedProjects) => {
+
+
+
                 callback()
             })
         })
@@ -284,7 +280,8 @@ const hubCrypto = {
             }
         })
         return authInfo
-    }
+    },
+
 
 }
 export default hubCrypto

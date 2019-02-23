@@ -1,0 +1,17 @@
+<template name="editProjectDescription">
+<h5>description</h5>
+    <div class="row no-margin ">
+        <div class=" col s12 no-padding">
+
+            {{#unless description}}
+                <p class="justify editable puce-list formattedText" contenteditable="true" data-length="1000"
+                   id="description"
+                   descriptionText></p>
+            {{else}}
+                <p class="justify editable puce-list formattedText" contenteditable="true" data-length="1000"
+                   id="description"
+                   descriptionText>{{description}} </p>
+            {{/unless}}
+        </div>
+    </div>
+</template>
