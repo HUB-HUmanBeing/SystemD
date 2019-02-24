@@ -19,6 +19,61 @@
                 "dOfSystD": "Création des interfaces faisant de la plateforme un espace de rencontre et de circulation des utilisateurs sur différents projets : Recherche géolocalisée par compétences-centres d'intérets, messagerie chiffrée, blogs partagés, etc.",
             "developFreeNetwork": "Développer un réseau de gratuité et de partage",
                 "dFreeNetwork": "Permettre à chaque utilisateur et chaque projets de mettre en partage les ressources qu'ils produisent afin de pouvoir réaliser une circulation non-marchande de grande ampleur."
-
+    },
+    "landingContact": {
+        "github": "Venez suivre l'avancement du projet, déposer vos issues et pulls-requests.",
+        "email": "Contactez moi par e-mail pour me faire part de vos remarques, idées, suggestions, propositions.",
+        "chat": "Rejoignez le chat du projet pour discuter avec l'équipe en toute simplicité."
+    },
+    "landingPlus": {
+        "anonymous": "ANONYME",
+            "panonymous": "Connectez vous avec un pseudo, pas besoin de renseigner son adresse e-mail, utilisez tor-browser pour encore plus d'anonymat",
+        "free": "GRATUIT",
+            "pfree": "Comment imaginer autrement une plate-forme dont l'objectif est la promotion des rapports sociaux non-marchands",
+        "encrypted": "CHIFFRÉ",
+            "pencrypted": "Les contenus que vous partagez, ainsi que la liste des projets auxquels vous participez sont chiffrés \"end-to-end\" "
+    },
+    "landingRoadmap": {
+        "roadmap": "FEUILLE DE ROUTE",
+        "firstPhase": "PREMIERE PHASE",
+            "pfirstPhase": "Interface de création de comptes utilisateurs et connexion à la plate forme",
+            "p2firstPhase": "Interface de modification du profil utilisateur",
+            "p3firstPhase": "Interface de création de projet",
+            "p4firstPhase": "Invitation à des projets et gestion des membres",
+            "p5firstPhase": "Création d'un forum de discussion par projet",
+            "p6firstPhase": "Agenda participatif pour chacun des projets",
+            "p7firstPhase": "Liste des taches ergonomique pour chaque projet",
+            "p8firstPhase": "Interface pour soutenir ou participer à SystemD",
+        "secondPhase": "SECONDE PHASE",
+            "psecondPhase": "Interface pour que chaque utilisateur puisse renseigner ses compétences",
+            "p2secondPhase": "Interface pour que chaque utilisateur puisse renseigner ses centres d'interets",
+            "p3secondPhase": "Prise en compte de la localisation géographique",
+            "p4secondPhase": "Outils de recherches avancées pour rechercher des collaborateurs potentiels / des projets intéressants",
+            "p5secondPhase": "Messagerie inter-utilisateurs et inter-projets",
+            "p6secondPhase": "Blog personnel et blog de projets",
+            "p7secondPhase": "Module de carte interactives pour les projets",
+        "thirdPhase": "TROISIÈME PHASE",
+            "pthirdPhase": "Prise en compte des retours utilisateurs de la seconde phase et amélioration des fonctionnalités",
+            "p2thirdPhase": "Interface permettant de lister les ressources matérielles qu'un projet ou utilisateur souhaite mettre en partages",
+            "p3thirdPhase": "Interface de recherche de ressources",
+            "p4thirdPhase": "Possibilité de laisser des annonces concernant les besoins personnels et ceux des projets",
+            "p5thirdPhase": "Applications IOS, ANDROID et DESKTOP",
+            "p6thirdPhase": "Module de planning Scrum"
+    },
+    "landingTitle": {
+        "h3title": "Plateforme chiffrée de projets collaboratifs non-marchands",
+        "ptitle": "Crééz des projets, invitez vos amis, et profitez des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif"
+    },
+    "landingTools": {
+        "calendar": "AGENDA PARTAGÉ",
+            "pcalendar": "Pour vous permettre de planifier avec votre collectif les prochains évènements de votre projet.",
+        "taskList": "LISTES DE TACHES",
+            "ptaskList": "Pour pouvoir voir d'un coup d'oeil l'avancement du travail, et inviter les participants à s'inscrire de manière active.",
+        "forum": "FORUM DE DISCUSSIONS",
+            "pforum": "Communiquer ensemble, par thématiques ou de manière générale afin de pouvoir faire circuler l'information de manière efficace.",
+        "modularTools": "DES OUTILS MODULAIRES",
+            "pmodularTools": "Cartes interactives, planning méthode agile, et d'autres outils développés peu à peu viendront completer vos projets de manière modulaire.",
+        "simpleTools": "DES OUTILS SIMPLES ET SÉCURISÉS",
+            "psimpleTools": "Des outils d'organisation ergonomiques pour une prise en main rapide, et dont les contenus sont entièrement chiffrés pour une confidentialité optimale" 
     }
 }

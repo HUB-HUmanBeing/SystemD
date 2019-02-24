@@ -19,7 +19,61 @@
                 "dOfSystD": "Creation of interfaces to do a meeting place through differents projects: Search geolocated by skills-interests, encrypted instant messaging, shared blog, etc...",
             "developFreeNetwork": "Develop a free and sharing network",
                 "dFreeNetwork": "Allow users and projects to share their resources in order to create a big free and non-commercial network."
-
+    },
+    "landingContact": {
+        "github": "Follow the progress of project, make issues and pull-requests.",
+        "email": "Contact-me by e-mail to share yours observations, ideas, suggestions, propositions, ...",
+        "chat": "Join us on the chat to discuss with the team of project."
+    },
+    "landingPlus": {
+        "anonymous": "ANONYMOUS",
+            "panonymous": "Login with a pseudo, no need email, and use a tor-browser for more anonymity.",
+        "free": "FREE",
+            "pfree": "How imagine differently a platform whose the purpose is the promotion of free exchange between humans?",
+        "encrypted": "ENCRYPTED",
+            "pencrypted": "Contents shared and the list of the projects you have selected are encrypted \"end-to-end\". "
+    },
+    "landingRoadmap": {
+        "roadmap": "ROADMAP",
+        "firstPhase": "FIRST PHASE",
+            "pfirstPhase": "Interface to make user account and connection to platform.",
+            "p2firstPhase": "Interface to change user profile.",
+            "p3firstPhase": "Interface to create project.",
+            "p4firstPhase": "Invitation for projects and to manage members.",
+            "p5firstPhase": "Creation of forum by project.",
+            "p6firstPhase": "Calendar participative for each project.",
+            "p7firstPhase": "List of ergonomics tasks for each project.",
+            "p8firstPhase": "Interface to support or participate at SystemD",
+        "secondPhase": "SECOND PHASE",
+            "psecondPhase": "Interface to select his skills for each users.",
+            "p2secondPhase": "Interface to select his interests for each users.",
+            "p3secondPhase": "Taking into consideration of geolocation.",
+            "p4secondPhase": "Advanced research tools to research potentials contributors / interstings projects.",
+            "p5secondPhase": "Instant messaging inter-users and inter-projects.",
+            "p6secondPhase": "Personnal blog and project blog.",
+            "p7secondPhase": "Interactive map module for projects.",
+        "thirdPhase": "THIRD PHASE",
+            "pthirdPhase": "Taking of consideration of  issues and improvements.",
+            "p2thirdPhase": "Interface to list shared materials assets.",
+            "p3thirdPhase": "Interface to research assets.",
+            "p4thirdPhase": "Possibility to make advertisements for personals and projects requirements.",
+            "p5thirdPhase": "Applications IOS, ANDROID and DESKTOP",
+            "p6thirdPhase": "Module of planning Scrum"
+    },
+    "landingTitle": {
+        "h3title": "Encrypted platform of collaboratives and free projects",
+        "ptitle": "Make projects, join your friends, and take advantage of free and secure tools to organize your association or group together."
+    },
+    "landingTools": {
+        "calendar": "SHARED CALENDAR",
+            "pcalendar": "To plan with your group the next events of your project.",
+        "taskList": "TASKS LIST",
+            "ptaskList": "To see the progress of the project and to select tasks interactively by the participants.",
+        "forum": "FORUM",
+            "pforum": "Communicate together, by themes or not.",
+        "modularTools": "MODULARS TOOLS",
+            "pmodularTools": "Interactives map, planning in agile méthod, and others tools will develop.",
+        "simpleTools": "SECURE AND SIMPLE TOOLS",
+            "psimpleTools": "user-friendly organization tools and encrypted content for optimum privacy." 
     }
-
 }
