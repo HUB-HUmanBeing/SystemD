@@ -24,19 +24,18 @@
                             </div>
                         </li>
                         <li>
-                            <div class="collapsible-header main-color transparent"><div class="flex"><i class="material-icons focus-color">security</i>Modifier le mot de passe</div>
+                            <div class="collapsible-header main-color transparent"><div class="flex"><i class="material-icons focus-color">security</i>{{__ '.editPassword'}}</div>
                                 <div class="hr"></div></div>
                             <div class="collapsible-body">
-                                <p class="infoQuotes no-margin">Nous n'auront aucun moyen de vous aider si vous oubliez votre mot de passe.
-                                    Ainsi, il est recommandé de noter le mot de passe que vous aurez choisi.</p>
+                                <p class="infoQuotes no-margin">{{__ '.peditPassword'}}</p>
                                 {{>editPassword}}
                             </div>
                         </li>
                         <li>
-                            <div class="collapsible-header main-color transparent"><div class="flex"><i class="material-icons focus-color">delete_forever</i>Supprimer votre compte</div><div class="hr"></div></div>
+                            <div class="collapsible-header main-color transparent"><div class="flex"><i class="material-icons focus-color">delete_forever</i>{{__ '.deleteAccount'}}</div><div class="hr"></div></div>
                             <div class="collapsible-body">
-                                <p class="red-text text-darken-1 center-align " >LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.</p>
-                                <p class="red-text text-darken-1 no-margin" ><i>Entrez votre mot de passe afin de confirmer la suppression du compte.</i></p>
+                                <p class="red-text text-darken-1 center-align " >{{__ '.pdeleteAccount'}}</p>
+                                <p class="red-text text-darken-1 no-margin" ><i>{{__ '.passwordDeleteAccount'}}</i></p>
                                 {{>deleteAccount}}
                             </div>
                         </li>
