@@ -41,3 +41,4 @@ TemplatesNames.forEach(name => {
         Template[name].bindI18nNamespace(name);
     }
 })
+
