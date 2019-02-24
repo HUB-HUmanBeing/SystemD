@@ -38,6 +38,7 @@
     "publicInfos" : "Informations publiques"
   },
   "projectHome": {
-    "projectDescription": "Project description"
+    "projectDescription": "Project description",
+    "noDescription" : "No description yet."
   }
 }

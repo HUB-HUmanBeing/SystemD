@@ -3,13 +3,13 @@
     <div id="projectHome" class="container main-color" style="padding-top: 30px">
         <div class="row">
             <div class="row no-margin ">
-                <div class="col s12 m3 l2 center-align">
+                <div class="col s12 m4 l3 xl2 center-align">
                     <div class="projectAvatarContainer  center-align">
                         {{>projectAvatar projectId= currentProject._id}}
                     </div>
 
                 </div>
-                <div class="col s12 m9 l10 ">
+                <div class="col s12 m8 l9 xl10 ">
                     <div class="row no-margin">
                         <h4 class="
                      hand-police ">
@@ -23,7 +23,7 @@
                                     descriptionVisible}}keyboard_arrow_down{{else}}keyboard_arrow_right{{/if}}</i></h6>
                             {{#if descriptionVisible}}
                                 <div class="main-bg shadow">
-                                    <p class="infoQuotes">{{currentProject.public.description}}</p>
+                                    <p class="infoQuotes">{{#if currentProject.public.description}}{{currentProject.public.description}}{{else}}{{__ ".noDescription"}}{{/if}}</p>
                                 </div>
 
                             {{/if}}
