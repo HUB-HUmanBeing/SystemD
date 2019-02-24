@@ -2,36 +2,50 @@ import BeautifyScrollbar from 'beautify-scrollbar';
 
 Template.projectList.helpers({
 
-    currentProjectId: function(){
-      return Template.instance().currentProjectId.get()
+    currentProjectId: function () {
+        return Template.instance().currentProjectId.get()
     },
-    currentProjectSection: function(){
+    currentProjectSection: function () {
         return Template.instance().currentProjectSection.get()
     },
     //add you helpers here
     decryptedProjects: function () {
         let instance = Template.instance()
-        Meteor.setTimeout(()=>{
+        Meteor.setTimeout(() => {
 
-            Meteor.setTimeout(()=>{
+            Meteor.setTimeout(() => {
                 let menuProjectsContainer = document.getElementById('menuProjectsContainer')
-                if(menuProjectsContainer && instance){
-                    instance.bs = new BeautifyScrollbar(menuProjectsContainer);
-                    Meteor.setTimeout(()=>{
-                        if(!instance.scrollDone &&instance.currentProjectId.get()){
-                            $('#menuProjectsContainer').animate({
-                                scrollTop: $("#menuProject-" + instance.currentProjectId.get()).offset().top - 160
-                            });
-                            instance.scrollDone = true
-                        }
+                if (menuProjectsContainer && instance) {
+                    if (Meteor.Device.isDesktop()) {
+                        instance.bs = new BeautifyScrollbar(menuProjectsContainer);
 
-                    })
+
+                        Meteor.setTimeout(() => {
+                            if (!instance.scrollDone && instance.currentProjectId.get()) {
+                                $('#menuProjectsContainer').animate({
+                                    scrollTop: $("#menuProject-" + instance.currentProjectId.get()).offset().top - 160
+                                });
+                                instance.scrollDone = true
+                            }
+
+                        })
+                    }else{
+                        Meteor.setTimeout(() => {
+                            if (!instance.scrollDone && instance.currentProjectId.get()) {
+                                $('.general-menu').animate({
+                                    scrollTop: $("#menuProject-" + instance.currentProjectId.get()).offset().top - 300
+                                });
+                                instance.scrollDone = true
+                            }
+
+                        },300)
+                    }
                 }
 
-            },100)
+            }, 100)
 
             $('#projectsList').collapsible();
-        },100)
+        }, 100)
         return Session.get('projects')
     },
 
@@ -43,19 +57,19 @@ Template.projectList.events({
 
 Template.projectList.onCreated(function () {
     //add your statement here
-this.bs =undefined
+    this.bs = undefined
     this.currentProjectId = new ReactiveVar('')
     this.currentProjectSection = new ReactiveVar('')
 
-    Tracker.autorun(()=>{
+    Tracker.autorun(() => {
         FlowRouter.watchPathChange()
         let currentRoute = FlowRouter.current()
-        if(currentRoute.params.projectId){
-            window.localStorage.setItem("lastOpenedProjectId",currentRoute.params.projectId )
+        if (currentRoute.params.projectId) {
+            window.localStorage.setItem("lastOpenedProjectId", currentRoute.params.projectId)
             this.currentProjectId.set(currentRoute.params.projectId)
             let currentSection = currentRoute.route.name.split("-")[1]
             this.currentProjectSection.set(currentSection)
-        }else{
+        } else {
             this.currentProjectId.set(window.localStorage.getItem("lastOpenedProjectId"))
         }
 
@@ -69,7 +83,7 @@ Template.projectList.onRendered(function () {
 
 Template.projectList.onDestroyed(function () {
     //add your statement here
-    if(this.bs){
+    if (this.bs) {
         this.bs.destroy()
     }
 });

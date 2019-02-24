@@ -17,6 +17,8 @@
 }
 
 .show-menu-btn{
+    transition: 0.3s ease-out;
+    position: relative;
     width: 60px;
     opacity: 0.8;
 }
