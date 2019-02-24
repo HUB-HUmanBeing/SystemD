@@ -1,3 +1,39 @@
 <template name="projectHome">
 
+    <div id="projectHome" class="container main-color" style="padding-top: 30px">
+        <div class="row">
+            <div class="row no-margin ">
+                <div class="col s12 m3 l2 center-align">
+                    <div class="projectAvatarContainer  center-align">
+                        {{>projectAvatar projectId= currentProject._id}}
+                    </div>
+
+                </div>
+                <div class="col s12 m9 l10 ">
+                    <div class="row no-margin">
+                        <h4 class="
+                     hand-police ">
+                            {{currentProject.name}}
+                        </h4>
+                    </div>
+                    <div class="description row" toggleDescription>
+                        <div class="col s12 relative">
+
+                            <h6 class="relative">{{__ ".projectDescription"}} <i class="material-icons relative">{{#if
+                                    descriptionVisible}}keyboard_arrow_down{{else}}keyboard_arrow_right{{/if}}</i></h6>
+                            {{#if descriptionVisible}}
+                                <div class="main-bg shadow">
+                                    <p class="infoQuotes">{{currentProject.public.description}}</p>
+                                </div>
+
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </template>

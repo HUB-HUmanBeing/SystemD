@@ -30,5 +30,14 @@
     "edit": "Editer l'avatar",
     "delete": "Supprimer l'avatar",
     "OK": "valider"
+  },
+  "editProjectDescription": {
+    "label": "Description du projet"
+  },
+  "projectParams": {
+    "publicInfos" : "Informations publiques"
+  },
+  "projectHome": {
+    "projectDescription": "Description du projet"
   }
 }

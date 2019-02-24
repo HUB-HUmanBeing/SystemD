@@ -1,0 +1,39 @@
+@import "{}/client/scss/variables.scss";
+
+#projectHome{
+  .projectAvatarContainer{
+    max-width: 120px;
+    max-height: 120px;
+    overflow: hidden;
+    border: 4px solid $blue-highlight-color;
+    border-radius: 20%;
+    display: inline-block;
+  }
+  .description{
+    h6{
+      cursor: pointer;
+      i{
+        top:7px;
+      }
+    }
+    h6:hover{
+      color: $focus-color;
+      i{
+        color: $focus-color !important;
+      }
+    }
+    .main-bg{
+      padding: 15px;
+      border-radius: 10px;
+      position: absolute;
+      z-index: 10;
+      width: 90%;
+      left: 5%;
+
+    }
+    p{
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
+  }
+}

@@ -17,7 +17,6 @@ FlowRouter.route('/new-project', {
 
 FlowRouter.route('/project/:projectId/home', {
     name: 'project-home',
-    triggersEnter: [checkLoggedOrReroute],
     action() {
         BlazeLayout.render('projectLayout', {main: 'projectHome'});
     },

@@ -315,9 +315,7 @@ const cryptoTools = {
             await this.asyncForEach(Object.keys(object), async (key,i) => {
                 await this.decryptElement(object[key], key, decryptionParams, (decryptedData) => {
                     decryptedObject[key] = decryptedData
-
                 })
-
             });
             callback(decryptedObject);
         }

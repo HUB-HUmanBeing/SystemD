@@ -10,14 +10,14 @@
                             {{>editProjectAvatar currentProject=currentProject}}
                         </div>
                     </div>
-                    <div class="row no-margin ">
+                    <div class="row no-margin hand-police ">
                         <h5>{{currentProject.name}}</h5>
                     </div>
                 </div>
-                <div class="col s12 m8 offset-m2 offset-xl3 xl6">
+                <div class="col s12 m8 offset-m2 ">
                     <ul class="collapsible popout" id="editProjectCollapse" data-collapsible="accordion">
                         <li style="background: none !important; box-shadow: none !important;">
-                            <div class="collapsible-header main-color transparent active"><div class="flex"><i class="material-icons focus-color">create</i>Informations publiques</div>
+                            <div class="collapsible-header main-color transparent active"><div class="flex"><i class="material-icons focus-color">group</i>{{__ ".publicInfos"}}</div>
                                 <div class="hr"></div></div>
                             <div class="collapsible-body">
                                 {{>editProjectDescription currentProject=currentProject}}

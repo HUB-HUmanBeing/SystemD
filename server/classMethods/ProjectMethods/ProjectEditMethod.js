@@ -26,6 +26,21 @@ Project.extend({
             check(this.isAdmin(authInfo), true)
             const result = await minioTools.client.removeObject('project-avatars', this._id + '.jpg')
             return result
+        },
+        /**********************
+         * methode d'edition des infos du projet
+         * @param authInfo
+         * @param text
+         * @returns {*|*|*|*|*|*|void}
+         */
+        editDescription(authInfo, text){
+            check(authInfo, {memberId: String, userSignature: String})
+            check(this.isAdmin(authInfo), true)
+
+            check(text, String)
+            this.public.description = text
+            return this.save()
+
         }
 
     }
