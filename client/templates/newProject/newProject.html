@@ -11,7 +11,7 @@
                         <!--<img src="/images/icon/systemd-logo-white.png" alt="System-D" class="responsive-img  "-->
                              <!--style=" width: 70px ; height: 70px;">-->
 
-                            <h5 class="focus-color ">Créer un projet</h5>
+                            <h5 class="focus-color ">{{__ '.createProject'}}</h5>
 
         {{#if newProjectComplete}}
             {{>encryptionLoader tasks=newProjectComplete}}
@@ -23,7 +23,7 @@
                                     <input id="projectName" type="text"
                                            class=" {{#if compare errors.projectName '==' 'valid'}}valid {{else }}{{#if
                                                    errors.projectName.length}}invalid{{/if}}{{/if}}">
-                                    <label for="projectName">Nom du projet</label>
+                                    <label for="projectName">{{__ '.nameProject'}}</label>
                                     <div class="formErrorContainer">
                                         {{#if isArray  errors.projectName}}
                                             {{#each error in errors.projectName}}
@@ -39,7 +39,7 @@
                             <div class="row no-margin right-align" style="padding: 15px 0px" >
                                 <div class="col s12">
                                     <button href="#" class="btn btnFocus waves-effect waves-light shadow"><i
-                                            class="material-icons right">add_box</i>Créer
+                                            class="material-icons right">add_box</i>{{__ '.create'}}
                                     </button>
                                 </div>
                             </div>

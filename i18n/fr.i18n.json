@@ -31,7 +31,8 @@
         "free": "GRATUIT",
             "pfree": "Comment imaginer autrement une plate-forme dont l'objectif est la promotion des rapports sociaux non-marchands",
         "encrypted": "CHIFFRÉ",
-            "pencrypted": "Les contenus que vous partagez, ainsi que la liste des projets auxquels vous participez sont chiffrés \"end-to-end\" "
+            "pencrypted": "Les contenus que vous partagez, ainsi que la liste des projets auxquels vous participez sont chiffrés \"end-to-end\" ",
+        "signin": "Inscription"
     },
     "landingRoadmap": {
         "roadmap": "FEUILLE DE ROUTE",
@@ -58,11 +59,13 @@
             "p3thirdPhase": "Interface de recherche de ressources",
             "p4thirdPhase": "Possibilité de laisser des annonces concernant les besoins personnels et ceux des projets",
             "p5thirdPhase": "Applications IOS, ANDROID et DESKTOP",
-            "p6thirdPhase": "Module de planning Scrum"
+            "p6thirdPhase": "Module de planning Scrum",
+        "signin": "Inscription"
     },
     "landingTitle": {
         "h3title": "Plateforme chiffrée de projets collaboratifs non-marchands",
-        "ptitle": "Crééz des projets, invitez vos amis, et profitez des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif"
+        "ptitle": "Crééz des projets, invitez vos amis, et profitez des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif",
+        "signin": "Inscription"
     },
     "landingTools": {
         "calendar": "AGENDA PARTAGÉ",
@@ -75,5 +78,62 @@
             "pmodularTools": "Cartes interactives, planning méthode agile, et d'autres outils développés peu à peu viendront completer vos projets de manière modulaire.",
         "simpleTools": "DES OUTILS SIMPLES ET SÉCURISÉS",
             "psimpleTools": "Des outils d'organisation ergonomiques pour une prise en main rapide, et dont les contenus sont entièrement chiffrés pour une confidentialité optimale" 
+    },
+    "loginForm": {
+        "userName": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "connection": "Connexion"
+    },
+    "signinForm": {
+        "userNameChoice": "Choisir un nom d'utilisateur",
+        "passwordChoice": "Mot de passe",
+        "passwordRepeat": "Répéter mot de passe",
+        "accountCreate": "Créer un compte"
+    },
+    "signinContainer": {
+        "psignin": "System-D accompagne vos projets en vous offrant un espace de travail collaboratif gratuit et entièrement",
+        "linkSignin": "https://fr.wikipedia.org/wiki/Chiffrement_de_bout_en_bout",
+        "endtoendencrypted": "chiffrée de bout en bout",
+        "p2signin": "Comme sur Telegram ou Signal, personne d'autre que vous et les personnes participant au même projet pourront déchiffrer et lire les contenus que vous postez, pas même les créateurs de cette plate-forme.",
+        "next": "Suivant",
+        "p3signin": "D'autre part",
+        "p3-1signin": "System-D preserve l'Anonymat",
+        "p3-2signin": "de ses utilisateurs : pas d'adresse mail requise ni d'informations personnelles. Cependant nous n'auront ",
+        "p3-3signin": "aucun moyen de vous aider si vous oubliez votre mot de passe.",
+        "p3-4signin": "Ainsi, il est recommandé de :",         
+        "spanSignin": "Noter le mot de passe que vous aurez choisi."
+    },
+    "loginPage": {
+        "signin": "Inscription",
+        "connection": "Connexion",
+        "backToHome": "Retour à l'acceuil"
+    },
+    "newProject": {
+        "createProject": "Créer un projet",
+        "nameProject": "Nom du projet",
+        "create": "Créer"
+    },
+    "deleteAccount": {
+        "confirmPassword": "Confirmer avec votre mot de passe",
+        "deleteAccount": "Supprimer le compte"
+    },
+    "editAvatar": {
+        "edit": "modifier l'avatar",
+        "close": "fermer",
+        "done": "valider"
+    },
+    "editPassword": {
+        "oldPassword": "Ancien mot de passe",
+        "newPassword": "Nouveau mot de passe",
+        "repeatPassword": "Répéter mot de passe",
+        "strength": "Force",
+        "editPassword": "Modifier mot de passe"
+    },
+    "userParams": {
+        "editPassword": "Modifier le mot de passe",
+            "peditPassword": "Nous n'auront aucun moyen de vous aider si vous oubliez votre mot de passe. Ainsi, il est recommandé de noter le mot de passe que vous aurez choisi.",
+        "deleteAccount": "Supprimer votre compte",
+            "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
+            "passwordDeleteAccount": "Entrez votre mot de passe afin de confirmer la suppression du compte."
     }
 }
