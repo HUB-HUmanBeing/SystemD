@@ -17,6 +17,7 @@ FlowRouter.route('/new-project', {
 
 FlowRouter.route('/project/:projectId/home', {
     name: 'project-home',
+    triggersEnter: [checkLoggedOrReroute],
     action() {
         BlazeLayout.render('projectLayout', {main: 'projectHome'});
     },
@@ -63,4 +64,17 @@ FlowRouter.route('/project/:projectId/params', {
         BlazeLayout.render('projectLayout', {main: 'projectParams'});
     },
 });
-
+FlowRouter.route('/project/:projectId/new-invitation', {
+    name: 'project-new-invitation',
+    triggersEnter: [checkLoggedOrReroute],
+    action() {
+        BlazeLayout.render('projectLayout', {main: 'newInvitation'});
+    },
+});
+FlowRouter.route('/project/:projectId/invitation/:invitationId', {
+    name: 'project-show-invitation',
+    triggersEnter: [checkLoggedOrReroute],
+    action() {
+        BlazeLayout.render('projectLayout', {main: 'showInvitation'});
+    },
+});

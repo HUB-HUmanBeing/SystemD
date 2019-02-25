@@ -12,9 +12,10 @@ Project.extend({
          */
         async getUpdateProjectAvatarUrl(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
-            check(this.isAdmin(authInfo), true)
+            let currentProject = Project.findOne(this.projectId)
+            check(currentProject.isAdmin(authInfo), true)
 
-            const result = await minioTools.client.presignedPutObject('project-avatars', this._id + '.jpg')
+            const result = await minioTools.client.presignedPutObject('project-avatars', currentProject._id + '.jpg')
             return result
         },
         /***************
@@ -23,8 +24,9 @@ Project.extend({
          */
         async deleteAvatar(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
-            check(this.isAdmin(authInfo), true)
-            const result = await minioTools.client.removeObject('project-avatars', this._id + '.jpg')
+            let currentProject = Project.findOne(this._id)
+            check(currentProject.isAdmin(authInfo), true)
+            const result = await minioTools.client.removeObject('project-avatars', currentProject._id + '.jpg')
             return result
         },
         /**********************
@@ -35,13 +37,13 @@ Project.extend({
          */
         editDescription(authInfo, text){
             check(authInfo, {memberId: String, userSignature: String})
-            check(this.isAdmin(authInfo), true)
+            let currentProject = Project.findOne(this._id)
+            check(currentProject.isAdmin(authInfo), true)
 
             check(text, String)
-            this.public.description = text
-            return this.save()
+            currentProject.public.description = text
+            return currentProject.save()
 
         }
-
     }
 })

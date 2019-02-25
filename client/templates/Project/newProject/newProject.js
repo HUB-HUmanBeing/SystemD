@@ -156,7 +156,7 @@ Template.newProject.events({
                 }
                 //on prepare l'encryption param
                 let encryptionParams = {
-                    simKey: projectBrunchOfKeys.projectKey,
+                    symKey: projectBrunchOfKeys.projectKey,
                     vector: projectName
                 }
                 //on chiffre le tout avec notre super fonction
@@ -176,6 +176,7 @@ Template.newProject.events({
                                 asymEnc_memberId: newMemberId,
                                 asymEnc_projectSymKey: projectBrunchOfKeys.stringifiedSymKey,
                                 asymEnc_role: "admin",
+                                asymEnc_adminPassword: adminPassword,
                                 //ce dernier champ sera utile pour editer le user project depuis d'
                                 hashedAdminSignature: cryptoTools.hash(newMemberId + adminPassword)
 

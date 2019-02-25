@@ -3,6 +3,7 @@ import uploadFiles from "../../../../lib/uploadFiles";
 import hubCrypto from "../../../../lib/hubCrypto";
 import projectAvatarStore from "../../../../lib/filesStore/projectAvatarStore";
 import Project from "../../../../../imports/classes/Project";
+import projectController from "../../../../lib/projectController";
 
 
 Template.editProjectAvatar.helpers({
@@ -47,7 +48,7 @@ Template.editProjectAvatar.events({
         event.preventDefault()
         instance.croppie.result({type: 'blob', format: 'jpeg'}).then((result) => {
             const currentProject = instance.data.currentProject
-            uploadFiles.uploadBlob(result, currentProject._id + '.jpg', currentProject, 'getUpdateProjectAvatarUrl', [hubCrypto.getAuthInfo(instance.data.currentProject._id)], () => {
+            uploadFiles.uploadBlob(result, currentProject._id + '.jpg', currentProject, 'getUpdateProjectAvatarUrl', [projectController.getAuthInfo(instance.data.currentProject._id)], () => {
                 projectAvatarStore.updateProjectAvatar(currentProject._id)
                 $('#modalEditProjectAvatar').modal('close');
             })
@@ -57,7 +58,7 @@ Template.editProjectAvatar.events({
     'click [removeProjectAvatar]': function (event, instance) {
         event.preventDefault()
         const project = Project.findOne(instance.data.currentProject._id)
-        project.callMethod('deleteAvatar', hubCrypto.getAuthInfo(instance.data.currentProject._id), (err) => {
+        project.callMethod('deleteAvatar', projectController.getAuthInfo(instance.data.currentProject._id), (err) => {
             if (!err) {
                 projectAvatarStore.deleteProjectAvatar(instance.data.currentProject._id)
             } else {

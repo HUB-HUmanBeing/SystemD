@@ -1,6 +1,9 @@
 import User from '/imports/classes/User';
 import Project from "../imports/classes/Project";
-import Projects from "../lib/collections/Project";
+import Projects from "../lib/collections/Projects";
+import Invitation from "../imports/classes/Invitation";
+import cryptoServer from "../imports/cryptoServer";
+import Invitations from "../lib/collections/Invitations";
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -34,4 +37,11 @@ Meteor.publish('ProjectForMembers', function (projectId, hashedSymKey) {
                 // }
             })
     }
+})
+Meteor.publish('invitation', function (invitationId, hashedPassword) {
+    check(invitationId, String)
+    check(hashedPassword, String)
+    const invitation = Invitation.findOne(invitationId)
+    check(invitation.hashedPassword === cryptoServer.hash(hashedPassword),true)
+    return Invitations.find({_id:invitationId})
 })

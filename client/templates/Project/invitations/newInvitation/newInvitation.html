@@ -1,0 +1,76 @@
+<template name="newInvitation">
+
+    <div id="newInvitation" class=" gradiant center-align relative" style="padding: 1px 0;">
+
+        <div class="bg-logo">{{>birdsBg}}
+            <img src="/images/icon/systemd-biglogo-grey.png" alt="">
+        </div>
+
+        <div class="contrasted-bg shadow newInvitationContainer  main-color">
+            <h5 class="left-align">{{__ ".title"}}</h5>
+            <div class="hr"></div>
+            <div class="row">
+                <p class="infoQuotes left-align">
+                    {{__ ".infoQuote"}}
+                </p>
+            </div>
+            <div class="row no-margin">
+                {{#if newInvitationComplete}}
+                    {{>encryptionLoader tasks=newInvitationComplete}}
+                {{else}}
+                    <form action="" id="newInvitationForm">
+                        <div class="row addMessage">
+                            <div class="col s9"><p>{{__ ".addMessage"}} :</p></div>
+                            <div class="col s3">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" addMessage>
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row invitMessage"
+                             style="display: {{#if showInvitMessage}}block{{else}}none{{/if}};">
+                            <div class="input-field col s12">
+                    <textarea id="message" class="materialize-textarea" data-length="500"
+                              maxlength="500" placeholder=""></textarea>
+                                <label for="message">{{__ ".invitMessage"}}</label>
+                            </div>
+                        </div>
+                        <div class="row no-margin">
+
+                            <div class="input-field col s12">
+                                <select id="validityDuration">
+                                    {{#each option in validityDurationOptions}}
+                                        <option value="{{option.value}}">{{option.label}}</option>
+                                    {{/each}}
+                                </select>
+                                <label>{{__ ".durationLabel"}}</label>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 no-margin">
+                                <label for="remaining">{{__ ".remainingLabel1"}} <b class="focus-color"
+                                                                                    style="font-size: 1rem">{{remaining}}</b> {{#if
+                                        compare  remaining ">" 1}}{{__ ".users"}}{{else}}{{__ ".user"}}{{/if}}</label>
+                                <p class="range-field">
+                                    <input type="range" id="remaining" value="1" min="1" max="15"/>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row right-align no-margin">
+                            <button href="#" class="btn btnFocus right-align waves-effect waves-light shadow"><i
+                                    class="material-icons right">group_add</i>{{__ ".ok"}}
+                            </button>
+                        </div>
+                    </form>
+                {{/if}}
+            </div>
+        </div>
+
+
+    </div>
+</template>

@@ -1,6 +1,17 @@
 import {Class} from 'meteor/jagi:astronomy';
-import Projects from "/lib/collections/Project";
-import cryptoServer from "../cryptoServer";
+import Projects from "/lib/collections/Projects";
+
+const ProjectInvitation = Class.create({
+    name: "ProjectInvitation",
+    fields: {
+        invitationId: {
+            type: String
+        },
+        symEnc_invitationPassword:{
+            type:String
+        }
+    }
+})
 
 const ProjectMember = Class.create({
     name: "ProjectMember",
@@ -20,12 +31,17 @@ const ProjectMember = Class.create({
         symEnc_joinAtTs: {
             type: String
         },
+        invitedBy:{
+            type:String,
+            optional: true
+        },
         // ca permet d'autentifier un membre sur le serveur: corespond a hashServer(hashClient(memberId + userPrivateKey)
         userSignature: {
             type: String
         }
     }
 })
+
 const ProjectPublic = Class.create({
     name: 'ProjectPublic',
     fields: {
@@ -69,6 +85,12 @@ const ProjectPrivate = Class.create({
                 return [];
             }
         },
+        invitations:{
+            type:[ProjectInvitation],
+            default: function () {
+                return [];
+            }
+        }
 
     }
 });
@@ -107,9 +129,7 @@ const Project = Class.create({
             }
         }
     },
-    helpers: {
-
-    }
+    helpers: {}
 
 });
 

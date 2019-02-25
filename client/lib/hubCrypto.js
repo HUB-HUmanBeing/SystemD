@@ -48,11 +48,11 @@ const hubCrypto = {
      */
     encryptAsymKeyWithPassword(password, stringifiedAsymPrivateKey, username, callback) {
         cryptoTools.hash(password, (hashedPassword) => {
-            cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (simKey) => {
+            cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (symKey) => {
                 //puis on la chiffre avec notre clef symétrique et en utilisant le nom d'utilisateur comme vecteur d'initialisation
                 cryptoTools.sim_encrypt_data(
                     stringifiedAsymPrivateKey,
-                    simKey,
+                    symKey,
                     username,
                     (unit8encryptedPrivateKey) => {
                         //puis on finit en mettant sous forme de string la clef privée ainsi chiffrée
@@ -74,14 +74,14 @@ const hubCrypto = {
         let currentUser = Meteor.user()
         if (currentUser && currentUser.private && currentUser.private.encryptedAsymPrivateKey) {
             //on commence par recuperer la clef symetrique associée au password utilisateur
-            cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (simKey) => {
+            cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (symKey) => {
                 //on recupere la clef stockée en base
                 let stringifiedEncryptedAsymPrivateKey = Meteor.user().private.encryptedAsymPrivateKey
                 //on converti la string en arrayBuffer
                 let encryptedAsymPrivateKey = cryptoTools.convertStringToArrayBufferView(stringifiedEncryptedAsymPrivateKey)
                 //puis on la déchiffre avec notre clef recuperée a partir du mot de passe et en utilisant le username
                 // comme vecteur d'initialisation
-                cryptoTools.sim_decrypt_data(encryptedAsymPrivateKey, simKey, username, (stringifiedAsymPrivateKey) => {
+                cryptoTools.sim_decrypt_data(encryptedAsymPrivateKey, symKey, username, (stringifiedAsymPrivateKey) => {
                     //on met ensuite en session la clef privée en session, il faudra penser a la réimporter a chaque nouvelle utilisation
                     Session.set("stringifiedAsymPrivateKey", stringifiedAsymPrivateKey)
                     callback()
@@ -262,22 +262,7 @@ const hubCrypto = {
             callback(string)
         })
     },
-    //crée l'objet authinfo nécessaire à l'authentification pour editer sur un projet
-    getAuthInfo(projectId) {
-        let authInfo = {
-            memberId: null,
-            userSignature: null
-        }
-        //on boucle sur la liste des userProjects
-        Session.get("projects").forEach(userProject => {
-            if (userProject.asymEnc_projectId === projectId) {
-                authInfo.memberId = userProject.asymEnc_memberId
-                //le hash de l'id de membre et de la clef privé utilisateur
-                authInfo.userSignature = cryptoTools.hash(userProject.asymEnc_memberId + Session.get("stringifiedAsymPrivateKey"))
-            }
-        })
-        return authInfo
-    },
+
 
 
 }

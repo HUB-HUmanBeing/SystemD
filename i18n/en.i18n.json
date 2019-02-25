@@ -162,5 +162,18 @@
     "deleteAccount": "Delete your account",
     "pdeleteAccount": "THE DELETION OF YOUR ACCOUNT WILL BE DEFINITIVE.",
     "passwordDeleteAccount": "Enter your password to confirm the deletion of your account."
+  },
+  "newInvitation": {
+    "title" : "Invitation link creation",
+    "infoQuote" : "By transmitting invitations links, you are transmitting the project ciphers keys to everyone who have acces to the link during the validity duration of the generated link.",
+    "durationLabel" : "Invitation validity duration",
+    "hour": "hour",
+    "day": "day",
+    "week": "week",
+    "month": "month",
+    "remainingLabel1" : "Valid for invite",
+    "user" : "user",
+    "users" : "users",
+    "ok" : "Generate invitation link"
   }
 }

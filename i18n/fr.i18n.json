@@ -162,5 +162,20 @@
     "deleteAccount": "Supprimer votre compte",
     "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
     "passwordDeleteAccount": "Entrez votre mot de passe afin de confirmer la suppression du compte."
+  },
+  "newInvitation": {
+    "title" : "Création du lien d'invitation",
+    "infoQuote" : "En transmettant des liens d'invitation, vous transmettez les clefs de chiffrement de votre projet à tout ceux qui auront accès au lien généré durant la période de validité.",
+    "durationLabel" : "Durée de validité du lien d'invitation",
+    "hour": "heure",
+    "day": "jour",
+    "week": "semaine",
+    "month": "mois",
+    "remainingLabel1" : "Valide pour inviter",
+    "user" : "utilisateur",
+    "users" : "utilisateurs",
+    "ok" : "Générer le lien d'invitation",
+    "addMessage" : "Ajouter un message d'invitation",
+    "invitMessage": "Message envoyé avec votre invitation"
   }
 }

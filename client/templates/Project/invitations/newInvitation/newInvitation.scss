@@ -1,0 +1,61 @@
+@import "{}/client/scss/variables.scss";
+
+#newInvitation {
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+
+  .bg-logo {
+  }
+
+  iframe {
+    position: relative;
+    z-index: 0;
+  }
+
+  .newInvitationContainer {
+    background-color: rgba($contrasted-bg, 0.8);
+    max-width: 90%;
+    width: 400px;
+    margin: 5vw 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: relative;
+    z-index: 10;
+    padding: 20px;
+
+    #newInvitationForm {
+      .addMessage{
+        p{
+          margin-top: 3px ;
+          font-size: 0.9rem;
+        }
+      }
+      .invitMessage{
+        background-color: $main-bg;
+        border-radius: 10px;
+        padding: 10px;
+      }
+      .character-counter{
+        margin-top: -25px;
+      }
+      label[for=remaining] {
+        font-size: 0.8rem;
+      }
+
+      input[type=range] {
+        border: none;
+        margin-top: 35px;
+        /* border: 1px solid white; */
+      }
+
+      .dropdown-content {
+        background-color: $main-bg;
+      }
+      .caret{
+        color: $main-color
+      }
+    }
+  }
+}
+

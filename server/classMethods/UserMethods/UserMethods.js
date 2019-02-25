@@ -16,6 +16,7 @@ User.extend({
                 asymEnc_projectSymKey: String,
                 asymEnc_memberId: String,
                 asymEnc_role: String,
+                asymEnc_adminPassword:String,
                 hashedAdminSignature:  String
 
             })

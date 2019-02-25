@@ -1,4 +1,5 @@
 import hubCrypto from "../../../../lib/hubCrypto";
+import projectController from "../../../../lib/projectController";
 
 Template.editProjectDescription.helpers({
     //add you helpers here
@@ -16,7 +17,7 @@ Template.editProjectDescription.events({
             instance.status.set('save')
             let text= $('#projectDescriptionInput').val()
             let project = instance.data.currentProject
-            project.callMethod("editDescription", hubCrypto.getAuthInfo(project._id), text, (err, res)=>{
+            project.callMethod("editDescription", projectController.getAuthInfo(project._id), text, (err, res)=>{
                 if(err){
                     console.log(err)
                 }else{
@@ -43,6 +44,7 @@ Template.editProjectDescription.onRendered(function () {
 
     $('#projectDescriptionInput').val(Template.currentData().currentProject.public.description)
     $('#projectDescriptionInput').trigger('autoresize');
+    $('#projectDescriptionInput').characterCounter();
     Materialize.updateTextFields();
 });
 

@@ -170,11 +170,11 @@ const cryptoTools = {
         });
     },
     //fonction de chiffrement symétrique en AES
-    sim_encrypt_data(data, simKey, vector, callback) {
+    sim_encrypt_data(data, symKey, vector, callback) {
         return crypto.subtle.encrypt({
             name: "AES-CBC",
             iv: this.vectorFromString(vector)
-        }, simKey, this.convertStringToArrayBufferView(data)).then(
+        }, symKey, this.convertStringToArrayBufferView(data)).then(
             function (result) {
                 callback(new Uint8Array(result));
             },
@@ -184,8 +184,8 @@ const cryptoTools = {
         );
     },
     //fonction de dechiffrement de données
-    sim_decrypt_data(encryptedData, simKey, vector, callback) {
-        this.crypto().subtle.decrypt({name: "AES-CBC", iv: this.vectorFromString(vector)}, simKey, encryptedData).then(
+    sim_decrypt_data(encryptedData, symKey, vector, callback) {
+        this.crypto().subtle.decrypt({name: "AES-CBC", iv: this.vectorFromString(vector)}, symKey, encryptedData).then(
             (result) => {
                 callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
             },
@@ -252,7 +252,7 @@ const cryptoTools = {
         if (elementType == "string" || elementType == "number") {
             let prefix = elementName.split('_')[0]
             if (prefix == 'symEnc') {
-                await this.sim_encrypt_data(element, encryptionParams.simKey, encryptionParams.vector, callback)
+                await this.sim_encrypt_data(element, encryptionParams.symKey, encryptionParams.vector, callback)
             } else if (prefix == 'asymEnc') {
                 await this.asym_encrypt_data(element, encryptionParams.publicKey, callback)
             }
@@ -293,7 +293,7 @@ const cryptoTools = {
             if (elementType == "string" || elementType == "number") {
                 let prefix = elementName.split('_')[0]
                 if (prefix == 'symEnc') {
-                    await this.sim_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.simKey, encryptionParams.vector, callback)
+                    await this.sim_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.symKey, encryptionParams.vector, callback)
                 } else if (prefix == 'asymEnc') {
                     await this.asym_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.privateKey, callback)
                 }

@@ -14,11 +14,23 @@
                         <h5>{{currentProject.name}}</h5>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col s12  center-align">
+                    <a href="/project/{{currentProject._id}}/new-invitation" class="btn btnStandard center-align" style="padding: 0 10px">
+                        <i class="focus-color material-icons left">group_add</i>
+                        Nouvelle Invitation</a>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col s12 m8 offset-m2 ">
                     <ul class="collapsible popout" id="editProjectCollapse" data-collapsible="accordion">
                         <li style="background: none !important; box-shadow: none !important;">
-                            <div class="collapsible-header main-color transparent active"><div class="flex"><i class="material-icons focus-color">group</i>{{__ ".publicInfos"}}</div>
-                                <div class="hr"></div></div>
+                            <div class="collapsible-header main-color transparent active">
+                                <div class="flex"><i class="material-icons focus-color">group</i>{{__
+                                        ".publicInfos"}}</div>
+                                <div class="hr"></div>
+                            </div>
                             <div class="collapsible-body">
                                 {{>editProjectDescription currentProject=currentProject}}
                             </div>
@@ -27,6 +39,7 @@
 
                 </div>
             </div>
+
         </div>
     </div>
 </template>
