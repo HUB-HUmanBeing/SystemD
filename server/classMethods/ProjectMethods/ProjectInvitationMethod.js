@@ -13,7 +13,7 @@ Project.extend({
             check(currentProject.isAdmin(authInfo), true)
             check(invitationParams, {
                 projectId: String,
-                message: Match.Maybe(String),
+                symEnc_message: Match.Maybe(String),
                 hashedPassword: String,
                 emittedBy: String,
                 symEnc_projectSymKey: String,

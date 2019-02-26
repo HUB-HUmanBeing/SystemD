@@ -18,7 +18,7 @@
     "jshashes": "^1.0.7",
     "meteor-node-stubs": "^0.4.1",
     "minio": "^7.0.5",
-    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
     "qrious": "^4.0.2",
     "zxcvbn": "^4.4.2"
   },

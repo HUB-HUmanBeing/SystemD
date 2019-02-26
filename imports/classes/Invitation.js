@@ -7,15 +7,9 @@ const Invitation = Class.create({
     name: 'Invitation',
     collection: Invitations,
     fields: {
-        message:{
+        symEnc_message:{
             type:String,
             optional: true,
-            validators: [
-                {
-                    type: 'maxLength',
-                    param: 500
-                }
-            ],
         },
         hashedPassword: {
             type: String

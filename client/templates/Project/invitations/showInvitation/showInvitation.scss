@@ -1,1 +1,89 @@
 @import "{}/client/scss/variables.scss";
+
+#showInvitation {
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+
+  .bg-logo {
+  }
+
+  iframe {
+    position: relative;
+    z-index: 0;
+  }
+
+  .showInvitationContainer {
+    background-color: rgba($contrasted-bg, 0.8);
+    max-width: 90%;
+    width: 800px;
+    margin: 5vw 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: relative;
+    z-index: 10;
+    padding: 2vw;
+
+    .infoQuotes{
+      font-size: 0.9em;
+    }
+    .magicLink {
+      width: 100%;
+      padding: 15px 50px 0px 10px;
+      background-color: #F1F1F1;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 3px solid $blue-highlight-color;
+
+      * {
+        color: $blue-highlight-color !important;
+      }
+
+      .magicLinkContent {
+        width: 100%;
+        overflow-x: scroll;
+        font-size: 1.2em;
+          text-wrap: none;
+      }
+
+      .copied {
+        background-color: #05a4be;
+        color: white !important;
+      }
+
+      .absolute {
+        right: 0;
+        top: 0;
+        margin: 15px;
+        z-index: 200;
+      }
+
+      &:hover {
+        .magicLinkContent {
+          background-color: #8beeff;;
+        }
+      }
+
+    }
+    .qrcode{
+      canvas{
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        border: 3px solid $blue-highlight-color;
+        overflow: hidden;
+      }
+    }
+    .detail{
+      padding: 20px 0px 0px 15px;
+
+
+      .invitLabel{
+        color: $link-color;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+

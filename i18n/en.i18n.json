@@ -175,5 +175,24 @@
     "user" : "user",
     "users" : "users",
     "ok" : "Generate invitation link"
+  },
+  "showInvitation": {
+    "title" : "Invitation",
+    "infoLink" : "copy this link and send it to the person(s) you want to invite in your project.",
+    "copied": "Invitation link copied in clipboard",
+    "share" : "Share",
+    "invitTitle" : "Invitation to join the project ",
+    "invitMessage": "You have been invited by someone to join a project on System-D : the free cyphered collaborative web-platform.Click on the link below to see the invitation.",
+    "infoQr": "If the person you want to invite is near you,  he or she can scan this QR-code to access the invitation.",
+    "infoDetail": "Invitation detail",
+    "createdAt": "Created at",
+    "createdBy": "By",
+    "expireIn" : "Valid during",
+    "remaining": "valid for",
+    "user" : "user",
+    "users" : "users",
+    "message" : "Invitation message",
+    "infoDestroy" : "By deleting the invitation, You delete the possibility to use the invitation link for access the cypher keys of your project.",
+    "destroy" : "Delete invitation"
   }
 }

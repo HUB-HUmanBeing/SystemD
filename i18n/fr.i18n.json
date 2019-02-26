@@ -177,5 +177,24 @@
     "ok" : "Générer le lien d'invitation",
     "addMessage" : "Ajouter un message d'invitation",
     "invitMessage": "Message envoyé avec votre invitation"
+  },
+  "showInvitation": {
+    "title" : "Invitation",
+    "infoLink" : "copiez ce lien et envoyez le à la ou les personnes que vous souhaitez inviter.",
+    "copied": "Lien d'invitation copié dans le presse papier",
+    "share" : "Partager",
+    "invitTitle" : "Invitation à rejoindre le projet ",
+    "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs . Cliquez sur le lien pour voir l'invitation.",
+    "infoQr": "Si la personne à inviter est à vos coté, elle peut aussi scanner ce QR-code pour accéder à l'invitation.",
+    "infoDetail": "Détail de l'invitation",
+    "createdAt": "Créée le",
+    "createdBy": "Par",
+    "expireIn" : "Encore valide durant",
+    "remaining": "Valide pour encore",
+    "user" : "utilisateur",
+    "users" : "utilisateurs",
+    "message" : "Message d'invitation",
+    "infoDestroy" : "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux cléfs de chiffrement de votre projet.",
+    "destroy" : "Supprimer l'invitation"
   }
 }

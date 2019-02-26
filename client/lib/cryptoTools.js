@@ -211,11 +211,12 @@ const cryptoTools = {
     },
     //fonction permettant de générer un mot de passe aléatoire
     generateRandomPassword(length) {
-        length = length || 50
+        let randomLength = 20 +Math.floor(Math.random() * 12)
+        length = length || randomLength
         let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         let lowercase = 'abcdefghijklmnopqrstuvwxyz';
         let numbers = '0123456789';
-        let symbols = '$-_.+!*';
+        let symbols = '$_.+!*';
         let all = uppercase + lowercase + numbers + symbols;
         let password = '';
         for (let index = 0; index < length; index++) {
