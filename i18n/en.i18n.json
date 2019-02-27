@@ -1,5 +1,30 @@
 {
   "_locale": "en-US",
+  "forbidden": {
+    "noAccess": "You don't have acces to this page",
+    "backHome": "Back to the home"
+  },
+  "notFound": {
+    "noAddress": "Sorry, we can't find a page at this address.",
+    "backHome": "Back to the home"
+  },
+  "workInProgress": {
+    "nofunction": "This feature is not yet enable",
+    "allow": "It will allow :",
+    "infos": "Additionals informations:"
+  },
+  "menu": {
+    "param": "Parameters",
+    "logout": "Log Out",
+    "noProject": "Currently, you have not join project.",
+    "clic": "You can clic on the button below to create a project or wait an invitation to a existing project.",
+    "decryption": "Decryption of your projects list.",
+    "newProject": "New Project"
+  },
+  "accessDenied": {
+    "denied": "Access denied",
+    "noAccess": "You can't access to this page! Please login."
+  },
   "landingHead": {
     "aims": "Purposes",
     "features": "Features",
