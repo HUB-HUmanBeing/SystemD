@@ -12,7 +12,22 @@ const projectController = {
 
     },
     isAdmin(projectId){
-        return this.getCurrentUserProject(projectId).role === "admin"
+        return this.getCurrentUserProject(projectId).asymEnc_role === "admin"
+    },
+    checkAdminOrReroute(projectId){
+        Tracker.autorun(()=>{
+          if(!this.isAdmin(projectId)){
+             this.timeoutBeforeReroute = Meteor.setTimeout(()=>{
+                 if(!this.isAdmin(projectId)) {
+                     FlowRouter.go("/403")
+                 }
+              }, 1000)
+
+            }else{
+
+            }
+        })
+
     },
     isMember(projectId){
         return !!this.getCurrentUserProject(projectId)

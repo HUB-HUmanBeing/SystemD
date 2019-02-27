@@ -3,7 +3,7 @@
     <div id="projectParams" class=" gradiant  main-color">
         <div class="container">
             <div class="row">
-                <div class="col s12 m8 offset-m2 center-align">
+                <div class="col s12 m10 offset-m1 center-align">
 
                     <div class="row no-margin ">
                         <div class="profile-picture shadow relative ">
@@ -23,16 +23,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12 m8 offset-m2 ">
-                    <ul class="collapsible popout" id="editProjectCollapse" data-collapsible="accordion">
+                <div class="col s12 m10 offset-m1 l8 offset-l2">
+                    <ul class="collapsible popout" id="editProjectCollapse" data-collapsible="expandable">
                         <li style="background: none !important; box-shadow: none !important;">
                             <div class="collapsible-header main-color transparent active">
-                                <div class="flex"><i class="material-icons focus-color">group</i>{{__
+                                <div class="flex"><i class="material-icons focus-color">public</i>{{__
                                         ".publicInfos"}}</div>
                                 <div class="hr"></div>
                             </div>
                             <div class="collapsible-body">
                                 {{>editProjectDescription currentProject=currentProject}}
+                            </div>
+                        </li>
+                        <li style="background: none !important; box-shadow: none !important;">
+                            <div class="collapsible-header main-color transparent active">
+                                <div class="flex"><i class="material-icons focus-color">group_add</i>{{__
+                                        ".invitationList"}}</div>
+                                <div class="hr"></div>
+                            </div>
+                            <div class="collapsible-body">
+                                {{>invitationList currentProject=currentProject}}
                             </div>
                         </li>
                     </ul>

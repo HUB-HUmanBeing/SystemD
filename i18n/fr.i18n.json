@@ -35,7 +35,8 @@
     "label": "Description du projet"
   },
   "projectParams": {
-    "publicInfos": "Informations publiques"
+    "publicInfos": "Informations publiques",
+    "invitationList": "Liens d'invitations"
   },
   "projectHome": {
     "projectDescription": "Description du projet",
@@ -176,11 +177,12 @@
     "users" : "utilisateurs",
     "ok" : "Générer le lien d'invitation",
     "addMessage" : "Ajouter un message d'invitation",
-    "invitMessage": "Message envoyé avec votre invitation"
+    "invitMessage": "Message envoyé avec votre invitation",
+    "backToParams": "Retour aux paramètres du projet"
   },
   "showInvitation": {
-    "title" : "Invitation",
-    "infoLink" : "copiez ce lien et envoyez le à la ou les personnes que vous souhaitez inviter.",
+    "title" : "Lien d'nvitation",
+    "infoLink" : "Copiez ce lien et envoyez le à la ou les personnes que vous souhaitez inviter.",
     "copied": "Lien d'invitation copié dans le presse papier",
     "share" : "Partager",
     "invitTitle" : "Invitation à rejoindre le projet ",
@@ -195,6 +197,16 @@
     "users" : "utilisateurs",
     "message" : "Message d'invitation",
     "infoDestroy" : "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux cléfs de chiffrement de votre projet.",
-    "destroy" : "Supprimer l'invitation"
+    "destroy" : "Supprimer le lien d'invitation",
+    "backToParams": "Retour aux paramètres du projet",
+    "deleted": "le lien d'invitation à été détruit"
+  },
+  "invitationList": {
+    "from": "Invitation créée le",
+    "by": "Créée par",
+    "expireIn": "Expire dans",
+    "remaining": "Invitations restantes",
+    "noInvits": "Il n'y a aucun lien d'invitation en cours de validité.",
+    "newInvitation": "Générer un nouveau lien d'invitation"
   }
 }

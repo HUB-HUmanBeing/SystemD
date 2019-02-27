@@ -62,13 +62,16 @@
                                 <label for="message">{{__ ".invitMessage"}}</label>
                             </div>
                         </div>
-                        <div class="row right-align no-margin">
+                        <div class="row right-align ">
                             <button href="#" class="btn btnFocus right-align waves-effect waves-light shadow"><i
                                     class="material-icons right">group_add</i>{{__ ".ok"}}
                             </button>
                         </div>
                     </form>
                 {{/if}}
+            </div>
+            <div class="backFooter left-align" style="padding: 0 10px;">
+                <a href="/project/{{currentProject._id}}/params" class=" link"><i class="material-icons left">arrow_back</i>{{__ '.backToParams'}}</a>
             </div>
         </div>
 

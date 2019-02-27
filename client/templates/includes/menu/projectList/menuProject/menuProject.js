@@ -1,3 +1,5 @@
+import projectController from "../../../../../lib/projectController";
+
 Template.menuProject.helpers({
     //add you helpers here
     sections: function () {
@@ -8,7 +10,7 @@ Template.menuProject.helpers({
                 return null
             }
         };
-        return [
+        let sectionsList =[
             {
                 name: __("menuProject.home"),
                 path: 'home',
@@ -44,13 +46,17 @@ Template.menuProject.helpers({
                 path: 'members',
                 icon: 'group',
                 isActive:isActive('members'),
-            }, {
+            },
+        ]
+        if(projectController.isAdmin(Template.currentData().project.asymEnc_projectId)){
+            sectionsList.push( {
                 name: __("menuProject.params"),
                 path: 'params',
                 icon: 'settings',
                 isActive:isActive('params'),
-            }
-        ]
+            })
+        }
+        return sectionsList
     }
 });
 

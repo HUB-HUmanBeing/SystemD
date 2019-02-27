@@ -14,31 +14,31 @@ Template.showInvitation.helpers({
         return Project.findOne(Template.instance().projectId)
     },
     magicLink: function () {
-        let magicLink =Template.instance().magicLink.get()
-        if(magicLink){
+        let magicLink = Template.instance().magicLink.get()
+        if (magicLink) {
             const qr = new QRious({
                 element: document.getElementById('qrCode'),
                 value: magicLink,
-                level:"Q",
-                background:"#ffffff",
-                foreground:"#263238",
+                level: "Q",
+                background: "#ffffff",
+                foreground: "#263238",
                 size: 300,
 
             })
         }
         return magicLink
     },
-    copied : function (){
+    copied: function () {
         return Template.instance().copied.get()
     },
-    decryptedMessage: function(){
+    decryptedMessage: function () {
         return Template.instance().decryptedMessage.get()
     },
     validityDurationLeft: function () {
         let invitation = Invitation.findOne(Template.instance().invitationId)
         let serverDate = Template.instance().serverDate.get()
-        if(serverDate && invitation){
-            let elapsingDuration = new moment(invitation.createdAt).add(invitation.validityDuration, "h").diff( new moment(serverDate))
+        if (serverDate && invitation) {
+            let elapsingDuration = new moment(invitation.createdAt).add(invitation.validityDuration, "h").diff(new moment(serverDate))
             return moment.duration(elapsingDuration).humanize()
         }
 
@@ -47,7 +47,7 @@ Template.showInvitation.helpers({
 
 Template.showInvitation.events({
     //add your events here
-    "click [copyMagicLink]" : function (event, instance) {
+    "click [copyMagicLink]": function (event, instance) {
         const el = document.createElement('textarea');
         el.value = instance.magicLink.get();
         el.setAttribute('readonly', '');
@@ -60,24 +60,36 @@ Template.showInvitation.events({
         Materialize.toast(__("showInvitation.copied"), 6000, "lighter-bg")
         instance.copied.set(true)
     },
-    "click [share]":function (event, instance) {
-        console.log({
-            title: __("showInvitation.invitTitle") +" "+ projectController.getCurrentUserProject(instance.projectId).asymEnc_projectName,
-            text: __("showInvitation.invitMessage"),
-            url: instance.magicLink.get(),
-        })
+    "click [share]": function (event, instance) {
         if (navigator.share) {
 
             navigator.share({
-                title: __("showInvitation.invitTitle") +" "+ projectController.getCurrentUserProject(instance.projectId).asymEnc_projectName,
+                title: __("showInvitation.invitTitle") + " " + projectController.getCurrentUserProject(instance.projectId).asymEnc_projectName,
                 text: __("showInvitation.invitMessage"),
                 url: instance.magicLink.get(),
             })
                 .then(() => console.log('Successful share'))
                 .catch((error) => console.log('Error sharing', error));
         }
+    },
+    "click [deleteInvitation]": function (event, instance) {
+        event.preventDefault()
+        let project = Project.findOne(instance.projectId)
+        project.callMethod(
+            "deleteInvitation",
+            projectController.getAuthInfo(instance.projectId),
+            instance.invitationId,
+            (err, res) => {
+                if(err){
+                    console.log(err)
+                }else{
+                    Materialize.toast(__("showInvitation.deleted"),6000, "lighter-bg")
+                    FlowRouter.go('/project/'+instance.projectId+'/params')
+                }
+            })
     }
-});
+})
+;
 
 Template.showInvitation.onCreated(function () {
     //add your statement here
@@ -88,18 +100,19 @@ Template.showInvitation.onCreated(function () {
     this.serverDate = new ReactiveVar()
     this.decryptedMessage = new ReactiveVar("")
     this.copied = new ReactiveVar(false)
-    Meteor.call("getServerDate",(err,date)=>{
-        if(err){
+    //on récupere la date du serveur
+    Meteor.call("getServerDate", (err, date) => {
+        if (err) {
             console.log(err)
-        }else{
+        } else {
             this.serverDate.set(date)
         }
-
     })
-
+    //récupération et déchiffrement de l'invitation
     Tracker.autorun(() => {
         let currentUserProject = projectController.getCurrentUserProject(this.projectId)
         if (currentUserProject) {
+            //on récupere le projet courant et la clef d'invitation chiffrée
             let currentProject = Project.findOne(this.projectId)
             let currentInvitationPassword = null
             if (currentProject.private.invitations.length) {
@@ -110,18 +123,20 @@ Template.showInvitation.onCreated(function () {
                 })
             }
             if (currentInvitationPassword) {
+                //on déchiffre la clef d'invitation
                 cryptoTools.importSymKey(Session.get("currentProjectSimKey"), currentProject.name, projectSymKey => {
                     cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(currentInvitationPassword), projectSymKey, currentProject.name, (decryptedInvitPassword) => {
                         this.decryptedInvitPassword.set(decryptedInvitPassword)
-
-                        this.magicLink.set(Meteor.absoluteUrl()+"invitation/"+this.invitationId+"&password="+decryptedInvitPassword)
+                        this.magicLink.set(Meteor.absoluteUrl() + "invitation/" + this.invitationId + "&password=" + decryptedInvitPassword)
+                        //on souscrit à l'invitation
                         Meteor.subscribe('invitation', this.invitationId, cryptoTools.hash(decryptedInvitPassword), (err) => {
                             if (err) {
                                 console.log(err)
 
-                            }else{
+                            } else {
+                                //on déchiffre le message d'invitation
                                 let symEnc_message = Invitation.findOne(this.invitationId).symEnc_message
-                                cryptoTools.generateSimKeyFromPassphrase(decryptedInvitPassword,(invitationSymKey)=>{
+                                cryptoTools.generateSimKeyFromPassphrase(decryptedInvitPassword, (invitationSymKey) => {
                                     cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(symEnc_message), invitationSymKey, currentProject._id, (decryptedMessage) => {
                                         this.decryptedMessage.set(decryptedMessage)
                                     })

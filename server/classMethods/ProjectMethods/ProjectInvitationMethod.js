@@ -7,7 +7,15 @@ import cryptoServer from "../../../imports/cryptoServer";
 
 Project.extend({
     meteorMethods: {
-        async createInvitation(authInfo, invitationParams,symEnc_invitationPassword) {
+        /*******************
+         * methode de génération d'invitation
+         * @param authInfo
+         * @param invitationParams
+         * @param symEnc_invitationPassword
+         * @returns {Promise<*|*|*|void>}
+         */
+        async createInvitation(authInfo, invitationParams, symEnc_invitationPassword) {
+            //on check les parametres et on vérifie que l'utilisateur courrant est admin du projet
             check(authInfo, {memberId: String, userSignature: String})
             let currentProject = Project.findOne(this._id)
             check(currentProject.isAdmin(authInfo), true)
@@ -20,22 +28,48 @@ Project.extend({
                 validityDuration: Number,
                 remaining: Number
             })
+            //on hash le password
             invitationParams.hashedPassword = cryptoServer.hash(invitationParams.hashedPassword)
             check(symEnc_invitationPassword, String)
+            //on crée l'invitation
             let invitation = new Invitation(invitationParams)
-            let invitationId =invitation.save((err, invitationId) => {
+            //on la sauvegarde
+            let invitationId = invitation.save((err, invitationId) => {
                 if (!err) {
+                    //si tout va bien, on sauvegarde aussi l'invitation coté projet en lui ajoutant la clef d'invitation chiffrée avec la clef projet
                     currentProject.private.invitations.push({
-                        invitationId: invitationId,
-                        symEnc_invitationPassword: symEnc_invitationPassword
+                            invitationId: invitationId,
+                            symEnc_invitationPassword: symEnc_invitationPassword
                         }
                     )
                     return currentProject.save()
-                }else{
+                } else {
                     console.log(err)
                 }
             })
             return invitationId
+        },
+        async deleteInvitation(authInfo, invitationId) {
+            //on check les parametres et on vérifie que l'utilisateur courrant est admin du projet
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(this._id)
+            check(currentProject.isAdmin(authInfo), true)
+            check(invitationId, String)
+
+            let invitation
+            currentProject.private.invitations.forEach((invit, i) => {
+                if (invit.invitationId === invitationId) {
+                    currentProject.private.invitations.splice(i, 1)
+                    invitation = Invitation.findOne(invitationId)
+                }
+            })
+            if(invitation){
+               return invitation.remove((err, result) => {
+                    if (!err) {
+                       return currentProject.save()
+                    }
+                })
+            }
 
         }
     }

@@ -211,7 +211,7 @@ const cryptoTools = {
     },
     //fonction permettant de générer un mot de passe aléatoire
     generateRandomPassword(length) {
-        let randomLength = 20 +Math.floor(Math.random() * 12)
+        let randomLength = 25 +Math.floor(Math.random() * 10)
         length = length || randomLength
         let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         let lowercase = 'abcdefghijklmnopqrstuvwxyz';

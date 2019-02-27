@@ -4,6 +4,7 @@ import Projects from "../lib/collections/Projects";
 import Invitation from "../imports/classes/Invitation";
 import cryptoServer from "../imports/cryptoServer";
 import Invitations from "../lib/collections/Invitations";
+import {check} from "meteor/check";
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -38,10 +39,22 @@ Meteor.publish('ProjectForMembers', function (projectId, hashedSymKey) {
             })
     }
 })
-Meteor.publish('invitation', function (invitationId, hashedPassword) {
-    check(invitationId, String)
+Meteor.publish('invitation', function (authInfo, projectId) {
+    check(authInfo, String)
     check(hashedPassword, String)
     const invitation = Invitation.findOne(invitationId)
-    check(invitation.hashedPassword === cryptoServer.hash(hashedPassword),true)
+    check( cryptoServer.compare(hashedPassword,invitation.hashedPassword),true)
     return Invitations.find({_id:invitationId})
 })
+Meteor.publish('invitationList', function (authInfo, projectId) {
+    check(authInfo, {memberId: String, userSignature: String})
+    check(projectId,String)
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isAdmin(authInfo), true)
+    let invitationIds = []
+    currentProject.private.invitations.forEach(invit=>{
+        invitationIds.push(invit.invitationId)
+    })
+    return Invitations.find({"_id":{"$in": invitationIds}})
+})
+

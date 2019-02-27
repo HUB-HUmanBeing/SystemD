@@ -1,0 +1,26 @@
+@import "{}/client/scss/variables.scss";
+
+#invitationList{
+  li{
+
+  }
+  a{
+    background-color: $light-bg !important;
+    border-bottom: 1px solid $info-color;
+  i{
+    background-color: $focus-color !important;
+    color: $contrasted-bg!important;
+  }
+    .title{
+      margin-bottom: 10px !important;
+      color: $plus-color;
+      b{
+        color: $plus-color;
+      }
+    }
+    &:hover{
+      background-color:  $lighter-bg !important;
+    }
+  }
+
+}

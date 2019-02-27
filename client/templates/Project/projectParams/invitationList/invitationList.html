@@ -1,0 +1,29 @@
+<template name="invitationList">
+    <div>
+        {{#if invitations.length}}
+            <ul class="collection main-bg" id="invitationList">
+                {{#each invitation in invitations}}
+
+                    <a href="/project/{{currentProject._id}}/invitation/{{invitation._id}}"
+                       class="collection-item avatar main-bg">
+                        <i class="material-icons circle focus-bg">insert_link</i>
+                        <p class="title">{{__ ".from"}} <b>{{formatDate invitation.createdAt}}</b></p>
+                        <p>{{__ ".by"}} : <b>{{usernameFromMemberId invitation.emittedBy}}</b> <br>
+                            {{__ ".expireIn"}} : <b>{{invitation.validityDuration}}</b> <br>
+                            {{__ ".remaining"}} : <b>{{invitation.remaining}}</b> <br>
+                        </p>
+                    </a>
+
+                {{/each}}
+
+
+            </ul>
+        {{else}}
+            <p class="infoQuotes">{{__ ".noInvits"}}  <a href="/project/{{currentProject._id}}/new-invitation" class="link" >
+                {{__ ".newInvitation"}}
+            </a></p>
+
+        {{/if}}
+    </div>
+
+</template>

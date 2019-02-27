@@ -13,5 +13,6 @@
   "public": {
     "frontSalt": "votre petit grain de sel"
   },
-  "serverSalt": "un autre grain de sel"
+  "serverSalt": "un autre grain de sel",
+  "serverSaltRounds": 10
 }

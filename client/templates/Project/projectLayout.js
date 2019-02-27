@@ -2,6 +2,7 @@ import cryptoTools from "../../lib/cryptoTools";
 
 import hubCrypto from "../../lib/hubCrypto";
 import Project from "../../../imports/classes/Project";
+import projectController from "../../lib/projectController";
 
 Template.projectLayout.helpers({
     //add you helpers here
@@ -19,7 +20,7 @@ Template.projectLayout.helpers({
                 return null
             }
         };
-        return [
+        let sectionsList = [
             {
                 name: __("menuProject.forum"),
                 path: 'forum',
@@ -49,13 +50,17 @@ Template.projectLayout.helpers({
                 path: 'members',
                 icon: 'group',
                 isActive:isActive('members'),
-            }, {
+            }
+        ]
+        if(projectController.isAdmin(Template.currentData().project.asymEnc_projectId)){
+            sectionsList.push( {
                 name: __("menuProject.params"),
                 path: 'params',
                 icon: 'settings',
                 isActive:isActive('params'),
-            }
-        ]
+            })
+        }
+        return sectionsList
     }
 });
 

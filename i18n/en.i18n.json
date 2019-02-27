@@ -35,7 +35,8 @@
     "label": "Projet description"
   },
   "projectParams": {
-    "publicInfos": "Informations publiques"
+    "publicInfos": "Public informations",
+    "invitationList": "Invitation links"
   },
   "projectHome": {
     "projectDescription": "Project description",
@@ -174,10 +175,11 @@
     "remainingLabel1" : "Valid for invite",
     "user" : "user",
     "users" : "users",
-    "ok" : "Generate invitation link"
+    "ok" : "Generate invitation link",
+    "backToParams": "Back to project parameters"
   },
   "showInvitation": {
-    "title" : "Invitation",
+    "title" : "Invitation link",
     "infoLink" : "copy this link and send it to the person(s) you want to invite in your project.",
     "copied": "Invitation link copied in clipboard",
     "share" : "Share",
@@ -193,6 +195,16 @@
     "users" : "users",
     "message" : "Invitation message",
     "infoDestroy" : "By deleting the invitation, You delete the possibility to use the invitation link for access the cypher keys of your project.",
-    "destroy" : "Delete invitation"
+    "destroy" : "Delete invitation link",
+    "backToParams": "Back to project parameters",
+    "deleted": "The invitation link has been removed"
+  },
+  "invitationList": {
+    "from": "Invitation created at",
+    "by": "Created by",
+    "expireIn": "Expires in",
+    "remaining": "Remaining invitations",
+    "noInvits": "There is not any valid invitation link.",
+    "newInvitation": "Generate a new invitation link"
   }
 }

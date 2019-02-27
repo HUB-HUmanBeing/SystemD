@@ -25,7 +25,7 @@
                              style="{{#unless isDesktop}}padding-bottom: 10px;{{/unless}}" copyMagicLink>
                             <div class="magicLinkContent {{#if copied}}copied{{/if}}">{{magicLink}}</div>
                             <div class="absolute"><i class="material-icons " style="{{#if
-                                    copied}}color: #05a4be !important{{/if}}">content_copy</i></div>
+                                    copied}}color: #05a4be !important{{/if}}">{{#if copied}}done{{else}}content_copy{{/if}}</i></div>
                         </div>
                     </div>
                     {{#unless isDesktop}}
@@ -51,7 +51,7 @@
                     </div>
 
                 </div>
-                <div class="col s12 m7  ">
+                <div class="col s12 offset-m1  m6 ">
                     <div class="row no-margin">
                         <p class="infoQuotes left-align">
                             {{__ ".infoDetail"}}
@@ -59,7 +59,7 @@
                         <div class="row detail left-align no-margin">
                             <p>
                                 <span class="invitLabel">{{__ ".createdAt"}} :</span>  {{formatDate
-                                    invitation.ceatedAt}}
+                                    invitation.createdAt}}
                             </p>
                             <p>
                                 <span class="invitLabel">{{__ ".createdBy"}} :</span>  {{usernameFromMemberId
@@ -87,7 +87,7 @@
                             {{__ ".infoDestroy"}}
                         </p>
                         <div class="row center-align">
-                            <a class="btn red darken-2 center-align waves-effect waves-light shadow" destroy>
+                            <a class="btn red darken-2 center-align waves-effect waves-light shadow" deleteInvitation >
                                 <i class="material-icons left">delete</i>
                                 {{__ ".destroy"}}
                             </a>
@@ -96,7 +96,9 @@
 
                 </div>
             </div>
-
+            <div class="backFooter left-align" style="padding: 0 10px;">
+                <a href="/project/{{currentProject._id}}/params" class=" link"><i class="material-icons left">arrow_back</i>{{__ '.backToParams'}}</a>
+            </div>
         </div>
     </div>
 </template>

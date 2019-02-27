@@ -20,7 +20,7 @@ Project.extend({
             let result = false
             this.private.members.forEach(member=>{
                 if(member.memberId === authInfo.memberId){
-                    if(cryptoServer.hash(authInfo.userSignature) === member.userSignature){
+                    if(cryptoServer.compare(authInfo.userSignature,member.userSignature)){
                         result = true
                     }
                 }
@@ -40,7 +40,7 @@ Project.extend({
             let result = false
             this.private.members.forEach(member=>{
                 if(member.memberId === authInfo.memberId){
-                    if(cryptoServer.hash(authInfo.userSignature) === member.userSignature){
+                    if(cryptoServer.compare(authInfo.userSignature, member.userSignature)){
                         result = member.role === "admin"
                     }
                 }

@@ -1,4 +1,5 @@
 import Project from "/imports/classes/Project";
+import projectController from "../../../lib/projectController";
 
 Template.projectParams.helpers({
     //add you helpers here
@@ -13,6 +14,7 @@ Template.projectParams.events({
 
 Template.projectParams.onCreated(function () {
     //add your statement here
+    projectController.checkAdminOrReroute(FlowRouter.current().params.projectId)
 });
 
 Template.projectParams.onRendered(function () {
