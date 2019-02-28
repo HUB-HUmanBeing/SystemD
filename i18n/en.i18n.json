@@ -1,190 +1,202 @@
 {
   "_locale": "en-US",
-  "forbidden": {
-    "noAccess": "You don't have acces to this page",
-    "backHome": "Back to the home"
-  },
-  "notFound": {
-    "noAddress": "Sorry, we can't find a page at this address.",
-    "backHome": "Back to the home"
-  },
-  "workInProgress": {
-    "nofunction": "This feature is not yet enable",
-    "allow": "It will allow :",
-    "infos": "Additionals informations:"
-  },
-  "menu": {
-    "param": "Parameters",
-    "logout": "Log Out",
-    "noProject": "Currently, you have not join project.",
-    "clic": "You can clic on the button below to create a project or wait an invitation to a existing project.",
-    "decryption": "Decryption of your projects list.",
-    "newProject": "New Project"
-  },
-  "accessDenied": {
-    "denied": "Access denied",
-    "noAccess": "You can't access to this page! Please login."
-  },
-  "landingHead": {
-    "aims": "Purposes",
-    "features": "Features",
-    "roadMap": "Road Map",
-    "contact": "Contact",
-    "login": "Login",
-    "signUp": "Sign Up",
-    "Logout": "Logout"
-  },
-  "menuProject": {
-    "home": "Home",
-    "forum": "Forum",
-    "params": "Parameters",
-    "calendar": "Calendar",
-    "tasks": "Tasks Lists",
-    "maps": "Maps",
-    "members": "Members"
-  },
-  "projectLayout": {
-    "decrypting1": "Projet informations deciphering"
-  },
-  "editAvatar": {
-    "edit": "Edit avatar",
-    "delete": "Delete avatar",
-    "OK": "OK"
-  },
-  "editProjectAvatar": {
-    "edit": "Edit avatar",
-    "delete": "Delete avatar",
-    "OK": "OK"
-  },
-  "editProjectDescription": {
-    "label": "Projet description"
-  },
-  "projectParams": {
-    "publicInfos": "Informations publiques"
-  },
-  "projectHome": {
-    "projectDescription": "Project description"
-  },
-  "landingAim": {
-    "ourPurpose": "OUR PURPOSE",
-    "purpose": "Develop a tool to support transition from a money society collapsing to a model based on the free exchange, the sharing and the collaboration between humans.",
-    "3DevPhases": "THREE PHASES OF DEVELOPMENT",
-    "createTool": "Create a tool to manage project opened to everybody.",
-    "cTool": "A tool that will enable to organize different groups and associations efficiently. A tool encrypted, free, open-source, taking aim at the 'horizontality'in the management of project.",
-    "doOfSystemD": "Make SystemD the social network of free exchange project.",
-    "dOfSystD": "Creation of interfaces to do a meeting place through differents projects: Search geolocated by skills-interests, encrypted instant messaging, shared blog, etc...",
-    "developFreeNetwork": "Develop a free and sharing network",
-    "dFreeNetwork": "Allow users and projects to share their resources in order to create a big free and non-commercial network."
-  },
-  "landingContact": {
-    "github": "Follow the progress of project, make issues and pull-requests.",
-    "email": "Contact-me by e-mail to share yours observations, ideas, suggestions, propositions, ...",
-    "chat": "Join us on the chat to discuss with the team of project."
-  },
-  "landingPlus": {
-    "anonymous": "ANONYMOUS",
-    "panonymous": "Login with a pseudo, no need email, and use a tor-browser for more anonymity.",
-    "free": "FREE",
-    "pfree": "How imagine differently a platform whose the purpose is the promotion of free exchange between humans?",
-    "encrypted": "ENCRYPTED",
-    "pencrypted": "Contents shared and the list of the projects you have selected are encrypted \"end-to-end\". ",
-    "signin": "Sign In"
-  },
-  "landingRoadmap": {
-    "roadmap": "ROADMAP",
-    "firstPhase": "FIRST PHASE",
-    "pfirstPhase": "Interface to make user account and connection to platform.",
-    "p2firstPhase": "Interface to change user profile.",
-    "p3firstPhase": "Interface to create project.",
-    "p4firstPhase": "Invitation for projects and to manage members.",
-    "p5firstPhase": "Creation of forum by project.",
-    "p6firstPhase": "Calendar participative for each project.",
-    "p7firstPhase": "List of ergonomics tasks for each project.",
-    "p8firstPhase": "Interface to support or participate at SystemD",
-    "secondPhase": "SECOND PHASE",
-    "psecondPhase": "Interface to select his skills for each users.",
-    "p2secondPhase": "Interface to select his interests for each users.",
-    "p3secondPhase": "Taking into consideration of geolocation.",
-    "p4secondPhase": "Advanced research tools to research potentials contributors / interstings projects.",
-    "p5secondPhase": "Instant messaging inter-users and inter-projects.",
-    "p6secondPhase": "Personnal blog and project blog.",
-    "p7secondPhase": "Interactive map module for projects.",
-    "thirdPhase": "THIRD PHASE",
-    "pthirdPhase": "Taking of consideration of  issues and improvements.",
-    "p2thirdPhase": "Interface to list shared materials assets.",
-    "p3thirdPhase": "Interface to research assets.",
-    "p4thirdPhase": "Possibility to make advertisements for personals and projects requirements.",
-    "p5thirdPhase": "Applications IOS, ANDROID and DESKTOP",
-    "p6thirdPhase": "Module of planning Scrum",
-    "signin": "Sign In"
-  },
-  "landingTitle": {
-    "h3title": "Encrypted platform of collaboratives and free projects",
-    "ptitle": "Make projects, join your friends, and take advantage of free and secure tools to organize your association or group together.",
-    "signin": "Sign In"
-  },
-  "landingTools": {
-    "calendar": "SHARED CALENDAR",
-    "pcalendar": "To plan with your group the next events of your project.",
-    "taskList": "TASKS LIST",
-    "ptaskList": "To see the progress of the project and to select tasks interactively by the participants.",
-    "forum": "FORUM",
-    "pforum": "Communicate together, by themes or not.",
-    "modularTools": "MODULARS TOOLS",
-    "pmodularTools": "Interactives map, planning in agile méthod, and others tools will develop.",
-    "simpleTools": "SECURE AND SIMPLE TOOLS",
-    "psimpleTools": "user-friendly organization tools and encrypted content for optimum privacy."
-  },
-  "loginForm": {
-    "userName": "User Name",
-    "password": "Password",
-    "connection": "Connection"
-  },
-  "signinForm": {
-    "userNameChoice": "Choice a username",
-    "passwordChoice": "Password",
-    "passwordRepeat": "Repeat password",
-    "accountCreate": "Create an account"
-  },
-  "signinContainer": {
-    "psignin": "System-D offers you a free collaborative workspace and totally",
-    "linkSignin": "https://en.wikipedia.org/wiki/End-to-end_encryption",
-    "endtoendencrypted": "end-to-end encrypted",
-    "p2signin": "Like Telegram or Signal, only you and the members of project will can decrypt and read the contents you post, even developers will not can.",
-    "next": "Next",
-    "p3signin": "And also",
-    "p3-1signin": "System-D keep the Anonymity",
-    "p3-2signin": " of his users : neither email required or personals informations. However we will not can ",
-    "p3-3signin": "help you if you forgot your password.",
-    "p3-4signin": "So, it is recommended:",
-    "spanSignin": "Write somewhere your password."
-  },
-  "loginPage": {
-    "signin": "Sign In",
-    "connection": "Connection",
-    "backToHome": "Back to home"
-  },
-  "newProject": {
-    "createProject": "Create a project",
-    "nameProject": "Project's name",
-    "create": "Create"
-  },
-  "deleteAccount": {
-    "confirmPassword": "Confirm with your password",
-    "deleteAccount": "Delete the account"
-  },
-  "editPassword": {
-    "oldPassword": "Old password",
-    "newPassword": "New password",
-    "repeatPassword": "Repeat password",
-    "strength": "Strength",
-    "editPassword": "Edit password"
-  },
-  "userParams": {
-    "editPassword": "Edit the password",
-    "peditPassword": "We will not can help you if you forgot your password. So, it is recommended to write your password somewhere.",
-    "deleteAccount": "Delete your account",
-    "pdeleteAccount": "THE DELETION OF YOUR ACCOUNT WILL BE DEFINITIVE.",
-    "passwordDeleteAccount": "Enter your password to confirm the deletion of your account."
-  }
+
+  "_templates": "application",
+    "forbidden": {
+      "noAccess": "You don't have acces to this page",
+      "backHome": "Back to the home"
+    },
+    "notFound": {
+      "noAddress": "Sorry, we can't find a page at this address.",
+      "backHome": "Back to the home"
+    },
+    "workInProgress": {
+      "nofunction": "This feature is not yet enable",
+      "allow": "It will allow :",
+      "infos": "Additionals informations:"
+    },
+
+  "_templates": "includes",
+    "menuProject": {
+      "home": "Home",
+      "forum": "Forum",
+      "params": "Parameters",
+      "calendar": "Calendar",
+      "tasks": "Tasks Lists",
+      "maps": "Maps",
+      "members": "Members"
+    },
+    "menu": {
+      "param": "Parameters",
+      "logout": "Log Out",
+      "noProject": "Currently, you have not join project.",
+      "clic": "You can clic on the button below to create a project or wait an invitation to a existing project.",
+      "decryption": "Decryption of your projects list.",
+      "newProject": "New Project"
+    },
+    "accessDenied": {
+      "denied": "Access denied",
+      "noAccess": "You can't access to this page! Please login."
+    },
+
+  "_templates": "landingPage",
+    "landingHead": {
+      "aims": "Purposes",
+      "features": "Features",
+      "roadMap": "Road Map",
+      "contact": "Contact",
+      "login": "Login",
+      "signUp": "Sign Up",
+      "Logout": "Logout"
+    },
+    "landingAim": {
+      "ourPurpose": "OUR PURPOSE",
+      "purpose": "Develop a tool to support transition from a money society collapsing to a model based on the free exchange, the sharing and the collaboration between humans.",
+      "3DevPhases": "THREE PHASES OF DEVELOPMENT",
+      "createTool": "Create a tool to manage project opened to everybody.",
+      "cTool": "A tool that will enable to organize different groups and associations efficiently. A tool encrypted, free, open-source, taking aim at the 'horizontality'in the management of project.",
+      "doOfSystemD": "Make SystemD the social network of free exchange project.",
+      "dOfSystD": "Creation of interfaces to do a meeting place through differents projects: Search geolocated by skills-interests, encrypted instant messaging, shared blog, etc...",
+      "developFreeNetwork": "Develop a free and sharing network",
+      "dFreeNetwork": "Allow users and projects to share their resources in order to create a big free and non-commercial network."
+    },
+    "landingContact": {
+      "github": "Follow the progress of project, make issues and pull-requests.",
+      "email": "Contact-me by e-mail to share yours observations, ideas, suggestions, propositions, ...",
+      "chat": "Join us on the chat to discuss with the team of project."
+    },
+    "landingPlus": {
+      "anonymous": "ANONYMOUS",
+      "panonymous": "Login with a pseudo, no need email, and use a tor-browser for more anonymity.",
+      "free": "FREE",
+      "pfree": "How imagine differently a platform whose the purpose is the promotion of free exchange between humans?",
+      "encrypted": "ENCRYPTED",
+      "pencrypted": "Contents shared and the list of the projects you have selected are encrypted \"end-to-end\". ",
+      "signin": "Sign In"
+    },
+    "landingRoadmap": {
+      "roadmap": "ROADMAP",
+      "firstPhase": "FIRST PHASE",
+      "pfirstPhase": "Interface to make user account and connection to platform.",
+      "p2firstPhase": "Interface to change user profile.",
+      "p3firstPhase": "Interface to create project.",
+      "p4firstPhase": "Invitation for projects and to manage members.",
+      "p5firstPhase": "Creation of forum by project.",
+      "p6firstPhase": "Calendar participative for each project.",
+      "p7firstPhase": "List of ergonomics tasks for each project.",
+      "p8firstPhase": "Interface to support or participate at SystemD",
+      "secondPhase": "SECOND PHASE",
+      "psecondPhase": "Interface to select his skills for each users.",
+      "p2secondPhase": "Interface to select his interests for each users.",
+      "p3secondPhase": "Taking into consideration of geolocation.",
+      "p4secondPhase": "Advanced research tools to research potentials contributors / interstings projects.",
+      "p5secondPhase": "Instant messaging inter-users and inter-projects.",
+      "p6secondPhase": "Personnal blog and project blog.",
+      "p7secondPhase": "Interactive map module for projects.",
+      "thirdPhase": "THIRD PHASE",
+      "pthirdPhase": "Taking of consideration of  issues and improvements.",
+      "p2thirdPhase": "Interface to list shared materials assets.",
+      "p3thirdPhase": "Interface to research assets.",
+      "p4thirdPhase": "Possibility to make advertisements for personals and projects requirements.",
+      "p5thirdPhase": "Applications IOS, ANDROID and DESKTOP",
+      "p6thirdPhase": "Module of planning Scrum",
+      "signin": "Sign In"
+    },
+    "landingTitle": {
+      "h3title": "Encrypted platform of collaboratives and free projects",
+      "ptitle": "Make projects, join your friends, and take advantage of free and secure tools to organize your association or group together.",
+      "signin": "Sign In"
+    },
+    "landingTools": {
+      "calendar": "SHARED CALENDAR",
+      "pcalendar": "To plan with your group the next events of your project.",
+      "taskList": "TASKS LIST",
+      "ptaskList": "To see the progress of the project and to select tasks interactively by the participants.",
+      "forum": "FORUM",
+      "pforum": "Communicate together, by themes or not.",
+      "modularTools": "MODULARS TOOLS",
+      "pmodularTools": "Interactives map, planning in agile méthod, and others tools will develop.",
+      "simpleTools": "SECURE AND SIMPLE TOOLS",
+      "psimpleTools": "user-friendly organization tools and encrypted content for optimum privacy."
+    },
+
+  "_templates": "loginPage",
+    "loginForm": {
+      "userName": "User Name",
+      "password": "Password",
+      "connection": "Connection"
+    },
+    "signinForm": {
+      "userNameChoice": "Choice a username",
+      "passwordChoice": "Password",
+      "passwordRepeat": "Repeat password",
+      "accountCreate": "Create an account"
+    },
+    "signinContainer": {
+      "psignin": "System-D offers you a free collaborative workspace and totally",
+      "linkSignin": "https://en.wikipedia.org/wiki/End-to-end_encryption",
+      "endtoendencrypted": "end-to-end encrypted",
+      "p2signin": "Like Telegram or Signal, only you and the members of project will can decrypt and read the contents you post, even developers will not can.",
+      "next": "Next",
+      "p3signin": "And also",
+      "p3-1signin": "System-D keep the Anonymity",
+      "p3-2signin": " of his users : neither email required or personals informations. However we will not can ",
+      "p3-3signin": "help you if you forgot your password.",
+      "p3-4signin": "So, it is recommended:",
+      "spanSignin": "Write somewhere your password."
+    },
+    "loginPage": {
+      "signin": "Sign In",
+      "connection": "Connection",
+      "backToHome": "Back to home"
+    },
+
+  "_templates": "Project",
+    "newProject": {
+      "createProject": "Create a project",
+      "nameProject": "Project's name",
+      "create": "Create"
+    },
+    "projectHome": {
+      "projectDescription": "Project description"
+    },
+    "editProjectAvatar": {
+      "edit": "Edit avatar",
+      "delete": "Delete avatar",
+      "OK": "OK"
+    },
+    "editProjectDescription": {
+      "label": "Projet description"
+    },
+    "projectParams": {
+      "publicInfos": "Informations publiques"
+    },
+    "projectLayout": {
+      "decrypting1": "Projet informations deciphering"
+    },
+    
+  "_templates": "users",
+    "deleteAccount": {
+      "confirmPassword": "Confirm with your password",
+      "deleteAccount": "Delete the account"
+    },
+    "editAvatar": {
+      "edit": "Edit avatar",
+      "delete": "Delete avatar",
+      "OK": "OK"
+    },
+    "editPassword": {
+      "oldPassword": "Old password",
+      "newPassword": "New password",
+      "repeatPassword": "Repeat password",
+      "strength": "Strength",
+      "editPassword": "Edit password"
+    },
+    "userParams": {
+      "editPassword": "Edit the password",
+      "peditPassword": "We will not can help you if you forgot your password. So, it is recommended to write your password somewhere.",
+      "deleteAccount": "Delete your account",
+      "pdeleteAccount": "THE DELETION OF YOUR ACCOUNT WILL BE DEFINITIVE.",
+      "passwordDeleteAccount": "Enter your password to confirm the deletion of your account."
+    }
 }
