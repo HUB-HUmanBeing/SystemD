@@ -126,11 +126,24 @@
       "password": "Password",
       "connection": "Connection"
     },
+    "loginFormJs": {
+      "key": "Recovery and decrypting the private key",
+      "session": "Initialisation new crypted session",
+      "welcome": "Welcome to System-D"
+    },
     "signinForm": {
       "userNameChoice": "Choice a username",
       "passwordChoice": "Password",
       "passwordRepeat": "Repeat password",
       "accountCreate": "Create an account"
+    },
+    "signinFormJs": {
+      "error": "There is an error",
+      "name4": "your username require 4 characters minimum",
+      "name40": "your username require 40 characters maximum",
+      "errmail": "your username can't be an email address",
+      "alreadyTaken": "this username already exists",
+      "putName": "Please, put your username"
     },
     "signinContainer": {
       "psignin": "System-D offers you a free collaborative workspace and totally",

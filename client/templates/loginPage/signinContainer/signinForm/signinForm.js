@@ -1,5 +1,4 @@
 import hubCrypto from '/client/lib/hubCrypto'
-
 import cryptoTools from "../../../../lib/cryptoTools";
 /**
  * Object in order to validate the signin form
@@ -14,7 +13,7 @@ const validateSigninForm = {
     checkUnicity(username, callback) {
         Meteor.call('alreadyExists', username, function (error, result) {
             if (error) {
-                Materialize.toast("Une erreur s'est produite", 6000, 'red darken-3')
+                Materialize.toast(__('loginFormJs.error'), 6000, 'red darken-3')
             } else {
                 callback(!result)
             }
@@ -32,13 +31,13 @@ const validateSigninForm = {
         const regexMail = RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
         if (signinUsername) {
             if (signinUsername.length < 4) {
-                errors.signinUsername = ["votre nom d'utilisateur doit comporter au moins 4 caractères"]
+                errors.signinUsername = [__('signinFormJs.name4')]
                 instance.errors.set(errors)
             } else if (signinUsername.length > 40) {
-                errors.signinUsername = ["votre nom d'utilisateur ne doit pas faire plus de 40 caractères"]
+                errors.signinUsername = [__('signinFormJs.name40')]
                 instance.errors.set(errors)
             } else if (regexMail.test(signinUsername)) {
-                errors.signinUsername = ["votre nom d'utilisateur ne peut être une adresse e-mail"]
+                errors.signinUsername = [__('signinFormJs.errmail')]
                 instance.errors.set(errors)
             } else {
                 this.checkUnicity(signinUsername, (isOk) => {
@@ -46,13 +45,13 @@ const validateSigninForm = {
                         errors.signinUsername = 'valid'
                         instance.errors.set(errors)
                     } else {
-                        errors.signinUsername = ["ce nom d'utilisateur est déjà pris"]
+                        errors.signinUsername = [__('signinFormJs.alreadyTaken')]
                         instance.errors.set(errors)
                     }
                 })
             }
         } else {
-            errors.signinUsername = ["veuillez inscrire votre nom d'utilisateur"]
+            errors.signinUsername = [__('signinFormJs.putName')]
             instance.errors.set(errors)
         }
     },

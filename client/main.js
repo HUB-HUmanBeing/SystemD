@@ -1,10 +1,10 @@
 // Client entry point, imports all client code
 import {Meteor} from "meteor/meteor";
+import i18n from 'meteor/universe:i18n';
 
 Session.set('userAvatars', {})
 Session.set('projectAvatars', {})
-// test of translation
-import i18n from 'meteor/universe:i18n';
+
 
 //fonction de récuperation de la locale à utiliser pour i18n
 function getLang() {

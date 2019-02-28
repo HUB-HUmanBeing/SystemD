@@ -17,8 +17,8 @@ Template.loginForm.events({
         let password = $('#loginPassword').val()
         //on soumet le login
         instance.loginComplete.set([
-            'Récupération et déchiffrement de la clef privée',
-            'Initialisation d\'une nouvelle session chiffrée'
+            __('loginFormJs.key'),
+            __('loginFormJs.session')
         ])
         Meteor.loginWithPassword(username, password, function (error) {
             // si il y a une erreur, on "toast" le message d'erreur
@@ -34,7 +34,7 @@ Template.loginForm.events({
                 })
                 Meteor.setTimeout(() => {
                     FlowRouter.go('/')
-                    Materialize.toast("Bienvenue sur System-D", 6000, 'light-bg')
+                    Materialize.toast(__('loginFormJs.welcome'), 6000, 'light-bg')
 
                 }, 3000)
             }
