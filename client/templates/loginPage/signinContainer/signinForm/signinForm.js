@@ -73,8 +73,8 @@ const validateSigninForm = {
                 delay: 250,
                 tooltip: `
                 <div class="password-tooltip left-align" style="max-width: 200px">
-                    <p>Le chiffrement de vos contenus sur System-D est basé sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.</p>
-                    <p class="infoQuotes">Utilisez des <b>caractères spéciaux</b>, des <b>majuscules</b> et des <b>chiffres</b> afin d'augmenter la force de votre mot de passe.</p>
+                    <p>`+__('signinFormJs.crypt')+`</p>
+                    <p class="infoQuotes">`+__('signinFormJs.use')+`<b>`+__('signinFormJs.characters')+`</b>`+__('signinFormJs.des')+`<b>`+__('signinFormJs.capital')+`</b>`+__('signinFormJs.and')+`<b>`+__('signinFormJs.number')+`</b>`+__('signinFormJs.up')+`</p>
                 </div>
                 `,
                 html: true,
@@ -84,7 +84,7 @@ const validateSigninForm = {
         let errors = instance.errors.get()
         if (signinPassword) {
             if (passwordStrength < 10) {
-                errors.signinPassword = ["La force du mot de passe doit au moins être de 1O"]
+                errors.signinPassword = [__('signinFormJs.strength')]
                 instance.errors.set(errors)
             } else {
                 errors.signinPassword = 'valid'
@@ -92,14 +92,14 @@ const validateSigninForm = {
             }
             let signinPasswordRepeat = $('#signinPasswordRepeat').val();
             if (signinPassword !== signinPasswordRepeat) {
-                errors.signinPasswordRepeat = ["Les mots de passes ne sont pas identiques"]
+                errors.signinPasswordRepeat = [__('signinFormJs.samePwd')]
                 instance.errors.set(errors)
             } else {
                 errors.signinPasswordRepeat = 'valid'
                 instance.errors.set(errors)
             }
         } else {
-            errors.signinPassword = ["Veuillez saisir un mot de passe"]
+            errors.signinPassword = [__('signinFormJs.typePwd')]
             instance.errors.set(errors)
         }
     }
@@ -114,10 +114,10 @@ const validateSigninForm = {
         let signinPasswordRepeat = $('#signinPasswordRepeat').val();
         let errors = instance.errors.get()
         if (!signinPasswordRepeat) {
-            errors.signinPasswordRepeat = ["Veuillez confirmer votre mot de passe"]
+            errors.signinPasswordRepeat = [__('signinFormJs.confirm')]
             instance.errors.set(errors)
         } else if (signinPassword !== signinPasswordRepeat) {
-            errors.signinPasswordRepeat = ["Les mots de passes ne sont pas identiques"]
+            errors.signinPasswordRepeat = [__('signinFormJs.samePwd')]
             instance.errors.set(errors)
         } else {
             errors.signinPasswordRepeat = 'valid'
@@ -139,7 +139,7 @@ const validateSigninForm = {
             if (errors[key] != "valid") {
                 isValid = false
                 if (errorList.length == 0) {
-                    errorList.push("Le formulaire d'inscription n'est pas valide")
+                    errorList.push(__('signinFormJs.form'))
                 }
                 if (errors[key].length) {
                     errorList = [...errorList, ...errors[key]]
@@ -149,7 +149,7 @@ const validateSigninForm = {
             }
         })
         if (missingFields) {
-            errorList.push("Il manque des informations")
+            errorList.push(__('signinFormJs.miss'))
         }
         if (errorList.length) {
             errorList.forEach((err, i) => {
@@ -206,9 +206,9 @@ Template.signinForm.events({
             //on génére les clefs de ckiffrement
             //ca lance le loader avec les infos de chiffrement pour l'utilisateur
             instance.signinComplete.set([
-                'Génération des clefs de chiffrement',
-                'Création du compte utilisateur',
-                'Initialisation d\'une nouvelle session chiffrée'
+                __('signinFormJs.generation'),
+                __('signinFormJs.creation'),
+                __('signinFormJs.initialization')
             ])
             hubCrypto.generateUserAsymKeys(password, username, (userAsymKeys) => {
                 //on préformate l'objet a envoyer
@@ -234,7 +234,7 @@ Template.signinForm.events({
                                             hubCrypto.initCryptoSession(hashedPassword, username, () => {
                                                 //si tout va bien on redirige vers la page pour completer le profil
                                                 FlowRouter.go('/user-params')
-                                                Materialize.toast("Bienvenue sur System-D", 6000, 'lighter-bg')
+                                                Materialize.toast(__('loginFormJs.welcome'), 6000, 'lighter-bg')
                                             })
                                         })
                                     } )
