@@ -187,6 +187,21 @@
       "nameProject": "Nom du projet",
       "create": "Créer"
     },
+    "newProjectJs":{
+      "error": "Une erreur s'est produite",
+      "name4": "votre nom de projet doit comporter au moins 4 caractères",
+      "name50": "votre nom de projet ne doit pas faire plus de 50 caractères",
+      "errmail": "votre nom de projet ne peut être une adresse e-mail",
+      "alreadyTaken": "ce nom de projet est déjà pris",
+      "nameProject": "veuillez donner un nom à votre projet",
+      "errForm": "Le formulaire de création de projet n'est pas valide",
+      "missInfo": "Il manque des informations",
+      "generation": "Génération des clefs de chiffrement du projet",
+      "creation": "Anonymisation de la liste de participants",
+      "initialization": "Connexion chiffrée au projet",
+      "theProject": "Le projet ",
+      "created": " a été créé."
+    },
     "projectHome": {
       "projectDescription": "Description du projet"
     },

@@ -13,7 +13,7 @@ const validateNewProjectForm = {
         Meteor.call('projectNameAlreadyExists', projectName, function (error, result) {
             if (error) {
                 console.log(error)
-                Materialize.toast("Une erreur s'est produite", 6000, 'red darken-3')
+                Materialize.toast(__('newProjectJs.error'), 6000, 'red darken-3')
             } else {
                 callback(!result)
             }
@@ -31,13 +31,13 @@ const validateNewProjectForm = {
         const regexMail = RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
         if (projectName) {
             if (projectName.length < 4) {
-                errors.projectName = ["votre nom de projet doit comporter au moins 4 caractères"]
+                errors.projectName = [__('newProjectJs.name4')]
                 instance.errors.set(errors)
             } else if (projectName.length > 50) {
-                errors.projectName = ["votre nom de projet ne doit pas faire plus de 50 caractères"]
+                errors.projectName = [__('newProjectJs.name50')]
                 instance.errors.set(errors)
             } else if (regexMail.test(projectName)) {
-                errors.projectName = ["votre nom de projet ne peut être une adresse e-mail"]
+                errors.projectName = [__('newProjectJs.errmail')]
                 instance.errors.set(errors)
             } else {
                 this.checkUnicity(projectName, (isOk) => {
@@ -45,13 +45,13 @@ const validateNewProjectForm = {
                         errors.projectName = 'valid'
                         instance.errors.set(errors)
                     } else {
-                        errors.projectName = ["ce nom de projet est déjà pris"]
+                        errors.projectName = [__('newProjectJs.alreadyTaken')]
                         instance.errors.set(errors)
                     }
                 })
             }
         } else {
-            errors.projectName = ["veuillez donner un nom à votre projet"]
+            errors.projectName = [__('newProjectJs.nameProject')]
             instance.errors.set(errors)
         }
     },
@@ -69,7 +69,7 @@ const validateNewProjectForm = {
             if (errors[key] != "valid") {
                 isValid = false
                 if (errorList.length == 0) {
-                    errorList.push("Le formulaire de création de projet n'est pas valide")
+                    errorList.push(__('newProjectJs.errForm'))
                 }
                 if (errors[key].length) {
                     errorList = [...errorList, ...errors[key]]
@@ -79,7 +79,7 @@ const validateNewProjectForm = {
             }
         })
         if (missingFields) {
-            errorList.push("Il manque des informations")
+            errorList.push(__('newProjectJs.missInfo'))
         }
         if (errorList.length) {
             errorList.forEach((err, i) => {
@@ -129,9 +129,9 @@ Template.newProject.events({
             let projectName = $('#projectName').val();
             //on lance le visuel de chargement
             instance.newProjectComplete.set([
-                'Génération des clefs de chiffrement du projet',
-                'Anonymisation de la liste de participants',
-                'Connexion chiffrée au projet'
+                __('newProjectJs.generation'),
+                __('newProjectJs.creation'),
+                __('newProjectJs.initialization')
             ])
             //on genere un password administrateur
             let adminPassword = cryptoTools.generateRandomPassword()
@@ -193,7 +193,7 @@ Template.newProject.events({
                                             //on redirige
                                             FlowRouter.go('/project/' + createdProject._id +"/params")
                                             //on toast que tout s'est bien passé
-                                            Materialize.toast("Le projet " + projectName + " a été créé.", 6000, 'lighter-bg')
+                                            Materialize.toast(__('newProjectJs.theProject') + projectName + __('newProjectJs.created'), 6000, 'lighter-bg')
                                             //on referme le loader
                                             instance.newProjectComplete.set(null)
                                         }

@@ -143,7 +143,7 @@
       "name40": "your username require 40 characters maximum",
       "errmail": "your username can't be an email address",
       "alreadyTaken": "this username already exists",
-      "putName": "Please, put your username",
+      "putName": "Please, type your username",
       "crypt": "Encryption of your contents in System-D is based on your password, so you should use a strong password.",
       "use": "Use ",
       "characters": "specials characters",
@@ -186,6 +186,21 @@
       "createProject": "Create a project",
       "nameProject": "Project's name",
       "create": "Create"
+    },
+    "newProjectJs":{
+      "error": "There is an error",
+      "name4": "your project name require 4 characters minimum",
+      "name50": "your project name require 50 characters minimum",
+      "errmail": "your project name can't be an email address",
+      "alreadyTaken": "this project name already exists",
+      "nameProject": "Please, type your project name",
+      "errForm": "Registration form is not valid",
+      "missInfo": "It is missing informations",
+      "generation": "Generation of keys of encryption",
+      "creation": "Encryption of participants list",
+      "initialization": "Connection to new encrypted project",
+      "theProject": "The project ",
+      "created": " has been created."
     },
     "projectHome": {
       "projectDescription": "Project description"
