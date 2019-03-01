@@ -225,6 +225,10 @@
       "confirmPassword": "Confirm with your password",
       "deleteAccount": "Delete the account"
     },
+    "deleteAccountJs": {
+      "error": "There is an error",
+      "deletedAccount": "Your user account has been deleted définitivement"
+    },
     "editAvatar": {
       "edit": "Edit avatar",
       "delete": "Delete avatar",
@@ -236,6 +240,26 @@
       "repeatPassword": "Repeat password",
       "strength": "Strength",
       "editPassword": "Edit password"
+    },
+    "editPasswordJs": {
+      "previousPwd": "please, enter your previous password",
+      "crypt": "Encryption of your contents in System-D is based on your password, so you should use a strong password.",
+      "use": "Use ",
+      "characters": "specials characters",
+      "des": ", ",
+      "capital": "capitals",
+      "and": " and ",
+      "number": "numbers",
+      "up": " in order to increase the strength of your password.",
+      "strength": "The strength of password must be at least 10",
+      "samePwd": "Passwords are not the same",
+      "typePwd": "Please, type a password",
+      "confirm": "Please, confirm your password",
+      "form": "Registration form is not valid",
+      "miss": "It is missing informations",
+      "pwdChange": "Changing password",
+      "encryptionKey": "Encryption of private key from new password",
+      "initialization": "Initialization of encrypted session again"
     },
     "userParams": {
       "editPassword": "Edit the password",

@@ -225,6 +225,10 @@
       "confirmPassword": "Confirmer avec votre mot de passe",
       "deleteAccount": "Supprimer le compte"
     },
+    "deleteAccountJs": {
+      "error": "une erreur s'est produite",
+      "deletedAccount": "Votre compte utilisateur à été définitivement supprimé"
+    },
     "editAvatar": {
       "edit": "Editer l'avatar",
       "delete": "Supprimer l'avatar",
@@ -236,6 +240,26 @@
       "repeatPassword": "Répéter mot de passe",
       "strength": "Force",
       "editPassword": "Modifier mot de passe"
+    },
+    "editPasswordJs": {
+      "previousPwd": "veuillez entrer votre précédent mot de passe",
+      "crypt": "Le chiffrement de vos contenus sur System-D est basé sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.",
+      "use": "Utilisez des ",
+      "characters": "caractères spéciaux",
+      "des": ", des ",
+      "capital": "majuscules",
+      "and": " et des ",
+      "number": "chiffres",
+      "up": " afin d'augmenter la force de votre mot de passe.",
+      "strength": "La force du mot de passe doit au moins être de 1O",
+      "samePwd": "Les mots de passes ne sont pas identiques",
+      "typePwd": "Veuillez saisir un mot de passe",
+      "confirm": "Veuillez confirmer votre mot de passe",
+      "form": "Le formulaire d'inscription n'est pas valide",
+      "miss": "Il manque des informations",
+      "pwdChange": "Changement du mot de passe",
+      "encryptionKey": "Chiffrement de la clef privée a partir du nouveau mot de passe",
+      "initialization": "Rénitialisation de la session chiffrée"
     },
     "userParams": {
       "editPassword": "Modifier le mot de passe",
