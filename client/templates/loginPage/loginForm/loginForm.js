@@ -1,5 +1,6 @@
 import hubCrypto from "../../../lib/hubCrypto";
 import cryptoTools from "../../../lib/cryptoTools";
+import inviteController from "../../../lib/inviteController";
 
 Template.loginForm.helpers({
     //add you helpers here
@@ -30,6 +31,13 @@ Template.loginForm.events({
                 cryptoTools.hash(password, (hashedPassword) => {
                     window.localStorage.setItem('hashedPassword', hashedPassword)
                     hubCrypto.initCryptoSession(hashedPassword, username, () => {
+                        let invitationId= FlowRouter.current().queryParams.invitationId
+                        let invitationPassword = FlowRouter.current().queryParams.password
+                        if(invitationId && invitationPassword ){
+                            inviteController.acceptInvitationId(invitationId,password,()=>{
+                                Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'light-bg')
+                            })
+                        }
                     })
                 })
                 Meteor.setTimeout(() => {

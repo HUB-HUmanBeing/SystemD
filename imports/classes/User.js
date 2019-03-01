@@ -17,7 +17,7 @@ const ProjectUser = Class.create({
             type:String
         },
         asymEnc_role:{
-            type: String
+            type: String,
         },
         asymEnc_adminPassword:{
             type: String

@@ -50,6 +50,7 @@
     margin-bottom: 30vh;
 
     li {
+      margin: 0 !important;
       box-shadow: none;
 
       &.active {
@@ -61,7 +62,7 @@
     }
 
     .collapsible-body {
-      padding: 15px;
+      padding: 5px 15px;
       border-bottom: none;
     }
 
@@ -71,8 +72,9 @@
       transition: 0.3s ease-out;
       border: none;
       display: block;
-      padding: 18px 14px;
-      font-size: 1.1em;
+      padding: 10px 14px;
+      font-size: 1.2em;
+
 
       .hr {
         margin: 15px 0 0 0 !important;

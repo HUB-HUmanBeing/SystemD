@@ -2,48 +2,60 @@
 
 .general-menu {
   padding: 0 0px !important;
-    height: 100%;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-#menuHeader{
-  background: linear-gradient(to bottom, $contrasted-plus-bg 0%,$contrasted-bg 100%);
-}
-  #menuProjectsContainer{
+
+  #menuHeader {
+    background: linear-gradient(to bottom, $contrasted-plus-bg 0%, $contrasted-bg 100%);
+  }
+
+  #menuProjectsContainer {
 
     height: calc(100vh - 110px);
-padding-bottom:200px;
-    .menuProjectsScrollbar{
-margin-top: -5px;
+    padding-bottom: 200px;
+
+    .menuProjectsScrollbar {
+      margin-top: -5px;
     }
   }
 
+  #mobileMenuProjectsContainer {
+    min-height: 95vh;
+  }
+
   .currentuser-infos {
-#userOptions{
-  position: relative;
-  z-index: 399;
-  top:115px !important;
-}
+    #userOptions {
+      position: relative;
+      z-index: 399;
+      top: 115px !important;
+    }
+
     .dropdown-button {
       padding: 0px 5px;
       cursor: pointer;
-      *{
+
+      * {
         transition: .3s ease-out;
       }
+
       transition: .3s ease-out;
-      &:hover, &.active{
-        background-color: rgba($contrasted-bg, .5);
-        *{
+
+      &:hover, &.active {
+        * {
           color: $minus-color;
         }
-        .elipsis{
+
+        .elipsis {
           width: auto;
           opacity: 1;
           right: 0;
         }
       }
-      .elipsis{
-        padding: 0px 10px 0px 0px ;
+
+      .elipsis {
+        padding: 0px 10px 0px 0px;
         font-size: 1em;
         margin-bottom: -10px;
         position: relative;
@@ -53,12 +65,13 @@ margin-top: -5px;
         transition: 0.3s ease-out;
         text-align: right;
       }
+
       .material-icons {
         position: relative;
         bottom: 0px;
 
-        left:2px;
-        padding:  0px;
+        left: 2px;
+        padding: 0px;
 
       }
     }
@@ -81,16 +94,20 @@ margin-top: -5px;
     .dropdown-content {
       li {
         min-height: 35px !important;
-        *{
+
+        * {
           font-size: 1.05em;
         }
+
         &:hover {
           background-color: $lighter-bg;
           color: $plus-color;
+
           * {
             color: $plus-color !important;
           }
         }
+
         a {
           padding: 10px 20px;
           color: $main-color !important;

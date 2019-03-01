@@ -24,8 +24,6 @@ Template.editProjectDescription.events({
                     Meteor.setTimeout(()=>{
                         instance.status.set('check')
                     },1000)
-
-                    console.log(res)
                 }
 
             })

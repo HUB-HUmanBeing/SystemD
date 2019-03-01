@@ -3,7 +3,6 @@ import cryptoTools from "../../../../lib/cryptoTools";
 import Project from "../../../../../imports/classes/Project";
 import Invitation from "../../../../../imports/classes/Invitation";
 import QRious from 'qrious'
-import moment from "moment";
 
 Template.showInvitation.helpers({
     //add you helpers here
@@ -31,18 +30,6 @@ Template.showInvitation.helpers({
     copied: function () {
         return Template.instance().copied.get()
     },
-    decryptedMessage: function () {
-        return Template.instance().decryptedMessage.get()
-    },
-    validityDurationLeft: function () {
-        let invitation = Invitation.findOne(Template.instance().invitationId)
-        let serverDate = Template.instance().serverDate.get()
-        if (serverDate && invitation) {
-            let elapsingDuration = new moment(invitation.createdAt).add(invitation.validityDuration, "h").diff(new moment(serverDate))
-            return moment.duration(elapsingDuration).humanize()
-        }
-
-    }
 });
 
 Template.showInvitation.events({
@@ -97,17 +84,7 @@ Template.showInvitation.onCreated(function () {
     this.invitationId = FlowRouter.current().params.invitationId
     this.decryptedInvitPassword = new ReactiveVar(null)
     this.magicLink = new ReactiveVar("")
-    this.serverDate = new ReactiveVar()
-    this.decryptedMessage = new ReactiveVar("")
     this.copied = new ReactiveVar(false)
-    //on récupere la date du serveur
-    Meteor.call("getServerDate", (err, date) => {
-        if (err) {
-            console.log(err)
-        } else {
-            this.serverDate.set(date)
-        }
-    })
     //récupération et déchiffrement de l'invitation
     Tracker.autorun(() => {
         let currentUserProject = projectController.getCurrentUserProject(this.projectId)
@@ -127,20 +104,13 @@ Template.showInvitation.onCreated(function () {
                 cryptoTools.importSymKey(Session.get("currentProjectSimKey"), currentProject.name, projectSymKey => {
                     cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(currentInvitationPassword), projectSymKey, currentProject.name, (decryptedInvitPassword) => {
                         this.decryptedInvitPassword.set(decryptedInvitPassword)
-                        this.magicLink.set(Meteor.absoluteUrl() + "invitation/" + this.invitationId + "&password=" + decryptedInvitPassword)
+                        this.magicLink.set(Meteor.absoluteUrl() + "invitation/" + this.invitationId + "?password=" + decryptedInvitPassword)
                         //on souscrit à l'invitation
                         Meteor.subscribe('invitation', this.invitationId, cryptoTools.hash(decryptedInvitPassword), (err) => {
                             if (err) {
                                 console.log(err)
 
                             } else {
-                                //on déchiffre le message d'invitation
-                                let symEnc_message = Invitation.findOne(this.invitationId).symEnc_message
-                                cryptoTools.generateSimKeyFromPassphrase(decryptedInvitPassword, (invitationSymKey) => {
-                                    cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(symEnc_message), invitationSymKey, currentProject._id, (decryptedMessage) => {
-                                        this.decryptedMessage.set(decryptedMessage)
-                                    })
-                                })
 
                             }
                         })

@@ -1,5 +1,9 @@
 @import "{}/client/scss/variables.scss";
 
+body, html{
+  background-color: $main-bg;
+
+}
 // POSITIONNEMENT
 .no-margin{
   margin: 0 !important;
@@ -157,6 +161,11 @@
   background-color: $focus-color;
 }
 .backFooter{
+  position: relative;
+  top: 0;
+  left: -5px;
+  height: 1.4em;
+  font-size: small;
   i{
     position: relative;
     top:-2px;
@@ -166,4 +175,16 @@
 
 .collapsible-header{
   text-transform: uppercase;
+}
+
+.character-counter{
+  position: relative;
+  top: -25px;
+}
+.breakLineContent{
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+.rounded{
+  border-radius: 10px;
 }

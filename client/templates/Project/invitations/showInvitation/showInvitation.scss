@@ -16,7 +16,7 @@
   .showInvitationContainer {
     background-color: rgba($contrasted-bg, 0.8);
     max-width: 90%;
-    width: 800px;
+    width: 500px;
     margin: 5vw 0;
     left: 50%;
     transform: translate(-50%, 0);
@@ -44,7 +44,7 @@
         width: 100%;
         overflow-x: scroll;
         font-size: 1.2em;
-          text-wrap: none;
+        white-space: nowrap;
       }
 
       .copied {
@@ -68,7 +68,7 @@
     }
     .qrcode{
       canvas{
-        max-width: 300px;
+        max-width: 15em;
         width: 100%;
         height: auto;
         border-radius: 5px;
@@ -76,6 +76,13 @@
         background-color: white;
         border: 3px solid $blue-highlight-color;
         overflow: hidden;
+      }
+    }
+    .red{
+      opacity: 0.7;
+      transition: 0.3s;
+      &:hover{
+        opacity: 1;
       }
     }
     .detail{

@@ -12,7 +12,7 @@ Project.extend({
          */
         async getUpdateProjectAvatarUrl(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
-            let currentProject = Project.findOne(this.projectId)
+            let currentProject = Project.findOne(this._id)
             check(currentProject.isAdmin(authInfo), true)
 
             const result = await minioTools.client.presignedPutObject('project-avatars', currentProject._id + '.jpg')

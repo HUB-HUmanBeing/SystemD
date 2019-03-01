@@ -35,6 +35,7 @@
     "label": "Projet description"
   },
   "projectParams": {
+    "createInvitelink" : "New invitation link",
     "publicInfos": "Public informations",
     "invitationList": "Invitation links"
   },
@@ -139,7 +140,8 @@
   "loginPage": {
     "signin": "Sign In",
     "connection": "Connection",
-    "backToHome": "Back to home"
+    "backToHome": "Back to home",
+    "invitationAccepted": "Invitation accepted"
   },
   "newProject": {
     "createProject": "Create a project",
@@ -182,29 +184,20 @@
     "title" : "Invitation link",
     "infoLink" : "copy this link and send it to the person(s) you want to invite in your project.",
     "copied": "Invitation link copied in clipboard",
-    "share" : "Share",
     "invitTitle" : "Invitation to join the project ",
     "invitMessage": "You have been invited by someone to join a project on System-D : the free cyphered collaborative web-platform.Click on the link below to see the invitation.",
     "infoQr": "If the person you want to invite is near you,  he or she can scan this QR-code to access the invitation.",
-    "infoDetail": "Invitation detail",
-    "createdAt": "Created at",
-    "createdBy": "By",
-    "expireIn" : "Valid during",
-    "remaining": "valid for",
-    "user" : "user",
-    "users" : "users",
-    "message" : "Invitation message",
     "infoDestroy" : "By deleting the invitation, You delete the possibility to use the invitation link for access the cypher keys of your project.",
     "destroy" : "Delete invitation link",
     "backToParams": "Back to project parameters",
     "deleted": "The invitation link has been removed"
   },
   "invitationList": {
-    "from": "Invitation created at",
+    "from": "Invitation link created at",
     "by": "Created by",
     "expireIn": "Expires in",
     "remaining": "Remaining invitations",
     "noInvits": "There is not any valid invitation link.",
-    "newInvitation": "Generate a new invitation link"
+    "newInvitation": "Generate a new invitation link."
   }
 }

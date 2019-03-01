@@ -16,7 +16,7 @@
   background-color:$lighter-bg;
 }
 .focus-bg{
-  color: $focus-color;
+  background-color: $focus-color ;
 }
 
 .main-color, .main-color *{
@@ -35,7 +35,7 @@ color: $minus-color;
  color: $info-color;
 }
 .contrasted-color{
-  background-color: $contrasted-bg;
+  color: $contrasted-bg !important;
 }
 
 .focus-border{

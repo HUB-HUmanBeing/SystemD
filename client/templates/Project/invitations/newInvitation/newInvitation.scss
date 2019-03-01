@@ -36,9 +36,6 @@
         border-radius: 10px;
         padding: 10px;
       }
-      .character-counter{
-        margin-top: -25px;
-      }
       label[for=remaining] {
         font-size: 0.8rem;
       }
@@ -50,7 +47,7 @@
       }
 .infoQuotes{
   font-size: 0.9em;
-  margin: 0.1em;
+  margin: 0.1em  !important;
 }
       .dropdown-content {
         background-color: $main-bg;

@@ -35,6 +35,7 @@
     "label": "Description du projet"
   },
   "projectParams": {
+    "createInvitelink" : "Nouveau lien d'invitation",
     "publicInfos": "Informations publiques",
     "invitationList": "Liens d'invitations"
   },
@@ -139,7 +140,8 @@
   "loginPage": {
     "signin": "Inscription",
     "connection": "Connexion",
-    "backToHome": "Retour à l'acceuil"
+    "backToHome": "Retour à l'acceuil",
+    "invitationAccepted": "Invitation acceptée"
   },
   "newProject": {
     "createProject": "Créer un projet",
@@ -182,31 +184,38 @@
   },
   "showInvitation": {
     "title" : "Lien d'nvitation",
-    "infoLink" : "Copiez ce lien et envoyez le à la ou les personnes que vous souhaitez inviter.",
+    "infoLink" : "Copiez ce lien et envoyez-le à la ou les personnes que vous souhaitez inviter.",
     "copied": "Lien d'invitation copié dans le presse papier",
-    "share" : "Partager",
     "invitTitle" : "Invitation à rejoindre le projet ",
     "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs . Cliquez sur le lien pour voir l'invitation.",
-    "infoQr": "Si la personne à inviter est à vos coté, elle peut aussi scanner ce QR-code pour accéder à l'invitation.",
-    "infoDetail": "Détail de l'invitation",
-    "createdAt": "Créée le",
-    "createdBy": "Par",
-    "expireIn" : "Encore valide durant",
-    "remaining": "Valide pour encore",
-    "user" : "utilisateur",
-    "users" : "utilisateurs",
-    "message" : "Message d'invitation",
+    "infoQr": "Si la personne à inviter est à coté de vous, elle peut aussi flasher ce QR-code avec n'importe quelle application de lecture de QR-code pour accéder à l'invitation.",
     "infoDestroy" : "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux cléfs de chiffrement de votre projet.",
     "destroy" : "Supprimer le lien d'invitation",
     "backToParams": "Retour aux paramètres du projet",
     "deleted": "le lien d'invitation à été détruit"
   },
   "invitationList": {
-    "from": "Invitation créée le",
+    "from": "Lien d'invitation créé le",
     "by": "Créée par",
     "expireIn": "Expire dans",
     "remaining": "Invitations restantes",
     "noInvits": "Il n'y a aucun lien d'invitation en cours de validité.",
-    "newInvitation": "Générer un nouveau lien d'invitation"
+    "newInvitation": "Générer un nouveau lien d'invitation."
+  },
+  "invitation": {
+    "title": "Invitation à rejoindre un projet",
+    "moreInfo" : "Presentation de System-D",
+    "project": "Projet",
+    "userAlreadyInProject": "Vous participez déjà à ce projet",
+    "description": "Description du projet",
+    "noDescription": "Description non-renseignée",
+    "message": "Message d'invitation",
+    "decline": "Décliner",
+    "accept": "Accepter",
+    "noLongerExist": "Cette invitation est expirée",
+    "noLongerExistInfo": "Demandez à la personne qui vous a envoyé l'invitation de vous en renvoyer une nouvelle",
+    "needToLoginFirst": "Vous devez être connecté pour rejoindre un projet",
+    "needToLoginFirstInfo": "Cliquez sur le bouton pour vous connecter ou vous inscrire et rejoindre le projet.",
+    "needToLoginFirstButton": "S'enregistrer"
   }
 }

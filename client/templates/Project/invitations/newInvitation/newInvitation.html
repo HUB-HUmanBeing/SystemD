@@ -9,16 +9,16 @@
         <div class="contrasted-bg shadow newInvitationContainer  main-color">
             <h5 class="left-align">{{__ ".title"}}</h5>
             <div class="hr"></div>
-            <div class="row">
+            <div class="row no-margin">
                 <p class="infoQuotes left-align">
                     {{__ ".infoQuote"}}
                 </p>
             </div>
-            <div class="row no-margin">
+            <div class="row ">
                 {{#if newInvitationComplete}}
                     {{>encryptionLoader tasks=newInvitationComplete}}
                 {{else}}
-                    <form action="" id="newInvitationForm">
+                    <form action="" id="newInvitationForm" class="contrasted-plus-bg small-padding shadow rounded">
 
                         <div class="row no-margin">
 
@@ -41,25 +41,6 @@
                                 <p class="range-field">
                                     <input type="range" id="remaining" value="1" min="1" max="15"/>
                                 </p>
-                            </div>
-                        </div>
-                        <div class="row addMessage">
-                            <div class="col s9"><p>{{__ ".addMessage"}} :</p></div>
-                            <div class="col s3">
-                                <div class="switch">
-                                    <label>
-                                        <input type="checkbox" addMessage>
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row invitMessage"
-                             style="display: {{#if showInvitMessage}}block{{else}}none{{/if}};">
-                            <div class="input-field col s12">
-                    <textarea id="message" class="materialize-textarea" data-length="500"
-                              maxlength="500" placeholder=""></textarea>
-                                <label for="message">{{__ ".invitMessage"}}</label>
                             </div>
                         </div>
                         <div class="row right-align ">

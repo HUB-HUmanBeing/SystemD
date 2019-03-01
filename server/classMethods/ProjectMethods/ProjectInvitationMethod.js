@@ -21,12 +21,15 @@ Project.extend({
             check(currentProject.isAdmin(authInfo), true)
             check(invitationParams, {
                 projectId: String,
-                symEnc_message: Match.Maybe(String),
                 hashedPassword: String,
                 emittedBy: String,
                 symEnc_projectSymKey: String,
                 validityDuration: Number,
-                remaining: Number
+                remaining: Number,
+                invitationMembers : [{
+                    memberId: String,
+                    hashedAdminSignature: String
+                }]
             })
             //on hash le password
             invitationParams.hashedPassword = cryptoServer.hash(invitationParams.hashedPassword)

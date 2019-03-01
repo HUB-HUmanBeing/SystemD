@@ -52,7 +52,7 @@ Template.projectLayout.helpers({
                 isActive:isActive('members'),
             }
         ]
-        if(projectController.isAdmin(Template.currentData().project.asymEnc_projectId)){
+        if(projectController.isAdmin(Template.instance().currentProjectId.get())){
             sectionsList.push( {
                 name: __("menuProject.params"),
                 path: 'params',

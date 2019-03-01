@@ -20,84 +20,52 @@
                         {{__ ".infoLink"}}
                     </p>
 
-                    <div class="row relative">
+                    <div class="row relative no-margin">
                         <div class="magicLink relative shadow waves-effect waves-light"
                              style="{{#unless isDesktop}}padding-bottom: 10px;{{/unless}}" copyMagicLink>
                             <div class="magicLinkContent {{#if copied}}copied{{/if}}">{{magicLink}}</div>
                             <div class="absolute"><i class="material-icons " style="{{#if
-                                    copied}}color: #05a4be !important{{/if}}">{{#if copied}}done{{else}}content_copy{{/if}}</i></div>
+                                    copied}}color: #05a4be !important{{/if}}">{{#if copied}}
+                                done{{else}}content_copy{{/if}}</i></div>
                         </div>
                     </div>
                     {{#unless isDesktop}}
-                        <div class="row center-align">
-                            <a class="btn btnStandard  waves-effect waves-light" share>
-                                <i class="material-icons left">share</i>
-                                {{__ ".share"}}
+                        <div class="row center-align no-margin small-padding">
+                            <a class="btn btn-floating focus-bg btn-large waves-effect waves-light" share>
+                                <i class="material-icons left contrasted-color">share</i>
                             </a>
                         </div>
+                        {{else}}
+                        <div class="row "></div>
                     {{/unless}}
                 </div>
-
-
             </div>
-
             <div class="row no-margin">
-                <div class="col s12 m5  qrcode ">
+                <div class="col s12  qrcode ">
                     <div class="row">
                         <p class="infoQuotes left-align">
                             {{__ ".infoQr"}}
                         </p>
                         <canvas id="qrCode"></canvas>
                     </div>
-
-                </div>
-                <div class="col s12 offset-m1  m6 ">
-                    <div class="row no-margin">
-                        <p class="infoQuotes left-align">
-                            {{__ ".infoDetail"}}
-                        </p>
-                        <div class="row detail left-align no-margin">
-                            <p>
-                                <span class="invitLabel">{{__ ".createdAt"}} :</span>  {{formatDate
-                                    invitation.createdAt}}
-                            </p>
-                            <p>
-                                <span class="invitLabel">{{__ ".createdBy"}} :</span>  {{usernameFromMemberId
-                                    invitation.emittedBy}}
-                            </p>
-                            <p>
-                                <span class="invitLabel">{{__ ".expireIn"}} :</span>  {{validityDurationLeft}}
-                            </p>
-                            <p>
-                                <span class="invitLabel">{{__ ".remaining"}} :</span>  {{invitation.remaining}} {{#if
-                                    compare invitation.remaining ">" 2 }}{{__ ".users"}}{{else}}{{__ ".user"}}{{/if}}
-                            </p>
-                            {{#if decryptedMessage}}
-                                <p>
-                                    <span class="invitLabel">{{__ ".message"}} :</span>  {{decryptedMessage}}
-                                </p>
-                            {{/if}}
-                        </div>
-                    </div>
-
                 </div>
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12 contrasted-plus-bg small-padding shadow rounded">
                         <p class="infoQuotes left-align">
                             {{__ ".infoDestroy"}}
                         </p>
                         <div class="row center-align">
-                            <a class="btn red darken-2 center-align waves-effect waves-light shadow" deleteInvitation >
+                            <a class="btn red darken-4 center-align waves-effect waves-light shadow" deleteInvitation>
                                 <i class="material-icons left">delete</i>
                                 {{__ ".destroy"}}
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="backFooter left-align" style="padding: 0 10px;">
-                <a href="/project/{{currentProject._id}}/params" class=" link"><i class="material-icons left">arrow_back</i>{{__ '.backToParams'}}</a>
+                <a href="/project/{{currentProject._id}}/params" class=" link"><i
+                        class="material-icons left">arrow_back</i>{{__ '.backToParams'}}</a>
             </div>
         </div>
     </div>

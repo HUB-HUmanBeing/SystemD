@@ -1,16 +1,19 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Invitations from "../../lib/collections/Invitations";
 
+const InvitatioMember = Class.create({
+    name: 'InvitationMember',
+    fields:{
+        memberId: String,
+        hashedAdminSignature: String
 
+    }
+})
 
 const Invitation = Class.create({
     name: 'Invitation',
     collection: Invitations,
     fields: {
-        symEnc_message:{
-            type:String,
-            optional: true,
-        },
         hashedPassword: {
             type: String
         },
@@ -31,15 +34,20 @@ const Invitation = Class.create({
             }
         },
         validityDuration: {
-            type: Number
+            type: Number //in hour
         },
         remaining:{
             type: Number
         },
+        invitationMembers: [InvitatioMember]
 
     },
     helpers: {
-
+        isAlwaysValable(){
+            let remainingOk = this.remaining>0
+            let timeOK = Date.now()- this.createdAt.getTime() <this.validityDuration*3600*1000
+            return timeOK && remainingOk
+        }
     }
 
 });

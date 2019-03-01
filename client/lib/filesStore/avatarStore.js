@@ -12,7 +12,7 @@ const avatarStore = {
      * @returns {*}
      */
     getUserAvatar(userId) {
-        let avatars = Session.get('userAvatars')
+        let avatars = Session.get('userAvatars')||{}
 
         if (avatars && avatars[userId]) {
             return avatars[userId]

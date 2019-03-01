@@ -14,7 +14,10 @@ Template.projectAvatar.helpers({
         return  avatars.create(Template.currentData().projectId);
     },
     avatarUrl : function () {
-        return projectAvatarStore.getProjectAvatar(Template.currentData().projectId)
+        if(Template.currentData().projectId){
+            return projectAvatarStore.getProjectAvatar(Template.currentData().projectId)
+        }
+
     }
 });
 

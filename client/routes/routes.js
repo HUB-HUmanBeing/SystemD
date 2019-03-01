@@ -49,4 +49,18 @@ FlowRouter.route('/user-params', {
         BlazeLayout.render('mainLayout', {main: 'userParams'});
     },
 });
+/***********
+ * invitation Route
+ */
+FlowRouter.route('/invitation/:invitationId', {
+    name: 'App.userParams',
+    action() {
+        if (!Meteor.userId()) {
+            BlazeLayout.render('noLayout', {main: 'invitation'});
+        } else {
+            BlazeLayout.render('mainLayout', {main: 'invitation'});
+        }
+
+    },
+});
 

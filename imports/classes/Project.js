@@ -21,6 +21,9 @@ const ProjectMember = Class.create({
         },
         role: {
             type: String,
+            default: function () {
+                return "member";
+            }
         },
         symEnc_username: {
             type: String
