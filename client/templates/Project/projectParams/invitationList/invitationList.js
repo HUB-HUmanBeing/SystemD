@@ -1,4 +1,4 @@
-import projectController from "../../../../lib/projectController";
+import projectController from "../../../../lib/controllers/projectController";
 import Invitation from "../../../../../imports/classes/Invitation";
 import moment from "moment";
 

@@ -1,4 +1,4 @@
-import projectController from "../../../../lib/projectController";
+import projectController from "../../../../lib/controllers/projectController";
 import cryptoTools from "../../../../lib/cryptoTools";
 import Project from "../../../../../imports/classes/Project";
 import Invitation from "../../../../../imports/classes/Invitation";
@@ -92,7 +92,7 @@ Template.showInvitation.onCreated(function () {
             //on récupere le projet courant et la clef d'invitation chiffrée
             let currentProject = Project.findOne(this.projectId)
             let currentInvitationPassword = null
-            if (currentProject.private.invitations.length) {
+            if (currentProject && currentProject.private.invitations.length) {
                 currentProject.private.invitations.forEach(projectInvitation => {
                     if (projectInvitation.invitationId === this.invitationId) {
                         currentInvitationPassword = projectInvitation.symEnc_invitationPassword

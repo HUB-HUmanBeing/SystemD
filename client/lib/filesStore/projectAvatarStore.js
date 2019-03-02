@@ -11,7 +11,8 @@ const projectAvatarStore = {
      * @returns {*}
      */
     getProjectAvatar(projectId) {
-        let avatars = Session.get('projectAvatars')
+
+        let avatars = Session.get('projectAvatars')||{}
 
         if (avatars && avatars[projectId]) {
             return avatars[projectId]

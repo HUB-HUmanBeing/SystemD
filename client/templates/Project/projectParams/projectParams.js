@@ -1,5 +1,5 @@
 import Project from "/imports/classes/Project";
-import projectController from "../../../lib/projectController";
+import projectController from "../../../lib/controllers/projectController";
 
 Template.projectParams.helpers({
     //add you helpers here

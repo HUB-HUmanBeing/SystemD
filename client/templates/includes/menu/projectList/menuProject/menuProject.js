@@ -1,4 +1,4 @@
-import projectController from "../../../../../lib/projectController";
+import projectController from "../../../../../lib/controllers/projectController";
 
 Template.menuProject.helpers({
     //add you helpers here

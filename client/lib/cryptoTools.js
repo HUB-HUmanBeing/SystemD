@@ -57,7 +57,7 @@ const cryptoTools = {
         //3. Usage of the keys. (http://www.w3.org/TR/WebCryptoAPI/#cryptokey-interface-types)
         let promise_key = crypto.subtle.generateKey({
             name: "RSA-OAEP",
-            modulusLength: 4096,
+            modulusLength: 2048,
             publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
             hash: {name: "SHA-256"}
         }, true, ["encrypt", "decrypt"]);
@@ -150,7 +150,7 @@ const cryptoTools = {
     },
     //fonction permettant de generer une clef symétrique de 128 bits pour un chifrement en AES-CBC
     generateSimKey(callback) {
-        let promise_key = crypto.subtle.generateKey({name: "AES-CBC", length: 256}, true, ["encrypt", "decrypt"]);
+        let promise_key = crypto.subtle.generateKey({name: "AES-CBC", length: 128}, true, ["encrypt", "decrypt"]);
         promise_key.then(function (key) {
             callback(key);
         });

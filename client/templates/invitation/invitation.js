@@ -1,4 +1,4 @@
-import inviteController from "../../lib/inviteController";
+import inviteController from "../../lib/controllers/inviteController";
 import Project from "../../../imports/classes/Project";
 import hubCrypto from "../../lib/hubCrypto";
 
@@ -36,8 +36,10 @@ Template.invitation.events({
         event.preventDefault()
         if(Meteor.userId()){
             inviteController.acceptInvitation(instance.invitation.get(), instance.project.get(), instance.password, ()=>{
-                hubCrypto.decryptAndStoreProjectListInSession()
-                FlowRouter.go('/project/'+instance.project.get()+'/home')
+                hubCrypto.decryptAndStoreProjectListInSession(()=>{
+                    FlowRouter.go('/project/'+instance.project.get()._id+'/home')
+                })
+
             })
         }else{
             instance.needToLoginFirst.set(true)
@@ -57,6 +59,7 @@ Template.invitation.onCreated(function () {
     this.invitationId = FlowRouter.current().params.invitationId
     this.password = FlowRouter.current().queryParams.password
     this.needToLoginFirst = new ReactiveVar(false)
+    //on récupere notre invit et notre projet grace au controlleur
     inviteController.getCurrentInvitAndProject(this.invitationId, this.password,(invitation, project) => {
         if(invitation){
             this.invitation.set(invitation)

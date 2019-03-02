@@ -1,7 +1,7 @@
 import hubCrypto from '/client/lib/hubCrypto'
 
 import cryptoTools from "../../../../lib/cryptoTools";
-import inviteController from "../../../../lib/inviteController";
+import inviteController from "../../../../lib/controllers/inviteController";
 /**
  * Object in order to validate the signin form
  * @type {{checkUnicity(*, *): void, validateSigninPassword(*, *): void, isValid(*): *, validateSigninUsername(*, *): void, validateSigninPasswordRepeat(*, *): void}}
@@ -237,11 +237,14 @@ Template.signinForm.events({
                                                 let invitationId= FlowRouter.current().queryParams.invitationId
                                                 let invitationPassword = FlowRouter.current().queryParams.password
                                                 if(invitationId && invitationPassword ){
-                                                    inviteController.acceptInvitationId(invitationId,password,()=>{
-                                                        Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'light-bg')
-                                                        //si tout va bien on redirige vers la page pour completer le profil
-                                                        FlowRouter.go('/user-params')
-                                                        Materialize.toast("Bienvenue sur System-D", 6000, 'lighter-bg')
+                                                    inviteController.acceptInvitationId(invitationId,invitationPassword,()=>{
+                                                        hubCrypto.decryptAndStoreProjectListInSession(()=>{
+                                                            Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'light-bg')
+                                                            //si tout va bien on redirige vers la page pour completer le profil
+                                                            FlowRouter.go('/user-params')
+                                                            Materialize.toast("Bienvenue sur System-D", 6000, 'lighter-bg')
+                                                        })
+
                                                     })
                                                 }else{
                                                     //si tout va bien on redirige vers la page pour completer le profil

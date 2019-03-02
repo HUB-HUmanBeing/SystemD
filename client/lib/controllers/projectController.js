@@ -1,4 +1,4 @@
-import cryptoTools from "./cryptoTools";
+import cryptoTools from "../cryptoTools";
 
 const projectController = {
     getCurrentUserProject(projectId){

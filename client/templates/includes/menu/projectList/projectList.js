@@ -18,20 +18,18 @@ Template.projectList.helpers({
                 if (menuProjectsContainer && instance) {
                     if (Meteor.Device.isDesktop()) {
                         instance.bs = new BeautifyScrollbar(menuProjectsContainer);
-
-
                         Meteor.setTimeout(() => {
-                            if (!instance.scrollDone && instance.currentProjectId.get()) {
+                            if (!instance.scrollDone && instance.currentProjectId.get() && $("#menuProject-" + instance.currentProjectId.get()).offset()) {
                                 $('#menuProjectsContainer').animate({
                                     scrollTop: $("#menuProject-" + instance.currentProjectId.get()).offset().top - 160
                                 });
                                 instance.scrollDone = true
                             }
 
-                        })
+                        },200)
                     }else{
                         Meteor.setTimeout(() => {
-                            if (!instance.scrollDone && instance.currentProjectId.get()) {
+                            if (!instance.scrollDone && instance.currentProjectId.get() && $("#menuProject-" + instance.currentProjectId.get()).offset()) {
                                 $('.general-menu').animate({
                                     scrollTop: $("#menuProject-" + instance.currentProjectId.get()).offset().top - 300
                                 });

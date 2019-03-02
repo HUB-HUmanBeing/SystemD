@@ -22,6 +22,7 @@ Project.extend({
             check(invitationParams, {
                 projectId: String,
                 hashedPassword: String,
+                projectName: String,
                 emittedBy: String,
                 symEnc_projectSymKey: String,
                 validityDuration: Number,

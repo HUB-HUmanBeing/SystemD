@@ -2,7 +2,7 @@ import cryptoTools from "../../lib/cryptoTools";
 
 import hubCrypto from "../../lib/hubCrypto";
 import Project from "../../../imports/classes/Project";
-import projectController from "../../lib/projectController";
+import projectController from "../../lib/controllers/projectController";
 
 Template.projectLayout.helpers({
     //add you helpers here

@@ -1,5 +1,5 @@
 import hubCrypto from "../../../../lib/hubCrypto";
-import projectController from "../../../../lib/projectController";
+import projectController from "../../../../lib/controllers/projectController";
 
 Template.editProjectDescription.helpers({
     //add you helpers here

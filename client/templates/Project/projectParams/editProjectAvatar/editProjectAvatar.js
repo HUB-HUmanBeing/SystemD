@@ -3,7 +3,7 @@ import uploadFiles from "../../../../lib/uploadFiles";
 import hubCrypto from "../../../../lib/hubCrypto";
 import projectAvatarStore from "../../../../lib/filesStore/projectAvatarStore";
 import Project from "../../../../../imports/classes/Project";
-import projectController from "../../../../lib/projectController";
+import projectController from "../../../../lib/controllers/projectController";
 
 
 Template.editProjectAvatar.helpers({

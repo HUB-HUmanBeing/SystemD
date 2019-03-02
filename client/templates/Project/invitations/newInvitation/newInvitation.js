@@ -1,6 +1,6 @@
 import Project from "../../../../../imports/classes/Project";
 import cryptoTools from "../../../../lib/cryptoTools";
-import projectController from "../../../../lib/projectController";
+import projectController from "../../../../lib/controllers/projectController";
 import moment from 'moment'
 
 Template.newInvitation.helpers({
@@ -62,52 +62,53 @@ Template.newInvitation.events({
         cryptoTools.generateSimKeyFromPassphrase(password, (simKey) => {
             //on chiffre la clef de notre projet et le message avec cette clef issue du password
             cryptoTools.sim_encrypt_data(currentUserProject.asymEnc_projectSymKey, simKey, currentProject._id, (symEnc_projectSymKey) => {
-                    //on chiffre ensuite ce password avec notre clef symétrique de projet (pour pouvoir le stocker en base et le récuperer
-                    cryptoTools.importSymKey(Session.get("currentProjectSimKey"), currentUserProject.asymEnc_projectName, (projectSimKey) => {
-                        cryptoTools.sim_encrypt_data(password, projectSimKey, currentUserProject.asymEnc_projectName, (symEnc_invitationPassword) => {
-                            let invitationMembers = []
-                            for (let i = 0; i < remaining ; i++) {
-                                let newId = cryptoTools.generateId()
-                                invitationMembers.push({
+                //on chiffre ensuite ce password avec notre clef symétrique de projet (pour pouvoir le stocker en base et le récuperer
+                cryptoTools.importSymKey(Session.get("currentProjectSimKey"), currentUserProject.asymEnc_projectName, (projectSimKey) => {
+                    cryptoTools.sim_encrypt_data(password, projectSimKey, currentUserProject.asymEnc_projectName, (symEnc_invitationPassword) => {
+                        //on pré-crée des membres du projet dans lequel les utilisateurs recevant l'invitation vont piocher pour créer leurs parametre
+                        let invitationMembers = []
+                        for (let i = 0; i < remaining; i++) {
+                            let newId = cryptoTools.generateId()
+                            invitationMembers.push({
                                     memberId: newId,
-                                    hashedAdminSignature: cryptoTools.hash(newId + projectController.getCurrentUserProject(FlowRouter.current().params.projectId).asymEnc_adminPassword )
+                                    hashedAdminSignature: cryptoTools.hash(newId + projectController.getCurrentUserProject(FlowRouter.current().params.projectId).asymEnc_adminPassword)
                                 }
-
-                                )
-                            }
-                            //on prépare notre objet invitation a transmettre à la methode
-                            let invitation = {
-                                projectId: currentProject._id,
-                                hashedPassword: cryptoTools.hash(password),
-                                emittedBy: currentUserProject.asymEnc_memberId,
-                                symEnc_projectSymKey: cryptoTools.convertArrayBufferViewtoString(symEnc_projectSymKey),
-                                validityDuration: Number(validityDuration),
-                                remaining: Number(remaining),
-                                invitationMembers: invitationMembers
-                            }
-                            //et on crée l'invitation
-                            currentProject.callMethod(
-                                "createInvitation",
-                                //on s'authentifie
-                                projectController.getAuthInfo(FlowRouter.current().params.projectId),
-                                invitation, cryptoTools.convertArrayBufferViewtoString(symEnc_invitationPassword),
-                                (err, invitationId) => {
-                                    if (err) {
-                                        console.log(err)
-                                    } else {
-                                        //si tout se passe bien, on mesure le temps écoulé et on attends le temps nécessaire avant de rediriger l'utilisateur sur l'invitation crée
-                                        let duration = Date.now() - startTs
-                                        let finish = () => {
-                                            FlowRouter.go("/project/" + FlowRouter.current().params.projectId + "/invitation/" + invitationId)
-                                        }
-                                        if (duration < 1000) {
-                                            finish()
-                                        } else {
-                                            Meteor.setTimeout(finish(), 1000 - duration)
-                                        }
+                            )
+                        }
+                        //on prépare notre objet invitation a transmettre à la methode
+                        let invitation = {
+                            projectId: currentProject._id,
+                            projectName: currentProject.name,
+                            hashedPassword: cryptoTools.hash(password),
+                            emittedBy: currentUserProject.asymEnc_memberId,
+                            symEnc_projectSymKey: cryptoTools.convertArrayBufferViewtoString(symEnc_projectSymKey),
+                            validityDuration: Number(validityDuration),
+                            remaining: Number(remaining),
+                            invitationMembers: invitationMembers
+                        }
+                        //et on crée l'invitation
+                        currentProject.callMethod(
+                            "createInvitation",
+                            //on s'authentifie
+                            projectController.getAuthInfo(FlowRouter.current().params.projectId),
+                            invitation, cryptoTools.convertArrayBufferViewtoString(symEnc_invitationPassword),
+                            (err, invitationId) => {
+                                if (err) {
+                                    console.log(err)
+                                } else {
+                                    //si tout se passe bien, on mesure le temps écoulé et on attends le temps nécessaire avant de rediriger l'utilisateur sur l'invitation crée
+                                    let duration = Date.now() - startTs
+                                    let finish = () => {
+                                        FlowRouter.go("/project/" + FlowRouter.current().params.projectId + "/invitation/" + invitationId)
                                     }
-                                })
-                        })
+                                    if (duration < 1000) {
+                                        finish()
+                                    } else {
+                                        Meteor.setTimeout(finish(), 1000 - duration)
+                                    }
+                                }
+                            })
+                    })
                 })
             })
         })

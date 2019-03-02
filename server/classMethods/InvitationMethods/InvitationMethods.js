@@ -7,7 +7,13 @@ import User from "../../../imports/classes/User";
 
 Invitation.extend({
     meteorMethods: {
-        async acceptInvitation(hashedPassword, encryptedUserProjectToAdd, encryptedNewMember) {
+        /***********************************
+         * methode d'acceptation d'une invitation recue
+         * @param hashedPassword
+         * @param encryptedUserProjectToAdd
+         * @param encryptedNewMember
+         */
+        acceptInvitation(hashedPassword, encryptedUserProjectToAdd, encryptedNewMember) {
             //on récupere toutes les entités et on check qu'elles existent bien
             let invitation = Invitation.findOne(this._id)
             check(!!invitation, true)
@@ -32,57 +38,63 @@ Invitation.extend({
                 memberId: String,
                 symEnc_userId: String,
                 symEnc_username: String,
+                invitedBy: String,
                 symEnc_joinAtTs: String,
                 userSignature: String
             })
             encryptedNewMember.userSignature = cryptoServer.hash(encryptedNewMember.userSignature)
             //on ajoute le role de simple membre à notre membre
-            encryptedNewMember.role="member"
+            encryptedNewMember.role = "member"
             //check que l'invit est toujours valable (temps et nombre restant)
             check(invitation.isAlwaysValable(), true)
             //on check que yavais bien le memberId dans l'invitation
-            let memberIdWasInInvitation=false
-            invitation.invitationMembers.forEach((invitMember, i)=>{
-                if(invitMember.memberId === encryptedNewMember.memberId){
+            let memberIdWasInInvitation = false
+            invitation.invitationMembers.forEach((invitMember, i) => {
+                if (invitMember.memberId === encryptedNewMember.memberId) {
                     memberIdWasInInvitation = true
-                    invitation.invitationMembers.splice(i,1)
+                    invitation.invitationMembers.splice(i, 1)
                 }
             })
             check(memberIdWasInInvitation, true)
             //edit de l'invit
-            invitation.remaining --
+            invitation.remaining--
             //check que l'invite est bien dans les invits listées du projet et on la retire au passage
             let invitationWasInProjectInvitations = false
-            currentProject.private.invitations.forEach((invit,i)=>{
-                if(invit.invitationId === invitation._id){
+            currentProject.private.invitations.forEach((invit, i) => {
+                if (invit.invitationId === invitation._id) {
                     invitationWasInProjectInvitations = true
-                    if(invitation.remaining<1){
+                    if (invitation.remaining < 1) {
                         currentProject.private.invitations.splice(i, 1)
                     }
                 }
             })
+
             check(invitationWasInProjectInvitations, true)
             //fonction à appeler après le save ou le remove de l'invitation
-            let finish = (err)=>{
-                if(!err){
+            let finish = (err) => {
+                if (!err) {
                     //edit du projet
                     currentProject.private.members.push(encryptedNewMember)
-                    currentProject.save((err2)=>{
-                        if(!err2){
-                            currentUser.private.projects.push(encryptedUserProjectToAdd)
+                    currentProject.save((err2) => {
+                        if (!err2) {
+                            currentUser.private.projects.unshift(encryptedUserProjectToAdd)
                             currentUser.save()
                         }
                     })
                     //edit de l'user
-                }else{
+                } else {
                     console.log(err)
                 }
             }
-
-            if(invitation.remaining <1){
-                invitation.remove(err=>{finish(err)})
-            }else{
-                invitation.save(err=>{finish(err)})
+            //on finit par save ou remove l'invitation suivant le cas puis à save notre user et notre projet en appelant la fonction finish
+            if (invitation.remaining < 1) {
+                invitation.remove(err => {
+                    finish(err)
+                })
+            } else {
+                invitation.save(err => {
+                    finish(err)
+                })
             }
 
         },

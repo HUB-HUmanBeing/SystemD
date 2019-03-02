@@ -1,6 +1,6 @@
 import hubCrypto from "../../../lib/hubCrypto";
 import cryptoTools from "../../../lib/cryptoTools";
-import inviteController from "../../../lib/inviteController";
+import inviteController from "../../../lib/controllers/inviteController";
 
 Template.loginForm.helpers({
     //add you helpers here
@@ -29,22 +29,30 @@ Template.loginForm.events({
             } else {
 
                 cryptoTools.hash(password, (hashedPassword) => {
-                    window.localStorage.setItem('hashedPassword', hashedPassword)
-                    hubCrypto.initCryptoSession(hashedPassword, username, () => {
-                        let invitationId= FlowRouter.current().queryParams.invitationId
-                        let invitationPassword = FlowRouter.current().queryParams.password
-                        if(invitationId && invitationPassword ){
-                            inviteController.acceptInvitationId(invitationId,password,()=>{
-                                Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'light-bg')
-                            })
-                        }
-                    })
-                })
-                Meteor.setTimeout(() => {
-                    FlowRouter.go('/')
-                    Materialize.toast("Bienvenue sur System-D", 6000, 'light-bg')
+                  Meteor.subscribe("UserPrivateInfo", Meteor.userId(),()=>{
+                      window.localStorage.setItem('hashedPassword', hashedPassword)
+                      hubCrypto.initCryptoSession(hashedPassword, username, () => {
 
-                }, 3000)
+                          let invitationId= FlowRouter.current().queryParams.invitationId
+                          let invitationPassword = FlowRouter.current().queryParams.password
+                          if(invitationId && invitationPassword ){
+                              inviteController.acceptInvitationId(invitationId,invitationPassword,(projectId)=>{
+                                  hubCrypto.decryptAndStoreProjectListInSession(()=>{
+                                      console.log(projectId)
+                                      FlowRouter.go('/project/'+projectId+"/home")
+                                      Materialize.toast("Bienvenue sur System-D", 6000, 'light-bg')
+                                      Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'light-bg')
+                                  })
+
+                              })
+                          }else{
+                              FlowRouter.go('/')
+                              Materialize.toast("Bienvenue sur System-D", 6000, 'light-bg')
+                          }
+                      })
+                  })
+
+                })
             }
             // hubCrypto.initCryptoSession(password,username, ()=>{
             //
