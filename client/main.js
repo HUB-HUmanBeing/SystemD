@@ -6,6 +6,7 @@ Session.set('projectAvatars', {})
 // test of translation
 import i18n from 'meteor/universe:i18n';
 import getLang from "./lib/getLang";
+import cryptoTools from "./lib/cryptoTools";
 
 
 //on set le language
@@ -21,4 +22,3 @@ TemplatesNames.forEach(name => {
         Template[name].bindI18nNamespace(name);
     }
 })
-

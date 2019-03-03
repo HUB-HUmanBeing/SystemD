@@ -71,7 +71,7 @@ const inviteController = {
      */
     decryptInvitation(invitation, password, callback) {
         cryptoTools.generateSimKeyFromPassphrase(password, (invitationSymKey) => {
-            cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(invitation.symEnc_projectSymKey), invitationSymKey, invitation.projectId, (projectSymKey) => {
+            cryptoTools.sim_decrypt_data(invitation.symEnc_projectSymKey, invitationSymKey, (projectSymKey) => {
                 invitation.projectSymKey = projectSymKey
                 callback(invitation)
             })
@@ -108,27 +108,24 @@ const inviteController = {
             hashedAdminSignature: newMember.hashedAdminSignature
         }
         //on chiffre le membre a ajouter avec la clef projet
-        cryptoTools.importSymKey(invitation.projectSymKey, project.name, (symKey) => {
             cryptoTools.encryptObject(unencryptedNewMember, {
-                symKey: symKey,
-                vector: project.name
+                symKey: invitation.projectSymKey
             }, (encryptedNewMember) => {
                 //on chiffre l'userProject à ajouter avec la clef publique de notre utilisateur
-                cryptoTools.importPublicKey(Meteor.user().public.asymPublicKey, (publicKey) => {
-                    cryptoTools.encryptObject(unencryptedUserProjectToAdd, {publicKey: publicKey}, (encryptedUserProjectToAdd) => {
-                        //on call la methode d'acceptation d'invitation
-                        invitation.callMethod('acceptInvitation', cryptoTools.hash(password), encryptedUserProjectToAdd, encryptedNewMember, (err, res) => {
-                            if (err) {
-                                console.log(err)
-                            } else {
-                                //et on renvoie le callback
-                                callback(project._id)
-                            }
-                        })
+
+                cryptoTools.encryptObject(unencryptedUserProjectToAdd, {publicKey: Meteor.user().public.asymPublicKey}, (encryptedUserProjectToAdd) => {
+                    //on call la methode d'acceptation d'invitation
+                    invitation.callMethod('acceptInvitation', cryptoTools.hash(password), encryptedUserProjectToAdd, encryptedNewMember, (err, res) => {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            //et on renvoie le callback
+                            callback(project._id)
+                        }
                     })
                 })
+
             })
-        })
     },
     /***************************
      * idem à celle du dessus, mais va d'abord chercher l'invitation et la déchiffre avant de passer aux autres opérations

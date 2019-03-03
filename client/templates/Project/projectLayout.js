@@ -119,14 +119,14 @@ Template.projectLayout.onCreated(function () {
                         if(currentProject){
                             this.currentProject.set(currentProject)
                             //on recupere la clef projet
-                            cryptoTools.importSymKey(currentUserProject.asymEnc_projectSymKey, currentProject.name, (symKey) => {
-                                hubCrypto.symDecryptData(currentProject.private.symEnc_asymPrivateKey, symKey, currentProject.name, (privateKey) => {
+
+                                cryptoTools.sim_decrypt_data(currentProject.private.symEnc_asymPrivateKey, currentUserProject.asymEnc_projectSymKey,  (privateKey) => {
                                     //on stocke en session les clefs ce qui sera pratique pour la suite
                                     Session.set("currentProjectSimKey", currentUserProject.asymEnc_projectSymKey)
                                     Session.set("currentProjectPrivateKey", privateKey)
                                     //on dechiffre les membres du projet
                                     let currentProjectMembers = []
-                                    let keyParam = {symKey: symKey, vector: currentProject.name}
+                                    let keyParam = {symKey: currentUserProject.asymEnc_projectSymKey}
                                     currentProject.private.members.forEach((encryptedMember,i) => {
                                         cryptoTools.decryptObject(encryptedMember, keyParam, (decryptedMember)=>{
                                             currentProjectMembers.push(decryptedMember)
@@ -150,7 +150,7 @@ Template.projectLayout.onCreated(function () {
                                         })
                                     })
                                 })
-                            })
+
                         }
 
                     })

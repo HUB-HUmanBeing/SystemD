@@ -199,5 +199,19 @@
     "remaining": "Remaining invitations",
     "noInvits": "There is not any valid invitation link.",
     "newInvitation": "Generate a new invitation link."
+  },
+  "invitation": {
+    "title": "Invitation to join a project",
+    "moreInfo" : "Presentation of System-D",
+    "project": "Project",
+    "userAlreadyInProject": "You ar already member of this projet",
+    "description": "Projet dDescription",
+    "decline": "Decline",
+    "accept": "Accept",
+    "noLongerExist": "This invitation is no more valable",
+    "noLongerExistInfo": "Ask to the person who sent the invitation to send it again.",
+    "needToLoginFirst": "You must be connected to accept the invitation",
+    "needToLoginFirstInfo": "Click on the button to login or register and join the project.",
+    "needToLoginFirstButton": "Register"
   }
 }

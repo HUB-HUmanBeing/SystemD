@@ -147,20 +147,20 @@ Template.newProject.events({
                 //on genere un nouveau membre pour le projet à partir des infos de l'utilisateur courant
                 let newMemberId = cryptoTools.generateId()
                 let uncryptedNewMember = {
-                    memberId: newMemberId ,
+                    memberId: newMemberId,
                     role: 'admin',
                     symEnc_userId: Meteor.userId(),
                     symEnc_username: Meteor.user().username,
                     symEnc_joinAtTs: Date.now(),
-                    userSignature: cryptoTools.hash(newMemberId+Session.get('stringifiedAsymPrivateKey') )
+                    userSignature: cryptoTools.hash(newMemberId + Session.get('stringifiedAsymPrivateKey'))
                 }
                 //on prepare l'encryption param
                 let encryptionParams = {
-                    symKey: projectBrunchOfKeys.projectKey,
-                    vector: projectName
+                    symKey: projectBrunchOfKeys.projectKey
                 }
                 //on chiffre le tout avec notre super fonction
                 cryptoTools.encryptObject(uncryptedNewMember, encryptionParams, (encryptedNewMember) => {
+                    console.log(brunchOfKeyToSend, encryptedNewMember)
                     //on crée le projet en base
                     Meteor.call('createProject', projectName, brunchOfKeyToSend, encryptedNewMember, (err, res) => {
                         if (err) {
@@ -182,25 +182,26 @@ Template.newProject.events({
 
                             }
                             //on le chiffre
-                            cryptoTools.importPublicKey(Meteor.user().public.asymPublicKey, (publicKey) => {
-                                cryptoTools.encryptObject(unencryptedUserProjectToAdd, {publicKey: publicKey}, (userProjectToAdd) => {
-                                    let currentUser = User.findOne(Meteor.userId())
-                                    //et on sauvegarde ce nouveau projet dans la liste des projets de l'utilisateur
-                                    currentUser.callMethod('addUserProject', userProjectToAdd, (err, res) => {
-                                        if (err) {
-                                            console.log(err)
-                                            //si tout est bon
-                                        } else {
-                                            //on redirige
-                                            FlowRouter.go('/project/' + createdProject._id +"/params")
-                                            //on toast que tout s'est bien passé
-                                            Materialize.toast("Le projet " + projectName + " a été créé.", 6000, 'lighter-bg')
-                                            //on referme le loader
-                                            instance.newProjectComplete.set(null)
-                                        }
-                                    })
+
+                            cryptoTools.encryptObject(unencryptedUserProjectToAdd, {publicKey: Meteor.user().public.asymPublicKey}, (userProjectToAdd) => {
+                                let currentUser = User.findOne(Meteor.userId())
+                                console.log(userProjectToAdd)
+                                //et on sauvegarde ce nouveau projet dans la liste des projets de l'utilisateur
+                                currentUser.callMethod('addUserProject', userProjectToAdd, (err, res) => {
+                                    if (err) {
+                                        console.log(err)
+                                        //si tout est bon
+                                    } else {
+                                        //on redirige
+                                        FlowRouter.go('/project/' + createdProject._id + "/params")
+                                        //on toast que tout s'est bien passé
+                                        Materialize.toast("Le projet " + projectName + " a été créé.", 6000, 'lighter-bg')
+                                        //on referme le loader
+                                        instance.newProjectComplete.set(null)
+                                    }
                                 })
                             })
+
 
                         }
                     })

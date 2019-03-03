@@ -101,8 +101,7 @@ Template.showInvitation.onCreated(function () {
             }
             if (currentInvitationPassword) {
                 //on déchiffre la clef d'invitation
-                cryptoTools.importSymKey(Session.get("currentProjectSimKey"), currentProject.name, projectSymKey => {
-                    cryptoTools.sim_decrypt_data(cryptoTools.convertStringToArrayBufferView(currentInvitationPassword), projectSymKey, currentProject.name, (decryptedInvitPassword) => {
+                    cryptoTools.sim_decrypt_data(currentInvitationPassword, Session.get("currentProjectSimKey"), (decryptedInvitPassword) => {
                         this.decryptedInvitPassword.set(decryptedInvitPassword)
                         this.magicLink.set(Meteor.absoluteUrl() + "invitation/" + this.invitationId + "?password=" + decryptedInvitPassword)
                         //on souscrit à l'invitation
@@ -115,7 +114,6 @@ Template.showInvitation.onCreated(function () {
                             }
                         })
                     })
-                })
             }
         }
     })

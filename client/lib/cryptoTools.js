@@ -71,30 +71,32 @@ const cryptoTools = {
 
 
     },
-    asym_encrypt_data(data, public_key_object, callback) {
+    asym_encrypt_data(data, stringifiedPublicKey, callback) {
 
-        crypto = this.crypto()
-        return this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(data)).then(
-            function (result) {
+        this.importPublicKey(stringifiedPublicKey, (public_key_object) => {
+            this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(data)).then(
+                function (result) {
 
-                callback(new Uint8Array(result))
-            },
-            function (e) {
-                console.log(e.message);
-            }
-        );
+                    callback(new Uint8Array(result))
+                },
+                function (e) {
+                    console.log(e.message);
+                }
+            );
+        })
+
     },
-    asym_decrypt_data(encrypted_data, private_key_object, callback) {
-        let decrypt_promise = this.crypto().subtle.decrypt({name: "RSA-OAEP"}, private_key_object, encrypted_data);
-
-        decrypt_promise.then(
-            (result) => {
-                callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
-            },
-            function (e) {
-                console.log(e.message);
-            }
-        );
+    asym_decrypt_data(encrypted_data, stringifiedPublicKey, callback) {
+        this.importPublicKey(stringifiedPublicKey, (public_key_object) => {
+            this.crypto().subtle.decrypt({name: "RSA-OAEP"}, public_key_object, encrypted_data).then(
+                (result) => {
+                    callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                },
+                function (e) {
+                    console.log("asym decrypt faillure", e)
+                }
+            );
+        })
     },
     //permet de stocker en base une clef
     getExportableKey(keyObject, callback) {
@@ -136,11 +138,11 @@ const cryptoTools = {
             });
     },
     //permet de rendre utilisable la clef publique d'un utilisateur
-    importSymKey(string_key, vector, callback) {
-        this.crypto().subtle.importKey(
+    async importSymKey(string_key, callback) {
+        return this.crypto().subtle.importKey(
             "jwk",
             JSON.parse(string_key),
-            {name: "AES-CBC", iv: vector},
+            {name: "AES-CBC"},
             true, ["encrypt", "decrypt"]).then(
             function (result) {
                 callback(result)
@@ -161,8 +163,11 @@ const cryptoTools = {
     //fonction permettant de generer une clef symétrique a partir d'un mot de passe
     generateSimKeyFromPassphrase(passphrase, callback) {
         this.crypto().subtle.digest({name: "SHA-256"}, this.convertStringToArrayBufferView(passphrase)).then((result) => {
-            this.crypto().subtle.importKey("raw", result, {name: "AES-CBC"}, false, ["encrypt", "decrypt"]).then(function (e) {
-                callback(e)
+            this.crypto().subtle.importKey("raw", result, {name: "AES-CBC"}, true, ["encrypt", "decrypt"]).then((e)=> {
+                this.getExportableKey(e,(stringifiedKey)=>{
+                    callback(stringifiedKey)
+                })
+
             }, function (e) {
                 console.log(e);
             });
@@ -170,30 +175,40 @@ const cryptoTools = {
         });
     },
     //fonction de chiffrement symétrique en AES
-    sim_encrypt_data(data, symKey, vector, callback) {
-        return crypto.subtle.encrypt({
-            name: "AES-CBC",
-            iv: this.vectorFromString(vector)
-        }, symKey, this.convertStringToArrayBufferView(data)).then(
-            function (result) {
-                callback(new Uint8Array(result));
-            },
-            function (e) {
-                console.log(e.message);
-            }
-        );
+    async sim_encrypt_data(data, stringifiedSymKey, callback) {
+
+        return this.importSymKey(stringifiedSymKey,  async (symKey) => {
+            let iv = this.crypto().getRandomValues(new Uint8Array(16))
+            await crypto.subtle.encrypt({
+                name: "AES-CBC",
+                iv: iv
+            }, symKey, this.convertStringToArrayBufferView(data)).then(
+                (result) => {
+                    callback(this.convertArrayBufferViewtoString(iv) + this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                },
+                function (e) {
+                    console.log(e.message);
+                }
+            );
+        })
+
     },
     //fonction de dechiffrement de données
-    sim_decrypt_data(encryptedData, symKey, vector, callback) {
-        this.crypto().subtle.decrypt({name: "AES-CBC", iv: this.vectorFromString(vector)}, symKey, encryptedData).then(
-            (result) => {
-                callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
-            },
-            function (e) {
-                console.log("sym decrypt faillure", e)
-            }
-        );
-    },
+    async sim_decrypt_data(encryptedData, stringifiedSymKey, callback) {
+        return this.importSymKey(stringifiedSymKey, async(symKey) => {
+            let iv = this.convertStringToArrayBufferView(encryptedData.substring(0, 16))
+            let cypherText = this.convertStringToArrayBufferView(encryptedData.substring(16))
+             return this.crypto().subtle.decrypt({name: "AES-CBC", iv: iv}, symKey, cypherText).then(
+                (result) => {
+                    callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                },
+                function (e) {
+                    console.log("sym decrypt faillure", e)
+                }
+            );
+        })
+    }
+    ,
     //fonction permettant d'obtenir le hash d'une string donnée
     hash(string, callback) {
         const simpleHash = function (stringToHash, salt) {
@@ -209,26 +224,32 @@ const cryptoTools = {
         }
         return hash
     },
+    heavyHash(string){
+
+        return this.hash(string)
+    },
     //fonction permettant de générer un mot de passe aléatoire
     generateRandomPassword(length) {
-        let randomLength = 30 +Math.floor(Math.random() * 10)
+        let randomLength = 30 + Math.floor(Math.random() * 10)
         length = length || randomLength
         let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         let lowercase = 'abcdefghijklmnopqrstuvwxyz';
         let numbers = '0123456789';
 
-        let all = uppercase + lowercase + numbers ;
+        let all = uppercase + lowercase + numbers;
         let password = '';
         for (let index = 0; index < length; index++) {
             let character = Math.floor(Math.random() * all.length);
             password += all.substring(character, character + 1);
         }
         return password;
-    },
+    }
+    ,
     //fonction générant un ID "unique"
     generateId() {
         return Math.random().toString(36).substr(2, 16)
-    },
+    }
+    ,
     /**************
      * fonction de foreach asynchrone
      * @param array
@@ -239,7 +260,8 @@ const cryptoTools = {
         for (let index = 0; index < array.length; index++) {
             await callback(array[index], index, array);
         }
-    },
+    }
+    ,
     /***********************
      * chiffre unelement a partir de l'encryption params si les conventions de nommage sont bonnes
      * @param element   --- le contenu à chiffrer
@@ -253,14 +275,17 @@ const cryptoTools = {
         if (elementType == "string" || elementType == "number") {
             let prefix = elementName.split('_')[0]
             if (prefix == 'symEnc') {
-                await this.sim_encrypt_data(element, encryptionParams.symKey, encryptionParams.vector, callback)
+                await this.sim_encrypt_data(element, encryptionParams.symKey, callback)
             } else if (prefix == 'asymEnc') {
                 await this.asym_encrypt_data(element, encryptionParams.publicKey, callback)
+            }else{
+                callback(element)
             }
         } else {
             console.warn("'on s'occupe que des champs simples pour l'instant'")
         }
-    },
+    }
+    ,
     /************************
      * fonction permettant de chiffrer tout les couples clef valeur d'un objet suivant les prefixes des clefs
      * @param object ---l'objet a chiffrer
@@ -270,16 +295,24 @@ const cryptoTools = {
     encryptObject(object, encryptionParams, callback) {
         let encryptedObject = object
         const encrypter = async (object, encryptionParams, callback) => {
-            await this.asyncForEach(Object.keys(object), async (key) => {
+            await this.asyncForEach(Object.keys(object), async (key,i) => {
+
                 await this.encryptElement(object[key], key, encryptionParams, (encryptedData) => {
-                    encryptedObject[key] = this.convertArrayBufferViewtoString(encryptedData)
+                    console.log("in")
+                    encryptedObject[key] = encryptedData
+                    if(i===Object.keys.length-1){
+                        console.log("go")
+                         console.log(encryptedObject)
+                        callback(encryptedObject);
+                    }
                 })
 
             });
-            callback(encryptedObject);
+
         }
         encrypter(object, encryptionParams, callback)
-    },
+    }
+    ,
     /********************
      * dechiffre un element a partir du decryption params si les conventions de nommage sont bonnes
      * @param element   --- le contenu à dechiffrer
@@ -290,19 +323,20 @@ const cryptoTools = {
      */
     async decryptElement(element, elementName, encryptionParams, callback) {
         let elementType = typeof element
-        if(element){
+        if (element) {
             if (elementType == "string" || elementType == "number") {
                 let prefix = elementName.split('_')[0]
                 if (prefix == 'symEnc') {
-                    await this.sim_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.symKey, encryptionParams.vector, callback)
+                    await this.sim_decrypt_data(element, encryptionParams.symKey,  callback)
                 } else if (prefix == 'asymEnc') {
-                    await this.asym_decrypt_data(this.convertStringToArrayBufferView(element), encryptionParams.privateKey, callback)
+                    await this.asym_decrypt_data(element, encryptionParams.privateKey, callback)
                 }
             } else {
                 console.warn("'on s'occupe que des champs simples pour l'instant'")
             }
         }
-    },
+    }
+    ,
     /***************
      * fonction permettant de dechiffrer tout les couples clef valeur d'un objet suivant les prefixes des clefs
      * @param object ---l'objet a deciffrer
@@ -313,7 +347,7 @@ const cryptoTools = {
         let decryptedObject = object
 
         const decrypter = async (object, decryptionParams, callback) => {
-            await this.asyncForEach(Object.keys(object), async (key,i) => {
+            await this.asyncForEach(Object.keys(object), async (key, i) => {
                 await this.decryptElement(object[key], key, decryptionParams, (decryptedData) => {
                     decryptedObject[key] = decryptedData
                 })
@@ -321,38 +355,40 @@ const cryptoTools = {
             callback(decryptedObject);
         }
         await decrypter(object, decryptionParams, callback)
-    },
+    }
+    ,
     async decryptArryOfObject(arrayOfObject, decryptionParams, callback) {
         let decryptedArrayOfObject = []
-        await this.asyncForEach(arrayOfObject, async (object,i) => {
-            await this.decryptObject(object,decryptionParams, (decryptedObject)=>{
+        await this.asyncForEach(arrayOfObject, async (object, i) => {
+            await this.decryptObject(object, decryptionParams, (decryptedObject) => {
                 decryptedArrayOfObject.push(decryptedObject)
-                if(i=== arrayOfObject.length -1){
+                if (i === arrayOfObject.length - 1) {
                     callback(decryptedArrayOfObject)
                 }
             })
         })
-    },
+    }
+    ,
     /******************
      * on stocke ici notre objet zxcvbn qui gere la difficulté des password
      */
-    zxcvbn : zxcvbn,
+    zxcvbn: zxcvbn,
     /***************************
      * pas très fier de celle là, elle nous permet de savoir a peu près les perf d'une machie
      * utilisateur et de pouvoir setter les setTimeOut des fonctions de déchiffrement qui font chier puisque
      * le Session.Set fait nimporte quoi
      * @returns {*}
      */
-    cryptoBenchmark(){
-        let cryptoBenchmark=window.localStorage.getItem("cryptoBenchmark")
-        if(cryptoBenchmark){
+    cryptoBenchmark() {
+        let cryptoBenchmark = window.localStorage.getItem("cryptoBenchmark")
+        if (cryptoBenchmark) {
             return cryptoBenchmark
-        }else{
-            let start= Date.now()
-            for (let i = 0; i < 150 ; i++) {
+        } else {
+            let start = Date.now()
+            for (let i = 0; i < 150; i++) {
                 new Hashes.SHA512().b64("test")
             }
-            let result = Date.now()-start
+            let result = Date.now() - start
             window.localStorage.setItem("cryptoBenchmark", result)
             return result
         }
