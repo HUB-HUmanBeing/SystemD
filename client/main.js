@@ -28,8 +28,16 @@ function getLang() {
     return localeResult
 }
 
-//on set le language
-i18n.setLocale(getLang())
+// we stock language browser
+localStorage.setItem('lang', getLang());
+
+// we get language browser
+let myLang = localStorage.getItem('lang');
+console.log("myLang ", myLang);
+
+// we set language from localStorage
+i18n.setLocale(myLang);
+
 //on recupere la liste de tout les templates de la plate-forme
 let TemplatesNames = [];
 for (name of Object.keys(Template)) {
