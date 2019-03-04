@@ -1,7 +1,26 @@
 import i18n from 'meteor/universe:i18n';
 
 Template.langButton.helpers({
-    
+    // tableau different lang
+    languages: function () {
+        return [
+            {
+                name: "Français",
+                langFormat: 'fr-FR',
+                langIso639: 'FR'
+            },
+            {
+                name: "English",
+                langFormat: 'en-US',
+                langIso639: 'EN'
+            },
+            {
+                name: "Espanol",
+                langFormat: 'es-ES',
+                langIso639: 'ES'
+            }
+        ]
+    }
 
 });
 
@@ -9,11 +28,12 @@ Template.langButton.events({
     // add your events here
 
     // when we change the language button 
-    'change select':(function(event) {
+    'change [changeLanguage]':(function(event) {
         // we store the value of new language, for example: fr-FR, in localStorage
-        localStorage.setItem('lang', $("select option:selected").val());
+        let newLang = event.target.value
+        localStorage.setItem('lang', newLang);
         // and we set the new language in i18n retrieving the value in localStorage(newLang)
-        let newLang = localStorage.getItem('lang');
+        localStorage.getItem('lang', newLang);
         i18n.setLocale(newLang);
         
       })

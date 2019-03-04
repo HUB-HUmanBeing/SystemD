@@ -29,7 +29,9 @@ function getLang() {
 }
 
 // we stock language browser
+if (localStorage.getItem('lang')==false){
 localStorage.setItem('lang', getLang());
+};
 
 // we get language browser
 let myLang = localStorage.getItem('lang');

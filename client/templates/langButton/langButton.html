@@ -11,10 +11,11 @@
     </div> -->
 
 
-    <select class="browser-default lang" id="tt">
-      <option id="fr" value="fr-FR">FR</option>
-      <option id="en" value="en-US">EN</option>
-      <option id="es" value="es-ES">ES</option>
+    <select class="browser-default lang" changeLanguage>
+      <!-- for each in -->
+      {{#each language in languages}}
+      <option value={{language.langFormat}}>{{language.langIso639}}</option>
+      {{/each}}
     </select>
 
 </template>
