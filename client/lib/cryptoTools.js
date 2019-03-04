@@ -320,10 +320,16 @@ const cryptoTools = {
         }
         return encryptedElement
     },
+    /**************************
+     * promise qui est utilisable comme callback et qui viens importer les clefs d'un objet encryption params
+     * @param encryptionParams
+     * @param callback
+     */
     importEncryptionParams(encryptionParams, callback) {
         let workingEncryptionParams = {}
         let encryptionParamsKeys = []
         let importKeysPromises = []
+        //on boucle sur les clefs et on renvoie la promise qui va bien pour l'importer suivant la clef et on met tout ca dans un array
         Object.keys(encryptionParams).forEach(key => {
             encryptionParamsKeys.push(key)
             if (key === "symKey") {
@@ -343,7 +349,8 @@ const cryptoTools = {
             }
         })
 
-        Promise.all(importKeysPromises).then((arrOfKeys) => {
+        //on renvoie la promise et surtout on passe l'objet avec toutes les clefs en callback lorsque toutes les promises ont étés executées
+       return  Promise.all(importKeysPromises).then((arrOfKeys) => {
             callback(workingEncryptionParams)
         })
 
@@ -373,7 +380,7 @@ const cryptoTools = {
     }
     ,
     /********************
-     * dechiffre un element a partir du decryption params si les conventions de nommage sont bonnes
+     * dechiffre un element a partir du decryption params si les conventions de nommage sont bonnes et renvoie une promise dont la résolution contient l'element déchiffré
      * @param element   --- le contenu à dechiffrer
      * @param elementName --- le nom de l'element pour récuperer le préfixe
      * @param encryptionParams  --- un objet comprenant {simkey, privateKey, vector} (pas obligé de toutes les avoir)
@@ -452,6 +459,7 @@ const cryptoTools = {
             })
         })
     },
+    //dechiffre un tableau d'objet chiffrés et les renvoie en callback
     async decryptArryOfObject(arrayOfObject, decryptionParams, callback) {
         let decryptedArrayOfObject = []
         await this.asyncForEach(arrayOfObject, async (object, i) => {

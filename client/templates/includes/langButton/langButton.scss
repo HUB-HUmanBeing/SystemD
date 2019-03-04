@@ -1,0 +1,19 @@
+@import "{}/client/scss/variables.scss";
+
+
+    .lang{
+        display: block;
+        position: absolute;
+        top: 0px;
+        margin-top: 10px ;
+        margin-right: 10px;
+        right: 0 !important;
+        height: 20px;
+        width: 39px;
+        z-index: 40;
+        font-size: 13px;
+        border: 1px solid $minus-color;
+        color: $minus-color;
+        background-color: $main-bg;
+        padding: 0;
+    }
