@@ -1,16 +1,22 @@
 // Client entry point, imports all client code
 import {Meteor} from "meteor/meteor";
+import i18n from 'meteor/universe:i18n';
 
 Session.set('userAvatars', {})
 Session.set('projectAvatars', {})
-// test of translation
-import i18n from 'meteor/universe:i18n';
-import getLang from "./lib/getLang";
-import cryptoTools from "./lib/cryptoTools";
 
+// we stock language browser
+if (localStorage.getItem('lang')==false){
+localStorage.setItem('lang', getLang());
+};
 
-//on set le language
-i18n.setLocale(getLang())
+// we get language browser
+let myLang = localStorage.getItem('lang');
+console.log("myLang ", myLang);
+
+// we set language from localStorage
+i18n.setLocale(myLang);
+
 //on recupere la liste de tout les templates de la plate-forme
 let TemplatesNames = [];
 for (name of Object.keys(Template)) {

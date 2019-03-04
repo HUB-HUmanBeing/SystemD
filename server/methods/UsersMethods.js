@@ -1,10 +1,6 @@
 import User from '/imports/classes/User'
 import {check} from "meteor/check";
 
-Meteor.users.deny({
-    update() { return true; }
-});
-
 /*********************************
  * METHODES DE LA COLLECTION USERS
  * les autres méthodes sont directement stockées dans la classe

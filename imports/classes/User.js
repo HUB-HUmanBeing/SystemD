@@ -43,6 +43,7 @@ const PublicUser = Class.create({
             type: String,
             optional: true
         },
+        myLanguage: String,
     },
 
 });

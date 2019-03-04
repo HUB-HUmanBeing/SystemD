@@ -1,0 +1,10 @@
+<template name="langButton">
+
+    <select class="browser-default lang" changeLanguage>
+      <!-- for each in -->
+      {{#each language in languages}}
+      <option value={{language.langFormat}}>{{language.langIso639}}</option>
+      {{/each}}
+    </select>
+
+</template>

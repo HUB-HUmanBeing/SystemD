@@ -28,10 +28,9 @@
                     </div>
                     <!-- Dropdown Structure -->
                     <ul id='userOptions' class='dropdown-content light-bg main-color' style="{{#unless isDesktop}}margin-top: -5px!important{{/unless}}">
-                        <li><a href="/user-params"><i class="material-icons main-color">settings</i>Paramètres</a></li>
-                        <li><a href="#" logout><i class="material-icons main-color">exit_to_app</i>Déconnexion</a></li>
+                        <li><a href="/user-params"><i class="material-icons main-color">settings</i>{{__ '.param'}}</a></li>
+                        <li><a href="#" logout><i class="material-icons main-color">exit_to_app</i>{{__ '.logout'}}</a></li>
                     </ul>
-
                 </div>
             {{/if}}
         </div>
@@ -45,16 +44,11 @@
 
                     {{else}}
                         {{#if showInfo}}
-                            <p class="infoQuotes " style=" margin: 25px 10px;">Vous n'etes actuellement inscrit sur
-                                aucuns
-                                projets. <br><br>Vous pouvez cliquer sur le bouton ci-dessous pour créer un projet ou
-                                attendre
-                                une
-                                invitation à un projet existant.</p>
+                            <p class="infoQuotes " style=" margin: 25px 10px;">{{__ '.noProject'}} <br><br>{{__ '.clic'}}</p>
                         {{else}}
                             <div class="row center-align" style=" margin: 25px 10px;">
                                 <i class="material-icons focus-color">lock</i>
-                                <p class="no-margin">Déchiffrement de la liste de vos projets.</p>
+                                <p class="no-margin">{{__ '.decryption'}}</p>
                                 <div class="progress">
                                     <div class="indeterminate"></div>
                                 </div>
@@ -65,7 +59,7 @@
                     <div class="row" style="margin: 25px 10px;">
                         <a href="/new-project" class="btn btnStandard full-width" style=" padding: 0 10px">
                             <i class="focus-color material-icons left" style="    margin-right: 5px;">add_box</i>
-                            Nouveau projet</a>
+                            {{__ '.newProject'}}</a>
                     </div>
                 </div>
             </div>

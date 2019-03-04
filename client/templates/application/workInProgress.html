@@ -8,15 +8,15 @@
         <div class="col s9  small-padding">
             <div class="" style="max-width: 400px">
                 <h6 class="amber-text  text-lighten-2  ">
-                    Cette fonctionnalité n'est pas encore accessible
+                    {{__ '.nofunction'}}
                 </h6>
                 <br>
                 {{#if content}}
-                    <i class="amber-text text-lighten-2">elle permettra :</i>
+                    <i class="amber-text text-lighten-2">{{__ '.allow'}}</i>
                     <p class="small-text grey-text "><i>{{content}}</i></p>
                 {{/if}}
                 {{#if info}}
-                    <i class="amber-text text-lighten-2">Infos complémentaires :</i>
+                    <i class="amber-text text-lighten-2">{{__ '.infos'}}</i>
                     <p class="small-text grey-text "><i>{{info}}</i></p>
                 {{/if}}
             </div>

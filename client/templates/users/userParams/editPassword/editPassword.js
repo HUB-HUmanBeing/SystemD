@@ -17,7 +17,7 @@ const validateUpdatePassword = {
         let oldPassword = $('#oldPassword').val();
         let errors = instance.errors.get()
         if (!oldPassword) {
-            errors.oldPassword = ["veuillez entrer votre précédent mot de passe"]
+            errors.oldPassword = [__('deleteAccountJs.previousPwd')]
             instance.errors.set(errors)
         }else{
             errors.oldPassword = "valid"
@@ -42,8 +42,8 @@ const validateUpdatePassword = {
                 delay: 250,
                 tooltip: `
                 <div class="password-tooltip left-align" style="max-width: 200px">
-                    <p>Le chiffrement de vos contenus sur System-D est basé sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.</p>
-                    <p class="infoQuotes">Utilisez des <b>caractères spéciaux</b>, des <b>majuscules</b> et des <b>chiffres</b> afin d'augmenter la force de votre mot de passe.</p>
+                    <p>` + __('editPasswordJs.crypt') +`(</p>
+                    <p class="infoQuotes">` + __('editPasswordJs.use') +`<b>` + __('editPasswordJs.characters') +`</b>` + __('editPasswordJs.des') +`<b>` + __('editPasswordJs.capital') +`</b>` + __('editPasswordJs.des') +`<b>` + __('editPasswordJs.number') +`</b>` + __('editPasswordJs.up') +`</p>
                 </div>
                 `,
                 html: true,
@@ -53,7 +53,7 @@ const validateUpdatePassword = {
         let errors = instance.errors.get()
         if (newPassword) {
             if (passwordStrength < 10) {
-                errors.newPassword = ["La force du mot de passe doit au moins être de 1O"]
+                errors.newPassword = [__('editPasswordJs.strength')]
                 instance.errors.set(errors)
             } else {
                 errors.newPassword = 'valid'
@@ -61,14 +61,14 @@ const validateUpdatePassword = {
             }
             let newPasswordRepeat = $('#newPasswordRepeat').val();
             if (newPassword !== newPasswordRepeat) {
-                errors.newPasswordRepeat = ["Les mots de passes ne sont pas identiques"]
+                errors.newPasswordRepeat = [__('editPasswordJs.samePwd')]
                 instance.errors.set(errors)
             } else {
                 errors.newPasswordRepeat = 'valid'
                 instance.errors.set(errors)
             }
         } else {
-            errors.newPassword = ["Veuillez saisir un mot de passe"]
+            errors.newPassword = [__('editPasswordJs.typePwd')]
             instance.errors.set(errors)
         }
     }
@@ -83,10 +83,10 @@ const validateUpdatePassword = {
         let newPasswordRepeat = $('#newPasswordRepeat').val();
         let errors = instance.errors.get()
         if (!newPasswordRepeat) {
-            errors.newPasswordRepeat = ["Veuillez confirmer votre mot de passe"]
+            errors.newPasswordRepeat = [__('editPasswordJs.confirm')]
             instance.errors.set(errors)
         } else if (newPassword !== newPasswordRepeat) {
-            errors.newPasswordRepeat = ["Les mots de passes ne sont pas identiques"]
+            errors.newPasswordRepeat = [__('editPasswordJs.samePwd')]
             instance.errors.set(errors)
         } else {
             errors.newPasswordRepeat = 'valid'
@@ -108,7 +108,7 @@ const validateUpdatePassword = {
             if (errors[key] != "valid") {
                 isValid = false
                 if (errorList.length === 0) {
-                    errorList.push("Le formulaire d'inscription n'est pas valide")
+                    errorList.push(__('editPasswordJs.form'))
                 }
                 if (errors[key].length) {
                     errorList = [...errorList, ...errors[key]]
@@ -118,7 +118,7 @@ const validateUpdatePassword = {
             }
         })
         if (missingFields) {
-            errorList.push("Il manque des informations")
+            errorList.push(__('editPasswordJs.miss'))
         }
         if (errorList.length) {
             errorList.forEach((err, i) => {
@@ -179,9 +179,9 @@ Template.editPassword.events({
                                 cryptoTools.hash(newPassword,(hashedPassword)=>{
                                     hubCrypto.initCryptoSession(hashedPassword,Meteor.user().username, ()=>{
                                         instance.updatePasswordComplete.set([
-                                            'Changement du mot de passe',
-                                            'Chiffrement de la clef privée a partir du nouveau mot de passe',
-                                            'Rénitialisation de la session chiffrée'
+                                            __('editPasswordJs.pwdChange'),
+                                            __('editPasswordJs.encryptionKey'),
+                                            __('editPasswordJs.initialization')
                                         ])
                                         Meteor.setTimeout(() => {
                                             //si tout va bien on redirige vers la page pour completer le profil
