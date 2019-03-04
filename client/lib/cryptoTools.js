@@ -86,9 +86,9 @@ const cryptoTools = {
         })
 
     },
-    asym_decrypt_data(encrypted_data, stringifiedPublicKey, callback) {
-        this.importPublicKey(stringifiedPublicKey, (public_key_object) => {
-            this.crypto().subtle.decrypt({name: "RSA-OAEP"}, public_key_object, encrypted_data).then(
+    asym_decrypt_data(encrypted_data, stringifiedPrivateKey, callback) {
+        this.importPrivateKey(stringifiedPrivateKey, (private_key_object) => {
+            this.crypto().subtle.decrypt({name: "RSA-OAEP"}, private_key_object, encrypted_data).then(
                 (result) => {
                     callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
                 },
@@ -107,7 +107,7 @@ const cryptoTools = {
         });
     },
     importPrivateKey(string_private_key, callback) {
-        this.crypto().subtle.importKey("jwk", JSON.parse(string_private_key), {
+        return this.crypto().subtle.importKey("jwk", JSON.parse(string_private_key), {
             name: "RSA-OAEP",
             modulusLength: 2048,
             publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
@@ -121,7 +121,7 @@ const cryptoTools = {
     },
     //permet de rendre utilisable la clef publique d'un utilisateur
     importPublicKey(string_private_key, callback) {
-        this.crypto().subtle.importKey(
+        return this.crypto().subtle.importKey(
             "jwk",
             JSON.parse(string_private_key),
             {
@@ -132,20 +132,24 @@ const cryptoTools = {
             },
             false, ["encrypt"]).then(
             function (result) {
-                callback(result)
+                if (callback) {
+                    callback(result)
+                }
             }, function (e) {
                 console.log(e);
             });
     },
     //permet de rendre utilisable la clef publique d'un utilisateur
-    async importSymKey(string_key, callback) {
+    importSymKey(string_key, callback) {
         return this.crypto().subtle.importKey(
             "jwk",
             JSON.parse(string_key),
             {name: "AES-CBC"},
             true, ["encrypt", "decrypt"]).then(
             function (result) {
-                callback(result)
+                if (callback) {
+                    callback(result)
+                }
             }, function (e) {
                 console.log(e);
             });
@@ -163,8 +167,8 @@ const cryptoTools = {
     //fonction permettant de generer une clef symétrique a partir d'un mot de passe
     generateSimKeyFromPassphrase(passphrase, callback) {
         this.crypto().subtle.digest({name: "SHA-256"}, this.convertStringToArrayBufferView(passphrase)).then((result) => {
-            this.crypto().subtle.importKey("raw", result, {name: "AES-CBC"}, true, ["encrypt", "decrypt"]).then((e)=> {
-                this.getExportableKey(e,(stringifiedKey)=>{
+            this.crypto().subtle.importKey("raw", result, {name: "AES-CBC"}, true, ["encrypt", "decrypt"]).then((e) => {
+                this.getExportableKey(e, (stringifiedKey) => {
                     callback(stringifiedKey)
                 })
 
@@ -177,14 +181,15 @@ const cryptoTools = {
     //fonction de chiffrement symétrique en AES
     async sim_encrypt_data(data, stringifiedSymKey, callback) {
 
-        return this.importSymKey(stringifiedSymKey,  async (symKey) => {
+        return this.importSymKey(stringifiedSymKey, async (symKey) => {
             let iv = this.crypto().getRandomValues(new Uint8Array(16))
             await crypto.subtle.encrypt({
                 name: "AES-CBC",
                 iv: iv
             }, symKey, this.convertStringToArrayBufferView(data)).then(
                 (result) => {
-                    callback(this.convertArrayBufferViewtoString(iv) + this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                    if (callback)
+                        callback(this.convertArrayBufferViewtoString(iv) + this.convertArrayBufferViewtoString(new Uint8Array(result)));
                 },
                 function (e) {
                     console.log(e.message);
@@ -193,12 +198,12 @@ const cryptoTools = {
         })
 
     },
-    //fonction de dechiffrement de données
+//fonction de dechiffrement de données
     async sim_decrypt_data(encryptedData, stringifiedSymKey, callback) {
-        return this.importSymKey(stringifiedSymKey, async(symKey) => {
+        return this.importSymKey(stringifiedSymKey, async (symKey) => {
             let iv = this.convertStringToArrayBufferView(encryptedData.substring(0, 16))
             let cypherText = this.convertStringToArrayBufferView(encryptedData.substring(16))
-             return this.crypto().subtle.decrypt({name: "AES-CBC", iv: iv}, symKey, cypherText).then(
+            return this.crypto().subtle.decrypt({name: "AES-CBC", iv: iv}, symKey, cypherText).then(
                 (result) => {
                     callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
                 },
@@ -207,9 +212,8 @@ const cryptoTools = {
                 }
             );
         })
-    }
-    ,
-    //fonction permettant d'obtenir le hash d'une string donnée
+    },
+//fonction permettant d'obtenir le hash d'une string donnée
     hash(string, callback) {
         const simpleHash = function (stringToHash, salt) {
             return (new Hashes.SHA512().b64(stringToHash + salt))
@@ -223,12 +227,14 @@ const cryptoTools = {
             callback(hash)
         }
         return hash
-    },
-    heavyHash(string){
+    }
+    ,
+    heavyHash(string) {
 
         return this.hash(string)
-    },
-    //fonction permettant de générer un mot de passe aléatoire
+    }
+    ,
+//fonction permettant de générer un mot de passe aléatoire
     generateRandomPassword(length) {
         let randomLength = 30 + Math.floor(Math.random() * 10)
         length = length || randomLength
@@ -245,7 +251,7 @@ const cryptoTools = {
         return password;
     }
     ,
-    //fonction générant un ID "unique"
+//fonction générant un ID "unique"
     generateId() {
         return Math.random().toString(36).substr(2, 16)
     }
@@ -270,22 +276,78 @@ const cryptoTools = {
      * @param callback
      * @returns {Promise<void>}
      */
-    async encryptElement(element, elementName, encryptionParams, callback) {
+    async encryptElement(element, elementName, encryptionParams) {
         let elementType = typeof element
+        let encryptedElement
         if (elementType == "string" || elementType == "number") {
             let prefix = elementName.split('_')[0]
             if (prefix == 'symEnc') {
-                await this.sim_encrypt_data(element, encryptionParams.symKey, callback)
+                let iv = this.crypto().getRandomValues(new Uint8Array(16))
+                encryptedElement = new Promise((resolve, reject) => {
+                    crypto.subtle.encrypt({
+                        name: "AES-CBC",
+                        iv: iv
+                    }, encryptionParams.symKey, this.convertStringToArrayBufferView(element)).then(
+                        (result) => {
+                            resolve(this.convertArrayBufferViewtoString(iv) + this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                        },
+                        function (e) {
+                            console.log(e.message);
+                        }
+                    );
+                })
             } else if (prefix == 'asymEnc') {
-                await this.asym_encrypt_data(element, encryptionParams.publicKey, callback)
-            }else{
-                callback(element)
+                encryptedElement = new Promise((resolve, reject) => {
+                    this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, encryptionParams.publicKey, this.convertStringToArrayBufferView(element)).then(
+                        (result) => {
+                            resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)))
+                        },
+                        function (e) {
+                            console.log(e.message);
+                        }
+                    );
+                })
+            } else {
+                encryptedElement = new Promise((resolve, reject) => {
+                    resolve(element)
+                })
             }
         } else {
+            encryptedElement = new Promise((resolve, reject) => {
+                resolve(element)
+            })
             console.warn("'on s'occupe que des champs simples pour l'instant'")
         }
-    }
-    ,
+        return encryptedElement
+    },
+    importEncryptionParams(encryptionParams, callback) {
+        let workingEncryptionParams = {}
+        let encryptionParamsKeys = []
+        let importKeysPromises = []
+        Object.keys(encryptionParams).forEach(key => {
+            encryptionParamsKeys.push(key)
+            if (key === "symKey") {
+                importKeysPromises.push(this.importSymKey(encryptionParams[key], (res) => {
+                    workingEncryptionParams[key] = res
+                }))
+            } else if (key === "publicKey") {
+                importKeysPromises.push(this.importPublicKey(encryptionParams[key], (res) => {
+                    workingEncryptionParams[key] = res
+                }))
+            } else if (key === "privateKey") {
+                importKeysPromises.push(this.importPrivateKey(encryptionParams[key], (res) => {
+                    workingEncryptionParams[key] = res
+                }))
+            } else {
+                console.warn("the encryption params are not valid", encryptionParams)
+            }
+        })
+
+        Promise.all(importKeysPromises).then((arrOfKeys) => {
+            callback(workingEncryptionParams)
+        })
+
+    },
     /************************
      * fonction permettant de chiffrer tout les couples clef valeur d'un objet suivant les prefixes des clefs
      * @param object ---l'objet a chiffrer
@@ -293,24 +355,21 @@ const cryptoTools = {
      * @param callback ------renvoie l'objet chiffré
      */
     encryptObject(object, encryptionParams, callback) {
-        let encryptedObject = object
-        const encrypter = async (object, encryptionParams, callback) => {
-            await this.asyncForEach(Object.keys(object), async (key,i) => {
-
-                await this.encryptElement(object[key], key, encryptionParams, (encryptedData) => {
-                    console.log("in")
-                    encryptedObject[key] = encryptedData
-                    if(i===Object.keys.length-1){
-                        console.log("go")
-                         console.log(encryptedObject)
-                        callback(encryptedObject);
-                    }
+        this.importEncryptionParams(encryptionParams, workingEncryptionParams => {
+            let promiseArray = []
+            let objectKeys = []
+            Object.keys(object).forEach(key => {
+                objectKeys.push(key)
+                promiseArray.push(this.encryptElement(object[key], key, workingEncryptionParams))
+            })
+            Promise.all(promiseArray).then(arrOfEncryptedElements => {
+                let encryptedObject = {}
+                arrOfEncryptedElements.forEach((encryptedElement, i) => {
+                    encryptedObject[objectKeys[i]] = encryptedElement
                 })
-
-            });
-
-        }
-        encrypter(object, encryptionParams, callback)
+                callback(encryptedObject)
+            })
+        })
     }
     ,
     /********************
@@ -321,20 +380,53 @@ const cryptoTools = {
      * @param callback
      * @returns {Promise<void>}
      */
-    async decryptElement(element, elementName, encryptionParams, callback) {
+    async decryptElement(element, elementName, encryptionParams) {
         let elementType = typeof element
-        if (element) {
-            if (elementType == "string" || elementType == "number") {
-                let prefix = elementName.split('_')[0]
-                if (prefix == 'symEnc') {
-                    await this.sim_decrypt_data(element, encryptionParams.symKey,  callback)
-                } else if (prefix == 'asymEnc') {
-                    await this.asym_decrypt_data(element, encryptionParams.privateKey, callback)
-                }
+        let decryptedElement
+        if (elementType === "string" || elementType === "number") {
+            let prefix = elementName.split('_')[0]
+            if (prefix === 'symEnc') {
+                decryptedElement = new Promise((resolve, reject) => {
+                    let iv = this.convertStringToArrayBufferView(element.substring(0, 16))
+                    let cypherText = this.convertStringToArrayBufferView(element.substring(16))
+                    return this.crypto().subtle.decrypt({
+                        name: "AES-CBC",
+                        iv: iv
+                    }, encryptionParams.symKey, cypherText).then(
+                        (result) => {
+                            resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                        },
+                        function (e) {
+                            console.log("decryptObject : sym decrypt faillure", e)
+                        }
+                    );
+                })
+            } else if (prefix === 'asymEnc') {
+                decryptedElement = new Promise((resolve, reject) => {
+                    this.crypto().subtle.decrypt({name: "RSA-OAEP"}, encryptionParams.privateKey, this.convertStringToArrayBufferView(element)).then(
+                        (result) => {
+                            resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                        },
+                        function (e) {
+                            console.log("decryptObject : asym decrypt faillure", e)
+                        }
+                    );
+                })
             } else {
-                console.warn("'on s'occupe que des champs simples pour l'instant'")
+                decryptedElement = new Promise((resolve, reject) => {
+                    resolve(element)
+                })
             }
+        } else {
+            decryptedElement = new Promise((resolve, reject) => {
+                resolve(element)
+            })
+            if (element) {
+                console.warn("'on s'occupe que des champs simples pour l'instant'", elementName, element)
+            }
+
         }
+        return decryptedElement
     }
     ,
     /***************
@@ -344,19 +436,22 @@ const cryptoTools = {
      * @param callback ------renvoie l'objet dechiffré
      */
     async decryptObject(object, decryptionParams, callback) {
-        let decryptedObject = object
-
-        const decrypter = async (object, decryptionParams, callback) => {
-            await this.asyncForEach(Object.keys(object), async (key, i) => {
-                await this.decryptElement(object[key], key, decryptionParams, (decryptedData) => {
-                    decryptedObject[key] = decryptedData
+        this.importEncryptionParams(decryptionParams, workingDecryptionParams => {
+            let promiseArray = []
+            let objectKeys = []
+            Object.keys(object).forEach(key => {
+                objectKeys.push(key)
+                promiseArray.push(this.decryptElement(object[key], key, workingDecryptionParams))
+            })
+            Promise.all(promiseArray).then(arrOfEncryptedElements => {
+                let decryptedObject = {}
+                arrOfEncryptedElements.forEach((decryptedElement, i) => {
+                    decryptedObject[objectKeys[i]] = decryptedElement
                 })
-            });
-            callback(decryptedObject);
-        }
-        await decrypter(object, decryptionParams, callback)
-    }
-    ,
+                callback(decryptedObject)
+            })
+        })
+    },
     async decryptArryOfObject(arrayOfObject, decryptionParams, callback) {
         let decryptedArrayOfObject = []
         await this.asyncForEach(arrayOfObject, async (object, i) => {

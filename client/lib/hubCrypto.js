@@ -97,9 +97,7 @@ const hubCrypto = {
 
             //pour chaque projet de l'utilisateur
             cryptoTools.decryptArryOfObject(encryptedProjects, {privateKey: Session.get('stringifiedAsymPrivateKey')}, (decryptedProjects) => {
-                Meteor.setTimeout(() => {
-                    Session.set('projects', decryptedProjects)
-                }, decryptedProjects.length * cryptoTools.cryptoBenchmark())
+                Session.set('projects', decryptedProjects)
                 callback(decryptedProjects)
             })
 

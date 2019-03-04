@@ -160,7 +160,6 @@ Template.newProject.events({
                 }
                 //on chiffre le tout avec notre super fonction
                 cryptoTools.encryptObject(uncryptedNewMember, encryptionParams, (encryptedNewMember) => {
-                    console.log(brunchOfKeyToSend, encryptedNewMember)
                     //on crée le projet en base
                     Meteor.call('createProject', projectName, brunchOfKeyToSend, encryptedNewMember, (err, res) => {
                         if (err) {
@@ -185,7 +184,6 @@ Template.newProject.events({
 
                             cryptoTools.encryptObject(unencryptedUserProjectToAdd, {publicKey: Meteor.user().public.asymPublicKey}, (userProjectToAdd) => {
                                 let currentUser = User.findOne(Meteor.userId())
-                                console.log(userProjectToAdd)
                                 //et on sauvegarde ce nouveau projet dans la liste des projets de l'utilisateur
                                 currentUser.callMethod('addUserProject', userProjectToAdd, (err, res) => {
                                     if (err) {

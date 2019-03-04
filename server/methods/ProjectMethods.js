@@ -37,7 +37,6 @@ Meteor.methods({
             hashedSymKey: String,
             hashedAdminPassword:String
         })
-        console.log(firstMember)
         check(firstMember, {
             memberId : String,
             role: String,
