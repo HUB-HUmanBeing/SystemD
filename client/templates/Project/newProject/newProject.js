@@ -151,7 +151,7 @@ Template.newProject.events({
                     role: 'admin',
                     symEnc_userId: Meteor.userId(),
                     symEnc_username: Meteor.user().username,
-                    symEnc_joinAtTs: Date.now(),
+                    symEnc_joinAtTs: String(Date.now()),
                     userSignature: cryptoTools.hash(newMemberId + Session.get('stringifiedAsymPrivateKey'))
                 }
                 //on prepare l'encryption param

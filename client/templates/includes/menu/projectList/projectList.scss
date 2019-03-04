@@ -13,8 +13,10 @@ $menuFocusColor : $blue-highlight-color;
 
     .collapsible-header {
       padding: 12px 5px;
-      transition: 0.3s ease-out;
+      transition: background-color 0.3s ;
       position: relative;
+      border-left: 0px solid $menuFocusColor;
+
       .project-avatar {
         width: 45px;
         height: 45px;
@@ -28,15 +30,15 @@ $menuFocusColor : $blue-highlight-color;
 
         font-size: 1.05em;
         color: $info-color;
-        transition: 0.4s ease-out;
+        transition: 0.3s ;
       }
 
       &:hover {
         margin-left: -5px;
         border-left: 5px solid $menuFocusColor;
         background-color: $main-bg !important;
-        margin-right: -5px;
-        padding-right: 15px;
+        //margin-right: -5px;
+        padding-right: 5px;
 
         .projectTitle {
           color: $main-color !important;

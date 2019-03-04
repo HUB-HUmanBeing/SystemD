@@ -1,3 +1,70 @@
 <template name="projectMembers">
 
+    <div id="projectMembers" class=" gradiant  main-color">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m10 offset-m1 l8 offset-l2">
+                    <ul class="collapsible popout" id="ProjectMemberCollapse" data-collapsible="expandable">
+                        {{#if isAdmin currentProject._id}}
+                            <li style="background: none !important; box-shadow: none !important;">
+                                <div class="collapsible-header main-color transparent active">
+                                    <div class="flex"><i class="material-icons focus-color">group_add</i>{{__
+                                            "projectParams.invitationList"}}</div>
+                                    <div class="hr"></div>
+                                </div>
+                                <div class="collapsible-body">
+                                    <div class="row"></div>
+                                    <div class="row ">
+                                        <div class="col s12 m10 offset-m1 l8 offset-l2 center-align"
+                                             style="padding: 0 25px">
+                                            <a href="/project/{{currentProject._id}}/new-invitation"
+                                               class="full-width btn btnStandard center-align" style="padding: 0 10px">
+                                                <i class="focus-color material-icons left">group_add</i>
+                                                {{__ "projectParams.createInvitelink"}}</a>
+                                        </div>
+                                    </div>
+                                    {{>invitationList currentProject=currentProject}}
+                                </div>
+                            </li>
+                        {{/if}}
+                        <li style="background: none !important; box-shadow: none !important;">
+                            <div class="collapsible-header main-color transparent active">
+                                <div class="flex"><i class="material-icons focus-color">group</i>{{__
+                                        ".membersList"}}</div>
+                                <div class="hr"></div>
+                            </div>
+                            <div class="collapsible-body memberList">
+                                <div class="row"></div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <h6 class="flex"><i class="material-icons">verified_user</i>{{__ ".admins"}}</h6>
+                                        <ul class="collection contrasted-bg">
+                                            {{#each item in admins}}
+                                                {{>member member=item memberIsAdmin=true}}
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <h6 class="flex"><i class="material-icons">person_outline</i>{{__ ".members"}}</h6>
+                                        <ul class="collection contrasted-bg">
+                                            {{#each item in members}}
+                                                {{>member member=item }}
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 </template>

@@ -94,7 +94,7 @@ const inviteController = {
             symEnc_userId: Meteor.userId(),
             invitedBy: invitation.emittedBy,
             symEnc_username: Meteor.user().username,
-            symEnc_joinAtTs: Date.now(),
+            symEnc_joinAtTs: String(Date.now()),
             userSignature: cryptoTools.hash(newMember.memberId + Session.get('stringifiedAsymPrivateKey'))
         }
         //on genere notre user project à ajouter

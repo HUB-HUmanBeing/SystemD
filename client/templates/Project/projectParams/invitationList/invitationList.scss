@@ -5,8 +5,8 @@
 
   }
   a{
-    background-color: $light-bg !important;
-    border-bottom: 1px solid $info-color;
+    background-color: $contrasted-bg !important;
+    border-bottom: 1px solid $main-bg;
   i{
     background-color: $focus-color !important;
     color: $contrasted-bg!important;
@@ -19,7 +19,7 @@
       }
     }
     &:hover{
-      background-color:  $lighter-bg !important;
+      background-color:  $contrasted-plus-bg !important;
     }
   }
 

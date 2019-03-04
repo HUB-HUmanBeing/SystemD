@@ -84,5 +84,6 @@ Template.editProjectAvatar.onDestroyed(function () {
     if (this.croppie) {
         this.croppie.destroy()
     }
+    resetTooltips()
 });
 

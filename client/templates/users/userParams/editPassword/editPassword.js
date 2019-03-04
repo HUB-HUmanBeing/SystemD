@@ -220,11 +220,11 @@ Template.editPassword.onCreated(function () {
 
 Template.editPassword.onRendered(function () {
     //add your statement here
-    $('.circle-container').tooltip();
+    resetTooltips()
 });
 
 Template.editPassword.onDestroyed(function () {
     //add your statement here
-    $('.circle-container').tooltip('remove');
+    resetTooltips()
 });
 

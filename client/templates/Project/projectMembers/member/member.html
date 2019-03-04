@@ -1,0 +1,31 @@
+<template name="member">
+    <li class="collection-item avatar contrasted-bg">
+        <div class="circle responsive-img memberAvatar">
+            {{>avatar userId=member.symEnc_userId}}
+        </div>
+
+        <span class="title">{{member.symEnc_username}}</span>
+        <div class="infoQuotes">
+            {{__ ".since"}} {{formatDate joinAt false}}
+        </div>
+        <div class="fixed-action-btn horizontal secondary-content">
+            <a class="btn-floating btn main-bg waves-effect waves-light">
+                <i class="large material-icons">settings</i>
+            </a>
+            <ul>
+                <li>
+                    <a class="btn-floating main-bg tooltipped waves-effect waves-light" data-position="bottom"
+                       data-delay="50" data-tooltip="{{__ ".kickUser"}}">
+                        <i class="material-icons">clear</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating main-bg tooltipped waves-effect waves-light" data-position="bottom"
+                       data-delay="50" data-tooltip="{{__ ".promoteUser"}}">
+                    <i class="material-icons">verified_user</i>
+                </a>
+                </li>
+            </ul>
+        </div>
+    </li>
+</template>

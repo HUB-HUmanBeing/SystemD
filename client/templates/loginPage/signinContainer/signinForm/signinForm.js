@@ -216,6 +216,7 @@ Template.signinForm.events({
                 let userAttribute = {
                     username: username,
                     password: password,
+                    language: window.localStorage.getItem("lang")
                 };
                 //et on passe par une meteor method pour creer notre user et stocker ses clefs
                 Meteor.call('createNewUser', userAttribute, userAsymKeys, function (error, result) {
@@ -236,12 +237,13 @@ Template.signinForm.events({
                                                 let invitationId= FlowRouter.current().queryParams.invitationId
                                                 let invitationPassword = FlowRouter.current().queryParams.password
                                                 if(invitationId && invitationPassword ){
-                                                    inviteController.acceptInvitationId(invitationId,invitationPassword,()=>{
+                                                    inviteController.acceptInvitationId(invitationId,invitationPassword,(projectId)=>{
                                                         hubCrypto.decryptAndStoreProjectListInSession(()=>{
                                                             Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'light-bg')
                                                             //si tout va bien on redirige vers la page pour completer le profil
                                                             FlowRouter.go('/user-params')
                                                             Materialize.toast(__('loginFormJs.welcome'), 6000, 'lighter-bg')
+                                                            window.localStorage.setItem("lastOpenedProjectId", projectId )
                                                         })
 
                                                     })

@@ -7,13 +7,13 @@ Template.avatar.helpers({
     //add you helpers here
 
     avatarSvg : function () {
-        let user = Template.currentData().user
+
             let options = { padding: 0, background:'#165261'};
             let avatars = new Avatars(sprites(options));
-            return  avatars.create(user._id);
+            return  avatars.create(Template.currentData().userId);
     },
     avatarUrl : function () {
-        return avatarStore.getUserAvatar(Template.currentData().user._id)
+        return avatarStore.getUserAvatar(Template.currentData().userId)
     }
 });
 

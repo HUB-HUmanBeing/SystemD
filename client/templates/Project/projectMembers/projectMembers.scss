@@ -1,0 +1,86 @@
+@import "{}/client/scss/variables.scss";
+
+#projectMembers {
+  min-height: 100vh;
+  padding: 30px 0;
+
+  .collapsible {
+    margin-bottom: 30vh;
+
+    li {
+      margin: 0 !important;
+      box-shadow: none;
+
+      &.active {
+        // border: 1px solid $blue-highlight-color;
+        background: linear-gradient(45deg,$main-bg  0%, $contrasted-bg  100%);
+        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+
+      }
+    }
+
+    .collapsible-body {
+      padding: 5px 15px;
+      border-bottom: none;
+      .collection{
+        background-color: $contrasted-bg;
+        .collection-item{
+          background-color: $contrasted-bg;
+          border-bottom: 1px solid $main-bg;
+          .title{
+            display: block;
+            margin-bottom: 5px;
+            color: $plus-color;
+            b{
+              color: $plus-color;
+            }
+          }
+          &:hover{
+            background-color:  $contrasted-plus-bg !important;
+          }
+        }
+      }
+    }
+.memberList{
+  h6{
+
+    margin-bottom: 12px;
+    i{
+      margin: -5px 10px;
+    }
+  }
+  .collection-item{
+    padding-right: 50px;
+    .fixed-action-btn.horizontal ul{
+      right: 54px;
+    }
+  }
+
+}
+
+  .collapsible-header {
+      position: relative;
+      box-shadow: none !important;
+      transition: 0.3s ease-out;
+      border: none;
+      display: block;
+      padding: 10px 14px;
+      font-size: 1.2em;
+
+
+      .hr {
+        margin: 15px 0 0 0 !important;
+        display: block;
+        position: absolute;
+        width: calc(100% - 28px);
+        bottom: -5px
+      }
+
+      &:hover {
+        background-color: $lighter-bg !important;
+      }
+    }
+
+    border-bottom: none;
+  }
+}

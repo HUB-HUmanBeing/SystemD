@@ -7,8 +7,8 @@
                     <a href="/project/{{currentProject._id}}/invitation/{{invitation._id}}"
                        class="collection-item avatar main-bg">
                         <i class="material-icons circle focus-bg">insert_link</i>
-                        <p class="title">{{__ ".from"}} <b>{{formatDate invitation.createdAt}}</b></p>
-                        <p>{{__ ".by"}} : <b>{{usernameFromMemberId invitation.emittedBy}}</b> <br>
+                        <span class="title">{{__ ".from"}} {{formatDate invitation.createdAt false}}</span>
+                        <p class="infoQuotes">{{__ ".by"}} : <b>{{usernameFromMemberId invitation.emittedBy}}</b> <br>
                             {{__ ".expireIn"}} : <b>{{invitation.validityDuration}}</b> <br>
                             {{__ ".remaining"}} : <b>{{invitation.remaining}}</b> <br>
                         </p>

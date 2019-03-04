@@ -1,4 +1,5 @@
 import i18n from 'meteor/universe:i18n';
+import moment from "../../../lib/i18nMoment";
 
 Template.langButton.helpers({
     // tableau different lang
@@ -27,22 +28,23 @@ Template.langButton.helpers({
 Template.langButton.events({
     // add your events here
 
-    // when we change the language button 
+    // when we change the language button
     'change [changeLanguage]':(function(event) {
         // we store the value of new language, for example: fr-FR, in localStorage
         let newLang = event.target.value
         localStorage.setItem('lang', newLang);
+        moment.locale(newLang)
         // and we set the new language in i18n retrieving the value in localStorage(newLang)
         localStorage.getItem('lang', newLang);
         i18n.setLocale(newLang);
-        
+
       })
 
 });
 
 Template.langButton.onCreated(() => {
     // add your statement here
-    
+
 });
 
 Template.langButton.onRendered(() => {

@@ -1,4 +1,5 @@
 import moment from "../../lib/i18nMoment";
+import projectController from "../../lib/controllers/projectController";
 
 Template.registerHelper('length', function (array) {
     return array.length
@@ -43,8 +44,14 @@ Template.registerHelper('isArray', function (el) {
 
 })
 
-Template.registerHelper('formatDate', function (date) {
-    return moment(date).format();
+Template.registerHelper('formatDate', function (date, capitalize) {
+    let calendarDate =moment(date).calendar();
+    if(capitalize){
+        return calendarDate.charAt(0).toUpperCase() + calendarDate.slice(1)
+    }else{
+        return calendarDate.charAt(0).toLowerCase() + calendarDate.slice(1)
+    }
+
 
 })
 
@@ -67,4 +74,7 @@ Template.registerHelper('userIdFromMemberId', function (memberId) {
     })
     return requiredMember.symEnc_userId;
 
+})
+Template.registerHelper("isAdmin", function (projectId) {
+    return projectController.isAdmin(projectId)
 })

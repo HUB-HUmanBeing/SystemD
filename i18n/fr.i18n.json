@@ -213,7 +213,9 @@
       "label": "Description du projet"
     },
     "projectParams": {
-      "publicInfos": "Informations publiques"
+      "publicInfos": "Informations publiques",
+      "createInvitelink": "Créer un lien d'invitation",
+      "invitationList": "Invitations en cours"
     },
     "projectLayout": {
       "decrypting1": "Déchiffrement des informations projet"
@@ -247,7 +249,7 @@
       "deleted": "le lien d'invitation à été détruit"
     },
     "invitationList": {
-      "from": "Lien d'invitation créé le",
+      "from": "Lien d'invitation créé",
       "by": "Créée par",
       "expireIn": "Expire dans",
       "remaining": "Invitations restantes",

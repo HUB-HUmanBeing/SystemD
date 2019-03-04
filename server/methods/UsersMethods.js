@@ -21,7 +21,7 @@ Meteor.methods({
      * @param userAttributes
      * @param key
      */
-    createNewUser: function (userAttributes,key) {
+    createNewUser: function (userAttributes,key, language) {
         //on définit notre fonction de validation
         const validAttribute = Match.Where((attribute) => {
             //en type
@@ -47,6 +47,7 @@ Meteor.methods({
             let newUser = User.findOne(userId);
             newUser.public.asymPublicKey = key.asymPublicKey
             newUser.private.encryptedAsymPrivateKey = key.encryptedAsymPrivateKey
+            newUser.public.language= language
             //puis on la sauvegarde, mettant ainsi en base l'utilisateur créé avec tous les champs nécessaires stoqués
             newUser.save();
 
