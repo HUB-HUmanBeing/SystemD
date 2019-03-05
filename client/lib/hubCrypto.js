@@ -47,8 +47,8 @@ const hubCrypto = {
      * @param callback
      */
     encryptAsymKeyWithPassword(password, stringifiedAsymPrivateKey, username, callback) {
-        cryptoTools.hash(password, (hashedPassword) => {
-            cryptoTools.generateSimKeyFromPassphrase(hashedPassword, (symKey) => {
+
+            cryptoTools.generateSimKeyFromPassphrase(cryptoTools.heavyHash(password, username), (symKey) => {
                 //puis on la chiffre avec notre clef symétrique et en utilisant le nom d'utilisateur comme vecteur d'initialisation
                 cryptoTools.sim_encrypt_data(
                     stringifiedAsymPrivateKey,
@@ -59,7 +59,7 @@ const hubCrypto = {
                     }
                 )
             })
-        })
+
     },
     /******************
      * methode permettant de dechiffrer la clef privée de l'utilisateur a partir du hash de son mot de passe

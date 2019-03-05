@@ -1,6 +1,7 @@
 import hubCrypto from '/client/lib/hubCrypto'
 import cryptoTools from "../../../../lib/cryptoTools";
 import inviteController from "../../../../lib/controllers/inviteController";
+
 /**
  * Object in order to validate the signin form
  * @type {{checkUnicity(*, *): void, validateSigninPassword(*, *): void, isValid(*): *, validateSigninUsername(*, *): void, validateSigninPasswordRepeat(*, *): void}}
@@ -14,7 +15,7 @@ const validateSigninForm = {
     checkUnicity(username, callback) {
         Meteor.call('alreadyExists', username, function (error, result) {
             if (error) {
-                Materialize.toast(__('loginFormJs.error'), 6000, 'red darken-3')
+                Materialize.toast(__('loginFormJs.error'), 6000, 'toastError')
             } else {
                 callback(!result)
             }
@@ -74,8 +75,8 @@ const validateSigninForm = {
                 delay: 250,
                 tooltip: `
                 <div class="password-tooltip left-align" style="max-width: 200px">
-                    <p>`+__('signinFormJs.crypt')+`</p>
-                    <p class="infoQuotes">`+__('signinFormJs.use')+`<b>`+__('signinFormJs.characters')+`</b>`+__('signinFormJs.des')+`<b>`+__('signinFormJs.capital')+`</b>`+__('signinFormJs.and')+`<b>`+__('signinFormJs.number')+`</b>`+__('signinFormJs.up')+`</p>
+                    <p>` + __('signinFormJs.crypt') + `</p>
+                    <p class="infoQuotes">` + __('signinFormJs.use') + `<b>` + __('signinFormJs.characters') + `</b>` + __('signinFormJs.des') + `<b>` + __('signinFormJs.capital') + `</b>` + __('signinFormJs.and') + `<b>` + __('signinFormJs.number') + `</b>` + __('signinFormJs.up') + `</p>
                 </div>
                 `,
                 html: true,
@@ -155,7 +156,7 @@ const validateSigninForm = {
         if (errorList.length) {
             errorList.forEach((err, i) => {
                 Meteor.setTimeout(() => {
-                    Materialize.toast(err, 6000, 'red darken-3')
+                    Materialize.toast(err, 6000, 'toastError')
                 }, i * 500)
 
             })
@@ -223,39 +224,40 @@ Template.signinForm.events({
                     //si ca échoue on renvoie l'erreur en toast
                     if (error) {
                         console.log(error, userAttribute, userAsymKeys)
-                        Materialize.toast(error.message, 6000, 'red darken-3')
+                        Materialize.toast(error.message, 6000, 'toastError')
                     } else {
                         //on laisse les infos de chiffrement plus que de raison pour que l'utilisateur puisse bien voir
                         Meteor.setTimeout(() => {
 
                             Meteor.loginWithPassword(username, password, function (error) {
-                                if(!error){//si ya pas de bug,on récupere les infos utilisateurs puis on initie une session chiffrée pour l'utilisateur
-                                    Meteor.subscribe("UserPrivateInfo", Meteor.userId(), ()=>{
-                                        cryptoTools.hash(password, (hashedPassword)=>{
-                                            window.localStorage.setItem('hashedPassword',hashedPassword)
-                                            hubCrypto.initCryptoSession(hashedPassword, username, () => {
-                                                let invitationId= FlowRouter.current().queryParams.invitationId
-                                                let invitationPassword = FlowRouter.current().queryParams.password
-                                                if(invitationId && invitationPassword ){
-                                                    inviteController.acceptInvitationId(invitationId,invitationPassword,(projectId)=>{
-                                                        hubCrypto.decryptAndStoreProjectListInSession(()=>{
-                                                            Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'light-bg')
-                                                            //si tout va bien on redirige vers la page pour completer le profil
-                                                            FlowRouter.go('/user-params')
-                                                            Materialize.toast(__('loginFormJs.welcome'), 6000, 'lighter-bg')
-                                                            window.localStorage.setItem("lastOpenedProjectId", projectId )
-                                                        })
+                                if (!error) {//si ya pas de bug,on récupere les infos utilisateurs puis on initie une session chiffrée pour l'utilisateur
+                                    Meteor.subscribe("UserPrivateInfo", Meteor.userId(), () => {
+                                        let hashedPassword = cryptoTools.heavyHash(password, username)
 
+                                        window.localStorage.setItem('hashedPassword', hashedPassword)
+                                        hubCrypto.initCryptoSession(hashedPassword, username, () => {
+                                            let invitationId = FlowRouter.current().queryParams.invitationId
+                                            let invitationPassword = FlowRouter.current().queryParams.password
+                                            if (invitationId && invitationPassword) {
+                                                inviteController.acceptInvitationId(invitationId, invitationPassword, (projectId) => {
+                                                    hubCrypto.decryptAndStoreProjectListInSession(() => {
+                                                        Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'toastOk')
+                                                        //si tout va bien on redirige vers la page pour completer le profil
+                                                        FlowRouter.go('/user-params')
+                                                        Materialize.toast(__('loginFormJs.welcome'), 6000, 'toastOk')
+                                                        window.localStorage.setItem("lastOpenedProjectId", projectId)
                                                     })
-                                                }else{
-                                                    //si tout va bien on redirige vers la page pour completer le profil
-                                                    FlowRouter.go('/user-params')
-                                                    Materialize.toast("Bienvenue sur System-D", 6000, 'lighter-bg')
-                                                }
-                                            })
+
+                                                })
+                                            } else {
+                                                //si tout va bien on redirige vers la page pour completer le profil
+                                                FlowRouter.go('/user-params')
+                                                Materialize.toast("Bienvenue sur System-D", 6000, 'toastOk')
+                                            }
+
                                         })
-                                    } )
-                                }else{
+                                    })
+                                } else {
                                     console.log(error)
                                 }
                             });

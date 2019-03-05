@@ -51,8 +51,24 @@
   }
   .collection-item{
     padding-right: 50px;
-    .fixed-action-btn.horizontal ul{
-      right: 54px;
+    .fixed-action-btn.horizontal {
+      .btn-floating{
+        &:hover, &:active,&:focus{
+          background-color: $blue-highlight-color;
+        }
+      }
+      ul{
+        right: 54px;
+      }
+
+    }
+    .infoQuotes{
+      font-size: 0.9em;
+    }
+    .action{
+      border-top: 1px solid $lighter-bg;
+      padding: 10px;
+      margin: 0 -40px 0 -60px;
     }
   }
 

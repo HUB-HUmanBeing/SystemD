@@ -1,6 +1,7 @@
 import * as Materialize from "meteor/materialize:materialize";
 import Hashes from "jshashes"
 import zxcvbn from 'zxcvbn'
+import bcrypt from 'bcryptjs'
 
 const cryptoTools = {
     //permet de recuperer l'object crypto suivant le navigateur
@@ -10,7 +11,7 @@ const cryptoTools = {
             return crypto
         } else {
             console.log("API crypto Not Supported")
-            Materialize.toast('Votre navigateur ne permet pas une connexion sécurisée', 6000, 'red darken-2')
+            Materialize.toast('Votre navigateur ne permet pas une connexion sécurisée', 6000, 'toasError')
         }
 
     },
@@ -73,8 +74,9 @@ const cryptoTools = {
     },
     asym_encrypt_data(data, stringifiedPublicKey, callback) {
 
+        let saltedPrefix = this.generateRandomPassword(10)
         this.importPublicKey(stringifiedPublicKey, (public_key_object) => {
-            this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(data)).then(
+            this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(saltedPrefix+data)).then(
                 function (result) {
 
                     callback(new Uint8Array(result))
@@ -90,7 +92,7 @@ const cryptoTools = {
         this.importPrivateKey(stringifiedPrivateKey, (private_key_object) => {
             this.crypto().subtle.decrypt({name: "RSA-OAEP"}, private_key_object, encrypted_data).then(
                 (result) => {
-                    callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                    callback(this.convertArrayBufferViewtoString(new Uint8Array(result)).substring(10));
                 },
                 function (e) {
                     console.log("asym decrypt faillure", e)
@@ -227,13 +229,11 @@ const cryptoTools = {
             callback(hash)
         }
         return hash
-    }
-    ,
-    heavyHash(string) {
-
-        return this.hash(string)
-    }
-    ,
+    },
+    heavyHash(string, customSalt) {
+        let frontEndDifficulty = "13"
+       return bcrypt.hashSync(string, "$2a$"+frontEndDifficulty+"$"+new Hashes.SHA512().hex(customSalt).substring(0, 22));
+    },
 //fonction permettant de générer un mot de passe aléatoire
     generateRandomPassword(length) {
         let randomLength = 30 + Math.floor(Math.random() * 10)
@@ -298,7 +298,8 @@ const cryptoTools = {
                 })
             } else if (prefix == 'asymEnc') {
                 encryptedElement = new Promise((resolve, reject) => {
-                    this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, encryptionParams.publicKey, this.convertStringToArrayBufferView(element)).then(
+                    let saltedPrefix = this.generateRandomPassword(10)
+                    this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, encryptionParams.publicKey, this.convertStringToArrayBufferView(saltedPrefix+element)).then(
                         (result) => {
                             resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)))
                         },
@@ -412,7 +413,7 @@ const cryptoTools = {
                 decryptedElement = new Promise((resolve, reject) => {
                     this.crypto().subtle.decrypt({name: "RSA-OAEP"}, encryptionParams.privateKey, this.convertStringToArrayBufferView(element)).then(
                         (result) => {
-                            resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                            resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)).substring(10));
                         },
                         function (e) {
                             console.log("decryptObject : asym decrypt faillure", e)

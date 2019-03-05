@@ -40,7 +40,7 @@
                                         <h6 class="flex"><i class="material-icons">verified_user</i>{{__ ".admins"}}</h6>
                                         <ul class="collection contrasted-bg">
                                             {{#each item in admins}}
-                                                {{>member member=item memberIsAdmin=true}}
+                                                {{>member member=item memberIsAdmin=true currentUserIsAdmin=currentUserIsAdmin currentProject=currentProject}}
                                             {{/each}}
                                         </ul>
                                     </div>
@@ -51,7 +51,7 @@
                                         <h6 class="flex"><i class="material-icons">person_outline</i>{{__ ".members"}}</h6>
                                         <ul class="collection contrasted-bg">
                                             {{#each item in members}}
-                                                {{>member member=item }}
+                                                {{>member member=item memberIsAdmin=false  currentUserIsAdmin=currentUserIsAdmin currentProject=currentProject}}
                                             {{/each}}
                                         </ul>
                                     </div>

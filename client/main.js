@@ -3,13 +3,13 @@ import {Meteor} from "meteor/meteor";
 import i18n from 'meteor/universe:i18n';
 import getLang from "./lib/getLang";
 import moment from "./lib/i18nMoment";
+import cryptoTools from "./lib/cryptoTools";
 
 Session.set('userAvatars', {})
 Session.set('projectAvatars', {})
 
 let lang =getLang()
 let storedLang = window.localStorage.getItem('lang')
-
 // we stock language browser
 if (storedLang) {
     i18n.setLocale(storedLang);

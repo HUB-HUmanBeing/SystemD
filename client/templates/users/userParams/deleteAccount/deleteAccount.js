@@ -21,14 +21,14 @@ Template.deleteAccount.events({
                     console.log("truc")
                     // si ca marche pas, on renvoie l'erreur par toast
                     if (error) {
-                        Materialize.toast(__('deletAccountJs.error'), 4000, 'red');
+                        Materialize.toast(__('deletAccountJs.error'), 4000, 'toastError');
                     } else {
                         console.log(res)
                     }
                 },
             );
 
-                Materialize.toast(__('deleteAccountJs.deletedAccount'), 6000, 'light-bg');
+                Materialize.toast(__('deleteAccountJs.deletedAccount'), 6000, 'toastOk');
                 window.location.reload()
 
 

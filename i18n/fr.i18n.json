@@ -214,7 +214,7 @@
     },
     "projectParams": {
       "publicInfos": "Informations publiques",
-      "createInvitelink": "Créer un lien d'invitation",
+      "createInvitelink": "Nouvelle invitation",
       "invitationList": "Invitations en cours"
     },
     "projectLayout": {
@@ -272,7 +272,22 @@
       "needToLoginFirstInfo": "Cliquez sur le bouton pour vous connecter ou vous inscrire et rejoindre le projet.",
       "needToLoginFirstButton": "S'enregistrer"
     },
-
+    "projectMembers": {
+      "membersList": "Liste des membres",
+      "admins": "Administrateurs",
+      "members": "Membres"
+    },
+    "member": {
+      "since": "Depuis",
+      "invitedBy": "Invité par",
+      "projectCreator": "Créateur du projet",
+      "quitProject": "Quitter le projet",
+      "quitProjectInfo": "",
+      "promoteUser": "Donner les droits d'administrateur",
+      "promoteUserInfo": "L'utilisateur pourra inviter et retirer des membres au projet.",
+      "kickUser" : "Retirer l'utilisateur",
+      "kickUserInfo": "Retirer l'utilisateur de la liste des membres du projet."
+    },
 
   "_templates": "users",
     "deleteAccount": {

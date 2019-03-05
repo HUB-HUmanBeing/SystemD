@@ -269,6 +269,22 @@
       "needToLoginFirstInfo": "Click on the button to login or register and join the project.",
       "needToLoginFirstButton": "Register"
     },
+    "projectMembers": {
+      "membersList": "Members list",
+      "admins": "Admins",
+      "members": "Members"
+    },
+    "member": {
+      "since": "Since ",
+      "invitedBy": "Invited by",
+      "projectCreator": "Project creator.",
+      "quitProject": "Quit the project",
+      "quitProjectInfo": "",
+      "promoteUser": "Give admins right",
+      "promoteUserInfo": "User will be able to invite and kick members.",
+      "kickUser" : "Remove user",
+      "kickUserInfo": "Remove user from the members of the project"
+    },
 
   "_templates": "users",
     "deleteAccount": {

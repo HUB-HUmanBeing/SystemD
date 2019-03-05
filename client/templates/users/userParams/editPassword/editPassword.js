@@ -123,7 +123,7 @@ const validateUpdatePassword = {
         if (errorList.length) {
             errorList.forEach((err, i) => {
                 Meteor.setTimeout(() => {
-                    Materialize.toast(err, 6000, 'red darken-3')
+                    Materialize.toast(err, 6000, 'toastError')
                 }, i * 500)
 
             })
@@ -168,7 +168,7 @@ Template.editPassword.events({
             Accounts.changePassword(oldPassword, newPassword, function (error, result) {
                 //si ca échoue on renvoie l'erreur en toast
                 if (error) {
-                    Materialize.toast(error.message, 6000, 'red darken-3')
+                    Materialize.toast(error.message, 6000, 'toastError')
                 } else {
                     hubCrypto.encryptAsymKeyWithPassword(newPassword, Session.get('stringifiedAsymPrivateKey'), Meteor.user().username,(encryptedAsymPrivateKey)=>{
                         let  user = User.findOne(Meteor.userId())
@@ -176,8 +176,8 @@ Template.editPassword.events({
                             if(err){
                                 console.log(err)
                             }else{
-                                cryptoTools.hash(newPassword,(hashedPassword)=>{
-                                    hubCrypto.initCryptoSession(hashedPassword,Meteor.user().username, ()=>{
+
+                                    hubCrypto.initCryptoSession(cryptoTools.heavyHash(newPassword, Meteor.user().username),Meteor.user().username, ()=>{
                                         instance.updatePasswordComplete.set([
                                             __('editPasswordJs.pwdChange'),
                                             __('editPasswordJs.encryptionKey'),
@@ -189,7 +189,7 @@ Template.editPassword.events({
                                             $('editPasswordCollapse').collapsible('close', 0);
                                         }, 4000)
                                     })
-                                })
+
                             }
 
 

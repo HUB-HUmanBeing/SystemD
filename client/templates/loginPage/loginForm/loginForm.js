@@ -25,32 +25,31 @@ Template.loginForm.events({
             // si il y a une erreur, on "toast" le message d'erreur
 
             if (error) {
-                Materialize.toast(error.message, 6000, 'red')();
+                Materialize.toast(error.message, 6000, 'toastError');
             } else {
+                let hashedPassword = cryptoTools.heavyHash(password, username)
+                Meteor.subscribe("UserPrivateInfo", Meteor.userId(), () => {
+                    window.localStorage.setItem('hashedPassword', hashedPassword)
+                    hubCrypto.initCryptoSession(hashedPassword, username, () => {
 
-                cryptoTools.hash(password, (hashedPassword) => {
-                  Meteor.subscribe("UserPrivateInfo", Meteor.userId(),()=>{
-                      window.localStorage.setItem('hashedPassword', hashedPassword)
-                      hubCrypto.initCryptoSession(hashedPassword, username, () => {
+                        let invitationId = FlowRouter.current().queryParams.invitationId
+                        let invitationPassword = FlowRouter.current().queryParams.password
+                        if (invitationId && invitationPassword) {
+                            inviteController.acceptInvitationId(invitationId, invitationPassword, (projectId) => {
+                                hubCrypto.decryptAndStoreProjectListInSession(() => {
+                                    console.log(projectId)
+                                    FlowRouter.go('/project/' + projectId + "/home")
+                                    Materialize.toast(__('loginFormJs.welcome'), 6000, 'toastOk')
+                                    Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'toastOk')
+                                })
 
-                          let invitationId= FlowRouter.current().queryParams.invitationId
-                          let invitationPassword = FlowRouter.current().queryParams.password
-                          if(invitationId && invitationPassword ){
-                              inviteController.acceptInvitationId(invitationId,invitationPassword,(projectId)=>{
-                                  hubCrypto.decryptAndStoreProjectListInSession(()=>{
-                                      console.log(projectId)
-                                      FlowRouter.go('/project/'+projectId+"/home")
-                                      Materialize.toast(__('loginFormJs.welcome'), 6000, 'light-bg')
-                                      Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'light-bg')
-                                  })
+                            })
+                        } else {
+                            FlowRouter.go('/')
+                            Materialize.toast("Bienvenue sur System-D", 6000, 'toastOk')
+                        }
+                    })
 
-                              })
-                          }else{
-                              FlowRouter.go('/')
-                              Materialize.toast("Bienvenue sur System-D", 6000, 'light-bg')
-                          }
-                      })
-                  })
 
                 })
             }

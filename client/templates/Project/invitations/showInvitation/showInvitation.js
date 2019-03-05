@@ -44,7 +44,7 @@ Template.showInvitation.events({
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
-        Materialize.toast(__("showInvitation.copied"), 6000, "lighter-bg")
+        Materialize.toast(__("showInvitation.copied"), 6000, "toastOk")
         instance.copied.set(true)
     },
     "click [share]": function (event, instance) {
@@ -70,7 +70,7 @@ Template.showInvitation.events({
                 if(err){
                     console.log(err)
                 }else{
-                    Materialize.toast(__("showInvitation.deleted"),6000, "lighter-bg")
+                    Materialize.toast(__("showInvitation.deleted"),6000, "toastOk")
                     FlowRouter.go('/project/'+instance.projectId+'/params')
                 }
             })

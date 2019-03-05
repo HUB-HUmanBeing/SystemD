@@ -1,4 +1,5 @@
 import Project from "../../../../imports/classes/Project";
+import projectController from "../../../lib/controllers/projectController";
 
 Template.projectMembers.helpers({
     //add you helpers here
@@ -13,7 +14,6 @@ Template.projectMembers.helpers({
                 result.push(member)
             }
         })
-        console.log(result)
         return result
     },
     admins: function () {
@@ -24,8 +24,10 @@ Template.projectMembers.helpers({
                 result.push(member)
             }
         })
-        console.log(result)
         return result
+    },
+    currentUserIsAdmin: function () {
+        return projectController.isAdmin(FlowRouter.current().params.projectId)
     }
 });
 

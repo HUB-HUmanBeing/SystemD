@@ -11,9 +11,13 @@ import {check} from "meteor/check";
  **********************************/
 Meteor.publish('UserPrivateInfo', function (id) {
     check(id, String);
-    if (id === this.userId)
-        return Meteor.users.find(id, {fields: {private: 1, public: 1, username: 1}});
+    check(id === Meteor.userId(), true)
+    return Meteor.users.find(id, {fields: {_id:1,private: 1, public: 1, username: 1}});
 });
+Meteor.publish('userPublicInfo', function (id) {
+    check(id, String);
+    return Meteor.users.find(id, {fields: {_id:1,public: 1, username: 1}});
+})
 Meteor.publish('ProjectPublic', function (projectId) {
     check(projectId, String)
     return Projects.find({_id: projectId},
@@ -54,7 +58,7 @@ Meteor.publish('invitation', function (invitationId, hashedPassword) {
     check(invitationId, String)
     check(hashedPassword, String)
     const invitation = Invitation.findOne(invitationId)
-    if(invitation){
+    if (invitation) {
         check(cryptoServer.compare(hashedPassword, invitation.hashedPassword), true)
         if (!invitation.isAlwaysValable()) {
             console.log("removed")
@@ -76,7 +80,7 @@ Meteor.publish('invitation', function (invitationId, hashedPassword) {
 
         }
         return Invitations.find({_id: invitationId})
-    }else{
+    } else {
 
         return []
     }

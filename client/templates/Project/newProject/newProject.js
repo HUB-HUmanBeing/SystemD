@@ -13,7 +13,7 @@ const validateNewProjectForm = {
         Meteor.call('projectNameAlreadyExists', projectName, function (error, result) {
             if (error) {
                 console.log(error)
-                Materialize.toast(__('newProjectJs.error'), 6000, 'red darken-3')
+                Materialize.toast(__('newProjectJs.error'), 6000, 'toastError')
             } else {
                 callback(!result)
             }
@@ -84,7 +84,7 @@ const validateNewProjectForm = {
         if (errorList.length) {
             errorList.forEach((err, i) => {
                 Meteor.setTimeout(() => {
-                    Materialize.toast(err, 6000, 'red darken-3')
+                    Materialize.toast(err, 6000, 'toastError')
                 }, i * 500)
 
             })
@@ -193,7 +193,7 @@ Template.newProject.events({
                                         //on redirige
                                         FlowRouter.go('/project/' + createdProject._id + "/params")
                                         //on toast que tout s'est bien passé
-                                        Materialize.toast(__('newProjectJs.theProject') + projectName + __('newProjectJs.created'), 6000, 'lighter-bg')
+                                        Materialize.toast(__('newProjectJs.theProject') + projectName + __('newProjectJs.created'), 6000, 'toastOk')
                                         //on referme le loader
                                         instance.newProjectComplete.set(null)
                                     }

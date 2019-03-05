@@ -95,6 +95,20 @@ body, html{
 
   border: 2px solid $focus-color !important;
 }
+.btn-danger{
+  background-color: transparent !important;
+  border: 2px solid $danger-color !important;
+  .material-icons{
+    color: $danger-color !important;
+    transition: color 0.5s
+  }
+
+  color: $plus-color !important;
+  transition: color 0.5s, border 0.5s;
+}
+.btn-danger:hover, .btn-danger:focus{
+  background-color: rgba($danger-color, 0.3) !important;
+}
 .btnFocus{
   opacity: 0.8;
   background-color: $focus-color !important;
@@ -187,4 +201,10 @@ body, html{
 }
 .rounded{
   border-radius: 10px;
+}
+.toastOk{
+  background-color: $blue-highlight-color !important;
+}
+.toastError{
+  background-color: $danger-color;
 }
