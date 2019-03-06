@@ -1,0 +1,15 @@
+<template name="deleteProject">
+<div class="center-align">
+    {{#if isDeletable}}
+        <p class="left-align " style="margin-bottom: 15px">{{__ ".deleteProjectInfo"}}</p>
+    {{else}}
+        <p class="left-align danger-color" style="margin-bottom: 15px">{{__ ".deleteProjectError"}}
+        <p class="left-align infoQuotes">{{__ ".deleteProjectErrorTips"}}</p>
+        </p>
+
+    {{/if}}
+    <button class="btn  {{#if isDeletable}}btn-danger{{else}}btnDisabled{{/if}} center-align waves-effect waves-light shadow " deleteProject><i
+            class="material-icons right">delete_forever</i>{{__ 'projectParams.deleteProject'}}
+    </button>
+</div>
+</template>

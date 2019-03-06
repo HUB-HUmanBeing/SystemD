@@ -202,7 +202,8 @@
       "created": " a été créé."
     },
     "projectHome": {
-      "projectDescription": "Description du projet"
+      "projectDescription": "Description du projet",
+      "noDescription": "Description non renseignée."
     },
     "editProjectAvatar": {
       "edit": "Editer l'avatar",
@@ -215,7 +216,14 @@
     "projectParams": {
       "publicInfos": "Informations publiques",
       "createInvitelink": "Nouvelle invitation",
-      "invitationList": "Invitations en cours"
+      "invitationList": "Invitations en cours",
+      "deleteProject": "Supprimer le projet"
+    },
+    "deleteProject": {
+      "deleteProjectInfo": "Cette action supprimera définitivement le projet",
+      "deleteProjectError": "Vous ne pouvez pas supprimer ce projet",
+      "deleteProjectErrorTips" : "Il reste des membres à l'interieur de ce projet",
+      "deleteSuccess": "Le projet a été supprimé"
     },
     "projectLayout": {
       "decrypting1": "Déchiffrement des informations projet"
@@ -282,11 +290,16 @@
       "invitedBy": "Invité par",
       "projectCreator": "Créateur du projet",
       "quitProject": "Quitter le projet",
-      "quitProjectInfo": "",
+      "quitProjectError": "Vous ne pouvez pas quitter le projet.",
+      "quitProjectErrorTips": "Nommer au moins un nouvel administrateur pour le projet.",
+      "quitProjectInfo": "Vous serez retirés des participants au projet.",
       "promoteUser": "Donner les droits d'administrateur",
       "promoteUserInfo": "L'utilisateur pourra inviter et retirer des membres au projet.",
       "kickUser" : "Retirer l'utilisateur",
-      "kickUserInfo": "Retirer l'utilisateur de la liste des membres du projet."
+      "kickUserInfo": "Retirer l'utilisateur de la liste des membres du projet.",
+      "removedSuccess" : "L'utilisateur à été retiré des membres du projet",
+      "promoteSuccess": "L'utilisateur fait désormais parti des administrateurs du projet",
+      "quitSuccess": "Vous avez quitté le projet"
     },
 
   "_templates": "users",

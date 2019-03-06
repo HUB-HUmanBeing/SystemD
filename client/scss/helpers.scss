@@ -109,6 +109,19 @@ body, html{
 .btn-danger:hover, .btn-danger:focus{
   background-color: rgba($danger-color, 0.3) !important;
 }
+.btnDisabled{
+  background-color: transparent !important;
+  border: 2px solid $minus-color !important;
+  cursor: not-allowed;
+  .material-icons{
+    color: $minus-color !important;
+    transition: color 0.5s
+  }
+
+  color: $minus-color !important;
+  transition: color 0.5s, border 0.5s;
+}
+
 .btnFocus{
   opacity: 0.8;
   background-color: $focus-color !important;

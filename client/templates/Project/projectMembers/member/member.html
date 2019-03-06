@@ -1,9 +1,9 @@
 <template name="member">
-    <li class="collection-item avatar contrasted-bg memberItem " >
+    <li class="collection-item avatar contrasted-bg memberItem ">
         <div class="circle responsive-img memberAvatar">
             {{>avatar userId=member.symEnc_userId}}
         </div>
-        <div class="row" >
+        <div class="row">
             <div class="col s12">
                 <span class="title">{{member.symEnc_username}}</span>
                 <div class="infoQuotes">
@@ -12,7 +12,7 @@
                         <br>{{__ ".invitedBy"}} {{usernameFromMemberId member.invitedBy}}
                     {{else}}
                         <br>{{__ ".projectCreator"}}
-                        {{/if}}
+                    {{/if}}
                 </div>
             </div>
         </div>
@@ -72,10 +72,21 @@
         {{#if quitProject}}
             <div class="row action">
                 <div class="col s12 center-align">
-                    <p class="left-align " style="margin-bottom: 15px">{{__ ".quitProjectInfo"}}</p>
-                    <button class="btn  btn-danger center-align waves-effect waves-light shadow " quitProject><i
+                    {{#if isDeletable}}
+                        {{>deleteProject currentProject = currentProject}}
+                        {{else}}
+                    {{#if isMemberAllowedToQuit}}
+                        <p class="left-align " style="margin-bottom: 15px">{{__ ".quitProjectInfo"}}</p>
+                    {{else}}
+                        <p class="left-align danger-color" style="margin-bottom: 15px">{{__ ".quitProjectError"}}
+                        <p class="left-align infoQuotes">{{__ ".quitProjectErrorTips"}}</p>
+                        </p>
+
+                    {{/if}}
+                    <button class="btn  {{#if isMemberAllowedToQuit}}btn-danger{{else}}btnDisabled{{/if}} center-align waves-effect waves-light shadow " quitProject><i
                             class="material-icons right">exit_to_app</i>{{__ '.quitProject'}}
                     </button>
+                    {{/if}}
                 </div>
 
             </div>

@@ -132,7 +132,25 @@ const Project = Class.create({
             }
         }
     },
-    helpers: {}
+    helpers: {
+        isMemberAllowedToQuit(memberId){
+            let adminCount = 0
+            let currentMember
+            this.private.members.forEach(member=>{
+
+                if(member.role ==="admin"){
+                    adminCount++
+                }
+                if(member.memberId === memberId){
+                    currentMember= member
+                }
+            })
+            return (currentMember.role !== "admin" || adminCount>=2)
+        },
+        isDeletable(){
+            return this.private.members.length ===1
+        }
+    }
 
 });
 

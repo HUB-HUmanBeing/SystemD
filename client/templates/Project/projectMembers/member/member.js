@@ -2,6 +2,7 @@ import moment from "../../../../lib/i18nMoment";
 import projectController from "../../../../lib/controllers/projectController";
 import cryptoTools from "../../../../lib/cryptoTools";
 import User from "../../../../../imports/classes/User";
+import hubCrypto from "../../../../lib/hubCrypto";
 
 Template.member.helpers({
     //add you helpers here
@@ -22,6 +23,12 @@ Template.member.helpers({
     },
     quitProject: function () {
         return Template.instance().quitProject.get()
+    },
+    isDeletable : function () {
+        return Template.currentData().currentProject.isDeletable()
+    },
+    isMemberAllowedToQuit: function () {
+        return Template.currentData().currentProject.isMemberAllowedToQuit(Template.currentData().member.memberId)
     }
 });
 
@@ -39,31 +46,31 @@ Template.member.events({
         let memberId = instance.data.member.memberId
         let userId = instance.data.member.symEnc_userId
         let currentUserProject = projectController.getCurrentUserProject(currentProject._id)
-        let adminPassword =  currentUserProject.asymEnc_adminPassword
-        Meteor.subscribe('userPublicInfo', userId,(err)=>{
-            if(err){
+        let adminPassword = currentUserProject.asymEnc_adminPassword
+        Meteor.subscribe('userPublicInfo', userId, (err) => {
+            if (err) {
                 console.log(err)
-            }else{
+            } else {
                 let user = User.findOne(userId)
-                let clearAsymEncParams={
+                let clearAsymEncParams = {
                     asymEnc_adminPassword: adminPassword,
                     asymEnc_role: "admin"
                 }
-                cryptoTools.encryptObject(clearAsymEncParams,{publicKey :user.public.asymPublicKey},(asymEncParams)=>{
+                cryptoTools.encryptObject(clearAsymEncParams, {publicKey: user.public.asymPublicKey}, (asymEncParams) => {
                     currentProject.callMethod(
                         "promoteMember",
                         projectController.getAuthInfo(currentProject._id),
                         memberId,
                         userId,
-                        cryptoTools.hash(memberId +adminPassword),
+                        cryptoTools.hash(memberId + adminPassword),
                         asymEncParams,
                         (err, res) => {
-                        if (err) {
-                            console.log(err)
-                        } else {
-                            Materialize.toast(__("member.PromotedSucces"), 6000, "toastOk")
-                        }
-                    })
+                            if (err) {
+                                console.log(err)
+                            } else {
+                                Materialize.toast(__("member.PromotedSuccess"), 6000, "toastOk")
+                            }
+                        })
                 })
             }
         })
@@ -81,18 +88,18 @@ Template.member.events({
         let memberId = instance.data.member.memberId
         let userId = instance.data.member.symEnc_userId
         let currentUserProject = projectController.getCurrentUserProject(currentProject._id)
-        let adminPassword =  currentUserProject.asymEnc_adminPassword
+        let adminPassword = currentUserProject.asymEnc_adminPassword
         currentProject.callMethod(
             "kickMember",
             projectController.getAuthInfo(currentProject._id),
             memberId,
             userId,
-            cryptoTools.hash(memberId +adminPassword),
+            cryptoTools.hash(memberId + adminPassword),
             (err, res) => {
                 if (err) {
                     console.log(err)
                 } else {
-                    Materialize.toast(__("member.removedSucces"), 6000, "toastOk")
+                    Materialize.toast(__("member.removedSuccess"), 6000, "toastOk")
                 }
             })
     },
@@ -104,7 +111,30 @@ Template.member.events({
     },
     'click [quitProject]': function (event, instance) {
         event.preventDefault()
-        console.log('kickUser')
+        let currentProject = instance.data.currentProject
+        let memberId = instance.data.member.memberId
+        let userProjectIndex = projectController.getCurrentUserProjectIndex(currentProject._id)
+        if (currentProject.isMemberAllowedToQuit(Template.currentData().member.memberId)) {
+            FlowRouter.go("/")
+            currentProject.callMethod(
+                "quitProject",
+                projectController.getAuthInfo(currentProject._id),
+                memberId,
+                userProjectIndex,
+                (err, res) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        hubCrypto.decryptAndStoreProjectListInSession()
+
+                        window.localStorage.setItem("lastOpenedProjectId", null)
+                        Materialize.toast(__("member.quitSuccess")+ " "+currentProject.name, 6000, "toastOk")
+                    }
+                })
+        } else {
+            Materialize.toast(__("member.quitProjectError"), 6000, "toastError")
+        }
+
     },
     'focusout .memberItem': function (event, instance) {
         instance.promoteUser.set(false)

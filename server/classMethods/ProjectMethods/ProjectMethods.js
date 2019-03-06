@@ -1,6 +1,6 @@
 import {check} from "meteor/check";
-import Project from "../../imports/classes/Project";
-import cryptoServer from "../../imports/cryptoServer";
+import Project from "../../../imports/classes/Project";
+import cryptoServer from "../../../imports/cryptoServer";
 
 
 /*********************************

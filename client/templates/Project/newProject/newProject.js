@@ -192,6 +192,7 @@ Template.newProject.events({
                                     } else {
                                         //on redirige
                                         FlowRouter.go('/project/' + createdProject._id + "/params")
+
                                         //on toast que tout s'est bien passé
                                         Materialize.toast(__('newProjectJs.theProject') + projectName + __('newProjectJs.created'), 6000, 'toastOk')
                                         //on referme le loader

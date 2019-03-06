@@ -17,6 +17,9 @@ Template.projectList.helpers({
                 let menuProjectsContainer = document.getElementById('menuProjectsContainer')
                 if (menuProjectsContainer && instance) {
                     if (Meteor.Device.isDesktop()) {
+                        if(instance.bs){
+                            instance.bs.destroy()
+                        }
                         instance.bs = new BeautifyScrollbar(menuProjectsContainer);
                         Meteor.setTimeout(() => {
                             if (!instance.scrollDone && instance.currentProjectId.get() && $("#menuProject-" + instance.currentProjectId.get()).offset()) {

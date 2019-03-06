@@ -9,15 +9,25 @@ import {check} from "meteor/check";
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
  **********************************/
+/************
+ * pulication des infos utilisateurs destinée à l'utilisateur courant
+ */
 Meteor.publish('UserPrivateInfo', function (id) {
     check(id, String);
     check(id === Meteor.userId(), true)
     return Meteor.users.find(id, {fields: {_id:1,private: 1, public: 1, username: 1}});
 });
+/***************
+ * publication des infos utilisateur publiques
+ */
 Meteor.publish('userPublicInfo', function (id) {
     check(id, String);
     return Meteor.users.find(id, {fields: {_id:1,public: 1, username: 1}});
 })
+
+/***********************
+ * publication de la partie publique d'un projet
+ */
 Meteor.publish('ProjectPublic', function (projectId) {
     check(projectId, String)
     return Projects.find({_id: projectId},
@@ -30,6 +40,9 @@ Meteor.publish('ProjectPublic', function (projectId) {
         })
 
 })
+/*******************
+ * publication de la partie rivée d'un projet
+ */
 Meteor.publish('ProjectForMembers', function (projectId, hashedSymKey) {
     check(projectId, String)
     check(hashedSymKey, String)
@@ -54,6 +67,10 @@ Meteor.publish('ProjectForMembers', function (projectId, hashedSymKey) {
             })
     }
 })
+/*********************
+ * publication d'une invitation, nécessite d'envoyer le hash du password envoyée avec
+ * gere aussi l'auto-destroy d'une invitation
+ */
 Meteor.publish('invitation', function (invitationId, hashedPassword) {
     check(invitationId, String)
     check(hashedPassword, String)
@@ -87,6 +104,11 @@ Meteor.publish('invitation', function (invitationId, hashedPassword) {
 
 })
 
+/*********
+ * publication de la liste des invitations pour un projet donné
+ * gere aussi l'auto-destroy d'une invitation
+ */
+
 Meteor.publish('invitationList', function (authInfo, projectId) {
     check(authInfo, {memberId: String, userSignature: String})
     check(projectId, String)
@@ -99,7 +121,7 @@ Meteor.publish('invitationList', function (authInfo, projectId) {
             invitation.remove(() => {
                 currentProject.private.invitations.splice(i, 1)
                 currentProject.save()
-                this.removed("Invitations", invitationId)
+                this.removed("Invitations", invit.invitationId)
                 console.log("invitation auto-removed")
             })
         } else {

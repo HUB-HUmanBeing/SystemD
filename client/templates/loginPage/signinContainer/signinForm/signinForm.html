@@ -14,7 +14,7 @@
                 <div class="formErrorContainer">
                     {{#if isArray  errors.signinUsername}}
                         {{#each error in errors.signinUsername}}
-                            <div class="formError red-text">
+                            <div class="formError danger-color">
                                 {{error}}
                             </div>
                         {{/each}}
@@ -35,7 +35,7 @@
                         <div class="formErrorContainer">
                             {{#if isArray errors.signinPassword}}
                                 {{#each error in errors.signinPassword}}
-                                    <div class="formError red-text">
+                                    <div class="formError danger-color">
                                         {{error}}
                                     </div>
                                 {{/each}}
@@ -53,7 +53,7 @@
                         <div class="formErrorContainer">
                             {{#if isArray  errors.signinPasswordRepeat}}
                                 {{#each error in errors.signinPasswordRepeat}}
-                                    <div class="formError red-text">
+                                    <div class="formError danger-color">
                                         {{error}}
                                     </div>
                                 {{/each}}

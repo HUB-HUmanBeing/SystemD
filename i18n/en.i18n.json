@@ -203,7 +203,8 @@
       "created": " has been created."
     },
     "projectHome": {
-      "projectDescription": "Project description"
+      "projectDescription": "Project description",
+      "noDescription": "no registered description."
     },
     "editProjectAvatar": {
       "edit": "Edit avatar",
@@ -216,7 +217,14 @@
     "projectParams": {
       "publicInfos": "Public informations",
       "createInvitelink": "Create invitation link",
-      "invitationList": "Pending Invitations"
+      "invitationList": "Pending Invitations",
+      "deleteProject": "Delete project"
+    },
+    "deleteProject": {
+      "deleteProjectInfo": "You will remove definitely this project",
+      "deleteProjectError": "You can't remove this project",
+      "deleteProjectErrorTips" : "There is still members in this project",
+      "deleteSuccess": "The project has been removed"
     },
     "projectLayout": {
       "decrypting1": "Projet informations deciphering"
@@ -279,11 +287,16 @@
       "invitedBy": "Invited by",
       "projectCreator": "Project creator.",
       "quitProject": "Quit the project",
-      "quitProjectInfo": "",
+      "quitProjectError": "You can't quit the project.",
+      "quitProjectErrorTips": "Design at least one new admin for the project.",
+      "quitProjectInfo": "You will be removed from the project members.",
       "promoteUser": "Give admins right",
       "promoteUserInfo": "User will be able to invite and kick members.",
       "kickUser" : "Remove user",
-      "kickUserInfo": "Remove user from the members of the project"
+      "kickUserInfo": "Remove user from the members of the project",
+      "removedSuccess" : "User has been removed from the project members",
+      "promoteSuccess": "User is now admin of the project",
+      "quitSuccess": "You have quit the project"
     },
 
   "_templates": "users",

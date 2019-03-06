@@ -27,6 +27,21 @@ Project.extend({
             })
             return result
         },
+        isThisMember(authInfo, memberId){
+            check(authInfo , {
+                memberId : String,
+                userSignature: String
+            })
+            let result = false
+            this.private.members.forEach(member=>{
+                if(member.memberId === authInfo.memberId){
+                    if(cryptoServer.compare(authInfo.userSignature,member.userSignature)){
+                        result = true
+                    }
+                }
+            })
+            return result && memberId===authInfo.memberId
+        },
         /***************************
          * renvoie true si l'utilisateur est admin du projet
          * @param authInfo
