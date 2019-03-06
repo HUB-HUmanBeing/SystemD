@@ -21,6 +21,9 @@ User.extend({
          */
         async getUpdateAvatarUrl() {
             check(this._id, Meteor.userId())
+            let currentUser =User.findOne(Meteor.userId())
+            currentUser.public.avatar = true
+            currentUser.save()
             const result = await minioTools.client.presignedPutObject('user-avatars', Meteor.userId() + '.jpg')
             return result
         },
@@ -30,6 +33,9 @@ User.extend({
          */
         async deleteAvatar() {
             check(this._id, Meteor.userId())
+            let currentUser =User.findOne(Meteor.userId())
+                currentUser.public.avatar = false
+            currentUser.save()
             const result = await minioTools.client.removeObject('user-avatars', Meteor.userId() + '.jpg')
             return result
         }

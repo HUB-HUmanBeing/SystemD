@@ -58,6 +58,12 @@ const ProjectPublic = Class.create({
                 }
             ],
         },
+        avatar:{
+            type: Boolean,
+            default: function () {
+                return false
+            }
+        },
         asymPublicKey: {
             type: String,
         }

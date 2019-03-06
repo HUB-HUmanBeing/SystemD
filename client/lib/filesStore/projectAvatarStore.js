@@ -14,7 +14,7 @@ const projectAvatarStore = {
 
         let avatars = Session.get('projectAvatars')||{}
 
-        if (avatars && avatars[projectId]) {
+        if (avatars && avatars[projectId] ) {
             return avatars[projectId]
         } else {
             if (!this.inProgress[projectId]) {
@@ -60,7 +60,7 @@ const projectAvatarStore = {
      */
     deleteProjectAvatar(projectId) {
         let avatars = Session.get('projectAvatars')
-        avatars[projectId] = undefined
+        avatars[projectId] = false
         Session.set('projectAvatars', avatars)
 
     }

@@ -2,6 +2,8 @@
 import Minio from 'minio'
 import {check} from "meteor/check";
 import minioTools from "../../imports/minioTools";
+import Project from "../../imports/classes/Project";
+import User from "../../imports/classes/User";
 
 
 Meteor.methods({
@@ -14,13 +16,23 @@ Meteor.methods({
      */
     async getMinioUserAvatarUrl(userId) {
         check(userId, String)
-        const result = await minioTools.client.presignedGetObject('user-avatars', userId + '.jpg')
-        return result
+
+        if(User.findOne(userId).public.avatar){
+            return await minioTools.client.presignedGetObject('user-avatars', userId + '.jpg')
+        }else{
+            return "noAvatar"
+        }
+
+
     },
     async getMinioProjectAvatarUrl(projectId){
         check(projectId, String)
-        const result = await minioTools.client.presignedGetObject('project-avatars', projectId + '.jpg')
-        return result
+        if(Project.findOne(projectId).public.avatar){
+            return await minioTools.client.presignedGetObject('project-avatars', projectId + '.jpg')
+        }else{
+            return "noAvatar"
+        }
+
     }
 
 });

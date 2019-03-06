@@ -40,8 +40,10 @@ const PublicUser = Class.create({
     fields: {
         asymPublicKey: String,
         avatar: {
-            type: String,
-            optional: true
+            type: Boolean,
+            default: function () {
+                return false
+            }
         },
         language: {
            type: String,

@@ -15,7 +15,8 @@ Project.extend({
             check(authInfo, {memberId: String, userSignature: String})
             let currentProject = Project.findOne(this._id)
             check(currentProject.isAdmin(authInfo), true)
-
+            currentProject.public.avatar = true
+            currentProject.save()
             const result = await minioTools.client.presignedPutObject('project-avatars', currentProject._id + '.jpg')
             return result
         },
@@ -27,6 +28,8 @@ Project.extend({
             check(authInfo, {memberId: String, userSignature: String})
             let currentProject = Project.findOne(this._id)
             check(currentProject.isAdmin(authInfo), true)
+            currentProject.public.avatar = false
+            currentProject.save()
             const result = await minioTools.client.removeObject('project-avatars', currentProject._id + '.jpg')
             return result
         },

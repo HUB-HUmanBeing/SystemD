@@ -60,7 +60,7 @@ const avatarStore = {
      */
     deleteUserAvatar(userId) {
         let avatars = Session.get('userAvatars')
-        avatars[userId] = undefined
+        avatars[userId] = false
         Session.set('userAvatars', avatars)
 
     }
