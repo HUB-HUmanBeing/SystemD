@@ -11,4 +11,9 @@ Meteor.startup(() => {
       Accounts.removeDefaultRateLimit();
   }
   minioTools.initialize()
+
 });
+
+var key = process.env.PWD + '/private/localhost.key';
+var cert = process.env.PWD + '/private/localhost.cert';
+SSL(key, cert, 3003);

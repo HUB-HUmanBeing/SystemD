@@ -1,0 +1,82 @@
+<template name="submitIssue">
+    {{#if currentUserId}}
+        <div id="openModalSubmitIssueContainer">
+
+            <a class="waves-effect waves-light btn modal-trigger " href="#modalSubmitIssue"><i
+                    class="material-icons left">sync_problem</i>{{__
+                    ".btnLabel"}}</a>
+
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="modalSubmitIssue" class="modal contrasted-bg">
+            <div class="modal-content small-padding contrasted-bg main-color">
+
+                <ul class="tabs tabs-fixed-width  transparent focus-color">
+                    <li class="tab col s6">
+                        <a href="#" class="active " bugReport>
+                            <!--<i class="material-icons">bug_report</i>-->
+                            {{__ '.bugReport'}}
+                        </a>
+                    </li>
+                    <li class="tab col s6">
+                        <a href="#" class="" suggestion>
+                            <!--<i class="material-icons">lightbulb_outline</i>-->
+                            {{__ '.suggestion'}}
+                        </a>
+                    </li>
+                </ul>
+                {{#unless issueUrl}}
+                <div class="row no-margin">
+                    <div class="col s12 small-padding">
+                        <form action="#" id="submitIssueForm" class="center-align small-margin small-padding">
+                            {{#if compare requestType "==" "bugReport"}}
+                                <div class="row">
+                                    <p class="infoQuotes">
+                                        {{__ "allowDeviceInfo"}}
+                                    </p>
+                                    <div class="switch">
+                                        <label>
+                                            {{__ ".decline"}}
+                                            <input type="checkbox" id="withDeviceInfo">
+                                            <span class="lever"></span>
+                                            {{__ ".autorise"}}
+                                        </label>
+                                    </div>
+                                </div>
+                            {{/if}}
+                            <div class="row no-margin">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">
+                                        {{#if compare requestType "==" "bugReport"}}
+                                            bug_report
+                                        {{else}}
+                                            lightbulb_outline
+                                        {{/if}}
+                                    </i>
+                                    <textarea id="submitIssueContent" class="materialize-textarea" required
+                                              data-length="1000"></textarea>
+                                    <label for="submitIssueContent">
+                                        {{#if compare requestType "==" "bugReport"}}
+                                            {{__ ".bugReportLabel"}}
+                                        {{else}}
+                                            {{__ ".sugestionLabel"}}
+                                        {{/if}}</label>
+                                </div>
+                            </div>
+                            <div class="row center-align no-margin">
+                                <button href="#" class="btn btnStandard center-align waves-effect waves-light shadow"><i
+                                        class="material-icons right">sync_problem</i>{{__ '.submit'}}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                    {{else}}
+                    <h4><i class="material-icons right">done</i>{{__ ".succesMessage"}}</h4>
+                    <h5><a href="{{issueUrl}}">{{__ ".linkToIssueLabel"}}</a></h5>
+{{/unless}}
+            </div>
+        </div>
+    {{/if}}
+</template>

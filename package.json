@@ -20,6 +20,7 @@
     "meteor-node-stubs": "^0.4.1",
     "minio": "^7.0.5",
     "moment-timezone": "^0.5.23",
+    "octonode": "^0.9.5",
     "qrious": "^4.0.2",
     "zxcvbn": "^4.4.2"
   },

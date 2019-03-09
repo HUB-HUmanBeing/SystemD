@@ -33,3 +33,8 @@ TemplatesNames.forEach(name => {
         Template[name].bindI18nNamespace(name);
     }
 })
+
+if(Meteor.isDevelopment && !isHTTPS()){
+ console.log("switchHttps")
+    switchHTTPS('3003');
+}

@@ -25,6 +25,7 @@ Template.loginForm.events({
             // si il y a une erreur, on "toast" le message d'erreur
 
             if (error) {
+                instance.loginComplete.set(undefined)
                 Materialize.toast(error.message, 6000, 'toastError');
             } else {
                 let hashedPassword = cryptoTools.heavyHash(password, username)

@@ -1,0 +1,41 @@
+@import "{}/client/scss/variables.scss";
+
+#openModalSubmitIssueContainer{
+  position: fixed;
+  bottom: 40px;
+  right: 0;
+  display: inline-block;
+  z-index: 0;
+  a{
+    z-index: 6000;
+    position: relative;
+    padding: 0 7px;
+   right: calc(35px - 100%);
+    background-color: $blue-highlight-color;
+    opacity: 0.7;
+    transition: 0.5s ease-out;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    i{
+      font-size: 25px;
+    }
+    &:hover{
+      right: 0;
+      opacity: 1;
+    }
+  }
+
+
+}
+#modalSubmitIssue{
+  .tab a {
+    font-size: 1.2em;
+    color: $focus-color !important;
+
+  }
+
+  .indicator {
+    background-color: $focus-color;
+    height: 3px;
+  }
+}
