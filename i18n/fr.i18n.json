@@ -37,6 +37,22 @@
       "denied": "Accès refusé",
       "noAccess": "Vous ne pouvez pas accéder à cette page ! Veuillez vous connecter."
     },
+    "submitIssue": {
+      "btnLabel": "Bugs - Suggestions",
+      "bugReport": "Bug",
+      "suggestion": "Suggestions",
+      "allowDeviceInfo": "Joindre automatiquement des informations sur le navigateur utilisé afin de faciliter le débuggage ? (navigateur, version, système d'exploitation, langue)",
+      "decline": "non",
+      "authorize": "oui",
+      "bugReportLabel": "Description du bug",
+      "sugestionLabel": "Idées et suggestions",
+      "refreshCaptcha": "Renouveler",
+      "captcha": "Saisir les 4 lettres",
+      "submit": "Envoyer",
+      "succesMessage": "Merci de votre contribution ! Votre message à été transmis au développeurs",
+      "githubLink": "Pour voir l'évolution de votre message, rendez vous sur GitHub",
+      "return": "Retour"
+    },
 
   "_templates": "landingPage",
     "landingHead": {

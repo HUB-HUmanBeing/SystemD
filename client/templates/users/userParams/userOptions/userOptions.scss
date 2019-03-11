@@ -11,4 +11,11 @@
         background-color: $lighter-bg;
         padding: 0;
     }
+    .dropdown-content {
+        background-color: $main-bg;
+    }
+
+    .caret {
+        color: $main-color
+    }
 }

@@ -1,5 +1,6 @@
 import User from '/imports/classes/User'
 import {check} from "meteor/check";
+import cryptoServer from "../../imports/cryptoServer";
 
 /*********************************
  * METHODES DE LA COLLECTION USERS
@@ -21,7 +22,13 @@ Meteor.methods({
      * @param userAttributes
      * @param key
      */
-    createNewUser: function (userAttributes,key, language) {
+    createNewUser: function (userAttributes,key, language, captcha) {
+        check(captcha,{
+            userInput: String,
+            hashControl:String
+        } )
+        check((cryptoServer.fastHash(captcha.userInput)===captcha.hashControl), true)
+        check (language, String)
         //on définit notre fonction de validation
         const validAttribute = Match.Where((attribute) => {
             //en type

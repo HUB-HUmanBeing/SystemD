@@ -1,6 +1,7 @@
 import hubCrypto from '/client/lib/hubCrypto'
 import cryptoTools from "../../../../lib/cryptoTools";
 import inviteController from "../../../../lib/controllers/inviteController";
+import i18n from "meteor/universe:i18n";
 
 /**
  * Object in order to validate the signin form
@@ -175,7 +176,9 @@ Template.signinForm.helpers({
     },
     signinComplete: function () {
         return Template.instance().signinComplete.get()
-
+    },
+    captcha: function () {
+        return Template.instance().captcha.get().data
     }
 });
 
@@ -195,6 +198,17 @@ Template.signinForm.events({
     'keyup #signinPasswordRepeat , touchend #signinPasswordRepeat , blur #signinPasswordRepeat ': function (event, instance) {
         validateSigninForm.validateSigninPasswordRepeat(event, instance)
     },
+    "click [refreshCaptcha]": function (event, instance) {
+        event.preventDefault()
+        Meteor.call("getCaptcha", (err, res) => {
+            if (err) {
+                console.log(err)
+            } else {
+                // console.log(res)
+                instance.captcha.set(res)
+            }
+        })
+    },
     /*****
      * Au submit du formulaire de login
      * @param event
@@ -202,6 +216,10 @@ Template.signinForm.events({
      */
     'submit #signinForm ': function (event, instance) {
         event.preventDefault()
+        let captcha = {
+            hashControl: instance.captcha.get().text,
+            userInput: $("#SignInCaptcha").val()
+        }
         if (validateSigninForm.isValid(instance)) {
             let username = $('#signinUsername').val();
             let password = $('#signinPassword').val()
@@ -219,8 +237,9 @@ Template.signinForm.events({
                     password: password,
                     language: window.localStorage.getItem("lang")
                 };
+
                 //et on passe par une meteor method pour creer notre user et stocker ses clefs
-                Meteor.call('createNewUser', userAttribute, userAsymKeys, function (error, result) {
+                Meteor.call('createNewUser', userAttribute, userAsymKeys, i18n.getLocale(), captcha,function (error, result) {
                     //si ca échoue on renvoie l'erreur en toast
                     if (error) {
                         console.log(error, userAttribute, userAsymKeys)
@@ -283,9 +302,19 @@ Template.signinForm.onCreated(function () {
         signinPassword: [],
         signinPasswordRepeat: []
     })
+    this.captcha = new ReactiveVar({data: null, text: null})
+    Meteor.call("getCaptcha", (err, res) => {
+        if (err) {
+            console.log(err)
+        } else {
+            // console.log(res)
+            this.captcha.set(res)
+        }
+    })
 });
 
 Template.signinForm.onRendered(function () {
+    resetTooltips()
 });
 
 Template.signinForm.onDestroyed(function () {

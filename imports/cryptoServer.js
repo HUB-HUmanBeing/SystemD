@@ -8,7 +8,10 @@ const cryptoServer = {
     },
     compare(elementToVerity, hash){
         return bcrypt.compareSync(elementToVerity+ Meteor.settings.serverSalt , hash);
-}
+},
+    fastHash(string){
+        return new Hashes.SHA512().b64(string + Meteor.settings.serverSalt)
+    }
 }
 
 export default cryptoServer

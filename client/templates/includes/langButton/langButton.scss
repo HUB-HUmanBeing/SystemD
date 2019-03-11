@@ -1,19 +1,37 @@
 @import "{}/client/scss/variables.scss";
 
+.langButtonContainer{
+    margin: 0;
+    height: 0;
+}
 
     .lang{
-        display: block;
+
         position: absolute;
         top: 0px;
-        margin-top: 10px ;
-        margin-right: 10px;
+        margin: 10px 10px 0 0 !important;
         right: 0 !important;
-        height: 20px;
-        width: 39px;
         z-index: 40;
-        font-size: 13px;
-        border: 1px solid $minus-color;
-        color: $minus-color;
-        background-color: $main-bg;
-        padding: 0;
+        width: 40px;
+        input{
+            color: $minus-color;
+            background-color: $main-bg;
+            margin: 0 !important;
+            height: 20px !important;
+            line-height: 20px !important;
+        }
+
+        //border: 1px solid $minus-color;
+
+       // padding: 0;
+        .caret{
+            color: $minus-color !important;
+        }
+        .dropdown-content{
+            background-color: $contrasted-bg;
+            min-width: 60px;
+            li:hover{
+              background-color: $light-bg;
+            }
+        }
     }

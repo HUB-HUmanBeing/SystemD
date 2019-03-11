@@ -77,6 +77,25 @@
                 </div>
             {{/if}}
         </div>
+        <div class="row">
+            <div class="col s12 no-padding  relative flex">
+                <div class="relative" style="padding: 15px 20px 0 0">
+                    {{{captcha}}}
+                    <a href="#" class="microBtn {{#if
+                            isDesktop}} tooltipped {{/if}}shadow main-bg waves-light waves-effect absolute"
+                       data-position="top"
+                       data-delay="50" data-tooltip="{{__ "submitIssue.refreshCaptcha"}}"
+                       style="right: 0; top: 0" refreshCaptcha>
+                        <i class="material-icons">refresh</i>
+                    </a>
+                </div>
+                <div class="input-field flex-auto " style="margin-left: 15px">
+                    <input id="SignInCaptcha" type="text" class="validate" required>
+                    <label for="SignInCaptcha">{{__ "submitIssue.captcha"}}</label>
+                </div>
+            </div>
+
+        </div>
 
         <div class="row center-align" style="margin: 15px 0 0 0">
             <button href="#" class="btn btnFocus center-align waves-effect waves-light shadow"><i

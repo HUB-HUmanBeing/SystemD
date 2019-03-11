@@ -1,4 +1,6 @@
 import hubCrypto from "../../lib/hubCrypto";
+import i18n from "meteor/universe:i18n";
+import moment from "../../lib/i18nMoment";
 
 Template.layout.helpers({});
 
@@ -15,6 +17,12 @@ Template.layout.onCreated(function () {
             if (userId){
                 if(hashedPassword) {
                     Meteor.subscribe("UserPrivateInfo", userId, () => {
+                        let language = Meteor.user().public.language
+                        if(language !== i18n.getLocale()){
+                            i18n.setLocale(language)
+                            localStorage.setItem('lang', language);
+                            moment.locale(language)
+                        }
                         hubCrypto.initCryptoSession(hashedPassword, Meteor.user().username, () => {
                         })
                     })

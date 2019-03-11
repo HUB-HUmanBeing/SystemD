@@ -1,9 +1,17 @@
 <template name="userOptions">
         <div id="userOptions">
-            <p>Modifier ma langue:</p>
-
-            <!--{{>langButton}}-->
+            <div class="row">
+                <div class="col s12">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">flag</i>
+                        <select id="selectLanguage" selectLanguage>
+                            {{#each language in languages}}
+                                <option value="{{language.langFormat}}" selected={{language.selected}} >{{language.name}}</option>
+                            {{/each}}
+                        </select>
+                        <label>{{__ ".language"}}</label>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
 </template>

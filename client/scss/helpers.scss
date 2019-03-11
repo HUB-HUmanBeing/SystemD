@@ -1,62 +1,77 @@
 @import "{}/client/scss/variables.scss";
 
-body, html{
+body, html {
   background-color: $main-bg;
 
 }
+
 // POSITIONNEMENT
-.no-margin{
+.no-margin {
   margin: 0 !important;
 }
-.small-margin{
+
+.small-margin {
   margin: 5px !important;
 }
 
-.small-padding{
+.small-padding {
   padding: 10px !important;
 }
+
 .no-padding {
   padding: 0 !important;
 }
-.padding-l-r{
+
+.padding-l-r {
   padding-left: 7px !important;
   padding-right: 7px !important;
 }
-.full-height{
+
+.full-height {
 
   height: 100% !important;
 }
-.full-width{
+
+.full-width {
   width: 100%;
 }
-.flex{
+
+.flex {
   display: flex !important;
 }
-.flex-auto{
-  flex: 1  !important;
+
+.flex-auto {
+  flex: 1 !important;
 }
-.flex-middle{
+
+.flex-middle {
   align-items: center;
 }
-.relative{
+
+.relative {
   position: relative;
 }
-.absolute{
+
+.absolute {
   position: absolute;
 }
+
 //Backgrounds et textures
-.gradiant{
+.gradiant {
   background: linear-gradient(45deg, $light-bg 0%, $contrasted-bg 100%);
 }
-.gradiant-dark{
-  background: linear-gradient(45deg,$main-bg  0%, $contrasted-bg  100%);
+
+.gradiant-dark {
+  background: linear-gradient(45deg, $main-bg 0%, $contrasted-bg 100%);
 }
-.shadow{
+
+.shadow {
   -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 
 }
-.bird-background{
+
+.bird-background {
   background-image: url("images/trame/empty_birds_bg.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -65,22 +80,24 @@ body, html{
 
 
 //textStyles
-.infoQuotes{
+.infoQuotes {
   transition: color .5s, left 0.5s ease-in-out, border-left 0.5s, padding-left 0.5s, margin-left 0.5s;
   padding-left: 10px;
   border-left: 3px solid $blue-highlight-color;
 }
-.infoQuotes:hover{
-  color : $plus-color;
+
+.infoQuotes:hover {
+  color: $plus-color;
   border-left: 10px solid $focus-color;
   margin-left: -3px;
   padding-left: 6px
 }
 
-.btnStandard{
+.btnStandard {
   background-color: transparent !important;
   border: 2px solid $blue-highlight-color !important;
-  .material-icons{
+
+  .material-icons {
     color: $blue-highlight-color !important;
     transition: color 0.5s
   }
@@ -88,17 +105,20 @@ body, html{
   color: $plus-color !important;
   transition: color 0.5s, border 0.5s;
 }
-.btnStandard:hover, .btnStandard:focus{
+
+.btnStandard:hover, .btnStandard:focus {
   .material-icons {
     color: $focus-color !important;
   }
 
   border: 2px solid $focus-color !important;
 }
-.btn-danger{
+
+.btn-danger {
   background-color: transparent !important;
   border: 2px solid $danger-color !important;
-  .material-icons{
+
+  .material-icons {
     color: $danger-color !important;
     transition: color 0.5s
   }
@@ -106,14 +126,17 @@ body, html{
   color: $plus-color !important;
   transition: color 0.5s, border 0.5s;
 }
-.btn-danger:hover, .btn-danger:focus{
+
+.btn-danger:hover, .btn-danger:focus {
   background-color: rgba($danger-color, 0.3) !important;
 }
-.btnDisabled{
+
+.btnDisabled {
   background-color: transparent !important;
   border: 2px solid $minus-color !important;
   cursor: not-allowed;
-  .material-icons{
+
+  .material-icons {
     color: $minus-color !important;
     transition: color 0.5s
   }
@@ -122,42 +145,53 @@ body, html{
   transition: color 0.5s, border 0.5s;
 }
 
-.btnFocus{
+.btnFocus {
   opacity: 0.8;
   background-color: $focus-color !important;
   color: $contrasted-bg !important;
-  *{
+
+  * {
     color: $contrasted-bg !important;
   }
 }
+
 .btnFocus:hover, .btnFocus:focus {
   opacity: 1 !important;
-  padding :2px 30px;
-  margin : -2px;
+  padding: 2px 30px;
+  margin: -2px;
   height: 41px;
 }
 
+.microBtn {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+
+}
+
 //forms
-.formErrorContainer{
+.formErrorContainer {
   position: relative;
-  top:-13px;
+  top: -13px;
   margin: -7px 42px;
-  .formError{
+
+  .formError {
     font-size: smaller;
   }
 }
 
-.link{
+.link {
   color: $link-color;
   opacity: 0.7;
   transition: 0.3s;
 }
-.link:hover{
+
+.link:hover {
   opacity: 1;
   text-decoration: underline;
 }
 
-.hr{
+.hr {
   width: 100%;
   height: 10px;
   margin: 10px 0;
@@ -167,57 +201,89 @@ body, html{
   background-position: center;
 }
 
-.elipsis{
+.elipsis {
   display: block;
   white-space: nowrap;
 
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.custom-avatar{
+
+.custom-avatar {
   overflow: hidden;
   background-color: $main-color;
   background-size: cover;
   border-radius: 50%;
 }
-.progress{
+
+.progress {
   height: 2px;
   background-color: $lighter-bg;
 }
-.determinate, .indeterminate{
+
+.determinate, .indeterminate {
   background-color: $focus-color;
 }
-.backFooter{
+
+.backFooter {
   position: relative;
   top: 0;
   left: -5px;
   height: 1.4em;
   font-size: small;
-  i{
+
+  i {
     position: relative;
-    top:-2px;
-    color:$link-color !important;
+    top: -2px;
+    color: $link-color !important;
   }
 }
 
-.collapsible-header{
+.collapsible-header {
   text-transform: uppercase;
 }
 
-.character-counter{
+.character-counter {
   position: relative;
   top: -25px;
 }
-.breakLineContent{
+
+.breakLineContent {
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }
-.rounded{
+
+.rounded {
   border-radius: 10px;
 }
-.toastOk{
+
+.toastOk {
   background-color: $blue-highlight-color !important;
 }
-.toastError{
+
+.toastError {
   background-color: $danger-color;
+}
+
+@media only screen and (max-width: 992px) {
+  .modal {
+    width: 90%;
+  }
+
+}
+
+.material-tooltip {
+  border: 1px solid $lighter-bg;
+  padding: 6px 8px;
+  min-height: 10px !important;
+
+  span {
+    color: $minus-color !important;
+  }
+}
+
+.microBtn {
+  i {
+    color: $minus-color;
+  }
 }

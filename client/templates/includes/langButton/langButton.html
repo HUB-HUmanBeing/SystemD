@@ -1,10 +1,11 @@
 <template name="langButton">
-
-    <select class="browser-default lang" changeLanguage>
-      <!-- for each in -->
-      {{#each language in languages}}
-      <option value={{language.langFormat}}>{{language.langIso639}}</option>
-      {{/each}}
-    </select>
-
+    <div class="input-field col s12 m6 langButtonContainer">
+        <select id="langButton" class="lang" changeLanguage>
+            <!-- for each in -->
+            {{#each language in languages}}
+                <option value="{{language.langFormat}}" selected={{language.selected}}>{{language.langIso639}}</option>
+            {{/each}}
+        </select>
+        <label for="langButton" style="display: none"></label>
+    </div>
 </template>

@@ -14,6 +14,6 @@ Meteor.startup(() => {
 
 });
 
-var key = process.env.PWD + '/private/localhost.key';
-var cert = process.env.PWD + '/private/localhost.cert';
+let key = process.env.PWD + '/private/localhost.key';
+let cert = process.env.PWD + '/private/localhost.cert';
 SSL(key, cert, 3003);

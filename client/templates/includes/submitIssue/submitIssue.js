@@ -1,3 +1,4 @@
+import i18n from "meteor/universe:i18n";
 
 Template.submitIssue.helpers({
     //add you helpers here
@@ -6,6 +7,9 @@ Template.submitIssue.helpers({
     },
     issueUrl: function () {
         return Template.instance().issueUrl.get()
+    },
+    captcha: function () {
+        return Template.instance().captcha.get().data
     }
 });
 
@@ -18,6 +22,17 @@ Template.submitIssue.events({
     "click [suggestion]": function (event, instance) {
         event.preventDefault()
         instance.requestType.set('suggestion')
+    },
+    "click [refreshCaptcha]": function (event, instance) {
+        event.preventDefault()
+        Meteor.call("getCaptcha", (err, res) => {
+            if (err) {
+                console.log(err)
+            } else {
+                // console.log(res)
+                instance.captcha.set(res)
+            }
+        })
     },
     'submit #submitIssueForm': function (event, instance) {
         event.preventDefault()
@@ -32,7 +47,9 @@ Template.submitIssue.events({
                 userAgent: navigator.userAgent,
                 appVersion: navigator.appVersion,
                 vendor: navigator.vendor,
-                url: window.location.href
+                url: window.location.href,
+                size: window.innerWidth + " x " +window.innerHeight,
+                locale: i18n.getLocale()
             }
         }
         let body = "### " + requestType + " from System-D user" + "\n"
@@ -48,10 +65,15 @@ Template.submitIssue.events({
             title: requestType + " from System-D user",
             body: body
         }
-        Meteor.call("sendIssue", issueObj, (err, res)=>{
-            if(err){
+        let captcha = {
+            hashControl: instance.captcha.get().text,
+            userInput: $("#SubmitIssueCaptcha").val()?$("#SubmitIssueCaptcha").val(): "ok"
+        }
+
+        Meteor.call("sendIssue", issueObj, captcha, (err, res) => {
+            if (err) {
                 console.log(err)
-            }else{
+            } else {
                 instance.issueUrl.set(res)
             }
         })
@@ -62,17 +84,32 @@ Template.submitIssue.onCreated(function () {
     //add your statement here
     this.requestType = new ReactiveVar('bugReport')
     this.issueUrl = new ReactiveVar(false)
+    this.captcha = new ReactiveVar({data: null, text: null})
+
 });
 
 Template.submitIssue.onRendered(function () {
     //add your statement here
     $('.modal').modal({
-        ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        startingTop: '4%', // Starting top style attribute
+        endingTop: '4%',
+        ready: (modal, trigger) =>{ // Callback for Modal open. Modal and trigger parameters available.
             $('ul.tabs').tabs();
+            Meteor.call("getCaptcha", (err, res) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    // console.log(res)
+                    this.captcha.set(res)
+                }
+            })
         },
-        complete() { this.issueUrl.set(false)}
+        complete: () => {
+            this.issueUrl.set(false)
+        }
     })
     $('#submitIssueContent').characterCounter();
+    resetTooltips()
 });
 
 Template.submitIssue.onDestroyed(function () {

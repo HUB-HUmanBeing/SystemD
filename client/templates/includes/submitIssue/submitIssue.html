@@ -1,50 +1,34 @@
 <template name="submitIssue">
-    {{#if currentUserId}}
-        <div id="openModalSubmitIssueContainer">
-
-            <a class="waves-effect waves-light btn modal-trigger " href="#modalSubmitIssue"><i
-                    class="material-icons left">sync_problem</i>{{__
-                    ".btnLabel"}}</a>
-
-        </div>
-
-        <!-- Modal Structure -->
-        <div id="modalSubmitIssue" class="modal contrasted-bg">
-            <div class="modal-content small-padding contrasted-bg main-color">
-
+    <div id="openModalSubmitIssueContainer">
+        <a class="waves-effect waves-light btn modal-trigger " href="#modalSubmitIssue"><i
+                class="material-icons left">sync_problem</i>
+            {{__ ".btnLabel"}}
+        </a>
+    </div>
+    <!-- Modal Structure -->
+    <div id="modalSubmitIssue" class="modal contrasted-bg">
+        <div class="modal-content small-padding contrasted-bg main-color">
+            <div class="row">
                 <ul class="tabs tabs-fixed-width  transparent focus-color">
-                    <li class="tab col s6">
+                    <li class="tab col m6">
                         <a href="#" class="active " bugReport>
                             <!--<i class="material-icons">bug_report</i>-->
                             {{__ '.bugReport'}}
                         </a>
                     </li>
-                    <li class="tab col s6">
+                    <li class="tab col m6">
                         <a href="#" class="" suggestion>
                             <!--<i class="material-icons">lightbulb_outline</i>-->
                             {{__ '.suggestion'}}
                         </a>
                     </li>
                 </ul>
-                {{#unless issueUrl}}
-                <div class="row no-margin">
-                    <div class="col s12 small-padding">
-                        <form action="#" id="submitIssueForm" class="center-align small-margin small-padding">
-                            {{#if compare requestType "==" "bugReport"}}
-                                <div class="row">
-                                    <p class="infoQuotes">
-                                        {{__ "allowDeviceInfo"}}
-                                    </p>
-                                    <div class="switch">
-                                        <label>
-                                            {{__ ".decline"}}
-                                            <input type="checkbox" id="withDeviceInfo">
-                                            <span class="lever"></span>
-                                            {{__ ".autorise"}}
-                                        </label>
-                                    </div>
-                                </div>
-                            {{/if}}
+            </div>
+            {{#unless issueUrl}}
+                <div class="row ">
+                    <div class="col s12 ">
+                        <form action="#" id="submitIssueForm" class="center-align ">
+
                             <div class="row no-margin">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">
@@ -64,6 +48,47 @@
                                         {{/if}}</label>
                                 </div>
                             </div>
+                            {{#if compare requestType "==" "bugReport"}}
+                                <div class="row">
+                                    <div class="col s12 m9">
+                                        <p class="infoQuotes">
+                                            {{__ ".allowDeviceInfo"}}
+                                        </p>
+                                    </div>
+                                    <div class="col s12 m3">
+                                        <div class="switch" style="margin-top: 20px">
+                                            <label>
+                                                {{__ ".decline"}}
+                                                <input type="checkbox" checked id="withDeviceInfo">
+                                                <span class="lever"></span>
+                                                {{__ ".authorize"}}
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {{/if}}
+                            {{#unless currentUserId}}
+                                <div class="row">
+                                    <div class="col s12 m8 offset-m2  l6 offset-l4  relative flex">
+                                        <div class="relative" style="padding: 10px 20px 0 0">
+                                            {{{captcha}}}
+                                            <a href="#" class="microBtn {{#if
+                                                    isDesktop}} tooltipped {{/if}}shadow main-bg waves-light waves-effect absolute"
+                                               data-position="top"
+                                               data-delay="50" data-tooltip="{{__ ".refreshCaptcha"}}"
+                                               style="right: 0; top: 0" refreshCaptcha>
+                                                <i class="material-icons">refresh</i>
+                                            </a>
+                                        </div>
+                                        <div class="input-field flex-auto " style="margin-left: 15px">
+                                            <input id="SubmitIssueCaptcha" type="text" class="validate" required>
+                                            <label for="SubmitIssueCaptcha">{{__ ".captcha"}}</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {{/unless}}
                             <div class="row center-align no-margin">
                                 <button href="#" class="btn btnStandard center-align waves-effect waves-light shadow"><i
                                         class="material-icons right">sync_problem</i>{{__ '.submit'}}
@@ -72,11 +97,17 @@
                         </form>
                     </div>
                 </div>
-                    {{else}}
-                    <h4><i class="material-icons right">done</i>{{__ ".succesMessage"}}</h4>
-                    <h5><a href="{{issueUrl}}">{{__ ".linkToIssueLabel"}}</a></h5>
-{{/unless}}
-            </div>
+            {{else}}
+                <div class="small-margin small-padding">
+                    <h5><i class="material-icons right">done</i>{{__ ".succesMessage"}}</h5>
+                    <a class="link" href="{{issueUrl}}" target="_blank">{{__ ".githubLink"}}</a>
+                    <div class="row center-align no-margin">
+                        <button href="#" class="btn btnStandard center-align waves-effect waves-light shadow"><i
+                                class="material-icons right">keyboard_return</i>{{__ '.return'}}
+                        </button>
+                    </div>
+                </div>
+            {{/unless}}
         </div>
-    {{/if}}
+    </div>
 </template>

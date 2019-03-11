@@ -37,6 +37,22 @@
       "denied": "Access denied",
       "noAccess": "You can't access to this page! Please login."
     },
+  "submitIssue": {
+    "btnLabel": "Bugs - Suggestions",
+    "bugReport": "Bug",
+    "suggestion": "Suggestions",
+    "allowDeviceInfo": "Automatically join navigator informations in order to help bug-fix ? (navigator, version, exploitation system, language)",
+    "decline": "no",
+    "authorize": "yes",
+    "bugReportLabel": "Bug description",
+    "sugestionLabel": "Idea and suggestions",
+    "refreshCaptcha": "Renew",
+    "captcha": "Enter the 4 letters",
+    "submit": "Send",
+    "succesMessage": "Thanks for your contribution ! Your message has been sent to the developers",
+    "githubLink": "To see the tracking of your feed-back, go to the GitHub of the project",
+    "return": "return"
+  },
 
   "_templates": "landingPage",
     "landingHead": {

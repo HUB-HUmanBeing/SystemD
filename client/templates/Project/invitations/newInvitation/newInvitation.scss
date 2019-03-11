@@ -25,17 +25,19 @@
     padding: 20px;
 
     #newInvitationForm {
-      .addMessage{
-        p{
-          margin-top: 3px ;
+      .addMessage {
+        p {
+          margin-top: 3px;
           font-size: 0.9rem;
         }
       }
-      .invitMessage{
+
+      .invitMessage {
         background-color: $main-bg;
         border-radius: 10px;
         padding: 10px;
       }
+
       label[for=remaining] {
         font-size: 0.8rem;
       }
@@ -45,14 +47,17 @@
         margin-top: 35px;
         /* border: 1px solid white; */
       }
-.infoQuotes{
-  font-size: 0.9em;
-  margin: 0.1em  !important;
-}
+
+      .infoQuotes {
+        font-size: 0.9em;
+        margin: 0.1em !important;
+      }
+
       .dropdown-content {
         background-color: $main-bg;
       }
-      .caret{
+
+      .caret {
         color: $main-color
       }
     }

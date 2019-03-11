@@ -38,6 +38,12 @@ User.extend({
             currentUser.save()
             const result = await minioTools.client.removeObject('user-avatars', Meteor.userId() + '.jpg')
             return result
+        },
+        changeLang(language){
+            check(this._id, Meteor.userId())
+            check(language, String)
+            this.public.language = language
+            return this.save()
         }
 
     }
