@@ -264,7 +264,7 @@
       "infoLink" : "copy this link and send it to the person(s) you want to invite in your project.",
       "copied": "Invitation link copied in clipboard",
       "invitTitle" : "Invitation to join the project ",
-      "invitMessage": "You have been invited by someone to join a project on System-D : the free cyphered collaborative web-platform.Click on the link below to see the invitation.",
+      "invitMessage": "You have been invited by someone to join a project on System-D : the free cyphered web-platform for collaborative projects . Click on the link below to see the invitation.",
       "infoQr": "If the person you want to invite is near you,  he or she can scan this QR-code to access the invitation.",
       "infoDestroy" : "By deleting the invitation, You delete the possibility to use the invitation link for access the cypher keys of your project.",
       "destroy" : "Delete invitation link",

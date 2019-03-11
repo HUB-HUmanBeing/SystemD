@@ -265,7 +265,7 @@
       "infoLink" : "Copiez ce lien et envoyez-le à la ou les personnes que vous souhaitez inviter.",
       "copied": "Lien d'invitation copié dans le presse papier",
       "invitTitle" : "Invitation à rejoindre le projet ",
-      "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs . Cliquez sur le lien pour voir l'invitation.",
+      "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs. Cliquez sur le lien pour voir l'invitation.",
       "infoQr": "Si la personne à inviter est à coté de vous, elle peut aussi flasher ce QR-code avec n'importe quelle application de lecture de QR-code pour accéder à l'invitation.",
       "infoDestroy" : "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux cléfs de chiffrement de votre projet.",
       "destroy" : "Supprimer le lien d'invitation",
