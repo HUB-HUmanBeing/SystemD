@@ -77,6 +77,11 @@ Template.submitIssue.events({
                 instance.issueUrl.set(res)
             }
         })
+    },
+    'click [closeModal]' : function (event, instance) {
+        event.preventDefault()
+        $('.modal').modal('close')
+        $('#submitIssueContent').val(' ')
     }
 });
 

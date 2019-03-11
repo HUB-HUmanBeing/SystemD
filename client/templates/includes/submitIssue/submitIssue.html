@@ -99,10 +99,14 @@
                 </div>
             {{else}}
                 <div class="small-margin small-padding">
-                    <h5><i class="material-icons right">done</i>{{__ ".succesMessage"}}</h5>
-                    <a class="link" href="{{issueUrl}}" target="_blank">{{__ ".githubLink"}}</a>
+                    <div class="row">
+                        <div class="col s12">
+                            <h5><i class="material-icons right">done</i>{{__ ".succesMessage"}}</h5>
+                            <a class="link" href="{{issueUrl}}" target="_blank">{{__ ".githubLink"}}</a>
+                        </div>
+                    </div>
                     <div class="row center-align no-margin">
-                        <button href="#" class="btn btnStandard center-align waves-effect waves-light shadow"><i
+                        <button class="btn btnStandard center-align waves-effect waves-light shadow  " closeModal><i
                                 class="material-icons right">keyboard_return</i>{{__ '.return'}}
                         </button>
                     </div>

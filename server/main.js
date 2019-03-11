@@ -9,11 +9,14 @@ import User from '/imports/classes/User';
 Meteor.startup(() => {
   if(Meteor.isDevelopment){
       Accounts.removeDefaultRateLimit();
+
   }
   minioTools.initialize()
 
 });
+if(Meteor.isDevelopment){
+    let key = process.env.PWD + '/private/localhost.key';
+    let cert = process.env.PWD + '/private/localhost.cert';
+    SSL(key, cert, 3003);
+}
 
-let key = process.env.PWD + '/private/localhost.key';
-let cert = process.env.PWD + '/private/localhost.cert';
-SSL(key, cert, 3003);
