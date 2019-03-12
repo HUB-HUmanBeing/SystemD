@@ -1,0 +1,29 @@
+<template name="notifModal">
+    <div id="notifModal" class="modal notif-modal
+                            {{#if isPhone}}
+                                phone-notif-modal
+                            {{else}}
+                                {{#if isTablet}}
+                                     tablet-notif-modal scrollbar
+                                {{else}}
+                                     desktop-notif-modal scrollbar
+                                {{/if}}
+                            {{/if}}
+                            ">
+        {{#if openNotifPannel}}
+            <div class="modal-content " style="background-color: transparent !important;">
+                <div class="notif-box ">
+                    <ul class="collection " id="notif-list" style=" margin: 0 !important; border: none !important;">
+                        {{#each notif in notifs}}
+                            {{>notifItem
+                                    notif = notif
+                                    notifs=notifs
+                            }}
+                        {{/each}}
+
+                    </ul>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>

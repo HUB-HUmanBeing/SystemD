@@ -1,6 +1,7 @@
 import {check} from "meteor/check";
 import Project from "../../../imports/classes/Project";
 import User from "../../../imports/classes/User";
+import ProjectNotification from "../../../imports/classes/ProjectNotification";
 
 
 Project.extend({
@@ -107,6 +108,14 @@ Project.extend({
                     console.log(err)
                 }
                 currentUser.save()
+                let notif = new ProjectNotification({
+                    projectId: currentProject._id,
+                    notifiedMembers: currentProject.getAdminMemberIds(),
+                    section: "members",
+                    notifType:"memberQuit",
+                    url: "/project/"+currentProject._id+"/members",
+                })
+                notif.save()
             })
 
         },

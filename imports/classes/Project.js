@@ -155,6 +155,15 @@ const Project = Class.create({
         },
         isDeletable(){
             return this.private.members.length ===1
+        },
+        getAdminMemberIds(){
+            let adminMemberIds=[]
+            this.private.members.forEach(member=>{
+                if(member.role === "admin"){
+                    adminMemberIds.push(member.memberId)
+                }
+            })
+            return adminMemberIds
         }
     }
 

@@ -34,7 +34,7 @@ TemplatesNames.forEach(name => {
     }
 })
 
-if(Meteor.isDevelopment && !isHTTPS()){
- console.log("switchHttps")
-    switchHTTPS('3003');
-}
+// if(Meteor.isDevelopment && !isHTTPS()){
+//  console.log("switchHttps")
+//     switchHTTPS('3003');
+// }

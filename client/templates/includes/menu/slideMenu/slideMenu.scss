@@ -20,5 +20,23 @@
     transition: 0.3s ease-out;
     position: relative;
     width: 60px;
-    opacity: 0.8;
+    img{
+        opacity: 0.6
+    }
+    .globalNotifCount{
+        color: $minus-color !important;
+        background-color: $danger-color;
+        width: 25px;
+        z-index: 1500;
+        height: 25px;
+        border-radius: 50%;
+        padding-top: 6px ;
+        text-align: center;
+        font-size: 16px;
+        line-height: 14px;
+        margin-right: 5px;
+        top:-47px;
+        opacity: 1;
+        //left: 35px;
+    }
 }

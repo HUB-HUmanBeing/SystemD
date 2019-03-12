@@ -5,6 +5,7 @@ import Invitation from "../imports/classes/Invitation";
 import cryptoServer from "../imports/cryptoServer";
 import Invitations from "../lib/collections/Invitations";
 import {check} from "meteor/check";
+import ProjectNotifications from "../lib/collections/ProjectNotifications";
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -15,14 +16,14 @@ import {check} from "meteor/check";
 Meteor.publish('UserPrivateInfo', function (id) {
     check(id, String);
     check(id === Meteor.userId(), true)
-    return Meteor.users.find(id, {fields: {_id:1,private: 1, public: 1, username: 1}});
+    return Meteor.users.find(id, {fields: {_id: 1, private: 1, public: 1, username: 1}});
 });
 /***************
  * publication des infos utilisateur publiques
  */
 Meteor.publish('userPublicInfo', function (id) {
     check(id, String);
-    return Meteor.users.find(id, {fields: {_id:1,public: 1, username: 1}});
+    return Meteor.users.find(id, {fields: {_id: 1, public: 1, username: 1}});
 })
 
 /***********************
@@ -129,5 +130,23 @@ Meteor.publish('invitationList', function (authInfo, projectId) {
         }
     })
     return Invitations.find({"_id": {"$in": invitationIds}})
+})
+Meteor.publish("getProjectNotificationsForMember", function (authInfo, projectId) {
+    check(authInfo, {memberId: String, userSignature: String})
+    check(projectId, String)
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+
+    return ProjectNotifications.find({
+        "$and": [
+            {projectId: projectId},
+            {
+                notifiedMembers: {
+                    "$elemMatch":
+                        {"$eq": authInfo.memberId}
+                }
+            }
+        ]
+    })
 })
 

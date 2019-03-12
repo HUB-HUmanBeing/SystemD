@@ -1,6 +1,6 @@
 @import "{}/client/scss/variables.scss";
 
-$menuFocusColor : $blue-highlight-color;
+$menuFocusColor: $blue-highlight-color;
 #projectsList {
   margin-top: -5px;
   padding: 0 5px;
@@ -13,7 +13,7 @@ $menuFocusColor : $blue-highlight-color;
 
     .collapsible-header {
       padding: 12px 5px;
-      transition: background-color 0.3s ;
+      transition: background-color 0.3s;
       position: relative;
       border-left: 0px solid $menuFocusColor;
 
@@ -30,7 +30,28 @@ $menuFocusColor : $blue-highlight-color;
 
         font-size: 1.05em;
         color: $info-color;
-        transition: 0.3s ;
+        transition: 0.3s;
+      }
+
+      .notifCount {
+        color: $minus-color !important;
+        background-color: $danger-color;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        padding-top: 8px ;
+        text-align: center;
+        font-size: 17px;
+        line-height: 15px;
+        margin-right: 5px;
+        top:2px;
+        left: 35px;
+        //border: 2px solid $link-color;
+      }
+      .notifCount:hover{
+        color: $plus-color !important;
+        -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
       }
 
       &:hover {
@@ -63,9 +84,30 @@ $menuFocusColor : $blue-highlight-color;
           color: $link-color !important;
           transition: 0.4s ease-out;
           font-size: .95em;
+
           .material-icons {
             font-size: 1.4em;
             color: $link-color !important;
+          }
+
+          .notifCountSection {
+            color: $minus-color;
+            background-color: $danger-color;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            padding: 7px 8px ;
+
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 12px;
+            right: 12px;
+            //border: 2px solid $link-color;
+          }
+          .notifCountSection:hover{
+            color: $plus-color;
+            -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
           }
 
           &:hover {
@@ -108,6 +150,9 @@ $menuFocusColor : $blue-highlight-color;
           color: $plus-color;
         }
 
+        .notifCount {
+          display: none;
+        }
       }
 
       .collapsible-body {

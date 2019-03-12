@@ -45,10 +45,10 @@ Template.registerHelper('isArray', function (el) {
 })
 
 Template.registerHelper('formatDate', function (date, capitalize) {
-    let calendarDate =moment(date).calendar();
-    if(capitalize){
+    let calendarDate = moment(date).calendar();
+    if (capitalize) {
         return calendarDate.charAt(0).toUpperCase() + calendarDate.slice(1)
-    }else{
+    } else {
         return calendarDate.charAt(0).toLowerCase() + calendarDate.slice(1)
     }
 
@@ -57,8 +57,8 @@ Template.registerHelper('formatDate', function (date, capitalize) {
 
 Template.registerHelper('usernameFromMemberId', function (memberId) {
     let requiredMember = {}
-    Session.get("currentProjectMembers").forEach((member)=>{
-        if(member.memberId === memberId){
+    Session.get("currentProjectMembers").forEach((member) => {
+        if (member.memberId === memberId) {
             requiredMember = member
         }
     })
@@ -67,8 +67,8 @@ Template.registerHelper('usernameFromMemberId', function (memberId) {
 })
 Template.registerHelper('userIdFromMemberId', function (memberId) {
     let requiredMember = {}
-    Session.get("currentProjectMembers").forEach((member)=>{
-        if(member.memberId === memberId){
+    Session.get("currentProjectMembers").forEach((member) => {
+        if (member.memberId === memberId) {
             requiredMember = member
         }
     })
@@ -77,4 +77,7 @@ Template.registerHelper('userIdFromMemberId', function (memberId) {
 })
 Template.registerHelper("isAdmin", function (projectId) {
     return projectController.isAdmin(projectId)
+})
+Template.registerHelper('onlyZeroToNine', function (number) {
+    return number > 9 ? "+" : number;
 })

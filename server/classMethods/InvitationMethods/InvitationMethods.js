@@ -3,6 +3,7 @@ import Project from "../../../imports/classes/Project";
 import Invitation from "../../../imports/classes/Invitation";
 import cryptoServer from "../../../imports/cryptoServer";
 import User from "../../../imports/classes/User";
+import ProjectNotification from "../../../imports/classes/ProjectNotification";
 
 
 Invitation.extend({
@@ -79,6 +80,14 @@ Invitation.extend({
                         if (!err2) {
                             currentUser.private.projects.unshift(encryptedUserProjectToAdd)
                             currentUser.save()
+                            let notif = new ProjectNotification({
+                                projectId: currentProject._id,
+                                notifiedMembers: currentProject.getAdminMemberIds(),
+                                section: "members",
+                                notifType:"acceptedInvitation",
+                                url: "/project/"+currentProject._id+"/members",
+                            })
+                            notif.save()
                         }
                     })
                     //edit de l'user
@@ -94,6 +103,7 @@ Invitation.extend({
             } else {
                 invitation.save(err => {
                     finish(err)
+
                 })
             }
 

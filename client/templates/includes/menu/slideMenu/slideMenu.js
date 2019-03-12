@@ -1,7 +1,12 @@
+import ProjectNotification from "../../../../../imports/classes/ProjectNotification";
+
 Template.slideMenu.helpers({
     //add you helpers here
     sideNavIsOpen : function () {
         return Template.instance().sideNavIsOpen.get()
+    },
+    globalNotifCount: function () {
+        return ProjectNotification.find().count()
     }
 });
 

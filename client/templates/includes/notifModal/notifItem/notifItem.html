@@ -1,0 +1,22 @@
+<template name="notifItem">
+    <li class="collection-item dismissable dismissable-notif main-bg" id="{{notif.id}}" style="border-radius: 3px">
+        <div class="row no-margin notif-item  valign-wrapper">
+
+            <a href="{{notif.url}}" class="col s10 flex " redirect style="padding: 0 0 0 0">
+                <div class="small-padding"><i class="material-icons focus-color">{{icon}}</i></div>
+                <div class="small-text flex-auto " style="padding: 12px 0px 0 0">
+                    <span class="main-color">{{notifLabel}}</span>
+                    <p class="right-align no-margin no-padding">
+                        <i class="small-info minus-color">{{formatDate formatedNotif.createdAt}}</i>
+                    </p>
+                </div>
+            </a>
+            <div class="col s2 ">
+                <a class="btn-flat no-padding">
+                    <i class="material-icons minus-color" deleteNotif>clear</i>
+                </a>
+            </div>
+
+        </div>
+    </li>
+</template>
