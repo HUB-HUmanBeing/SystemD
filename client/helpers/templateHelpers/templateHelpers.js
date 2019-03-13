@@ -79,5 +79,5 @@ Template.registerHelper("isAdmin", function (projectId) {
     return projectController.isAdmin(projectId)
 })
 Template.registerHelper('onlyZeroToNine', function (number) {
-    return number > 9 ? "+" : number;
+    return number > 9 ? "9+" : number;
 })

@@ -15,9 +15,9 @@ Meteor.methods({
             noise: 1, // number of noise lines
             color: true, // characters will have distinct colors instead of grey, true if background option is set
             background: '#1E272C',
-            width: 110, // width of captcha
+            width: 120, // width of captcha
             height:40,
-            fontSize:45
+            fontSize:50
         });
         captcha.text= cryptoServer.fastHash(captcha.text)
         return captcha

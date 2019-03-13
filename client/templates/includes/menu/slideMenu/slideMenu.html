@@ -12,7 +12,7 @@
                 <a href="" data-activates="slide-out" class=" button-collapse small-margin show-menu-btn"
                    style="left: {{#if sideNavIsOpen}}232px{{else}}0px{{/if}}">
                     {{#if globalNotifCount}}
-                        <div class="globalNotifCount absolute">{{globalNotifCount}}</div>
+                        <div class="globalNotifCount absolute">{{onlyZeroToNine globalNotifCount}}</div>
                     {{/if}}
                     <img src="/images/icon/menu_icon.png" alt="Menu" class="responsive-img"
                          style="width: 50px; margin: 3px;">

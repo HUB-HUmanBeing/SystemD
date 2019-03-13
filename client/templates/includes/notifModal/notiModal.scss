@@ -42,10 +42,18 @@
     padding: 0 !important;
     margin: 5px !important;
 }
+#notifModal{
+    max-height: calc(100vh - 110px);
+}
+.notif-box{
+   height: calc( 100vh - 110px);
+    //overflow-y: hidden;
+}
 .notif-item{
-    padding: 3px !important;
-    border-radius: 3px;
+    padding: 4px !important;
+    //border-radius: 3px;
     background-color: $blue-highlight-color!important;
+
     //background-color: $lighter-bg!important;
     //border: 2px solid $blue-highlight-color;
     .material-icons{
@@ -53,6 +61,11 @@
     }
     .small-info{
         font-size: 0.9em;
+    }
+    &:hover{
+        padding-left: 0 !important;
+        border-left: 4px solid $plus-color;
+
     }
 }
 

@@ -53,14 +53,15 @@ Template.submitIssue.events({
             }
         }
         let body = "### " + requestType + " from System-D user" + "\n"
+        body += "#### content :" + "\n"
+        body += issueContent+ "\n"
         if (contextInfos) {
             body += "#### context info :" + "\n"
             Object.keys(contextInfos).forEach(key => {
                 body += '> ' + key + " : " + contextInfos[key] + "\n"
             })
         }
-        body += "#### content :" + "\n"
-        body += issueContent
+
         let issueObj = {
             title: requestType + " from System-D user",
             body: body

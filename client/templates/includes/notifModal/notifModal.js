@@ -1,5 +1,6 @@
 import ProjectNotifications from "../../../../lib/collections/ProjectNotifications";
 import ProjectNotification from "../../../../imports/classes/ProjectNotification";
+import BeautifyScrollbar from "beautify-scrollbar";
 
 Template.notifModal.helpers({
     openNotifPannel: function () {
@@ -19,6 +20,16 @@ Template.notifModal.helpers({
                     {section: section}]
             }).fetch()
         }
+        let instance = Template.instance()
+        Meteor.setTimeout(() => {
+            if (Meteor.Device.isDesktop() && notifs.length) {
+                let notifList = document.getElementById('notif-box')
+                if (instance.bs) {
+                    instance.bs.destroy()
+                }
+                instance.bs = new BeautifyScrollbar(notifList);
+            }
+        }, 200)
         return notifs
     }
 });
@@ -34,6 +45,7 @@ Template.notifModal.onCreated(function () {
 
 Template.notifModal.onRendered(function () {
     //add your statement here
+    this.bs = undefined
     Session.set("showNotifications", false)
     $('#notifModal').modal({
         opacity: 0.3,
@@ -46,5 +58,8 @@ Template.notifModal.onRendered(function () {
 Template.notifModal.onDestroyed(function () {
     //add your statement here
     $('#notifModal').modal('close');
+    if (this.bs) {
+        this.bs.destroy()
+    }
 });
 
