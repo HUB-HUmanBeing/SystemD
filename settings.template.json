@@ -11,8 +11,10 @@
     "MINIO_SECRET_KEY":"???"
   },
   "public": {
-    "frontSalt": "votre petit grain de sel"
+    "frontSalt": "votre petit grain de sel",
+    "publicVapidKey": ""
   },
+  "privateVapidKey": "",
   "serverSalt": "un autre grain de sel",
   "serverSaltRounds": 10,
   "githubToken" : "ton super token"

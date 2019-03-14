@@ -66,12 +66,12 @@ Project.extend({
                     currentProject.private.members[i].role = "admin"
                 }
             })
-            let userToRemove = User.findOne(userId)
+            let userToPromote = User.findOne(userId)
             let userProjectFound = false
-            userToRemove.private.projects.forEach((userProject, i) => {
+            userToPromote.private.projects.forEach((userProject, i) => {
                 if (userProject.hashedAdminSignature === hashedAdminSignature) {
-                    userToRemove.private.projects[i].asymEnc_adminPassword = asymEncParams.asymEnc_adminPassword
-                    userToRemove.private.projects[i].asymEnc_role = asymEncParams.asymEnc_role
+                    userToPromote.private.projects[i].asymEnc_adminPassword = asymEncParams.asymEnc_adminPassword
+                    userToPromote.private.projects[i].asymEnc_role = asymEncParams.asymEnc_role
                     userProjectFound = true
                 }
             })
@@ -80,7 +80,15 @@ Project.extend({
                 if (err) {
                     console.log(err)
                 }
-                userToRemove.save()
+                let notif = new ProjectNotification({
+                    projectId: currentProject._id,
+                    notifiedMembers: [memberId],
+                    section: "members",
+                    notifType:"memberPromoted",
+                    url: "/project/"+currentProject._id+"/members",
+                })
+                notif.save()
+                userToPromote.save()
             })
         },
         /**********************

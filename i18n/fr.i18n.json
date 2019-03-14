@@ -54,8 +54,9 @@
       "return": "Retour"
     },
   "notifItem": {
-    "acceptedInvitation": "Une invitation a été acceptée et un nouveau membre a rejoint le projet",
-    "memberQuit": "Un membre a quitté le projet"
+    "acceptedInvitation": "Une invitation a été acceptée et un nouveau membre a rejoint le projet.",
+    "memberQuit": "Un membre a quitté le projet.",
+    "memberPromoted": "Vous avez désormais les droits d'administrateur sur le projet."
   },
 
   "_templates": "landingPage",
