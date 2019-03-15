@@ -6,6 +6,7 @@ import cryptoServer from "../imports/cryptoServer";
 import Invitations from "../lib/collections/Invitations";
 import {check} from "meteor/check";
 import ProjectNotifications from "../lib/collections/ProjectNotifications";
+import NotifPush from "../imports/NotifPush";
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout

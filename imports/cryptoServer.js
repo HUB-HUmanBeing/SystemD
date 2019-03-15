@@ -11,6 +11,9 @@ const cryptoServer = {
 },
     fastHash(string){
         return new Hashes.SHA512().b64(string + Meteor.settings.serverSalt)
+    },
+    fastCompare(elementToVerity, hash){
+        return bcrypt.compareSync(elementToVerity , hash);
     }
 }
 

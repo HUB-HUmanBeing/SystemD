@@ -14,7 +14,9 @@
     "frontSalt": "votre petit grain de sel",
     "publicVapidKey": ""
   },
+  "webpushMail": "test@test.com",
   "privateVapidKey": "",
+  "GcmApiKey": "",
   "serverSalt": "un autre grain de sel",
   "serverSaltRounds": 10,
   "githubToken" : "ton super token"

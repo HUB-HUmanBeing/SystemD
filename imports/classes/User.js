@@ -4,35 +4,33 @@ import {Class} from 'meteor/jagi:astronomy';
 const ProjectUser = Class.create({
     name: 'ProjectUser',
     fields: {
-        asymEnc_projectId :{
-            type:String
+        asymEnc_projectId: {
+            type: String
         },
-        asymEnc_memberId : {
-          type: String
+        asymEnc_memberId: {
+            type: String
         },
         asymEnc_projectName: {
-            type:String
+            type: String
         },
-        asymEnc_projectSymKey:{
-            type:String
+        asymEnc_projectSymKey: {
+            type: String
         },
-        asymEnc_role:{
+        asymEnc_role: {
             type: String,
         },
-        asymEnc_adminPassword:{
+        asymEnc_adminPassword: {
             type: String
         },
         //permet d'authentifier un admin du projet hashServer(hashclient(memberId + adminPassword))
         hashedAdminSignature: {
-            type:String
+            type: String
         }
     },
 });
 const Profile = Class.create({
     name: 'Profile',
-    fields: {
-
-    },
+    fields: {},
 
 });
 const PublicUser = Class.create({
@@ -46,12 +44,21 @@ const PublicUser = Class.create({
             }
         },
         language: {
-           type: String,
+            type: String,
             optional: true
         },
     },
 
 });
+
+const pushSubscription = Class.create({
+    name: 'pushSubscription',
+    fields: {
+        navigatorFingerPrint: String,
+        subscription: String
+    }
+})
+
 const PrivateUser = Class.create({
     name: 'PrivateUser',
     fields: {
@@ -62,8 +69,14 @@ const PrivateUser = Class.create({
                 return new Date()
             }
         },
-        projects:{
+        projects: {
             type: [ProjectUser],
+            default: function () {
+                return []
+            }
+        },
+        pushSubscriptions: {
+            type: [pushSubscription],
             default: function () {
                 return []
             }
@@ -90,13 +103,13 @@ const User = Class.create({
             type: Object,
             optional: true
         },
-        private:{
+        private: {
             type: PrivateUser,
             default: function () {
                 return {};
             }
         },
-        public:{
+        public: {
             type: PublicUser,
             default: function () {
                 return {};
@@ -115,8 +128,7 @@ const User = Class.create({
             }
         }
     },
-    indexes: {
-    },
+    indexes: {},
     helpers: {}
 });
 

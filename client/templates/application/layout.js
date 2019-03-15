@@ -1,8 +1,13 @@
 import hubCrypto from "../../lib/hubCrypto";
 import i18n from "meteor/universe:i18n";
 import moment from "../../lib/i18nMoment";
+import pushController from "../../lib/controllers/pushController";
 
-Template.layout.helpers({});
+Template.layout.helpers({
+    showAcceptNotifTemplate : function () {
+        return Session.get("showAcceptNotif")
+    }
+});
 
 Template.layout.events({
     //add your events here
@@ -25,6 +30,9 @@ Template.layout.onCreated(function () {
                         }
                         hubCrypto.initCryptoSession(hashedPassword, Meteor.user().username, () => {
                         })
+                        if(Meteor.user().private.projects.length){
+                            pushController.initialize(Meteor.user())
+                        }
                     })
                 }else{
                     hubCrypto.destroyCryptoSession(() => {

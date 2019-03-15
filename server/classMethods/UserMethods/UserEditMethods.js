@@ -1,6 +1,7 @@
 import User from '/imports/classes/User';
 import {check} from "meteor/check";
 import minioTools from "../../../imports/minioTools";
+import NotifPush from "../../../imports/NotifPush";
 
 
 User.extend({
@@ -42,6 +43,7 @@ User.extend({
         changeLang(language){
             check(this._id, Meteor.userId())
             check(language, String)
+            NotifPush.sendNotif([Meteor.userId()], "acceptedInvitation")
             this.public.language = language
             return this.save()
         }

@@ -2,6 +2,7 @@ import {check} from "meteor/check";
 import Project from "../../../imports/classes/Project";
 import User from "../../../imports/classes/User";
 import ProjectNotification from "../../../imports/classes/ProjectNotification";
+import NotifPush from "../../../imports/NotifPush";
 
 
 Project.extend({
@@ -50,7 +51,7 @@ Project.extend({
          * @param hashedAdminSignature
          * @param asymEncParams
          */
-        promoteMember(authInfo, memberId, userId, hashedAdminSignature, asymEncParams) {
+        promoteMember(authInfo, memberId, userId, hashedAdminSignature, asymEncParams, notifObjects) {
             check(Meteor.userId(), String)
             check(asymEncParams, {
                 asymEnc_adminPassword: String,
@@ -76,18 +77,26 @@ Project.extend({
                 }
             })
             check(userProjectFound, true)
+            check(notifObjects, [{
+                userId: String,
+                memberId: String,
+                hashControl: String
+            }])
             currentProject.save((err) => {
                 if (err) {
                     console.log(err)
                 }
+                let membersToNotifyIds = [memberId]
+                let notifType = "memberPromoted"
                 let notif = new ProjectNotification({
                     projectId: currentProject._id,
-                    notifiedMembers: [memberId],
+                    notifiedMembers: membersToNotifyIds,
                     section: "members",
-                    notifType:"memberPromoted",
-                    url: "/project/"+currentProject._id+"/members",
+                    notifType: notifType,
+                    url: "/project/" + currentProject._id + "/members",
                 })
                 notif.save()
+                NotifPush.CheckThenNotify(membersToNotifyIds, notifObjects, notifType)
                 userToPromote.save()
             })
         },
@@ -120,8 +129,8 @@ Project.extend({
                     projectId: currentProject._id,
                     notifiedMembers: currentProject.getAdminMemberIds(),
                     section: "members",
-                    notifType:"memberQuit",
-                    url: "/project/"+currentProject._id+"/members",
+                    notifType: "memberQuit",
+                    url: "/project/" + currentProject._id + "/members",
                 })
                 notif.save()
             })

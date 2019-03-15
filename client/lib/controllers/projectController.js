@@ -49,9 +49,7 @@ const projectController = {
             memberId: userProject.asymEnc_memberId,
             userSignature: cryptoTools.hash(userProject.asymEnc_memberId + Session.get("stringifiedAsymPrivateKey"))
         }
-
-
-    },
+    }
 }
 
 export default projectController

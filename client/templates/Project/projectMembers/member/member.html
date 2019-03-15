@@ -7,7 +7,7 @@
             <div class="col s12">
                 <span class="title">{{member.symEnc_username}}</span>
                 <div class="infoQuotes">
-                    {{__ ".since"}} {{formatDate joinAtTs false}}s
+                    {{__ ".since"}} {{formatDate joinAtTs false}}
                     {{#if member.invitedBy}}
                         <br>{{__ ".invitedBy"}} {{usernameFromMemberId member.invitedBy}}
                     {{else}}

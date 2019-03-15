@@ -76,7 +76,7 @@ const cryptoTools = {
 
         let saltedPrefix = this.generateRandomPassword(10)
         this.importPublicKey(stringifiedPublicKey, (public_key_object) => {
-            this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(saltedPrefix+data)).then(
+            this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(saltedPrefix + data)).then(
                 function (result) {
 
                     callback(new Uint8Array(result))
@@ -232,7 +232,11 @@ const cryptoTools = {
     },
     heavyHash(string, customSalt) {
         let frontEndDifficulty = "13"
-       return bcrypt.hashSync(string, "$2a$"+frontEndDifficulty+"$"+new Hashes.SHA512().hex(customSalt).substring(0, 22));
+        return bcrypt.hashSync(string, "$2a$" + frontEndDifficulty + "$" + new Hashes.SHA512().hex(customSalt).substring(0, 22));
+    },
+    fastBcryptHash(string){
+        let salt = bcrypt.genSaltSync(Meteor.settings.public.fastHashDifficulty);
+        return bcrypt.hashSync(string, salt);
     },
 //fonction permettant de générer un mot de passe aléatoire
     generateRandomPassword(length) {
@@ -299,7 +303,7 @@ const cryptoTools = {
             } else if (prefix == 'asymEnc') {
                 encryptedElement = new Promise((resolve, reject) => {
                     let saltedPrefix = this.generateRandomPassword(10)
-                    this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, encryptionParams.publicKey, this.convertStringToArrayBufferView(saltedPrefix+element)).then(
+                    this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, encryptionParams.publicKey, this.convertStringToArrayBufferView(saltedPrefix + element)).then(
                         (result) => {
                             resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)))
                         },
@@ -351,7 +355,7 @@ const cryptoTools = {
         })
 
         //on renvoie la promise et surtout on passe l'objet avec toutes les clefs en callback lorsque toutes les promises ont étés executées
-       return  Promise.all(importKeysPromises).then((arrOfKeys) => {
+        return Promise.all(importKeysPromises).then((arrOfKeys) => {
             callback(workingEncryptionParams)
         })
 
@@ -477,6 +481,17 @@ const cryptoTools = {
      * on stocke ici notre objet zxcvbn qui gere la difficulté des password
      */
     zxcvbn: zxcvbn,
+    getNavigatorFingerPrint() {
+        return cryptoTools.hash(
+            navigator.vendor +
+            navigator.platform +
+            navigator.hardwareConcurrency +
+            navigator.deviceMemory +
+            navigator.appCodeName +
+            navigator.appName +
+            window.localStorage.getItem("hashedPassword")
+        )
+    },
     /***************************
      * pas très fier de celle là, elle nous permet de savoir a peu près les perf d'une machie
      * utilisateur et de pouvoir setter les setTimeOut des fonctions de déchiffrement qui font chier puisque

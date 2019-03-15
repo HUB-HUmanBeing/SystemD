@@ -1,6 +1,7 @@
 import hubCrypto from "/client/lib/hubCrypto";
 //https://www.npmjs.com/package/beautify-scrollbar
 import BeautifyScrollbar from 'beautify-scrollbar';
+import pushController from "../../../lib/controllers/pushController";
 
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
@@ -37,6 +38,7 @@ Template.menu.events({
 
 Template.menu.onCreated(function () {
     this.showInfo = new ReactiveVar()
+
 });
 
 Template.menu.onRendered(function () {

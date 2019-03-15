@@ -3,6 +3,7 @@ import projectController from "../../../../lib/controllers/projectController";
 import cryptoTools from "../../../../lib/cryptoTools";
 import User from "../../../../../imports/classes/User";
 import hubCrypto from "../../../../lib/hubCrypto";
+import notificationController from "../../../../lib/controllers/notificationController";
 
 Template.member.helpers({
     //add you helpers here
@@ -64,6 +65,7 @@ Template.member.events({
                         userId,
                         cryptoTools.hash(memberId + adminPassword),
                         asymEncParams,
+                        [notificationController.getNotifyObject(instance.data.member)],
                         (err, res) => {
                             if (err) {
                                 console.log(err)

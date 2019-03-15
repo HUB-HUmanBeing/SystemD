@@ -53,6 +53,13 @@
     "githubLink": "To see the tracking of your feed-back, go to the GitHub of the project",
     "return": "return"
   },
+  "notifItem": {
+    "acceptedInvitation": "An invitation has been accepted and a new member has join the project.",
+    "memberQuit": "A member has quit the project.",
+    "memberPromoted": "You now have admin rights on the project.",
+    "genericTitle": "New activity on System-D",
+    "genericAction": "See on website"
+  },
 
   "_templates": "landingPage",
     "landingHead": {
