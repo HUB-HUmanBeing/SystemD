@@ -10,7 +10,7 @@ const notificationController = {
                 notifObjects.push(this.getNotifyObject(member))
             }
         })
-        return notifObject
+        return notifObjects
     },
     getNotifyObject(member){
         return {

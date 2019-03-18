@@ -4,23 +4,23 @@ import ProjectNotification from "../../../imports/classes/ProjectNotification";
 
 ProjectNotification.extend({
     meteorMethods: {
-        deleteNotif(authInfo){
+        deleteNotif(authInfo) {
             let notification = ProjectNotification.findOne(this._id)
             check(Meteor.userId(), String)
             check(authInfo, {memberId: String, userSignature: String})
             let currentProject = Project.findOne(notification.projectId)
             check(currentProject.isMember(authInfo), true)
-            let found= false
-            notification.notifiedMembers.forEach((memberId,i)=>{
-                if(memberId === authInfo.memberId){
-                    notification.notifiedMembers.splice(i,1)
-                    found=true
+            let found = false
+            notification.notifiedMembers.forEach((memberId, i) => {
+                if (memberId === authInfo.memberId) {
+                    notification.notifiedMembers.splice(i, 1)
+                    found = true
                 }
             })
             check(found, true)
-            if(notification.notifiedMembers.length){
+            if (notification.notifiedMembers.length) {
                 return notification.save()
-            }else{
+            } else {
                 return notification.remove()
             }
 

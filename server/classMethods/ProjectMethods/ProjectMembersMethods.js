@@ -86,17 +86,7 @@ Project.extend({
                 if (err) {
                     console.log(err)
                 }
-                let membersToNotifyIds = [memberId]
-                let notifType = "memberPromoted"
-                let notif = new ProjectNotification({
-                    projectId: currentProject._id,
-                    notifiedMembers: membersToNotifyIds,
-                    section: "members",
-                    notifType: notifType,
-                    url: "/project/" + currentProject._id + "/members",
-                })
-                notif.save()
-                NotifPush.CheckThenNotify(membersToNotifyIds, notifObjects, notifType)
+                NotifPush.notifyGlobally([memberId], notifObjects, "memberPromoted",currentProject._id,"members")
                 userToPromote.save()
             })
         },
@@ -106,7 +96,7 @@ Project.extend({
          * @param memberId
          * @param userProjectIndex
          */
-        quitProject(authInfo, memberId, userProjectIndex) {
+        quitProject(authInfo, memberId, userProjectIndex,notifObjects) {
             check(Meteor.userId(), String)
             check(authInfo, {memberId: String, userSignature: String})
             check(userProjectIndex, Number)
@@ -119,20 +109,19 @@ Project.extend({
                 }
             })
             let currentUser = User.findOne(Meteor.userId())
+            check(notifObjects, [{
+                userId: String,
+                memberId: String,
+                hashControl: String
+            }])
             currentUser.private.projects.splice(userProjectIndex, 1)
             currentProject.save((err) => {
                 if (err) {
                     console.log(err)
                 }
                 currentUser.save()
-                let notif = new ProjectNotification({
-                    projectId: currentProject._id,
-                    notifiedMembers: currentProject.getAdminMemberIds(),
-                    section: "members",
-                    notifType: "memberQuit",
-                    url: "/project/" + currentProject._id + "/members",
-                })
-                notif.save()
+
+                NotifPush.notifyGlobally(currentProject.getAdminMemberIds(), notifObjects, "memberQuit",currentProject._id,"members")
             })
 
         },

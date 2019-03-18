@@ -29,7 +29,7 @@ const pushController = {
         navigator.serviceWorker.register("/worker.js", {
             scope: "/"
         }).then(res => {
-            console.log(res)
+            //console.log(res)
             callback(res)
         })
     },
@@ -46,7 +46,7 @@ const pushController = {
             userVisibleOnly: true,
             applicationServerKey: this.urlBase64ToUint8Array(publicVapidKey)
         }).then((res) => {
-            console.log(res)
+            //console.log(res)
             Meteor.clearTimeout(timeout)
             Session.set("showAcceptNotif", false)
             this.registerSubscriptionIfNeeded(JSON.stringify(res), user)

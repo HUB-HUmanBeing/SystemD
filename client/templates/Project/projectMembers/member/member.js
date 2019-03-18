@@ -123,6 +123,7 @@ Template.member.events({
                 projectController.getAuthInfo(currentProject._id),
                 memberId,
                 userProjectIndex,
+                notificationController.getNotifyAdmins(),
                 (err, res) => {
                     if (err) {
                         console.log(err)

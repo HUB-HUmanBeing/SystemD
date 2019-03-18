@@ -50,7 +50,6 @@ Template.notifItem.events({
     "click [deleteNotif]": function (event, instance) {
         //on récupere la nofi concernée
         let notif = instance.data.notif
-console.log(notif)
         //on appele la methote de suppression de la notification
         notif.callMethod('deleteNotif', projectController.getAuthInfo(notif.projectId), (err, res) => {
             //s'il y a une erreur, on toast l'erreur
@@ -76,7 +75,7 @@ Template.notifItem.onCreated(function () {
 });
 
 Template.notifItem.onRendered(function () {
-
+    resetTooltips()
 });
 
 Template.notifItem.onDestroyed(function () {

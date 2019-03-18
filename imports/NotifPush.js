@@ -1,5 +1,6 @@
 import fs from 'fs'
 import cryptoServer from "./cryptoServer";
+import ProjectNotification from "./classes/ProjectNotification";
 
 const NotifPush = {
     i18nNotifs: {},
@@ -10,9 +11,9 @@ const NotifPush = {
             Meteor.settings.public.publicVapidKey,
             Meteor.settings.privateVapidKey
         );
-        // if(Meteor.settings.GcmApiKey){
-        //     webPush.setGCMAPIKey(Meteor.settings.GcmApiKey);
-        // }
+        // if(Meteor.settings.GcmApiKey && Meteor.isProduction){
+            webPush.setGCMAPIKey(Meteor.settings.GcmApiKey);
+        //}
 
 
         return webPush
@@ -59,18 +60,18 @@ const NotifPush = {
             translatedTitle = this.i18nNotifs[language]["genericTitle"]
         }
         let translatedAction = this.i18nNotifs[language]["genericAction"]
-        return JSON.stringify({
+        return new Buffer(JSON.stringify({
             title: translatedTitle,
             body: translatedMessage,
             action: translatedAction
-        })
+        }))
     },
     CheckThenNotify(membersToNotifyIds, notifObjects, message){
         let userIds = []
         notifObjects.forEach(notifObject=>{
             let index=membersToNotifyIds.indexOf(notifObject.memberId)
             if(index>=0){
-                if(cryptoServer.fastCompare(membersToNotifyIds[index]+notifObject.userId)){
+                if(cryptoServer.fastCompare(membersToNotifyIds[index]+notifObject.userId, notifObject.hashControl)){
                     userIds.push(notifObject.userId)
                 }
             }
@@ -80,6 +81,17 @@ const NotifPush = {
             this.sendNotif([...new Set(userIds)], message)
         }
 
+    },
+    notifyGlobally(membersToNotifyIds, notifObjects, notifType,projectId,section){
+        let notif = new ProjectNotification({
+            projectId: projectId,
+            notifiedMembers: membersToNotifyIds,
+            section: section,
+            notifType: notifType,
+            url: "/project/" + projectId + "/"+ section,
+        })
+        notif.save()
+        this.CheckThenNotify(membersToNotifyIds, notifObjects, notifType)
     }
 }
 export default NotifPush

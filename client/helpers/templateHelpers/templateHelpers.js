@@ -81,3 +81,6 @@ Template.registerHelper("isAdmin", function (projectId) {
 Template.registerHelper('onlyZeroToNine', function (number) {
     return number > 9 ? "9+" : number;
 })
+Template.registerHelper('isDev', function () {
+    return Meteor.isDevelopment
+})

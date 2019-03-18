@@ -60,6 +60,10 @@
       "genericTitle": "Nouvelle activité sur System-D",
       "genericAction": "Voir sur le site"
     },
+    "showAcceptNotif":{
+      "showAcceptNotifs": "Cliquez sur accepter pour être averti des activités de votre projet.",
+      "showAcceptNotifsInfos": "Vous pourrez paramétrer ou désactiver les notifications plus tard."
+    },
 
   "_templates": "landingPage",
     "landingHead": {
@@ -372,5 +376,8 @@
       "deleteAccount": "Supprimer votre compte",
       "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
       "passwordDeleteAccount": "Entrez votre mot de passe afin de confirmer la suppression du compte."
-    }
+    },
+  "userOptions":{
+    "language": "Langue"
+  }
 }

@@ -3,16 +3,27 @@
                             {{#if isPhone}}
                                 phone-notif-modal
                             {{else}}
-                                {{#if isTablet}}
+        {{#if isTablet}}
                                      tablet-notif-modal
                                 {{else}}
                                      desktop-notif-modal
                                 {{/if}}
-                            {{/if}}
-                            " >
+    {{/if}}
+                            ">
         {{#if openNotifPannel}}
             <div class="modal-content " id="notif-list-container" style="background-color: transparent !important;">
-                <div class="notif-box " id="notif-box" >
+
+
+                <div class="notif-box " id="notif-box">
+                    <div class="row no-margin notifHeader">
+                        <div class="col s10 valign-wrapper">
+                            <h5 class="plus-color">{{__ ".title"}}</h5>
+                        </div>
+                        <div class="col s2 valign-wrapper no-padding">
+                            <a href="" class="btn btn-floating waves-effect waves-light tooltipped" data-position="left"
+                               data-delay="50" data-tooltip="{{__ ".deleteAll"}}" deleteAll><i class="material-icons">delete_sweep</i></a>
+                        </div>
+                    </div>
                     <ul class="collection " id="notif-list" style=" margin: 0 !important; border: none !important;">
                         {{#each notif in notifs}}
                             {{>notifItem

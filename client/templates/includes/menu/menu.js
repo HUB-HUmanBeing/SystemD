@@ -2,6 +2,7 @@ import hubCrypto from "/client/lib/hubCrypto";
 //https://www.npmjs.com/package/beautify-scrollbar
 import BeautifyScrollbar from 'beautify-scrollbar';
 import pushController from "../../../lib/controllers/pushController";
+import ProjectNotification from "../../../../imports/classes/ProjectNotification";
 
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
@@ -38,7 +39,16 @@ Template.menu.events({
 
 Template.menu.onCreated(function () {
     this.showInfo = new ReactiveVar()
+Tracker.autorun(()=>{
+    let totalNotifCount = ProjectNotification.find().count()
+    let title= "System-D"
+    if(totalNotifCount){
+        title += ' ('+ totalNotifCount +')'
 
+    }
+    document.title = title
+
+})
 });
 
 Template.menu.onRendered(function () {

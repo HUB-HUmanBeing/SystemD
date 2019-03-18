@@ -1,0 +1,38 @@
+{
+  "name": "System-D",
+  "short_name": "System-D",
+  "description": "Encrypted platform for collaboratives and free projects",
+  "start_url": "./?utm_source=web_app_manifest",
+  "display": "standalone",
+  "background_color": "#1E272C",
+  "icons": [
+    {
+      "src": "images/favicons/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicons/favicon-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicons/favicon-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicons/favicon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+
+    {
+      "src": "images/favicons/favicon-196.png",
+      "sizes": "196x196",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "gcm_sender_id": "785822409291"
+}

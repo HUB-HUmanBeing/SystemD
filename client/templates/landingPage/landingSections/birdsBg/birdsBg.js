@@ -1,5 +1,8 @@
 Template.birdsBg.helpers({
     //add you helpers here
+    isAccepted: function () {
+        return navigator.userAgent.indexOf("Firefox") == -1
+    }
 });
 
 Template.birdsBg.events({

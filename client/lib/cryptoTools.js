@@ -2,6 +2,7 @@ import * as Materialize from "meteor/materialize:materialize";
 import Hashes from "jshashes"
 import zxcvbn from 'zxcvbn'
 import bcrypt from 'bcryptjs'
+import * as randomPassword from "secure-random-password";
 
 const cryptoTools = {
     //permet de recuperer l'object crypto suivant le navigateur
@@ -242,16 +243,7 @@ const cryptoTools = {
     generateRandomPassword(length) {
         let randomLength = 30 + Math.floor(Math.random() * 10)
         length = length || randomLength
-        let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        let lowercase = 'abcdefghijklmnopqrstuvwxyz';
-        let numbers = '0123456789';
-
-        let all = uppercase + lowercase + numbers;
-        let password = '';
-        for (let index = 0; index < length; index++) {
-            let character = Math.floor(Math.random() * all.length);
-            password += all.substring(character, character + 1);
-        }
+        let password = randomPassword.randomPassword({length: length, characters: [randomPassword.lower, randomPassword.upper, randomPassword.digits] })
         return password;
     }
     ,

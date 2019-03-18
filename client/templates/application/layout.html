@@ -2,7 +2,9 @@
     {{#if compare isDesktop '!&' currentUserId  }}
         {{> slideMenu}}
     {{/if}}
-
+{{#if isDev}}
+{{>testBtn}}
+{{/if}}
     <div class="main-container" style="min-height: 100vh">
 
         <main class="">

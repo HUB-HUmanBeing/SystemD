@@ -1,6 +1,6 @@
 <template name="birdsBg">
     <div class="bird-container">
-        {{#if isDesktop}}
+        {{#if compare isDesktop "&&" isAccepted}}
         <iframe
                 class="boids-iframe"
                 src="/improv-wip-gh-pages/demos/boids/boids2.html"

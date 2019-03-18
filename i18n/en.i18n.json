@@ -59,8 +59,12 @@
     "memberPromoted": "You now have admin rights on the project.",
     "genericTitle": "New activity on System-D",
     "genericAction": "See on website"
-  },
 
+  },
+  "showAcceptNotif":{
+    "showAcceptNotifs": "Click accept to be notified of the activities on your projects",
+    "showAcceptNotifsInfos": "You will be able to adjust or disable the notifications later"
+  },
   "_templates": "landingPage",
     "landingHead": {
       "aims": "Purposes",
@@ -125,7 +129,7 @@
       "signin": "Sign In"
     },
     "landingTitle": {
-      "h3title": "Encrypted platform of collaboratives and free projects",
+      "h3title": "Encrypted platform for collaboratives and free projects",
       "ptitle": "Make projects, join your friends, and take advantage of free and secure tools to organize your association or group together.",
       "signin": "Sign In"
     },
@@ -369,5 +373,8 @@
       "deleteAccount": "Delete your account",
       "pdeleteAccount": "THE DELETION OF YOUR ACCOUNT WILL BE DEFINITIVE.",
       "passwordDeleteAccount": "Enter your password to confirm the deletion of your account."
-    }
+    },
+  "userOptions":{
+    "language": "Language"
+  }
 }

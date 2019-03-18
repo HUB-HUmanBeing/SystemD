@@ -38,3 +38,10 @@ TemplatesNames.forEach(name => {
 //  console.log("switchHttps")
 //     switchHTTPS('3003');
 // }
+if(!document.getElementById('manifest')) {
+    var link = document.createElement('link');
+    link.id = 'manifest';
+    link.rel = 'manifest';
+    link.href = '/manifest.json';
+    document.head.appendChild(link);
+}

@@ -7,4 +7,13 @@
   bottom: 0;
   z-index: 9000;
   background-color: rgba($contrasted-bg,0.7);
+  .material-icons{
+    color: $plus-color !important;
+  }
+  .message-container{
+    background: linear-gradient(to right, $blue-highlight-color 0%,  $main-bg 20%, $main-bg 100%);
+  }
+  p{
+    font-size: 0.9em;
+  }
 }

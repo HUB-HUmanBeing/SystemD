@@ -1,6 +1,6 @@
-import ProjectNotifications from "../../../../lib/collections/ProjectNotifications";
 import ProjectNotification from "../../../../imports/classes/ProjectNotification";
 import BeautifyScrollbar from "beautify-scrollbar";
+import projectController from "../../../lib/controllers/projectController";
 
 Template.notifModal.helpers({
     openNotifPannel: function () {
@@ -36,6 +36,31 @@ Template.notifModal.helpers({
 
 Template.notifModal.events({
     //add your events here
+    'click [deleteAll]': function (event, instance) {
+        let projectId = Session.get("showNotifications").split('#')[1]
+        let section = Session.get("showNotifications").split('#')[2]
+        //let projectNotification = new ProjectNotification()
+        Meteor.call(
+            "deleteAllNotifications",
+            projectController.getAuthInfo(projectId),
+            projectId,
+            section,
+            (err, res) => {
+                //s'il y a une erreur, on toast l'erreur
+                if (err) {
+                    console.log(err)
+                    //Materialize.toast("une erreur s'est produite", 4000, 'red');
+                } else {
+                    //sinon, on attends un peu,
+                    Meteor.setTimeout(() => {
+
+                        $('#notifModal').modal('close')
+
+                    }, 200)
+
+                }
+            })
+    }
 });
 
 Template.notifModal.onCreated(function () {
@@ -53,6 +78,7 @@ Template.notifModal.onRendered(function () {
             Session.set("showNotifications", false)
         }
     });
+
 });
 
 Template.notifModal.onDestroyed(function () {
