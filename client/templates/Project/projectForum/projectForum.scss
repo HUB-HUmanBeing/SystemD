@@ -1,0 +1,34 @@
+@import "{}/client/scss/variables.scss";
+
+#projectForum {
+  position: absolute;
+ height: 100vh;
+  overflow-y: hidden;
+
+
+  #categoryListContainer {
+    max-width: 320px;
+    width: 100vw;
+    height: 100vh;
+    padding: 40px 0;
+  }
+  .blurBottom, .blurTop{
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    z-index: 200;
+  }
+  .blurBottom{
+    bottom: 0;
+
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, $main-bg 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,$main-bg 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0)  0%,$main-bg 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+  .blurTop{
+    top:0;
+    background: -moz-linear-gradient(bottom, rgba(0,0,0,0) 0%, $contrasted-bg 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(bottom, rgba(0,0,0,0) 0%,$contrasted-bg 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to top, rgba(0,0,0,0)  0%,$contrasted-bg 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+}

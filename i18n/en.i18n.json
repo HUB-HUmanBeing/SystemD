@@ -37,34 +37,38 @@
       "denied": "Access denied",
       "noAccess": "You can't access to this page! Please login."
     },
-  "submitIssue": {
-    "btnLabel": "Bugs - Suggestions",
-    "bugReport": "Bug",
-    "suggestion": "Suggestions",
-    "allowDeviceInfo": "Automatically join navigator informations in order to help bug-fix ? (navigator, version, exploitation system, language)",
-    "decline": "no",
-    "authorize": "yes",
-    "bugReportLabel": "Bug description",
-    "sugestionLabel": "Idea and suggestions",
-    "refreshCaptcha": "Renew",
-    "captcha": "Enter the 4 letters",
-    "submit": "Send",
-    "succesMessage": "Thanks for your contribution ! Your message has been sent to the developers",
-    "githubLink": "To see the tracking of your feed-back, go to the GitHub of the project",
-    "return": "return"
-  },
-  "notifItem": {
-    "acceptedInvitation": "An invitation has been accepted and a new member has join the project.",
-    "memberQuit": "A member has quit the project.",
-    "memberPromoted": "You now have admin rights on the project.",
-    "genericTitle": "New activity on System-D",
-    "genericAction": "See on website"
+    "submitIssue": {
+      "btnLabel": "Bugs - Suggestions",
+      "bugReport": "Bug",
+      "suggestion": "Suggestions",
+      "allowDeviceInfo": "Automatically join navigator informations in order to help bug-fix ? (navigator, version, exploitation system, language)",
+      "decline": "no",
+      "authorize": "yes",
+      "bugReportLabel": "Bug description",
+      "sugestionLabel": "Idea and suggestions",
+      "refreshCaptcha": "Renew",
+      "captcha": "Enter the 4 letters",
+      "submit": "Send",
+      "succesMessage": "Thanks for your contribution ! Your message has been sent to the developers",
+      "githubLink": "To see the tracking of your feed-back, go to the GitHub of the project",
+      "return": "return"
+    },
+    "notifModal": {
+      "title": "Notifications",
+      "deleteAll": "Delete all"
+    },
+    "notifItem": {
+      "acceptedInvitation": "An invitation has been accepted and a new member has join the project.",
+      "memberQuit": "A member has quit the project.",
+      "memberPromoted": "You now have admin rights on the project.",
+      "genericTitle": "New activity on System-D",
+      "genericAction": "See on website"
 
-  },
-  "showAcceptNotif":{
-    "showAcceptNotifs": "Click accept to be notified of the activities on your projects",
-    "showAcceptNotifsInfos": "You will be able to adjust or disable the notifications later"
-  },
+    },
+    "showAcceptNotif":{
+      "showAcceptNotifs": "Click accept to be notified of the activities on your projects",
+      "showAcceptNotifsInfos": "You will be able to adjust or disable the notifications later"
+    },
   "_templates": "landingPage",
     "landingHead": {
       "aims": "Purposes",
@@ -376,5 +380,21 @@
     },
   "userOptions":{
     "language": "Language"
-  }
+  },
+  "template": "forum",
+    "categoryList": {
+      "categoryName": "Folder name",
+      "new": "New folder"
+    },
+    "categoryItem": {
+      "categoryName": "Folder name",
+      "delete": "Delete folder",
+      "deleteInfo": "All of the items in the folder will be deleted",
+      "moveDown": "Move down",
+      "moveUp": "Move up",
+      "edit": "Edit name",
+      "disableNotifications": "Notifications are actived on this folder, click to desactivate.",
+      "enlableNotifications": "Notifications are desactived on this folder, click to activate."
+
+    }
 }

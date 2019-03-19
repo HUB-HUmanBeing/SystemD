@@ -76,6 +76,7 @@ Template.registerHelper('userIdFromMemberId', function (memberId) {
 
 })
 Template.registerHelper("isAdmin", function (projectId) {
+    projectId = projectId || FlowRouter.current().params.projectId
     return projectController.isAdmin(projectId)
 })
 Template.registerHelper('onlyZeroToNine', function (number) {

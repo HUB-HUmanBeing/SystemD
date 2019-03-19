@@ -55,7 +55,6 @@ body, html {
 .absolute {
   position: absolute;
 }
-
 //Backgrounds et textures
 .gradiant {
   background: linear-gradient(45deg, $light-bg 0%, $contrasted-bg 100%);
@@ -96,10 +95,12 @@ body, html {
 .btnStandard {
   background-color: transparent !important;
   border: 2px solid $blue-highlight-color !important;
-
+  line-height: 34px;
+  padding: 0 10px !important;
   .material-icons {
     color: $blue-highlight-color !important;
-    transition: color 0.5s
+    transition: color 0.5s;
+    margin-top: -2px;
   }
 
   color: $plus-color !important;
@@ -109,6 +110,7 @@ body, html {
 .btnStandard:hover, .btnStandard:focus {
   .material-icons {
     color: $focus-color !important;
+
   }
 
   border: 2px solid $focus-color !important;
@@ -117,10 +119,12 @@ body, html {
 .btn-danger {
   background-color: transparent !important;
   border: 2px solid $danger-color !important;
-
+  line-height: 34px;
+  padding: 0 10px !important;
   .material-icons {
     color: $danger-color !important;
-    transition: color 0.5s
+    transition: color 0.5s;
+    margin-top: -2px;
   }
 
   color: $plus-color !important;
@@ -275,7 +279,11 @@ body, html {
 .material-tooltip {
   border: 1px solid $lighter-bg;
   padding: 6px 8px;
+  max-width: 250px;
+  text-align: left;
   min-height: 10px !important;
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 
   span {
     color: $minus-color !important;

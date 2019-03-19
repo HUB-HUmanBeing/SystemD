@@ -218,6 +218,9 @@ Template.newProject.onCreated(function () {
 
 Template.newProject.onRendered(function () {
     //add your statement here
+    Meteor.setTimeout(()=>{
+        $('#projectName').focus()
+    },200)
 });
 
 Template.newProject.onDestroyed(function () {

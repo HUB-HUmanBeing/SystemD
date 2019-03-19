@@ -15,7 +15,8 @@ const ProjectNotification = Class.create({
             index: 1
         },
         section: {
-            type: String
+            type: String,
+            index: 1
         },
         notifType:{
             type:String

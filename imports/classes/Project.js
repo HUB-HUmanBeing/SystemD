@@ -7,8 +7,8 @@ const ProjectInvitation = Class.create({
         invitationId: {
             type: String
         },
-        symEnc_invitationPassword:{
-            type:String
+        symEnc_invitationPassword: {
+            type: String
         }
     }
 })
@@ -34,13 +34,35 @@ const ProjectMember = Class.create({
         symEnc_joinAtTs: {
             type: String
         },
-        invitedBy:{
-            type:String,
+        invitedBy: {
+            type: String,
             optional: true
         },
         // ca permet d'autentifier un membre sur le serveur: corespond a hashServer(hashClient(memberId + userPrivateKey)
         userSignature: {
             type: String
+        }
+    }
+})
+
+const ForumCategory = Class.create({
+    name: 'ForumCategory',
+    fields: {
+        categoryId: String,
+        symEnc_name: {
+            type:String
+        },
+        createdAt: {
+            type: Date,
+            default: function () {
+                return new Date()
+            }
+        },
+        membersToNotify: {
+            type: [String],
+            default: function () {
+                return [];
+            }
         }
     }
 })
@@ -58,7 +80,7 @@ const ProjectPublic = Class.create({
                 }
             ],
         },
-        avatar:{
+        avatar: {
             type: Boolean,
             default: function () {
                 return false
@@ -94,8 +116,14 @@ const ProjectPrivate = Class.create({
                 return [];
             }
         },
-        invitations:{
-            type:[ProjectInvitation],
+        invitations: {
+            type: [ProjectInvitation],
+            default: function () {
+                return [];
+            }
+        },
+        forumCategories: {
+            type: [ForumCategory],
             default: function () {
                 return [];
             }
@@ -139,27 +167,27 @@ const Project = Class.create({
         }
     },
     helpers: {
-        isMemberAllowedToQuit(memberId){
+        isMemberAllowedToQuit(memberId) {
             let adminCount = 0
             let currentMember
-            this.private.members.forEach(member=>{
+            this.private.members.forEach(member => {
 
-                if(member.role ==="admin"){
+                if (member.role === "admin") {
                     adminCount++
                 }
-                if(member.memberId === memberId){
-                    currentMember= member
+                if (member.memberId === memberId) {
+                    currentMember = member
                 }
             })
-            return (currentMember.role !== "admin" || adminCount>=2)
+            return (currentMember.role !== "admin" || adminCount >= 2)
         },
-        isDeletable(){
-            return this.private.members.length ===1
+        isDeletable() {
+            return this.private.members.length === 1
         },
-        getAdminMemberIds(){
-            let adminMemberIds=[]
-            this.private.members.forEach(member=>{
-                if(member.role === "admin"){
+        getAdminMemberIds() {
+            let adminMemberIds = []
+            this.private.members.forEach(member => {
+                if (member.role === "admin") {
                     adminMemberIds.push(member.memberId)
                 }
             })

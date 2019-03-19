@@ -426,7 +426,7 @@ const cryptoTools = {
                 resolve(element)
             })
             if (element) {
-                console.warn("'on s'occupe que des champs simples pour l'instant'", elementName, element)
+                //console.warn("'on s'occupe que des champs simples pour l'instant'", elementName, element)
             }
 
         }

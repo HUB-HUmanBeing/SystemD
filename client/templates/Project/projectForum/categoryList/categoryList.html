@@ -1,0 +1,36 @@
+<template name="categoryList">
+
+    <div id="categoryList" class="full-height ">
+        <div class="row no-margin">
+            <div class="col s12">
+                <ul class="collapsible transparent no-margin" data-collapsible="expandable">
+                    {{#each category in categories}}
+                        {{>categoryItem category=category currentProject=currentProject index=@index}}
+                        {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+
+                {{#if showNewCategory}}
+
+                    <form id="newCategoryForm" action="" newCategoryForm class="flex contrasted-bg  shadow" >
+                        <div class="input-field flex-auto small-padding small-margin">
+                            <input id="newCategoryName" type="text" required class="validate no-margin">
+                            <label for="newCategoryName">{{__ ".categoryName"}}</label>
+                        </div>
+                        <div class="">
+                            <button href="" class="btn btn-floating waves-effect waves-light"><i class="material-icons prefix">done</i></button>
+                        </div>
+                    </form>
+                    {{else}}
+                    <a href="" class="btn btnStandard full-width  waves-effect waves-light" showNewCategory>
+                        {{__ ".new"}}
+                        <i class="material-icons left">create_new_folder</i>
+                    </a>
+                    {{/if}}
+            </div>
+        </div>
+    </div>
+</template>

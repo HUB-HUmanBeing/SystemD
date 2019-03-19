@@ -20,7 +20,7 @@ Meteor.methods({
             color: true, // characters will have distinct colors instead of grey, true if background option is set
             background: '#1E272C',
             width: 120, // width of captcha
-            height: 40,
+            height: 50,
             fontSize: 50
         });
         captcha.text = cryptoServer.fastHash(captcha.text)

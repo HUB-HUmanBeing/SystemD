@@ -1,0 +1,129 @@
+@import "{}/client/scss/variables.scss";
+
+.categoryItem {
+  margin-bottom: 8px;
+  //background-color: $contrasted-bg;
+  .collapsible-header {
+    background-color: $contrasted-bg;
+    border-bottom: none;
+    transition: 0.3s;
+    border-left: 3px solid $blue-highlight-color;
+    padding: 10px;
+
+    &:hover {
+      padding-left: 5px;
+      border-left: 8px solid $blue-highlight-color;
+
+      .categoryTitle * {
+        color: $plus-color !important;
+      }
+    }
+
+    //margin-right: 15px;
+    .categoryTitle {
+      position: relative;
+
+      i {
+        font-size: 25px;
+        position: relative;
+        top: 2px;
+      }
+
+      span {
+        position: relative;
+        top: -5px;
+      }
+    }
+
+    .categorySettings {
+      right: -4px;
+      top: -2px;
+
+      > a {
+        box-shadow: none;
+        background-color: transparent;
+      }
+
+      .btn-floating {
+        padding: 0 3.5px !important;
+        width: 35px;
+        height: 35px;
+        transition: 0.3s;
+
+        i {
+          line-height: 36px;
+          font-size: 20px;
+        }
+
+        &:hover {
+          background-color: $blue-highlight-color !important;
+
+          i {
+            color: $plus-color !important;
+          }
+        }
+      }
+
+      ul {
+        right: 16px;
+        top: 10px;
+        height: 50px;
+        padding-right: 30px;
+
+        li {
+          margin-right: 0px;
+          padding-right: 1px;
+
+          .btn-floating {
+            background-color: $light-bg;
+          }
+
+        }
+      }
+    }
+
+    #editCategoryForm {
+      margin-top: 20px;
+      width: 100%;
+
+      .btn-floating {
+        padding: 0px 5px;
+        transition: 0.3s;
+        background-color: $blue-highlight-color !important;
+
+        &:hover {
+
+
+          i {
+            color: $plus-color !important;
+          }
+        }
+      }
+    }
+    .notifyCategory{
+      .btn-floating{
+        padding: 0 3.5px !important;
+        width: 35px;
+        height: 35px;
+        transition: 0.3s;
+        box-shadow: none;
+        background-color: transparent;
+
+        i {
+          line-height: 34px;
+          font-size: 20px;
+          &:hover{
+            color: $plus-color !important;
+          }
+        }
+      }
+
+  }
+  }
+
+  .collapsible-body {
+    border: none;
+    background-color: $contrasted-minus-bg;
+    margin-left: 15px;
+  }
+}

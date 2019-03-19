@@ -1,0 +1,29 @@
+@import "{}/client/scss/variables.scss";
+
+#categoryList{
+
+  #newCategoryForm{
+    padding: 20px 10px 0 10px;
+    border-left: 3px solid $blue-highlight-color;
+    input{
+      height: 2em;
+    }
+    button{
+      background-color: $blue-highlight-color !important;
+      i{
+        color: $main-color !important;
+      }
+      &:hover{
+        i{
+          color: $plus-color !important;
+        }
+      }
+    };
+
+  }
+  .collapsible{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}

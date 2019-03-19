@@ -17,9 +17,15 @@ Template.submitIssue.events({
     //add your events here
     "click [bugReport]": function (event, instance) {
         event.preventDefault()
+        Meteor.setTimeout(()=>{
+            $('#submitIssueContent').focus()
+        },200)
         instance.requestType.set('bugReport')
     },
     "click [suggestion]": function (event, instance) {
+        Meteor.setTimeout(()=>{
+            $('#submitIssueContent').focus()
+        },200)
         event.preventDefault()
         instance.requestType.set('suggestion')
     },
@@ -101,6 +107,9 @@ Template.submitIssue.onRendered(function () {
         endingTop: '4%',
         ready: (modal, trigger) =>{ // Callback for Modal open. Modal and trigger parameters available.
             $('ul.tabs').tabs();
+            Meteor.setTimeout(()=>{
+                $('#submitIssueContent').focus()
+            },200)
             Meteor.call("getCaptcha", (err, res) => {
                 if (err) {
                     console.log(err)

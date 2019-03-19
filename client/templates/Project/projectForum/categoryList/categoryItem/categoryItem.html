@@ -1,0 +1,83 @@
+<template name="categoryItem">
+    <li class="categoryItem">
+        <div class="collapsible-header active flex shadow">
+            {{#if isEditing}}
+                <form id="editCategoryForm" action="" editCategoryForm class="flex contrasted-bg  ">
+                    <div class="input-field flex-auto small-padding small-margin" openSettings>
+                        <input id="editCategoryName" type="text" value="{{category.symEnc_name}}" required
+                               class="validate no-margin">
+                        <label for="editCategoryName">{{__ ".categoryName"}}</label>
+                    </div>
+                    <div class="" openSettings>
+                        <button href="" class="btn btn-floating waves-effect waves-light"><i
+                                class="material-icons prefix">done</i></button>
+                    </div>
+                </form>
+            {{else}}
+                <div class="flex-auto elipsis categoryTitle">
+                    <i class="material-icons">folder</i><span>{{category.symEnc_name}}</span>
+                </div>
+                {{#if showDelete}}
+
+                    <div class="row action no-margin">
+                        <div class="col s12 center-align no-padding">
+                            <p class="left-align infoQuotes" style="margin-bottom: 15px; text-transform: none;">
+                                {{__ ".deleteInfo"}}
+                            </p>
+                            <button class="btn full-width  btn-danger center-align waves-effect waves-light shadow"
+                                    delete><i
+                                    class="material-icons left">delete_forever</i>{{__ '.delete'}}
+                            </button>
+                        </div>
+                    </div>
+                {{else}}
+                    {{#if isAdmin}}
+                        <div class="relative" style="width: 40px">
+                            <div class="fixed-action-btn horizontal absolute categorySettings" openSettings>
+                                <a class="btn-floating  ">
+                                    <i class="material-icons">settings</i>
+                                </a>
+                                <ul>
+                                    <li><a class="btn-floating tooltipped waves-light waves-effect"
+                                           data-position="bottom"
+                                           data-delay="50" data-tooltip="{{__ ".delete"}}" showDelete><i
+                                            class="material-icons">delete_forever</i></a>
+                                    </li>
+                                    {{#if canMoveDown}}
+                                        <li><a class="btn-floating tooltipped waves-light waves-effect"
+                                               data-position="bottom"
+                                               data-delay="50" data-tooltip="{{__ ".moveDown"}}" movedown><i
+                                                class="material-icons">keyboard_arrow_down</i></a>
+                                        </li>
+                                    {{/if}}
+                                    {{#if canMoveUp}}
+                                        <li><a class="btn-floating tooltipped waves-light waves-effect"
+                                               data-position="bottom"
+                                               data-delay="50" data-tooltip="{{__ ".moveUp"}}" moveUp><i
+                                                class="material-icons">keyboard_arrow_up</i></a>
+                                        </li>
+                                    {{/if}}
+                                    <li><a class="btn-floating tooltipped waves-light waves-effect"
+                                           data-position="bottom"
+                                           data-delay="50" data-tooltip="{{__ ".edit"}}" editName><i
+                                            class="material-icons">mode_edit</i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+            <div class="relative notifyCategory">
+                <a class="btn-floating tooltipped waves-light waves-effect"
+                data-position="bottom"
+                data-delay="50" data-tooltip="{{#if isMemberNotified}}
+                    {{__ ".disableNotifications"}}{{else}}{{__ ".enlableNotifications"}}{{/if}}" toggleNotifications>
+                    <i class="material-icons">{{#if isMemberNotified}}
+                        notifications{{else}}notifications_off{{/if}}</i>
+                </a>
+            </div>
+
+        </div>
+        <div class="collapsible-body shadow"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+</template>

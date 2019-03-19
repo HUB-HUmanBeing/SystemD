@@ -1,3 +1,19 @@
 <template name="projectForum">
+    <div id="projectForum" class="full-height row no-margin bird-background" style="{{#if isDesktop}}padding-top: 0px;{{else}}padding-top: 100px;{{/if}}">
+        <div class="blurTop"></div>
+        <div class="col s12 l10 offset-l1 xl8 offset-xl2 flex full-height main-color no-padding">
+            {{#if showCategories}}
 
+                <div id="categoryListContainer" class="beautify-scroll-container" style="{{#if isDesktop}}height:  100vh ;{{else}}height: calc( 100vh - 100px);{{/if}}">
+                    {{>categoryList currentProject=currentProject categories=categories}}
+                </div>
+            {{/if}}
+            {{#if showTopic}}
+                <div id="topicContainer" class="flex-auto">
+                    {{>topic}}
+                </div>
+            {{/if}}
+        </div>
+        <div class="blurBottom"></div>
+    </div>
 </template>

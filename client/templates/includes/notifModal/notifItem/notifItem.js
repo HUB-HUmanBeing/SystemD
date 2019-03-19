@@ -44,6 +44,15 @@ Template.notifItem.events({
     "click [redirect]": function (event, instance) {
         $('#notifModal').modal('close')
         //on execute la redirection
+        let notif = instance.data.notif
+        //on appele la methote de suppression de la notification
+        notif.callMethod('deleteNotif', projectController.getAuthInfo(notif.projectId), (err, res) => {
+            //s'il y a une erreur, on toast l'erreur
+            if (err) {
+                console.log(err)
+                //Materialize.toast("une erreur s'est produite", 4000, 'red');
+            }
+        })
         return true
     },
     //add your events here

@@ -53,6 +53,10 @@
       "githubLink": "Pour voir l'évolution de votre message, rendez vous sur GitHub",
       "return": "Retour"
     },
+    "notifModal": {
+      "title": "Notifications",
+      "deleteAll": "Tout supprimer"
+    },
     "notifItem": {
       "acceptedInvitation": "Une invitation a été accepté et un nouveau membre a rejoint le projet.",
       "memberQuit": "Un membre a quitté le projet.",
@@ -377,7 +381,22 @@
       "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
       "passwordDeleteAccount": "Entrez votre mot de passe afin de confirmer la suppression du compte."
     },
-  "userOptions":{
-    "language": "Langue"
-  }
+    "userOptions":{
+      "language": "Langue"
+    },
+  "template": "forum",
+    "categoryList": {
+      "categoryName": "Nom du dossier",
+      "new": "Nouveau dossier"
+    },
+    "categoryItem": {
+      "categoryName": "Nom du dossier",
+      "delete": "Supprimer le dossier",
+      "deleteInfo": "Toutes les conversations à l'interieur du dossier seront supprimées",
+      "moveDown": "Descendre dans la liste",
+      "moveUp": "remonter dans la liste",
+      "edit": "Editer le nom",
+      "disableNotifications": "Les notifications sont actives sur ce dossier, cliquez pour les désactiver.",
+      "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver."
+    }
 }
