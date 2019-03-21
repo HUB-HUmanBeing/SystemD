@@ -19,21 +19,21 @@
 
         {{#if showParams}}
             <div class="fixed-action-btn horizontal secondary-content" style="max-height: 50px">
-                <a class="btn-floating btn main-bg waves-effect waves-light">
-                    <i class="large material-icons">settings</i>
+                <a class="btn-floating btn main-bg main-color waves-effect waves-light">
+                    <i class="large material-icons main-color">settings</i>
                 </a>
                 <ul>
                     {{#if compare currentUserIsAdmin '&!' memberIsAdmin}}
                         <li>
                             <a class="btn-floating main-bg tooltipped waves-effect waves-light" data-position="bottom"
                                data-delay="50" data-tooltip="{{__ ".kickUser"}}" openKickUser>
-                                <i class="material-icons">clear</i>
+                                <i class="material-icons main-color">clear</i>
                             </a>
                         </li>
                         <li>
                             <a class="btn-floating main-bg tooltipped waves-effect waves-light" data-position="bottom"
                                data-delay="50" data-tooltip="{{__ ".promoteUser"}}" openPromoteUser>
-                                <i class="material-icons">verified_user</i>
+                                <i class="material-icons main-color">verified_user</i>
                             </a>
                         </li>
                     {{/if}}
@@ -41,7 +41,7 @@
                         <li>
                             <a class="btn-floating main-bg tooltipped waves-effect waves-light" data-position="bottom"
                                data-delay="50" data-tooltip="{{__ ".quitProject"}}" openQuitProject>
-                                <i class="material-icons">exit_to_app</i>
+                                <i class="material-icons main-color">exit_to_app</i>
                             </a>
                         </li>
                     {{/if}}

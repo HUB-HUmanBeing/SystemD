@@ -394,7 +394,15 @@
       "moveUp": "Move up",
       "edit": "Edit name",
       "disableNotifications": "Notifications are actived on this folder, click to desactivate.",
-      "enlableNotifications": "Notifications are desactived on this folder, click to activate."
-
-    }
+      "enlableNotifications": "Notifications are desactived on this folder, click to activate.",
+      "abort": "Cancel",
+      "showMore": "Show more Topics",
+      "newTopic": "Create a new Topic",
+      "noTopics" : "This folder is empty"
+    },
+  "topicItem": {
+    "unseenPublications":"New publications",
+    "dragInfo": "You can move this topic in an other category",
+    "mainTopic": "MAIN TOPIC"
+  }
 }

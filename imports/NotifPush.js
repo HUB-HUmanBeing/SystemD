@@ -2,8 +2,19 @@ import fs from 'fs'
 import cryptoServer from "./cryptoServer";
 import ProjectNotification from "./classes/ProjectNotification";
 
+/****************************
+ * objet permettant de gerer les notification internes et push simultanément
+ * @type {{translateAndFormatMessage(*, *, *=): *, getSubscriptions(*=): *, i18nNotifs: {}, CheckThenNotify(*, *, *=): void, initializeWebpush(): *, notifyGlobally(*=, *=, *=, *=, *=): void, sendNotif(*=, *=): void}}
+ */
 const NotifPush = {
+    /*******************************************
+     * on stockera ici les listes de traductions récupérés afins de pas avoir a les récuperer plusieurs fois
+     */
     i18nNotifs: {},
+    /*****************************
+     * retourne une instance de webPush prete à l'emploi
+     * @returns {{supportedContentEncodings, WebPushError, encrypt, getVapidHeaders, setGCMAPIKey, setVapidDetails, sendNotification, generateRequestDetails, generateVAPIDKeys}|*}
+     */
     initializeWebpush() {
         const webPush = require("web-push")
         webPush.setVapidDetails(
@@ -14,8 +25,6 @@ const NotifPush = {
         // if(Meteor.settings.GcmApiKey && Meteor.isProduction){
             webPush.setGCMAPIKey(Meteor.settings.GcmApiKey);
         //}
-
-
         return webPush
     },
     sendNotif(userIds, message) {
@@ -32,6 +41,11 @@ const NotifPush = {
                 .catch(err => console.error(err))
         })
     },
+    /******************************
+     * recupere l'objet subscription pour un utilisateur donné
+     * @param userIds
+     * @returns {Array}
+     */
     getSubscriptions(userIds) {
         let pushSubscriptions = []
         let usersToNotify = Meteor.users.find({_id: {"$in": userIds}}, {
@@ -48,6 +62,13 @@ const NotifPush = {
         })
         return pushSubscriptions
     },
+    /***********************
+     * traduit un message dans la locale de l'utilisateur avant de le formatter pour qu'il soit envoyé en notif push
+     * @param language
+     * @param message
+     * @param title
+     * @returns {Buffer}
+     */
     translateAndFormatMessage(language, message, title) {
         if (!(language in this.i18nNotifs)) {
             this.i18nNotifs[language] = JSON.parse(fs.readFileSync(Meteor.absolutePath + '/i18n/' + language.split('-')[0] + '.i18n.json')).notifItem;
@@ -66,6 +87,13 @@ const NotifPush = {
             action: translatedAction
         }))
     },
+    /***********************************
+     * verifie que le tableau de memmbres a notifier est valide avant d'envoyer les notifs
+     * @param membersToNotifyIds
+     * @param notifObjects
+     * @param message
+     * @constructor
+     */
     CheckThenNotify(membersToNotifyIds, notifObjects, message){
         let userIds = []
         notifObjects.forEach(notifObject=>{
@@ -76,12 +104,18 @@ const NotifPush = {
                 }
             }
         })
-
         if(userIds.length){
             this.sendNotif([...new Set(userIds)], message)
         }
-
     },
+    /**********************************
+     * notifie a la fois sur le site et via les notifs push
+     * @param membersToNotifyIds
+     * @param notifObjects
+     * @param notifType
+     * @param projectId
+     * @param section
+     */
     notifyGlobally(membersToNotifyIds, notifObjects, notifType,projectId,section){
         let notif = new ProjectNotification({
             projectId: projectId,

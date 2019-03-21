@@ -63,6 +63,12 @@ const ForumCategory = Class.create({
             default: function () {
                 return [];
             }
+        },
+        topicCount:{
+            type: Number,
+            default: function () {
+                return 0
+            }
         }
     }
 })

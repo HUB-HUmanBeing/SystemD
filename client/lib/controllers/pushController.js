@@ -3,9 +3,12 @@ import User from "../../../imports/classes/User";
 import * as Materialize from "meteor/materialize:materialize";
 
 const pushController = {
+    /*********************************
+     * initialise l'api de notification pour un utilisateur donné
+     * @param user
+     */
     initialize(user) {
         const publicVapidKey = Meteor.settings.public.publicVapidKey
-
 // Check for service worker
         if ("serviceWorker" in navigator) {
             this.getRegister((register) => {
@@ -39,9 +42,9 @@ const pushController = {
         let timeout = Meteor.setTimeout(() => {
             Session.set("showAcceptNotif", true)
         }, 200)
-        // Meteor.setTimeout(()=>{
-        //     Session.set("showAcceptNotif", false)
-        // }, 15000)
+        Meteor.setTimeout(()=>{
+            Session.set("showAcceptNotif", false)
+        }, 15000)
         register.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: this.urlBase64ToUint8Array(publicVapidKey)

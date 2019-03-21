@@ -1,0 +1,30 @@
+<template name="topicItem">
+    <li class="collection-item topicItem {{#if isCurrentTopic }}currentTopic{{/if}} {{#if compare  isAdmin '&!' topic.isMainTopic}}tooltipped{{/if}} {{#if isDragged}}dragged{{/if}}"
+        draggable={{isDraggable}}
+        data-position="bottom"
+        data-delay="400" data-tooltip="{{__ ".dragInfo"}}"
+        id="topicItem-{{topic._id}}"
+    >
+        <a href="/project/{{topic.projectId}}/forum/?{{#if topic.isMainTopic}}mainTopic=true&{{else}}categoryId={{topic.categoryId}}&{{/if}}topicId={{topic._id}}" class="">
+        <div class="flex">
+            <div class="flex-auto elipsis ">
+                <i class="material-icons left">{{icon}}</i><span>
+                {{#if topic.isMainTopic}}
+                    {{__ ".mainTopic"}}
+                {{else}}
+                {{topic.symEnc_name}}
+                {{/if}}</span>
+            </div>
+            {{#unless seen}}
+                <div class="unseenItemContainer tooltipped "
+                     data-position="bottom"
+                     data-delay="50" data-tooltip="{{__ ".unseenPublications"}}">
+                    <div class="unseenItem "></div>
+                </div>
+            {{/unless}}
+        </div>
+        </a>
+
+
+    </li>
+</template>

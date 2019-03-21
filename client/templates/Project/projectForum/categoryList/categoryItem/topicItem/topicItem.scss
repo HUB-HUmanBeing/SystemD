@@ -1,0 +1,42 @@
+@import "{}/client/scss/variables.scss";
+.topicItem{
+background-color: $contrasted-minus-bg !important;
+  border-bottom: 1px solid $lighter-bg !important;
+  transition: 0.3s;
+  border-left: 0px solid $blue-highlight-color;
+  padding: 8px 20px !important;
+  &:hover{
+    border-left: 6px solid $blue-highlight-color;
+    background-color: $light-bg !important;
+  }
+  i{
+    color: $link-color;
+    font-size: 18px;
+  }
+  .unseenItemContainer{
+    margin: -5px;
+    padding: 5px;
+  }
+}
+.currentTopic{
+  background:linear-gradient(to right, $blue-highlight-color 0%, $light-bg 30%, $light-bg 100%);
+  padding-left: 32px !important;
+  color: $plus-color !important;
+  *{
+    color: $plus-color !important;
+  }
+}
+.dragged{
+  background-color: $lighter-bg;
+  opacity: 0.3
+}
+.unseenItem{
+  width:5px;
+  height: 5px;
+  border-radius: 50%;
+  margin: 10px 1px;
+  background-color: $danger-text;
+  -webkit-box-shadow: 0px 0px 11px 3px $danger-text;
+  -moz-box-shadow: 0px 0px 11px 3px $danger-text;
+  box-shadow: 0px 0px 11px 3px $danger-text;
+}

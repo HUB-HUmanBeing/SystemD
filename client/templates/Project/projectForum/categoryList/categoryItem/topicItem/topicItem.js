@@ -1,0 +1,67 @@
+import projectController from "../../../../../../lib/controllers/projectController";
+
+Template.topicItem.helpers({
+    //add you helpers here
+    icon : function () {
+        if(Template.currentData().topic.isMainTopic){
+            return "home"
+        }
+        switch (Template.currentData().topic.type) {
+            case "chat":
+                return "chat"
+                break
+            default:
+                return "chat"
+        }
+    },
+    seen: function () {
+        let topic =Template.currentData().topic
+        let memberId = projectController.getCurrentUserProject(topic.projectId).asymEnc_memberId
+        return topic.seenBy.indexOf(memberId)>=0
+    },
+    isCurrentTopic: function () {
+        FlowRouter.watchPathChange()
+        return Template.currentData().topic._id=== FlowRouter.current().queryParams.topicId
+    },
+    isDraggable: function () {
+        return !Template.currentData().topic.isMainTopic && projectController.isAdmin(FlowRouter.current().params.projectId)
+    },
+    isDragged: function () {
+        return Template.instance().isDrag.get()
+    }
+});
+
+Template.topicItem.events({
+    //add your events here
+});
+
+Template.topicItem.onCreated(function () {
+    //add your statement here
+    this.isDrag = new ReactiveVar(false)
+});
+
+Template.topicItem.onRendered(function () {
+    //add your statement here
+    resetTooltips()
+    if(!this.data.topic.isMainTopic && projectController.isAdmin(FlowRouter.current().params.projectId)){
+
+        let topic = document.getElementById("topicItem-"+this.data.topic._id)
+        topic.ondragstart= (event)=>{
+            this.isDrag.set(true)
+            $('.tooltipped').tooltip('remove')
+            Session.set("draggedTopicItem", this.data.topic)
+        }
+        topic.ondragend= (event)=>{
+            event.preventDefault()
+            Session.set("draggedTopicItem", null)
+            this.isDrag.set(false)
+            resetTooltips()
+        }
+    }
+
+});
+
+Template.topicItem.onDestroyed(function () {
+    //add your statement here
+});
+

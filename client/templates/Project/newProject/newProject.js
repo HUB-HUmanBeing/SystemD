@@ -2,6 +2,8 @@ import Project from "../../../../imports/classes/Project";
 import hubCrypto from "/client/lib/hubCrypto";
 import cryptoTools from "/client/lib/cryptoTools";
 import User from "/imports/classes/User";
+import Topic from "../../../../imports/classes/Topic";
+import projectController from "../../../lib/controllers/projectController";
 
 const validateNewProjectForm = {
     /**
@@ -200,8 +202,6 @@ Template.newProject.events({
                                     }
                                 })
                             })
-
-
                         }
                     })
                 })
@@ -218,9 +218,9 @@ Template.newProject.onCreated(function () {
 
 Template.newProject.onRendered(function () {
     //add your statement here
-    Meteor.setTimeout(()=>{
+    Meteor.setTimeout(() => {
         $('#projectName').focus()
-    },200)
+    }, 200)
 });
 
 Template.newProject.onDestroyed(function () {

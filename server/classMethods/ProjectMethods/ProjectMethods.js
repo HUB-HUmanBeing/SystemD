@@ -1,7 +1,7 @@
 import {check} from "meteor/check";
 import Project from "../../../imports/classes/Project";
 import cryptoServer from "../../../imports/cryptoServer";
-
+import Topic from "../../../imports/classes/Topic";
 
 /*********************************
  * METHODES DE LA COLLECTION USERS
@@ -54,8 +54,19 @@ Meteor.methods({
         newProject.private.hashedSymKey = brunchOfKeys.hashedSymKey
         newProject.private.hashedAdminPassword = brunchOfKeys.hashedAdminPassword
         newProject.private.members.push(firstMember)
+
+
         return {
-            projectId : newProject.save(),
+            projectId : newProject.save((err, res)=>{
+               let projectId= res
+                let mainTopic =new Topic({
+                    projectId: projectId,
+                    symEnc_name: "mainTopic",
+                    membersToNotify: [firstMember.memberId],
+                    isMainTopic:true
+                })
+                mainTopic.save()
+            }),
             project: newProject
         }
     }

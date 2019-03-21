@@ -1,17 +1,25 @@
 @import "{}/client/scss/variables.scss";
 
 .categoryItem {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   //background-color: $contrasted-bg;
+  .currentCategory {
+    background: linear-gradient(to right, $blue-highlight-color 0%, $light-bg 20%, $light-bg 100%);
+
+    .categoryTitle * {
+      color: $plus-color !important;
+    }
+  }
+
   .collapsible-header {
     background-color: $contrasted-bg;
     border-bottom: none;
     transition: 0.3s;
     border-left: 3px solid $blue-highlight-color;
-    padding: 10px;
+    padding: 7px;
 
     &:hover {
-      padding-left: 5px;
+      padding-left: 2px;
       border-left: 8px solid $blue-highlight-color;
 
       .categoryTitle * {
@@ -100,8 +108,9 @@
         }
       }
     }
-    .notifyCategory{
-      .btn-floating{
+
+    .notifyCategory {
+      .btn-floating {
         padding: 0 3.5px !important;
         width: 35px;
         height: 35px;
@@ -112,18 +121,67 @@
         i {
           line-height: 34px;
           font-size: 20px;
-          &:hover{
+
+          &:hover {
             color: $plus-color !important;
           }
         }
       }
-
-  }
+    }
   }
 
   .collapsible-body {
     border: none;
     background-color: $contrasted-minus-bg;
     margin-left: 15px;
+
+    .btn-floating {
+      transition: 0.3s;
+      background-color: $blue-highlight-color !important;
+
+      i {
+        color: $main-color
+      }
+
+      &:hover {
+        color: $plus-color !important;
+      }
+    }
+
+    .showMoreTopics {
+
+      position: relative;
+
+      i {
+        margin: -15px 0;
+        position: relative;
+        top: 7px;
+      }
+
+      span {
+        font-size: 1.05em;
+        line-height: 20px;
+      }
+    }
+    .topicDropBasket{
+      transition: 0.3s;
+      top:0;
+      bottom:0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 200;
+      background-color: $lighter-bg;
+      display: flex; /* comportement visuel de cellule */
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+      border: 3px dotted $plus-color;
+      //border-radius: 8px;
+      i{
+        font-size: 40px;
+      }
+    }
   }
 }

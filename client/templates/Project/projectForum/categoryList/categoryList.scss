@@ -1,7 +1,50 @@
 @import "{}/client/scss/variables.scss";
 
 #categoryList{
+#mainTopicItem{
+  ul{
+    border: none;
+    border-left: 3px solid $blue-highlight-color;
+    transition: 0.3s;
 
+    border-radius: 0px !important;
+    li{
+      transition: 0.3s;
+      background-color: $contrasted-bg !important;
+      border: none !important;
+      height: 50px;
+      position: relative;
+      padding-left: 10px !important;
+      i{
+        position: relative;
+        top:4px;
+        font-size: 25px;
+      }
+      span{
+        display: inline-block;
+        position: relative;
+        top: 8px
+      }
+      .unseenItemContainer{
+        margin-top: 0px !important;
+      }
+    }
+
+      &:hover {
+        li{
+          padding-left: 5px !important;
+        }
+
+        border-left: 8px solid $blue-highlight-color;
+
+         * {
+          color: $plus-color !important;
+        }
+      }
+
+
+  }
+}
   #newCategoryForm{
     padding: 20px 10px 0 10px;
     border-left: 3px solid $blue-highlight-color;

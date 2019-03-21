@@ -1,5 +1,6 @@
 import cryptoTools from "../../../../../lib/cryptoTools";
 import projectController from "../../../../../lib/controllers/projectController";
+import Topic from "../../../../../../imports/classes/Topic";
 
 Template.categoryItem.helpers({
     //add you helpers here
@@ -9,7 +10,11 @@ Template.categoryItem.helpers({
     showDelete: function () {
         return Template.instance().showDelete.get()
     },
+    showNewTopic: function () {
+        return Template.instance().showNewTopic.get()
+    },
     canMoveUp: function () {
+        Template.instance().categoryId.set(Template.currentData().category.categoryId)
         return Template.currentData().index > 0
     },
     canMoveDown: function () {
@@ -19,6 +24,20 @@ Template.categoryItem.helpers({
         let membersToNotify = Template.currentData().category.membersToNotify
         let currentMemberId = projectController.getCurrentUserProject(Template.currentData().currentProject._id).asymEnc_memberId
         return membersToNotify.indexOf(currentMemberId) >= 0
+    },
+    topics: function () {
+        return Template.instance().topics.get()
+    },
+    hasMore: function () {
+        return Template.instance().topicsLimit.get()<Template.currentData().category.topicCount
+    },
+    isCurrentCategory: function () {
+        FlowRouter.watchPathChange()
+        return Template.currentData().category.categoryId === FlowRouter.current().queryParams.categoryId
+    },
+    isDraggingTopic: function () {
+        let draggedTopicItem=Session.get("draggedTopicItem")
+        return !!draggedTopicItem && draggedTopicItem.categoryId !==Template.currentData().category.categoryId
     }
 });
 
@@ -68,7 +87,6 @@ Template.categoryItem.events({
     'click [moveUp]': function (event, instance) {
         event.preventDefault()
         event.stopPropagation()
-        console.log("coucou")
         $('.tooltipped').tooltip('remove')
         let currentProject = instance.data.currentProject
         currentProject.callMethod("moveForumCategory", projectController.getAuthInfo(currentProject._id), instance.data.index, "up", (err, res) => {
@@ -121,6 +139,15 @@ Template.categoryItem.events({
         })
 
     },
+    'click [abortDelete]': function (event, instance) {
+        event.preventDefault()
+        event.stopPropagation()
+        $('.tooltipped').tooltip('remove')
+        Meteor.setTimeout(() => {
+            resetTooltips()
+        }, 200)
+        instance.showDelete.set(false)
+    },
     'click [toggleNotifications]': function (event, instance) {
         event.preventDefault()
         event.stopPropagation()
@@ -136,6 +163,46 @@ Template.categoryItem.events({
                 }, 200)
             }
         })
+    },
+    "click [openNewTopic]": function (event, instance) {
+        event.preventDefault()
+        event.stopPropagation()
+        $('.tooltipped').tooltip('remove')
+        Meteor.setTimeout(() => {
+            $('#newTopicName').focus()
+            resetTooltips()
+        }, 200)
+        instance.showNewTopic.set(true)
+    },
+    "submit [newTopicForm]": function (event, instance) {
+        event.preventDefault()
+        event.stopPropagation()
+        $('.tooltipped').tooltip('remove')
+        let currentProjectId = instance.data.currentProject._id
+        let topicParmas = {
+            projectId: currentProjectId,
+            type: "chat",
+            categoryId: instance.data.category.categoryId,
+            symEnc_name: event.target.newTopicName.value,
+        }
+        cryptoTools.encryptObject(topicParmas, {symKey: Session.get("currentProjectSimKey")}, (encryptedTopicParams) => {
+            let topic = new Topic()
+            topic.callMethod('newTopic', projectController.getAuthInfo(currentProjectId), encryptedTopicParams, (err, res) => {
+                if (err) {
+                    console.warn(err)
+                } else {
+                    Meteor.setTimeout(() => {
+                        resetTooltips()
+                    }, 200)
+                    instance.showNewTopic.set(false)
+                    console.warn('todo: redirect')
+                }
+            })
+        })
+    },
+    'click [showMore]': function (event, instance) {
+        event.preventDefault()
+        instance.topicsLimit.set(instance.topicsLimit.get()+5)
     }
 });
 
@@ -143,11 +210,79 @@ Template.categoryItem.onCreated(function () {
     //add your statement here
     this.isEditing = new ReactiveVar(false)
     this.showDelete = new ReactiveVar(false)
+    this.showNewTopic = new ReactiveVar(false)
+    this.topics = new ReactiveVar([])
+    this.topicsLimit = new ReactiveVar(5)
+    this.categoryId = new ReactiveVar(this.data.category.categoryId)
+
+    Tracker.autorun(() => {
+        Meteor.subscribe(
+            'topics',
+            projectController.getAuthInfo(this.data.currentProject._id),
+            this.data.currentProject._id,
+            this.categoryId.get(),
+            this.topicsLimit.get(),
+            err => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    Tracker.autorun(() => {
+                        let encryptedTopics = Topic.find({categoryId: this.categoryId.get()}, { sort: {
+                                lastActivity: -1
+                            }}).fetch()
+                        if (encryptedTopics.length) {
+                            cryptoTools.decryptArryOfObject(encryptedTopics, {symKey: Session.get('currentProjectSimKey')}, (topics) => {
+                                this.topics.set(topics)
+                            })
+                        }
+                    })
+
+                }
+            })
+    })
 });
 
 Template.categoryItem.onRendered(function () {
     //add your statement here
     resetTooltips()
+    if(projectController.isAdmin(FlowRouter.current().params.projectId)){
+
+        let categoryBody = document.getElementById("categoryBody-"+this.data.category.categoryId)
+        let counter =0
+        categoryBody.ondragenter= (event)=>{
+            event.preventDefault()
+            if(counter === 0){
+                $("#categoryBody-"+this.data.category.categoryId+ " .topicDropBasket").css("opacity",0.9).css("border"," 3px solid white")
+            }
+            counter ++
+
+        }
+        categoryBody.ondragleave= (event)=>{
+            counter --
+            if(counter ===0){
+                $("#categoryBody-"+this.data.category.categoryId+ " .topicDropBasket").css("opacity",0.5).css("border"," 3px dotted white")
+            }
+
+        }
+        categoryBody.ondragover=(event)=>{
+            event.preventDefault()
+        }
+        categoryBody.ondrop= (event)=>{
+            event.preventDefault()
+            let topic= Topic.findOne(Session.get("draggedTopicItem")._id)
+            Session.set("draggedTopicItem", null)
+            topic.callMethod(
+                "changeCategory",
+                projectController.getAuthInfo(FlowRouter.current().params.projectId),
+                this.data.category.categoryId,
+                (err, res)=>{
+                    if(err){
+                        console.log(err)
+                    }
+                }
+                )
+        }
+    }
 });
 
 Template.categoryItem.onDestroyed(function () {

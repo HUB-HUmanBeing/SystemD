@@ -1,8 +1,9 @@
 <template name="categoryItem">
     <li class="categoryItem">
-        <div class="collapsible-header active flex shadow">
+        <div class="collapsible-header active flex shadow relative {{#if isCurrentCategory}}currentCategory{{/if}}">
             {{#if isEditing}}
-                <form id="editCategoryForm" action="" editCategoryForm class="flex contrasted-bg  ">
+
+                <form id="editCategoryForm" action="" editCategoryForm class="flex  ">
                     <div class="input-field flex-auto small-padding small-margin" openSettings>
                         <input id="editCategoryName" type="text" value="{{category.symEnc_name}}" required
                                class="validate no-margin">
@@ -15,19 +16,27 @@
                 </form>
             {{else}}
                 <div class="flex-auto elipsis categoryTitle">
-                    <i class="material-icons">folder</i><span>{{category.symEnc_name}}</span>
+                    <i class="material-icons link">folder</i><span>{{category.symEnc_name}}</span>
                 </div>
                 {{#if showDelete}}
 
                     <div class="row action no-margin">
-                        <div class="col s12 center-align no-padding">
-                            <p class="left-align infoQuotes" style="margin-bottom: 15px; text-transform: none;">
+                        <div class="col s12 center-align no-padding relative">
+
+                            <a href="" class="absolute tooltipped waves-light waves-effect"
+                               data-position="bottom"
+                               data-delay="50" data-tooltip="{{__ ".abort"}}" abortDelete style="right: 0;top: 6px"><i
+                                    class="material-icons left">clear</i></a>
+
+
+                            <p class="left-align infoQuotes" style="margin: 35px 0 15px 0; text-transform: none;">
                                 {{__ ".deleteInfo"}}
                             </p>
                             <button class="btn full-width  btn-danger center-align waves-effect waves-light shadow"
                                     delete><i
                                     class="material-icons left">delete_forever</i>{{__ '.delete'}}
                             </button>
+
                         </div>
                     </div>
                 {{else}}
@@ -69,15 +78,71 @@
             {{/if}}
             <div class="relative notifyCategory">
                 <a class="btn-floating tooltipped waves-light waves-effect"
-                data-position="bottom"
-                data-delay="50" data-tooltip="{{#if isMemberNotified}}
+                   data-position="bottom"
+                   data-delay="50" data-tooltip="{{#if isMemberNotified}}
                     {{__ ".disableNotifications"}}{{else}}{{__ ".enlableNotifications"}}{{/if}}" toggleNotifications>
-                    <i class="material-icons">{{#if isMemberNotified}}
+                    <i class="material-icons {{#if isMemberNotified}}
+                        danger-color{{/if}}">{{#if isMemberNotified}}
                         notifications{{else}}notifications_off{{/if}}</i>
                 </a>
             </div>
 
         </div>
-        <div class="collapsible-body shadow"><span>Lorem ipsum dolor sit amet.</span></div>
+        <div class="collapsible-body shadow no-padding relative" id="categoryBody-{{category.categoryId}}">
+            {{#if isDraggingTopic}}
+                <div class="absolute topicDropBasket center-align">
+                    <i class="material-icons plus-color ">move_to_inbox</i>
+                </div>
+            {{/if}}
+
+            {{#if length topics}}
+                <ul class="collection">
+
+                    {{#each topic in topics}}
+                        {{>topicItem topic= topic}}
+                    {{/each}}
+                </ul>
+            {{else}}
+                {{#unless showNewTopic}}
+                    <div class="small-padding" style="margin-bottom: -40px">
+                        <p class="infoQuotes"><i>{{__ ".noTopics"}}</i></p>
+                    </div>
+                {{/unless}}
+            {{/if}}
+            {{#if showNewTopic}}
+                <form action="" newTopicForm class="flex  " style="padding: 20px 15px 0 10px">
+                    <div class="input-field flex-auto small-padding small-margin">
+                        <input id="newTopicName" type="text" required
+                               class="validate no-margin">
+                        <label for="newTopicName">{{__ ".topicName"}}</label>
+                    </div>
+                    <div class="">
+                        <button href="" class="btn btn-floating waves-effect waves-light"><i
+                                class="material-icons prefix">done</i></button>
+                    </div>
+                </form>
+
+            {{/if}}
+            {{#unless showNewTopic}}
+                <div class="relative">
+                    <a href="" class="btn btn-floating tooltipped waves-light waves-effect absolute"
+                       data-position="left"
+                       data-delay="50" data-tooltip="{{__ ".newTopic"}}" style="top:-15px; right: 25px"><i
+                            class="material-icons right" openNewTopic>playlist_add</i></a>
+                </div>
+            {{/unless}}
+            {{#unless showNewTopic}}
+                <div class="small-padding relative center-align">
+                    {{#if hasMore}}
+                        <a href="" class="link showMoreTopics" showMore><i
+                                class="material-icons">expand_more</i><span>{{__ ".showMore"}}</span></a>
+                    {{else}}
+
+                        <div style="height: 10px"></div>
+
+                    {{/if}}
+                </div>
+            {{/unless}}
+        </div>
     </li>
 </template>

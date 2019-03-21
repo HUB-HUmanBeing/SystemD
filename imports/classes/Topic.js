@@ -12,8 +12,13 @@ const Topic = Class.create({
         },
         type: {
             type: String,
+            default: "chat"
         },
-        categoryId: String,
+        categoryId: {
+            type:String,
+            optional:true,
+            index:1
+        },
         symEnc_name: {
             type:String
         },
@@ -23,12 +28,25 @@ const Topic = Class.create({
                 return [];
             }
         },
-        createdAt: {
+        lastActivity:{
             type: Date,
             default: function () {
                 return new Date()
+            },
+            index:-1
+        },
+        seenBy: {
+            type: [String],
+            default: function () {
+                return [];
             }
         },
+        isMainTopic:{
+            type: Boolean,
+            default: function () {
+                return false
+            }
+        }
     },
     helpers: {
     }

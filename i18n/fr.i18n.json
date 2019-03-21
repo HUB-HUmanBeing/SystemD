@@ -394,9 +394,18 @@
       "delete": "Supprimer le dossier",
       "deleteInfo": "Toutes les conversations à l'interieur du dossier seront supprimées",
       "moveDown": "Descendre dans la liste",
-      "moveUp": "remonter dans la liste",
+      "moveUp": "Monter dans la liste",
       "edit": "Editer le nom",
       "disableNotifications": "Les notifications sont actives sur ce dossier, cliquez pour les désactiver.",
-      "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver."
+      "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver.",
+      "abort": "Annuler",
+      "showMore": "Voir plus",
+      "newTopic": "Créer une nouvelle discussion",
+      "noTopics" : "Ce dossier est vide"
+    },
+    "topicItem": {
+      "unseenPublications":"Nouvelles publications",
+      "dragInfo": "Vous pouvez déplacer cette discussion dans une autre catégorie.",
+      "mainTopic": "DISCUSSION PRINCIPALE"
     }
 }

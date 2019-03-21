@@ -1,4 +1,3 @@
-import User from '/imports/classes/User';
 import Project from "../imports/classes/Project";
 import Projects from "../lib/collections/Projects";
 import Invitation from "../imports/classes/Invitation";
@@ -6,7 +5,7 @@ import cryptoServer from "../imports/cryptoServer";
 import Invitations from "../lib/collections/Invitations";
 import {check} from "meteor/check";
 import ProjectNotifications from "../lib/collections/ProjectNotifications";
-import NotifPush from "../imports/NotifPush";
+import Topics from "../lib/collections/Topics";
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -150,4 +149,37 @@ Meteor.publish("getProjectNotificationsForMember", function (authInfo, projectId
         ]
     })
 })
+Meteor.publish('topics', function (authInfo, projectId, categoryId, limit) {
+    check(authInfo, {memberId: String, userSignature: String})
+    check(projectId, String)
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    check(categoryId, String)
+    check(limit, Number)
 
+    return Topics.find({
+            "$and": [
+                {projectId: projectId},
+                {categoryId: categoryId}
+            ]
+        }, {
+            limit: limit,
+            sort: {
+                lastActivity: -1
+            }
+        }
+    )
+})
+Meteor.publish('mainTopic', function (authInfo, projectId) {
+    check(authInfo, {memberId: String, userSignature: String})
+    check(projectId, String)
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return Topics.find({
+        "$and": [{
+            projectId:projectId
+        }, {
+            isMainTopic: true
+        }]
+    })
+})
