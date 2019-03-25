@@ -10,33 +10,37 @@ Template.projectForum.helpers({
 
     },
     categories: function () {
+
         let instance = Template.instance()
         Meteor.setTimeout(() => {
             let categoryListContainer = document.getElementById('categoryListContainer')
             if (categoryListContainer && instance && Meteor.Device.isDesktop()) {
-                if (instance.bs) {
-                    instance.bs.destroy()
+                if (instance.categorybs) {
+                    instance.categorybs.destroy()
                 }
-                instance.bs = new BeautifyScrollbar('#categoryListContainer');
-                // Meteor.setTimeout(() => {
-                //     if (!instance.scrollDone && instance.currentProjectId.get() && $("#menuProject-" + instance.currentProjectId.get()).offset()) {
-                //         $('#menuProjectsContainer').animate({
-                //             scrollTop: $("#menuProject-" + instance.currentProjectId.get()).offset().top - 160
-                //         });
-                //         instance.scrollDone = true
-                //     }
-                //
-                // }, 200)
-
+                instance.categorybs = new BeautifyScrollbar('#categoryListContainer');
             }
         },700)
         return instance.categories.get()
     },
     showTopic: function () {
-        return true
+
+        FlowRouter.watchPathChange()
+        let instance = Template.instance()
+        Meteor.setTimeout(() => {
+            let topicContainer = document.getElementById('topicContainer')
+            if (topicContainer && instance && Meteor.Device.isDesktop()) {
+                if (instance.topicbs) {
+                    instance.topicbs.destroy()
+                }
+                instance.topicbs = new BeautifyScrollbar('#topicContainer');
+            }
+        },700)
+        return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId
     },
     showCategories: function () {
-        return true
+        FlowRouter.watchPathChange()
+        return Meteor.Device.isDesktop() ||!FlowRouter.current().queryParams.topicId
     }
 });
 
@@ -46,7 +50,8 @@ Template.projectForum.events({
 
 Template.projectForum.onCreated(function () {
     //add your statement here
-    this.bs = undefined
+    this.categorybs = undefined
+    this.topicbs= undefined
     this.projectId = FlowRouter.current().params.projectId
     this.categories = new ReactiveVar([])
     this.currentProject = new ReactiveVar()
@@ -69,8 +74,11 @@ Template.projectForum.onRendered(function () {
 
 Template.projectForum.onDestroyed(function () {
     //add your statement here
-    if (this.bs) {
-        this.bs.destroy()
+    if (this.categorybs) {
+        this.categorybs.destroy()
+    }
+    if (this.topicbs) {
+        this.topicbs.destroy()
     }
 });
 

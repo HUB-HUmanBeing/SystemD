@@ -34,6 +34,7 @@ Topic.extend({
                     }
                 }
             })
+            newTopic.createdBy = authInfo.memberId
             newTopic.seenBy.push(authInfo.memberId)
             return newTopic.save((err) => {
                 if (!err) {
@@ -46,8 +47,8 @@ Topic.extend({
             check(categoryId, String)
             check(authInfo, {memberId: String, userSignature: String})
             let currentProject = Project.findOne(this.projectId)
-            check(currentProject.isAdmin(authInfo), true)
-
+            check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && this.memberId === authInfo.createdBy), true)
+            check(this.isMainTopic, false)
             currentProject.private.forumCategories.forEach(cat => {
                 if (cat.id === this.categoryId) {
                     this.membersToNotify = [...this.membersToNotify, cat.membersToNotify]
@@ -57,6 +58,38 @@ Topic.extend({
             this.categoryId = categoryId
             this.lastActivity = new Date()
             return this.save()
-        }
+        },
+        editName(authInfo, symEnc_name) {
+            check(symEnc_name, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let topic = Topic.findOne(this._id)
+            let currentProject = Project.findOne(topic.projectId)
+            check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && topic.createdBy === authInfo.memberId), true)
+            check(topic.isMainTopic, false)
+            topic.symEnc_name = symEnc_name
+            return topic.save()
+        },
+        delete(authInfo) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let topic = Topic.findOne(this._id)
+            let currentProject = Project.findOne(topic.projectId)
+            check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && topic.createdBy === authInfo.memberId), true)
+            check(topic.isMainTopic, false)
+            return topic.remove()
+        },
+        toggleNotify(authInfo) {
+            check(authInfo, {memberId: String, userSignature: String})
+
+            let topic = Topic.findOne(this._id)
+            let currentProject = Project.findOne(topic.projectId)
+            check(currentProject.isMember(authInfo), true)
+            let indexMember = topic.membersToNotify.indexOf(authInfo.memberId)
+            if (indexMember === -1) {
+                topic.membersToNotify.push(authInfo.memberId)
+            } else {
+                topic.membersToNotify.splice(indexMember, 1)
+            }
+            topic.save()
+        },
     }
 })

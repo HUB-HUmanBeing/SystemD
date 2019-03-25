@@ -2,7 +2,7 @@
     {{#layout}}
 
         <div id="projectLayout"
-             class=" yield-content gradiant {{#if compare isDesktop '&&' currentUserId}} yield-content-desktop {{/if}} "
+             class=" yield-content {{#if compare isDesktop '&&' currentUserId}} gradiant yield-content-desktop {{/if}} "
              style="min-height: 100vh">
             {{#if decrypting}}
                 <div class="container loader-container">
@@ -14,7 +14,7 @@
                 </div>
             {{else}}
                 {{#unless isDesktop}}
-                    <nav class="projectNavbar">
+                    <nav class="projectNavbar" style="margin-bottom: 65px">
                         <div class="row no-margin topNavbar">
                             <a href="/project/{{currentProject._id}}/home" class="flex relative ">
                                 <div class="navProjectAvatar">
@@ -35,7 +35,7 @@
                         </ul>
                     </nav>
                 {{/unless}}
-                <div class="relative" style="{{#unless isDesktop}}padding-top: 70px  {{/unless}}"></div>
+
                 {{> Template.dynamic template=main }}
             {{/if}}
         </div>

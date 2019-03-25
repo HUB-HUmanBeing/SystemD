@@ -47,9 +47,9 @@ Template.categoryList.events({
             currentProject.callMethod("newForumCategory", projectController.getAuthInfo(currentProject._id), symEnc_categoryName, id, membersToNotify, (err, res) => {
                 if (err) {
                     console.log(err)
+                    Materialize.toast(__('general.error'), 6000, 'toastError')
                 } else {
                     instance.showNewCategory.set(false)
-                    console.log("gagné", res)
                 }
             })
         })

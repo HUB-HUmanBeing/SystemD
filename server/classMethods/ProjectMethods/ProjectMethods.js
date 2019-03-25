@@ -63,7 +63,8 @@ Meteor.methods({
                     projectId: projectId,
                     symEnc_name: "mainTopic",
                     membersToNotify: [firstMember.memberId],
-                    isMainTopic:true
+                    isMainTopic:true,
+                    createdBy:firstMember.memberId
                 })
                 mainTopic.save()
             }),

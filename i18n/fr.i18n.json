@@ -1,5 +1,8 @@
 {
   "_locale": "fr-FR",
+  "general": {
+    "error": "Une erreur s'est produite"
+  },
   "_templates": "application",
     "forbidden": {
       "noAccess": "Vous n'avez pas accès à cette page",
@@ -401,11 +404,26 @@
       "abort": "Annuler",
       "showMore": "Voir plus",
       "newTopic": "Créer une nouvelle discussion",
-      "noTopics" : "Ce dossier est vide"
+      "noTopics" : "Ce dossier est vide",
+      "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
+      "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier"
     },
     "topicItem": {
       "unseenPublications":"Nouvelles publications",
       "dragInfo": "Vous pouvez déplacer cette discussion dans une autre catégorie.",
       "mainTopic": "DISCUSSION PRINCIPALE"
+    },
+    "topicHeader": {
+      "mainTopic": "Discussion principale",
+      "topicName": "Nom de la discussion",
+      "delete": "Supprimer la discussion",
+      "edit": "Changer le nom de la discussion",
+      "disableNotifications": "Les notifications sont actives pour cette discussion, cliquez pour les désactiver.",
+      "enlableNotifications": "Les notifications sont désactivées pour cette discussion, cliquez pour les activer.",
+      "abort": "annuler",
+      "deleteInfo": "Cette discussion et tout son contenu seront supprimés.",
+      "deleteSuccess": "La discussion à été supprimée",
+      "notifEnabled": "Vous recevrez désormais des notifications pour chaque nouvelles publications.",
+      "notifDisabled": "Les notifications ont été désactivées pour cette discussion."
     }
 }

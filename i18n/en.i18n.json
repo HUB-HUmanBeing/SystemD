@@ -1,5 +1,8 @@
 {
   "_locale": "en-US",
+  "general": {
+    "error": "An error has occurred"
+  },
   "_templates": "application",
     "forbidden": {
       "noAccess": "You don't have acces to this page",
@@ -398,11 +401,26 @@
       "abort": "Cancel",
       "showMore": "Show more Topics",
       "newTopic": "Create a new Topic",
-      "noTopics" : "This folder is empty"
+      "noTopics" : "This folder is empty",
+      "notifEnabled": "You will now receive notifications for all topics in this folder.",
+      "notifDisabled": "Notifications are now disabled for all topics in this folder."
     },
-  "topicItem": {
-    "unseenPublications":"New publications",
-    "dragInfo": "You can move this topic in an other category",
-    "mainTopic": "MAIN TOPIC"
-  }
+    "topicItem": {
+      "unseenPublications":"New publications",
+      "dragInfo": "You can move this topic in an other category",
+      "mainTopic": "MAIN TOPIC"
+    },
+    "topicHeader": {
+      "mainTopic": "Main topic",
+      "topicName": "Topic name",
+      "delete": "Delete Topic",
+      "edit": "Edit topic name",
+      "disableNotifications": "Notifications are actived on this topic, click to desactivate.",
+      "enlableNotifications": "Notifications are desactived on this topic, click to activate.",
+      "abort": "Cancel",
+      "deleteInfo": "This topic and all the publications inside will be deleted.",
+      "deleteSuccess": "Topic has been deleted",
+      "notifEnabled": "You will now receive notifications for all publications in this topic",
+      "notifDisabled": "Notifications are now disabled for this topic."
+    }
 }

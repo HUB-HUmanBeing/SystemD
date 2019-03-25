@@ -183,3 +183,26 @@ Meteor.publish('mainTopic', function (authInfo, projectId) {
         }]
     })
 })
+Meteor.publish('singleTopic', function (authInfo, topicId, projectId) {
+
+    check(topicId, String)
+    check(projectId, String)
+    let topicCursor
+    if(topicId === "mainTopic"){
+        topicCursor = Topics.find({
+            "$and": [{
+                projectId:projectId
+            }, {
+                isMainTopic: true
+            }]
+        })
+    }else{
+        topicCursor = Topics.find({_id:topicId})
+    }
+
+    check(authInfo, {memberId: String, userSignature: String})
+    projectId= topicCursor.fetch()[0].projectId
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return topicCursor
+})

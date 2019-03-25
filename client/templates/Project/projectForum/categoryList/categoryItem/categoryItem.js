@@ -29,15 +29,15 @@ Template.categoryItem.helpers({
         return Template.instance().topics.get()
     },
     hasMore: function () {
-        return Template.instance().topicsLimit.get()<Template.currentData().category.topicCount
+        return Template.instance().topicsLimit.get() < Template.currentData().category.topicCount
     },
     isCurrentCategory: function () {
         FlowRouter.watchPathChange()
         return Template.currentData().category.categoryId === FlowRouter.current().queryParams.categoryId
     },
     isDraggingTopic: function () {
-        let draggedTopicItem=Session.get("draggedTopicItem")
-        return !!draggedTopicItem && draggedTopicItem.categoryId !==Template.currentData().category.categoryId
+        let draggedTopicItem = Session.get("draggedTopicItem")
+        return !!draggedTopicItem && draggedTopicItem.categoryId !== Template.currentData().category.categoryId
     }
 });
 
@@ -74,6 +74,7 @@ Template.categoryItem.events({
         cryptoTools.sim_encrypt_data(categoryName, Session.get("currentProjectSimKey"), (symEnc_categoryName) => {
             currentProject.callMethod("editForumCategoryName", projectController.getAuthInfo(currentProject._id), instance.data.index, symEnc_categoryName, (err, res) => {
                 if (err) {
+                    Materialize.toast(__('general.error'), 6000, 'toastError')
                     console.log(err)
                 } else {
                     instance.isEditing.set(false)
@@ -91,6 +92,7 @@ Template.categoryItem.events({
         let currentProject = instance.data.currentProject
         currentProject.callMethod("moveForumCategory", projectController.getAuthInfo(currentProject._id), instance.data.index, "up", (err, res) => {
             if (err) {
+                Materialize.toast(__('general.error'), 6000, 'toastError')
                 console.log(err)
             } else {
                 instance.isEditing.set(false)
@@ -109,6 +111,7 @@ Template.categoryItem.events({
         let currentProject = instance.data.currentProject
         currentProject.callMethod("moveForumCategory", projectController.getAuthInfo(currentProject._id), instance.data.index, "down", (err, res) => {
             if (err) {
+                Materialize.toast(__('general.error'), 6000, 'toastError')
                 console.log(err)
             } else {
                 instance.isEditing.set(false)
@@ -126,6 +129,7 @@ Template.categoryItem.events({
         let currentProject = instance.data.currentProject
         currentProject.callMethod("deleteForumCategory", projectController.getAuthInfo(currentProject._id), instance.data.index, (err, res) => {
             if (err) {
+                Materialize.toast(__('general.error'), 6000, 'toastError')
                 console.log(err)
             } else {
                 instance.showDelete.set(false)
@@ -153,11 +157,16 @@ Template.categoryItem.events({
         event.stopPropagation()
         $('.tooltipped').tooltip('remove')
         let currentProject = instance.data.currentProject
-        console.log(instance.data)
         currentProject.callMethod("toggleNotifyCategory", projectController.getAuthInfo(currentProject._id), instance.data.index, (err, res) => {
             if (err) {
+                Materialize.toast(__('general.error'), 6000, 'toastError')
                 console.log(err)
             } else {
+                let membersToNotify = instance.data.category.membersToNotify
+                let currentMemberId = projectController.getCurrentUserProject(instance.data.currentProject._id).asymEnc_memberId
+                let wasNotified =  membersToNotify.indexOf(currentMemberId) >= 0
+                Materialize.toast(__('categoryItem.'+ (wasNotified?"notifDisabled":"notifEnabled")), 6000, 'toastOk')
+
                 Meteor.setTimeout(() => {
                     resetTooltips()
                 }, 200)
@@ -189,20 +198,21 @@ Template.categoryItem.events({
             let topic = new Topic()
             topic.callMethod('newTopic', projectController.getAuthInfo(currentProjectId), encryptedTopicParams, (err, res) => {
                 if (err) {
+                    Materialize.toast(__('general.error'), 6000, 'toastError')
                     console.warn(err)
                 } else {
                     Meteor.setTimeout(() => {
                         resetTooltips()
                     }, 200)
                     instance.showNewTopic.set(false)
-                    console.warn('todo: redirect')
+                    FlowRouter.go('/project/' + currentProjectId + '/forum/?categoryId=' + instance.data.category.categoryId + '&topicId=' + res)
                 }
             })
         })
     },
     'click [showMore]': function (event, instance) {
         event.preventDefault()
-        instance.topicsLimit.set(instance.topicsLimit.get()+5)
+        instance.topicsLimit.set(instance.topicsLimit.get() + 5)
     }
 });
 
@@ -227,9 +237,11 @@ Template.categoryItem.onCreated(function () {
                     console.log(err)
                 } else {
                     Tracker.autorun(() => {
-                        let encryptedTopics = Topic.find({categoryId: this.categoryId.get()}, { sort: {
+                        let encryptedTopics = Topic.find({categoryId: this.categoryId.get()}, {
+                            sort: {
                                 lastActivity: -1
-                            }}).fetch()
+                            }
+                        }).fetch()
                         if (encryptedTopics.length) {
                             cryptoTools.decryptArryOfObject(encryptedTopics, {symKey: Session.get('currentProjectSimKey')}, (topics) => {
                                 this.topics.set(topics)
@@ -245,42 +257,42 @@ Template.categoryItem.onCreated(function () {
 Template.categoryItem.onRendered(function () {
     //add your statement here
     resetTooltips()
-    if(projectController.isAdmin(FlowRouter.current().params.projectId)){
+    if (projectController.isAdmin(FlowRouter.current().params.projectId)) {
 
-        let categoryBody = document.getElementById("categoryBody-"+this.data.category.categoryId)
-        let counter =0
-        categoryBody.ondragenter= (event)=>{
+        let categoryBody = document.getElementById("categoryBody-" + this.data.category.categoryId)
+        let counter = 0
+        categoryBody.ondragenter = (event) => {
             event.preventDefault()
-            if(counter === 0){
-                $("#categoryBody-"+this.data.category.categoryId+ " .topicDropBasket").css("opacity",0.9).css("border"," 3px solid white")
+            if (counter === 0) {
+                $("#categoryBody-" + this.data.category.categoryId + " .topicDropBasket").css("opacity", 0.9).css("border", " 3px solid white")
             }
-            counter ++
+            counter++
 
         }
-        categoryBody.ondragleave= (event)=>{
-            counter --
-            if(counter ===0){
-                $("#categoryBody-"+this.data.category.categoryId+ " .topicDropBasket").css("opacity",0.5).css("border"," 3px dotted white")
+        categoryBody.ondragleave = (event) => {
+            counter--
+            if (counter === 0) {
+                $("#categoryBody-" + this.data.category.categoryId + " .topicDropBasket").css("opacity", 0.5).css("border", " 3px dotted white")
             }
 
         }
-        categoryBody.ondragover=(event)=>{
+        categoryBody.ondragover = (event) => {
             event.preventDefault()
         }
-        categoryBody.ondrop= (event)=>{
+        categoryBody.ondrop = (event) => {
             event.preventDefault()
-            let topic= Topic.findOne(Session.get("draggedTopicItem")._id)
+            let topic = Topic.findOne(Session.get("draggedTopicItem")._id)
             Session.set("draggedTopicItem", null)
             topic.callMethod(
                 "changeCategory",
                 projectController.getAuthInfo(FlowRouter.current().params.projectId),
                 this.data.category.categoryId,
-                (err, res)=>{
-                    if(err){
+                (err, res) => {
+                    if (err) {
                         console.log(err)
                     }
                 }
-                )
+            )
         }
     }
 });

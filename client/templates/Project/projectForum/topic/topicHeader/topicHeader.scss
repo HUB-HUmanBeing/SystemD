@@ -1,0 +1,40 @@
+@import "{}/client/scss/variables.scss";
+
+#topicHeader{
+  justify-content: center;
+  #editTopicName{
+    font-size: 1.5em;
+  }
+  .topicTitle{
+    font-size: 1.5em;
+    line-height: 40px;
+    padding-right: 10px;
+    color: $plus-color;
+  }
+  .btn-floating{
+    background-color: $contrasted-plus-bg;
+    i{
+      color: $plus-color
+    }
+    &:hover{
+      background-color: $blue-highlight-color !important;
+
+
+  }
+  }
+  .fixed-action-btn{
+    top:0;
+  left: 0;
+    padding: 0;
+    ul{
+      right: 25px;
+      li{
+        margin: 0 3px 0 0;
+        a{
+          background-color: $lighter-bg;
+        }
+      }
+    }
+
+  }
+}

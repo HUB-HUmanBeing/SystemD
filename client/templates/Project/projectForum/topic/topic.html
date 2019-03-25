@@ -1,9 +1,20 @@
 <template name="topic">
     <div id="topic" class="full-height flex-auto">
-<h1>topic</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi atque deserunt earum eligendi et explicabo harum id, impedit ipsa laudantium minima optio quod quos recusandae saepe ullam veniam, vitae?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi atque deserunt earum eligendi et explicabo harum id, impedit ipsa laudantium minima optio quod quos recusandae saepe ullam veniam, vitae?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi atque deserunt earum eligendi et explicabo harum id, impedit ipsa laudantium minima optio quod quos recusandae saepe ullam veniam, vitae?</p>
 
+        {{#if currentTopic}}
+            {{>topicHeader currentTopic=currentTopic}}
+            <div class="row">
+                <div class="col s12 ">
+                    <div class="contrasted-bg shadow small-padding">
+                     {{>newPublication}}
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        {{/if}}
     </div>
+
 </template>

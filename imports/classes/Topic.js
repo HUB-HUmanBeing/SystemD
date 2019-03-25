@@ -14,6 +14,9 @@ const Topic = Class.create({
             type: String,
             default: "chat"
         },
+        createdBy: {
+          type:String
+        },
         categoryId: {
             type:String,
             optional:true,
