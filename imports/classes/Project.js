@@ -133,6 +133,10 @@ const ProjectPrivate = Class.create({
             default: function () {
                 return [];
             }
+        },
+        mainTopicId:{
+            type: String,
+            optional: true
         }
 
     }

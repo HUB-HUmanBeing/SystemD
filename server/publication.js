@@ -6,6 +6,7 @@ import Invitations from "../lib/collections/Invitations";
 import {check} from "meteor/check";
 import ProjectNotifications from "../lib/collections/ProjectNotifications";
 import Topics from "../lib/collections/Topics";
+import Publications from "../lib/collections/Publications";
 
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
@@ -177,7 +178,7 @@ Meteor.publish('mainTopic', function (authInfo, projectId) {
     check(currentProject.isMember(authInfo), true)
     return Topics.find({
         "$and": [{
-            projectId:projectId
+            projectId: projectId
         }, {
             isMainTopic: true
         }]
@@ -187,22 +188,32 @@ Meteor.publish('singleTopic', function (authInfo, topicId, projectId) {
 
     check(topicId, String)
     check(projectId, String)
-    let topicCursor
-    if(topicId === "mainTopic"){
-        topicCursor = Topics.find({
-            "$and": [{
-                projectId:projectId
-            }, {
-                isMainTopic: true
-            }]
-        })
-    }else{
-        topicCursor = Topics.find({_id:topicId})
-    }
-
+    let topicCursor = Topics.find({_id: topicId})
     check(authInfo, {memberId: String, userSignature: String})
-    projectId= topicCursor.fetch()[0].projectId
+    projectId = topicCursor.fetch()[0].projectId
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
     return topicCursor
 })
+
+Meteor.publish("publications", function (authInfo, topicId, projectId, limit) {
+
+    check(topicId, String)
+    check(limit, Number)
+    check(projectId, String)
+    let topic
+    topic = Topics.findOne({_id: topicId})
+    check(authInfo, {memberId: String, userSignature: String})
+    projectId = topic.projectId
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    console.warn("todo, retirer le membre de la liste des gens qui ont pas vu")
+
+    return Publications.find({topicId: topic._id}, {
+        limit: limit,
+        sort: {
+            createdAt: -1
+        }
+    })
+})
+

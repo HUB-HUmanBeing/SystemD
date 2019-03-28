@@ -1,11 +1,11 @@
 <template name="projectForum">
     <div id="projectForum" class=" row no-margin "
-         style="{{#if isDesktop}}padding-top: 0px; height: 100vh;{{else}}padding-top: 0;width: 100%;{{/if}}">
+         style="{{#if isDesktop}}padding-top: 0px; height: 100vh; width: calc( 100% - 210px ){{else}}padding-top: 0;width: 100%;{{/if}}">
         {{#if isDesktop}}
             <div class="blurTop"></div>
         {{/if}}
-        <div class="col s12  xl10 offset-xl1 flex gradiant {{#if
-                isDesktop}}full-height{{/if}} main-color no-padding bird-background ">
+        <div class="forumContainer col s12 flex gradiantLight {{#if
+                isDesktop}}full-height  {{/if}} main-color no-padding bird-background ">
             {{#if showCategories}}
 
                 <div id="categoryListContainer" class="beautify-scroll-container"
@@ -25,7 +25,7 @@
                 <div id="topicContainer" class="flex-auto beautify-scroll-container center-align"
                      style="{{#if isDesktop}}
                      height:  100vh ;
-                             padding: 40px 0 100px 0;
+                             padding: 40px 0 40vh 0;
                      {{else}}
                          {{#if isTablet}}
                          margin: 0 10%;
@@ -34,7 +34,7 @@
                      {{/if}}"
                 >
                     <div class="topicSubContainer center-align">
-                        {{>topic}}
+                        {{>topic refreshScrollbar=refreshScrollbar}}
                     </div>
 
                 </div>

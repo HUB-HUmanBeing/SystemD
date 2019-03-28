@@ -1,0 +1,37 @@
+<template name="publicationsList">
+    <div id="publicationsList">
+        {{#each publication in publications}}
+            <div class="row">
+                <div class="col s12 ">
+                    <div class="publicationBox shadow small-padding">
+                        {{>publicationItem publication=publication topic=topic refreshScrollbar=refreshScrollbar}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        {{#if isWaiting}}
+            <div class="row loadMore">
+                <div class="col s10 offset-s1 xl8 offset-xl2">
+                    <p class="center-align">
+                        <i>{{__ ".loadingMore"}}</i>
+                    </p>
+                    <div class="progress">
+
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+
+            </div>
+            {{else}}
+            {{#if hasMore}}
+                <div class="relative">
+                    <a href="" class="link showMoreTopics" showMore><i
+                            class="material-icons">expand_more</i><span>{{__ ".showMore"}}</span></a>
+                </div>
+
+                {{/if}}
+        {{/if}}
+
+    </div>
+
+</template>

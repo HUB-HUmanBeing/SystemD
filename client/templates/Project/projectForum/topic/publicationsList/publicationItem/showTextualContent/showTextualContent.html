@@ -1,0 +1,5 @@
+<template name="showTextualContent">
+{{#if decryptedContent}}
+    {{>smartContent content=decryptedContent.symEnc_text  refreshScrollbar= refreshScrollbar}}
+    {{/if}}
+</template>

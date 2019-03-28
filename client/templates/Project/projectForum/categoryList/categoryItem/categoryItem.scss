@@ -10,7 +10,19 @@
       color: $plus-color !important;
     }
   }
+  .newTopicBtn{
+    opacity: 0;right: 55px;
+    top:-15px ;
 
+    transition: 0.4s ease-out !important;
+  }
+  &:hover{
+    .newTopicBtn{
+      right: 25px !important;
+      opacity: 1 !important;
+
+    }
+  }
   .collapsible-header {
     background-color: $contrasted-bg;
     border-bottom: none;
@@ -132,7 +144,7 @@
 
   .collapsible-body {
     border: none;
-    background-color: $contrasted-minus-bg;
+
     margin-left: 15px;
 
     .btn-floating {
@@ -163,6 +175,7 @@
         line-height: 20px;
       }
     }
+
     .topicDropBasket{
       transition: 0.3s;
       top:0;

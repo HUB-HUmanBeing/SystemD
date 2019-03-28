@@ -88,7 +88,7 @@
             </div>
 
         </div>
-        <div class="collapsible-body shadow no-padding relative" id="categoryBody-{{category.categoryId}}">
+        <div class="collapsible-body transparent no-padding relative" id="categoryBody-{{category.categoryId}}">
             {{#if isDraggingTopic}}
                 <div class="absolute topicDropBasket center-align">
                     <i class="material-icons plus-color ">move_to_inbox</i>
@@ -96,7 +96,7 @@
             {{/if}}
 
             {{#if length topics}}
-                <ul class="collection">
+                <ul class="collection shadow ">
 
                     {{#each topic in topics}}
                         {{>topicItem topic= topic}}
@@ -105,7 +105,7 @@
             {{else}}
                 {{#unless showNewTopic}}
                     <div class="small-padding" style="margin-bottom: -40px">
-                        <p class="infoQuotes"><i>{{__ ".noTopics"}}</i></p>
+                        <p class="infoQuotes" style="margin: 5px;"><i>{{__ ".noTopics"}}</i></p>
                     </div>
                 {{/unless}}
             {{/if}}
@@ -125,20 +125,26 @@
             {{/if}}
             {{#unless showNewTopic}}
                 <div class="relative">
-                    <a href="" class="btn btn-floating tooltipped waves-light waves-effect absolute"
+                    <a href="" class="btn btn-floating tooltipped waves-light waves-effect absolute newTopicBtn"
                        data-position="left"
-                       data-delay="50" data-tooltip="{{__ ".newTopic"}}" style="top:-15px; right: 25px"><i
+                       data-delay="50"
+                       data-tooltip="{{__ ".newTopic"}}"
+                       style="{{#if isDesktop}}
+                       opacity: 0;right: 55px;
+                       {{else}}
+                       right: 25px !important;opacity: 1 !important;
+                       {{/if}}"><i
                             class="material-icons right" openNewTopic>playlist_add</i></a>
                 </div>
             {{/unless}}
             {{#unless showNewTopic}}
-                <div class="small-padding relative center-align">
+                <div class="small-padding relative center-align transparent">
                     {{#if hasMore}}
                         <a href="" class="link showMoreTopics" showMore><i
                                 class="material-icons">expand_more</i><span>{{__ ".showMore"}}</span></a>
                     {{else}}
 
-                        <div style="height: 10px"></div>
+                        <div style="height: 5px"></div>
 
                     {{/if}}
                 </div>

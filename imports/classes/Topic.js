@@ -49,6 +49,12 @@ const Topic = Class.create({
             default: function () {
                 return false
             }
+        },
+        publicationTotalCount:{
+            type: Number,
+            default: function () {
+                return 0
+            }
         }
     },
     helpers: {

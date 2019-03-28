@@ -1,5 +1,7 @@
 @import "{}/client/scss/variables.scss";
 
 #topic{
-
+.publicationBox{
+  background: linear-gradient(45deg, $contrasted-bg 0%,$contrasted-plus-bg  100%);
+}
 }

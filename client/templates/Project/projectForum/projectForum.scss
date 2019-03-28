@@ -31,3 +31,14 @@ width: 100%;
     background: linear-gradient(to top, rgba(0,0,0,0)  0%,$contrasted-bg 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   }
 }
+@media screen and (min-width: 1100px){
+  #projectForum{
+    text-align: center;
+    .forumContainer{
+
+      max-width: 900px;
+      margin-left: calc( calc( 100% - 900px) / 2 ) ;
+    }
+
+  }
+}

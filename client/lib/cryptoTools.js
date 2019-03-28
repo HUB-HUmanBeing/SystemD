@@ -4,6 +4,7 @@ import zxcvbn from 'zxcvbn'
 import bcrypt from 'bcryptjs'
 import * as randomPassword from "secure-random-password";
 
+
 const cryptoTools = {
     //permet de recuperer l'object crypto suivant le navigateur
     crypto() {
@@ -426,7 +427,8 @@ const cryptoTools = {
                 resolve(element)
             })
             if (element) {
-                //console.warn("'on s'occupe que des champs simples pour l'instant'", elementName, element)
+                // console.log(typeof element)
+                // console.warn("'on s'occupe que des champs simples pour l'instant'", elementName, element)
             }
 
         }
@@ -457,7 +459,7 @@ const cryptoTools = {
         })
     },
     //dechiffre un tableau d'objet chiffrés et les renvoie en callback
-    async decryptArryOfObject(arrayOfObject, decryptionParams, callback) {
+    async decryptArrayOfObject(arrayOfObject, decryptionParams, callback) {
         let decryptedArrayOfObject = []
         await this.asyncForEach(arrayOfObject, async (object, i) => {
             await this.decryptObject(object, decryptionParams, (decryptedObject) => {

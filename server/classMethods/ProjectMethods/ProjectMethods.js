@@ -66,7 +66,10 @@ Meteor.methods({
                     isMainTopic:true,
                     createdBy:firstMember.memberId
                 })
-                mainTopic.save()
+                let mainTopicId= mainTopic.save()
+                let createdProject = Project.findOne(res)
+                createdProject.private.mainTopicId = mainTopicId
+                createdProject.save()
             }),
             project: newProject
         }

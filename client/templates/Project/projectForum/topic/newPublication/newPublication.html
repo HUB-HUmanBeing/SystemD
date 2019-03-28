@@ -1,16 +1,39 @@
 <template name="newPublication">
     <div id="newPublication" class="main-color">
-        <div class="row">
-            <div class="col s12 flex">
-                <div><i class="material-icons ">create</i></div>
-                <div class="flex-auto">
-                    {{__ ".newPublication"}}
-                </div>
+        <div class="row no-margin">
+            <div class="col s12 flex left-align newPublicationTitle no-padding"
+                 selectType={{selectedType}}
+                 style="{{#if selectedType}}cursor:pointer{{/if}}">
+                <div><i class="material-icons ">{{#if selectedType}}keyboard_backspace{{else}}create{{/if}}</i></div>
+                <h5 class="flex-auto ">
+                    {{#if selectedType}}
+                        {{__ ".return"}}
+                    {{else}}
+                        {{__ ".newPublication"}}
+                    {{/if}}
+
+                </h5>
 
             </div>
         </div>
-    <div class="row">
+        {{#unless selectedType}}
+            <div class="row contentTypeSelector center-align">
+                {{#each type in contentType}}
 
-    </div>
+                    <div class="col s3 center-align no-padding">
+                        <a href="" class="contentTypeBox center-align shadow tooltipped"
+                           data-position="bottom"
+                           selectType
+                           id="contentTypeSelector-{{type.type}}"
+                           data-delay="50" data-tooltip="{{type.label}}">
+                            <i class="material-icons ">{{type.icon}}</i>
+                        </a>
+                    </div>
+                {{/each}}
+            </div>
+        {{else}}
+
+            {{> UI.dynamic template=selectedType data=dataContext }}
+        {{/unless}}
     </div>
 </template>

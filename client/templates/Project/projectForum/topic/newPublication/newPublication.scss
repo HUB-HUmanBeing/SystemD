@@ -1,5 +1,41 @@
 @import "{}/client/scss/variables.scss";
 
-#newPublication{
+#newPublication {
+  .newPublicationTitle {
+    i {
+      margin-right: 5px;
+    }
 
+    h5 {
+      margin: 0;
+      line-height: 24px;
+    font-size: 1em;
+    }
+  }
+  .contentTypeSelector{
+    margin: -10px -5px;
+    .contentTypeBox{
+      display: block;
+      padding:  5px ;
+      margin: 0px 5px 10px 5px;
+      background-color: $main-bg;
+     // border-radius: 5px;
+      height: 45px;
+      i{
+        font-size: 35px;
+        line-height: 35px;
+      }
+      p{
+        margin: 0;
+      }
+      &:hover{
+
+        background-color: $blue-highlight-color;
+        //border: 2px solid $plus-color;
+        *{
+          color: $plus-color !important;
+        }
+      }
+    }
+  }
 }

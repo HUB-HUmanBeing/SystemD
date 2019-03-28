@@ -1,8 +1,9 @@
 @import "{}/client/scss/variables.scss";
 .topicItem{
 background-color: $contrasted-minus-bg !important;
-  border-bottom: 1px solid $lighter-bg !important;
+  border-bottom: none !important;
   transition: 0.3s;
+  margin-bottom: 3px;
   border-left: 0px solid $blue-highlight-color;
   &:hover{
     border-left: 6px solid $blue-highlight-color;

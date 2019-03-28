@@ -1,6 +1,7 @@
 import Project from "../../../../imports/classes/Project";
 import cryptoTools from "../../../lib/cryptoTools";
 import BeautifyScrollbar from 'beautify-scrollbar';
+import Publication from "../../../../imports/classes/Publication";
 
 Template.projectForum.helpers({
     //add you helpers here
@@ -20,7 +21,7 @@ Template.projectForum.helpers({
                 }
                 instance.categorybs = new BeautifyScrollbar('#categoryListContainer');
             }
-        },700)
+        }, 700)
         return instance.categories.get()
     },
     showTopic: function () {
@@ -35,12 +36,27 @@ Template.projectForum.helpers({
                 }
                 instance.topicbs = new BeautifyScrollbar('#topicContainer');
             }
-        },700)
+        }, 700)
+
         return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId
     },
     showCategories: function () {
         FlowRouter.watchPathChange()
-        return Meteor.Device.isDesktop() ||!FlowRouter.current().queryParams.topicId
+        return Meteor.Device.isDesktop() || !FlowRouter.current().queryParams.topicId
+    },
+    refreshScrollbar: function () {
+        let instance = Template.instance()
+        return function () {
+            Meteor.setTimeout(() => {
+                let topicContainer = document.getElementById('topicContainer')
+                if (topicContainer && instance && Meteor.Device.isDesktop()) {
+                    if (instance.topicbs) {
+                        instance.topicbs.destroy()
+                    }
+                    instance.topicbs = new BeautifyScrollbar('#topicContainer');
+                }
+            }, 200)
+        }
     }
 });
 
@@ -51,19 +67,22 @@ Template.projectForum.events({
 Template.projectForum.onCreated(function () {
     //add your statement here
     this.categorybs = undefined
-    this.topicbs= undefined
+    this.topicbs = undefined
     this.projectId = FlowRouter.current().params.projectId
     this.categories = new ReactiveVar([])
     this.currentProject = new ReactiveVar()
     Tracker.autorun(() => {
         this.currentProject.set(Project.findOne(this.projectId))
-        let encryptedCategories = this.currentProject.get().private.forumCategories;
-        let symKey = Session.get("currentProjectSimKey")
-        if (encryptedCategories.length && symKey) {
-            cryptoTools.decryptArryOfObject(encryptedCategories, {symKey: symKey}, (decryptedCategories) => {
-                this.categories.set(decryptedCategories)
-            })
+        if (this.currentProject.get()) {
+            let encryptedCategories = this.currentProject.get().private.forumCategories;
+            let symKey = Session.get("currentProjectSimKey")
+            if (encryptedCategories.length && symKey) {
+                cryptoTools.decryptArrayOfObject(encryptedCategories, {symKey: symKey}, (decryptedCategories) => {
+                    this.categories.set(decryptedCategories)
+                })
+            }
         }
+
 
     })
 });

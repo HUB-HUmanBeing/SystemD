@@ -1,0 +1,44 @@
+@import "{}/client/scss/variables.scss";
+
+.smartContent {
+  margin-top: -10px;
+
+  a {
+    color: $link-color;
+    opacity: 0.7;
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  }
+  .emojiImg{
+    position: relative;
+    bottom: -0.4em;
+    margin: 0 0.3em;
+    width: 1.45em;
+    height: 1.45em;
+  }
+  .previewLink{
+    margin: 10px 0;
+background-color: $main-bg;
+    &:hover{
+      background: $light-bg;
+    }
+img{
+  background-color: $plus-color;
+  padding: 4px;
+  max-width: 200px;
+  width: 100%;
+}
+    h6{
+      font-size: 0.95em;
+      margin-top: 0;
+    }
+    p{
+      font-size: 0.85em;
+      ;
+    }
+  }
+}

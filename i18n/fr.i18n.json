@@ -406,7 +406,8 @@
       "newTopic": "Créer une nouvelle discussion",
       "noTopics" : "Ce dossier est vide",
       "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
-      "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier"
+      "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier",
+      "topicName": "Nom de la discussion"
     },
     "topicItem": {
       "unseenPublications":"Nouvelles publications",
@@ -425,5 +426,17 @@
       "deleteSuccess": "La discussion à été supprimée",
       "notifEnabled": "Vous recevrez désormais des notifications pour chaque nouvelles publications.",
       "notifDisabled": "Les notifications ont été désactivées pour cette discussion."
+    },
+    "newPublication": {
+      "return": "Retour",
+      "newPublication": "Nouvelle publication",
+      "text": "Texte",
+      "images": "Images et texte",
+      "poll": "Sondage",
+      "files": "Fichiers"
+    },
+    "textualContent": {
+      "placeholder": "Contenu de votre publication ...",
+      "publish": "Publier"
     }
 }

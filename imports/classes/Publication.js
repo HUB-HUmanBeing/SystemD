@@ -8,7 +8,7 @@ const TextualContent = Class.create({
     }
 })
 const PollOption = Class.create({
-    name: "PollContent",
+    name: "PollOption",
     fields:{
         symEnc_label:String,
         checkedBy: {
@@ -54,12 +54,6 @@ const Publication = Class.create({
 
             index:1
         },
-        membersToNotify: {
-            type: [String],
-            default: function () {
-                return [];
-            }
-        },
         createdAt:{
             type: Date,
             default: function () {
@@ -67,8 +61,9 @@ const Publication = Class.create({
             },
             index:-1
         },
-        content:{
-            type:[TextualContent, PollContent]
+        textualContent:{
+            type: TextualContent,
+            optional: true
         }
 
     },

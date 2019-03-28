@@ -1,0 +1,47 @@
+<template name="textualContent">
+    <div class="row no no-margin ">
+        <form class="col s12 no-padding" id="newPublicationForm" newPublicationForm>
+            <div class="row textareaSuperContainter relative">
+                <div class="textareaContainer input-field col s12   no-margin" style="overflow-x: hidden;">
+                <textarea
+                        id="newPublicationText"
+                        class="materialize-textarea validate {{#if isDesktop }}desktop{{/if}}"
+                        data-length="10000"
+                        maxlength="10000"
+                        required
+                        placeholder="{{__ ".placeholder"}}"
+                        data-emoji-picker="true"
+                ></textarea>
+
+                </div>
+                {{#if isDesktop}}
+                    <a href="" class="emojiBtn" toggleEmojiPicker><i class="material-icons">tag_faces</i></a>
+                    {{#if showEmojiPicker}}
+                        <div class="closeBackground" toggleEmojiPicker>
+
+                        </div>
+                        <div class="absolute " style="bottom: 0 ; width: 100%">
+                            <div class="emojiPicker shadow  left-align">
+                                {{#each emoji in getEmojis}}
+                                    <div class="emojiContainer center-align" selectEmoji id="emojiPicker-{{emoji.unicode}}">
+                                        <div class="emoji">{{{emoji.img}}}</div>
+                                    </div>
+
+                                {{/each}}
+                            </div>
+                        </div>
+
+                    {{/if}}
+                {{/if}}
+            </div>
+            <div class="row right-align no-margin">
+                <div class="col s12 no-padding">
+                    <button class="btn btnStandard"><i class="material-icons left">send</i>{{__ ".publish"}}</button>
+
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</template>

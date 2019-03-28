@@ -9,12 +9,12 @@ Template.projectLayout.helpers({
     decrypting: function () {
         return Template.instance().decrypting.get()
     },
-    currentProject : function () {
+    currentProject: function () {
         return Template.instance().currentProject.get()
     },
     sections: function () {
         const isActive = function (section) {
-            if (Template.instance().currentProjectSection.get() === section ) {
+            if (Template.instance().currentProjectSection.get() === section) {
                 return "active"
             } else {
                 return null
@@ -25,39 +25,39 @@ Template.projectLayout.helpers({
                 name: __("menuProject.forum"),
                 path: 'forum',
                 icon: 'chat',
-                isActive:isActive('forum'),
+                isActive: isActive('forum'),
             },
             {
                 name: __("menuProject.calendar"),
                 path: 'calendar',
                 icon: 'view_comfy',
-                isActive:isActive('calendar'),
+                isActive: isActive('calendar'),
             },
             {
                 name: __("menuProject.tasks"),
                 path: 'tasks',
                 icon: 'format_list_bulleted',
-                isActive:isActive('tasks'),
+                isActive: isActive('tasks'),
             },
             {
                 name: __("menuProject.maps"),
                 path: 'maps',
                 icon: 'map',
-                isActive:isActive('maps'),
+                isActive: isActive('maps'),
             },
             {
                 name: __("menuProject.members"),
                 path: 'members',
                 icon: 'group',
-                isActive:isActive('members'),
+                isActive: isActive('members'),
             }
         ]
-        if(projectController.isAdmin(Template.instance().currentProjectId.get())){
-            sectionsList.push( {
+        if (projectController.isAdmin(Template.instance().currentProjectId.get())) {
+            sectionsList.push({
                 name: __("menuProject.params"),
                 path: 'params',
                 icon: 'settings',
-                isActive:isActive('params'),
+                isActive: isActive('params'),
             })
         }
         return sectionsList
@@ -87,7 +87,7 @@ Template.projectLayout.onCreated(function () {
         let currentRoute = FlowRouter.current()
         let currentProjectId = currentRoute.params.projectId
         //on fait prompter le loader si c'est pas le projet courant
-        if(this.currentProjectId.get() !== currentProjectId){
+        if (this.currentProjectId.get() !== currentProjectId) {
             this.decrypting.set([
                 __('projectLayout.decrypting1')
             ])
@@ -110,46 +110,47 @@ Template.projectLayout.onCreated(function () {
             //si on le trouve
             if (currentUserProject) {
                 //on fait partir un timer afin de mesurer le temps que ca prends
-                let tsStart = Date.now()
+
                 //on souscrit au projet
                 Meteor.subscribe('ProjectForMembers', currentProjectId, cryptoTools.hash(currentUserProject.asymEnc_projectSymKey), () => {
                     Tracker.autorun(() => {
+                        let tsStart = Date.now()
                         //on find le projet
                         let currentProject = Project.findOne(currentProjectId)
-                        if(currentProject){
+                        if (currentProject) {
                             this.currentProject.set(currentProject)
                             //on recupere la clef projet
 
-                                cryptoTools.sim_decrypt_data(currentProject.private.symEnc_asymPrivateKey, currentUserProject.asymEnc_projectSymKey,  (privateKey) => {
-                                    //on stocke en session les clefs ce qui sera pratique pour la suite
-                                    Session.set("currentProjectSimKey", currentUserProject.asymEnc_projectSymKey)
-                                    Session.set("currentProjectPrivateKey", privateKey)
-                                    //on dechiffre les membres du projet
-                                    let currentProjectMembers = []
-                                    let keyParam = {symKey: currentUserProject.asymEnc_projectSymKey}
-                                    currentProject.private.members.forEach((encryptedMember,i) => {
-                                        cryptoTools.decryptObject(encryptedMember, keyParam, (decryptedMember)=>{
-                                            currentProjectMembers.push(decryptedMember)
-                                            if(i === currentProject.private.members.length-1){
-                                                Meteor.setTimeout(()=>{
-                                                    //on stocke la liste des membres en session
-                                                    Session.set("currentProjectMembers", currentProjectMembers)
-                                                    //on fait fermer le loader
-                                                    let duration = Date.now()-tsStart
-                                                    if(duration>1000){
-                                                      this.decrypting.set(false)
-                                                     }else {
-                                                        Meteor.setTimeout(()=>{
-                                                            this.decrypting.set(false)
-                                                        },1000-duration)
-                                                    }
+                            cryptoTools.sim_decrypt_data(currentProject.private.symEnc_asymPrivateKey, currentUserProject.asymEnc_projectSymKey, (privateKey) => {
+                                //on stocke en session les clefs ce qui sera pratique pour la suite
+                                Session.set("currentProjectSimKey", currentUserProject.asymEnc_projectSymKey)
+                                Session.set("currentProjectPrivateKey", privateKey)
+                                //on dechiffre les membres du projet
+                                let currentProjectMembers = []
+                                let keyParam = {symKey: currentUserProject.asymEnc_projectSymKey}
+                                currentProject.private.members.forEach((encryptedMember, i) => {
+                                    cryptoTools.decryptObject(encryptedMember, keyParam, (decryptedMember) => {
+                                        currentProjectMembers.push(decryptedMember)
+                                        if (i === currentProject.private.members.length - 1) {
+                                            Meteor.setTimeout(() => {
+                                                //on stocke la liste des membres en session
+                                                Session.set("currentProjectMembers", currentProjectMembers)
+                                                //on fait fermer le loader
+                                                let duration = Date.now() - tsStart
+                                                if (duration > 1000) {
+                                                    this.decrypting.set(false)
+                                                } else {
+                                                    Meteor.setTimeout(() => {
+                                                        this.decrypting.set(false)
+                                                    }, 1000 - duration)
+                                                }
 
-                                                }, i*20)
+                                            }, i * 20)
 
-                                            }
-                                        })
+                                        }
                                     })
                                 })
+                            })
 
                         }
 

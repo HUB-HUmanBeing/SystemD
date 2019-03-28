@@ -243,7 +243,7 @@ Template.categoryItem.onCreated(function () {
                             }
                         }).fetch()
                         if (encryptedTopics.length) {
-                            cryptoTools.decryptArryOfObject(encryptedTopics, {symKey: Session.get('currentProjectSimKey')}, (topics) => {
+                            cryptoTools.decryptArrayOfObject(encryptedTopics, {symKey: Session.get('currentProjectSimKey')}, (topics) => {
                                 this.topics.set(topics)
                             })
                         }

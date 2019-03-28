@@ -1,4 +1,5 @@
 import projectController from "../../../../../../lib/controllers/projectController";
+import Project from "../../../../../../../imports/classes/Project";
 
 Template.topicItem.helpers({
     //add you helpers here
@@ -30,6 +31,14 @@ Template.topicItem.helpers({
     },
     isDragged: function () {
         return Template.instance().isDrag.get()
+    },
+    topicId: function () {
+        if(Template.currentData().topic.isMainTopic){
+            return Project.findOne(FlowRouter.current().params.projectId).private.mainTopicId
+        }else{
+            return Template.currentData().topic._id
+        }
+
     }
 });
 

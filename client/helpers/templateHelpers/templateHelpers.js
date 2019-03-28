@@ -1,5 +1,6 @@
 import moment from "../../lib/i18nMoment";
 import projectController from "../../lib/controllers/projectController";
+import {render} from "emojitsu";
 
 Template.registerHelper('length', function (array) {
     return array.length
@@ -84,4 +85,23 @@ Template.registerHelper('onlyZeroToNine', function (number) {
 })
 Template.registerHelper('isDev', function () {
     return Meteor.isDevelopment
+})
+
+Template.registerHelper("getEmojis", function () {
+
+    let emojis = ["👍", "🙂", "😉", "☺️", "😐", "😆", "😜", "😅", "😂", "😱", "😁", "😃", "😘", "😗", "😋", "😊", "😍", "🤨", "🤩", "😑", "😏", "😯", "😡", "😱", "😨", "😤", "😖", "🤫", "💩", "💀", "👌", "✌", "💪", "❤", "️💣", "💥", "🕶", "🍴", "🍺", "🎉", "📢", "🏴"]
+    let imagesEmoji = []
+    emojis.forEach(function (emoji) {
+        imagesEmoji.push({
+            unicode: emoji,
+            img: render(emoji, {
+                size: 32, // size of emojis to use when the default CDN is used
+                className: "emojiImg", // CSS class to use when rendering image tags
+                unsafe: false, // when set to true, render will NOT sanitize the string, e.g. it forces "unsafe" output
+                single: true, // when a string contains just a single emoji this speeds render a bit
+                cdn: undefined, // a CDN to use for image paths
+            })
+        })
+    })
+    return imagesEmoji
 })

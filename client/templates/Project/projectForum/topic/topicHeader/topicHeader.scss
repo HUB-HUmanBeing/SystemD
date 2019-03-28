@@ -14,20 +14,26 @@
   .btn-floating{
     background-color: $contrasted-plus-bg;
     i{
-      color: $plus-color
+      color: $main-color
     }
     &:hover{
       background-color: $blue-highlight-color !important;
-
+i{
+  color: $plus-color
+}
 
   }
   }
   .fixed-action-btn{
+
     top:0;
   left: 0;
     padding: 0;
     ul{
-      right: 25px;
+      top:25px;
+      right: 10px;
+      padding-right: 15px;
+      height: 50px;
       li{
         margin: 0 3px 0 0;
         a{

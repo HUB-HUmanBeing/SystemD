@@ -96,7 +96,7 @@ const hubCrypto = {
             let decryptedProjects = []
 
             //pour chaque projet de l'utilisateur
-            cryptoTools.decryptArryOfObject(encryptedProjects, {privateKey: Session.get('stringifiedAsymPrivateKey')}, (decryptedProjects) => {
+            cryptoTools.decryptArrayOfObject(encryptedProjects, {privateKey: Session.get('stringifiedAsymPrivateKey')}, (decryptedProjects) => {
                 Session.set('projects', decryptedProjects)
                 callback(decryptedProjects)
             })

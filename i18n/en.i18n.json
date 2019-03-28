@@ -403,12 +403,14 @@
       "newTopic": "Create a new Topic",
       "noTopics" : "This folder is empty",
       "notifEnabled": "You will now receive notifications for all topics in this folder.",
-      "notifDisabled": "Notifications are now disabled for all topics in this folder."
+      "notifDisabled": "Notifications are now disabled for all topics in this folder.",
+      "topicName": "Topic name"
     },
     "topicItem": {
       "unseenPublications":"New publications",
       "dragInfo": "You can move this topic in an other category",
       "mainTopic": "MAIN TOPIC"
+
     },
     "topicHeader": {
       "mainTopic": "Main topic",
@@ -422,5 +424,17 @@
       "deleteSuccess": "Topic has been deleted",
       "notifEnabled": "You will now receive notifications for all publications in this topic",
       "notifDisabled": "Notifications are now disabled for this topic."
+    },
+    "newPublication": {
+      "return": "Back",
+      "newPublication": "New publication",
+      "text": "Text",
+      "images": "Images and text",
+      "poll": "Poll",
+      "files": "Files"
+    },
+    "textualContent": {
+      "placeholder": "Content of your publication ...",
+      "publish": "Publish"
     }
 }

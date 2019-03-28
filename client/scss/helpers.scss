@@ -63,6 +63,9 @@ body, html {
 .gradiant-dark {
   background: linear-gradient(45deg, $main-bg 0%, $contrasted-bg 100%);
 }
+.gradiantLight{
+  background: linear-gradient(45deg, $lighter-bg 0%, $main-bg 100%);
+}
 
 .shadow {
   -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
@@ -298,4 +301,7 @@ body, html {
 
 .btn-floating i{
   color: $main-color
+}
+.emojiImg{
+  opacity: 0.75;
 }

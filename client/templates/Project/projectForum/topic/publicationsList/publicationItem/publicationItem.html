@@ -1,0 +1,30 @@
+<template name="publicationItem">
+    <div class="publicationItem">
+        <div class="publicationHeader">
+            <div class="authorInfo left-align">
+                <div class="userAvatar" >
+                    {{>avatar userId=(userIdFromMemberId publication.createdBy)}}
+                </div>
+<div class="username">
+    {{usernameFromMemberId publication.createdBy}}
+</div>
+
+            </div>
+
+
+        </div>
+        <div class="publicationContent left-align">
+            {{#if compare publication.type "===" "textualContent"}}
+                {{>showTextualContent content=publication.textualContent  refreshScrollbar= refreshScrollbar}}
+            {{/if}}
+        </div>
+        <div class="publicationDate right-align">
+            {{formatDate publication.createdAt}}
+        </div>
+        <div class="commentBox">
+            <div class="hr"></div>
+            comments
+        </div>
+    </div>
+
+</template>

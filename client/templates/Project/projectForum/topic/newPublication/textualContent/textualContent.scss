@@ -1,0 +1,104 @@
+@import "{}/client/scss/variables.scss";
+
+.emojiBtn{
+
+}
+.closeBackground{
+  position: fixed;
+  top:0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2000;
+}
+.emojiPicker{
+  z-index: 2001;
+    width: 100%;
+    position: absolute;
+    background-color: $light-bg;
+    top:5px;
+    left: -20px;
+    border-radius: 5px;
+    border: 2px solid $minus-color;
+    max-width: 275px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around ;
+    padding: 5px;
+    .emojiContainer{
+      width: 36px;
+      height: 36px;
+      padding: 4px;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover{
+        background-color: $main-bg;
+        .emoji{
+          color:$main-color
+        }
+      }
+    }
+    .emoji{
+
+      display: inline-block;
+      font-size: 25px;
+      position: relative;
+      color: $minus-color;
+.emojiImg{
+        width:25px;
+        height:25px;
+      }
+
+    }
+  }
+#newPublicationForm {
+  margin-top: -5px;
+  .emojiBtn{
+    position: absolute;
+    bottom: -5px;
+    left:2px;
+    i{
+      color: $minus-color !important;
+    }
+  }
+
+  .textareaSuperContainter{
+    border-radius: 5px;
+    background-color: $main-bg;
+    margin:5px 0 10px 0;
+    padding: 10px 10px 0 10px;
+  }
+  .textareaContainer{
+    padding: 0 ;
+    border-radius: 5px;
+    overflow: hidden;
+    .character-counter{
+      top:-15px;
+    }
+  }
+
+  #newPublicationText {
+padding:5px 0 15px 0   ;
+box-shadow: none !important;
+    margin: 0;
+border: none !important;
+    transition: 0.3s;
+    &.desktop {
+      min-height: 10vh;
+      max-height: 40vh !important;
+      overflow-y: scroll !important;
+      overflow-x: hidden;
+      width: calc(100% + 15px);
+    }
+
+  }
+
+  #newPublicationText::placeholder {
+    color: $minus-color;
+    font-style: italic;
+  }
+}
+
+
