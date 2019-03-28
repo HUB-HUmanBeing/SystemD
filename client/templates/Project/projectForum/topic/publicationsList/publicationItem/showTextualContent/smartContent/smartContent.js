@@ -34,8 +34,8 @@ Template.smartContent.helpers({
                 }
 
                 if (linkPreview.img && linkPreview.description) {
-                    if (linkPreview.description.length > 150) {
-                        linkPreview.description = linkPreview.description.substring(0, 149) + "..."
+                    if (linkPreview.description.length > 120) {
+                        linkPreview.description = linkPreview.description.substring(0, 119) + "..."
                     }
                     console.log(linkPreview.img)
                     if (!linkPreview.img.match(regexUrl)) {

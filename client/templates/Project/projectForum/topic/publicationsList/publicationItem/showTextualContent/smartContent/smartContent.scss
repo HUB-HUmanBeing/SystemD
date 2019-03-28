@@ -2,7 +2,9 @@
 
 .smartContent {
   margin-top: -10px;
-
+.smartifiedContent{
+  white-space: pre-line;
+  overflow-wrap: break-word;
   a {
     color: $link-color;
     opacity: 0.7;
@@ -13,6 +15,8 @@
       text-decoration: underline;
     }
   }
+}
+
   .emojiImg{
     position: relative;
     bottom: -0.4em;
@@ -21,7 +25,7 @@
     height: 1.45em;
   }
   .previewLink{
-    margin: 10px 0;
+    margin: 10px -5%;
 background-color: $main-bg;
     &:hover{
       background: $light-bg;
@@ -35,9 +39,11 @@ img{
     h6{
       font-size: 0.95em;
       margin-top: 0;
+      overflow-wrap: break-word;
     }
     p{
       font-size: 0.85em;
+      overflow-wrap: break-word;
       ;
     }
   }

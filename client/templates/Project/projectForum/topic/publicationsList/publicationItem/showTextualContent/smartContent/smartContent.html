@@ -1,15 +1,19 @@
 <template name="smartContent">
     <div class="smartContent">
-        {{{smartifiedContent}}}
+        <div class="smartifiedContent">
+            {{{smartifiedContent}}}
+        </div>
+
         {{#if linkPreview}}
-            <a href="{{linkPreview.title}}" target="_blank" class="row small-padding previewLink valign-wrapper shadow">
+            <a href="{{linkPreview.title}}" target="_blank" class="link row small-padding previewLink valign-wrapper shadow">
                 <div class="col s12 m4 relative no-padding valign-wrapper center-align">
                     <img src="{{linkPreview.img}}" alt="" class="responsive-img valign-wrapper">
                 </div>
                 <div class="col s12 m8">
-                    <h6 class="elipsis">{{linkPreview.title}}</h6>
+                    <h6 class="elipsis" title="{{linkPreview.title}}">{{linkPreview.title}}</h6>
                     <p class="infoQuotes no-margin"><i>{{linkPreview.description}}</i></p>
                 </div>
+
             </a>
         {{/if}}
     </div>
