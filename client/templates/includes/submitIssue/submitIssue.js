@@ -97,7 +97,6 @@ Template.submitIssue.onCreated(function () {
     this.requestType = new ReactiveVar('bugReport')
     this.issueUrl = new ReactiveVar(false)
     this.captcha = new ReactiveVar({data: null, text: null})
-
 });
 
 Template.submitIssue.onRendered(function () {
