@@ -4,48 +4,52 @@
   .publicationHeader {
     position: relative;
 
-    margin: -10px -10px 0px -10px;
+    margin: -5px -5px 0px -5px;
     padding: 7px;
 
     .authorInfo {
-      height: 25px;
+      height: 3em;
 
       .userAvatar {
         display: inline-block;
         position: relative;
-        width: 25px;
-        height: 25px;
+        width: 3em;
+        height: 3em;
         margin-right: 5px;
+        border-radius: 50%;
       }
 
       .username {
         color: $plus-color;
         position: relative;
-        top: -8px;
-        line-height: 20px;
-        font-size: 14.5px;
+        line-height: 1.5em;
+        font-size: 1.2em;
         display: inline-block;
+      }
+
+      .publicationDate {
+        line-height: 1em;
+        font-size: 0.85em;
+        color: $minus-color;
+        font-style: italic;
       }
     }
 
   }
 
-  .publicationDate {
-    font-size: 0.85em;
-    color: $minus-color;
-    margin:2px  10px;
-    font-style: italic;
-  }
-  .publicationContent{
+
+  .publicationContent {
     margin: 0 5%;
   }
-  .commentBox{
+
+  .commentBox {
 
     margin: 0 -10px -10px -10px;
     padding: 5px;
     position: relative;
+
     .hr {
-      width: calc( 90% - 15px) ;
+      width: calc(90% - 15px);
       margin-left: 5%;
       top: -11px;
       height: 2px;

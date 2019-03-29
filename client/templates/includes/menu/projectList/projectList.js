@@ -62,7 +62,7 @@ Template.projectList.onCreated(function () {
     this.currentProjectId = new ReactiveVar('')
     this.currentProjectSection = new ReactiveVar('')
 
-    Tracker.autorun(() => {
+    this.autorun(() => {
         FlowRouter.watchPathChange()
         let currentRoute = FlowRouter.current()
         if (currentRoute.params.projectId) {

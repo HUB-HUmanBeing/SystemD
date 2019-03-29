@@ -86,7 +86,7 @@ Template.showInvitation.onCreated(function () {
     this.magicLink = new ReactiveVar("")
     this.copied = new ReactiveVar(false)
     //récupération et déchiffrement de l'invitation
-    Tracker.autorun(() => {
+    this.autorun(() => {
         let currentUserProject = projectController.getCurrentUserProject(this.projectId)
         if (currentUserProject) {
             //on récupere le projet courant et la clef d'invitation chiffrée

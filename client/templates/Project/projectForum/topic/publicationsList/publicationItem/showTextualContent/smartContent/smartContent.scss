@@ -1,50 +1,73 @@
 @import "{}/client/scss/variables.scss";
 
 .smartContent {
-  margin-top: -10px;
-.smartifiedContent{
-  white-space: pre-line;
-  overflow-wrap: break-word;
-  a {
-    color: $link-color;
-    opacity: 0.7;
-    transition: 0.3s;
+  margin-bottom: 10px;
 
-    &:hover {
-      opacity: 1;
-      text-decoration: underline;
+  .smartifiedContent {
+    white-space: pre-line;
+    overflow-wrap: break-word;
+
+    a {
+      color: $link-color;
+      opacity: 0.7;
+      transition: 0.3s;
+
+      &:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
     }
   }
-}
 
-  .emojiImg{
+  .emojiImg {
     position: relative;
     bottom: -0.4em;
     margin: 0 0.3em;
     width: 1.45em;
     height: 1.45em;
   }
-  .previewLink{
-    margin: 10px -5%;
-background-color: $main-bg;
-    &:hover{
+
+  .iframeContainer {
+    height: 100%;
+    width: 110%;
+    margin: 10px -5% 0 -5%;
+    min-height: 250px;
+    border: 4px solid $minus-color;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+
+  .previewLink {
+    margin: 10px -5% 0 -5%;
+    background-color: $main-bg;
+
+    &:hover {
       background: $light-bg;
     }
-img{
-  background-color: $plus-color;
-  padding: 4px;
-  max-width: 200px;
-  width: 100%;
-}
-    h6{
+
+    img {
+      background-color: $plus-color;
+      padding: 4px;
+      max-width: 200px;
+      width: 100%;
+    }
+
+    h6 {
       font-size: 0.95em;
       margin-top: 0;
       overflow-wrap: break-word;
     }
-    p{
+
+    p {
       font-size: 0.85em;
-      overflow-wrap: break-word;
-      ;
+      overflow-wrap: break-word;;
     }
   }
 }

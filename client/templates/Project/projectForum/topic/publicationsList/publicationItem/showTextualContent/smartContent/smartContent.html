@@ -1,20 +1,32 @@
 <template name="smartContent">
     <div class="smartContent">
-        <div class="smartifiedContent">
-            {{{smartifiedContent}}}
-        </div>
+        <div class="smartifiedContent">{{{smartifiedContent}}}</div>
+        {{#if videoEmbedUrl}}
+            {{>responsiveIframe url=videoEmbedUrl}}
+        {{else}}
+            {{#if linkPreview}}
+                <a href="{{linkPreview.siteUrl}}" target="_blank"
+                   class="link row small-padding previewLink valign-wrapper shadow">
+                    <div class="col s12 m4 relative no-padding valign-wrapper center-align">
+                        <img src="{{linkPreview.img}}" alt="" class="responsive-img valign-wrapper">
+                    </div>
+                    <div class="col s12 m8">
+                        <h6 class="elipsis" title="{{linkPreview.title}}"><b>{{linkPreview.title}}</b></h6>
+                        <i class="elipsis">{{linkPreview.siteUrl}}</i>
+                        <p class="infoQuotes no-margin"><i>{{linkPreview.description}}</i></p>
+                    </div>
 
-        {{#if linkPreview}}
-            <a href="{{linkPreview.title}}" target="_blank" class="link row small-padding previewLink valign-wrapper shadow">
-                <div class="col s12 m4 relative no-padding valign-wrapper center-align">
-                    <img src="{{linkPreview.img}}" alt="" class="responsive-img valign-wrapper">
-                </div>
-                <div class="col s12 m8">
-                    <h6 class="elipsis" title="{{linkPreview.title}}">{{linkPreview.title}}</h6>
-                    <p class="infoQuotes no-margin"><i>{{linkPreview.description}}</i></p>
-                </div>
-
-            </a>
+                </a>
+            {{/if}}
         {{/if}}
+    </div>
+</template>
+
+<template name="responsiveIframe">
+    <div class="iframeContainer relative shadow">
+
+        <iframe src="{{url}}" frameborder="0" width="560" height="315"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
     </div>
 </template>

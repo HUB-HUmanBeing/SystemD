@@ -20,6 +20,7 @@
     "emojione-assets": "^4.5.0",
     "emojitsu": "^2.4.0",
     "jdenticon": "^2.1.1",
+    "js-video-url-parser": "^0.3.1",
     "jshashes": "^1.0.7",
     "meteor-node-stubs": "^0.4.1",
     "minio": "^7.0.5",

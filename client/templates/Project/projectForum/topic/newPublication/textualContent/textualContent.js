@@ -2,9 +2,10 @@ import cryptoTools from "../../../../../../lib/cryptoTools";
 import Publication from "../../../../../../../imports/classes/Publication";
 import projectController from "../../../../../../lib/controllers/projectController";
 import {renderShortname, unicodeToShortnames} from "emojitsu";
+
 Template.textualContent.helpers({
     //add you helpers here
-    showEmojiPicker : function () {
+    showEmojiPicker: function () {
         return Template.instance().showEmojiPicker.get()
     }
 });
@@ -19,11 +20,12 @@ Template.textualContent.events({
         event.preventDefault()
         instance.showEmojiPicker.set(!instance.showEmojiPicker.get())
         let emoji = event.currentTarget.id.split('-')[1]
-        $('#newPublicationText').val($('#newPublicationText').val() +emoji)
+        $('#newPublicationText').val($('#newPublicationText').val() + emoji)
     },
     'submit [newPublicationForm]': function (event, instance) {
         event.preventDefault()
-        function replaceSmileyByEmoji(text){
+
+        function replaceSmileyByEmoji(text) {
             let map = {
                 "<3": "❤",
                 ":D": "😀",
@@ -36,16 +38,17 @@ Template.textualContent.events({
                 ':/ ': "😑"
             };
 
-            let  escapeSpecialChars = (regex)=> {
+            let escapeSpecialChars = (regex) => {
                 return regex.replace(/([()[{*+.$^\\|?])/g, '\\$1');
             }
             for (let i in map) {
                 let regex = new RegExp(escapeSpecialChars(i), 'gim');
-                text  = text.replace(regex, map[i]);
+                text = text.replace(regex, map[i]);
             }
             return text
         }
-        let textContent =  unicodeToShortnames(replaceSmileyByEmoji($('#newPublicationText').val()))
+
+        let textContent = unicodeToShortnames(replaceSmileyByEmoji($('#newPublicationText').val()))
         let topic = instance.data.topic
         cryptoTools.sim_encrypt_data(textContent, Session.get("currentProjectSimKey"), (symEnc_text) => {
             let publicationParams = {
@@ -61,11 +64,10 @@ Template.textualContent.events({
                 projectController.getAuthInfo(FlowRouter.current().params.projectId),
                 topic._id,
                 publicationParams,
-                (err,res)=>{
-                    if(err){
+                (err, res) => {
+                    if (err) {
                         console.log(err)
-                    }else{
-                        console.log("gagné", res)
+                    } else {
                         instance.data.reset()
                     }
                 }

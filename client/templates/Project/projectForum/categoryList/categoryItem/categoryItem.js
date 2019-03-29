@@ -225,7 +225,7 @@ Template.categoryItem.onCreated(function () {
     this.topicsLimit = new ReactiveVar(5)
     this.categoryId = new ReactiveVar(this.data.category.categoryId)
 
-    Tracker.autorun(() => {
+    this.autorun(() => {
         Meteor.subscribe(
             'topics',
             projectController.getAuthInfo(this.data.currentProject._id),
@@ -236,7 +236,7 @@ Template.categoryItem.onCreated(function () {
                 if (err) {
                     console.log(err)
                 } else {
-                    Tracker.autorun(() => {
+                    this.autorun(() => {
                         let encryptedTopics = Topic.find({categoryId: this.categoryId.get()}, {
                             sort: {
                                 lastActivity: -1

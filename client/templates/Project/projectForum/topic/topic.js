@@ -25,32 +25,43 @@ Template.topic.onCreated(function () {
     //add your statement here
     this.currentTopic = new ReactiveVar()
     this.isRefreshing = new ReactiveVar(true)
-    let currentProject = Project.findOne(FlowRouter.current().params.projectId)
-    Tracker.autorun(() => {
+    this.projectId = new ReactiveVar(null)
+    this.handlerSubscription = null
+    this.autorun(() => {
         this.isRefreshing.set(true)
         FlowRouter.watchPathChange()
-        let topicId = FlowRouter.current().queryParams.topicId || currentProject.private.mainTopicId
-        let projectId = FlowRouter.current().params.projectId
-        Meteor.subscribe("singleTopic", projectController.getAuthInfo(projectId), topicId, projectId, err => {
-            if (err) {
-                console.log(err)
-            } else {
-                Tracker.autorun(() => {
-                    let encryptedTopic = Topic.findOne({_id: topicId})
-                    if (encryptedTopic.isMainTopic) {
-                        this.currentTopic.set(encryptedTopic)
-                        this.isRefreshing.set(false)
-                    } else {
-                        cryptoTools.decryptObject(encryptedTopic, {symKey: Session.get("currentProjectSimKey")}, (topic) => {
-                            this.currentTopic.set(topic)
+        if (this.projectId.get() !== FlowRouter.current().params.projectId && this.handlerSubscription) {
+            this.handlerSubscription.stop()
+        }
+        let currentProject = Project.findOne(FlowRouter.current().params.projectId)
+        if (currentProject) {
+            let topicId = FlowRouter.current().queryParams.topicId || currentProject.private.mainTopicId
+            this.projectId.set(FlowRouter.current().params.projectId)
+
+            this.handlerSubscription = Meteor.subscribe("singleTopic", projectController.getAuthInfo(this.projectId.get()), topicId, this.projectId.get(), err => {
+
+                if (err) {
+                    console.log(err)
+                } else {
+                    this.autorun(() => {
+                        let encryptedTopic = Topic.findOne({_id: topicId})
+                        if (encryptedTopic.isMainTopic) {
+                            this.currentTopic.set(encryptedTopic)
                             this.isRefreshing.set(false)
-                        })
-                    }
-                })
+                        } else {
+                            cryptoTools.decryptObject(encryptedTopic, {symKey: Session.get("currentProjectSimKey")}, (topic) => {
+                                this.currentTopic.set(topic)
+                                this.isRefreshing.set(false)
+                            })
+                        }
+                    })
 
 
-            }
-        })
+                }
+
+            })
+        }
+
     })
 });
 

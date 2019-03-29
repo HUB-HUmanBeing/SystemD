@@ -81,7 +81,7 @@ Template.projectLayout.onCreated(function () {
     /*********
      * récupération et déchiffrement des infos du projet courant
      */
-    Tracker.autorun(() => {
+    this.autorun(() => {
         //on commence par récuperer l'id du projet à partir de la route
         FlowRouter.watchPathChange()
         let currentRoute = FlowRouter.current()
@@ -108,12 +108,12 @@ Template.projectLayout.onCreated(function () {
                 }
             })
             //si on le trouve
-            if (currentUserProject) {
+            if (currentUserProject && currentUserProject.asymEnc_projectId === currentRoute.params.projectId) {
                 //on fait partir un timer afin de mesurer le temps que ca prends
 
                 //on souscrit au projet
                 Meteor.subscribe('ProjectForMembers', currentProjectId, cryptoTools.hash(currentUserProject.asymEnc_projectSymKey), () => {
-                    Tracker.autorun(() => {
+                    this.autorun(() => {
                         let tsStart = Date.now()
                         //on find le projet
                         let currentProject = Project.findOne(currentProjectId)
@@ -156,6 +156,7 @@ Template.projectLayout.onCreated(function () {
 
                     })
                 })
+
             }
         }
     })

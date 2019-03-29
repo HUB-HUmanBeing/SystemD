@@ -68,10 +68,12 @@ Template.projectForum.onCreated(function () {
     //add your statement here
     this.categorybs = undefined
     this.topicbs = undefined
-    this.projectId = FlowRouter.current().params.projectId
+
     this.categories = new ReactiveVar([])
     this.currentProject = new ReactiveVar()
-    Tracker.autorun(() => {
+    this.autorun(() => {
+        FlowRouter.watchPathChange()
+        this.projectId = FlowRouter.current().params.projectId
         this.currentProject.set(Project.findOne(this.projectId))
         if (this.currentProject.get()) {
             let encryptedCategories = this.currentProject.get().private.forumCategories;

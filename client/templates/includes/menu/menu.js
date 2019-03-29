@@ -9,7 +9,7 @@ Template.menu.helpers({
     showProjects: function () {
         return !!Session.get("projects") && !!Session.get("projects").length
     },
-    showInfo:function () {
+    showInfo: function () {
         return Template.instance().showInfo.get()
     }
 });
@@ -29,7 +29,7 @@ Template.menu.events({
                     window.location.reload()
                 }, 50)
 
-            });
+            }, );
         })
 
 
@@ -39,16 +39,16 @@ Template.menu.events({
 
 Template.menu.onCreated(function () {
     this.showInfo = new ReactiveVar()
-Tracker.autorun(()=>{
-    let totalNotifCount = ProjectNotification.find().count()
-    let title= "System-D"
-    if(totalNotifCount){
-        title += ' ('+ totalNotifCount +')'
+    this.autorun(() => {
+        let totalNotifCount = ProjectNotification.find().count()
+        let title = "System-D"
+        if (totalNotifCount) {
+            title += ' (' + totalNotifCount + ')'
 
-    }
-    document.title = title
+        }
+        document.title = title
 
-})
+    })
 });
 
 Template.menu.onRendered(function () {
@@ -58,9 +58,9 @@ Template.menu.onRendered(function () {
             belowOrigin: true
         });
     }, 1000)
-    Meteor.setTimeout(()=>{
+    Meteor.setTimeout(() => {
         this.showInfo.set(true)
-    },2500)
+    }, 2500)
 
 });
 

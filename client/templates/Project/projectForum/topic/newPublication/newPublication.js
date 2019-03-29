@@ -66,7 +66,7 @@ Template.newPublication.onCreated(function () {
     //add your statement here
     this.selectedType = new ReactiveVar(false)
     this.textContent = new ReactiveVar("")
-    Tracker.autorun(()=>{
+    this.autorun(()=>{
         FlowRouter.watchPathChange()
         this.selectedType.set(false)
         this.textContent.set("")
