@@ -23,6 +23,9 @@
             {{#if compare publication.type "===" "textualContent"}}
                 {{>showTextualContent content=publication.textualContent  refreshScrollbar= refreshScrollbar id=publication._id}}
             {{/if}}
+            {{#if compare publication.type "===" "pollContent"}}
+                {{>showPollContent content=publication.pollContent  refreshScrollbar= refreshScrollbar id=publication._id }}
+            {{/if}}
         </div>
 
         <div class="commentBox">

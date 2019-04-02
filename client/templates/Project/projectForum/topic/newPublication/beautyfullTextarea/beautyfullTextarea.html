@@ -1,0 +1,36 @@
+<template name="beautyfullTextarea">
+    <div class="row textareaSuperContainter relative">
+        <div class="textareaContainer input-field col s12   no-margin" style="overflow-x: hidden;">
+                <textarea
+                        id="{{id}}"
+                        class="materialize-textarea validate {{#if isDesktop }}desktop{{/if}}"
+                        data-length="10000"
+                        maxlength="10000"
+                        required
+                        placeholder="{{placeholder}}"
+                        data-emoji-picker="true"
+                        style="min-height: {{minheight}}"
+                ></textarea>
+
+        </div>
+        {{#if isDesktop}}
+            <a href="" class="emojiBtn" toggleEmojiPicker><i class="material-icons">tag_faces</i></a>
+            {{#if showEmojiPicker}}
+                <div class="closeBackground" toggleEmojiPicker>
+
+                </div>
+                <div class="absolute " style="bottom: 0 ; width: 100%">
+                    <div class="emojiPicker shadow  left-align">
+                        {{#each emoji in getEmojis}}
+                            <div class="emojiContainer center-align" selectEmoji id="emojiPicker-{{emoji.unicode}}">
+                                <div class="emoji">{{{emoji.img}}}</div>
+                            </div>
+
+                        {{/each}}
+                    </div>
+                </div>
+
+            {{/if}}
+        {{/if}}
+    </div>
+</template>

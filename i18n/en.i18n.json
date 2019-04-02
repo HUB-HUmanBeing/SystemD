@@ -431,7 +431,19 @@
     "placeholder": "Content of your publication ...",
     "publish": "Publish"
   },
+  "pollContent": {
+    "placeholder": "Description of the poll",
+    "newProposition": "Answer proposal n°",
+    "addProposition": "Add proposal",
+    "publish": "Publish poll"
+  },
   "publicationsList": {
     "showMore": "Show more..."
+  },
+  "showPollContent": {
+    "answers": "answers"
+  },
+  "pollOption": {
+    "vote": "votes"
   }
 }

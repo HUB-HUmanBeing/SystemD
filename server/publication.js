@@ -7,7 +7,7 @@ import {check} from "meteor/check";
 import ProjectNotifications from "../lib/collections/ProjectNotifications";
 import Topics from "../lib/collections/Topics";
 import Publications from "../lib/collections/Publications";
-
+import Topic from "../imports/classes/Topic";
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
  **********************************/
@@ -202,13 +202,13 @@ Meteor.publish("publications", function (authInfo, topicId, projectId, limit) {
     check(limit, Number)
     check(projectId, String)
     let topic
-    topic = Topics.findOne({_id: topicId})
+    topic = Topic.findOne({_id: topicId})
     check(authInfo, {memberId: String, userSignature: String})
     projectId = topic.projectId
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
-    console.warn("todo, retirer le membre de la liste des gens qui ont pas vu")
-
+    topic.seenByAdd(authInfo.memberId)
+    topic.save()
     return Publications.find({topicId: topic._id}, {
         limit: limit,
         sort: {

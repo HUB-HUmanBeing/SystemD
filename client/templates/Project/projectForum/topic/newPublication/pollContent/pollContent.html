@@ -1,0 +1,52 @@
+<template name="pollContent">
+    <div class="row no no-margin " id="newPollContainer">
+        <form class="col s12 no-padding" id="newPublicationForm" newPublicationForm>
+            {{>beautyfullTextarea id="newPublicationText" placeholder=(__ ".placeholder")}}
+            <div class="row no-margin">
+                <ul class="collection relative transparent">
+                    {{#each proposition in propositions}}
+                        <li class="collection-item no-padding transparent relative flex">
+                            <i class="material-icons">check_box_outline_blank</i>
+                            <div class="inputContainer flex-auto">
+                                <input type="text" class="no-margin "
+                                       id="pollPropositionInput-{{proposition.id}}"
+                                       placeholder="{{__ ".newProposition"}} {{@index}}" value="{{proposition.value}}"
+                                       propositionInput>
+                            </div>
+
+                            <a href="" class="removePropositionBtn waves-effect waves-light"
+                               id="newPollProposition-{{proposition.id}}" removeProposition><i
+                                    class="material-icons ">clear</i></a>
+
+
+                        </li>
+                    {{/each}}
+
+
+                    <a href="" class="waves-effect waves-light addPropositionBtn left-align" addProposition>{{__
+                            ".addProposition"}}<i
+                            class="material-icons left">add</i></a>
+
+
+                </ul>
+
+                <!--                <div class="flex row">-->
+                <!--                    <div class="flex-auto left-align">{{__ ".allowAddLabel"}}</div>-->
+                <!--                    <div class="switch">-->
+                <!--                        <label>-->
+                <!--                            <input type="checkbox" checked id="usersAllowedToAdd">-->
+                <!--                            <span class="lever no-margin"></span>-->
+                <!--                        </label>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+            <div class="row right-align no-margin">
+                <div class="col s12 no-padding">
+                    <a href="#" class="btn btnStandard" submitPublicationForm><i
+                            class="material-icons left">send</i>{{__ ".publish"}}</a>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</template>

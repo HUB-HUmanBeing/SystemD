@@ -1,0 +1,18 @@
+<template name="showPollContent">
+    <div class="showPollContent">
+        {{#if decryptedSymEnc_text}}
+            {{>smartContent content=decryptedSymEnc_text  refreshScrollbar= refreshScrollbar id=id}}
+
+            <ul class="poll collection">
+                {{#each option in pollOptions}}
+                    <li class="collection-item transparent no-padding">
+                        {{>pollOption option=option index=@index id=id showResult=showResult totalAnswer=totalAnswer}}
+
+                    </li>
+                {{/each}}
+            </ul>
+            <p class="right-align answerTotalCount">{{totalAnswer}} {{__ ".answers"}}</p>
+        {{/if}}
+    </div>
+
+</template>

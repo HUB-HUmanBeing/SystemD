@@ -24,8 +24,6 @@ const PollContent = Class.create({
     name: "PollContent",
     fields:{
         symEnc_text:String,
-        type:String,
-        usersAllowedToAddOptions:Boolean,
         options: {
             type: [PollOption],
             default: function () {
@@ -64,6 +62,10 @@ const Publication = Class.create({
         textualContent:{
             type: TextualContent,
             optional: true
+        },
+        pollContent:{
+            type:PollContent,
+            optional:true
         }
 
     },

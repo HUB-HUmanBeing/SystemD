@@ -1,0 +1,13 @@
+<template name="pollOption">
+    <p class="no-margin selectOption" selectOption>
+        <input type="checkbox" id="poll-{{id}}-{{index}}" checked={{checked}} />
+        <label for="poll-{{id}}-{{index}}">{{option.symEnc_label}}</label>
+    </p>
+    {{#if showResult}}
+        <div class="countContainer relative">
+            <div class="countLabel absolute">{{countValue}} {{__ ".vote"}} ( {{countPercent}}% )</div>
+            <div class="pollCount" style="width: {{countPercent}}%"></div>
+        </div>
+    {{/if}}
+
+</template>

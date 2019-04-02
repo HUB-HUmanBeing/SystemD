@@ -1,3 +1,6 @@
+import notificationController from "../../../../../lib/controllers/notificationController";
+import projectController from "../../../../../lib/controllers/projectController";
+
 Template.newPublication.helpers({
     //add you helpers here
     contentType: function () {
@@ -32,16 +35,18 @@ Template.newPublication.helpers({
     },
     dataContext: function () {
         let instance = Template.instance()
-        let reset = ()=>{
+        let reset = () => {
             instance.selectedType.set(false)
             instance.textContent.set("")
         }
+        let membersToNotify = Template.currentData().topic.membersToNotify
         return {
             topic: Template.currentData().topic,
             textContent: Template.instance().textContent.get(),
-            reset: reset
+            reset: reset,
+            notifyObjects:notificationController.getNotifyObjects(membersToNotify)
         }
-    }
+    },
 });
 
 Template.newPublication.events({
@@ -66,7 +71,7 @@ Template.newPublication.onCreated(function () {
     //add your statement here
     this.selectedType = new ReactiveVar(false)
     this.textContent = new ReactiveVar("")
-    this.autorun(()=>{
+    this.autorun(() => {
         FlowRouter.watchPathChange()
         this.selectedType.set(false)
         this.textContent.set("")

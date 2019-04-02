@@ -99,7 +99,10 @@ Template.smartContent.onRendered(function () {
                     console.log(linkPreview.img)
                 }
                 instanceLinkPreview.set(linkPreview)
-                refreshScrollbar()
+                Meteor.setTimeout(() => {
+                    refreshScrollbar()
+                }, 400)
+
 
             }
         });

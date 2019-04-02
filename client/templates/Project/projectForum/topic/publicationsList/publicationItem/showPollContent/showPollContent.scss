@@ -1,0 +1,47 @@
+@import "{}/client/scss/variables.scss";
+
+.showPollContent {
+  .answerTotalCount {
+    font-style: italic;
+    font-size: 0.9em;
+    color: $minus-color;
+    margin: 5px 0 10px 0;
+  }
+
+  .collection {
+    border: none;
+    margin: 0;
+
+
+    .collection-item {
+      border: none;
+      margin-top: 5px;
+
+      .countContainer {
+        height: 1.2em;
+        background-color: $main-bg;
+        margin-left: 35px;
+        border-radius: 0.6em;
+
+        .selectOption {
+
+        }
+
+        .countLabel {
+          font-style: italic;
+          font-size: 0.9em;
+          line-height: 1.2em;
+          color: $minus-color;
+          padding: 0.1em 0.6em;
+        }
+
+        .pollCount {
+          height: 100%;
+          content: " ";
+          background-color: $blue-highlight-color;
+          border-radius: 0.6em;
+        }
+      }
+    }
+  }
+}

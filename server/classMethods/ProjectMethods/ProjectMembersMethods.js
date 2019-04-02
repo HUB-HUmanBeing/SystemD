@@ -50,6 +50,7 @@ Project.extend({
          * @param userId
          * @param hashedAdminSignature
          * @param asymEncParams
+         * @param notifObjects
          */
         promoteMember(authInfo, memberId, userId, hashedAdminSignature, asymEncParams, notifObjects) {
             check(Meteor.userId(), String)

@@ -23,7 +23,7 @@ const NotifPush = {
             Meteor.settings.privateVapidKey
         );
         // if(Meteor.settings.GcmApiKey && Meteor.isProduction){
-            webPush.setGCMAPIKey(Meteor.settings.GcmApiKey);
+        webPush.setGCMAPIKey(Meteor.settings.GcmApiKey);
         //}
         return webPush
     },
@@ -33,9 +33,12 @@ const NotifPush = {
         this.getSubscriptions(userIds).forEach((pushSubscription) => {
             let payload = this.translateAndFormatMessage(pushSubscription.language, message)
 
+            let subscription = JSON.parse(pushSubscription.subscription)
+            subscription.endpoint = 'https://cors-anywhere.herokuapp.com/' + subscription.endpoint
+            console.log(subscription)
             webPush
-                .sendNotification(JSON.parse(pushSubscription.subscription), payload)
-                .then(()=>{
+                .sendNotification(subscription, payload)
+                .then(() => {
                     console.log('push')
                 })
                 .catch(err => console.error(err))
@@ -94,17 +97,20 @@ const NotifPush = {
      * @param message
      * @constructor
      */
-    CheckThenNotify(membersToNotifyIds, notifObjects, message){
+    CheckThenNotify(membersToNotifyIds, notifObjects, message) {
         let userIds = []
-        notifObjects.forEach(notifObject=>{
-            let index=membersToNotifyIds.indexOf(notifObject.memberId)
-            if(index>=0){
-                if(cryptoServer.fastCompare(membersToNotifyIds[index]+notifObject.userId, notifObject.hashControl)){
+        notifObjects.forEach(notifObject => {
+            let index = membersToNotifyIds.indexOf(notifObject.memberId)
+            if (index >= 0) {
+                if (cryptoServer.fastCompare(membersToNotifyIds[index] + notifObject.userId, notifObject.hashControl)) {
+
                     userIds.push(notifObject.userId)
                 }
             }
         })
-        if(userIds.length){
+
+        if (userIds.length) {
+
             this.sendNotif([...new Set(userIds)], message)
         }
     },
@@ -116,13 +122,17 @@ const NotifPush = {
      * @param projectId
      * @param section
      */
-    notifyGlobally(membersToNotifyIds, notifObjects, notifType,projectId,section){
+    notifyGlobally(membersToNotifyIds, notifObjects, notifType, projectId, section, queryParams) {
+        let url = "/project/" + projectId + "/" + section
+        if (queryParams) {
+            url += "?" + queryParams
+        }
         let notif = new ProjectNotification({
             projectId: projectId,
             notifiedMembers: membersToNotifyIds,
             section: section,
             notifType: notifType,
-            url: "/project/" + projectId + "/"+ section,
+            url: url,
         })
         notif.save()
         this.CheckThenNotify(membersToNotifyIds, notifObjects, notifType)

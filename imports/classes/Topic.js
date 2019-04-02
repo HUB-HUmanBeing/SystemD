@@ -58,6 +58,7 @@ const Topic = Class.create({
         }
     },
     helpers: {
+
     }
 
 });

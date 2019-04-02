@@ -1,0 +1,74 @@
+@import "{}/client/scss/variables.scss";
+
+#newPollContainer {
+
+  .collection {
+    border: none;
+    margin-top: -5px;
+
+    .collection-item {
+      border: none;
+      padding: 10px 5px;
+      align-items: center;
+      justify-content: center;
+      line-height: 1em;
+
+      i {
+        color: $link-color;
+      }
+      .inputContainer {
+        padding: 5px;
+
+
+        input {
+          margin: 10px;
+          padding: 0 10px;
+          background-color: $main-bg;
+          border-radius: 5px;
+          box-shadow: none;
+          border: none;
+          height: 2.2em;
+
+          &::placeholder {
+            color: $minus-color;
+            font-style: italic;
+          }
+        }
+      }
+
+      .removePropositionBtn {
+        padding: 5px 0px 5px 15px;
+        cursor: pointer;
+i{
+  color: $main-color;
+}
+        &:hover {
+          i {
+            color: $plus-color;
+          }
+
+        }
+      }
+    }
+
+    .addPropositionBtn {
+      float: left;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-top: 5px;
+      position: relative;
+      color: $link-color;
+
+      i {
+        color: $link-color;
+        position: relative;
+        top: -3px;
+        margin-right: 5px;
+      }
+
+      &:hover {
+        color: $plus-color;
+      }
+    }
+  }
+}

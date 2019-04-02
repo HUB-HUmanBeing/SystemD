@@ -471,6 +471,18 @@ const cryptoTools = {
         })
     }
     ,
+    async encryptArrayOfObject(arrayOfObject, encryptionParams, callback) {
+        let encryptedArrayOfObject = []
+        await this.asyncForEach(arrayOfObject, async (object, i) => {
+            await this.encryptObject(object, encryptionParams, (encryptedObject) => {
+                encryptedArrayOfObject.push(encryptedObject)
+                if (i === arrayOfObject.length - 1) {
+                    callback(encryptedArrayOfObject)
+                }
+            })
+        })
+    }
+    ,
     /******************
      * on stocke ici notre objet zxcvbn qui gere la difficulté des password
      */

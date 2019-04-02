@@ -434,7 +434,19 @@
     "placeholder": "Contenu de votre publication ...",
     "publish": "Publier"
   },
+  "pollContent": {
+    "placeholder": "Description du sondage",
+    "newProposition": "Proposition de réponse n°",
+    "addProposition": "Ajouter une proposition",
+    "publish": "Publier le sondage"
+  },
   "publicationsList": {
     "showMore": "Voir plus..."
+  },
+  "showPollContent": {
+    "answers": "participants"
+  },
+  "pollOption": {
+    "vote": "votes"
   }
 }

@@ -6,7 +6,7 @@ const notificationController = {
      * @returns {Array}
      */
     getNotifyAdmins() {
-        let notifObjects =[]
+        let notifObjects = []
 
         const currentProjectMembers = Session.get('currentProjectMembers')
         currentProjectMembers.forEach(member => {
@@ -21,12 +21,21 @@ const notificationController = {
      * @param member
      * @returns {{hashControl: *, userId: (ProjectMember.fields.symEnc_userId|{type}), memberId: *}}
      */
-    getNotifyObject(member){
+    getNotifyObject(member) {
         return {
             userId: member.symEnc_userId,
             memberId: member.memberId,
             hashControl: cryptoTools.fastBcryptHash(member.memberId + member.symEnc_userId)
         }
+    },
+    getNotifyObjects(membersId) {
+        let notifyObjects = []
+        Session.get("currentProjectMembers").forEach(member => {
+            if (membersId.indexOf(member.memberId) !== -1) {
+                notifyObjects.push(this.getNotifyObject(member))
+            }
+        })
+        return notifyObjects
     }
 }
 
