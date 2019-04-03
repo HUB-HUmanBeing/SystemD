@@ -15,7 +15,7 @@ Template.beautyfullTextarea.events({
         event.preventDefault()
         instance.showEmojiPicker.set(!instance.showEmojiPicker.get())
         let emoji = event.currentTarget.id.split('-')[1]
-        $('#newPublicationText').val($('#newPublicationText').val() + emoji)
+        $("#" + instance.data.id).val($("#" + instance.data.id).val() + emoji)
     },
 });
 

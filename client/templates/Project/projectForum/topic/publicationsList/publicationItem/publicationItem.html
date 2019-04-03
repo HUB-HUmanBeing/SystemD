@@ -21,16 +21,35 @@
         </div>
         <div class="publicationContent left-align">
             {{#if compare publication.type "===" "textualContent"}}
-                {{>showTextualContent content=publication.textualContent  refreshScrollbar= refreshScrollbar id=publication._id}}
+                {{>showTextualContent content=publication.textualContent  refreshScrollbar=refreshScrollbar id=publication._id}}
             {{/if}}
             {{#if compare publication.type "===" "pollContent"}}
-                {{>showPollContent content=publication.pollContent  refreshScrollbar= refreshScrollbar id=publication._id }}
+                {{>showPollContent content=publication.pollContent  refreshScrollbar=refreshScrollbar id=publication._id }}
             {{/if}}
         </div>
 
+        {{#if  isDeletable }}
+            {{#unless showDelete}}
+                <div class="publicationFooter">
+                    <a href="#" class="link" showDelete><i class="material-icons">delete</i>{{__ ".delete"}}</a>
+                </div>
+            {{else}}
+                <div class="row">
+                    <div class="col s12">
+                        <p class="infoQuotes left-align">{{__ ".deleteInfo"}}</p>
+                        <a href="#" class="btn btn-danger" deletePublication><i
+                                class="material-icons">delete</i>{{__
+                                ".delete"}}</a>
+                    </div>
+                </div>
+
+
+            {{/unless}}
+        {{/if}}
+
         <div class="commentBox">
             <div class="hr"></div>
-            comments
+            {{>commentList publication=publication refreshScrollbar=refreshScrollbar }}
         </div>
     </div>
 

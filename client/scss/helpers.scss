@@ -55,6 +55,7 @@ body, html {
 .absolute {
   position: absolute;
 }
+
 //Backgrounds et textures
 .gradiant {
   background: linear-gradient(45deg, $light-bg 0%, $contrasted-bg 100%);
@@ -63,7 +64,8 @@ body, html {
 .gradiant-dark {
   background: linear-gradient(45deg, $main-bg 0%, $contrasted-bg 100%);
 }
-.gradiantLight{
+
+.gradiantLight {
   background: linear-gradient(45deg, $lighter-bg 0%, $main-bg 100%);
 }
 
@@ -100,6 +102,7 @@ body, html {
   border: 2px solid $blue-highlight-color !important;
   line-height: 34px;
   padding: 0 10px !important;
+
   .material-icons {
     color: $blue-highlight-color !important;
     transition: color 0.5s;
@@ -124,6 +127,7 @@ body, html {
   border: 2px solid $danger-color !important;
   line-height: 34px;
   padding: 0 10px !important;
+
   .material-icons {
     color: $danger-color !important;
     transition: color 0.5s;
@@ -206,6 +210,7 @@ body, html {
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
+  opacity: 0.6;
 }
 
 .elipsis {
@@ -299,9 +304,10 @@ body, html {
   }
 }
 
-.btn-floating i{
+.btn-floating i {
   color: $main-color
 }
-.emojiImg{
+
+.emojiImg {
   opacity: 0.75;
 }

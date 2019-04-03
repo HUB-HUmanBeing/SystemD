@@ -13,7 +13,7 @@ Template.pollOption.helpers({
     },
     countPercent: function () {
         let countValue = Publication.findOne(Template.currentData().id).pollContent.options[Template.currentData().index].checkedBy.length
-        return (countValue / Template.currentData().totalAnswer) * 100
+        return Math.round((countValue / Template.currentData().totalAnswer) * 100)
     }
 });
 

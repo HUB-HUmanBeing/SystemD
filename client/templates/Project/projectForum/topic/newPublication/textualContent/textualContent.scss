@@ -85,7 +85,7 @@
     transition: 0.3s;
 
     &.desktop {
-      max-height: 40vh !important;
+
       overflow-y: scroll !important;
       overflow-x: hidden;
       width: calc(100% + 15px);
@@ -101,7 +101,11 @@
 
 #newPublicationForm {
   margin-top: -5px;
-
+textarea{
+  &.desktop{
+    max-height: 40vh !important;
+  }
+}
   .emojiBtn {
     position: absolute;
     bottom: -5px;

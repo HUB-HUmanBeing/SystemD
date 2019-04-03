@@ -443,10 +443,25 @@
   "publicationsList": {
     "showMore": "Voir plus..."
   },
+  "publicationItem": {
+    "delete": "Supprimer",
+    "deleteinfo": "Cette action supprimera définitivement la publication et tout ses commentaires"
+  },
   "showPollContent": {
     "answers": "participants"
   },
   "pollOption": {
     "vote": "votes"
+  },
+  "newComment": {
+    "placeholder": "Votre commentaire..."
+  },
+  "commentList": {
+    "see": "Voir les",
+    "moreComments": "autres commentaires"
+  },
+  "commentItem": {
+    "answer": "Répondre",
+    "delete": "Supprimer"
   }
 }

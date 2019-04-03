@@ -440,10 +440,25 @@
   "publicationsList": {
     "showMore": "Show more..."
   },
+  "publicationItem": {
+    "delete": "Delete",
+    "deleteInfo": "This action will remove the publication and all its comments."
+  },
   "showPollContent": {
     "answers": "answers"
   },
   "pollOption": {
     "vote": "votes"
+  },
+  "newComment": {
+    "placeholder": "Your comment..."
+  },
+  "commentList": {
+    "see": "See",
+    "moreComments": "others comments"
+  },
+  "commentItem": {
+    "answer": "Answer",
+    "delete": "Delete"
   }
 }

@@ -3,6 +3,7 @@ import Project from "../../../imports/classes/Project";
 import Topic from "../../../imports/classes/Topic";
 import Publication from "../../../imports/classes/Publication";
 import NotifPush from "../../../imports/NotifPush";
+import Comment from "../../../imports/classes/Comment";
 
 
 Publication.extend({
@@ -94,12 +95,21 @@ Publication.extend({
                 if (memberIndex > -1) {
                     publication.pollContent.options[i].checkedBy.splice(memberIndex, 1)
                 }
-                if (index === i ) {
-                    console.log(i,memberIndex)
+                if (index === i) {
                     publication.pollContent.options[i].checkedBy.push(authInfo.memberId)
                 }
             })
             return publication.save()
+        },
+        delete(authInfo) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let publication = Publication.findOne(this._id)
+            let currentProject = Project.findOne(publication.projectId)
+            check(currentProject.isMember(authInfo), true)
+            check(authInfo.memberId === publication.createdBy, true)
+            return publication.remove((err) => {
+                console.warn('todo: remover les comments enfants')
+            })
         }
     }
 })

@@ -3,16 +3,16 @@ import Publications from "../../lib/collections/Publications";
 
 const TextualContent = Class.create({
     name: "TextualContent",
-    fields:{
-        symEnc_text:String
+    fields: {
+        symEnc_text: String
     }
 })
 const PollOption = Class.create({
     name: "PollOption",
-    fields:{
-        symEnc_label:String,
+    fields: {
+        symEnc_label: String,
         checkedBy: {
-            type : [String],
+            type: [String],
             default: function () {
                 return [];
             }
@@ -22,8 +22,8 @@ const PollOption = Class.create({
 })
 const PollContent = Class.create({
     name: "PollContent",
-    fields:{
-        symEnc_text:String,
+    fields: {
+        symEnc_text: String,
         options: {
             type: [PollOption],
             default: function () {
@@ -45,32 +45,37 @@ const Publication = Class.create({
             type: String
         },
         createdBy: {
-            type:String
+            type: String
         },
         topicId: {
-            type:String,
+            type: String,
 
-            index:1
+            index: 1
         },
-        createdAt:{
+        createdAt: {
             type: Date,
             default: function () {
                 return new Date()
             },
-            index:-1
+            index: -1
         },
-        textualContent:{
+        textualContent: {
             type: TextualContent,
             optional: true
         },
-        pollContent:{
-            type:PollContent,
-            optional:true
+        pollContent: {
+            type: PollContent,
+            optional: true
+        },
+        commentCount: {
+            type: Number,
+            default: function () {
+                return 0
+            }
         }
 
     },
-    helpers: {
-    }
+    helpers: {}
 
 });
 

@@ -1,0 +1,34 @@
+<template name="commentList">
+    {{#if publication}}
+        <div class="commentList row no-margin">
+            <div class=" col s12 no-padding">
+                <div class="newComment flex">
+                    <div class="userAvatar">
+                        {{>avatar userId=currentUserId}}
+                    </div>
+                    <div class="flex-auto">
+                        {{>newComment publication=publication isRootComment=true}}
+                    </div>
+
+                </div>
+                <ul class="commentListUl">
+                    {{#each comment in comments}}
+                        {{>commentItem comment=comment isRootComment=true}}
+                    {{/each}}
+                </ul>
+                {{#if commentLeft}}
+                    <div class="">
+                        <a href="" class=" showMoreComment" loadMoreComments>
+                            <i class="material-icons">expand_more</i>
+                            {{__ ".see"}} {{commentLeft}} {{__ ".moreComments"}}
+                        </a>
+                    </div>
+
+                {{/if}}
+
+            </div>
+
+        </div>
+    {{/if}}
+
+</template>

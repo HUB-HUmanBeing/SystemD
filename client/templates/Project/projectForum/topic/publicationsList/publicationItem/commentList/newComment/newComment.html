@@ -1,0 +1,11 @@
+<template name="newComment">
+    <form class="relative no-padding" id="newCommentForm-{{publication._id}}" newPublicationForm>
+
+        {{>beautyfullTextarea id=textareaId placeholder=(__ ".placeholder") minheight="0" rows="1"}}
+
+
+        <button class="sendCommentBtn absolute"><i class="material-icons left">send</i></button>
+
+
+    </form>
+</template>

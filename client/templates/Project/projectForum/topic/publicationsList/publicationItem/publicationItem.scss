@@ -57,4 +57,24 @@
 
     }
   }
+
+  .publicationFooter {
+    text-align: right;
+    margin-top: -4px;
+    padding-right: 5%;
+    height: 1.5em !important;
+
+    a {
+      margin-left: 0.4em;
+      position: relative;
+      font-size: 0.95em;
+
+      i {
+        position: relative;
+        top: 0.15em;
+        margin-right: 0.2em;
+        font-size: 1em;
+      }
+    }
+  }
 }

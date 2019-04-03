@@ -1,0 +1,29 @@
+<template name="commentItem">
+    <li class="commentItem flex">
+
+        <div class="userAvatar shadow">
+            {{>avatar userId=(userIdFromMemberId comment.createdBy)}}
+        </div>
+        <div class="commentContent flex-auto">
+            <div class="commentHeader flex">
+                <div class="username">
+                    {{usernameFromMemberId comment.createdBy}}
+                </div>
+                <div class="commentDate flex-auto right-align">
+                    {{formatDate comment.createdAt}}
+                </div>
+            </div>
+
+            <div class="left-align commentSmartContent">
+                {{>smartContent content=decryptedContent }}
+            </div>
+            <div class="commentFooter">
+                <a href="" class="link"><i class="material-icons">question_answer</i>{{__ ".answer"}}</a>
+                {{#if  isDeletable }}
+                    <a href="" class="link" deleteComment><i class="material-icons">delete</i>{{__ ".delete"}}</a>
+                {{/if}}
+            </div>
+        </div>
+
+    </li>
+</template>

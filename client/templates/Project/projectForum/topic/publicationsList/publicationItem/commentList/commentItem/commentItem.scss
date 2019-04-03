@@ -1,0 +1,81 @@
+@import "{}/client/scss/variables.scss";
+
+.commentItem {
+  margin: 5px 0;
+
+  &:hover .commentFooter {
+    opacity: 1;
+
+  }
+
+  .userAvatar {
+    width: 35px;
+    height: 30px;
+    padding-right: 5px;
+    border-radius: 50%;
+  }
+
+  .commentFooter {
+    opacity: 0;
+    transition: 0.3s;
+    text-align: right;
+    margin-top: -4px;
+    height: 1.1em !important;
+
+    a {
+      margin-left: 0.4em;
+      position: relative;
+      font-size: 0.85em;
+
+      i {
+        position: relative;
+        top: 0.1em;
+        margin-right: 0.2em;
+        font-size: 1em;
+      }
+    }
+  }
+
+  .commentContent {
+    margin-bottom: 5px;
+    background-color: $contrasted-minus-bg;
+    padding: 5px 10px;
+    border-radius: 1em;
+    opacity: 0.8;
+    width: 100%;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    .username {
+      display: inline-block;
+      color: $plus-color;
+    }
+
+    .commentDate {
+      line-height: 1.5em;
+      font-size: 0.9em;
+      font-style: italic;
+      color: $minus-color;
+    }
+
+    .commentSmartContent {
+      margin-left: 10px;
+      width: 100%;
+
+      * {
+        font-size: 0.95em;
+      }
+
+      .smartContent {
+        max-width: 100%;
+        margin-bottom: 0 !important;
+
+        .smartifiedContent {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

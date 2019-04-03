@@ -1,0 +1,108 @@
+@import "{}/client/scss/variables.scss";
+
+.commentList {
+  padding: 0 2%;
+
+  .commentListUl {
+    margin: 5px;
+  }
+
+  .showMoreComment {
+    position: relative;
+    top: -10px;
+
+    i {
+      position: relative;
+      bottom: -7px;
+    }
+
+
+    font-size: 0.9em;
+    color: $minus-color;
+
+    * {
+      color: $minus-color;
+    }
+
+    opacity: 0.8;
+
+    &:hover {
+      color: $link-color;
+      opacity: 1;
+
+      * {
+        color: $link-color;
+      }
+    }
+  }
+
+  .newComment {
+    margin: 10px 5px 5px 5px;
+
+
+    .userAvatar {
+      width: 35px;
+      height: 30px;
+      padding-right: 5px;
+      border-radius: 50%;
+    }
+
+    .btnStandard {
+      margin: 5px 0 0 5px !important;
+      border-radius: 5px;
+      height: content-box;
+
+      i {
+        margin: 0 !important;
+      }
+    }
+
+    .textareaSuperContainter {
+      background-color: $contrasted-minus-bg !important;
+      margin: 0px 0 5px 0;
+      padding: 7px 60px 0 10px;
+      border-radius: 1em;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .sendCommentBtn {
+      position: absolute;
+      top: 3px;
+      right: 7px;
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .emojiBtn {
+      position: absolute;
+      top: 3px;
+      right: 37px;
+    }
+
+    .emojiBtn, .sendCommentBtn {
+      i {
+        color: $minus-color;
+        margin: 0;
+
+        &:hover {
+          color: $plus-color;
+        }
+      }
+    }
+
+    textarea {
+      margin: 0px 0 -6px 0;
+      padding: 0 !important;
+      min-height: 1.7em;
+      max-height: 5.6em !important;
+      font-size: 0.9em;
+    }
+  }
+
+}

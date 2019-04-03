@@ -8,6 +8,8 @@ import ProjectNotifications from "../lib/collections/ProjectNotifications";
 import Topics from "../lib/collections/Topics";
 import Publications from "../lib/collections/Publications";
 import Topic from "../imports/classes/Topic";
+import Publication from "../imports/classes/Publication";
+import Comments from "../lib/collections/Comments";
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
  **********************************/
@@ -216,4 +218,18 @@ Meteor.publish("publications", function (authInfo, topicId, projectId, limit) {
         }
     })
 })
-
+Meteor.publish("rootComments", function (authInfo, publicationId, limit) {
+    check(publicationId, String)
+    check(limit, Number)
+    let publication = Publication.findOne({_id: publicationId})
+    check(authInfo, {memberId: String, userSignature: String})
+    let projectId = publication.projectId
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return Comments.find({publicationId: publicationId, isRootComment:true}, {
+        limit: limit,
+        sort: {
+            createdAt: -1
+        }
+    })
+})
