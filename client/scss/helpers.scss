@@ -74,7 +74,12 @@ body, html {
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 
 }
+.small-shadow {
+  -webkit-box-shadow: 2px 2px 6px -1px rgba(0,0,0,0.15);
+  -moz-box-shadow: 2px 2px 6px -1px rgba(0,0,0,0.15);
+  box-shadow: 2px 2px 6px -1px rgba(0,0,0,0.15);
 
+}
 .bird-background {
   background-image: url("images/trame/empty_birds_bg.png");
   background-repeat: no-repeat;

@@ -64,7 +64,8 @@
     "memberQuit": "A member has quit the project.",
     "memberPromoted": "You now have admin rights on the project.",
     "genericTitle": "New activity on System-D",
-    "genericAction": "See on website"
+    "genericAction": "See on website",
+    "newPublication": "A new publication has been added in a followed topic"
   },
   "showAcceptNotif": {
     "showAcceptNotifs": "Click accept to be notified of the activities on your projects",

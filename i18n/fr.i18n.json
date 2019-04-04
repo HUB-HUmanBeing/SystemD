@@ -60,11 +60,12 @@
     "deleteAll": "Tout supprimer"
   },
   "notifItem": {
-    "acceptedInvitation": "Une invitation a été accepté et un nouveau membre a rejoint le projet.",
+    "acceptedInvitation": "Une invitation a été acceptée et un nouveau membre a rejoint le projet.",
     "memberQuit": "Un membre a quitté le projet.",
     "memberPromoted": "Vous avez désormais les droits d'administrateur sur le projet.",
     "genericTitle": "Nouvelle activité sur System-D",
-    "genericAction": "Voir sur le site"
+    "genericAction": "Voir sur le site",
+    "newPublication": "Une nouvelle publication a été ajoutée dans une discussion que vous suivez"
   },
   "showAcceptNotif": {
     "showAcceptNotifs": "Cliquez sur accepter pour être averti des activités de votre projet.",
