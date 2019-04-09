@@ -8,7 +8,10 @@ Template.commentItem.helpers({
     },
     isDeletable: function () {
         return Template.currentData().comment.createdBy === projectController.getCurrentUserProject(FlowRouter.current().params.projectId).asymEnc_memberId
-    }
+    },
+    refreshScrollbar: function () {
+        return Template.currentData().refreshScrollbar
+    },
 });
 
 Template.commentItem.events({
@@ -18,6 +21,8 @@ Template.commentItem.events({
         instance.data.comment.callMethod("delete", projectController.getAuthInfo(FlowRouter.current().params.projectId), (err) => {
             if (err) {
                 console.log(err)
+            }else{
+                Materialize.toast(__('commentItem.deleteSuccess'), 6000, 'toastOk')
             }
         })
     }

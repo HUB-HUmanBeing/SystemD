@@ -1,6 +1,7 @@
 import projectController from "../../../../lib/controllers/projectController";
 import cryptoTools from "../../../../lib/cryptoTools";
 import Topic from "../../../../../imports/classes/Topic";
+
 Template.categoryList.helpers({
     //add you helpers here
     showNewCategory: function () {
@@ -20,6 +21,9 @@ Template.categoryList.helpers({
                 isMainTopic: true
             }]
         })
+    },
+    isCreating: function () {
+        return Template.instance().isCreating.get()
     }
 });
 
@@ -34,6 +38,7 @@ Template.categoryList.events({
     },
     "submit [newCategoryForm]": function (event, instance) {
         event.preventDefault()
+        instance.isCreating.set(true)
         let currentProject = instance.data.currentProject
         let categoryName = $('#newCategoryName').val()
         let id = cryptoTools.generateId()
@@ -50,6 +55,7 @@ Template.categoryList.events({
                     Materialize.toast(__('general.error'), 6000, 'toastError')
                 } else {
                     instance.showNewCategory.set(false)
+                    instance.isCreating.set(false)
                 }
             })
         })
@@ -61,8 +67,9 @@ Template.categoryList.events({
 Template.categoryList.onCreated(function () {
     //add your statement here
     this.showNewCategory = new ReactiveVar(false)
-    let projectId =  FlowRouter.current().params.projectId
-    Meteor.subscribe('mainTopic', projectController.getAuthInfo( projectId), projectId)
+    this.isCreating = new ReactiveVar(false)
+    let projectId = FlowRouter.current().params.projectId
+    Meteor.subscribe('mainTopic', projectController.getAuthInfo(projectId), projectId)
 });
 
 Template.categoryList.onRendered(function () {

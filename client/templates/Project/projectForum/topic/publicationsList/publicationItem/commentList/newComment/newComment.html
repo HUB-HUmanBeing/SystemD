@@ -4,7 +4,11 @@
         {{>beautyfullTextarea id=textareaId placeholder=(__ ".placeholder") minheight="0" rows="1"}}
 
 
-        <button class="sendCommentBtn absolute"><i class="material-icons left">send</i></button>
+        <button class="sendCommentBtn absolute">{{#if isCreating}}
+            {{>circleSpinner}}
+        {{else}}
+            <i class="material-icons left">send</i>
+        {{/if}}</button>
 
 
     </form>

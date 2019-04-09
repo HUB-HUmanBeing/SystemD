@@ -32,8 +32,8 @@
                             <label for="newCategoryName">{{__ ".categoryName"}}</label>
                         </div>
                         <div class="">
-                            <button href="" class="btn btn-floating waves-effect waves-light"><i
-                                    class="material-icons prefix">done</i></button>
+                            <button href="" class="btn btn-floating waves-effect waves-light">{{#if isCreating}}{{>circleSpinner}}{{else}}<i
+                                    class="material-icons prefix">done</i>{{/if}}</button>
                         </div>
                     </form>
                 {{else}}

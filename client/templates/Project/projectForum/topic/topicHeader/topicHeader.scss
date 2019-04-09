@@ -10,6 +10,14 @@
     line-height: 40px;
     padding-right: 10px;
     color: $plus-color;
+
+    .placeholder{
+      height: 1.7em;
+      width: 66%;
+      overflow: hidden;
+      margin: 2.5px auto 2.5px 0px;
+      border-radius: 5px;
+    }
   }
   .btn-floating{
     background-color: $contrasted-plus-bg;

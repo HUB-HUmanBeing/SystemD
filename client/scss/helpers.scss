@@ -74,12 +74,14 @@ body, html {
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 
 }
+
 .small-shadow {
-  -webkit-box-shadow: 2px 2px 6px -1px rgba(0,0,0,0.15);
-  -moz-box-shadow: 2px 2px 6px -1px rgba(0,0,0,0.15);
-  box-shadow: 2px 2px 6px -1px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
+  box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
 
 }
+
 .bird-background {
   background-image: url("images/trame/empty_birds_bg.png");
   background-repeat: no-repeat;
@@ -287,6 +289,32 @@ body, html {
     width: 90%;
   }
 
+}
+
+
+.progress .indeterminate {
+  background-color: $link-color;
+}
+
+.preloader-wrapper {
+  width: 30px;
+  height: 30px;
+  margin-top: calc(50% - 15px);
+  cursor: wait;
+
+  .spinner-layer {
+    border-color: $main-color;
+  }
+}
+
+.btnStandard {
+  .preloader-wrapper {
+    width: 20px !important;
+    height:20px !important;
+    margin-top: -7px !important;
+    margin-bottom: -7px;
+    margin-right: 5px;
+  }
 }
 
 .material-tooltip {

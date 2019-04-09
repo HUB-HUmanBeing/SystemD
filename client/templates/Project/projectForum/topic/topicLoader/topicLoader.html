@@ -1,0 +1,49 @@
+<template name="topicLoader">
+    <div class="row">
+        <div class="col s12 ">
+            <div class="row">
+                <div class="col s12">
+                    <div id="topicHeader" class=" flex">
+                        <div class="flex-auto elipsis left-align topicTitle">
+
+                            <div class="placeholder">
+                                <div class="animated-background"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="publicationBox shadow small-padding">
+                {{>newPublication }}
+            </div>
+
+
+        </div>
+    </div>
+    <div id="publicationsList">
+        <div class="row loadMore">
+            <div class="col s12 ">
+                <div class="publicationBox shadow small-padding">
+                    {{>publicationLoader}}
+                </div>
+            </div>
+        </div>
+        <div class="row loadMore">
+            <div class="col s12 ">
+                <div class="publicationBox shadow small-padding">
+                    {{>publicationLoader}}
+                </div>
+            </div>
+        </div>
+        <div class="row loadMore">
+            <div class="col s12 ">
+                <div class="publicationBox shadow small-padding">
+                    {{>publicationLoader}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

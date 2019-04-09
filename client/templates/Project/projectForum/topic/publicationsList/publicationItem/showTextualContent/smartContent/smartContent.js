@@ -56,6 +56,7 @@ Template.smartContent.onRendered(function () {
         }
     })
 
+
     function getMetaContent(html, name) {
         return html.filter(
             (index, tag) => tag && tag.name && tag.name == name).attr('content');

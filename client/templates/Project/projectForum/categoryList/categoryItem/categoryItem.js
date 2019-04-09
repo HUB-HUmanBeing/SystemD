@@ -38,6 +38,12 @@ Template.categoryItem.helpers({
     isDraggingTopic: function () {
         let draggedTopicItem = Session.get("draggedTopicItem")
         return !!draggedTopicItem && draggedTopicItem.categoryId !== Template.currentData().category.categoryId
+    },
+    isLoading: function () {
+        return Template.instance().isLoading.get()
+    },
+    isCreating: function () {
+        return Template.instance().isCreating.get()
     }
 });
 
@@ -164,8 +170,8 @@ Template.categoryItem.events({
             } else {
                 let membersToNotify = instance.data.category.membersToNotify
                 let currentMemberId = projectController.getCurrentUserProject(instance.data.currentProject._id).asymEnc_memberId
-                let wasNotified =  membersToNotify.indexOf(currentMemberId) >= 0
-                Materialize.toast(__('categoryItem.'+ (wasNotified?"notifDisabled":"notifEnabled")), 6000, 'toastOk')
+                let wasNotified = membersToNotify.indexOf(currentMemberId) >= 0
+                Materialize.toast(__('categoryItem.' + (wasNotified ? "notifDisabled" : "notifEnabled")), 6000, 'toastOk')
 
                 Meteor.setTimeout(() => {
                     resetTooltips()
@@ -186,6 +192,7 @@ Template.categoryItem.events({
     "submit [newTopicForm]": function (event, instance) {
         event.preventDefault()
         event.stopPropagation()
+        instance.isCreating.set(true)
         $('.tooltipped').tooltip('remove')
         let currentProjectId = instance.data.currentProject._id
         let topicParmas = {
@@ -205,6 +212,7 @@ Template.categoryItem.events({
                         resetTooltips()
                     }, 200)
                     instance.showNewTopic.set(false)
+                    instance.isCreating.set(false)
                     FlowRouter.go('/project/' + currentProjectId + '/forum/?categoryId=' + instance.data.category.categoryId + '&topicId=' + res)
                 }
             })
@@ -222,6 +230,8 @@ Template.categoryItem.onCreated(function () {
     this.showDelete = new ReactiveVar(false)
     this.showNewTopic = new ReactiveVar(false)
     this.topics = new ReactiveVar([])
+    this.isLoading = new ReactiveVar(true)
+    this.isCreating = new ReactiveVar(false)
     this.topicsLimit = new ReactiveVar(5)
     this.categoryId = new ReactiveVar(this.data.category.categoryId)
 
@@ -242,6 +252,7 @@ Template.categoryItem.onCreated(function () {
                                 lastActivity: -1
                             }
                         }).fetch()
+                        this.isLoading.set(false)
                         if (encryptedTopics.length) {
                             cryptoTools.decryptArrayOfObject(encryptedTopics, {symKey: Session.get('currentProjectSimKey')}, (topics) => {
                                 this.topics.set(topics)

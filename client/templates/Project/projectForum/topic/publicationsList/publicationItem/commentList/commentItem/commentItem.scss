@@ -63,10 +63,7 @@
     .commentSmartContent {
       margin-left: 10px;
       width: 100%;
-
-      * {
-        font-size: 0.95em;
-      }
+      font-size: 0.85em !important;
 
       .smartContent {
         max-width: 100%;
@@ -74,6 +71,18 @@
 
         .smartifiedContent {
           width: 100%;
+        }
+
+        .iframeContainer {
+          margin: 10px -10px 5px -10px;
+          width: 100%;
+          border-radius: 5px;
+        }
+
+        .previewLink {
+          width: 100%;
+          margin: 10px -10px 5px -10px;
+          border-radius: 5px;
         }
       }
     }

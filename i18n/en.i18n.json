@@ -443,7 +443,8 @@
   },
   "publicationItem": {
     "delete": "Delete",
-    "deleteInfo": "This action will remove the publication and all its comments."
+    "deleteInfo": "This action will remove the publication and all its comments.",
+    "deleteSuccess": "This publication and all its comments has been removed."
   },
   "showPollContent": {
     "answers": "answers"
@@ -460,6 +461,7 @@
   },
   "commentItem": {
     "answer": "Answer",
-    "delete": "Delete"
+    "delete": "Delete",
+    "deleteSuccess": "Comment deleted."
   }
 }

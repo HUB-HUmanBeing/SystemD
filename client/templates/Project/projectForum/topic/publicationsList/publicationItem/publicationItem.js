@@ -26,7 +26,7 @@ Template.publicationItem.events({
             if (err) {
                 console.log(err)
             } else {
-                console.log("gagné")
+                Materialize.toast(__('publicationItem.deleteSuccess'), 6000, 'toastOk')
             }
 
         })

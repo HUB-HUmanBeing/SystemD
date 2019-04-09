@@ -8,6 +8,9 @@ import preFormatMessage from "../../../../../../lib/preformatMessages";
 Template.textualContent.helpers({
     //add you helpers here
 
+    isCreating: function () {
+        return Template.instance().isCreating.get()
+    }
 });
 
 Template.textualContent.events({
@@ -15,7 +18,7 @@ Template.textualContent.events({
 
     'submit [newPublicationForm]': function (event, instance) {
         event.preventDefault()
-
+        instance.isCreating.set(true)
         let textContent = preFormatMessage($('#newPublicationText').val())
         let topic = instance.data.topic
         cryptoTools.sim_encrypt_data(textContent, Session.get("currentProjectSimKey"), (symEnc_text) => {
@@ -37,6 +40,7 @@ Template.textualContent.events({
                         console.log(err)
                     } else {
                         instance.data.reset()
+                        instance.isCreating.set(false)
                     }
                 }
             )
@@ -46,7 +50,7 @@ Template.textualContent.events({
 
 Template.textualContent.onCreated(function () {
     //add your statement here
-
+    this.isCreating = new ReactiveVar(false)
 });
 
 Template.textualContent.onRendered(function () {

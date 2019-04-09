@@ -4,7 +4,11 @@
             {{>beautyfullTextarea id="newPublicationText" placeholder=(__ ".placeholder") minheight="10vh"}}
             <div class="row right-align no-margin">
                 <div class="col s12 no-padding">
-                    <button class="btn btnStandard"><i class="material-icons left">send</i>{{__ ".publish"}}</button>
+                    <button class="btn btnStandard">
+                        {{#if isCreating}}
+                            {{>circleSpinner}}
+                        {{else}}<i class="material-icons left">send</i>
+                        {{/if}}{{__ ".publish"}}</button>
 
                 </div>
             </div>

@@ -17,6 +17,12 @@ Template.commentList.helpers({
         if (count > 0) {
             return count
         }
+    },
+    refreshScrollbar: function () {
+        return Template.currentData().refreshScrollbar
+    },
+    loadingMore: function () {
+        return Template.instance().isLoading.get()
     }
 });
 
@@ -25,21 +31,29 @@ Template.commentList.events({
     'click [loadMoreComments]': function (event, instance) {
         event.preventDefault()
         instance.limit.set(instance.limit.get() + 15)
+        instance.isLoading.set(true)
     }
 });
 
 Template.commentList.onCreated(function () {
     //add your statement here
     this.limit = new ReactiveVar(3)
+    this.isLoading = new ReactiveVar(true)
     this.autorun(() => {
         let commentCount = Publication.findOne(this.data.publication._id).commentCount
         if (commentCount > 0) {
-            Meteor.subscribe("rootComments", projectController.getAuthInfo(FlowRouter.current().params.projectId), this.data.publication._id, this.limit.get())
+            Meteor.subscribe("rootComments", projectController.getAuthInfo(FlowRouter.current().params.projectId), this.data.publication._id, this.limit.get(),(err)=>{
+                this.isLoading.set(false)
+                Meteor.setTimeout(() => {
+                    this.data.refreshScrollbar()
+                    this.isLoading.set(false)
+                }, 1000)
+            })
+        }else{
+            this.isLoading.set(false)
         }
 
-        Meteor.setTimeout(() => {
-            this.data.refreshScrollbar()
-        }, 1000)
+
     })
 });
 

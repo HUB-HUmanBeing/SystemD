@@ -15,7 +15,9 @@
             </div>
 
             <div class="left-align commentSmartContent">
-                {{>smartContent content=decryptedContent }}
+                {{#if decryptedContent}}
+                    {{>smartContent content=decryptedContent refreshScrollbar=refreshScrollbar }}
+                {{/if}}
             </div>
             <div class="commentFooter">
                 <a href="" class="link"><i class="material-icons">question_answer</i>{{__ ".answer"}}</a>

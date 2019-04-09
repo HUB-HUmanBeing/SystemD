@@ -8,6 +8,9 @@ Template.newComment.helpers({
     //add you helpers here
     textareaId: function () {
         return "newCommentText-" + Template.currentData().publication._id
+    },
+    isCreating: function () {
+        return Template.instance().isCreating.get()
     }
 });
 
@@ -15,6 +18,7 @@ Template.newComment.events({
     //add your events here
     'submit [newPublicationForm]': function (event, instance) {
         event.preventDefault()
+        instance.isCreating.set(true)
         let content = preFormatMessage($("#newCommentText-" + instance.data.publication._id).val())
         cryptoTools.sim_encrypt_data(content, Session.get("currentProjectSimKey"), encryptedContent => {
             let comment = new Comment()
@@ -34,6 +38,7 @@ Template.newComment.events({
                         console.log(err)
                     } else {
                         $("#newCommentText-" + instance.data.publication._id).val("")
+                        instance.isCreating.set(false)
                     }
                 })
         })
@@ -42,6 +47,7 @@ Template.newComment.events({
 
 Template.newComment.onCreated(function () {
     //add your statement here
+    this.isCreating = new ReactiveVar(false)
 });
 
 Template.newComment.onRendered(function () {

@@ -446,7 +446,8 @@
   },
   "publicationItem": {
     "delete": "Supprimer",
-    "deleteinfo": "Cette action supprimera définitivement la publication et tout ses commentaires"
+    "deleteInfo": "Cette action supprimera définitivement la publication et tout ses commentaires",
+    "deleteSuccess": "Cette publication et tout ses commentaires ont été supprimés"
   },
   "showPollContent": {
     "answers": "participants"
@@ -463,6 +464,7 @@
   },
   "commentItem": {
     "answer": "Répondre",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "deleteSuccess": "Commentaire supprimé."
   }
 }

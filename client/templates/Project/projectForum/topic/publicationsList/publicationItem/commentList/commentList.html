@@ -13,8 +13,11 @@
                 </div>
                 <ul class="commentListUl">
                     {{#each comment in comments}}
-                        {{>commentItem comment=comment isRootComment=true}}
+                        {{>commentItem comment=comment isRootComment=true  refreshScrollbar= refreshScrollbar}}
                     {{/each}}
+                    {{#if loadingMore}}
+                        {{>commentLoader}}
+                        {{/if}}
                 </ul>
                 {{#if commentLeft}}
                     <div class="">

@@ -103,11 +103,17 @@
                     {{/each}}
                 </ul>
             {{else}}
-                {{#unless showNewTopic}}
-                    <div class="small-padding" style="margin-bottom: -40px">
-                        <p class="infoQuotes" style="margin: 5px;"><i>{{__ ".noTopics"}}</i></p>
+                {{#if isLoading}}
+                    <div class="progress">
+                        <div class="indeterminate"></div>
                     </div>
-                {{/unless}}
+                {{else}}
+                    {{#unless showNewTopic}}
+                        <div class="small-padding" style="margin-bottom: -40px">
+                            <p class="infoQuotes" style="margin: 5px;"><i>{{__ ".noTopics"}}</i></p>
+                        </div>
+                    {{/unless}}
+                {{/if}}
             {{/if}}
             {{#if showNewTopic}}
                 <form action="" newTopicForm class="flex  " style="padding: 20px 15px 0 10px">
@@ -117,8 +123,9 @@
                         <label for="newTopicName">{{__ ".topicName"}}</label>
                     </div>
                     <div class="">
-                        <button href="" class="btn btn-floating waves-effect waves-light"><i
-                                class="material-icons prefix">done</i></button>
+                        <button href="" class="btn btn-floating waves-effect waves-light">
+                            {{#if isCreating}}{{>circleSpinner}}{{else}}<i
+                                class="material-icons prefix">done</i>{{/if}}</button>
                     </div>
                 </form>
 

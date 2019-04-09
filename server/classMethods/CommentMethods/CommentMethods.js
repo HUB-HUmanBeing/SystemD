@@ -47,7 +47,7 @@ Comment.extend({
             let currentProject = Project.findOne(comment.projectId)
             check(currentProject.isMember(authInfo), true)
             check(authInfo.memberId === comment.createdBy, true)
-            return comment.remove((err) => {
+            return comment.removeRecursive((err) => {
                 console.warn('todo: remover les comments enfants')
             })
         }

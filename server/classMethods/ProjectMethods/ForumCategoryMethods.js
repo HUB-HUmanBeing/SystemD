@@ -58,7 +58,7 @@ Project.extend({
                 ]
             }).fetch()
             insideTopics.forEach((topic)=>{
-                topic.remove()
+                topic.removeRecursive()
             })
 
             currentProject.private.forumCategories.splice(index, 1)

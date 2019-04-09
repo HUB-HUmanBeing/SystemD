@@ -75,7 +75,7 @@ Topic.extend({
             let currentProject = Project.findOne(topic.projectId)
             check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && topic.createdBy === authInfo.memberId), true)
             check(topic.isMainTopic, false)
-            return topic.remove()
+            return topic.removeRecursive()
         },
         toggleNotify(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})

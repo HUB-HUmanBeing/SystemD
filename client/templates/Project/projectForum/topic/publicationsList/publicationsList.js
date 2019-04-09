@@ -24,6 +24,7 @@ Template.publicationsList.events({
     //add your events here
     'click [showMore]': function (event, instance) {
         instance.limit.set(instance.limit.get() + 10)
+        instance.isWaiting.set(true)
     }
 });
 
@@ -48,7 +49,7 @@ Template.publicationsList.onCreated(function () {
                 if (err) {
                     console.log(err)
                 } else {
-
+                    this.isWaiting.set(false)
                 }
             })
             this.autorun(() => {
@@ -57,7 +58,7 @@ Template.publicationsList.onCreated(function () {
                         createdAt: -1
                     }
                 }).fetch())
-                this.isWaiting.set(false)
+
                 this.data.refreshScrollbar()
             })
         }

@@ -107,7 +107,7 @@ Publication.extend({
             let currentProject = Project.findOne(publication.projectId)
             check(currentProject.isMember(authInfo), true)
             check(authInfo.memberId === publication.createdBy, true)
-            return publication.remove((err) => {
+            return publication.removeRecursive((err) => {
                 console.warn('todo: remover les comments enfants')
             })
         }
