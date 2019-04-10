@@ -65,7 +65,8 @@
     "memberPromoted": "You now have admin rights on the project.",
     "genericTitle": "New activity on System-D",
     "genericAction": "See on website",
-    "newPublication": "A new publication has been added in a followed topic"
+    "newPublication": "A new publication has been added in a followed topic",
+    "newResponse": "A comment has been made after your message"
   },
   "showAcceptNotif": {
     "showAcceptNotifs": "Click accept to be notified of the activities on your projects",

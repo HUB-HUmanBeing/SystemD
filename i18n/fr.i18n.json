@@ -65,7 +65,8 @@
     "memberPromoted": "Vous avez désormais les droits d'administrateur sur le projet.",
     "genericTitle": "Nouvelle activité sur System-D",
     "genericAction": "Voir sur le site",
-    "newPublication": "Une nouvelle publication a été ajoutée dans une discussion que vous suivez"
+    "newPublication": "Une nouvelle publication a été ajoutée dans une discussion que vous suivez",
+    "newResponse": "Un Commentaire à été fait suite à l'un de vos messages."
   },
   "showAcceptNotif": {
     "showAcceptNotifs": "Cliquez sur accepter pour être averti des activités de votre projet.",

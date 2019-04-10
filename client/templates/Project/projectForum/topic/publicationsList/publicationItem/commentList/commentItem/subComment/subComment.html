@@ -1,10 +1,14 @@
 <template name="subComment">
 
-    <li class="commentItem subComment flex">
+    <li class="commentItem subComment flex relative">
+
         <div class="userAvatar shadow">
             {{>avatar userId=(userIdFromMemberId comment.createdBy)}}
         </div>
-        <div class="commentContent flex-auto small-shadow">
+        <div class="commentContent flex-auto small-shadow relative">
+            <div class="absolute" style="top:1.4em; right: -10px">
+                {{>likeBox class=comment}}
+            </div>
             <div class="commentHeader flex">
                 <div class="username">
                     {{usernameFromMemberId comment.createdBy}}
@@ -23,7 +27,8 @@
             {{#if  isDeletable }}
                 <div class="commentFooter">
 
-                    <a href="" class="link" deleteComment><i class="material-icons">delete</i>{{__ "commentItem.delete"}}</a>
+                    <a href="" class="link" deleteComment><i class="material-icons">delete</i>{{__
+                            "commentItem.delete"}}</a>
 
                 </div>
             {{/if}}

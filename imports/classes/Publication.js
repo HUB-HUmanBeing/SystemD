@@ -72,6 +72,12 @@ const Publication = Class.create({
             default: function () {
                 return 0
             }
+        },
+        likedBy: {
+            type: [String],
+            default: function () {
+                return [];
+            }
         }
 
     },

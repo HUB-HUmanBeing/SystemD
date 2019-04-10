@@ -103,6 +103,7 @@ Publication.extend({
         },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
+
             let publication = Publication.findOne(this._id)
             let currentProject = Project.findOne(publication.projectId)
             check(currentProject.isMember(authInfo), true)
@@ -110,6 +111,20 @@ Publication.extend({
             return publication.removeRecursive((err) => {
                 console.warn('todo: remover les comments enfants')
             })
+        },
+        toggleLike(authInfo){
+            check(authInfo, {memberId: String, userSignature: String})
+            let publication = Publication.findOne(this._id)
+            let currentProject = Project.findOne(publication.projectId)
+            check(currentProject.isMember(authInfo), true)
+                let memberIndex = publication.likedBy.indexOf(authInfo.memberId)
+                if (memberIndex > -1) {
+                    publication.likedBy.splice(memberIndex, 1)
+                }else{
+                    publication.likedBy.push(authInfo.memberId)
+                }
+
+            return publication.save()
         }
     }
 })

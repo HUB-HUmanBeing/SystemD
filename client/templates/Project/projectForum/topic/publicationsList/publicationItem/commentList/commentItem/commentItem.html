@@ -1,10 +1,13 @@
 <template name="commentItem">
-    <li class="commentItem flex">
+    <li class="commentItem flex relative">
 
         <div class="userAvatar shadow">
             {{>avatar userId=(userIdFromMemberId comment.createdBy)}}
         </div>
-        <div class="commentContent flex-auto small-shadow">
+        <div class="commentContent flex-auto small-shadow relative">
+            <div class="absolute" style="top:1.4em; right: -10px">
+                {{>likeBox class=comment}}
+            </div>
             <div class="commentHeader flex">
                 <div class="username">
                     {{usernameFromMemberId comment.createdBy}}
@@ -14,10 +17,11 @@
                 </div>
             </div>
 
-            <div class="left-align commentSmartContent">
+            <div class="left-align commentSmartContent relative">
                 {{#if decryptedContent}}
                     {{>smartContent content=decryptedContent refreshScrollbar=refreshScrollbar }}
                 {{/if}}
+
             </div>
             <div class="commentFooter">
                 {{#unless compare showAnswer '||' comment.commentCount}}
@@ -45,6 +49,11 @@
                             {{>subComment comment=comment refreshScrollbar=refreshScrollbar}}
                         {{/each}}
                     </ul>
+                    {{#if loadingMore}}
+                        <div class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                    {{/if}}
                     {{#if commentLeft}}
                         <div class="">
                             <a href="" class=" showMoreComment" loadMoreComments>

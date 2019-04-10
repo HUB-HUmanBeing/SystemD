@@ -28,12 +28,12 @@ Template.newSubComment.events({
                 isRootComment: false,
                 symEnc_content: encryptedContent
             }
-            console.warn('todo : notif les precedent comments')
+            let MembersToNotify= comment.getMembersToNotify(parentComment, projectController.getCurrentUserProject(parentComment.projectId).asymEnc_memberId)
             comment.callMethod(
                 "newSubComment",
                 projectController.getAuthInfo(parentComment.projectId),
                 subCommentParams,
-                notificationController.getNotifyObjects([parentComment.createdBy]),
+                notificationController.getNotifyObjects(MembersToNotify),
                 (err, res) => {
                     if (err) {
                         console.log(err)

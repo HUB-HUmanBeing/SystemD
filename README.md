@@ -48,7 +48,7 @@
  - [X]  Interface de modification du profil utilisateur 
  - [X]  Interface de création de projet 
  - [X]  Invitation à des projets et gestion des membres 
- - [ ]  Création d'un forum de discussion par projet 
+ - [X]  Création d'un forum de discussion par projet 
  - [ ]  Agenda participatif pour chacun des projets 
  - [ ]  Liste des taches ergonomique pour chaque projet 
  - [ ]  Interface pour soutenir ou participer à SystemD

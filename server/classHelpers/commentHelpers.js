@@ -19,6 +19,11 @@ Comment.extend({
                     })
                 }
             })
-        }
+        },
+        notify(membersToNotify,notifObjects){
+
+
+            NotifPush.notifyGlobally(membersToNotify, notifObjects, "newResponse",this.projectId,"forum", "categoryId="+this.categoryId+"&topicId="+this._id)
+        },
     }
 })

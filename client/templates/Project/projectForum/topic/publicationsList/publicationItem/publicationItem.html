@@ -1,5 +1,9 @@
 <template name="publicationItem">
-    <div class="publicationItem">
+    <div class="publicationItem relative">
+        <div class="absolute" style="top:10px; right: -15px">
+            {{>likeBox class=publication}}
+        </div>
+
         <div class="publicationHeader">
             <div class="authorInfo left-align flex">
                 <div class="userAvatar small-shadow">

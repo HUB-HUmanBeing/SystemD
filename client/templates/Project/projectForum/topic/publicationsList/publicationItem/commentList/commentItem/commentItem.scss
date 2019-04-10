@@ -65,7 +65,7 @@
 
     .commentSmartContent {
       margin-left: 10px;
-      width: 100%;
+      width: calc( 100% - 20px );
       font-size: 0.85em !important;
 
       .smartContent {

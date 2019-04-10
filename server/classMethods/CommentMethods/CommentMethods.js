@@ -35,7 +35,7 @@ Comment.extend({
                         memberId: String,
                         hashControl: String
                     }])
-                    console.warn("todo: envoyer les notifs")
+                    newComment.notify(this.getMembersToNotify(publication, authInfo.memberId), notifObjects)
                 } else {
                     console.log(err)
                 }
@@ -69,7 +69,7 @@ Comment.extend({
                         memberId: String,
                         hashControl: String
                     }])
-                    console.warn("todo: envoyer les notifs")
+                    newComment.notify(this.getMembersToNotify(comment, authInfo.memberId), notifObjects)
                 } else {
                     console.log(err)
                 }
@@ -81,8 +81,23 @@ Comment.extend({
             let currentProject = Project.findOne(comment.projectId)
             check(currentProject.isMember(authInfo), true)
             check(authInfo.memberId === comment.createdBy, true)
-                return comment.removeRecursive()
 
+            return comment.removeRecursive()
+
+        },
+        toggleLike(authInfo) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let comment = Comment.findOne(this._id)
+            let currentProject = Project.findOne(comment.projectId)
+            check(currentProject.isMember(authInfo), true)
+            let memberIndex = comment.likedBy.indexOf(authInfo.memberId)
+            if (memberIndex > -1) {
+                comment.likedBy.splice(memberIndex, 1)
+            } else {
+                comment.likedBy.push(authInfo.memberId)
+            }
+
+            return comment.save()
         }
     }
 })

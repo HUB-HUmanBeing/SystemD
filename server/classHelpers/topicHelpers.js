@@ -18,7 +18,7 @@ Topic.extend({
         notifySubscribers(notifObjects,memberToExclude){
             let membersToNotify = this.membersToNotify
             membersToNotify.forEach((memberId,i)=> {
-                if(memberId=memberToExclude){
+                if(memberId===memberToExclude){
                     membersToNotify.splice(i,1)
                 }
             })

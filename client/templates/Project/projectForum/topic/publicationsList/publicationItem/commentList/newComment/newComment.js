@@ -28,11 +28,12 @@ Template.newComment.events({
                 isRootComment: true,
                 symEnc_content: encryptedContent
             }
+            let MembersToNotify= comment.getMembersToNotify(publication, projectController.getCurrentUserProject(publication.projectId).asymEnc_memberId)
             comment.callMethod(
                 "newComment",
                 projectController.getAuthInfo(publication.projectId),
                 commentParams,
-                notificationController.getNotifyObjects([publication.createdBy]),
+                notificationController.getNotifyObjects(MembersToNotify),
                 (err, res) => {
                     if (err) {
                         console.log(err)
