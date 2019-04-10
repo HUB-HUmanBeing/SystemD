@@ -226,7 +226,22 @@ Meteor.publish("rootComments", function (authInfo, publicationId, limit) {
     let projectId = publication.projectId
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
-    return Comments.find({publicationId: publicationId, isRootComment:true}, {
+    return Comments.find({publicationId: publicationId, isRootComment: true}, {
+        limit: limit,
+        sort: {
+            createdAt: -1
+        }
+    })
+})
+Meteor.publish("subComments", function (authInfo, commentId, limit) {
+    check(commentId, String)
+    check(limit, Number)
+    let comment = Comments.findOne({_id: commentId})
+    check(authInfo, {memberId: String, userSignature: String})
+    let projectId = comment.projectId
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return Comments.find({commentId: commentId, isRootComment: false}, {
         limit: limit,
         sort: {
             createdAt: -1

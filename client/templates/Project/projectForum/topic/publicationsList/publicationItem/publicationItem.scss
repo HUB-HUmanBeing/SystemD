@@ -1,7 +1,13 @@
 @import "{}/client/scss/variables.scss";
 
 .publicationItem {
-  .publicationHeader {
+  .preloader-wrapper {
+    width: 20px;
+    height: 20px;
+    margin-top: calc(50% - 7.5px);
+    cursor: wait;
+  }
+    .publicationHeader {
     position: relative;
 
     margin: -5px -5px 0px -5px;

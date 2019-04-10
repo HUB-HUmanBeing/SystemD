@@ -26,7 +26,6 @@ Template.beautyfullTextarea.onCreated(function () {
 
 Template.beautyfullTextarea.onRendered(function () {
     //add your statement here
-    $('#newPublicationText').val(Template.currentData().textContent)
     $('#newPublicationText').trigger('autoresize');
     $('#newPublicationText').characterCounter();
     $('#newPublicationText').focus()

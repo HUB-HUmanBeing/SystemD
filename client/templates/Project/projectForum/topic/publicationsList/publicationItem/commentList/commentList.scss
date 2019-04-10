@@ -11,6 +11,7 @@
     position: relative;
     top: -10px;
 
+
     i {
       position: relative;
       bottom: -7px;
@@ -58,12 +59,12 @@
     }
 
     .textareaSuperContainter {
-      background-color: $contrasted-minus-bg !important;
-      margin: 0px 0 5px 0;
+      background-color: $contrasted-minus-bg ;
+      margin: 0px 0 2.5px 0;
       padding: 7px 60px 0 10px;
       border-radius: 1em;
       opacity: 0.8;
-
+      transition: 0.3s;
       &:hover {
         opacity: 1;
       }

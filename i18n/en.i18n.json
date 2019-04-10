@@ -462,6 +462,11 @@
   "commentItem": {
     "answer": "Answer",
     "delete": "Delete",
-    "deleteSuccess": "Comment deleted."
+    "deleteSuccess": "Comment deleted.",
+    "see": "see",
+    "moreComments": "other answers"
+  },
+  "newSubComment": {
+    "placeholder": "Your answer..."
   }
 }

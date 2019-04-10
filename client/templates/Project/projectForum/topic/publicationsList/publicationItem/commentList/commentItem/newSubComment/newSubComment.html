@@ -1,0 +1,15 @@
+<template name="newSubComment">
+    <form class="relative no-padding" id="newSubCommentForm-{{comment._id}}" newSubCommentForm>
+
+        {{>beautyfullTextarea id=textareaId placeholder=(__ ".placeholder") minheight="0" rows="1"}}
+
+
+        <button class="sendCommentBtn absolute">{{#if isCreating}}
+            {{>circleSpinner}}
+        {{else}}
+            <i class="material-icons left">send</i>
+        {{/if}}</button>
+
+
+    </form>
+</template>

@@ -8,37 +8,41 @@ const Comment = Class.create({
 
         projectId: {
             type: String,
-            index:1
+            index: 1
         },
         publicationId: {
             type: String,
-            index:1
+            index: 1
         },
-        commentId:{
+        commentId: {
             type: String,
-            index:1,
-            optional:true
+            index: 1,
+            optional: true
         },
-        isRootComment:{
+        isRootComment: {
             type: Boolean,
-            index:1
+            index: 1
         },
         createdBy: { //memberId of the admin who emit the Comment
             type: String
         },
         symEnc_content: {
-            type:String
+            type: String
         },
         createdAt: {
             type: Date,
             default: function () {
                 return new Date()
             }
+        },
+        commentCount: {
+            type: Number,
+            default: function () {
+                return 0
+            }
         }
     },
-    helpers: {
-
-    }
+    helpers: {}
 
 });
 

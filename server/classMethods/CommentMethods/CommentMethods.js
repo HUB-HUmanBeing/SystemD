@@ -41,15 +41,48 @@ Comment.extend({
                 }
             })
         },
+        newSubComment(authInfo, subCommentParmas, notifObjects) {
+            check(subCommentParmas, {
+                commentId: String,
+                isRootComment: Boolean,
+                symEnc_content: String
+            })
+            check(authInfo, {memberId: String, userSignature: String})
+
+            let comment = Comment.findOne(subCommentParmas.commentId)
+            let currentProject = Project.findOne(comment.projectId)
+            check(currentProject.isMember(authInfo), true)
+
+            let computedParams = {
+                projectId: currentProject._id,
+                createdBy: authInfo.memberId,
+                publicationId: comment.publicationId
+            }
+            subCommentParmas = {...subCommentParmas, ...computedParams}
+            let newComment = new Comment(subCommentParmas)
+            return newComment.save((err) => {
+                if (!err) {
+                    comment.commentCount++
+                    comment.save()
+                    check(notifObjects, [{
+                        userId: String,
+                        memberId: String,
+                        hashControl: String
+                    }])
+                    console.warn("todo: envoyer les notifs")
+                } else {
+                    console.log(err)
+                }
+            })
+        },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
             let comment = Comment.findOne(this._id)
             let currentProject = Project.findOne(comment.projectId)
             check(currentProject.isMember(authInfo), true)
             check(authInfo.memberId === comment.createdBy, true)
-            return comment.removeRecursive((err) => {
-                console.warn('todo: remover les comments enfants')
-            })
+                return comment.removeRecursive()
+
         }
     }
 })

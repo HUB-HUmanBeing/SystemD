@@ -1,11 +1,13 @@
 @import "{}/client/scss/variables.scss";
 
 .commentItem {
-  margin: 5px 0;
+  margin: 2.5px 0;
 
-  &:hover .commentFooter {
-    opacity: 1;
+  &:hover{
+    >.commentContent>.commentFooter {
+      opacity: 1;
 
+    }
   }
 
   .userAvatar {
@@ -43,6 +45,7 @@
     border-radius: 1em;
     opacity: 0.8;
     width: 100%;
+    transition: 0.3s;
 
     &:hover {
       opacity: 1;

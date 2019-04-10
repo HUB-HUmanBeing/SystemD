@@ -40,16 +40,16 @@ Template.commentList.onCreated(function () {
     this.limit = new ReactiveVar(3)
     this.isLoading = new ReactiveVar(true)
     this.autorun(() => {
-        let commentCount = Publication.findOne(this.data.publication._id).commentCount
-        if (commentCount > 0) {
-            Meteor.subscribe("rootComments", projectController.getAuthInfo(FlowRouter.current().params.projectId), this.data.publication._id, this.limit.get(),(err)=>{
+        let publication = Publication.findOne(this.data.publication._id)
+        if (publication && publication.commentCount > 0) {
+            Meteor.subscribe("rootComments", projectController.getAuthInfo(FlowRouter.current().params.projectId), this.data.publication._id, this.limit.get(), (err) => {
                 this.isLoading.set(false)
                 Meteor.setTimeout(() => {
                     this.data.refreshScrollbar()
                     this.isLoading.set(false)
                 }, 1000)
             })
-        }else{
+        } else {
             this.isLoading.set(false)
         }
 
@@ -59,6 +59,7 @@ Template.commentList.onCreated(function () {
 
 Template.commentList.onRendered(function () {
     //add your statement here
+    this.data.refreshScrollbar()
 });
 
 Template.commentList.onDestroyed(function () {

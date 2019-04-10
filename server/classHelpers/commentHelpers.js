@@ -11,7 +11,8 @@ Comment.extend({
                 if (cb) {
                     cb(err)
                 }
-                if (!err) {
+
+                if (!err && this.isRootComment) {
                     let commentsInside = Comment.find({commentId: this._id}).fetch()
                     commentsInside.forEach(comment => {
                         comment.remove()

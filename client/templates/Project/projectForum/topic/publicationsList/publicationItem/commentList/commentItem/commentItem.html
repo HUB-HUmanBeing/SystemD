@@ -20,12 +20,42 @@
                 {{/if}}
             </div>
             <div class="commentFooter">
-                <a href="" class="link"><i class="material-icons">question_answer</i>{{__ ".answer"}}</a>
+                {{#unless compare showAnswer '||' comment.commentCount}}
+                    <a href="" class="link" answerComment><i class="material-icons">question_answer</i>{{__ ".answer"}}
+                    </a>
+                {{/unless}}
                 {{#if  isDeletable }}
                     <a href="" class="link" deleteComment><i class="material-icons">delete</i>{{__ ".delete"}}</a>
                 {{/if}}
             </div>
-        </div>
+            {{#if compare showAnswer '||' comment.commentCount}}
+                <div class="subCommentsContainer relative">
+                    <hr class="hr"/>
+                    <div class="newComment flex newSubComment">
+                        <div class="userAvatar shadow">
+                            {{>avatar userId=(userIdFromMemberId comment.createdBy)}}
+                        </div>
+                        <div class="flex-auto">
+                            {{>newSubComment comment=comment}}
+                        </div>
 
+                    </div>
+                    <ul class="commentListUl">
+                        {{#each comment in comments}}
+                            {{>subComment comment=comment refreshScrollbar=refreshScrollbar}}
+                        {{/each}}
+                    </ul>
+                    {{#if commentLeft}}
+                        <div class="">
+                            <a href="" class=" showMoreComment" loadMoreComments>
+                                <i class="material-icons">expand_more</i>
+                                {{__ ".see"}} {{commentLeft}} {{__ ".moreComments"}}
+                            </a>
+                        </div>
+
+                    {{/if}}
+                </div>
+            {{/if}}
+        </div>
     </li>
 </template>

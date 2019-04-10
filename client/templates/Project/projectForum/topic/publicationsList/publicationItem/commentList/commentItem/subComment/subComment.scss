@@ -1,0 +1,30 @@
+@import "{}/client/scss/variables.scss";
+
+.subCommentsContainer {
+  hr{
+    position: relative !important;
+    top: 0 !important;
+    border: none;
+    width: 90% !important;
+    margin-top: 5px !important;
+  };
+  .userAvatar {
+    width: 30px !important;
+    height: 25px !important;
+  }
+
+  .newSubComment {
+    .textareaSuperContainter{
+      margin-bottom: 2.5px !important;
+      background-color: rgba($light-bg, 0.2) !important;
+    }
+  }
+
+  .subComment {
+    margin: 2.5px 0;
+    .commentContent{
+      background-color: rgba($light-bg, 0.2) !important;
+    }
+  }
+
+}

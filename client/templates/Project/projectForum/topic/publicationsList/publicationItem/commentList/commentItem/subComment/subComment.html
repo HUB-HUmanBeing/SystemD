@@ -1,0 +1,32 @@
+<template name="subComment">
+
+    <li class="commentItem subComment flex">
+        <div class="userAvatar shadow">
+            {{>avatar userId=(userIdFromMemberId comment.createdBy)}}
+        </div>
+        <div class="commentContent flex-auto small-shadow">
+            <div class="commentHeader flex">
+                <div class="username">
+                    {{usernameFromMemberId comment.createdBy}}
+                </div>
+                <div class="commentDate flex-auto right-align">
+                    {{formatDate comment.createdAt}}
+                </div>
+            </div>
+
+            <div class="left-align commentSmartContent">
+                {{#if decryptedContent}}
+                    {{>smartContent content=decryptedContent refreshScrollbar=refreshScrollbar }}
+                {{/if}}
+            </div>
+
+            {{#if  isDeletable }}
+                <div class="commentFooter">
+
+                    <a href="" class="link" deleteComment><i class="material-icons">delete</i>{{__ "commentItem.delete"}}</a>
+
+                </div>
+            {{/if}}
+        </div>
+    </li>
+</template>

@@ -465,6 +465,11 @@
   "commentItem": {
     "answer": "Répondre",
     "delete": "Supprimer",
-    "deleteSuccess": "Commentaire supprimé."
+    "deleteSuccess": "Commentaire supprimé.",
+    "see": "Voir les",
+    "moreComments": "autres réponses"
+  },
+  "newSubComment": {
+    "placeholder": "Votre réponse..."
   }
 }
