@@ -1,0 +1,54 @@
+<template name="newMarker">
+    <div id="newMarker">
+        <h5>{{__ ".title"}}</h5>
+        <div class="row no-margin">
+            <div class="col s12">
+                <div class="hr"></div>
+                <p class="sectionLabel">{{__ ".color"}}</p>
+                <div class="flex colorPicker">
+                    {{#each color in colors}}
+                        <div class="flex-auto center-align">
+
+                            <a href="" id="color-{{color}}"
+                               class="colorItem shadow {{#if compare selectedColor "==" color}}selectedColor{{/if}}"
+                               style="background-color: {{color}}" selectColor></a>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="row no-margin">
+            <div class="col s12">
+                <div class="hr"></div>
+                <p class="sectionLabel">{{__ ".color"}}</p>
+                <ul class="collapsible" data-collapsible="accordion" id="markerList">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small-shadow" style="background-color:{{selectedColor}}">location_on</i>{{__ ".icons"}}</div>
+                        <div class="collapsible-body">
+                            <div class="row iconPicker no-margin" style="background-color:{{selectedColor}}">
+                                {{#each icon in icons}}
+                                    <a href="" id="newMarker#icon#{{icon}}" class="iconItem col s2 no-padding center-align" selectIcon>
+                                        <i class="material-icons" >{{icon}}</i>
+                                    </a>
+                                {{/each}}
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small-shadow" style="background-color:{{selectedColor}}">timeline</i>{{__ ".lines"}}</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small-shadow" style="background-color:{{selectedColor}}">call_made</i>{{__ ".arrows"}}</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons small-shadow" style="background-color:{{selectedColor}}">crop_16_9</i>{{__ ".shapes"}}</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>

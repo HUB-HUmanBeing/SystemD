@@ -1,0 +1,272 @@
+@import "{}/client/scss/variables.scss";
+//@import "{}/client/scss/pluginsLib/leaflet.css";
+
+#projectMaps {
+  width: 100%;
+  position: relative;
+
+  &.desktopProjectMaps {
+    height: 100vh;
+  }
+
+  &.mobileProjectMaps {
+    height: calc(100vh - 121px);
+  }
+
+  &.tabletProjectMaps {
+    height: calc(100vh - 129px);
+  }
+
+  #mapContainer {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+
+    &.creatingIcon {
+      #map {
+        cursor: crosshair;
+      }
+    }
+
+    .markerIcon {
+      .icon {
+        width: 34px;
+        height: 34px;
+        padding: 3px 0 0 3px;
+        border-radius: 50%;
+        border: 2px solid $plus-color;
+
+      }
+
+      .arrow-down {
+        z-index: 103;
+        width: 0px;
+        height: 0px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        position: absolute;
+        left: 12px;
+        bottom: -5px;
+      }
+    }
+
+    #newIconMarker {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      z-index: 102;
+
+    }
+
+    .closeSideNav {
+      content: " ";
+      top: 0;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 101;
+    }
+
+    .btn-floating {
+      i {
+        color: $plus-color;
+      }
+    }
+
+    .addBtn {
+      background-color: $danger-text;
+      position: absolute;
+      bottom: calc(5em - 28px);
+      right: 10px;
+      z-index: 600;
+      i {
+        font-size: 2.6em;
+      }
+    }
+
+    #mapButtons {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      z-index: 500;
+      margin: 0;
+
+      .chatBtn {
+        background-color: $blue-highlight-color;
+      }
+
+      .settingsBtn {
+        background-color: $contrasted-plus-bg;
+      }
+
+      li {
+        margin-top: 5px !important;
+
+        a {
+          position: relative;
+          z-index: 400;
+        }
+      }
+
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      background-color: $main-color;
+      z-index: 100;
+
+      .leaflet-marker-icon {
+        border: none;
+width: 0 !important;
+        height: 0!important;
+        .markerIcon {
+          position: absolute;
+          bottom: 0px;
+          left: -11px;
+          .icon {
+            width: 34px;
+            height: 34px;
+            padding: 3px 0 0 3px;
+
+          }
+
+          .arrow-down {
+            z-index: 101;
+            width: 0px;
+            height: 0px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            position: absolute;
+          }
+        }
+      }
+
+      .leaflet-control-minimap {
+        z-index: 102;
+        -webkit-box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
+        box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
+        bottom: 0 !important;
+        left: 0 !important;
+        margin: 16px 15px !important;
+        border-radius: 10px;
+        filter: brightness(95%);
+        border: 2px solid $lighter-bg;
+      }
+
+      .leaflet-control-scale {
+        z-index: 102;
+        position: absolute;
+        top: -5px;
+        left: 10px;
+        height: 5px;
+        border-left: 2px solid $lighter-bg;
+        border-bottom: 2px solid $lighter-bg;
+        border-right: 2px solid $lighter-bg;
+
+        .leaflet-control-scale-line {
+          position: relative;
+          bottom: 12px;
+          background-color: transparent;
+          border: none;
+          color: $lighter-bg;
+          font-size: 13px;
+          font-weight: bold;
+        }
+      }
+
+      .leaflet-control-zoom {
+        border: none;
+
+
+        .leaflet-control-zoom-in {
+          margin-bottom: 2px;
+          z-index: 102;
+        }
+
+        .leaflet-control-zoom-out, .leaflet-control-zoom-in {
+          color: $plus-color !important;
+          z-index: 102;
+          border-radius: 5px;
+          background-color: $main-bg;
+          -webkit-box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
+          -moz-box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
+          box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
+
+        }
+      }
+    }
+
+    #mapFooter {
+      color: $main-color;
+      position: absolute;
+      background-color: $main-bg;
+      height: 5em;
+      bottom: -5em;
+      width: 100%;
+      transition: 0.3s ease-out;
+      z-index: 200;
+
+      &.footerOpened {
+        bottom: 0;
+      }
+    }
+  }
+
+
+  #mapSideNav {
+    height: 100%;
+    color: $main-color;
+    z-index: 600;
+
+
+    &.desktopMapSideNav {
+      width: 30%;
+      min-width: 300px;
+      max-width: 400px;
+      position: relative;
+
+
+    }
+
+    &.mobileMapSideNav, &.tabletMapSideNav {
+      top: 0;
+      position: absolute;
+      transition: 0.3s ease-out;
+
+    }
+
+    &.mobileMapSideNav {
+      width: calc(100vw - 70px);
+      right: calc(-100vw + 70px);
+
+      &.openedSideNav {
+        right: 0;
+      }
+    }
+
+    &.tabletMapSideNav {
+      width: 300px;
+      right: -300px;
+
+      &.openedSideNav {
+        right: 0;
+
+        #sideMapContent {
+          overflow: scroll;
+        }
+      }
+    }
+
+    #sideMapContent {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+
+  }
+}

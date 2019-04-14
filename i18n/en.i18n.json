@@ -24,7 +24,7 @@
     "params": "Parameters",
     "calendar": "Calendar",
     "tasks": "Tasks Lists",
-    "maps": "Maps",
+    "maps": "Map",
     "members": "Members"
   },
   "menu": {
@@ -469,5 +469,19 @@
   },
   "newSubComment": {
     "placeholder": "Your answer..."
+  },
+  "mapParams": {
+    "topo": "Topo",
+    "aerial": "Aerial",
+    "standard": "Standard"
+  },
+  "mapSettings": {
+    "title": "Parameters",
+    "kindOfMap": "Type of map : ",
+    "saveChoice": "Use this kind of map by défault for all project members.",
+    "save": "Save",
+    "defaultCenter": "Default center : ",
+    "defaultCenterInfo": "Center the map on the zone you want to appears by default and click save.",
+    "centerSaved": "Default center of the map has been edited."
   }
 }

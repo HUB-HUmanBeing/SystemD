@@ -1,3 +1,53 @@
 <template name="projectMaps">
+    <div id="projectMaps" class=" {{#if isDesktop}} flex desktopProjectMaps {{else}}{{#if
+            isPhone}} mobileProjectMaps {{else}} tabletProjectMaps{{/if}}{{/if}}">
+        <div id="mapContainer" class="relative {{mapState.currentAction}} {{#if isDesktop}} flex-auto {{/if}}">
+            <ul id="mapButtons">
+                <li>
+                    <a href="/project/{{currentProject._id}}/maps?side=mapChat"
+                       class="btn-floating btn chatBtn small-shadow"><i
+                            class="material-icons">chat</i></a>
+                </li>
+                <li>
+                    <a href="/project/{{currentProject._id}}/maps?side=mapSettings"
+                       class="btn-floating btn settingsBtn small-shadow"><i
+                            class="material-icons">settings</i></a>
+                </li>
+                {{#if showFullScreen}}
+                    <li>
+                        <a href="#"
+                           class="btn-floating btn settingsBtn small-shadow" fullScreen><i
+                                class="material-icons">{{#if isFullScreen}}
+                            fullscreen_exit{{else}}zoom_out_map{{/if}}</i></a>
+                    </li>
+                {{/if}}
+            </ul>
+            <div id="map" class="">
 
+            </div>
+            <a href="/project/{{currentProject._id}}/maps?side=newMarker"
+               class="btn-floating btn danger-bg addBtn btn-large shadow" newMarker><i
+                    class="material-icons large">add</i></a>
+            <div id="mapFooter" class="{{#if mapState.currentAction}}footerOpened{{/if}}">
+                {{#if mapState.currentAction}}
+                    {{#Template.dynamic template=mapState.currentAction data=sideNavData}}{{/Template.dynamic}}
+                {{/if}}
+            </div>
+            {{#if sideNav}}
+                {{#unless isDesktop}}
+                    <div class="closeSideNav" closeSideNav></div>
+
+                {{/unless}}
+            {{/if}}
+        </div>
+        <div id="mapSideNav" class="gradiant-dark shadow {{#if isDesktop}} desktopMapSideNav{{else}} {{#if
+                isPhone}}mobileMapSideNav{{else}}tabletMapSideNav{{/if}} {{#if
+                sideNav}}openedSideNav{{/if}}{{/if}}">
+
+            <div id="sideMapContent">
+                {{#Template.dynamic template=sideNav data=sideNavData}}{{/Template.dynamic}}
+            </div>
+
+        </div>
+    </div>
 </template>

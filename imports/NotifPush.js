@@ -34,10 +34,11 @@ const NotifPush = {
             let payload = this.translateAndFormatMessage(pushSubscription.language, message)
 
             let subscription = JSON.parse(pushSubscription.subscription)
-            subscription.endpoint = 'https://cors-anywhere.herokuapp.com/' + subscription.endpoint
-            console.log(subscription)
+
             webPush
-                .sendNotification(subscription, payload)
+                .sendNotification(subscription, payload,{
+                    headers:{"Access-Control-Allow-Headers": "x-requested-with, x-requested-by"}
+                })
                 .then(() => {
                     console.log('push')
                 })

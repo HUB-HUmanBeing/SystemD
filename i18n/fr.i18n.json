@@ -24,7 +24,7 @@
     "params": "Paramètres",
     "calendar": "Agenda",
     "tasks": "Taches",
-    "maps": "Cartes",
+    "maps": "Carte",
     "members": "Membres"
   },
   "menu": {
@@ -472,5 +472,19 @@
   },
   "newSubComment": {
     "placeholder": "Votre réponse..."
+  },
+  "mapParams": {
+    "topo": "Topo",
+    "aerial": "Aérienne",
+    "standard": "Standard"
+  },
+  "mapSettings": {
+    "title": "Paramètres",
+    "kindOfMap": "Type de carte : ",
+    "saveChoice": "Utiliser ce fond de carte par défaut pour tout les membres du projet.",
+    "save": "Enregistrer",
+    "defaultCenter": "Centrage par défaut : ",
+    "defaultCenterInfo": "Centrer la carte sur la zone que vous souhaitez voir apparaitre par défaut puis cliquez sur enregistrer",
+    "centerSaved": "Le centrage par défaut de votre carte à été modifié."
   }
 }

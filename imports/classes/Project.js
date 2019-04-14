@@ -50,7 +50,7 @@ const ForumCategory = Class.create({
     fields: {
         categoryId: String,
         symEnc_name: {
-            type:String
+            type: String
         },
         createdAt: {
             type: Date,
@@ -64,7 +64,7 @@ const ForumCategory = Class.create({
                 return [];
             }
         },
-        topicCount:{
+        topicCount: {
             type: Number,
             default: function () {
                 return 0
@@ -72,7 +72,25 @@ const ForumCategory = Class.create({
         }
     }
 })
-
+const Map = Class.create({
+    name: "Map",
+    fields: {
+        zoomLevel: {
+            type: Number,
+            default: function () {
+                return 6
+            }
+        },
+        symEnc_center: {
+            type: String,
+            optional: true,
+        },
+        symEnc_mapProvider: {
+            type: String,
+            optional:true
+        }
+    }
+})
 const ProjectPublic = Class.create({
     name: 'ProjectPublic',
     fields: {
@@ -134,9 +152,15 @@ const ProjectPrivate = Class.create({
                 return [];
             }
         },
-        mainTopicId:{
+        mainTopicId: {
             type: String,
             optional: true
+        },
+        map: {
+            type: Map,
+            default: function () {
+                return {};
+            }
         }
 
     }
