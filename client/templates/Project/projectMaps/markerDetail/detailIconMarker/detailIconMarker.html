@@ -1,0 +1,45 @@
+<template name="detailIconMarker">
+    <div id="detailIconMarker">
+        <div class="iconMarkerHead center-align" style="background-color: {{marker.iconMarker.symEnc_color}}">
+
+            <div class="relative iconContainer">
+                <a href="" class="btn btn-floating editIconBtn" editIcon><i class="material-icons">edit</i></a>
+
+                <i class="material-icons white-text large small-padding small-margin">{{marker.iconMarker.symEnc_icon}}</i>
+                <a href="" class="btn btn-floating editColorBtn" editColor><i class="material-icons">color_lens</i></a>
+
+
+            </div>
+
+        </div>
+        {{#if editingColor}}
+            <div class="editIcon">
+                <div class="flex colorPicker">
+                    {{#each color in colors}}
+                        <div class="flex-auto center-align">
+
+                            <a href="" id="color-{{color}}"
+                               class="colorItem shadow {{#if compare marker.iconMarker.symEnc_color "=="
+                                                             color}}selectedColor{{/if}}"
+                               style="background-color: {{color}}" selectColor></a>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+        {{#if editingIcon}}
+            <div class="editIcon">
+                <div class="row iconPicker no-margin" style="background-color:{{selectedColor}}">
+                    {{#each icon in icons}}
+                        <a href="" id="newMarker#icon#{{icon}}" class="iconItem col s2 no-padding center-align"
+                           selectIcon>
+                            <i class="material-icons">{{icon}}</i>
+                        </a>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+    </div>
+
+
+</template>

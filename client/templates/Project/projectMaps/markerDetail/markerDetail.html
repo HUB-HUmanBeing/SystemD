@@ -1,0 +1,75 @@
+<template name="markerDetail">
+    <div id="markerDetail">
+        {{#if marker}}
+            <div class="row relative" style="margin-bottom: 5px">
+                {{#Template.dynamic template=templateName data=data}}{{/Template.dynamic}}
+                <div class="publicationHeader small-padding">
+                    <div class="authorInfo left-align flex">
+                        <div class="userAvatar small-shadow">
+                            {{>avatar userId=(userIdFromMemberId marker.createdBy)}}
+                        </div>
+                        <div class="flex-auto" style="padding-left: 0.2em">
+                            <div class="publicationDate ">
+                                {{#if marker.lastEditAt}}
+                                    {{formatDate marker.lastEditAt}}{{__ ".lastEdit"}}
+                                {{else}}
+                                    {{formatDate marker.createdAt}}
+                                {{/if}}
+                            </div>
+                            <div class="username">
+                                {{__ ".createdBy"}} {{usernameFromMemberId marker.createdBy}}
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row no-margin">
+                <div class="col s12">
+                    <form id="EditMarkerForm" action="" editMarker class="">
+                        <div class="input-field ">
+                            <input id="markerName" type="text" class="no-margin" placeholder="{{__ ".markerName"}}"
+                                   value="{{subData.symEnc_name}}">
+                        </div>
+                        <div class="input-field ">
+                            <textarea id="editMarkerDetail" type="text" class="materialize-textarea no-margin"
+                                      value="{{subData.symEnc_detail}}"></textarea>
+                            <label for="editMarkerDetail">{{__ ".markerDetail"}}</label>
+                        </div>
+                        {{#if showEditFormButton}}
+                            <div class="right-align">
+                                <button href="" class="btn btnStandard waves-effect waves-light">
+                                    <i class="material-icons left">edit</i>{{__ ".editMarker"}}</button>
+                            </div>
+                        {{/if}}
+                    </form>
+
+                </div>
+            </div>
+            <div class="row no-margin">
+                <div class="col s12">
+                    <div class="hr"></div>
+                </div>
+                <div class="col s6">
+                    <a href="" class="btn btnStandard full-width waves-effect waves-light" moveMarker>
+                        {{__ ".moveMarker"}}</a>
+                </div>
+                <div class="col s6">
+                    <a href="" class="btn btn-danger waves-effect waves-light full-width" deleteMarker>
+                        {{__ ".deleteMarker"}}</a>
+                </div>
+            </div>
+            <div class="row no-margin">
+                <div class="col s12">
+                    <div class="hr"></div>
+                    <p class="sectionLabel">{{__ ".coordinates"}}</p>
+                    <div class="coordinates">{{coordinates}}</div>
+                </div>
+            </div>
+
+        {{/if}}
+    </div>
+</template>

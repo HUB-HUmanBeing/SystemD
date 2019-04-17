@@ -12,8 +12,8 @@ Template.projectMaps.helpers({
     },
     sideNav: function () {
         FlowRouter.watchPathChange()
-
-        return FlowRouter.current().queryParams.side
+        console.log()
+        return (Meteor.Device.isDesktop() || !Template.instance().mapState.get().type) && FlowRouter.current().queryParams.side
     },
     showFullScreen: function () {
         return true

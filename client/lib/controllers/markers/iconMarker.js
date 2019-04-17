@@ -7,11 +7,11 @@ import * as L from "leaflet";
 const iconMarker = {
     iconHtml(options, id) {
         return `
-<div class="markerIcon" id="${escapeHtml(id)}">
-    <a href="${escapeHtml(options.path)}" class="rounded ${escapeHtml(options.name) ? "tooltipped" : ""} "
+<div id="${escapeHtml(id)}" class="markerIcon ${escapeHtml(options.name) ? "tooltipped" : ""} "
                      data-position="top"
-                     data-delay="50" data-tooltip="${escapeHtml(options.name)}">
-        <i class="material-icons plus-color icon shadow" style="background-color: ${escapeHtml(options.color)}">${escapeHtml(options.icon)}</i>
+                     data-delay="50" data-tooltip="${escapeHtml(options.name)}" >
+    <a href="${escapeHtml(options.path)}" class="rounded ">
+        <i class="material-icons plus-color icon shadow" style="border-color: ${escapeHtml(options.color)}; color: ${escapeHtml(options.color)}">${escapeHtml(options.icon)}</i>
     </a>
 
     <i class="arrow-down" style="border-top: 8px solid ${escapeHtml(options.color)}"></i>
@@ -58,7 +58,10 @@ const iconMarker = {
                         console.log(err)
                         Materialize.toast(__('general.error'), 6000, 'toastError')
                     } else {
-                        console.log(res)
+                        FlowRouter.go("/project/" + newMarkerParams.projectId + "/maps?side=markerDetail&markerId=" + res)
+                        Meteor.setTimeout(() => {
+                            $('#markerName').focus()
+                        }, 300)
                     }
                 }
             )
@@ -73,6 +76,41 @@ const iconMarker = {
             mapState.set({})
         }
         mapController.map.on('click', this.addMarker)
+    },
+    editMarkerCoordinates(marker, coordinates) {
+        cryptoTools.sim_encrypt_data(JSON.stringify(coordinates), Session.get("currentProjectSimKey"), symEnc_coordinates => {
+            marker.callMethod("moveMarker", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_coordinates, err => {
+                if (err) {
+                    console.log(err)
+                } else {
+
+                }
+            })
+        })
+    },
+    editCoordinates: function (e) {
+
+    },
+    moveMarker(marker, mapState) {
+        $('#marker-' + marker._id).css('opacity', '0.4')
+        this.createMouseFollower({
+            color: marker[marker.markerType].symEnc_color,
+            icon: marker[marker.markerType].symEnc_icon
+        }, "newIconMarker")
+        this.editCoordinates = (e) => {
+            this.editMarkerCoordinates(marker, [e.latlng.lat, e.latlng.lng])
+            this.stopEditing(marker)
+            mapState.set({})
+        }
+        mapController.map.on('click', this.editCoordinates)
+
+    },
+    stopEditing(marker) {
+        $('#marker-' + marker._id).css('opacity', '1')
+        let element = document.getElementById("newIconMarker");
+        mapController.map.off('click', this.editCoordinates)
+        element.removeEventListener('mousemove', this.mouseFollower)
+        element.remove();
     },
     stop() {
         let element = document.getElementById("newIconMarker");
@@ -97,20 +135,36 @@ const iconMarker = {
             marker.iconMarker = decryptedIconMarker
             marker.leafletMarker = leafletMarker
             mapController.markers[marker._id] = marker
-            console.log(mapController.markers)
             Meteor.setTimeout(() => {
                 resetTooltips()
             }, 200)
         })
     },
     editMarker(marker) {
-        this.removeMarker(marker)
         this.showMarker(marker)
+        this.removeMarker(marker)
     },
     removeMarker(marker) {
-        mapController.map.removeLayer(marker)
-        marker.leafletMarker.remove()
-        console.log("todo: removemarker")
-    }
+        let leafletMarker = mapController.markers[marker._id].leafletMarker
+        mapController.map.removeLayer(leafletMarker)
+    },
+    startHighlightMapIcon(marker) {
+        Meteor.setTimeout(() => {
+            $("#marker-" + marker._id).addClass("highLighted")
+            if (mapController.map.panTo) {
+                mapController.map.panTo(JSON.parse(marker.iconMarker.symEnc_coordinates));
+
+            } else {
+                Meteor.setTimeout(() => {
+                    mapController.map.panTo(JSON.parse(marker.iconMarker.symEnc_coordinates));
+                }, 1000)
+            }
+
+        }, 100)
+
+    },
+    stopHighlightMapIcon(markerId) {
+        $("#marker-" + markerId).removeClass("highLighted")
+    },
 }
 export default iconMarker

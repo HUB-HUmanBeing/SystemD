@@ -44,7 +44,7 @@
                 isPhone}}mobileMapSideNav{{else}}tabletMapSideNav{{/if}} {{#if
                 sideNav}}openedSideNav{{/if}}{{/if}}">
 
-            <div id="sideMapContent">
+            <div id="sideMapContent" style="{{#unless isDesktop}}overflow: scroll;{{else}}{{/unless}}">
                 {{#Template.dynamic template=sideNav data=sideNavData}}{{/Template.dynamic}}
             </div>
 

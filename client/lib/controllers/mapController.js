@@ -73,6 +73,13 @@ const mapController = {
         this[type].default.initialize(options, mapState)
         mapState.set({currentAction: "creatingIcon", type: 'iconMarker', options: options})
     },
+    moveMarker(marker, mapState) {
+        this[marker.markerType].default.moveMarker(marker, mapState)
+        mapState.set({currentAction: "editingIcon", type: 'iconMarker', options: {}, marker: marker})
+    },
+    stopEtitingMarker(mapState) {
+        this[mapState.get().type].default.stopEditing(mapState.get().marker)
+    },
     stopMarkerCreator(mapState) {
         this[mapState.get().type].default.stop()
     },
@@ -88,14 +95,17 @@ const mapController = {
             let markers = MapMarker.find({projectId: projectId}).fetch()
 
             markers.forEach((marker) => {
-                if (!this.markers[marker._id] ){
+                if (!this.markers[marker._id]) {
                     this[marker.markerType].default.showMarker(marker)
-                }else if( marker.lastEditAt.getTime() > this.markers[marker._id].lastEditAt.getTime()) {
+                } else if (marker.lastEditAt.getTime() > this.markers[marker._id].lastEditAt.getTime()) {
                     this[marker.markerType].default.editMarker(marker)
                 }
             })
         })
 
+    },
+    removeMarker(marker) {
+        this[marker.markerType].default.removeMarker(marker)
     }
 }
 export default mapController

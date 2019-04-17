@@ -1,5 +1,17 @@
 @import "{}/client/scss/variables.scss";
 //@import "{}/client/scss/pluginsLib/leaflet.css";
+@keyframes highlight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(white, 1);
+  }
+
+  50% {
+    box-shadow: 0 0 0 15px rgba(white, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(white, 0);
+  }
+}
 
 #projectMaps {
   width: 100%;
@@ -34,8 +46,8 @@
         height: 34px;
         padding: 3px 0 0 3px;
         border-radius: 50%;
-        border: 2px solid $plus-color;
-
+        border: 2px solid; //$plus-color;
+        background-color: $plus-color
       }
 
       .arrow-down {
@@ -48,6 +60,15 @@
         left: 12px;
         bottom: -5px;
       }
+
+      &.highLighted {
+        z-index: 105;
+        .icon {
+          animation: highlight 1.5s infinite;
+        }
+
+      }
+
     }
 
     #newIconMarker {
@@ -80,6 +101,7 @@
       bottom: calc(5em - 28px);
       right: 10px;
       z-index: 600;
+
       i {
         font-size: 2.6em;
       }
@@ -119,12 +141,14 @@
 
       .leaflet-marker-icon {
         border: none;
-width: 0 !important;
-        height: 0!important;
+        width: 0 !important;
+        height: 0 !important;
+
         .markerIcon {
           position: absolute;
           bottom: 0px;
           left: -11px;
+
           .icon {
             width: 34px;
             height: 34px;
@@ -265,6 +289,7 @@ width: 0 !important;
       position: absolute;
       top: 0;
       width: 100%;
+      padding-bottom: 50px;
     }
 
 

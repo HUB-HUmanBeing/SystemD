@@ -37,13 +37,13 @@ const mapParams = {
         },
     ],
     colors: [
-        "#ff6d00",
-        "#b71c1c",
-        "#781ead",
-        "#1565c0",
-        "#2e7d32",
-        "#debb00",
-        "#546e7a"
+        "#d25a00",
+        "#961717",
+        "#8110b9",
+        "#0f2a79",
+        "#286e2c",
+        "#ecba00",
+        "#445963"
 
         // "#711030",
         // "#6438ad",
@@ -77,7 +77,7 @@ const mapParams = {
                 "remove_red_eye",
                 "filter_drama",
                 "store",
-                "priority_high",
+                "warning",
                 "help_outline",
                 "local_hospital",
 

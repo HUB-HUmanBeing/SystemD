@@ -17,6 +17,10 @@ const IconMarker = Class.create({
         symEnc_icon:{
             type: String
         },
+        symEnc_detail: {
+            type: String,
+            optional: true
+        }
     }
 })
 const MapMarker = Class.create({

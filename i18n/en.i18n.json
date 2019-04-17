@@ -483,5 +483,30 @@
     "defaultCenter": "Default center : ",
     "defaultCenterInfo": "Center the map on the zone you want to appears by default and click save.",
     "centerSaved": "Default center of the map has been edited."
+  },
+  "newMarker": {
+    "title": "New Marker",
+    "color": "Color",
+    "type": "Type",
+    "icons": "Icons",
+    "arrows": "Arrows",
+    "lines": "Lines",
+    "shapes": "Shapes"
+  },
+  "creatingIcon": {
+    "createIconInfo": "Click on map to set marker position."
+  },
+  "editingIcon": {
+    "editIconInfo": "Click on map to edit marker position."
+  },
+  "markerDetail": {
+    "markerName": "Marker name...",
+    "markerDetail": "Detail",
+    "editMarker": "Edit",
+    "moveMarker": "Move",
+    "deleteMarker": "Delete",
+    "coordinates": "Coordinates :",
+    "createdBy": "Created by ",
+    "lastEdit": "(edited)"
   }
 }

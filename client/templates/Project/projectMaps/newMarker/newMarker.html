@@ -20,10 +20,10 @@
         <div class="row no-margin">
             <div class="col s12">
                 <div class="hr"></div>
-                <p class="sectionLabel">{{__ ".color"}}</p>
+                <p class="sectionLabel">{{__ ".type"}}</p>
                 <ul class="collapsible" data-collapsible="accordion" id="markerList">
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons small-shadow" style="background-color:{{selectedColor}}">location_on</i>{{__ ".icons"}}</div>
+                    <li class="">
+                        <div class="collapsible-header active"><i class="material-icons small-shadow" style="background-color:{{selectedColor}}">location_on</i>{{__ ".icons"}}</div>
                         <div class="collapsible-body">
                             <div class="row iconPicker no-margin" style="background-color:{{selectedColor}}">
                                 {{#each icon in icons}}

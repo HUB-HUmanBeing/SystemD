@@ -486,5 +486,30 @@
     "defaultCenter": "Centrage par défaut : ",
     "defaultCenterInfo": "Centrer la carte sur la zone que vous souhaitez voir apparaitre par défaut puis cliquez sur enregistrer",
     "centerSaved": "Le centrage par défaut de votre carte à été modifié."
+  },
+  "newMarker": {
+    "title": "Nouveau marqueur",
+    "color": "Couleur",
+    "type": "Type",
+    "icons": "Icones",
+    "arrows": "Flèches",
+    "lines": "Lignes",
+    "shapes": "Formes"
+  },
+  "creatingIcon": {
+    "createIconInfo": "Cliquer sur la carte pour positionner le marqueur."
+  },
+  "editingIcon": {
+    "editIconInfo": "Cliquer sur la carte pour modifier la position du marqueur."
+  },
+  "markerDetail": {
+    "markerName": "Nom du marqueur...",
+    "markerDetail": "Detail",
+    "editMarker": "éditer",
+    "moveMarker": "déplacer",
+    "deleteMarker": "Supprimer",
+    "coordinates": "Coordonnées :",
+    "createdBy": "Créé par ",
+    "lastEdit": "(édité)"
   }
 }

@@ -1,0 +1,21 @@
+@import "{}/client/scss/variables.scss";
+
+.footerContent {
+
+  padding: 10px;
+  width: calc(100% - 60px);
+
+  .infoQuotes {
+    margin: 0 !important;
+    font-size: 0.9em;
+    font-style: italic;
+  }
+
+  .btn-container {
+    padding: 5px 0 0 5px;
+  }
+
+  &.creatingIcon {
+
+  }
+}

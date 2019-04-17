@@ -33,16 +33,59 @@ MapMarker.extend({
                 }
             })
         },
+        editMarkerTexts(authInfo, params) {
+            check(authInfo, {memberId: String, userSignature: String})
+            check(params, {
+                symEnc_name: String,
+                symEnc_detail: String
+            })
+            let mapMarker = MapMarker.findOne(this._id)
+
+            let currentProject = Project.findOne(mapMarker.projectId)
+            check(currentProject.isMember(authInfo), true)
+            mapMarker[mapMarker.markerType].symEnc_name = params.symEnc_name
+            mapMarker[mapMarker.markerType].symEnc_detail = params.symEnc_detail
+            mapMarker.lastEditAt = new Date()
+            return mapMarker.save()
+        },
+        changeIcon(authInfo, symEnc_icon) {
+            check(authInfo, {memberId: String, userSignature: String})
+            check(symEnc_icon, String)
+            let mapMarker = MapMarker.findOne(this._id)
+
+            let currentProject = Project.findOne(mapMarker.projectId)
+            check(currentProject.isMember(authInfo), true)
+            mapMarker[mapMarker.markerType].symEnc_icon = symEnc_icon
+            mapMarker.lastEditAt = new Date()
+            return mapMarker.save()
+        },
+        changeColor(authInfo, symEnc_color) {
+            check(authInfo, {memberId: String, userSignature: String})
+            check(symEnc_color, String)
+            let mapMarker = MapMarker.findOne(this._id)
+
+            let currentProject = Project.findOne(mapMarker.projectId)
+            check(currentProject.isMember(authInfo), true)
+            mapMarker[mapMarker.markerType].symEnc_color = symEnc_color
+            mapMarker.lastEditAt = new Date()
+            return mapMarker.save()
+        },
+        moveMarker(authInfo, symEnc_coordinates) {
+            check(authInfo, {memberId: String, userSignature: String})
+            check(symEnc_coordinates, String)
+            let mapMarker = MapMarker.findOne(this._id)
+
+            let currentProject = Project.findOne(mapMarker.projectId)
+            check(currentProject.isMember(authInfo), true)
+            mapMarker[mapMarker.markerType].symEnc_coordinates = symEnc_coordinates
+            mapMarker.lastEditAt = new Date()
+            return mapMarker.save()
+        },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
-
-            let MapMarker = MapMarker.findOne(this._id)
-            let currentProject = Project.findOne(MapMarker.projectId)
+            let currentProject = Project.findOne(this.projectId)
             check(currentProject.isMember(authInfo), true)
-            check(authInfo.memberId === MapMarker.createdBy, true)
-            return MapMarker.removeRecursive((err) => {
-                console.warn('todo: remover les comments enfants')
-            })
+            return this.remove()
         },
     }
 })
