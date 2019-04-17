@@ -8,13 +8,13 @@ import cryptoTools from "./lib/cryptoTools";
 Session.set('userAvatars', {})
 Session.set('projectAvatars', {})
 
-let lang =getLang()
+let lang = getLang()
 let storedLang = window.localStorage.getItem('lang')
 // we stock language browser
 if (storedLang) {
     i18n.setLocale(storedLang);
     moment.locale(storedLang)
-}else{
+} else {
     i18n.setLocale(lang);
     moment.locale(lang)
     window.localStorage.setItem('lang', lang);
@@ -38,7 +38,7 @@ TemplatesNames.forEach(name => {
 //  console.log("switchHttps")
 //     switchHTTPS('3003');
 // }
-if(!document.getElementById('manifest')) {
+if (!document.getElementById('manifest')) {
     var link = document.createElement('link');
     link.id = 'manifest';
     link.rel = 'manifest';

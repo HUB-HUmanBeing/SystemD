@@ -10,6 +10,8 @@ import Publications from "../lib/collections/Publications";
 import Topic from "../imports/classes/Topic";
 import Publication from "../imports/classes/Publication";
 import Comments from "../lib/collections/Comments";
+import MapMarkers from "../lib/collections/MapMarkers";
+import MapMarker from "../imports/classes/MapMarker";
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
  **********************************/
@@ -247,4 +249,24 @@ Meteor.publish("subComments", function (authInfo, commentId, limit) {
             createdAt: -1
         }
     })
+})
+Meteor.publish('mapMarkers', function (authInfo, projectId) {
+        check(projectId, String)
+        check(authInfo, {memberId: String, userSignature: String})
+        let currentProject = Project.findOne(projectId)
+        check(currentProject.isMember(authInfo), true)
+        return MapMarkers.find({projectId: projectId}, {
+            sort: {
+                createdAt: -1
+            }
+        })
+    }
+)
+Meteor.publish('markerDetail', function (authInfo, markerId) {
+    check(markerId, String)
+    check(authInfo, {memberId: String, userSignature: String})
+    let projectId = MapMarker.findOne(markerId).projectId
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return MapMarkers.find({_id: markerId})
 })

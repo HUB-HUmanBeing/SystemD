@@ -1,0 +1,71 @@
+@import "{}/client/scss/variables.scss";
+
+#markerDetail {
+  width: 100%;
+  position: relative;
+  height: 100%;
+
+  h5 {
+    margin: 20px 10px 0px 10px;
+  }
+
+  .publicationHeader {
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    margin: 0;
+
+    .username {
+      font-size: 1em !important;
+      margin-top: 0.2em;
+      color: $main-color;
+    }
+
+    .userAvatar {
+      width: 2.6em;
+      height: 2.6em;
+      margin-top: 10px;
+    }
+
+    .publicationDate {
+      text-align: right;
+      line-height: 1.4em;
+      margin-top: 0.4em;
+      color: $plus-color;
+    }
+  }
+
+  .coordinates {
+    position: absolute;
+    font-size: 0.9em;
+    font-style: italic;
+    padding: 0 5px;
+  }
+
+  .sectionLabel {
+    margin: 5px 10px 5px 0px;
+    font-size: 1.1em;
+  }
+
+  #EditMarkerForm {
+    #markerName {
+      font-size: 1.15em;
+
+      &::placeholder {
+        font-style: italic;
+        color: $minus-color;
+      }
+    }
+
+    #editMarkerDetail {
+      min-height: 1rem !important;
+    }
+
+    .input-field {
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-top: 25px;
+    }
+  }
+
+}

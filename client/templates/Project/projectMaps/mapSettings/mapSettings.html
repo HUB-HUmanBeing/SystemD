@@ -1,0 +1,45 @@
+<template name="mapSettings">
+    <div id="mapSettings">
+        <h5>{{__ ".title"}}</h5>
+        <div class="row no-margin">
+            <div class="col s12">
+                <div class="hr"></div>
+                <p class="sectionLabel">{{__ ".kindOfMap"}}</p>
+                <div class="mapProviders flex">
+                    {{#each map in mapProviders}}
+                        <div class=" ">
+                            <a href="" id="map-{{@index}}"
+                               class="small-shadow {{#if compare currentMap '==' @index}}selectedMap{{/if}}" selectMap>
+                                <img src="{{map.imgUrl}}" alt="" class="responsive-img">
+                                <span class="mapName">{{__ map.name}}</span>
+                            </a>
+
+                        </div>
+                    {{/each}}
+                </div>
+                {{#if showSaveMap}}
+                    <div class="row no-margin">
+                        <div class="col s12 center-align no-padding">
+                            <p class="infoQuotes left-align">{{__ '.saveChoice'}}</p>
+                            <a href="" class="btn btnStandard " saveMap><i class="material-icons left">save</i>{{__
+                                    ".save"}}</a>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col s12 center-align">
+                <div class="hr"></div>
+                <p class="sectionLabel left-align">{{__ ".defaultCenter"}}</p>
+                <p class="infoQuotes left-align">{{__ '.defaultCenterInfo'}}</p>
+                <a href="" class="btn btnStandard " saveDefaultCenter><i class="material-icons left">save</i>{{__
+                        ".save"}}</a>
+            </div>
+        </div>
+
+    </div>
+
+</template>

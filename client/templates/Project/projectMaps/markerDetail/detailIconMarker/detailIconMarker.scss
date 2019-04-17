@@ -1,0 +1,45 @@
+@import "{}/client/scss/variables.scss";
+
+#detailIconMarker {
+  .iconMarkerHead {
+    position: relative;
+padding: 10px 0;
+
+
+    .btn-floating {
+      opacity: 0.7;
+      position: absolute;
+      background-color: rgba($plus-color, 0.2);
+
+      i {
+        color: $plus-color;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .editIconBtn {
+      top: 15px;
+      right: -35px;
+    }
+
+    .editColorBtn {
+      bottom: 15px;
+      right: -35px;
+    }
+
+    .iconContainer {
+
+      display: inline-block;
+    }
+  }
+
+  .editIcon {
+    margin-bottom:35px;
+    .colorPicker{
+      margin: 10px 0 ;
+    }
+  }
+}
