@@ -491,7 +491,11 @@
     "icons": "Icons",
     "arrows": "Arrows",
     "lines": "Lines",
-    "shapes": "Shapes"
+    "text": "Text zone",
+    "shapes": "Shapes",
+    "myPosition": "My position",
+    "myPositionInfo": "Cliquer on this button to create a marker from your current position.",
+    "updateUserPosition": "set my position"
   },
   "creatingIcon": {
     "createIconInfo": "Click on map to set marker position."
@@ -507,6 +511,27 @@
     "deleteMarker": "Delete",
     "coordinates": "Coordinates :",
     "createdBy": "Created by ",
-    "lastEdit": "(edited)"
+    "lastEdit": " (edited)",
+    "goTo": "let's go !!"
+  },
+  "detailMemberPosition": {
+    "lastEdit": "Last update :",
+    "actualise": "actualise",
+    "deleteMarker": "Delete"
+  },
+  "creatingPolyline": {
+    "save": "Save",
+    "undo": "Cancel last point",
+    "createIconInfo": "Set the different points then click save."
+  },
+  "creatingShape": {
+    "save": "Save",
+    "undo": "Cancel last point",
+    "circleInfo": "Set the center then drag to set diameter.",
+    "rectangleInfo": "set one angle of the rectangle then drag to enlarge.",
+    "polygonInfo": "set the different points of your shape then click save or click on first point."
+  },
+  "creatingArrow": {
+    "createArrowInfo": "Place your arrow on the map."
   }
 }

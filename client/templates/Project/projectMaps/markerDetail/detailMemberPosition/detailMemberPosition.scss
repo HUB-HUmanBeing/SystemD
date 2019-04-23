@@ -1,0 +1,16 @@
+@import "{}/client/scss/variables.scss";
+
+#detailMemberPosition {
+  .userAvatar {
+    width: 70px;
+    height: 70px;
+    margin: 40px auto 10px auto ;
+  }
+
+  .username {
+    margin: 0;
+  }
+  .coordinates{
+   position: relative !important;
+  }
+}

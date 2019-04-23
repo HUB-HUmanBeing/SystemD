@@ -1,0 +1,48 @@
+<template name="detailMemberPosition">
+    <div id="detailMemberPosition">
+        <div class="row no-margin">
+            <div class="col s12 center-align">
+                <div class="userAvatar small-shadow">
+                    {{>avatar userId=(userIdFromMemberId marker.createdBy)}}
+                </div>
+
+
+                <h5 class="username">
+                    {{usernameFromMemberId marker.createdBy}}
+                </h5>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row no-margin">
+        <div class="col s12">
+            <div class="hr"></div>
+            <p class="sectionLabel">{{__ ".lastEdit"}}</p>
+            <div class="coordinates">
+                {{#if marker.lastEditAt}}
+                    {{formatDate marker.lastEditAt}}
+                {{else}}
+                    {{formatDate marker.createdAt}}
+                {{/if}}
+            </div>
+
+        </div>
+
+    </div>
+    {{#if isCruuentUserFromMemberId marker.createdBy}}
+        <div class="row no-margin">
+            <div class="col s12">
+                <div class="hr"></div>
+            </div>
+            <div class="col s6">
+                <a href="" class="btn btnStandard full-width waves-effect waves-light" updtateUserPosition>
+                    {{__ ".actualise"}}</a>
+            </div>
+            <div class="col s6">
+                <a href="" class="btn btn-danger waves-effect waves-light full-width" deleteMarker>
+                    {{__ ".deleteMarker"}}</a>
+            </div>
+        </div>
+    {{/if}}
+</template>

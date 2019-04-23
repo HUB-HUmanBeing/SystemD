@@ -4,14 +4,12 @@ import MapMarker from "../../../../imports/classes/MapMarker";
 import projectController from "../projectController";
 import * as L from "leaflet";
 
-const iconMarker = {
+const markerText = {
     iconHtml(options, id) {
         return `
-<div id="${escapeHtml(id)}" class="markerIcon ${escapeHtml(options.name) ? "tooltipped" : ""} "
-                     data-position="top"
-                     data-delay="50" data-tooltip="${escapeHtml(options.name)}" >
-    <a href="${escapeHtml(options.path)}" class="rounded ">
-        <i class="material-icons plus-color icon shadow" style="border-color: ${escapeHtml(options.color)}; color: ${escapeHtml(options.color)}">${escapeHtml(options.icon)}</i>
+<div id="${escapeHtml(id)}" class="markerText" >
+    <a href="${escapeHtml(options.path)}" class=" small-shadow" style="color: ${escapeHtml(options.color)}">
+        ${escapeHtml(options.text)}
     </a>
 
     <i class="arrow-down" style="border-top: 8px solid ${escapeHtml(options.color)}"></i>
@@ -26,8 +24,8 @@ const iconMarker = {
         let bsDiv = document.getElementById("newIconMarker");
         let x, y;
         this.mouseFollower = function (event) {
-            x = event.clientX - 17;
-            y = event.clientY - 42;
+            x = event.clientX -4;
+            y = event.clientY -4;
             if (typeof x !== 'undefined') {
                 bsDiv.style.left = x + "px";
                 bsDiv.style.top = y + "px";
@@ -44,20 +42,20 @@ const iconMarker = {
         let newIconMarker = {
             symEnc_coordinates: JSON.stringify(coordinates),
             symEnc_color: options.color,
-            symEnc_icon: options.icon
+            symEnc_name: options.text
         }
         cryptoTools.encryptObject(newIconMarker, {symKey: Session.get("currentProjectSimKey")}, encryptedNewIconMarker => {
             let newMarkerParams = {
                 projectId: FlowRouter.current().params.projectId,
-                markerType: "iconMarker",
-                iconMarker: encryptedNewIconMarker
+                markerType: "markerText",
+                markerText: encryptedNewIconMarker
             }
             let newMarker = new MapMarker()
-            newMarker.callMethod("newIconMarker", projectController.getAuthInfo(newMarkerParams.projectId), newMarkerParams, (err, res) => {
+            newMarker.callMethod("newMarkerText", projectController.getAuthInfo(newMarkerParams.projectId), newMarkerParams, (err, res) => {
                     if (err) {
                         console.log(err)
                         Materialize.toast(__('general.error'), 6000, 'toastError')
-                    } else if (!Meteor.Device.isPhone()){
+                    } else if (!Meteor.Device.isPhone()) {
                         FlowRouter.go("/project/" + newMarkerParams.projectId + "/maps?side=markerDetail&markerId=" + res)
                         Meteor.setTimeout(() => {
                             $('#markerName').focus()
@@ -96,7 +94,7 @@ const iconMarker = {
         $('#marker-' + marker._id).css('opacity', '0.4')
         this.createMouseFollower({
             color: marker[marker.markerType].symEnc_color,
-            icon: marker[marker.markerType].symEnc_icon
+            text: marker[marker.markerType].symEnc_name
         }, "newIconMarker")
         this.editCoordinates = (e) => {
             this.editMarkerCoordinates(marker, [e.latlng.lat, e.latlng.lng])
@@ -115,7 +113,7 @@ const iconMarker = {
     },
     stop() {
         let element = document.getElementById("newIconMarker");
-        if(element){
+        if (element) {
             mapController.map.off('click', this.addMarker)
             element.removeEventListener('mousemove', this.mouseFollower)
             element.remove();
@@ -123,11 +121,10 @@ const iconMarker = {
 
     },
     showMarker(marker) {
-        cryptoTools.decryptObject(marker.iconMarker, {symKey: Session.get("currentProjectSimKey")}, decryptedIconMarker => {
+        cryptoTools.decryptObject(marker.markerText, {symKey: Session.get("currentProjectSimKey")}, decryptedIconMarker => {
             let options = {
                 color: decryptedIconMarker.symEnc_color,
-                icon: decryptedIconMarker.symEnc_icon,
-                name: decryptedIconMarker.symEnc_name ? decryptedIconMarker.symEnc_name : "",
+                text: decryptedIconMarker.symEnc_name ? decryptedIconMarker.symEnc_name : "",
                 path: "/project/" + marker.projectId + "/maps?side=markerDetail&markerId=" + marker._id
             }
             let icon = L.divIcon({
@@ -171,4 +168,4 @@ const iconMarker = {
         $("#marker-" + markerId).removeClass("highLighted")
     },
 }
-export default iconMarker
+export default markerText

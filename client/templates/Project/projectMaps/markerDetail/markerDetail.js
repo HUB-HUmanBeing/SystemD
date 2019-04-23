@@ -40,9 +40,10 @@ Template.markerDetail.helpers({
     },
     coordinates: function () {
         let marker = Template.instance().marker.get()
-        let coordinatesArray = JSON.parse(marker[marker.markerType].symEnc_coordinates)
-        if (coordinatesArray.length === 2) {
-            return coordinatesArray[0] + " ," + coordinatesArray[1]
+        if (marker.markerType == "memberPosition" || marker.markerType == "iconMarker"||marker.markerType == "markerText") {
+
+            let coordinatesArray = JSON.parse(marker[marker.markerType].symEnc_coordinates)
+            return coordinatesArray[0] + " , " + coordinatesArray[1]
         }
 
     }
@@ -93,6 +94,16 @@ Template.markerDetail.events({
     'click [moveMarker]': function (event, instance) {
         event.preventDefault()
         mapController.moveMarker(instance.marker.get(), instance.data.mapState)
+    },
+    'click [goTo]': function (event, instance) {
+
+        navigator.geolocation.getCurrentPosition(function (location) {
+            let userPosition = [location.coords.latitude, location.coords.longitude]
+            let pointToGo = JSON.parse(instance.data.marker[instance.data.marker.markerType].symEnc_coordinates)
+            let url = "https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=" + userPosition[0] + "%2C" + userPosition[1] + "%3B" + pointToGo[0] + "%2C" + pointToGo[1]
+            var win = window.open(url, '_blank');
+            win.focus();
+        })
     }
 });
 
@@ -130,6 +141,7 @@ Template.markerDetail.onCreated(function () {
 
 Template.markerDetail.onRendered(function () {
     //add your statement here
+    resetTooltips()
 });
 
 Template.markerDetail.onDestroyed(function () {

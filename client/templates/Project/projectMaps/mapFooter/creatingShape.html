@@ -1,0 +1,29 @@
+<template name="creatingShape">
+    <div class="footerContent creatingPolyline">
+        <div class="flex">
+            <div class="flex-auto">
+                <p class="infoQuotes">
+                    {{text}}
+                </p>
+
+
+            </div>
+            <div class="btn-container ">
+                <a class="btn btn-floating light-bg" abort><i class="material-icons">clear</i></a>
+            </div>
+        </div>
+        {{#if compare options.shapeType "==" "polygon"}}
+            <div class="row " style="margin: 0 -10px">
+                <div class="col s12 m6">
+                    <a href="" class="btn btnStandard full-width" save><i class="material-icons left">save</i>{{__
+                            ".save"}}</a>
+                </div>
+                <div class="col s12 m6">
+                    <a href="" class="btn btnStandard full-width" undo><i class="material-icons left">undo</i>{{__
+                            ".undo"}}</a>
+                </div>
+            </div>
+        {{/if}}
+
+    </div>
+</template>

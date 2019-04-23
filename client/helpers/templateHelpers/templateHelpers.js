@@ -76,6 +76,14 @@ Template.registerHelper('userIdFromMemberId', function (memberId) {
     return requiredMember.symEnc_userId;
 
 })
+Template.registerHelper('isCruuentUserFromMemberId',function (memberId) {
+    let requiredMember = {}
+    Session.get("currentProjectMembers").forEach((member) => {
+        if (member.memberId === memberId) {
+            requiredMember = member
+        }
+    })
+    return requiredMember.symEnc_userId === Meteor.userId()})
 Template.registerHelper("isAdmin", function (projectId) {
     projectId = projectId || FlowRouter.current().params.projectId
     return projectController.isAdmin(projectId)

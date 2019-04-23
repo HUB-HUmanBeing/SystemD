@@ -494,7 +494,11 @@
     "icons": "Icones",
     "arrows": "Flèches",
     "lines": "Lignes",
-    "shapes": "Formes"
+    "text": "Zone de texte",
+    "shapes": "Formes",
+    "myPosition": "Ma Position",
+    "myPositionInfo": "Cliquer sur le bouton ci-dessous pour créer un marqueur sur la carte à partir de votre position",
+    "updateUserPosition": "indiquer ma position"
   },
   "creatingIcon": {
     "createIconInfo": "Cliquer sur la carte pour positionner le marqueur."
@@ -510,6 +514,27 @@
     "deleteMarker": "Supprimer",
     "coordinates": "Coordonnées :",
     "createdBy": "Créé par ",
-    "lastEdit": "(édité)"
+    "lastEdit": " (édité)",
+    "goTo": "Y aller !"
+  },
+  "detailMemberPosition": {
+    "lastEdit": "Dernière mise à jour :",
+    "actualise": "actualiser",
+    "deleteMarker": "Supprimer"
+  },
+  "creatingPolyline": {
+    "save": "Enregistrer",
+    "undo": "annuler dernier point",
+    "createIconInfo": "Placer les différents points puis cliquer sur enregistrer"
+  },
+  "creatingShape": {
+    "save": "Enregistrer",
+    "undo": "annuler dernier point",
+    "circleInfo": "Positionner le centre du cercle puis élargissez son diamètre en glissant avec la souris.",
+    "rectangleInfo": "Positionner un coin du rectangle puis agrandissez le en glissant avec la souris.",
+    "polygonInfo": "Placer les différents sommets de votre forme puis cliquer sur le dernier point ou sur enregistrer"
+  },
+  "creatingArrow": {
+    "createArrowInfo": "Placer votre flèche sur la carte."
   }
 }
