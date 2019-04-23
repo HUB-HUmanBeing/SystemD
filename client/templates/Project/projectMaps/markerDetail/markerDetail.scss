@@ -36,7 +36,6 @@
   }
 
   .coordinates {
-    position: absolute;
     font-size: 0.9em;
     font-style: italic;
     padding: 0 5px;
@@ -49,7 +48,8 @@
 
   #EditMarkerForm {
     #markerName {
-      font-size: 1.15em;
+      font-size: 1.25em;
+      color: $plus-color;
 
       &::placeholder {
         font-style: italic;

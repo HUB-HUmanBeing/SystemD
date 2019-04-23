@@ -83,12 +83,6 @@ const mapParams = {
 
                 "whatshot"
             ]
-            ,
-            arrows: {}
-            ,
-            lines: {}
-            ,
-            zones: {}
         }
 }
 export default mapParams

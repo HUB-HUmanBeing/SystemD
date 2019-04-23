@@ -34,9 +34,14 @@
     height: 100%;
     position: relative;
 
-    &.creatingIcon {
+    &.creatingIcon, &.creatingPolyline, &.creatingShape, &.creatingArrow {
       #map {
         cursor: crosshair;
+      }
+    }
+    .leaflet-control-container{
+      .leaflet-draw{
+        display: none;
       }
     }
 
@@ -63,6 +68,43 @@
 
       &.highLighted {
         z-index: 105;
+
+        .icon {
+          animation: highlight 1.5s infinite;
+        }
+
+      }
+
+    }
+    .markerText {
+      a{
+
+        width: 100px !important;
+        display: block;
+        padding: 1px 3px;
+        border-radius: 5px;
+        border: 2px solid; //$plus-color;
+        background-color: $plus-color;
+        position:absolute;
+        bottom: 5px;
+        left: -46px;
+
+      }
+
+      .arrow-down {
+        z-index: 103;
+        width: 0px;
+        height: 0px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        position: absolute;
+        left: 0px;
+        bottom: -3px;
+      }
+
+      &.highLighted {
+        z-index: 105;
+
         .icon {
           animation: highlight 1.5s infinite;
         }
@@ -98,8 +140,10 @@
     .addBtn {
       background-color: $danger-text;
       position: absolute;
-      bottom: calc(5em - 28px);
-      right: 10px;
+      //bottom: calc(5em - 28px);
+      right: 9px;
+      margin-top: 5px;
+      margin-right: -14px;
       z-index: 600;
 
       i {
@@ -153,6 +197,26 @@
             width: 34px;
             height: 34px;
             padding: 3px 0 0 3px;
+
+          }
+
+          .memberPin {
+            position: relative;
+            bottom: 2px;
+            left: -1px;
+            width: 36px;
+            height: 36px;
+            overflow: hidden;
+            border: 2px solid;
+            border-radius: 50%;
+
+            svg {
+              height: 32px !important;
+              width: 32px !important;
+              //margin-top: 2px;
+              //border-color: $blue-highlight-color;
+              border-radius: 50%;
+            }
 
           }
 
@@ -227,8 +291,8 @@
       color: $main-color;
       position: absolute;
       background-color: $main-bg;
-      height: 5em;
-      bottom: -5em;
+
+      bottom: -300px;
       width: 100%;
       transition: 0.3s ease-out;
       z-index: 200;

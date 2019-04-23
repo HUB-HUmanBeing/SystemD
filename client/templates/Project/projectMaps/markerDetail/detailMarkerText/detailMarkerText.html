@@ -1,0 +1,30 @@
+<template name="detailMarkerText">
+    <div id="detailIconMarker">
+        <div class="iconMarkerHead center-align relative" style="background-color: {{marker.markerText.symEnc_color}}">
+            <a href="" class="btn btn-floating editColorBtn" editColor><i class="material-icons">color_lens</i></a>
+
+            <div class="relative iconContainer">
+
+                <i class="material-icons white-text large small-padding small-margin">text_fields</i>
+
+
+            </div>
+
+        </div>
+        {{#if editingColor}}
+            <div class="editIcon">
+                <div class="flex colorPicker">
+                    {{#each color in colors}}
+                        <div class="flex-auto center-align">
+
+                            <a href="" id="color-{{color}}"
+                               class="colorItem shadow {{#if compare marker.markerText.symEnc_color "=="
+                                                             color}}selectedColor{{/if}}"
+                               style="background-color: {{color}}" selectColor></a>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>

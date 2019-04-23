@@ -1,10 +1,10 @@
 import mapController from "../../../../lib/controllers/mapController";
 
-Template.creatingIcon.helpers({
+Template.creatingArrow.helpers({
     //add you helpers here
 });
 
-Template.creatingIcon.events({
+Template.creatingArrow.events({
     //add your events here
     'click [abort]': function (event, instance) {
         event.preventDefault()
@@ -15,15 +15,15 @@ Template.creatingIcon.events({
     }
 });
 
-Template.creatingIcon.onCreated(function () {
+Template.creatingArrow.onCreated(function () {
     //add your statement here
 });
 
-Template.creatingIcon.onRendered(function () {
+Template.creatingArrow.onRendered(function () {
     //add your statement here
 });
 
-Template.creatingIcon.onDestroyed(function () {
+Template.creatingArrow.onDestroyed(function () {
     //add your statement here
 });
 

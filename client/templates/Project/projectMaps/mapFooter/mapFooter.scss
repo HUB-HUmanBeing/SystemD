@@ -3,16 +3,17 @@
 .footerContent {
 
   padding: 10px;
-  width: calc(100% - 60px);
+  width: 100%;
 
   .infoQuotes {
-    margin: 0 !important;
+    margin: 10px 0;
     font-size: 0.9em;
     font-style: italic;
+
   }
 
   .btn-container {
-    padding: 5px 0 0 5px;
+    padding: 0px 0 10px 5px;
   }
 
   &.creatingIcon {

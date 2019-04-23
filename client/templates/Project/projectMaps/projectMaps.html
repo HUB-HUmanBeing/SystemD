@@ -21,13 +21,16 @@
                             fullscreen_exit{{else}}zoom_out_map{{/if}}</i></a>
                     </li>
                 {{/if}}
+                <li>
+                    <a href="/project/{{currentProject._id}}/maps?side=newMarker"
+                       class="btn-floating btn danger-bg addBtn btn-large shadow" newMarker><i
+                            class="material-icons large">add</i></a>
+                </li>
             </ul>
             <div id="map" class="">
 
             </div>
-            <a href="/project/{{currentProject._id}}/maps?side=newMarker"
-               class="btn-floating btn danger-bg addBtn btn-large shadow" newMarker><i
-                    class="material-icons large">add</i></a>
+
             <div id="mapFooter" class="{{#if mapState.currentAction}}footerOpened{{/if}}">
                 {{#if mapState.currentAction}}
                     {{#Template.dynamic template=mapState.currentAction data=sideNavData}}{{/Template.dynamic}}

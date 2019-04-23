@@ -8,18 +8,117 @@ const IconMarker = Class.create({
             type: String,
             optional: true
         },
-        symEnc_coordinates:{
+        symEnc_coordinates: {
             type: String
         },
-        symEnc_color:{
+        symEnc_color: {
             type: String
         },
-        symEnc_icon:{
+        symEnc_icon: {
             type: String
         },
         symEnc_detail: {
             type: String,
             optional: true
+        }
+    }
+})
+
+const MarkerText = Class.create({
+    name: "MarkerText",
+    fields: {
+        symEnc_name: {
+            type: String,
+            optional: true
+        },
+        symEnc_coordinates: {
+            type: String
+        },
+        symEnc_color: {
+            type: String
+        },
+        symEnc_detail: {
+            type: String,
+            optional: true
+        }
+    }
+})
+const Polyline = Class.create({
+    name: "Polyline",
+    fields: {
+        symEnc_name: {
+            type: String,
+            optional: true
+        },
+        symEnc_coordinates: {
+            type: String
+        },
+        symEnc_color: {
+            type: String
+        },
+        symEnc_detail: {
+            type: String,
+            optional: true
+        }
+    }
+})
+const Arrow = Class.create({
+    name: "Arrow",
+    fields: {
+        symEnc_name: {
+            type: String,
+            optional: true
+        },
+        symEnc_coordinates: {
+            type: String
+        },
+        symEnc_color: {
+            type: String
+        },
+        symEnc_detail: {
+            type: String,
+            optional: true
+        },
+        curve:{
+            type:Number
+        }
+    }
+})
+const Shape = Class.create({
+    name: "Shape",
+    fields: {
+        symEnc_name: {
+            type: String,
+            optional: true
+        },
+        shapeType: {
+            type: String
+        },
+        symEnc_coordinates: {
+            type: String
+        },
+        symEnc_color: {
+            type: String
+        },
+        symEnc_detail: {
+            type: String,
+            optional: true
+        },
+        symEnc_radius: {
+            type: String,
+            optional: true
+        },
+    }
+})
+
+const MemberPosition = Class.create({
+    name: "MemberPosition",
+    fields: {
+        memberId: {
+            type: String
+        },
+        symEnc_coordinates: {
+            type: String
         }
     }
 })
@@ -56,13 +155,27 @@ const MapMarker = Class.create({
             optional: true
 
         },
-        commentCount: {
-            type: Number,
-            default: function () {
-                return 0
-            }
-        }
+        polyline: {
+            type: Polyline,
+            optional: true
 
+        },
+        arrow:{
+            type: Arrow,
+            optional: true
+        },
+        memberPosition: {
+            type: MemberPosition,
+            optional: true
+        },
+        shape: {
+            type: Shape,
+            optional: true
+        },
+        markerText:{
+            type:MarkerText,
+            optional:true
+        }
     },
     helpers: {}
 

@@ -33,6 +33,103 @@ MapMarker.extend({
                 }
             })
         },
+        newMarkerText(authInfo, MapMarkerParmas) {
+            check(MapMarkerParmas, {
+                markerType: String,
+                projectId: String,
+                markerText: Object
+            })
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(MapMarkerParmas.projectId)
+            check(currentProject.isMember(authInfo), true)
+
+            let computedParams = {
+                createdBy: authInfo.memberId
+            }
+
+            MapMarkerParmas = {...MapMarkerParmas, ...computedParams}
+            let newMapMarker = new MapMarker(MapMarkerParmas)
+            return newMapMarker.save((err) => {
+                if (!err) {
+                    console.warn("todo : notifier les membres")
+                    //topic.notifySubscribers(notifObjects, authInfo.memberId)
+                } else {
+                    console.log(err)
+                }
+            })
+        },
+        newPolyline(authInfo, MapMarkerParmas) {
+            check(MapMarkerParmas, {
+                markerType: String,
+                projectId: String,
+                polyline: Object
+            })
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(MapMarkerParmas.projectId)
+            check(currentProject.isMember(authInfo), true)
+
+            let computedParams = {
+                createdBy: authInfo.memberId,
+            }
+            MapMarkerParmas = {...MapMarkerParmas, ...computedParams}
+            let newMapMarker = new MapMarker(MapMarkerParmas)
+            return newMapMarker.save((err) => {
+                if (!err) {
+                    console.warn("todo : notifier les membres")
+                    //topic.notifySubscribers(notifObjects, authInfo.memberId)
+                } else {
+                    console.log(err)
+                }
+            })
+        },
+        newArrow(authInfo, MapMarkerParmas) {
+            check(MapMarkerParmas, {
+                markerType: String,
+                projectId: String,
+                arrow: Object
+            })
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(MapMarkerParmas.projectId)
+            check(currentProject.isMember(authInfo), true)
+
+            let computedParams = {
+                createdBy: authInfo.memberId,
+            }
+            MapMarkerParmas = {...MapMarkerParmas, ...computedParams}
+            let newMapMarker = new MapMarker(MapMarkerParmas)
+            return newMapMarker.save((err) => {
+                if (!err) {
+                    console.warn("todo : notifier les membres")
+                    //topic.notifySubscribers(notifObjects, authInfo.memberId)
+                } else {
+                    console.log(err)
+                }
+            })
+        },
+        newShape(authInfo, MapMarkerParmas) {
+            check(MapMarkerParmas, {
+                markerType: String,
+                projectId: String,
+                shape: Object
+            })
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(MapMarkerParmas.projectId)
+            check(currentProject.isMember(authInfo), true)
+
+            let computedParams = {
+                createdBy: authInfo.memberId,
+            }
+            MapMarkerParmas = {...MapMarkerParmas, ...computedParams}
+            let newMapMarker = new MapMarker(MapMarkerParmas)
+            return newMapMarker.save((err) => {
+                if (!err) {
+                    console.warn("todo : notifier les membres")
+                    //topic.notifySubscribers(notifObjects, authInfo.memberId)
+                } else {
+                    console.log(err)
+                }
+            })
+        },
         editMarkerTexts(authInfo, params) {
             check(authInfo, {memberId: String, userSignature: String})
             check(params, {
@@ -87,5 +184,36 @@ MapMarker.extend({
             check(currentProject.isMember(authInfo), true)
             return this.remove()
         },
+        updateMemberPosition(authInfo, projectId, symEnc_coordinates) {
+            check(projectId, String)
+            check(symEnc_coordinates, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(projectId)
+            check(currentProject.isMember(authInfo), true)
+            let previousMapMarker = MapMarker.findOne({
+                projectId: projectId,
+                "memberPosition.memberId": authInfo.memberId
+            })
+            if (previousMapMarker) {
+                previousMapMarker.memberPosition.coordinates = symEnc_coordinates
+                previousMapMarker.lastEditAt = new Date()
+                return previousMapMarker.save()
+            } else {
+                let params = {
+                    createdBy: authInfo.memberId,
+                    projectId: projectId,
+                    markerType: "memberPosition",
+                    memberPosition: {
+                        memberId: authInfo.memberId,
+                        symEnc_coordinates: symEnc_coordinates
+                    }
+
+                }
+
+                let newMapMarker = new MapMarker(params)
+                return newMapMarker.save()
+            }
+
+        }
     }
 })

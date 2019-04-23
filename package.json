@@ -26,6 +26,7 @@
     "leaflet": "^1.4.0",
     "leaflet-draw": "^1.0.4",
     "leaflet-minimap": "^3.6.1",
+    "leaflet-swoopy": "^3.4.1",
     "meteor-node-stubs": "^0.4.1",
     "minio": "^7.0.5",
     "moment-timezone": "^0.5.23",

@@ -29,7 +29,11 @@
 
 .iconPicker {
   .iconItem {
-
+.arrowContainer{
+  margin: 0 auto;
+  max-width: 37px;
+  padding: 10px 5px 3px;
+}
     i {
       color: $main-color;
       margin: 10px auto;
@@ -40,6 +44,10 @@
     &:hover {
       background-color: transparent !important;
       border: 1px solid $main-color !important;
+      .arrowContainer{
+        //margin: -1 auto;
+        padding: 9px 5px 2px;
+      }
 
       i {
         margin: 9px auto;
@@ -89,5 +97,29 @@
 
 
     }
+  }
+}
+.newTextZone{
+  padding: 15px 10px !important;
+  margin-top: -5px;
+  //padding: 5px;
+  width: 100%;
+  form{
+
+    label{
+      color: $plus-color;
+    }
+  }
+  #markerText{
+    background-color: $plus-color;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px ;
+    width: calc( 100% - 24px);
+    font-size: 1em;
+    font-weight: bold;
+    height: auto !important;
+    margin-bottom: 10px;
+    box-shadow: none !important;
   }
 }
