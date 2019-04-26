@@ -4,6 +4,7 @@ import MapMarker from "../../../../imports/classes/MapMarker";
 import projectController from "../projectController";
 import L from 'leaflet';
 import 'leaflet-swoopy';
+import notificationController from "../notificationController";
 
 const arrow = {
 
@@ -20,7 +21,7 @@ const arrow = {
                 arrow: encryptedArrow
             }
             let newMarker = new MapMarker()
-            newMarker.callMethod("newArrow", projectController.getAuthInfo(newMarkerParams.projectId), newMarkerParams, (err, res) => {
+            newMarker.callMethod("newArrow", projectController.getAuthInfo(newMarkerParams.projectId), newMarkerParams, notificationController.getNotifyAll(), (err, res) => {
                     if (err) {
                         console.log(err)
                         Materialize.toast(__('general.error'), 6000, 'toastError')
@@ -148,7 +149,6 @@ const arrow = {
         this.removeMarker(marker)
     },
     removeMarker(marker) {
-        console.log("remove")
         let leafletMarker = mapController.markers[marker._id].leafletMarker
         mapController.map.removeLayer(leafletMarker)
     },

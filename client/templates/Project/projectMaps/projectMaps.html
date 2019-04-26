@@ -1,13 +1,8 @@
 <template name="projectMaps">
-    <div id="projectMaps" class=" {{#if isDesktop}} flex desktopProjectMaps {{else}}{{#if
-            isPhone}} mobileProjectMaps {{else}} tabletProjectMaps{{/if}}{{/if}}">
-        <div id="mapContainer" class="relative {{mapState.currentAction}} {{#if isDesktop}} flex-auto {{/if}}">
+    <div id="projectMaps" class=" {{#if
+            isPhone}} mobileProjectMaps {{else}} {{#if isDesktop }}desktopProjectMaps{{else}}tabletProjectMaps{{/if}}{{/if}}">
+        <div id="mapContainer" class="relative {{mapState.currentAction}}">
             <ul id="mapButtons">
-                <li>
-                    <a href="/project/{{currentProject._id}}/maps?side=mapChat"
-                       class="btn-floating btn chatBtn small-shadow"><i
-                            class="material-icons">chat</i></a>
-                </li>
                 <li>
                     <a href="/project/{{currentProject._id}}/maps?side=mapSettings"
                        class="btn-floating btn settingsBtn small-shadow"><i
@@ -37,15 +32,14 @@
                 {{/if}}
             </div>
             {{#if sideNav}}
-                {{#unless isDesktop}}
+
                     <div class="closeSideNav" closeSideNav></div>
 
-                {{/unless}}
             {{/if}}
         </div>
-        <div id="mapSideNav" class="gradiant-dark shadow {{#if isDesktop}} desktopMapSideNav{{else}} {{#if
+        <div id="mapSideNav" class="gradiant-dark shadow {{#if isDesktop}} desktopMapSideNav {{/if}}{{#if
                 isPhone}}mobileMapSideNav{{else}}tabletMapSideNav{{/if}} {{#if
-                sideNav}}openedSideNav{{/if}}{{/if}}">
+                sideNav}}openedSideNav{{/if}}">
 
             <div id="sideMapContent" style="{{#unless isDesktop}}overflow: scroll;{{else}}{{/unless}}">
                 {{#Template.dynamic template=sideNav data=sideNavData}}{{/Template.dynamic}}

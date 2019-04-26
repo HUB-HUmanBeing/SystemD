@@ -3,6 +3,7 @@ import cryptoTools from "../../cryptoTools";
 import MapMarker from "../../../../imports/classes/MapMarker";
 import projectController from "../projectController";
 import * as L from "leaflet";
+import notificationController from "../notificationController";
 
 const markerText = {
     iconHtml(options, id) {
@@ -51,7 +52,7 @@ const markerText = {
                 markerText: encryptedNewIconMarker
             }
             let newMarker = new MapMarker()
-            newMarker.callMethod("newMarkerText", projectController.getAuthInfo(newMarkerParams.projectId), newMarkerParams, (err, res) => {
+            newMarker.callMethod("newMarkerText", projectController.getAuthInfo(newMarkerParams.projectId), newMarkerParams, notificationController.getNotifyAll(), (err, res) => {
                     if (err) {
                         console.log(err)
                         Materialize.toast(__('general.error'), 6000, 'toastError')

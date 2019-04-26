@@ -2,6 +2,7 @@ import mapParams from "../../../../lib/controllers/mapParams";
 import cryptoTools from "../../../../lib/cryptoTools";
 import mapController from "../../../../lib/controllers/mapController";
 import projectController from "../../../../lib/controllers/projectController";
+import MapMarker from "../../../../../imports/classes/MapMarker";
 
 Template.mapSettings.helpers({
     //add you helpers here
@@ -13,7 +14,31 @@ Template.mapSettings.helpers({
     },
     showSaveMap: function () {
         return Template.instance().showSaveMap.get()
-    }
+    },
+    durationOptions: function () {
+        return [
+            {
+                value: 0,
+                label: __("mapSettings.chooseDuration")
+            },
+            {
+                value: 24 * 30,
+                label: "1 " + __("newInvitation.month")
+            },
+            {
+                value: 24 * 7,
+                label: "1 " + __("newInvitation.week")
+            },
+            {
+                value: 24,
+                label: "1 " + __("newInvitation.day")
+            },
+            {
+                value: 1,
+                label: "1 " + __("newInvitation.hour")
+            }
+        ]
+    },
 });
 
 Template.mapSettings.events({
@@ -59,6 +84,24 @@ Template.mapSettings.events({
                     }
                 })
         })
+    },
+    'click [deleteOldMarkers]': function (event, instance) {
+        event.preventDefault()
+        let duration = Number($("#duration").val())
+        let mapMarkerInstance = new MapMarker()
+        let projectId = FlowRouter.current().params.projectId
+        if (duration) {
+            let date = new Date()
+            date.setHours(date.getHours() - duration)
+            mapMarkerInstance.callMethod("deleteOldsMarkers", projectController.getAuthInfo(projectId), projectId, date, (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    Materialize.toast(__('mapSettings.oldsMarkersDeleted'), 6000, 'toastOk')
+                }
+            })
+        }
+
     }
 });
 
@@ -79,9 +122,12 @@ Template.mapSettings.onCreated(function () {
 
 Template.mapSettings.onRendered(function () {
     //add your statement here
+    $('#duration').material_select();
 });
 
 Template.mapSettings.onDestroyed(function () {
     //add your statement here
+
+    $('#duration').material_select('destroy');
 });
 
