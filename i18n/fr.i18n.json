@@ -67,7 +67,7 @@
     "genericAction": "Voir sur le site",
     "newPublication": "Une nouvelle publication a été ajoutée dans une discussion que vous suivez",
     "newResponse": "Un Commentaire à été fait suite à l'un de vos messages.",
-    "newMapMarker": "Un nouveau marqueur à été ajouté sur la carte."
+    "newMapMarker": "Un nouveau marqueur à été placé sur la carte"
   },
   "showAcceptNotif": {
     "showAcceptNotifs": "Cliquez sur accepter pour être averti des activités de votre projet.",
@@ -486,7 +486,12 @@
     "save": "Enregistrer",
     "defaultCenter": "Centrage par défaut : ",
     "defaultCenterInfo": "Centrer la carte sur la zone que vous souhaitez voir apparaitre par défaut puis cliquez sur enregistrer",
-    "centerSaved": "Le centrage par défaut de votre carte à été modifié."
+    "centerSaved": "Le centrage par défaut de votre carte à été modifié.",
+    "deleteOlds": "Retirer les anciens marqueurs :",
+    "deleteOldsInfo": "Retirer les marqueurs dont la date de création remonte à plus de :",
+    "chooseDuration": "Choisir durée",
+    "delete": "retirer",
+    "oldsMarkersDeleted": "Les anciens marqueurs ont étés supprimés"
   },
   "newMarker": {
     "title": "Nouveau marqueur",
@@ -496,6 +501,8 @@
     "arrows": "Flèches",
     "lines": "Lignes",
     "text": "Zone de texte",
+    "textLabel": "contenu de la zone de texte",
+    "textSubmit": "Créer",
     "shapes": "Formes",
     "myPosition": "Ma Position",
     "myPositionInfo": "Cliquer sur le bouton ci-dessous pour créer un marqueur sur la carte à partir de votre position",

@@ -4,12 +4,13 @@ import Topic from "../../../imports/classes/Topic";
 import MapMarker from "../../../imports/classes/MapMarker";
 import NotifPush from "../../../imports/NotifPush";
 import Comment from "../../../imports/classes/Comment";
+import MapMarkers from "../../../lib/collections/MapMarkers";
 
 
 MapMarker.extend({
     meteorMethods: {
 
-        newIconMarker(authInfo, MapMarkerParmas) {
+        newIconMarker(authInfo, MapMarkerParmas, notifObjects) {
             check(MapMarkerParmas, {
                 markerType: String,
                 projectId: String,
@@ -26,14 +27,18 @@ MapMarker.extend({
             let newMapMarker = new MapMarker(MapMarkerParmas)
             return newMapMarker.save((err) => {
                 if (!err) {
-                    console.warn("todo : notifier les membres")
-                    //topic.notifySubscribers(notifObjects, authInfo.memberId)
+                    check(notifObjects, [{
+                        userId: String,
+                        memberId: String,
+                        hashControl: String
+                    }])
+                    newMapMarker.notify(notifObjects, authInfo.memberId)
                 } else {
                     console.log(err)
                 }
             })
         },
-        newMarkerText(authInfo, MapMarkerParmas) {
+        newMarkerText(authInfo, MapMarkerParmas, notifObjects) {
             check(MapMarkerParmas, {
                 markerType: String,
                 projectId: String,
@@ -51,14 +56,18 @@ MapMarker.extend({
             let newMapMarker = new MapMarker(MapMarkerParmas)
             return newMapMarker.save((err) => {
                 if (!err) {
-                    console.warn("todo : notifier les membres")
-                    //topic.notifySubscribers(notifObjects, authInfo.memberId)
+                    check(notifObjects, [{
+                        userId: String,
+                        memberId: String,
+                        hashControl: String
+                    }])
+                    newMapMarker.notify(notifObjects, authInfo.memberId)
                 } else {
                     console.log(err)
                 }
             })
         },
-        newPolyline(authInfo, MapMarkerParmas) {
+        newPolyline(authInfo, MapMarkerParmas, notifObjects) {
             check(MapMarkerParmas, {
                 markerType: String,
                 projectId: String,
@@ -75,14 +84,18 @@ MapMarker.extend({
             let newMapMarker = new MapMarker(MapMarkerParmas)
             return newMapMarker.save((err) => {
                 if (!err) {
-                    console.warn("todo : notifier les membres")
-                    //topic.notifySubscribers(notifObjects, authInfo.memberId)
+                    check(notifObjects, [{
+                        userId: String,
+                        memberId: String,
+                        hashControl: String
+                    }])
+                    newMapMarker.notify(notifObjects, authInfo.memberId)
                 } else {
                     console.log(err)
                 }
             })
         },
-        newArrow(authInfo, MapMarkerParmas) {
+        newArrow(authInfo, MapMarkerParmas, notifObjects) {
             check(MapMarkerParmas, {
                 markerType: String,
                 projectId: String,
@@ -99,14 +112,18 @@ MapMarker.extend({
             let newMapMarker = new MapMarker(MapMarkerParmas)
             return newMapMarker.save((err) => {
                 if (!err) {
-                    console.warn("todo : notifier les membres")
-                    //topic.notifySubscribers(notifObjects, authInfo.memberId)
+                    check(notifObjects, [{
+                        userId: String,
+                        memberId: String,
+                        hashControl: String
+                    }])
+                    newMapMarker.notify(notifObjects, authInfo.memberId)
                 } else {
                     console.log(err)
                 }
             })
         },
-        newShape(authInfo, MapMarkerParmas) {
+        newShape(authInfo, MapMarkerParmas, notifObjects) {
             check(MapMarkerParmas, {
                 markerType: String,
                 projectId: String,
@@ -123,8 +140,12 @@ MapMarker.extend({
             let newMapMarker = new MapMarker(MapMarkerParmas)
             return newMapMarker.save((err) => {
                 if (!err) {
-                    console.warn("todo : notifier les membres")
-                    //topic.notifySubscribers(notifObjects, authInfo.memberId)
+                    check(notifObjects, [{
+                        userId: String,
+                        memberId: String,
+                        hashControl: String
+                    }])
+                    newMapMarker.notify(notifObjects, authInfo.memberId)
                 } else {
                     console.log(err)
                 }
@@ -214,6 +235,18 @@ MapMarker.extend({
                 return newMapMarker.save()
             }
 
+        },
+        deleteOldsMarkers(authInfo, projectId,date){
+            check(projectId, String)
+            check(date, Date)
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(projectId)
+            check(currentProject.isAdmin(authInfo), true)
+            let markers = MapMarker.find({projectId:projectId, createdAt : { $lte : date}}).fetch()
+            markers.forEach(marker=>{
+                marker.remove()
+            })
+            return true
         }
     }
 })

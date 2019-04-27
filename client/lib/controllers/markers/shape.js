@@ -3,17 +3,16 @@ import cryptoTools from "../../cryptoTools";
 import MapMarker from "../../../../imports/classes/MapMarker";
 import projectController from "../projectController";
 import * as L from "leaflet";
+import notificationController from "../notificationController";
 
 const shape = {
     saveMarker(options, coordinates, specificOptions) {
-        console.log(options.shapeType)
         let shape = {
             symEnc_coordinates: coordinates,
             symEnc_color: options.color,
             shapeType: options.shapeType,
             symEnc_radius: specificOptions.radius ? specificOptions.radius.toString() : "0"
         }
-        console.log(shape)
         cryptoTools.encryptObject(shape, {symKey: Session.get("currentProjectSimKey")}, encryptedShape => {
             let newMarkerParams = {
                 projectId: FlowRouter.current().params.projectId,
@@ -21,7 +20,7 @@ const shape = {
                 shape: encryptedShape
             }
             let newMarker = new MapMarker()
-            newMarker.callMethod("newShape", projectController.getAuthInfo(newMarkerParams.projectId), newMarkerParams, (err, res) => {
+            newMarker.callMethod("newShape", projectController.getAuthInfo(newMarkerParams.projectId), newMarkerParams,notificationController.getNotifyAll(), (err, res) => {
                     if (err) {
                         console.log(err)
                         Materialize.toast(__('general.error'), 6000, 'toastError')
@@ -42,7 +41,6 @@ const shape = {
 
             goodOnes.push([coord[1], coord[0]])
         })
-        console.log(coordinates, goodOnes)
         return JSON.stringify([goodOnes])
     },
     formatCoordinatesRectangle(bounds) {
@@ -73,7 +71,6 @@ const shape = {
                 }
                 break
             case "polygon":
-                console.log(mapController.drawControl)
                 mapController.drawControl.setDrawingOptions({
                     polygon: {
                         shapeOptions: {
@@ -150,7 +147,6 @@ const shape = {
 
                     options.radius = Number(decryptedShape.symEnc_radius)
                     leafletMarker = L.circle(JSON.parse(decryptedShape.symEnc_coordinates), options)
-                    console.log(decryptedShape)
                     break
                 case "rectangle":
                     leafletMarker = L.rectangle(JSON.parse(decryptedShape.symEnc_coordinates), options)

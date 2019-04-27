@@ -16,6 +16,11 @@ Meteor.startup(() => {
     minioTools.initialize()
 
 });
+// Listen to incoming HTTP requests, can only be used on the server
+WebApp.connectHandlers.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    return next();
+});
 // if(Meteor.isDevelopment){
 //     let key = process.env.PWD + '/private/localhost.key';
 //     let cert = process.env.PWD + '/private/localhost.cert';

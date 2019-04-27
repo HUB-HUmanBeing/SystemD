@@ -314,7 +314,10 @@
       width: 30%;
       min-width: 300px;
       max-width: 400px;
-      position: relative;
+      //position: relative;
+      #sideMapContent{
+        overflow-x: hidden !important;
+      }
 
 
     }

@@ -144,7 +144,7 @@ const mapController = {
     promptMarkers(projectId, instance) {
         instance.autorun(() => {
             let markers = MapMarker.find({projectId: projectId}).fetch()
-
+            let markersIdtoRemove = Object.keys(this.markers)
             markers.forEach((marker) => {
                 if (!this.markers[marker._id]) {
                     if (this[marker.markerType].default) {
@@ -160,6 +160,10 @@ const mapController = {
                         this[marker.markerType].editMarker(marker)
                     }
                 }
+                markersIdtoRemove.splice(markersIdtoRemove.indexOf(marker._id),1)
+            })
+            markersIdtoRemove.forEach(id=>{
+                this.removeMarker(this.markers[id])
             })
         })
 

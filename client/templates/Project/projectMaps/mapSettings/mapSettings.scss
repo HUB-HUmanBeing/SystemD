@@ -61,4 +61,11 @@
       }
     }
   }
+  .dropdown-content {
+    background-color: $lighter-bg;
+  }
+
+  .caret {
+    color: $main-color
+  }
 }

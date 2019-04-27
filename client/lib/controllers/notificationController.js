@@ -16,6 +16,19 @@ const notificationController = {
         })
         return notifObjects
     },
+    getNotifyAll() {
+        let notifObjects = []
+
+        const currentProjectMembers = Session.get('currentProjectMembers')
+        currentProjectMembers.forEach(member => {
+
+            if (member.symEnc_userId !== Meteor.userId()) {
+                notifObjects.push(this.getNotifyObject(member))
+            }
+        })
+
+        return notifObjects
+    },
     /********************
      * retourne un objet contenant l'id de membre d'un utilisateur, son id, ainsi qu'un hash que le serveur pourra verifier pour authentifier ces infos
      * @param member

@@ -66,7 +66,8 @@
     "genericTitle": "New activity on System-D",
     "genericAction": "See on website",
     "newPublication": "A new publication has been added in a followed topic",
-    "newResponse": "A comment has been made after your message"
+    "newResponse": "A comment has been made after your message",
+    "newMapMarker": "A new marker has been positionned on the map"
   },
   "showAcceptNotif": {
     "showAcceptNotifs": "Click accept to be notified of the activities on your projects",
@@ -482,7 +483,12 @@
     "save": "Save",
     "defaultCenter": "Default center : ",
     "defaultCenterInfo": "Center the map on the zone you want to appears by default and click save.",
-    "centerSaved": "Default center of the map has been edited."
+    "centerSaved": "Default center of the map has been edited.",
+    "deleteOlds": "Remove olds markers :",
+    "deleteOldsInfo": "Remove markers with a creation date older than:",
+    "chooseDuration": "Choose duration",
+    "delete": "remove",
+    "oldsMarkersDeleted": "Olds markers has been deleted"
   },
   "newMarker": {
     "title": "New Marker",
@@ -491,8 +497,9 @@
     "icons": "Icons",
     "arrows": "Arrows",
     "lines": "Lines",
-    "text": "Text zonegit pull origin robin",
-
+    "text": "Text zone",
+    "textLabel": "Text zone content",
+    "textSubmit": "Create",
     "shapes": "Shapes",
     "myPosition": "My position",
     "myPositionInfo": "Cliquer on this button to create a marker from your current position.",
