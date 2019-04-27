@@ -3,7 +3,7 @@
   margin: 0 auto;
   width: 100%;
   height: 100%;
-  background-color: $main-bg;
+  background-color: $light-bg;
 }
 
 @keyframes placeHolderShimmer {
@@ -22,7 +22,7 @@
   animation-name: placeHolderShimmer;
   animation-timing-function: linear;
   background: $main-bg;
-  background: linear-gradient(to right, $main-bg 10%, $main-bg 18%, rgba($minus-color, 0.1) 33%, $main-bg 43%);
+  background: linear-gradient(to right, $light-bg 10%, $light-bg 18%, rgba($plus-color, 0.1) 33%, $light-bg 43%);
   background-size: 800px 100%;
   height: 100%;
   position: relative;

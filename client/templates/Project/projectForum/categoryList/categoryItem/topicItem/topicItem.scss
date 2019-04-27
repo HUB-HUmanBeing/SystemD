@@ -19,7 +19,7 @@ background-color: $contrasted-minus-bg !important;
   }
 }
 .currentTopic{
-  background:linear-gradient(to left, $blue-highlight-color 0%, $main-bg 30%, $main-bg 100%);
+  background:linear-gradient(to left, $blue-highlight-color 0%, $light-bg 30%, $light-bg 100%);
   padding-left: 32px !important;
   color: $plus-color !important;
   *{

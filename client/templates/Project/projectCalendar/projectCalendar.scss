@@ -1,0 +1,101 @@
+@import "{}/client/scss/variables.scss";
+//@import "{}/client/scss/pluginsLib/leaflet.css";
+
+
+#projectCalendar {
+  width: 100%;
+  position: relative;
+
+  &.desktopProjectCalendar {
+    height: 100vh;
+  }
+
+  &.mobileProjectCalendar {
+    height: calc(100vh - 121px);
+  }
+
+  &.tabletProjectCalendar {
+    height: calc(100vh - 129px);
+  }
+
+  #calendarContainer {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+
+
+    .closeSideNav {
+      content: " ";
+      top: 0;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 101;
+    }
+
+
+    #calendar {
+      width: 100%;
+      height: 100%;
+      //background-color: $main-color;
+      z-index: 100;
+    }
+  }
+
+
+  #calendarSideNav {
+    height: 100%;
+    color: $main-color;
+    z-index: 600;
+
+
+    &.desktopCalendarSideNav {
+      width: 30%;
+      min-width: 300px;
+      max-width: 400px;
+      position: relative;
+
+
+    }
+
+    &.mobileCalendarSideNav, &.tabletCalendarSideNav {
+      top: 0;
+      position: absolute;
+      transition: 0.3s ease-out;
+
+    }
+
+    &.mobileCalendarSideNav {
+      width: calc(100vw - 70px);
+      right: calc(-100vw + 70px);
+
+      &.openedSideNav {
+        right: 0;
+      }
+    }
+
+    &.tabletCalendarSideNav {
+      width: 300px;
+      right: -300px;
+
+      &.openedSideNav {
+        right: 0;
+
+        #sideCalendarContent {
+          overflow: scroll;
+        }
+      }
+    }
+
+    #sideCalendarContent {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      padding-bottom: 50px;
+    }
+
+
+  }
+}

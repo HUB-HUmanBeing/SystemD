@@ -9,7 +9,7 @@
   }
 
   .currentCategory {
-    background: linear-gradient(to right, $blue-highlight-color 0%, $light-bg 20%, $light-bg 100%);
+    background: linear-gradient(to right, $blue-highlight-color 0%, $lighter-bg 20%, $lighter-bg 100%);
 
     .categoryTitle * {
       color: $plus-color !important;
@@ -33,7 +33,7 @@
   }
 
   .collapsible-header {
-    background-color: $contrasted-bg;
+    background-color: $contrasted-minus-bg;
     border-bottom: none;
     transition: 0.3s;
     border-left: 3px solid $blue-highlight-color;
