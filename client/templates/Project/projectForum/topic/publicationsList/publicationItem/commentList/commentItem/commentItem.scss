@@ -40,7 +40,7 @@
 
   .commentContent {
     margin-bottom: 5px;
-    background-color: $contrasted-minus-bg;
+    background: linear-gradient(45deg, $light-bg 0%,$contrasted-minus-bg  100%);
     padding: 5px 10px;
     border-radius: 1em;
     opacity: 0.8;

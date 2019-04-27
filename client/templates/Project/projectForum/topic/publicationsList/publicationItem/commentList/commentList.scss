@@ -59,7 +59,7 @@
     }
 
     .textareaSuperContainter {
-      background-color: $contrasted-minus-bg ;
+      background: linear-gradient(45deg, $main-bg 0%,$contrasted-minus-bg  100%);
       margin: 0px 0 2.5px 0;
       padding: 7px 60px 0 10px;
       border-radius: 1em;

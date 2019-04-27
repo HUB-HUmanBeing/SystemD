@@ -18,7 +18,7 @@
       display: block;
       padding:  5px ;
       margin: 0px 5px 10px 5px;
-      background-color: $main-bg;
+      background: linear-gradient(45deg, $main-bg 0%,$contrasted-minus-bg  100%);
      // border-radius: 5px;
       height: 45px;
       i{
@@ -29,8 +29,7 @@
         margin: 0;
       }
       &:hover{
-
-        background-color: $blue-highlight-color;
+        background: linear-gradient(45deg, $main-bg 0%,$blue-highlight-color 100%);
         //border: 2px solid $plus-color;
         *{
           color: $plus-color !important;
