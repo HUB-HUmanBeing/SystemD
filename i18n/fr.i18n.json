@@ -560,5 +560,11 @@
   "colorLegend": {
     "placeholder": "Non renseigné",
     "save": "Enregistrer"
+  },
+  "activityDetail": {
+    "activityTitle": "Activité sans nom",
+    "activityDetail": "Détail de l'activité",
+    "date": "Dates :",
+    "deleteActivity": "Supprimer"
   }
 }

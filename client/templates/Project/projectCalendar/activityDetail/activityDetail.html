@@ -1,0 +1,127 @@
+<template name="activityDetail">
+    <div id="activityDetail">
+        {{#if activity}}
+            <div class="row relative" style="margin-bottom: 5px">
+                <div id="detailIconMarker">
+                    <div class="iconMarkerHead center-align relative" style="background-color: {{eventColor}}">
+                        <a href="" class="btn btn-floating editColorBtn" editColor><i
+                                class="material-icons">color_lens</i></a>
+                        <div class="absolute colorLegendLabel">
+                            {{getIndex colorLegend activity.color}}
+                        </div>
+                        <div class="relative iconContainer">
+
+                            <i class="material-icons white-text medium small-padding small-margin">event</i>
+
+
+                        </div>
+
+                    </div>
+                    {{#if editingColor}}
+                        <div class="editIcon">
+                            <div class="flex colorPicker">
+                                {{#each color in colors}}
+                                    <div class="flex-auto center-align">
+
+                                        <a href="" id="color-{{@index}}"
+                                           class="colorItem shadow {{#if compare activity.color "=="
+                                                                         @index}}selectedColor{{/if}} {{#if getIndex
+                                                                                                            colorLegend
+                                                                                                            @index}}tooltipped{{/if}}"
+                                           data-position="top"
+                                           data-delay="50" data-tooltip="{{getIndex colorLegend @index}}"
+                                           style="background-color: {{color}}" selectColor></a>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+
+                <div class="publicationHeader small-padding">
+                    <div class="authorInfo left-align flex">
+                        <div class="userAvatar small-shadow">
+                            {{>avatar userId=(userIdFromMemberId activity.createdBy)}}
+                        </div>
+                        <div class="flex-auto" style="padding-left: 0.2em">
+                            <div class="publicationDate ">
+                                {{#if compare activity.lastEditAt "!==" activity.createdAt}}
+                                    {{formatDate activity.lastEditAt}}{{__ "markerDetail.lastEdit"}}
+                                {{else}}
+                                    {{formatDate activity.createdAt}}
+                                {{/if}}
+                            </div>
+                            <div class="username">
+                                {{__ "markerDetail.createdBy"}} {{usernameFromMemberId activity.createdBy}}
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row no-margin">
+                <div class="col s12">
+                    <form id="EditActivityForm" action="" editActivity class="">
+                        <div class="input-field ">
+                            <input id="activityTitle" type="text" class="no-margin"
+                                   placeholder="{{__ ".activityTitle"}}"
+                                   value="{{activity.symEnc_title}}">
+                        </div>
+                        <div class="input-field ">
+                            <textarea id="editActivityDetail" class="materialize-textarea no-margin"
+                                      value="{{activity.symEnc_detail}}"></textarea>
+                            <label for="editActivityDetail">{{__ ".activityDetail"}}</label>
+                        </div>
+                        {{#if showEditFormButton}}
+                            <div class="right-align" style="margin-top: 10px">
+                                <button href="" class="btn btnStandard waves-effect waves-light">
+                                    <i class="material-icons left">edit</i>{{__ ".editActivity"}}</button>
+                            </div>
+                        {{/if}}
+                    </form>
+
+                </div>
+            </div>
+            <div class="row no-margin">
+                <div class="col s12">
+                    <div class="hr"></div>
+                    <p class="sectionLabel">{{__ ".date"}}</p>
+                    <form id="EditDateForm" action="" editDate class="">
+                        <div class="input-field ">
+                            <input id="activityTitle" type="text" class="no-margin"
+                                   placeholder="{{__ ".activityTitle"}}"
+                                   value="{{activity.symEnc_title}}">
+                        </div>
+                        <div class="input-field ">
+                            <textarea id="editActivityDetail" class="materialize-textarea no-margin"
+                                      value="{{activity.symEnc_detail}}"></textarea>
+                            <label for="editActivityDetail">{{__ ".activityDetail"}}</label>
+                        </div>
+                        {{#if showEditFormButton}}
+                            <div class="right-align" style="margin-top: 10px">
+                                <button href="" class="btn btnStandard waves-effect waves-light">
+                                    <i class="material-icons left">edit</i>{{__ ".editActivity"}}</button>
+                            </div>
+                        {{/if}}
+                    </form>
+
+                </div>
+            </div>
+            <div class="row no-margin">
+                <div class="col s12">
+                    <div class="hr"></div>
+                </div>
+                <div class="col s6">
+                    <a href="" class="btn btn-danger waves-effect waves-light full-width" deleteActivity>
+                        {{__ ".deleteActivity"}}</a>
+                </div>
+            </div>
+
+
+        {{/if}}
+    </div>
+</template>

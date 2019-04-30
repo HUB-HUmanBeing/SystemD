@@ -38,7 +38,6 @@ Template.calendarSettings.events({
 
 Template.calendarSettings.onCreated(function () {
     //add your statement here
-    console.log(this.data.project)
 });
 
 Template.calendarSettings.onRendered(function () {

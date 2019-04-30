@@ -12,6 +12,7 @@ import Publication from "../imports/classes/Publication";
 import Comments from "../lib/collections/Comments";
 import MapMarkers from "../lib/collections/MapMarkers";
 import MapMarker from "../imports/classes/MapMarker";
+import Activities from "../lib/collections/Activities";
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
  **********************************/
@@ -269,4 +270,15 @@ Meteor.publish('markerDetail', function (authInfo, markerId) {
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
     return MapMarkers.find({_id: markerId})
+})
+Meteor.publish("activitiesByProject",function (authInfo, projectId) {
+    check(projectId, String)
+    check(authInfo, {memberId: String, userSignature: String})
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return Activities.find({projectId: projectId, start:{$exists: true}}, {
+        sort: {
+            createdAt: -1
+        }
+    })
 })

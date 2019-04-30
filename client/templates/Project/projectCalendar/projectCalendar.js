@@ -36,7 +36,7 @@ Template.projectCalendar.helpers({
     currentView: function () {
         FlowRouter.watchPathChange()
         let view = FlowRouter.current().queryParams.view
-        let name=view?view: 'days'
+        let name=view?view: Project.findOne(FlowRouter.current().params.projectId).private.calendar.defaultView
         let icon=""
         switch (name) {
             case "days":
@@ -45,7 +45,7 @@ Template.projectCalendar.helpers({
             case "month":
                 icon="view_comfy"
                 break
-            case "list":
+            case "listMonth":
                 icon="format_list_bulleted"
                 break
             default:
@@ -63,7 +63,7 @@ Template.projectCalendar.events({
     //add your events here
     "click [closeSideNav]": function (event) {
         event.preventDefault()
-        FlowRouter.go("/project/" + FlowRouter.current().params.projectId + "/calendar")
+        calendarController.closeSideNav()
     },
     'click [dayView]': function (event) {
         event.preventDefault()
@@ -80,7 +80,7 @@ Template.projectCalendar.events({
     'click [listView]': function (event) {
         event.preventDefault()
         resetTooltips()
-        calendarController.changeView('list')
+        calendarController.changeView('listMonth')
         $('.calendarButtons').closeFAB()
     },
     'click [previousPeriod]': function (event) {
@@ -90,6 +90,10 @@ Template.projectCalendar.events({
     'click [nextPeriod]': function (event) {
         event.preventDefault()
         calendarController.changePeriod(false)
+    },
+    'click [goSettings]': function (event) {
+        event.preventDefault()
+        calendarController.goSettings()
     }
 });
 

@@ -36,7 +36,7 @@
                                             class="material-icons">view_comfy</i></a>
                                 </li>
                             {{/unless}}
-                            {{#unless compare currentView.name "==" "list"}}
+                            {{#unless compare currentView.name "==" "listMonth"}}
                                 <li>
                                     <a href="#"
                                        class="btn-floating btn  small-shadow tooltipped" data-position="left"
@@ -45,7 +45,7 @@
                                 </li>
                             {{/unless}}
                             <li>
-                                <a href="/project/{{currentProject._id}}/calendar?side=calendarSettings"
+                                <a href="" goSettings
                                    class="btn-floating btn settingsBtn tooltipped" data-position="left" data-delay="250"
                                    data-tooltip="{{__ ".settings"}}"><i
                                         class="material-icons">settings</i></a>

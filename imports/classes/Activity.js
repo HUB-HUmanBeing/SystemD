@@ -12,14 +12,21 @@ const Activity = Class.create({
         createdBy: {
             type: String
         },
-        symEnc_title:String,
+        symEnc_title:{
+            type:String,
+            optional: true
+        },
+        symEnc_detail:{
+            type:String,
+            optional: true
+        },
         taskListId:{
             type: String,
             optional:true
         },
         color:{
-            type: String,
-            optional:true
+            type: Number,
+            default:0
         },
         allDay:{
             type: Boolean,
@@ -27,16 +34,12 @@ const Activity = Class.create({
         },
         start:{
             type: Date,
-            default: function () {
-                return new Date()
-            },
+            optional:true,
             index: -1
         },
         end:{
             type: Date,
-            default: function () {
-                return new Date()
-            },
+            optional:true,
             index: -1
         },
         createdAt: {

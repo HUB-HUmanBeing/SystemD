@@ -1,0 +1,124 @@
+@import "{}/client/scss/variables.scss";
+
+#activityDetail {
+  width: 100%;
+  position: relative;
+  height: 100%;
+
+  h5 {
+    margin: 20px 10px 0px 10px;
+  }
+
+  #detailIconMarker {
+    .iconMarkerHead {
+      position: relative;
+      padding: 10px 0;
+
+.colorLegendLabel{
+  position: absolute;
+  top:0px ;
+  font-style: italic;
+  right: 10px;
+  text-align: right;
+  line-height: 1.4em;
+  margin-top: 0.4em;
+  color: $plus-color;
+}
+      .btn-floating {
+        opacity: 0.7;
+        position: absolute;
+        background-color: rgba($plus-color, 0.2);
+
+        i {
+          color: $plus-color;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .editIconBtn {
+        bottom: 15px;
+        right: -5px;
+      }
+
+      .editColorBtn {
+        top: 10px;
+        left: 10px;
+      }
+
+      .iconContainer {
+
+        display: inline-block;
+      }
+    }
+
+    .editIcon {
+      margin-bottom:35px;
+      .colorPicker{
+        margin: 10px 0 ;
+      }
+    }
+  }
+
+  .publicationHeader {
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    margin: 0;
+
+    .username {
+      font-size: 1em !important;
+      margin-top: 0.2em;
+      color: $main-color;
+    }
+
+    .userAvatar {
+      width: 2.6em;
+      height: 2.6em;
+      margin-top: 10px;
+    }
+
+    .publicationDate {
+      text-align: right;
+      line-height: 1.4em;
+      margin-top: 0.4em;
+      color: $plus-color;
+    }
+  }
+
+  .coordinates {
+    font-size: 0.9em;
+    font-style: italic;
+    padding: 0 5px;
+  }
+
+  .sectionLabel {
+    margin: 5px 10px 5px 0px;
+    font-size: 1.1em;
+  }
+
+  #EditActivityForm {
+    #activityTitle {
+      font-size: 1.25em;
+      color: $plus-color;
+
+      &::placeholder {
+        font-style: italic;
+        color: $minus-color;
+      }
+    }
+
+    #editActivityDetail {
+      min-height: 1rem !important;
+    }
+
+    .input-field {
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-top: 25px;
+    }
+  }
+
+}
