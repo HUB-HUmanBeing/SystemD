@@ -94,6 +94,9 @@ Template.registerHelper('onlyZeroToNine', function (number) {
 Template.registerHelper('isDev', function () {
     return Meteor.isDevelopment
 })
+Template.registerHelper('getIndex', function (array, i) {
+    return array[i]
+})
 
 Template.registerHelper("getEmojis", function () {
 

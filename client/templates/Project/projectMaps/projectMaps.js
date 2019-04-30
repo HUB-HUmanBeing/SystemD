@@ -1,6 +1,7 @@
 import Project from "../../../../imports/classes/Project";
 import mapController from "../../../lib/controllers/mapController";
 import projectController from "../../../lib/controllers/projectController";
+import cryptoTools from "../../../lib/cryptoTools";
 
 Template.projectMaps.helpers({
     //add you helpers here
@@ -23,7 +24,8 @@ Template.projectMaps.helpers({
     sideNavData: function () {
         return {
             project: Project.findOne(FlowRouter.current().params.projectId),
-            mapState: Template.instance().mapState
+            mapState: Template.instance().mapState,
+            colorLegend:Template.instance().colorLegend.get()
         }
     },
     mapState: function () {
@@ -76,6 +78,7 @@ Template.projectMaps.events({
 
 Template.projectMaps.onCreated(function () {
     //add your statement here
+    this.colorLegend = new ReactiveVar([])
     this.footerOpened = new ReactiveVar(false)
     this.isFullScreen = new ReactiveVar(false)
     this.mapState = new ReactiveVar({currentAction: false})
@@ -85,6 +88,13 @@ Template.projectMaps.onCreated(function () {
         mapController.initialize(Project.findOne(projectId), this)
 
     }, 200)
+    this.autorun(()=>{
+        FlowRouter.watchPathChange()
+        let colorLegends = Project.findOne(FlowRouter.current().params.projectId).private.map.symEncArr_colorLegend
+        cryptoTools.decryptStringArray(colorLegends,Session.get("currentProjectSimKey"), decryptedCalendarlegend=>{
+            this.colorLegend.set(decryptedCalendarlegend)
+        })
+    })
 });
 
 Template.projectMaps.onRendered(function () {

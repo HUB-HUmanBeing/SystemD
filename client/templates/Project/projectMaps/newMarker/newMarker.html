@@ -10,7 +10,8 @@
                         <div class="flex-auto center-align">
 
                             <a href="" id="color-{{color}}"
-                               class="colorItem shadow {{#if compare selectedColor "==" color}}selectedColor{{/if}}"
+                               class="colorItem shadow {{#if compare selectedColor "==" color}}selectedColor{{/if}} {{#if getIndex colorLegend @index}}tooltipped{{/if}}" data-position="bottom"
+                               data-delay="50" data-tooltip="{{getIndex colorLegend @index}}"
                                style="background-color: {{color}}" selectColor></a>
                         </div>
                     {{/each}}

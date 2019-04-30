@@ -1,0 +1,36 @@
+@import "{}/client/scss/variables.scss";
+
+#calendarSettings {
+  width: 100%;
+  position: relative;
+
+  h5 {
+    margin: 20px 10px 0px 10px;
+  }
+
+  .sectionLabel {
+    margin: 5px 10px 10px 0px;
+    font-size: 1.1em;
+  }
+
+  .row {
+    .infoQuotes {
+      margin: 0 5px 5px;
+      font-size: 0.9em;
+    }
+  }
+.selected{
+  background-color: $blue-highlight-color !important;
+  pointer-events: none;
+  cursor: default;
+}
+
+  .dropdown-content {
+    background-color: $lighter-bg;
+  }
+
+  .caret {
+    color: $main-color
+  }
+
+}

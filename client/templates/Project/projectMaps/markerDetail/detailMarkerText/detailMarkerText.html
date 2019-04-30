@@ -19,7 +19,8 @@
 
                             <a href="" id="color-{{color}}"
                                class="colorItem shadow {{#if compare marker.markerText.symEnc_color "=="
-                                                             color}}selectedColor{{/if}}"
+                                                             color}}selectedColor{{/if}} {{#if getIndex colorLegend @index}}tooltipped{{/if}}" data-position="bottom"
+                               data-delay="50" data-tooltip="{{getIndex colorLegend @index}}"
                                style="background-color: {{color}}" selectColor></a>
                         </div>
                     {{/each}}

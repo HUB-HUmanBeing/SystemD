@@ -263,8 +263,7 @@ const cryptoTools = {
         for (let index = 0; index < array.length; index++) {
             await callback(array[index], index, array);
         }
-    }
-    ,
+    },
     /***********************
      * chiffre unelement a partir de l'encryption params si les conventions de nommage sont bonnes
      * @param element   --- le contenu à chiffrer
@@ -375,8 +374,7 @@ const cryptoTools = {
                 callback(encryptedObject)
             })
         })
-    }
-    ,
+    },
     /********************
      * dechiffre un element a partir du decryption params si les conventions de nommage sont bonnes et renvoie une promise dont la résolution contient l'element déchiffré
      * @param element   --- le contenu à dechiffrer
@@ -481,8 +479,30 @@ const cryptoTools = {
                 }
             })
         })
-    }
-    ,
+    },
+
+    async encryptStringArray(StringArray, stringifiedSymKey, callback){
+        let encryptedStringArray = []
+        await this.asyncForEach(StringArray, async (string, i) => {
+            await this.sim_encrypt_data(string, stringifiedSymKey, (encryptedString) => {
+                encryptedStringArray.push(encryptedString)
+                if (i === StringArray.length - 1) {
+                    callback(encryptedStringArray)
+                }
+            })
+        })
+    },
+    async decryptStringArray(StringArray, stringifiedSymKey, callback){
+        let decryptedStringArray = []
+        await this.asyncForEach(StringArray, async (string, i) => {
+            await this.sim_decrypt_data(string, stringifiedSymKey, (decryptedString) => {
+               decryptedStringArray.push(decryptedString)
+                if (i === StringArray.length - 1) {
+                    callback(decryptedStringArray)
+                }
+            })
+        })
+    },
     /******************
      * on stocke ici notre objet zxcvbn qui gere la difficulté des password
      */

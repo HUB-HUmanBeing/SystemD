@@ -2,25 +2,60 @@ import projectController from "../../../lib/controllers/projectController";
 import mapController from "../../../lib/controllers/mapController";
 import Project from "../../../../imports/classes/Project";
 import calendarController from "../../../lib/controllers/calendarController";
+import cryptoTools from "../../../lib/cryptoTools";
 
 Template.projectCalendar.helpers({
     //add you helpers here
     currentProject: function () {
+        FlowRouter.watchPathChange()
         return Project.findOne(FlowRouter.current().params.projectId)
     },
     sideNav: function () {
         FlowRouter.watchPathChange()
-        return FlowRouter.current().queryParams.side
+        if(Meteor.Device.isDesktop()){
+            return FlowRouter.current().queryParams.side?FlowRouter.current().queryParams.side : "calendarSettings"
+        }else{
+            return FlowRouter.current().queryParams.side
+        }
+
     },
     sideNavData: function () {
         return {
             project: Project.findOne(FlowRouter.current().params.projectId),
-            calendarState: Template.instance().calendarState
+            calendarState: Template.instance().calendarState,
+            colorLegend:Template.instance().colorLegend.get()
         }
     },
     calendarState: function () {
         return Template.instance().calendarState.get()
 
+    },
+    title: function () {
+        return Template.instance().title.get()
+    },
+    currentView: function () {
+        FlowRouter.watchPathChange()
+        let view = FlowRouter.current().queryParams.view
+        let name=view?view: 'days'
+        let icon=""
+        switch (name) {
+            case "days":
+                icon="view_list"
+                break
+            case "month":
+                icon="view_comfy"
+                break
+            case "list":
+                icon="format_list_bulleted"
+                break
+            default:
+                break
+
+        }
+        return {name:name,icon:icon}
+    },
+    colorLegend:function () {
+        return Template.instance().colorLegend.get()
     }
 });
 
@@ -30,22 +65,58 @@ Template.projectCalendar.events({
         event.preventDefault()
         FlowRouter.go("/project/" + FlowRouter.current().params.projectId + "/calendar")
     },
+    'click [dayView]': function (event) {
+        event.preventDefault()
+        $('.calendarButtons').closeFAB()
+        resetTooltips()
+        calendarController.changeView('days')
+    },
+    'click [monthView]': function (event) {
+        event.preventDefault()
+        $('.calendarButtons').closeFAB()
+        resetTooltips()
+        calendarController.changeView('month')
+    },
+    'click [listView]': function (event) {
+        event.preventDefault()
+        resetTooltips()
+        calendarController.changeView('list')
+        $('.calendarButtons').closeFAB()
+    },
+    'click [previousPeriod]': function (event) {
+        event.preventDefault()
+        calendarController.changePeriod(true)
+    },
+    'click [nextPeriod]': function (event) {
+        event.preventDefault()
+        calendarController.changePeriod(false)
+    }
 });
 
 Template.projectCalendar.onCreated(function () {
     //add your statement here
+    this.colorLegend = new ReactiveVar([])
+    this.title = new ReactiveVar("")
     this.calendarState = new ReactiveVar({currentAction: false})
-        let projectId = FlowRouter.current().params.projectId
-        Meteor.subscribe('calendarEventsProject', projectController.getAuthInfo(projectId), projectId)
-        Meteor.setTimeout(() => {
-            calendarController.initialize(Project.findOne(projectId), this)
+    let projectId = FlowRouter.current().params.projectId
+    Meteor.subscribe('calendarEventsProject', projectController.getAuthInfo(projectId), projectId)
+    Meteor.setTimeout(() => {
+        calendarController.initialize(Project.findOne(projectId), this)
 
-        }, 200)
+    }, 200)
+
+    this.autorun(()=>{
+        FlowRouter.watchPathChange()
+        let colorLegends = Project.findOne(FlowRouter.current().params.projectId).private.calendar.symEncArr_colorLegend
+        cryptoTools.decryptStringArray(colorLegends,Session.get("currentProjectSimKey"), decryptedCalendarlegend=>{
+            this.colorLegend.set(decryptedCalendarlegend)
+        })
+    })
 });
 
 Template.projectCalendar.onRendered(function () {
     //add your statement here
-
+    resetTooltips()
 });
 
 Template.projectCalendar.onDestroyed(function () {

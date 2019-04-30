@@ -491,7 +491,8 @@
     "deleteOldsInfo": "Retirer les marqueurs dont la date de création remonte à plus de :",
     "chooseDuration": "Choisir durée",
     "delete": "retirer",
-    "oldsMarkersDeleted": "Les anciens marqueurs ont étés supprimés"
+    "oldsMarkersDeleted": "Les anciens marqueurs ont étés supprimés",
+    "colorLegend": "Légende couleur :"
   },
   "newMarker": {
     "title": "Nouveau marqueur",
@@ -544,5 +545,20 @@
   },
   "creatingArrow": {
     "createArrowInfo": "Placer votre flèche sur la carte."
+  },
+  "projectCalendar": {
+    "daysView": "Vue journalière",
+    "monthView": "Vue mensuelle",
+    "listVue": "Listing des évènements mensuels"
+  },
+  "calendarSettings": {
+    "title": "Paramètre de l'agenda",
+    "defaultView": "Vue par défaut : ",
+    "colorLegend": "Legende couleur : ",
+    "defaultViewSaved": "La vue par défaut à été modifiée pour tout les membres du projet"
+  },
+  "colorLegend": {
+    "placeholder": "Non renseigné",
+    "save": "Enregistrer"
   }
 }

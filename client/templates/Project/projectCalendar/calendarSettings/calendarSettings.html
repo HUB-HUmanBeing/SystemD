@@ -1,0 +1,40 @@
+<template name="calendarSettings">
+    <div id="calendarSettings">
+        <h5>{{__ ".title"}}</h5>
+        {{#if isAdmin project._id}}
+            <div class="row no-margin">
+                <div class="col s12">
+                    <div class="hr"></div>
+                    <p class="sectionLabel">{{__ ".defaultView"}}</p>
+                    <div class="row iconPicker no-margin" style="background-color:{{selectedColor}}">
+                        <a href="" id="defaultView#days"
+                           class="iconItem col s4 no-padding center-align tooltipped {{#if compare project.private.calendar.defaultView '==' 'days'}} selected {{/if}}" data-position="bottom" data-delay="250"
+                           data-tooltip="{{__ "projectCalendar.daysView"}}" selectDefaultView>
+                            <i class="material-icons" style="transform: rotate(90deg)">view_list</i>
+                        </a>
+                        <a href="" id="defaultView#month"
+                           class="iconItem col s4 no-padding center-align tooltipped {{#if compare project.private.calendar.defaultView '==' 'month'}} selected {{/if}}" data-position="bottom" data-delay="250"
+                           data-tooltip="{{__ "projectCalendar.monthView"}}" selectDefaultView>
+                            <i class="material-icons">view_comfy</i>
+                        </a>
+                        <a href="" id="defaultView#list"
+                           class="iconItem col s4 no-padding center-align tooltipped {{#if compare project.private.calendar.defaultView '==' 'list'}} selected {{/if}}" data-position="bottom" data-delay="250"
+                           data-tooltip="{{__ "projectCalendar.listView"}}" selectDefaultView>
+                            <i class="material-icons">format_list_bulleted</i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+        <div class="row no-margin">
+            <div class="col s12">
+                <div class="hr"></div>
+                <p class="sectionLabel">{{__ ".colorLegend"}}</p>
+{{>colorLegend callback=colorLegendCallback colorLegend=colorLegend}}
+            </div>
+        </div>
+
+
+    </div>
+</template>

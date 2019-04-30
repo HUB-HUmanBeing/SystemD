@@ -33,6 +33,7 @@ Template.detailIconMarker.events({
     'click [editColor]': function (event, instance) {
         event.preventDefault()
         instance.editingIcon.set(false)
+        resetTooltips()
         instance.editingColor.set(!instance.editingColor.get())
     },
     'click [selectColor]': function (event, instance) {

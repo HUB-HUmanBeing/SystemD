@@ -39,6 +39,20 @@ Template.mapSettings.helpers({
             }
         ]
     },
+    colorLegendCallback: function () {
+        let instance=Template.instance()
+        return function (encryptedColorLegends) {
+            instance.data.project.callMethod("editMapLegend",
+                projectController.getAuthInfo(instance.data.project._id),
+                encryptedColorLegends,
+                (err, res) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                    }
+                })
+        }
+    }
 });
 
 Template.mapSettings.events({

@@ -8,6 +8,26 @@
 
   &.desktopProjectCalendar {
     height: 100vh;
+
+    .fc-view-container {
+      overflow-x: hidden;
+      position: relative;
+
+      &:after {
+        content: " ";
+        position: absolute;
+        width: 1px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 101;
+        background-color: $grey;
+      }
+    }
+
+    .fc-days-view {
+      width: calc(100% + 15px);
+    }
   }
 
   &.mobileProjectCalendar {
@@ -22,7 +42,65 @@
     overflow: hidden;
     height: 100%;
     position: relative;
+    padding: 5px;
+    flex-direction: column;
 
+    .calendarHeader {
+      margin: 1em 0 1em 0;
+
+      a {
+        background-color: $lighter-bg;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: $blue-highlight-color;
+        }
+      }
+
+      .titleContainer {
+        .title {
+          padding: 0 5px;
+          text-align: center;
+          font-size: calc( 1em + 50%);
+          line-height: 40px;
+          color: $plus-color;
+        }
+      }
+
+      .calendarButtons {
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 500;
+        margin: 0;
+        padding: 0 0 0 5px;
+
+        ul {
+          bottom: auto !important;
+        }
+
+        .btn-large {
+          background-color: $blue-highlight-color !important;
+        }
+
+        .dayBtn {
+          transform: rotate(90deg) !important;
+        }
+
+        a {
+          position: relative;
+          z-index: 400;
+
+        }
+
+        li {
+          margin: 7px 0px 0 0 !important;
+
+
+        }
+
+      }
+    }
 
     .closeSideNav {
       content: " ";
@@ -40,6 +118,69 @@
       height: 100%;
       //background-color: $main-color;
       z-index: 100;
+
+      thead {
+        background-color: $main-bg;
+      }
+
+      .fc-toolbar {
+        display: none;
+      }
+
+      .fc-view-container {
+        background-color: $light-bg;
+
+        .fc-today {
+          background-color: rgba($minus-color, 0.2);
+        }
+
+        .fc-axis, .fc-axis * {
+          color: $main-color;
+          border: none;
+        }
+
+        .fc-day-header {
+          color: $main-color;
+        }
+
+        .fc-day-top {
+          background-color: $main-bg;
+        }
+
+        .fc-divider {
+          background-color: rgba($minus-color, 0.5);
+        }
+
+        * {
+          border-color: $grey;
+        }
+        .fc-axis{
+          //width: auto !important;
+          width: 30px !important;
+         &.fc-time{
+           &.fc-widget-content{
+             position: relative;
+             span{
+               position: relative;
+               top:-10px;
+             }
+           }
+         }
+        }
+.fc-day-grid{
+  .fc-axis  {
+    &.fc-widget-content span{
+      display: none;
+    }
+
+  }
+}
+
+
+        .fc-time-grid .fc-slats .fc-minor td {
+          border-top-color: rgba($grey, 0.6) !important;
+        }
+      }
     }
   }
 
@@ -51,9 +192,8 @@
 
 
     &.desktopCalendarSideNav {
-      width: 30%;
-      min-width: 300px;
-      max-width: 400px;
+      width: 300px;
+
       position: relative;
 
 

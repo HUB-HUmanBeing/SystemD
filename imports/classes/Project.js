@@ -87,8 +87,33 @@ const Map = Class.create({
         },
         symEnc_mapProvider: {
             type: String,
-            optional:true
+            optional: true
+        },
+        symEncArr_colorLegend:{
+            type: [String],
+            default: function () {
+                return []
+            }
         }
+    }
+})
+
+const Calendar = Class.create({
+    name: "Calendar",
+    fields: {
+        defaultView: {
+            type: String,
+            default: function () {
+                return "days"
+            }
+        },
+        symEncArr_colorLegend:{
+            type: [String],
+            default: function () {
+                return []
+            }
+        }
+
     }
 })
 const ProjectPublic = Class.create({
@@ -158,6 +183,12 @@ const ProjectPrivate = Class.create({
         },
         map: {
             type: Map,
+            default: function () {
+                return {};
+            }
+        },
+        calendar: {
+            type: Calendar,
             default: function () {
                 return {};
             }

@@ -1,0 +1,27 @@
+@import "{}/client/scss/variables.scss";
+
+.colorLegend {
+  .colorPreview {
+    content: " ";
+    display: block;
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  .flex-auto{
+    padding-left: 10px;
+    padding-right: 50px;
+  }
+  input{
+
+    height: 1.5em !important;
+    margin-bottom: 1em !important;
+    border-bottom: 1px solid rgba($minus-color, 0.5) !important;
+
+    &::placeholder{
+      color: $minus-color;
+    }
+  }
+}

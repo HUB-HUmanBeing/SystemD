@@ -28,7 +28,13 @@
                 {{/if}}
             </div>
         </div>
-
+        <div class="row no-margin">
+            <div class="col s12">
+                <div class="hr"></div>
+                <p class="sectionLabel">{{__ ".colorLegend"}}</p>
+                {{>colorLegend callback=colorLegendCallback colorLegend=colorLegend}}
+            </div>
+        </div>
 
         <div class="row">
             <div class="col s12 center-align">

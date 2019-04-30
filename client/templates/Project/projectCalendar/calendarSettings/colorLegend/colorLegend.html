@@ -1,0 +1,25 @@
+<template name="colorLegend">
+    <form class="colorLegend" saveLegend>
+
+        {{#each color in colors}}
+                <div class="flex">
+                    <div class="colorPreview shadow" style="background-color: {{color}}">
+
+                    </div>
+                    <div class="flex-auto">
+                        <input id="colorLegend-{{@index}}" type="text" value="{{getIndex colorLegend @index }}" placeholder="{{__ ".placeholder"}}" colorInput>
+                    </div>
+
+                </div>
+            {{/each}}
+
+        {{#if showValidate}}
+            <div class="row no-margin">
+                <div class="col s12 right-align no-padding">
+                    <button  class="btn btnStandard " ><i class="material-icons left">save</i>{{__
+                            ".save"}}</button>
+                </div>
+            </div>
+        {{/if}}
+    </form>
+</template>

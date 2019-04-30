@@ -1,8 +1,65 @@
 <template name="projectCalendar">
     <div id="projectCalendar" class=" {{#if isDesktop}} flex desktopProjectCalendar {{else}}{{#if
             isPhone}} mobileProjectCalendar {{else}} tabletProjectCalendar{{/if}}{{/if}}">
-        <div id="calendarContainer" class="relative {{mapState.currentAction}} {{#if isDesktop}} flex-auto {{/if}}">
-            <div id="calendar" class="">
+        <div id="calendarContainer"
+             class="relative flex {{mapState.currentAction}} {{#if isDesktop}} flex-auto {{/if}}">
+            <div class="calendarHeader">
+                <div class="titleContainer flex relative">
+                    <a href="" class="previousPeriod btn-floating btn" previousPeriod>
+                        <i class="material-icons ">navigate_before</i>
+                    </a>
+                    <div class="flex-auto elipsis title">
+                        {{title}}
+                    </div>
+                    <a href="" class=" btn-floating btn" nextPeriod>
+                        <i class="material-icons ">navigate_next</i>
+                    </a>
+                    <div class="fixed-action-btn calendarButtons ">
+                        <a class="btn-floating btn ">
+                            <i class=" material-icons {{#if compare currentView.name "=="
+                                                            "days"}} dayBtn {{/if}}">{{currentView.icon}}</i>
+                        </a>
+                        <ul>
+                            {{#unless compare currentView.name "==" "days"}}
+                                <li>
+                                    <a href="#"
+                                       class="btn-floating btn tooltipped" data-position="left" data-delay="250"
+                                       data-tooltip="{{__ ".dayView"}}" dayView><i
+                                            class="material-icons dayBtn">view_list</i></a>
+                                </li>
+                            {{/unless}}
+                            {{#unless compare currentView.name "==" "month"}}
+                                <li>
+                                    <a href="#"
+                                       class="btn-floating btn tooltipped" data-position="left" data-delay="250"
+                                       data-tooltip="{{__ ".monthView"}}" monthView><i
+                                            class="material-icons">view_comfy</i></a>
+                                </li>
+                            {{/unless}}
+                            {{#unless compare currentView.name "==" "list"}}
+                                <li>
+                                    <a href="#"
+                                       class="btn-floating btn  small-shadow tooltipped" data-position="left"
+                                       data-delay="250" data-tooltip="{{__ ".listView"}}" listView><i
+                                            class="material-icons">format_list_bulleted</i></a>
+                                </li>
+                            {{/unless}}
+                            <li>
+                                <a href="/project/{{currentProject._id}}/calendar?side=calendarSettings"
+                                   class="btn-floating btn settingsBtn tooltipped" data-position="left" data-delay="250"
+                                   data-tooltip="{{__ ".settings"}}"><i
+                                        class="material-icons">settings</i></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex-auto relative">
+                <div id="calendar" class="">
+                </div>
+
 
             </div>
             {{#if sideNav}}

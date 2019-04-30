@@ -26,5 +26,13 @@ Project.extend({
             currentProject.private.map.zoomLevel = centeringParams.zoomLevel
             return currentProject.save()
         },
+        editMapLegend: function (authInfo, legends) {
+            check(legends, [String])
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(this._id)
+            check(currentProject.isMember(authInfo), true)
+            currentProject.private.map.symEncArr_colorLegend = legends
+            return currentProject.save()
+        },
     }
 })

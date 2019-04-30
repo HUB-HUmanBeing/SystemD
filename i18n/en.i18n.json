@@ -541,5 +541,20 @@
   },
   "creatingArrow": {
     "createArrowInfo": "Place your arrow on the map."
+  },
+  "projectCalendar": {
+    "daysView": "Daily view",
+    "monthView": "Monthly view",
+    "listVue": "list of monthly events"
+  },
+  "calendarSettings": {
+    "title": "Calendar parameters",
+    "defaultView": "Default view : ",
+    "colorLegend": "Color legend : ",
+    "defaultViewSaved": "Default view has been changed for all members of the project"
+  },
+  "colorLegend": {
+    "placeholder": "Your legend ...",
+    "save": "Save"
   }
 }

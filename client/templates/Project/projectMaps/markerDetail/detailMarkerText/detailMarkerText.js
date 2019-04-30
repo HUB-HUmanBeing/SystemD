@@ -17,6 +17,7 @@ Template.detailMarkerText.events({
     'click [editColor]': function (event, instance) {
         event.preventDefault()
         instance.editingColor.set(!instance.editingColor.get())
+        resetTooltips()
     },
     'click [selectColor]': function (event, instance) {
         event.preventDefault()

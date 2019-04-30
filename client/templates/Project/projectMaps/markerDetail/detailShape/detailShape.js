@@ -31,6 +31,7 @@ Template.detailShape.events({
     //add your events here
     'click [editColor]': function (event, instance) {
         event.preventDefault()
+        resetTooltips()
         instance.editingColor.set(!instance.editingColor.get())
     },
     'click [selectColor]': function (event, instance) {
