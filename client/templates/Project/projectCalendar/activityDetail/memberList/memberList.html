@@ -1,0 +1,32 @@
+<template name="memberList">
+    <div class="memberList">
+        {{#if members.length}}
+            {{#each member in members}}
+                {{#if compare @index "<" 7}}
+                    <div class="memberItem">
+                        <div class="memberListAvatar shadow tooltipped"
+                             data-position="bottom"
+                             data-delay="50" data-tooltip="{{usernameFromMemberId member}}">
+                            {{>avatar userId=(userIdFromMemberId member)}}
+                        </div>
+
+                    </div>
+                {{/if}}
+            {{/each}}
+            {{#if rest}}
+                <div class="memberItem">
+                    <a id="otherMembers-{{type}}" class="btn btn-floating waves-effect waves-light rest"
+                       href=""
+                        showAll>+{{rest}}</a>
+                </div>
+            {{/if}}
+        {{else}}
+            <div class="noMemberMessage">
+                {{noMemberMessage}}
+            </div>
+
+        {{/if}}
+
+    </div>
+
+</template>

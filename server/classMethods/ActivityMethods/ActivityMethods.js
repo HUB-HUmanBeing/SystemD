@@ -85,6 +85,30 @@ Activity.extend({
             activity.lastEditAt = new Date()
             return activity.save()
         },
+        changeRecursivity(authInfo,daysOfWeek) {
+            check(authInfo, {memberId: String, userSignature: String})
+            check(daysOfWeek,[Number])
+            let activity = Activity.findOne(this._id)
+
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            activity.daysOfWeek = daysOfWeek
+            activity.lastEditAt = new Date()
+            return activity.save()
+        },
+        togglePresence(authInfo,daysOfWeek) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let activity = Activity.findOne(this._id)
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            let index = activity.participants.indexOf(authInfo.memberId)
+            if(index !== -1){
+                activity.participants.splice(index,1)
+            }else{
+                activity.participants.push(authInfo.memberId)
+            }
+            return activity.save()
+        },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
 

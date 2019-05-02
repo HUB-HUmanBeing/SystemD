@@ -53,7 +53,7 @@ const calendarController = {
                     type: 'listMonth'
                 }
             },
-            longPressDelay:500,
+            longPressDelay: 500,
             //selectLongPressDelay:500,
             locale: this.getLocale(),
             height: "parent",
@@ -104,19 +104,19 @@ const calendarController = {
     initializeEventRenderer(instance, project) {
         Meteor.subscribe("activitiesByProject", projectController.getAuthInfo(project._id), project._id, err => {
             instance.autorun(() => {
-                let start= new Date().getTime()
+                let start = new Date().getTime()
                 let eventSource = {
-                    id:"currentProjectEvents",
-                    events:[]
+                    id: "currentProjectEvents",
+                    events: []
                 }
-                let activities = Activity.find({projectId: project._id, start:{$exists: true}}).fetch()
-                cryptoTools.decryptArrayOfObject(activities,{symKey:Session.get("currentProjectSimKey")}, decryptedActivities=>{
-                    Meteor.setTimeout(()=>{
-                        decryptedActivities.forEach(activity=>{
+                let activities = Activity.find({projectId: project._id, start: {$exists: true}}).fetch()
+                cryptoTools.decryptArrayOfObject(activities, {symKey: Session.get("currentProjectSimKey")}, decryptedActivities => {
+                    Meteor.setTimeout(() => {
+                        decryptedActivities.forEach(activity => {
                             eventSource.events.push(this.getEventFromActivity(activity))
                         })
-                        let currentEventSource = this.calendar.getEventSourceById( "currentProjectEvents" )
-                        if(currentEventSource){
+                        let currentEventSource = this.calendar.getEventSourceById("currentProjectEvents")
+                        if (currentEventSource) {
                             currentEventSource.remove()
                         }
                         this.calendar.addEventSource(eventSource)
@@ -127,14 +127,14 @@ const calendarController = {
         })
 
     },
-    editEvent(info, project){
+    editEvent(info, project) {
         let activity = Activity.findOne(info.event.id)
         let activityParams = {
             start: info.event.start,
             end: info.event.end,
             allDay: info.event.allDay
         }
-        activity.callMethod("editCalendarActivityTime", projectController.getAuthInfo(project._id), activityParams,(err, res) => {
+        activity.callMethod("editCalendarActivityTime", projectController.getAuthInfo(project._id), activityParams, (err, res) => {
             if (err) {
                 console.log(err)
             } else {
@@ -142,16 +142,44 @@ const calendarController = {
             }
         })
     },
-    getEventFromActivity(activity){
-        return {
-            id:activity._id,
-            title: activity.symEnc_title,
-            start: activity.start,
-            end:activity.end,
-            allDay:activity.allDay,
-            classNames:["event-color-"+activity.color]
+    getEventFromActivity(activity) {
+
+        let event
+
+        let participating = ""
+        if(activity.participants.length){
+            let currentUserMemberId =""
+            Session.get("currentProjectMembers").forEach((member) => {
+                if (member.symEnc_userId=== Meteor.userId()) {
+                    currentUserMemberId = member.memberId
+                }
+            })
+            participating = activity.participants.indexOf(currentUserMemberId)=== -1?"":"participating"
+        }
+        if (activity.daysOfWeek.length) {
+            let startTime = activity.allDay ? null : activity.start.getHours() + ":" + activity.start.getMinutes()
+            let endTime = activity.allDay ? null : activity.end.getHours() + ":" + activity.end.getMinutes()
+            event = {
+                id: activity._id,
+                title: (activity.symEnc_title ? activity.symEnc_title+ " " : "") + __("projectCalendar.recurring"),
+                allDay: activity.allDay,
+                classNames: ["event-color-" + activity.color,participating],
+                daysOfWeek: activity.daysOfWeek,
+                startTime: startTime,
+                endTime: endTime,
+            }
+        } else {
+            event = {
+                id: activity._id,
+                title: activity.symEnc_title?activity.symEnc_title:__("projectCalendar.unnamed"),
+                start: activity.start,
+                end: activity.end,
+                allDay: activity.allDay,
+                classNames: ["event-color-" + activity.color,participating]
+            }
 
         }
+        return event
     },
     initializeRouterView(instance, project) {
         instance.autorun(() => {
@@ -181,7 +209,7 @@ const calendarController = {
         let currentQueryParams = FlowRouter.current().queryParams
 
         currentQueryParams.side = "activityDetail"
-            currentQueryParams.activityId = eventId
+        currentQueryParams.activityId = eventId
         FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
     },
     goSettings(eventId) {
@@ -191,7 +219,7 @@ const calendarController = {
         delete currentQueryParams.activityId
         FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
     },
-    closeSideNav(){
+    closeSideNav() {
         let currentQueryParams = FlowRouter.current().queryParams
 
         delete currentQueryParams.side

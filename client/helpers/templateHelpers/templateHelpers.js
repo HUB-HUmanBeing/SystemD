@@ -76,14 +76,20 @@ Template.registerHelper('userIdFromMemberId', function (memberId) {
     return requiredMember.symEnc_userId;
 
 })
-Template.registerHelper('isCruuentUserFromMemberId',function (memberId) {
+Template.registerHelper('isCurentUserFromMemberId',function (memberId) {
     let requiredMember = {}
     Session.get("currentProjectMembers").forEach((member) => {
         if (member.memberId === memberId) {
             requiredMember = member
         }
     })
-    return requiredMember.symEnc_userId === Meteor.userId()})
+    return requiredMember.symEnc_userId === Meteor.userId()
+})
+Template.registerHelper('isCurentUserInMemberArray',function (memberArray) {
+
+  let currentMemberId = projectController.getCurrentUserProject(FlowRouter.current().params.projectId).asymEnc_memberId
+    return memberArray.indexOf(currentMemberId) != -1
+})
 Template.registerHelper("isAdmin", function (projectId) {
     projectId = projectId || FlowRouter.current().params.projectId
     return projectController.isAdmin(projectId)
@@ -97,7 +103,9 @@ Template.registerHelper('isDev', function () {
 Template.registerHelper('getIndex', function (array, i) {
     return array[i]
 })
-
+Template.registerHelper('boolean', function (x) {
+    return !!x
+})
 Template.registerHelper("getEmojis", function () {
 
     let emojis = ["👍", "🙂", "😉", "☺️", "😐", "😆", "😜", "😅", "😂", "😱", "😁", "😃", "😘", "😗", "😋", "😊", "😍", "🤨", "🤩", "😑", "😏", "😯", "😡", "😱", "😨", "😤", "😖", "🤫", "💩", "💀", "👌", "✌", "💪", "❤", "️💣", "💥", "🕶", "🍴", "🍺", "🎉", "📢", "🏴"]

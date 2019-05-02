@@ -14,16 +14,17 @@
       position: relative;
       padding: 10px 0;
 
-.colorLegendLabel{
-  position: absolute;
-  top:0px ;
-  font-style: italic;
-  right: 10px;
-  text-align: right;
-  line-height: 1.4em;
-  margin-top: 0.4em;
-  color: $plus-color;
-}
+      .colorLegendLabel {
+        position: absolute;
+        top: 0px;
+        font-style: italic;
+        right: 10px;
+        text-align: right;
+        line-height: 1.4em;
+        margin-top: 0.4em;
+        color: $plus-color;
+      }
+
       .btn-floating {
         opacity: 0.7;
         position: absolute;
@@ -51,13 +52,18 @@
       .iconContainer {
 
         display: inline-block;
+
+        i {
+          font-size: 3em !important;
+        }
       }
     }
 
     .editIcon {
-      margin-bottom:35px;
-      .colorPicker{
-        margin: 10px 0 ;
+      margin-bottom: 35px;
+
+      .colorPicker {
+        margin: 10px 0;
       }
     }
   }
@@ -119,6 +125,45 @@
       margin-right: 5px;
       margin-top: 25px;
     }
+  }
+
+  .weekdays {
+    margin-top: 10px;
+
+    .weekDay {
+      background-color: $main-bg;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      color: $main-color;
+      padding-top: 5px;
+
+      &:hover {
+        color: $plus-color;
+        background-color: $lighter-bg;
+      }
+
+      &.checkedWeekDay {
+        color: $plus-color;
+        background-color: $blue-highlight-color;
+      }
+    }
+  }
+
+  .activityMembers {
+    .infoQuotes{
+      margin: 5px 0;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+  .btn-floating{
+    background-color: $light-bg;
+    color: $main-color;
+    &:hover{
+      color: $plus-color;
+      background-color: $blue-highlight-color;
+    }
+  }
   }
 
 }

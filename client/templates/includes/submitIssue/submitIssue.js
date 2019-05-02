@@ -101,7 +101,7 @@ Template.submitIssue.onCreated(function () {
 
 Template.submitIssue.onRendered(function () {
     //add your statement here
-    $('.modal').modal({
+    $('#modalSubmitIssue').modal({
         startingTop: '4%', // Starting top style attribute
         endingTop: '4%',
         ready: (modal, trigger) =>{ // Callback for Modal open. Modal and trigger parameters available.

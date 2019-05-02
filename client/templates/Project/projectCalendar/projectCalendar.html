@@ -15,7 +15,7 @@
                         <i class="material-icons ">navigate_next</i>
                     </a>
                     <div class="fixed-action-btn calendarButtons ">
-                        <a class="btn-floating btn ">
+                        <a class="btn-floating btn waves-effect waves-light">
                             <i class=" material-icons {{#if compare currentView.name "=="
                                                             "days"}} dayBtn {{/if}}">{{currentView.icon}}</i>
                         </a>
@@ -23,7 +23,7 @@
                             {{#unless compare currentView.name "==" "days"}}
                                 <li>
                                     <a href="#"
-                                       class="btn-floating btn tooltipped" data-position="left" data-delay="250"
+                                       class="btn-floating btn waves-effect waves-light tooltipped" data-position="left" data-delay="250"
                                        data-tooltip="{{__ ".dayView"}}" dayView><i
                                             class="material-icons dayBtn">view_list</i></a>
                                 </li>
@@ -31,7 +31,7 @@
                             {{#unless compare currentView.name "==" "month"}}
                                 <li>
                                     <a href="#"
-                                       class="btn-floating btn tooltipped" data-position="left" data-delay="250"
+                                       class="btn-floating btn waves-effect waves-light tooltipped" data-position="left" data-delay="250"
                                        data-tooltip="{{__ ".monthView"}}" monthView><i
                                             class="material-icons">view_comfy</i></a>
                                 </li>

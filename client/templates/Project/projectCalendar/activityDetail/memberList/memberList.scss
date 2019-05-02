@@ -1,0 +1,65 @@
+@import "{}/client/scss/variables.scss";
+
+.memberList {
+  width: 100%;
+  min-width: 20px;
+  .memberListAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .memberItem {
+    display: inline-block;
+    width: 22px;
+    transition: 0.5s;
+
+    &:hover {
+      width: 35px;
+    }
+
+
+
+    a {
+      margin-top: -30px;
+      font-size: 1.3em;
+    }
+
+  }
+
+  .noMemberMessage {
+    line-height: 40px;
+    font-style: italic;
+    margin-left: 10px;
+  }
+  .memberName{
+    line-height: 40px;
+    padding-left: 10px;
+  }
+  .modal{
+    width: 100% !important;
+    max-width: 300px;
+  }
+
+
+
+}
+.chip{
+  color:$main-color;
+  background-color: $lighter-bg;
+}
+.svgAvatar {
+  float: left;
+  display: inline-block;
+  margin: 0 8px 0 -12px;
+  height: 32px !important;
+  width: 32px !important;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  svg{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}

@@ -145,7 +145,18 @@
           -moz-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4);
           box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4) !important;
         }
-
+.participating::after{
+  content: " ";
+  background-color: $plus-color;
+  display: block;
+  z-index: 30;
+  position: absolute;
+  top:8px;
+  left: -8.5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
         .event-color-0 {
           border-color:  #205386
 

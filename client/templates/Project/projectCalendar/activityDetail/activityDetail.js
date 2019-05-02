@@ -31,6 +31,16 @@ Template.activityDetail.helpers({
     eventColor: function () {
 
         return mapParams.colors[Template.instance().activity.get().color]
+    },
+    weekdays: function () {
+        let weekDays = []
+        for (let i = 0; i < 7; i++) {
+            weekDays.push({
+                day: (__("weekDays.day" + i)).substr(0, 2),
+                checked: Template.instance().activity.get().daysOfWeek.indexOf(i) !== -1
+            })
+        }
+        return weekDays
     }
 });
 
@@ -99,6 +109,56 @@ Template.activityDetail.events({
 
 
     },
+    'change [recursivitySwitch]': function (event, instance) {
+
+        let activityId = FlowRouter.current().queryParams.activityId
+        let activity = Activity.findOne(activityId)
+
+        let recursivity = []
+        if ($('#recursivitySwitch').prop("checked")) {
+            recursivity = [activity.start.getDay()]
+        }
+        activity.callMethod("changeRecursivity", projectController.getAuthInfo(FlowRouter.current().params.projectId), recursivity, err => {
+            if (err) {
+                console.log(err)
+            } else {
+                resetTooltips()
+            }
+        })
+    },
+    'click [toogleDay]': function (event, instance) {
+
+        let activityId = FlowRouter.current().queryParams.activityId
+        let activity = Activity.findOne(activityId)
+        let recursivity = activity.daysOfWeek
+        let clickedDay = Number(event.currentTarget.id.split('-')[1])
+        let index = activity.daysOfWeek.indexOf(clickedDay)
+        if (index != -1) {
+            recursivity.splice(index, 1)
+        } else {
+            recursivity.push(clickedDay)
+        }
+        activity.callMethod("changeRecursivity", projectController.getAuthInfo(FlowRouter.current().params.projectId), recursivity, err => {
+            if (err) {
+                console.log(err)
+            } else {
+                //instance.editingColor.set(false)
+                resetTooltips()
+            }
+        })
+    },
+    'click [togglePresence]':function (event, instance) {
+        event.preventDefault()
+        let activityId = FlowRouter.current().queryParams.activityId
+        let activity = Activity.findOne(activityId)
+        activity.callMethod("togglePresence", projectController.getAuthInfo(FlowRouter.current().params.projectId),  err => {
+            if (err) {
+                console.log(err)
+            } else {
+                resetTooltips()
+            }
+        })
+    }
 });
 
 Template.activityDetail.onCreated(function () {
@@ -117,10 +177,10 @@ Template.activityDetail.onCreated(function () {
         if (activity) {
             cryptoTools.decryptObject(activity, {symKey: Session.get("currentProjectSimKey")}, decryptedObject => {
                 this.activity.set(decryptedObject)
-                if(!decryptedObject.symEnc_title ){
-                    Meteor.setTimeout(()=>{
+                if (!decryptedObject.symEnc_title) {
+                    Meteor.setTimeout(() => {
                         $('#activityTitle').focus()
-                    },500)
+                    }, 500)
 
                 }
             })

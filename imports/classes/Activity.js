@@ -16,6 +16,12 @@ const Activity = Class.create({
             type:String,
             optional: true
         },
+        daysOfWeek:{
+            type: [Number],
+            default: function () {
+                return []
+            }
+        },
         symEnc_detail:{
             type:String,
             optional: true
@@ -55,7 +61,7 @@ const Activity = Class.create({
                 return 0
             }
         },
-        waitingResponseOf: {
+        invitedMembers: {
             type: [String],
             default: function () {
                 return [];

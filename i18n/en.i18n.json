@@ -545,7 +545,9 @@
   "projectCalendar": {
     "daysView": "Daily view",
     "monthView": "Monthly view",
-    "listVue": "list of monthly events"
+    "listVue": "list of monthly events",
+    "recurring": "( Recurring )",
+    "unnamed": "No title"
   },
   "calendarSettings": {
     "title": "Calendar parameters",
@@ -556,5 +558,20 @@
   "colorLegend": {
     "placeholder": "Your legend ...",
     "save": "Save"
+  },
+  "activityDetail": {
+    "activityTitle": "Unnamed activity",
+    "activityDetail": "Detail",
+    "recursivity": "Recurrence:",
+    "deleteActivity": "delete"
+  },
+  "weekDays": {
+    "day0": "Sunday",
+    "day1": "Monday",
+    "day2": "Tuesday",
+    "day3": "Wednesday",
+    "day4": "Thursday",
+    "day5": "Friday",
+    "day6": "Saturday"
   }
 }

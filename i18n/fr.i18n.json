@@ -549,7 +549,9 @@
   "projectCalendar": {
     "daysView": "Vue journalière",
     "monthView": "Vue mensuelle",
-    "listVue": "Listing des évènements mensuels"
+    "listVue": "Listing des évènements mensuels",
+    "recurring": "( Récurant )",
+    "unnamed": "Sans titre"
   },
   "calendarSettings": {
     "title": "Paramètre de l'agenda",
@@ -563,8 +565,20 @@
   },
   "activityDetail": {
     "activityTitle": "Activité sans nom",
-    "activityDetail": "Détail de l'activité",
-    "date": "Dates :",
-    "deleteActivity": "Supprimer"
+    "activityDetail": "Détail",
+    "recursivity": "Récurrence",
+    "deleteActivity": "Supprimer",
+    "participants": "Participants :",
+    "paricipating": "Vous participez à cette activité",
+    "invited": "Invités :"
+  },
+  "weekDays": {
+    "day0": "Dimanche",
+    "day1": "Lundi",
+    "day2": "Mardi",
+    "day3": "Mercredi",
+    "day4": "Jeudi",
+    "day5": "Vendredi",
+    "day6": "Samedi"
   }
 }
