@@ -65,6 +65,18 @@ const calendarController = {
             navLinkDayClick: (date, jsEvent) => {
                 this.changeView("days", date)
             },
+            eventRender: function(info) {
+                console.log(info)
+                if(Meteor.Device.isDesktop){
+                    let html = `<div>coucou</div>`
+                    $(info.el).tooltip({
+                        delay:350,
+                        position:"top",
+                        tooltip: html,
+                        html:true
+                    })
+                }
+            },
             eventLimit: true,
             select: (info) => {
                 let activity = new Activity()
@@ -148,13 +160,12 @@ const calendarController = {
 
         let participating = ""
         if(activity.participants.length){
-            let currentUserMemberId =""
-            Session.get("currentProjectMembers").forEach((member) => {
-                if (member.symEnc_userId=== Meteor.userId()) {
-                    currentUserMemberId = member.memberId
-                }
-            })
-            participating = activity.participants.indexOf(currentUserMemberId)=== -1?"":"participating"
+            participating = activity.participants.indexOf(projectController.getCurrentMemberId(activity.projectId))=== -1?"":"participating"
+        }
+        if(activity.invitedMembers.length && !Session.get("invitationActivityId")){
+            if(activity.invitedMembers.indexOf(projectController.getCurrentMemberId(activity.projectId))> -1){
+                Session.set("invitationActivityId", activity)
+            }
         }
         if (activity.daysOfWeek.length) {
             let startTime = activity.allDay ? null : activity.start.getHours() + ":" + activity.start.getMinutes()

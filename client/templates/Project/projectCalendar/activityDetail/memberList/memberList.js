@@ -5,7 +5,9 @@ import sprites from "@dicebear/avatars-identicon-sprites";
 Template.memberList.helpers({
     //add you helpers here
     rest: function () {
-        Template.instance().createTooltip()
+        if(Template.currentData().members.length - 7 > 0){
+            Template.instance().createTooltip()
+        }
         return Template.currentData().members.length - 7 > 0 ? Template.currentData().members.length - 7 : false
     }
 });

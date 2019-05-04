@@ -8,7 +8,7 @@ Template.registerHelper('length', function (array) {
 
 
 Template.registerHelper('isInArray', function (element, array) {
-    return array.includes(element)
+    return array.indexOf(element)!== -1
 })
 
 Template.registerHelper('showDistance', function (distance) {

@@ -96,7 +96,7 @@ Activity.extend({
             activity.lastEditAt = new Date()
             return activity.save()
         },
-        togglePresence(authInfo,daysOfWeek) {
+        togglePresence(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
             let activity = Activity.findOne(this._id)
             let currentProject = Project.findOne(activity.projectId)
@@ -106,8 +106,35 @@ Activity.extend({
                 activity.participants.splice(index,1)
             }else{
                 activity.participants.push(authInfo.memberId)
+                let indexInvited = activity.invitedMembers.indexOf(authInfo.memberId)
+                if(indexInvited!==-1){
+                    activity.invitedMembers.splice(indexInvited,1)
+                }
             }
             return activity.save()
+        },
+        declineInvitation(authInfo) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let activity = Activity.findOne(this._id)
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            activity.invitedMembers.splice(activity.invitedMembers.indexOf(authInfo.memberId), 1)
+            return activity.save()
+        },
+        editInvited(authInfo,membersToAdd, membersToRemove, notifObjects) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let activity = Activity.findOne(this._id)
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            membersToRemove.forEach(member=>{
+                activity.invitedMembers.splice(activity.invitedMembers.indexOf(member),1)
+            })
+            activity.invitedMembers = [...activity.invitedMembers, ...membersToAdd]
+            return activity.save(err=>{
+                if(!err){
+                    console.warn("todo: notify")
+                }
+            })
         },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})

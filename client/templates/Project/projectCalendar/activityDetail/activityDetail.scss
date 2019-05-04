@@ -151,19 +151,81 @@
   }
 
   .activityMembers {
-    .infoQuotes{
+    .infoQuotes {
       margin: 5px 0;
       font-size: 0.9em;
       font-style: italic;
     }
-  .btn-floating{
-    background-color: $light-bg;
-    color: $main-color;
-    &:hover{
-      color: $plus-color;
-      background-color: $blue-highlight-color;
+
+    .btn-floating {
+      background-color: $light-bg;
+      color: $main-color;
+
+      &:hover {
+        color: $plus-color;
+        background-color: $blue-highlight-color;
+      }
     }
   }
+
+  #modalInviteMembers {
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 0;
+
+    .btn-floating {
+      background-color: $light-bg;
+      color: $main-color;
+
+      &:hover {
+        color: $plus-color;
+        background-color: $blue-highlight-color;
+      }
+    }
+
+    .modalInviteContent {
+      position: relative;
+      width: 420px;
+      max-width: 90%;
+      max-height: 80vh;
+      z-index: 1000;
+      margin: 10vh auto;
+
+      h5 {
+        position: relative;
+        font-size: 1.1em;
+        //line-height: 3em;
+        margin: 10px;
+      }
+
+      i {
+        line-height: 1.7em;
+      }
+
+      .btn-floating {
+        margin-top: -5px;
+
+        i {
+          line-height: 40px !important;
+        }
+      }
+    }
+
+
   }
 
+  .modalBg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: $lighter-bg;
+    opacity: 0.5;
+    z-index: 999;
+  }
 }

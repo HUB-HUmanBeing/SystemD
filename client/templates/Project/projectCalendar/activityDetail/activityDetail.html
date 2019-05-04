@@ -93,40 +93,68 @@
 
                     <p class="sectionLabel no-margin">{{__ ".participants"}}</p>
                     {{#if isCurentUserInMemberArray activity.participants}}
-                        <p class="infoQuotes" >{{__ ".paricipating"}}</p>
+                        <p class="infoQuotes">{{__ ".paricipating"}}</p>
                     {{/if}}
                     <div class="flex" style="margin-bottom: 10px">
                         <div class="flex-auto">
-                            {{>memberList members=activity.participants type="participants" noMemberMessage=(__ ".noParticipans")}}
+                            {{>memberList members=activity.participants type="participants" noMemberMessage=(__ ".noParticipant") }}
                         </div>
-            {{#if isCurentUserInMemberArray activity.participants}}
-                <a href="" class="btn btn-floating waves-effect waves-light tooltipped"
-                   data-position="left"
-                   data-delay="250" data-tooltip="{{__ ".quitActivity"}}" togglePresence>
-                    <i class="material-icons left">exit_to_app</i></a>
-                {{else}}
-                <a href="" class="btn btn-floating waves-effect waves-light tooltipped"
-                   data-position="left"
-                   data-delay="250" data-tooltip="{{__ ".joinActivity"}}" togglePresence>
-                    <i class="material-icons left">border_color</i></a>
+                        {{#if isCurentUserInMemberArray activity.participants}}
+                            <a href="" class="btn btn-floating waves-effect waves-light tooltipped"
+                               data-position="left"
+                               data-delay="250" data-tooltip="{{__ ".quitActivity"}}" togglePresence>
+                                <i class="material-icons left">exit_to_app</i></a>
+                        {{else}}
+                            <a href="" class="btn btn-floating waves-effect waves-light tooltipped"
+                               data-position="left"
+                               data-delay="250" data-tooltip="{{__ ".joinActivity"}}" togglePresence>
+                                <i class="material-icons left">border_color</i></a>
 
-                {{/if}}
+                        {{/if}}
                     </div>
 
 
-                    <p class=" sectionLabel no-margin">{{__ ".invited"}}</p>
-                    <div class="flex" >
-                        <div class="flex-auto">
-                            {{>memberList members=activity.invitedMembers type="invitedMembers" noMemberMessage=(__ ".noInvited")}}
+                        <p class=" sectionLabel no-margin">{{__ ".invited"}}</p>
+                        <div class="flex">
+                            <div class="flex-auto">
+                                {{>memberList members=activity.invitedMembers type="invitedMembers" noMemberMessage=(__ ".noInvited")}}
+                            </div>
+                        {{#if invitableMembers.length}}
+                            <a class="btn btn-floating waves-effect waves-light tooltipped " href=""
+                               toggleModalInviteMembers
+                               data-position="left"
+                               data-delay="250" data-tooltip="{{__ ".inviteMember"}}">
+                                <i class="material-icons left">group_add</i></a>
+                        {{/if}}
                         </div>
 
-                        <a href="" class="btn btn-floating waves-effect waves-light tooltipped"
-                           data-position="left"
-                           data-delay="250" data-tooltip="{{__ ".inviteMember"}}" inviteUser>
-                            <i class="material-icons left">group_add</i></a>
-                    </div>
                 </div>
             </div>
+            {{#if modalOpened}}
+
+                <div id="modalInviteMembers" class=" ">
+                    <div class="modalBg" toggleModalInviteMembers></div>
+                    <div class="contrasted-bg shadow modalInviteContent">
+                        <div class=" small-padding contrasted-bg main-color">
+                            <div class="flex" style="margin-bottom: -15px">
+                                <i class="material-icons ">group_add</i>
+                                <h5 class="flex-auto"> {{__ ".inviteMember"}}</h5>
+                                <a href="" class="btn btn-floating  waves-effect waves-light " toggleModalInviteMembers>
+                                    <i class="material-icons ">close</i>
+
+                                </a>
+                            </div>
+                            <div class="row no-margin">
+                                <div class="col s12 no-padding">
+                                    <div class="hr"></div>
+                                    {{>inviteMembers invitableMembers=invitableMembers  previousSelectedMembers=activity.invitedMembers callbackSubmit=editInvitedMembers}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            {{/if}}
             <div class="row no-margin">
                 <div class="col s12">
                     <div class="hr"></div>

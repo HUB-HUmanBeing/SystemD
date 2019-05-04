@@ -1,0 +1,63 @@
+<template name="invitedPopup">
+    {{#if activity}}
+        <div id="invitationPopup" class=" ">
+
+            <div class="contrasted-bg shadow modalInviteContent">
+                <div class=" small-padding contrasted-bg main-color">
+                    <div class="flex" style="margin-bottom: -15px">
+                        <i class="material-icons ">group_add</i>
+                        <h5 class="flex-auto"> {{__ ".title"}}</h5>
+
+                    </div>
+                    <div class="row no-margin">
+                        <div class="col s12 no-padding">
+                            <div class="hr"></div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="center-align">
+                                        <div class="eventIcon shadow" style="background-color: {{eventColor}}">
+                                            <i class="material-icons">event</i>
+                                        </div>
+
+                                    </div>
+                                    <h5 class="center-align title plus-color">
+                                        {{activity.symEnc_title}}
+                                    </h5>
+                                    {{#if activity.symEnc_detail}}
+                                        <p class="infoQuotes">
+                                            <b>{{__ ".detail"}}</b><br>{{activity.symEnc_detail}}
+                                        </p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s6">
+                                    <b>{{__ ".start"}}</b> <br>{{formatDate activity.start}}
+                                </div>
+                                <div class="col s6">
+                                    <b>{{__ ".end"}}</b><br> {{formatDate activity.end}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-margin">
+                        <div class="col s12 no-padding">
+                            <div class="hr"></div>
+                        </div>
+                        <div class="col s6 ">
+                            <a href="" class="btn btn-danger waves-light waves-effect full-width" decline><i
+                                    class="material-icons left">clear</i>{{__
+                                    ".decline"}}</a>
+                        </div>
+                        <div class="col s6 ">
+                            <a href="" class="btn btnStandard waves-light waves-effect full-width" accept><i
+                                    class="material-icons left">done</i>{{__
+                                    ".accept"}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {{/if}}
+</template>

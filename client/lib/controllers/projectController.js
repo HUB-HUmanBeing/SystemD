@@ -42,6 +42,9 @@ const projectController = {
     isMember(projectId){
         return !!this.getCurrentUserProject(projectId)
     },
+    getCurrentMemberId(projectId){
+        return this.getCurrentUserProject(projectId).asymEnc_memberId
+    },
     //crée l'objet authinfo nécessaire à l'authentification pour editer sur un projet
     getAuthInfo(projectId) {
         let userProject = this.getCurrentUserProject(projectId)

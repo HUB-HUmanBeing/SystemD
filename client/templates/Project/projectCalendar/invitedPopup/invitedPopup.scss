@@ -1,0 +1,53 @@
+@import "{}/client/scss/variables.scss";
+
+#invitationPopup {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top:0;
+  background-color: rgba($lighter-bg, 0.5);
+
+  z-index: 999;
+  .modalInviteContent{
+    position: relative;
+    width: 420px;
+    max-width: 90%;
+    max-height: 80vh;
+    z-index: 1000;
+    margin: 10vh auto;
+    .eventIcon {
+      width:60px;
+      line-height: 60px;
+      display: inline-block;
+      height:60px;
+      text-align: center;
+      border-radius: 50%;
+      i{
+        line-height: 60px;
+        font-size: 30px;
+      }
+    }
+    h5{
+      position: relative;
+      font-size: 1.1em;
+      //line-height: 3em;
+      margin:  10px;
+    }
+    i{
+      line-height: 1.7em;
+    }
+    .btn-floating{
+      margin-top: -5px;
+      i{
+        line-height: 40px !important;
+      }
+    }
+  }
+
+  .modalBg{
+
+  }
+
+}
+

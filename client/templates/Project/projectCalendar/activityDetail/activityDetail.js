@@ -3,6 +3,7 @@ import projectController from "../../../../lib/controllers/projectController";
 import Activity from "../../../../../imports/classes/Activity";
 import mapParams from "../../../../lib/controllers/mapParams";
 import calendarController from "../../../../lib/controllers/calendarController";
+import notificationController from "../../../../lib/controllers/notificationController";
 
 Template.activityDetail.helpers({
     //add you helpers here
@@ -41,6 +42,60 @@ Template.activityDetail.helpers({
             })
         }
         return weekDays
+    },
+    modalOpened: function () {
+        return Template.instance().modalOpened.get()
+    },
+    invitableMembers: function(){
+        let activityId = FlowRouter.current().queryParams.activityId
+        let activity = Activity.findOne(activityId)
+        let participants = activity.participants
+        let projectId = FlowRouter.current().params.projectId
+        let invitable = []
+        let blackList = [...participants, projectController.getCurrentMemberId(projectId)]
+        Session.get("currentProjectMembers").forEach(member=>{
+            if(blackList.indexOf(member.memberId)===-1)
+            invitable.push(member)
+        })
+
+        return invitable
+    },
+    editInvitedMembers: function () {
+        let instance = Template.instance()
+
+        let activityId = FlowRouter.current().queryParams.activityId
+        let projectId = FlowRouter.current().params.projectId
+        let activity = Activity.findOne(activityId)
+        let previousMembers = activity.invitedMembers
+        return (selectedMembers) => {
+
+            let addedMembers = []
+            let removedMembers = []
+            selectedMembers.forEach(selectedMember => {
+                if (previousMembers.indexOf(selectedMember) === -1) {
+
+                    addedMembers.push(selectedMember)
+                }
+            })
+            previousMembers.forEach(previousMember => {
+                if (selectedMembers.indexOf(previousMember) === -1) {
+                    removedMembers.push(previousMember)
+                }
+            })
+            activity.callMethod(
+                "editInvited",
+                projectController.getAuthInfo(FlowRouter.current().params.projectId),
+                addedMembers,
+                removedMembers,
+                notificationController.getNotifyObjects(addedMembers), err => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        instance.modalOpened.set(false)
+                        resetTooltips()
+                    }
+                })
+        }
     }
 });
 
@@ -68,7 +123,7 @@ Template.activityDetail.events({
                     if (err) {
                         console.log(err)
                     } else {
-
+                        instance.showEditFormButton.set(false)
                     }
                 })
         })
@@ -147,17 +202,21 @@ Template.activityDetail.events({
             }
         })
     },
-    'click [togglePresence]':function (event, instance) {
+    'click [togglePresence]': function (event, instance) {
         event.preventDefault()
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)
-        activity.callMethod("togglePresence", projectController.getAuthInfo(FlowRouter.current().params.projectId),  err => {
+        activity.callMethod("togglePresence", projectController.getAuthInfo(FlowRouter.current().params.projectId), err => {
             if (err) {
                 console.log(err)
             } else {
                 resetTooltips()
             }
         })
+    },
+    'click [toggleModalInviteMembers]': function (event, instance) {
+        event.preventDefault()
+        instance.modalOpened.set(!instance.modalOpened.get())
     }
 });
 
@@ -167,12 +226,10 @@ Template.activityDetail.onCreated(function () {
     this.activity = new ReactiveVar(false)
     this.showEditFormButton = new ReactiveVar(false)
     this.editingColor = new ReactiveVar(false)
-
+    this.modalOpened = new ReactiveVar(false)
     this.autorun(() => {
         FlowRouter.watchPathChange()
-
         let activityId = FlowRouter.current().queryParams.activityId
-        let projectId = FlowRouter.current().params.projectId
         let activity = Activity.findOne(activityId)
         if (activity) {
             cryptoTools.decryptObject(activity, {symKey: Session.get("currentProjectSimKey")}, decryptedObject => {
@@ -186,7 +243,6 @@ Template.activityDetail.onCreated(function () {
             })
         }
     })
-
 
 })
 

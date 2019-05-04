@@ -172,6 +172,9 @@ body, html {
     color: $contrasted-bg !important;
   }
 }
+.btn-flat:hover{
+  background-color: rgba($main-color, 0.1);
+}
 
 .btnFocus:hover, .btnFocus:focus {
   opacity: 1 !important;

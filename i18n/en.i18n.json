@@ -562,8 +562,17 @@
   "activityDetail": {
     "activityTitle": "Unnamed activity",
     "activityDetail": "Detail",
-    "recursivity": "Recurrence:",
-    "deleteActivity": "delete"
+    "recursivity": "Recurrence",
+    "deleteActivity": "delete",
+    "editActivity": "enregistrer",
+    "participants": "Participants :",
+    "paricipating": "You participate to this activity",
+    "invited": "gest :",
+    "noInvited": "Any guest member.",
+    "noParticipant" : "Any participant",
+    "quitActivity": "Quit activitéy",
+    "joinActivity": "Participate to activity",
+    "inviteMember": "Guest member to join activity"
   },
   "weekDays": {
     "day0": "Sunday",
@@ -573,5 +582,19 @@
     "day4": "Thursday",
     "day5": "Friday",
     "day6": "Saturday"
+  },
+  "inviteMembers": {
+    "inviteEverybody": "Everyone",
+    "removeEverybody": "Anybody",
+    "cancelModifs": "Cancel modifs",
+    "save": "Save"
+  },
+  "invitedPopup": {
+    "detail": "Detail : ",
+    "title": "Guest to participate to an activity",
+    "start": "Start : ",
+    "end": "End : ",
+    "decline": "Decline",
+    "accept": "Accept"
   }
 }

@@ -55,12 +55,6 @@ const Activity = Class.create({
             },
             index: -1
         },
-        commentCount: {
-            type: Number,
-            default: function () {
-                return 0
-            }
-        },
         invitedMembers: {
             type: [String],
             default: function () {

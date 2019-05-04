@@ -1,0 +1,41 @@
+<template name="inviteMembers">
+<!--    <div class="quickChangeRow flex" style="margin: -10px 0px 10px; padding: 0 ">-->
+<!--        <div class="center-align">-->
+<!--            <a href="" class=" " inviteEverybody><i-->
+<!--                    class="material-icons ">done_all</i><span>{{__ ".inviteEverybody"}}</span></a>-->
+<!--        </div>-->
+<!--        <div class="center-align">-->
+<!--            <a href="" class="" removeEverybody><i-->
+<!--                    class="material-icons ">do_not_disturb_alt</i><span>{{__ ".removeEverybody"}}</span></a>-->
+<!--        </div>-->
+<!--        {{#if showSubmit}}-->
+<!--            <div class="center-align">-->
+<!--                <a href="" class="" cancelModifs><i-->
+<!--                        class="material-icons ">undo</i><span>{{__ ".cancelModifs"}}</span></a>-->
+<!--            </div>-->
+<!--        {{/if}}-->
+<!--    </div>-->
+    <div class="inviteMembers row ">
+
+        {{#each projectMember in projectMembers}}
+            <div class="col col s6">
+                <a href="" id="projectMember-{{projectMember.memberId}}"
+                   class=" flex-middle memberBox shadow  full-width flex {{#if isInArray projectMember.memberId
+                                                                               selectedMembers}}selectedMember{{/if}}"
+                   toggleMember>
+                    <div class="circle responsive-img memberAvatar  flex-middle">
+                        {{>avatar userId=projectMember.symEnc_userId}}
+                    </div>
+                    <div class="username flex-auto elipsis flex-middle">{{projectMember.symEnc_username}}</div>
+                </a></div>
+        {{/each}}
+    </div>
+    {{#if showSubmit}}
+        <div class="row no-margin">
+            <div class="col s12 right-align ">
+                <a href="" class="btn btnStandard waves-light waves-effect" save><i class="material-icons left">group_add</i>{{__
+                        ".save"}}</a>
+            </div>
+        </div>
+    {{/if}}
+</template>

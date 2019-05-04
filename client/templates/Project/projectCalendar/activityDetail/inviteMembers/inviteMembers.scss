@@ -1,0 +1,56 @@
+@import "{}/client/scss/variables.scss";
+.quickChangeRow{
+  &>div{
+    padding: 0 20px;
+    display: inline-block;
+  }
+  a{
+    font-size: 1em;
+    line-height: 1.3em;
+position: relative;
+    .material-icons{
+      height: 1em;
+      font-size: 1.1em !important;
+      line-height: 1em;
+      position: relative;
+      top:0.2em;
+    }
+    span{
+      margin: -5px 0 0 5px;
+    }
+    &:hover *{
+      color: $plus-color;
+    }
+  }
+}
+.inviteMembers {
+
+  .memberBox {
+    background-color: $main-bg;
+padding: 8px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    .memberAvatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .username {
+      padding-left: 10px;
+
+    }
+    &:hover, &.selectedMember{
+      padding: 8px;
+*{
+  color: $plus-color
+}
+      ;
+      background-color: $lighter-bg;
+    }
+    &.selectedMember{
+      border: 2px solid $plus-color !important;
+    }
+  }
+}
