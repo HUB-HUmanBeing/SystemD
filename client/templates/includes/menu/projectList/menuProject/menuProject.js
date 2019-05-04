@@ -23,13 +23,13 @@ Template.menuProject.helpers({
             }).count()
         }
         let sectionsList = [
-            {
-                name: __("menuProject.home"),
-                path: 'home',
-                icon: 'home',
-                isActive: isActive('home'),
-                notifsCount: notifsCountBySection('home')
-            },
+            // {
+            //     name: __("menuProject.home"),
+            //     path: 'home',
+            //     icon: 'home',
+            //     isActive: isActive('home'),
+            //     notifsCount: notifsCountBySection('home')
+            // },
             {
                 name: __("menuProject.forum"),
                 path: 'forum',
