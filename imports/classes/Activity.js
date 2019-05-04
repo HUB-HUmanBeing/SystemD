@@ -1,6 +1,19 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Activities from "../../lib/collections/Activities";
 
+const Check = Class.create({
+    name: 'Check',
+    fields: {
+        symEnc_label:{
+            type:String,
+            optional:true
+        },
+        checked:{
+            type:Boolean,
+            default:false
+        }
+    }
+})
 const Activity = Class.create({
     name: 'Activity',
     collection: Activities,
@@ -12,40 +25,40 @@ const Activity = Class.create({
         createdBy: {
             type: String
         },
-        symEnc_title:{
-            type:String,
+        symEnc_title: {
+            type: String,
             optional: true
         },
-        daysOfWeek:{
+        daysOfWeek: {
             type: [Number],
             default: function () {
                 return []
             }
         },
-        symEnc_detail:{
-            type:String,
+        symEnc_detail: {
+            type: String,
             optional: true
         },
-        taskListId:{
+        taskListId: {
             type: String,
-            optional:true
+            optional: true
         },
-        color:{
+        color: {
             type: Number,
-            default:0
+            default: 0
         },
-        allDay:{
+        allDay: {
             type: Boolean,
-            default:false
+            default: false
         },
-        start:{
+        start: {
             type: Date,
-            optional:true,
+            optional: true,
             index: -1
         },
-        end:{
+        end: {
             type: Date,
-            optional:true,
+            optional: true,
             index: -1
         },
         createdAt: {
@@ -55,8 +68,18 @@ const Activity = Class.create({
             },
             index: -1
         },
+        lastEditAt: {
+            type: Date,
+            optional:true,
+        },
         invitedMembers: {
             type: [String],
+            default: function () {
+                return [];
+            }
+        },
+        checkList: {
+            type: [Check],
             default: function () {
                 return [];
             }

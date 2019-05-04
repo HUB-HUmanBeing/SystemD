@@ -12,9 +12,9 @@ Activity.extend({
 
         newCalendarActivity(authInfo, projectId, ActivityParmas, notifObjects) {
             check(ActivityParmas, {
-                start:Date,
-                end:Date,
-                allDay:Boolean
+                start: Date,
+                end: Date,
+                allDay: Boolean
             })
             check(authInfo, {memberId: String, userSignature: String})
             check(projectId, String)
@@ -23,7 +23,7 @@ Activity.extend({
             let computedParams = {
                 projectId: currentProject._id,
                 createdBy: authInfo.memberId,
-                participants : [authInfo.memberId]
+                participants: [authInfo.memberId]
             }
             ActivityParmas = {...ActivityParmas, ...computedParams}
             let newActivity = new Activity(ActivityParmas)
@@ -38,25 +38,26 @@ Activity.extend({
                     //
                     // topic.save()
                     // topic.notifySubscribers(notifObjects, authInfo.memberId)
-                    console.warn('todo : ENvoyer les notifs')
+                   // console.warn('todo : ENvoyer les notifs')
                 } else {
                     console.log(err)
                 }
             })
         },
-        editCalendarActivityTime(authInfo,params){
+        editCalendarActivityTime(authInfo, params) {
             check(authInfo, {memberId: String, userSignature: String})
             check(params, {
-                start:Date,
-                end:Date,
-                allDay:Boolean
+                start: Date,
+                end: Date,
+                allDay: Boolean
             })
             let activity = Activity.findOne(this._id)
             let currentProject = Project.findOne(activity.projectId)
             check(currentProject.isMember(authInfo), true)
             activity.start = params.start
-            activity.end= params.end
+            activity.end = params.end
             activity.allDay = params.allDay
+            activity.lastEditAt = new Date()
             return activity.save()
         },
         changeColor(authInfo, color) {
@@ -85,9 +86,9 @@ Activity.extend({
             activity.lastEditAt = new Date()
             return activity.save()
         },
-        changeRecursivity(authInfo,daysOfWeek) {
+        changeRecursivity(authInfo, daysOfWeek) {
             check(authInfo, {memberId: String, userSignature: String})
-            check(daysOfWeek,[Number])
+            check(daysOfWeek, [Number])
             let activity = Activity.findOne(this._id)
 
             let currentProject = Project.findOne(activity.projectId)
@@ -102,13 +103,13 @@ Activity.extend({
             let currentProject = Project.findOne(activity.projectId)
             check(currentProject.isMember(authInfo), true)
             let index = activity.participants.indexOf(authInfo.memberId)
-            if(index !== -1){
-                activity.participants.splice(index,1)
-            }else{
+            if (index !== -1) {
+                activity.participants.splice(index, 1)
+            } else {
                 activity.participants.push(authInfo.memberId)
                 let indexInvited = activity.invitedMembers.indexOf(authInfo.memberId)
-                if(indexInvited!==-1){
-                    activity.invitedMembers.splice(indexInvited,1)
+                if (indexInvited !== -1) {
+                    activity.invitedMembers.splice(indexInvited, 1)
                 }
             }
             return activity.save()
@@ -121,20 +122,65 @@ Activity.extend({
             activity.invitedMembers.splice(activity.invitedMembers.indexOf(authInfo.memberId), 1)
             return activity.save()
         },
-        editInvited(authInfo,membersToAdd, membersToRemove, notifObjects) {
+        editInvited(authInfo, membersToAdd, membersToRemove, notifObjects) {
             check(authInfo, {memberId: String, userSignature: String})
             let activity = Activity.findOne(this._id)
             let currentProject = Project.findOne(activity.projectId)
             check(currentProject.isMember(authInfo), true)
-            membersToRemove.forEach(member=>{
-                activity.invitedMembers.splice(activity.invitedMembers.indexOf(member),1)
+            membersToRemove.forEach(member => {
+                activity.invitedMembers.splice(activity.invitedMembers.indexOf(member), 1)
             })
             activity.invitedMembers = [...activity.invitedMembers, ...membersToAdd]
-            return activity.save(err=>{
-                if(!err){
-                    console.warn("todo: notify")
+            return activity.save(err => {
+                if (!err) {
+                    if (!err) {
+                        check(notifObjects, [{
+                            userId: String,
+                            memberId: String,
+                            hashControl: String
+                        }])
+                        activity.notify(notifObjects, authInfo.memberId)
+                    } else {
+                        console.log(err)
+                    }
                 }
             })
+        },
+        newCheckItem(authInfo) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let activity = Activity.findOne(this._id)
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            activity.checkList.push({label: "", checked: false})
+            return activity.save()
+        },
+        removeCheckItem(authInfo, index) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let activity = Activity.findOne(this._id)
+            check(index, Number)
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            activity.checkList.splice(index,1)
+            return activity.save()
+        },
+        checkCheckItem(authInfo, index) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let activity = Activity.findOne(this._id)
+            check(index, Number)
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            activity.checkList[index].checked = !activity.checkList[index].checked
+            return activity.save()
+        },
+        editCheckItem(authInfo, index, value) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let activity = Activity.findOne(this._id)
+            check(index, Number)
+            check(value, String)
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            activity.checkList[index].symEnc_label =value
+            return activity.save()
         },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})

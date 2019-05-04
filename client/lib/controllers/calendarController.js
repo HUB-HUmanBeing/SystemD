@@ -65,18 +65,18 @@ const calendarController = {
             navLinkDayClick: (date, jsEvent) => {
                 this.changeView("days", date)
             },
-            eventRender: function(info) {
-                // console.log(info)
-                // if(Meteor.Device.isDesktop){
-                //     let html = `<div>coucou</div>`
-                //     $(info.el).tooltip({
-                //         delay:350,
-                //         position:"top",
-                //         tooltip: html,
-                //         html:true
-                //     })
-                // }
-            },
+            // eventRender: function(info) {
+            //     console.log(info)
+            //     if(Meteor.Device.isDesktop()){
+            //         let html = `<div>coucou</div>`
+            //         $(info.el).tooltip({
+            //             delay:350,
+            //             position:"top",
+            //             tooltip: html,
+            //             html:true
+            //         })
+            //     }
+            // },
             eventLimit: true,
             select: (info) => {
                 let activity = new Activity()

@@ -45,7 +45,7 @@
                         </div>
                         <div class="flex-auto" style="padding-left: 0.2em">
                             <div class="publicationDate ">
-                                {{#if compare activity.lastEditAt "!==" activity.createdAt}}
+                                {{#if activity.lastEditAt}}
                                     {{formatDate activity.lastEditAt}}{{__ "markerDetail.lastEdit"}}
                                 {{else}}
                                     {{formatDate activity.createdAt}}
@@ -86,7 +86,13 @@
 
                 </div>
             </div>
+            <div class="row no-margin">
+                <div class="col s12">
+                    <div class="hr"></div>
+                    {{>checkList activity=activity}}
 
+                </div>
+            </div>
             <div class="row no-margin activityMembers">
                 <div class="col s12">
                     <div class="hr"></div>

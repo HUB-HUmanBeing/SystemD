@@ -338,7 +338,9 @@
       width: 300px;
 
       position: relative;
-
+      #sideCalendarContent{
+        overflow-x: hidden !important;
+      }
 
     }
 

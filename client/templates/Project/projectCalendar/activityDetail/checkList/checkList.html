@@ -1,0 +1,50 @@
+<template name="checkList">
+    <div id="checkList">
+        <div class="flex">
+            <p class="sectionLabel flex-auto no-margin">{{__ ".checkList"}}</p>
+            {{#unless checkItems.length}}
+                <div class="switch" style="">
+                    <label>
+
+                        <input switchCheckList type="checkbox" id="recursivitySwitch" checked={{ boolean
+                                activity.checkList.length}}>
+                        <span class="lever" style="margin: 5px 0"></span>
+
+                    </label>
+                </div>
+            {{/unless}}
+        </div>
+        {{refresher}}
+        {{#if checkItems.length}}
+            <ul class="collection relative transparent">
+                {{#each check in checkItems}}
+                    <li class="collection-item no-padding transparent relative flex">
+                        <a href="" id="checkChecked-{{@index}}" class=" {{#if check.checked}}checkDone{{/if}}" check><i
+                                class="material-icons">{{#if check.checked}}done{{else}}check_box_outline_blank{{/if}}</i></a>
+
+                        <div class="inputContainer flex-auto">
+                            <input type="text" class="no-margin "
+                                   id="checkInput-{{@index}}"
+                                   placeholder="{{__ ".newCheck"}}" value="{{check.symEnc_label}}"
+                                   checkInput>
+                        </div>
+
+                        <a href="" class="removePropositionBtn"
+                           id="newPollProposition-{{@index}}" removeCheck><i
+                                class="material-icons ">clear</i></a>
+
+
+                    </li>
+                {{/each}}
+
+
+                <a href="" class="waves-effect waves-light addPropositionBtn left-align" addCheck>{{__
+                        ".addCheck"}}<i
+                        class="material-icons left">add</i></a>
+
+
+            </ul>
+        {{/if}}
+    </div>
+
+</template>

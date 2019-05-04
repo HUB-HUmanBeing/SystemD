@@ -596,5 +596,10 @@
     "end": "End : ",
     "decline": "Decline",
     "accept": "Accept"
+  },
+  "checkList": {
+    "checkList": "Check list : ",
+    "newCheck": "Check...",
+    "addCheck": "add check"
   }
 }

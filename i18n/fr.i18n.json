@@ -67,7 +67,8 @@
     "genericAction": "Voir sur le site",
     "newPublication": "Une nouvelle publication a été ajoutée dans une discussion que vous suivez",
     "newResponse": "Un Commentaire à été fait suite à l'un de vos messages.",
-    "newMapMarker": "Un nouveau marqueur à été placé sur la carte"
+    "newMapMarker": "Un nouveau marqueur à été placé sur la carte",
+    "newInvitation": "Vous avez été invité à participer à une activité"
   },
   "showAcceptNotif": {
     "showAcceptNotifs": "Cliquez sur accepter pour être averti des activités de votre projet.",
@@ -600,5 +601,10 @@
     "end": "Fin : ",
     "decline": "Décliner",
     "accept": "Accepter"
+  },
+  "checkList": {
+    "checkList": "Check list : ",
+    "newCheck": "Check...",
+    "addCheck": "Ajouter un check"
   }
 }
