@@ -67,7 +67,8 @@
     "genericAction": "See on website",
     "newPublication": "A new publication has been added in a followed topic",
     "newResponse": "A comment has been made after your message",
-    "newMapMarker": "A new marker has been positionned on the map"
+    "newMapMarker": "A new marker has been positioned on the map",
+    "newInvitation": "you have been invited to participate to an activity"
   },
   "showAcceptNotif": {
     "showAcceptNotifs": "Click accept to be notified of the activities on your projects",
