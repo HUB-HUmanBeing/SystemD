@@ -1,0 +1,64 @@
+<template name="createPopup">
+    <div id="invitationPopup" class=" ">
+
+        <div class="contrasted-bg shadow modalInviteContent">
+            <div class=" small-padding contrasted-bg main-color">
+                <div class="flex" style="margin-bottom: -15px">
+                    <i class="material-icons ">event</i>
+                    <h5 class="flex-auto"> {{__ ".title"}}</h5>
+                    <a href="" class="btn btn-floating  waves-effect waves-light " abort>
+                        <i class="material-icons ">close</i>
+
+                    </a>
+                </div>
+                <div class="row no-margin">
+                    <div class="col s12 no-padding">
+                        <div class="hr"></div>
+                        <div class="row">
+                            <div class="col s12">
+                                <p class="infoQuotes">{{__ ".color"}}</p>
+                                <div class="flex colorPicker">
+                                    {{#each color in colors}}
+                                        <div class="flex-auto center-align">
+
+                                            <a href="" id="color-{{@index}}"
+                                               class="colorItem shadow {{#if compare selectedColor "=="
+                                                                             @index}}selectedColor{{/if}} {{#if getIndex
+                                                                                                                colorLegend
+                                                                                                                @index}}tooltipped{{/if}}"
+                                               data-position="top"
+                                               data-delay="50" data-tooltip="{{getIndex colorLegend @index}}"
+                                               style="background-color: {{color}}" selectColor></a>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s6">
+                                <b>{{__ ".start"}}</b> <br>{{formatDate createParams.start}}
+                            </div>
+                            <div class="col s6">
+                                <b>{{__ ".end"}}</b><br> {{formatDate createParams.end}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin">
+
+                    <div class="col s6 ">
+                        <a href="" class="btn btn-danger waves-light waves-effect full-width" abort><i
+                                class="material-icons left">clear</i>{{__
+                                ".decline"}}</a>
+                    </div>
+                    <div class="col s6 ">
+                        <a href="" class="btn btnStandard waves-light waves-effect full-width" create><i
+                                class="material-icons left">done</i>{{__
+                                ".accept"}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>

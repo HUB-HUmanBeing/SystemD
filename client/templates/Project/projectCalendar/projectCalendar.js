@@ -56,6 +56,12 @@ Template.projectCalendar.helpers({
     },
     colorLegend:function () {
         return Template.instance().colorLegend.get()
+    },
+    createParams: function () {
+        return Template.instance().createParams.get()
+    },
+    parentInstance: function () {
+        return Template.instance()
     }
 });
 
@@ -102,6 +108,7 @@ Template.projectCalendar.onCreated(function () {
     this.colorLegend = new ReactiveVar([])
     this.title = new ReactiveVar("")
     this.calendarState = new ReactiveVar({currentAction: false})
+    this.createParams =  new ReactiveVar(false)
     let projectId = FlowRouter.current().params.projectId
     Meteor.subscribe('calendarEventsProject', projectController.getAuthInfo(projectId), projectId)
     Meteor.setTimeout(() => {

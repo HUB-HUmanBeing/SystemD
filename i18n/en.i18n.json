@@ -546,7 +546,7 @@
   "projectCalendar": {
     "daysView": "Daily view",
     "monthView": "Monthly view",
-    "listVue": "list of monthly events",
+    "listView": "list of monthly events",
     "recurring": "( Recurring )",
     "unnamed": "No title"
   },

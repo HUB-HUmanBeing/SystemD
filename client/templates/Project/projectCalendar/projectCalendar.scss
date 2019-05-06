@@ -24,6 +24,7 @@
         background-color: $grey;
       }
     }
+
     .fc-listMonth-view {
       .fc-scroller {
         width: calc(100% + 15px);
@@ -137,7 +138,7 @@
 
         .fc-event {
           border: none;
-         padding: 3px;
+          padding: 3px;
           border-left: 1em solid;
           border-radius: 0 !important;
           background-color: $grey !important;
@@ -145,20 +146,30 @@
           -moz-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4);
           box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4) !important;
         }
-.participating::after{
-  content: " ";
-  background-color: $plus-color;
-  display: block;
-  z-index: 30;
-  position: absolute;
-  top:8px;
-  left: -8.5px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
+
+
+        .focusedActivity {
+
+          background-color: #586772 !important;
+
+
+        }
+
+        .participating::after {
+          content: " ";
+          background-color: $plus-color;
+          display: block;
+          z-index: 30;
+          position: absolute;
+          top: 8px;
+          left: -8.5px;
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+        }
+
         .event-color-0 {
-          border-color:  #205386
+          border-color: #205386
 
         }
 
@@ -194,16 +205,20 @@
         .fc-today {
           background-color: rgba($minus-color, 0.1);
         }
-        .fc-more{
+
+        .fc-more {
           color: $link-color !important;
         }
-        .fc-popover{
+
+        .fc-popover {
           background-color: $light-bg;
-          .fc-header{
+
+          .fc-header {
             background-color: $main-bg;
             color: $main-color !important;
           }
         }
+
         .fc-axis, .fc-axis * {
           color: $main-color;
           border: none;
@@ -338,7 +353,8 @@
       width: 300px;
 
       position: relative;
-      #sideCalendarContent{
+
+      #sideCalendarContent {
         overflow-x: hidden !important;
       }
 

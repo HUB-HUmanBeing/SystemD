@@ -80,4 +80,7 @@
     </div>
 
         {{>invitedPopup}}
+    {{#if createParams}}
+        {{>createPopup createParams=createParams parentInstance=parentInstance colorLegend=colorLegend}}
+        {{/if}}
 </template>

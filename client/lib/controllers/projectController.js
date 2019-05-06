@@ -48,6 +48,7 @@ const projectController = {
     //crée l'objet authinfo nécessaire à l'authentification pour editer sur un projet
     getAuthInfo(projectId) {
         let userProject = this.getCurrentUserProject(projectId)
+        //console.log(Session.get("stringifiedAsymPrivateKey"))
         return {
             memberId: userProject.asymEnc_memberId,
             userSignature: cryptoTools.hash(userProject.asymEnc_memberId + Session.get("stringifiedAsymPrivateKey"))

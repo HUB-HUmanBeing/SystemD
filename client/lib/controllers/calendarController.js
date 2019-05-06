@@ -85,6 +85,7 @@ const calendarController = {
                     end: info.end,
                     allDay: info.allDay
                 }
+                //instance.createParams.set(activityParams)
                 activity.callMethod("newCalendarActivity", projectController.getAuthInfo(project._id), project._id, activityParams, {}, (err, res) => {
                     if (err) {
                         console.log(err)
@@ -99,7 +100,6 @@ const calendarController = {
             },
             eventResize: (info) => {
                 this.editEvent(info, project)
-
             },
             eventDrop: (info) => {
                 this.editEvent(info, project)
@@ -111,7 +111,7 @@ const calendarController = {
         Meteor.setTimeout(() => {
             this.initializeRouterView(instance, project)
             this.initializeEventRenderer(instance, project)
-        }, 100)
+        }, 50)
     },
     initializeEventRenderer(instance, project) {
         Meteor.subscribe("activitiesByProject", projectController.getAuthInfo(project._id), project._id, err => {
@@ -121,18 +121,19 @@ const calendarController = {
                     id: "currentProjectEvents",
                     events: []
                 }
+                FlowRouter.watchPathChange()
                 let activities = Activity.find({projectId: project._id, start: {$exists: true}}).fetch()
                 cryptoTools.decryptArrayOfObject(activities, {symKey: Session.get("currentProjectSimKey")}, decryptedActivities => {
                     Meteor.setTimeout(() => {
                         decryptedActivities.forEach(activity => {
-                            eventSource.events.push(this.getEventFromActivity(activity))
+                            eventSource.events.push(this.getEventFromActivity(activity, FlowRouter.current().queryParams.activityId))
                         })
                         let currentEventSource = this.calendar.getEventSourceById("currentProjectEvents")
                         if (currentEventSource) {
                             currentEventSource.remove()
                         }
                         this.calendar.addEventSource(eventSource)
-                    }, 100)
+                    }, 0)
                 })
 
             })
@@ -146,6 +147,11 @@ const calendarController = {
             end: info.event.end,
             allDay: info.event.allDay
         }
+        if (!activityParams.end) {
+            let start = activityParams.start
+            start.setHours(start.getHours() + 1)
+            activityParams.end = start
+        }
         activity.callMethod("editCalendarActivityTime", projectController.getAuthInfo(project._id), activityParams, (err, res) => {
             if (err) {
                 console.log(err)
@@ -154,16 +160,16 @@ const calendarController = {
             }
         })
     },
-    getEventFromActivity(activity) {
+    getEventFromActivity(activity, focusedActivity) {
 
         let event
 
         let participating = ""
-        if(activity.participants.length){
-            participating = activity.participants.indexOf(projectController.getCurrentMemberId(activity.projectId))=== -1?"":"participating"
+        if (activity.participants.length) {
+            participating = activity.participants.indexOf(projectController.getCurrentMemberId(activity.projectId)) === -1 ? "" : "participating"
         }
-        if(activity.invitedMembers.length && !Session.get("invitationActivityId")){
-            if(activity.invitedMembers.indexOf(projectController.getCurrentMemberId(activity.projectId))> -1){
+        if (activity.invitedMembers.length && !Session.get("invitationActivityId")) {
+            if (activity.invitedMembers.indexOf(projectController.getCurrentMemberId(activity.projectId)) > -1) {
                 Session.set("invitationActivityId", activity)
             }
         }
@@ -172,9 +178,9 @@ const calendarController = {
             let endTime = activity.allDay ? null : activity.end.getHours() + ":" + activity.end.getMinutes()
             event = {
                 id: activity._id,
-                title: (activity.symEnc_title ? activity.symEnc_title+ " " : "") + __("projectCalendar.recurring"),
+                title: (activity.symEnc_title ? activity.symEnc_title + " " : "") + __("projectCalendar.recurring"),
                 allDay: activity.allDay,
-                classNames: ["event-color-" + activity.color,participating],
+                classNames: ["event-color-" + activity.color, participating],
                 daysOfWeek: activity.daysOfWeek,
                 startTime: startTime,
                 endTime: endTime,
@@ -182,14 +188,26 @@ const calendarController = {
         } else {
             event = {
                 id: activity._id,
-                title: activity.symEnc_title?activity.symEnc_title:__("projectCalendar.unnamed"),
+                title: activity.symEnc_title ? activity.symEnc_title : __("projectCalendar.unnamed"),
                 start: activity.start,
                 end: activity.end,
                 allDay: activity.allDay,
-                classNames: ["event-color-" + activity.color,participating]
+                classNames: ["event-color-" + activity.color, participating]
             }
-
         }
+        if (activity.checkList.length) {
+            let validItems = 0
+            activity.checkList.forEach(check => {
+                if (check.checked) {
+                    validItems++
+                }
+            })
+            event.title = event.title + " \t\t\ ☑️" + validItems + "/" + activity.checkList.length
+        }
+        if (focusedActivity && activity._id == focusedActivity) {
+            event.classNames.push(' focusedActivity')
+        }
+
         return event
     },
     initializeRouterView(instance, project) {

@@ -7,17 +7,22 @@
   "minio": {
     "endPoint": "???",
     "port": 9000,
-    "MINIO_ACCESS_KEY":"???" ,
-    "MINIO_SECRET_KEY":"???"
+    "MINIO_ACCESS_KEY": "???",
+    "MINIO_SECRET_KEY": "???"
   },
   "public": {
     "frontSalt": "votre petit grain de sel",
+    "publicVapidKey": ""
+  },
+  "public": {
+    "fastHashDifficulty": 5,
+    "frontSalt": "coucou",
     "publicVapidKey": ""
   },
   "webpushMail": "test@test.com",
   "privateVapidKey": "",
   "GcmApiKey": "",
   "serverSalt": "un autre grain de sel",
-  "serverSaltRounds": 10,
-  "githubToken" : "ton super token"
+  "serverSaltRounds": 3,
+  "githubToken": "ton super token"
 }

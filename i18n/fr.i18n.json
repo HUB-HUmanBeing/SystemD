@@ -550,12 +550,12 @@
   "projectCalendar": {
     "daysView": "Vue journalière",
     "monthView": "Vue mensuelle",
-    "listVue": "Listing des évènements mensuels",
+    "listView": "Listing des évènements mensuels",
     "recurring": "( Récurant )",
     "unnamed": "Sans titre"
   },
   "calendarSettings": {
-    "title": "Paramètre de l'agenda",
+    "title": "Paramètres de l'agenda",
     "defaultView": "Vue par défaut : ",
     "colorLegend": "Legende couleur : ",
     "defaultViewSaved": "La vue par défaut à été modifiée pour tout les membres du projet"
