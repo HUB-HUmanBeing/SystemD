@@ -4,14 +4,16 @@
             <div class="row relative" style="margin-bottom: 5px">
                 <div id="detailIconMarker">
                     <div class="iconMarkerHead center-align relative" style="background-color: {{eventColor}}">
-                        <a href="" class="btn btn-floating waves-effect waves-light editColorBtn" editColor><i
-                                class="material-icons">color_lens</i></a>
+                        {{#unless initialColor}}
+                            <a href="" class="btn btn-floating waves-effect waves-light editColorBtn" editColor><i
+                                    class="material-icons">color_lens</i></a>
+                        {{/unless}}
                         <div class="absolute colorLegendLabel">
                             {{getIndex colorLegend activity.color}}
                         </div>
                         <div class="relative iconContainer">
 
-                            <i class="material-icons white-text medium small-padding small-margin">event</i>
+                            <i class="material-icons white-text medium small-padding small-margin">{{icon}}</i>
 
 
                         </div>
@@ -86,6 +88,46 @@
 
                 </div>
             </div>
+            {{#if initialColor}}
+                <div class="row no-margin">
+                    <div class="col s12">
+                        <div class="hr"></div>
+                    </div>
+                    <div class="col s12">
+                        <div class="editIcon">
+                            <div class="flex colorPicker">
+                                {{#each color in colors}}
+                                    <div class="flex-auto center-align">
+
+                                        <a href="" id="color-{{@index}}"
+                                           class="colorItem shadow {{#if compare activity.color "=="
+                                                                         @index}}selectedColor{{/if}} {{#if getIndex
+                                                                                                            colorLegend
+                                                                                                            @index}}tooltipped{{/if}}"
+                                           data-position="top"
+                                           data-delay="50" data-tooltip="{{getIndex colorLegend @index}}"
+                                           style="background-color: {{color}}" selectColor></a>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+            {{#if showDates}}
+                <div class="row no-margin">
+                    <div class="col s12">
+                        <div class="hr"></div>
+                    </div>
+                    <div class="col s12">
+
+                        <b>{{__ "invitedPopup.start"}}</b> {{formatDate activity.start}}
+                    </div>
+                    <div class="col s12">
+                        <b>{{__ "invitedPopup.end"}}</b> {{formatDate activity.end}}
+                    </div>
+                </div>
+            {{/if}}
             <div class="row no-margin">
                 <div class="col s12">
                     <div class="hr"></div>
@@ -120,11 +162,11 @@
                     </div>
 
 
-                        <p class=" sectionLabel no-margin">{{__ ".invited"}}</p>
-                        <div class="flex">
-                            <div class="flex-auto">
-                                {{>memberList members=activity.invitedMembers type="invitedMembers" noMemberMessage=(__ ".noInvited")}}
-                            </div>
+                    <p class=" sectionLabel no-margin">{{__ ".invited"}}</p>
+                    <div class="flex">
+                        <div class="flex-auto">
+                            {{>memberList members=activity.invitedMembers type="invitedMembers" noMemberMessage=(__ ".noInvited")}}
+                        </div>
                         {{#if invitableMembers.length}}
                             <a class="btn btn-floating waves-effect waves-light tooltipped " href=""
                                toggleModalInviteMembers
@@ -132,7 +174,7 @@
                                data-delay="250" data-tooltip="{{__ ".inviteMember"}}">
                                 <i class="material-icons left">group_add</i></a>
                         {{/if}}
-                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -161,35 +203,37 @@
 
                 </div>
             {{/if}}
-            <div class="row no-margin">
-                <div class="col s12">
-                    <div class="hr"></div>
-                    <div class="flex">
-                        <p class="sectionLabel flex-auto no-margin">{{__ ".recursivity"}}</p>
-                        <div class="switch" style="">
-                            <label>
+            {{#if activity.start}}
+                <div class="row no-margin">
+                    <div class="col s12">
+                        <div class="hr"></div>
+                        <div class="flex">
+                            <p class="sectionLabel flex-auto no-margin">{{__ ".recursivity"}}</p>
+                            <div class="switch" style="">
+                                <label>
 
-                                <input recursivitySwitch type="checkbox" id="recursivitySwitch" checked={{ boolean
-                                        activity.daysOfWeek.length}}>
-                                <span class="lever" style="margin: 5px 0"></span>
+                                    <input recursivitySwitch type="checkbox" id="recursivitySwitch" checked={{ boolean
+                                            activity.daysOfWeek.length}}>
+                                    <span class="lever" style="margin: 5px 0"></span>
 
-                            </label>
+                                </label>
+                            </div>
                         </div>
+
+                        {{#if activity.daysOfWeek.length}}
+                            <div class="flex weekdays">
+                                {{#each weekday in weekdays}}
+                                    <div class="flex-auto center-align">
+                                        <a href="" id="day-{{@index}}"
+                                           class="shadow no-margin center-align weekDay waves-effect waves-light {{#if
+                                                   weekday.checked}}checkedWeekDay{{/if}}" toogleDay>{{weekday.day}}</a>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        {{/if}}
                     </div>
-
-                    {{#if activity.daysOfWeek.length}}
-                        <div class="flex weekdays">
-                            {{#each weekday in weekdays}}
-                                <div class="flex-auto center-align">
-                                    <a href="" id="day-{{@index}}"
-                                       class="shadow no-margin center-align weekDay waves-effect waves-light {{#if
-                                               weekday.checked}}checkedWeekDay{{/if}}" toogleDay>{{weekday.day}}</a>
-                                </div>
-                            {{/each}}
-                        </div>
-                    {{/if}}
                 </div>
-            </div>
+            {{/if}}
             <div class="row no-margin">
                 <div class="col s12">
                     <div class="hr"></div>

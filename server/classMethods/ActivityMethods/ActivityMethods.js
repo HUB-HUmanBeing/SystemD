@@ -23,7 +23,8 @@ Activity.extend({
             let computedParams = {
                 projectId: currentProject._id,
                 createdBy: authInfo.memberId,
-                participants: [authInfo.memberId]
+                participants: [authInfo.memberId],
+                done:false
             }
             ActivityParmas = {...ActivityParmas, ...computedParams}
             let newActivity = new Activity(ActivityParmas)
@@ -43,6 +44,21 @@ Activity.extend({
                     console.log(err)
                 }
             })
+        },
+        newTaskActivity(authInfo, projectId) {
+            check(authInfo, {memberId: String, userSignature: String})
+            check(projectId, String)
+            let currentProject = Project.findOne(projectId)
+            check(currentProject.isMember(authInfo), true)
+            let computedParams = {
+                projectId: currentProject._id,
+                createdBy: authInfo.memberId,
+                participants: [authInfo.memberId],
+                done: false
+            }
+            let ActivityParmas = { ...computedParams}
+            let newActivity = new Activity(ActivityParmas)
+            return newActivity.save()
         },
         editCalendarActivityTime(authInfo, params) {
             check(authInfo, {memberId: String, userSignature: String})
@@ -182,6 +198,28 @@ Activity.extend({
             activity.checkList[index].symEnc_label =value
             return activity.save()
         },
+        changeList(authInfo, type) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let activity = Activity.findOne(this._id)
+            check(type, String)
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            if(type=="todo"){
+                delete activity.start
+                delete activity.end
+                activity.daysOfWeek= []
+                activity.allDay=false
+                activity.done= false
+            }else if(type=="done"){
+                delete activity.start
+                delete activity.end
+                activity.daysOfWeek= []
+                activity.allDay=false
+                activity.done= true
+            }
+            activity.lastEditAt= new Date()
+            return activity.save()
+        },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
 
@@ -190,6 +228,18 @@ Activity.extend({
             check(currentProject.isMember(authInfo), true)
             return activity.remove((err) => {
             })
+        },
+        deleteOldsActivities(authInfo, projectId,date){
+            check(projectId, String)
+            check(date, Date)
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(projectId)
+            check(currentProject.isAdmin(authInfo), true)
+            let activities = Activity.find({projectId:projectId, start : { $lte : date}}).fetch()
+            activities.forEach(activity=>{
+                activity.remove()
+            })
+            return true
         }
     }
 })

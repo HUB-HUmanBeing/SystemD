@@ -1,0 +1,13 @@
+<template name="tasksList">
+    <div class="tasksList relative" id="scrollContainer-{{type}}" style="{{#if isDesktop}}overflow: hidden{{/if}}">
+
+        {{#if isDraggingTopic}}
+            <div class="absolute listDropBasket center-align">
+                <i class="material-icons plus-color ">move_to_inbox</i>
+            </div>
+        {{/if}}
+        {{#each task in tasks}}
+            {{>taskItem task=task type=type}}
+        {{/each}}
+    </div>
+</template>

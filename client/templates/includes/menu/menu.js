@@ -38,13 +38,26 @@ Template.menu.events({
 });
 
 Template.menu.onCreated(function () {
+    function changeFavicon(src) {
+        let link = document.createElement('link'),
+            oldLink = document.getElementById('dynamic-favicon');
+        link.id = 'dynamic-favicon';
+        link.rel = 'shortcut icon';
+        link.href = src;
+        if (oldLink) {
+            document.head.removeChild(oldLink);
+        }
+        document.head.appendChild(link);
+    }
     this.showInfo = new ReactiveVar()
     this.autorun(() => {
         let totalNotifCount = ProjectNotification.find().count()
         let title = "System-D"
         if (totalNotifCount) {
             title += ' (' + totalNotifCount + ')'
-
+            changeFavicon('/images/icon/systemd-notif.png');
+        }else{
+            changeFavicon('/favicon.ico');
         }
         document.title = title
 

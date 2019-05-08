@@ -1,4 +1,6 @@
 import projectController from "../../../../lib/controllers/projectController";
+import MapMarker from "../../../../../imports/classes/MapMarker";
+import Activity from "../../../../../imports/classes/Activity";
 
 Template.calendarSettings.helpers({
     //add you helpers here
@@ -15,7 +17,23 @@ Template.calendarSettings.helpers({
                     }
                 })
         }
-    }
+    },
+    durationOptions: function () {
+        return [
+            {
+                value: 1,
+                label: "1 " + __("newInvitation.day")
+            },
+            {
+                value: 7,
+                label: "1 " + __("newInvitation.week")
+            },
+            {
+                value: 30,
+                label: "1 " + __("newInvitation.month")
+            },
+        ]
+    },
 });
 
 Template.calendarSettings.events({
@@ -33,6 +51,25 @@ Template.calendarSettings.events({
                     Materialize.toast(__('calendarSettings.defaultViewSaved'), 6000, 'toastOk')
                 }
             })
+    },
+    'click [deleteOldActivities]': function (event, instance) {
+        event.preventDefault()
+        let duration = Number($("#duration").val())
+        let ActivityInstance = new Activity()
+        let projectId = FlowRouter.current().params.projectId
+        if (duration) {
+            let date = new Date()
+            date.setDate(date.getDate() - duration)
+            console.log(date)
+            ActivityInstance.callMethod("deleteOldsActivities", projectController.getAuthInfo(projectId), projectId, date, (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    Materialize.toast(__('calendarSettings.oldsActivitiesDeleted'), 6000, 'toastOk')
+                }
+            })
+        }
+
     }
 });
 
@@ -43,9 +80,11 @@ Template.calendarSettings.onCreated(function () {
 Template.calendarSettings.onRendered(function () {
     //add your statement here
     resetTooltips()
+    $('#duration').material_select();
 });
 
 Template.calendarSettings.onDestroyed(function () {
     //add your statement here
+    $('#duration').material_select('destroy');
 });
 

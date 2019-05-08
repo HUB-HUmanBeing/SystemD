@@ -39,9 +39,8 @@ const Activity = Class.create({
             type: String,
             optional: true
         },
-        taskListId: {
-            type: String,
-            optional: true
+        done: {
+            type: Boolean,
         },
         color: {
             type: Number,

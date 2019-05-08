@@ -271,7 +271,7 @@ Meteor.publish('markerDetail', function (authInfo, markerId) {
     check(currentProject.isMember(authInfo), true)
     return MapMarkers.find({_id: markerId})
 })
-Meteor.publish("activitiesByProject",function (authInfo, projectId) {
+Meteor.publish("CalendarActivitiesByProject",function (authInfo, projectId) {
     check(projectId, String)
     check(authInfo, {memberId: String, userSignature: String})
     let currentProject = Project.findOne(projectId)
@@ -282,3 +282,12 @@ Meteor.publish("activitiesByProject",function (authInfo, projectId) {
         }
     })
 })
+Meteor.publish("activitiesProject",function (authInfo, projectId) {
+    check(projectId, String)
+    check(authInfo, {memberId: String, userSignature: String})
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return Activities.find({projectId: projectId}, {
+    })
+})
+

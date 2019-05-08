@@ -1,0 +1,44 @@
+<template name="taskItem">
+    <a href="/project/{{task.projectId}}/tasks?side=activityDetail&activityId={{task._id}}"
+    class="taskItem shadow {{#if participating}}participating{{/if}} {{#if selected}}
+        selected{{/if}}"
+    style="border-color:  {{taskColor}}; {{#if isDrag}}opacity:0.5{{/if}}"
+    draggable="true"
+    id="taskItem-{{task._id}}"
+    >
+    <div class="title">{{#if task.symEnc_title}}{{task.symEnc_title}}{{else}}{{__
+            "projectCalendar.unnamed"}}{{/if}}</div>
+{{#if task.symEnc_detail}}
+        <div class="detail">{{firstLetters task.symEnc_detail 100}}</div>
+{{/if}}
+    <div class=" taskInfos">
+        <div class=" tooltipped" data-position="bottom"
+             data-delay="450" data-tooltip="{{task.participants.length}} {{__ ".participants"}}">
+            <span>{{task.participants.length}}</span><i
+                class="material-icons">people</i></div>
+        <div class=" tooltipped" data-position="bottom"
+             data-delay="450" data-tooltip="{{task.invitedMembers.length}} {{__ ".inviteds"}}">
+            <span>{{task.invitedMembers.length}}</span><i
+                class="material-icons">people_outline</i>
+        </div>
+        {{#if task.checkList.length}}
+            <div class=" tooltipped" data-position="bottom"
+                 data-delay="450" data-tooltip="{{__ ".checklist"}}"><span>{{checked}}
+                /{{task.checkList.length}}</span><i
+                    class="material-icons">check_box</i>
+            </div>
+        {{/if}}
+        {{#if task.start}}
+            <div class=" tooltipped" data-position="bottom"
+                 data-delay="250"
+                 data-tooltip="{{__ ".start"}} : {{formatDate task.start}}    {{__ ".end"}} : {{formatDate task.end}}">
+                <span class="start shadow"><i class="material-icons">access_time</i><span>{{formatDate task.start}} {{#if
+                        task.daysOfWeek.length}}{{__ "projectCalendar.recurring"}}{{/if}}</span></span>
+
+            </div>
+        {{/if}}
+    </div>
+
+
+    </a>
+</template>

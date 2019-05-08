@@ -1,0 +1,288 @@
+@import "{}/client/scss/variables.scss";
+//@import "{}/client/scss/pluginsLib/leaflet.css";
+
+
+#projectTasks {
+  width: 100%;
+  position: relative;
+  color: $main-color;
+
+  &.desktopProjectTasks {
+    height: 100vh;
+  }
+
+  &.mobileProjectTasks {
+    height: calc(100vh - 121px);
+
+    .tasksList {
+      padding: 0 15% ;
+    }
+    .listDropBasket {
+
+    }
+    .mobileDragging .tasksList{
+      width: 70% !important;
+      margin: 0 15% !important;
+      padding: 0 !important;
+    }
+    .mobileNavBar {
+      position: fixed;
+      right: 0;
+      width: 100vw;
+
+      a {
+        top: -5px;
+      }
+
+      .nextList {
+        right: 0;
+      }
+
+      .previousList {
+        left: 20px;
+      }
+
+      .dragOver {
+        width: 15%;
+        background-color: $main-color;
+        z-index: 60000;
+        content: " ";
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        opacity: 0.1;
+      }
+
+
+
+      #dragover-right {
+        right: 0;
+      }
+
+      #dragover-left {
+        left: 0
+      }
+    }
+
+    #tasksGroupsList {
+      width: 400vw !important;
+      overflow: scroll;
+      transition: 0.5s ease-out;
+      left: 0vw;
+      padding: 0 !important;
+
+      .tasksGroupContainer {
+        width: calc(100vw - 10px);
+
+        .tasksGroup {
+          display: block;
+          overflow: scroll;
+
+          .addBtn {
+            margin: 0 15% !important;
+            width: 70%;
+          }
+        }
+      }
+    }
+
+  }
+
+  &.tabletProjectTasks {
+    height: calc(100vh - 129px);
+  }
+
+  .addBtn {
+    background-color: $light-bg !important;
+    border-color: $focus-color !important;
+    width: 100%;
+
+    i {
+      color: $focus-color !important;
+
+    }
+
+    &:hover {
+      background-color: $lighter-bg !important;
+    }
+  }
+
+  .closeColorSelector {
+    content: " ";
+    top: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 299;
+  }
+
+  .colorSelector {
+    position: absolute;
+    z-index: 400;
+    width: 260px;
+    padding: 5px 15px;
+    border-radius: 25px;
+    right: 0px;
+    background-color: $main-bg;
+    top: 00px;
+    height: 40px;
+
+    a {
+      position: relative;
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      border-radius: 5px;
+      background-color: $main-color !important;
+      margin: 2px;
+
+      i {
+        position: relative;
+        display: inline-block;
+        top: -2px;
+        left: -2px;
+        font-size: 30px;
+      }
+    }
+  }
+
+  #tasksContainer {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    flex-direction: column;
+
+    .tasksHeader, .mobileNavBar {
+      margin: 10px;
+
+      a {
+        background-color: $light-bg;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: $blue-highlight-color;
+        }
+      }
+
+      .titleContainer {
+        .title {
+
+          padding: 0 5px;
+          text-align: center;
+          font-size: calc(1em + 50%);
+          line-height: 40px;
+          color: $plus-color;
+        }
+      }
+    }
+
+    .closeSideNav {
+      content: " ";
+      top: 0;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 299;
+    }
+
+
+    #tasksGroupsList {
+      width: 100%;
+      height: 100%;
+      //background-color: $main-color;
+      z-index: 100;
+      display: flex;
+      padding: 0 5px;
+
+      .tasksGroupContainer {
+        flex: 1;
+        padding: 0 5px;
+        height: 100%;
+
+        //overflow: hidden;
+
+        .tasksGroup {
+          display: flex;
+          background: linear-gradient(to bottom, $contrasted-plus-bg 0%, $main-bg 100%);
+          height: 100%;
+          flex-direction: column;
+
+          .groupHead {
+            text-align: center;
+            font-size: 0.9em;
+            font-style: italic;
+            padding: 10px 0 3px 0;
+            //background-color: $contrasted-bg;
+
+            i {
+              color: $focus-color;
+              font-size: 2.3em;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+
+  #tasksSideNav {
+    height: 100%;
+    color: $main-color;
+    z-index: 600;
+
+
+    &.desktopTasksSideNav {
+      width: 300px;
+
+      #sideTasksContent {
+        overflow-x: hidden !important;
+      }
+
+    }
+
+    &.mobileTasksSideNav, &.tabletTasksSideNav, &.desktopTasksSideNav {
+      top: 0;
+      position: absolute;
+      transition: 0.3s ease-out;
+
+    }
+
+    &.mobileTasksSideNav {
+      width: calc(100vw - 70px);
+      right: calc(-100vw + 70px);
+
+      &.openedSideNav {
+        right: 0;
+      }
+    }
+
+    &.tabletTasksSideNav, &.desktopTasksSideNav {
+      width: 300px;
+      right: -300px;
+
+      &.openedSideNav {
+        right: 0;
+
+        #sideTasksContent {
+          overflow: scroll;
+        }
+      }
+    }
+
+    #sideTasksContent {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      padding-bottom: 50px;
+    }
+
+
+  }
+}

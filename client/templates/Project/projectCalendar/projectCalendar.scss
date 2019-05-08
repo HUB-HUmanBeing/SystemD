@@ -1,5 +1,4 @@
 @import "{}/client/scss/variables.scss";
-//@import "{}/client/scss/pluginsLib/leaflet.css";
 
 
 #projectCalendar {
@@ -50,6 +49,27 @@
     position: relative;
     padding: 5px;
     flex-direction: column;
+
+    .waitingActivityInfo {
+      color: $main-color;
+
+      position: absolute;
+      bottom: -5px;
+      z-index: 400;
+      right: -5px;
+      left: -5px;
+      background-color: $lighter-bg;
+      border: 3px solid $blue-highlight-color;
+
+      a {
+        background-color: $lighter-bg;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: $blue-highlight-color;
+        }
+      }
+    }
 
     .calendarHeader {
       margin: 1em 0 1em 0;

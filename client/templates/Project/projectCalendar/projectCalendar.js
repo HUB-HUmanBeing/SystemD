@@ -62,6 +62,10 @@ Template.projectCalendar.helpers({
     },
     parentInstance: function () {
         return Template.instance()
+    },
+    waitingActivity: function () {
+        console.log(Session.get("waitingActivity"))
+        return Session.get("waitingActivity")
     }
 });
 
@@ -100,6 +104,12 @@ Template.projectCalendar.events({
     'click [goSettings]': function (event) {
         event.preventDefault()
         calendarController.goSettings()
+    },
+    'click [stopWaitingActivity]':function (event) {
+        event.preventDefault()
+        let activity = Session.get("waitingActivity")
+        FlowRouter.go('/project/'+activity.projectId+'/tasks')
+        Session.set("waitingActivity", false)
     }
 });
 
@@ -132,5 +142,6 @@ Template.projectCalendar.onRendered(function () {
 
 Template.projectCalendar.onDestroyed(function () {
     //add your statement here
+   Session.set("waitingActivity", false)
 });
 

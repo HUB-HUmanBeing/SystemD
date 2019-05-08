@@ -23,7 +23,7 @@
     "forum": "Forum",
     "params": "Parameters",
     "calendar": "Calendar",
-    "tasks": "Tasks Lists",
+    "tasks": "Tasks List",
     "maps": "Map",
     "members": "Members"
   },
@@ -554,7 +554,11 @@
     "title": "Calendar parameters",
     "defaultView": "Default view : ",
     "colorLegend": "Color legend : ",
-    "defaultViewSaved": "Default view has been changed for all members of the project"
+    "defaultViewSaved": "Default view has been changed for all members of the project",
+    "deleteOlds": "Delete old activities",
+    "deleteOldsInfo": "Delete activities older than :",
+    "delete": "Delete",
+    "oldsActivitiesDeleted": "Old activities have been deleted"
   },
   "colorLegend": {
     "placeholder": "Your legend ...",
@@ -602,5 +606,21 @@
     "checkList": "Check list : ",
     "newCheck": "Check...",
     "addCheck": "add check"
+  },
+  "projectTasks": {
+    "title": "Tasks list",
+    "inProject": "To do",
+    "calendarPlaced": "Set on calendar",
+    "waitingForStatus": "Waiting validation",
+    "done": "Done"
+
+  },
+  "tasksSettings": {
+    "title": "Tasks list parameters",
+    "colorLegend": "Color legend",
+    "deleteDone": "Delete old done tasks",
+    "deleteDoneInfo": "Delete tasks done since:",
+    "delete": "Delete",
+    "oldsActivitiesDeleted": "Old done tasks have been deleted"
   }
 }

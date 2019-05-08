@@ -7,7 +7,29 @@ import notificationController from "../../../../lib/controllers/notificationCont
 
 Template.activityDetail.helpers({
     //add you helpers here
-    //add you helpers here
+    icon: function () {
+        let activity = Template.instance().activity.get()
+        if (activity.start) {
+            if (activity.start.getTime() > Date.now()) {
+                return "event"
+            } else {
+                return "hourglass_empty"
+            }
+        } else {
+            if (activity.done) {
+                return "check_box"
+            } else {
+                return "check_box_outline_blank"
+            }
+        }
+    },
+    initialColor:function(){
+        return Template.instance().initialColor.get()
+    },
+    showDates: function () {
+        FlowRouter.watchPathChange()
+        return (FlowRouter.current().route.name === "project-tasks") && Template.instance().activity.get().start
+    },
     activity: function () {
         let activity = Template.instance().activity.get()
         Meteor.setTimeout(() => {
@@ -46,16 +68,16 @@ Template.activityDetail.helpers({
     modalOpened: function () {
         return Template.instance().modalOpened.get()
     },
-    invitableMembers: function(){
+    invitableMembers: function () {
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)
         let participants = activity.participants
         let projectId = FlowRouter.current().params.projectId
         let invitable = []
         let blackList = [...participants, projectController.getCurrentMemberId(projectId)]
-        Session.get("currentProjectMembers").forEach(member=>{
-            if(blackList.indexOf(member.memberId)===-1)
-            invitable.push(member)
+        Session.get("currentProjectMembers").forEach(member => {
+            if (blackList.indexOf(member.memberId) === -1)
+                invitable.push(member)
         })
 
         return invitable
@@ -168,18 +190,23 @@ Template.activityDetail.events({
 
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)
+        let recursivity
+        if (activity.daysOfWeek.length == 0) {
 
-        let recursivity = []
-        if ($('#recursivitySwitch').prop("checked")) {
             recursivity = [activity.start.getDay()]
+        } else {
+            recursivity = []
         }
         activity.callMethod("changeRecursivity", projectController.getAuthInfo(FlowRouter.current().params.projectId), recursivity, err => {
             if (err) {
                 console.log(err)
             } else {
+
                 resetTooltips()
             }
         })
+
+
     },
     'click [toogleDay]': function (event, instance) {
 
@@ -227,11 +254,15 @@ Template.activityDetail.onCreated(function () {
     this.showEditFormButton = new ReactiveVar(false)
     this.editingColor = new ReactiveVar(false)
     this.modalOpened = new ReactiveVar(false)
+    this.initialColor = new ReactiveVar(false)
     this.autorun(() => {
         FlowRouter.watchPathChange()
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)
         if (activity) {
+             if(!activity.lastEditAt){
+                 this.initialColor.set(true)
+             }
             cryptoTools.decryptObject(activity, {symKey: Session.get("currentProjectSimKey")}, decryptedObject => {
                 this.activity.set(decryptedObject)
                 if (!decryptedObject.symEnc_title) {

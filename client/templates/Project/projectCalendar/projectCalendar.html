@@ -2,7 +2,7 @@
     <div id="projectCalendar" class=" {{#if isDesktop}} flex desktopProjectCalendar {{else}}{{#if
             isPhone}} mobileProjectCalendar {{else}} tabletProjectCalendar{{/if}}{{/if}}">
         <div id="calendarContainer"
-             class="relative flex {{mapState.currentAction}} {{#if isDesktop}} flex-auto {{/if}}">
+             class="relative flex  {{#if isDesktop}} flex-auto {{/if}}">
             <div class="calendarHeader">
                 <div class="titleContainer flex relative">
                     <a href="" class="previousPeriod btn-floating btn" previousPeriod>
@@ -23,7 +23,8 @@
                             {{#unless compare currentView.name "==" "days"}}
                                 <li>
                                     <a href="#"
-                                       class="btn-floating btn waves-effect waves-light tooltipped" data-position="left" data-delay="250"
+                                       class="btn-floating btn waves-effect waves-light tooltipped" data-position="left"
+                                       data-delay="250"
                                        data-tooltip="{{__ ".dayView"}}" dayView><i
                                             class="material-icons dayBtn">view_list</i></a>
                                 </li>
@@ -31,7 +32,8 @@
                             {{#unless compare currentView.name "==" "month"}}
                                 <li>
                                     <a href="#"
-                                       class="btn-floating btn waves-effect waves-light tooltipped" data-position="left" data-delay="250"
+                                       class="btn-floating btn waves-effect waves-light tooltipped" data-position="left"
+                                       data-delay="250"
                                        data-tooltip="{{__ ".monthView"}}" monthView><i
                                             class="material-icons">view_comfy</i></a>
                                 </li>
@@ -60,13 +62,26 @@
                 <div id="calendar" class="">
                 </div>
 
-
+                {{#if waitingActivity}}
+                    <div class="waitingActivityInfo flex">
+                        <div class="flex-auto small-padding">
+                            <p class="infoQuotes no-margin">
+                                {{__ ".setActivityInfo"}}
+                            </p>
+                        </div>
+                        <div class="small-padding">
+                            <a href="" class="btn btn-floating waves-light waves-effect" stopWaitingActivity><i
+                                    class="material-icons left">clear</i></a>
+                        </div>
+                    </div>
+                {{/if}}
             </div>
             {{#if sideNav}}
                 {{#unless isDesktop}}
                     <div class="closeSideNav" closeSideNav></div>
                 {{/unless}}
             {{/if}}
+
         </div>
         <div id="calendarSideNav" class="gradiant-dark shadow {{#if isDesktop}} desktopCalendarSideNav{{else}} {{#if
                 isPhone}}mobileCalendarSideNav{{else}}tabletCalendarSideNav{{/if}} {{#if
@@ -79,8 +94,8 @@
         </div>
     </div>
 
-        {{>invitedPopup}}
+    {{>invitedPopup}}
     {{#if createParams}}
         {{>createPopup createParams=createParams parentInstance=parentInstance colorLegend=colorLegend}}
-        {{/if}}
+    {{/if}}
 </template>

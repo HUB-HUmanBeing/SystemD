@@ -552,13 +552,19 @@
     "monthView": "Vue mensuelle",
     "listView": "Listing des évènements mensuels",
     "recurring": "( Récurant )",
-    "unnamed": "Sans titre"
+    "unnamed": "Sans titre",
+    "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
+    "activityPlaced": "L'activité à été placée dur l'agenda."
   },
   "calendarSettings": {
     "title": "Paramètres de l'agenda",
     "defaultView": "Vue par défaut : ",
     "colorLegend": "Legende couleur : ",
-    "defaultViewSaved": "La vue par défaut à été modifiée pour tout les membres du projet"
+    "defaultViewSaved": "La vue par défaut à été modifiée pour tout les membres du projet",
+    "deleteOlds": "Supprimer les anciennes activités",
+    "deleteOldsInfo": "Supprimer les activités dont la date debut remonte à plus de :",
+    "delete": "Supprimer",
+    "oldsActivitiesDeleted": "Les anciennes activités ont été supprimées"
   },
   "colorLegend": {
     "placeholder": "Non renseigné",
@@ -606,5 +612,28 @@
     "checkList": "Check list : ",
     "newCheck": "Check...",
     "addCheck": "Ajouter un check"
+  },
+  "projectTasks": {
+    "title": "Liste des tâches",
+    "inProject": "Tâches en projet",
+    "calendarPlaced": "Placées sur l'agenda",
+    "waitingForStatus": "Tâches passées",
+    "done": "Tâches terminées",
+    "newActivity": "Nouvelle tâche"
+  },
+  "tasksSettings": {
+    "title": "Paramètres de la liste de tâches",
+    "colorLegend": "Legende couleur : ",
+    "deleteDone": "Supprimer les anciennes tâches terminées",
+    "deleteDoneInfo": "Supprimer les tâches terminées il y a plus de :",
+    "delete": "Supprimer",
+    "oldsActivitiesDeleted": "Les anciennes tâches terminées ont été supprimées"
+  },
+  "taskItem": {
+    "participants": "Participants",
+    "inviteds": "Membres invités",
+    "checklist": "Check list",
+    "start": "Début",
+    "end": "Fin"
   }
 }

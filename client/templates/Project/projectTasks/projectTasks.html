@@ -1,3 +1,122 @@
 <template name="projectTasks">
+    <div id="projectTasks" class=" {{#if isDesktop}} flex desktopProjectTasks {{else}}{{#if
+            isPhone}} mobileProjectTasks {{else}} tabletProjectTasks{{/if}}{{/if}}">
+        <div id="tasksContainer"
+             class="relative flex">
+            {{#if compare colorSelector "&&" isPhone}}
+                <div class="closeColorSelector" colorSelector></div>
+            {{/if}}
+            <div class="tasksHeader">
+                <div class="titleContainer flex relative">
+                    <div class="flex-auto elipsis title">
+                        {{__ '.title'}}
+                    </div>
 
+                    <div class="relative">
+                        <a href="" class=" btn-floating btn"
+                           style="margin-left: 5px;{{#unless isPhone}}width:260px !important;{{/unless}}" colorSelector>
+                            <i class="material-icons ">color_lens</i>
+                        </a>
+
+                            <div class="colorSelector shadow">
+                                {{#each color in colors}}
+                                    <a href="" id="selectColor-{{@index}}"
+                                       class=" {{#if getIndex colorLegend @index}}tooltipped{{/if}}"
+                                       data-position="bottom"
+                                       data-delay="50" data-tooltip="{{getIndex colorLegend @index}}" toggleColor>
+                                        <i class="material-icons" style="color:{{color}}">{{#if isInArray @index
+                                                                                                selectedColors}}
+                                            check_box{{else}}check_box_outline_blank{{/if}}</i>
+                                    </a>
+                                {{/each}}
+                            </div>
+                    </div>
+                    <a href="/project/{{currentProject._id}}/tasks?side=tasksSettings" class=" btn-floating btn"
+                       style="margin-left: 5px">
+                        <i class="material-icons ">settings</i>
+                    </a>
+                </div>
+            </div>
+            <div id="tasksGroupsList" class="flex relative flex-auto">
+                {{#if isPhone}}
+                    <div class="  mobileNavBar  ">
+                    <a href="" class="previousList btn-floating btn  absolute waves-effect waves-light" previous>
+                        <i class="material-icons ">navigate_before</i>
+                    </a>
+
+                    <a href="" class="nextList btn-floating btn  absolute waves-effect waves-light" next>
+                        <i class="material-icons ">navigate_next</i>
+                    </a>
+                        <div id="dragover-right" class="dragOver" style="display: {{#if showDragover}}block;{{else}}none; {{/if}} "></div>
+                        <div id="dragover-left" class="dragOver " style="display: {{#if showDragover}}block;{{else}}none; {{/if}}"></div>
+                </div>
+                {{/if}}
+                <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
+                    <div id="taskGroup-todo" class="tasksGroup shadow">
+                        <div class="groupHead">
+                            <i class="material-icons">check_box_outline_blank</i><br>
+                            {{__ ".inProject"}}
+                        </div>
+                        <div class="" style="padding-top: 5px"><a href="" class="btn addBtn btnStandard waves-effect waves-light " addBtn><i
+                                class="material-icons left">add</i>{{__ ".newActivity"}}</a>
+                        </div>
+
+
+                        {{>tasksList type="todo" selectedColors=selectedColors}}
+
+                    </div>
+
+                </div>
+
+                <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
+                    <div id="taskGroup-calendar" class="tasksGroup shadow">
+                        <div class="groupHead">
+                            <i class="material-icons">event</i><br>
+                            {{__ ".calendarPlaced"}}
+                        </div>
+                        {{>tasksList type="calendar" selectedColors=selectedColors}}
+                    </div>
+                </div>
+
+                <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
+                    <div id="taskGroup-waiting" class="tasksGroup shadow">
+                        <div class="groupHead">
+                            <i class="material-icons">hourglass_empty</i><br>
+                            {{__ ".waitingForStatus"}}
+                        </div>
+                        {{>tasksList type="waiting" selectedColors=selectedColors}}
+                    </div>
+                </div>
+
+                <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
+                    <div id="taskGroup-done" class="tasksGroup  shadow">
+                        <div class="groupHead">
+                            <i class="material-icons">check_box</i><br>
+                            {{__ ".done"}}
+                        </div>
+                        {{>tasksList type="done" selectedColors=selectedColors}}
+                    </div>
+                </div>
+
+            </div>
+            {{#if sideNav}}
+
+                <div class="closeSideNav" closeSideNav></div>
+
+            {{/if}}
+        </div>
+        {{#if sideNav}}
+            <div id="tasksSideNav" class="gradiant-dark shadow {{#if isDesktop}} desktopTasksSideNav{{else}} {{#if
+                    isPhone}}mobileTasksSideNav{{else}}tabletTasksSideNav{{/if}}{{/if}} {{#if
+                    sideNav}}openedSideNav{{/if}}">
+
+                <div id="sideTasksContent" style="{{#unless isDesktop}}overflow: scroll;{{else}}{{/unless}}">
+
+                    {{#Template.dynamic template=sideNav data=sideNavData}}{{/Template.dynamic}}
+
+                </div>
+
+            </div>
+        {{/if}}
+    </div>
 </template>

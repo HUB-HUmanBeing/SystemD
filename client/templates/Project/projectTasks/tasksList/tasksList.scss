@@ -1,0 +1,27 @@
+@import "{}/client/scss/variables.scss";
+//@import "{}/client/scss/pluginsLib/leaflet.css";
+
+.tasksList {
+  padding-bottom: 100px;
+  overflow: scroll;
+  min-height: 100%;
+  .listDropBasket {
+    transition: 0.3s;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    z-index: 401;
+    background-color: $lighter-bg;
+    display: flex; /* comportement visuel de cellule */
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    border: 3px dotted $plus-color;
+    //border-radius: 8px;
+    i {
+      font-size: 40px;
+    }
+  }
+}

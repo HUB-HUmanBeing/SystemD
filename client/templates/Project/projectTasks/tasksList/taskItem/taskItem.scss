@@ -1,0 +1,80 @@
+@import "{}/client/scss/variables.scss";
+//@import "{}/client/scss/pluginsLib/leaflet.css";
+
+.taskItem {
+  margin: 5px 0;
+  border-left: 12px solid;
+  padding: 5px;
+  display: block;
+  color: $main-color;
+  background-color: $light-bg;
+  transition: 0.3s;
+  position: relative;
+  .detail{
+    font-size: 0.9em;
+    font-style: italic;
+    opacity: 0.8;
+  }
+  .taskInfos {
+    font-size: 0.9em;
+
+    div{
+      display: inline-block;
+      position: relative;
+      margin-left: 5px;
+      i {
+        position: relative;
+        top:3px;
+        left: 2px;
+      font-size: 16px;
+    }
+    }
+
+  }
+  &:hover{
+    background-color: $lighter-bg !important;
+    color: $plus-color
+  }
+  &.selected{
+    background-color: $lighter-bg !important;
+    color: $plus-color
+  }
+  &.participating::after {
+    content: " ";
+    background-color: $plus-color !important;
+    display: block;
+    z-index: 30;
+    position: absolute;
+    top: 8px;
+    left: -9.5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+  .start{
+    background-color: $blue-highlight-color;
+    //float: right;
+    display: inline-block;
+    line-height: 12px;
+    height: 18px;
+    font-size: 12px;
+    padding: 0 3px;
+    border-radius: 7.5px;
+
+    position: relative;
+    bottom: -2px;
+
+    i{
+      font-size: 12px;
+      padding-right: 5px;
+      display: inline-block;
+      position: relative;
+      margin-top:-1px;
+      margin-left: -2px;
+    }
+    span{
+position: relative;
+      top:-2px;
+    }
+  }
+}

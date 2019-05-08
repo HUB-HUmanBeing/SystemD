@@ -79,21 +79,48 @@ const calendarController = {
             // },
             eventLimit: true,
             select: (info) => {
-                let activity = new Activity()
-                let activityParams = {
-                    start: info.start,
-                    end: info.end,
-                    allDay: info.allDay
-                }
-                //instance.createParams.set(activityParams)
-                activity.callMethod("newCalendarActivity", projectController.getAuthInfo(project._id), project._id, activityParams, {}, (err, res) => {
-                    if (err) {
-                        console.log(err)
-                    } else {
-                        this.calendar.unselect()
-                        this.getEventDetail(res)
+                if (Session.get("waitingActivity")) {
+                    console.log(Session.get("waitingActivity"))
+                    let activity = new Activity()
+                    activity._id = Session.get("waitingActivity")._id
+                    let activityParams = {
+                        start: info.start,
+                        end: info.end,
+                        allDay: info.allDay
                     }
-                })
+                    if (!activityParams.end) {
+                        let start = activityParams.start
+                        start.setHours(start.getHours() + 1)
+                        activityParams.end = start
+                    }
+                    let projectId = FlowRouter.current().params.projectId
+                    activity.callMethod("editCalendarActivityTime", projectController.getAuthInfo(projectId), activityParams, (err, res) => {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            FlowRouter.go('/project/' + projectId + '/tasks')
+                            Materialize.toast(__('projectCalendar.activityPlaced'), 6000, 'toastOk')
+
+                        }
+                    })
+                } else {
+                    let activity = new Activity()
+                    let activityParams = {
+                        start: info.start,
+                        end: info.end,
+                        allDay: info.allDay
+                    }
+                    //instance.createParams.set(activityParams)
+                    activity.callMethod("newCalendarActivity", projectController.getAuthInfo(project._id), project._id, activityParams, {}, (err, res) => {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            this.calendar.unselect()
+                            this.getEventDetail(res)
+                        }
+                    })
+                }
+
             },
             eventClick: (info) => {
                 this.getEventDetail(info.event.id)
@@ -114,7 +141,7 @@ const calendarController = {
         }, 50)
     },
     initializeEventRenderer(instance, project) {
-        Meteor.subscribe("activitiesByProject", projectController.getAuthInfo(project._id), project._id, err => {
+        Meteor.subscribe("CalendarActivitiesByProject", projectController.getAuthInfo(project._id), project._id, err => {
             instance.autorun(() => {
                 let start = new Date().getTime()
                 let eventSource = {
@@ -133,7 +160,7 @@ const calendarController = {
                             currentEventSource.remove()
                         }
                         this.calendar.addEventSource(eventSource)
-                    }, 0)
+                    }, 100)
                 })
 
             })
