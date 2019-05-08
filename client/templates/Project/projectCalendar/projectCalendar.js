@@ -64,7 +64,6 @@ Template.projectCalendar.helpers({
         return Template.instance()
     },
     waitingActivity: function () {
-        console.log(Session.get("waitingActivity"))
         return Session.get("waitingActivity")
     }
 });

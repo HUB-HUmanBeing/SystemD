@@ -80,7 +80,6 @@ const calendarController = {
             eventLimit: true,
             select: (info) => {
                 if (Session.get("waitingActivity")) {
-                    console.log(Session.get("waitingActivity"))
                     let activity = new Activity()
                     activity._id = Session.get("waitingActivity")._id
                     let activityParams = {
@@ -183,7 +182,7 @@ const calendarController = {
             if (err) {
                 console.log(err)
             } else {
-                this.getEventDetail(info.event.id)
+               // this.getEventDetail(info.event.id)
             }
         })
     },

@@ -172,7 +172,9 @@
 
           background-color: #586772 !important;
 
-
+          -webkit-box-shadow: inset 0px 0px 5px 0px rgba($plus-color,0.75) !important;
+          -moz-box-shadow: inset 0px 0px 5px 0px rgba($plus-color,0.75) !important;
+          box-shadow: inset 0px 0px 5px 0px rgba($plus-color,0.75) !important;
         }
 
         .participating::after {

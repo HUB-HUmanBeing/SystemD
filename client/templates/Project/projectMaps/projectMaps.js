@@ -99,7 +99,7 @@ Template.projectMaps.onCreated(function () {
 
 Template.projectMaps.onRendered(function () {
     //add your statement here
-
+resetTooltips()
 });
 
 Template.projectMaps.onDestroyed(function () {

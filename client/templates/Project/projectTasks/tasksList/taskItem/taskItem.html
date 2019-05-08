@@ -1,4 +1,4 @@
-<template name="taskItem">
+<template name="taskItem" >
     <a href="/project/{{task.projectId}}/tasks?side=activityDetail&activityId={{task._id}}"
     class="taskItem shadow {{#if participating}}participating{{/if}} {{#if selected}}
         selected{{/if}}"
@@ -32,8 +32,8 @@
             <div class=" tooltipped" data-position="bottom"
                  data-delay="250"
                  data-tooltip="{{__ ".start"}} : {{formatDate task.start}}    {{__ ".end"}} : {{formatDate task.end}}">
-                <span class="start shadow"><i class="material-icons">access_time</i><span>{{formatDate task.start}} {{#if
-                        task.daysOfWeek.length}}{{__ "projectCalendar.recurring"}}{{/if}}</span></span>
+                <a href="/project/{{task.projectId}}/calendar?side=activityDetail&activityId={{task._id}}" class="start shadow"><i class="material-icons">access_time</i><span>{{formatDate task.start}} {{#if
+                        task.daysOfWeek.length}}{{__ "projectCalendar.recurring"}}{{/if}}</span></a>
 
             </div>
         {{/if}}

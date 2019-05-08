@@ -2,7 +2,8 @@
 
 body, html {
   background-color: $main-bg;
-  overflow-x:hidden
+  overflow-x:hidden;
+  -moz-force-broken-image-icon: 0 !important;
 }
 
 // POSITIONNEMENT

@@ -11,6 +11,7 @@ Template.projectTasks.helpers({
     },
     sideNav: function () {
         FlowRouter.watchPathChange()
+        Template.instance().lastChange.set(Date.now())
         return FlowRouter.current().queryParams.side
     },
     sideNavData: function () {
@@ -38,9 +39,13 @@ Template.projectTasks.helpers({
 
 Template.projectTasks.events({
     //add your events here
-    "click [closeSideNav]": function (event) {
+    "click [closeSideNav]": function (event,instance) {
         event.preventDefault()
-        FlowRouter.go("/project/" + FlowRouter.current().params.projectId + "/tasks")
+        let duration = Date.now() - instance.lastChange.get()
+        if(duration> 300){
+            FlowRouter.go("/project/" + FlowRouter.current().params.projectId + "/tasks")
+        }
+
     },
     "click [colorSelector]": function (event, instance) {
         event.preventDefault()
@@ -84,6 +89,7 @@ Template.projectTasks.events({
 
 Template.projectTasks.onCreated(function () {
     //add your statement here
+    this.lastChange = new ReactiveVar(0)
     this.colorLegend = new ReactiveVar([])
     this.colorSelector = new ReactiveVar(false)
     this.selectedColors = new ReactiveVar([0, 1, 2, 3, 4, 5, 6])

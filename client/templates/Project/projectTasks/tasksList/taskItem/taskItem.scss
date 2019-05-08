@@ -10,6 +10,12 @@
   background-color: $light-bg;
   transition: 0.3s;
   position: relative;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  *{
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
   .detail{
     font-size: 0.9em;
     font-style: italic;
@@ -37,7 +43,10 @@
   }
   &.selected{
     background-color: $lighter-bg !important;
-    color: $plus-color
+    color: $plus-color;
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba($plus-color,0.75) !important;
+    -moz-box-shadow: inset 0px 0px 5px 0px rgba($plus-color,0.75) !important;
+    box-shadow: inset 0px 0px 5px 0px rgba($plus-color,0.75) !important;
   }
   &.participating::after {
     content: " ";
@@ -54,6 +63,7 @@
   .start{
     background-color: $blue-highlight-color;
     //float: right;
+    color: $main-color;
     display: inline-block;
     line-height: 12px;
     height: 18px;

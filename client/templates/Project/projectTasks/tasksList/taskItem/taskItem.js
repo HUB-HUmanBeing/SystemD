@@ -58,6 +58,15 @@ Template.taskItem.onRendered(function () {
             this.isDrag.set(false)
             resetTooltips()
         }
+        $('#taskItem-' + Template.currentData().task._id).bind('contextmenu', function(e) {
+            return false;
+        });
+        // document.getElementById('yourElement').oncontextmenu = function(event) {
+        //     event.preventDefault();
+        //     event.stopPropagation(); // not necessary in my case, could leave in case stopImmediateProp isn't available?
+        //     event.stopImmediatePropagation();
+        //     return false;
+        // };
     }
 });
 
