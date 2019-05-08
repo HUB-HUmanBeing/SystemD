@@ -489,7 +489,8 @@
     "deleteOldsInfo": "Remove markers with a creation date older than:",
     "chooseDuration": "Choose duration",
     "delete": "remove",
-    "oldsMarkersDeleted": "Olds markers has been deleted"
+    "oldsMarkersDeleted": "Olds markers has been deleted",
+    "colorLegend": "Color legend :"
   },
   "newMarker": {
     "title": "New Marker",
@@ -548,7 +549,9 @@
     "monthView": "Monthly view",
     "listView": "list of monthly events",
     "recurring": "( Recurring )",
-    "unnamed": "No title"
+    "unnamed": "No title",
+    "setActivityInfo": "Set the activity where you want on the calendar.",
+    "activityPlaced": "Activity has been set on calendar."
   },
   "calendarSettings": {
     "title": "Calendar parameters",
@@ -612,7 +615,8 @@
     "inProject": "To do",
     "calendarPlaced": "Set on calendar",
     "waitingForStatus": "Waiting validation",
-    "done": "Done"
+    "done": "Done",
+    "newActivity": "New task"
 
   },
   "tasksSettings": {
@@ -622,5 +626,12 @@
     "deleteDoneInfo": "Delete tasks done since:",
     "delete": "Delete",
     "oldsActivitiesDeleted": "Old done tasks have been deleted"
+  },
+  "taskItem": {
+    "participants": "Participants",
+    "inviteds": "Invited Members",
+    "checklist": "Check list",
+    "start": "Start",
+    "end": "End"
   }
 }
