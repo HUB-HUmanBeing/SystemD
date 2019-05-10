@@ -46,6 +46,13 @@
     }
 
     .markerIcon {
+      &.activityIcon {
+        .icon{border-radius: 5px;
+        }
+        .arrow-down {
+          bottom: -6px;
+        }
+      }
       .icon {
         width: 34px;
         height: 34px;

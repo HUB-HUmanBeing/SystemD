@@ -282,6 +282,13 @@ Meteor.publish("CalendarActivitiesByProject",function (authInfo, projectId) {
         }
     })
 })
+Meteor.publish("mapActivitiesByProject",function (authInfo, projectId) {
+    check(projectId, String)
+    check(authInfo, {memberId: String, userSignature: String})
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return Activities.find({projectId: projectId, symEnc_coordinates:{$exists: true}},{})
+})
 Meteor.publish("activitiesProject",function (authInfo, projectId) {
     check(projectId, String)
     check(authInfo, {memberId: String, userSignature: String})

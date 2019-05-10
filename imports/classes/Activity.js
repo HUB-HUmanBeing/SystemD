@@ -77,6 +77,10 @@ const Activity = Class.create({
                 return [];
             }
         },
+        symEnc_coordinates: {
+            type: String,
+            optional:true
+        },
         checkList: {
             type: [Check],
             default: function () {

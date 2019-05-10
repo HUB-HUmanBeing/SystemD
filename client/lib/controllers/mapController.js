@@ -10,13 +10,16 @@ import polyline from "./markers/polyline";
 import shape from "./markers/shape";
 import arrow from "./markers/arrow";
 import markerText from "./markers/markerText";
+import activityMarker from "./markers/activityMarker";
+import projectController from "./projectController";
+import Activity from "../../../imports/classes/Activity";
 
 const mapController = {
     map: {},
     minimap: {},
     currentLayer: {},
     drawControl: {},
-    initialize(project, instance) {
+    initialize(project, instance, callback) {
         let encryptedProjectMapParams = project.private.map
         cryptoTools.decryptObject(encryptedProjectMapParams, {symKey: Session.get("currentProjectSimKey")}, projectMapParams => {
             if (!projectMapParams.symEnc_mapProvider) {
@@ -60,6 +63,13 @@ const mapController = {
             });
             this.map.addControl(this.drawControl);
             this.promptMarkers(project._id, instance)
+            this.promptActivityMarkers(project._id, instance)
+            if(callback){
+                Meteor.setTimeout(()=>{
+                    callback()
+                },300)
+
+            }
         })
 
 
@@ -89,6 +99,7 @@ const mapController = {
     shape: shape,
     arrow: arrow,
     markerText: markerText,
+    activityMarker: activityMarker,
     startMarkerCreator(type, options, mapState) {
         this.offEvents()
         if (this[type].default) {
@@ -160,12 +171,42 @@ const mapController = {
                         this[marker.markerType].editMarker(marker)
                     }
                 }
-                markersIdtoRemove.splice(markersIdtoRemove.indexOf(marker._id),1)
+                markersIdtoRemove.splice(markersIdtoRemove.indexOf(marker._id), 1)
             })
-            markersIdtoRemove.forEach(id=>{
+            markersIdtoRemove.forEach(id => {
                 this.removeMarker(this.markers[id])
             })
         })
+
+    },
+    activities: [],
+    promptActivityMarkers(projectId, instance) {
+
+        Meteor.subscribe("mapActivitiesByProject", projectController.getAuthInfo(projectId), projectId, err => {
+            if (err) {
+                console.log(err)
+            } else {
+                instance.autorun(() => {
+                    let activities = Activity.find({projectId: projectId, symEnc_coordinates: {$exists: true}}).fetch()
+                    let markersIdtoRemove = Object.keys(this.activities)
+                    activities.forEach((activity) => {
+                        if (!this.activities[activity._id]) {
+
+                            this.activityMarker.default.showMarker(activity)
+                        } else if (activity.lastEditAt.getTime() > this.activities[activity._id].lastEditAt.getTime()) {
+
+                            this.activityMarker.default.editMarker(activity)
+
+                        }
+                        markersIdtoRemove.splice(markersIdtoRemove.indexOf(activity._id), 1)
+                    })
+                    markersIdtoRemove.forEach(id => {
+                        this.removeMarker(this.activities[id])
+                    })
+                })
+            }
+        })
+
 
     },
     removeMarker(marker) {
@@ -178,6 +219,16 @@ const mapController = {
         }
 
 
+    },
+    reset(){
+        this.activities = []
+        this.markers = []
+        let mapInstance=this.map
+        if (mapInstance && mapInstance.remove) {
+            console.log("in")
+            mapInstance.off();
+            mapInstance.remove();
+        }
     }
 }
 export default mapController

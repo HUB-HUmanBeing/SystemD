@@ -4,6 +4,9 @@ import Activity from "../../../../../imports/classes/Activity";
 import mapParams from "../../../../lib/controllers/mapParams";
 import calendarController from "../../../../lib/controllers/calendarController";
 import notificationController from "../../../../lib/controllers/notificationController";
+import mapController from "../../../../lib/controllers/mapController";
+import iconMarker from "../../../../lib/controllers/markers/iconMarker";
+import activityMarker from "../../../../lib/controllers/markers/activityMarker";
 
 Template.activityDetail.helpers({
     //add you helpers here
@@ -23,12 +26,12 @@ Template.activityDetail.helpers({
             }
         }
     },
-    initialColor:function(){
+    initialColor: function () {
         return Template.instance().initialColor.get()
     },
     showDates: function () {
         FlowRouter.watchPathChange()
-        return (FlowRouter.current().route.name === "project-tasks") && Template.instance().activity.get().start
+        return (FlowRouter.current().route.name !== "project-calendar") && Template.instance().activity.get().start
     },
     activity: function () {
         let activity = Template.instance().activity.get()
@@ -118,6 +121,15 @@ Template.activityDetail.helpers({
                     }
                 })
         }
+    },
+    coordinates: function () {
+
+        let activity = Template.instance().activity.get()
+        let coordinatesArray = JSON.parse(activity.symEnc_coordinates)
+        return coordinatesArray[0] + " , " + coordinatesArray[1]
+    },
+    showGoto: function () {
+        return FlowRouter.current().route.name === "project-maps"
     }
 });
 
@@ -208,6 +220,43 @@ Template.activityDetail.events({
 
 
     },
+    'change [mapSwitch]': function (event, instance) {
+
+        let activityId = FlowRouter.current().queryParams.activityId
+        let activity = Activity.findOne(activityId)
+        if (activity.symEnc_coordinates) {
+            event.preventDefault()
+            activity.callMethod("editActivityPosition", projectController.getAuthInfo(FlowRouter.current().params.projectId), "", err => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    if (FlowRouter.current().route.name === "project-maps") {
+                        FlowRouter.go("/project/" + activity.projectId + "/maps")
+                    }
+                }
+            })
+        } else {
+
+            FlowRouter.go("/project/" + activity.projectId + "/maps")
+            Session.set("activityToPositionate", activity)
+
+        }
+    },
+    'click [moveMarker]': function (event, instance) {
+        Session.set("activityToPositionate", instance.activity.get())
+        FlowRouter.go("/project/" + instance.activity.get().projectId + "/maps")
+
+    },
+    'click [goTo]': function (event, instance) {
+
+        navigator.geolocation.getCurrentPosition(function (location) {
+            let userPosition = [location.coords.latitude, location.coords.longitude]
+            let pointToGo = JSON.parse(instance.activity.get().symEnc_coordinates)
+            let url = "https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=" + userPosition[0] + "%2C" + userPosition[1] + "%3B" + pointToGo[0] + "%2C" + pointToGo[1]
+            var win = window.open(url, '_blank');
+            win.focus();
+        })
+    },
     'click [toogleDay]': function (event, instance) {
 
         let activityId = FlowRouter.current().queryParams.activityId
@@ -260,11 +309,17 @@ Template.activityDetail.onCreated(function () {
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)
         if (activity) {
-             if(!activity.lastEditAt){
-                 this.initialColor.set(true)
-             }
+            if (!activity.lastEditAt) {
+                this.initialColor.set(true)
+            }
             cryptoTools.decryptObject(activity, {symKey: Session.get("currentProjectSimKey")}, decryptedObject => {
                 this.activity.set(decryptedObject)
+                if (decryptedObject.symEnc_coordinates &&(FlowRouter.current().route.name === "project-maps")) {
+                    Meteor.setTimeout(() => {
+                        activityMarker.startHighlightMapIcon(decryptedObject)
+                    },500)
+                }
+
                 if (!decryptedObject.symEnc_title) {
                     Meteor.setTimeout(() => {
                         $('#activityTitle').focus()
@@ -285,5 +340,9 @@ Template.activityDetail.onRendered(function () {
 
 Template.activityDetail.onDestroyed(function () {
     //add your statement here
+    if((FlowRouter.current().route.name === "project-maps")){
+        activityMarker.stopHighlightMapIcon(this.activity.get()._id)
+    }
+
 });
 

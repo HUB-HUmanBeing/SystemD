@@ -13,7 +13,7 @@ Template.projectMaps.helpers({
     },
     sideNav: function () {
         FlowRouter.watchPathChange()
-        return ( !Template.instance().mapState.get().type) && FlowRouter.current().queryParams.side
+        return (!Template.instance().mapState.get().type) && FlowRouter.current().queryParams.side
     },
     showFullScreen: function () {
         return true
@@ -25,7 +25,7 @@ Template.projectMaps.helpers({
         return {
             project: Project.findOne(FlowRouter.current().params.projectId),
             mapState: Template.instance().mapState,
-            colorLegend:Template.instance().colorLegend.get()
+            colorLegend: Template.instance().colorLegend.get()
         }
     },
     mapState: function () {
@@ -85,24 +85,41 @@ Template.projectMaps.onCreated(function () {
     let projectId = FlowRouter.current().params.projectId
     Meteor.subscribe('mapMarkers', projectController.getAuthInfo(projectId), projectId)
     Meteor.setTimeout(() => {
-        mapController.initialize(Project.findOne(projectId), this)
+        mapController.initialize(Project.findOne(projectId), this, ()=>{
+           this.autorun(()=>{
+            let activityToPositionate=Session.get("activityToPositionate")
+                if (activityToPositionate) {
+                    let creationOptions = {activity: activityToPositionate}
+                    mapController.startMarkerCreator('activityMarker', creationOptions, this.mapState)
+
+                }
+           })
+        })
 
     }, 200)
-    this.autorun(()=>{
+    this.autorun(() => {
         FlowRouter.watchPathChange()
         let colorLegends = Project.findOne(FlowRouter.current().params.projectId).private.map.symEncArr_colorLegend
-        cryptoTools.decryptStringArray(colorLegends,Session.get("currentProjectSimKey"), decryptedCalendarlegend=>{
+        cryptoTools.decryptStringArray(colorLegends, Session.get("currentProjectSimKey"), decryptedCalendarlegend => {
             this.colorLegend.set(decryptedCalendarlegend)
         })
+
     })
 });
 
 Template.projectMaps.onRendered(function () {
     //add your statement here
-resetTooltips()
+    resetTooltips()
+
+
+
+
 });
 
 Template.projectMaps.onDestroyed(function () {
     //add your statement here
+    Session.set("activityToPositionate", false)
+    mapController.reset()
+
 });
 

@@ -29,6 +29,10 @@
       padding-left: 10px;
       color: $minus-color;
       border-left: 3px solid $blue-highlight-color;
+      &.highlighted{
+        border-left: 10px solid $focus-color !important;
+        color: $plus-color !important;
+      }
     }
     li:hover{
       border-left: 10px solid $focus-color;

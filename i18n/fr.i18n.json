@@ -583,7 +583,9 @@
     "noParticipant" : "Aucun participant",
     "quitActivity": "Quitter l'activité",
     "joinActivity": "Participer à l'activité",
-    "inviteMember": "inviter des membres à se joindre à l'activité"
+    "inviteMember": "inviter des membres à se joindre à l'activité",
+    "onMap": "Position sur la carte :",
+    "showOnMap": "Voir"
   },
   "weekDays": {
     "day0": "Dimanche",

@@ -13,37 +13,55 @@
 
   &.mobileProjectTasks {
     height: calc(100vh - 121px);
-
+.focus-color{
+  border-bottom: 3px solid $focus-color;
+}
     .tasksList {
-      padding: 0 15% ;
+      padding: 0 10% ;
     }
     .listDropBasket {
 
     }
     .mobileDragging .tasksList{
-      width: 70% !important;
-      margin: 0 15% !important;
+      width: 80% !important;
+      margin: 0 10% !important;
       padding: 0 !important;
     }
     .mobileNavBar {
       position: fixed;
       right: 0;
       width: 100vw;
-
+      margin: 0px;
       a {
-        top: -5px;
+        top: 5px;
+
+
+
+
+            background-color:transparent;
+            transition: 0.3s;
+box-shadow: none !important;
+        margin: 0 5px;
+        i{
+          font-size: 50px;
+        }
+            &:hover {
+              background-color: transparent;
+            }
+
       }
+
 
       .nextList {
         right: 0;
       }
 
       .previousList {
-        left: 20px;
+        left: -10px;
       }
 
       .dragOver {
-        width: 15%;
+        width: 10%;
         background-color: $main-color;
         z-index: 60000;
         content: " ";
@@ -79,8 +97,8 @@
           overflow: scroll;
 
           .addBtn {
-            margin: 0 15% !important;
-            width: 70%;
+            margin: 0 10% !important;
+            width: 80%;
           }
         }
       }
@@ -123,7 +141,7 @@
 
   .colorSelector {
     position: absolute;
-    z-index: 400;
+    z-index: 299;
     width: 260px;
     padding: 5px 15px;
     border-radius: 25px;
@@ -160,7 +178,7 @@
     position: relative;
     flex-direction: column;
 
-    .tasksHeader, .mobileNavBar {
+    .tasksHeader {
       margin: 10px;
 
       a {
@@ -224,8 +242,13 @@
             //background-color: $contrasted-bg;
 
             i {
-              color: $focus-color;
+              padding: 0 5px;
+              color: $minus-color;
               font-size: 2.3em;
+              &.focus-color{
+                color: $focus-color !important;
+
+              }
             }
           }
         }

@@ -105,6 +105,7 @@ Template.newMarker.onCreated(function () {
 Template.newMarker.onRendered(function () {
     //add your statement here
     $('#markerList').collapsible();
+
 });
 
 Template.newMarker.onDestroyed(function () {

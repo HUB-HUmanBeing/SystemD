@@ -439,7 +439,7 @@ var DragDropTouch;
     DragDropTouch._instance = new DragDropTouch(); // singleton
     // constants
     DragDropTouch._THRESHOLD = 5; // pixels to move before drag starts
-    DragDropTouch._OPACITY = 0.5; // drag image opacity
+    DragDropTouch._OPACITY = 1; // drag image opacity
     DragDropTouch._DBLCLICK = 500; // max ms between clicks in a double click
     DragDropTouch._CTXMENU = 900; // ms to hold before raising 'contextmenu' event
     DragDropTouch._ISPRESSHOLDMODE = true; // decides of press & hold mode presence

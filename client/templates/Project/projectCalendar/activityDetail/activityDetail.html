@@ -237,6 +237,46 @@
             <div class="row no-margin">
                 <div class="col s12">
                     <div class="hr"></div>
+                    <div class="flex">
+                        <p class="sectionLabel flex-auto no-margin">{{__ ".onMap"}}</p>
+                        <div class="switch" style="">
+                            <label>
+
+                                <input mapSwitch type="checkbox" id="recursivitySwitch" checked={{ boolean
+                                        activity.symEnc_coordinates}}>
+                                <span class="lever" style="margin: 5px 0"></span>
+
+                            </label>
+                        </div>
+                    </div>
+
+                    {{#if activity.symEnc_coordinates}}
+                        <div class="coordinates">{{coordinates}}</div>
+                        <div class="row " style="margin: 0 -10px">
+                            <div class="col s6">
+                                <a href="" class="btn btnStandard full-width waves-effect waves-light" moveMarker>
+                                    {{__ "markerDetail.moveMarker"}}</a>
+                            </div>
+                            <div class="col s6">
+                                {{#if showGoto}}
+                                    <a href="" class="btn btnStandard waves-effect waves-light full-width" goTo>
+                                        {{__ "markerDetail.goTo"}}
+                                    </a>
+                                {{else}}
+                                    <a href="/project/{{activity.projectId}}/maps?side=activityDetail&activityId={{activity._id}}
+                                    " class="btn btnStandard waves-effect waves-light full-width">
+                                    {{__ ".showOnMap"}}
+                                    </a>
+                                {{/if}}
+                            </div>
+                        </div>
+
+                    {{/if}}
+                </div>
+            </div>
+            <div class="row no-margin">
+                <div class="col s12">
+                    <div class="hr"></div>
                 </div>
                 <div class="col s12 right-align" style="margin-bottom: 120px">
                     <a href="" class="btn btn-danger waves-effect waves-light " deleteActivity>

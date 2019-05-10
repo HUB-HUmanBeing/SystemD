@@ -170,6 +170,21 @@ Activity.extend({
             activity.checkList.push({label: "", checked: false})
             return activity.save()
         },
+        editActivityPosition(authInfo, symEnc_coordinates){
+            check(authInfo, {memberId: String, userSignature: String})
+            let activity = Activity.findOne(this._id)
+            let currentProject = Project.findOne(activity.projectId)
+            check(currentProject.isMember(authInfo), true)
+            check(symEnc_coordinates, String)
+            if(symEnc_coordinates){
+                activity.symEnc_coordinates = symEnc_coordinates
+            }else{
+                delete      activity.symEnc_coordinates
+            }
+
+            activity.lastEditAt = new Date()
+            return activity.save()
+        },
         removeCheckItem(authInfo, index) {
             check(authInfo, {memberId: String, userSignature: String})
             let activity = Activity.findOne(this._id)

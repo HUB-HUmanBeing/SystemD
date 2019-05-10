@@ -31,6 +31,15 @@ const calendarController = {
     initialize(project, instance) {
         this.currentProject = project
         this.columnNumber = this.calculateColumnNumber()
+        let days = {
+            type: 'timeGridWeek',
+            duration: {days: this.columnNumber},
+            buttonText: '3 days',
+            scrollTime: '08:30:00',
+        }
+        if (this.columnNumber == 7){
+            delete days.duration
+        }
         this.calendar = new Calendar(document.getElementById('calendar'), {
             plugins: [dayGridPlugin, timeGridPlugin, interaction, dayGrid, list],
             defaultView: project.private.calendar.defaultView,
@@ -40,12 +49,7 @@ const calendarController = {
                 right: ''
             },
             views: {
-                days: {
-                    type: 'timeGridWeek',
-                    duration: {days: this.columnNumber},
-                    buttonText: '3 days',
-                    scrollTime: '08:30:00'
-                },
+                days: days,
                 month: {
                     type: 'dayGridMonth'
                 },
@@ -245,7 +249,7 @@ const calendarController = {
 
             Meteor.setTimeout(() => {
                 instance.title.set(this.calendar.view.title)
-            }, 100)
+            }, 50)
 
         })
     },

@@ -400,7 +400,7 @@ const cryptoTools = {
                             resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)));
                         },
                         function (e) {
-                            console.log("decryptObject : sym decrypt faillure", e)
+                            console.log("decryptObject : sym decrypt faillure", e,elementName)
                         }
                     );
                 })

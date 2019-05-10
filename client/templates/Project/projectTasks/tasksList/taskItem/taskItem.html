@@ -28,12 +28,17 @@
                     class="material-icons">check_box</i>
             </div>
         {{/if}}
+        {{#if task.symEnc_coordinates}}
+            <div class="" ><i
+                    class="material-icons">pin_drop</i>
+            </div>
+        {{/if}}
         {{#if task.start}}
             <div class=" tooltipped" data-position="bottom"
                  data-delay="250"
                  data-tooltip="{{__ ".start"}} : {{formatDate task.start}}    {{__ ".end"}} : {{formatDate task.end}}">
-                <a href="/project/{{task.projectId}}/calendar?side=activityDetail&activityId={{task._id}}" class="start shadow"><i class="material-icons">access_time</i><span>{{formatDate task.start}} {{#if
-                        task.daysOfWeek.length}}{{__ "projectCalendar.recurring"}}{{/if}}</span></a>
+                <a href="/project/{{task.projectId}}/calendar?side=activityDetail&activityId={{task._id}}" class="start shadow"><i class="material-icons">access_time</i><span>{{#if
+                        task.daysOfWeek.length}}{{__ "projectCalendar.recurring"}}{{else}}{{formatDate task.start}}{{/if}}</span></a>
 
             </div>
         {{/if}}

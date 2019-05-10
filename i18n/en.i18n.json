@@ -580,7 +580,9 @@
     "noParticipant" : "Any participant",
     "quitActivity": "Quit activitéy",
     "joinActivity": "Participate to activity",
-    "inviteMember": "Guest member to join activity"
+    "inviteMember": "Guest member to join activity",
+    "onMap": "Map position :",
+    "showOnMap": "See on map"
   },
   "weekDays": {
     "day0": "Sunday",

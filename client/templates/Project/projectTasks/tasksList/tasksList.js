@@ -68,10 +68,24 @@ Template.tasksList.onCreated(function () {
                 cursor = {projectId: projectId, start: {$exists: false}, color: colorSelector, done: false}
                 break
             case "calendar":
-                cursor = {projectId: projectId, end: {$gte: new Date()}, color: colorSelector}
+                cursor = {
+                    projectId: projectId,
+                    $or: [{daysOfWeek: {$exists: true, $ne: []}}, {end: {$gte: new Date()}}],
+                    color: colorSelector
+                }
                 break
             case "waiting":
-                cursor = {projectId: projectId, end: {$lte: new Date()}, color: colorSelector}
+                cursor = {
+                    projectId: projectId,
+                    $or: [
+                        {daysOfWeek: {$exists: false}},
+                        {daysOfWeek: {$size: 0}},
+                    ],
+
+
+                    $and:[{end: {$lte: new Date()}},{end:{$exists: true}}],
+                    color: colorSelector
+                }
                 break
             case "done":
                 cursor = {projectId: projectId, start: {$exists: false}, color: colorSelector, done: true}
@@ -150,7 +164,7 @@ Template.tasksList.onRendered(function () {
                 )
             } else {
                 Session.set("waitingActivity", activity)
-                FlowRouter.go('/project/'+activity.projectId+"/calendar")
+                FlowRouter.go('/project/' + activity.projectId + "/calendar")
                 Materialize.toast(__('projectCalendar.setActivityInfo'), 6000, 'toastOk')
             }
         } else {
