@@ -1,4 +1,5 @@
 import projectController from "../../../../lib/controllers/projectController";
+import Activity from "../../../../../imports/classes/Activity";
 
 Template.tasksSettings.helpers({
     //add you helpers here
@@ -36,6 +37,18 @@ Template.tasksSettings.helpers({
 
 Template.tasksSettings.events({
     //add your events here
+    'click [deleteOldActivities]': function (event, instance) {
+        event.preventDefault()
+        let activityInstance = new Activity()
+        let projectId= FlowRouter.current().params.projectId
+        activityInstance.callMethod("deleteDone", projectController.getAuthInfo(projectId), projectId,(err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                Materialize.toast(__('tasksSettings.doneActivitiesDeleted'), 6000, 'toastOk')
+            }
+        })
+    }
 });
 
 Template.tasksSettings.onCreated(function () {

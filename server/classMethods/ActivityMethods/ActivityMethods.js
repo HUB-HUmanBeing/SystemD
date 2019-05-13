@@ -244,6 +244,17 @@ Activity.extend({
             return activity.remove((err) => {
             })
         },
+        deleteDone(authInfo, projectId){
+            check(projectId, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(projectId)
+            check(currentProject.isAdmin(authInfo), true)
+            let activities = Activity.find({projectId:projectId, done : true}).fetch()
+            activities.forEach(activity=>{
+                activity.remove()
+            })
+            return true
+        },
         deleteOldsActivities(authInfo, projectId,date){
             check(projectId, String)
             check(date, Date)

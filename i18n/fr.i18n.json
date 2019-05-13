@@ -621,15 +621,14 @@
     "calendarPlaced": "Placées sur l'agenda",
     "waitingForStatus": "Tâches passées",
     "done": "Tâches terminées",
-    "newActivity": "Nouvelle tâche"
+    "newActivity": "Nouvelle tâche",
+    "myTasks": "Mes tâches"
   },
   "tasksSettings": {
     "title": "Paramètres de la liste de tâches",
     "colorLegend": "Legende couleur : ",
-    "deleteDone": "Supprimer les anciennes tâches terminées",
-    "deleteDoneInfo": "Supprimer les tâches terminées il y a plus de :",
-    "delete": "Supprimer",
-    "oldsActivitiesDeleted": "Les anciennes tâches terminées ont été supprimées"
+    "deleteDone": "Supprimer les tâches terminées",
+    "doneActivitiesDeleted": "Les tâches terminées ont été supprimées"
   },
   "taskItem": {
     "participants": "Participants",

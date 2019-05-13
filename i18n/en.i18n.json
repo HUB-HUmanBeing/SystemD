@@ -618,16 +618,16 @@
     "calendarPlaced": "Set on calendar",
     "waitingForStatus": "Waiting validation",
     "done": "Done",
-    "newActivity": "New task"
+    "newActivity": "New task",
+    "myTasks": "My tasks"
 
   },
   "tasksSettings": {
     "title": "Tasks list parameters",
     "colorLegend": "Color legend",
-    "deleteDone": "Delete old done tasks",
-    "deleteDoneInfo": "Delete tasks done since:",
+    "deleteDone": "Delete done tasks",
     "delete": "Delete",
-    "oldsActivitiesDeleted": "Old done tasks have been deleted"
+    "oldsActivitiesDeleted": "Done tasks have been deleted"
   },
   "taskItem": {
     "participants": "Participants",

@@ -34,6 +34,9 @@ Template.projectTasks.helpers({
     },
     showDragover: function () {
         return Session.get("draggedTaskItem")
+    },
+    myTasks: function () {
+      return Template.instance().myTasks.get()
     }
 });
 
@@ -84,11 +87,16 @@ Template.projectTasks.events({
     'click [previous]': function (event, instance) {
         event.preventDefault()
         instance.move(false)
-    }
+    },
+    "click [myTasks]": function (event, instance) {
+        event.preventDefault()
+        instance.myTasks.set(!instance.myTasks.get())
+    },
 });
 
 Template.projectTasks.onCreated(function () {
     //add your statement here
+    this.myTasks = new ReactiveVar(false)
     this.lastChange = new ReactiveVar(0)
     this.colorLegend = new ReactiveVar([])
     this.colorSelector = new ReactiveVar(false)

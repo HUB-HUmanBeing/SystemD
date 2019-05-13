@@ -63,7 +63,8 @@
   .start{
     background-color: $blue-highlight-color;
     //float: right;
-    color: $main-color;
+    color: $plus-color;
+    opacity: 0.8;
     display: inline-block;
     line-height: 12px;
     height: 18px;
@@ -73,7 +74,9 @@
 
     position: relative;
     bottom: -2px;
-
+&:hover{
+  opacity: 1 !important;
+}
     i{
       font-size: 12px;
       padding-right: 5px;

@@ -72,6 +72,6 @@ Template.taskItem.onRendered(function () {
 
 Template.taskItem.onDestroyed(function () {
     //add your statement here
-    //resetTooltips()
+    resetTooltips()
 });
 

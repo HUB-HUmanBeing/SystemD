@@ -92,7 +92,9 @@ Template.tasksList.onCreated(function () {
                 //cursor = {projectId:projectId, start: {"$exists": false}, done: true}
                 break
         }
-
+if(Template.currentData().myTasks){
+    cursor.participants = {$elemMatch : {$eq: projectController.getCurrentMemberId(projectId)}}
+}
         let taskList = Activity.find(cursor).fetch()
         if (taskList.length) {
             cryptoTools.decryptArrayOfObject(taskList, {symKey: Session.get("currentProjectSimKey")}, decryptedActivities => {

@@ -29,10 +29,18 @@
                                             check_box{{else}}check_box_outline_blank{{/if}}</i>
                                     </a>
                                 {{/each}}
+                                <div class="tooltipped myTasks {{#if myTasks}}myTasksSelected {{/if}}"
+                                   data-position="bottom"
+                                   data-delay="50" data-tooltip="{{__ ".myTasks"}}"
+                                     myTasks
+                                style=""
+                                >
+                                    {{>avatar userId=currentUserId}}
+                                </div>
                             </div>
                     </div>
                     <a href="/project/{{currentProject._id}}/tasks?side=tasksSettings" class=" btn-floating btn"
-                       style="margin-left: 5px">
+                       style="margin-left: 5px; ">
                         <i class="material-icons ">settings</i>
                     </a>
                 </div>
@@ -63,7 +71,7 @@
                         </div>
 
 
-                        {{>tasksList type="todo" selectedColors=selectedColors}}
+                        {{>tasksList type="todo" selectedColors=selectedColors myTasks=myTasks}}
 
                     </div>
 
@@ -75,7 +83,7 @@
 {{#if isPhone}}<i class="material-icons">check_box_outline_blank</i>{{/if}}<i class="material-icons focus-color">event</i>{{#if isPhone}}<i class="material-icons">hourglass_empty</i><i class="material-icons">check_box</i> {{/if}}<br>
                             {{__ ".calendarPlaced"}}
                         </div>
-                        {{>tasksList type="calendar" selectedColors=selectedColors}}
+                        {{>tasksList type="calendar" selectedColors=selectedColors myTasks=myTasks}}
                     </div>
                 </div>
 
@@ -85,7 +93,7 @@
                             {{#if isPhone}}<i class="material-icons">check_box_outline_blank</i><i class="material-icons">event</i>{{/if}}<i class="material-icons focus-color">hourglass_empty</i>{{#if isPhone}}<i class="material-icons">check_box</i> {{/if}}<br>
                             {{__ ".waitingForStatus"}}
                         </div>
-                        {{>tasksList type="waiting" selectedColors=selectedColors}}
+                        {{>tasksList type="waiting" selectedColors=selectedColors myTasks=myTasks}}
                     </div>
                 </div>
 
@@ -95,7 +103,7 @@
                             {{#if isPhone}}<i class="material-icons">check_box_outline_blank</i><i class="material-icons">event</i><i class="material-icons">hourglass_empty</i>{{/if}}<i class="material-icons focus-color">check_box</i> <br>
                             {{__ ".done"}}
                         </div>
-                        {{>tasksList type="done" selectedColors=selectedColors}}
+                        {{>tasksList type="done" selectedColors=selectedColors myTasks=myTasks}}
                     </div>
                 </div>
 

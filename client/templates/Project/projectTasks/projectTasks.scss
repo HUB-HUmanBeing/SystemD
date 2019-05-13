@@ -142,7 +142,7 @@ box-shadow: none !important;
   .colorSelector {
     position: absolute;
     z-index: 299;
-    width: 260px;
+    width: 291px;
     padding: 5px 15px;
     border-radius: 25px;
     right: 0px;
@@ -168,6 +168,23 @@ box-shadow: none !important;
         left: -2px;
         font-size: 30px;
       }
+    }
+    .myTasks{
+      position: relative;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      border-radius: 50%;
+      top:-2px;
+left: 6px;
+      cursor: pointer;
+      margin: 0px -2px 0 0;
+      border: 2px solid $lighter-bg;
+      overflow: hidden;
+      &.myTasksSelected{
+      border-color: $main-color !important;
+    }
     }
   }
 

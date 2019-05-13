@@ -14,15 +14,6 @@
                 <div class="col s12 center-align">
                     <div class="hr"></div>
                     <p class="sectionLabel left-align">{{__ ".deleteDone"}}</p>
-                    <p class="infoQuotes left-align">{{__ '.deleteDoneInfo'}}</p>
-                    <div class="input-field col s12 no-margin">
-                        <i class="material-icons prefix" style="left:0; top:0.5em">av_timer</i>
-                        <select id="duration">
-                            {{#each option in durationOptions}}
-                                <option value="{{option.value}}">{{option.label}}</option>
-                            {{/each}}
-                        </select>
-                    </div>
                     <a href="" class="btn btn-danger waves-effect waves-light" deleteOldActivities><i class="material-icons left">delete_forever</i>{{__
                             ".delete"}}</a>
                 </div>
