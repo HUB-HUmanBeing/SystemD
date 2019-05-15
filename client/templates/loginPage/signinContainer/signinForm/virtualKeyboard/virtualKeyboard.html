@@ -1,0 +1,23 @@
+<template name="virtualKeyboard">
+    <div class="virtualKeyboard">
+        <div class="keyBoard center-align">
+            {{#each key in keys}}
+                <div class="keyContainer">
+                    <div class="key shadow" keyInput id="keyInput-{{key}}">{{key}}</div>
+                </div>
+            {{/each}}
+        </div>
+        <div id="pinCode" class=" center-align">
+            <div class="pinContainer center-align">
+                <div class="pinItem">{{#if getIndex pinCode 0 }}*{{/if}}</div>
+                <div class="pinItem">{{#if getIndex pinCode 1 }}*{{/if}}</div>
+                <div class="pinItem">{{#if getIndex pinCode 2 }}*{{/if}}</div>
+                <div class="pinItem">{{#if getIndex pinCode 3 }}*{{/if}}</div>
+                {{#if pinCode}}
+                    <i class="material-icons" clearPinCode>clear</i>
+                {{/if}}
+            </div>
+
+        </div>
+    </div>
+</template>

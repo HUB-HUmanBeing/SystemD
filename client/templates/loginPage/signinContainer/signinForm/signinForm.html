@@ -1,107 +1,188 @@
 <template name="signinForm">
 
-{{#if signinComplete}}
-    {{>encryptionLoader tasks=signinComplete}}
-{{else}}
-    <form action="#" id="signinForm">
-        <div class="row no-margin">
-            <div class="input-field col s12 relative">
-                <i class="material-icons prefix  main-color">account_circle</i>
-                <input id="signinUsername" type="text"
-                       class=" {{#if compare errors.signinUsername '==' 'valid'}}valid {{else }}{{#if
-                               errors.signinUsername.length}}invalid{{/if}}{{/if}}">
-                <label for="signinUsername">{{__ '.userNameChoice'}}</label>
-                <div class="formErrorContainer">
-                    {{#if isArray  errors.signinUsername}}
-                        {{#each error in errors.signinUsername}}
-                            <div class="formError danger-color">
-                                {{error}}
+    {{#if signinComplete}}
+        {{>encryptionLoader tasks=signinComplete}}
+    {{else}}
+        <form action="#" id="signinForm">
+            <div class="row no-margin">
+                <div class="input-field col s12 relative">
+                    <i class="material-icons prefix  main-color">account_circle</i>
+                    <input id="signinUsername" type="text"
+                           class=" {{#if compare errors.signinUsername '==' 'valid'}}valid {{else }}{{#if
+                                   errors.signinUsername.length}}invalid{{/if}}{{/if}}">
+                    <label for="signinUsername">{{__ '.userNameChoice'}}</label>
+                    <div class="formErrorContainer">
+                        {{#if isArray  errors.signinUsername}}
+                            {{#each error in errors.signinUsername}}
+                                <div class="formError danger-color">
+                                    {{error}}
+                                </div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex">
+                <div class="flex-auto">
+                    <div class="row no-margin">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix main-color">security</i>
+                            <input id="signinPassword" type="password"
+                                   class=" {{#if compare errors.signinPassword '==' 'valid'}}valid {{else }}{{#if
+                                           errors.signinPassword.length}}invalid{{/if}}{{/if}}">
+                            <label for="signinPassword">{{__ '.passwordChoice'}}</label>
+                            <div class="formErrorContainer">
+                                {{#if isArray errors.signinPassword}}
+                                    {{#each error in errors.signinPassword}}
+                                        <div class="formError danger-color">
+                                            {{error}}
+                                        </div>
+                                    {{/each}}
+                                {{/if}}
                             </div>
-                        {{/each}}
-                    {{/if}}
+                        </div>
+                    </div>
+                    <div class="row no-margin">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix  main-color">verified_user</i>
+                            <input id="signinPasswordRepeat" type="password"
+                                   class=" {{#if compare errors.signinPasswordRepeat '==' 'valid'}}valid {{else }}{{#if
+                                           errors.signinPasswordRepeat.length}}invalid{{/if}}{{/if}}">
+                            <label for="signinPasswordRepeat">{{__ '.passwordRepeat'}}</label>
+                            <div class="formErrorContainer">
+                                {{#if isArray  errors.signinPasswordRepeat}}
+                                    {{#each error in errors.signinPasswordRepeat}}
+                                        <div class="formError danger-color">
+                                            {{error}}
+                                        </div>
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{#if passwordStrength.strength}}
+                    <div class="circle-container  tooltipped"
+                         style=" {{#if
+                                 isPhone}}width: 60px; padding-top: 40px {{else}}width: 100px ; padding:20px;{{/if}}">
+                        <p class="center-align  minus-color " style="font-size: 1em ; margin: 0">Force :</p>
+                        <div class="center-align  progress--circle progress--{{passwordStrength.progress}}"
+                             style="margin: 5px 0px !important;">
+                            <div class="progress__number {{#if compare passwordStrength.strength '>='
+                                                               10}} green-text text-darken-2 strong{{else}}red-text text-darken-2{{/if}}">{{passwordStrength.strength}}
+                                /10
+                            </div>
+                        </div>
+                        <!--<p  class="center-align no-margin"><b class="focus-color">minimum : 10</b></p>-->
+                    </div>
+                {{/if}}
+            </div>
+            <div class="row" style="margin-bottom: 10px !important;">
+                <div class="col s12 no-padding  relative flex">
+                    <div class="relative" style="padding: 15px 20px 0 0">
+                        {{{captcha}}}
+                        <a href="#" class="microBtn {{#if
+                                isDesktop}} tooltipped {{/if}}shadow main-bg waves-light waves-effect absolute"
+                           data-position="top"
+                           data-delay="50" data-tooltip="{{__ "submitIssue.refreshCaptcha"}}"
+                           style="right: 0; top: 0" refreshCaptcha>
+                            <i class="material-icons">refresh</i>
+                        </a>
+                    </div>
+                    <div class="input-field flex-auto " style="margin-left: 15px">
+                        <input id="SignInCaptcha" type="text" class="validate" required>
+                        <label for="SignInCaptcha">{{__ "submitIssue.captcha"}}</label>
+                    </div>
                 </div>
 
             </div>
-        </div>
-        <div class="flex">
-            <div class="flex-auto">
-                <div class="row no-margin">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix main-color">security</i>
-                        <input id="signinPassword" type="password"
-                               class=" {{#if compare errors.signinPassword '==' 'valid'}}valid {{else }}{{#if
-                                       errors.signinPassword.length}}invalid{{/if}}{{/if}}">
-                        <label for="signinPassword">{{__ '.passwordChoice'}}</label>
-                        <div class="formErrorContainer">
-                            {{#if isArray errors.signinPassword}}
-                                {{#each error in errors.signinPassword}}
-                                    <div class="formError danger-color">
-                                        {{error}}
-                                    </div>
-                                {{/each}}
-                            {{/if}}
+            {{#if showSecurize}}
+                <div class="row">
+                    <div class="col s12 no-padding">
+                        <div class="flex tooltipped" data-position="top"
+                             data-delay="50" data-tooltip="{{__ ".securizeInfo"}}">
+                            <i class="material-icons lockIcon">vpn_key</i>
+                            <p class="sectionLabel flex-auto no-margin">{{__ ".securized"}}</p>
+                            <p style="">
+                                <input securizedSwitch type="checkbox" id="securizedSwitch">
+                                <label for="securizedSwitch"></label>
+                            </p>
                         </div>
                     </div>
-                </div>
-                <div class="row no-margin">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix  main-color">verified_user</i>
-                        <input id="signinPasswordRepeat" type="password"
-                               class=" {{#if compare errors.signinPasswordRepeat '==' 'valid'}}valid {{else }}{{#if
-                                       errors.signinPasswordRepeat.length}}invalid{{/if}}{{/if}}">
-                        <label for="signinPasswordRepeat">{{__ '.passwordRepeat'}}</label>
-                        <div class="formErrorContainer">
-                            {{#if isArray  errors.signinPasswordRepeat}}
-                                {{#each error in errors.signinPasswordRepeat}}
-                                    <div class="formError danger-color">
-                                        {{error}}
-                                    </div>
-                                {{/each}}
-                            {{/if}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{#if passwordStrength.strength}}
-                <div class="circle-container  tooltipped"
-                     style=" {{#if isPhone}}width: 60px; padding-top: 40px {{else}}width: 100px ; padding:20px;{{/if}}">
-                    <p class="center-align  minus-color " style="font-size: 1em ; margin: 0">Force :</p>
-                    <div class="center-align  progress--circle progress--{{passwordStrength.progress}}"
-                         style="margin: 5px 0px !important;">
-                        <div class="progress__number {{#if compare passwordStrength.strength '>='
-                                                           10}} green-text text-darken-2 strong{{else}}red-text text-darken-2{{/if}}">{{passwordStrength.strength}}
-                            /10
-                        </div>
-                    </div>
-                    <!--<p  class="center-align no-margin"><b class="focus-color">minimum : 10</b></p>-->
                 </div>
             {{/if}}
-        </div>
-        <div class="row">
-            <div class="col s12 no-padding  relative flex">
-                <div class="relative" style="padding: 15px 20px 0 0">
-                    {{{captcha}}}
-                    <a href="#" class="microBtn {{#if
-                            isDesktop}} tooltipped {{/if}}shadow main-bg waves-light waves-effect absolute"
-                       data-position="top"
-                       data-delay="50" data-tooltip="{{__ "submitIssue.refreshCaptcha"}}"
-                       style="right: 0; top: 0" refreshCaptcha>
-                        <i class="material-icons">refresh</i>
-                    </a>
+            <div class="row center-align" style="margin: 15px 0 0 0">
+                <button href="#" class="btn btnFocus center-align waves-effect waves-light shadow"><i
+                        class="material-icons right">account_circle</i>{{__ '.accountCreate'}}
+                </button>
+            </div>
+        </form>
+        {{#if securizeModal}}
+            <div class="securizeModalBg" closeSecurizeModal>
+            </div>
+            <div id="securizeModal" class="shadow">
+                <a href="" class="btn btn-floating waves-light waves-effect" closeSecurizeModal><i
+                        class="material-icons">clear</i></a>
+                <div class="row no-margin">
+                    <div class="col s12">
+                        <p class="center-align"><i class="material-icons focus-color">vpn_key</i>{{__
+                                ".securizeTitle"}}</p>
+                    </div>
+                    <hr class="hr">
                 </div>
-                <div class="input-field flex-auto " style="margin-left: 15px">
-                    <input id="SignInCaptcha" type="text" class="validate" required>
-                    <label for="SignInCaptcha">{{__ "submitIssue.captcha"}}</label>
+                <div class="row">
+                    <div class="col s12">
+                        <h6 class="">
+                            {{__ ".securizedpasswordInfos"}}
+                        </h6>
+                        <div class="flex pwnedResults">
+
+
+                            {{#if compare verifiedPassword "==" "verified"}}
+                                <div class=""><i class="material-icons green-text">done</i></div>
+                                <div class="pwnedResult green-text">{{__ ".pwnedSuccess"}}</div>
+                            {{/if}}
+                            {{#if compare verifiedPassword ">" 0}}
+                                <div class=""><i class="material-icons danger-color">clear</i></div>
+                                <div class="pwnedResult danger-color">{{__ ".pwned"}} {{verifiedPassword}} {{__
+                                        ".times"}}<br><a href="" class="link center-align" closeSecurizeModal>{{__ ".changeAndRetry"}}</a></div>
+
+                            {{/if}}
+                            {{#if compare verifiedPassword "==" "error"}}
+                                <div class=""><i class="material-icons danger-color">clear</i></div>
+                                <div class="pwnedResult danger-color">{{__ ".pwnedError"}}</div>
+                            {{/if}}
+                            {{#if compare verifiedPassword "==" "waiting"}}
+                                <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                {{#if compare verifiedPassword "==" "verified"}}
+                    <div class="row">
+                        <div class="col s12">
+                            <h6>{{__ ".pinCode"}}</h6>
+                            <p class="infoQuotes">{{__ ".keyboardInfo"}}</p>
+                        </div>
+
+                        {{>virtualKeyboard parentInstance = parentInstance pinCode=pinCode}}
+
+                    </div>
+                {{/if}}
+                <div class="row">
+                    <div class="col s6"><a href="" class="btn btn-danger full-width waves-effect waves-light"
+                                           closeSecurizeModal>{{__
+                            ".return"}}</a></div>
+                    {{#if compare (compare verifiedPassword "==" "verified") "&&" (compare pinCode.length "==" 4) }}
+                        <div class="col s6"><a href="" class="btn btnStandard full-width waves-effect waves-light" validateSecurize>{{__
+                                ".validate"}}</a></div>
+
+                    {{/if}}
                 </div>
             </div>
-
-        </div>
-
-        <div class="row center-align" style="margin: 15px 0 0 0">
-            <button href="#" class="btn btnFocus center-align waves-effect waves-light shadow"><i
-                    class="material-icons right">account_circle</i>{{__ '.accountCreate'}}
-            </button>
-        </div>
-    </form>
-{{/if}}
+        {{/if}}
+    {{/if}}
 </template>

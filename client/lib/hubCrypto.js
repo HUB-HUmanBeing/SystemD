@@ -14,7 +14,7 @@ const hubCrypto = {
      * @param username
      * @param callback
      */
-    generateUserAsymKeys(password, username, callback) {
+    generateUserAsymKeys(password, username,pinCode, callback) {
 
 
         //on commence par générer notre clef asymetrique
@@ -22,7 +22,7 @@ const hubCrypto = {
             //on stringifie la clef privée
             cryptoTools.getExportableKey(keyObject.privateKey, (exportablePrivateKey) => {
                 //on la chiffre avec le password
-                this.encryptAsymKeyWithPassword(password, exportablePrivateKey, username, (encryptedAsymPrivateKey) => {
+                this.encryptAsymKeyWithPassword(password, exportablePrivateKey, username, pinCode,(encryptedAsymPrivateKey,salt,superPassword) => {
                     //on stringifie aussi la clef publique
                     cryptoTools.getExportableKey(keyObject.publicKey, (exportablePublicKey) => {
                         //on construit l'objet réponse
@@ -31,7 +31,7 @@ const hubCrypto = {
                             encryptedAsymPrivateKey: encryptedAsymPrivateKey
                         }
                         //et on les retourne en argument du callback
-                        callback(UserAsymKeys)
+                        callback(UserAsymKeys,salt,superPassword)
 
                     })
                 })
@@ -46,19 +46,39 @@ const hubCrypto = {
      * @param username
      * @param callback
      */
-    encryptAsymKeyWithPassword(password, stringifiedAsymPrivateKey, username, callback) {
-
-            cryptoTools.generateSimKeyFromPassphrase(cryptoTools.heavyHash(password, username), (symKey) => {
+    encryptAsymKeyWithPassword(password, stringifiedAsymPrivateKey, username,pinCode, callback) {
+if(!pinCode){
+    cryptoTools.generateSimKeyFromPassphrase(cryptoTools.heavyHash(password, username), (symKey) => {
+        //puis on la chiffre avec notre clef symétrique et en utilisant le nom d'utilisateur comme vecteur d'initialisation
+        cryptoTools.sim_encrypt_data(
+            stringifiedAsymPrivateKey,
+            symKey,
+            (encryptedAsymPrivateKey) => {
+                //et on la retourne en argument du callback
+                callback(encryptedAsymPrivateKey,"",false)
+            }
+        )
+    })
+}else{
+    Meteor.call("createHash",cryptoTools.heavyHash(password, username),pinCode,(err,res)=>{
+        if(err){
+            console.log(err)
+        }else{
+            cryptoTools.generateSimKeyFromPassphrase(res.hash, (symKey) => {
                 //puis on la chiffre avec notre clef symétrique et en utilisant le nom d'utilisateur comme vecteur d'initialisation
                 cryptoTools.sim_encrypt_data(
                     stringifiedAsymPrivateKey,
                     symKey,
                     (encryptedAsymPrivateKey) => {
                         //et on la retourne en argument du callback
-                        callback(encryptedAsymPrivateKey)
+                        callback(encryptedAsymPrivateKey,res.salt,res.hash)
                     }
                 )
             })
+        }
+    } )
+}
+
 
     },
     /******************

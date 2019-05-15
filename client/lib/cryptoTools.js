@@ -3,6 +3,7 @@ import Hashes from "jshashes"
 import zxcvbn from 'zxcvbn'
 import bcrypt from 'bcryptjs'
 import * as randomPassword from "secure-random-password";
+import axios from "axios"
 
 
 const cryptoTools = {
@@ -537,6 +538,31 @@ const cryptoTools = {
             window.localStorage.setItem("cryptoBenchmark", result)
             return result
         }
+    },
+    verifyPwned(password, cb){
+        let sha1 = require('js-sha1');
+        let hash = sha1(password).toUpperCase()
+        axios.get('https://api.pwnedpasswords.com/range/'+hash.substring(0,5))
+            .then(function (response) {
+                let arrayOfHash = response.data.split('\n');
+                let length = arrayOfHash.length
+                let hashToVerify = hash.substring(5,40)
+                let pwned = false
+                arrayOfHash.forEach((pawnedHash,i)=>{
+                    if(pawnedHash.split(":")[0]==hashToVerify){
+                        cb(false,pawnedHash.split(":")[1])
+                        pwned=true
+                    }else if(length-1 === i && !pwned){
+                        cb(false, "verified")
+                    }
+                })
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+                cb(error,undefined)
+            });
     }
 }
 

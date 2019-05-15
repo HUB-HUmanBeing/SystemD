@@ -1,0 +1,60 @@
+@import "{}/client/scss/variables.scss";
+
+.virtualKeyboard{
+  .keyBoard{
+    position: relative;
+    .keyContainer{
+      display: inline-block;
+      width: calc(20% - 5px);
+      position: relative;
+      .key{
+        position: relative;
+        display: block;
+        width: 90%;
+        height: 90%;
+        margin: 5%;
+        line-height: 40px;
+        padding: auto;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: $main-color;
+        color: $contrasted-bg;
+        &:hover{
+          background-color: $plus-color !important;
+        }
+      }
+    }
+  }
+  #pinCode{
+
+    .pinContainer{
+      margin-top: 10px;
+      display: inline-block;
+      width: 120px;
+      height: 40px;
+      background-color: $light-bg;
+      border: 2px solid $main-color;
+      border-radius: 5px;
+      position: relative;
+    }
+    .pinItem{
+      position: relative;
+      top:20px;
+      font-size: 50px;
+      line-height: 20px;
+      display: inline-block;
+
+      width: 20px;
+      height: 20px;
+    }
+    .material-icons{
+      font-size: 25px;
+      position: absolute;
+      display: inline-block;
+      right: -170px;
+      height: 20px;
+      line-height: 20px;
+      cursor: pointer;
+    }
+  }
+}

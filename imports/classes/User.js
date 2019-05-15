@@ -47,6 +47,9 @@ const PublicUser = Class.create({
             type: String,
             optional: true
         },
+        securized:{
+            type: Boolean
+        }
     },
 
 });
@@ -126,6 +129,10 @@ const User = Class.create({
             default: function () {
                 return [];
             }
+        },
+        salt:{
+            type:String,
+            optional:true
         }
     },
     indexes: {},

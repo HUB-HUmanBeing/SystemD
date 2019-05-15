@@ -1,17 +1,18 @@
 Template.signinContainer.helpers({
     //add you helpers here
-    page : function () {
+    page: function () {
         return Template.instance().signinPage.get()
     },
-    left : function () {
-        return ((Template.instance().signinPage.get()%3 )*-100 )+ "%"
+    left: function () {
+        return ((Template.instance().signinPage.get() % 3) * -100) + "%"
     }
 });
 
 Template.signinContainer.events({
     //add your events here
-    'click [next] , touch [next]' : function (event, instance) {
-        instance.signinPage.set(instance.signinPage.get() +1)
+    'click [next] , touch [next]': function (event, instance) {
+        instance.signinPage.set(instance.signinPage.get() + 1)
+        resetTooltips()
     }
 });
 
