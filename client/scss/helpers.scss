@@ -107,7 +107,13 @@ body, html {
 hr{
   border: none !important;
 }
-
+.captchaContainer{
+  svg{
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+}
 .btnStandard {
   background-color: transparent !important;
   border: 2px solid $blue-highlight-color !important;

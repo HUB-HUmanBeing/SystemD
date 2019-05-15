@@ -1,0 +1,47 @@
+<template name="askForPinCode">
+    {{#if show}}
+        <div class="pinCodeBg">
+
+        </div>
+        <div class="pinCodeModal">
+            {{#unless blockedUntil}}
+                <h5 class="center-align"><i class="material-icons focus-color">vpn_key</i><br>{{__ ".enterPinCode"}}
+                </h5>
+                <div class="row">
+                    <div class="col s12">
+                        {{>virtualKeyboard parentInstance = parentInstance pinCode=pinCode}}
+                    </div>
+                </div>
+                {{#if compare leftTentatives "<" 3}}
+                    <div class="row">
+                        <div class="col s12 center-align pinError">
+                            <i class="material-icons danger-color">highlight_off</i>
+                            {{__ ".leftTentatives"}} <b>{{ leftTentatives}}</b>
+                        </div>
+                    </div>
+                {{/if}}
+            {{else}}
+                <h5 class="center-align danger-color"><i class="material-icons danger-color">highlight_off</i><br>{{__
+                        ".accountBlocked"}}</h5>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="infoQuotes">
+                            {{__ ".retryIn"}} {{formatDate blockedUntil}}
+                        </p>
+                    </div>
+                </div>
+            {{/unless}}
+            <div class="row">
+                <div class="col s6"><a href="" class="btn btn-danger full-width waves-effect waves-light"
+                                       logout>{{__
+                        ".logout"}}</a></div>
+                {{#if compare pinCode.length "==" 4 }}
+                    <div class="col s6"><a href="" class="btn btnStandard full-width waves-effect waves-light"
+                                           validate>{{__
+                            ".validate"}}</a></div>
+
+                {{/if}}
+            </div>
+        </div>
+    {{/if}}
+</template>

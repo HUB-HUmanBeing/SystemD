@@ -30,9 +30,15 @@ Template.layout.onCreated(function () {
                     }
                     let timer = 1000 - Meteor.user().private.projects.length * 60
                     Meteor.setTimeout(() => {
-                        hubCrypto.initCryptoSession(hashedPassword, Meteor.user().username, () => {
+                        if(!Session.get("stringifiedAsymPrivateKey")){
+                            if(Meteor.user().public.securized){
+                                Session.set("askForPinCode", true)
+                            }else {
+                                hubCrypto.initCryptoSession(hashedPassword, Meteor.user().username, () => {
 
-                        })
+                                })
+                            }
+                        }
                     }, timer > 0 ? timer : 0)
 
                     if (Meteor.user().private.projects.length) {

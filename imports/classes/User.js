@@ -47,7 +47,7 @@ const PublicUser = Class.create({
             type: String,
             optional: true
         },
-        securized:{
+        securized: {
             type: Boolean
         }
     },
@@ -83,6 +83,16 @@ const PrivateUser = Class.create({
             default: function () {
                 return []
             }
+        },
+        leftPinCodeTentatives: {
+            type: Number,
+            default: function () {
+                return 2
+            }
+        },
+        blockedUntil:{
+            type:Date,
+            optional:true
         }
     },
 
@@ -130,10 +140,15 @@ const User = Class.create({
                 return [];
             }
         },
-        salt:{
-            type:String,
-            optional:true
-        }
+        salt: {
+            type: String,
+            optional: true
+        },
+        hashedPinCode: {
+            type: String,
+            optional: true
+        },
+
     },
     indexes: {},
     helpers: {}

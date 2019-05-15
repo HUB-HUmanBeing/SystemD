@@ -171,20 +171,26 @@
     "passwordRepeat": "Répéter mot de passe",
     "accountCreate": "Créer un compte",
     "securized": "Sécurisation avancée du compte :",
-    "securizeInfo" : "le mode de sécurité avancée est plus contraignant mais plus sûr. Il peut être requis pour participer à certains projets. (Toutes vos données seront quand même chiffrées meme sans activer cette option. Vous pourrez changer votre choix plus tard).",
+    "securizeInfo" : "Le mode de sécurité avancée est plus contraignant mais plus sûr. Il peut être requis pour participer à certains projets. ( Toutes vos données seront quand même chiffrées meme sans activer cette option. Vous pourrez changer votre choix plus tard ).",
     "securizeTitle":"Sécurisation avancée du compte",
     "securizedpasswordInfos": "Verification avancée du mot de passe :",
     "pwnedSuccess": "Votre mot de passe n'apparait sûr aucune base de données de mots de passe utilisateurs piratées.",
     "pwned": "Votre mot de passe est vulnérable aux attaques par dictionnaire. il apparaît ",
     "times":" fois dans les bases de données de mots de passe déjà piratées par le passé.",
     "changeAndRetry": "Veuillez modifier votre mot de passe",
-    "pwnedError": "une erreur s'est produite lors de la vérification de votre mot de passe, veillez réessayer plus tard.",
+    "pwnedError": "Une erreur s'est produite lors de la vérification de votre mot de passe, veillez réessayer plus tard.",
     "pinCode": "Créez votre code pin :",
-    "keyboardInfo": "Ce code pin sera demandé à chaque ouverture du site pour déchiffrer vos informations. votre compte sera bloqué 48h après 3 saisies erronées.",
+    "keyboardInfo": "Ce code pin sera demandé à chaque ouverture du site pour déchiffrer vos informations. Votre compte sera bloqué 48h après 3 saisies erronées.",
     "validate": "valider",
     "return":"retour"
-
-
+  },
+  "askForPinCode": {
+    "enterPinCode": "Entrez votre code pin",
+    "leftTentatives": "Le code pin est incorrect. tentatives restantes : ",
+    "accountBlocked": "Compte bloqué",
+    "retryIn": "Votre compte sera débloqué ",
+    "logout": "déconnexion",
+    "validate": "OK"
   },
   "signinFormJs": {
     "error": "Une erreur s'est produite",

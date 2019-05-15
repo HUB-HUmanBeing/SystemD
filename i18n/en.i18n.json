@@ -169,7 +169,28 @@
     "userNameChoice": "Choice a username",
     "passwordChoice": "Password",
     "passwordRepeat": "Repeat password",
-    "accountCreate": "Create an account"
+    "accountCreate": "Create an account",
+    "securized": "Account advanced security :",
+    "securizeInfo" : "Advanced security mode is more secure but more restrictive. It may be required to participate to some projects. ( All your data will be encrypted even if you don't activate this option. You will be able to modify it later ).",
+    "securizeTitle":"Account advanced Ssecuring",
+    "securizedpasswordInfos": "Advanced password verification :",
+    "pwnedSuccess": "Your password doesn't appear on any hacked password database.",
+    "pwned": "Your password is vulnerable to dictionnary attack. It appears ",
+    "times":" times in hacked password database.",
+    "changeAndRetry": "Please change your password",
+    "pwnedError": "an error occured during password verification, please try again later",
+    "pinCode": "Create your pin code :",
+    "keyboardInfo": "This code will be asked to you every time you open System-D. Your account will be blocked after 3 error.",
+    "validate": "validate",
+    "return":"back"
+  },
+  "askForPinCode": {
+    "enterPinCode": "Enter your pin code",
+    "leftTentatives": "Your pin code is incorrect. remaining attempts : ",
+    "accountBlocked": "Account blocked",
+    "retryIn": "Your account will be unlocked ",
+    "logout": "log-Out",
+    "validate": "OK"
   },
   "signinFormJs": {
     "error": "There is an error",

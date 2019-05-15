@@ -24,7 +24,7 @@ Meteor.methods({
      * @param userAttributes
      * @param key
      */
-    createNewUser: function (userAttributes, key, language, captcha,salt) {
+    createNewUser: function (userAttributes, key, language, captcha,salt,pinCode) {
         check(captcha, {
             userInput: String,
             hashControl: String
@@ -47,6 +47,7 @@ Meteor.methods({
         check(key.asymPublicKey, String)
         check(key.encryptedAsymPrivateKey, String)
         check(salt,String)
+        check(pinCode, String)
         //on lance la methode de création
 
         userId = Accounts.createUser(userAttributes);
@@ -62,6 +63,7 @@ Meteor.methods({
             if(salt){
                 newUser.public.securized = true
                 newUser.salt=salt
+                newUser.hashedPinCode = cryptoServer.heavyHash(pinCode)
             }else{
                 newUser.public.securized = false
             }
@@ -93,7 +95,6 @@ Meteor.methods({
             length: 30,
             characters: [randomPassword.lower, randomPassword.upper, randomPassword.digits]
         })
-        console.log("inWithPincode")
         return {
             hash: new Hashes.SHA512().b64(password + pinCode + salt+Meteor.settings.serverSalt),
             salt: salt

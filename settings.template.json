@@ -24,5 +24,6 @@
   "GcmApiKey": "",
   "serverSalt": "un autre grain de sel",
   "serverSaltRounds": 3,
+  "serverSaltHeavyRounds": "10",
   "githubToken": "ton super token"
 }

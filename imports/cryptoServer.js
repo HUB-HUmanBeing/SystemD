@@ -2,6 +2,10 @@ import Hashes from "jshashes";
 import * as bcrypt from "bcrypt";
 
 const cryptoServer = {
+    heavyHash(string) {
+        return bcrypt.hashSync(string+ Meteor.settings.serverSalt, Meteor.settings.serverSaltHeavyRounds)
+
+    },
     hash(string) {
         return bcrypt.hashSync(string+ Meteor.settings.serverSalt, Meteor.settings.serverSaltRounds)
 

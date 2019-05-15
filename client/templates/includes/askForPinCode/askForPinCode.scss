@@ -1,0 +1,45 @@
+@import "{}/client/scss/variables.scss";
+
+.pinCodeBg{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: $contrasted-plus-bg;
+  opacity: 1;
+  z-index: 9999;
+}
+.pinCodeModal {
+  position: fixed !important;
+  width: 450px;
+  max-width: 90%;
+  left: 0;
+  right: 0;
+  top: 0;
+  max-height: 80vh;
+  z-index: 10000;
+  margin: 10vh auto;
+  background-color: $main-bg;
+  padding: 10px;
+  color: $main-color;
+  h5{
+    i{
+      font-size: 2em !important;
+    }
+  }
+  .pinError{
+    margin-top: -20px;
+    i{
+      position: relative;
+      display: inline-block;
+      top:7px;
+    }
+  }
+  .pinContainer{
+    i{
+      right:-35px !important;
+      top:10px !important;
+    }
+  }
+}

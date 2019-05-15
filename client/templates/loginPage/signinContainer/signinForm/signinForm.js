@@ -188,7 +188,7 @@ Template.signinForm.helpers({
     },
     showSecurize: function () {
 
-        return Template.instance().errors.get().signinPasswordRepeat === 'valid' &&Template.instance().errors.get().signinPassword === 'valid'
+        return Template.instance().errors.get().signinPasswordRepeat === 'valid' && Template.instance().errors.get().signinPassword === 'valid'
     },
     parentInstance: function () {
         return Template.instance()
@@ -196,7 +196,7 @@ Template.signinForm.helpers({
     verifiedPassword: function () {
         return Template.instance().verifiedPassword.get()
     },
-    pinCode:function () {
+    pinCode: function () {
         return Template.instance().pinCode.get()
     }
 });
@@ -240,25 +240,25 @@ Template.signinForm.events({
     'change [securizedSwitch]': function (event, instance) {
         event.preventDefault()
         instance.securizeModal.set(true)
-         cryptoTools.verifyPwned($('#signinPassword').val(), (err, res) => {
-         Meteor.setTimeout(()=>{
-                 if (err) {
-                     console.log(err)
-                     instance.verifiedPassword.set("err")
-                 } else {
-                     if (res === "verified") {
-                         instance.verifiedPassword.set("verified")
-                         resetTooltips()
-                     } else {
-                         console.log(res)
-                         instance.verifiedPassword.set(res)
-                     }
-                 }
-         },1700)
+        cryptoTools.verifyPwned($('#signinPassword').val(), (err, res) => {
+            Meteor.setTimeout(() => {
+                if (err) {
+                    console.log(err)
+                    instance.verifiedPassword.set("err")
+                } else {
+                    if (res === "verified") {
+                        instance.verifiedPassword.set("verified")
+                        resetTooltips()
+                    } else {
+                        console.log(res)
+                        instance.verifiedPassword.set(res)
+                    }
+                }
+            }, 1700)
         })
         resetTooltips()
     },
-    'click [validateSecurize]':function (event, instance) {
+    'click [validateSecurize]': function (event, instance) {
         event.preventDefault()
         $("#securizedSwitch").prop('checked', true);
         instance.securizeModal.set(false)
@@ -282,24 +282,24 @@ Template.signinForm.events({
 
             let username = $('#signinUsername').val();
             let password = $('#signinPassword').val()
-                //on génére les clefs de ckiffrement
-                //ca lance le loader avec les infos de chiffrement pour l'utilisateur
-                instance.signinComplete.set([
-                    __('signinFormJs.generation'),
-                    __('signinFormJs.creation'),
-                    __('signinFormJs.initialization')
-                ])
+            //on génére les clefs de ckiffrement
+            //ca lance le loader avec les infos de chiffrement pour l'utilisateur
+            instance.signinComplete.set([
+                __('signinFormJs.generation'),
+                __('signinFormJs.creation'),
+                __('signinFormJs.initialization')
+            ])
             let pinCode = instance.pinCode.get()
-                hubCrypto.generateUserAsymKeys(password, username,pinCode, (userAsymKeys,salt,superPassword) => {
-                    //on préformate l'objet a envoyer
-                    let userAttribute = {
-                        username: username,
-                        password: password,
-                        language: window.localStorage.getItem("lang")
-                    };
+            hubCrypto.generateUserAsymKeys(password, username, pinCode, (userAsymKeys, salt, superPassword) => {
+                //on préformate l'objet a envoyer
+                let userAttribute = {
+                    username: username,
+                    password: password,
+                    language: window.localStorage.getItem("lang")
+                };
 
-                    //et on passe par une meteor method pour creer notre user et stocker ses clefs
-                    Meteor.call('createNewUser', userAttribute, userAsymKeys, i18n.getLocale(), captcha,salt, function (error, result) {
+                //et on passe par une meteor method pour creer notre user et stocker ses clefs
+                Meteor.call('createNewUser', userAttribute, userAsymKeys, i18n.getLocale(), captcha, salt, pinCode, function (error, result) {
                         //si ca échoue on renvoie l'erreur en toast
                         if (error) {
                             console.log(error, userAttribute, userAsymKeys)
@@ -308,42 +308,53 @@ Template.signinForm.events({
                             //on laisse les infos de chiffrement plus que de raison pour que l'utilisateur puisse bien voir
                             Meteor.setTimeout(() => {
 
-                                Meteor.loginWithPassword(username, password, function (error) {
-                                    if (!error) {//si ya pas de bug,on récupere les infos utilisateurs puis on initie une session chiffrée pour l'utilisateur
-                                        Meteor.subscribe("UserPrivateInfo", Meteor.userId(), () => {
-                                            let hashedPassword = cryptoTools.heavyHash(password, username)
+                                    Meteor.loginWithPassword(username, password, function (error) {
+                                            if (!error) {//si ya pas de bug,on récupere les infos utilisateurs puis on initie une session chiffrée pour l'utilisateur
+                                                Meteor.subscribe("UserPrivateInfo", Meteor.userId(), () => {
+                                                    let hashedPassword = cryptoTools.heavyHash(password, username)
 
-                                            window.localStorage.setItem('hashedPassword', hashedPassword)
-                                            hubCrypto.initCryptoSession(superPassword?superPassword:hashedPassword, username, () => {
-                                                let invitationId = FlowRouter.current().queryParams.invitationId
-                                                let invitationPassword = FlowRouter.current().queryParams.password
-                                                if (invitationId && invitationPassword) {
-                                                    inviteController.acceptInvitationId(invitationId, invitationPassword, (projectId) => {
-                                                        hubCrypto.decryptAndStoreProjectListInSession(() => {
-                                                            Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'toastOk')
-                                                            //si tout va bien on redirige vers la page pour completer le profil
-                                                            FlowRouter.go('/user-params')
-                                                            Materialize.toast(__('loginFormJs.welcome'), 6000, 'toastOk')
-                                                            window.localStorage.setItem("lastOpenedProjectId", projectId)
+                                                    window.localStorage.setItem('hashedPassword', hashedPassword)
+                                                    if(superPassword){
+                                                        FlowRouter.go('/user-params')
+                                                        Materialize.toast("Bienvenue sur System-D", 6000, 'toastOk')
+                                                    }else{
+                                                        hubCrypto.decryptAndStorePrivateKeyInSession(superPassword ? superPassword : hashedPassword, username, () => {
+                                                            hubCrypto.decryptAndStoreProjectListInSession(() => {
+                                                                let invitationId = FlowRouter.current().queryParams.invitationId
+                                                                let invitationPassword = FlowRouter.current().queryParams.password
+                                                                if (invitationId && invitationPassword) {
+                                                                    inviteController.acceptInvitationId(invitationId, invitationPassword, (projectId) => {
+                                                                        hubCrypto.decryptAndStoreProjectListInSession(() => {
+                                                                            Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'toastOk')
+                                                                            //si tout va bien on redirige vers la page pour completer le profil
+                                                                            FlowRouter.go('/user-params')
+                                                                            Materialize.toast(__('loginFormJs.welcome'), 6000, 'toastOk')
+                                                                            window.localStorage.setItem("lastOpenedProjectId", projectId)
+                                                                        })
+
+                                                                    })
+                                                                } else {
+                                                                    //si tout va bien on redirige vers la page pour completer le profil
+                                                                    FlowRouter.go('/user-params')
+                                                                    Materialize.toast("Bienvenue sur System-D", 6000, 'toastOk')
+                                                                }
+                                                            })
                                                         })
+                                                    }
 
-                                                    })
-                                                } else {
-                                                    //si tout va bien on redirige vers la page pour completer le profil
-                                                    FlowRouter.go('/user-params')
-                                                    Materialize.toast("Bienvenue sur System-D", 6000, 'toastOk')
-                                                }
-
-                                            })
-                                        })
-                                    } else {
-                                        console.log(error)
-                                    }
-                                });
-                            }, 1000)
+                                                })
+                                            } else {
+                                                console.log(error)
+                                            }
+                                        }
+                                    );
+                                },
+                                1000
+                            )
                         }
-                    })
-                })
+                    }
+                )
+            })
 
 
         }

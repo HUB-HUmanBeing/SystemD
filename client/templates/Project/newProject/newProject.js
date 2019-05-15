@@ -193,6 +193,7 @@ Template.newProject.events({
                                         //si tout est bon
                                     } else {
                                         //on redirige
+                                        Session.set("stringifiedAsymPrivateKey", null)
                                         FlowRouter.go('/project/' + createdProject._id + "/params")
 
                                         //on toast que tout s'est bien passé
