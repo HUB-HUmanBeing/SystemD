@@ -35,8 +35,9 @@
                         </ul>
                     </nav>
                 {{/unless}}
-
+{{#if currentProject}}
                 {{> Template.dynamic template=main data=childrensData}}
+    {{/if}}
             {{/if}}
         </div>
     {{/layout}}

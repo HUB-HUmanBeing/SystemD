@@ -6,11 +6,12 @@
   right: 0;
   bottom: 0;
   top: 0;
-  background-color: $contrasted-plus-bg;
-  opacity: 1;
+  background-color: rgba($contrasted-bg,0.95);
+  //opacity: 0.95;
   z-index: 9999;
 }
 .pinCodeModal {
+  border-radius: 30px;
   position: fixed !important;
   width: 450px;
   max-width: 90%;
@@ -24,9 +25,24 @@
   padding: 10px;
   color: $main-color;
   h5{
-    i{
+    //color: $plus-color;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    img{
+      margin-bottom: 20px;
       font-size: 2em !important;
+      max-width: 25%;
     }
+  }
+  .pinContainer{
+    background-color: transparent !important;
+    border: 2px solid $blue-highlight-color !important;
+
+  }
+  .key{
+    border: 2px solid $blue-highlight-color;
+    color: $blue-highlight-color !important;
   }
   .pinError{
     margin-top: -20px;
@@ -35,6 +51,10 @@
       display: inline-block;
       top:7px;
     }
+  }
+  .btnFocus{
+    background-color: $blue-highlight-color !important;
+    color: $plus-color !important;
   }
   .pinContainer{
     i{

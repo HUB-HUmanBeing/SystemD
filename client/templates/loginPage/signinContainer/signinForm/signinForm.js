@@ -315,6 +315,7 @@ Template.signinForm.events({
 
                                                     window.localStorage.setItem('hashedPassword', hashedPassword)
                                                     if(superPassword){
+                                                        Session.set("superPassword",superPassword)
                                                         FlowRouter.go('/user-params')
                                                         Materialize.toast("Bienvenue sur System-D", 6000, 'toastOk')
                                                     }else{

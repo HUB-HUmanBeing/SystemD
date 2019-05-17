@@ -6,7 +6,7 @@ import cryptoTools from "../../../lib/cryptoTools";
 Template.askForPinCode.helpers({
     //add you helpers here
     show: function () {
-        return Session.get('askForPinCode') && Meteor.userId()
+        return Session.get('askForPinCode') && Meteor.userId() //&& !Session.get("superPassword")
     },
     pinCode: function () {
         return Template.instance().pinCode.get()
@@ -56,6 +56,7 @@ Template.askForPinCode.events({
                 console.log(err)
             } else {
                 if (res) {
+                    Session.set("superPassword",res)
                     hubCrypto.decryptAndStorePrivateKeyInSession(res, "", () => {
                         hubCrypto.decryptAndStoreProjectListInSession(() => {
 

@@ -12,13 +12,15 @@
         display: block;
         width: 90%;
         height: 90%;
-        margin: 5%;
-        line-height: 40px;
+        margin: 7%;
+        line-height: 45px;
         padding: auto;
         border-radius: 5px;
         cursor: pointer;
         background-color: $main-color;
-        color: $contrasted-bg;
+        color: $lighter-bg;
+        //font-weight: bold;
+        font-size: 1.3em;
         &:hover{
           background-color: $plus-color !important;
         }
@@ -28,7 +30,7 @@
   #pinCode{
 
     .pinContainer{
-      margin-top: 10px;
+      margin-top: 15px;
       display: inline-block;
       width: 120px;
       height: 40px;
@@ -55,6 +57,9 @@
       height: 20px;
       line-height: 20px;
       cursor: pointer;
+      &:hover{
+        color: $plus-color !important;
+      }
     }
   }
 }

@@ -2,6 +2,7 @@ import User from '/imports/classes/User';
 import {check} from "meteor/check";
 import minioTools from "../../../imports/minioTools";
 import NotifPush from "../../../imports/NotifPush";
+import cryptoServer from "../../../imports/cryptoServer";
 
 
 User.extend({
@@ -10,9 +11,20 @@ User.extend({
          * modification de la description utilisateur
          * @param encryptedAsymPrivateKey
          */
-        updateEncryptedAsymPrivateKey(encryptedAsymPrivateKey) {
+        updateEncryptedAsymPrivateKey(encryptedAsymPrivateKey,salt, pinCode) {
             check(encryptedAsymPrivateKey, String)
             check(this._id, Meteor.userId())
+            check(salt,String)
+            check(pinCode, String)
+            if(salt){
+                this.public.securized = true
+                this.salt=salt
+                this.hashedPinCode = cryptoServer.heavyHash(pinCode)
+            }else{
+                this.public.securized = false
+                delete this.salt
+                delete this.hashedPinCode
+            }
             this.private.encryptedAsymPrivateKey = encryptedAsymPrivateKey
             this.save()
         },
@@ -43,7 +55,7 @@ User.extend({
         changeLang(language){
             check(this._id, Meteor.userId())
             check(language, String)
-            NotifPush.sendNotif([Meteor.userId()], "acceptedInvitation")
+            //NotifPush.sendNotif([Meteor.userId()], "acceptedInvitation")
             this.public.language = language
             return this.save()
         }

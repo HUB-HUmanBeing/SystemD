@@ -463,7 +463,9 @@
     "publish": "Publish poll"
   },
   "publicationsList": {
-    "showMore": "Show more..."
+    "showMore": "Show more...",
+    "noPublication": "There is no publication, create one with the menu on top."
+
   },
   "publicationItem": {
     "delete": "Delete",

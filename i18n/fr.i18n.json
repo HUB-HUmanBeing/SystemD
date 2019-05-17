@@ -466,7 +466,8 @@
     "publish": "Publier le sondage"
   },
   "publicationsList": {
-    "showMore": "Voir plus..."
+    "showMore": "Voir plus...",
+    "noPublication": "Il n'y à aucune puplication, écrivez en une grâce au menu ci-dessus."
   },
   "publicationItem": {
     "delete": "Supprimer",

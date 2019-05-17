@@ -9,6 +9,7 @@
                 </div>
             </div>
         {{/each}}
+
         {{#if isWaiting}}
             <div class="row loadMore">
                 <div class="col s12 ">
@@ -26,6 +27,9 @@
                 </div>
 
             {{/if}}
+            {{#if compare publications.length "==" 0}}
+                {{__ ".noPublication"}}
+                {{/if}}
         {{/if}}
 
     </div>

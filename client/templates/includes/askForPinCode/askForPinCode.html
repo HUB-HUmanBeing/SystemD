@@ -1,11 +1,11 @@
 <template name="askForPinCode">
     {{#if show}}
-        <div class="pinCodeBg">
+        <div class="pinCodeBg bird-background">
 
         </div>
-        <div class="pinCodeModal">
+        <div class="pinCodeModal bird-background gradiant">
             {{#unless blockedUntil}}
-                <h5 class="center-align"><i class="material-icons focus-color">vpn_key</i><br>{{__ ".enterPinCode"}}
+                <h5 class="center-align "><img src="/images/icon/systemd-logo-white.png" alt="" class="responsive-img  "><br>{{__ ".enterPinCode"}}
                 </h5>
                 <div class="row">
                     <div class="col s12">
@@ -31,12 +31,12 @@
                     </div>
                 </div>
             {{/unless}}
-            <div class="row">
-                <div class="col s6"><a href="" class="btn btn-danger full-width waves-effect waves-light"
+            <div class="row ">
+                <div class="col s6"><a href="" class="btn btn-flat full-width waves-effect waves-light main-color"
                                        logout>{{__
                         ".logout"}}</a></div>
                 {{#if compare pinCode.length "==" 4 }}
-                    <div class="col s6"><a href="" class="btn btnStandard full-width waves-effect waves-light"
+                    <div class="col s6"><a href="" class="btn btnFocus full-width waves-effect waves-light main-color"
                                            validate>{{__
                             ".validate"}}</a></div>
 
