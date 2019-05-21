@@ -102,10 +102,25 @@ Template.newProject.helpers({
     newProjectComplete: function () {
         return Template.instance().newProjectComplete.get()
 
+    },
+    securizable: function () {
+        if(Meteor.user() && Meteor.user().public){
+            return Meteor.user().public.securized
+        }
+
+    },
+    securizedProject: function () {
+        return Template.instance().securizedProject.get()
     }
 });
 
 Template.newProject.events({
+    'change [securizedProject]': function (enent, instance) {
+        event.preventDefault()
+        let securized =  $('#securizedProject').prop('checked')
+        console.log(securized)
+        instance.securizedProject.set(securized)
+    },
     //add your events here
     'keyup #projectName, touchend #projectName , blur #projectName ': function (event, instance) {
         if (instance.timeout) {
@@ -163,7 +178,8 @@ Template.newProject.events({
                 //on chiffre le tout avec notre super fonction
                 cryptoTools.encryptObject(uncryptedNewMember, encryptionParams, (encryptedNewMember) => {
                     //on crée le projet en base
-                    Meteor.call('createProject', projectName, brunchOfKeyToSend, encryptedNewMember, (err, res) => {
+                    let securized = instance.securizedProject.get()
+                    Meteor.call('createProject', projectName, brunchOfKeyToSend, encryptedNewMember,securized, (err, res) => {
                         if (err) {
                             console.log(err)
                             //si tout va bien
@@ -178,6 +194,7 @@ Template.newProject.events({
                                 asymEnc_projectSymKey: projectBrunchOfKeys.stringifiedSymKey,
                                 asymEnc_role: "admin",
                                 asymEnc_adminPassword: adminPassword,
+
                                 //ce dernier champ sera utile pour editer le user project depuis d'
                                 hashedAdminSignature: cryptoTools.hash(newMemberId + adminPassword)
 
@@ -187,6 +204,7 @@ Template.newProject.events({
                             cryptoTools.encryptObject(unencryptedUserProjectToAdd, {publicKey: Meteor.user().public.asymPublicKey}, (userProjectToAdd) => {
                                 let currentUser = User.findOne(Meteor.userId())
                                 //et on sauvegarde ce nouveau projet dans la liste des projets de l'utilisateur
+                                userProjectToAdd.securized=  securized
                                 currentUser.callMethod('addUserProject', userProjectToAdd, (err, res) => {
                                     if (err) {
                                         console.log(err)
@@ -215,6 +233,7 @@ Template.newProject.onCreated(function () {
     //add your statement here
     this.newProjectComplete = new ReactiveVar()
     this.errors = new ReactiveVar({projectName: []})
+    this.securizedProject = new ReactiveVar(false)
 });
 
 Template.newProject.onRendered(function () {
@@ -222,6 +241,7 @@ Template.newProject.onRendered(function () {
     Meteor.setTimeout(() => {
         $('#projectName').focus()
     }, 200)
+    resetTooltips()
 });
 
 Template.newProject.onDestroyed(function () {

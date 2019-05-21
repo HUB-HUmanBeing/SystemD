@@ -3,48 +3,71 @@
         <div id="newProject" class=" gradiant full-width  main-color relative ">
             <div class="full-width" style="overflow: hidden">{{>birdsBg}}</div>
             <div class="bg-logo">
-                <img src="/images/icon/systemd-biglogo-grey.png" alt="" >
+                <img src="/images/icon/systemd-biglogo-grey.png" alt="">
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col s12 m8 offset-m2 center-align contrasted-bg relative" style="opacity:0.8; z-index: 10; padding: 15px; margin-top: calc(50vh - 180px)">
+                    <div class="col s12 m8 offset-m2 center-align contrasted-bg relative"
+                         style="opacity:0.8; z-index: 10; padding: 15px; margin-top: calc(50vh - 180px)">
                         <!--<img src="/images/icon/systemd-logo-white.png" alt="System-D" class="responsive-img  "-->
-                             <!--style=" width: 70px ; height: 70px;">-->
+                        <!--style=" width: 70px ; height: 70px;">-->
 
-                            <h5 class="focus-color ">{{__ '.createProject'}}</h5>
+                        <h5 class="focus-color ">{{__ '.createProject'}}</h5>
 
-        {{#if newProjectComplete}}
-            {{>encryptionLoader tasks=newProjectComplete}}
-        {{else}}
-                        <form action="#" id="newProjectForm">
-                            <div class="row no-margin">
-                                <div class="input-field col s12 relative">
-                                    <i class="material-icons prefix  main-color">text_fields</i>
-                                    <input id="projectName" type="text"
-                                           class=" {{#if compare errors.projectName '==' 'valid'}}valid {{else }}{{#if
-                                                   errors.projectName.length}}invalid{{/if}}{{/if}}">
-                                    <label for="projectName">{{__ '.nameProject'}}</label>
-                                    <div class="formErrorContainer">
-                                        {{#if isArray  errors.projectName}}
-                                            {{#each error in errors.projectName}}
-                                                <div class="formError danger-color">
-                                                    {{error}}
-                                                </div>
-                                            {{/each}}
+                        {{#if newProjectComplete}}
+                            {{>encryptionLoader tasks=newProjectComplete}}
+                        {{else}}
+                            <form action="#" id="newProjectForm">
+                                <div class="row no-margin">
+                                    <div class="input-field col s12 relative">
+                                        <i class="material-icons prefix  main-color">text_fields</i>
+                                        <input id="projectName" type="text"
+                                               class=" {{#if compare errors.projectName '=='
+                                                             'valid'}}valid {{else }}{{#if
+                                                       errors.projectName.length}}invalid{{/if}}{{/if}}">
+                                        <label for="projectName">{{__ '.nameProject'}}</label>
+                                        <div class="formErrorContainer">
+                                            {{#if isArray  errors.projectName}}
+                                                {{#each error in errors.projectName}}
+                                                    <div class="formError danger-color">
+                                                        {{error}}
+                                                    </div>
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row no-margin">
+                                    <div class="col s12 " style="padding-right: 0; margin-top: 5px">
+                                        <div class="flex ">
+                                            <i class="material-icons lockIcon">vpn_key</i>
+                                            <p class="sectionLabel flex-auto no-margin tooltipped" data-position="top"
+                                               data-delay="50" data-tooltip="{{__ ".securizeInfo"}}">{{__
+                                                    ".securized"}}</p>
+                                            <p style="{{#if securizable}}{{else}}cursor: not-allowed;{{/if}}" class="tooltipped" data-position="top"
+                                               data-delay="50" data-tooltip="{{#if securizable}}{{__ ".securizeInfo"}}{{else}}{{__ ".disableInfo"}}{{/if}}">
+                                                <input securizedProject type="checkbox" id="securizedProject"
+                                                       disabled={{#if securizable}}{{else}}"disabled"{{/if}}>
+                                                <label for="securizedProject"></label>
+                                            </p>
+                                        </div>
+                                        {{#if securizedProject}}
+                                            <p class="infoQuotes">
+                                                {{__ ".securizeInfo"}}
+                                            </p>
                                         {{/if}}
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="row no-margin right-align" style="padding: 15px 0px" >
-                                <div class="col s12">
-                                    <button href="#" class="btn btnFocus waves-effect waves-light shadow"><i
-                                            class="material-icons right">add_box</i>{{__ '.create'}}
-                                    </button>
+                                <div class="row no-margin right-align" style="padding: 0 0 15px 0px">
+                                    <div class="col s12">
+                                        <button href="#" class="btn btnFocus waves-effect waves-light shadow"><i
+                                                class="material-icons right">add_box</i>{{__ '.create'}}
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-            {{/if}}
+                            </form>
+                        {{/if}}
                     </div>
                 </div>
             </div>

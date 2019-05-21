@@ -164,6 +164,12 @@ Template.editPassword.helpers({
     },
     pinCode: function () {
         return Template.instance().pinCode.get()
+    },
+    forceSecurize: function () {
+        return Template.instance().forceSecurize.get()
+    },
+    isSubmitable: function () {
+        return !Template.instance().forceSecurize.get() || Template.instance().pinCode.get().length===4
     }
 });
 
@@ -219,7 +225,7 @@ Template.editPassword.events({
     },
     'submit #editPasswordForm ': function (event, instance) {
         event.preventDefault()
-        if (validateUpdatePassword.isValid(instance)) {
+        if (validateUpdatePassword.isValid(instance) && (!Template.instance().forceSecurize.get() || Template.instance().pinCode.get().length===4)) {
             let oldPassword = $('#oldPassword').val();
             let newPassword = $('#newPassword').val()
             let pinCode = instance.pinCode.get()
@@ -284,6 +290,7 @@ Template.editPassword.events({
 Template.editPassword.onCreated(function () {
 
     //add your statement here
+    this.forceSecurize= new ReactiveVar(false)
     this.securized = new ReactiveVar(false)
     this.securizeModal = new ReactiveVar(false)
     this.verifiedPassword = new ReactiveVar("waiting")
@@ -297,6 +304,13 @@ Template.editPassword.onCreated(function () {
         oldPassword: [],
         newPassword: [],
         newPasswordRepeat: []
+    })
+    this.autorun(()=>{
+        Session.get("projects").forEach(project=>{
+            if(project.securized){
+                this.forceSecurize.set(true)
+            }
+        })
     })
 });
 

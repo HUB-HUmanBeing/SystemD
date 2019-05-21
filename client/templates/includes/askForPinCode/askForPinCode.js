@@ -51,12 +51,12 @@ Template.askForPinCode.events({
         event.preventDefault()
         let user = User.findOne(Meteor.userId())
 
-       user.callMethod("getPinCodeHash", window.localStorage.getItem("hashedPassword"), instance.pinCode.get(), (err, res) => {
+        user.callMethod("getPinCodeHash", window.localStorage.getItem("hashedPassword"), instance.pinCode.get(), (err, res) => {
             if (err) {
                 console.log(err)
             } else {
                 if (res) {
-                    Session.set("superPassword",res)
+                    Session.set("superPassword", res)
                     hubCrypto.decryptAndStorePrivateKeyInSession(res, "", () => {
                         hubCrypto.decryptAndStoreProjectListInSession(() => {
 
@@ -94,6 +94,16 @@ Template.askForPinCode.events({
 Template.askForPinCode.onCreated(function () {
     //add your statement here
     this.pinCode = new ReactiveVar("")
+    this.autorun(() => {
+        if (Session.get("superPassword")) {
+            Session.set('askForPinCode', false)
+            hubCrypto.decryptAndStorePrivateKeyInSession(Session.get("superPassword"), "", () => {
+                hubCrypto.decryptAndStoreProjectListInSession(() => {
+
+                })
+            })
+        }
+    })
 });
 
 Template.askForPinCode.onRendered(function () {

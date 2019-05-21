@@ -102,6 +102,24 @@ width: 35px;
     padding-top: 5px;
     font-size: 1em;
   }
+  .checkBoxContainer{
+    border: 2px solid transparent;
+    padding: 5px;
+    position: relative;
+    border-radius: 5px;
+    top: -5px;
+    p{
+      position: relative;
+      top: 9px;
+      left: 1px;
+      margin: 0;
+      width: 20px;
+      height: 20px;
+    }
+    &.forceSecurize{
+      border-color: $focus-color !important;
+    }
+  }
 }
 #securizeEditModal{
   position: fixed !important;

@@ -11,7 +11,14 @@
                         </div>
                     </div>
                     <div class="row no-margin hand-police ">
-                        <h5>{{currentProject.name}}</h5>
+                        <h5>
+                            {{#if currentProject.private.securized}}
+                        <i class="material-icons tooltipped"  data-position="bottom"
+                                                                       data-delay="50" data-tooltip="{{__ ".securizedInfo"}}">
+                                                                       lock</i>
+{{/if}}
+                            {{currentProject.name}}
+</h5>
                     </div>
                 </div>
             </div>

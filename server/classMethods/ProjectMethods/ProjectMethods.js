@@ -27,10 +27,11 @@ Meteor.methods({
      * @param firstMember
      * @returns {{project, projectId: (*|*|*|void)}}
      */
-    createProject(projectName, brunchOfKeys, firstMember) {
+    createProject(projectName, brunchOfKeys, firstMember, securized) {
         check(projectName, String)
         const project = Project.findOne({name: projectName})
         check(!!project, false)
+        check (securized, Boolean)
         check(brunchOfKeys, {
             asymPublicKey: String,
             symEnc_asymPrivateKey: String,
@@ -54,6 +55,7 @@ Meteor.methods({
         newProject.private.hashedSymKey = brunchOfKeys.hashedSymKey
         newProject.private.hashedAdminPassword = brunchOfKeys.hashedAdminPassword
         newProject.private.members.push(firstMember)
+        newProject.private.securized = securized
 
 
         return {

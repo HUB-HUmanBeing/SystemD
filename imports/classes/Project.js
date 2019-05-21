@@ -165,6 +165,7 @@ const ProjectPrivate = Class.create({
                 return [];
             }
         },
+        securized: Boolean,
         invitations: {
             type: [ProjectInvitation],
             default: function () {

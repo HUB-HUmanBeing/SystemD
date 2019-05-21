@@ -172,7 +172,7 @@
     "accountCreate": "Create an account",
     "securized": "Account advanced security :",
     "securizeInfo" : "Advanced security mode is more secure but more restrictive. It may be required to participate to some projects. ( All your data will be encrypted even if you don't activate this option. You will be able to modify it later ).",
-    "securizeTitle":"Account advanced Ssecuring",
+    "securizeTitle":"Account advanced Securing",
     "securizedpasswordInfos": "Advanced password verification :",
     "pwnedSuccess": "Your password doesn't appear on any hacked password database.",
     "pwned": "Your password is vulnerable to dictionnary attack. It appears ",
@@ -240,7 +240,11 @@
   "newProject": {
     "createProject": "Create a project",
     "nameProject": "Project's name",
-    "create": "Create"
+    "create": "Create",
+    "securized": "Advanced project security",
+    "securizeInfo": "Only users with secure account will be able to join the project.",
+    "disableInfo": "Vous devez avoir un compte Sécurisé pour pouvoir activer cette option. Activez cette option en modifiant votre mot de passe dans les paramètres utilisateurs."
+
   },
   "newProjectJs": {
     "error": "There is an error",
@@ -273,7 +277,8 @@
     "publicInfos": "Public informations",
     "createInvitelink": "Create invitation link",
     "invitationList": "Pending Invitations",
-    "deleteProject": "Delete project"
+    "deleteProject": "Delete project",
+    "securizedInfo": "All project members must have secure account."
   },
   "deleteProject": {
     "deleteProjectInfo": "You will remove definitely this project",
@@ -372,7 +377,8 @@
     "newPassword": "New password",
     "repeatPassword": "Repeat password",
     "strength": "Strength",
-    "editPassword": "Edit password"
+    "editPassword": "Edit password",
+    "forceSecurize": "You participate to securized projects. You have to select the advance security option"
   },
   "editPasswordJs": {
     "previousPwd": "please, enter your previous password",

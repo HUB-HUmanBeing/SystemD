@@ -19,9 +19,11 @@ User.extend({
                 asymEnc_memberId: String,
                 asymEnc_role: String,
                 asymEnc_adminPassword:String,
-                hashedAdminSignature:  String
+                hashedAdminSignature:  String,
+                securized:Boolean
 
             })
+
             userProjectToAdd.hashedAdminSignature = cryptoServer.hash(userProjectToAdd.hashedAdminSignature)
             check(this._id , Meteor.userId())
             this.private.projects.unshift(userProjectToAdd)

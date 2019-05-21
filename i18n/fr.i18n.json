@@ -239,7 +239,10 @@
   "newProject": {
     "createProject": "Créer un projet",
     "nameProject": "Nom du projet",
-    "create": "Créer"
+    "create": "Créer",
+    "securized": "Sécurisation avancée du projet",
+    "securizeInfo": "Seuls les utilisateurs avec un compte sécurisé pourront rejoindre le projet.",
+    "disableInfo": "Vous devez avoir un compte Sécurisé pour pouvoir activer cette option. Activez cette option en modifiant votre mot de passe dans les paramètres utilisateurs."
   },
   "newProjectJs": {
     "error": "Une erreur s'est produite",
@@ -272,7 +275,8 @@
     "publicInfos": "Informations publiques",
     "createInvitelink": "Nouvelle invitation",
     "invitationList": "Invitations en cours",
-    "deleteProject": "Supprimer le projet"
+    "deleteProject": "Supprimer le projet",
+    "securizedInfo": "Tous les membres du projet doivent avoir un compte sécurisé."
   },
   "deleteProject": {
     "deleteProjectInfo": "Cette action supprimera définitivement le projet",
@@ -375,7 +379,8 @@
     "newPassword": "Nouveau mot de passe",
     "repeatPassword": "Répéter mot de passe",
     "strength": "Force",
-    "editPassword": "Modifier mot de passe"
+    "editPassword": "Modifier mot de passe",
+    "forceSecurize": "Vous participez à des projets sécurisés. Vous devez sélectionner l'option de sécurisation avancée du compte."
   },
   "editPasswordJs": {
     "previousPwd": "veuillez entrer votre précédent mot de passe",
