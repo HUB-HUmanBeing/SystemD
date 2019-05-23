@@ -1,12 +1,12 @@
 <template name="projectForum">
-    <div id="projectForum" class=" row no-margin "
+    <div id="projectForum" class=" bird-background row no-margin"
          style="{{#if
                  isDesktop}}padding-top: 0px; height: 100vh; width: calc( 100% - 210px ){{else}}padding-top: 0;width: 100%;{{/if}}">
         {{#if isDesktop}}
             <div class="blurTop"></div>
         {{/if}}
-        <div class="forumContainer col s12 flex gradiantLight {{#if
-                isDesktop}}full-height  {{/if}} main-color no-padding bird-background ">
+        <div class="forumContainer col s12 flex  {{#if
+                isDesktop}}full-height  {{/if}} main-color no-padding ">
             {{#if showCategories}}
 
                 <div id="categoryListContainer" class="beautify-scroll-container"

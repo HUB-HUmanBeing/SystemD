@@ -65,7 +65,9 @@ body, html {
 .gradiant-dark {
   background: linear-gradient(45deg, $main-bg 0%, $contrasted-bg 100%);
 }
-
+.meiumGradiant{
+  background: linear-gradient(45deg, $light-bg 0%, $main-bg 100%);
+}
 .gradiantLight {
   background: linear-gradient(45deg, $lighter-bg 0%, $main-bg 100%);
 }

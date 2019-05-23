@@ -37,10 +37,12 @@
                         </div>
                     </form>
                 {{else}}
+                    {{#if isAdmin currentProject._id}}
                     <a href="" class="btn btnStandard full-width  waves-effect waves-light" showNewCategory>
                         {{__ ".new"}}
                         <i class="material-icons left">create_new_folder</i>
                     </a>
+                        {{/if}}
                 {{/if}}
             </div>
         </div>

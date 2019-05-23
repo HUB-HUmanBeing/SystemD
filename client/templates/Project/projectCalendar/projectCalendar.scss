@@ -148,7 +148,13 @@
       thead {
         background-color: $main-bg;
       }
-
+.fc-list-empty-wrap2{
+  background: linear-gradient(45deg, $light-bg 0%, $contrasted-bg 100%) !important;
+  *{
+    color:$main-color;
+    background-color: transparent !important;
+  }
+}
       .fc-toolbar {
         display: none;
       }
