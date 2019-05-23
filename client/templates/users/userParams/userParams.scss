@@ -17,14 +17,14 @@
     .btn-floating {
 
       position: absolute;
-width: 35px;
+      width: 35px;
       height: 35px;
       transition: 0.4s ease-out;
       z-index: 201;
 
       .material-icons {
         position: relative;
-        top:-2.5px;
+        top: -2.5px;
         font-size: 20px;
         color: $plus-color;
         transition: 0.4s ease-out;
@@ -50,9 +50,10 @@ width: 35px;
     li {
       box-shadow: none;
       margin: 0 !important;
+
       &.active {
         // border: 1px solid $blue-highlight-color;
-        background: linear-gradient(45deg, $light-bg  00%,$main-bg  100%);
+        background: linear-gradient(45deg, $light-bg 00%, $main-bg 100%);
         box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 
       }
@@ -89,39 +90,47 @@ width: 35px;
     border-bottom: none;
   }
 }
-#editPasswordForm{
-  label[for="securizedSwitch"]{
+
+#editPasswordForm {
+  label[for="securizedSwitch"] {
     position: relative;
-    top:-10px;
+    top: -10px;
   }
-  .lockIcon{
+
+  .lockIcon {
     padding: 0 15px 0 10px;
     font-size: 2rem;
   }
-  .sectionLabel{
+
+  .sectionLabel {
     padding-top: 5px;
     font-size: 1em;
   }
-  .checkBoxContainer{
-    border: 2px solid transparent;
-    padding: 5px;
+
+}
+
+.checkBoxContainer {
+  border: 2px solid transparent;
+  padding: 5px;
+  position: relative;
+  border-radius: 5px;
+  top: -5px;
+
+  p {
     position: relative;
-    border-radius: 5px;
-    top: -5px;
-    p{
-      position: relative;
-      top: 9px;
-      left: 1px;
-      margin: 0;
-      width: 20px;
-      height: 20px;
-    }
-    &.forceSecurize{
-      border-color: $focus-color !important;
-    }
+    top: 9px;
+    left: 1px;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  &.forceSecurize {
+    border-color: $focus-color !important;
   }
 }
-#securizeEditModal{
+
+#securizeEditModal {
   position: fixed !important;
   max-width: 90%;
   width: 450px;
@@ -133,40 +142,48 @@ width: 35px;
   margin: 10vh auto;
   background-color: $main-bg;
   padding: 10px 20px;
-  .center-align{
-    margin:-10px 0 5px 0;
+
+  .center-align {
+    margin: -10px 0 5px 0;
     font-size: 1.2em;
-    i{
+
+    i {
       position: relative;
       top: 10px;
-      left:-10px;
+      left: -10px;
       font-size: 2.2em;
     }
   }
-  h6{
+
+  h6 {
     font-size: 1.1em;
-    color:$plus-color;
+    color: $plus-color;
   }
-  p{
+
+  p {
     font-size: .9em;
   }
-  .pwnedResults{
+
+  .pwnedResults {
     padding-top: 10px;
-    i{
+
+    i {
       font-size: 3em;
     }
-    .pwnedResult{
-      flex:1;
+
+    .pwnedResult {
+      flex: 1;
       padding-left: 5px;
     }
   }
 
-  .btn-floating{
+  .btn-floating {
     position: absolute;
     right: 10px;
-    top:5px;
+    top: 5px;
     background-color: $main-bg;
-    &:hover{
+
+    &:hover {
       background-color: $light-bg !important;
     }
   }

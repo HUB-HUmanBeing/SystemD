@@ -12,17 +12,24 @@
   .invitationContainer {
     background-color: rgba($contrasted-bg, 0.8);
     max-width: 90%;
-    width: 400px;
+    width: 450px;
+    max-width: 90%;
     margin: calc(5vw + 50px) 0;
     left: 50%;
     transform: translate(-50%, 0);
     position: relative;
     z-index: 10;
     padding: 2vw;
-
+.select-wrapper{
+  top:-15px !important;
+  right: -15px !important;
+}
     .system-dLogo{
 
 
+    }
+    h4{
+      font-size: 1.3em;
     }
     .infoQuotes {
       font-size: 0.9em;

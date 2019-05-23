@@ -100,23 +100,39 @@
             {{#if showSecurize}}
                 <div class="row">
                     <div class="col s12 no-padding">
-                        <div class="flex tooltipped" data-position="top"
-                             data-delay="50" data-tooltip="{{__ ".securizeInfo"}}">
+                        <div class="flex ">
                             <i class="material-icons lockIcon">vpn_key</i>
-                            <p class="sectionLabel flex-auto no-margin">{{__ ".securized"}}</p>
-                            <p style="">
-                                <input securizedSwitch type="checkbox" id="securizedSwitch">
-                                <label for="securizedSwitch"></label>
-                            </p>
+                            <p class="sectionLabel flex-auto no-margin tooltipped" data-position="top"
+                               data-delay="50" data-tooltip="{{__ ".securizeInfo"}}">{{__ ".securized"}}</p>
+                            <div class="checkBoxContainer {{#if forceSecurize}}tooltipped forceSecurize{{/if}}"
+                                 data-position="top"
+                                 data-delay="50" data-tooltip="{{__ ".forceSecurize"}}">
+                                <p style="">
+                                    <input securizedSwitch type="checkbox" id="securizedSwitch">
+                                    <label for="securizedSwitch"></label>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {{#unless isSubmitable}}
+                    <div class="row no-margin">
+                        <div class="col s12">
+                            <p class="infoQuotes">
+                                {{__ ".forceSecurize"}}
+                            </p>
+                        </div>
+                    </div>
+
+                {{/unless}}
             {{/if}}
-            <div class="row center-align" style="margin: 15px 0 0 0">
-                <button href="#" class="btn btnFocus center-align waves-effect waves-light shadow"><i
-                        class="material-icons right">account_circle</i>{{__ '.accountCreate'}}
-                </button>
-            </div>
+            {{#if isSubmitable}}
+                <div class="row center-align" style="margin: 15px 0 0 0">
+                    <button href="#" class="btn btnFocus center-align waves-effect waves-light shadow"><i
+                            class="material-icons right">account_circle</i>{{__ '.accountCreate'}}
+                    </button>
+                </div>
+            {{/if}}
         </form>
         {{#if securizeModal}}
             <div class="securizeModalBg" closeSecurizeModal>
@@ -146,7 +162,8 @@
                             {{#if compare verifiedPassword ">" 0}}
                                 <div class=""><i class="material-icons danger-color">clear</i></div>
                                 <div class="pwnedResult danger-color">{{__ ".pwned"}} {{verifiedPassword}} {{__
-                                        ".times"}}<br><a href="" class="link center-align" closeSecurizeModal>{{__ ".changeAndRetry"}}</a></div>
+                                        ".times"}}<br><a href="" class="link center-align" closeSecurizeModal>{{__
+                                        ".changeAndRetry"}}</a></div>
 
                             {{/if}}
                             {{#if compare verifiedPassword "==" "error"}}
@@ -177,7 +194,8 @@
                                            closeSecurizeModal>{{__
                             ".return"}}</a></div>
                     {{#if compare (compare verifiedPassword "==" "verified") "&&" (compare pinCode.length "==" 4) }}
-                        <div class="col s6"><a href="" class="btn btnStandard full-width waves-effect waves-light" validateSecurize>{{__
+                        <div class="col s6"><a href="" class="btn btnStandard full-width waves-effect waves-light"
+                                               validateSecurize>{{__
                                 ".validate"}}</a></div>
 
                     {{/if}}

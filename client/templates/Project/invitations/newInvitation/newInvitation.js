@@ -83,7 +83,8 @@ Template.newInvitation.events({
                         symEnc_projectSymKey: symEnc_projectSymKey,
                         validityDuration: Number(validityDuration),
                         remaining: Number(remaining),
-                        invitationMembers: invitationMembers
+                        invitationMembers: invitationMembers,
+                        securized: currentProject.private.securized
                     }
                     //et on crée l'invitation
                     currentProject.callMethod(

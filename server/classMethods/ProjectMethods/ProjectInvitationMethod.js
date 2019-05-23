@@ -30,7 +30,8 @@ Project.extend({
                 invitationMembers : [{
                     memberId: String,
                     hashedAdminSignature: String
-                }]
+                }],
+                securized: Boolean
             })
             //on hash le password
             invitationParams.hashedPassword = cryptoServer.hash(invitationParams.hashedPassword)

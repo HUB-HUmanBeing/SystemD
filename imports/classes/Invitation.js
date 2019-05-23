@@ -39,6 +39,7 @@ const Invitation = Class.create({
         remaining:{
             type: Number
         },
+        securized: Boolean,
         invitationMembers: [InvitatioMember]
 
     },

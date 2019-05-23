@@ -10,6 +10,7 @@ Template.showInvitation.helpers({
         return Invitation.findOne(Template.instance().invitationId)
     },
     currentProject: function () {
+        console.log(Project.findOne(Template.instance().projectId))
         return Project.findOne(Template.instance().projectId)
     },
     magicLink: function () {

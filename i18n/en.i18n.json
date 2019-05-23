@@ -182,7 +182,8 @@
     "pinCode": "Create your pin code :",
     "keyboardInfo": "This code will be asked to you every time you open System-D. Your account will be blocked after 3 error.",
     "validate": "validate",
-    "return":"back"
+    "return":"back",
+    "forceSecurize": "You have to activate the advanced security option to finalize the signin because you want to participate a securized project"
   },
   "askForPinCode": {
     "enterPinCode": "Enter your pin code",

@@ -187,7 +187,7 @@ Template.signinForm.helpers({
         return Template.instance().securizeModal.get()
     },
     showSecurize: function () {
-
+resetTooltips()
         return Template.instance().errors.get().signinPasswordRepeat === 'valid' && Template.instance().errors.get().signinPassword === 'valid'
     },
     parentInstance: function () {
@@ -198,6 +198,17 @@ Template.signinForm.helpers({
     },
     pinCode: function () {
         return Template.instance().pinCode.get()
+    },
+    forceSecurize: function () {
+        FlowRouter.watchPathChange()
+        return FlowRouter.current().queryParams.securized
+    },
+    isSubmitable: function () {
+        if(FlowRouter.current().queryParams.securized && !Template.instance().pinCode.get()){
+            return false
+        }else{
+            return true
+        }
     }
 });
 

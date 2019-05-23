@@ -306,11 +306,14 @@ Template.editPassword.onCreated(function () {
         newPasswordRepeat: []
     })
     this.autorun(()=>{
-        Session.get("projects").forEach(project=>{
-            if(project.securized){
-                this.forceSecurize.set(true)
-            }
-        })
+        if(Session.get("projects")){
+            Session.get("projects").forEach(project=>{
+                if(project.securized){
+                    this.forceSecurize.set(true)
+                }
+            })
+        }
+
     })
 });
 

@@ -8,13 +8,13 @@
         <div class="contrasted-bg shadow invitationContainer  main-color">
             {{> langButton}}
             <div class="row no-margin">
-                <div class="col s3 ">
+                <div class="col s2 ">
                     <img src="/images/icon/systemd-logo-white.png" alt="System-D" class="responsive-img  system-dLogo"
                     >
                 </div>
-                <div class="col s9 ">
+                <div class="col s10 " style="padding-top: 10px">
 
-                    <h5 class="focus-color left-align no-margin" style="padding-right: 30px">{{__ ".title"}}</h5>
+                    <h4 class="focus-color left-align no-margin" style="padding-right: 30px">{{__ ".title"}}</h4>
                     <div class="right-align"><a href="/" target="_blank" class="right-align link"><i>{{__
                             ".moreInfo"}}</i></a>
                     </div>
@@ -56,8 +56,20 @@
                                         {{>projectAvatar projectId=project._id}}
                                     </div>
                                     <h5 class="no-margin ">{{project.name}}</h5>
-                                </div>
 
+                                </div>
+                                {{#if securized}}
+                                    <div class="row">
+                                        <div class="col s10 offset-s1">
+                                            <p class="infoQuotes tooltipped left-align " data-position="top"
+                                               data-delay="50" data-tooltip="{{__ ".securizedInfo"}}">{{__
+                                                    ".securized"}}</p>
+                                            {{#unless securizedOk}}<p class="danger-color"><i class="danger-color">{{__
+                                                    ".needToSecurize"}}</i></p>{{/unless}}
+                                        </div>
+                                    </div>
+
+                                {{/if}}
                             </div>
                             {{#if userAlreadyInProject}}
                                 <p class=" no-margin">
@@ -72,7 +84,7 @@
                                     </div>
                                     <div class="col s6">
                                         <a href="" class="btn btnStandard waves-effect waves-light full-width" accept>
-                                            {{__ ".accept"}}
+                                            {{#if securizedOk}}{{__ ".accept"}}{{else}}{{__ ".editAccound"}}{{/if}}
                                         </a>
                                     </div>
                                 </div>

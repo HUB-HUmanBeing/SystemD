@@ -182,7 +182,9 @@
     "pinCode": "Créez votre code pin :",
     "keyboardInfo": "Ce code pin sera demandé à chaque ouverture du site pour déchiffrer vos informations. Votre compte sera bloqué 48h après 3 saisies erronées.",
     "validate": "valider",
-    "return":"retour"
+    "return":"retour",
+    "forceSecurize": "Vous devez activer l'option de sécurisation avancée du compte pour finaliser l'inscription car le projet auquel vous souhaitez participer est sécurisé."
+
   },
   "askForPinCode": {
     "enterPinCode": "Entrez votre code pin",

@@ -11,10 +11,10 @@ Template.invitation.helpers({
         return Template.instance().project.get()
     },
     userAlreadyInProject: function () {
-        let result= false
-        if(Session.get("projects")){
-            Session.get("projects").forEach(userProject=>{
-                if(userProject.asymEnc_projectId === Template.instance().project.get()._id){
+        let result = false
+        if (Session.get("projects")) {
+            Session.get("projects").forEach(userProject => {
+                if (userProject.asymEnc_projectId === Template.instance().project.get()._id) {
                     result = true
                 }
             })
@@ -27,27 +27,49 @@ Template.invitation.helpers({
     },
     needToLoginFirst: function () {
         return Template.instance().needToLoginFirst.get()
+    },
+    securized: function () {
+        return Template.instance().invitation.get().securized
+    },
+    securizedOk: function () {
+        let invitation = Template.instance().invitation.get()
+        if (invitation && !invitation.securized) {
+            return true
+        } else if (!Meteor.user() || Meteor.user() && Meteor.user().public.securized) {
+            return true
+        }
+
     }
 });
 
 Template.invitation.events({
     //add your events here
-    "click [accept]" :function (event, instance) {
+    "click [accept]": function (event, instance) {
         event.preventDefault()
-        if(Meteor.userId()){
-            inviteController.acceptInvitation(instance.invitation.get(), instance.project.get(), instance.password, ()=>{
-                hubCrypto.decryptAndStoreProjectListInSession(()=>{
-                    FlowRouter.go('/project/'+instance.project.get()._id+'/home')
-                })
 
-            })
-        }else{
+        if (Meteor.userId()) {
+            if (invitation.securized && !Meteor.user().public.securized) {
+                console.log("todo: force change password")
+            } else {
+                inviteController.acceptInvitation(instance.invitation.get(), instance.project.get(), instance.password, () => {
+                    hubCrypto.decryptAndStoreProjectListInSession(() => {
+                        FlowRouter.go('/project/' + instance.project.get()._id + '/home')
+                    })
+
+                })
+            }
+
+        } else {
             instance.needToLoginFirst.set(true)
         }
     },
-    "click [goLogin]" : function (event, instance) {
+    "click [goLogin]": function (event, instance) {
         event.preventDefault()
-        FlowRouter.go('/login', null,{invitationId: instance.invitationId, password: instance.password})
+        let queryParams = {invitationId: instance.invitationId, password: instance.password}
+        if (instance.invitation.get().securized) {
+            queryParams.securized = true
+        }
+        FlowRouter.go('/login', null, queryParams)
     }
 });
 
@@ -60,11 +82,11 @@ Template.invitation.onCreated(function () {
     this.password = FlowRouter.current().queryParams.password
     this.needToLoginFirst = new ReactiveVar(false)
     //on récupere notre invit et notre projet grace au controlleur
-    inviteController.getCurrentInvitAndProject(this.invitationId, this.password,(invitation, project) => {
-        if(invitation){
+    inviteController.getCurrentInvitAndProject(this.invitationId, this.password, (invitation, project) => {
+        if (invitation) {
             this.invitation.set(invitation)
             this.project.set(project)
-        }else{
+        } else {
             this.noLongerExist.set(true)
         }
 
@@ -75,6 +97,7 @@ Template.invitation.onCreated(function () {
 
 Template.invitation.onRendered(function () {
     //add your statement here
+    resetTooltips()
 });
 
 Template.invitation.onDestroyed(function () {
