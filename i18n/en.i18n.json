@@ -635,5 +635,25 @@
     "checklist": "Check list",
     "start": "Start",
     "end": "End"
+  },
+  "donate": {
+    "title": "Support System-D",
+    "why": "We need your donations",
+    "whyText": "System-D project has been made with heart, on free time. If you want it to continue and offer more free time  to the persons who make it alive for develop new features and improve the existing ones, your donations are significant.",
+    "withTheMoney": "Your donations allow :",
+    "servers": "To pay the hosting cost of the platform for an always increasing number of user",
+    "sustain": "To sustain and improve the features of System-D, make them accessible to a large amount of users, and take into account the users feedbacks.",
+    "develop": "To create new features. Our todo list :",
+    "next1": "Instant chats between users,users and projects, projects.",
+    "next2": "allow users to search a project or an user by localization, skills, center of interest, type of activity.",
+    "next3": "Android, Desktop, and  IOS apps ",
+    "ponctual": "One-time donation ( Paypal )",
+    "ponctualInfo": "Send one-time donation on our Paypal account :",
+    "recursive": "Recurring donation ( liberapay )",
+    "recursiveInfo": "Give a little money every month to System-D for sustain its long-term development with the open-source and free platform LiberaPay :",
+    "cryptos": "crypto currency donation",
+    "donateIn": "Send a donation on the System-D wallet in",
+    "wallet": "Wallet ",
+    "copied": "Wallet address copied in the clipboard"
   }
 }

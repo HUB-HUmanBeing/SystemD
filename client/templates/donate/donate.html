@@ -1,0 +1,163 @@
+<template name="donate">
+    <div id="donate" class=" gradiant center-align relative" style="padding: 10px 0;">
+
+        <div class="bg-logo">{{>birdsBg}}
+            <img src="/images/icon/systemd-biglogo-grey.png" alt="">
+        </div>
+
+        <div class="container main-color">
+            <div class="row relative">
+                <div class="col m6 s12 ">
+                    <div class="donateInfo shadow">
+                        <h5>{{__ ".title"}}</h5>
+                        <div class="hr"></div>
+                        <h6>{{__ ".why"}}</h6>
+                        <div class="iconInfo">
+                            <i class="material-icons">favorite</i>
+                            <p class=" left-align">
+                                {{__ ".whyText"}}
+                            </p>
+                        </div>
+<div class="hr"></div>
+                        <h6>{{__ ".withTheMoney"}}</h6>
+                        <div class="iconInfo">
+                            <i class="material-icons">home</i>
+                            <p class="left-align">
+
+                                {{__ ".servers"}}
+                            </p>
+                        </div>
+                        <div class="iconInfo">
+                            <i class="material-icons">build</i>
+                            <p class=" left-align">
+                                {{__ ".sustain"}}
+                            </p>
+                        </div>
+                        <div class="iconInfo">
+                            <i class="material-icons">library_add</i>
+                            <p class="left-align">
+                                {{__ ".develop"}}
+                            <ul>
+                                <li>
+                                    {{__ ".next1"}}
+                                </li>
+                                <li>
+                                    {{__ ".next2"}}
+                                </li>
+                                <li>
+                                    {{__ ".next3"}}
+                                </li>
+                            </ul>
+
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col m6 s12 " style="padding-top: 0">
+                    <div class="">
+                        <img src="/images/icon/systemd-logo-white.png" alt="System-D"
+                             class="responsive-img systemDLogo " style=" width: 70px ; height: 70px ">
+                    </div>
+                    <div class="donatePayment">
+                        <ul class="collapsible shadow" id="donateCollapse" data-collapsible="accordion">
+                            <li style="background: none !important; box-shadow: none !important;">
+                                <div class="collapsible-header main-color ">
+                                    <div class="flex"><i class="material-icons">check</i>{{__ ".ponctual"}}</div>
+                                </div>
+                                <div class="collapsible-body">
+                                    <img src="images/icon/sauvegarde/1280px-PayPal.svg.png" alt=""
+                                         class="paymentWay responsive-img">
+                                    <p class="infoQuotes left-align">
+                                        {{__ ".ponctualInfo"}}
+                                    </p>
+                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                        <input type="hidden" name="cmd" value="_s-xclick"/>
+                                        <input type="hidden" name="hosted_button_id" value="PS2DVL8JBTGK2"/>
+                                        <input type="image"
+                                               src="https://www.paypalobjects.com/en_US/FR/i/btn/btn_donateCC_LG.gif"
+                                               border="0" name="submit"
+                                               title="PayPal - The safer, easier way to pay online!"
+                                               alt="Donate with PayPal button"/>
+                                        <img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif"
+                                             width="1" height="1"/>
+                                    </form>
+
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header main-color  active">
+                                    <div class="flex"><i class="material-icons">av_timer</i>{{__ '.recursive'}}</div>
+                                </div>
+
+                                <div class="collapsible-body">
+                                    <img src="images/icon/sauvegarde/liberapay-logo-300x105.png" alt=""
+                                         class="paymentWay responsive-img">
+
+                                    <p class="infoQuotes left-align">
+                                        {{__ ".recursiveInfo"}}
+                                    </p>
+                                    <a href="https://liberapay.com/robinBanquo/donate"><img alt="Donate using Liberapay"
+                                                                                            src="https://liberapay.com/assets/widgets/donate.svg"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header main-color ">
+                                    <div class="flex"><i class="material-icons">star_border</i>{{__ '.cryptos'}}</div>
+                                </div>
+                                <div class="collapsible-body">
+                                    <ul class="tabs tabs-fixed-width transparent focus-color" id="cryptoTabs">
+                                        {{#each crypto in cryptos}}
+                                            <li class="tab col transparent focus-color"><a
+                                                    href="#crypto-{{crypto.short}}">{{crypto.short}}</a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                    <div class="cryptoContainer">
+                                        {{#each crypto in cryptos}}
+                                            <div id="crypto-{{crypto.short}}" class="col s12 crypto">
+                                                <div class="row ">
+                                                    <div class=" col s12 m7 center-align">
+                                                        <img src="{{crypto.img}}" alt="" class="responsive-img shadow">
+                                                        <p class="infoQuotes left-align">
+                                                            {{__ ".donateIn"}} {{crypto.label}}
+                                                        </p>
+                                                    </div>
+                                                    {{#unless isPhone}}
+                                                    <div class="col s12 m5">
+                                                        <canvas id="{{crypto.short}}-qrCode" class="cryptoQR ">
+
+                                                        </canvas>
+                                                    </div>
+                                                        {{/unless}}
+                                                </div>
+                                                <div>
+                                                    <div class="magicLink relative shadow waves-effect waves-light"
+                                                         style="{{#unless isDesktop}}padding-bottom: 10px;{{/unless}}"
+                                                         id="address-{{crypto.address}}" copyMagicLink>
+                                                        <span>{{__ ".wallet"}} {{crypto.label}}</span>
+                                                        <div class="magicLinkContent {{#if
+                                                                copied}}copied{{/if}}">{{crypto.address}}</div>
+                                                        <div class="absolute"><i class="material-icons " style="{{#if
+                                                                copied}}color: #05a4be !important{{/if}}">{{#if copied}}
+                                                            done{{else}}content_copy{{/if}}</i></div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        {{/each}}
+                                    </div>
+
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</template>

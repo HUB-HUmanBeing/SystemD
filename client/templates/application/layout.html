@@ -19,6 +19,12 @@
         </main>
     </div>
     {{>submitIssue}}
+    <div id="donateBtn">
+        <a class="waves-effect waves-light btn " href="/donate"><i
+                class="material-icons left">monetization_on</i>
+            {{__ ".donateLabel"}}
+        </a>
+    </div>
     {{>notifModal}}
     {{#if showAcceptNotifTemplate}}
         {{>showAcceptNotif}}

@@ -7,7 +7,12 @@ FlowRouter.route('/', {
         BlazeLayout.render('mainLayout', {main: 'landingPage', header: 'landingHead'});
     },
 });
-
+FlowRouter.route('/donate', {
+    name: 'App.home',
+    action() {
+        BlazeLayout.render('mainLayout', {main: 'donate'});
+    },
+});
 FlowRouter.route('/login', {
     name: 'App.login',
     action() {

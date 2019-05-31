@@ -1,5 +1,42 @@
 @import "{}/client/scss/variables.scss";
+.magicLink {
+  width: 100%;
+  padding: 15px 50px 0px 10px;
+  background-color: #F1F1F1;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 3px solid $blue-highlight-color;
 
+  * {
+    color: $blue-highlight-color !important;
+  }
+
+  .magicLinkContent {
+    width: 100%;
+    overflow-x: scroll;
+    font-size: 1.2em;
+    white-space: nowrap;
+  }
+
+  .copied {
+    background-color: #05a4be;
+    color: white !important;
+  }
+
+  .absolute {
+    right: 0;
+    top: 0;
+    margin: 15px;
+    z-index: 200;
+  }
+
+  &:hover {
+    .magicLinkContent {
+      background-color: #8beeff;;
+    }
+  }
+
+}
 #showInvitation {
   position: relative;
   min-height: 100vh;
@@ -28,44 +65,7 @@
       font-size: 0.9em;
       margin: 0.6em 0;
     }
-    .magicLink {
-      width: 100%;
-      padding: 15px 50px 0px 10px;
-      background-color: #F1F1F1;
-      border-radius: 5px;
-      cursor: pointer;
-      border: 3px solid $blue-highlight-color;
 
-      * {
-        color: $blue-highlight-color !important;
-      }
-
-      .magicLinkContent {
-        width: 100%;
-        overflow-x: scroll;
-        font-size: 1.2em;
-        white-space: nowrap;
-      }
-
-      .copied {
-        background-color: #05a4be;
-        color: white !important;
-      }
-
-      .absolute {
-        right: 0;
-        top: 0;
-        margin: 15px;
-        z-index: 200;
-      }
-
-      &:hover {
-        .magicLinkContent {
-          background-color: #8beeff;;
-        }
-      }
-
-    }
     .qrcode{
       canvas{
         max-width: 15em;

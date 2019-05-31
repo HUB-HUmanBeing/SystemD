@@ -17,7 +17,12 @@
   "public": {
     "fastHashDifficulty": 5,
     "frontSalt": "coucou",
-    "publicVapidKey": ""
+    "publicVapidKey": "",
+    "cryptos": {
+      "eth": "0x35309468064c217abEbE23ca92DaFba088224Ad5",
+      "xrp": "rfSf6dWXp1Q91NSsFaoAAfTseqvG89PJAQ",
+      "btc": "1Pi1TgDAe4N1CGvREUT3LC2pmo6yTx5zcE"
+    }
   },
   "webpushMail": "test@test.com",
   "privateVapidKey": "",

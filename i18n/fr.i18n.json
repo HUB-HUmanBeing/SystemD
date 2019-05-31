@@ -636,5 +636,25 @@
     "checklist": "Check list",
     "start": "Début",
     "end": "Fin"
+  },
+  "donate": {
+    "title": "Soutenir System-D",
+    "why": "Nous avons besoins de vos donnations",
+    "whyText": "Le projet System-D à été bâti avec le coeur, sur du temps libre. Si vous souhaitez le voir perdurer et offrir à ceux qui le font vivre du temps libre pour developper de nouvelles fonctionnalités et améliorer les fonctionnalités existantes, vos donations sont importantes.",
+    "withTheMoney": "Vos donations permettent :",
+    "servers": "De payer les frais d'hébergement de la plate-forme pour un nombre toujours croissant d'utilisateurs",
+    "sustain": "De maintenir et améliorer les fonctionnalités de System-D, de les rendre accessible à toujours plus d'utilistateurs, et prendre en compte les retours utilisateurs.",
+    "develop": "De créer de nouvelles fonctionnalités. Prochains chantiers :",
+    "next1": "Discussions instantanées entre utilisateurs, utilisateurs et projets, projets.",
+    "next2": "Rechercher un projet ou un utilisateur par compétences, centre d'interet, type d'activité, localisation.",
+    "next3": "applications Android, Bureau, et IOS",
+    "ponctual": "Donation ponctuelle ( Paypal )",
+    "ponctualInfo": "Envoyer une donation ponctuelle via notre compte Paypal :",
+    "recursive": "Donation récurrente ( liberapay )",
+    "recursiveInfo": "Donner un peu d'argent tout les mois à System-D pour soutenir son développement sur le long terme via la plate-forme libre et open-source LiberaPay :",
+    "cryptos": "Donation en crypto monnaies",
+    "donateIn": "Envoyer un don sur le wallet de System-D en",
+    "wallet": "Wallet ",
+    "copied": "Adresse du wallet copiée dans le presse papier"
   }
 }

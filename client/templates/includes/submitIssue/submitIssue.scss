@@ -11,13 +11,17 @@
     visibility: visible;
     z-index: 6000;
     position: relative;
-    padding: 0 7px;
-   right: calc(35px - 100%);
+    padding: 0 3px;
+
     background-color: $blue-highlight-color;
+    height: 30px;
+    line-height: 30px;
+    right: calc(30px - 100%);
+
     opacity: 0.7;
     transition: 0.5s ease-out;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
     i{
       font-size: 25px;
     }
