@@ -518,6 +518,40 @@ const cryptoTools = {
             window.localStorage.getItem("hashedPassword")
         )
     },
+    async sim_encrypt_file(data, stringifiedSymKey, callback) {
+
+        return this.importSymKey(stringifiedSymKey, async (symKey) => {
+            let iv = this.crypto().getRandomValues(new Uint8Array(16))
+            await crypto.subtle.encrypt({
+                name: "AES-CBC",
+                iv: iv
+            }, symKey, data).then(
+                (result) => {
+                    if (callback)
+                        callback(this.convertArrayBufferViewtoString(iv) + this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                },
+                function (e) {
+                    console.log(e.message);
+                }
+            );
+        })
+
+    },
+//fonction de dechiffrement de données
+    async sim_decrypt_file(encryptedData, stringifiedSymKey, callback) {
+        return this.importSymKey(stringifiedSymKey, async (symKey) => {
+            let iv = this.convertStringToArrayBufferView(encryptedData.substring(0, 16))
+            let cypherText = this.convertStringToArrayBufferView(encryptedData.substring(16))
+            return this.crypto().subtle.decrypt({name: "AES-CBC", iv: iv}, symKey, cypherText).then(
+                (result) => {
+                    callback(this.convertArrayBufferViewtoString(new Uint8Array(result)));
+                },
+                function (e) {
+                    console.log("sym decrypt faillure", e)
+                }
+            );
+        })
+    },
     /***************************
      * pas très fier de celle là, elle nous permet de savoir a peu près les perf d'une machie
      * utilisateur et de pouvoir setter les setTimeOut des fonctions de déchiffrement qui font chier puisque

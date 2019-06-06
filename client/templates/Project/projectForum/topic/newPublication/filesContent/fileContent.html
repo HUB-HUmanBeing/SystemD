@@ -1,0 +1,54 @@
+<template name="fileContent">
+    <div class="row no no-margin ">
+        <form class="col s12 no-padding" id="newPublicationForm" newPublicationForm>
+            <div class="fileUploaderContainer">
+                <div class="fileUploader center-align" fileUploader>
+                    <i class="material-icons">file_upload</i><br><span>{{__ ".addFiles"}}</span>
+                </div>
+                <input type="file" id="fileInput" fileInput style="display: none">
+            {{#if files.length}}
+                <div class="filesPreview ">
+                    {{#if fileLoading}}
+                        <div class="loadBar center-align">
+                            {{__ ".loadInfos"}}
+                            <div class="progress">
+                                <div class="indeterminate"></div>
+                            </div>
+                        </div>
+                        {{/if}}
+                {{#each file in files}}
+                        <div class="filePreviewItem " id="filePreviewItem-{{file.tempId}}">
+                            <div class="fileIcon">
+                                {{#if compare file.status "==" "done"}}
+                                    <a href="" deleteFile id="fileItem-{{file.tempId}}" class="btn btn-floating waves-effect waves-light"><i class="material-icons">clear</i></a>
+                                {{else}} <div class="loadingFile animated-background">
+                                    <i class="material-icons">cloud_upload</i>
+                                </div>
+                                {{/if}}
+                                <img src="{{getFileIcon file.type}}" alt="" class="responsive-img shadow"  title="{{file.name}}">
+                            </div>
+                            <div class="fileLabel elipsis" title="{{file.name}}">
+                                {{file.name}}
+                            </div>
+
+                        </div>
+                    {{/each}}
+            </div>
+                {{/if}}
+            </div>
+            {{>beautyfullTextarea id="newPublicationText" placeholder=(__ "textualContent.placeholder") minheight="10vh"}}
+            <div class="row right-align no-margin">
+                <div class="col s12 no-padding">
+                    <button class="btn btnStandard waves-effect waves-light">
+                        {{#if isCreating}}
+                            {{>circleSpinner}}
+                        {{else}}<i class="material-icons left">send</i>
+                        {{/if}}{{__ "textualContent.publish"}}</button>
+
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</template>

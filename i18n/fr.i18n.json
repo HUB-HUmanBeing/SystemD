@@ -432,7 +432,7 @@
     "text": "Texte",
     "images": "Images et texte",
     "poll": "Sondage",
-    "files": "Fichiers"
+    "files": "Images, fichiers et texte"
   },
   "textualContent": {
     "placeholder": "Contenu de votre publication ...",
@@ -443,6 +443,10 @@
     "newProposition": "Proposition de réponse n°",
     "addProposition": "Ajouter une proposition",
     "publish": "Publier le sondage"
+  },
+  "fileContent": {
+    "addFiles": "Ajouter un ou plusieurs documents",
+    "loadInfos": "Chiffrement et upload des documents"
   },
   "publicationsList": {
     "showMore": "Voir plus..."

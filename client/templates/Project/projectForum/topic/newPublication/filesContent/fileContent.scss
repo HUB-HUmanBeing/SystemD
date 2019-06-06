@@ -1,0 +1,197 @@
+@import "{}/client/scss/variables.scss";
+
+.emojiBtn {
+
+}
+
+.closeBackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2000;
+}
+
+.emojiPicker {
+  z-index: 2001;
+  width: 100%;
+  position: absolute;
+  background-color: $light-bg;
+  top: 5px;
+  left: -20px;
+  border-radius: 5px;
+  border: 2px solid $minus-color;
+  max-width: 275px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 5px;
+
+  .emojiContainer {
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $main-bg;
+
+      .emoji {
+        color: $main-color
+      }
+    }
+  }
+
+  .emoji {
+
+    display: inline-block;
+    font-size: 25px;
+    position: relative;
+    color: $minus-color;
+
+    .emojiImg {
+      width: 25px;
+      height: 25px;
+    }
+
+  }
+}
+
+.textareaSuperContainter {
+  border-radius: 5px;
+  background-color: $main-bg;
+  margin: 5px 0 10px 0;
+  padding: 10px 10px 0 10px;
+
+  .textareaContainer {
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden;
+
+    .character-counter {
+      top: -15px;
+    }
+  }
+
+  textarea {
+    padding: 5px 0 15px 0;
+    box-shadow: none !important;
+    margin: 0;
+    border: none !important;
+    transition: 0.3s;
+
+    &.desktop {
+
+      overflow-y: scroll !important;
+      overflow-x: hidden;
+      width: calc(100% + 15px);
+    }
+
+  }
+
+  textarea::placeholder {
+    color: $minus-color;
+    font-style: italic;
+  }
+}
+
+#newPublicationForm {
+  margin-top: -5px;
+  .fileUploaderContainer{
+    .fileUploader{
+      opacity: 0.5;
+      border: 2px dashed white;
+      border-radius: 10px ;
+      margin: 5px  0 10px 0;
+      padding: 15px;
+      cursor: pointer;
+      *{
+        transition: 0.3s;
+        color: white;
+      }
+
+      i{
+        font-size: 3em;
+      }
+      transition: 0.3s;
+      &:hover{
+       opacity: 0.9;
+      }
+    }
+.filesPreview{
+  text-align: left;
+  .filePreviewItem{
+    text-align: center;
+    display: inline-block;
+    max-width: 70px;
+    margin: 0 5px 0 0;
+    .fileIcon{
+      position: relative;
+      img{
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .animated-background {
+        animation-duration: 20.25s !important;
+        background: rgba($minus-color, 0.4);
+        background: linear-gradient(to right, rgba($minus-color, 0.4) 10%, rgba($minus-color, 0.4) 18%, rgba($plus-color, 0.4) 33%, rgba($minus-color, 0.4) 43%);
+      }
+      a{
+        position: absolute;
+        left: 2px;
+        top:2px;
+        width: 25px;
+        height: 25px;
+        background-color: rgba($main-bg, 0.5);
+        i{
+          position: relative;
+          top: -7px;
+          font-size: 20px;
+        }
+      }
+      .loadingFile{
+        position: absolute;
+        top:0;
+        right: 0;
+        left:0;
+        bottom: 5px;
+        z-index: 300;
+        opacity: 1;
+        i{
+          font-size: 2em;
+          margin-top: 15px;
+          color: $plus-color;
+        }
+
+
+      }
+    }
+
+  }
+}
+  }
+textarea{
+  &.desktop{
+    max-height: 40vh !important;
+  }
+}
+  .emojiBtn {
+    position: absolute;
+    bottom: -5px;
+    left: 2px;
+
+    i {
+      color: $minus-color !important;
+    }
+  }
+
+}
+
+
+
+
+

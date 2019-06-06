@@ -1,7 +1,7 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Invitations from "../../lib/collections/Invitations";
 
-const InvitatioMember = Class.create({
+const InvitationMember = Class.create({
     name: 'InvitationMember',
     fields:{
         memberId: String,
@@ -39,7 +39,7 @@ const Invitation = Class.create({
         remaining:{
             type: Number
         },
-        invitationMembers: [InvitatioMember]
+        invitationMembers: [InvitationMember]
 
     },
     helpers: {

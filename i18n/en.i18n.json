@@ -429,7 +429,7 @@
     "text": "Text",
     "images": "Images and text",
     "poll": "Poll",
-    "files": "Files"
+    "files": "Images, files and text"
   },
   "textualContent": {
     "placeholder": "Content of your publication ...",
@@ -440,6 +440,10 @@
     "newProposition": "Answer proposal n°",
     "addProposition": "Add proposal",
     "publish": "Publish poll"
+  },
+  "fileContent": {
+    "addFiles": "Add one or more documents",
+    "loadInfos": "encryption and upload of documents"
   },
   "publicationsList": {
     "showMore": "Show more..."

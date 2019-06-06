@@ -7,6 +7,18 @@ const TextualContent = Class.create({
         symEnc_text: String
     }
 })
+const FileContent = Class.create({
+    name: "FileContent",
+    fields: {
+        symEnc_text: String,
+        projectFileIds : {
+            type : [String],
+            default: function () {
+                return [];
+            }
+        }
+    }
+})
 const PollOption = Class.create({
     name: "PollOption",
     fields: {
@@ -66,6 +78,10 @@ const Publication = Class.create({
         pollContent: {
             type: PollContent,
             optional: true
+        },
+        fileContent:{
+          type:FileContent,
+          optional:true
         },
         commentCount: {
             type: Number,

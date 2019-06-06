@@ -11,20 +11,16 @@ Template.newPublication.helpers({
                 icon: "subject"
             },
             {
-                type: "imagesContent",
-                label: __("newPublication.images"),
-                icon: "panorama"
+                type: "fileContent",
+                label: __("newPublication.files"),
+                icon: "insert_drive_file"
             },
             {
                 type: "pollContent",
                 label: __("newPublication.poll"),
                 icon: "list"
             },
-            {
-                type: "filesContent",
-                label: __("newPublication.files"),
-                icon: "insert_drive_file"
-            }
+
         ]
     },
     selectedType: function () {

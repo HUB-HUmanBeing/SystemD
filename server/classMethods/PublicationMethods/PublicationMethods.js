@@ -45,6 +45,42 @@ Publication.extend({
                 }
             })
         },
+        newPublicationFile(authInfo, topicId, publicationParmas, notifObjects) {
+            check(publicationParmas, {
+                type: String,
+                fileContent: Object,
+            })
+            check(authInfo, {memberId: String, userSignature: String})
+            check(topicId, String)
+            let topic = Topic.findOne(topicId)
+            let currentProject = Project.findOne(topic.projectId)
+            check(currentProject.isMember(authInfo), true)
+
+            let computedParams = {
+                projectId: currentProject._id,
+                createdBy: authInfo.memberId,
+                topicId: topic._id,
+            }
+            publicationParmas = {...publicationParmas, ...computedParams}
+            let newPublication = new Publication(publicationParmas)
+            topic.seenBy = [authInfo.memberId]
+            topic.lastActivity = new Date()
+            topic.publicationTotalCount++
+            return newPublication.save((err) => {
+                if (!err) {
+                    check(notifObjects, [{
+                        userId: String,
+                        memberId: String,
+                        hashControl: String
+                    }])
+
+                    topic.save()
+                    topic.notifySubscribers(notifObjects, authInfo.memberId)
+                } else {
+                    console.log(err)
+                }
+            })
+        },
         newPublicationPoll(authInfo, topicId, publicationParmas, notifObjects) {
             check(publicationParmas, {
                 type: String,

@@ -71,7 +71,7 @@ const uploadFiles = {
      * @param cb
      */
     uploadFile(file, fileName, url, cb) {
-        var xhr = new XMLHttpRequest()
+        let xhr = new XMLHttpRequest()
         xhr.open('PUT', url, true)
         xhr.send(file)
         xhr.onload = () => {

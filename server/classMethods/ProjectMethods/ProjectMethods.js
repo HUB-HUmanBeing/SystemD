@@ -2,6 +2,7 @@ import {check} from "meteor/check";
 import Project from "../../../imports/classes/Project";
 import cryptoServer from "../../../imports/cryptoServer";
 import Topic from "../../../imports/classes/Topic";
+import minioTools from "../../../imports/minioTools";
 
 /*********************************
  * METHODES DE LA COLLECTION USERS
