@@ -1,46 +1,47 @@
 import cryptoTools from "./cryptoTools";
 import ProjectFile from "../../imports/classes/ProjectFile";
 import projectController from "./controllers/projectController";
+import Axios from "axios";
 
-const projectFileUploader = {
+const projectFilesController = {
 
     encryptAndUploadFiles(files, projectId, instance) {
         let filesArray = instance.files.get()
         for (let i = 0; i < files.length; i++) {
             let tempId = cryptoTools.generateId()
             filesArray.push({
-                tempId :tempId,
+                tempId: tempId,
                 name: files[i].name,
                 status: "loading",
                 type: files[i].type
             })
-            if(["image/jpeg", "image/gif", "image/png", "image/svg+xml", "image/jpg"].indexOf(files[i].type)>-1){
+            if (["image/jpeg", "image/gif", "image/png", "image/svg+xml", "image/jpg"].indexOf(files[i].type) > -1) {
                 let reader = new FileReader();
-                reader.onload = function(e) {
-                    Meteor.setTimeout(()=>{
-                        $('#filePreviewItem-'+tempId+ ' img').attr('src', e.target.result);
-                    },200)
+                reader.onload = function (e) {
+                    Meteor.setTimeout(() => {
+                        $('#filePreviewItem-' + tempId + ' img').attr('src', e.target.result);
+                    }, 200)
 
                 }
                 reader.readAsDataURL(files[i]);
             }
             this.getUploadLink(files[i], projectId, (uploadLink, fileId) => {
-                this.encryptFile(files[i],fileId, (encryptedFile, boundary) => {
-                    this.uploadFile(encryptedFile,uploadLink,boundary, projectId, () => {
+                this.encryptFile(files[i], fileId, (encryptedFile, boundary) => {
+                    this.uploadFile(encryptedFile, uploadLink, boundary, projectId, () => {
                         console.log("done")
-                        Meteor.setTimeout(()=>{
+                        Meteor.setTimeout(() => {
                             let newFiles = instance.files.get()
                             console.log(newFiles)
-                            newFiles.forEach((file,j)=>{
-                                if (file.tempId == tempId){
+                            newFiles.forEach((file, j) => {
+                                if (file.tempId == tempId) {
                                     newFiles[j].id = fileId
-                                    newFiles[j].status="done"
+                                    newFiles[j].status = "done"
                                     instance.files.set(newFiles)
                                 }
 
                             })
 
-                        },200)
+                        }, 200)
 
                     })
                 })
@@ -49,7 +50,7 @@ const projectFileUploader = {
         }
         instance.files.set(filesArray)
     },
-    getUploadLink(file,projectId, callback) {
+    getUploadLink(file, projectId, callback) {
         let projectFile = new ProjectFile
 
         let projectFileParams = {
@@ -58,20 +59,20 @@ const projectFileUploader = {
             symEnc_mimeType: file.type,
             projectId: projectId
         }
-        cryptoTools.encryptObject(projectFileParams, {symKey:Session.get("currentProjectSimKey")},(encryptedProjectFileParams)=>{
+        cryptoTools.encryptObject(projectFileParams, {symKey: Session.get("currentProjectSimKey")}, (encryptedProjectFileParams) => {
             console.log(encryptedProjectFileParams)
-            projectFile.callMethod('newProjectFile',projectController.getAuthInfo(FlowRouter.current().params.projectId), encryptedProjectFileParams,(err, res) => {
+            projectFile.callMethod('newProjectFile', projectController.getAuthInfo(FlowRouter.current().params.projectId), encryptedProjectFileParams, (err, res) => {
                 if (err) {
                     console.log(err)
                 } else {
                     console.log(res)
                     callback(res.url, res.id)
                 }
-            } )
+            })
         })
 
     },
-    encryptFile(file,fileId, callback) {
+    encryptFile(file, fileId, callback) {
         let reader = new FileReader();
         reader.onload = () => {
 
@@ -94,8 +95,8 @@ const projectFileUploader = {
 
 
     },
-    uploadFile(encryptedFile,uploadLink,boundary, projectId, callback) {
-        this.UploadData(uploadLink, encryptedFile, boundary, ()=>{
+    uploadFile(encryptedFile, uploadLink, boundary, projectId, callback) {
+        this.UploadData(uploadLink, encryptedFile, boundary, () => {
             callback()
         })
 
@@ -130,27 +131,70 @@ const projectFileUploader = {
             }
         }
     },
-    delete(tempId,instance){
+    delete(tempId, instance) {
         console.log(tempId)
         let fileToDelete = false
         let files = instance.files.get()
-        files.forEach((file,i)=> {
-if(file.tempId === tempId){
-    console.log(file)
-    let projectFile = new ProjectFile
-    projectFile.callMethod('deleteProjectFile',projectController.getAuthInfo(instance.projectId), file.id,(err, res) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log(res)
-            files.splice(i,1)
-            instance.files.set(files)
-        }
-    } )
-}
+        files.forEach((file, i) => {
+            if (file.tempId === tempId) {
+                console.log(file)
+                let projectFile = new ProjectFile
+                projectFile.callMethod('deleteProjectFile', projectController.getAuthInfo(instance.projectId), file.id, (err, res) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        console.log(res)
+                        files.splice(i, 1)
+                        instance.files.set(files)
+                    }
+                })
+            }
+        })
+    },
+    getFile(fileInfo, callback){
+        this.getFileUrl(fileInfo, (fileUrl)=>{
+            Axios.get(fileUrl)
+                .then((res)=>{
+                   // console.log("axiosRes",res.data)
+                    this.decryptFile(res.data)
+                }).catch((err)=>{
+                    console.log(err)
+            })
+        })
+    },
+    decryptFile(fileData, callback){
+        // let reader = new FileReader();
+        // reader.onload = () => {
+
+            let b64str = fileData.split("\n")[4];
+            console.log(b64str);
+
+            //let filename = file.name;
+            cryptoTools.sim_decrypt_data(b64str, Session.get("currentProjectSimKey"), (decryptedData) => {
+console.log(decryptedData)
+
+                // Generate a random boundary
+                // let boundary = "-----------------" + Math.floor(Math.random() * 32768) + Math.floor(Math.random() * 32768);
+                //
+                // let datapack = this.PackData(boundary, encryptedData, filename, "fileupload");
+                //
+                // callback(datapack, boundary)
+            })
+        // };
+        // reader.readAsDataURL(file);
+
+    },
+    getFileUrl(fileInfo, callback){
+        let file = new ProjectFile(fileInfo._id)
+        file.callMethod("getFileUrl", projectController.getAuthInfo(fileInfo.projectId), fileInfo._id, (err,res)=>{
+            if(err){
+                console.log(err)
+            }else{
+                callback(res)
+            }
         })
     }
 
 }
 
-export default projectFileUploader
+export default projectFilesController

@@ -3,7 +3,7 @@ import Publication from "../../../../../../../imports/classes/Publication";
 import projectController from "../../../../../../lib/controllers/projectController";
 import {renderShortname, unicodeToShortnames} from "emojitsu";
 import preFormatMessage from "../../../../../../lib/preformatMessages";
-import projectFileUploader from "../../../../../../lib/projectFileUploader"
+import projectFilesController from "../../../../../../lib/projectFilesController"
 
 Template.fileContent.helpers({
     //add you helpers here
@@ -72,12 +72,12 @@ Template.fileContent.events({
         $('#fileInput').click()
     },
     'change [fileInput]':function (event,instance) {
-        projectFileUploader.encryptAndUploadFiles(event.currentTarget.files, FlowRouter.current().params.projectId, instance)
+        projectFilesController.encryptAndUploadFiles(event.currentTarget.files, FlowRouter.current().params.projectId, instance)
     },
     'click [deleteFile]':function (event, instance) {
         event.preventDefault()
         let tempId = event.currentTarget.id.split('-')[1]
-        projectFileUploader.delete(tempId,instance)
+        projectFilesController.delete(tempId,instance)
     }
 
 });
@@ -116,7 +116,7 @@ let dropContainer = $('.fileUploader')[0]
         evt.preventDefault();
         // pretty simple -- but not for IE :(
         let fileInput = evt.dataTransfer.files;
-        projectFileUploader.encryptAndUploadFiles(fileInput, FlowRouter.current().params.projectId, this)
+        projectFilesController.encryptAndUploadFiles(fileInput, FlowRouter.current().params.projectId, this)
         $('.fileUploader').css("opacity", 0.5).css("border", " 2px dashed white")
 
     };
@@ -125,7 +125,7 @@ let dropContainer = $('.fileUploader')[0]
 Template.fileContent.onDestroyed(function () {
     //add your statement here
     this.files.get().forEach(file=>{
-        projectFileUploader.delete(file.tempId,this )
+        projectFilesController.delete(file.tempId,this )
     })
 });
 

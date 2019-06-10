@@ -30,6 +30,9 @@
             {{#if compare publication.type "===" "pollContent"}}
                 {{>showPollContent content=publication.pollContent  refreshScrollbar=refreshScrollbar id=publication._id }}
             {{/if}}
+            {{#if compare publication.type "===" "fileContent"}}
+                {{>showFileContent content=publication.fileContent  refreshScrollbar=refreshScrollbar id=publication._id }}
+            {{/if}}
         </div>
 
         {{#if  isDeletable }}

@@ -13,6 +13,7 @@ import Comments from "../lib/collections/Comments";
 import MapMarkers from "../lib/collections/MapMarkers";
 import MapMarker from "../imports/classes/MapMarker";
 import Activities from "../lib/collections/Activities";
+import ProjectFiles from "../lib/collections/ProjectFiles";
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
  **********************************/
@@ -271,30 +272,42 @@ Meteor.publish('markerDetail', function (authInfo, markerId) {
     check(currentProject.isMember(authInfo), true)
     return MapMarkers.find({_id: markerId})
 })
-Meteor.publish("CalendarActivitiesByProject",function (authInfo, projectId) {
+Meteor.publish("CalendarActivitiesByProject", function (authInfo, projectId) {
     check(projectId, String)
     check(authInfo, {memberId: String, userSignature: String})
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
-    return Activities.find({projectId: projectId, start:{$exists: true}}, {
+    return Activities.find({projectId: projectId, start: {$exists: true}}, {
         sort: {
             createdAt: -1
         }
     })
 })
-Meteor.publish("mapActivitiesByProject",function (authInfo, projectId) {
+Meteor.publish("mapActivitiesByProject", function (authInfo, projectId) {
     check(projectId, String)
     check(authInfo, {memberId: String, userSignature: String})
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
-    return Activities.find({projectId: projectId, symEnc_coordinates:{$exists: true}},{})
+    return Activities.find({projectId: projectId, symEnc_coordinates: {$exists: true}}, {})
 })
-Meteor.publish("activitiesProject",function (authInfo, projectId) {
+Meteor.publish("activitiesProject", function (authInfo, projectId) {
     check(projectId, String)
     check(authInfo, {memberId: String, userSignature: String})
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
-    return Activities.find({projectId: projectId}, {
+    return Activities.find({projectId: projectId}, {})
+})
+Meteor.publish("publicationFiles", function (authInfo, projectId, filesId) {
+    check(projectId, String)
+    check(authInfo, {memberId: String, userSignature: String})
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    check(filesId, [String])
+    return ProjectFiles.find({
+        $and:
+            [
+                {projectId: projectId},
+                {_id: {$in: filesId}}
+            ]
     })
 })
-

@@ -1,0 +1,22 @@
+<template name="showFileContent">
+    <div class="fileDisplayContainer flex">
+<!--        <div class="focusFile flex-auto">-->
+<!--            -->
+<!--        </div>-->
+
+        <div class="carousel">
+            {{#each file in files}}
+                <div class="carousel-item" href="#{{@index}}!">
+                   {{>filePreview file=file index=@index}}
+
+                </div>
+
+            {{/each}}
+        </div>
+
+    </div>
+
+    {{#if decryptedContent}}
+        {{>smartContent content=decryptedContent.symEnc_text  refreshScrollbar= refreshScrollbar id=id}}
+    {{/if}}
+</template>
