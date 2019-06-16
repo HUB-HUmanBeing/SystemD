@@ -17,6 +17,9 @@
     "allow": "elle permettra :",
     "infos": "Informations complémentaires :"
   },
+  "layout": {
+    "donateLabel": "Soutenir System-D"
+  },
   "_templates": "includes",
   "menuProject": {
     "home": "Accueil",
@@ -407,6 +410,9 @@
     "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
     "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier",
     "topicName": "Nom de la discussion"
+  },
+  "topic": {
+    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier en cours"
   },
   "topicItem": {
     "unseenPublications": "Nouvelles publications",

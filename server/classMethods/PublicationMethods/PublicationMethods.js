@@ -145,7 +145,6 @@ Publication.extend({
             check(currentProject.isMember(authInfo), true)
             check(authInfo.memberId === publication.createdBy, true)
             return publication.removeRecursive((err) => {
-                console.warn('todo: remover les comments enfants')
             })
         },
         toggleLike(authInfo){

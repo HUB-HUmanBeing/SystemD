@@ -28,15 +28,18 @@ Template.projectForum.helpers({
 
         FlowRouter.watchPathChange()
         let instance = Template.instance()
-        Meteor.setTimeout(() => {
-            let topicContainer = document.getElementById('topicContainer')
-            if (topicContainer && instance && Meteor.Device.isDesktop()) {
-                if (instance.topicbs) {
-                    instance.topicbs.destroy()
+        if (Meteor.Device.isDesktop()) {
+            Meteor.setTimeout(() => {
+                let topicContainer = document.getElementById('topicContainer')
+                if (topicContainer && instance && Meteor.Device.isDesktop()) {
+                    if (instance.topicbs) {
+                        instance.topicbs.destroy()
+                    }
+                    instance.topicbs = new BeautifyScrollbar('#topicContainer');
                 }
-                instance.topicbs = new BeautifyScrollbar('#topicContainer');
-            }
-        }, 700)
+            }, 700)
+        }
+
 
         return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId
     },
@@ -47,15 +50,18 @@ Template.projectForum.helpers({
     refreshScrollbar: function () {
         let instance = Template.instance()
         return function () {
-            Meteor.setTimeout(() => {
-                let topicContainer = document.getElementById('topicContainer')
-                if (topicContainer && instance && Meteor.Device.isDesktop()) {
-                    if (instance.topicbs) {
-                        instance.topicbs.destroy()
+            if (Meteor.Device.isDesktop()) {
+                Meteor.setTimeout(() => {
+                    let topicContainer = document.getElementById('topicContainer')
+                    if (topicContainer && instance && Meteor.Device.isDesktop()) {
+                        if (instance.topicbs) {
+                            instance.topicbs.destroy()
+                        }
+                        instance.topicbs = new BeautifyScrollbar('#topicContainer');
                     }
-                    instance.topicbs = new BeautifyScrollbar('#topicContainer');
-                }
-            }, 200)
+                }, 200)
+            }
+
         }
     }
 });

@@ -27,6 +27,9 @@
     "maps": "Map",
     "members": "Members"
   },
+  "layout": {
+    "donateLabel": "Support System-D"
+  },
   "menu": {
     "param": "Parameters",
     "logout": "Log Out",
@@ -409,6 +412,9 @@
     "unseenPublications": "New publications",
     "dragInfo": "You can move this topic in an other category",
     "mainTopic": "MAIN TOPIC"
+  },
+  "topic": {
+    "downloadAndDecrypt": "Downloading and decrypting file..."
   },
   "topicHeader": {
     "mainTopic": "Main topic",

@@ -1,7 +1,83 @@
 @import "{}/client/scss/variables.scss";
 
-#topic{
-.publicationBox{
-  background: linear-gradient(45deg, $contrasted-bg 0%,$contrasted-plus-bg  100%);
+#topic {
+  .publicationBox {
+    background: linear-gradient(45deg, $contrasted-bg 0%, $contrasted-plus-bg 100%);
+  }
+
+  .fullSreenFileView {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+    padding: 5vh;
+
+    .closeFullScreenView {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 10000;
+      background-color: rgba($contrasted-plus-bg, 0.7);
+    }
+.preloader-wrapper{
+  margin-top: 20vh;
 }
+    .fullScreenItem {
+      margin: 0 auto;
+
+      position: relative;
+      z-index: 10001;
+      //line-height: 90vh;
+      max-width: 800px;
+
+      .fileContainer {
+        position: relative;
+
+        .fileContent {
+          max-height: 90vh;
+          position: relative;
+audio, .fileIcon{
+  margin-top: 20vh;
+}
+          video, img{
+            position: relative;
+            width: auto;
+            height: 100%;
+            max-height: 80vh;
+          }
+
+
+        }
+
+        .downloadFileBtn {
+margin: 5px;
+          background-color: $light-bg;
+          transition: 0.3s;
+
+          * {
+            transition: 0.3s;
+            color: $main-color;
+          }
+
+          &:hover {
+            background-color: $blue-highlight-color !important;
+
+            * {
+              color: $plus-color;
+            }
+          }
+        }
+
+        .fileLabel {
+          position: relative;
+          bottom: 0px;
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
 }

@@ -1,24 +1,67 @@
 @import "{}/client/scss/variables.scss";
 
-.fileDisplayContainer{
+.fileDisplayContainer {
   height: 30vh;
   position: relative;
   margin: 0 -15px;
-  .carousel{
-  height: 200px;
-    .carousel-item{
+
+  .mobileCaroussel {
+    height: 30vh;
+    overflow-x: scroll;
+
+    .mobileCarousselScroller{
+      display: inline-block !important;
+      white-space: nowrap;
+      height: 30vh;
+      overflow: hidden;
+
+      //width: 4000px;
+      .mobileCarousselItem {
+        height: 30vh;
+        display: inline-block !important;
+        position: relative;
+        overflow: hidden;
+        .fileIcon {
+          height: 30vh;
+          overflow: hidden;
+          text-align: center;
+          padding: 0 0px 0 0px !important;
+
+          img {
+            width: auto;
+            height: calc(30vh - 45px) !important;
+          }
+
+          .fileLabel {
+            max-width: 150px !important;
+            padding: 5px 10px 0 10px !important;
+          }
+        }
+      }
+    }
+
+  }
+
+  .carousel {
+    height: 200px;
+
+    .carousel-item {
       //position: relative;
     }
-    .fileIcon{
-      text-align: center;
-      padding: 0 0px 10px 0px;
-     img{
-       width: auto;
-       height: calc( 30vh - 35px);
-     }
-.fileLabel{
-  padding: 5px 10px;
+
+  }
 }
-    }
+
+.fileIcon {
+  text-align: center;
+  padding: 0 0px 10px 0px;
+
+  img {
+    width: auto;
+    height: calc(30vh - 35px);
+  }
+
+  .fileLabel {
+    padding: 5px 10px;
   }
 }

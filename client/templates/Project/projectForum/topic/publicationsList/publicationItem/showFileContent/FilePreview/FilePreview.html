@@ -1,11 +1,32 @@
 <template name="filePreview">
     <div class="fileIcon" id="filePreviewCarousel-{{carouselIndex index}}" focusFile>
-        <img src="{{getFileIcon file.symEnc_mimeType}}" alt="" class="shadow"
-             title="{{file.symEnc_fileName}}">
+    <!--        {{#if compare type "==" "video"}}-->
+        <!--            <video controls>-->
 
+        <!--                <source src="" type="{{file.symEnc_mimeType}}" id="video-{{file._id}}">-->
+        <!--                <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>-->
+        <!--            </video>-->
+            <!--        {{else}}-->
+            <!--            {{#if compare type "==" "audio"}}-->
+            <!--                <audio controls title="{{file.symEnc_fileName}}">-->
+            <!--                    <source src="" type="{{file.symEnc_mimeType}}" id="audio-{{file._id}}">-->
+            <!--                    Your browser does not support the audio element.-->
+            <!--                </audio>-->
+
+                <!--            {{else}}-->
+
+            <img src="{{getFileIcon file.symEnc_mimeType}}" alt="" class="shadow"
+                 title="{{file.symEnc_fileName}}" id="img-{{file._id}}">
+
+                <!--            {{/if}}-->
+            <!--        {{/if}}-->
         <div class="fileLabel elipsis" title="{{file.symEnc_fileName}}">
             {{file.symEnc_fileName}}
         </div>
-</div>
+        <a href="" download role="button" class="btn btn-floating download-file shadow waves-effect waves-light"
+           downLoadFile id="downLoadLink-{{file._id}}"><i class="material-icons">remove_red_eye</i></a>
+
+
+    </div>
 
 </template>

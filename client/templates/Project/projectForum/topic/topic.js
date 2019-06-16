@@ -2,6 +2,7 @@ import projectController from "../../../../lib/controllers/projectController";
 import cryptoTools from "../../../../lib/cryptoTools";
 import Topic from "/imports/classes/Topic";
 import Project from "../../../../../imports/classes/Project";
+import filesTypes from "../../../../lib/filesTypes";
 
 Template.topic.helpers({
     //add you helpers here
@@ -14,11 +15,31 @@ Template.topic.helpers({
     },
     refreshScrollbar: function () {
         return Template.currentData().refreshScrollbar
-    }
+    },
+    file: function () {
+        return Session.get('fullSizeFile')
+    },
+    type: function () {
+        let file = Session.get('fullSizeFile')
+        if(file){
+            let type = ""
+            filesTypes.forEach(fileType => {
+                if (fileType.mimes.indexOf(file.symEnc_mimeType) > -1) {
+                    type = fileType.label
+
+                }
+            })
+            return type
+        }
+
+    },
 });
 
 Template.topic.events({
     //add your events here
+    'click [closeFullScreenView]': function () {
+        Session.set('fullSizeFile', false)
+    }
 });
 
 Template.topic.onCreated(function () {

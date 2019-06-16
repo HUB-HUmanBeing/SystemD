@@ -26,12 +26,10 @@ const projectFilesController = {
                 reader.readAsDataURL(files[i]);
             }
             this.getUploadLink(files[i], projectId, (uploadLink, fileId) => {
-                this.encryptFile(files[i], fileId, (encryptedFile, boundary) => {
-                    this.uploadFile(encryptedFile, uploadLink, boundary, projectId, () => {
-                        console.log("done")
+                this.encryptFile(files[i], fileId, (encryptedBlob) => {
+                    this.uploadFile(encryptedBlob, uploadLink, projectId, () => {
                         Meteor.setTimeout(() => {
                             let newFiles = instance.files.get()
-                            console.log(newFiles)
                             newFiles.forEach((file, j) => {
                                 if (file.tempId == tempId) {
                                     newFiles[j].id = fileId
@@ -60,12 +58,11 @@ const projectFilesController = {
             projectId: projectId
         }
         cryptoTools.encryptObject(projectFileParams, {symKey: Session.get("currentProjectSimKey")}, (encryptedProjectFileParams) => {
-            console.log(encryptedProjectFileParams)
             projectFile.callMethod('newProjectFile', projectController.getAuthInfo(FlowRouter.current().params.projectId), encryptedProjectFileParams, (err, res) => {
                 if (err) {
                     console.log(err)
                 } else {
-                    console.log(res)
+                    //console.log(res)
                     callback(res.url, res.id)
                 }
             })
@@ -75,44 +72,42 @@ const projectFilesController = {
     encryptFile(file, fileId, callback) {
         let reader = new FileReader();
         reader.onload = () => {
-
-            let b64str = reader.result.split(",")[1];
-            //console.log(b64str);
-
             let filename = file.name;
-            cryptoTools.sim_encrypt_data(b64str, Session.get("currentProjectSimKey"), (encryptedData) => {
-
-
-                // Generate a random boundary
-                let boundary = "-----------------" + Math.floor(Math.random() * 32768) + Math.floor(Math.random() * 32768);
-
-                let datapack = this.PackData(boundary, encryptedData, filename, "fileupload");
-
-                callback(datapack, boundary)
+            console.log("le fichier tel qu'il est fourni", reader.result)
+            const iv = window.crypto.getRandomValues(new Uint8Array(16)); //generate a random iv
+            const content = new Uint8Array(reader.result); //encoded file content
+            // encrypt the file
+            cryptoTools.importSymKey(Session.get("currentProjectSimKey"), (symKey) => {
+                window.crypto.subtle.encrypt({
+                    iv,
+                    name: "AES-CBC"
+                }, symKey, content)
+                    .then(function (encrypted) {
+                        //returns an ArrayBuffer containing the encrypted data
+                        const blob = new Blob([window.atob("RW5jcnlwdGVkIFVzaW5nIEhhdC5zaA"), iv, new Uint8Array(encrypted)], {
+                            type: 'application/octet-stream'
+                        });
+                        callback(blob)//create the new file buy adding signature and iv and content
+                        //console.log("file has been successuflly encrypted");
+                    })
+                    .catch(function (err) {
+                        console.log("An error occured while Encrypting the file, try again!"); //reject
+                    });
             })
         };
-        reader.readAsDataURL(file);
+        reader.readAsArrayBuffer(file);
 
 
     },
-    uploadFile(encryptedFile, uploadLink, boundary, projectId, callback) {
-        this.UploadData(uploadLink, encryptedFile, boundary, () => {
+    uploadFile(encryptedBlob, uploadLink, projectId, callback) {
+        this.UploadData(uploadLink, encryptedBlob, () => {
             callback()
         })
 
-    },
-    PackData(boundary, data, filename, varname) {
-        let datapack = '';
-        datapack += '--' + boundary + '\r\n';
-        datapack += 'Content-Disposition: form-data; ';
-        datapack += 'name="' + varname + '"; filename="' + filename + '"\r\n';
-        datapack += 'Content-Type: application/octet-stream\r\n\r\n';
-        datapack += data;
-        datapack += '\r\n';
-        datapack += '--' + boundary + '--';
-        return datapack;
-    },
-    UploadData(url, datapack, boundary, cb) {
+    }
+    ,
+
+    UploadData(url, blob, cb) {
         let xhr = new XMLHttpRequest();
         /*
         xhr.onreadystatechange = function() {
@@ -120,9 +115,13 @@ const projectFilesController = {
                alert("error in upload!");
         }
         */
+        // const blob = new Blob(datapack, {
+        //     type: 'application/octet-stream'
+        // });
+        // console.log("datapack",datapack,  blob)
         xhr.open('PUT', url);
-        xhr.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
-        xhr.send(datapack);
+        xhr.setRequestHeader('Content-Type', 'multipart/form-data;');
+        xhr.send(blob);
         xhr.onload = () => {
             if (xhr.status == 200) {
                 cb()
@@ -130,66 +129,81 @@ const projectFilesController = {
                 console.warn("la requete d'upload de fichier sur minio ne passe pas")
             }
         }
-    },
+    }
+    ,
     delete(tempId, instance) {
-        console.log(tempId)
         let fileToDelete = false
         let files = instance.files.get()
         files.forEach((file, i) => {
             if (file.tempId === tempId) {
-                console.log(file)
                 let projectFile = new ProjectFile
                 projectFile.callMethod('deleteProjectFile', projectController.getAuthInfo(instance.projectId), file.id, (err, res) => {
                     if (err) {
                         console.log(err)
                     } else {
-                        console.log(res)
                         files.splice(i, 1)
                         instance.files.set(files)
                     }
                 })
             }
         })
-    },
-    getFile(fileInfo, callback){
-        this.getFileUrl(fileInfo, (fileUrl)=>{
-            Axios.get(fileUrl)
-                .then((res)=>{
-                   // console.log("axiosRes",res.data)
-                    this.decryptFile(res.data)
-                }).catch((err)=>{
-                    console.log(err)
+    }
+    ,
+    getFile(fileInfo, callback) {
+        this.getFileUrl(fileInfo, (fileUrl) => {
+            Axios({
+                url: fileUrl,
+                method: 'GET',
+                responseType: 'blob', // important
+            })
+                .then((res) => {
+
+                    let fileReader = new FileReader();
+                    fileReader.onload = (event) => {
+                        //data:image/jpeg;base64,
+                        const iv = new Uint8Array(fileReader.result.slice(22, 38)); //take out encryption iv
+
+                        const content = new Uint8Array(fileReader.result.slice(38)); //take out encrypted content
+                        cryptoTools.importSymKey(Session.get("currentProjectSimKey"), (symKey) => {
+                            window.crypto.subtle.decrypt({
+                                iv,
+                                name: "AES-CBC"
+                            }, symKey, content)
+                                .then(function (decrypted) {
+                                    //returns an ArrayBuffer containing the decrypted data
+                                    const blob = new Blob([new Uint8Array(decrypted)], {
+                                        type: 'application/octet-stream'
+                                    });
+                                    const url = URL.createObjectURL(blob);
+                                    callback(url) //create new file from the decrypted content
+
+                                })
+                                .catch(function () {
+                                    console.log("You have entered a wrong Decryption Key!");
+                                });
+                        })
+                    };
+                    fileReader.readAsArrayBuffer(res.data);
+                    // console.log("axiosRes",res.data)
+
+                }).catch((err) => {
+                console.log(err)
             })
         })
-    },
-    decryptFile(fileData, callback){
-        // let reader = new FileReader();
-        // reader.onload = () => {
-
-            let b64str = fileData.split("\n")[4];
-            console.log(b64str);
-
-            //let filename = file.name;
-            cryptoTools.sim_decrypt_data(b64str, Session.get("currentProjectSimKey"), (decryptedData) => {
-console.log(decryptedData)
-
-                // Generate a random boundary
-                // let boundary = "-----------------" + Math.floor(Math.random() * 32768) + Math.floor(Math.random() * 32768);
-                //
-                // let datapack = this.PackData(boundary, encryptedData, filename, "fileupload");
-                //
-                // callback(datapack, boundary)
-            })
-        // };
-        // reader.readAsDataURL(file);
-
-    },
-    getFileUrl(fileInfo, callback){
+    }
+    ,
+    decryptFile(fileData, callback) {
+        cryptoTools.sim_decrypt_data(fileData, Session.get("currentProjectSimKey"), (res) => {
+            callback(res)
+        })
+    }
+    ,
+    getFileUrl(fileInfo, callback) {
         let file = new ProjectFile(fileInfo._id)
-        file.callMethod("getFileUrl", projectController.getAuthInfo(fileInfo.projectId), fileInfo._id, (err,res)=>{
-            if(err){
+        file.callMethod("getFileUrl", projectController.getAuthInfo(fileInfo.projectId), fileInfo._id, (err, res) => {
+            if (err) {
                 console.log(err)
-            }else{
+            } else {
                 callback(res)
             }
         })
