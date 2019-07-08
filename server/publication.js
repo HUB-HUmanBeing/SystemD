@@ -311,3 +311,18 @@ Meteor.publish("publicationFiles", function (authInfo, projectId, filesId) {
             ]
     })
 })
+Meteor.publish("projectFiles", function (authInfo, projectId, limit) {
+    check(projectId, String)
+    check(authInfo, {memberId: String, userSignature: String})
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return ProjectFiles.find(
+                {projectId: projectId}, {
+            limit: limit,
+            sort: {
+                createdAt: -1
+            }
+        }
+
+    )
+})

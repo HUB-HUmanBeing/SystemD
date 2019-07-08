@@ -192,7 +192,14 @@ const ProjectPrivate = Class.create({
             default: function () {
                 return {};
             }
+        },
+        totalFilesSize:{
+            type: Number,
+            default: function () {
+                return 0
+            }
         }
+
 
     }
 });

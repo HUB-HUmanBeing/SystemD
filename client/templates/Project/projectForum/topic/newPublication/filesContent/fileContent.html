@@ -18,7 +18,7 @@
                         {{/if}}
                 {{#each file in files}}
                         <div class="filePreviewItem " id="filePreviewItem-{{file.tempId}}">
-                            <div class="fileIcon">
+                            <div class="filePreviewIcon">
                                 {{#if compare file.status "==" "done"}}
                                     <a href="" deleteFile id="fileItem-{{file.tempId}}" class="btn btn-floating waves-effect waves-light"><i class="material-icons">clear</i></a>
                                 {{else}} <div class="loadingFile animated-background">

@@ -1,0 +1,88 @@
+<template name="fullSreenFile">
+    <div class="fullSreenFileView">
+        <div class="closeFullScreenView" closeFullScreenView></div>
+        <div class="fullScreenItem">
+            <div class="fileContainer">
+                {{#if compare file "==" "waiting"}}
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center-align relative">
+                        <div class="fileLabel">{{__ ".downloadAndDecrypt"}}</div>
+                        <a href="" class="btn btn-floating downloadFileBtn" closeFullScreenView><i
+                                class="material-icons">clear</i></a>
+                    </div>
+                {{else}}
+                    <div class="fileContent">
+                        {{#if compare type "==" "video"}}
+
+
+
+                            <video controls class="responsive-video">
+
+                                <source src="{{file.showWideUrl}}" type="{{file.symEnc_mimeType}}"
+                                        id="video-{{file._id}}">
+                                <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>
+                            </video>
+                        {{else}}
+                            {{#if compare type "==" "audio"}}
+                                <audio controls title="{{file.symEnc_fileName}}">
+                                    <source src="{{file.showWideUrl}}" type="{{file.symEnc_mimeType}}"
+                                            id="audio-{{file._id}}">
+                                    Your browser does not support the audio element.
+                                </audio>
+
+                            {{else}}
+
+                                {{#if compare type "==" "image"}}
+                                    <img src="{{file.showWideUrl}}" alt="" class="shadow "
+                                         title="{{file.symEnc_fileName}}" id="img-{{file._id}}">
+
+
+                                {{else}}
+
+                                    <img src="{{getFileIcon file.symEnc_mimeType}}" alt=""
+                                         class="shadow fileIcon"
+                                         title="{{file.symEnc_fileName}}" id="img-{{file._id}}">
+
+                                {{/if}}
+                            {{/if}}
+                        {{/if}}
+                    </div>
+
+
+                    <div class="fileLabel elipsis" title="{{file.symEnc_fileName}}">
+
+                        {{file.symEnc_fileName}}
+                    </div>
+                    <div class="relative center-align">
+                        <a href="{{file.showWideUrl}}" download="{{file.symEnc_fileName}}"
+                           class="btn btn-floating downloadFileBtn tooltipped"
+                           data-position="top" data-delay="50" data-tooltip="{{__ ".download"}}"><i
+                                class="material-icons">file_download</i></a>
+                        {{#if deletable}}
+                            <a href="" role="button" class="btn btn-floating downloadFileBtn shadow waves-effect waves-light tooltipped"
+                               data-position="top" data-delay="50" data-tooltip="{{__ ".delete"}}"
+                               deleteFile ><i class="material-icons danger-color">delete_forever</i></a>
+                            {{/if}}
+
+                        <a href="" class="btn btn-floating downloadFileBtn tooltipped"
+                           data-position="top" data-delay="50" data-tooltip="{{__ ".return"}}" closeFullScreenView><i
+                                class="material-icons">clear</i></a>
+                    </div>
+                {{/if}}
+            </div>
+
+        </div>
+    </div>
+</template>

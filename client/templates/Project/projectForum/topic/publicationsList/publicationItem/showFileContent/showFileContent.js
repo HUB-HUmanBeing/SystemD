@@ -58,14 +58,23 @@ Template.showFileContent.onCreated(function () {
             let decryptedFiles = []
             this.data.content.projectFileIds.forEach(fileId=>{
                 let publicationFile = ProjectFile.findOne(fileId)
-
-                cryptoTools.decryptObject(publicationFile, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
-                    decryptedFiles.push(decryptedContent)
+                if(publicationFile){
+                    cryptoTools.decryptObject(publicationFile, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
+                        decryptedFiles.push(decryptedContent)
+                        if(decryptedFiles.length ===  this.data.content.projectFileIds.length){
+                            this.files.set( decryptedFiles)
+                            this.focusedFile.set(decryptedFiles[0])
+                        }
+                    })
+                }else{
+                    decryptedFiles.push({deleted:true, symEnc_mimeType:"deleted",symEnc_fileName: __("showFileContent.deleted")})
                     if(decryptedFiles.length ===  this.data.content.projectFileIds.length){
-                       this.files.set( decryptedFiles)
+                        this.files.set( decryptedFiles)
                         this.focusedFile.set(decryptedFiles[0])
                     }
-                })
+                }
+
+
             })
 
         }else{

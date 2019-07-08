@@ -149,6 +149,18 @@ const projectFilesController = {
         })
     }
     ,
+    deleteSaved(fileId, cb) {
+
+        let projectFile = new ProjectFile
+        projectFile.callMethod('deleteProjectFile', projectController.getAuthInfo(FlowRouter.current().params.projectId), fileId, (err, res) => {
+            if (err) {
+                console.log(err)
+            } else {
+                cb()
+            }
+        })
+
+    },
     getFile(fileInfo, callback) {
         this.getFileUrl(fileInfo, (fileUrl) => {
             Axios({

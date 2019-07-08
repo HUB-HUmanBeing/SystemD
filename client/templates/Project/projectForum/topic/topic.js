@@ -19,20 +19,7 @@ Template.topic.helpers({
     file: function () {
         return Session.get('fullSizeFile')
     },
-    type: function () {
-        let file = Session.get('fullSizeFile')
-        if(file){
-            let type = ""
-            filesTypes.forEach(fileType => {
-                if (fileType.mimes.indexOf(file.symEnc_mimeType) > -1) {
-                    type = fileType.label
 
-                }
-            })
-            return type
-        }
-
-    },
 });
 
 Template.topic.events({

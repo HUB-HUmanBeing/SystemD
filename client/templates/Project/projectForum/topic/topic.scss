@@ -11,7 +11,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 9999;
+    z-index:1000;
     padding: 5vh;
 
     .closeFullScreenView {
@@ -20,17 +20,19 @@
       right: 0;
       left: 0;
       bottom: 0;
-      z-index: 10000;
+      z-index: 1001;
       background-color: rgba($contrasted-plus-bg, 0.7);
     }
-.preloader-wrapper{
-  margin-top: 20vh;
-}
+
+    .preloader-wrapper {
+      margin-top: 20vh;
+    }
+
     .fullScreenItem {
       margin: 0 auto;
 
       position: relative;
-      z-index: 10001;
+      z-index: 1002;
       //line-height: 90vh;
       max-width: 800px;
 
@@ -40,10 +42,12 @@
         .fileContent {
           max-height: 90vh;
           position: relative;
-audio, .fileIcon{
-  margin-top: 20vh;
-}
-          video, img{
+
+          audio, .fileIcon {
+            margin-top: 20vh;
+          }
+
+          video, img {
             position: relative;
             width: auto;
             height: 100%;
@@ -54,8 +58,8 @@ audio, .fileIcon{
         }
 
         .downloadFileBtn {
-margin: 5px;
-          background-color: $light-bg;
+          margin: 5px;
+          background-color: $lighter-bg;
           transition: 0.3s;
 
           * {

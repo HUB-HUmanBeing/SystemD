@@ -29,6 +29,7 @@ FlowRouter.route('/project/:projectId/forum', {
         BlazeLayout.render('projectLayout', {main: 'projectForum'});
     },
 });
+
 FlowRouter.route('/project/:projectId/calendar', {
     name: 'project-calendar',
     triggersEnter: [checkLoggedOrReroute],

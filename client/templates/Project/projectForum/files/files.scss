@@ -1,0 +1,43 @@
+@import "{}/client/scss/variables.scss";
+
+
+.cloudPage{
+  .filesSize{
+    .infoQuotes{
+      margin: 3px;
+      font-size: 0.9em;
+    }
+    .percentage{
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 50%;
+      background-color: $contrasted-plus-bg;
+      color: $link-color;
+      font-style: italic;
+      font-weight: bold;
+    }
+    .filesSizeContainer{
+      margin-left: 6px;
+margin-top: 9px;
+      height: 19px;
+      border-radius: 9.5px;
+      background-color: $contrasted-plus-bg;
+      border: 2px solid $contrasted-plus-bg;
+      position: relative;
+    }
+    .totalFileSize{
+      content: ' ';
+      background-color: $blue-highlight-color;
+      height: 15px;
+      border-radius: 7.5px;
+      font-size: 13px;
+      line-height: 15px;
+      min-width: 15px !important;
+      color: $contrasted-plus-bg;
+      padding-left: 15px;
+
+    }
+  }
+}

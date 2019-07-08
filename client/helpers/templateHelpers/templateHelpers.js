@@ -138,7 +138,9 @@ Template.registerHelper('firstLetters', function (string, number) {
 Template.registerHelper('getFileIcon', function (typeInput) {
     let types = filesTypes
     let res = "/images/icon/files/other.svg"
+    console.log(typeInput)
     types.forEach(type=>{
+
         if(type.mimes.indexOf(typeInput)>-1){
             res = type.iconUrl
         }
@@ -151,4 +153,16 @@ Template.registerHelper('getFileIcon', function (typeInput) {
 Template.registerHelper("carouselIndex", function (index){
     let values = ["#one!","#two!", "#three!", "#four!", "#five!", "#six!", "#seven!", "#eight!","#nine!","#ten!"]
     return values[index]
+})
+Template.registerHelper("formatBytes", function (bytes){
+    let decimals= 2
+    if (bytes === 0) return '0 Bytes';
+
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 })

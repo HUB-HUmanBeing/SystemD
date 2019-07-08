@@ -389,7 +389,8 @@
   "template": "forum",
   "categoryList": {
     "categoryName": "Folder name",
-    "new": "New folder"
+    "new": "New folder",
+    "myFiles": "FILES"
   },
   "categoryItem": {
     "categoryName": "Folder name",
@@ -665,5 +666,19 @@
     "donateIn": "Send a donation on the System-D wallet in",
     "wallet": "Wallet ",
     "copied": "Wallet address copied in the clipboard"
+  },
+  "files": {
+    "projectUsing": " ",
+    "of": "of",
+    "allowed" : " "
+  },
+  "filePreview": {
+    "delete": "Delete file"
+  },
+  "fullScreenFile": {
+    "download": "Download",
+    "delete": "Delete file",
+    "return": "Return",
+    "downloadAndDecrypt": "Downloading and decrypting the file."
   }
 }

@@ -1,0 +1,60 @@
+<template name="files">
+    <div id="topic" class="full-height flex-auto cloudPage" style="{{#if isDesktop}}padding-top:10px{{/if}}">
+
+        <div class="no-margin">
+            <div class="col s12">
+
+                <div id="topicHeader" class=" flex">
+                    {{#unless isDesktop}}
+                        <a href="/project/{{currentProject._id}}/forum"
+                           class="btn btn-floating waves-effect waves-light "
+                           style="margin-right: 10px"><i
+                                class="material-icons left">arrow_back</i></a>
+                    {{/unless}}
+                    <div class="flex-auto elipsis left-align topicTitle">
+                        {{__ "categoryList.myFiles"}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row filesSize">
+            <div class="col s12 relative">
+                <p class="infoQuotes left-align">
+                    {{__ ".projectUsing"}} <b>{{formatBytes currentProject.private.totalFilesSize}}</b> {{__ ".of"}}
+                    <b>500 MB</b> {{__ ".allowed"}}
+                </p>
+                <div class="flex">
+                    <div class="percentage shadow">{{percentage}}%</div>
+                    <div class="filesSizeContainer flex-auto shadow">
+                        <div class="totalFileSize" style="width: {{percentage}}%"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row filesContainer">
+            <div class="col s12 relative">
+                <div class="row">
+
+                    {{#each fileItem in files}}
+                        <div class="col s6 m4 xl3 ">
+                            {{>cloudFile file=fileItem index= @index}}
+                        </div>
+                    {{/each}}
+
+                </div>
+
+            </div>
+        </div>
+
+        {{#if file}}
+
+            {{>fullSreenFile file=file deletable=true}}
+
+
+        {{/if}}
+
+    </div>
+</template>

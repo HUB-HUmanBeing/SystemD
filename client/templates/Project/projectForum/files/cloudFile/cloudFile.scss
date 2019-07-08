@@ -1,0 +1,31 @@
+@import "{}/client/scss/variables.scss";
+
+.cloudFile{
+  height: 120px;
+  img{
+    width: auto;
+    max-width: 100px;
+    height:80px;
+  }
+  .fileLabel{
+    padding: 0 !important;
+    font-size: 0.9em;
+  }
+  .actionBtns{
+    opacity: 0;
+    transition: 0.3s;
+    position: absolute;
+    top: -15px;
+    right: 00px;
+    width: 100px;
+    a{
+      position: relative !important;
+      display: inline-block;
+    }
+  }
+  &:hover{
+    .actionBtns{
+      opacity: 1 !important;
+    }
+  }
+}

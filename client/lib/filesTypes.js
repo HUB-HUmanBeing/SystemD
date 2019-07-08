@@ -30,5 +30,10 @@ const filesTypes = [
         mimes:   ["application/vnd.ms-excel","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.oasis.opendocument.spreadsheet"],
         iconUrl: "/images/icon/files/excel.svg"
     },
+    {
+        label: "deleted",
+        mimes:["deleted"],
+        iconUrl: "/images/icon/files/delete-svgrepo-com.svg"
+    }
 ]
 export default filesTypes

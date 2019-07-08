@@ -392,7 +392,8 @@
   "template": "forum",
   "categoryList": {
     "categoryName": "Nom du dossier",
-    "new": "Nouveau dossier"
+    "new": "Nouveau dossier",
+    "myFiles": "DOCUMENTS"
   },
   "categoryItem": {
     "categoryName": "Nom du dossier",
@@ -666,5 +667,19 @@
     "donateIn": "Envoyer un don sur le wallet de System-D en",
     "wallet": "Wallet ",
     "copied": "Adresse du wallet copiée dans le presse papier"
+  },
+  "files": {
+    "projectUsing": " ",
+    "of": "sur",
+    "allowed" : " "
+  },
+  "filePreview": {
+    "delete": "Supprimer le fichier"
+  },
+  "fullScreenFile": {
+    "download": "Télécharger",
+    "delete": "Supprimer le fichier",
+    "return": "Retour",
+    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier"
   }
 }

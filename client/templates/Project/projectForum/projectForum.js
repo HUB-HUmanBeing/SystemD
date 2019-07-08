@@ -43,9 +43,13 @@ Template.projectForum.helpers({
 
         return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId
     },
+    showFiles: function () {
+        FlowRouter.watchPathChange()
+        return FlowRouter.current().queryParams.files
+    },
     showCategories: function () {
         FlowRouter.watchPathChange()
-        return Meteor.Device.isDesktop() || !FlowRouter.current().queryParams.topicId
+        return Meteor.Device.isDesktop() || (!FlowRouter.current().queryParams.topicId && !FlowRouter.current().queryParams.files)
     },
     refreshScrollbar: function () {
         let instance = Template.instance()

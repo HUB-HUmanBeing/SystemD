@@ -1,4 +1,9 @@
 @import "{}/client/scss/variables.scss";
+.carousel-item{
+  &.active{
+    cursor: default !important;
+  }
+}
 .fileIcon{
 width: 100%;
   .download-file{
