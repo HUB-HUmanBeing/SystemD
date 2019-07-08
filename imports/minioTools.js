@@ -11,7 +11,7 @@ const minioTools = {
     client: new Minio.Client({
         endPoint: Meteor.settings.minio.endPoint,
         port: Meteor.settings.minio.port,
-        useSSL: false,
+        useSSL: Meteor.settings.minio.useSsl,
         accessKey: Meteor.settings.minio.MINIO_ACCESS_KEY,
         secretKey: Meteor.settings.minio.MINIO_SECRET_KEY
     }),
