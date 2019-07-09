@@ -12,10 +12,6 @@
     "MINIO_SECRET_KEY": "???"
   },
   "public": {
-    "frontSalt": "votre petit grain de sel",
-    "publicVapidKey": ""
-  },
-  "public": {
     "fastHashDifficulty": 5,
     "frontSalt": "coucou",
     "publicVapidKey": "",
@@ -23,12 +19,15 @@
       "eth": "0x35309468064c217abEbE23ca92DaFba088224Ad5",
       "xrp": "rfSf6dWXp1Q91NSsFaoAAfTseqvG89PJAQ",
       "btc": "1Pi1TgDAe4N1CGvREUT3LC2pmo6yTx5zcE"
-    }
+    },
+    "maxFilesSize": 524288000,
+    "maxOneFile": 15728640
   },
   "webpushMail": "test@test.com",
   "privateVapidKey": "",
   "GcmApiKey": "",
   "serverSalt": "un autre grain de sel",
   "serverSaltRounds": 3,
+  "serverSaltHeavyRounds": 10,
   "githubToken": "ton super token"
 }
