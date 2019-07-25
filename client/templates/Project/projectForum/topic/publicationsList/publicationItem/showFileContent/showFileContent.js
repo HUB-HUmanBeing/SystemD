@@ -11,21 +11,13 @@ Template.showFileContent.helpers({
         return Template.currentData().refreshScrollbar
     },
     files: function () {
+        let id= Template.currentData().id
         if(Template.instance().files.get().length && Meteor.Device.isDesktop()){
             Meteor.setTimeout(()=>{
-                $('.carousel').carousel();
-//   $(".owl-carousel").owlCarousel({
-//                     center: true,
-//                     items:2,
-//                     loop:true,
-//                     margin:10,
-//                     responsive:{
-//                         600:{
-//                             items:4
-//                         }
-//                     }
-//                 });
-            },200)
+
+                $('.carousel-'+id).carousel();
+
+            },500)
         }
 
         return Template.instance().files.get()

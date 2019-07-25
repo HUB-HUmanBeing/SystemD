@@ -28,7 +28,16 @@
     "members": "Members"
   },
   "layout": {
-    "donateLabel": "Support System-D"
+    "beta": "béta",
+    "donateLabel": "Soutenir System-D",
+    "betaVersion": "System-D.org est toujours en version béta !",
+    "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorable. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
+    "betaExplain2": "Merci de ",
+    "donate": "nous aider avec vos donations ",
+    "betaExplainEnd": "et en faisant remonter les idées d'améliorations et bugs constatés.",
+    "betaWarning": "Le protocole de chiffrement a été conçut avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
+    "betaWarning2": "Nous ne pouvons donc pas assurer à 100% a nos utilisateurs que leurs données sont inviolables meme si c'est pour nous un objectif aussi prioritaire que l'ergonomie du site.",
+    "help": "Communiquer une vulnérabilité ou un problème de sécurité ..."
   },
   "menu": {
     "param": "Parameters",
@@ -680,5 +689,12 @@
     "delete": "Delete file",
     "return": "Return",
     "downloadAndDecrypt": "Downloading and decrypting the file."
+  },
+  "projectFiles": {
+    "limitOneFile": "the documents size is limited to 15 Mo",
+    "projectFiles.limitSize": "you've reach the files upload limit on this project. Please delete documents to be able to upload again. "
+  },
+  "beta": {
+    "beta": "beta"
   }
 }

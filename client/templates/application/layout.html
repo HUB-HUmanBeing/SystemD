@@ -2,9 +2,7 @@
     {{#if compare isDesktop '!&' currentUserId  }}
         {{> slideMenu}}
     {{/if}}
-<!--{{#if isDev}}-->
-<!--&lt;!&ndash;{{>testBtn}}&ndash;&gt;-->
-<!--{{/if}}-->
+
     <div class="main-container" style="min-height: 100vh">
 
         <main class="">
@@ -19,6 +17,50 @@
         </main>
     </div>
     {{>submitIssue}}
+    <div id="modalbeta" class="modal light-bg">
+        <div class="band">
+            <a class="waves-effect waves-light btn modal-trigger " href="#modalbeta"><i
+                    class="material-icons left">code</i>
+                {{__ ".beta"}}
+            </a>
+        </div>
+        <div class="modal-content small-padding light-bg main-color">
+
+            <div class="row">
+                <h4 class="center-align plus-color " style="color: white !important;">
+                    {{__ ".betaVersion"}}
+
+                </h4>
+                <p>
+                    {{__ ".betaExplain"}}
+                </p>
+                <p style="color: white !important;">
+                    {{__ ".betaExplain2"}}<a href="/donate" class="link">{{__ ".donate"}}</a> {{__ ".betaExplainEnd"}}
+                </p>
+
+                <div class="flex">
+                    <h4 class="center-align"><i class="material-icons focus-color medium small-padding">lock_outline</i>
+                    </h4>
+                    <div class="flex-auto">
+                        <p class="infoQuotes">
+                            {{__ ".betaWarning"}}
+                        </p>
+                        <p class="infoQuotes" style="color: white !important;">
+                            <b>
+                                {{__ ".betaWarning2"}}
+                            </b>
+                            <br>
+                            <a href="mailto:rbanquo@protonmail.com"
+                               class="link right-align">{{__ ".help"}}</a>
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
     <div id="donateBtn">
         <a class="waves-effect waves-light btn " href="/donate"><i
                 class="material-icons left">monetization_on</i>

@@ -25,12 +25,11 @@
                             <div class="input-field col s12">
                                 <select id="validityDuration">
                                     {{#each option in validityDurationOptions}}
-                                        <option value="{{option.value}}">{{option.label}}</option>
+                                        <option value="{{option.value}}" selected={{#if compare @index "==" 2}}"selected"{{/if}} >{{option.label}}</option>
                                     {{/each}}
                                 </select>
                                 <label>{{__ ".durationLabel"}}</label>
                             </div>
-
                         </div>
 
                         <div class="row">

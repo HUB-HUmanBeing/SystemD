@@ -280,13 +280,17 @@ Template.activityDetail.events({
     },
     'click [togglePresence]': function (event, instance) {
         event.preventDefault()
+        resetTooltips()
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)
         activity.callMethod("togglePresence", projectController.getAuthInfo(FlowRouter.current().params.projectId), err => {
             if (err) {
                 console.log(err)
             } else {
-                resetTooltips()
+                Meteor.setTimeout(()=>{
+                    resetTooltips()
+                },200)
+
             }
         })
     },
@@ -343,6 +347,6 @@ Template.activityDetail.onDestroyed(function () {
     if((FlowRouter.current().route.name === "project-maps")){
         activityMarker.stopHighlightMapIcon(this.activity.get()._id)
     }
-
+    resetTooltips()
 });
 

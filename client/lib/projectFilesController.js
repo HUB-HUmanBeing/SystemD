@@ -2,48 +2,62 @@ import cryptoTools from "./cryptoTools";
 import ProjectFile from "../../imports/classes/ProjectFile";
 import projectController from "./controllers/projectController";
 import Axios from "axios";
+import Project from "../../imports/classes/Project";
 
 const projectFilesController = {
 
-    encryptAndUploadFiles(files, projectId, instance) {
+    encryptAndUploadFiles(files, projectId, instance, cb) {
+        let totalSize = 0
+        let projectFilesSize = Project.findOne(FlowRouter.current().params.projectId).private.totalFilesSize
         let filesArray = instance.files.get()
         for (let i = 0; i < files.length; i++) {
             let tempId = cryptoTools.generateId()
-            filesArray.push({
-                tempId: tempId,
-                name: files[i].name,
-                status: "loading",
-                type: files[i].type
-            })
-            if (["image/jpeg", "image/gif", "image/png", "image/svg+xml", "image/jpg"].indexOf(files[i].type) > -1) {
-                let reader = new FileReader();
-                reader.onload = function (e) {
-                    Meteor.setTimeout(() => {
-                        $('#filePreviewItem-' + tempId + ' img').attr('src', e.target.result);
-                    }, 200)
+            totalSize += files[i].size
+            if ((totalSize + projectFilesSize) < Meteor.settings.public.maxFilesSize) {
+                if(files[i].size<Meteor.settings.public.maxOneFile){
+                    filesArray.push({
+                        tempId: tempId,
+                        name: files[i].name,
+                        status: "loading",
+                        type: files[i].type
+                    })
+                    if (["image/jpeg", "image/gif", "image/png", "image/svg+xml", "image/jpg"].indexOf(files[i].type) > -1) {
+                        let reader = new FileReader();
+                        reader.onload = function (e) {
+                            Meteor.setTimeout(() => {
+                                $('#filePreviewItem-' + tempId + ' img').attr('src', e.target.result);
+                            }, 200)
 
-                }
-                reader.readAsDataURL(files[i]);
-            }
-            this.getUploadLink(files[i], projectId, (uploadLink, fileId) => {
-                this.encryptFile(files[i], fileId, (encryptedBlob) => {
-                    this.uploadFile(encryptedBlob, uploadLink, projectId, () => {
-                        Meteor.setTimeout(() => {
-                            let newFiles = instance.files.get()
-                            newFiles.forEach((file, j) => {
-                                if (file.tempId == tempId) {
-                                    newFiles[j].id = fileId
-                                    newFiles[j].status = "done"
-                                    instance.files.set(newFiles)
-                                }
+                        }
+                        reader.readAsDataURL(files[i]);
+                    }
+                    this.getUploadLink(files[i], projectId, (uploadLink, fileId) => {
+                        this.encryptFile(files[i], fileId, (encryptedBlob) => {
+                            this.uploadFile(encryptedBlob, uploadLink, projectId, () => {
+                                Meteor.setTimeout(() => {
+                                    let newFiles = instance.files.get()
+                                    newFiles.forEach((file, j) => {
+                                        if (file.tempId == tempId) {
+                                            newFiles[j].id = fileId
+                                            newFiles[j].status = "done"
+                                            instance.files.set(newFiles)
+                                        }
+
+                                    })
+
+                                }, 200)
 
                             })
-
-                        }, 200)
-
+                        })
                     })
-                })
-            })
+                }else{
+                    cb(__("projectFiles.limitOneFile"))
+                }
+
+            } else {
+                cb(__("projectFiles.limitSize"))
+            }
+
 
         }
         instance.files.set(filesArray)
@@ -73,7 +87,6 @@ const projectFilesController = {
         let reader = new FileReader();
         reader.onload = () => {
             let filename = file.name;
-            console.log("le fichier tel qu'il est fourni", reader.result)
             const iv = window.crypto.getRandomValues(new Uint8Array(16)); //generate a random iv
             const content = new Uint8Array(reader.result); //encoded file content
             // encrypt the file

@@ -4,7 +4,7 @@
         <!--            -->
         <!--        </div>-->
         {{#if isDesktop}}
-            <div class="carousel">
+            <div class="carousel carousel-{{id}}">
                 {{#each file in files}}
                     <a class="carousel-item" href="#{{@index}}!">
                         {{>filePreview file=file index=@index}}

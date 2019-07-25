@@ -18,18 +18,21 @@ ProjectFile.extend({
                 symEnc_mimeType: String,
                 projectId: String
             })
-            let currentProject = Project.findOne(projectFileParams.projectId)
-            check(currentProject.isMember(authInfo), true)
-            currentProject.private.totalFilesSize += projectFileParams.size
-            let newProjectFile = new ProjectFile(projectFileParams)
-            newProjectFile.createdBy = authInfo.memberId
-            let id = newProjectFile.save((err) => {
-                if (!err) {
-                    currentProject.save()
-                }
-            })
-            const result = await minioTools.client.presignedPutObject('project-files', id)
-            return {url: result, id: id}
+            let projectFilesSize = Project.findOne(projectFileParams.projectId).private.totalFilesSize
+            if (((projectFileParams.size + projectFilesSize) < Meteor.settings.public.maxFilesSize)&&((projectFileParams.size ) < Meteor.settings.public.maxOneFile)) {
+                let currentProject = Project.findOne(projectFileParams.projectId)
+                check(currentProject.isMember(authInfo), true)
+                currentProject.private.totalFilesSize += projectFileParams.size
+                let newProjectFile = new ProjectFile(projectFileParams)
+                newProjectFile.createdBy = authInfo.memberId
+                let id = newProjectFile.save((err) => {
+                    if (!err) {
+                        currentProject.save()
+                    }
+                })
+                const result = await minioTools.client.presignedPutObject('project-files', id)
+                return {url: result, id: id}
+            }
         },
         async deleteProjectFile(authInfo, fileId) {
             check(authInfo, {memberId: String, userSignature: String})
@@ -38,9 +41,13 @@ ProjectFile.extend({
             check(currentProject.isMember(authInfo), true)
             currentProject.private.totalFilesSize -= file.size
             const resultDelete = await minioTools.client.removeObject('project-files', file._id)
-            return {servRes: file.remove((err)=>{
-                if(!err){currentProject.save()}
-                }), minioRes: resultDelete}
+            return {
+                servRes: file.remove((err) => {
+                    if (!err) {
+                        currentProject.save()
+                    }
+                }), minioRes: resultDelete
+            }
         },
         async getFileUrl(authInfo, fileId) {
             check(authInfo, {memberId: String, userSignature: String})

@@ -49,9 +49,9 @@
  - [X]  Interface de création de projet 
  - [X]  Invitation à des projets et gestion des membres 
  - [X]  Création d'un forum de discussion par projet 
- - [ ]  Agenda participatif pour chacun des projets 
- - [ ]  Liste des taches ergonomique pour chaque projet 
- - [ ]  Interface pour soutenir ou participer à SystemD
+ - [X]  Agenda participatif pour chacun des projets 
+ - [X]  Liste des taches ergonomique pour chaque projet 
+ - [X]  Interface pour soutenir ou participer à SystemD
 
 ### Deuxième phase :
 
@@ -64,7 +64,7 @@
    potentiels / des projets intéressants
  - [ ]  Messagerie inter-utilisateurs et inter-projets
  - [ ]  Blog personnel et blog de projets
- - [ ]  Module de carte interactives pour les projets
+ - [X]  Module de carte interactives pour les projets
 
 ### Troisième phase :
 

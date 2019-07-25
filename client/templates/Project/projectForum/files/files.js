@@ -22,13 +22,17 @@ Template.files.helpers({
 
 Template.files.events({
     //add your events here
+    "click [seeMore]" : function (event, instance) {
+        event.preventDefault()
+        instance.limit.set(instance.limit.get()+5)
+    }
 });
 
 Template.files.onCreated(function () {
     //add your statement here
 
     let projectId= Template.currentData().currentProject._id
-    this.limit = new ReactiveVar(30)
+    this.limit = new ReactiveVar(20)
 
     this.autorun(()=>{
         Meteor.subscribe("projectFiles", projectController.getAuthInfo(projectId), projectId, this.limit.get() , (err)=>{

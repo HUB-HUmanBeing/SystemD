@@ -138,7 +138,6 @@ Template.registerHelper('firstLetters', function (string, number) {
 Template.registerHelper('getFileIcon', function (typeInput) {
     let types = filesTypes
     let res = "/images/icon/files/other.svg"
-    console.log(typeInput)
     types.forEach(type=>{
 
         if(type.mimes.indexOf(typeInput)>-1){

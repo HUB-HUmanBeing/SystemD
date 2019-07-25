@@ -40,7 +40,6 @@ Template.fileContent.events({
                 filesId.push(file.id)
             }
         })
-        console.log(filesId)
         cryptoTools.sim_encrypt_data(textContent, Session.get("currentProjectSimKey"), (symEnc_text) => {
             let publicationParams = {
                 type: "fileContent",
@@ -72,7 +71,11 @@ Template.fileContent.events({
         $('#fileInput').click()
     },
     'change [fileInput]':function (event,instance) {
-        projectFilesController.encryptAndUploadFiles(event.currentTarget.files, FlowRouter.current().params.projectId, instance)
+        projectFilesController.encryptAndUploadFiles(event.currentTarget.files, FlowRouter.current().params.projectId, instance, (err)=>{
+            if(err){
+                Materialize.toast(err, 6000, 'toastError')
+            }
+        })
     },
     'click [deleteFile]':function (event, instance) {
         event.preventDefault()

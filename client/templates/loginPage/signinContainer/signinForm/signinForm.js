@@ -242,7 +242,7 @@ Template.signinForm.events({
                 Meteor.call('createNewUser', userAttribute, userAsymKeys, i18n.getLocale(), captcha,function (error, result) {
                     //si ca échoue on renvoie l'erreur en toast
                     if (error) {
-                        console.log(error, userAttribute, userAsymKeys)
+                        instance.signinComplete.set(false)
                         Materialize.toast(error.message, 6000, 'toastError')
                     } else {
                         //on laisse les infos de chiffrement plus que de raison pour que l'utilisateur puisse bien voir
@@ -277,6 +277,7 @@ Template.signinForm.events({
                                         })
                                     })
                                 } else {
+
                                     console.log(error)
                                 }
                             });

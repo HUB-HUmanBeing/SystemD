@@ -18,7 +18,16 @@
     "infos": "Informations complémentaires :"
   },
   "layout": {
-    "donateLabel": "Soutenir System-D"
+    "beta": "béta",
+    "donateLabel": "Soutenir System-D",
+    "betaVersion": "System-D.org est toujours en version béta !",
+    "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorable. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
+    "betaExplain2": "Merci de ",
+    "donate": "nous aider avec vos donations ",
+    "betaExplainEnd": "et en faisant remonter les idées d'améliorations et bugs constatés.",
+    "betaWarning": "Le protocole de chiffrement a été conçut avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
+    "betaWarning2": "Nous ne pouvons donc pas assurer à 100% a nos utilisateurs que leurs données sont inviolables meme si c'est pour nous un objectif aussi prioritaire que l'ergonomie du site.",
+    "help": "Communiquer une vulnérabilité ou un problème de sécurité ..."
   },
   "_templates": "includes",
   "menuProject": {
@@ -591,7 +600,7 @@
     "paricipating": "Vous participez à cette activité",
     "invited": "Invités :",
     "noInvited": "Aucun membre invité.",
-    "noParticipant" : "Aucun participant",
+    "noParticipant": "Aucun participant",
     "quitActivity": "Quitter l'activité",
     "joinActivity": "Participer à l'activité",
     "inviteMember": "inviter des membres à se joindre à l'activité",
@@ -671,7 +680,7 @@
   "files": {
     "projectUsing": " ",
     "of": "sur",
-    "allowed" : " "
+    "allowed": " "
   },
   "filePreview": {
     "delete": "Supprimer le fichier"
@@ -681,5 +690,13 @@
     "delete": "Supprimer le fichier",
     "return": "Retour",
     "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier"
+  },
+  "projectFiles": {
+    "limitOneFile": "La taille des documents est limitée à 15 Mo",
+    "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
+  },
+  "beta": {
+    "beta": "béta"
+
   }
 }

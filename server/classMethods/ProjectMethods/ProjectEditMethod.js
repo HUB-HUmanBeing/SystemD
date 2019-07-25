@@ -2,6 +2,16 @@ import {check} from "meteor/check";
 import minioTools from "../../../imports/minioTools";
 import Project from "../../../imports/classes/Project";
 import User from "../../../imports/classes/User";
+import Topic from "../../../imports/classes/Topic";
+import MapMarkers from "../../../lib/collections/MapMarkers";
+import Invitations from "../../../lib/collections/Invitations";
+import Activities from "../../../lib/collections/Activities";
+import Topics from "../../../lib/collections/Topics";
+import Publication from "../../../imports/classes/Publication";
+import Publications from "../../../lib/collections/Publications";
+import Comments from "../../../lib/collections/Comments";
+import ProjectFiles from "../../../lib/collections/ProjectFiles";
+import ProjectFile from "../../../imports/classes/ProjectFile";
 
 
 Project.extend({
@@ -63,6 +73,18 @@ Project.extend({
             check(currentProject.isDeletable(), true)
             let currentUser = User.findOne(Meteor.userId())
             currentUser.private.projects.splice(userProjectIndex, 1)
+
+            Topics.remove({projectId: currentProject._id})
+            Comments.remove({projectId: currentProject._id})
+            Publications.remove({projectId: currentProject._id})
+            MapMarkers.remove({projectId: currentProject._id})
+            Invitations.remove({projectId: currentProject._id})
+            Activities.remove({projectId: currentProject._id})
+let files = ProjectFile.find({projectId: currentProject._id}).fetch()
+            files.forEach(file=>{
+                file.removeAndDeleteFile()
+            })
+            minioTools.client.removeObject('project-avatars', currentProject._id + '.jpg')
             currentProject.remove((err) => {
                 if (err) {
                     console.log(err)
