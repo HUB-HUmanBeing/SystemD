@@ -53,7 +53,11 @@ Template.publicationsList.onCreated(function () {
                 }
             })
             this.autorun(() => {
-                this.publications.set(Publication.find({topicId: topicId}, {
+                this.publications.set(Publication.find({
+                    $and: [
+                        {topicId: topicId},
+                        {pinned: false}]
+                }, {
                     sort: {
                         createdAt: -1
                     }

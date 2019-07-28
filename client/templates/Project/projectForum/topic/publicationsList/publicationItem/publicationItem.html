@@ -1,28 +1,40 @@
 <template name="publicationItem">
     <div class="publicationItem relative">
-        <div class="absolute" style="top:10px; right: -15px">
-            {{>likeBox class=publication}}
-        </div>
+        {{#unless pinned }}
+            <div class="absolute" style="top:10px; right: -15px">
+                {{>likeBox class=publication}}
+            </div>
+        {{/unless}}
+        {{#if isAdmin publication.projectId}}
+            <div class="absolute" style="top:40px; right: -15px">
+                {{>pinned class=publication}}
+            </div>
+        {{/if}}
+        {{#unless pinned }}
+            <div class="publicationHeader">
+                <div class="authorInfo left-align flex">
+                    <div class="userAvatar small-shadow">
+                        {{>avatar userId=(userIdFromMemberId publication.createdBy)}}
+                    </div>
+                    <div class="flex-auto" style="padding-left: 0.2em">
+                        <div class="username">
+                            {{usernameFromMemberId publication.createdBy}}
+                        </div>
+                        <div class="publicationDate ">
+                            {{formatDate publication.createdAt}}
+                        </div>
+                    </div>
 
-        <div class="publicationHeader">
-            <div class="authorInfo left-align flex">
-                <div class="userAvatar small-shadow">
-                    {{>avatar userId=(userIdFromMemberId publication.createdBy)}}
-                </div>
-                <div class="flex-auto" style="padding-left: 0.2em">
-                    <div class="username">
-                        {{usernameFromMemberId publication.createdBy}}
-                    </div>
-                    <div class="publicationDate ">
-                        {{formatDate publication.createdAt}}
-                    </div>
+
                 </div>
 
 
             </div>
-
-
-        </div>
+        {{else}}
+            <div class="pinnedHead left-align">
+                {{__ ".pinnedPublicationHead"}}
+            </div>
+        {{/unless}}
         <div class="publicationContent left-align">
             {{#if compare publication.type "===" "textualContent"}}
                 {{>showTextualContent content=publication.textualContent  refreshScrollbar=refreshScrollbar id=publication._id}}
@@ -54,10 +66,12 @@
             {{/unless}}
         {{/if}}
 
-        <div class="commentBox">
-            <div class="hr"></div>
-            {{>commentList publication=publication refreshScrollbar=refreshScrollbar }}
-        </div>
+        {{#unless pinned }}
+            <div class="commentBox">
+                <div class="hr"></div>
+                {{>commentList publication=publication refreshScrollbar=refreshScrollbar }}
+            </div>
+        {{/unless}}
     </div>
 
 </template>

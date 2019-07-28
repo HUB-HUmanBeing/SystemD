@@ -467,7 +467,8 @@
   "publicationItem": {
     "delete": "Delete",
     "deleteInfo": "This action will remove the publication and all its comments.",
-    "deleteSuccess": "This publication and all its comments has been removed."
+    "deleteSuccess": "This publication and all its comments has been removed.",
+    "pinnedPublicationHead": "Pinned publication"
   },
   "showPollContent": {
     "answers": "answers"
@@ -696,5 +697,9 @@
   },
   "beta": {
     "beta": "beta"
+  },
+  "pinned": {
+    "pin": "Pin the publication on the top of the topic",
+    "unpin": "Unpin publication"
   }
 }

@@ -94,6 +94,13 @@ const Publication = Class.create({
             default: function () {
                 return [];
             }
+        },
+        pinned:{
+            type: Boolean,
+            default:function () {
+                return false
+            },
+            index: 1
         }
 
     },

@@ -1,0 +1,6 @@
+<template name="pinned">
+
+    <div class="likeBox small-shadow relative tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{#if pinned}}{{__ ".unpin"}}{{else}}{{__ ".pin"}}{{/if}}" togglePinned>
+        <i class="material-icons {{#if pinned}} pinned {{else}}unpinned{{/if}}" style="position: relative !important;">flag</i>
+    </div>
+</template>

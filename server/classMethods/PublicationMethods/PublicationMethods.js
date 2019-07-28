@@ -147,19 +147,38 @@ Publication.extend({
             return publication.removeRecursive((err) => {
             })
         },
-        toggleLike(authInfo){
+        toggleLike(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
             let publication = Publication.findOne(this._id)
             let currentProject = Project.findOne(publication.projectId)
             check(currentProject.isMember(authInfo), true)
-                let memberIndex = publication.likedBy.indexOf(authInfo.memberId)
-                if (memberIndex > -1) {
-                    publication.likedBy.splice(memberIndex, 1)
-                }else{
-                    publication.likedBy.push(authInfo.memberId)
-                }
+            let memberIndex = publication.likedBy.indexOf(authInfo.memberId)
+            if (memberIndex > -1) {
+                publication.likedBy.splice(memberIndex, 1)
+            } else {
+                publication.likedBy.push(authInfo.memberId)
+            }
 
             return publication.save()
+        },
+        togglePinned(authInfo) {
+            check(authInfo, {memberId: String, userSignature: String})
+            let publication = Publication.findOne(this._id)
+            let currentProject = Project.findOne(publication.projectId)
+            check(currentProject.isAdmin(authInfo), true)
+            let previousPinnedPub = Publication.findOne({
+                $and: [
+                    {pinned: true},
+                    {topicId: publication.topicId}
+                ]
+            })
+            publication.pinned = !publication.pinned
+            return publication.save(() => {
+                if(previousPinnedPub){
+                    previousPinnedPub.pinned=false
+                    previousPinnedPub.save()
+                }
+            })
         }
     }
 })

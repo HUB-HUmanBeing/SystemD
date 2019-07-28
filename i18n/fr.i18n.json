@@ -470,7 +470,8 @@
   "publicationItem": {
     "delete": "Supprimer",
     "deleteInfo": "Cette action supprimera définitivement la publication et tout ses commentaires",
-    "deleteSuccess": "Cette publication et tout ses commentaires ont été supprimés"
+    "deleteSuccess": "Cette publication et tout ses commentaires ont été supprimés",
+    "pinnedPublicationHead": "Publication épinglée"
   },
   "showPollContent": {
     "answers": "participants"
@@ -698,5 +699,9 @@
   "beta": {
     "beta": "béta"
 
+  },
+  "pinned": {
+    "pin": "Epingler la publication en en-tête de la discussion",
+    "unpin": "Désépingler la publication"
   }
 }

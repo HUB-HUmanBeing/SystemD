@@ -35,7 +35,11 @@
   }
 
 }
-
+.pinnedHead{
+  color: $minus-color !important;
+  font-size: 0.9em;
+  font-style: italic;
+}
 .publicationItem {
   .likeBox {
     background-color: $lighter-bg;
@@ -59,7 +63,9 @@
     .liked {
       color: rgba($danger-text, 0.9);
     }
-
+    .pinned {
+      color: rgba($focus-color, 0.9)
+    }
     .likeCounter {
       position: relative;
       top: -5px;
@@ -78,6 +84,13 @@
       .liked {
         color: $main-color;
       }
+      .pinned {
+        color: $main-color;
+      }
+      .unpinned {
+        color: rgba($focus-color, 0.9);
+      }
+
     }
   }
 
@@ -128,4 +141,11 @@
       }
     }
   }
+}
+.pinnedPublication{
+  .smartifiedContent{
+    font-size: 0.95em !important;
+    color: rgba($main-color, 0.8) !important;
+  }
+
 }

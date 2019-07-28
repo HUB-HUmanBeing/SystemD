@@ -215,12 +215,31 @@ Meteor.publish("publications", function (authInfo, topicId, projectId, limit) {
     check(currentProject.isMember(authInfo), true)
     topic.seenByAdd(authInfo.memberId)
     topic.save()
-    return Publications.find({topicId: topic._id}, {
+    return Publications.find({
+        $and: [
+            {topicId: topic._id},
+            {pinned: false}]
+    }, {
         limit: limit,
         sort: {
             createdAt: -1
         }
     })
+})
+Meteor.publish("pinnedPublication", function (authInfo, topicId) {
+
+    check(topicId, String)
+    let topic
+    topic = Topic.findOne({_id: topicId})
+    check(authInfo, {memberId: String, userSignature: String})
+    let projectId = topic.projectId
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    return Publications.find({
+        $and: [
+            {topicId: topic._id},
+            {pinned: true}]
+    }, {})
 })
 Meteor.publish("rootComments", function (authInfo, publicationId, limit) {
     check(publicationId, String)
@@ -317,12 +336,11 @@ Meteor.publish("projectFiles", function (authInfo, projectId, limit) {
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
     return ProjectFiles.find(
-                {projectId: projectId}, {
+        {projectId: projectId}, {
             limit: limit,
             sort: {
                 createdAt: -1
             }
         }
-
     )
 })
