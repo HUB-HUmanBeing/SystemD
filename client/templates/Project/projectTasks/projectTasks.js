@@ -92,6 +92,22 @@ Template.projectTasks.events({
         event.preventDefault()
         instance.myTasks.set(!instance.myTasks.get())
     },
+    "click [goTodo]": function (event, instance) {
+        event.preventDefault()
+        instance.go("todo")
+    },
+    "click [goCalendar]": function (event, instance) {
+        event.preventDefault()
+        instance.go("calendar")
+    },
+    "click [goWaitingForStatus]": function (event, instance) {
+        event.preventDefault()
+        instance.go("waiting")
+    },
+    "click [goDone]": function (event, instance) {
+        event.preventDefault()
+        instance.go("done")
+    }
 });
 
 Template.projectTasks.onCreated(function () {
@@ -124,13 +140,30 @@ Template.projectTasks.onCreated(function () {
         }
         $tasksGroupsList.css("left", leftValue + "px")
     }
+    this.go=(type)=>{
+        let leftValue=0
+        let $tasksGroupsList = $("#tasksGroupsList")
+        switch (type) {
+            case "todo":
+                break
+            case "calendar":
+                leftValue = -1*window.innerWidth
+                break
+            case "waiting":
+                leftValue = -2*window.innerWidth
+                break
+            case "done":
+                leftValue = -3*window.innerWidth
+                break
+        }
+        $tasksGroupsList.css("left", leftValue + "px")
+    }
 });
 
 Template.projectTasks.onRendered(function () {
     //add your statement here
     resetTooltips()
     if (Meteor.Device.isPhone()) {
-        console.log('eeee')
         this.counter1 = 0
         this.autorun(() => {
             if (Session.get("draggedTaskItem")) {

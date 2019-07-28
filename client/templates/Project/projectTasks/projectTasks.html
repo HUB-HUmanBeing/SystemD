@@ -63,7 +63,7 @@
                     <div id="taskGroup-todo" class="tasksGroup shadow">
                         <div class="groupHead">
 
-                            <i class="material-icons focus-color">check_box_outline_blank</i>{{#if isPhone}}<i class="material-icons">event</i><i class="material-icons">hourglass_empty</i><i class="material-icons">check_box</i> {{/if}}<br>
+                            <i class="material-icons focus-color" >check_box_outline_blank</i>{{#if isPhone}}<i class="material-icons" goCalendar>event</i><i class="material-icons" goWaitingForStatus>hourglass_empty</i><i class="material-icons" goDone>check_box</i> {{/if}}<br>
                             {{__ ".inProject"}}
                         </div>
                         <div class="" style="padding-top: 5px"><a href="" class="btn addBtn btnStandard waves-effect waves-light " addBtn><i
@@ -80,7 +80,7 @@
                 <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
                     <div id="taskGroup-calendar" class="tasksGroup shadow">
                         <div class="groupHead">
-{{#if isPhone}}<i class="material-icons">check_box_outline_blank</i>{{/if}}<i class="material-icons focus-color">event</i>{{#if isPhone}}<i class="material-icons">hourglass_empty</i><i class="material-icons">check_box</i> {{/if}}<br>
+{{#if isPhone}}<i class="material-icons" goTodo>check_box_outline_blank</i>{{/if}}<i class="material-icons focus-color">event</i>{{#if isPhone}}<i class="material-icons" goWaitingForStatus>hourglass_empty</i><i class="material-icons" goDone>check_box</i> {{/if}}<br>
                             {{__ ".calendarPlaced"}}
                         </div>
                         {{>tasksList type="calendar" selectedColors=selectedColors myTasks=myTasks}}
@@ -90,7 +90,7 @@
                 <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
                     <div id="taskGroup-waiting" class="tasksGroup shadow">
                         <div class="groupHead">
-                            {{#if isPhone}}<i class="material-icons">check_box_outline_blank</i><i class="material-icons">event</i>{{/if}}<i class="material-icons focus-color">hourglass_empty</i>{{#if isPhone}}<i class="material-icons">check_box</i> {{/if}}<br>
+                            {{#if isPhone}}<i class="material-icons" goTodo>check_box_outline_blank</i><i class="material-icons" goCalendar>event</i>{{/if}}<i class="material-icons focus-color">hourglass_empty</i>{{#if isPhone}}<i class="material-icons" goDone>check_box</i> {{/if}}<br>
                             {{__ ".waitingForStatus"}}
                         </div>
                         {{>tasksList type="waiting" selectedColors=selectedColors myTasks=myTasks}}
@@ -100,7 +100,7 @@
                 <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
                     <div id="taskGroup-done" class="tasksGroup  shadow">
                         <div class="groupHead">
-                            {{#if isPhone}}<i class="material-icons">check_box_outline_blank</i><i class="material-icons">event</i><i class="material-icons">hourglass_empty</i>{{/if}}<i class="material-icons focus-color">check_box</i> <br>
+                            {{#if isPhone}}<i class="material-icons" goTodo>check_box_outline_blank</i><i class="material-icons" goCalendar>event</i><i class="material-icons" goWaitingForStatus>hourglass_empty</i>{{/if}}<i class="material-icons focus-color">check_box</i> <br>
                             {{__ ".done"}}
                         </div>
                         {{>tasksList type="done" selectedColors=selectedColors myTasks=myTasks}}

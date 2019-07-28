@@ -37,7 +37,7 @@ Template.invitation.events({
         if(Meteor.userId()){
             inviteController.acceptInvitation(instance.invitation.get(), instance.project.get(), instance.password, ()=>{
                 hubCrypto.decryptAndStoreProjectListInSession(()=>{
-                    FlowRouter.go('/project/'+instance.project.get()._id+'/home')
+                    FlowRouter.go('/project/'+instance.project.get()._id+'/forum')
                 })
 
             })

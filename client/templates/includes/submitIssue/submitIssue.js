@@ -69,7 +69,7 @@ Template.submitIssue.events({
         }
 
         let issueObj = {
-            title: requestType + " from System-D user",
+            title: requestType + " : " +issueContent.substring(0,50) + "...",
             body: body
         }
         let captcha = {
