@@ -67,6 +67,10 @@
     "githubLink": "Pour voir l'évolution de votre message, rendez vous sur GitHub",
     "return": "Retour"
   },
+  "newsFeed": {
+    "btnLabel": "Actualités",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
   "notifModal": {
     "title": "Notifications",
     "deleteAll": "Tout supprimer"
@@ -660,7 +664,7 @@
   },
   "donate": {
     "title": "Soutenir System-D",
-    "why": "Nous avons besoins de vos donnations",
+    "why": "Nous avons besoins de vos donations",
     "whyText": "Le projet System-D à été bâti avec le coeur, sur du temps libre. Si vous souhaitez le voir perdurer et offrir à ceux qui le font vivre du temps libre pour developper de nouvelles fonctionnalités et améliorer les fonctionnalités existantes, vos donations sont importantes.",
     "withTheMoney": "Vos donations permettent :",
     "servers": "De payer les frais d'hébergement de la plate-forme pour un nombre toujours croissant d'utilisateurs",

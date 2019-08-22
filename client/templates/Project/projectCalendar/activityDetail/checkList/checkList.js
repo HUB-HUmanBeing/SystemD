@@ -59,7 +59,6 @@ Template.checkList.events({
                     }
                 })
             })
-
         },500)
     },
     'click [check]':function (event, instance) {

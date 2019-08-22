@@ -8,19 +8,19 @@ import cryptoTools from "./lib/cryptoTools";
 Session.set('userAvatars', {})
 Session.set('projectAvatars', {})
 
-let lang = getLang()
 let storedLang = window.localStorage.getItem('lang')
 // we stock language browser
 if (storedLang) {
     i18n.setLocale(storedLang);
     moment.locale(storedLang)
-} else {
+} 
+else {
+    let lang = getLang()
     i18n.setLocale(lang);
     moment.locale(lang)
     window.localStorage.setItem('lang', lang);
 }
 // we set language from localStorage
-
 
 //on recupere la liste de tout les templates de la plate-forme
 let TemplatesNames = [];
