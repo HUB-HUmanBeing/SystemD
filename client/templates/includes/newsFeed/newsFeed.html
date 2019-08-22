@@ -1,0 +1,23 @@
+<template name="newsFeed">
+    <div id="openModalNewsFeedContainer">
+        <a class="waves-effect waves-light btn modal-trigger " href="#modalNewsFeed"><i
+                class="material-icons left">rss_feed</i>
+                {{__ ".btnLabel"}}
+                <p> {{__ ".content"}}</p>
+            
+        </a>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modalNewsFeed" class="modal contrasted-bg">
+        <div class="modal-content small-padding contrasted-bg main-color">
+            <h6>{{__ ".btnLabel"}}</h6>
+            <div class="iconInfo">
+                <p class=" left-align">
+                    {{__ ".content"}}
+                </p>
+            </div>
+        </div>
+    </div>
+
+</template>
