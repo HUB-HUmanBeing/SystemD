@@ -2,6 +2,7 @@ import {check} from "meteor/check";
 import Comment from "/imports/classes/Comment";
 import NotifPush from "../../imports/NotifPush";
 import Publication from "../../imports/classes/Publication";
+import Topic from "../../imports/classes/Topic";
 
 
 Comment.extend({
@@ -21,9 +22,10 @@ Comment.extend({
             })
         },
         notify(membersToNotify,notifObjects){
-
-
-            NotifPush.notifyGlobally(membersToNotify, notifObjects, "newResponse",this.projectId,"forum", "categoryId="+this.categoryId+"&topicId="+this._id)
+let topicId = Publication.findOne(this.publicationId).topicId
+let categoryId = Topic.findOne(topicId).categoryId
+            console.log( categoryId)
+            NotifPush.notifyGlobally(membersToNotify, notifObjects, "newResponse",this.projectId,"forum", "categoryId="+categoryId+"&topicId="+topicId)
         },
     }
 })
