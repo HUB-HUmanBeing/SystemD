@@ -48,7 +48,9 @@ Template.checkList.events({
         if(instance.timeout){
             Meteor.clearTimeout(instance.timeout)
         }
-        instance.timeout = Meteor.setTimeout(()=>{
+        let action= ()=>{
+
+            instance.actionOnClose = ()=>{}
             let activity = instance.data.activity
             event.preventDefault()
             let index = Number(event.currentTarget.id.split('-')[1])
@@ -59,8 +61,9 @@ Template.checkList.events({
                     }
                 })
             })
-
-        },500)
+        }
+        instance.actionOnClose = action
+        instance.timeout = Meteor.setTimeout(action,15000)
     },
     'click [check]':function (event, instance) {
         let activity = instance.data.activity
@@ -93,9 +96,12 @@ Template.checkList.onCreated(function () {
     //add your statement here
     this.timeout=false
     this.checkItems = new ReactiveVar([])
-    this.items= new ReactiveVar(Activity.findOne(this.data.activity._id).checkList)
+    this.items= new ReactiveVar()
+    this.actionOnClose = ()=>{}
     this.autorun(()=>{
-        let items = this.items.get()
+        FlowRouter.watchPathChange()
+        let items = Activity.findOne(FlowRouter.current().queryParams.activityId).checkList
+        this.items.set(items)
         if(items.length){
 
             let decryptedCheckItems = []
@@ -121,5 +127,6 @@ Template.checkList.onRendered(function () {
 
 Template.checkList.onDestroyed(function () {
     //add your statement here
+    this.actionOnClose()
 });
 
