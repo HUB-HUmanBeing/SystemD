@@ -21,7 +21,6 @@ FlowRouter.route('/login', {
         } else {
             FlowRouter.go("/")
         }
-
     },
 });
 
@@ -65,7 +64,8 @@ FlowRouter.route('/invitation/:invitationId', {
         } else {
             BlazeLayout.render('mainLayout', {main: 'invitation'});
         }
-
     },
 });
+
+
 

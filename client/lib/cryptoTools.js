@@ -184,7 +184,6 @@ const cryptoTools = {
     },
     //fonction de chiffrement symétrique en AES
     async sim_encrypt_data(data, stringifiedSymKey, callback) {
-
         return this.importSymKey(stringifiedSymKey, async (symKey) => {
             let iv = this.crypto().getRandomValues(new Uint8Array(16))
             await crypto.subtle.encrypt({

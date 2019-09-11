@@ -1,10 +1,16 @@
 <template name="newsFeed">
-    <div id="openModalNewsFeedContainer">
-        <a class="waves-effect waves-light btn modal-trigger " href="#modalNewsFeed"><i
-                class="material-icons left">rss_feed</i>
-                {{__ ".btnLabel"}}
-                <p> {{__ ".content"}}</p>
-            
+    <div id="openModalNewsFeedContainer" openModal>
+        <a class="waves-effect waves-light btn modal-trigger news" href="#modalNewsFeed">
+            <i class="material-icons left">rss_feed
+            {{#unless isUpToDate}}
+              <span class="notif">.</span>
+            {{/unless}}
+            </i>
+
+            {{__ ".btnLabel"}}
+            {{#if isOpen}}
+            <p> {{__ ".content"}}</p>
+            {{/if}}
         </a>
     </div>
 

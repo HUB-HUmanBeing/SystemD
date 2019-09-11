@@ -32,15 +32,11 @@
       text-transform: none;
     }
     &:hover{
-      height: 300px;
       width: 200px;
-
       right: 0;
       opacity: 1;
     }
   }
-
-
 }
 #modalNewsFeed{
   max-width: 600px;
@@ -58,4 +54,14 @@
     background-color: $focus-color;
     height: 3px;
   }
+}
+
+.notif{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  z-index: 6200;
 }

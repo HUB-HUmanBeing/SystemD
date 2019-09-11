@@ -1,129 +1,79 @@
 import i18n from "meteor/universe:i18n";
+import Axios from "axios";
 
 Template.newsFeed.helpers({
     //add you helpers here
-    requestType: function () {
-        return Template.instance().requestType.get()
-    },
     issueUrl: function () {
         return Template.instance().issueUrl.get()
     },
-    captcha: function () {
-        return Template.instance().captcha.get().data
+    isOpen: function () {
+        return Template.instance().isOpen.get()
+    },
+    isUpToDate: function() {
+        return Template.instance().isUpToDate.get()
     }
 });
 
 Template.newsFeed.events({
-    //add your events here
-    "click [bugReport]": function (event, instance) {
-        event.preventDefault()
-        Meteor.setTimeout(()=>{
-            $('#newsFeedContent').focus()
-        },200)
-        instance.requestType.set('bugReport')
-    },
-    "click [suggestion]": function (event, instance) {
-        Meteor.setTimeout(()=>{
-            $('#newsFeedContent').focus()
-        },200)
-        event.preventDefault()
-        instance.requestType.set('suggestion')
-    },
-    "click [refreshCaptcha]": function (event, instance) {
-        event.preventDefault()
-        Meteor.call("getCaptcha", (err, res) => {
-            if (err) {
-                console.log(err)
-            } else {
-                // console.log(res)
-                instance.captcha.set(res)
-            }
-        })
-    },
-    'submit #newsFeedForm': function (event, instance) {
-        event.preventDefault()
-        let issueContent = $('#newsFeedContent').val()
-        let requestType = instance.requestType.get()
-        let contextInfos = null
-        let withDeviceInfo = $('#withDeviceInfo').prop("checked")
-        console.log(withDeviceInfo)
-        if (requestType === "bugReport" && withDeviceInfo) {
-            contextInfos = {
-                platform: navigator.platform,
-                userAgent: navigator.userAgent,
-                appVersion: navigator.appVersion,
-                vendor: navigator.vendor,
-                url: window.location.href,
-                size: window.innerWidth + " x " +window.innerHeight,
-                locale: i18n.getLocale()
-            }
-        }
-        let body = "### " + requestType + " from System-D user" + "\n"
-        body += "#### content :" + "\n"
-        body += issueContent+ "\n"
-        if (contextInfos) {
-            body += "#### context info :" + "\n"
-            Object.keys(contextInfos).forEach(key => {
-                body += '> ' + key + " : " + contextInfos[key] + "\n"
-            })
-        }
-
-        let issueObj = {
-            title: requestType + " : " +issueContent.substring(0,50) + "...",
-            body: body
-        }
-        let captcha = {
-            hashControl: instance.captcha.get().text,
-            userInput: $("#NewsFeedCaptcha").val()?$("#NewsFeedCaptcha").val(): "ok"
-        }
-
-        Meteor.call("sendIssue", issueObj, captcha, (err, res) => {
-            if (err) {
-                console.log(err)
-            } else {
-                instance.issueUrl.set(res)
-            }
-        })
-    },
-    'click [closeModal]' : function (event, instance) {
-        event.preventDefault()
-        $('.modal').modal('close')
-        $('#newsFeedContent').val(' ')
+    'click [openModal]' : function (event, instance) {
+        event.preventDefault();
+        instance.isOpen.set(true);
+        instance.isUpToDate.set(true);
+        window.localStorage.setItem('newsFeedHist', Date.now());
+        $('.news').css({
+          height: '300px',
+          width: '200px',
+          right: '0',
+        });
     }
-});
+})
 
 Template.newsFeed.onCreated(function () {
     //add your statement here
-    this.requestType = new ReactiveVar('bugReport')
-    this.issueUrl = new ReactiveVar(false)
-    this.captcha = new ReactiveVar({data: null, text: null})
+    this.issueUrl = new ReactiveVar(false);
+    this.isOpen = new ReactiveVar(false);
+    this.isUpToDate = new ReactiveVar(true);
+    this.lastView = window.localStorage.getItem('newsFeedHist');
 });
 
 Template.newsFeed.onRendered(function () {
-    //add your statement here
-    $('#modalNewsFeed').modal({
-        startingTop: '4%', // Starting top style attribute
-        endingTop: '4%',
-        ready: (modal, trigger) =>{ // Callback for Modal open. Modal and trigger parameters available.
-            $('ul.tabs').tabs();
-            Meteor.setTimeout(()=>{
-                $('#newsFeedContent').focus()
-            },200)
-            Meteor.call("getCaptcha", (err, res) => {
-                if (err) {
-                    console.log(err)
-                } else {
-                    // console.log(res)
-                    this.captcha.set(res)
-                }
-            })
-        },
-        complete: () => {
-            this.issueUrl.set(false)
+    //GET request for newsFeed
+    var template = this;
+
+    $.get(
+      'news/newsFeed.json',
+      'false',
+      function (feed) {
+        template.feed = feed;
+        //TODO marche pas à cause de la mise en cache de FF
+        console.log(template.feed['lastUpdate'],template.lastView,Date.now());
+        if(feed['lastUpdate']>template.lastView){
+          template.isUpToDate.set(false);
+          console.log('Point rouge');
         }
-    })
-    $('#newsFeedContent').characterCounter();
-    resetTooltips()
+      },
+      'json'
+    );
+
+    //Define modal 
+    $('#modalNewsFeed').modal({
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '4%',
+      complete: function() { 
+        template.isOpen.set(false);
+        console.log('closed');      
+        $('.news').css({
+          height: '30px',
+          right: 'calc(30px - 100%)',
+          /*TODO handle hover ? 
+          hover{
+            width: 200px;
+            right: 0;
+            opacity: 1;
+          }*/
+        });
+      } 
+    });
 });
 
 Template.newsFeed.onDestroyed(function () {

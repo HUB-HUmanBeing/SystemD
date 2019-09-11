@@ -228,7 +228,7 @@
   "loginPage": {
     "signin": "Inscription",
     "connection": "Connexion",
-    "backToHome": "Retour à l'acceuil"
+    "backToHome": "Retour à l'accueil"
   },
   "_templates": "Project",
   "newProject": {
@@ -357,13 +357,13 @@
     "deleteAccount": "Supprimer le compte"
   },
   "deleteAccountJs": {
-    "error": "une erreur s'est produite",
+    "error": "Une erreur s'est produite",
     "deletedAccount": "Votre compte utilisateur à été définitivement supprimé"
   },
   "editAvatar": {
     "edit": "Editer l'avatar",
     "delete": "Supprimer l'avatar",
-    "OK": "valider"
+    "OK": "Valider"
   },
   "editPassword": {
     "oldPassword": "Ancien mot de passe",
@@ -406,7 +406,8 @@
   "categoryList": {
     "categoryName": "Nom du dossier",
     "new": "Nouveau dossier",
-    "myFiles": "DOCUMENTS"
+    "myFiles": "DOCUMENTS",
+    "seeMore": "Voir plus"
   },
   "categoryItem": {
     "categoryName": "Nom du dossier",
