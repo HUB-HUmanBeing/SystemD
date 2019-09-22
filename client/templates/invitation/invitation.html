@@ -59,6 +59,7 @@
                                 </div>
 
                             </div>
+                            {{#if ready}}
                             {{#if userAlreadyInProject}}
                                 <p class=" no-margin">
                                     <i>{{__ '.userAlreadyInProject'}}</i>
@@ -76,6 +77,7 @@
                                         </a>
                                     </div>
                                 </div>
+                            {{/if}}
                             {{/if}}
                         </div>     {{#if project.public.description}}
                         <div class="row">

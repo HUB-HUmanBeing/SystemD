@@ -22,6 +22,9 @@ Template.invitation.helpers({
 
         return result
     },
+    ready:function(){
+        return !Meteor.userId() || !!Session.get("projects")
+    },
     noLongerExist: function () {
         return Template.instance().noLongerExist.get()
     },

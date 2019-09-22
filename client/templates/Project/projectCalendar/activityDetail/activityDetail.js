@@ -42,7 +42,6 @@ Template.activityDetail.helpers({
                 Materialize.updateTextFields();
             }
         }, 100)
-
         return activity
     },
     showEditFormButton: function () {
