@@ -33,7 +33,6 @@ accounts-base@1.4.3
 universe:utilities-blaze
 jagi:astronomy
 mystor:device-detection
-materialize:materialize
 ostrio:templatehelpers
 webtempest:animate
 robinbanquo:start-loader
@@ -43,3 +42,4 @@ underscore@1.0.10
 
 nourharidy:ssl
 http@1.4.2
+materialize:materialize
