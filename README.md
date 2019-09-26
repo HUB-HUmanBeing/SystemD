@@ -115,7 +115,7 @@ dans un autre terminal lancez minio avec la commande suivante :
 
     
 #### 4. C'est prêt !
-enfin, lancez le serveur de dev avec :
+Copiez le fichier settings.template.json à la racine et rennomez le settings.json. Lancez enfin le serveur de dev avec :
    
     $  meteor --settings settings.json
 Vous pouvez ensuite visionner l'avancement du travail en vous rendant à l'adresse suivante :
