@@ -1,5 +1,5 @@
 App.info({
-    id: 'com.meteor.examples.todos',
+    id: 'com.meteor.system-d',
     name: 'System-D',
-    version: "0.0.1"
+    version: "0.0.2"
 });
