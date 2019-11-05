@@ -1,0 +1,57 @@
+{
+  "name": "materialize",
+  "description": "A modern responsive front-end framework based on Material Design",
+  "keywords": [
+    "css",
+    "js",
+    "sass",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "ux",
+    "material",
+    "design"
+  ],
+  "main": [
+    "dist/js/materialize.js",
+    "dist/css/materialize.css",
+    "dist/fonts/roboto/Roboto-Bold.woff",
+    "dist/fonts/roboto/Roboto-Bold.woff2",
+    "dist/fonts/roboto/Roboto-Light.woff",
+    "dist/fonts/roboto/Roboto-Light.woff2",
+    "dist/fonts/roboto/Roboto-Medium.woff",
+    "dist/fonts/roboto/Roboto-Medium.woff2",
+    "dist/fonts/roboto/Roboto-Regular.woff",
+    "dist/fonts/roboto/Roboto-Regular.woff2",
+    "dist/fonts/roboto/Roboto-Thin.woff",
+    "dist/fonts/roboto/Roboto-Thin.woff2"
+  ],
+  "ignore": [
+    "jade/",
+    ".gitignore",
+    "CNAME",
+    "css/",
+    "bower.json",
+    "README.md",
+    "images/",
+    "fonts",
+    "js/jquery.timeago.js",
+    "js/init.js",
+    "js/prism.js",
+    "res/",
+    "sass/style.scss",
+    "sass/ghpages-materialize.scss",
+    "**/*.html",
+    "**/*.zip",
+    "**/*.txt",
+    "sitemap.xml",
+    "package.json",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0 || ^2.1.4"
+  },
+  "devDependencies": {
+  }
+}
