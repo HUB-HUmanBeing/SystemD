@@ -680,7 +680,8 @@
   "files": {
     "projectUsing": " ",
     "of": "of",
-    "allowed" : " "
+    "allowed" : " ",
+    "seeMore": "see more"
   },
   "filePreview": {
     "delete": "Delete file"
@@ -701,5 +702,8 @@
   "pinned": {
     "pin": "Pin the publication on the top of the topic",
     "unpin": "Unpin publication"
+  },
+  "showFileContent": {
+    "deleted": "The file has been deleted."
   }
 }

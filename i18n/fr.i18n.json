@@ -681,7 +681,8 @@
   "files": {
     "projectUsing": " ",
     "of": "sur",
-    "allowed": " "
+    "allowed": " ",
+    "seeMore": "voir plus"
   },
   "filePreview": {
     "delete": "Supprimer le fichier"
@@ -703,5 +704,8 @@
   "pinned": {
     "pin": "Epingler la publication en en-tête de la discussion",
     "unpin": "Désépingler la publication"
+  },
+  "showFileContent": {
+    "deleted": "Le fichier à été supprimé."
   }
 }
