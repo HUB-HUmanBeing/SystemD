@@ -1,14 +1,19 @@
 @import "{}/client/scss/variables.scss";
 
 #categoryList{
-#mainTopicItem{
+.mainTopicItem{
   ul{
     cursor: pointer;
     border: none;
     border-left: 3px solid $blue-highlight-color;
     transition: 0.3s;
-
     border-radius: 0px !important;
+    a{
+      width: 100%;
+      height: 100%;
+      display: block;
+      padding: 8px 10px !important;
+    }
     li{
       transition: 0.3s;
       background-color: $contrasted-bg !important;
@@ -17,12 +22,7 @@
       position: relative;
       //padding-left: 10px !important;
       padding: 0 !important;
-      a{
-        width: 100%;
-        height: 100%;
-        display: block;
-        padding: 8px 20px !important;
-      }
+
       i{
         position: relative;
         top:4px;

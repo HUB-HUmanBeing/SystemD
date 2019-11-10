@@ -198,9 +198,13 @@ const ProjectPrivate = Class.create({
             default: function () {
                 return 0
             }
+        },
+        spreadsheetCount:{
+            type: Number,
+            default: function () {
+                return 0
+            }
         }
-
-
     }
 });
 

@@ -707,5 +707,13 @@
   },
   "showFileContent": {
     "deleted": "Le fichier à été supprimé."
+  },
+  "spreadsheetList": {
+    "spreadsheetList": "Tableurs",
+    "noSpreadsheet" : "Aucuns tableurs",
+    "newSpreadsheet": "Nouveau tableur",
+    "showMore": "showMore",
+    "SpreadsheetName": "Nom du tableur"
+
   }
 }

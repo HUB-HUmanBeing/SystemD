@@ -67,6 +67,10 @@ Template.projectForum.helpers({
             }
 
         }
+    },
+    isSpreadsheet: function () {
+        FlowRouter.watchPathChange()
+        return !!FlowRouter.current().queryParams.spreadsheetId
     }
 });
 

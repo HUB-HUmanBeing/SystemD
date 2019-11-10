@@ -1,0 +1,17 @@
+<template name="spreadsheet">
+    {{#unless isRefreshing}}
+        <div id="topic" class="full-height flex-auto" style="{{#if isDesktop}}padding-top:10px{{/if}}">
+
+            {{#if currentSpreadsheet}}
+                {{>spreadsheetHeader currentSpreadsheet=currentSpreadsheet}}
+
+            {{else}}
+                {{>topicLoader}}
+            {{/if}}
+            {{#if file}}
+                {{>fullSreenFile file=file}}
+            {{/if}}
+
+        </div>
+    {{/unless}}
+</template>

@@ -1,0 +1,73 @@
+<template name="spreadsheetList">
+    <div class="collapsible-header active flex shadow relative {{#if isCurrentCategory}}currentCategory{{/if}}">
+
+            <div class="flex-auto elipsis categoryTitle" title="{{category.symEnc_name}}">
+                <i class="material-icons link" style="transform: rotate(90deg)">view_comfy</i><span>{{__ ".spreadsheetList"}}</span>
+            </div>
+    </div>
+    <div class="collapsible-body transparent no-padding relative">
+
+
+        {{#if length spreadsheets}}
+            <ul class="collection shadow ">
+
+                {{#each spreadsheet in spreadsheets}}
+                    {{>spreadsheetItem spreadsheet=spreadsheet}}
+                {{/each}}
+            </ul>
+        {{else}}
+            {{#if isLoading}}
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+            {{else}}
+
+                    <div class="small-padding" style="margin-bottom: -40px">
+                        <p class="infoQuotes" style="margin: 5px;"><i>{{__ ".noSpreadsheet"}}</i></p>
+                    </div>
+
+            {{/if}}
+        {{/if}}
+        {{#if showNewSpreadsheet}}
+            <form action="" newSpreadsheetForm class="flex  " style="padding: 20px 15px 0 10px">
+                <div class="input-field flex-auto small-padding small-margin">
+                    <input id="newSpreadsheetName" type="text" required
+                           class="validate no-margin">
+                    <label for="newSpreadsheetName">{{__ ".SpreadsheetName"}}</label>
+                </div>
+                <div class="">
+                    <button href="" class="btn btn-floating waves-effect waves-light">
+                        {{#if isCreating}}{{>circleSpinner}}{{else}}<i
+                                class="material-icons prefix">done</i>{{/if}}</button>
+                </div>
+            </form>
+
+        {{/if}}
+        {{#unless showNewSpreadsheet}}
+            <div class="relative">
+                <a href="" class="btn btn-floating tooltipped waves-light waves-effect absolute newTopicBtn"
+                   data-position="left"
+                   data-delay="50"
+                   data-tooltip="{{__ ".newSpreadsheet"}}"
+                   style="{{#if isDesktop}}
+                   opacity: 0;right: 55px;
+                   {{else}}
+                   right: 25px !important;opacity: 1 !important;
+                   {{/if}}"><i
+                        class="material-icons right" openNewSpreadsheet>playlist_add</i></a>
+            </div>
+        {{/unless}}
+        {{#unless showNewSpreadsheet}}
+            <div class="small-padding relative center-align transparent">
+                {{#if hasMore}}
+                    <a href="" class="link showMoreTopics" showMore><i
+                            class="material-icons">expand_more</i><span>{{__ ".showMore"}}</span></a>
+                {{else}}
+
+                    <div style="height: 5px"></div>
+
+                {{/if}}
+            </div>
+        {{/unless}}
+    </div>
+</template>

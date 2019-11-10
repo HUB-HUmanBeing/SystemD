@@ -53,7 +53,11 @@
                          {{/if}}"
                     >
                         <div class="topicSubContainer center-align">
-                            {{>topic refreshScrollbar=refreshScrollbar}}
+                            {{#if isSpreadsheet}}
+                                {{>spreadsheet refreshScrollbar=refreshScrollbar}}
+                            {{else}}
+                                {{>topic refreshScrollbar=refreshScrollbar}}
+                            {{/if}}
                         </div>
 
                     </div>
