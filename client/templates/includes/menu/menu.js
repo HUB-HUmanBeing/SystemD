@@ -3,6 +3,7 @@ import hubCrypto from "/client/lib/hubCrypto";
 import BeautifyScrollbar from 'beautify-scrollbar';
 import pushController from "../../../lib/controllers/pushController";
 import ProjectNotification from "../../../../imports/classes/ProjectNotification";
+import i18n from "meteor/universe:i18n";
 
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
@@ -75,6 +76,10 @@ Template.menu.onRendered(function () {
         this.showInfo.set(true)
     }, 2500)
 
+   let  isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)
+    if(!isChrome){
+        Materialize.toast(__('general.changNavigator'), 10000, 'toastError')
+    }
 });
 
 Template.menu.onDestroyed(function () {

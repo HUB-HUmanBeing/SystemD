@@ -202,7 +202,8 @@
     "return": "Return"
   },
   "general": {
-    "error": "An error has occurred"
+    "error": "An error has occurred",
+    "changNavigator": "We are a small team of volonteers and the needed development works to ensure the portability to your browser are not yet completed.\nYou will have an optimal user experience using Chrome browser or its open-source version Chromium. "
   },
   "invitation": {
     "accept": "Accept",

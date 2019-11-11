@@ -1,7 +1,8 @@
 {
   "_locale": "fr-FR",
   "general": {
-    "error": "Une erreur s'est produite"
+    "error": "Une erreur s'est produite",
+    "changNavigator": "Nous sommes une équipe réduite de bénévoles et les développements nécessaires pour adapter ce site à votre navigateur ne sont pas encore terminés. Vous obtiendrez une expérience optimale en utilisant le navigateur Chrome ou sa version open-source Chromium."
   },
   "_templates": "application",
   "forbidden": {
