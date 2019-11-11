@@ -1,609 +1,693 @@
 {
+  "_file": "en.i18n.json",
   "_locale": "en-US",
-  "general": {
-    "error": "An error has occurred"
-  },
-  "_templates": "application",
-  "forbidden": {
-    "noAccess": "You don't have acces to this page",
-    "backHome": "Back to the home"
-  },
-  "notFound": {
-    "noAddress": "Sorry, we can't find a page at this address.",
-    "backHome": "Back to the home"
-  },
-  "workInProgress": {
-    "nofunction": "This feature is not yet enable",
-    "allow": "It will allow :",
-    "infos": "Additionals informations:"
-  },
-  "_templates": "includes",
-  "menuProject": {
-    "home": "Home",
-    "forum": "Forum",
-    "params": "Parameters",
-    "calendar": "Calendar",
-    "tasks": "Tasks List",
-    "maps": "Map",
-    "members": "Members"
-  },
-  "layout": {
-    "beta": "béta",
-    "donateLabel": "Soutenir System-D",
-    "betaVersion": "System-D.org est toujours en version béta !",
-    "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorable. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
-    "betaExplain2": "Merci de ",
-    "donate": "nous aider avec vos donations ",
-    "betaExplainEnd": "et en faisant remonter les idées d'améliorations et bugs constatés.",
-    "betaWarning": "Le protocole de chiffrement a été conçut avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
-    "betaWarning2": "Nous ne pouvons donc pas assurer à 100% a nos utilisateurs que leurs données sont inviolables meme si c'est pour nous un objectif aussi prioritaire que l'ergonomie du site.",
-    "help": "Communiquer une vulnérabilité ou un problème de sécurité ..."
-  },
-  "menu": {
-    "param": "Parameters",
-    "logout": "Log Out",
-    "noProject": "Currently, you have not join project.",
-    "clic": "You can clic on the button below to create a project or wait an invitation to a existing project.",
-    "decryption": "Decryption of your projects list.",
-    "newProject": "New Project"
-  },
+  "_template": "forum",
   "accessDenied": {
     "denied": "Access denied",
-    "noAccess": "You can't access to this page! Please login."
+    "noAccess": "You don't have the authorization to access to this page! Please login."
   },
-  "submitIssue": {
-    "btnLabel": "Bugs - Suggestions",
-    "bugReport": "Bug",
-    "suggestion": "Suggestions",
-    "allowDeviceInfo": "Automatically join navigator informations in order to help bug-fix ? (navigator, version, exploitation system, language)",
-    "decline": "no",
-    "authorize": "yes",
-    "bugReportLabel": "Bug description",
-    "sugestionLabel": "Idea and suggestions",
-    "refreshCaptcha": "Renew",
-    "captcha": "Enter the 4 letters",
-    "submit": "Send",
-    "succesMessage": "Thanks for your contribution ! Your message has been sent to the developers",
-    "githubLink": "To see the tracking of your feed-back, go to the GitHub of the project",
-    "return": "return"
+  "activityDetail": {
+    "activityDetail": "Detail",
+    "activityTitle": "Unnamed activity",
+    "deleteActivity": "delete",
+    "editActivity": "save",
+    "inviteMember": "Invite members to join activity",
+    "invited": "guest :",
+    "joinActivity": "Participate to activity",
+    "noInvited": "No members invited",
+    "noParticipant": "Any participant",
+    "onMap": "Map position :",
+    "paricipating": "You participate to this activity",
+    "participants": "Participants :",
+    "quitActivity": "Quit activity",
+    "recursivity": "Recurrence",
+    "showOnMap": "See on map"
   },
-  "notifModal": {
-    "title": "Notifications",
-    "deleteAll": "Delete all"
+  "beta": {
+    "beta": "beta"
   },
-  "notifItem": {
-    "acceptedInvitation": "An invitation has been accepted and a new member has join the project.",
-    "memberQuit": "A member has quit the project.",
-    "memberPromoted": "You now have admin rights on the project.",
-    "genericTitle": "New activity on System-D",
-    "genericAction": "See on website",
-    "newPublication": "A new publication has been added in a followed topic",
-    "newResponse": "A comment has been made after your message",
-    "newMapMarker": "A new marker has been positioned on the map",
-    "newInvitation": "you have been invited to participate to an activity"
-  },
-  "showAcceptNotif": {
-    "showAcceptNotifs": "Click accept to be notified of the activities on your projects",
-    "showAcceptNotifsInfos": "You will be able to adjust or disable the notifications later"
-  },
-  "_templates": "landingPage",
-  "landingHead": {
-    "aims": "Purposes",
-    "features": "Features",
-    "roadMap": "Road Map",
-    "contact": "Contact",
-    "login": "Login",
-    "signUp": "Sign Up",
-    "Logout": "Logout"
-  },
-  "landingAim": {
-    "ourPurpose": "OUR PURPOSE",
-    "purpose": "Develop a tool to support transition from a money society collapsing to a model based on the free exchange, the sharing and the collaboration between humans.",
-    "3DevPhases": "THREE PHASES OF DEVELOPMENT",
-    "createTool": "Create a tool to manage project opened to everybody.",
-    "cTool": "A tool that will enable to organize different groups and associations efficiently. A tool encrypted, free, open-source, taking aim at the 'horizontality'in the management of project.",
-    "doOfSystemD": "Make SystemD the social network of free exchange project.",
-    "dOfSystD": "Creation of interfaces to do a meeting place through differents projects: Search geolocated by skills-interests, encrypted instant messaging, shared blog, etc...",
-    "developFreeNetwork": "Develop a free and sharing network",
-    "dFreeNetwork": "Allow users and projects to share their resources in order to create a big free and non-commercial network."
-  },
-  "landingContact": {
-    "github": "Follow the progress of project, make issues and pull-requests.",
-    "email": "Contact-me by e-mail to share yours observations, ideas, suggestions, propositions, ...",
-    "chat": "Join us on the chat to discuss with the team of project."
-  },
-  "landingPlus": {
-    "anonymous": "ANONYMOUS",
-    "panonymous": "Login with a pseudo, no need email, and use a tor-browser for more anonymity.",
-    "free": "FREE",
-    "pfree": "How imagine differently a platform whose the purpose is the promotion of free exchange between humans?",
-    "encrypted": "ENCRYPTED",
-    "pencrypted": "Contents shared and the list of the projects you have selected are encrypted \"end-to-end\". ",
-    "signin": "Sign In"
-  },
-  "landingRoadmap": {
-    "roadmap": "ROADMAP",
-    "firstPhase": "FIRST PHASE",
-    "pfirstPhase": "Interface to make user account and connection to platform.",
-    "p2firstPhase": "Interface to change user profile.",
-    "p3firstPhase": "Interface to create project.",
-    "p4firstPhase": "Invitation for projects and to manage members.",
-    "p5firstPhase": "Creation of forum by project.",
-    "p6firstPhase": "Calendar participative for each project.",
-    "p7firstPhase": "List of ergonomics tasks for each project.",
-    "p8firstPhase": "Interface to support or participate at SystemD",
-    "secondPhase": "SECOND PHASE",
-    "psecondPhase": "Interface to select his skills for each users.",
-    "p2secondPhase": "Interface to select his interests for each users.",
-    "p3secondPhase": "Taking into consideration of geolocation.",
-    "p4secondPhase": "Advanced research tools to research potentials contributors / interstings projects.",
-    "p5secondPhase": "Instant messaging inter-users and inter-projects.",
-    "p6secondPhase": "Personnal blog and project blog.",
-    "p7secondPhase": "Interactive map module for projects.",
-    "thirdPhase": "THIRD PHASE",
-    "pthirdPhase": "Taking of consideration of  issues and improvements.",
-    "p2thirdPhase": "Interface to list shared materials assets.",
-    "p3thirdPhase": "Interface to research assets.",
-    "p4thirdPhase": "Possibility to make advertisements for personals and projects requirements.",
-    "p5thirdPhase": "Applications IOS, ANDROID and DESKTOP",
-    "p6thirdPhase": "Module of planning Scrum",
-    "signin": "Sign In"
-  },
-  "landingTitle": {
-    "h3title": "Encrypted platform for collaboratives and free projects",
-    "ptitle": "Make projects, join your friends, and take advantage of free and secure tools to organize your association or group together.",
-    "signin": "Sign In"
-  },
-  "landingTools": {
-    "calendar": "SHARED CALENDAR",
-    "pcalendar": "To plan with your group the next events of your project.",
-    "taskList": "TASKS LIST",
-    "ptaskList": "To see the progress of the project and to select tasks interactively by the participants.",
-    "forum": "FORUM",
-    "pforum": "Communicate together, by themes or not.",
-    "modularTools": "MODULARS TOOLS",
-    "pmodularTools": "Interactives map, planning in agile méthod, and others tools will develop.",
-    "simpleTools": "SECURE AND SIMPLE TOOLS",
-    "psimpleTools": "user-friendly organization tools and encrypted content for optimum privacy."
-  },
-  "_templates": "loginPage",
-  "loginForm": {
-    "userName": "User Name",
-    "password": "Password",
-    "connection": "Connection"
-  },
-  "loginFormJs": {
-    "key": "Recovery and decrypting the private key",
-    "session": "Initialisation new crypted session",
-    "welcome": "Welcome to System-D"
-  },
-  "signinForm": {
-    "userNameChoice": "Choice a username",
-    "passwordChoice": "Password",
-    "passwordRepeat": "Repeat password",
-    "accountCreate": "Create an account"
-  },
-  "signinFormJs": {
-    "error": "There is an error",
-    "name4": "your username require 4 characters minimum",
-    "name40": "your username require 40 characters maximum",
-    "errmail": "your username can't be an email address",
-    "alreadyTaken": "this username already exists",
-    "putName": "Please, type your username",
-    "crypt": "Encryption of your contents in System-D is based on your password, so you should use a strong password.",
-    "use": "Use ",
-    "characters": "specials characters",
-    "des": ", ",
-    "capital": "capitals",
-    "and": " and ",
-    "number": "numbers",
-    "up": " in order to increase the strength of your password.",
-    "strength": "The strength of password must be at least 10",
-    "samePwd": "Passwords are not the same",
-    "typePwd": "Please, type a password",
-    "confirm": "Please, confirm your password",
-    "form": "Registration form is not valid",
-    "miss": "It is missing informations",
-    "generation": "Generation of keys of encryption",
-    "creation": "Creation of user account",
-    "initialization": "Initialization of new encrypted session"
-  },
-  "signinContainer": {
-    "psignin": "System-D offers you a free collaborative workspace and totally",
-    "linkSignin": "https://en.wikipedia.org/wiki/End-to-end_encryption",
-    "endtoendencrypted": "end-to-end encrypted",
-    "p2signin": "Like Telegram or Signal, only you and the members of project will can decrypt and read the contents you post, even developers will not can.",
-    "next": "Next",
-    "p3signin": "And also",
-    "p3-1signin": "System-D keep the Anonymity",
-    "p3-2signin": " of his users : neither email required or personals informations. However we will not can ",
-    "p3-3signin": "help you if you forgot your password.",
-    "p3-4signin": "So, it is recommended:",
-    "spanSignin": "Write somewhere your password."
-  },
-  "loginPage": {
-    "signin": "Sign In",
-    "connection": "Connection",
-    "backToHome": "Back to home",
-    "invitationAccepted": "Invitation accepted"
-  },
-  "_templates": "Project",
-  "newProject": {
-    "createProject": "Create a project",
-    "nameProject": "Project's name",
-    "create": "Create"
-  },
-  "newProjectJs": {
-    "error": "There is an error",
-    "name4": "your project name require 4 characters minimum",
-    "name50": "your project name require 50 characters minimum",
-    "errmail": "your project name can't be an email address",
-    "alreadyTaken": "this project name already exists",
-    "nameProject": "Please, type your project name",
-    "errForm": "Registration form is not valid",
-    "missInfo": "It is missing informations",
-    "generation": "Generation of keys of encryption",
-    "creation": "Encryption of participants list",
-    "initialization": "Connection to new encrypted project",
-    "theProject": "The project ",
-    "created": " has been created."
-  },
-  "projectHome": {
-    "projectDescription": "Project description",
-    "noDescription": "no registered description."
-  },
-  "editProjectAvatar": {
-    "edit": "Edit avatar",
-    "delete": "Delete avatar",
-    "OK": "OK"
-  },
-  "editProjectDescription": {
-    "label": "Projet description"
-  },
-  "projectParams": {
-    "publicInfos": "Public informations",
-    "createInvitelink": "Create invitation link",
-    "invitationList": "Pending Invitations",
-    "deleteProject": "Delete project"
-  },
-  "deleteProject": {
-    "deleteProjectInfo": "You will remove definitely this project",
-    "deleteProjectError": "You can't remove this project",
-    "deleteProjectErrorTips": "There is still members in this project",
-    "deleteSuccess": "The project has been removed"
-  },
-  "projectLayout": {
-    "decrypting1": "Projet informations deciphering"
-  },
-  "newInvitation": {
-    "title": "Invitation link creation",
-    "infoQuote": "By transmitting invitations links, you are transmitting the project ciphers keys to everyone who have acces to the link during the validity duration of the generated link.",
-    "durationLabel": "Invitation validity duration",
-    "hour": "hour",
-    "day": "day",
-    "week": "week",
-    "month": "month",
-    "remainingLabel1": "Valid for invite",
-    "user": "user",
-    "users": "users",
-    "ok": "Generate invitation link",
-    "backToParams": "Back to project parameters"
-  },
-  "showInvitation": {
-    "title": "Invitation link",
-    "infoLink": "copy this link and send it to the person(s) you want to invite in your project.",
-    "copied": "Invitation link copied in clipboard",
-    "invitTitle": "Invitation to join the project ",
-    "invitMessage": "You have been invited by someone to join a project on System-D : the free cyphered web-platform for collaborative projects . Click on the link below to see the invitation.",
-    "infoQr": "If the person you want to invite is near you,  he or she can scan this QR-code to access the invitation.",
-    "infoDestroy": "By deleting the invitation, You delete the possibility to use the invitation link for access the cypher keys of your project.",
-    "destroy": "Delete invitation link",
-    "backToParams": "Back to project parameters",
-    "deleted": "The invitation link has been removed"
-  },
-  "invitationList": {
-    "from": "Invitation link created",
-    "by": "Created by",
-    "expireIn": "Expires in",
-    "remaining": "Remaining invitations",
-    "noInvits": "There is not any valid invitation link.",
-    "newInvitation": "Generate a new invitation link."
-  },
-  "invitation": {
-    "title": "Invitation to join a project",
-    "moreInfo": "Presentation of System-D",
-    "project": "Project",
-    "userAlreadyInProject": "You ar already member of this projet",
-    "description": "Projet dDescription",
-    "decline": "Decline",
-    "accept": "Accept",
-    "noLongerExist": "This invitation is no more valable",
-    "noLongerExistInfo": "Ask to the person who sent the invitation to send it again.",
-    "needToLoginFirst": "You must be connected to accept the invitation",
-    "needToLoginFirstInfo": "Click on the button to login or register and join the project.",
-    "needToLoginFirstButton": "Register"
-  },
-  "projectMembers": {
-    "membersList": "Members list",
-    "admins": "Admins",
-    "members": "Members"
-  },
-  "member": {
-    "since": "Since ",
-    "invitedBy": "Invited by",
-    "projectCreator": "Project creator.",
-    "quitProject": "Quit the project",
-    "quitProjectError": "You can't quit the project.",
-    "quitProjectErrorTips": "Design at least one new admin for the project.",
-    "quitProjectInfo": "You will be removed from the project members.",
-    "promoteUser": "Give admins right",
-    "promoteUserInfo": "User will be able to invite and kick members.",
-    "kickUser": "Remove user",
-    "kickUserInfo": "Remove user from the members of the project",
-    "removedSuccess": "User has been removed from the project members",
-    "promoteSuccess": "User is now admin of the project",
-    "quitSuccess": "You have quit the project"
-  },
-  "_templates": "users",
-  "deleteAccount": {
-    "confirmPassword": "Confirm with your password",
-    "deleteAccount": "Delete the account"
-  },
-  "deleteAccountJs": {
-    "error": "There is an error",
-    "deletedAccount": "Your user account has been deleted définitivement"
-  },
-  "editAvatar": {
-    "edit": "Edit avatar",
-    "delete": "Delete avatar",
-    "OK": "OK"
-  },
-  "editPassword": {
-    "oldPassword": "Old password",
-    "newPassword": "New password",
-    "repeatPassword": "Repeat password",
-    "strength": "Strength",
-    "editPassword": "Edit password"
-  },
-  "editPasswordJs": {
-    "previousPwd": "please, enter your previous password",
-    "crypt": "Encryption of your contents in System-D is based on your password, so you should use a strong password.",
-    "use": "Use ",
-    "characters": "specials characters",
-    "des": ", ",
-    "capital": "capitals",
-    "and": " and ",
-    "number": "numbers",
-    "up": " in order to increase the strength of your password.",
-    "strength": "The strength of password must be at least 10",
-    "samePwd": "Passwords are not the same",
-    "typePwd": "Please, type a password",
-    "confirm": "Please, confirm your password",
-    "form": "Registration form is not valid",
-    "miss": "It is missing informations",
-    "pwdChange": "Changing password",
-    "encryptionKey": "Encryption of private key from new password",
-    "initialization": "Initialization of encrypted session again"
-  },
-  "userParams": {
-    "editPassword": "Edit the password",
-    "peditPassword": "We will not can help you if you forgot your password. So, it is recommended to write your password somewhere.",
-    "deleteAccount": "Delete your account",
-    "pdeleteAccount": "THE DELETION OF YOUR ACCOUNT WILL BE DEFINITIVE.",
-    "passwordDeleteAccount": "Enter your password to confirm the deletion of your account."
-  },
-  "userOptions": {
-    "language": "Language"
-  },
-  "template": "forum",
-  "categoryList": {
-    "categoryName": "Folder name",
-    "new": "New folder",
-    "myFiles": "FILES"
+  "calendarSettings": {
+    "colorLegend": "Color legend : ",
+    "defaultView": "Default view : ",
+    "defaultViewSaved": "Default view has been changed for all members of the project",
+    "delete": "Delete",
+    "deleteOlds": "Delete old activities",
+    "deleteOldsInfo": "Delete activities older than :",
+    "oldsActivitiesDeleted": "Old activities have been deleted",
+    "title": "Calendar parameters"
   },
   "categoryItem": {
+    "abort": "Cancel",
     "categoryName": "Folder name",
     "delete": "Delete folder",
     "deleteInfo": "All of the items in the folder will be deleted",
+    "disableNotifications": "Notifications are enabled on this folder, click to disable.",
+    "edit": "Edit name",
+    "enlableNotifications": "Notifications are disabled on this folder, click to enable.",
     "moveDown": "Move down",
     "moveUp": "Move up",
-    "edit": "Edit name",
-    "disableNotifications": "Notifications are actived on this folder, click to desactivate.",
-    "enlableNotifications": "Notifications are desactived on this folder, click to activate.",
-    "abort": "Cancel",
-    "showMore": "Show more Topics",
     "newTopic": "Create a new Topic",
     "noTopics": "This folder is empty",
-    "notifEnabled": "You will now receive notifications for all topics in this folder.",
     "notifDisabled": "Notifications are now disabled for all topics in this folder.",
+    "notifEnabled": "You will now receive notifications for all topics in this folder.",
+    "showMore": "Show more Topics",
     "topicName": "Topic name"
   },
-  "topicItem": {
-    "unseenPublications": "New publications",
-    "dragInfo": "You can move this topic in an other category",
-    "mainTopic": "MAIN TOPIC"
+  "categoryList": {
+    "categoryName": "Folder name",
+    "myFiles": "FILES",
+    "new": "New folder",
+    "seeMore": "See more"
   },
-  "topic": {
-    "downloadAndDecrypt": "Downloading and decrypting file..."
-  },
-  "topicHeader": {
-    "mainTopic": "Main topic",
-    "topicName": "Topic name",
-    "delete": "Delete Topic",
-    "edit": "Edit topic name",
-    "disableNotifications": "Notifications are actived on this topic, click to desactivate.",
-    "enlableNotifications": "Notifications are desactived on this topic, click to activate.",
-    "abort": "Cancel",
-    "deleteInfo": "This topic and all the publications inside will be deleted.",
-    "deleteSuccess": "Topic has been deleted",
-    "notifEnabled": "You will now receive notifications for all publications in this topic",
-    "notifDisabled": "Notifications are now disabled for this topic."
-  },
-  "newPublication": {
-    "return": "Back",
-    "newPublication": "New publication",
-    "text": "Text",
-    "images": "Images and text",
-    "poll": "Poll",
-    "files": "Images, files and text"
-  },
-  "textualContent": {
-    "placeholder": "Content of your publication ...",
-    "publish": "Publish"
-  },
-  "pollContent": {
-    "placeholder": "Description of the poll",
-    "newProposition": "Answer proposal n°",
-    "addProposition": "Add proposal",
-    "publish": "Publish poll"
-  },
-  "fileContent": {
-    "addFiles": "Add one or more documents",
-    "loadInfos": "encryption and upload of documents"
-  },
-  "publicationsList": {
-    "showMore": "Show more..."
-  },
-  "publicationItem": {
-    "delete": "Delete",
-    "deleteInfo": "This action will remove the publication and all its comments.",
-    "deleteSuccess": "This publication and all its comments has been removed.",
-    "pinnedPublicationHead": "Pinned publication"
-  },
-  "showPollContent": {
-    "answers": "answers"
-  },
-  "pollOption": {
-    "vote": "votes"
-  },
-  "newComment": {
-    "placeholder": "Your comment..."
-  },
-  "commentList": {
-    "see": "See",
-    "moreComments": "others comments"
-  },
-  "commentItem": {
-    "answer": "Answer",
-    "delete": "Delete",
-    "deleteSuccess": "Comment deleted.",
-    "see": "see",
-    "moreComments": "other answers"
-  },
-  "newSubComment": {
-    "placeholder": "Your answer..."
-  },
-  "mapParams": {
-    "topo": "Topo",
-    "aerial": "Aerial",
-    "standard": "Standard"
-  },
-  "mapSettings": {
-    "title": "Parameters",
-    "kindOfMap": "Type of map : ",
-    "saveChoice": "Use this kind of map by défault for all project members.",
-    "save": "Save",
-    "defaultCenter": "Default center : ",
-    "defaultCenterInfo": "Center the map on the zone you want to appears by default and click save.",
-    "centerSaved": "Default center of the map has been edited.",
-    "deleteOlds": "Remove olds markers :",
-    "deleteOldsInfo": "Remove markers with a creation date older than:",
-    "chooseDuration": "Choose duration",
-    "delete": "remove",
-    "oldsMarkersDeleted": "Olds markers has been deleted",
-    "colorLegend": "Color legend :"
-  },
-  "newMarker": {
-    "title": "New Marker",
-    "color": "Color",
-    "type": "Type",
-    "icons": "Icons",
-    "arrows": "Arrows",
-    "lines": "Lines",
-    "text": "Text zone",
-    "textLabel": "Text zone content",
-    "textSubmit": "Create",
-    "shapes": "Shapes",
-    "myPosition": "My position",
-    "myPositionInfo": "Cliquer on this button to create a marker from your current position.",
-    "updateUserPosition": "set my position"
-  },
-  "creatingIcon": {
-    "createIconInfo": "Click on map to set marker position."
-  },
-  "editingIcon": {
-    "editIconInfo": "Click on map to edit marker position."
-  },
-  "markerDetail": {
-    "markerName": "Marker name...",
-    "markerDetail": "Detail",
-    "editMarker": "Edit",
-    "moveMarker": "Move",
-    "deleteMarker": "Delete",
-    "coordinates": "Coordinates :",
-    "createdBy": "Created by ",
-    "lastEdit": " (edited)",
-    "goTo": "let's go !!"
-  },
-  "detailMemberPosition": {
-    "lastEdit": "Last update :",
-    "actualise": "actualise",
-    "deleteMarker": "Delete"
-  },
-  "creatingPolyline": {
-    "save": "Save",
-    "undo": "Cancel last point",
-    "createIconInfo": "Set the different points then click save."
-  },
-  "creatingShape": {
-    "save": "Save",
-    "undo": "Cancel last point",
-    "circleInfo": "Set the center then drag to set diameter.",
-    "rectangleInfo": "set one angle of the rectangle then drag to enlarge.",
-    "polygonInfo": "set the different points of your shape then click save or click on first point."
-  },
-  "creatingArrow": {
-    "createArrowInfo": "Place your arrow on the map."
-  },
-  "projectCalendar": {
-    "daysView": "Daily view",
-    "monthView": "Monthly view",
-    "listView": "list of monthly events",
-    "recurring": "( Recurring )",
-    "unnamed": "No title",
-    "setActivityInfo": "Set the activity where you want on the calendar.",
-    "activityPlaced": "Activity has been set on calendar."
-  },
-  "calendarSettings": {
-    "title": "Calendar parameters",
-    "defaultView": "Default view : ",
-    "colorLegend": "Color legend : ",
-    "defaultViewSaved": "Default view has been changed for all members of the project",
-    "deleteOlds": "Delete old activities",
-    "deleteOldsInfo": "Delete activities older than :",
-    "delete": "Delete",
-    "oldsActivitiesDeleted": "Old activities have been deleted"
+  "checkList": {
+    "addCheck": "add check",
+    "checkList": "Check list : ",
+    "newCheck": "Check..."
   },
   "colorLegend": {
     "placeholder": "Your legend ...",
     "save": "Save"
   },
-  "activityDetail": {
-    "activityTitle": "Unnamed activity",
-    "activityDetail": "Detail",
-    "recursivity": "Recurrence",
-    "deleteActivity": "delete",
-    "editActivity": "enregistrer",
-    "participants": "Participants :",
-    "paricipating": "You participate to this activity",
-    "invited": "gest :",
-    "noInvited": "Any guest member.",
-    "noParticipant" : "Any participant",
-    "quitActivity": "Quit activitéy",
-    "joinActivity": "Participate to activity",
-    "inviteMember": "Guest member to join activity",
-    "onMap": "Map position :",
-    "showOnMap": "See on map"
+  "commentItem": {
+    "answer": "Answer",
+    "delete": "Delete",
+    "deleteSuccess": "Comment deleted.",
+    "moreComments": "other answers",
+    "see": "see"
+  },
+  "commentList": {
+    "moreComments": "others comments",
+    "see": "See"
+  },
+  "creatingArrow": {
+    "createArrowInfo": "Place your arrow on the map."
+  },
+  "creatingIcon": {
+    "createIconInfo": "Click on map to set marker position."
+  },
+  "creatingPolyline": {
+    "createIconInfo": "Set the different points then click save.",
+    "save": "Save",
+    "undo": "Cancel last point"
+  },
+  "creatingShape": {
+    "circleInfo": "Set the center then drag to set diameter.",
+    "polygonInfo": "set the different points of your shape then click save or click on first point.",
+    "rectangleInfo": "set one angle of the rectangle then drag to enlarge.",
+    "save": "Save",
+    "undo": "Cancel last point"
+  },
+  "deleteAccount": {
+    "confirmPassword": "Confirm with your password",
+    "deleteAccount": "Delete the account"
+  },
+  "deleteAccountJs": {
+    "deletedAccount": "Your user account has been deleted for good",
+    "error": "There is an error"
+  },
+  "deleteProject": {
+    "deleteProjectError": "You can't remove this project",
+    "deleteProjectErrorTips": "There is still members in this project",
+    "deleteProjectInfo": "You will remove this project for good",
+    "deleteSuccess": "The project has been removed"
+  },
+  "detailMemberPosition": {
+    "actualise": "actualize",
+    "deleteMarker": "Delete",
+    "lastEdit": "Last update:"
+  },
+  "donate": {
+    "copied": "Wallet address copied into clipboard",
+    "cryptos": "crypto currency donation",
+    "develop": "To create new features. Our todo list :",
+    "donateIn": "Send a donation on the System-D wallet",
+    "next1": "Instant chats between users, users and projects, projects.",
+    "next2": "Allow users to search a project or an user by localization, skills, center of interest, type of activity.",
+    "next3": "Android, Desktop, and  IOS apps ",
+    "ponctual": "One-time donation ( Paypal )",
+    "ponctualInfo": "Send a one-time donation on our Paypal account :",
+    "recursive": "Recurring donation ( liberapay )",
+    "recursiveInfo": "Give a little money every month to System-D to sustain its long-term development with the LiberaPay open-source and free platform :",
+    "servers": "To pay the hosting costs of the platform for an constantly increasing number of user",
+    "sustain": "To sustain and improve the features of System-D, make them accessible to a large amounts of users, and take into account the users feedback.",
+    "title": "Support System-D",
+    "wallet": "Wallet ",
+    "why": "We need your donations",
+    "whyText": "System-D project has been made with the heart, on free time. If you want it to continue and if you want to offer more free time  to the people who make it live so that they can develop new features and improve the existing ones, your donations are important.",
+    "withTheMoney": "Your donations allow :"
+  },
+  "editAvatar": {
+    "OK": "OK",
+    "delete": "Delete avatar",
+    "edit": "Edit avatar"
+  },
+  "editPassword": {
+    "editPassword": "Edit password",
+    "newPassword": "New password",
+    "oldPassword": "Old password",
+    "repeatPassword": "Repeat password",
+    "strength": "Strength"
+  },
+  "editPasswordJs": {
+    "and": " and ",
+    "capital": "capitals",
+    "characters": "specials characters",
+    "confirm": "Please, confirm your password",
+    "crypt": "The System-D data encryption is based on your password. To help us secure your data, you should use a strong password.",
+    "des": ", ",
+    "encryptionKey": "Encryption of private key from new password",
+    "form": "Registration form is not valid",
+    "initialization": "Initialization of encrypted session again",
+    "miss": "Missing information",
+    "number": "numbers",
+    "previousPwd": "Please enter your previous password",
+    "pwdChange": "Changing password",
+    "samePwd": "Passwords are not the same",
+    "strength": "The strength of password must be at least 10",
+    "typePwd": "Please, type a password",
+    "up": " in order to increase the strength of your password.",
+    "use": "Use "
+  },
+  "editProjectAvatar": {
+    "OK": "OK",
+    "delete": "Delete avatar",
+    "edit": "Edit avatar"
+  },
+  "editProjectDescription": {
+    "label": "Project description"
+  },
+  "editingIcon": {
+    "editIconInfo": "Click on map to edit marker position."
+  },
+  "fileContent": {
+    "addFiles": "Add one or more documents",
+    "loadInfos": "encryption and upload of documents"
+  },
+  "filePreview": {
+    "delete": "Delete file"
+  },
+  "files": {
+    "allowed": " ",
+    "of": "of",
+    "projectUsing": " "
+  },
+  "forbidden": {
+    "backHome": "Back to the home",
+    "noAccess": "You don't have access to this page"
+  },
+  "fullScreenFile": {
+    "delete": "Delete file",
+    "download": "Download",
+    "downloadAndDecrypt": "Downloading and decrypting the file.",
+    "return": "Return"
+  },
+  "general": {
+    "error": "An error has occurred"
+  },
+  "invitation": {
+    "accept": "Accept",
+    "decline": "Decline",
+    "description": "Project description",
+    "message": "Invitation message",
+    "moreInfo": "Presentation of System-D",
+    "needToLoginFirst": "You must be connected to accept the invitation",
+    "needToLoginFirstButton": "Register",
+    "needToLoginFirstInfo": "Click on the button to login or register to join the project.",
+    "noDescription": "Description left blank",
+    "noLongerExist": "This invitation has expired",
+    "noLongerExistInfo": "Ask to the person who sent the invitation to send it again.",
+    "project": "Project",
+    "title": "Invitation to join a project",
+    "userAlreadyInProject": "You already are a member of this project"
+  },
+  "invitationList": {
+    "by": "Created by",
+    "expireIn": "Expires in",
+    "from": "Invitation link created",
+    "newInvitation": "Generate a new invitation link.",
+    "noInvits": "There is no valid invitation link.",
+    "remaining": "Remaining invitations"
+  },
+  "inviteMembers": {
+    "cancelModifs": "Cancel modifs",
+    "inviteEverybody": "All",
+    "removeEverybody": "None",
+    "save": "Save"
+  },
+  "invitedPopup": {
+    "accept": "Accept",
+    "decline": "Decline",
+    "detail": "Detail : ",
+    "end": "End : ",
+    "start": "Start : ",
+    "title": "Invitation to participate to an activity"
+  },
+  "landingAim": {
+    "3DevPhases": "THREE PHASES OF DEVELOPMENT",
+    "cTool": "A tool that will enable different groups and associations to organize themselves efficiently. A tool which is encrypted, free, open-source and aiming to promote horizontalization in project management.",
+    "createTool": "Create a project management tool open to everyone.",
+    "dFreeNetwork": "Allow users and projects to share their resources in order to create a free and large non-commercial network.",
+    "dOfSystD": "Creation of interfaces allowing the platform to be the user's traffic and meeting place through different projects: geolocated research by skills and centers of interest, encrypted mails, shared blogs, etc...",
+    "developFreeNetwork": "To develop a free and sharing network",
+    "doOfSystemD": "Make System-D the social network of non-commercial projects",
+    "ourPurpose": "OUR PURPOSE",
+    "purpose": "Develop a tool to support the transition from a collapsing money society to a production model based on the free exchange, the sharing and the collaboration between humans."
+  },
+  "landingContact": {
+    "chat": "Join us on the chat to discuss with the team of the project.",
+    "email": "Contact me by email to share yours observations, ideas, suggestions, propositions...",
+    "github": "Follow the progress of project, make issues and pull requests."
+  },
+  "landingHead": {
+    "Logout": "Log out",
+    "aims": "Purposes",
+    "contact": "Contact",
+    "features": "Features",
+    "login": "Login",
+    "road Map": "Roadmap",
+    "signUp": "Sign Up"
+  },
+  "landingPlus": {
+    "anonymous": "ANONYMOUS",
+    "encrypted": "ENCRYPTED",
+    "free": "FREE",
+    "panonymous": "Login with a pseudo, no email needed, and use a tor browser for more anonymity.",
+    "pencrypted": "The content you share and the list of the projects you are involved in are encrypted \"end-to-end\". ",
+    "pfree": "How can you picture a platform which purpose is to promote free exchange between humans differently?",
+    "signin": "Sign Up"
+  },
+  "landingRoadmap": {
+    "firstPhase": "FIRST PHASE",
+    "p2firstPhase": "Interface to change user profile.",
+    "p2secondPhase": "Interface that allows each user to select their center of interest",
+    "p2thirdPhase": "Interface to list shared materials assets.",
+    "p3firstPhase": "Project creation interface.",
+    "p3secondPhase": "Taking into consideration the geolocation.",
+    "p3thirdPhase": "Asset research interface.",
+    "p4firstPhase": "Invitation to projects and member management.",
+    "p4secondPhase": "Advanced research tools to research potentials contributors / interesting projects.",
+    "p4thirdPhase": "Possibility to make advertisements for personals and projects requirements.",
+    "p5firstPhase": "Creation of forum by project.",
+    "p5secondPhase": "Instant messaging inter-users and inter-projects.",
+    "p5thirdPhase": "IOS, ANDROID and DESKTOP applications",
+    "p6firstPhase": "Shared calendar for each project.",
+    "p6secondPhase": "Personal blog and project blog.",
+    "p6thirdPhase": "Module of planning Scrum",
+    "p7firstPhase": "List of ergonomics tasks for each project.",
+    "p7secondPhase": "Interactive map module for projects.",
+    "p8firstPhase": "Interface to support or participate to System-D",
+    "pfirstPhase": "Creation of user accounts and connection to platform interface.",
+    "psecondPhase": "Interface to allow each user to talk about their skills.",
+    "pthirdPhase": "Taking in consideration issues and improvements.",
+    "roadmap": "ROADMAP",
+    "secondPhase": "SECOND PHASE",
+    "signin": "Sign Up",
+    "thirdPhase": "THIRD PHASE"
+  },
+  "landingTitle": {
+    "h3title": "Encrypted platform for collaborative and free projects",
+    "ptitle": "Make projects, join your friends, and take advantage of free and secure tools to organize your association or group together.",
+    "signin": "Sign Up"
+  },
+  "landingTools": {
+    "calendar": "SHARED CALENDAR",
+    "forum": "FORUM",
+    "modularTools": "MODULAR TOOLS",
+    "pcalendar": "To plan with your group the next events of your project.",
+    "pforum": "Communicate together, by themes or not.",
+    "pmodularTools": "Interactive map, planning in agile method, and others tools will develop.",
+    "psimpleTools": "user friendly organization tools and encrypted content for optimum privacy.",
+    "ptaskList": "To see the progress of the project and to select tasks interactively by the participants.",
+    "simpleTools": "SECURE AND SIMPLE TOOLS",
+    "taskList": "TASKS LIST"
+  },
+  "layout": {
+    "beta": "beta",
+    "betaExplain": "You can probably find bugs or unusable/improvable features. We strive to make the user experience as enjoyable as possible despite very limited means (a volunteer developer helped occasionally by his friends).",
+    "betaExplain2": "Thanks for ",
+    "betaExplainEnd": "and by sending us the bugs you encountered or ideas to improve existing or new features.",
+    "betaVersion": "System-D.org is still in a beta version!",
+    "betaWarning": "The encryption protocol has been carefully designed to ensure the optimal protection of your data. That said, it has still not benefit from either in-depth expertise or penetration tests by experimented hackers.",
+    "betaWarning2": "The privacy and encryption of the user's data is a priority for us. However, we can not guarantee the inviolability of the data for our users. You should keep this in mind",
+    "donate": "help us with your donations",
+    "donateLabel": "Support System-D",
+    "help": "Report a vulnerability or a security problem..."
+  },
+  "loginForm": {
+    "connection": "Connection",
+    "password": "Password",
+    "userName": "Username"
+  },
+  "loginFormJs": {
+    "key": "Recovering and decrypting the private key",
+    "session": "Initialize new encrypted session",
+    "welcome": "Welcome to System-D"
+  },
+  "loginPage": {
+    "backToHome": "Back to home",
+    "connection": "Connection",
+    "signin": "Sign Up"
+  },
+  "mapParams": {
+    "aerial": "Aerial",
+    "standard": "Standard",
+    "topo": "Topo"
+  },
+  "mapSettings": {
+    "centerSaved": "Default center of the map has been edited.",
+    "chooseDuration": "Choose duration",
+    "colorLegend": "Color legend:",
+    "defaultCenter": "Default center: ",
+    "defaultCenterInfo": "Center the map on the zone you want to appears by default and click save.",
+    "delete": "remove",
+    "deleteOlds": "Remove old markers:",
+    "deleteOldsInfo": "Remove markers which have creation date older than:",
+    "kindOfMap": "Type of map: ",
+    "oldsMarkersDeleted": "Old markers have been deleted",
+    "save": "Save",
+    "saveChoice": "Use this kind of map by default for all project members.",
+    "title": "Parameters"
+  },
+  "markerDetail": {
+    "coordinates": "Coordinates:",
+    "createdBy": "Created by ",
+    "deleteMarker": "Delete",
+    "editMarker": "Edit",
+    "goTo": "let's go!!",
+    "lastEdit": " (edited)",
+    "markerDetail": "Detail",
+    "markerName": "Marker name...",
+    "moveMarker": "Move"
+  },
+  "member": {
+    "invitedBy": "Invited by",
+    "kickUser": "Remove user",
+    "kickUserInfo": "Remove user from the members of the project",
+    "projectCreator": "Project creator.",
+    "promoteSuccess": "The user is now admin of the project",
+    "promoteUser": "Give admin rights",
+    "promoteUserInfo": "The user will be able to invite members or to kick them out.",
+    "quitProject": "Quit the project",
+    "quitProjectError": "You can't quit the project.",
+    "quitProjectErrorTips": "Design at least one new admin for the project.",
+    "quitProjectInfo": "You will be removed from the project members.",
+    "quitSuccess": "You have quit the project",
+    "removedSuccess": "The user has been removed from the project members",
+    "since": "Since "
+  },
+  "menu": {
+    "clic": "You can click on the button below to create a project or wait for an invitation to an existing one.",
+    "decryption": "Decryption of your projects list.",
+    "logout": "Log Out",
+    "newProject": "New Project",
+    "noProject": "You have not join any project.",
+    "param": "Parameters"
+  },
+  "menuProject": {
+    "calendar": "Calendar",
+    "forum": "Forum",
+    "home": "Home",
+    "maps": "Map",
+    "members": "Members",
+    "params": "Parameters",
+    "tasks": "Tasks List"
+  },
+  "newComment": {
+    "placeholder": "Your comment..."
+  },
+  "newInvitation": {
+    "addMessage": "Add an invitation message",
+    "backToParams": "Back to project parameters",
+    "day": "day",
+    "durationLabel": "Invitation validity duration",
+    "hour": "hour",
+    "infoQuote": "By transmitting invitations links, you are transmitting the project ciphers keys to everyone who has access to the link during the validity duration of the generated link.",
+    "invitMessage": "Message sent with your invitation",
+    "month": "month",
+    "ok": "Generate invitation link",
+    "remainingLabel1": "Valid for invite",
+    "title": "Invitation link creation",
+    "user": "user",
+    "users": "users",
+    "week": "week"
+  },
+  "newMarker": {
+    "arrows": "Arrows",
+    "color": "Color",
+    "icons": "Icons",
+    "lines": "Lines",
+    "myPosition": "My position",
+    "myPositionInfo": "Click on this button to create a marker from your current position.",
+    "shapes": "Shapes",
+    "text": "Text zone",
+    "textLabel": "Text zone content",
+    "textSubmit": "Create",
+    "title": "New Marker",
+    "type": "Type",
+    "updateUserPosition": "set my position"
+  },
+  "newProject": {
+    "create": "Create",
+    "createProject": "Create a project",
+    "nameProject": "Project's name"
+  },
+  "newProjectJs": {
+    "alreadyTaken": "this project name already exists",
+    "created": " has been created.",
+    "creation": "Encryption of participants list",
+    "errForm": "Registration form is not valid",
+    "errmail": "your project name can't be an email address",
+    "error": "An error occurred.",
+    "generation": "Generation of encryption keys",
+    "initialization": "Connection to new encrypted project",
+    "missInfo": "Missing information",
+    "name4": "your project name requires at  least 4 characters",
+    "name50": "your project name requires at least 50 characters",
+    "nameProject": "Please, type your project name",
+    "theProject": "The project "
+  },
+  "newPublication": {
+    "files": "Images, files and text",
+    "images": "Images and text",
+    "newPublication": "New publication",
+    "poll": "Poll",
+    "return": "Back",
+    "text": "Text"
+  },
+  "newSubComment": {
+    "placeholder": "Your answer..."
+  },
+  "newsFeed": {
+    "btnLabel": "News",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "notFound": {
+    "backHome": "Back to the home",
+    "noAddress": "Sorry, we can't find a page at this address."
+  },
+  "notifItem": {
+    "acceptedInvitation": "An invitation has been accepted and a new member joined the project.",
+    "genericAction": "See on website",
+    "genericTitle": "New activity on System-D",
+    "memberPromoted": "You now have admin rights on the project.",
+    "memberQuit": "A member has quit the project.",
+    "newInvitation": "you have been invited to participate to an activity",
+    "newMapMarker": "A new marker has been positioned on the map",
+    "newPublication": "A new publication has been added in a followed topic",
+    "newResponse": "A comment has been made after your message"
+  },
+  "notifModal": {
+    "deleteAll": "Delete all",
+    "title": "Notifications"
+  },
+  "pinned": {
+    "pin": "Pin publication",
+    "unpin": "Unpin publication"
+  },
+  "pollContent": {
+    "addProposition": "Add proposal",
+    "newProposition": "Answer proposal n°",
+    "placeholder": "Description of the poll",
+    "publish": "Publish poll"
+  },
+  "pollOption": {
+    "vote": "votes"
+  },
+  "projectCalendar": {
+    "activityPlaced": "The activity has been set on the calendar.",
+    "daysView": "Daily view",
+    "listView": "list of monthly events",
+    "monthView": "Monthly view",
+    "recurring": "( Recurring )",
+    "setActivityInfo": "Set the activity where you want on the calendar.",
+    "unnamed": "No title"
+  },
+  "projectFiles": {
+    "limitOneFile": "Document size is limited at 15 Mo",
+    "projectFiles.limitSize": "You have reached the files upload limit on this project. Please delete documents before uploading."
+  },
+  "projectHome": {
+    "noDescription": "No registered description.",
+    "projectDescription": "Project description"
+  },
+  "projectLayout": {
+    "decrypting1": "Project information deciphering"
+  },
+  "projectMembers": {
+    "admins": "Admins",
+    "members": "Members",
+    "membersList": "Members list"
+  },
+  "projectParams": {
+    "createInvitelink": "Create invitation link",
+    "deleteProject": "Delete project",
+    "invitationList": "Pending Invitations",
+    "publicInfos": "Public information"
+  },
+  "projectTasks": {
+    "calendarPlaced": "Set on calendar",
+    "done": "Done",
+    "inProject": "To do",
+    "myTasks": "My tasks",
+    "newActivity": "New task",
+    "title": "Tasks list",
+    "waitingForStatus": "Waiting validation"
+  },
+  "publicationItem": {
+    "delete": "Delete",
+    "deleteInfo": "This action will remove the publication and all its comments.",
+    "deleteSuccess": "This publication and all its comments have been removed.",
+    "pinnedPublicationHead": "Pinned publication"
+  },
+  "publicationsList": {
+    "showMore": "Show more..."
+  },
+  "showAcceptNotif": {
+    "showAcceptNotifs": "Click accept to be notified by your project activities",
+    "showAcceptNotifsInfos": "You will be able to adjust or disable the notifications later"
+  },
+  "showInvitation": {
+    "backToParams": "Back to project parameters",
+    "copied": "Invitation link copied in clipboard",
+    "deleted": "The invitation link has been deleted",
+    "destroy": "Delete invitation link",
+    "infoDestroy": "By deleting the invitation, you delete the possibility to use the invitation link to access the encryption keys of your project.",
+    "infoLink": "copy this link and send it to the person(s) you want to invite in your project.",
+    "infoQr": "If the person you want to invite is near you, he or she can scan this QR-code to access the invitation.",
+    "invitMessage": "You have been invited by someone to join a project on System-D: the free encrypted web-platform for collaborative projects. Click on the link below to see the invitation.",
+    "invitTitle": "Invitation to join the project ",
+    "title": "Invitation link"
+  },
+  "showPollContent": {
+    "answers": "answers"
+  },
+  "signinContainer": {
+    "endtoendencrypted": "end-to-end encrypted",
+    "linkSignin": "https://en.wikipedia.org/wiki/End-to-end_encryption",
+    "next": "Next",
+    "p2signin": "Like Telegram or Signal, only you and the other project members will be able to decrypt and read the content you post. Even developers won't have access to your data.",
+    "p3-1signin": "System-D keep the Anonymity",
+    "p3-2signin": " of his users: neither email required or personal information. However we will not be able ",
+    "p3-3signin": "We can't help you if you forget your password.",
+    "p3-4signin": "It is recommended:",
+    "p3signin": "And also",
+    "psignin": "System-D offers you a free collaborative workspace and totally",
+    "spanSignin": "Write your password down somewhere."
+  },
+  "signinForm": {
+    "accountCreate": "Create an account",
+    "passwordChoice": "Choose a password",
+    "passwordRepeat": "Repeat password",
+    "userNameChoice": "Choose an username"
+  },
+  "signinFormJs": {
+    "alreadyTaken": "this username already exists",
+    "and": " and ",
+    "capital": "capitals",
+    "characters": "special characters",
+    "confirm": "Please, confirm your password",
+    "creation": "Account creation",
+    "crypt": "Encryption of your contents in System-D is based on your password. In order to help us secure your data, be sure to use a strong password.",
+    "des": ", ",
+    "errmail": "your username can't be an email address",
+    "error": "An error occurred",
+    "form": "Registration form is not valid",
+    "generation": "Generation of encryption keys",
+    "initialization": "Initialization of encrypted session",
+    "miss": "Missing information",
+    "name4": "your username requires at least 4 characters",
+    "name40": "your username requires can't be longer than 40 characters ",
+    "number": "numbers",
+    "putName": "Please, type your username",
+    "samePwd": "Passwords are different",
+    "strength": "The strength of your password must be at least 10",
+    "typePwd": "Please, type a password",
+    "up": " in order to increase the strength of your password.",
+    "use": "Use "
+  },
+  "submitIssue": {
+    "allowDeviceInfo": "Automatically join navigator information in order to help bug-fixing? (navigator, version, exploitation system, language)",
+    "authorize": "yes",
+    "btnLabel": "Bugs - Suggestions",
+    "bugReport": "Bug",
+    "bugReportLabel": "Bug description",
+    "captcha": "Enter the 4 letters",
+    "decline": "no",
+    "githubLink": "To see the tracking of your feedback, go to the GitHub of the project",
+    "refreshCaptcha": "Refresh",
+    "return": "Return",
+    "submit": "Send",
+    "succesMessage": "Thanks for your contribution! Your message has been sent to the developers",
+    "sugestionLabel": "Idea and suggestions",
+    "suggestion": "Suggestions"
+  },
+  "taskItem": {
+    "checklist": "Check list",
+    "end": "End",
+    "inviteds": "Invited Members",
+    "participants": "Participants",
+    "start": "Start"
+  },
+  "tasksSettings": {
+    "colorLegend": "Color legend",
+    "deleteDone": "Delete completed tasks",
+    "doneActivitiesDeleted": "Completed tasks have been delete.",
+    "title": "Tasks list setup"
+  },
+  "textualContent": {
+    "placeholder": "Content of your publication...",
+    "publish": "Publish"
+  },
+  "topic": {
+    "downloadAndDecrypt": "Downloading and decrypting file..."
+  },
+  "topicHeader": {
+    "abort": "Cancel",
+    "delete": "Delete Topic",
+    "deleteInfo": "This topic and all the publications inside will be deleted.",
+    "deleteSuccess": "Topic has been deleted",
+    "disableNotifications": "Notifications are enabled on this topic, click to disable.",
+    "edit": "Edit topic name",
+    "enlableNotifications": "Notifications are disabled on this topic, click to enable.",
+    "mainTopic": "Main topic",
+    "notifDisabled": "Notifications are now disabled for this topic.",
+    "notifEnabled": "You will now receive notifications for all publications in this topic",
+    "topicName": "Topic name"
+  },
+  "topicItem": {
+    "dragInfo": "You can move this topic in another category",
+    "mainTopic": "MAIN TOPIC",
+    "unseenPublications": "New publications"
+  },
+  "userOptions": {
+    "language": "Language"
+  },
+  "userParams": {
+    "deleteAccount": "Delete your account",
+    "editPassword": "Edit password",
+    "passwordDeleteAccount": "Enter your password to confirm the deletion of your account.",
+    "pdeleteAccount": "THE DELETION OF YOUR ACCOUNT WILL BE DEFINITIVE.",
+    "peditPassword": "We will not be able to help you if you forget your password. It is recommended to write your password somewhere."
   },
   "weekDays": {
     "day0": "Sunday",
@@ -614,92 +698,9 @@
     "day5": "Friday",
     "day6": "Saturday"
   },
-  "inviteMembers": {
-    "inviteEverybody": "Everyone",
-    "removeEverybody": "Anybody",
-    "cancelModifs": "Cancel modifs",
-    "save": "Save"
-  },
-  "invitedPopup": {
-    "detail": "Detail : ",
-    "title": "Guest to participate to an activity",
-    "start": "Start : ",
-    "end": "End : ",
-    "decline": "Decline",
-    "accept": "Accept"
-  },
-  "checkList": {
-    "checkList": "Check list : ",
-    "newCheck": "Check...",
-    "addCheck": "add check"
-  },
-  "projectTasks": {
-    "title": "Tasks list",
-    "inProject": "To do",
-    "calendarPlaced": "Set on calendar",
-    "waitingForStatus": "Waiting validation",
-    "done": "Done",
-    "newActivity": "New task",
-    "myTasks": "My tasks"
-
-  },
-  "tasksSettings": {
-    "title": "Tasks list parameters",
-    "colorLegend": "Color legend",
-    "deleteDone": "Delete done tasks",
-    "delete": "Delete",
-    "oldsActivitiesDeleted": "Done tasks have been deleted"
-  },
-  "taskItem": {
-    "participants": "Participants",
-    "inviteds": "Invited Members",
-    "checklist": "Check list",
-    "start": "Start",
-    "end": "End"
-  },
-  "donate": {
-    "title": "Support System-D",
-    "why": "We need your donations",
-    "whyText": "System-D project has been made with heart, on free time. If you want it to continue and offer more free time  to the persons who make it alive for develop new features and improve the existing ones, your donations are significant.",
-    "withTheMoney": "Your donations allow :",
-    "servers": "To pay the hosting cost of the platform for an always increasing number of user",
-    "sustain": "To sustain and improve the features of System-D, make them accessible to a large amount of users, and take into account the users feedbacks.",
-    "develop": "To create new features. Our todo list :",
-    "next1": "Instant chats between users,users and projects, projects.",
-    "next2": "allow users to search a project or an user by localization, skills, center of interest, type of activity.",
-    "next3": "Android, Desktop, and  IOS apps ",
-    "ponctual": "One-time donation ( Paypal )",
-    "ponctualInfo": "Send one-time donation on our Paypal account :",
-    "recursive": "Recurring donation ( liberapay )",
-    "recursiveInfo": "Give a little money every month to System-D for sustain its long-term development with the open-source and free platform LiberaPay :",
-    "cryptos": "crypto currency donation",
-    "donateIn": "Send a donation on the System-D wallet in",
-    "wallet": "Wallet ",
-    "copied": "Wallet address copied in the clipboard"
-  },
-  "files": {
-    "projectUsing": " ",
-    "of": "of",
-    "allowed" : " "
-  },
-  "filePreview": {
-    "delete": "Delete file"
-  },
-  "fullScreenFile": {
-    "download": "Download",
-    "delete": "Delete file",
-    "return": "Return",
-    "downloadAndDecrypt": "Downloading and decrypting the file."
-  },
-  "projectFiles": {
-    "limitOneFile": "the documents size is limited to 15 Mo",
-    "projectFiles.limitSize": "you've reach the files upload limit on this project. Please delete documents to be able to upload again. "
-  },
-  "beta": {
-    "beta": "beta"
-  },
-  "pinned": {
-    "pin": "Pin the publication on the top of the topic",
-    "unpin": "Unpin publication"
+  "workInProgress": {
+    "allow": "It will allow:",
+    "infos": "Additional information:",
+    "nofunction": "This feature is not yet enabled"
   }
 }

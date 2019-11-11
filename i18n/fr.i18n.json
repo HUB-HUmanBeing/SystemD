@@ -6,11 +6,11 @@
   "_templates": "application",
   "forbidden": {
     "noAccess": "Vous n'avez pas accès à cette page",
-    "backHome": "Retour à l'acceuil"
+    "backHome": "Retour à l'accueil"
   },
   "notFound": {
-    "noAddress": "Désolé, nous ne pouvons pas trouver une page à cette adresse.",
-    "backHome": "Retour à l'acceuil"
+    "noAddress": "Désolé, nous ne pouvons pas trouver de page à cette adresse.",
+    "backHome": "Retour à l'accueil"
   },
   "workInProgress": {
     "nofunction": "Cette fonctionnalité n'est pas encore accessible",
@@ -18,9 +18,9 @@
     "infos": "Informations complémentaires :"
   },
   "layout": {
-    "beta": "béta",
+    "beta": "bêta",
     "donateLabel": "Soutenir System-D",
-    "betaVersion": "System-D.org est toujours en version béta !",
+    "betaVersion": "System-D.org est toujours en version bêta !",
     "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorable. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
     "betaExplain2": "Merci de ",
     "donate": "nous aider avec vos donations ",
@@ -35,14 +35,14 @@
     "forum": "Forum",
     "params": "Paramètres",
     "calendar": "Agenda",
-    "tasks": "Taches",
+    "tasks": "Tâches",
     "maps": "Carte",
     "members": "Membres"
   },
   "menu": {
     "param": "Paramètres",
     "logout": "Déconnexion",
-    "noProject": "Vous n'etes actuellement inscrit sur aucun projet.",
+    "noProject": "Vous n'êtes actuellement inscrit sur aucun projet.",
     "clic": "Vous pouvez cliquer sur le bouton ci-dessous pour créer un projet ou attendre une invitation à un projet existant.",
     "decryption": "Déchiffrement de la liste de vos projets.",
     "newProject": "Nouveau projet"
@@ -66,6 +66,10 @@
     "succesMessage": "Merci de votre contribution ! Votre message à été transmis au développeurs",
     "githubLink": "Pour voir l'évolution de votre message, rendez vous sur GitHub",
     "return": "Retour"
+  },
+  "newsFeed": {
+    "btnLabel": "Actualités",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   "notifModal": {
     "title": "Notifications",
@@ -130,16 +134,16 @@
     "p4firstPhase": "Invitation à des projets et gestion des membres",
     "p5firstPhase": "Création d'un forum de discussion par projet",
     "p6firstPhase": "Agenda participatif pour chacun des projets",
-    "p7firstPhase": "Liste des taches ergonomique pour chaque projet",
+    "p7firstPhase": "Liste des tâches ergonomique pour chaque projet",
     "p8firstPhase": "Interface pour soutenir ou participer à SystemD",
     "secondPhase": "SECONDE PHASE",
     "psecondPhase": "Interface pour que chaque utilisateur puisse renseigner ses compétences",
-    "p2secondPhase": "Interface pour que chaque utilisateur puisse renseigner ses centres d'interets",
+    "p2secondPhase": "Interface pour que chaque utilisateur puisse renseigner ses centres d'intérêts",
     "p3secondPhase": "Prise en compte de la localisation géographique",
     "p4secondPhase": "Outils de recherches avancées pour rechercher des collaborateurs potentiels / des projets intéressants",
     "p5secondPhase": "Messagerie inter-utilisateurs et inter-projets",
-    "p6secondPhase": "Blog personnel et blog de projets",
-    "p7secondPhase": "Module de carte interactives pour les projets",
+    "p6secondPhase": "Blog personnel et blog de projet",
+    "p7secondPhase": "Module de cartes interactives pour les projets",
     "thirdPhase": "TROISIÈME PHASE",
     "pthirdPhase": "Prise en compte des retours utilisateurs de la seconde phase et amélioration des fonctionnalités",
     "p2thirdPhase": "Interface permettant de lister les ressources matérielles qu'un projet ou utilisateur souhaite mettre en partages",
@@ -224,7 +228,7 @@
   "loginPage": {
     "signin": "Inscription",
     "connection": "Connexion",
-    "backToHome": "Retour à l'acceuil"
+    "backToHome": "Retour à l'accueil"
   },
   "_templates": "Project",
   "newProject": {
@@ -268,7 +272,7 @@
   "deleteProject": {
     "deleteProjectInfo": "Cette action supprimera définitivement le projet",
     "deleteProjectError": "Vous ne pouvez pas supprimer ce projet",
-    "deleteProjectErrorTips": "Il reste des membres à l'interieur de ce projet",
+    "deleteProjectErrorTips": "Il reste des membres à l'intérieur de ce projet",
     "deleteSuccess": "Le projet a été supprimé"
   },
   "projectLayout": {
@@ -297,7 +301,7 @@
     "invitTitle": "Invitation à rejoindre le projet ",
     "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs. Cliquez sur le lien pour voir l'invitation.",
     "infoQr": "Si la personne à inviter est à coté de vous, elle peut aussi flasher ce QR-code avec n'importe quelle application de lecture de QR-code pour accéder à l'invitation.",
-    "infoDestroy": "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux cléfs de chiffrement de votre projet.",
+    "infoDestroy": "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux clefs de chiffrement de votre projet.",
     "destroy": "Supprimer le lien d'invitation",
     "backToParams": "Retour aux paramètres du projet",
     "deleted": "le lien d'invitation à été détruit"
@@ -312,7 +316,7 @@
   },
   "invitation": {
     "title": "Invitation à rejoindre un projet",
-    "moreInfo": "Presentation de System-D",
+    "moreInfo": "Présentation de System-D",
     "project": "Projet",
     "userAlreadyInProject": "Vous participez déjà à ce projet",
     "description": "Description du projet",
@@ -353,13 +357,13 @@
     "deleteAccount": "Supprimer le compte"
   },
   "deleteAccountJs": {
-    "error": "une erreur s'est produite",
+    "error": "Une erreur s'est produite",
     "deletedAccount": "Votre compte utilisateur à été définitivement supprimé"
   },
   "editAvatar": {
     "edit": "Editer l'avatar",
     "delete": "Supprimer l'avatar",
-    "OK": "valider"
+    "OK": "Valider"
   },
   "editPassword": {
     "oldPassword": "Ancien mot de passe",
@@ -402,12 +406,13 @@
   "categoryList": {
     "categoryName": "Nom du dossier",
     "new": "Nouveau dossier",
-    "myFiles": "DOCUMENTS"
+    "myFiles": "DOCUMENTS",
+    "seeMore": "Voir plus"
   },
   "categoryItem": {
     "categoryName": "Nom du dossier",
     "delete": "Supprimer le dossier",
-    "deleteInfo": "Toutes les conversations à l'interieur du dossier seront supprimées",
+    "deleteInfo": "Toutes les conversations à l'intérieur du dossier seront supprimées",
     "moveDown": "Descendre dans la liste",
     "moveUp": "Monter dans la liste",
     "edit": "Editer le nom",
@@ -539,7 +544,7 @@
   },
   "markerDetail": {
     "markerName": "Nom du marqueur...",
-    "markerDetail": "Detail",
+    "markerDetail": "Détail",
     "editMarker": "éditer",
     "moveMarker": "déplacer",
     "deleteMarker": "Supprimer",
@@ -571,7 +576,7 @@
   "projectCalendar": {
     "daysView": "Vue journalière",
     "monthView": "Vue mensuelle",
-    "listView": "Listing des évènements mensuels",
+    "listView": "Liste des évènements mensuels",
     "recurring": "( Récurant )",
     "unnamed": "Sans titre",
     "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
@@ -583,7 +588,7 @@
     "colorLegend": "Legende couleur : ",
     "defaultViewSaved": "La vue par défaut à été modifiée pour tout les membres du projet",
     "deleteOlds": "Supprimer les anciennes activités",
-    "deleteOldsInfo": "Supprimer les activités dont la date debut remonte à plus de :",
+    "deleteOldsInfo": "Supprimer les activités dont la date de début remonte à plus de :",
     "delete": "Supprimer",
     "oldsActivitiesDeleted": "Les anciennes activités ont été supprimées"
   },
@@ -660,19 +665,19 @@
   },
   "donate": {
     "title": "Soutenir System-D",
-    "why": "Nous avons besoins de vos donnations",
-    "whyText": "Le projet System-D à été bâti avec le coeur, sur du temps libre. Si vous souhaitez le voir perdurer et offrir à ceux qui le font vivre du temps libre pour developper de nouvelles fonctionnalités et améliorer les fonctionnalités existantes, vos donations sont importantes.",
+    "why": "Nous avons besoins de vos donations",
+    "whyText": "Le projet System-D à été bâti avec le coeur, sur du temps libre. Si vous souhaitez le voir perdurer et offrir à ceux qui le font vivre du temps libre pour développer de nouvelles fonctionnalités et améliorer les fonctionnalités existantes, vos donations sont importantes.",
     "withTheMoney": "Vos donations permettent :",
     "servers": "De payer les frais d'hébergement de la plate-forme pour un nombre toujours croissant d'utilisateurs",
-    "sustain": "De maintenir et améliorer les fonctionnalités de System-D, de les rendre accessible à toujours plus d'utilistateurs, et prendre en compte les retours utilisateurs.",
+    "sustain": "De maintenir et améliorer les fonctionnalités de System-D, de les rendre accessible à toujours plus d'utilisateurs, et prendre en compte les retours utilisateurs.",
     "develop": "De créer de nouvelles fonctionnalités. Prochains chantiers :",
     "next1": "Discussions instantanées entre utilisateurs, utilisateurs et projets, projets.",
-    "next2": "Rechercher un projet ou un utilisateur par compétences, centre d'interet, type d'activité, localisation.",
+    "next2": "Rechercher un projet ou un utilisateur par compétences, centre d'intérêt, type d'activité, localisation.",
     "next3": "applications Android, Bureau, et IOS",
     "ponctual": "Donation ponctuelle ( Paypal )",
     "ponctualInfo": "Envoyer une donation ponctuelle via notre compte Paypal :",
     "recursive": "Donation récurrente ( liberapay )",
-    "recursiveInfo": "Donner un peu d'argent tout les mois à System-D pour soutenir son développement sur le long terme via la plate-forme libre et open-source LiberaPay :",
+    "recursiveInfo": "Donner un peu d'argent tous les mois à System-D pour soutenir son développement sur le long terme via la plate-forme libre et open-source LiberaPay :",
     "cryptos": "Donation en crypto monnaies",
     "donateIn": "Envoyer un don sur le wallet de System-D en",
     "wallet": "Wallet ",
@@ -697,7 +702,7 @@
     "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
   },
   "beta": {
-    "beta": "béta"
+    "beta": "bêta"
 
   },
   "pinned": {
