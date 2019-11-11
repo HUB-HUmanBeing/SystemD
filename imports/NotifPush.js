@@ -40,7 +40,6 @@ const NotifPush = {
                     headers:{"Access-Control-Allow-Headers": "x-requested-with, x-requested-by"}
                 })
                 .then(() => {
-                    console.log('push')
                 })
                 .catch(err => console.error(err))
         })
