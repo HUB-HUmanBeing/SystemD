@@ -4,11 +4,12 @@
 
             {{#if currentSpreadsheet}}
                 {{>spreadsheetHeader currentSpreadsheet=currentSpreadsheet}}
-ddd
+                {{>spreadsheetContent currentSpreadsheet=currentSpreadsheet}}
             {{else}}
-                coucou
                 {{>topicLoader}}
             {{/if}}
+
         </div>
     {{/unless}}
+
 </template>

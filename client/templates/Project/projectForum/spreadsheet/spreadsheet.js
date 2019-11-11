@@ -3,12 +3,12 @@ import cryptoTools from "../../../../lib/cryptoTools";
 import Spreadsheet from "/imports/classes/Spreadsheet";
 import Project from "../../../../../imports/classes/Project";
 import Publications from "../../../../../lib/collections/Publications";
-import Publication from "../../../../../imports/classes/Publication";
+import Publication from "../../../../../imports/classes/Publication"
+    import jexcel from "jexcel";
 
 Template.spreadsheet.helpers({
     //add you helpers here
     currentSpreadsheet: function () {
-
         return Template.instance().currentSpreadsheet.get()
     },
     isRefreshing: function () {
@@ -45,11 +45,12 @@ Template.spreadsheet.onCreated(function () {
                 if (err) {
                     console.log(err)
                 } else {
-                    let encryptedSpreadsheet = Spreadsheet.findOne({_id: spreadsheetId})
-                    cryptoTools.decryptObject(encryptedSpreadsheet, {symKey: Session.get("currentProjectSimKey")}, (spreadsheet) => {
-                        this.currentSpreadsheet.set(spreadsheet)
-                        console.log(spreadsheet)
-                        this.isRefreshing.set(false)
+                    this.autorun(() => {
+                        let encryptedSpreadsheet = Spreadsheet.findOne({_id: spreadsheetId})
+                        cryptoTools.decryptObject(encryptedSpreadsheet, {symKey: Session.get("currentProjectSimKey")}, (spreadsheet) => {
+                            this.currentSpreadsheet.set(spreadsheet)
+                            this.isRefreshing.set(false)
+                        })
                     })
                 }
             })
@@ -59,6 +60,8 @@ Template.spreadsheet.onCreated(function () {
 
 Template.spreadsheet.onRendered(function () {
     //add your statement here
+
+
 });
 
 Template.spreadsheet.onDestroyed(function () {

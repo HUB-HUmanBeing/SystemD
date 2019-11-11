@@ -4,9 +4,21 @@ import Spreadsheets from "../../lib/collections/Spreadsheets";
 const SpreadsheetsContent = Class.create({
     name: 'SpreadsheetsContent',
     fields:{
-        symEnc_table: {
+        symEnc_datas: {
             type:String,
             optional: true,
+        },
+        columns:{
+            type:String,
+            default: function () {
+                return "[]"
+            }
+        },
+        rows:{
+            type:String,
+            default: function () {
+                return "[]"
+            }
         }
     }
 })

@@ -721,5 +721,13 @@
     "showMore": "showMore",
     "SpreadsheetName": "Nom du tableur"
 
+  },
+  "spreadsheetHeader": {
+    "spreadsheetName": "Nom du tableur",
+    "delete": "Supprimer le tableur",
+    "edit": "Changer le nom du tableur",
+    "abort": "annuler",
+    "deleteInfo": "Ce tableur sera supprimé ainsi que tout son contenu.",
+    "deleteSuccess": "Le tableur à été supprimé"
   }
 }

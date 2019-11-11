@@ -39,7 +39,6 @@ Spreadsheet.extend({
             let spreadsheet = Spreadsheet.findOne(this._id)
             let currentProject = Project.findOne(spreadsheet.projectId)
             check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && spreadsheet.createdBy === authInfo.memberId), true)
-            check(spreadsheet.isMainSpreadsheet, false)
             spreadsheet.symEnc_name = symEnc_name
             return spreadsheet.save()
         },
@@ -48,8 +47,7 @@ Spreadsheet.extend({
             let spreadsheet = Spreadsheet.findOne(this._id)
             let currentProject = Project.findOne(spreadsheet.projectId)
             check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && spreadsheet.createdBy === authInfo.memberId), true)
-            check(spreadsheet.isMainSpreadsheet, false)
-            return spreadsheet.removeRecursive()
+            return spreadsheet.remove()
         },
     }
 })

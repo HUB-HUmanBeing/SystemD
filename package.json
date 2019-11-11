@@ -27,6 +27,7 @@
     "emojitsu": "^2.4.1",
     "hammerjs": "^2.0.8",
     "jdenticon": "^2.2.0",
+    "jexcel": "^3.6.2",
     "jquery": "^3.4.1",
     "js-video-url-parser": "^0.3.3",
     "jshashes": "^1.0.7",

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col s12">
             {{#if isEditing}}
-                <div id="spreadsheetHeader">
+                <div id="topicHeader">
                     <form id="editSpreadsheetForm" action="" editSpreadsheetForm class="flex  ">
                         <div class="input-field flex-auto small-padding small-margin">
                             <input id="editSpreadsheetName" type="text" value="{{currentSpreadsheet.symEnc_name}}" required
@@ -17,13 +17,13 @@
                 </div>
 
             {{else}}
-                <div id="spreadsheetHeader" class=" flex">
+                <div id="topicHeader" class=" flex">
                     {{#unless isDesktop}}
                         <a href="/project/{{currentSpreadsheet.projectId}}/forum" class="btn btn-floating waves-effect waves-light "
                            style="margin-right: 10px"><i
                                 class="material-icons left">arrow_back</i></a>
                     {{/unless}}
-                    <div class="flex-auto elipsis left-align spreadsheetTitle">
+                    <div class="flex-auto elipsis left-align topicTitle">
                        {{currentSpreadsheet.symEnc_name}}
                     </div>
 
