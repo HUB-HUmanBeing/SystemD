@@ -118,7 +118,6 @@ Meteor.methods({
         })
     },
     getCounter(){
-        console.log("in" )
         return {
             projects: Projects.find({}).count(),
             members: Meteor.users.find({}).count()
