@@ -189,7 +189,8 @@
   "files": {
     "allowed": " ",
     "of": "of",
-    "projectUsing": " "
+    "projectUsing": " ",
+		"seeMore": "See more"
   },
   "forbidden": {
     "backHome": "Back to the home",
