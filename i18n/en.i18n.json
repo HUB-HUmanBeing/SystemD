@@ -703,5 +703,11 @@
     "allow": "It will allow:",
     "infos": "Additional information:",
     "nofunction": "This feature is not yet enabled"
+  },
+  "landingCounter": {
+    "members": "Register members",
+    "projects": "Created projects",
+    "joinToo": "Sign-in and have fun with a useful, free and cyphered tool for organise your projects with your friends, your associations or collectives.",
+    "signin": "Sign-in"
   }
 }
