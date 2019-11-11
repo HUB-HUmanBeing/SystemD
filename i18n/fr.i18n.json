@@ -6,11 +6,11 @@
   "_templates": "application",
   "forbidden": {
     "noAccess": "Vous n'avez pas accès à cette page",
-    "backHome": "Retour à l'acceuil"
+    "backHome": "Retour à l'accueil"
   },
   "notFound": {
     "noAddress": "Désolé, nous ne pouvons pas trouver une page à cette adresse.",
-    "backHome": "Retour à l'acceuil"
+    "backHome": "Retour à l'accueil"
   },
   "workInProgress": {
     "nofunction": "Cette fonctionnalité n'est pas encore accessible",
@@ -21,11 +21,11 @@
     "beta": "béta",
     "donateLabel": "Soutenir System-D",
     "betaVersion": "System-D.org est toujours en version béta !",
-    "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorable. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
+    "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorables. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
     "betaExplain2": "Merci de ",
     "donate": "nous aider avec vos donations ",
     "betaExplainEnd": "et en faisant remonter les idées d'améliorations et bugs constatés.",
-    "betaWarning": "Le protocole de chiffrement a été conçut avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
+    "betaWarning": "Le protocole de chiffrement a été conçu avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
     "betaWarning2": "Nous ne pouvons donc pas assurer à 100% a nos utilisateurs que leurs données sont inviolables meme si c'est pour nous un objectif aussi prioritaire que l'ergonomie du site.",
     "help": "Communiquer une vulnérabilité ou un problème de sécurité ..."
   },
@@ -64,7 +64,7 @@
     "captcha": "Saisir les 4 lettres",
     "submit": "Envoyer",
     "succesMessage": "Merci de votre contribution ! Votre message à été transmis au développeurs",
-    "githubLink": "Pour voir l'évolution de votre message, rendez vous sur GitHub",
+    "githubLink": "Pour voir l'évolution de votre message, rendez-vous sur GitHub",
     "return": "Retour"
   },
   "notifModal": {
@@ -99,13 +99,13 @@
   "landingAim": {
     "ourPurpose": "NOTRE OBJECTIF",
     "purpose": "Créer un outil qui accompagne la transition d'une société de l'argent en faillite à un mode de production basé sur la collaboration et le partage.",
-    "3DevPhases": "TROIS PHASES DE DEVELOPEMENT",
+    "3DevPhases": "TROIS PHASES DE DÉVELOPPEMENT",
     "createTool": "Créer un outil de gestion de projet ouvert à tous",
     "cTool": "Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet.",
     "doOfSystemD": "Faire de SystemD le réseau social du projet non-marchand",
     "dOfSystD": "Création des interfaces faisant de la plateforme un espace de rencontre et de circulation des utilisateurs sur différents projets : Recherche géolocalisée par compétences-centres d'intérets, messagerie chiffrée, blogs partagés, etc.",
     "developFreeNetwork": "Développer un réseau de gratuité et de partage",
-    "dFreeNetwork": "Permettre à chaque utilisateur et chaque projets de mettre en partage les ressources qu'ils produisent afin de pouvoir réaliser une circulation non-marchande de grande ampleur."
+    "dFreeNetwork": "Permettre à chaque utilisateur et chaque projet de mettre en partage les ressources produites afin de pouvoir réaliser une circulation non-marchande de grande ampleur."
   },
   "landingContact": {
     "github": "Venez suivre l'avancement du projet, déposer vos issues et pulls-requests.",
@@ -114,7 +114,7 @@
   },
   "landingPlus": {
     "anonymous": "ANONYME",
-    "panonymous": "Connectez vous avec un pseudo, pas besoin de renseigner son adresse e-mail, utilisez tor-browser pour encore plus d'anonymat",
+    "panonymous": "Connectez-vous avec un pseudo, pas besoin de renseigner son adresse e-mail, utilisez tor-browser pour encore plus d'anonymat",
     "free": "GRATUIT",
     "pfree": "Comment imaginer autrement une plate-forme dont l'objectif est la promotion des rapports sociaux non-marchands",
     "encrypted": "CHIFFRÉ",
@@ -130,11 +130,11 @@
     "p4firstPhase": "Invitation à des projets et gestion des membres",
     "p5firstPhase": "Création d'un forum de discussion par projet",
     "p6firstPhase": "Agenda participatif pour chacun des projets",
-    "p7firstPhase": "Liste des taches ergonomique pour chaque projet",
+    "p7firstPhase": "Liste des tâches ergonomique pour chaque projet",
     "p8firstPhase": "Interface pour soutenir ou participer à SystemD",
     "secondPhase": "SECONDE PHASE",
     "psecondPhase": "Interface pour que chaque utilisateur puisse renseigner ses compétences",
-    "p2secondPhase": "Interface pour que chaque utilisateur puisse renseigner ses centres d'interets",
+    "p2secondPhase": "Interface pour que chaque utilisateur puisse renseigner ses centres d'intérêt",
     "p3secondPhase": "Prise en compte de la localisation géographique",
     "p4secondPhase": "Outils de recherches avancées pour rechercher des collaborateurs potentiels / des projets intéressants",
     "p5secondPhase": "Messagerie inter-utilisateurs et inter-projets",
@@ -142,7 +142,7 @@
     "p7secondPhase": "Module de carte interactives pour les projets",
     "thirdPhase": "TROISIÈME PHASE",
     "pthirdPhase": "Prise en compte des retours utilisateurs de la seconde phase et amélioration des fonctionnalités",
-    "p2thirdPhase": "Interface permettant de lister les ressources matérielles qu'un projet ou utilisateur souhaite mettre en partages",
+    "p2thirdPhase": "Interface permettant de lister les ressources matérielles qu'un projet ou utilisateur souhaite mettre en partage",
     "p3thirdPhase": "Interface de recherche de ressources",
     "p4thirdPhase": "Possibilité de laisser des annonces concernant les besoins personnels et ceux des projets",
     "p5thirdPhase": "Applications IOS, ANDROID et DESKTOP",
@@ -162,7 +162,7 @@
     "forum": "FORUM DE DISCUSSIONS",
     "pforum": "Communiquer ensemble, par thématiques ou de manière générale afin de pouvoir faire circuler l'information de manière efficace.",
     "modularTools": "DES OUTILS MODULAIRES",
-    "pmodularTools": "Cartes interactives, planning méthode agile, et d'autres outils développés peu à peu viendront completer vos projets de manière modulaire.",
+    "pmodularTools": "Cartes interactives, planning méthode agile, et d'autres outils développés peu à peu viendront compléter vos projets de manière modulaire.",
     "simpleTools": "DES OUTILS SIMPLES ET SÉCURISÉS",
     "psimpleTools": "Des outils d'organisation ergonomiques pour une prise en main rapide, et dont les contenus sont entièrement chiffrés pour une confidentialité optimale"
   },
@@ -197,8 +197,8 @@
     "capital": "majuscules",
     "and": " et des ",
     "number": "chiffres",
-    "up": " afin d'augmenter la force de votre mot de passe.",
-    "strength": "La force du mot de passe doit au moins être de 1O",
+    "up": " afin d'augmenter la robustesse de votre mot de passe.",
+    "strength": "La robustesse du mot de passe doit au moins être de 1O",
     "samePwd": "Les mots de passes ne sont pas identiques",
     "typePwd": "Veuillez saisir un mot de passe",
     "confirm": "Veuillez confirmer votre mot de passe",
@@ -211,12 +211,12 @@
   "signinContainer": {
     "psignin": "System-D accompagne vos projets en vous offrant un espace de travail collaboratif gratuit et entièrement",
     "linkSignin": "https://fr.wikipedia.org/wiki/Chiffrement_de_bout_en_bout",
-    "endtoendencrypted": "chiffrée de bout en bout",
-    "p2signin": "Comme sur Telegram ou Signal, personne d'autre que vous et les personnes participant au même projet pourront déchiffrer et lire les contenus que vous postez, pas même les créateurs de cette plate-forme.",
+    "endtoendencrypted": "chiffré de bout en bout",
+    "p2signin": "Comme sur Telegram ou Signal, personne d'autre que vous et les personnes participant au même projet ne pourront déchiffrer et lire les contenus que vous postez, pas même les créateurs de cette plate-forme.",
     "next": "Suivant",
     "p3signin": "D'autre part",
     "p3-1signin": "System-D preserve l'Anonymat",
-    "p3-2signin": "de ses utilisateurs : pas d'adresse mail requise ni d'informations personnelles. Cependant nous n'auront ",
+    "p3-2signin": "de ses utilisateurs : pas d'adresse mail requise ni d'informations personnelles. Cependant nous n'aurons ",
     "p3-3signin": "aucun moyen de vous aider si vous oubliez votre mot de passe.",
     "p3-4signin": "Ainsi, il est recommandé de :",
     "spanSignin": "Noter le mot de passe que vous aurez choisi."
@@ -224,9 +224,9 @@
   "loginPage": {
     "signin": "Inscription",
     "connection": "Connexion",
-    "backToHome": "Retour à l'acceuil"
+    "backToHome": "Retour à l'accueil"
   },
-  "_templates": "Project",
+  "_templates": "Projet",
   "newProject": {
     "createProject": "Créer un projet",
     "nameProject": "Nom du projet",
@@ -276,7 +276,7 @@
   },
   "newInvitation": {
     "title": "Création du lien d'invitation",
-    "infoQuote": "En transmettant des liens d'invitation, vous transmettez les clefs de chiffrement de votre projet à tout ceux qui auront accès au lien généré durant la période de validité.",
+    "infoQuote": "En transmettant des liens d'invitation, vous transmettez les clefs de chiffrement de votre projet à tous ceux qui auront accès au lien généré durant la période de validité.",
     "durationLabel": "Durée de validité du lien d'invitation",
     "hour": "heure",
     "day": "jour",
@@ -297,7 +297,7 @@
     "invitTitle": "Invitation à rejoindre le projet ",
     "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs. Cliquez sur le lien pour voir l'invitation.",
     "infoQr": "Si la personne à inviter est à coté de vous, elle peut aussi flasher ce QR-code avec n'importe quelle application de lecture de QR-code pour accéder à l'invitation.",
-    "infoDestroy": "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux cléfs de chiffrement de votre projet.",
+    "infoDestroy": "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux clefs de chiffrement de votre projet.",
     "destroy": "Supprimer le lien d'invitation",
     "backToParams": "Retour aux paramètres du projet",
     "deleted": "le lien d'invitation à été détruit"
@@ -344,7 +344,7 @@
     "kickUser": "Retirer l'utilisateur",
     "kickUserInfo": "Retirer l'utilisateur de la liste des membres du projet.",
     "removedSuccess": "L'utilisateur à été retiré des membres du projet",
-    "promoteSuccess": "L'utilisateur fait désormais parti des administrateurs du projet",
+    "promoteSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
     "quitSuccess": "Vous avez quitté le projet"
   },
   "_templates": "users",
@@ -357,7 +357,7 @@
     "deletedAccount": "Votre compte utilisateur à été définitivement supprimé"
   },
   "editAvatar": {
-    "edit": "Editer l'avatar",
+    "edit": "Éditer l'avatar",
     "delete": "Supprimer l'avatar",
     "OK": "valider"
   },
@@ -370,7 +370,7 @@
   },
   "editPasswordJs": {
     "previousPwd": "veuillez entrer votre précédent mot de passe",
-    "crypt": "Le chiffrement de vos contenus sur System-D est basé sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.",
+    "crypt": "Le chiffrement de vos contenus sur System-D repose sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.",
     "use": "Utilisez des ",
     "characters": "caractères spéciaux",
     "des": ", des ",
@@ -379,18 +379,18 @@
     "number": "chiffres",
     "up": " afin d'augmenter la force de votre mot de passe.",
     "strength": "La force du mot de passe doit au moins être de 1O",
-    "samePwd": "Les mots de passes ne sont pas identiques",
+    "samePwd": "Les mots de passe ne sont pas identiques",
     "typePwd": "Veuillez saisir un mot de passe",
     "confirm": "Veuillez confirmer votre mot de passe",
     "form": "Le formulaire d'inscription n'est pas valide",
     "miss": "Il manque des informations",
     "pwdChange": "Changement du mot de passe",
-    "encryptionKey": "Chiffrement de la clef privée a partir du nouveau mot de passe",
+    "encryptionKey": "Chiffrement de la clef privée à partir du nouveau mot de passe",
     "initialization": "Rénitialisation de la session chiffrée"
   },
   "userParams": {
     "editPassword": "Modifier le mot de passe",
-    "peditPassword": "Nous n'auront aucun moyen de vous aider si vous oubliez votre mot de passe. Ainsi, il est recommandé de noter le mot de passe que vous aurez choisi.",
+    "peditPassword": "Nous n'aurons aucun moyen de vous aider si vous oubliez votre mot de passe. Ainsi, il est recommandé de noter le mot de passe que vous aurez choisi.",
     "deleteAccount": "Supprimer votre compte",
     "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
     "passwordDeleteAccount": "Entrez votre mot de passe afin de confirmer la suppression du compte."
@@ -407,10 +407,10 @@
   "categoryItem": {
     "categoryName": "Nom du dossier",
     "delete": "Supprimer le dossier",
-    "deleteInfo": "Toutes les conversations à l'interieur du dossier seront supprimées",
+    "deleteInfo": "Toutes les conversations à l'intérieur du dossier seront supprimées",
     "moveDown": "Descendre dans la liste",
     "moveUp": "Monter dans la liste",
-    "edit": "Editer le nom",
+    "edit": "Éditer le nom",
     "disableNotifications": "Les notifications sont actives sur ce dossier, cliquez pour les désactiver.",
     "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver.",
     "abort": "Annuler",
@@ -439,7 +439,7 @@
     "abort": "annuler",
     "deleteInfo": "Cette discussion et tout son contenu seront supprimés.",
     "deleteSuccess": "La discussion à été supprimée",
-    "notifEnabled": "Vous recevrez désormais des notifications pour chaque nouvelles publications.",
+    "notifEnabled": "Vous recevrez désormais des notifications pour chaque nouvelle publication.",
     "notifDisabled": "Les notifications ont été désactivées pour cette discussion."
   },
   "newPublication": {
@@ -469,8 +469,8 @@
   },
   "publicationItem": {
     "delete": "Supprimer",
-    "deleteInfo": "Cette action supprimera définitivement la publication et tout ses commentaires",
-    "deleteSuccess": "Cette publication et tout ses commentaires ont été supprimés",
+    "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
+    "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
     "pinnedPublicationHead": "Publication épinglée"
   },
   "showPollContent": {
@@ -504,7 +504,7 @@
   "mapSettings": {
     "title": "Paramètres",
     "kindOfMap": "Type de carte : ",
-    "saveChoice": "Utiliser ce fond de carte par défaut pour tout les membres du projet.",
+    "saveChoice": "Utiliser ce fond de carte par défaut pour tous les membres du projet.",
     "save": "Enregistrer",
     "defaultCenter": "Centrage par défaut : ",
     "defaultCenterInfo": "Centrer la carte sur la zone que vous souhaitez voir apparaitre par défaut puis cliquez sur enregistrer",
@@ -513,7 +513,7 @@
     "deleteOldsInfo": "Retirer les marqueurs dont la date de création remonte à plus de :",
     "chooseDuration": "Choisir durée",
     "delete": "retirer",
-    "oldsMarkersDeleted": "Les anciens marqueurs ont étés supprimés",
+    "oldsMarkersDeleted": "Les anciens marqueurs ont été supprimés",
     "colorLegend": "Légende couleur :"
   },
   "newMarker": {
@@ -572,7 +572,7 @@
     "daysView": "Vue journalière",
     "monthView": "Vue mensuelle",
     "listView": "Listing des évènements mensuels",
-    "recurring": "( Récurant )",
+    "recurring": "( Récurrent )",
     "unnamed": "Sans titre",
     "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
     "activityPlaced": "L'activité à été placée dur l'agenda."
@@ -660,20 +660,20 @@
   },
   "donate": {
     "title": "Soutenir System-D",
-    "why": "Nous avons besoins de vos donnations",
-    "whyText": "Le projet System-D à été bâti avec le coeur, sur du temps libre. Si vous souhaitez le voir perdurer et offrir à ceux qui le font vivre du temps libre pour developper de nouvelles fonctionnalités et améliorer les fonctionnalités existantes, vos donations sont importantes.",
+    "why": "Nous avons besoins de vos donations",
+    "whyText": "Le projet System-D à été bâti avec le cœur, sur du temps libre. Si vous souhaitez le voir perdurer et offrir à ceux qui le font vivre du temps libre pour developper de nouvelles fonctionnalités et améliorer les fonctionnalités existantes, vos donations sont importantes.",
     "withTheMoney": "Vos donations permettent :",
     "servers": "De payer les frais d'hébergement de la plate-forme pour un nombre toujours croissant d'utilisateurs",
-    "sustain": "De maintenir et améliorer les fonctionnalités de System-D, de les rendre accessible à toujours plus d'utilistateurs, et prendre en compte les retours utilisateurs.",
+    "sustain": "De maintenir et améliorer les fonctionnalités de System-D, de les rendre accessible à toujours plus d'utilisateurs, et prendre en compte les retours utilisateurs.",
     "develop": "De créer de nouvelles fonctionnalités. Prochains chantiers :",
     "next1": "Discussions instantanées entre utilisateurs, utilisateurs et projets, projets.",
-    "next2": "Rechercher un projet ou un utilisateur par compétences, centre d'interet, type d'activité, localisation.",
+    "next2": "Rechercher un projet ou un utilisateur par compétences, centre d'intérêt, type d'activité, localisation.",
     "next3": "applications Android, Bureau, et IOS",
     "ponctual": "Donation ponctuelle ( Paypal )",
     "ponctualInfo": "Envoyer une donation ponctuelle via notre compte Paypal :",
     "recursive": "Donation récurrente ( liberapay )",
     "recursiveInfo": "Donner un peu d'argent tout les mois à System-D pour soutenir son développement sur le long terme via la plate-forme libre et open-source LiberaPay :",
-    "cryptos": "Donation en crypto monnaies",
+    "cryptos": "Donation en crypto-monnaies",
     "donateIn": "Envoyer un don sur le wallet de System-D en",
     "wallet": "Wallet ",
     "copied": "Adresse du wallet copiée dans le presse papier"
@@ -701,7 +701,7 @@
 
   },
   "pinned": {
-    "pin": "Epingler la publication en en-tête de la discussion",
+    "pin": "Épingler la publication en en-tête de la discussion",
     "unpin": "Désépingler la publication"
   }
 }
