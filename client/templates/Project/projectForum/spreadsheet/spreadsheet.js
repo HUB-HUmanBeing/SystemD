@@ -45,15 +45,12 @@ Template.spreadsheet.onCreated(function () {
                 if (err) {
                     console.log(err)
                 } else {
-
-                        let encryptedSpreadsheet = Spreadsheet.findOne({_id: spreadsheetId})
-                        cryptoTools.decryptObject(encryptedSpreadsheet, {symKey: Session.get("currentProjectSimKey")}, (spreadsheet) => {
-
-                            this.currentSpreadsheet.set(spreadsheet)
-                            console.log(spreadsheet)
-                            this.isRefreshing.set(false)
-                        })
-
+                    let encryptedSpreadsheet = Spreadsheet.findOne({_id: spreadsheetId})
+                    cryptoTools.decryptObject(encryptedSpreadsheet, {symKey: Session.get("currentProjectSimKey")}, (spreadsheet) => {
+                        this.currentSpreadsheet.set(spreadsheet)
+                        console.log(spreadsheet)
+                        this.isRefreshing.set(false)
+                    })
                 }
             })
         }
