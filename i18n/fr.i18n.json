@@ -171,6 +171,12 @@
     "simpleTools": "DES OUTILS SIMPLES ET SÉCURISÉS",
     "psimpleTools": "Des outils d'organisation ergonomiques pour une prise en main rapide, et dont les contenus sont entièrement chiffrés pour une confidentialité optimale"
   },
+  "landingCounter": {
+    "members": "Membres inscrits",
+    "projects": "Projets créés",
+    "joinToo": "Inscrivez vous et profitez d'un outil pratique, gratuit et chiffré pour gérer vos projets avec vos amis, votre association ou votre collectif.",
+    "signin": "Inscription"
+  },
   "_templates": "loginPage",
   "loginForm": {
     "userName": "Nom d'utilisateur",
@@ -688,7 +694,7 @@
     "projectUsing": " ",
     "of": "sur",
     "allowed": " ",
-    "seeMore": "voir plus"
+    "seeMore": "Voir plus"
   },
   "filePreview": {
     "delete": "Supprimer le fichier"

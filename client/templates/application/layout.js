@@ -4,9 +4,9 @@ import moment from "../../lib/i18nMoment";
 import pushController from "../../lib/controllers/pushController";
 
 Template.layout.helpers({
-    showAcceptNotifTemplate: function () {
-        return Session.get("showAcceptNotif")
-    }
+    //showAcceptNotifTemplate: function () {
+    //    return Session.get("showAcceptNotif")
+    //}
 });
 
 Template.layout.events({
@@ -35,9 +35,10 @@ Template.layout.onCreated(function () {
                         })
                     }, timer > 0 ? timer : 0)
 
-                    if (Meteor.user().private.projects.length) {
-                        pushController.initialize(Meteor.user())
-                    }
+										//!\ bug sur firefox dans certaines conditions 
+                    //if (Meteor.user().private.projects.length) {
+                    //    pushController.initialize(Meteor.user())
+                    //}
                 })
             } else {
                 hubCrypto.destroyCryptoSession(() => {

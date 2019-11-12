@@ -1,0 +1,45 @@
+
+@import "{}/client/scss/variables.scss";
+
+
+#landingCounter{
+  .btn-large{
+    border: 2px solid $focus-color;
+    font-size: 120%;
+    background-color: transparent;
+  }
+  .btn-large:focus, .btn-large:hover{
+    background-color: $contrasted-bg !important;
+  }
+  .container{
+    padding:20px 0 !important;
+    overflow: hidden;
+  }
+  .flex{
+    position: relative;
+    margin-top: 20px;
+    padding: 30px;
+
+    .number{
+      padding:0 10px 0 20px;
+    }
+    img{
+      position: relative;
+      border-radius: 10px;
+      width: 100px;
+      height: 100px;
+      padding: 5px;
+      background-color: $lighter-bg;
+      border: 3px solid $focus-color;
+
+    }
+
+
+  }
+  .m5{
+    margin-top: 50px;
+    img{
+      margin: 30px;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import User from "../../imports/classes/User";
 import NotifPush from "../../imports/NotifPush";
 import Project from "../../imports/classes/Project";
 import ProjectNotification from "../../imports/classes/ProjectNotification";
+import Projects from "../../lib/collections/Projects"
 
 Meteor.methods({
     getServerDate() {
@@ -115,6 +116,12 @@ Meteor.methods({
                 notification.remove()
             }
         })
+    },
+    getCounter(){
+        return {
+            projects: Projects.find({}).count(),
+            members: Meteor.users.find({}).count()
+        }
     }
 })
 if(Meteor.isDevelopment){
