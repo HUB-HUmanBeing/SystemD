@@ -61,11 +61,10 @@ Template.menu.onCreated(function () {
             changeFavicon('/favicon.ico');
         }
         document.title = title
-        let  isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)
-        if(!isChrome){
-            Materialize.toast(__('general.changNavigator'), 10000, 'toastError')
-        }
+
+
     })
+
 });
 
 Template.menu.onRendered(function () {
