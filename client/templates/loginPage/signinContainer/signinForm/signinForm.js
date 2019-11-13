@@ -271,7 +271,7 @@ Template.signinForm.events({
                                             } else {
                                                 //si tout va bien on redirige vers la page pour completer le profil
                                                 FlowRouter.go('/user-params')
-                                                Materialize.toast("Bienvenue sur System-D", 6000, 'toastOk')
+                                                Materialize.toast(__('loginFormJs.welcome'), 6000, 'toastOk')
                                             }
 
                                         })
