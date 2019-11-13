@@ -7,7 +7,7 @@ let spreadsheetController = {
     id:null,
     columns:[],
     rows:1,
-    datas:[[],[],[],[],[],[],[],[],[],[]],
+    datas:[],
     initialize(spreadsheetId,el, instance){
         this.id = spreadsheetId
         instance.autorun(() => {
@@ -23,18 +23,18 @@ let spreadsheetController = {
                     this.columns=this.defaultColumns()
                     this.saveColumns()
                 }
-                let newRows = JSON.parse(spreadsheetContent.rows)
-                if(newRows.length){
-                    if(this.rows!=newRows){
-                        this.rows=newRows
+                if(spreadsheetContent.symEnc_datas && JSON.parse(spreadsheetContent.symEnc_datas).length){
+                    let newDatas = JSON.parse(spreadsheetContent.symEnc_datas)
+                    if(this.rows!=newDatas){
+                        this.datas=newDatas
                         console.log('todo: updateRows')
                     }
                 }else{
-                    this.rows=this.defaultRows()
-                    this.saveRows()
+                    this.datas=this.defaultDatas()
+                    this.saveDatas()
                 }
 
-                    this.createTable(el)
+                this.createTable(el)
 
                 console.log(this.table.getConfig())
             })
@@ -45,7 +45,8 @@ let spreadsheetController = {
     },
     createTable(el){
         console.log(this.rows)
-        this.table = jexcel(el, {
+        let table
+        this.table= table = jexcel(el, {
             data:this.datas,
             columns:this.columns,
             rows:this.rows,
@@ -58,21 +59,22 @@ let spreadsheetController = {
                     type: 'i',
                     content: 'undo',
                     onclick: function() {
-                        this.table.undo();
+                        table.undo();
                     }
                 },
                 {
                     type: 'i',
                     content: 'redo',
                     onclick: function() {
-                        this.table.redo();
+                        table.redo();
                     }
                 },
                 {
                     type: 'i',
                     content: 'save',
                     onclick: function () {
-                        this.table.download();
+                        console.log(table.getJson())
+                        //this.table.download();
                     }
                 },
                 {
@@ -127,17 +129,17 @@ let spreadsheetController = {
         }
         return res
     },
-    defaultRows(){
+    defaultDatas(){
         let res =[]
-        for (let i = 0; i < 100; i++) {
-            res.push({height:30})
+        for (let i = 0; i < 60; i++) {
+            res.push([""])
         }
         return res
     },
     saveColumns(){
         console.log('todo: saveColumns')
     },
-    saveRows(){
+    saveDatas(){
         console.log('todo: saveRows')
     }
 

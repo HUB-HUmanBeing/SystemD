@@ -14,10 +14,10 @@ const SpreadsheetsContent = Class.create({
                 return "[]"
             }
         },
-        rows:{
+        style:{
             type:String,
             default: function () {
-                return "[]"
+                return "{}"
             }
         }
     }
