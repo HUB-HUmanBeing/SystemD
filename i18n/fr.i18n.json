@@ -95,7 +95,7 @@
   "landingHead": {
     "aims": "Objectifs",
     "features": "Atouts",
-    "road Map": "Feuille de route",
+    "roadMap": "Feuille de route",
     "contact": "Contact",
     "login": "Connexion",
     "signUp": "Inscription",
@@ -584,10 +584,11 @@
     "daysView": "Vue journalière",
     "monthView": "Vue mensuelle",
     "listView": "Liste des évènements mensuels",
-    "recurring": "( Récurrent )",
+    "recurring": "(Récurrent)",
     "unnamed": "Sans titre",
     "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
-    "activityPlaced": "L'activité à été placée dur l'agenda."
+    "activityPlaced": "L'activité à été placée sur l'agenda.",
+		"settings": "Paramètres"
   },
   "calendarSettings": {
     "title": "Paramètres de l'agenda",
@@ -661,7 +662,8 @@
     "title": "Paramètres de la liste de tâches",
     "colorLegend": "Legende couleur : ",
     "deleteDone": "Supprimer les tâches terminées",
-    "doneActivitiesDeleted": "Les tâches terminées ont été supprimées"
+    "doneActivitiesDeleted": "Les tâches terminées ont été supprimées",
+		"delete": "Supprimer"
   },
   "taskItem": {
     "participants": "Participants",
