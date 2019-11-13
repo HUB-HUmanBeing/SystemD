@@ -12,7 +12,7 @@
     "deleteActivity": "delete",
     "editActivity": "save",
     "inviteMember": "Invite members to join activity",
-    "invited": "guest :",
+    "invited": "Invited :",
     "joinActivity": "Participate to activity",
     "noInvited": "No members invited",
     "noParticipant": "Any participant",
@@ -266,7 +266,7 @@
     "contact": "Contact",
     "features": "Features",
     "login": "Login",
-    "road Map": "Roadmap",
+    "roadMap": "Roadmap",
     "signUp": "Sign Up"
   },
   "landingPlus": {
@@ -522,7 +522,8 @@
     "monthView": "Monthly view",
     "recurring": "( Recurring )",
     "setActivityInfo": "Set the activity where you want on the calendar.",
-    "unnamed": "No title"
+    "unnamed": "No title",
+		"settings": "Settings"
   },
   "projectFiles": {
     "limitOneFile": "Document size is limited at 15 Mo",
@@ -654,7 +655,8 @@
     "colorLegend": "Color legend",
     "deleteDone": "Delete completed tasks",
     "doneActivitiesDeleted": "Completed tasks have been delete.",
-    "title": "Tasks list setup"
+    "title": "Tasks list setup",
+		"delete": "Delete"
   },
   "textualContent": {
     "placeholder": "Content of your publication...",
