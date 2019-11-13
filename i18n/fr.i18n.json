@@ -705,7 +705,7 @@
     "download": "Télécharger",
     "delete": "Supprimer le fichier",
     "return": "Retour",
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier"
+    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier."
   },
   "projectFiles": {
     "limitOneFile": "La taille des documents est limitée à 15 Mo",

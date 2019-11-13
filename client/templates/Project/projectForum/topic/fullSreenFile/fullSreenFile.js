@@ -1,7 +1,7 @@
 import filesTypes from "../../../../../lib/filesTypes";
 import projectFilesController from "../../../../../lib/projectFilesController";
 
-Template.fullSreenFile.helpers({
+Template.fullScreenFile.helpers({
     //add you helpers here
     type: function () {
         let file = Session.get('fullSizeFile')
@@ -20,7 +20,7 @@ Template.fullSreenFile.helpers({
     },
 });
 
-Template.fullSreenFile.events({
+Template.fullScreenFile.events({
     //add your events here
     "click [closeFullScreenView]": function (event, instance) {
         event.preventDefault()
@@ -35,16 +35,16 @@ Template.fullSreenFile.events({
     }
 });
 
-Template.fullSreenFile.onCreated(function () {
+Template.fullScreenFile.onCreated(function () {
     //add your statement here
 });
 
-Template.fullSreenFile.onRendered(function () {
+Template.fullScreenFile.onRendered(function () {
     //add your statement here
     resetTooltips()
 });
 
-Template.fullSreenFile.onDestroyed(function () {
+Template.fullScreenFile.onDestroyed(function () {
     //add your statement here
     resetTooltips()
 });
