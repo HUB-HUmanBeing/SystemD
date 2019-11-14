@@ -54,6 +54,7 @@ let spreadsheetController = {
             allowExport:true,
             editable:true,
             //search:true,
+            onselection: this.selectionActive,
             toolbar:[
                 {
                     type: 'i',
@@ -80,7 +81,17 @@ let spreadsheetController = {
                 {
                     type: 'select',
                     k: 'font-size',
-                    v: ['9px','10px','11px','12px','13px','14px','15px','16px','17px','18px','19px','20px']
+                    v: ['9px','10px','11px','12px','13px','14px','16px','18px','21px', '26px', '36px' ]
+                },
+                {
+                    type: 'color',
+                    content: 'format_color_text',
+                    k: 'color'
+                },
+                {
+                    type: 'color',
+                    content: 'format_color_fill',
+                    k: 'background-color'
                 },
                 {
                     type: 'i',
@@ -107,15 +118,39 @@ let spreadsheetController = {
                     v: 'bold'
                 },
                 {
-                    type: 'color',
-                    content: 'format_color_text',
-                    k: 'color'
+                    type: 'i',
+                    content: 'zoom_out_map',
+                    onclick: function() {
+                        if (
+                            document.fullscreenElement ||
+                            document.webkitFullscreenElement ||
+                            document.mozFullScreenElement ||
+                            document.msFullscreenElement
+                        ) {
+                            if (document.exitFullscreen) {
+                                document.exitFullscreen();
+                            } else if (document.mozCancelFullScreen) {
+                                document.mozCancelFullScreen();
+                            } else if (document.webkitExitFullscreen) {
+                                document.webkitExitFullscreen();
+                            } else if (document.msExitFullscreen) {
+                                document.msExitFullscreen();
+                            }
+                        } else {
+                            let element = $('#spreadsheetContent').get(0);
+                            if (element.requestFullscreen) {
+                                element.requestFullscreen();
+                            } else if (element.mozRequestFullScreen) {
+                                element.mozRequestFullScreen();
+                            } else if (element.webkitRequestFullscreen) {
+                                element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                            } else if (element.msRequestFullscreen) {
+                                element.msRequestFullscreen();
+                            }
+                        }
+                    }
                 },
-                {
-                    type: 'color',
-                    content: 'format_color_fill',
-                    k: 'background-color'
-                },
+
             ],
         });
     },
@@ -124,7 +159,7 @@ let spreadsheetController = {
     },
     defaultColumns(){
         let res =[]
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
             res.push({width:120})
         }
         return res
@@ -141,7 +176,11 @@ let spreadsheetController = {
     },
     saveDatas(){
         console.log('todo: saveRows')
+    },
+    selectionActive: function(instance, x1, y1, x2, y2, origin) {
+
     }
+
 
 
 }

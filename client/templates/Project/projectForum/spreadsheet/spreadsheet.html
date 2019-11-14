@@ -1,12 +1,10 @@
 <template name="spreadsheet">
     {{#unless isRefreshing}}
-        <div id="topic" class="full-height flex-auto" style="{{#if isDesktop}}padding-top:10px{{/if}}">
+        <div id="" class="full-height flex-auto spreadsheetSubContainer" style="{{#if isDesktop}}padding-top:10px{{/if}}">
 
             {{#if currentSpreadsheet}}
                 {{>spreadsheetHeader currentSpreadsheet=currentSpreadsheet}}
                 {{>spreadsheetContent currentSpreadsheet=currentSpreadsheet}}
-            {{else}}
-                {{>topicLoader}}
             {{/if}}
 
         </div>

@@ -28,7 +28,7 @@ Template.projectForum.helpers({
 
         FlowRouter.watchPathChange()
         let instance = Template.instance()
-        if (Meteor.Device.isDesktop()) {
+        if (Meteor.Device.isDesktop() && !FlowRouter.current().queryParams.spreadsheetId) {
             Meteor.setTimeout(() => {
                 let topicContainer = document.getElementById('topicContainer')
                 if (topicContainer && instance && Meteor.Device.isDesktop()) {
@@ -38,10 +38,14 @@ Template.projectForum.helpers({
                     instance.topicbs = new BeautifyScrollbar('#topicContainer');
                 }
             }, 700)
+        }else{
+            if (instance.topicbs) {
+                instance.topicbs.destroy()
+            }
         }
 
 
-        return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId
+        return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId || !!FlowRouter.current().queryParams.spreadsheetId
     },
     showFiles: function () {
         FlowRouter.watchPathChange()
@@ -49,7 +53,7 @@ Template.projectForum.helpers({
     },
     showCategories: function () {
         FlowRouter.watchPathChange()
-        return Meteor.Device.isDesktop() || (!FlowRouter.current().queryParams.topicId && !FlowRouter.current().queryParams.files)
+        return Meteor.Device.isDesktop() || (!FlowRouter.current().queryParams.topicId && !FlowRouter.current().queryParams.files&& !FlowRouter.current().queryParams.spreadsheetId)
     },
     refreshScrollbar: function () {
         let instance = Template.instance()

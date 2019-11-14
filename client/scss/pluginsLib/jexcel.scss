@@ -11,8 +11,9 @@
  */
 @import "{}/client/scss/variables.scss";
 .jexcel_contextmenu{
+  border: none !important;
   background: $light-bg !important;
-  box-shadow:0 4px 4px rgba(0, 0, 0, 0.35) !important;
+
 
   hr{
 border: 1px solid $blue-highlight-color ;
@@ -20,12 +21,15 @@ border: 1px solid $blue-highlight-color ;
   }
   .jcontextmenu{
     background: $light-bg !important;
+    border: none !important;
+    box-shadow:0 4px 4px rgba(0, 0, 0, 0.35) !important;
     ul{
       margin: 0 !important;
       margin-block-start: 0em !important;
       margin-block-end: 0em !important;
       margin-inline-start: 0px;
       margin-inline-end: 0px;
+      border: none !important;
     }
     li {
       transition: 0.5s;
@@ -41,7 +45,64 @@ border: 1px solid $blue-highlight-color ;
   }
 
 }
+.jcolor-content{
+  margin-left: -100px;
+  background: $light-bg !important;
+  box-shadow:0 4px 8px rgba(0, 0, 0, 0.35) !important;
+  td{
+    border: none !important;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 10px !important;
+    &:hover{
+      margin: -3px;
+
+    }
+
+  }
+}
 #spreadsheetContent {
+ height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  .jexcel_toolbar{
+select{
+  max-width: 150px;
+  option{
+    background-color: $main-bg;
+  }
+}
+
+  }
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba($blue-highlight-color,0.5);
+    border-radius: 50px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba($blue-highlight-color,0.8);
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: rgba($blue-highlight-color,1);
+  }
+  ::-webkit-scrollbar-track {
+    background: $light-bg;
+
+    border-radius: 52px;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 
 
   $color1: $contrasted-bg;
@@ -55,6 +116,15 @@ border: 1px solid $blue-highlight-color ;
   :root {
     --jexcel-border-color: $color7;
   }
+  .jexcel_pagination{
+     display: none !important;
+   }
+.jexcel_content{
+  width: 100%;
+  height: 100%;
+ overflow: scroll;
+  flex: 1
+}
 
   .jexcel_container {
     display: inline-block;

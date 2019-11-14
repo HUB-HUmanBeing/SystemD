@@ -8,9 +8,17 @@
   #categoryListContainer {
 width: 100%;
   }
-  #topicContainer {
+  .topicContainer {
   width: auto;
   }
+  .spreadsheetContainer{
+
+  }
+.spreadsheetSubContainer{
+ display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+}
   .blurBottom, .blurTop{
     position: absolute;
     height: 40px;

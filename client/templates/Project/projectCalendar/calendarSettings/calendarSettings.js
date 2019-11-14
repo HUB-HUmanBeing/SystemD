@@ -32,6 +32,10 @@ Template.calendarSettings.helpers({
                 value: 30,
                 label: "1 " + __("newInvitation.month")
             },
+            {
+                value: 183,
+                label: "6 " + __("newInvitation.month")
+            },
         ]
     },
 });
