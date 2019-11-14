@@ -10,7 +10,37 @@
  * This software is distribute under MIT License
  */
 @import "{}/client/scss/variables.scss";
+.jexcel_contextmenu{
+  background: $light-bg !important;
+  box-shadow:0 4px 4px rgba(0, 0, 0, 0.35) !important;
 
+  hr{
+border: 1px solid $blue-highlight-color ;
+    margin:0;
+  }
+  .jcontextmenu{
+    background: $light-bg !important;
+    ul{
+      margin: 0 !important;
+      margin-block-start: 0em !important;
+      margin-block-end: 0em !important;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+    }
+    li {
+      transition: 0.5s;
+      border-left: 3px solid $blue-highlight-color !important;
+      a{
+        color: $main-color !important;
+      }
+    }
+    li:not(.contextmenu-line):hover {
+      background: $lighter-bg;
+      border-left: 10px solid $blue-highlight-color !important;
+    }
+  }
+
+}
 #spreadsheetContent {
 
 
@@ -547,13 +577,21 @@
   }
 
   .jexcel_toolbar i.jexcel_toolbar_item {
-    width: 24px;
-    height: 24px;
-    margin: 10px;
+    width: 44px;
+    height: 44px;
+   padding: 10px;
 
     cursor: pointer;
     display: inline-block;
-
+    transition: 0.5s;
+&:hover{
+  width: 46px;
+  height: 46px;
+  padding: 11px;
+  margin: -1px;
+  background-color: $blue-highlight-color !important;
+  color: $plus-color;
+}
   }
 
   .jexcel_toolbar i.jexcel_toolbar_item:hover {
