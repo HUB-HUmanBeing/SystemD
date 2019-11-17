@@ -190,6 +190,9 @@ const calendarController = {
             }
         })
     },
+    stringFromTime(date) {
+        return (date.getHours() === 0 ? "00" : date.getHours()) + ":" + (date.getMinutes() === 0 ? "00" : date.getMinutes())
+    },
     getEventFromActivity(activity, focusedActivity) {
 
         let event
@@ -204,8 +207,8 @@ const calendarController = {
             }
         }
         if (activity.daysOfWeek.length) {
-            let startTime = activity.allDay ? null : activity.start.getHours() + ":" + activity.start.getMinutes()
-            let endTime = activity.allDay ? null : activity.end.getHours() + ":" + activity.end.getMinutes()
+            let startTime = activity.allDay ? null : this.stringFromTime(activity.start)
+            let endTime = activity.allDay ? null :this.stringFromTime(activity.end)
             event = {
                 id: activity._id,
                 title: (activity.symEnc_title ? activity.symEnc_title + " " : "") + __("projectCalendar.recurring"),

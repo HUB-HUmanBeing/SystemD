@@ -62,7 +62,8 @@
   "checkList": {
     "addCheck": "add check",
     "checkList": "Check list : ",
-    "newCheck": "Check..."
+    "newCheck": "Check...",
+    "saveCheckItems" : "Save"
   },
   "colorLegend": {
     "placeholder": "Your legend ...",

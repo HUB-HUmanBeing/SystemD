@@ -16,6 +16,8 @@
         </div>
         {{refresher}}
         {{#if checkItems.length}}
+            <form action="" saveCheckItems>
+
             <ul class="collection relative transparent">
                 {{#each check in checkItems}}
                     <li class="collection-item no-padding transparent relative flex">
@@ -44,6 +46,11 @@
 
 
             </ul>
+                {{#if showSaveBtn}}
+                <button type="submit" class="waves-effect waves-light btn btnStandard right-align"><i class="material-icons left">save</i>{{__
+                        ".saveCheckItems"}}</button>
+                {{/if}}
+          </form>
         {{/if}}
     </div>
 

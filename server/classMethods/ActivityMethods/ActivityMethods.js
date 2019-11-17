@@ -203,14 +203,15 @@ Activity.extend({
             activity.checkList[index].checked = !activity.checkList[index].checked
             return activity.save()
         },
-        editCheckItem(authInfo, index, value) {
+        editCheckItems(authInfo, values) {
             check(authInfo, {memberId: String, userSignature: String})
             let activity = Activity.findOne(this._id)
-            check(index, Number)
-            check(value, String)
+            check(values, [String])
             let currentProject = Project.findOne(activity.projectId)
             check(currentProject.isMember(authInfo), true)
-            activity.checkList[index].symEnc_label =value
+            values.forEach((val, i)=>{
+                activity.checkList[i].symEnc_label =val
+            })
             return activity.save()
         },
         changeList(authInfo, type) {

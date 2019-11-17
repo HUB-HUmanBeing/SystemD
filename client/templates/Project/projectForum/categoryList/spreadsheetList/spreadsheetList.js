@@ -44,7 +44,8 @@ Template.spreadsheetList.events({
         event.stopPropagation()
         $('.tooltipped').tooltip('remove')
         Meteor.setTimeout(() => {
-            $('#newSpreadsheetsName').focus()
+            console.log('couco')
+            $('#newSpreadsheetName').click()
             resetTooltips()
         }, 200)
         instance.showNewSpreadsheet.set(true)
@@ -71,6 +72,7 @@ Template.spreadsheetList.events({
                     }, 200)
                     instance.showNewSpreadsheet.set(false)
                     instance.isCreating.set(false)
+                    console.log(res)
                     FlowRouter.go('/project/' + currentProjectId + '/forum/?spreadsheetId=' + res)
                 }
             })

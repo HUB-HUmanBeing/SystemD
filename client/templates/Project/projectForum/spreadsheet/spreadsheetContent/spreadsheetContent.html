@@ -1,3 +1,7 @@
 <template name="spreadsheetContent">
-        <div id="spreadsheetContent"></div>
+    {{#if editorMemberId}}
+    <div id="spreadsheetEditorContainer" class="tooltipped" data-position="left"
+         data-delay="50" data-tooltip="{{__ ".editedBy"}} {{usernameFromMemberId editorMemberId}}"  >{{>avatar userId=(userIdFromMemberId editorMemberId)}}</div>
+        {{/if}}
+            <div id="spreadsheetContent"></div>
 </template>

@@ -25,7 +25,6 @@ Spreadsheet.extend({
 
 
             newSpreadsheet.createdBy = authInfo.memberId
-            console.log( newSpreadsheet.save())
             return newSpreadsheet.save((err) => {
                 if (!err) {
                     currentProject.private.spreadsheetCount++
@@ -49,5 +48,16 @@ Spreadsheet.extend({
             check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && spreadsheet.createdBy === authInfo.memberId), true)
             return spreadsheet.remove()
         },
+        setEditor(authInfo){
+            check(authInfo, {memberId: String, userSignature: String})
+            let spreadsheet = Spreadsheet.findOne(this._id)
+            let currentProject = Project.findOne(spreadsheet.projectId)
+            check(currentProject.isMember(authInfo) , true)
+            spreadsheet.currentEditor ={
+                memberId: authInfo.memberId,
+                lastActivityAt: new Date()
+            }
+            return spreadsheet.save()
+        }
     }
 })

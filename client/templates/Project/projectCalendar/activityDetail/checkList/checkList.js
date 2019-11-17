@@ -12,7 +12,10 @@ Template.checkList.helpers({
     refresher: function () {
     Template.instance().items.set(Activity.findOne(Template.currentData().activity._id).checkList)
         return false
-}
+},
+    showSaveBtn: function () {
+        return Template.instance().showSaveBtn.get()
+    }
 });
 
 Template.checkList.events({
@@ -45,25 +48,28 @@ Template.checkList.events({
 
     },
     'keyup [checkInput]':function (event, instance) {
-        if(instance.timeout){
-            Meteor.clearTimeout(instance.timeout)
-        }
-        let action= ()=>{
-
-            instance.actionOnClose = ()=>{}
-            let activity = instance.data.activity
-            event.preventDefault()
-            let index = Number(event.currentTarget.id.split('-')[1])
-            cryptoTools.sim_encrypt_data(event.currentTarget.value,Session.get("currentProjectSimKey"), encryptedValue=>{
-                Activity.findOne(activity._id).callMethod("editCheckItem", projectController.getAuthInfo(FlowRouter.current().params.projectId),index,encryptedValue, err => {
-                    if (err) {
-                        console.log(err)
-                    }
-                })
+        instance.showSaveBtn.set(true)
+    },
+    'submit [saveCheckItems]':function (event, instance) {
+        event.preventDefault()
+        let activity = Activity.findOne(FlowRouter.current().queryParams.activityId)
+        let encryptedValues = []
+        instance.checkItems.get().forEach((item, i)=>{
+            cryptoTools.sim_encrypt_data($("#checkInput-"+i).val(),Session.get("currentProjectSimKey"), encryptedValue=>{
+                encryptedValues.push(encryptedValue)
+                if(i == instance.checkItems.get().length-1){
+                    activity.callMethod("editCheckItems", projectController.getAuthInfo(FlowRouter.current().params.projectId),encryptedValues, err => {
+                        if (err) {
+                            console.log(err)
+                        }else{
+                            instance.showSaveBtn.set(false)
+                        }
+                    })
+                }
             })
-        }
-        instance.actionOnClose = action
-        instance.timeout = Meteor.setTimeout(action,15000)
+        })
+
+
     },
     'click [check]':function (event, instance) {
         let activity = instance.data.activity
@@ -97,7 +103,8 @@ Template.checkList.onCreated(function () {
     this.timeout=false
     this.checkItems = new ReactiveVar([])
     this.items= new ReactiveVar()
-    this.actionOnClose = ()=>{}
+
+    this.showSaveBtn = new ReactiveVar(false)
     this.autorun(()=>{
         FlowRouter.watchPathChange()
         let items = Activity.findOne(FlowRouter.current().queryParams.activityId).checkList
@@ -127,6 +134,6 @@ Template.checkList.onRendered(function () {
 
 Template.checkList.onDestroyed(function () {
     //add your statement here
-    this.actionOnClose()
+
 });
 

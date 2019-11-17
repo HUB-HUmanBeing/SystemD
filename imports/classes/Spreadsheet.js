@@ -1,6 +1,18 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Spreadsheets from "../../lib/collections/Spreadsheets";
-
+const CurrentEditor = Class.create({
+    name: 'CurrentEditor',
+    fields:{
+        memberId: {
+            type:String,
+            optional: true,
+        },
+        lastActivityAt:{
+            type:Date,
+            optional: true,
+        }
+    }
+})
 const SpreadsheetsContent = Class.create({
     name: 'SpreadsheetsContent',
     fields:{
@@ -19,7 +31,8 @@ const SpreadsheetsContent = Class.create({
             default: function () {
                 return "{}"
             }
-        }
+        },
+
     }
 })
 
@@ -43,6 +56,12 @@ const Spreadsheet = Class.create({
                 return new Date()
             },
             index:-1
+        },
+        currentEditor:{
+            type: CurrentEditor,
+            default: function () {
+                return {};
+            }
         },
         content:{
             type:SpreadsheetsContent,

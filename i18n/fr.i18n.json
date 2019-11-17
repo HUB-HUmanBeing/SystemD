@@ -646,7 +646,8 @@
   "checkList": {
     "checkList": "Check list : ",
     "newCheck": "Check...",
-    "addCheck": "Ajouter un check"
+    "addCheck": "Ajouter un check",
+    "saveCheckItems" : "Enregistrer"
   },
   "projectTasks": {
     "title": "Liste des tâches",
