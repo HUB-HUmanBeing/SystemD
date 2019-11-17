@@ -1,0 +1,727 @@
+{
+  "_locale": "es-ES",
+  "general": {
+    "error": "",
+    "changNavigator": ""
+  },
+  "_templates_application": "===========================================================================================================================",
+  "forbidden": {
+    "noAccess": "",
+    "backHome": ""
+  },
+  "notFound": {
+    "backHome": "",
+    "noAddress": ""
+  },
+  "workInProgress": {
+    "nofunction": "",
+    "allow": "",
+    "infos": ""
+  },
+  "layout": {
+    "donateLabel": "",
+    "betaExplain2": "",
+    "betaWarning2": "",
+    "betaExplain": "",
+    "betaExplainEnd": "",
+    "help": "",
+    "betaVersion": "",
+    "betaWarning": "",
+    "beta": "",
+    "donate": ""
+  },
+  "_templates_includes": "===========================================================================================================================",
+  "menuProject": {
+    "tasks": "",
+    "params": "",
+    "calendar": "",
+    "members": "",
+    "forum": "",
+    "maps": "",
+    "home": ""
+  },
+  "menu": {
+    "noProject": "",
+    "decryption": "",
+    "logout": "",
+    "clic": "",
+    "newProject": "",
+    "param": ""
+  },
+  "accessDenied": {
+    "noAccess": "",
+    "denied": ""
+  },
+  "submitIssue": {
+    "succesMessage": "",
+    "bugReport": "",
+    "bugReportLabel": "",
+    "sugestionLabel": "",
+    "suggestion": "",
+    "githubLink": "",
+    "captcha": "",
+    "authorize": "",
+    "allowDeviceInfo": "",
+    "refreshCaptcha": "",
+    "return": "",
+    "decline": "",
+    "submit": "",
+    "btnLabel": ""
+  },
+  "newsFeed": {
+    "content": "",
+    "btnLabel": ""
+  },
+  "notifModal": {
+    "title": "",
+    "deleteAll": ""
+  },
+  "notifItem": {
+    "newResponse": "",
+    "memberQuit": "",
+    "newPublication": "",
+    "newMapMarker": "",
+    "newInvitation": "",
+    "memberPromoted": "",
+    "acceptedInvitation": "",
+    "genericAction": "",
+    "genericTitle": ""
+  },
+  "showAcceptNotif": {
+    "showAcceptNotifs": "",
+    "showAcceptNotifsInfos": ""
+  },
+  "beta": {
+    "beta": ""
+  },
+  "_templates_landingPage": "===========================================================================================================================",
+  "landingHead": {
+    "roadMap": "",
+    "contact": "",
+    "login": "",
+    "aims": "",
+    "signUp": "",
+    "Logout": "",
+    "features": ""
+  },
+  "landingAim": {
+    "createTool": "",
+    "developFreeNetwork": "",
+    "purpose": "",
+    "dFreeNetwork": "",
+    "cTool": "",
+    "3DevPhases": "",
+    "ourPurpose": "",
+    "doOfSystemD": "",
+    "dOfSystD": ""
+  },
+  "landingContact": {
+    "chat": "",
+    "github": "",
+    "email": ""
+  },
+  "landingPlus": {
+    "pfree": "",
+    "encrypted": "",
+    "anonymous": "",
+    "panonymous": "",
+    "free": "",
+    "signin": "",
+    "pencrypted": ""
+  },
+  "landingRoadmap": {
+    "pthirdPhase": "",
+    "roadmap": "",
+    "psecondPhase": "",
+    "p6firstPhase": "",
+    "p2thirdPhase": "",
+    "p3secondPhase": "",
+    "p3thirdPhase": "",
+    "p5firstPhase": "",
+    "p5thirdPhase": "",
+    "secondPhase": "",
+    "signin": "",
+    "p2secondPhase": "",
+    "thirdPhase": "",
+    "p6secondPhase": "",
+    "p6thirdPhase": "",
+    "p7firstPhase": "",
+    "p4secondPhase": "",
+    "p4thirdPhase": "",
+    "p8firstPhase": "",
+    "p5secondPhase": "",
+    "p7secondPhase": "",
+    "p2firstPhase": "",
+    "p4firstPhase": "",
+    "pfirstPhase": "",
+    "p3firstPhase": "",
+    "firstPhase": ""
+  },
+  "landingTitle": {
+    "h3title": "",
+    "ptitle": "",
+    "signin": ""
+  },
+  "landingTools": {
+    "simpleTools": "",
+    "pmodularTools": "",
+    "calendar": "",
+    "modularTools": "",
+    "taskList": "",
+    "pforum": "",
+    "ptaskList": "",
+    "pcalendar": "",
+    "psimpleTools": "",
+    "forum": ""
+  },
+  "landingCounter": {
+    "members": "",
+    "joinToo": "",
+    "projects": "",
+    "signin": ""
+  },
+  "_templates_loginPage": "===========================================================================================================================",
+  "loginForm": {
+    "userName": "",
+    "password": "",
+    "connection": ""
+  },
+  "loginFormJs": {
+    "key": "",
+    "welcome": "",
+    "session": ""
+  },
+  "signinForm": {
+    "passwordRepeat": "",
+    "userNameChoice": "",
+    "passwordChoice": "",
+    "accountCreate": ""
+  },
+  "signinFormJs": {
+    "alreadyTaken": "",
+    "putName": "",
+    "initialization": "",
+    "up": "",
+    "miss": "",
+    "des": "",
+    "name40": "",
+    "crypt": "",
+    "samePwd": "",
+    "error": "",
+    "strength": "",
+    "confirm": "",
+    "capital": "",
+    "creation": "",
+    "characters": "",
+    "and": "",
+    "errmail": "",
+    "name4": "",
+    "use": "",
+    "form": "",
+    "generation": "",
+    "number": "",
+    "typePwd": ""
+  },
+  "signinContainer": {
+    "p3-2signin": "",
+    "psignin": "",
+    "p3-1signin": "",
+    "next": "",
+    "p3signin": "",
+    "p3-4signin": "",
+    "linkSignin": "",
+    "spanSignin": "",
+    "p3-3signin": "",
+    "endtoendencrypted": "",
+    "p2signin": ""
+  },
+  "loginPage": {
+    "connection": "",
+    "backToHome": "",
+    "signin": ""
+  },
+  "_templates_Projet": "===========================================================================================================================",
+  "newProject": {
+    "nameProject": "",
+    "createProject": "",
+    "create": ""
+  },
+  "newProjectJs": {
+    "alreadyTaken": "",
+    "errmail": "",
+    "initialization": "",
+    "name4": "",
+    "errForm": "",
+    "generation": "",
+    "missInfo": "",
+    "error": "",
+    "theProject": "",
+    "name50": "",
+    "creation": "",
+    "nameProject": "",
+    "created": ""
+  },
+  "projectHome": {
+    "noDescription": "",
+    "projectDescription": ""
+  },
+  "editProjectAvatar": {
+    "edit": "",
+    "OK": "",
+    "delete": ""
+  },
+  "editProjectDescription": {
+    "label": ""
+  },
+  "projectParams": {
+    "createInvitelink": "",
+    "invitationList": "",
+    "publicInfos": "",
+    "deleteProject": ""
+  },
+  "deleteProject": {
+    "deleteProjectInfo": "",
+    "deleteProjectErrorTips": "",
+    "deleteProjectError": "",
+    "deleteSuccess": ""
+  },
+  "projectLayout": {
+    "decrypting1": ""
+  },
+  "newInvitation": {
+    "durationLabel": "",
+    "hour": "",
+    "user": "",
+    "infoQuote": "",
+    "title": "",
+    "month": "",
+    "addMessage": "",
+    "remainingLabel1": "",
+    "users": "",
+    "day": "",
+    "backToParams": "",
+    "ok": "",
+    "week": "",
+    "invitMessage": ""
+  },
+  "showInvitation": {
+    "infoDestroy": "",
+    "infoLink": "",
+    "destroy": "",
+    "title": "",
+    "backToParams": "",
+    "deleted": "",
+    "invitMessage": "",
+    "invitTitle": "",
+    "infoQr": "",
+    "copied": ""
+  },
+  "invitationList": {
+    "noInvits": "",
+    "remaining": "",
+    "from": "",
+    "newInvitation": "",
+    "by": "",
+    "expireIn": ""
+  },
+  "invitation": {
+    "needToLoginFirstButton": "",
+    "noLongerExistInfo": "",
+    "accept": "",
+    "message": "",
+    "noLongerExist": "",
+    "needToLoginFirstInfo": "",
+    "moreInfo": "",
+    "project": "",
+    "title": "",
+    "userAlreadyInProject": "",
+    "description": "",
+    "noDescription": "",
+    "decline": "",
+    "needToLoginFirst": ""
+  },
+  "projectMembers": {
+    "members": "",
+    "admins": "",
+    "membersList": ""
+  },
+  "member": {
+    "since": "",
+    "promoteSuccess": "",
+    "kickUser": "",
+    "quitProjectInfo": "",
+    "quitSuccess": "",
+    "invitedBy": "",
+    "promoteUserInfo": "",
+    "kickUserInfo": "",
+    "quitProjectError": "",
+    "removedSuccess": "",
+    "quitProjectErrorTips": "",
+    "projectCreator": "",
+    "promoteUser": "",
+    "quitProject": ""
+  },
+  "_templates_users": "===========================================================================================================================",
+  "deleteAccount": {
+    "deleteAccount": "",
+    "confirmPassword": ""
+  },
+  "deleteAccountJs": {
+    "error": "",
+    "deletedAccount": ""
+  },
+  "editAvatar": {
+    "edit": "",
+    "OK": "",
+    "delete": ""
+  },
+  "editPassword": {
+    "editPassword": "",
+    "oldPassword": "",
+    "newPassword": "",
+    "strength": "",
+    "repeatPassword": ""
+  },
+  "editPasswordJs": {
+    "and": "",
+    "initialization": "",
+    "up": "",
+    "use": "",
+    "previousPwd": "",
+    "miss": "",
+    "strength": "",
+    "des": "",
+    "crypt": "",
+    "pwdChange": "",
+    "encryptionKey": "",
+    "number": "",
+    "form": "",
+    "typePwd": "",
+    "confirm": "",
+    "capital": "",
+    "samePwd": "",
+    "characters": ""
+  },
+  "userParams": {
+    "editPassword": "",
+    "peditPassword": "",
+    "pdeleteAccount": "",
+    "deleteAccount": "",
+    "passwordDeleteAccount": ""
+  },
+  "userOptions": {
+    "language": ""
+  },
+  "_templates_forum": "===========================================================================================================================",
+  "categoryList": {
+    "seeMore": "",
+    "categoryName": "",
+    "new": "",
+    "myFiles": ""
+  },
+  "categoryItem": {
+    "topicName": "",
+    "categoryName": "",
+    "abort": "",
+    "moveDown": "",
+    "notifDisabled": "",
+    "enlableNotifications": "",
+    "notifEnabled": "",
+    "showMore": "",
+    "edit": "",
+    "newTopic": "",
+    "delete": "",
+    "moveUp": "",
+    "noTopics": "",
+    "deleteInfo": "",
+    "disableNotifications": ""
+  },
+  "topic": {
+    "downloadAndDecrypt": ""
+  },
+  "topicItem": {
+    "dragInfo": "",
+    "unseenPublications": "",
+    "mainTopic": ""
+  },
+  "topicHeader": {
+    "notifEnabled": "",
+    "edit": "",
+    "mainTopic": "",
+    "abort": "",
+    "deleteSuccess": "",
+    "delete": "",
+    "disableNotifications": "",
+    "enlableNotifications": "",
+    "notifDisabled": "",
+    "deleteInfo": "",
+    "topicName": ""
+  },
+  "newPublication": {
+    "poll": "",
+    "text": "",
+    "return": "",
+    "newPublication": "",
+    "files": "",
+    "images": ""
+  },
+  "textualContent": {
+    "publish": "",
+    "placeholder": ""
+  },
+  "pollContent": {
+    "addProposition": "",
+    "publish": "",
+    "newProposition": "",
+    "placeholder": ""
+  },
+  "fileContent": {
+    "addFiles": "",
+    "loadInfos": ""
+  },
+  "publicationsList": {
+    "showMore": ""
+  },
+  "publicationItem": {
+    "pinnedPublicationHead": "",
+    "deleteSuccess": "",
+    "deleteInfo": "",
+    "delete": ""
+  },
+  "showPollContent": {
+    "answers": ""
+  },
+  "pollOption": {
+    "vote": ""
+  },
+  "newComment": {
+    "placeholder": ""
+  },
+  "commentList": {
+    "moreComments": "",
+    "see": ""
+  },
+  "commentItem": {
+    "see": "",
+    "answer": "",
+    "deleteSuccess": "",
+    "moreComments": "",
+    "delete": ""
+  },
+  "newSubComment": {
+    "placeholder": ""
+  },
+  "files": {
+    "seeMore": "",
+    "of": "",
+    "allowed": "",
+    "projectUsing": ""
+  },
+  "filePreview": {
+    "delete": ""
+  },
+  "fullScreenFile": {
+    "return": "",
+    "downloadAndDecrypt": "",
+    "download": "",
+    "delete": ""
+  },
+  "projectFiles": {
+    "projectFiles.limitSize": "",
+    "limitOneFile": ""
+  },
+  "pinned": {
+    "unpin": "",
+    "pin": ""
+  },
+  "showFileContent": {
+    "deleted": ""
+  },
+  "_templates_map": "===========================================================================================================================",
+  "mapParams": {
+    "aerial": "",
+    "standard": "",
+    "topo": ""
+  },
+  "mapSettings": {
+    "centerSaved": "",
+    "save": "",
+    "defaultCenterInfo": "",
+    "kindOfMap": "",
+    "saveChoice": "",
+    "chooseDuration": "",
+    "title": "",
+    "colorLegend": "",
+    "delete": "",
+    "deleteOldsInfo": "",
+    "defaultCenter": "",
+    "deleteOlds": "",
+    "oldsMarkersDeleted": ""
+  },
+  "newMarker": {
+    "myPositionInfo": "",
+    "textLabel": "",
+    "textSubmit": "",
+    "type": "",
+    "arrows": "",
+    "text": "",
+    "shapes": "",
+    "title": "",
+    "color": "",
+    "updateUserPosition": "",
+    "lines": "",
+    "myPosition": "",
+    "icons": ""
+  },
+  "creatingIcon": {
+    "createIconInfo": ""
+  },
+  "editingIcon": {
+    "editIconInfo": ""
+  },
+  "markerDetail": {
+    "coordinates": "",
+    "moveMarker": "",
+    "editMarker": "",
+    "createdBy": "",
+    "goTo": "",
+    "markerName": "",
+    "lastEdit": "",
+    "deleteMarker": "",
+    "markerDetail": ""
+  },
+  "detailMemberPosition": {
+    "deleteMarker": "",
+    "lastEdit": "",
+    "actualise": ""
+  },
+  "creatingPolyline": {
+    "undo": "",
+    "save": "",
+    "createIconInfo": ""
+  },
+  "creatingShape": {
+    "polygonInfo": "",
+    "undo": "",
+    "save": "",
+    "circleInfo": "",
+    "rectangleInfo": ""
+  },
+  "creatingArrow": {
+    "createArrowInfo": ""
+  },
+  "_templates_calendar": "===========================================================================================================================",
+  "projectCalendar": {
+    "monthView": "",
+    "settings": "",
+    "activityPlaced": "",
+    "listView": "",
+    "daysView": "",
+    "setActivityInfo": "",
+    "unnamed": "",
+    "recurring": ""
+  },
+  "calendarSettings": {
+    "title": "",
+    "colorLegend": "",
+    "delete": "",
+    "deleteOldsInfo": "",
+    "oldsActivitiesDeleted": "",
+    "defaultView": "",
+    "deleteOlds": "",
+    "defaultViewSaved": ""
+  },
+  "colorLegend": {
+    "save": "",
+    "placeholder": ""
+  },
+  "activityDetail": {
+    "showOnMap": "",
+    "participants": "",
+    "activityTitle": "",
+    "quitActivity": "",
+    "deleteActivity": "",
+    "inviteMember": "",
+    "recursivity": "",
+    "invited": "",
+    "joinActivity": "",
+    "paricipating": "",
+    "activityDetail": "",
+    "editActivity": "",
+    "noInvited": "",
+    "onMap": "",
+    "noParticipant": ""
+  },
+  "weekDays": {
+    "day3": "",
+    "day5": "",
+    "day2": "",
+    "day1": "",
+    "day4": "",
+    "day0": "",
+    "day6": ""
+  },
+  "inviteMembers": {
+    "inviteEverybody": "",
+    "save": "",
+    "removeEverybody": "",
+    "cancelModifs": ""
+  },
+  "invitedPopup": {
+    "title": "",
+    "accept": "",
+    "end": "",
+    "decline": "",
+    "start": "",
+    "detail": ""
+  },
+  "checkList": {
+    "checkList": "",
+    "newCheck": "",
+    "addCheck": ""
+  },
+  "projectTasks": {
+    "waitingForStatus": "",
+    "title": "",
+    "done": "",
+    "inProject": "",
+    "newActivity": "",
+    "calendarPlaced": "",
+    "myTasks": ""
+  },
+  "tasksSettings": {
+    "deleteDone": "",
+    "title": "",
+    "doneActivitiesDeleted": "",
+    "colorLegend": "",
+    "delete": ""
+  },
+  "taskItem": {
+    "checklist": "",
+    "start": "",
+    "end": "",
+    "participants": "",
+    "inviteds": ""
+  },
+  "_templates_donate": "===========================================================================================================================",
+  "donate": {
+    "recursive": "",
+    "sustain": "",
+    "recursiveInfo": "",
+    "cryptos": "",
+    "withTheMoney": "",
+    "wallet": "",
+    "next2": "",
+    "ponctual": "",
+    "title": "",
+    "donateIn": "",
+    "next3": "",
+    "servers": "",
+    "develop": "",
+    "ponctualInfo": "",
+    "next1": "",
+    "whyText": "",
+    "copied": "",
+    "why": ""
+  }
+}
