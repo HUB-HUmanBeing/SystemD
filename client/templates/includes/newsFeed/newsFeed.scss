@@ -1,0 +1,67 @@
+@import "{}/client/scss/variables.scss";
+
+#openModalNewsFeedContainer{
+  position: fixed;
+  bottom: 125px;
+  right: 0;
+  display: inline-block;
+  visibility: hidden;
+  z-index: 6000;
+  a{
+    visibility: visible;
+    z-index: 6000;
+    position: relative;
+    padding: 0 3px;
+
+    background-color: $focus-color;
+    height: 30px;
+    line-height: 30px;
+    right: calc(30px - 100%);
+
+    opacity: 0.7;
+    transition: 0.5s ease-out;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    i{
+      font-size: 25px;
+    }
+    p{
+      width: 200px;
+      line-height: 10px;
+      font-size: 10px;
+      text-transform: none;
+    }
+    &:hover{
+      width: 200px;
+      right: 0;
+      opacity: 1;
+    }
+  }
+}
+#modalNewsFeed{
+  max-width: 600px;
+  max-height: 90%;
+  h6 {
+    font-size: 1.1em;
+    color: $focus-color;
+  }
+
+  .infoQuotes{
+    font-size: 0.9em;
+  }
+
+  .indicator {
+    background-color: $focus-color;
+    height: 3px;
+  }
+}
+
+.notif{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  z-index: 6200;
+}
