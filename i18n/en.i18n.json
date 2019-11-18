@@ -1,5 +1,5 @@
 {
-  "_locale": "fr-FR",
+  "_locale": "en-EN",
   "general": {
     "error": "An error has occurred",
     "changNavigator": "We are a small team of volonteers and the needed development works to ensure the portability to your browser are not yet completed.\nYou will have an optimal user experience using Chrome browser or its open-source version Chromium. "
@@ -645,7 +645,6 @@
     "joinActivity": "Participate to activity",
     "noInvited": "No members invited",
     "noParticipant": "No participant",
-    "noParticipant": "Any participant",
     "onMap": "Map position :",
     "paricipating": "You participate to this activity",
     "participants": "Participants :",
