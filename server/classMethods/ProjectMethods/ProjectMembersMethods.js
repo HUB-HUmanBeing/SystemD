@@ -97,10 +97,10 @@ Project.extend({
          * @param memberId
          * @param userProjectIndex
          */
-        quitProject(authInfo, memberId, userProjectIndex,notifObjects) {
+        quitProject(authInfo, memberId, hashedAdminSignature,notifObjects) {
             check(Meteor.userId(), String)
             check(authInfo, {memberId: String, userSignature: String})
-            check(userProjectIndex, Number)
+            check(hashedAdminSignature, String)
             let currentProject = Project.findOne(this._id)
             check(currentProject.isMember(authInfo), true)
             check(currentProject.isThisMember(authInfo, memberId), true)
@@ -115,7 +115,15 @@ Project.extend({
                 memberId: String,
                 hashControl: String
             }])
-            currentUser.private.projects.splice(userProjectIndex, 1)
+            let found = false
+            currentUser.private.projects.forEach((userProjet,i)=>{
+                if(userProjet.hashedAdminSignature === hashedAdminSignature){
+                    currentUser.private.projects.splice(i,  1)
+                    found = true
+                }
+            })
+
+            check(found, true)
             currentProject.save((err) => {
                 if (err) {
                     console.log(err)

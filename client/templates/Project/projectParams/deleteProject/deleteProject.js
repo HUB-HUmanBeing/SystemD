@@ -1,9 +1,10 @@
 import projectController from "../../../../lib/controllers/projectController";
 import hubCrypto from "../../../../lib/hubCrypto";
+import cryptoTools from "../../../../lib/cryptoTools";
 
 Template.deleteProject.helpers({
     //add you helpers here
-    isDeletable : function () {
+    isDeletable: function () {
         return Template.currentData().currentProject.isDeletable()
     }
 });
@@ -13,13 +14,13 @@ Template.deleteProject.events({
     'click [deleteProject]': function (event, instance) {
         event.preventDefault()
         let currentProject = instance.data.currentProject
-        let userProjectIndex = projectController.getCurrentUserProjectIndex(currentProject._id)
         if (currentProject.isDeletable()) {
             FlowRouter.go("/")
+            let currentUserProject = projectController.getCurrentUserProject(currentProject._id)
             currentProject.callMethod(
                 "deleteProject",
                 projectController.getAuthInfo(currentProject._id),
-                userProjectIndex,
+                currentUserProject.hashedAdminSignature,
                 (err, res) => {
                     if (err) {
                         console.log(err)
@@ -29,6 +30,7 @@ Template.deleteProject.events({
                         Materialize.toast(__("deleteProject.deleteSuccess"), 6000, "toastOk")
                     }
                 })
+
         } else {
             Materialize.toast(__("deleteProject.deleteProjectError"), 6000, "toastError")
         }

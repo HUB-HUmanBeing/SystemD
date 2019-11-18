@@ -115,14 +115,14 @@ Template.member.events({
         event.preventDefault()
         let currentProject = instance.data.currentProject
         let memberId = instance.data.member.memberId
-        let userProjectIndex = projectController.getCurrentUserProjectIndex(currentProject._id)
+        let currentUserProject = projectController.getCurrentUserProject(currentProject._id)
         if (currentProject.isMemberAllowedToQuit(Template.currentData().member.memberId)) {
             FlowRouter.go("/")
             currentProject.callMethod(
                 "quitProject",
                 projectController.getAuthInfo(currentProject._id),
                 memberId,
-                userProjectIndex,
+                currentUserProject.hashedAdminSignature,
                 notificationController.getNotifyAdmins(),
                 (err, res) => {
                     if (err) {
