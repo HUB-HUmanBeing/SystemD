@@ -11,6 +11,7 @@ const projectController = {
         return userProject
 
     },
+    //ne pas utiliser, c'est buggé
     getCurrentUserProjectIndex(projectId){
         let userProjectIndex = null
         Session.get("projects").forEach((project,i)=>{

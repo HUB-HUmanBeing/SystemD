@@ -493,50 +493,61 @@ let dataB64 = this.convertStringToArrayBufferView(data)
             })
         })
     },
+    initResObject(array){
+        let res = {}
+        array.forEach((el,i)=>{
+            res[i] = null
+        })
+        return res
+    },
+    returnRes(resObject,el,i, callback){
+        resObject[i] = el
+        let completed = true
+        Object.keys(resObject).forEach((key)=>{
+            if(resObject[key] == null){
+                completed = false
+            }
+        })
+        if(completed){
+            let res = []
+            Object.keys(resObject).forEach((key,val)=>{
+                res.push(resObject[key])
+            })
+            callback(res)
+        }
+    },
     //dechiffre un tableau d'objet chiffrés et les renvoie en callback
     async decryptArrayOfObject(arrayOfObject, decryptionParams, callback) {
-        let decryptedArrayOfObject = []
+        let tempObject = this.initResObject(arrayOfObject)
         await this.asyncForEach(arrayOfObject, async (object, i) => {
             await this.decryptObject(object, decryptionParams, (decryptedObject) => {
-                decryptedArrayOfObject.push(decryptedObject)
-                if (i === arrayOfObject.length - 1) {
-                    callback(decryptedArrayOfObject)
-                }
+                this.returnRes(tempObject,decryptedObject,i, callback)
             })
         })
     }
     ,
     async encryptArrayOfObject(arrayOfObject, encryptionParams, callback) {
-        let encryptedArrayOfObject = []
+        let tempObject = this.initResObject(arrayOfObject)
         await this.asyncForEach(arrayOfObject, async (object, i) => {
             await this.encryptObject(object, encryptionParams, (encryptedObject) => {
-                encryptedArrayOfObject.push(encryptedObject)
-                if (i === arrayOfObject.length - 1) {
-                    callback(encryptedArrayOfObject)
-                }
+                this.returnRes(tempObject,encryptedObject,i, callback)
             })
         })
     },
 
     async encryptStringArray(StringArray, stringifiedSymKey, callback){
-        let encryptedStringArray = []
+        let tempObject = this.initResObject(StringArray)
         await this.asyncForEach(StringArray, async (string, i) => {
             await this.sim_encrypt_data(string, stringifiedSymKey, (encryptedString) => {
-                encryptedStringArray.push(encryptedString)
-                if (i === StringArray.length - 1) {
-                    callback(encryptedStringArray)
-                }
+                this.returnRes(tempObject,encryptedString,i, callback)
             })
         })
     },
     async decryptStringArray(StringArray, stringifiedSymKey, callback){
-        let decryptedStringArray = []
+        let tempObject = this.initResObject(StringArray)
         await this.asyncForEach(StringArray, async (string, i) => {
             await this.sim_decrypt_data(string, stringifiedSymKey, (decryptedString) => {
-               decryptedStringArray.push(decryptedString)
-                if (i === StringArray.length - 1) {
-                    callback(decryptedStringArray)
-                }
+                this.returnRes(tempObject,decryptedString,i, callback)
             })
         })
     },
