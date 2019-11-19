@@ -4,7 +4,7 @@
     "error": "Une erreur s'est produite",
     "changNavigator": "Nous sommes une équipe réduite de bénévoles et les développements nécessaires pour adapter ce site à votre navigateur ne sont pas encore terminés. Vous obtiendrez une expérience optimale en utilisant le navigateur Chrome ou sa version open-source Chromium."
   },
-  "_templates": "application",
+  "_templates_application": "===========================================================================================================================",
   "forbidden": {
     "noAccess": "Vous n'avez pas accès à cette page",
     "backHome": "Retour à l'accueil"
@@ -30,7 +30,7 @@
     "betaWarning2": "Nous ne pouvons donc pas assurer à 100% a nos utilisateurs que leurs données sont inviolables meme si c'est pour nous un objectif aussi prioritaire que l'ergonomie du site.",
     "help": "Communiquer une vulnérabilité ou un problème de sécurité ..."
   },
-  "_templates": "includes",
+  "_templates_includes": "===========================================================================================================================",
   "menuProject": {
     "home": "Accueil",
     "forum": "Forum",
@@ -91,11 +91,14 @@
     "showAcceptNotifs": "Cliquez sur accepter pour être averti des activités de votre projet.",
     "showAcceptNotifsInfos": "Vous pourrez paramétrer ou désactiver les notifications plus tard."
   },
-  "_templates": "landingPage",
+  "beta": {
+    "beta": "bêta"
+  },
+  "_templates_landingPage": "===========================================================================================================================",
   "landingHead": {
     "aims": "Objectifs",
     "features": "Atouts",
-    "road Map": "Feuille de route",
+    "roadMap": "Feuille de route",
     "contact": "Contact",
     "login": "Connexion",
     "signUp": "Inscription",
@@ -177,7 +180,7 @@
     "joinToo": "Inscrivez vous et profitez d'un outil pratique, gratuit et chiffré pour gérer vos projets avec vos amis, votre association ou votre collectif.",
     "signin": "Inscription"
   },
-  "_templates": "loginPage",
+  "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
     "userName": "Nom d'utilisateur",
     "password": "Mot de passe",
@@ -237,7 +240,7 @@
     "connection": "Connexion",
     "backToHome": "Retour à l'accueil"
   },
-  "_templates": "Projet",
+  "_templates_Projet": "===========================================================================================================================",
   "newProject": {
     "createProject": "Créer un projet",
     "nameProject": "Nom du projet",
@@ -358,7 +361,7 @@
     "promoteSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
     "quitSuccess": "Vous avez quitté le projet"
   },
-  "_templates": "users",
+  "_templates_users":  "===========================================================================================================================",
   "deleteAccount": {
     "confirmPassword": "Confirmer avec votre mot de passe",
     "deleteAccount": "Supprimer le compte"
@@ -409,7 +412,7 @@
   "userOptions": {
     "language": "Langue"
   },
-  "template": "forum",
+  "_templates_forum": "===========================================================================================================================",
   "categoryList": {
     "categoryName": "Nom du dossier",
     "new": "Nouveau dossier",
@@ -508,6 +511,33 @@
   "newSubComment": {
     "placeholder": "Votre réponse..."
   },
+  "files": {
+    "projectUsing": " ",
+    "of": "sur",
+    "allowed": " ",
+    "seeMore": "Voir plus"
+  },
+  "filePreview": {
+    "delete": "Supprimer le fichier"
+  },
+  "fullScreenFile": {
+    "download": "Télécharger",
+    "delete": "Supprimer le fichier",
+    "return": "Retour",
+    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier."
+  },
+  "projectFiles": {
+    "limitOneFile": "La taille des documents est limitée à 15 Mo",
+    "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
+  },
+  "pinned": {
+    "pin": "Épingler la publication en en-tête de la discussion",
+    "unpin": "Désépingler la publication"
+  },
+  "showFileContent": {
+    "deleted": "Le fichier à été supprimé."
+  },
+	"_templates_map": "===========================================================================================================================",
   "mapParams": {
     "topo": "Topo",
     "aerial": "Aérienne",
@@ -580,14 +610,16 @@
   "creatingArrow": {
     "createArrowInfo": "Placer votre flèche sur la carte."
   },
+	"_templates_calendar": "===========================================================================================================================",
   "projectCalendar": {
     "daysView": "Vue journalière",
     "monthView": "Vue mensuelle",
     "listView": "Liste des évènements mensuels",
-    "recurring": "( Récurrent )",
+    "recurring": "(Récurrent)",
     "unnamed": "Sans titre",
     "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
-    "activityPlaced": "L'activité à été placée dur l'agenda."
+    "activityPlaced": "L'activité à été placée sur l'agenda.",
+		"settings": "Paramètres"
   },
   "calendarSettings": {
     "title": "Paramètres de l'agenda",
@@ -662,7 +694,8 @@
     "title": "Paramètres de la liste de tâches",
     "colorLegend": "Legende couleur : ",
     "deleteDone": "Supprimer les tâches terminées",
-    "doneActivitiesDeleted": "Les tâches terminées ont été supprimées"
+    "doneActivitiesDeleted": "Les tâches terminées ont été supprimées",
+		"delete": "Supprimer"
   },
   "taskItem": {
     "participants": "Participants",
@@ -671,6 +704,7 @@
     "start": "Début",
     "end": "Fin"
   },
+	"_templates_donate": "===========================================================================================================================",
   "donate": {
     "title": "Soutenir System-D",
     "why": "Nous avons besoins de vos donations",
@@ -690,36 +724,6 @@
     "donateIn": "Envoyer un don sur le wallet de System-D en",
     "wallet": "Wallet ",
     "copied": "Adresse du wallet copiée dans le presse papier"
-  },
-  "files": {
-    "projectUsing": " ",
-    "of": "sur",
-    "allowed": " ",
-    "seeMore": "Voir plus"
-  },
-  "filePreview": {
-    "delete": "Supprimer le fichier"
-  },
-  "fullScreenFile": {
-    "download": "Télécharger",
-    "delete": "Supprimer le fichier",
-    "return": "Retour",
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier"
-  },
-  "projectFiles": {
-    "limitOneFile": "La taille des documents est limitée à 15 Mo",
-    "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
-  },
-  "beta": {
-    "beta": "bêta"
-
-  },
-  "pinned": {
-    "pin": "Épingler la publication en en-tête de la discussion",
-    "unpin": "Désépingler la publication"
-  },
-  "showFileContent": {
-    "deleted": "Le fichier à été supprimé."
   },
   "spreadsheetList": {
     "spreadsheetList": "Tableurs",
