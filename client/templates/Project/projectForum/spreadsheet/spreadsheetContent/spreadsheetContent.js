@@ -23,13 +23,19 @@ Template.spreadsheetContent.onCreated(function () {
     this.memberId = projectController.getCurrentMemberId(FlowRouter.current().params.projectId)
     this.timeout1
     this.timeout2
+    this.previousEditor = null
     this.initializeTable = () => {
-        this.spreadsheetController.initialize(
-            FlowRouter.current().queryParams.spreadsheetId,
-            document.getElementById('spreadsheetContent'),
-            this,
-            this.currentEditor.get.memberId === this.memberId
-        )
+
+            if(this.currentEditor.get().memberId != this.previousEditor || !this.spreadsheetController.table){
+                this.previousEditor = this.currentEditor.get().memberId
+                this.spreadsheetController.initialize(
+                    FlowRouter.current().queryParams.spreadsheetId,
+                    document.getElementById('spreadsheetContent'),
+                    this,
+                    this.currentEditor.get().memberId === this.memberId
+                )
+            }
+
     }
     this.currentSpreadsheet = Spreadsheet.findOne({_id: this.data.currentSpreadsheet._id})
     if (this.currentSpreadsheet) {
