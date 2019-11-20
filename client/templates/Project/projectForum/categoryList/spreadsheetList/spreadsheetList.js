@@ -44,10 +44,9 @@ Template.spreadsheetList.events({
         event.stopPropagation()
         $('.tooltipped').tooltip('remove')
         Meteor.setTimeout(() => {
-            console.log('couco')
-            $('#newSpreadsheetName').click()
+            $('#newSpreadsheetName').focus()
             resetTooltips()
-        }, 200)
+        }, 400)
         instance.showNewSpreadsheet.set(true)
     },
     "submit [newSpreadsheetForm]": function (event, instance) {

@@ -58,6 +58,14 @@ Spreadsheet.extend({
                 lastActivityAt: new Date()
             }
             return spreadsheet.save()
+        },
+        quitEdition(authInfo){
+            check(authInfo, {memberId: String, userSignature: String})
+            let spreadsheet = Spreadsheet.findOne(this._id)
+            let currentProject = Project.findOne(spreadsheet.projectId)
+            check(currentProject.isMember(authInfo) , true)
+            spreadsheet.currentEditor ={}
+            return spreadsheet.save()
         }
     }
 })
