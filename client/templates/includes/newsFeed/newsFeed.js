@@ -3,14 +3,15 @@ import Axios from "axios";
 
 Template.newsFeed.helpers({
     //add you helpers here
-    issueUrl: function () {
-        return Template.instance().issueUrl.get()
-    },
     isOpen: function () {
         return Template.instance().isOpen.get()
     },
     isUpToDate: function() {
-        return Template.instance().isUpToDate.get()
+        return false// Template.instance().isUpToDate.get()
+    },
+    getContent: function () {
+        console.log(Template.instance())
+        return Template.instance().content.get()
     }
 });
 
@@ -20,20 +21,15 @@ Template.newsFeed.events({
         instance.isOpen.set(true);
         instance.isUpToDate.set(true);
         window.localStorage.setItem('newsFeedHist', Date.now());
-        $('.news').css({
-          height: '300px',
-          width: '200px',
-          right: '0',
-        });
     }
 })
 
 Template.newsFeed.onCreated(function () {
     //add your statement here
-    this.issueUrl = new ReactiveVar(false);
     this.isOpen = new ReactiveVar(false);
     this.isUpToDate = new ReactiveVar(true);
     this.lastView = window.localStorage.getItem('newsFeedHist');
+    this.content = new ReactiveVar('');
 });
 
 Template.newsFeed.onRendered(function () {
@@ -43,14 +39,15 @@ Template.newsFeed.onRendered(function () {
     $.get(
       'news/newsFeed.json',
       'false',
-      function (feed) {
-        template.feed = feed;
+      function (newsJson) {
+        template.newsJson = newsJson;
         //TODO marche pas à cause de la mise en cache de FF
-        console.log(template.feed['lastUpdate'],template.lastView,Date.now());
-        if(feed['lastUpdate']>template.lastView){
+        console.log(template.newsJson['lastUpdate'],template.lastView,Date.now());
+        if(newsJson['lastUpdate']<template.lastView){
           template.isUpToDate.set(false);
-          console.log('Point rouge');
         }
+        template.content=newsJson['new1']
+        console.log(template.content)
       },
       'json'
     );
@@ -61,17 +58,6 @@ Template.newsFeed.onRendered(function () {
       endingTop: '4%',
       complete: function() { 
         template.isOpen.set(false);
-        console.log('closed');      
-        $('.news').css({
-          height: '30px',
-          right: 'calc(30px - 100%)',
-          /*TODO handle hover ? 
-          hover{
-            width: 200px;
-            right: 0;
-            opacity: 1;
-          }*/
-        });
       } 
     });
 });
