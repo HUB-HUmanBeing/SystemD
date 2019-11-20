@@ -4,7 +4,7 @@
 
 
 ## Plate forme web chiffrée de projets collaboratifs non marchands
-
+chat du projet : https://riot.im/app/#/room/!ztKzNaLEQMIgMTitwR:matrix.org?via=matrix.org
 #### Crééz des projets, invitez vos amis, et profitez ensemble des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif
 
 ### Notre Objectif : 
