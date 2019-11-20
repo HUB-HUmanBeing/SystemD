@@ -3,25 +3,27 @@
         <a class="waves-effect waves-light btn modal-trigger news" href="#modalNewsFeed">
             <i class="material-icons left">rss_feed
             {{#unless isUpToDate}}
-              <span class="notif">.</span>
+                <div class="unseenItemContainer tooltipped "
+                    data-position="bottom"
+                    data-delay="50" data-tooltip="{{__ ".unseenNews"}}">
+                    <div class="unseenItem "></div>
+                </div>            
             {{/unless}}
             </i>
-
             {{__ ".btnLabel"}}
-            {{#if isOpen}}
-            <p> {{__ ".content"}}</p>
-            {{/if}}
         </a>
     </div>
 
     <!-- Modal Structure -->
     <div id="modalNewsFeed" class="modal contrasted-bg">
         <div class="modal-content small-padding contrasted-bg main-color">
-            <h6>{{__ ".btnLabel"}}</h6>
+            <h6 style="text-transform: uppercase;">{{__ ".btnLabel"}}</h6>
             <div class="iconInfo">
-                <p class=" left-align">
-                    {{__ ".content"}}
-                </p>
+                {{#if isOpen}}
+                    <p class=" left-align">
+                        {{getContent}}
+                    </p>
+                {{/if}}
             </div>
         </div>
     </div>
