@@ -12,17 +12,17 @@
     visibility: visible;
     z-index: 6000;
     position: relative;
-    padding: 0 30px;
+    padding: 5px 40px 5px 30px;
 
     background-color: $focus-color;
-    height: 20px;
+    height: 30px;
     line-height: 20px;
     color: $contrasted-bg;
 
     opacity: 0.7;
     transition: 0.5s ease-out;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 15px;
     transform: rotate(-45deg);
 
     i {

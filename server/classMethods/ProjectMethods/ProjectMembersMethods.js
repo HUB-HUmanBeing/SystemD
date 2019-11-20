@@ -28,19 +28,24 @@ Project.extend({
             })
             let userToRemove = User.findOne(userId)
             let userProjectFound = false
-            userToRemove.private.projects.forEach((userProject, i) => {
-                console.log(userProject.hashedAdminSignature, hashedAdminSignature)
-                if (userProject.hashedAdminSignature === hashedAdminSignature) {
-                    userToRemove.private.projects.splice(i, 1)
-                    userProjectFound = true
-                }
-            })
-            check(userProjectFound, true)
+            if(userToRemove){
+                userToRemove.private.projects.forEach((userProject, i) => {
+                    console.log(userProject.hashedAdminSignature, hashedAdminSignature)
+                    if (userProject.hashedAdminSignature === hashedAdminSignature) {
+                        userToRemove.private.projects.splice(i, 1)
+                        userProjectFound = true
+                    }
+                })
+            }
+
+
             currentProject.save((err) => {
                 if (err) {
                     console.log(err)
                 }
-                userToRemove.save()
+                if(userToRemove) {
+                    userToRemove.save()
+                }
             })
         },
         /**************************

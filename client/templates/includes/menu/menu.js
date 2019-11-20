@@ -73,9 +73,12 @@ Template.menu.onRendered(function () {
         $("#userOptionsBtn").dropdown({
             belowOrigin: true
         });
-    }, 1000)
+    }, 1500)
     Meteor.setTimeout(() => {
         this.showInfo.set(true)
+        $("#userOptionsBtn").dropdown({
+            belowOrigin: true
+        });
     }, 2500)
 
 
