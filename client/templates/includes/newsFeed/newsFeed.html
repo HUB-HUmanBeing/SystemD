@@ -1,15 +1,10 @@
 <template name="newsFeed">
+
     <div id="openModalNewsFeedContainer" openModal>
-        <a class="waves-effect waves-light btn modal-trigger news" href="#modalNewsFeed">
-            <i class="material-icons left">rss_feed
-            {{#unless isUpToDate}}
-                <div class="unseenItemContainer tooltipped "
-                    data-position="bottom"
-                    data-delay="50" data-tooltip="{{__ ".unseenNews"}}">
-                    <div class="unseenItem "></div>
-                </div>            
-            {{/unless}}
-            </i>
+        <a class="waves-effect waves-light btn modal-trigger news {{#unless isUpToDate}} tooltipped{{/unless}} "
+           data-position="top"
+           data-delay="50" data-tooltip="{{__ ".unseenNews"}}" href="#modalNewsFeed">
+            <i class="material-icons left   {{#unless isUpToDate}} danger-color{{/unless}}">rss_feed</i>
             {{__ ".btnLabel"}}
         </a>
     </div>
@@ -20,9 +15,12 @@
             <h6 style="text-transform: uppercase;">{{__ ".btnLabel"}}</h6>
             <div class="iconInfo">
                 {{#if isOpen}}
-                    <p class=" left-align">
-                        {{getContent}}
-                    </p>
+                    {{#each news in newsArray}}
+                        <h1>{{news.title}}</h1>
+                        <p>{{news.content}}</p>
+                        <img src="{{news.img}}" alt="" class="responsive-img">
+                    {{/each}}
+
                 {{/if}}
             </div>
         </div>

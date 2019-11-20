@@ -11,7 +11,7 @@
     visibility: visible;
     z-index: 6000;
     position: relative;
-    padding: 0 3px;
+    padding: 0 4px;
 
     background-color: $focus-color;
     height: 30px;
@@ -67,6 +67,9 @@
 }
 
 .unseenItem{
+  position: absolute;
+  top : 9px;
+  left: 5px;
   width:5px;
   height: 5px;
   border-radius: 50%;
