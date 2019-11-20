@@ -2,6 +2,7 @@ import Project from "../../../../imports/classes/Project";
 import cryptoTools from "../../../lib/cryptoTools";
 import BeautifyScrollbar from 'beautify-scrollbar';
 import Publication from "../../../../imports/classes/Publication";
+import Topics from "../../../../lib/collections/Topics";
 
 Template.projectForum.helpers({
     //add you helpers here
@@ -11,9 +12,8 @@ Template.projectForum.helpers({
 
     },
     categories: function () {
-
         let instance = Template.instance()
-        Meteor.setTimeout(() => {
+        let resetCategoryScrollbar = ()=>{
             let categoryListContainer = document.getElementById('categoryListContainer')
             if (categoryListContainer && instance && Meteor.Device.isDesktop()) {
                 if (instance.categorybs) {
@@ -21,7 +21,16 @@ Template.projectForum.helpers({
                 }
                 instance.categorybs = new BeautifyScrollbar('#categoryListContainer');
             }
+        }
+        Meteor.setTimeout(() => {
+           resetCategoryScrollbar()
         }, 700)
+        Meteor.setTimeout(() => {
+            resetCategoryScrollbar()
+        }, 3000)
+        Meteor.setTimeout(() => {
+            resetCategoryScrollbar()
+        }, 8000)
         return instance.categories.get()
     },
     showTopic: function () {
