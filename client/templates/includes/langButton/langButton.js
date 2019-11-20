@@ -32,9 +32,7 @@ Template.langButton.events({
         // we store the value of new language, for example: fr-FR, in localStorage
         let newLang = event.target.value;
         let user= User.findOne(Meteor.userId());
-        console.log(user)
         if(user){
-            console.log('test2: '+user)
             user.callMethod("changeLang", newLang, (err,res)=>{
                 if(err){console.log(err);}
             });
