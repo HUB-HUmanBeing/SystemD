@@ -43,7 +43,7 @@ User.extend({
         changeLang(language){
             check(this._id, Meteor.userId())
             check(language, String)
-            NotifPush.sendNotif([Meteor.userId()], "acceptedInvitation")
+            //NotifPush.sendNotif([Meteor.userId()], "acceptedInvitation")
             this.public.language = language
             return this.save()
         }
