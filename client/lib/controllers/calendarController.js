@@ -280,7 +280,6 @@ const calendarController = {
     },
     closeSideNav() {
         let currentQueryParams = FlowRouter.current().queryParams
-
         delete currentQueryParams.side
         delete currentQueryParams.activityId
         FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
