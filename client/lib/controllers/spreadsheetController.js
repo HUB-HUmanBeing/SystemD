@@ -11,7 +11,7 @@ let spreadsheetController = {
 
     initialize(spreadsheetId, el, instance, isEditable) {
         this.id = spreadsheetId
-        instance.autorun(() => {
+
             let encryptedSpreadsheetContent = Spreadsheet.findOne({_id: spreadsheetId}).content
             cryptoTools.decryptObject(encryptedSpreadsheetContent, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
                 let newColumns = JSON.parse(spreadsheetContent.columns)
@@ -36,10 +36,8 @@ let spreadsheetController = {
                 }
 
                 this.createTable(el, isEditable)
-
-                console.log(this.table.getConfig())
             })
-        })
+
 
 
     },
@@ -48,7 +46,7 @@ let spreadsheetController = {
            this.destroy(el)
        }
         let table
-        this.table = table = jexcel(el, {
+        let tableOptions = {
             data: this.datas,
             columns: this.columns,
             rows: this.rows,
@@ -56,9 +54,13 @@ let spreadsheetController = {
             allowExport: true,
             editable: isEditable,
             //search:true,
-            onselection: this.selectionActive,
             toolbar: this.toolbar(isEditable)
-        });
+        }
+       if(!isEditable){
+           tableOptions.contextMenu = function(obj, x, y, e) {return []}
+       }
+       console.log("in")
+        this.table = table = jexcel(el,tableOptions );
     },
     destroy(el) {
         jexcel.destroy(el, false);
@@ -83,9 +85,7 @@ let spreadsheetController = {
     saveDatas() {
         console.log('todo: saveRows')
     },
-    selectionActive: function (instance, x1, y1, x2, y2, origin) {
 
-    },
 
 
     toolbar(isEditable) {
@@ -107,8 +107,8 @@ let spreadsheetController = {
                 {
                     type: 'i',
                     content: 'file_upload',
-                    onclick: function () {
-                        console.log(table.getJson())
+                    onclick() {
+                        console.log(this.table.getJson())
                         //this.table.download();
                     }
                 },

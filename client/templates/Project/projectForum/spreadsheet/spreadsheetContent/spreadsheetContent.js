@@ -24,37 +24,27 @@ Template.spreadsheetContent.onCreated(function () {
     this.timeout1
     this.timeout2
     this.previousEditor = null
-    this.initializeTable = () => {
-
-            if(this.currentEditor.get().memberId != this.previousEditor || !this.spreadsheetController.table){
-                this.previousEditor = this.currentEditor.get().memberId
-                this.spreadsheetController.initialize(
-                    FlowRouter.current().queryParams.spreadsheetId,
-                    document.getElementById('spreadsheetContent'),
-                    this,
-                    this.currentEditor.get().memberId === this.memberId
-                )
-            }
-
-    }
     this.currentSpreadsheet = Spreadsheet.findOne({_id: this.data.currentSpreadsheet._id})
     if (this.currentSpreadsheet) {
         this.currentEditor.set(this.currentSpreadsheet.currentEditor)
-        let setCurrentUserAsEditor = () => {
+        let setCurrentUserAsEditor = (cb) => {
             this.currentSpreadsheet.callMethod("setEditor", projectController.getAuthInfo(this.currentSpreadsheet.projectId), (err, res) => {
                 if (err) {
                     Materialize.toast(__('general.error'), 6000, 'toastError')
                     console.log(err)
                 } else {
                     Meteor.clearTimeout(this.timeout1)
+                    if(cb){
+                        Meteor.setTimeout(() => {cb()
+                        }, 500)
+                    }
                     this.timeout1 = Meteor.setTimeout(() => {
                         setCurrentUserAsEditor()
-                    }, 30000)
+                    }, 5000)
                 }
             })
         }
-
-        let rebootEditor = () => {
+        this.rebootEditor = () => {
             Meteor.clearTimeout(this.timeout1)
             Meteor.clearTimeout(this.timeout2)
             if (!this.currentSpreadsheet.currentEditor ||
@@ -62,42 +52,59 @@ Template.spreadsheetContent.onCreated(function () {
                 !this.currentSpreadsheet.currentEditor.lastActivityAt ||
                 !this.currentSpreadsheet.currentEditor.memberId
             ) {
-                console.log("in1", this.currentSpreadsheet.currentEditor)
+                console.log("cas1")
                 this.initializeTable()
                 setCurrentUserAsEditor()
             } else {
-                console.log("member<Id", this.currentSpreadsheet.currentEditor.memberId)
                 if (this.currentSpreadsheet.currentEditor.memberId == this.memberId) {
                     setCurrentUserAsEditor()
+                    console.log("cas2")
                     this.initializeTable()
                 } else {
-                    console.log("in2")
                     Meteor.call('getServerDate', (err,res)=>{
                         if(!err){
                             this.currentSpreadsheet = Spreadsheet.findOne({_id: this.data.currentSpreadsheet._id})
-                            let delay = res - this.currentSpreadsheet.currentEditor.lastActivityAt.getTime()
-                            console.log(delay)
-                          if(delay<0){
-                              this.timeout2 = Meteor.setTimeout(() => {
+                            if(this.currentSpreadsheet){
+                                if(!this.currentSpreadsheet.currentEditor.lastActivityAt || res.getTime() - this.currentSpreadsheet.currentEditor.lastActivityAt.getTime()>10000){
+                                    setCurrentUserAsEditor(()=>{
+                                        this.initializeTable()
+                                    })
+                                }else{  this.initializeTable()
+                                    this.timeout2 = Meteor.setTimeout(() => {
 
-                                  rebootEditor()
-                              }, 20000 )
-                          }
+                                        this.rebootEditor()
+                                    }, 7000 )
+                                }
+                            }
 
-
+                        }else{
+                            console.log(err)
                         }
                     })
-
                 }
             }
         }
-        rebootEditor()
+
+        this.initializeTable = () => {
+            console.log(this.currentEditor.get().memberId , this.previousEditor , !this.table)
+            if(!this.currentEditor.get().memberId ||this.currentEditor.get().memberId != this.previousEditor || !this.table){
+                this.previousEditor = this.currentEditor.get().memberId
+                this.table = this.spreadsheetController.initialize(
+                    FlowRouter.current().queryParams.spreadsheetId,
+                    document.getElementById('spreadsheetContent'),
+                    this,
+                    !this.currentEditor.get().memberId ||this.currentEditor.get().memberId === this.memberId
+                )
+            }
+
+        }
+
     }
 });
 
 Template.spreadsheetContent.onRendered(function () {
     //add your statement here
-    this.initializeTable()
+    this.rebootEditor()
 });
 
 Template.spreadsheetContent.onDestroyed(function () {

@@ -25,6 +25,10 @@ Spreadsheet.extend({
 
 
             newSpreadsheet.createdBy = authInfo.memberId
+            newSpreadsheet.currentEditor ={
+                memberId: authInfo.memberId,
+                lastActivityAt: new Date()
+            }
             return newSpreadsheet.save((err) => {
                 if (!err) {
                     currentProject.private.spreadsheetCount++

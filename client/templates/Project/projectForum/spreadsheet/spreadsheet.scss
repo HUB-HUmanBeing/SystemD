@@ -1,0 +1,20 @@
+@import "{}/client/scss/variables.scss";
+
+.spreadsheetSubContainer{
+  position: relative;
+  #spreadsheetEditorContainer{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 60px;
+    right:-10px;
+    border-radius: 50%;
+    z-index: 1000;
+    overflow: hidden;
+    border: 3px solid $blue-highlight-color;
+&:hover{
+
+}
+  }
+}
+
