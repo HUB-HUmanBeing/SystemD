@@ -65,7 +65,7 @@ Template.spreadsheetContent.onCreated(function () {
                         if(!err){
                             this.currentSpreadsheet = Spreadsheet.findOne({_id: this.data.currentSpreadsheet._id})
                             if(this.currentSpreadsheet){
-                                if(!this.currentSpreadsheet.currentEditor.lastActivityAt || res.getTime() - this.currentSpreadsheet.currentEditor.lastActivityAt.getTime()>10000){
+                                if(!this.currentSpreadsheet.currentEditor.lastActivityAt || res.getTime() - this.currentSpreadsheet.currentEditor.lastActivityAt.getTime()>30000){
                                     setCurrentUserAsEditor(()=>{
 
                                         this.initializeTable()
