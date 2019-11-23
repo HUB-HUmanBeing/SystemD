@@ -1,5 +1,5 @@
 <template name="spreadsheetHeader">
-    <div class="row" style="margin: 0 0 20px 0 !important;">
+    <div id="spreadsheetHeader" class="row" style="margin: 0 0 20px 0 !important;">
         <div class="col s12">
             {{#if isEditing}}
                 <div id="topicHeader">
@@ -25,6 +25,10 @@
                     {{/unless}}
                     <div class="flex-auto elipsis left-align topicTitle">
                        {{currentSpreadsheet.symEnc_name}}
+                    </div>
+                    <div class="lastEdit">
+                        {{__ ".lastEdit"}} : {{formatDate currentSpreadsheet.lastActivity}}
+
                     </div>
 
                     {{#if isEditable}}

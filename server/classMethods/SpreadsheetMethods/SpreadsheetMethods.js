@@ -82,8 +82,9 @@ Spreadsheet.extend({
             spreadsheet.content.symEnc_datas = symEnc_datas
             return spreadsheet.save()
         },
-        saveColumns(authInfo, symEnc_datas, columns){
+        saveColumns(authInfo, symEnc_datas, columns, style){
             check(columns , String)
+            check(style , String)
             check(symEnc_datas , String)
             check(authInfo, {memberId: String, userSignature: String})
             let spreadsheet = Spreadsheet.findOne(this._id)
@@ -91,6 +92,7 @@ Spreadsheet.extend({
             check(currentProject.isMember(authInfo) , true)
             spreadsheet.lastActivity = new Date()
             spreadsheet.content.symEnc_datas = symEnc_datas
+            spreadsheet.content.style = style
             spreadsheet.content.columns = columns
             return spreadsheet.save()
         },

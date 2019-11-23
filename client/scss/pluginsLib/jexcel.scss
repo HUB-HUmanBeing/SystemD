@@ -67,6 +67,11 @@ border: 1px solid $blue-highlight-color ;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  td{
+    overflow: visible;
+    overflow-wrap: break-word !important;
+
+  }
   .jexcel_toolbar{
 select{
   max-width: 150px;

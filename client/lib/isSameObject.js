@@ -22,7 +22,7 @@ let isSameObject = function( x, y ) {
         if ( typeof( x[ p ] ) !== "object" ) return false;
         // Numbers, Strings, Functions, Booleans must be strictly equal
 
-        if ( ! Object.equals( x[ p ],  y[ p ] ) ) return false;
+        if ( ! isSameObject( x[ p ],  y[ p ] ) ) return false;
         // Objects and Arrays must be tested recursively
     }
 

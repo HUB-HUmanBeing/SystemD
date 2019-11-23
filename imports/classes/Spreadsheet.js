@@ -26,12 +26,6 @@ const SpreadsheetsContent = Class.create({
                 return "[]"
             }
         },
-        rows:{
-            type:String,
-            default: function () {
-                return "[]"
-            }
-        },
         style:{
             type:String,
             default: function () {

@@ -1,2 +1,13 @@
 @import "{}/client/scss/variables.scss";
 
+#spreadsheetHeader{
+  position: relative;;
+  .lastEdit{
+    position: absolute;
+bottom: -10px;
+    left:50px;
+    font-size: 0.9em;
+    font-style: italic;
+    color: $minus-color
+  }
+}

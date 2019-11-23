@@ -29,7 +29,6 @@ let spreadsheetController = {
             }
 
             let newColumns = JSON.parse(spreadsheetContent.columns)
-            console.log(newColumns)
             if (newColumns.length) {
 
                 this.columns = newColumns
@@ -38,16 +37,6 @@ let spreadsheetController = {
                 this.columns = this.defaultColumns()
                 this.saveColumns(this.datas, this.columns)
             }
-            //
-            // let newRows = JSON.parse(spreadsheetContent.rows)
-            // if (newRows.length) {
-            //     if (this.columns != newRows) {
-            //         this.columns = newRows
-            //     }
-            // } else {
-            //     this.columns = this.defaultColumns()
-            //     this.saveColumns(this.datas, this.columns)
-            // }
             if (spreadsheetContent.style) {
                 this.style = JSON.parse(spreadsheetContent.style)
 
@@ -72,7 +61,8 @@ let spreadsheetController = {
             copyCompatibility: true,
             allowExport: true,
             editable: isEditable,
-            //search:true,
+            columnDrag: true,
+            allowRenameColumn:false,
             toolbar: this.toolbar(isEditable),
 
         }
@@ -90,26 +80,24 @@ let spreadsheetController = {
         if (this.style) {
             table.setStyle(this.style)
         }
-        console.log(!isEditable ,!checkForUpdatesNotNeeded)
         if (!isEditable && !checkForUpdatesNotNeeded) {
 
             this.checkForUpdates(el, isEditable, instance)
         }
-        console.log("initialColumns", this.table.getConfig().columns)
     },
     destroy(el) {
         jexcel.destroy(el, false);
     },
     defaultColumns() {
         let res = []
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 20; i++) {
             res.push({width: 120})
         }
         return res
     },
     defaultDatas() {
         let res = []
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 60; i++) {
             res.push([""])
         }
         return res
@@ -238,7 +226,6 @@ let spreadsheetController = {
                 res[i][j] = el
             })
         })
-        console.log("arrtobjs", res)
         return res
     },
     beautifyColumns(columns) {
@@ -256,37 +243,52 @@ let spreadsheetController = {
         onchange: () => {
 
             spreadsheetController.saveDatas(this.table.getJson())
+            spreadsheetController.saveStyles(this.table.getConfig().style)
         },
         ondeleterow: () => {
-            spreadsheetController.saveRows(this.table.getJson())
+            spreadsheetController.saveDatas(this.table.getJson())
+            spreadsheetController.saveStyles(this.table.getConfig().style)
         },
         oninsertrow: () => {
-            spreadsheetController.saveRows(this.table.getJson())
+            spreadsheetController.saveDatas(this.table.getJson())
+            spreadsheetController.saveStyles(this.table.getConfig().style)
         },
         ondeletecolumn: () => {
 
             spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
+            spreadsheetController.saveStyles(this.table.getConfig().style)
         },
         oninsertcolumn: () => {
-
+console.log(this.table.getConfig().style)
             spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
+           spreadsheetController.saveStyles(this.table.getConfig().style)
         },
         onmoverow: () => {
-            spreadsheetController.saveRows(this.table.getJson())
+            spreadsheetController.saveDatas(this.table.getJson())
+            spreadsheetController.saveStyles(this.table.getConfig().style)
         },
         onmovecolumn: () => {
             spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
-        },
-        onresizerow: () => {
-            console.log(this.table.getConfig())
-            spreadsheetController.saveRows(this.table.getJson())
+            spreadsheetController.saveStyles(this.table.getConfig().style)
         },
         onresizecolumn: () => {
-            console.log(this.table.getConfig())
+
             spreadsheetController.saveColumns(this.table.getJson(), this.table.getConfig().columns)
         },
         onchangestyle: () => {
-            spreadsheetController.saveStyles(this.table.getStyle())
+            spreadsheetController.saveStyles(this.table.getConfig().style)
+        },
+        onsort: () => {
+            spreadsheetController.saveDatas(this.table.getJson())
+            spreadsheetController.saveStyles(this.table.getConfig().style)
+        },
+        onundo: () => {
+            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
+            spreadsheetController.saveStyles(this.table.getConfig().style)
+        },
+        onredo: () => {
+            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
+            spreadsheetController.saveStyles(this.table.getConfig().style)
         },
 
     },
@@ -294,16 +296,6 @@ let spreadsheetController = {
         let currentSpreadsheet = Spreadsheet.findOne(this.id)
         cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
             currentSpreadsheet.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, (err, res) => {
-                if (err) {
-                    console.log(err)
-                }
-            })
-        })
-    },
-    saveRows(datas, rows) {
-        let currentSpreadsheet = Spreadsheet.findOne(this.id)
-        cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
-            currentSpreadsheet.callMethod("saveRows", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, JSON.stringify(rows), (err, res) => {
                 if (err) {
                     console.log(err)
                 }
@@ -321,12 +313,15 @@ let spreadsheetController = {
         })
     },
     saveStyles(styles) {
+    Meteor.setTimeout(()=>{
         let currentSpreadsheet = Spreadsheet.findOne(this.id)
         currentSpreadsheet.callMethod("saveStyles", projectController.getAuthInfo(FlowRouter.current().params.projectId), JSON.stringify(styles), (err, res) => {
             if (err) {
                 console.log(err)
             }
         })
+    },400)
+
 
     },
 
@@ -341,7 +336,6 @@ let spreadsheetController = {
                         this.columns = JSON.parse(spreadsheetContent.columns)
                         this.datas = JSON.parse(spreadsheetContent.symEnc_datas)
                         this.style = JSON.parse(spreadsheetContent.style)
-                        console.log("in33")
                         this.createTable(el, isEditable, instance, true)
                     }
                 })
