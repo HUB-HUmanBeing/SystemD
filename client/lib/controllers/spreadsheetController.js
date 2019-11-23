@@ -42,6 +42,7 @@ let spreadsheetController = {
 
     },
     createTable(el, isEditable) {
+        console.log(this.table)
        if(this.table){
            this.destroy(el)
        }
