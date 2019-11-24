@@ -4,10 +4,16 @@
   position: relative;;
   .lastEdit{
     position: absolute;
-bottom: -10px;
+bottom: -14px;
     left:50px;
     font-size: 0.9em;
     font-style: italic;
     color: $minus-color
+  }
+  #closeSearchSpreadsheet{
+    position: absolute;
+    right: 5px;
+    top:55px;
+    z-index:901
   }
 }

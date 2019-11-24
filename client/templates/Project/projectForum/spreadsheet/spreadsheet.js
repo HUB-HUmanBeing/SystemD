@@ -5,6 +5,7 @@ import Project from "../../../../../imports/classes/Project";
 import Publications from "../../../../../lib/collections/Publications";
 import Publication from "../../../../../imports/classes/Publication"
     import jexcel from "jexcel";
+import Spreadsheets from "../../../../../lib/collections/Spreadsheets";
 
 Template.spreadsheet.helpers({
     //add you helpers here
@@ -46,11 +47,14 @@ Template.spreadsheet.onCreated(function () {
                     console.log(err)
                 } else {
                     this.autorun(() => {
-                        let encryptedSpreadsheet = Spreadsheet.findOne({_id: spreadsheetId})
-                        cryptoTools.decryptObject(encryptedSpreadsheet, {symKey: Session.get("currentProjectSimKey")}, (spreadsheet) => {
-                            this.currentSpreadsheet.set(spreadsheet)
-                            this.isRefreshing.set(false)
-                        })
+                        let encryptedSpreadsheet = Spreadsheets.findOne({_id: spreadsheetId})
+                        if(encryptedSpreadsheet.currentEditor){
+                            cryptoTools.decryptObject(encryptedSpreadsheet, {symKey: Session.get("currentProjectSimKey")}, (spreadsheet) => {
+                                this.currentSpreadsheet.set(spreadsheet)
+                                this.isRefreshing.set(false)
+                            })
+                        }
+
                     })
                 }
             })

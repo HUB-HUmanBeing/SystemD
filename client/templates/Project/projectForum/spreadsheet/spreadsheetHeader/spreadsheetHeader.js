@@ -15,6 +15,9 @@ Template.spreadsheetHeader.helpers({
         let isCreator = Template.currentData().currentSpreadsheet.createdBy === projectController.getCurrentUserProject(projectId).memberId
         let isAdmin= projectController.isAdmin(projectId)
         return  (isAdmin || isCreator)
+    },
+    showCloseSearch: function () {
+        return Template.instance().showCloseSearch.get()
     }
 });
 
@@ -78,6 +81,19 @@ Template.spreadsheetHeader.events({
                 Materialize.toast(__('spreadsheetHeader.deleteSuccess'), 6000, 'toastOk')
             }
         })
+    },
+    'click [search]': function (event, instance) {
+        let searchInput = $('.jexcel_filter input')
+        if(searchInput.hasClass("searchVisible")){
+            searchInput.val("")
+            searchInput.removeClass("searchVisible")
+            instance.showCloseSearch.set(false)
+        }else{
+            searchInput.addClass("searchVisible")
+
+            instance.showCloseSearch.set(true)
+        }
+
     }
 });
 
@@ -85,6 +101,7 @@ Template.spreadsheetHeader.onCreated(function () {
     //add your statement here
     this.isEditing = new ReactiveVar(false)
     this.showDelete = new ReactiveVar(false)
+    this.showCloseSearch =  new ReactiveVar(false)
 });
 
 Template.spreadsheetHeader.onRendered(function () {

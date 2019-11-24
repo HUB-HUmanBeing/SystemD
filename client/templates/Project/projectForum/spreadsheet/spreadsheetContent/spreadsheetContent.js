@@ -1,6 +1,7 @@
 import spreadsheetController from "../../../../../lib/controllers/spreadsheetController";
 import projectController from "../../../../../lib/controllers/projectController";
 import Spreadsheet from "../../../../../../imports/classes/Spreadsheet";
+import Spreadsheets from "../../../../../../lib/collections/Spreadsheets";
 
 Template.spreadsheetContent.helpers({
     //add you helpers here
@@ -41,7 +42,7 @@ Template.spreadsheetContent.onCreated(function () {
                     }
                     this.timeout1 = Meteor.setTimeout(() => {
                         setCurrentUserAsEditor()
-                    }, 20000)
+                    }, 10000)
                 }
             })
         }
@@ -65,7 +66,7 @@ Template.spreadsheetContent.onCreated(function () {
                         if(!err){
                             this.currentSpreadsheet = Spreadsheet.findOne({_id: this.data.currentSpreadsheet._id})
                             if(this.currentSpreadsheet){
-                                if(!this.currentSpreadsheet.currentEditor.lastActivityAt || res.getTime() - this.currentSpreadsheet.currentEditor.lastActivityAt.getTime()>30000){
+                                if(!this.currentSpreadsheet.currentEditor.lastActivityAt || res.getTime() - this.currentSpreadsheet.currentEditor.lastActivityAt.getTime()>15000){
                                     setCurrentUserAsEditor(()=>{
 
                                         this.initializeTable()
@@ -74,7 +75,7 @@ Template.spreadsheetContent.onCreated(function () {
                                     this.timeout2 = Meteor.setTimeout(() => {
 
                                         this.rebootEditor()
-                                    }, 30000 )
+                                    }, 15000 )
                                 }
                             }
 
@@ -87,13 +88,16 @@ Template.spreadsheetContent.onCreated(function () {
         }
 
         this.initializeTable = () => {
-            if(!this.currentEditor.get().memberId ||this.currentEditor.get().memberId != this.previousEditor || !this.table){
-                this.previousEditor = this.currentEditor.get().memberId
+            let currentSpreadsheet = Spreadsheet.findOne({_id: this.data.currentSpreadsheet._id})
+            if(currentSpreadsheet.currentEditor.memberId ||currentSpreadsheet.currentEditor.memberId != this.previousEditor || !this.table){
+                this.previousEditor = currentSpreadsheet.currentEditor.memberId
+                console.log(currentSpreadsheet.currentEditor.memberId  , this.memberId)
+                this.spreadsheetController.reset(document.getElementById('spreadsheetContent'))
                 this.spreadsheetController.initialize(
                     FlowRouter.current().queryParams.spreadsheetId,
                     document.getElementById('spreadsheetContent'),
                     this,
-                    !this.currentEditor.get().memberId ||this.currentEditor.get().memberId === this.memberId
+                    !currentSpreadsheet.currentEditor.memberId ||currentSpreadsheet.currentEditor.memberId === this.memberId
                 )
                 this.table = this.spreadsheetController.table
             }

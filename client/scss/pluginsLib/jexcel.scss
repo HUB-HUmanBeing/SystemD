@@ -68,7 +68,9 @@ border: 1px solid $blue-highlight-color ;
   display: flex;
   flex-direction: column;
   td{
+    white-space: normal !important;
     overflow: visible;
+    word-wrap: break-word !important;
     overflow-wrap: break-word !important;
 
   }
@@ -82,6 +84,26 @@ select{
 
   }
 
+  .jexcel_filter{
+    display: none;
+    position: absolute;
+    width: 100%;
+    input{
+      display: none;
+      position: absolute;background-color: $lighter-bg;
+      top: 15px;
+      right: 20px;
+      width: 300px;
+      padding: 10px;
+max-width: 80%;
+      z-index: 900;
+      box-shadow:0 4px 4px rgba(0, 0, 0, 0.35) !important;
+      border-radius: 5px;
+    }
+    .searchVisible{
+      display: block;
+    }
+  }
 ::-webkit-scrollbar {
   width: 11px;
   height: 11px;

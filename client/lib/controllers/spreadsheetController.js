@@ -11,7 +11,21 @@ let spreadsheetController = {
     columns: [],
     rows: 1,
     datas: [],
-
+isFirst:true,
+    reset(el){
+        if (this.table) {
+            this.destroy(el)
+        }
+        this.table = null
+        this.reactiveTable =  null
+        this.id = null
+        this.columns = []
+        this.rows = 1
+        this.datas = []
+        this.isFirst =true
+        this.instance=null
+        this.style=null
+    },
     initialize(spreadsheetId, el, instance, isEditable) {
         this.id = spreadsheetId
 
@@ -64,6 +78,8 @@ let spreadsheetController = {
             columnDrag: true,
             allowRenameColumn:false,
             toolbar: this.toolbar(isEditable),
+            search:true,
+           // pagination:10,
 
         }
         if (!isEditable) {
@@ -83,7 +99,15 @@ let spreadsheetController = {
         if (!isEditable && !checkForUpdatesNotNeeded) {
 
             this.checkForUpdates(el, isEditable, instance)
+
         }
+        this.arrangeSearch()
+    },
+    arrangeSearch(){
+        console.log('truc)')
+Meteor.setTimeout(()=>{
+    $(".jexcel_search").attr("placeholder", __('spreadsheet.searchInTable')+ '...')
+},400)
     },
     destroy(el) {
         jexcel.destroy(el, false);
@@ -313,20 +337,26 @@ console.log(this.table.getConfig().style)
         })
     },
     saveStyles(styles) {
-    Meteor.setTimeout(()=>{
-        let currentSpreadsheet = Spreadsheet.findOne(this.id)
-        currentSpreadsheet.callMethod("saveStyles", projectController.getAuthInfo(FlowRouter.current().params.projectId), JSON.stringify(styles), (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-        })
-    },400)
+        if(this.isFirst){
+            this.isFirst = false
+        }else{
+
+            Meteor.setTimeout(()=>{
+                let currentSpreadsheet = Spreadsheet.findOne(this.id)
+                currentSpreadsheet.callMethod("saveStyles", projectController.getAuthInfo(FlowRouter.current().params.projectId), JSON.stringify(styles), (err, res) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                })
+            },400)
+        }
+
 
 
     },
 
     checkForUpdates(el, isEditable, instance) {
-        instance.autorun(() => {
+        instance.autorun((computation) => {
             let currentSpreadsheet = Spreadsheet.findOne(this.id)
             if (currentSpreadsheet && this.table) {
                 cryptoTools.decryptObject(currentSpreadsheet.content, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
@@ -339,7 +369,11 @@ console.log(this.table.getConfig().style)
                         this.createTable(el, isEditable, instance, true)
                     }
                 })
+                if(currentSpreadsheet.currentEditor && currentSpreadsheet.currentEditor.memberId == projectController.getCurrentMemberId(FlowRouter.current().params.projectId)){
+                    computation.stop()
+                }
             }
+
         })
     }
 }

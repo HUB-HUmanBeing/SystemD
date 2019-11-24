@@ -1,7 +1,7 @@
 <template name="menuProject">
     <li class="menuProjectItem" id="menuProject-{{project.asymEnc_projectId}}">
         <div class="collapsible-header transparent {{#if compare currentProjectId '=='
-                                                         project.asymEnc_projectId}}active{{/if}}">
+                                                         project.asymEnc_projectId}}active{{/if}}" projectTitle>
             <div class="flex full-width flex-middle">
                 <div class="project-avatar relative" style="">
                     {{>projectAvatar projectId=project.asymEnc_projectId}}

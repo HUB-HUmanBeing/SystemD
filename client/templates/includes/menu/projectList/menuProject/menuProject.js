@@ -86,6 +86,9 @@ Template.menuProject.events({
         event.stopPropagation()
         Session.set("showNotifications", event.target.id)
         $('#notifModal').modal('open');
+    },
+    'dblclick [projectTitle]' : function (event, instance) {
+        FlowRouter.go("/project/"+Template.currentData().project.asymEnc_projectId+"/forum")
     }
 });
 

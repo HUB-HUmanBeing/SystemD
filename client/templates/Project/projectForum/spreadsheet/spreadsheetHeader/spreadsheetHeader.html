@@ -58,6 +58,21 @@
                             </div>
                         </div>
                     {{/if}}
+                    <div class="relative" style="width: 40px; margin-right: 5px">
+                        <div class="fixed-action-btn  horizontal absolute categorySettings" search>
+                            <a class="btn-floating tooltipped waves-light waves-effect"
+                               data-position="bottom"
+                               data-delay="50" data-tooltip="{{__ "spreadsheet.searchInTable"}}">
+                                <i class="material-icons">search</i>
+                            </a>
+                        </div>
+                    </div>
+                    {{#if showCloseSearch}}
+                        <a id="closeSearchSpreadsheet" class="btn-floating waves-light waves-effect"
+                   search>
+                            <i class="material-icons">clear</i>
+                        </a>
+                        {{/if}}
                 </div>
             {{/if}}
             {{#if showDelete}}

@@ -729,7 +729,7 @@
     "spreadsheetList": "Tableurs",
     "noSpreadsheet" : "Aucuns tableurs",
     "newSpreadsheet": "Nouveau tableur",
-    "showMore": "showMore",
+    "showMore": "Voir plus",
     "SpreadsheetName": "Nom du tableur"
 
   },
@@ -739,6 +739,10 @@
     "edit": "Changer le nom du tableur",
     "abort": "annuler",
     "deleteInfo": "Ce tableur sera supprimé ainsi que tout son contenu.",
-    "deleteSuccess": "Le tableur à été supprimé"
+    "deleteSuccess": "Le tableur à été supprimé",
+    "lastEdit": "Dernière édition"
+  },
+  "spreadsheet":{
+    "searchInTable": "Rechercher dans le tableur"
   }
 }

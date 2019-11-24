@@ -4,8 +4,9 @@
 
             {{#if currentSpreadsheet}}
                 {{>spreadsheetHeader currentSpreadsheet=currentSpreadsheet}}
-
+{{#if currentSpreadsheet.currentEditor}}
                 {{>spreadsheetContent currentSpreadsheet=currentSpreadsheet}}
+    {{/if}}
             {{/if}}
 
         </div>
