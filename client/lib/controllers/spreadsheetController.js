@@ -268,34 +268,41 @@ Meteor.setTimeout(()=>{
     events: {
         onchange: () => {
 
-            spreadsheetController.saveDatas(this.table.getJson())
-            spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveDatas(this.table.getJson(),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
         },
         ondeleterow: () => {
-            spreadsheetController.saveDatas(this.table.getJson())
-            spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveDatas(this.table.getJson(),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
         },
         oninsertrow: () => {
-            spreadsheetController.saveDatas(this.table.getJson())
-            spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveDatas(this.table.getJson(),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
         },
         ondeletecolumn: () => {
 
-            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
-            spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
         },
         oninsertcolumn: () => {
 console.log(this.table.getConfig().style)
-            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
-           spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
         },
         onmoverow: () => {
-            spreadsheetController.saveDatas(this.table.getJson())
-            spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveDatas(this.table.getJson(),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
         },
         onmovecolumn: () => {
-            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
-            spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
         },
         onresizecolumn: () => {
 
@@ -305,35 +312,44 @@ console.log(this.table.getConfig().style)
             spreadsheetController.saveStyles(this.table.getConfig().style)
         },
         onsort: () => {
-            spreadsheetController.saveDatas(this.table.getJson())
-            spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveDatas(this.table.getJson(),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
         },
         onundo: () => {
-            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
-            spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
+
         },
         onredo: () => {
-            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns))
-            spreadsheetController.saveStyles(this.table.getConfig().style)
+            spreadsheetController.saveColumns(spreadsheetController.arrToObj(this.table.getConfig().data), spreadsheetController.beautifyColumns(this.table.getConfig().columns),()=>{
+                spreadsheetController.saveStyles(this.table.getConfig().style)
+            })
+
         },
 
     },
-    saveDatas(datas) {
+    saveDatas(datas,cb) {
         let currentSpreadsheet = Spreadsheet.findOne(this.id)
         cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
             currentSpreadsheet.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, (err, res) => {
                 if (err) {
                     console.log(err)
+                }else{
+                    if(cb){cb()}
                 }
             })
         })
     },
-    saveColumns(datas, columns) {
+    saveColumns(datas, columns, cb) {
         let currentSpreadsheet = Spreadsheet.findOne(this.id)
         cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
             currentSpreadsheet.callMethod("saveColumns", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, JSON.stringify(columns), JSON.stringify(columns), (err, res) => {
                 if (err) {
                     console.log(err)
+                }else{
+                    if(cb){cb()}
                 }
             })
         })
@@ -350,7 +366,7 @@ console.log(this.table.getConfig().style)
                         console.log(err)
                     }
                 })
-            },400)
+            },1500)
         }
 
 
