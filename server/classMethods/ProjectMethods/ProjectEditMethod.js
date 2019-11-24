@@ -13,6 +13,7 @@ import Comments from "../../../lib/collections/Comments";
 import ProjectFiles from "../../../lib/collections/ProjectFiles";
 import ProjectFile from "../../../imports/classes/ProjectFile";
 import ProjectNotifications from "../../../imports/classes/ProjectNotification";
+import Spreadsheets from "../../../lib/collections/Spreadsheets";
 
 Project.extend({
     meteorMethods: {
@@ -88,6 +89,7 @@ Project.extend({
             Invitations.remove({projectId: currentProject._id})
             Activities.remove({projectId: currentProject._id})
             ProjectNotifications.remove({projectId: currentProject._id})
+            Spreadsheets.remove({projectId: currentProject._id})
 let files = ProjectFile.find({projectId: currentProject._id}).fetch()
             files.forEach(file=>{
                 file.removeAndDeleteFile()

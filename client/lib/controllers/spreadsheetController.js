@@ -104,13 +104,15 @@ isFirst:true,
         this.arrangeSearch()
     },
     arrangeSearch(){
-        console.log('truc)')
 Meteor.setTimeout(()=>{
     $(".jexcel_search").attr("placeholder", __('spreadsheet.searchInTable')+ '...')
 },400)
     },
     destroy(el) {
-        jexcel.destroy(el, false);
+        if(el){
+            jexcel.destroy(el, false);
+        }
+
     },
     defaultColumns() {
         let res = []

@@ -91,7 +91,6 @@ Template.spreadsheetContent.onCreated(function () {
             let currentSpreadsheet = Spreadsheet.findOne({_id: this.data.currentSpreadsheet._id})
             if(currentSpreadsheet.currentEditor.memberId ||currentSpreadsheet.currentEditor.memberId != this.previousEditor || !this.table){
                 this.previousEditor = currentSpreadsheet.currentEditor.memberId
-                console.log(currentSpreadsheet.currentEditor.memberId  , this.memberId)
                 this.spreadsheetController.reset(document.getElementById('spreadsheetContent'))
                 this.spreadsheetController.initialize(
                     FlowRouter.current().queryParams.spreadsheetId,
