@@ -20,6 +20,7 @@ Template.pollOption.helpers({
 Template.pollOption.events({
     //add your events here
     'click [selectOption]': function (event, instance) {
+        event.preventDefault()
         let publication = Publication.findOne(instance.data.id)
         publication.callMethod("chooseProposition", projectController.getAuthInfo(FlowRouter.current().params.projectId), instance.data.index, (err, res) => {
             if (err) {
