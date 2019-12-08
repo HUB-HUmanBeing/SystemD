@@ -8,7 +8,7 @@
         'fr-FR'
     );
     //nos traductions listées ici
-    let aviableLanguages = ['fr-FR', 'en-US']
+    let aviableLanguages = ['fr-FR', 'en-US', 'es-ES']
     //on initialise avec en-US
     let localeResult = 'en-US'
     //si les 2 premières lettres avant le tiret correspondrent a nos locales, on les prends, sinon ca reste en-US
