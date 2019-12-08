@@ -61,7 +61,8 @@
                 {{/if}}
                 <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
                     <div id="taskGroup-todo" class="tasksGroup shadow">
-                        <div class="groupHead">
+                        <div class=" groupHead tooltipped" data-position="bottom"
+             data-delay="450" data-tooltip="{{__ ".inProjectDetail"}}">
 
                             <i class="material-icons focus-color" >check_box_outline_blank</i>{{#if isPhone}}<i class="material-icons" goCalendar>event</i><i class="material-icons" goWaitingForStatus>hourglass_empty</i><i class="material-icons" goDone>check_box</i> {{/if}}<br>
                             {{__ ".inProject"}}
@@ -79,7 +80,8 @@
 
                 <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
                     <div id="taskGroup-calendar" class="tasksGroup shadow">
-                        <div class="groupHead">
+                        <div class=" groupHead tooltipped" data-position="bottom"
+             data-delay="450" data-tooltip="{{__ ".calendarPlacedDetail"}}">
 {{#if isPhone}}<i class="material-icons" goTodo>check_box_outline_blank</i>{{/if}}<i class="material-icons focus-color">event</i>{{#if isPhone}}<i class="material-icons" goWaitingForStatus>hourglass_empty</i><i class="material-icons" goDone>check_box</i> {{/if}}<br>
                             {{__ ".calendarPlaced"}}
                         </div>
@@ -89,7 +91,8 @@
 
                 <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
                     <div id="taskGroup-waiting" class="tasksGroup shadow">
-                        <div class="groupHead">
+                        <div class=" groupHead tooltipped" data-position="bottom"
+             data-delay="450" data-tooltip="{{__ ".waitingForStatusDetail"}}">
                             {{#if isPhone}}<i class="material-icons" goTodo>check_box_outline_blank</i><i class="material-icons" goCalendar>event</i>{{/if}}<i class="material-icons focus-color">hourglass_empty</i>{{#if isPhone}}<i class="material-icons" goDone>check_box</i> {{/if}}<br>
                             {{__ ".waitingForStatus"}}
                         </div>
@@ -99,7 +102,8 @@
 
                 <div class="tasksGroupContainer {{#if showDragover}}mobileDragging{{/if}}">
                     <div id="taskGroup-done" class="tasksGroup  shadow">
-                        <div class="groupHead">
+                        <div class=" groupHead tooltipped" data-position="bottom"
+             data-delay="450" data-tooltip="{{__ ".doneDetail"}}">
                             {{#if isPhone}}<i class="material-icons" goTodo>check_box_outline_blank</i><i class="material-icons" goCalendar>event</i><i class="material-icons" goWaitingForStatus>hourglass_empty</i>{{/if}}<i class="material-icons focus-color">check_box</i> <br>
                             {{__ ".done"}}
                         </div>

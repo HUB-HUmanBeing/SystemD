@@ -1,5 +1,6 @@
 <template name="tasksList">
-    <div class="tasksList relative" id="scrollContainer-{{type}}" style="{{#if isDesktop}}overflow: hidden{{/if}}">
+    <div class="tasksList relative" id="scrollContainer-{{type}}"
+         style="{{#if isDesktop}} width: calc(100% + 15px){{/if}}">
 
         {{#if isDraggingTopic}}
             <div class="absolute listDropBasket center-align">

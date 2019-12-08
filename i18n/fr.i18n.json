@@ -687,6 +687,10 @@
     "calendarPlaced": "Placées sur l'agenda",
     "waitingForStatus": "Tâches passées",
     "done": "Tâches terminées",
+    "inProjectDetail": "Les taches placées ici n'ont pas encore de date fixée.",
+    "calendarPlacedDetail": "Les taches placées sont placées dans l'agenda avec des dates dans le futur.",
+    "waitingForStatusDetail": "Les taches se trouvant dans cette section ont étés placées sur l'agenda, mais leurs dates est dépassée. A vous de voir si elles doivent etre remises en projet, replanifiées, ou si on peut les considerer comme terminées",
+    "doneDetail": "Cette section regroupe les taches qui ont étés considérées comme terminées.",
     "newActivity": "Nouvelle tâche",
     "myTasks": "Mes tâches"
   },
