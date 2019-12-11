@@ -25,8 +25,6 @@ Template.pollOption.events({
         publication.callMethod("chooseProposition", projectController.getAuthInfo(FlowRouter.current().params.projectId), instance.data.index, (err, res) => {
             if (err) {
                 console.log(err)
-            } else {
-                console.log("gagné")
             }
         })
     }
