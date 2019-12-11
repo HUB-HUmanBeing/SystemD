@@ -20,6 +20,12 @@ Template.langButton.helpers({
                 langFormat: 'en-US',
                 langIso639: 'EN',
                 selected: actualLang === 'en-US'
+            },
+            {
+                name: "Español",
+                langFormat: 'es-ES',
+                langIso639: 'ES',
+                selected: actualLang === 'es-ES'
             }
         ]
     }

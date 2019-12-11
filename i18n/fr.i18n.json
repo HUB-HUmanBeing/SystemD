@@ -619,7 +619,8 @@
     "unnamed": "Sans titre",
     "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
     "activityPlaced": "L'activité à été placée sur l'agenda.",
-		"settings": "Paramètres"
+		"settings": "Paramètres",
+    "addBtn": "Ajouter un événement"
   },
   "calendarSettings": {
     "title": "Paramètres de l'agenda",

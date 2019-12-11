@@ -106,7 +106,8 @@ const calendarController = {
 
                         }
                     })
-                } else {
+                } else if (Session.get("addEvent")){
+                    Session.set("addEvent",false)
                     let activity = new Activity()
                     let activityParams = {
                         start: info.start,
@@ -123,7 +124,6 @@ const calendarController = {
                         }
                     })
                 }
-
             },
             eventClick: (info) => {
                 this.getEventDetail(info.event.id)
