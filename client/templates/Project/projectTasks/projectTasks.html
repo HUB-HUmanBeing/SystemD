@@ -1,6 +1,6 @@
 <template name="projectTasks">
-    <div id="projectTasks" class=" {{#if isDesktop}} flex desktopProjectTasks {{else}}{{#if
-            isPhone}} mobileProjectTasks {{else}} tabletProjectTasks{{/if}}{{/if}}">
+    <div id="projectTasks" class=" {{#if isDesktop}} flex desktopProjectTasks {{#if isChrome}} chromeNiceTasks {{/if}} {{else}}{{#if
+            isPhone}} mobileProjectTasks {{else}} tabletProjectTasks{{/if}}{{/if}}" >
         <div id="tasksContainer"
              class="relative flex">
             {{#if compare colorSelector "&&" isPhone}}

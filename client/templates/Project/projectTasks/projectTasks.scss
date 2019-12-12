@@ -1,14 +1,16 @@
 @import "{}/client/scss/variables.scss";
 //@import "{}/client/scss/pluginsLib/leaflet.css";
 
-
+.chromeNiceTasks{
+  height: 100vh;
+}
 #projectTasks {
   width: 100%;
   position: relative;
   color: $main-color;
 
   &.desktopProjectTasks {
-    height: 100vh;
+
   }
 
   &.mobileProjectTasks {
