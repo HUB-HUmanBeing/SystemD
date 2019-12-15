@@ -61,11 +61,23 @@ const mapController = {
                     featureGroup: drawnItems
                 }
             });
+            // Init search tools
             this.search = new L.Control.Geocoder({
                 position: 'topleft',
-                showResultIcons: true
-            }).addTo(this.map);
+                showResultIcons: true,
+                defaultMarkGeocode: false
+            })
+            .on('markgeocode', (e) => {
+                this.map.fitBounds(e.geocode.bbox,this.map.getZoom());
+                var popup = L.popup()
+                    .setLatLng(e.geocode.center)
+                    .setContent(e.geocode.html)
+                    .openOn(this.map);
+                
+            })
+            .addTo(this.map);
 
+            //
             this.map.addControl(this.drawControl);
             this.promptMarkers(project._id, instance)
             this.promptActivityMarkers(project._id, instance)

@@ -307,8 +307,9 @@
     .leaflet-control-geocoder {
         border-radius: 5px;
         background-color: $main-bg;
-        min-width: 35px;
-        min-height: 35px;
+        min-width: 30px;
+        min-height: 30px;
+        border: none !important;
       }
       
       .leaflet-touch .leaflet-control-geocoder {
@@ -339,6 +340,7 @@
         vertical-align: middle;
         background-color: $main-bg;
         color: white;
+        margin-right: 10px;
       }
       .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
         display: inline-block;
@@ -347,16 +349,16 @@
         font-size: 120%;
         border: 0;
         background-color: $main-bg;
-        width: 246px;
+        width: 220px;
       }
       
       .leaflet-control-geocoder-icon {
         border-radius: 4px;
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
         border: none;
         background-color: $main-bg;
-        background-image: url(public/images/icon/search_icon.png);
+        background-image: url(images/icon/geocoder_search.png);
         background-repeat: no-repeat;
         background-position: center;
         cursor: pointer;
@@ -368,7 +370,7 @@
       }
       
       .leaflet-control-geocoder-throbber .leaflet-control-geocoder-icon {
-        background-image: url(images/throbber.gif);
+        background-image: url(images/icon/geocoder_throbber.gif);
       }
       
       .leaflet-control-geocoder-form-no-error {
@@ -398,7 +400,7 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        background-color: $main-bg
+        background-color: $main-bg;
       }
       
       .leaflet-control-geocoder-alternatives-minimized {
@@ -431,12 +433,16 @@
       }
       .leaflet-control-geocoder-alternatives li:hover,
       .leaflet-control-geocoder-selected {
-        background-color: $main-bg
+        background-color: $light-bg;
       }
       .leaflet-control-geocoder-address-detail {
       }
       .leaflet-control-geocoder-address-context {
         color: #ccc;
+      }
+      .leaflet-popup-content-wrapper,.leaflet-popup-tip{
+        background-color: $main-bg;
+        color: $main-color;
       }
       
     }
