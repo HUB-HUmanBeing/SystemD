@@ -18,6 +18,16 @@ Template.spreadsheet.helpers({
     refreshScrollbar: function () {
         return Template.currentData().refreshScrollbar
     },
+    refreshRender: function () {
+        let instance = Template.instance()
+        let currentSpreadsheet = Template.instance().currentSpreadsheet.get()
+        return ()=>{
+            instance.currentSpreadsheet.set(false)
+            Meteor.setTimeout(()=>{
+                instance.currentSpreadsheet.set(currentSpreadsheet)
+            },500)
+        }
+    }
 
 });
 

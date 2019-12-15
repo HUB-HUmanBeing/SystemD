@@ -745,7 +745,12 @@
     "abort": "annuler",
     "deleteInfo": "Ce tableur sera supprimé ainsi que tout son contenu.",
     "deleteSuccess": "Le tableur à été supprimé",
-    "lastEdit": "Dernière édition"
+    "lastEdit": "Dernière édition",
+    "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
+    "uploadInfo" : "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregisterez votre tableur excel ou oppenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
+    "uploadWarning" : "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
+    "fileUpload": "Importer un fichier csv",
+    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"
   },
   "spreadsheet":{
     "searchInTable": "Rechercher dans le tableur"
