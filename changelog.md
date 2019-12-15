@@ -6,7 +6,7 @@
 
 - débuggage du scroll de la todo list sur firefox
 - ajout d'un label au dessus des groupes de taches dans la todo list
-
+- possibilité de faire une recherche sur la carte
 
 #### deployé le 08/12/19
 
