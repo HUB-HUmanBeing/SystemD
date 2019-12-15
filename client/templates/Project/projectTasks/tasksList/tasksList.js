@@ -22,18 +22,18 @@ Template.tasksList.onCreated(function () {
     //add your statement here
     this.bs ={}
     this.refreshTaskScrollbar = () => {
-        let types = ["todo", "calendar", "done", "waiting"]
-        types.forEach(type=>{
-            let scrollContainer = document.getElementById('scrollContainer-' + type)
-
-            if (scrollContainer && Meteor.Device.isDesktop()) {
-
-                if (this.bs[type]) {
-                    this.bs[type].destroy()
-                }
-                this.bs[type] = new BeautifyScrollbar('#scrollContainer-' + type);
-            }
-        })
+        // let types = ["todo", "calendar", "done", "waiting"]
+        // types.forEach(type=>{
+        //     let scrollContainer = document.getElementById('scrollContainer-' + type)
+        //
+        //     if (scrollContainer && Meteor.Device.isDesktop()) {
+        //
+        //         if (this.bs[type]) {
+        //             this.bs[type].destroy()
+        //         }
+        //         this.bs[type] = new BeautifyScrollbar('#scrollContainer-' + type);
+        //     }
+        // })
 
     }
     this.tasks = new ReactiveVar([])

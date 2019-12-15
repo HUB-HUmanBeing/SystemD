@@ -39,6 +39,7 @@
     "minio": "^7.0.12",
     "moment-timezone": "^0.5.26",
     "octonode": "^0.9.5",
+    "papaparse": "^5.1.0",
     "qrious": "^4.0.2",
     "secure-random-password": "^0.1.0",
     "string-to-arraybuffer": "^1.0.2",

@@ -37,6 +37,9 @@ Template.projectTasks.helpers({
     },
     myTasks: function () {
       return Template.instance().myTasks.get()
+    },
+    isChrome: function () {
+        return /Chrome/.test(navigator.userAgent)
     }
 });
 
@@ -62,7 +65,12 @@ Template.projectTasks.events({
         if (index === -1) {
             selectedColors.push(color)
         } else {
-            selectedColors.splice(index, 1)
+            if(selectedColors.length == 7){
+                selectedColors = [color]
+            }else{
+                selectedColors.splice(index, 1)
+            }
+
         }
         instance.selectedColors.set(selectedColors)
     },

@@ -688,6 +688,10 @@
     "calendarPlaced": "Placées sur l'agenda",
     "waitingForStatus": "Tâches passées",
     "done": "Tâches terminées",
+    "inProjectDetail": "Les taches placées ici n'ont pas encore de date fixée.",
+    "calendarPlacedDetail": "Les taches placées sont placées dans l'agenda avec des dates dans le futur.",
+    "waitingForStatusDetail": "Les taches se trouvant dans cette section ont étés placées sur l'agenda, mais leurs dates est dépassée. A vous de voir si elles doivent etre remises en projet, replanifiées, ou si on peut les considerer comme terminées",
+    "doneDetail": "Cette section regroupe les taches qui ont étés considérées comme terminées.",
     "newActivity": "Nouvelle tâche",
     "myTasks": "Mes tâches"
   },
@@ -741,7 +745,12 @@
     "abort": "annuler",
     "deleteInfo": "Ce tableur sera supprimé ainsi que tout son contenu.",
     "deleteSuccess": "Le tableur à été supprimé",
-    "lastEdit": "Dernière édition"
+    "lastEdit": "Dernière édition",
+    "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
+    "uploadInfo" : "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregisterez votre tableur excel ou oppenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
+    "uploadWarning" : "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
+    "fileUpload": "Importer un fichier csv",
+    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"
   },
   "spreadsheet":{
     "searchInTable": "Rechercher dans le tableur"

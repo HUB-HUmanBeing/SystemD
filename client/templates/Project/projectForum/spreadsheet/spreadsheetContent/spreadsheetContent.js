@@ -42,7 +42,7 @@ Template.spreadsheetContent.onCreated(function () {
                     }
                     this.timeout1 = Meteor.setTimeout(() => {
                         setCurrentUserAsEditor()
-                    }, 10000)
+                    }, 15000)
                 }
             })
         }
@@ -66,7 +66,7 @@ Template.spreadsheetContent.onCreated(function () {
                         if(!err){
                             this.currentSpreadsheet = Spreadsheet.findOne({_id: this.data.currentSpreadsheet._id})
                             if(this.currentSpreadsheet){
-                                if(!this.currentSpreadsheet.currentEditor.lastActivityAt || res.getTime() - this.currentSpreadsheet.currentEditor.lastActivityAt.getTime()>15000){
+                                if(!this.currentSpreadsheet.currentEditor.lastActivityAt || res.getTime() - this.currentSpreadsheet.currentEditor.lastActivityAt.getTime()>20000){
                                     setCurrentUserAsEditor(()=>{
 
                                         this.initializeTable()
@@ -75,7 +75,7 @@ Template.spreadsheetContent.onCreated(function () {
                                     this.timeout2 = Meteor.setTimeout(() => {
 
                                         this.rebootEditor()
-                                    }, 15000 )
+                                    }, 20000 )
                                 }
                             }
 
