@@ -2,7 +2,7 @@
 
 ##changelog
 
-#### en attente de déploiement
+#### deployé le 15/12/19
 
 - débuggage du scroll de la todo list sur firefox
 - ajout d'un label au dessus des groupes de taches dans la todo list
