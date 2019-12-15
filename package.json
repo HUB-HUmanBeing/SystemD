@@ -32,6 +32,7 @@
     "js-video-url-parser": "^0.3.3",
     "jshashes": "^1.0.7",
     "leaflet": "^1.5.1",
+    "leaflet-control-geocoder": "^1.10.0",
     "leaflet-draw": "^1.0.4",
     "leaflet-minimap": "^3.6.1",
     "leaflet-swoopy": "^3.4.1",
