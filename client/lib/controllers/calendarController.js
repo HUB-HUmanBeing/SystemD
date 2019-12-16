@@ -146,26 +146,26 @@ const calendarController = {
     initializeEventRenderer(instance, project) {
         Meteor.subscribe("CalendarActivitiesByProject", projectController.getAuthInfo(project._id), project._id, err => {
             instance.autorun(() => {
-                let start = new Date().getTime()
                 let eventSource = {
                     id: "currentProjectEvents",
                     events: []
                 }
                 FlowRouter.watchPathChange()
                 let activities = Activity.find({projectId: project._id, start: {$exists: true}}).fetch()
+                
                 cryptoTools.decryptArrayOfObject(activities, {symKey: Session.get("currentProjectSimKey")}, decryptedActivities => {
-                    Meteor.setTimeout(() => {
                         decryptedActivities.forEach(activity => {
                             eventSource.events.push(this.getEventFromActivity(activity, FlowRouter.current().queryParams.activityId))
                         })
-                        let currentEventSource = this.calendar.getEventSourceById("currentProjectEvents")
-                        if (currentEventSource) {
-                            currentEventSource.remove()
-                        }
-                        this.calendar.addEventSource(eventSource)
-                    }, 100)
                 })
 
+                Meteor.setTimeout(() => {
+                    let currentEventSource = this.calendar.getEventSourceById("currentProjectEvents")
+                    if (currentEventSource) {
+                        currentEventSource.remove()
+                    }
+                    this.calendar.addEventSource(eventSource)
+                }, 100) 
             })
         })
 
