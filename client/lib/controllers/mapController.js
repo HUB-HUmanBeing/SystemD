@@ -239,7 +239,6 @@ const mapController = {
         this.markers = []
         let mapInstance=this.map
         if (mapInstance && mapInstance.remove) {
-            console.log("in")
             mapInstance.off();
             mapInstance.remove();
         }

@@ -89,9 +89,16 @@ const activityMarker = {
             element.removeEventListener('mousemove', this.mouseFollower)
             element.remove();
         }
+        let from = "project-tasks";
         Session.set("activityToPositionate", false)
-        FlowRouter.go("/project/"+FlowRouter.current().params.projectId+"/maps")
-
+        console.log("using stop")
+        if(from==="project-calendar"){
+            FlowRouter.go("/project/"+FlowRouter.current().params.projectId+"/calendar")
+        }else if(from==="project-tasks"){
+            FlowRouter.go("/project/"+FlowRouter.current().params.projectId+"/tasks")
+        }else{
+            FlowRouter.go("/project/"+FlowRouter.current().params.projectId+"/maps")
+        }
     },
     showMarker(activity) {
         cryptoTools.decryptObject(activity, {symKey: Session.get("currentProjectSimKey")}, decryptedIconMarker => {

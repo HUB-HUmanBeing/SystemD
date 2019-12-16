@@ -120,6 +120,5 @@ Template.projectMaps.onDestroyed(function () {
     //add your statement here
     Session.set("activityToPositionate", false)
     mapController.reset()
-
 });
 
