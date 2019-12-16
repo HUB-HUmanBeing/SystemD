@@ -235,12 +235,12 @@ Template.activityDetail.events({
                 }
             })
         } else {
+            Session.set("activityToPositionate", {activity: activity, from: FlowRouter.current().route.name})
             FlowRouter.go("/project/" + activity.projectId + "/maps")
-            Session.set("activityToPositionate", activity)
         }
     },
     'click [moveMarker]': function (event, instance) {
-        Session.set("activityToPositionate", instance.activity.get())
+        Session.set("activityToPositionate", {activity: instance.activity.get(), from: FlowRouter.current().route.name})
         FlowRouter.go("/project/" + instance.activity.get().projectId + "/maps")
 
     },

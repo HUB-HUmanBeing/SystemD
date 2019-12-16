@@ -288,12 +288,8 @@ const calendarController = {
         delete current.queryParams.side
         delete current.queryParams.activityId
 
-
-        if(current.route.name === "project-calendar"){
-            FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, current.queryParams)
-        } else {
-            FlowRouter.go('/project/' + this.currentProject._id + '/tasks', {}, current.queryParams)
-        }
+        let route = current.route.name.substring(8)
+        FlowRouter.go('/project/' + this.currentProject._id + '/'+route, {}, current.queryParams)
     },
     changePeriod(isPrevious) {
         $('.fc-' + (isPrevious ? 'prev' : 'next') + '-button').click()
