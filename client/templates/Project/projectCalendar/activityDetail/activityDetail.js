@@ -73,16 +73,18 @@ Template.activityDetail.helpers({
     invitableMembers: function () {
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)
-        let participants = activity.participants
-        let projectId = FlowRouter.current().params.projectId
-        let invitable = []
-        let blackList = [...participants, projectController.getCurrentMemberId(projectId)]
-        Session.get("currentProjectMembers").forEach(member => {
-            if (blackList.indexOf(member.memberId) === -1)
-                invitable.push(member)
-        })
+        if(typeof activity !== "undefined"){
+            let participants = activity.participants
+            let projectId = FlowRouter.current().params.projectId
+            let invitable = []
+            let blackList = [...participants, projectController.getCurrentMemberId(projectId)]
+            Session.get("currentProjectMembers").forEach(member => {
+                if (blackList.indexOf(member.memberId) === -1)
+                    invitable.push(member)
+            })
 
-        return invitable
+            return invitable
+        }
     },
     editInvitedMembers: function () {
         let instance = Template.instance()

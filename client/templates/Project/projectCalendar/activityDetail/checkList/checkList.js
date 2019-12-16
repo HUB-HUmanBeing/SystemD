@@ -10,7 +10,9 @@ Template.checkList.helpers({
         return Template.instance().checkItems.get()
     },
     refresher: function () {
-    Template.instance().items.set(Activity.findOne(Template.currentData().activity._id).checkList)
+        if(typeof Activity.findOne(Template.currentData().activity._id) !== "undefined"){
+            Template.instance().items.set(Activity.findOne(Template.currentData().activity._id).checkList)
+        }
         return false
 },
     showSaveBtn: function () {
@@ -107,22 +109,24 @@ Template.checkList.onCreated(function () {
     this.showSaveBtn = new ReactiveVar(false)
     this.autorun(()=>{
         FlowRouter.watchPathChange()
-        let items = Activity.findOne(FlowRouter.current().queryParams.activityId).checkList
-        this.items.set(items)
-        if(items.length){
-
-            let decryptedCheckItems = []
-            items.forEach((item,i)=>{
-                cryptoTools.decryptObject(item, {symKey: Session.get("currentProjectSimKey")}, decryptedCheckItem => {
-                   decryptedCheckItems[i]=decryptedCheckItem
+        let activity = Activity.findOne(FlowRouter.current().queryParams.activityId)
+        if(typeof activity !== "undefined"){
+            let items = activity.checkList
+            this.items.set(items)
+            if(items.length){
+                let decryptedCheckItems = []
+                items.forEach((item,i)=>{
+                    cryptoTools.decryptObject(item, {symKey: Session.get("currentProjectSimKey")}, decryptedCheckItem => {
+                    decryptedCheckItems[i]=decryptedCheckItem
+                    })
                 })
-            })
-            Meteor.setTimeout(()=>{
-                this.checkItems.set(decryptedCheckItems)
-            },200)
+                Meteor.setTimeout(()=>{
+                    this.checkItems.set(decryptedCheckItems)
+                },200)
 
-        }else{
-            this.checkItems.set([])
+            }else{
+                this.checkItems.set([])
+            }
         }
     })
 
