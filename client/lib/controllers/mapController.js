@@ -201,9 +201,9 @@ const mapController = {
                 console.log(err)
             } else {
                 instance.autorun(() => {
-                    let activities = Activity.find({projectId: projectId, symEnc_coordinates: {$exists: true}}).fetch()
+                    let activitiesToShow = Activity.find({projectId: projectId, symEnc_coordinates: {$exists: true}}).fetch()
                     let markersIdtoRemove = Object.keys(this.activities)
-                    activities.forEach((activity) => {
+                    activitiesToShow.forEach((activity) => {
                         if (!this.activities[activity._id]) {
 
                             this.activityMarker.default.showMarker(activity)
@@ -215,31 +215,27 @@ const mapController = {
                         markersIdtoRemove.splice(markersIdtoRemove.indexOf(activity._id), 1)
                     })
                     markersIdtoRemove.forEach(id => {
+                        this.activities[id].markerType='activityMarker'
                         this.removeMarker(this.activities[id])
                     })
                 })
             }
         })
-
-
     },
     removeMarker(marker) {
         if (marker) {
-            if (this[marker.markerType].default) {
+            if (typeof this[marker.markerType].default !== "undefined") {
                 this[marker.markerType].default.removeMarker(marker)
             } else {
                 this[marker.markerType].removeMarker(marker)
             }
         }
-
-
     },
     reset(){
         this.activities = []
         this.markers = []
         let mapInstance=this.map
         if (mapInstance && mapInstance.remove) {
-            console.log("in")
             mapInstance.off();
             mapInstance.remove();
         }
