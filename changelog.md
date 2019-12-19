@@ -1,6 +1,9 @@
 #System-D.org
 
 ##changelog
+#### ready to deploy
+
+- Debug calendrier suppression de la dernière activité
 
 #### deployé le 15/12/19
 

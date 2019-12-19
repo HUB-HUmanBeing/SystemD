@@ -113,6 +113,7 @@ Template.projectCalendar.events({
     'click [addEvent]': function (event) {
         event.preventDefault()
         Session.set("addEvent",true)
+        Materialize.toast(__('projectCalendar.setActivityInfo'), 5000, 'toastOk')
     }
 });
 
