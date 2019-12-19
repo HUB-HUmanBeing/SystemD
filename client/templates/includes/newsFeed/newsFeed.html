@@ -1,10 +1,8 @@
 <template name="newsFeed">
 
     <div id="openModalNewsFeedContainer" openModal>
-        <a class="waves-effect waves-light btn modal-trigger news {{#unless isUpToDate}} tooltipped{{/unless}} "
-           data-position="top"
-           data-delay="50" data-tooltip="{{__ ".unseenNews"}}" href="#modalNewsFeed">
-            <i class="material-icons left   {{#unless isUpToDate}} danger-color{{/unless}}">rss_feed</i>
+        <a class="waves-effect waves-light btn modal-trigger news " href="#modalNewsFeed">
+            <i class="material-icons left   {{#unless isUpToDate}} news-incoming{{/unless}}">rss_feed</i>
             {{__ ".btnLabel"}}
         </a>
     </div>
@@ -16,9 +14,19 @@
             <div class="iconInfo">
                 {{#if isOpen}}
                     {{#each news in newsArray}}
-                        <h1>{{news.title}}</h1>
-                        <p>{{news.content}}</p>
-                        <img src="{{news.img}}" alt="" class="responsive-img">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{{news.img}}">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">{{news.title}}<i class="material-icons right">more_vert</i></span>
+                                <p>{{news.firstWords}}</p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
+                                <p>{{news.content}}</p>
+                            </div>
+                        </div>
                     {{/each}}
 
                 {{/if}}

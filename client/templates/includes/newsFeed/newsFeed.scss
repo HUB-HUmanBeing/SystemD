@@ -25,6 +25,14 @@
     i{
       font-size: 25px;
     }
+    .news-incoming{
+
+      -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+      animation-name: shinyAlert;
+      animation-duration: 4s;
+      animation-iteration-count: 5;
+    }
     p{
       width: 200px;
       line-height: 10px;
@@ -37,6 +45,13 @@
       opacity: 1;
     }
   }
+}
+@keyframes shinyAlert {
+  0%   {color:$danger-text}
+  25%  {color:white}
+  50%  {color:$danger-text}
+  75%  {color:white}
+  100% {color:$danger-text}
 }
 #modalNewsFeed{
   max-width: 600px;

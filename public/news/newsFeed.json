@@ -4,13 +4,13 @@
 		{
 			"title": "ceci est une news",
 			"content": "lorem ifesfsefsef sef sefs ef sef sef se fs ef sef s ef zef se fs ef sef se f sef sef se fs ef sefsefsefsefsefsef",
-			"img": "images/aquarelle.jpg",
+			"img": "/images/aquarelle.jpg",
 			"timestamp" : 1574280100912
 		},
 		{
-			"title": "ceci est une rfferggdrggnews",
+			"title": "ceci est une dfgs",
 			"content": "lorem ifesfsefsef sef sefs ef sef sef se fs ef sef s ef zef sdrgdrgdrgdrge fs ef sef se f sef sef se fs ef sefsefsefsefsefsef",
-			"img": "images/aquarelle.jpg",
+			"img": "/images/aquarelle.jpg",
 			"timestamp" : 1574280300912
 		}
 	]
