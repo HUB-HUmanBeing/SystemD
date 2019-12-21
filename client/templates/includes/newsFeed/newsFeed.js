@@ -20,6 +20,9 @@ Template.newsFeed.events({
         instance.isOpen.set(true);
         instance.isUpToDate.set(true);
         window.localStorage.setItem('newsFeedHist', Date.now());
+        if(instance.newsArray.get().length == 0){
+
+        }
     }
 })
 
@@ -44,7 +47,7 @@ Template.newsFeed.onCreated(function () {
             }
             let newsArray = newsJson['newsArray']
             newsArray.forEach((news,i)=>{
-                newsArray[i].firstWords = news.content.substr(0,100)+(news.content.length>100 ?"...":"")
+                newsArray[i].firstWords = news.content.substr(0,160)+(news.content.length>160 ?" ...":"")
             })
             this.newsArray.set(newsArray)
             console.log(this.newsArray.get())

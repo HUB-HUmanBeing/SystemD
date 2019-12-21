@@ -5,28 +5,19 @@
             <i class="material-icons left   {{#unless isUpToDate}} news-incoming{{/unless}}">rss_feed</i>
             {{__ ".btnLabel"}}
         </a>
+
     </div>
 
     <!-- Modal Structure -->
-    <div id="modalNewsFeed" class="modal contrasted-bg">
-        <div class="modal-content small-padding contrasted-bg main-color">
-            <h6 style="text-transform: uppercase;">{{__ ".btnLabel"}}</h6>
-            <div class="iconInfo">
+    <div id="modalNewsFeed" class="modal contrasted-bg" style="{{#if isDesktop}} overflow: hidden;{{/if}}">
+        <div class="modal-content small-padding contrasted-bg main-color" style="{{#if isDesktop}}  width: calc(100% + 15px);
+                height: calc(100% + 15px);{{/if}}">
+            <h5 style="text-transform: uppercase;">{{__ ".btnLabel"}}</h5>
+            <div class="newsList">
                 {{#if isOpen}}
                     {{#each news in newsArray}}
-                        <div class="card">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="{{news.img}}">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">{{news.title}}<i class="material-icons right">more_vert</i></span>
-                                <p>{{news.firstWords}}</p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title</span>
-                                <p>{{news.content}}</p>
-                            </div>
-                        </div>
+                        {{>newsItem news=news}}
+
                     {{/each}}
 
                 {{/if}}
