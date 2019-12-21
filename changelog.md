@@ -1,8 +1,14 @@
-#System-D.org
+# System-D.org
 
-##changelog
-#### ready to deploy
+## changelog
 
+#### en projet
+- Faire marcher les notification et réaliser un build pour une appli android
+- module permettant de gerer des fiches ( demandé par un centre de soin qui aimerait y gerer ses fiches patients, mais qui pourra servir a tout ceux souhaitant archiver, gerer et trier de l'info de manière collaborative)
+- traduction en allemand et italien ( les contributeurs a cela sont vraiement formidables !)
+
+#### deployé le 21/12/19
+- Module de newsFeed
 - Debug calendrier suppression de la dernière activité
 
 #### deployé le 15/12/19
@@ -13,6 +19,10 @@
 
 #### deployé le 08/12/19
 
-- ajout de l'espagnol dans les langues possibles
+- ajout de l'ESPAGNOL dans les langues possibles
 - possibilité de cocher plusieurs items dans les sondages
 - changement de la licence pour passer sur la plus libre GNU AFFERO GPL
+
+### déployé le 25/11/19
+
+-ajout de TABLEURS INTERACTIFS pour tout les projets
