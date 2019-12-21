@@ -1,0 +1,150 @@
+@import "{}/client/scss/variables.scss";
+
+#openModalNewsFeedContainer {
+  position: fixed;
+  bottom: 125px;
+  right: 0;
+  display: inline-block;
+  visibility: hidden;
+  z-index: 6000;
+
+  a {
+    visibility: visible;
+    z-index: 6000;
+    position: relative;
+    padding: 0 4px;
+
+    background-color: $focus-color;
+    height: 30px;
+    line-height: 30px;
+    right: calc(30px - 100%);
+
+    opacity: 0.7;
+    transition: 0.5s ease-out;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+
+    i {
+      font-size: 25px;
+    }
+
+    .news-incoming {
+
+      -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+      animation-name: shinyAlert;
+      animation-duration: 4s;
+      animation-iteration-count: 5;
+    }
+
+    p {
+      width: 200px;
+      line-height: 10px;
+      font-size: 10px;
+      text-transform: none;
+    }
+
+    &:hover {
+      width: 200px;
+      right: 0;
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes shinyAlert {
+  0% {
+    color: $danger-text
+  }
+  25% {
+    color: white
+  }
+  50% {
+    color: $danger-text
+  }
+  75% {
+    color: white
+  }
+  100% {
+    color: $danger-text
+  }
+}
+
+#modalNewsFeed {
+
+}
+
+.notif {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  z-index: 6200;
+}
+
+.unseenItem {
+  position: absolute;
+  top: 9px;
+  left: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin: 10px 1px;
+  background-color: $danger-text;
+  -webkit-box-shadow: 0px 0px 11px 3px $danger-text;
+  -moz-box-shadow: 0px 0px 11px 3px $danger-text;
+  box-shadow: 0px 0px 11px 3px $danger-text;
+}
+
+#modalNewsFeed {
+  max-width: 600px;
+  height: 90vh !important;
+  min-height: 90vh !important;
+  z-index: 9000 !important;
+
+  h5 {
+    font-size: 1.2em;
+    color: $focus-color;
+    display: inline-block;
+    padding: 0px 20px 10px 0;
+    margin: 10px;
+    border-bottom: 2px solid $focus-color;
+  }
+
+  .card {
+    margin: 15px 10px 25px 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+
+  .card-reveal {
+    background-color: $main-bg !important;
+    width : calc( 100% + 15px);
+    p{
+      margin-bottom: 300px;
+      white-space: pre-line;
+      overflow-wrap: break-word;
+    }
+  }
+
+  .card-title{
+    color:$focus-color;
+  }
+
+  .indicator {
+    background-color: $focus-color;
+    height: 3px;
+  }
+
+  .modal-content {
+    overflow: scroll;
+
+  }
+
+  .newsList {
+
+  }
+}

@@ -1,0 +1,18 @@
+{
+	"lastUpdate": "1576949653952",
+	"newsArray": [
+		{
+			"title": "Sortie du module de news !",
+			"content": "Une fonctionnalité qui nous tenait a cœur depuis un moment : pouvoir vous tenir informer au jour le jour des actualités du projet. Lorsque des nouvelles news sont disponibles, vous verrez le petit logo news en bas a droite clignoter, et ainsi la (petite) équipe de dev que nous sommes pourrons vous tenir informés des avancées du projet !\nMerci aux développeur  rencontré cet été  qui a participé grandement à rendre cette fonctionnalité possible, et qui contribue grandement à ce projet depuis peu.",
+			"img": "https://i.imgur.com/N04s1mh.gif",
+			"timestamp" : 1576949653952
+		},{
+			"title": "System-d.org s'améliore de jours en jour",
+			"content": "Grâce aux idées que vous nous faites remonter, System-d.org s'améliore de jours en jour ! aujourd'hui, déploiement des derniers petits ajouts :\n\n- débuggage du scroll de la todo list sur firefox\n- ajout d'un label au dessus des groupes de taches dans la todo list\n- possibilité de faire une recherche sur la carte\n- possibilité d'uploader un tableur existant dans les tableurs de vos projets\n- possibilité de cocher plusieurs items dans les sondages\n- changement de la licence pour passer sur la plus libre GNU AFFERO GPL",
+			"img": "https://i.imgur.com/TJI3cXw.gif",
+			"timestamp" : 1576948553952
+		}
+	]
+
+}
+
