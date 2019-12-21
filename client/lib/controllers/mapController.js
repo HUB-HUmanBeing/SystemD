@@ -1,4 +1,5 @@
 import * as L from "leaflet";
+import Search from "leaflet-control-geocoder";
 import cryptoTools from "../cryptoTools";
 import mapParams from "./mapParams";
 import MiniMap from 'leaflet-minimap';
@@ -28,7 +29,6 @@ const mapController = {
             if (!projectMapParams.symEnc_center) {
                 projectMapParams.symEnc_center = JSON.stringify([47, 2.5])
             }
-
 
             this.map = L.map("map").setView(JSON.parse(projectMapParams.symEnc_center), projectMapParams.zoomLevel);
 
@@ -61,6 +61,23 @@ const mapController = {
                     featureGroup: drawnItems
                 }
             });
+            // Init search tools
+            this.search = new L.Control.Geocoder({
+                position: 'topleft',
+                showResultIcons: true,
+                defaultMarkGeocode: false
+            })
+            .on('markgeocode', (e) => {
+                this.map.fitBounds(e.geocode.bbox,this.map.getZoom());
+                var popup = L.popup()
+                    .setLatLng(e.geocode.center)
+                    .setContent(e.geocode.html)
+                    .openOn(this.map);
+                
+            })
+            .addTo(this.map);
+
+            //
             this.map.addControl(this.drawControl);
             this.promptMarkers(project._id, instance)
             this.promptActivityMarkers(project._id, instance)
@@ -68,11 +85,8 @@ const mapController = {
                 Meteor.setTimeout(()=>{
                     callback()
                 },300)
-
             }
         })
-
-
     },
     changeLayer(id) {
         let newLayer = L.tileLayer(
@@ -187,9 +201,9 @@ const mapController = {
                 console.log(err)
             } else {
                 instance.autorun(() => {
-                    let activities = Activity.find({projectId: projectId, symEnc_coordinates: {$exists: true}}).fetch()
+                    let activitiesToShow = Activity.find({projectId: projectId, symEnc_coordinates: {$exists: true}}).fetch()
                     let markersIdtoRemove = Object.keys(this.activities)
-                    activities.forEach((activity) => {
+                    activitiesToShow.forEach((activity) => {
                         if (!this.activities[activity._id]) {
 
                             this.activityMarker.default.showMarker(activity)
@@ -201,31 +215,27 @@ const mapController = {
                         markersIdtoRemove.splice(markersIdtoRemove.indexOf(activity._id), 1)
                     })
                     markersIdtoRemove.forEach(id => {
+                        this.activities[id].markerType='activityMarker'
                         this.removeMarker(this.activities[id])
                     })
                 })
             }
         })
-
-
     },
     removeMarker(marker) {
         if (marker) {
-            if (this[marker.markerType].default) {
+            if (typeof this[marker.markerType].default !== "undefined") {
                 this[marker.markerType].default.removeMarker(marker)
             } else {
                 this[marker.markerType].removeMarker(marker)
             }
         }
-
-
     },
     reset(){
         this.activities = []
         this.markers = []
         let mapInstance=this.map
         if (mapInstance && mapInstance.remove) {
-            console.log("in")
             mapInstance.off();
             mapInstance.remove();
         }

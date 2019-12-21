@@ -87,7 +87,7 @@ Template.projectMaps.onCreated(function () {
     Meteor.setTimeout(() => {
         mapController.initialize(Project.findOne(projectId), this, ()=>{
            this.autorun(()=>{
-            let activityToPositionate=Session.get("activityToPositionate")
+            let activityToPositionate=Session.get("activityToPositionate")["activity"]
                 if (activityToPositionate) {
                     let creationOptions = {activity: activityToPositionate}
                     mapController.startMarkerCreator('activityMarker', creationOptions, this.mapState)
@@ -120,6 +120,5 @@ Template.projectMaps.onDestroyed(function () {
     //add your statement here
     Session.set("activityToPositionate", false)
     mapController.reset()
-
 });
 

@@ -14,6 +14,7 @@
                     <a href="" class=" btn-floating btn" nextPeriod>
                         <i class="material-icons ">navigate_next</i>
                     </a>
+
                     <div class="fixed-action-btn calendarButtons ">
                         <a class="btn-floating btn waves-effect waves-light">
                             <i class=" material-icons {{#if compare currentView.name "=="
@@ -59,6 +60,14 @@
 
             </div>
             <div class="flex-auto relative">
+                {{#unless waitingActivity}}
+                    <a href=""
+                       class="btn-floating btn danger-bg waves-effect waves-light addBtn btn-large shadow tooltipped"
+                       data-position="left"
+                       data-delay="250"
+                       data-tooltip="{{__ ".addBtn"}}" addEvent><i
+                            class="material-icons large">add</i></a>
+                {{/unless}}
                 <div id="calendar" class="">
                 </div>
 
@@ -88,6 +97,7 @@
                 sideNav}}openedSideNav{{/if}}{{/if}}">
 
             <div id="sideCalendarContent" style="{{#unless isDesktop}}overflow: scroll;{{else}}{{/unless}}">
+
                 {{#Template.dynamic template=sideNav data=sideNavData}}{{/Template.dynamic}}
             </div>
 

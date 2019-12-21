@@ -106,7 +106,8 @@ const calendarController = {
 
                         }
                     })
-                } else {
+                } else if (Session.get("addEvent")){
+                    Session.set("addEvent",false)
                     let activity = new Activity()
                     let activityParams = {
                         start: info.start,
@@ -123,7 +124,6 @@ const calendarController = {
                         }
                     })
                 }
-
             },
             eventClick: (info) => {
                 this.getEventDetail(info.event.id)
@@ -146,26 +146,26 @@ const calendarController = {
     initializeEventRenderer(instance, project) {
         Meteor.subscribe("CalendarActivitiesByProject", projectController.getAuthInfo(project._id), project._id, err => {
             instance.autorun(() => {
-                let start = new Date().getTime()
                 let eventSource = {
                     id: "currentProjectEvents",
                     events: []
                 }
                 FlowRouter.watchPathChange()
                 let activities = Activity.find({projectId: project._id, start: {$exists: true}}).fetch()
+                
                 cryptoTools.decryptArrayOfObject(activities, {symKey: Session.get("currentProjectSimKey")}, decryptedActivities => {
-                    Meteor.setTimeout(() => {
                         decryptedActivities.forEach(activity => {
                             eventSource.events.push(this.getEventFromActivity(activity, FlowRouter.current().queryParams.activityId))
                         })
-                        let currentEventSource = this.calendar.getEventSourceById("currentProjectEvents")
-                        if (currentEventSource) {
-                            currentEventSource.remove()
-                        }
-                        this.calendar.addEventSource(eventSource)
-                    }, 100)
                 })
 
+                Meteor.setTimeout(() => {
+                    let currentEventSource = this.calendar.getEventSourceById("currentProjectEvents")
+                    if (currentEventSource) {
+                        currentEventSource.remove()
+                    }
+                    this.calendar.addEventSource(eventSource)
+                }, 100) 
             })
         })
 
@@ -282,18 +282,13 @@ const calendarController = {
         FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
     },
     closeSideNav() {
-
         let current = FlowRouter.current()
 
         delete current.queryParams.side
         delete current.queryParams.activityId
 
-
-        if(current.route.name === "project-calendar"){
-            FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, current.queryParams)
-        } else {
-            FlowRouter.go('/project/' + this.currentProject._id + '/tasks', {}, current.queryParams)
-        }
+        let route = current.route.name.substring(8)
+        FlowRouter.go('/project/' + current.params.projectId + '/'+route, {}, current.queryParams)
     },
     changePeriod(isPrevious) {
         $('.fc-' + (isPrevious ? 'prev' : 'next') + '-button').click()

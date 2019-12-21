@@ -2,7 +2,6 @@ Template.inviteMembers.helpers({
     //add you helpers here
     projectMembers: function () {
         return Template.currentData().invitableMembers
-
     },
     selectedMembers: function () {
         return Template.instance().selectedMembers.get()

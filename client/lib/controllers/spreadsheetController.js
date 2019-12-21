@@ -51,7 +51,7 @@ isFirst:true,
                 this.columns = this.defaultColumns()
                 this.saveColumns(this.datas, this.columns)
             }
-            if (spreadsheetContent.style) {
+            if (spreadsheetContent.style && spreadsheetContent.style != "") {
                 this.style = JSON.parse(spreadsheetContent.style)
 
             }
@@ -77,7 +77,7 @@ isFirst:true,
             editable: isEditable,
             columnDrag: true,
             allowRenameColumn:false,
-            toolbar: this.toolbar(isEditable),
+            toolbar: this.toolbar(isEditable, instance),
             search:true,
            // pagination:10,
 
@@ -129,7 +129,7 @@ Meteor.setTimeout(()=>{
         return res
     },
 
-    toolbar(isEditable) {
+    toolbar(isEditable, instance) {
         let commonItems = [
             {
                 type: 'i',

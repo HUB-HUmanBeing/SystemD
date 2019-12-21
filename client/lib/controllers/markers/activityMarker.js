@@ -56,6 +56,7 @@ const activityMarker = {
         this.addMarker = (e) => {
             this.editMarkerCoordinates(options, [e.latlng.lat, e.latlng.lng])
             this.stop()
+            this.reroute(options.activity._id)
             mapState.set({})
         }
         mapController.map.on('click', this.addMarker)
@@ -89,9 +90,12 @@ const activityMarker = {
             element.removeEventListener('mousemove', this.mouseFollower)
             element.remove();
         }
-        Session.set("activityToPositionate", false)
-        FlowRouter.go("/project/"+FlowRouter.current().params.projectId+"/maps")
+    },
+    reroute(activityId){   
+        let route = Session.get("activityToPositionate")["from"].substring(8);
 
+        Session.set("activityToPositionate", false)
+        FlowRouter.go("/project/"+FlowRouter.current().params.projectId+"/"+route+"?side=activityDetail&activityId="+activityId)
     },
     showMarker(activity) {
         cryptoTools.decryptObject(activity, {symKey: Session.get("currentProjectSimKey")}, decryptedIconMarker => {
