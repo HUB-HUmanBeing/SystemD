@@ -22,7 +22,7 @@
     },
     "maxFilesSize": 524288000,
     "maxOneFile": 15728640,
-    "newsURL": "news/newsFeed.json"
+    "newsURL": "https://raw.githubusercontent.com/HUB-HUmanBeing/SystemD/master/public/news/newsFeed.json"
   },
   "webpushMail": "test@test.com",
   "privateVapidKey": "",

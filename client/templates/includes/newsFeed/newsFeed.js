@@ -7,7 +7,7 @@ Template.newsFeed.helpers({
         return Template.instance().isOpen.get()
     },
     isUpToDate: function () {
-        return false // Template.instance().isUpToDate.get()
+        return  Template.instance().isUpToDate.get()
     },
     newsArray: function () {
         return Template.instance().newsArray.get()
@@ -20,9 +20,6 @@ Template.newsFeed.events({
         instance.isOpen.set(true);
         instance.isUpToDate.set(true);
         window.localStorage.setItem('newsFeedHist', Date.now());
-        if(instance.newsArray.get().length == 0){
-
-        }
     }
 })
 
@@ -35,14 +32,10 @@ Template.newsFeed.onCreated(function () {
 
     let url = Meteor.isDevelopment ? "http://localhost:3000/news/newsFeed.json" :Meteor.settings.public.newsURL
     url +="?preventCache="+Date.now()
-    console.log(url)
     $.get(
         url ,
         (newsJson) => {
-            //TODO marche pas à cause de la mise en cache de FF
-           // console.log(this.newsJson['lastUpdate'], this.lastView, Date.now());
-            console.log(newsJson)
-            if (newsJson['lastUpdate'] < this.lastView) {
+            if (newsJson['lastUpdate'] > this.lastView) {
                 this.isUpToDate.set(false);
             }
             let newsArray = newsJson['newsArray']
@@ -50,7 +43,6 @@ Template.newsFeed.onCreated(function () {
                 newsArray[i].firstWords = news.content.substr(0,160)+(news.content.length>160 ?" ...":"")
             })
             this.newsArray.set(newsArray)
-            console.log(this.newsArray.get())
         },
         'json'
     ).fail(function(err) {
