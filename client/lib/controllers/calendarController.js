@@ -106,7 +106,8 @@ const calendarController = {
 
                         }
                     })
-                } else {
+                } else if (Session.get("addEvent")){
+                    Session.set("addEvent",false)
                     let activity = new Activity()
                     let activityParams = {
                         start: info.start,
@@ -123,7 +124,6 @@ const calendarController = {
                         }
                     })
                 }
-
             },
             eventClick: (info) => {
                 this.getEventDetail(info.event.id)
@@ -146,26 +146,26 @@ const calendarController = {
     initializeEventRenderer(instance, project) {
         Meteor.subscribe("CalendarActivitiesByProject", projectController.getAuthInfo(project._id), project._id, err => {
             instance.autorun(() => {
-                let start = new Date().getTime()
                 let eventSource = {
                     id: "currentProjectEvents",
                     events: []
                 }
                 FlowRouter.watchPathChange()
                 let activities = Activity.find({projectId: project._id, start: {$exists: true}}).fetch()
+                
                 cryptoTools.decryptArrayOfObject(activities, {symKey: Session.get("currentProjectSimKey")}, decryptedActivities => {
-                    Meteor.setTimeout(() => {
                         decryptedActivities.forEach(activity => {
                             eventSource.events.push(this.getEventFromActivity(activity, FlowRouter.current().queryParams.activityId))
                         })
-                        let currentEventSource = this.calendar.getEventSourceById("currentProjectEvents")
-                        if (currentEventSource) {
-                            currentEventSource.remove()
-                        }
-                        this.calendar.addEventSource(eventSource)
-                    }, 100)
                 })
 
+                Meteor.setTimeout(() => {
+                    let currentEventSource = this.calendar.getEventSourceById("currentProjectEvents")
+                    if (currentEventSource) {
+                        currentEventSource.remove()
+                    }
+                    this.calendar.addEventSource(eventSource)
+                }, 100) 
             })
         })
 
@@ -190,6 +190,9 @@ const calendarController = {
             }
         })
     },
+    stringFromTime(date) {
+        return (date.getHours() === 0 ? "00" : date.getHours()) + ":" + (date.getMinutes() === 0 ? "00" : date.getMinutes())
+    },
     getEventFromActivity(activity, focusedActivity) {
 
         let event
@@ -204,8 +207,8 @@ const calendarController = {
             }
         }
         if (activity.daysOfWeek.length) {
-            let startTime = activity.allDay ? null : activity.start.getHours() + ":" + activity.start.getMinutes()
-            let endTime = activity.allDay ? null : activity.end.getHours() + ":" + activity.end.getMinutes()
+            let startTime = activity.allDay ? null : this.stringFromTime(activity.start)
+            let endTime = activity.allDay ? null :this.stringFromTime(activity.end)
             event = {
                 id: activity._id,
                 title: (activity.symEnc_title ? activity.symEnc_title + " " : "") + __("projectCalendar.recurring"),
@@ -279,12 +282,13 @@ const calendarController = {
         FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
     },
     closeSideNav() {
-        let currentQueryParams = FlowRouter.current().queryParams
+        let current = FlowRouter.current()
 
-        delete currentQueryParams.side
-        delete currentQueryParams.activityId
-        FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
+        delete current.queryParams.side
+        delete current.queryParams.activityId
 
+        let route = current.route.name.substring(8)
+        FlowRouter.go('/project/' + current.params.projectId + '/'+route, {}, current.queryParams)
     },
     changePeriod(isPrevious) {
         $('.fc-' + (isPrevious ? 'prev' : 'next') + '-button').click()

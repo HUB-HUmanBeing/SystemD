@@ -1,6 +1,7 @@
 import cryptoTools from "../../../../../../../lib/cryptoTools";
 import projectController from "../../../../../../../lib/controllers/projectController";
 import ProjectFile from "../../../../../../../../imports/classes/ProjectFile";
+import Publication from "../../../../../../../../imports/classes/Publication";
 
 Template.showFileContent.helpers({
     //add you helpers here
@@ -24,7 +25,10 @@ Template.showFileContent.helpers({
     },
     focusedFile: function () {
         return Template.instance().focusedFile.get()
-    }
+    },
+    abortEdition: function () {
+        return Template.currentData().abortEdition
+    },
 });
 
 Template.showFileContent.events({
@@ -40,9 +44,13 @@ Template.showFileContent.onCreated(function () {
     //add your statement here
     this.focusedFile =  new ReactiveVar({})
     this.decryptedContent = new ReactiveVar(null)
-    cryptoTools.decryptObject(this.data.content, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
-        this.decryptedContent.set(decryptedContent)
+    this.autorun(()=>{
+        let  publication = Publication.findOne(this.data.id)
+        cryptoTools.decryptObject(publication.fileContent, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
+            this.decryptedContent.set(decryptedContent)
+        })
     })
+
     this.files = new ReactiveVar([])
     let projectId=FlowRouter.current().params.projectId
     Meteor.subscribe("publicationFiles",projectController.getAuthInfo(projectId), projectId, this.data.content.projectFileIds, (err)=>{

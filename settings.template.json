@@ -21,7 +21,8 @@
       "btc": "1Pi1TgDAe4N1CGvREUT3LC2pmo6yTx5zcE"
     },
     "maxFilesSize": 524288000,
-    "maxOneFile": 15728640
+    "maxOneFile": 15728640,
+    "newsURL": "https://raw.githubusercontent.com/HUB-HUmanBeing/SystemD/master/public/news/newsFeed.json"
   },
   "webpushMail": "test@test.com",
   "privateVapidKey": "",

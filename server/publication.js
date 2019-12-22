@@ -14,6 +14,7 @@ import MapMarkers from "../lib/collections/MapMarkers";
 import MapMarker from "../imports/classes/MapMarker";
 import Activities from "../lib/collections/Activities";
 import ProjectFiles from "../lib/collections/ProjectFiles";
+import Spreadsheets from "../lib/collections/Spreadsheets";
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
  **********************************/
@@ -344,3 +345,45 @@ Meteor.publish("projectFiles", function (authInfo, projectId, limit) {
         }
     )
 })
+Meteor.publish('spreadsheets', function (authInfo, projectId,  limit) {
+    check(authInfo, {memberId: String, userSignature: String})
+    check(projectId, String)
+    let currentProject = Project.findOne(projectId)
+    check(currentProject.isMember(authInfo), true)
+    check(limit, Number)
+
+    return Spreadsheets.find({
+            "$and": [
+                {projectId: projectId}
+            ]
+        }, {
+            limit: limit,
+            sort: {
+                lastActivity: -1
+            },
+            fields: {
+                _id: 1,
+                symEnc_name: 1,
+                lastActivity: 1,
+                projectId:1,
+
+            }
+        }
+    )
+})
+Meteor.publish('singleSpreadsheet', function (authInfo, spreadsheetId, projectId) {
+
+    check(spreadsheetId, String)
+    check(projectId, String)
+    let SpreadsheetCursor = Spreadsheets.find({_id: spreadsheetId})
+    check(authInfo, {memberId: String, userSignature: String})
+
+    if(SpreadsheetCursor.fetch()[0]){
+        projectId = SpreadsheetCursor.fetch()[0].projectId
+        let currentProject = Project.findOne(projectId)
+        check(currentProject.isMember(authInfo), true)
+        return SpreadsheetCursor
+    }
+
+})
+

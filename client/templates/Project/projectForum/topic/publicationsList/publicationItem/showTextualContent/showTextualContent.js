@@ -1,4 +1,5 @@
 import cryptoTools from "/client/lib/cryptoTools";
+import Publication from "../../../../../../../../imports/classes/Publication";
 
 Template.showTextualContent.helpers({
     //add you helpers here
@@ -7,7 +8,10 @@ Template.showTextualContent.helpers({
     },
     refreshScrollbar: function () {
         return Template.currentData().refreshScrollbar
-    }
+    },
+    abortEdition: function () {
+        return Template.currentData().abortEdition
+    },
 });
 
 Template.showTextualContent.events({
@@ -17,9 +21,13 @@ Template.showTextualContent.events({
 Template.showTextualContent.onCreated(function () {
     //add your statement here
     this.decryptedContent = new ReactiveVar(null)
-    cryptoTools.decryptObject(this.data.content, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
-        this.decryptedContent.set(decryptedContent)
+    this.autorun(()=>{
+       let  publication = Publication.findOne(this.data.id)
+        cryptoTools.decryptObject(publication.textualContent, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
+            this.decryptedContent.set(decryptedContent)
+        })
     })
+
 
 });
 

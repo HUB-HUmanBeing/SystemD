@@ -5,6 +5,9 @@
   background-color: $contrasted-bg;
   .card{
     margin-bottom: 50px;
+    img{
+     // border: 4px solid $focus-color
+    }
   }
   .card-content p, .collapsible li{
     opacity: 0;

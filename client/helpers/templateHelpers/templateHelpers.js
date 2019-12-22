@@ -47,6 +47,9 @@ Template.registerHelper('isArray', function (el) {
 })
 
 Template.registerHelper('formatDate', function (date, capitalize) {
+    if(!isNaN(date)){
+        date = new Date(date)
+    }
     let calendarDate = moment(date).calendar();
     if (capitalize) {
         return calendarDate.charAt(0).toUpperCase() + calendarDate.slice(1)

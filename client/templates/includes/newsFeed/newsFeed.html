@@ -1,0 +1,28 @@
+<template name="newsFeed">
+
+    <div id="openModalNewsFeedContainer" openModal>
+        <a class="waves-effect waves-light btn modal-trigger news " href="#modalNewsFeed">
+            <i class="material-icons left   {{#unless isUpToDate}} news-incoming{{/unless}}">rss_feed</i>
+            {{__ ".btnLabel"}}
+        </a>
+
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modalNewsFeed" class="modal contrasted-bg" style="{{#if isDesktop}} overflow: hidden;{{/if}}">
+        <div class="modal-content small-padding contrasted-bg main-color" style="{{#if isDesktop}}  width: calc(100% + 15px);
+                height: calc(100% + 15px);{{/if}}">
+            <h5 style="text-transform: uppercase;">{{__ ".btnLabel"}}</h5>
+            <div class="newsList">
+                {{#if isOpen}}
+                    {{#each news in newsArray}}
+                        {{>newsItem news=news}}
+
+                    {{/each}}
+
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+</template>

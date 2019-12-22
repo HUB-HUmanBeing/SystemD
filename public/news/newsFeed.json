@@ -1,0 +1,23 @@
+{
+	"lastUpdate": "1576949653952",
+	"newsArray": [
+		{
+			"title": "Sortie du module de news !",
+			"content": "Une fonctionnalité qui nous tenait à cœur depuis un moment : pouvoir vous tenir informés au jour le jour des actualités du projet. Lorsque de nouvelles news sont disponibles, vous verrez le petit logo news en bas à droite clignoter, et ainsi la (petite) équipe de dev que nous sommes pourra communiquer avec vous sur les avancées du projet !\nMerci au développeur rencontré cet été qui a participé grandement à rendre cette fonctionnalité possible, et qui contribue grandement à ce projet depuis peu.",
+			"img": "https://i.imgur.com/N04s1mh.gif",
+			"timestamp" : 1576949653952
+		},{
+			"title": "System-d.org s'améliore de jour en jour",
+			"content": "Grâce aux idées que vous nous faites remonter, System-d.org s'améliore de jour en jour ! Aujourd'hui, déploiement des derniers petits ajouts :\n\n- Débuggage du scroll de la todo list sur firefox\n- Ajout d'un label au dessus des groupes de tâches dans la todo list\n- Possibilité de faire une recherche sur la carte\n- Possibilité d'uploader un tableur existant dans les tableurs de vos projets\n- Possibilité de cocher plusieurs items dans les sondages\n- Changement de la licence pour passer sur la plus libre GNU AFFERO GPL",
+			"img": "https://i.imgur.com/TJI3cXw.gif",
+			"timestamp" : 1576949653952
+		},{
+			"title": "System-d.org disponible en espagnol !",
+			"content": "Un grand merci aux copains et copines qui ont œuvré pour traduire system-d.org en ESPAGNOL !\n\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\uD83C\uDDE8\uD83C\uDDFA\uD83C\uDDEA\uD83C\uDDF8\uD83C\uDDE8\uD83C\uDDF4\uD83C\uDDE8\uD83C\uDDF1\uD83C\uDDF2\uD83C\uDDFD\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\n\nla plateforme libre de projet chiffrée est désormais disponible en français, anglais et espagnol !",
+			"img": "https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/78974287_451685522215982_3229203463946633216_n.png?_nc_cat=110&_nc_eui2=AeG_hX3_RIh8qOYCuE85G4RkY9hD1wuv__xKhnthfU9aQ674lN7or-q4ChcwYLegLy5Cf_XTxmPqSvJxbYG6O9LZiym_jEcDk4MzKuPGpE4iYw&_nc_oc=AQnHzKMY6IYthUrag0dMYo-czcHnIjoyGz1o2EH-VBxdzqWR7CsSatnzACeZpIdKOeGahAqpAPkvJrsIDEAO2tk-&_nc_ht=scontent-cdt1-1.xx&oh=26eb367fc9419c7b6a187cceca092969&oe=5E698C0A",
+			"timestamp" : 1576949653952
+		}
+	]
+
+}
+

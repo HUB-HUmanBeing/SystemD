@@ -1,0 +1,17 @@
+<template name="newsItem">
+    <div class="card shadow">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{news.img}}">
+        </div>
+        <div class="card-content main-bg">
+            <span class="card-title activator plus-color">{{news.title}}<i class="material-icons right">more_vert</i></span>
+    <i class="minus-color">{{formatDate news.timestamp}}</i>
+            <p class="main-color infoQuotes">{{news.firstWords}}</p>
+        </div>
+        <div class="card-reveal main-bg">
+            <span class="card-title plus-color"><i class="material-icons right plus-color">close</i>{{news.title}}</span>
+            <i class="minus-color">{{formatDate news.timestamp}}</i>
+            <p class="main-color infoQuotes">{{news.content}}</p>
+        </div>
+    </div>
+</template>

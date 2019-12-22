@@ -41,26 +41,43 @@
             {{else}}
 
                 {{#if showTopic}}
-                    <div id="topicContainer" class="flex-auto beautify-scroll-container center-align"
+                    <div id="topicContainer" class="flex-auto beautify-scroll-container center-align {{#if
+                            isSpreadsheet}} full-height spreadsheetContainer {{else}} topicContainer{{/if}}"
                          style="{{#if isDesktop}}
                          height:  100vh ;
-                                 padding: 40px 0 300px 0;
-                         {{else}}
-                             {{#if isTablet}}
-                             margin: 0 10%;
+                             {{#if isSpreadsheet}}
+
+                             padding: 40px 0 0px 0;
+                             {{else}}
+                             padding: 40px 0 300px 0;
                              {{/if}}
-                                 padding: 30px 0 300px 0;
+                         {{else}}
+
+                             {{#if isSpreadsheet}}
+                             height:  calc(100vh + 30px) !important;
+                                     padding: 40px 0 0px 0;
+                             {{else}}
+                                 {{#if isTablet}}
+                                 margin: 0 10%;
+                                 {{/if}}
+                                     padding: 30px 0 300px 0;
+                             {{/if}}
+
                          {{/if}}"
                     >
-                        <div class="topicSubContainer center-align">
-                            {{>topic refreshScrollbar=refreshScrollbar}}
+                        <div class="topicSubContainer center-align {{#if isSpreadsheet}} full-height {{/if}}">
+                            {{#if isSpreadsheet}}
+                                {{>spreadsheet refreshScrollbar=refreshScrollbar}}
+                            {{else}}
+                                {{>topic refreshScrollbar=refreshScrollbar}}
+                            {{/if}}
                         </div>
 
                     </div>
                 {{/if}}
             {{/if}}
         </div>
-        {{#if isDesktop}}
+        {{#if compare isDesktop "&!" isSpreadsheet}}
             <div class="blurBottom"></div>
         {{/if}}
     </div>

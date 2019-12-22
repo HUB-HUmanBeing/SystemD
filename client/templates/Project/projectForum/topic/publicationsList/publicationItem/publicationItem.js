@@ -11,6 +11,16 @@ Template.publicationItem.helpers({
     },
     showDelete: function () {
         return Template.instance().showDelete.get()
+    },
+    isEditing: function () {
+        return Template.instance().isEditing.get()
+    },
+    abortEdition: function () {
+        let instance = Template.instance()
+        return function (){
+               instance.isEditing.set(false)
+
+        }
     }
 });
 
@@ -19,6 +29,10 @@ Template.publicationItem.events({
     'click [showDelete]': function (event, instance) {
       event.preventDefault()
       instance.showDelete.set(true)
+    },
+    'click [edit]': function (event, instance) {
+      event.preventDefault()
+      instance.isEditing.set(true)
     },
     'click [deletePublication]': function (event, instance) {
         event.preventDefault()
@@ -30,12 +44,14 @@ Template.publicationItem.events({
             }
 
         })
-    }
+    },
+
 });
 
 Template.publicationItem.onCreated(function () {
     //add your statement here
     this.showDelete = new ReactiveVar(false)
+    this.isEditing = new ReactiveVar(false)
 
 });
 

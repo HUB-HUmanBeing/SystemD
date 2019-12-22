@@ -118,34 +118,50 @@ Publication.extend({
             })
         },
 
-        chooseProposition(authInfo, index) {
+        chooseProposition(authInfo, i) {
             check(authInfo, {memberId: String, userSignature: String})
-            check(index, Number)
+            check(i, Number)
             let publication = Publication.findOne(this._id)
             let currentProject = Project.findOne(publication.projectId)
             check(currentProject.isMember(authInfo), true)
 
-            publication.pollContent.options.forEach((option, i) => {
+            let option = publication.pollContent.options[i]
 
-                let memberIndex = option.checkedBy.indexOf(authInfo.memberId)
-                if (memberIndex > -1) {
-                    publication.pollContent.options[i].checkedBy.splice(memberIndex, 1)
-                }
-                if (index === i) {
-                    publication.pollContent.options[i].checkedBy.push(authInfo.memberId)
-                }
-            })
+            let memberIndex = option.checkedBy.indexOf(authInfo.memberId)
+            if (memberIndex > -1) {
+                publication.pollContent.options[i].checkedBy.splice(memberIndex, 1)
+            } else {
+                publication.pollContent.options[i].checkedBy.push(authInfo.memberId)
+            }
             return publication.save()
         },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
-
             let publication = Publication.findOne(this._id)
             let currentProject = Project.findOne(publication.projectId)
             check(currentProject.isMember(authInfo), true)
             check(authInfo.memberId === publication.createdBy, true)
             return publication.removeRecursive((err) => {
             })
+        },
+        editPublication(authInfo, symEnc_text) {
+            check(authInfo, {memberId: String, userSignature: String})
+            check(symEnc_text, String)
+            let publication = Publication.findOne(this._id)
+            let currentProject = Project.findOne(publication.projectId)
+            check(currentProject.isMember(authInfo), true)
+            check(authInfo.memberId === publication.createdBy, true)
+            if (publication.fileContent) {
+                publication.fileContent.symEnc_text = symEnc_text
+            }
+            if (publication.pollContent) {
+                publication.pollContent.symEnc_text = symEnc_text
+            }
+            if (publication.textualContent) {
+                publication.textualContent.symEnc_text = symEnc_text
+            }
+
+            return publication.save()
         },
         toggleLike(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
@@ -174,8 +190,8 @@ Publication.extend({
             })
             publication.pinned = !publication.pinned
             return publication.save(() => {
-                if(previousPinnedPub){
-                    previousPinnedPub.pinned=false
+                if (previousPinnedPub) {
+                    previousPinnedPub.pinned = false
                     previousPinnedPub.save()
                 }
             })

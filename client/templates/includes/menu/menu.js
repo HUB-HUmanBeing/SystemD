@@ -3,6 +3,7 @@ import hubCrypto from "/client/lib/hubCrypto";
 import BeautifyScrollbar from 'beautify-scrollbar';
 import pushController from "../../../lib/controllers/pushController";
 import ProjectNotification from "../../../../imports/classes/ProjectNotification";
+import i18n from "meteor/universe:i18n";
 
 Template.menu.helpers({
     //tableau de tout ce qu'il y a dans le menu, permettant de pas trop repeter de html en bouclant dessus
@@ -61,7 +62,9 @@ Template.menu.onCreated(function () {
         }
         document.title = title
 
+
     })
+
 });
 
 Template.menu.onRendered(function () {
@@ -70,10 +73,14 @@ Template.menu.onRendered(function () {
         $("#userOptionsBtn").dropdown({
             belowOrigin: true
         });
-    }, 1000)
+    }, 1500)
     Meteor.setTimeout(() => {
         this.showInfo.set(true)
+        $("#userOptionsBtn").dropdown({
+            belowOrigin: true
+        });
     }, 2500)
+
 
 });
 

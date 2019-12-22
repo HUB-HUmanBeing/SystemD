@@ -12,7 +12,8 @@ import Publications from "../../../lib/collections/Publications";
 import Comments from "../../../lib/collections/Comments";
 import ProjectFiles from "../../../lib/collections/ProjectFiles";
 import ProjectFile from "../../../imports/classes/ProjectFile";
-
+import ProjectNotifications from "../../../imports/classes/ProjectNotification";
+import Spreadsheets from "../../../lib/collections/Spreadsheets";
 
 Project.extend({
     meteorMethods: {
@@ -64,22 +65,31 @@ Project.extend({
          * @param authInfo
          * @param userProjectIndex
          */
-        deleteProject(authInfo, userProjectIndex) {
+        deleteProject(authInfo, hashedAdminSignature) {
             check(Meteor.userId(), String)
             check(authInfo, {memberId: String, userSignature: String})
-            check(userProjectIndex, Number)
+            check(hashedAdminSignature, String)
             let currentProject = Project.findOne(this._id)
             check(currentProject.isAdmin(authInfo), true)
             check(currentProject.isDeletable(), true)
             let currentUser = User.findOne(Meteor.userId())
-            currentUser.private.projects.splice(userProjectIndex, 1)
+            let found = false
+            currentUser.private.projects.forEach((userProjet,i)=>{
+                if(userProjet.hashedAdminSignature === hashedAdminSignature){
+                    currentUser.private.projects.splice(i,  1)
+                    found = true
+                }
+            })
 
+            check(found, true)
             Topics.remove({projectId: currentProject._id})
             Comments.remove({projectId: currentProject._id})
             Publications.remove({projectId: currentProject._id})
             MapMarkers.remove({projectId: currentProject._id})
             Invitations.remove({projectId: currentProject._id})
             Activities.remove({projectId: currentProject._id})
+            ProjectNotifications.remove({projectId: currentProject._id})
+            Spreadsheets.remove({projectId: currentProject._id})
 let files = ProjectFile.find({projectId: currentProject._id}).fetch()
             files.forEach(file=>{
                 file.removeAndDeleteFile()

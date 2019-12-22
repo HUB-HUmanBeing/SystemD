@@ -20,6 +20,12 @@ Template.langButton.helpers({
                 langFormat: 'en-US',
                 langIso639: 'EN',
                 selected: actualLang === 'en-US'
+            },
+            {
+                name: "Español",
+                langFormat: 'es-ES',
+                langIso639: 'ES',
+                selected: actualLang === 'es-ES'
             }
         ]
     }
@@ -27,21 +33,20 @@ Template.langButton.helpers({
 });
 
 Template.langButton.events({
-    'click [changeLanguage]':function (event, instance) {
-      console.log("ok")
-    },
     //when we change the language button
     'change [changeLanguage]': function (event, instance) {
         // we store the value of new language, for example: fr-FR, in localStorage
-        let newLang = event.target.value
+        let newLang = event.target.value;
+        let user= User.findOne(Meteor.userId());
+        if(user){
+            user.callMethod("changeLang", newLang, (err,res)=>{
+                if(err){console.log(err);}
+            });
+        }
         localStorage.setItem('lang', newLang);
-        moment.locale(newLang)
-        // and we set the new language in i18n retrieving the value in localStorage(newLang)
         i18n.setLocale(newLang);
-
+        moment.locale(newLang);
     },
-
-
 });
 
 Template.langButton.onCreated(() => {
@@ -51,10 +56,7 @@ Template.langButton.onCreated(() => {
 
 Template.langButton.onRendered(() => {
     // add your statement here
-
-
     $('#langButton').material_select();
-
 });
 
 Template.langButton.onDestroyed(() => {

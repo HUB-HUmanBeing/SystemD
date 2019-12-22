@@ -20,6 +20,22 @@ Template.tasksList.events({
 
 Template.tasksList.onCreated(function () {
     //add your statement here
+    this.bs ={}
+    this.refreshTaskScrollbar = () => {
+        // let types = ["todo", "calendar", "done", "waiting"]
+        // types.forEach(type=>{
+        //     let scrollContainer = document.getElementById('scrollContainer-' + type)
+        //
+        //     if (scrollContainer && Meteor.Device.isDesktop()) {
+        //
+        //         if (this.bs[type]) {
+        //             this.bs[type].destroy()
+        //         }
+        //         this.bs[type] = new BeautifyScrollbar('#scrollContainer-' + type);
+        //     }
+        // })
+
+    }
     this.tasks = new ReactiveVar([])
     let type = this.data.type
     this.isDroppable = function (activity) {
@@ -58,6 +74,7 @@ Template.tasksList.onCreated(function () {
             }
         })
         this.tasks.set(tasks)
+
     }
     this.autorun(() => {
         let colorSelector = {"$in": Template.currentData().selectedColors}
@@ -83,7 +100,7 @@ Template.tasksList.onCreated(function () {
                     ],
 
 
-                    $and:[{end: {$lte: new Date()}},{end:{$exists: true}}],
+                    $and: [{end: {$lte: new Date()}}, {end: {$exists: true}}],
                     color: colorSelector
                 }
                 break
@@ -92,9 +109,9 @@ Template.tasksList.onCreated(function () {
                 //cursor = {projectId:projectId, start: {"$exists": false}, done: true}
                 break
         }
-if(Template.currentData().myTasks){
-    cursor.participants = {$elemMatch : {$eq: projectController.getCurrentMemberId(projectId)}}
-}
+        if (Template.currentData().myTasks) {
+            cursor.participants = {$elemMatch: {$eq: projectController.getCurrentMemberId(projectId)}}
+        }
         let taskList = Activity.find(cursor).fetch()
         if (taskList.length) {
             cryptoTools.decryptArrayOfObject(taskList, {symKey: Session.get("currentProjectSimKey")}, decryptedActivities => {
@@ -106,18 +123,11 @@ if(Template.currentData().myTasks){
         } else {
             this.tasks.set([])
         }
-        Meteor.setTimeout(() => {
-            let scrollContainer = document.getElementById('scrollContainer-' + type)
-            if (scrollContainer && Meteor.Device.isDesktop()) {
-                if (this.bs) {
-                    this.bs.destroy()
-                }
-                this.bs = new BeautifyScrollbar('#scrollContainer-' + type);
-            }
-        }, 500)
 
+        Meteor.setTimeout(this.refreshTaskScrollbar, 600)
+        Meteor.setTimeout(this.refreshTaskScrollbar, 1600)
+        Meteor.setTimeout(this.refreshTaskScrollbar, 5600)
     })
-
 });
 
 Template.tasksList.onRendered(function () {

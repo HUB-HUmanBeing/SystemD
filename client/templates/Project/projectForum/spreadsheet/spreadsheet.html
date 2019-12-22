@@ -1,0 +1,15 @@
+<template name="spreadsheet">
+    {{#unless isRefreshing}}
+        <div id="" class="full-height flex-auto spreadsheetSubContainer" style="{{#if isDesktop}}padding-top:10px{{/if}}">
+
+            {{#if currentSpreadsheet}}
+                {{>spreadsheetHeader currentSpreadsheet=currentSpreadsheet refreshRender=refreshRender}}
+{{#if currentSpreadsheet.currentEditor}}
+                {{>spreadsheetContent currentSpreadsheet=currentSpreadsheet}}
+    {{/if}}
+            {{/if}}
+
+        </div>
+    {{/unless}}
+
+</template>

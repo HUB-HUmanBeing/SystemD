@@ -1,0 +1,44 @@
+<template name="landingCounter">
+    <div class="container ">
+        <div class="row">
+            <div class="col s12 m7">
+                <div class="row flex  flex-middle">
+                    <div class="center-align">
+                        <img src="/images/icon/user_icon.png" alt="" class="contrasted-bg shadow">
+                    </div>
+                    <div class="number">
+                        <h2 class="hand-police main-color">{{counters.members}}</h2>
+                    </div>
+                    <div class="flex-auto flex-middle">
+                        <p class="hand-police main-color" style="font-size: 1.3em"> {{__ '.members'}}</p>
+                    </div>
+
+                </div>
+                <div class="row flex  flex-middle">
+                    <div class="center-align">
+                        <img src="/images/icon/project_icon.png" alt="" class="contrasted-bg shadow">
+                    </div>
+                    <div class="number">
+                        <h2 class="hand-police main-color">{{counters.projects}}</h2>
+                    </div>
+                    <div class="flex-auto flex-middle">
+                        <p class="hand-police main-color" style="font-size: 1.3em"> {{__ '.projects'}}</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col s12 m5">
+                <div class="row center-align">
+                    {{#unless currentUserId}}
+                        <p class="infoQuotes main-color left-alignr">{{__ '.joinToo'}}</p>
+                        <img src="/images/icon/systemd-logo-white.png" alt=""><br>
+                        <a href="/login" class="center-align waves-effect waves-light btn-large focus-color "><i class=" material-icons left">account_circle</i>{{__ '.signin'}}</a>
+                    {{/unless}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="hr"></div>
+    </div>
+</template>

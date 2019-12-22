@@ -12,7 +12,7 @@ Template.topicHeader.helpers({
     },
     isEditable: function () {
         let projectId = FlowRouter.current().params.projectId
-        let isCreator = Template.currentData().currentTopic.createdBy === projectController.getCurrentUserProject(projectId).memberId
+        let isCreator = Template.currentData().currentTopic.createdBy === projectController.getCurrentUserProject(projectId).asymEnc_memberId
         let isAdmin= projectController.isAdmin(projectId)
 
         return  !Template.currentData().currentTopic.isMainTopic &&(isAdmin || isCreator)

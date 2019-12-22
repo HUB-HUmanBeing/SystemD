@@ -1,10 +1,25 @@
+
 @import "{}/client/scss/variables.scss";
 
 
 #projectCalendar {
   width: 100%;
   position: relative;
+  .addBtn {
+    background-color: $danger-text;
+    position: absolute;
+    //bottom: calc(5em - 28px);
+    right: 20px;
+    bottom:50px;
+    margin-top: -7px;
+    margin-left: 10px;
+    margin-right: 10px;
+    z-index: 600;
 
+    i {
+      font-size: 2.6em;
+    }
+  }
   &.desktopProjectCalendar {
     height: 100vh;
 
@@ -92,6 +107,8 @@
           color: $plus-color;
         }
       }
+
+
 
       .calendarButtons {
         position: relative;

@@ -1,14 +1,16 @@
 @import "{}/client/scss/variables.scss";
 //@import "{}/client/scss/pluginsLib/leaflet.css";
 
-
+.chromeNiceTasks{
+  height: 100vh;
+}
 #projectTasks {
   width: 100%;
   position: relative;
   color: $main-color;
 
   &.desktopProjectTasks {
-    height: 100vh;
+
   }
 
   &.mobileProjectTasks {
@@ -94,7 +96,8 @@ box-shadow: none !important;
 
         .tasksGroup {
           display: block;
-          overflow: scroll;
+          //overflow-y: scroll;
+          overflow:hidden;
 
           .addBtn {
             margin: 0 10% !important;
@@ -250,7 +253,7 @@ left: 6px;
           background: linear-gradient(to bottom, $contrasted-plus-bg 0%, $main-bg 100%);
           height: 100%;
           flex-direction: column;
-
+overflow: hidden;
           .groupHead {
             text-align: center;
             font-size: 0.9em;

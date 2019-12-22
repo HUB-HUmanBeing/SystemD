@@ -109,6 +109,11 @@ Template.projectCalendar.events({
         let activity = Session.get("waitingActivity")
         FlowRouter.go('/project/'+activity.projectId+'/tasks')
         Session.set("waitingActivity", false)
+    },
+    'click [addEvent]': function (event) {
+        event.preventDefault()
+        Session.set("addEvent",true)
+        Materialize.toast(__('projectCalendar.setActivityInfo'), 5000, 'toastOk')
     }
 });
 
@@ -142,5 +147,6 @@ Template.projectCalendar.onRendered(function () {
 Template.projectCalendar.onDestroyed(function () {
     //add your statement here
    Session.set("waitingActivity", false)
+   Session.set("addEvent",false)
 });
 

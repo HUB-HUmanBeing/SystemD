@@ -1,0 +1,18 @@
+<template name="spreadsheetItem">
+    <li class="collection-item topicItem {{#if isCurrentSpreadsheet }}currentTopic{{/if}}"
+        style="padding: 8px 20px !important; "
+
+    >
+        <a href="/project/{{spreadsheet.projectId}}/forum?spreadsheetId={{spreadsheet._id}}" class="">
+        <div class="flex">
+            <div class="flex-auto elipsis ">
+                <i class="material-icons left" style="transform: rotate(90deg)">view_comfy</i><span>
+                {{spreadsheet.symEnc_name}}
+                </span>
+            </div>
+        </div>
+        </a>
+
+
+    </li>
+</template>
