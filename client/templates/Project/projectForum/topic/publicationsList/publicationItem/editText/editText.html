@@ -1,0 +1,24 @@
+<template name="editText">
+    <div class="row no no-margin ">
+        <form class="col s12 no-padding" id="newPublicationForm" editPublicationForm>
+            {{>beautyfullTextarea id=textareaId  placeholder=(__ ".placeholder") minheight="10vh" content=content}}
+            <div class="row right-align no-margin">
+                <div class="col s12 no-padding">
+                    {{#unless isCreating}}
+                    <a class="btn btn-danger waves-effect waves-light" style="margin-bottom: 10px !important;" abort>
+                        <i class="material-icons left">clear</i>{{__ ".abort"}}
+                    </a>
+                    {{/unless}}
+                    <button class="btn btnStandard waves-effect waves-light" style="margin-bottom: 10px !important;">
+                        {{#if isCreating}}
+                            {{>circleSpinner}}
+                        {{else}}<i class="material-icons left">send</i>
+                        {{/if}}{{__ ".publish"}}</button>
+
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</template>

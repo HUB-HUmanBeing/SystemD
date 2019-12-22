@@ -1,8 +1,13 @@
 <template name="showPollContent">
     <div class="showPollContent">
         {{#if decryptedSymEnc_text}}
-            {{>smartContent content=decryptedSymEnc_text  refreshScrollbar= refreshScrollbar id=id}}
 
+            {{#if isEditing}}
+                {{>editText content=decryptedSymEnc_text refreshScrollbar=refreshScrollbar id=id abortEdition=abortEdition}}
+            {{else}}
+
+                    {{>smartContent content=decryptedSymEnc_text  refreshScrollbar= refreshScrollbar id=id}}
+            {{/if}}
             <ul class="poll collection">
                 {{#each option in pollOptions}}
                     <li class="collection-item transparent no-padding">

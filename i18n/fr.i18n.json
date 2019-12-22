@@ -484,9 +484,15 @@
   },
   "publicationItem": {
     "delete": "Supprimer",
+    "edit": "Editer",
     "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
     "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
     "pinnedPublicationHead": "Publication épinglée"
+  },
+  "editText": {
+    "placeholder": "Contenu de votre publication ...",
+    "abort": "Annuler",
+    "publish": "Enregistrer"
   },
   "showPollContent": {
     "answers": "participants"

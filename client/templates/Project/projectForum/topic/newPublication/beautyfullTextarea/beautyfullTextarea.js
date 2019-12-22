@@ -2,6 +2,9 @@ Template.beautyfullTextarea.helpers({
     //add you helpers here
     showEmojiPicker: function () {
         return Template.instance().showEmojiPicker.get()
+    },
+    initialContent: function () {
+        return Template.instance().data.content
     }
 });
 
@@ -26,9 +29,9 @@ Template.beautyfullTextarea.onCreated(function () {
 
 Template.beautyfullTextarea.onRendered(function () {
     //add your statement here
-    $('#newPublicationText').trigger('autoresize');
-    $('#newPublicationText').characterCounter();
-    $('#newPublicationText').focus()
+    $('#'+this.data.id).trigger('autoresize');
+    $('#'+this.data.id).characterCounter();
+    $('#'+this.data.id).focus()
 });
 
 Template.beautyfullTextarea.onDestroyed(function () {
