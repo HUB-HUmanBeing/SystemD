@@ -30,7 +30,11 @@
     </div>
 
 
-    {{#if decryptedContent}}
-        {{>smartContent content=decryptedContent.symEnc_text  refreshScrollbar= refreshScrollbar id=id}}
+    {{#if isEditing}}
+        {{>editText content=decryptedContent.symEnc_text refreshScrollbar=refreshScrollbar id=id abortEdition=abortEdition}}
+    {{else}}
+        {{#if decryptedContent}}
+            {{>smartContent content=decryptedContent.symEnc_text  refreshScrollbar=refreshScrollbar id=id}}
+        {{/if}}
     {{/if}}
 </template>

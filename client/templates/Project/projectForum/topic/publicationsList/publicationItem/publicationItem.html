@@ -38,21 +38,25 @@
         {{/unless}}
         <div class="publicationContent left-align">
             {{#if compare publication.type "===" "textualContent"}}
-                {{>showTextualContent content=publication.textualContent  refreshScrollbar=refreshScrollbar id=publication._id}}
+                {{>showTextualContent content=publication.textualContent  refreshScrollbar=refreshScrollbar id=publication._id isEditing=isEditing abortEdition=abortEdition}}
             {{/if}}
             {{#if compare publication.type "===" "pollContent"}}
-                {{>showPollContent content=publication.pollContent  refreshScrollbar=refreshScrollbar id=publication._id }}
+                {{>showPollContent content=publication.pollContent  refreshScrollbar=refreshScrollbar id=publication._id isEditing=isEditing abortEdition=abortEdition}}
             {{/if}}
             {{#if compare publication.type "===" "fileContent"}}
-                {{>showFileContent content=publication.fileContent  refreshScrollbar=refreshScrollbar id=publication._id }}
+                {{>showFileContent content=publication.fileContent  refreshScrollbar=refreshScrollbar id=publication._id isEditing=isEditing abortEdition=abortEdition}}
             {{/if}}
         </div>
 
         {{#if  isDeletable }}
             {{#unless showDelete}}
+                {{#unless isEditing}}
                 <div class="publicationFooter">
+                    <a href="#" class="link" edit><i class="material-icons">edit</i>{{__ ".edit"}}</a>
                     <a href="#" class="link" showDelete><i class="material-icons">delete</i>{{__ ".delete"}}</a>
+
                 </div>
+                {{/unless}}
             {{else}}
                 <div class="row">
                     <div class="col s12">
