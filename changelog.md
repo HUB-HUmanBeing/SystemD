@@ -6,6 +6,8 @@
 - Faire marcher les notification et réaliser un build pour une appli android
 - module permettant de gerer des fiches ( demandé par un centre de soin qui aimerait y gerer ses fiches patients, mais qui pourra servir a tout ceux souhaitant archiver, gerer et trier de l'info de manière collaborative)
 - traduction en allemand et italien ( les contributeurs a cela sont vraiement formidables !)
+#### déployé le 22/12/19
+- possibilité d'editer les publications
 
 #### deployé le 21/12/19
 - Module de newsFeed
