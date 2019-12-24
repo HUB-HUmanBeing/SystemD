@@ -115,7 +115,7 @@ Template.newInvitation.events({
 
 Template.newInvitation.onCreated(function () {
     //add your statement here
-    this.remaining = new ReactiveVar(1)
+    this.remaining = new ReactiveVar(5)
     this.newInvitationComplete = new ReactiveVar(undefined)
 });
 
