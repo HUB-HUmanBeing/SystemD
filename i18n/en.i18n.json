@@ -484,9 +484,15 @@
   },
   "publicationItem": {
     "delete": "Delete",
+    "edit": "Editer",
     "deleteInfo": "This action will remove the publication and all its comments.",
     "deleteSuccess": "This publication and all its comments have been removed.",
     "pinnedPublicationHead": "Pinned publication"
+  },
+  "editText": {
+    "placeholder": "Contenu de votre publication ...",
+    "abort": "Annuler",
+    "publish": "Enregistrer"
   },
   "showPollContent": {
     "answers": "answers"
@@ -619,7 +625,8 @@
     "unnamed": "No title",
     "setActivityInfo": "Set the activity where you want on the calendar.",
     "activityPlaced": "The activity has been set on the calendar.",
-    "settings": "Settings"
+    "settings": "Settings",
+    "addBtn": "Ajouter un événement"
   },
   "calendarSettings": {
     "title": "Calendar parameters",
@@ -687,6 +694,10 @@
     "calendarPlaced": "Set on calendar",
     "waitingForStatus": "Waiting validation",
     "done": "Done",
+    "inProjectDetail": "Les taches placées ici n'ont pas encore de date fixée.",
+    "calendarPlacedDetail": "Les taches placées sont placées dans l'agenda avec des dates dans le futur.",
+    "waitingForStatusDetail": "Les taches se trouvant dans cette section ont étés placées sur l'agenda, mais leurs dates est dépassée. A vous de voir si elles doivent etre remises en projet, replanifiées, ou si on peut les considerer comme terminées",
+    "doneDetail": "Cette section regroupe les taches qui ont étés considérées comme terminées.",
     "newActivity": "New task",
     "myTasks": "My tasks"
   },
@@ -739,7 +750,12 @@
     "abort": "cancel",
     "deleteInfo": "This spreadsheet and all its content will be deleted",
     "deleteSuccess": "The spreadsheet has been deleted",
-    "lastEdit": "Last edit"
+    "lastEdit": "Last edit",
+    "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
+    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregisterez votre tableur excel ou oppenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
+    "uploadWarning": "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
+    "fileUpload": "Importer un fichier csv",
+    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"
   },
   "spreadsheet": {
     "searchInTable": "Search in spreadsheet"
