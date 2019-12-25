@@ -1,727 +1,763 @@
 {
   "_locale": "ca-ES",
   "general": {
-    "error": "",
-    "changNavigator": ""
+    "error": "Une erreur s'est produite",
+    "changNavigator": "Nous sommes une équipe réduite de bénévoles et les développements nécessaires pour adapter ce site à votre navigateur ne sont pas encore terminés. Vous obtiendrez une expérience optimale en utilisant le navigateur Chrome ou sa version open-source Chromium."
   },
   "_templates_application": "===========================================================================================================================",
   "forbidden": {
-    "backHome": "",
-    "noAccess": ""
+    "noAccess": "Vous n'avez pas accès à cette page",
+    "backHome": "Retour à l'accueil"
   },
   "notFound": {
-    "backHome": "",
-    "noAddress": ""
+    "noAddress": "Désolé, nous ne pouvons pas trouver de page à cette adresse.",
+    "backHome": "Retour à l'accueil"
   },
   "workInProgress": {
-    "allow": "",
-    "nofunction": "",
-    "infos": ""
+    "nofunction": "Cette fonctionnalité n'est pas encore accessible",
+    "allow": "elle permettra :",
+    "infos": "Informations complémentaires :"
   },
   "layout": {
-    "betaExplain2": "",
-    "beta": "",
-    "betaVersion": "",
-    "betaExplainEnd": "",
-    "help": "",
-    "donate": "",
-    "donateLabel": "",
-    "betaWarning2": "",
-    "betaExplain": "",
-    "betaWarning": ""
+    "beta": "bêta",
+    "donateLabel": "Soutenir System-D",
+    "betaVersion": "System-D.org est toujours en version bêta !",
+    "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorables. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
+    "betaExplain2": "Merci de ",
+    "donate": "nous aider avec vos donations ",
+    "betaExplainEnd": "et en faisant remonter les idées d'améliorations et bugs constatés.",
+    "betaWarning": "Le protocole de chiffrement a été conçu avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
+    "betaWarning2": "Nous ne pouvons donc pas assurer à 100% a nos utilisateurs que leurs données sont inviolables meme si c'est pour nous un objectif aussi prioritaire que l'ergonomie du site.",
+    "help": "Communiquer une vulnérabilité ou un problème de sécurité ..."
   },
   "_templates_includes": "===========================================================================================================================",
   "menuProject": {
-    "home": "",
-    "forum": "",
-    "tasks": "",
-    "params": "",
-    "calendar": "",
-    "maps": "",
-    "members": ""
+    "home": "Accueil",
+    "forum": "Forum",
+    "params": "Paramètres",
+    "calendar": "Agenda",
+    "tasks": "Tâches",
+    "maps": "Carte",
+    "members": "Membres"
   },
   "menu": {
-    "noProject": "",
-    "clic": "",
-    "param": "",
-    "logout": "",
-    "decryption": "",
-    "newProject": ""
+    "param": "Paramètres",
+    "logout": "Déconnexion",
+    "noProject": "Vous n'êtes actuellement inscrit sur aucun projet.",
+    "clic": "Vous pouvez cliquer sur le bouton ci-dessous pour créer un projet ou attendre une invitation à un projet existant.",
+    "decryption": "Déchiffrement de la liste de vos projets.",
+    "newProject": "Nouveau projet"
   },
   "accessDenied": {
-    "noAccess": "",
-    "denied": ""
+    "denied": "Accès refusé",
+    "noAccess": "Vous ne pouvez pas accéder à cette page ! Veuillez vous connecter."
   },
   "submitIssue": {
-    "submit": "",
-    "sugestionLabel": "",
-    "suggestion": "",
-    "captcha": "",
-    "refreshCaptcha": "",
-    "bugReportLabel": "",
-    "decline": "",
-    "btnLabel": "",
-    "githubLink": "",
-    "return": "",
-    "authorize": "",
-    "succesMessage": "",
-    "bugReport": "",
-    "allowDeviceInfo": ""
+    "btnLabel": "Bugs - Suggestions",
+    "bugReport": "Bug",
+    "suggestion": "Suggestions",
+    "allowDeviceInfo": "Joindre automatiquement des informations sur le navigateur utilisé afin de faciliter le débuggage ? (navigateur, version, système d'exploitation, langue)",
+    "decline": "non",
+    "authorize": "oui",
+    "bugReportLabel": "Description du bug",
+    "sugestionLabel": "Idées et suggestions",
+    "refreshCaptcha": "Renouveler",
+    "captcha": "Saisir les 4 lettres",
+    "submit": "Envoyer",
+    "succesMessage": "Merci de votre contribution ! Votre message à été transmis au développeurs",
+    "githubLink": "Pour voir l'évolution de votre message, rendez-vous sur GitHub",
+    "return": "Retour"
   },
   "newsFeed": {
-    "content": "",
-    "btnLabel": ""
+    "btnLabel": "Actualités",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   "notifModal": {
-    "deleteAll": "",
-    "title": ""
+    "title": "Notifications",
+    "deleteAll": "Tout supprimer"
   },
   "notifItem": {
-    "memberPromoted": "",
-    "genericAction": "",
-    "newResponse": "",
-    "memberQuit": "",
-    "newMapMarker": "",
-    "genericTitle": "",
-    "newPublication": "",
-    "newInvitation": "",
-    "acceptedInvitation": ""
+    "acceptedInvitation": "Une invitation a été acceptée et un nouveau membre a rejoint le projet.",
+    "memberQuit": "Un membre a quitté le projet.",
+    "memberPromoted": "Vous avez désormais les droits d'administrateur sur le projet.",
+    "genericTitle": "Nouvelle activité sur System-D",
+    "genericAction": "Voir sur le site",
+    "newPublication": "Une nouvelle publication a été ajoutée dans une discussion que vous suivez",
+    "newResponse": "Un Commentaire à été fait suite à l'un de vos messages.",
+    "newMapMarker": "Un nouveau marqueur à été placé sur la carte",
+    "newInvitation": "Vous avez été invité à participer à une activité"
   },
   "showAcceptNotif": {
-    "showAcceptNotifs": "",
-    "showAcceptNotifsInfos": ""
+    "showAcceptNotifs": "Cliquez sur accepter pour être averti des activités de votre projet.",
+    "showAcceptNotifsInfos": "Vous pourrez paramétrer ou désactiver les notifications plus tard."
   },
   "beta": {
-    "beta": ""
+    "beta": "bêta"
   },
   "_templates_landingPage": "===========================================================================================================================",
   "landingHead": {
-    "Logout": "",
-    "login": "",
-    "contact": "",
-    "roadMap": "",
-    "features": "",
-    "aims": "",
-    "signUp": ""
+    "aims": "Objectifs",
+    "features": "Atouts",
+    "roadMap": "Feuille de route",
+    "contact": "Contact",
+    "login": "Connexion",
+    "signUp": "Inscription",
+    "Logout": "Déconnexion"
   },
   "landingAim": {
-    "doOfSystemD": "",
-    "3DevPhases": "",
-    "dOfSystD": "",
-    "createTool": "",
-    "purpose": "",
-    "dFreeNetwork": "",
-    "developFreeNetwork": "",
-    "cTool": "",
-    "ourPurpose": ""
+    "ourPurpose": "NOTRE OBJECTIF",
+    "purpose": "Créer un outil qui accompagne la transition d'une société de l'argent en faillite à un mode de production basé sur la collaboration et le partage.",
+    "3DevPhases": "TROIS PHASES DE DÉVELOPPEMENT",
+    "createTool": "Créer un outil de gestion de projet ouvert à tous",
+    "cTool": "Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet.",
+    "doOfSystemD": "Faire de SystemD le réseau social du projet non-marchand",
+    "dOfSystD": "Création des interfaces faisant de la plateforme un espace de rencontre et de circulation des utilisateurs sur différents projets : Recherche géolocalisée par compétences-centres d'intérets, messagerie chiffrée, blogs partagés, etc.",
+    "developFreeNetwork": "Développer un réseau de gratuité et de partage",
+    "dFreeNetwork": "Permettre à chaque utilisateur et chaque projet de mettre en partage les ressources produites afin de pouvoir réaliser une circulation non-marchande de grande ampleur."
   },
   "landingContact": {
-    "github": "",
-    "email": "",
-    "chat": ""
+    "github": "Venez suivre l'avancement du projet, déposer vos issues et pulls-requests.",
+    "email": "Contactez moi par e-mail pour me faire part de vos remarques, idées, suggestions, propositions.",
+    "chat": "Rejoignez le chat du projet pour discuter avec l'équipe en toute simplicité."
   },
   "landingPlus": {
-    "encrypted": "",
-    "signin": "",
-    "panonymous": "",
-    "pfree": "",
-    "anonymous": "",
-    "free": "",
-    "pencrypted": ""
+    "anonymous": "ANONYME",
+    "panonymous": "Connectez-vous avec un pseudo, pas besoin de renseigner son adresse e-mail, utilisez tor-browser pour encore plus d'anonymat",
+    "free": "GRATUIT",
+    "pfree": "Comment imaginer autrement une plate-forme dont l'objectif est la promotion des rapports sociaux non-marchands",
+    "encrypted": "CHIFFRÉ",
+    "pencrypted": "Les contenus que vous partagez, ainsi que la liste des projets auxquels vous participez sont chiffrés \"end-to-end\" ",
+    "signin": "Inscription"
   },
   "landingRoadmap": {
-    "p5firstPhase": "",
-    "p2secondPhase": "",
-    "p4thirdPhase": "",
-    "pthirdPhase": "",
-    "p6thirdPhase": "",
-    "p2firstPhase": "",
-    "p2thirdPhase": "",
-    "p3secondPhase": "",
-    "p3thirdPhase": "",
-    "p5secondPhase": "",
-    "p7secondPhase": "",
-    "thirdPhase": "",
-    "p3firstPhase": "",
-    "pfirstPhase": "",
-    "psecondPhase": "",
-    "p6secondPhase": "",
-    "signin": "",
-    "p7firstPhase": "",
-    "firstPhase": "",
-    "p5thirdPhase": "",
-    "roadmap": "",
-    "p4firstPhase": "",
-    "p8firstPhase": "",
-    "secondPhase": "",
-    "p4secondPhase": "",
-    "p6firstPhase": ""
+    "roadmap": "FEUILLE DE ROUTE",
+    "firstPhase": "PREMIERE PHASE",
+    "pfirstPhase": "Interface de création de comptes utilisateurs et connexion à la plate forme",
+    "p2firstPhase": "Interface de modification du profil utilisateur",
+    "p3firstPhase": "Interface de création de projet",
+    "p4firstPhase": "Invitation à des projets et gestion des membres",
+    "p5firstPhase": "Création d'un forum de discussion par projet",
+    "p6firstPhase": "Agenda participatif pour chacun des projets",
+    "p7firstPhase": "Liste des tâches ergonomique pour chaque projet",
+    "p8firstPhase": "Interface pour soutenir ou participer à SystemD",
+    "secondPhase": "SECONDE PHASE",
+    "psecondPhase": "Interface pour que chaque utilisateur puisse renseigner ses compétences",
+    "p2secondPhase": "Interface pour que chaque utilisateur puisse renseigner ses centres d'intérêt",
+    "p3secondPhase": "Prise en compte de la localisation géographique",
+    "p4secondPhase": "Outils de recherches avancées pour rechercher des collaborateurs potentiels / des projets intéressants",
+    "p5secondPhase": "Messagerie inter-utilisateurs et inter-projets",
+    "p6secondPhase": "Blog personnel et blog de projet",
+    "p7secondPhase": "Module de cartes interactives pour les projets",
+    "thirdPhase": "TROISIÈME PHASE",
+    "pthirdPhase": "Prise en compte des retours utilisateurs de la seconde phase et amélioration des fonctionnalités",
+    "p2thirdPhase": "Interface permettant de lister les ressources matérielles qu'un projet ou utilisateur souhaite mettre en partage",
+    "p3thirdPhase": "Interface de recherche de ressources",
+    "p4thirdPhase": "Possibilité de laisser des annonces concernant les besoins personnels et ceux des projets",
+    "p5thirdPhase": "Applications IOS, ANDROID et DESKTOP",
+    "p6thirdPhase": "Module de planning Scrum",
+    "signin": "Inscription"
   },
   "landingTitle": {
-    "signin": "",
-    "h3title": "",
-    "ptitle": ""
+    "h3title": "Plateforme chiffrée de projets collaboratifs non-marchands",
+    "ptitle": "Crééz des projets, invitez vos amis, et profitez des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif",
+    "signin": "Inscription"
   },
   "landingTools": {
-    "pforum": "",
-    "simpleTools": "",
-    "forum": "",
-    "taskList": "",
-    "pmodularTools": "",
-    "pcalendar": "",
-    "calendar": "",
-    "modularTools": "",
-    "ptaskList": "",
-    "psimpleTools": ""
+    "calendar": "AGENDA PARTAGÉ",
+    "pcalendar": "Pour vous permettre de planifier avec votre collectif les prochains évènements de votre projet.",
+    "taskList": "LISTES DE TACHES",
+    "ptaskList": "Pour pouvoir voir d'un coup d'oeil l'avancement du travail, et inviter les participants à s'inscrire de manière active.",
+    "forum": "FORUM DE DISCUSSIONS",
+    "pforum": "Communiquer ensemble, par thématiques ou de manière générale afin de pouvoir faire circuler l'information de manière efficace.",
+    "modularTools": "DES OUTILS MODULAIRES",
+    "pmodularTools": "Cartes interactives, planning méthode agile, et d'autres outils développés peu à peu viendront compléter vos projets de manière modulaire.",
+    "simpleTools": "DES OUTILS SIMPLES ET SÉCURISÉS",
+    "psimpleTools": "Des outils d'organisation ergonomiques pour une prise en main rapide, et dont les contenus sont entièrement chiffrés pour une confidentialité optimale"
   },
   "landingCounter": {
-    "signin": "",
-    "members": "",
-    "joinToo": "",
-    "projects": ""
+    "members": "Membres inscrits",
+    "projects": "Projets créés",
+    "joinToo": "Inscrivez vous et profitez d'un outil pratique, gratuit et chiffré pour gérer vos projets avec vos amis, votre association ou votre collectif.",
+    "signin": "Inscription"
   },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
-    "password": "",
-    "connection": "",
-    "userName": ""
+    "userName": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "connection": "Connexion"
   },
   "loginFormJs": {
-    "welcome": "",
-    "session": "",
-    "key": ""
+    "key": "Récupération et déchiffrement de la clef privée",
+    "session": "Initialisation d'une nouvelle session chiffrée",
+    "welcome": "Bienvenue sur System-D"
   },
   "signinForm": {
-    "userNameChoice": "",
-    "passwordRepeat": "",
-    "passwordChoice": "",
-    "accountCreate": ""
+    "userNameChoice": "Choisir un nom d'utilisateur",
+    "passwordChoice": "Mot de passe",
+    "passwordRepeat": "Répéter mot de passe",
+    "accountCreate": "Créer un compte"
   },
   "signinFormJs": {
-    "form": "",
-    "name40": "",
-    "name4": "",
-    "characters": "",
-    "putName": "",
-    "capital": "",
-    "generation": "",
-    "miss": "",
-    "typePwd": "",
-    "des": "",
-    "and": "",
-    "creation": "",
-    "use": "",
-    "up": "",
-    "strength": "",
-    "errmail": "",
-    "confirm": "",
-    "number": "",
-    "samePwd": "",
-    "alreadyTaken": "",
-    "error": "",
-    "initialization": "",
-    "crypt": ""
+    "error": "Une erreur s'est produite",
+    "name4": "votre nom d'utilisateur doit comporter au moins 4 caractères",
+    "name40": "votre nom d'utilisateur ne doit pas faire plus de 40 caractères",
+    "errmail": "votre nom d'utilisateur ne peut être une adresse e-mail",
+    "alreadyTaken": "ce nom d'utilisateur est déjà pris",
+    "putName": "veuillez inscrire votre nom d'utilisateur",
+    "crypt": "Le chiffrement de vos contenus sur System-D est basé sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.",
+    "use": "Utilisez des ",
+    "characters": "caractères spéciaux",
+    "des": ", des ",
+    "capital": "majuscules",
+    "and": " et des ",
+    "number": "chiffres",
+    "up": " afin d'augmenter la robustesse de votre mot de passe.",
+    "strength": "La robustesse du mot de passe doit au moins être de 1O",
+    "samePwd": "Les mots de passes ne sont pas identiques",
+    "typePwd": "Veuillez saisir un mot de passe",
+    "confirm": "Veuillez confirmer votre mot de passe",
+    "form": "Le formulaire d'inscription n'est pas valide",
+    "miss": "Il manque des informations",
+    "generation": "Génération des clefs de chiffrement",
+    "creation": "Création du compte utilisateur",
+    "initialization": "Initialisation d'une nouvelle session chiffrée"
   },
   "signinContainer": {
-    "p3-3signin": "",
-    "spanSignin": "",
-    "p3-4signin": "",
-    "p3-2signin": "",
-    "linkSignin": "",
-    "psignin": "",
-    "p2signin": "",
-    "next": "",
-    "p3-1signin": "",
-    "endtoendencrypted": "",
-    "p3signin": ""
+    "psignin": "System-D accompagne vos projets en vous offrant un espace de travail collaboratif gratuit et entièrement",
+    "linkSignin": "https://fr.wikipedia.org/wiki/Chiffrement_de_bout_en_bout",
+    "endtoendencrypted": "chiffré de bout en bout",
+    "p2signin": "Comme sur Telegram ou Signal, personne d'autre que vous et les personnes participant au même projet ne pourront déchiffrer et lire les contenus que vous postez, pas même les créateurs de cette plate-forme.",
+    "next": "Suivant",
+    "p3signin": "D'autre part",
+    "p3-1signin": "System-D preserve l'Anonymat",
+    "p3-2signin": "de ses utilisateurs : pas d'adresse mail requise ni d'informations personnelles. Cependant nous n'aurons ",
+    "p3-3signin": "aucun moyen de vous aider si vous oubliez votre mot de passe.",
+    "p3-4signin": "Ainsi, il est recommandé de :",
+    "spanSignin": "Noter le mot de passe que vous aurez choisi."
   },
   "loginPage": {
-    "signin": "",
-    "backToHome": "",
-    "connection": ""
+    "signin": "Inscription",
+    "connection": "Connexion",
+    "backToHome": "Retour à l'accueil"
   },
   "_templates_Projet": "===========================================================================================================================",
   "newProject": {
-    "createProject": "",
-    "nameProject": "",
-    "create": ""
+    "createProject": "Créer un projet",
+    "nameProject": "Nom du projet",
+    "create": "Créer"
   },
   "newProjectJs": {
-    "created": "",
-    "name50": "",
-    "missInfo": "",
-    "name4": "",
-    "errForm": "",
-    "errmail": "",
-    "nameProject": "",
-    "theProject": "",
-    "creation": "",
-    "generation": "",
-    "alreadyTaken": "",
-    "error": "",
-    "initialization": ""
+    "error": "Une erreur s'est produite",
+    "name4": "votre nom de projet doit comporter au moins 4 caractères",
+    "name50": "votre nom de projet ne doit pas faire plus de 50 caractères",
+    "errmail": "votre nom de projet ne peut être une adresse e-mail",
+    "alreadyTaken": "ce nom de projet est déjà pris",
+    "nameProject": "veuillez donner un nom à votre projet",
+    "errForm": "Le formulaire de création de projet n'est pas valide",
+    "missInfo": "Il manque des informations",
+    "generation": "Génération des clefs de chiffrement du projet",
+    "creation": "Anonymisation de la liste de participants",
+    "initialization": "Connexion chiffrée au projet",
+    "theProject": "Le projet ",
+    "created": " a été créé."
   },
   "projectHome": {
-    "projectDescription": "",
-    "noDescription": ""
+    "projectDescription": "Description du projet",
+    "noDescription": "Description non renseignée."
   },
   "editProjectAvatar": {
-    "OK": "",
-    "delete": "",
-    "edit": ""
+    "edit": "Editer l'avatar",
+    "delete": "Supprimer l'avatar",
+    "OK": "valider"
   },
   "editProjectDescription": {
-    "label": ""
+    "label": "Description du projet"
   },
   "projectParams": {
-    "createInvitelink": "",
-    "publicInfos": "",
-    "deleteProject": "",
-    "invitationList": ""
+    "publicInfos": "Informations publiques",
+    "createInvitelink": "Nouvelle invitation",
+    "invitationList": "Invitations en cours",
+    "deleteProject": "Supprimer le projet"
   },
   "deleteProject": {
-    "deleteProjectInfo": "",
-    "deleteProjectError": "",
-    "deleteSuccess": "",
-    "deleteProjectErrorTips": ""
+    "deleteProjectInfo": "Cette action supprimera définitivement le projet",
+    "deleteProjectError": "Vous ne pouvez pas supprimer ce projet",
+    "deleteProjectErrorTips": "Il reste des membres à l'intérieur de ce projet",
+    "deleteSuccess": "Le projet a été supprimé"
   },
   "projectLayout": {
-    "decrypting1": ""
+    "decrypting1": "Déchiffrement des informations projet"
   },
   "newInvitation": {
-    "month": "",
-    "user": "",
-    "day": "",
-    "title": "",
-    "durationLabel": "",
-    "invitMessage": "",
-    "infoQuote": "",
-    "users": "",
-    "addMessage": "",
-    "hour": "",
-    "backToParams": "",
-    "ok": "",
-    "remainingLabel1": "",
-    "week": ""
+    "title": "Création du lien d'invitation",
+    "infoQuote": "En transmettant des liens d'invitation, vous transmettez les clefs de chiffrement de votre projet à tous ceux qui auront accès au lien généré durant la période de validité.",
+    "durationLabel": "Durée de validité du lien d'invitation",
+    "hour": "heure",
+    "day": "jour",
+    "week": "semaine",
+    "month": "mois",
+    "remainingLabel1": "Valide pour inviter",
+    "user": "utilisateur",
+    "users": "utilisateurs",
+    "ok": "Générer le lien d'invitation",
+    "addMessage": "Ajouter un message d'invitation",
+    "invitMessage": "Message envoyé avec votre invitation",
+    "backToParams": "Retour aux paramètres du projet"
   },
   "showInvitation": {
-    "copied": "",
-    "destroy": "",
-    "invitTitle": "",
-    "infoLink": "",
-    "infoDestroy": "",
-    "backToParams": "",
-    "invitMessage": "",
-    "title": "",
-    "deleted": "",
-    "infoQr": ""
+    "title": "Lien d'nvitation",
+    "infoLink": "Copiez ce lien et envoyez-le à la ou les personnes que vous souhaitez inviter.",
+    "copied": "Lien d'invitation copié dans le presse papier",
+    "invitTitle": "Invitation à rejoindre le projet ",
+    "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs. Cliquez sur le lien pour voir l'invitation.",
+    "infoQr": "Si la personne à inviter est à coté de vous, elle peut aussi flasher ce QR-code avec n'importe quelle application de lecture de QR-code pour accéder à l'invitation.",
+    "infoDestroy": "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux clefs de chiffrement de votre projet.",
+    "destroy": "Supprimer le lien d'invitation",
+    "backToParams": "Retour aux paramètres du projet",
+    "deleted": "le lien d'invitation à été détruit"
   },
   "invitationList": {
-    "remaining": "",
-    "newInvitation": "",
-    "noInvits": "",
-    "expireIn": "",
-    "from": "",
-    "by": ""
+    "from": "Lien d'invitation créé",
+    "by": "Créée par",
+    "expireIn": "Expire dans",
+    "remaining": "Invitations restantes",
+    "noInvits": "Il n'y a aucun lien d'invitation en cours de validité.",
+    "newInvitation": "Générer un nouveau lien d'invitation."
   },
   "invitation": {
-    "project": "",
-    "userAlreadyInProject": "",
-    "needToLoginFirst": "",
-    "accept": "",
-    "title": "",
-    "needToLoginFirstButton": "",
-    "noDescription": "",
-    "noLongerExist": "",
-    "decline": "",
-    "needToLoginFirstInfo": "",
-    "message": "",
-    "moreInfo": "",
-    "description": "",
-    "noLongerExistInfo": ""
+    "title": "Invitation à rejoindre un projet",
+    "moreInfo": "Présentation de System-D",
+    "project": "Projet",
+    "userAlreadyInProject": "Vous participez déjà à ce projet",
+    "description": "Description du projet",
+    "noDescription": "Description non-renseignée",
+    "message": "Message d'invitation",
+    "decline": "Décliner",
+    "accept": "Accepter",
+    "noLongerExist": "Cette invitation est expirée",
+    "noLongerExistInfo": "Demandez à la personne qui vous a envoyé l'invitation de vous en renvoyer une nouvelle",
+    "needToLoginFirst": "Vous devez être connecté pour rejoindre un projet",
+    "needToLoginFirstInfo": "Cliquez sur le bouton pour vous connecter ou vous inscrire et rejoindre le projet.",
+    "needToLoginFirstButton": "S'enregistrer"
   },
   "projectMembers": {
-    "admins": "",
-    "members": "",
-    "membersList": ""
+    "membersList": "Liste des membres",
+    "admins": "Administrateurs",
+    "members": "Membres"
   },
   "member": {
-    "promoteUserInfo": "",
-    "promoteSuccess": "",
-    "kickUser": "",
-    "since": "",
-    "promoteUser": "",
-    "invitedBy": "",
-    "quitProjectInfo": "",
-    "removedSuccess": "",
-    "quitProjectError": "",
-    "quitProject": "",
-    "kickUserInfo": "",
-    "quitProjectErrorTips": "",
-    "quitSuccess": "",
-    "projectCreator": ""
+    "since": "Depuis",
+    "invitedBy": "Invité par",
+    "projectCreator": "Créateur du projet",
+    "quitProject": "Quitter le projet",
+    "quitProjectError": "Vous ne pouvez pas quitter le projet.",
+    "quitProjectErrorTips": "Nommer au moins un nouvel administrateur pour le projet.",
+    "quitProjectInfo": "Vous serez retirés des participants au projet.",
+    "promoteUser": "Donner les droits d'administrateur",
+    "promoteUserInfo": "L'utilisateur pourra inviter et retirer des membres au projet.",
+    "kickUser": "Retirer l'utilisateur",
+    "kickUserInfo": "Retirer l'utilisateur de la liste des membres du projet.",
+    "removedSuccess": "L'utilisateur à été retiré des membres du projet",
+    "promoteSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
+    "quitSuccess": "Vous avez quitté le projet"
   },
   "_templates_users": "===========================================================================================================================",
   "deleteAccount": {
-    "deleteAccount": "",
-    "confirmPassword": ""
+    "confirmPassword": "Confirmer avec votre mot de passe",
+    "deleteAccount": "Supprimer le compte"
   },
   "deleteAccountJs": {
-    "deletedAccount": "",
-    "error": ""
+    "error": "Une erreur s'est produite",
+    "deletedAccount": "Votre compte utilisateur à été définitivement supprimé"
   },
   "editAvatar": {
-    "OK": "",
-    "delete": "",
-    "edit": ""
+    "edit": "Éditer l'avatar",
+    "delete": "Supprimer l'avatar",
+    "OK": "Valider"
   },
   "editPassword": {
-    "repeatPassword": "",
-    "strength": "",
-    "newPassword": "",
-    "editPassword": "",
-    "oldPassword": ""
+    "oldPassword": "Ancien mot de passe",
+    "newPassword": "Nouveau mot de passe",
+    "repeatPassword": "Répéter mot de passe",
+    "strength": "Force",
+    "editPassword": "Modifier mot de passe"
   },
   "editPasswordJs": {
-    "form": "",
-    "previousPwd": "",
-    "use": "",
-    "up": "",
-    "samePwd": "",
-    "characters": "",
-    "strength": "",
-    "des": "",
-    "pwdChange": "",
-    "confirm": "",
-    "number": "",
-    "typePwd": "",
-    "encryptionKey": "",
-    "crypt": "",
-    "miss": "",
-    "capital": "",
-    "initialization": "",
-    "and": ""
+    "previousPwd": "veuillez entrer votre précédent mot de passe",
+    "crypt": "Le chiffrement de vos contenus sur System-D repose sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.",
+    "use": "Utilisez des ",
+    "characters": "caractères spéciaux",
+    "des": ", des ",
+    "capital": "majuscules",
+    "and": " et des ",
+    "number": "chiffres",
+    "up": " afin d'augmenter la force de votre mot de passe.",
+    "strength": "La force du mot de passe doit au moins être de 1O",
+    "samePwd": "Les mots de passe ne sont pas identiques",
+    "typePwd": "Veuillez saisir un mot de passe",
+    "confirm": "Veuillez confirmer votre mot de passe",
+    "form": "Le formulaire d'inscription n'est pas valide",
+    "miss": "Il manque des informations",
+    "pwdChange": "Changement du mot de passe",
+    "encryptionKey": "Chiffrement de la clef privée à partir du nouveau mot de passe",
+    "initialization": "Rénitialisation de la session chiffrée"
   },
   "userParams": {
-    "peditPassword": "",
-    "passwordDeleteAccount": "",
-    "deleteAccount": "",
-    "editPassword": "",
-    "pdeleteAccount": ""
+    "editPassword": "Modifier le mot de passe",
+    "peditPassword": "Nous n'aurons aucun moyen de vous aider si vous oubliez votre mot de passe. Ainsi, il est recommandé de noter le mot de passe que vous aurez choisi.",
+    "deleteAccount": "Supprimer votre compte",
+    "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
+    "passwordDeleteAccount": "Entrez votre mot de passe afin de confirmer la suppression du compte."
   },
   "userOptions": {
-    "language": ""
+    "language": "Langue"
   },
   "_templates_forum": "===========================================================================================================================",
   "categoryList": {
-    "new": "",
-    "seeMore": "",
-    "myFiles": "",
-    "categoryName": ""
+    "categoryName": "Nom du dossier",
+    "new": "Nouveau dossier",
+    "myFiles": "DOCUMENTS",
+    "seeMore": "Voir plus"
   },
   "categoryItem": {
-    "topicName": "",
-    "noTopics": "",
-    "showMore": "",
-    "categoryName": "",
-    "notifEnabled": "",
-    "moveUp": "",
-    "disableNotifications": "",
-    "edit": "",
-    "newTopic": "",
-    "deleteInfo": "",
-    "abort": "",
-    "delete": "",
-    "notifDisabled": "",
-    "moveDown": "",
-    "enlableNotifications": ""
+    "categoryName": "Nom du dossier",
+    "delete": "Supprimer le dossier",
+    "deleteInfo": "Toutes les conversations à l'intérieur du dossier seront supprimées",
+    "moveDown": "Descendre dans la liste",
+    "moveUp": "Monter dans la liste",
+    "edit": "Éditer le nom",
+    "disableNotifications": "Les notifications sont actives sur ce dossier, cliquez pour les désactiver.",
+    "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver.",
+    "abort": "Annuler",
+    "showMore": "Voir plus",
+    "newTopic": "Créer une nouvelle discussion",
+    "noTopics": "Ce dossier est vide",
+    "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
+    "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier",
+    "topicName": "Nom de la discussion"
   },
   "topic": {
-    "downloadAndDecrypt": ""
+    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier en cours"
   },
   "topicItem": {
-    "unseenPublications": "",
-    "mainTopic": "",
-    "dragInfo": ""
+    "unseenPublications": "Nouvelles publications",
+    "dragInfo": "Vous pouvez déplacer cette discussion dans une autre catégorie.",
+    "mainTopic": "DISCUSSION PRINCIPALE"
   },
   "topicHeader": {
-    "topicName": "",
-    "mainTopic": "",
-    "notifDisabled": "",
-    "deleteInfo": "",
-    "abort": "",
-    "deleteSuccess": "",
-    "notifEnabled": "",
-    "enlableNotifications": "",
-    "delete": "",
-    "disableNotifications": "",
-    "edit": ""
+    "mainTopic": "Discussion principale",
+    "topicName": "Nom de la discussion",
+    "delete": "Supprimer la discussion",
+    "edit": "Changer le nom de la discussion",
+    "disableNotifications": "Les notifications sont actives pour cette discussion, cliquez pour les désactiver.",
+    "enlableNotifications": "Les notifications sont désactivées pour cette discussion, cliquez pour les activer.",
+    "abort": "annuler",
+    "deleteInfo": "Cette discussion et tout son contenu seront supprimés.",
+    "deleteSuccess": "La discussion à été supprimée",
+    "notifEnabled": "Vous recevrez désormais des notifications pour chaque nouvelle publication.",
+    "notifDisabled": "Les notifications ont été désactivées pour cette discussion."
   },
   "newPublication": {
-    "files": "",
-    "images": "",
-    "return": "",
-    "newPublication": "",
-    "text": "",
-    "poll": ""
+    "return": "Retour",
+    "newPublication": "Nouvelle publication",
+    "text": "Texte",
+    "images": "Images et texte",
+    "poll": "Sondage",
+    "files": "Images, fichiers et texte"
   },
   "textualContent": {
-    "placeholder": "",
-    "publish": ""
+    "placeholder": "Contenu de votre publication ...",
+    "publish": "Publier"
   },
   "pollContent": {
-    "newProposition": "",
-    "placeholder": "",
-    "publish": "",
-    "addProposition": ""
+    "placeholder": "Description du sondage",
+    "newProposition": "Proposition de réponse n°",
+    "addProposition": "Ajouter une proposition",
+    "publish": "Publier le sondage"
   },
   "fileContent": {
-    "loadInfos": "",
-    "addFiles": ""
+    "addFiles": "Ajouter un ou plusieurs documents",
+    "loadInfos": "Chiffrement et upload des documents"
   },
   "publicationsList": {
-    "showMore": ""
+    "showMore": "Voir plus..."
   },
   "publicationItem": {
-    "pinnedPublicationHead": "",
-    "deleteInfo": "",
-    "deleteSuccess": "",
-    "delete": ""
+    "delete": "Supprimer",
+    "edit": "Editer",
+    "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
+    "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
+    "pinnedPublicationHead": "Publication épinglée"
+  },
+  "editText": {
+    "placeholder": "Contenu de votre publication ...",
+    "abort": "Annuler",
+    "publish": "Enregistrer"
   },
   "showPollContent": {
-    "answers": ""
+    "answers": "participants"
   },
   "pollOption": {
-    "vote": ""
+    "vote": "votes"
   },
   "newComment": {
-    "placeholder": ""
+    "placeholder": "Votre commentaire..."
   },
   "commentList": {
-    "see": "",
-    "moreComments": ""
+    "see": "Voir les",
+    "moreComments": "autres commentaires"
   },
   "commentItem": {
-    "moreComments": "",
-    "see": "",
-    "answer": "",
-    "deleteSuccess": "",
-    "delete": ""
+    "answer": "Répondre",
+    "delete": "Supprimer",
+    "deleteSuccess": "Commentaire supprimé.",
+    "see": "Voir les",
+    "moreComments": "autres réponses"
   },
   "newSubComment": {
-    "placeholder": ""
+    "placeholder": "Votre réponse..."
   },
   "files": {
-    "allowed": "",
-    "seeMore": "",
-    "projectUsing": "",
-    "of": ""
+    "projectUsing": " ",
+    "of": "sur",
+    "allowed": " ",
+    "seeMore": "Voir plus"
   },
   "filePreview": {
-    "delete": ""
+    "delete": "Supprimer le fichier"
   },
   "fullScreenFile": {
-    "downloadAndDecrypt": "",
-    "download": "",
-    "delete": "",
-    "return": ""
+    "download": "Télécharger",
+    "delete": "Supprimer le fichier",
+    "return": "Retour",
+    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier."
   },
   "projectFiles": {
-    "limitOneFile": "",
-    "projectFiles.limitSize": ""
+    "limitOneFile": "La taille des documents est limitée à 15 Mo",
+    "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
   },
   "pinned": {
-    "pin": "",
-    "unpin": ""
+    "pin": "Épingler la publication en en-tête de la discussion",
+    "unpin": "Désépingler la publication"
   },
   "showFileContent": {
-    "deleted": ""
+    "deleted": "Le fichier à été supprimé."
   },
   "_templates_map": "===========================================================================================================================",
   "mapParams": {
-    "aerial": "",
-    "topo": "",
-    "standard": ""
+    "topo": "Topo",
+    "aerial": "Aérienne",
+    "standard": "Standard"
   },
   "mapSettings": {
-    "kindOfMap": "",
-    "oldsMarkersDeleted": "",
-    "saveChoice": "",
-    "chooseDuration": "",
-    "title": "",
-    "save": "",
-    "deleteOlds": "",
-    "centerSaved": "",
-    "defaultCenterInfo": "",
-    "delete": "",
-    "colorLegend": "",
-    "deleteOldsInfo": "",
-    "defaultCenter": ""
+    "title": "Paramètres",
+    "kindOfMap": "Type de carte : ",
+    "saveChoice": "Utiliser ce fond de carte par défaut pour tous les membres du projet.",
+    "save": "Enregistrer",
+    "defaultCenter": "Centrage par défaut : ",
+    "defaultCenterInfo": "Centrer la carte sur la zone que vous souhaitez voir apparaitre par défaut puis cliquez sur enregistrer",
+    "centerSaved": "Le centrage par défaut de votre carte à été modifié.",
+    "deleteOlds": "Retirer les anciens marqueurs :",
+    "deleteOldsInfo": "Retirer les marqueurs dont la date de création remonte à plus de :",
+    "chooseDuration": "Choisir durée",
+    "delete": "retirer",
+    "oldsMarkersDeleted": "Les anciens marqueurs ont été supprimés",
+    "colorLegend": "Légende couleur :"
   },
   "newMarker": {
-    "textSubmit": "",
-    "arrows": "",
-    "type": "",
-    "title": "",
-    "myPosition": "",
-    "shapes": "",
-    "text": "",
-    "myPositionInfo": "",
-    "icons": "",
-    "updateUserPosition": "",
-    "color": "",
-    "lines": "",
-    "textLabel": ""
+    "title": "Nouveau marqueur",
+    "color": "Couleur",
+    "type": "Type",
+    "icons": "Icones",
+    "arrows": "Flèches",
+    "lines": "Lignes",
+    "text": "Zone de texte",
+    "textLabel": "contenu de la zone de texte",
+    "textSubmit": "Créer",
+    "shapes": "Formes",
+    "myPosition": "Ma Position",
+    "myPositionInfo": "Cliquer sur le bouton ci-dessous pour créer un marqueur sur la carte à partir de votre position",
+    "updateUserPosition": "indiquer ma position"
   },
   "creatingIcon": {
-    "createIconInfo": ""
+    "createIconInfo": "Cliquer sur la carte pour positionner le marqueur."
   },
   "editingIcon": {
-    "editIconInfo": ""
+    "editIconInfo": "Cliquer sur la carte pour modifier la position du marqueur."
   },
   "markerDetail": {
-    "markerName": "",
-    "goTo": "",
-    "moveMarker": "",
-    "editMarker": "",
-    "markerDetail": "",
-    "createdBy": "",
-    "coordinates": "",
-    "lastEdit": "",
-    "deleteMarker": ""
+    "markerName": "Nom du marqueur...",
+    "markerDetail": "Détail",
+    "editMarker": "éditer",
+    "moveMarker": "déplacer",
+    "deleteMarker": "Supprimer",
+    "coordinates": "Coordonnées :",
+    "createdBy": "Créé par ",
+    "lastEdit": " (édité)",
+    "goTo": "Y aller !"
   },
   "detailMemberPosition": {
-    "actualise": "",
-    "lastEdit": "",
-    "deleteMarker": ""
+    "lastEdit": "Dernière mise à jour :",
+    "actualise": "actualiser",
+    "deleteMarker": "Supprimer"
   },
   "creatingPolyline": {
-    "save": "",
-    "createIconInfo": "",
-    "undo": ""
+    "save": "Enregistrer",
+    "undo": "annuler dernier point",
+    "createIconInfo": "Placer les différents points puis cliquer sur enregistrer"
   },
   "creatingShape": {
-    "save": "",
-    "rectangleInfo": "",
-    "polygonInfo": "",
-    "circleInfo": "",
-    "undo": ""
+    "save": "Enregistrer",
+    "undo": "annuler dernier point",
+    "circleInfo": "Positionner le centre du cercle puis élargissez son diamètre en glissant avec la souris.",
+    "rectangleInfo": "Positionner un coin du rectangle puis agrandissez le en glissant avec la souris.",
+    "polygonInfo": "Placer les différents sommets de votre forme puis cliquer sur le dernier point ou sur enregistrer"
   },
   "creatingArrow": {
-    "createArrowInfo": ""
+    "createArrowInfo": "Placer votre flèche sur la carte."
   },
   "_templates_calendar": "===========================================================================================================================",
   "projectCalendar": {
-    "unnamed": "",
-    "recurring": "",
-    "settings": "",
-    "activityPlaced": "",
-    "setActivityInfo": "",
-    "daysView": "",
-    "listView": "",
-    "monthView": ""
+    "daysView": "Vue journalière",
+    "monthView": "Vue mensuelle",
+    "listView": "Liste des évènements mensuels",
+    "recurring": "(Récurrent)",
+    "unnamed": "Sans titre",
+    "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
+    "activityPlaced": "L'activité à été placée sur l'agenda.",
+    "settings": "Paramètres",
+    "addBtn": "Ajouter un événement"
   },
   "calendarSettings": {
-    "title": "",
-    "defaultView": "",
-    "delete": "",
-    "colorLegend": "",
-    "oldsActivitiesDeleted": "",
-    "deleteOlds": "",
-    "defaultViewSaved": "",
-    "deleteOldsInfo": ""
+    "title": "Paramètres de l'agenda",
+    "defaultView": "Vue par défaut : ",
+    "colorLegend": "Legende couleur : ",
+    "defaultViewSaved": "La vue par défaut à été modifiée pour tout les membres du projet",
+    "deleteOlds": "Supprimer les anciennes activités",
+    "deleteOldsInfo": "Supprimer les activités dont la date de début remonte à plus de :",
+    "delete": "Supprimer",
+    "oldsActivitiesDeleted": "Les anciennes activités ont été supprimées"
   },
   "colorLegend": {
-    "save": "",
-    "placeholder": ""
+    "placeholder": "Non renseigné",
+    "save": "Enregistrer"
   },
   "activityDetail": {
-    "deleteActivity": "",
-    "showOnMap": "",
-    "quitActivity": "",
-    "noInvited": "",
-    "invited": "",
-    "participants": "",
-    "joinActivity": "",
-    "editActivity": "",
-    "activityTitle": "",
-    "onMap": "",
-    "recursivity": "",
-    "inviteMember": "",
-    "noParticipant": "",
-    "paricipating": "",
-    "activityDetail": ""
+    "activityTitle": "Activité sans nom",
+    "activityDetail": "Détail",
+    "editActivity": "enregistrer",
+    "recursivity": "Récurrence",
+    "deleteActivity": "Supprimer",
+    "participants": "Participants :",
+    "paricipating": "Vous participez à cette activité",
+    "invited": "Invités :",
+    "noInvited": "Aucun membre invité.",
+    "noParticipant": "Aucun participant",
+    "quitActivity": "Quitter l'activité",
+    "joinActivity": "Participer à l'activité",
+    "inviteMember": "inviter des membres à se joindre à l'activité",
+    "onMap": "Position sur la carte :",
+    "showOnMap": "Voir"
   },
   "weekDays": {
-    "day1": "",
-    "day0": "",
-    "day2": "",
-    "day5": "",
-    "day3": "",
-    "day4": "",
-    "day6": ""
+    "day0": "Dimanche",
+    "day1": "Lundi",
+    "day2": "Mardi",
+    "day3": "Mercredi",
+    "day4": "Jeudi",
+    "day5": "Vendredi",
+    "day6": "Samedi"
   },
   "inviteMembers": {
-    "save": "",
-    "removeEverybody": "",
-    "inviteEverybody": "",
-    "cancelModifs": ""
+    "inviteEverybody": "Tous",
+    "removeEverybody": "Aucuns",
+    "cancelModifs": "Annuler modifs",
+    "save": "enregistrer"
   },
   "invitedPopup": {
-    "start": "",
-    "accept": "",
-    "title": "",
-    "detail": "",
-    "end": "",
-    "decline": ""
+    "detail": "Détail : ",
+    "title": "Invitation à participer à une activité",
+    "start": "Début : ",
+    "end": "Fin : ",
+    "decline": "Décliner",
+    "accept": "Accepter"
   },
   "checkList": {
-    "addCheck": "",
-    "checkList": "",
-    "newCheck": ""
+    "checkList": "Check list : ",
+    "newCheck": "Check...",
+    "addCheck": "Ajouter un check",
+    "saveCheckItems": "Enregistrer"
   },
   "projectTasks": {
-    "newActivity": "",
-    "myTasks": "",
-    "calendarPlaced": "",
-    "title": "",
-    "inProject": "",
-    "done": "",
-    "waitingForStatus": ""
+    "title": "Liste des tâches",
+    "inProject": "Tâches en projet",
+    "calendarPlaced": "Placées sur l'agenda",
+    "waitingForStatus": "Tâches passées",
+    "done": "Tâches terminées",
+    "inProjectDetail": "Les taches placées ici n'ont pas encore de date fixée.",
+    "calendarPlacedDetail": "Les taches placées sont placées dans l'agenda avec des dates dans le futur.",
+    "waitingForStatusDetail": "Les taches se trouvant dans cette section ont étés placées sur l'agenda, mais leurs dates est dépassée. A vous de voir si elles doivent etre remises en projet, replanifiées, ou si on peut les considerer comme terminées",
+    "doneDetail": "Cette section regroupe les taches qui ont étés considérées comme terminées.",
+    "newActivity": "Nouvelle tâche",
+    "myTasks": "Mes tâches"
   },
   "tasksSettings": {
-    "doneActivitiesDeleted": "",
-    "title": "",
-    "deleteDone": "",
-    "delete": "",
-    "colorLegend": ""
+    "title": "Paramètres de la liste de tâches",
+    "colorLegend": "Legende couleur : ",
+    "deleteDone": "Supprimer les tâches terminées",
+    "doneActivitiesDeleted": "Les tâches terminées ont été supprimées",
+    "delete": "Supprimer"
   },
   "taskItem": {
-    "start": "",
-    "checklist": "",
-    "end": "",
-    "inviteds": "",
-    "participants": ""
+    "participants": "Participants",
+    "inviteds": "Membres invités",
+    "checklist": "Check list",
+    "start": "Début",
+    "end": "Fin"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
-    "next1": "",
-    "copied": "",
-    "whyText": "",
-    "recursive": "",
-    "ponctualInfo": "",
-    "withTheMoney": "",
-    "cryptos": "",
-    "recursiveInfo": "",
-    "next3": "",
-    "next2": "",
-    "develop": "",
-    "ponctual": "",
-    "why": "",
-    "servers": "",
-    "title": "",
-    "wallet": "",
-    "donateIn": "",
-    "sustain": ""
+    "title": "Soutenir System-D",
+    "why": "Nous avons besoins de vos donations",
+    "whyText": "Le projet System-D à été bâti avec le cœur, sur du temps libre. Si vous souhaitez le voir perdurer et offrir à ceux qui le font vivre du temps libre pour developper de nouvelles fonctionnalités et améliorer les fonctionnalités existantes, vos donations sont importantes.",
+    "withTheMoney": "Vos donations permettent :",
+    "servers": "De payer les frais d'hébergement de la plate-forme pour un nombre toujours croissant d'utilisateurs",
+    "sustain": "De maintenir et améliorer les fonctionnalités de System-D, de les rendre accessible à toujours plus d'utilisateurs, et prendre en compte les retours utilisateurs.",
+    "develop": "De créer de nouvelles fonctionnalités. Prochains chantiers :",
+    "next1": "Discussions instantanées entre utilisateurs, utilisateurs et projets, projets.",
+    "next2": "Rechercher un projet ou un utilisateur par compétences, centre d'intérêt, type d'activité, localisation.",
+    "next3": "applications Android, Bureau, et IOS",
+    "ponctual": "Donation ponctuelle ( Paypal )",
+    "ponctualInfo": "Envoyer une donation ponctuelle via notre compte Paypal :",
+    "recursive": "Donation récurrente ( liberapay )",
+    "recursiveInfo": "Donner un peu d'argent tout les mois à System-D pour soutenir son développement sur le long terme via la plate-forme libre et open-source LiberaPay :",
+    "cryptos": "Donation en crypto-monnaies",
+    "donateIn": "Envoyer un don sur le wallet de System-D en",
+    "wallet": "Wallet ",
+    "copied": "Adresse du wallet copiée dans le presse papier"
+  },
+  "spreadsheetList": {
+    "spreadsheetList": "Tableurs",
+    "noSpreadsheet": "Aucuns tableurs",
+    "newSpreadsheet": "Nouveau tableur",
+    "showMore": "Voir plus",
+    "SpreadsheetName": "Nom du tableur"
+  },
+  "spreadsheetHeader": {
+    "spreadsheetName": "Nom du tableur",
+    "delete": "Supprimer le tableur",
+    "edit": "Changer le nom du tableur",
+    "abort": "annuler",
+    "deleteInfo": "Ce tableur sera supprimé ainsi que tout son contenu.",
+    "deleteSuccess": "Le tableur à été supprimé",
+    "lastEdit": "Dernière édition",
+    "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
+    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregisterez votre tableur excel ou oppenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
+    "uploadWarning": "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
+    "fileUpload": "Importer un fichier csv",
+    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"
+  },
+  "spreadsheet": {
+    "searchInTable": "Rechercher dans le tableur"
   }
 }
