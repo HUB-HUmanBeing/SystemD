@@ -423,93 +423,93 @@
     "categoryName": "Name des Verzeichnisses",
     "delete": "Verzeichnis Löschen",
     "deleteInfo": "Alle Dialoge innerhalb des Verzeichnisses werden gelöscht",
-    "moveDown": "In der Liste nach unten bewegen",
-    "moveUp": "Monter dans la liste",
-    "edit": "Éditer le nom",
-    "disableNotifications": "Les notifications sont actives sur ce dossier, cliquez pour les désactiver.",
-    "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver.",
-    "abort": "Annuler",
-    "showMore": "Voir plus",
-    "newTopic": "Créer une nouvelle discussion",
-    "noTopics": "Ce dossier est vide",
-    "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
-    "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier",
-    "topicName": "Nom de la discussion"
+    "moveDown": "In der Liste nach unten verschieben",
+    "moveUp": "In der Liste nach oben verschieben",
+    "edit": "Name bearbeiten",
+    "disableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen aktiv, klicken Sie diese an, um sie zu deaktivieren.",
+    "enlableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen deaktiviert, klicken Sie diese an, um sie zu reaktivieren.",
+    "abort": "Abbrechen",
+    "showMore": "Mehr erfahren",
+    "newTopic": "Ein neues Thema beginnen",
+    "noTopics": "Dieses Verzeichnis ist leer",
+    "notifEnabled": "Sie erhalten nun Benachrichtigungen für alle Diskussionen in diesem Verzeichnis",
+    "notifDisabled": "Die Benachrichtigungen wurden für alle Threads in diesem Verzeichnis deaktiviert",
+    "topicName": "Titel des Themas"
   },
   "topic": {
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier en cours"
+    "downloadAndDecrypt": "Herunterladen und Entschlüsseln der aktuellen Datei"
   },
   "topicItem": {
-    "unseenPublications": "Nouvelles publications",
-    "dragInfo": "Vous pouvez déplacer cette discussion dans une autre catégorie.",
-    "mainTopic": "DISCUSSION PRINCIPALE"
+    "unseenPublications": "Neue Beiträge",
+    "dragInfo": "Sie können diese Diskussion in eine andere Kategorie verschieben.",
+    "mainTopic": "HAUPTTHEMA"
   },
   "topicHeader": {
-    "mainTopic": "Discussion principale",
-    "topicName": "Nom de la discussion",
-    "delete": "Supprimer la discussion",
-    "edit": "Changer le nom de la discussion",
-    "disableNotifications": "Les notifications sont actives pour cette discussion, cliquez pour les désactiver.",
-    "enlableNotifications": "Les notifications sont désactivées pour cette discussion, cliquez pour les activer.",
-    "abort": "annuler",
-    "deleteInfo": "Cette discussion et tout son contenu seront supprimés.",
-    "deleteSuccess": "La discussion à été supprimée",
-    "notifEnabled": "Vous recevrez désormais des notifications pour chaque nouvelle publication.",
-    "notifDisabled": "Les notifications ont été désactivées pour cette discussion."
+    "mainTopic": "Hauptthema",
+    "topicName": "Titel der Diskussion",
+    "delete": "Diskussion löschen",
+    "edit": "Ändere Namen der Diskussion",
+    "disableNotifications": "Für diese Diskussion sind die Benachrichtigungen aktiv, klicken Sie darauf, um sie zu deaktivieren.",
+    "enlableNotifications": "Benachrichtigungen sind für diese Diskussion deaktiviert, klicken Sie darauf, um sie zu aktivieren.",
+    "abort": "Abbrechen",
+    "deleteInfo": "Diese Diskussion und alle ihre Inhalte werden gelöscht.",
+    "deleteSuccess": "Diese Diskussion wurde gelöscht",
+    "notifEnabled": "Sie erhalten nun für jede neue Änderung eine Benachrichtigung.",
+    "notifDisabled": "Die Benachrichtigungen wurden für diese Diskussion deaktiviert."
   },
   "newPublication": {
-    "return": "Retour",
-    "newPublication": "Nouvelle publication",
-    "text": "Texte",
-    "images": "Images et texte",
-    "poll": "Sondage",
-    "files": "Images, fichiers et texte"
+    "return": "Zurück",
+    "newPublication": "Neuer Beitrag",
+    "text": "Text",
+    "images": "Bilder und Text",
+    "poll": "Umfrage",
+    "files": "Bilder, Dateien und Text"
   },
   "textualContent": {
-    "placeholder": "Contenu de votre publication ...",
-    "publish": "Publier"
+    "placeholder": "Inhalt Ihrer Veröffentlichung ...",
+    "publish": "Veröffentlichen"
   },
   "pollContent": {
-    "placeholder": "Description du sondage",
-    "newProposition": "Proposition de réponse n°",
-    "addProposition": "Ajouter une proposition",
-    "publish": "Publier le sondage"
+    "placeholder": "Inhalt der Umfrage",
+    "newProposition": "Antwortvorschlag Nr.",
+    "addProposition": "Vorschlag hinzufügen",
+    "publish": "Umfrage veröffentlichen"
   },
   "fileContent": {
-    "addFiles": "Ajouter un ou plusieurs documents",
-    "loadInfos": "Chiffrement et upload des documents"
+    "addFiles": "Ein oder mehrere Dokumente hinzufügen",
+    "loadInfos": "Verschlüsselung und Hochladen von Dokumenten"
   },
   "publicationsList": {
-    "showMore": "Voir plus..."
+    "showMore": "Mehr erfahren..."
   },
   "publicationItem": {
-    "delete": "Supprimer",
-    "edit": "Editer",
-    "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
-    "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
-    "pinnedPublicationHead": "Publication épinglée"
+    "delete": "Entfernen",
+    "edit": "Bearbeiten",
+    "deleteInfo": "Diese Aktion wird die Veröffentlichung und alle Kommentare unwiderruflich löschen",
+    "deleteSuccess": "Diese Veröffentlichung und alle ihre Kommentare wurden entfernt",
+    "pinnedPublicationHead": "Gepinnte Veröffentlichung"
   },
   "editText": {
-    "placeholder": "Contenu de votre publication ...",
-    "abort": "Annuler",
-    "publish": "Enregistrer"
+    "placeholder": "Inhalt Ihrer Veröffentlichung ...",
+    "abort": "Abbrechen",
+    "publish": "Speichern"
   },
   "showPollContent": {
-    "answers": "participants"
+    "answers": "Beteiligte"
   },
   "pollOption": {
-    "vote": "votes"
+    "vote": "Stimmen"
   },
   "newComment": {
-    "placeholder": "Votre commentaire..."
+    "placeholder": "Ihr Kommentar..."
   },
   "commentList": {
-    "see": "Voir les",
-    "moreComments": "autres commentaires"
+    "see": "Siehe",
+    "moreComments": "andere Kommentare"
   },
   "commentItem": {
-    "answer": "Répondre",
-    "delete": "Supprimer",
+    "answer": "Antworten",
+    "delete": "Entfernen",
     "deleteSuccess": "Commentaire supprimé.",
     "see": "Voir les",
     "moreComments": "autres réponses"
