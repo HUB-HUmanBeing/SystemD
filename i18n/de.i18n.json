@@ -510,53 +510,53 @@
   "commentItem": {
     "answer": "Antworten",
     "delete": "Entfernen",
-    "deleteSuccess": "Commentaire supprimé.",
-    "see": "Voir les",
-    "moreComments": "autres réponses"
+    "deleteSuccess": "Kommentar gelöscht.",
+    "see": "Siehe",
+    "moreComments": "andere Antworten"
   },
   "newSubComment": {
-    "placeholder": "Votre réponse..."
+    "placeholder": "Ihre Antwort..."
   },
   "files": {
     "projectUsing": " ",
-    "of": "sur",
+    "of": "von",
     "allowed": " ",
-    "seeMore": "Voir plus"
+    "seeMore": "Mehr erfahren"
   },
   "filePreview": {
-    "delete": "Supprimer le fichier"
+    "delete": "Datei löschen"
   },
   "fullScreenFile": {
-    "download": "Télécharger",
-    "delete": "Supprimer le fichier",
-    "return": "Retour",
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier."
+    "download": "Herunterladen",
+    "delete": "Datei löschen",
+    "return": "Zurück",
+    "downloadAndDecrypt": "Herunterladen und Entschlüsseln der Datei."
   },
   "projectFiles": {
-    "limitOneFile": "La taille des documents est limitée à 15 Mo",
-    "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
+    "limitOneFile": "Die Größe der Dokumente ist auf 15 MB begrenzt",
+    "projectFiles.limitSize": "Sie haben das Datei-Upload-Limit für dieses Projekt erreicht. Bitte löschen Sie andere Dokumente, bevor Sie diese wieder hochladen können. "
   },
   "pinned": {
-    "pin": "Épingler la publication en en-tête de la discussion",
-    "unpin": "Désépingler la publication"
+    "pin": "Anheften des Beitrags an den Titel der Diskussion",
+    "unpin": "Entschlüsseln Sie die Veröffentlichung"
   },
   "showFileContent": {
-    "deleted": "Le fichier à été supprimé."
+    "deleted": "Die Datei wurde gelöscht."
   },
   "_templates_map": "===========================================================================================================================",
   "mapParams": {
-    "topo": "Topo",
-    "aerial": "Aérienne",
+    "topo": "Thema",
+    "aerial": "Luftbild",
     "standard": "Standard"
   },
   "mapSettings": {
-    "title": "Paramètres",
-    "kindOfMap": "Type de carte : ",
-    "saveChoice": "Utiliser ce fond de carte par défaut pour tous les membres du projet.",
-    "save": "Enregistrer",
-    "defaultCenter": "Centrage par défaut : ",
-    "defaultCenterInfo": "Centrer la carte sur la zone que vous souhaitez voir apparaitre par défaut puis cliquez sur enregistrer",
-    "centerSaved": "Le centrage par défaut de votre carte à été modifié.",
+    "title": "Einstellungen",
+    "kindOfMap": "Kartentyp: ",
+    "saveChoice": "Verwenden Sie diese Standard-Hintergrundkarte für alle Mitglieder des Projekts.",
+    "save": "Speichern",
+    "defaultCenter": "Voreinstellung Zentrierung: ",
+    "defaultCenterInfo": "Zentrieren Sie die Karte im gewünschten Bereich und klicken Sie dann auf Speichern",
+    "centerSaved": "Die Standard-Zentrierung Ihrer Karte wurde geändert.",
     "deleteOlds": "Entfernen Sie die alten Markierungen:",
     "deleteOldsInfo": "Entfernen Sie die Markierungen mit einem Erstellungsdatum älter als:",
     "chooseDuration": "Dauer auswählen",
@@ -574,58 +574,58 @@
     "text": "Textfeld",
     "textLabel": "Inhalt des Textfeldes",
     "textSubmit": "Erstellen",
-    "shapes": "Formes",
-    "myPosition": "Ma Position",
-    "myPositionInfo": "Cliquer sur le bouton ci-dessous pour créer un marqueur sur la carte à partir de votre position",
-    "updateUserPosition": "indiquer ma position"
+    "shapes": "Formen",
+    "myPosition": "Meine Koordinaten",
+    "myPositionInfo": "Klicken Sie auf die Schaltfläche unten, um von Ihrem Standort aus eine Markierung auf der Karte zu erstellen",
+    "updateUserPosition": "Meinen Standort teilen"
   },
   "creatingIcon": {
-    "createIconInfo": "Cliquer sur la carte pour positionner le marqueur."
+    "createIconInfo": "Klicken Sie auf die Karte, um den Marker zu positionieren."
   },
   "editingIcon": {
-    "editIconInfo": "Cliquer sur la carte pour modifier la position du marqueur."
+    "editIconInfo": "Klicken Sie auf die Karte, um die Position des Markers zu verändern."
   },
   "markerDetail": {
-    "markerName": "Nom du marqueur...",
-    "markerDetail": "Détail",
-    "editMarker": "éditer",
-    "moveMarker": "déplacer",
-    "deleteMarker": "Supprimer",
-    "coordinates": "Coordonnées :",
-    "createdBy": "Créé par ",
-    "lastEdit": " (édité)",
-    "goTo": "Y aller !"
+    "markerName": "Name des Markers...",
+    "markerDetail": "Detail",
+    "editMarker": "Bearbeiten",
+    "moveMarker": "Verschieben",
+    "deleteMarker": "Entfernen",
+    "coordinates": "Kontaktdaten :",
+    "createdBy": "Hergestellt von ",
+    "lastEdit": " (bearbeitet)",
+    "goTo": "Auf geht's!"
   },
   "detailMemberPosition": {
-    "lastEdit": "Dernière mise à jour :",
-    "actualise": "actualiser",
-    "deleteMarker": "Supprimer"
+    "lastEdit": "Letzte Aktualisierung :",
+    "actualise": "aktualisieren",
+    "deleteMarker": "Entfernen"
   },
   "creatingPolyline": {
-    "save": "Enregistrer",
-    "undo": "annuler dernier point",
-    "createIconInfo": "Placer les différents points puis cliquer sur enregistrer"
+    "save": "Speichern",
+    "undo": "Letzten Punkt löschen",
+    "createIconInfo": "Platzieren Sie die verschiedenen Punkte und klicken Sie dann auf \"Speichern\""
   },
   "creatingShape": {
-    "save": "Enregistrer",
-    "undo": "annuler dernier point",
-    "circleInfo": "Positionner le centre du cercle puis élargissez son diamètre en glissant avec la souris.",
-    "rectangleInfo": "Positionner un coin du rectangle puis agrandissez le en glissant avec la souris.",
-    "polygonInfo": "Placer les différents sommets de votre forme puis cliquer sur le dernier point ou sur enregistrer"
+    "save": "Speichern",
+    "undo": "Letzten Punkt löschen",
+    "circleInfo": "Positionieren Sie den Mittelpunkt des Kreises und vergrößern Sie dann seinen Durchmesser durch Ziehen mit der Maus.",
+    "rectangleInfo": "Positionieren Sie eine Ecke des Rechtecks und vergrößern Sie es durch Ziehen mit der Maus.",
+    "polygonInfo": "Platzieren Sie die verschiedenen Eckpunkte Ihrer Form und klicken Sie dann auf den letzten Punkt oder auf Speichern"
   },
   "creatingArrow": {
-    "createArrowInfo": "Placer votre flèche sur la carte."
+    "createArrowInfo": "Platzieren Sie Ihren Pfeil auf der Karte."
   },
   "_templates_calendar": "===========================================================================================================================",
   "projectCalendar": {
-    "daysView": "Vue journalière",
-    "monthView": "Vue mensuelle",
-    "listView": "Liste des évènements mensuels",
-    "recurring": "(Récurrent)",
-    "unnamed": "Sans titre",
-    "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
-    "activityPlaced": "L'activité à été placée sur l'agenda.",
-    "settings": "Paramètres",
+    "daysView": "Tagesansicht",
+    "monthView": "Monatliche Ansicht",
+    "listView": "Liste der monatlichen Aktivitäten",
+    "recurring": "(Wiederkehrend)",
+    "unnamed": "Unbenannt",
+    "setActivityInfo": "Positionieren Sie die Aktivität dort, wo Sie diese auf dem Kalender haben wollen.",
+    "activityPlaced": "Die Aktivität wurde auf den Kalender gesetzt.",
+    "settings": "Einstellungen",
     "addBtn": "Termin hinzufügen"
   },
   "calendarSettings": {
@@ -640,12 +640,12 @@
   },
   "colorLegend": {
     "placeholder": "Nicht angegeben",
-    "save": "Enregistrer"
+    "save": "Speichern"
   },
   "activityDetail": {
     "activityTitle": "Aktivität ohne Namen",
     "activityDetail": "Detail",
-    "editActivity": "enregistrer",
+    "editActivity": "speichern",
     "recursivity": "Wiederholung",
     "deleteActivity": "Entfernen",
     "participants": "Beteiligte:",
@@ -679,7 +679,7 @@
     "title": "Einladung zur Teilnahme an einer Aktivität",
     "start": "Beginn:",
     "end": "Ende:",
-    "decline": "Décliner",
+    "decline": "Ablehnen",
     "accept": "Annehmen"
   },
   "checkList": {
