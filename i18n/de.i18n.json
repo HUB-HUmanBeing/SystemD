@@ -400,30 +400,30 @@
     "miss": "Es fehlen Informationen",
     "pwdChange": "Passwort ändern",
     "encryptionKey": "Verschlüsseln des privaten Schlüssels mit neuem Passwort",
-    "initialization": "Rénitialisation de la session chiffrée"
+    "initialization": "Zurücksetzen der verschlüsselten Sitzung"
   },
   "userParams": {
-    "editPassword": "Modifier le mot de passe",
-    "peditPassword": "Nous n'aurons aucun moyen de vous aider si vous oubliez votre mot de passe. Ainsi, il est recommandé de noter le mot de passe que vous aurez choisi.",
-    "deleteAccount": "Supprimer votre compte",
-    "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
-    "passwordDeleteAccount": "Entrez votre mot de passe afin de confirmer la suppression du compte."
+    "editPassword": "Passwort ändern",
+    "peditPassword": "Wir können Ihnen nicht helfen, wenn Sie Ihr Passwort vergessen haben. Es wird daher dringend angeraten, sich das selbstgewählte Passwort zu notieren.",
+    "deleteAccount": "Benutzerkonto löschen",
+    "pdeleteAccount": "DIE LÖSCHUNG IHRES KONTOS WIRD UNWIDERRUFLICH SEIN.",
+    "passwordDeleteAccount": "Geben Sie Ihr Passwort ein, um die Löschung des Benutzerkontos zu bestätigen."
   },
   "userOptions": {
-    "language": "Langue"
+    "language": "Sprache"
   },
   "_templates_forum": "===========================================================================================================================",
   "categoryList": {
-    "categoryName": "Nom du dossier",
-    "new": "Nouveau dossier",
-    "myFiles": "DOCUMENTS",
-    "seeMore": "Voir plus"
+    "categoryName": "Name des Verzeichnisses",
+    "new": "Neues Verzeichnis",
+    "myFiles": "DOKUMENTE",
+    "seeMore": "Mehr erfahren"
   },
   "categoryItem": {
-    "categoryName": "Nom du dossier",
-    "delete": "Supprimer le dossier",
-    "deleteInfo": "Toutes les conversations à l'intérieur du dossier seront supprimées",
-    "moveDown": "Descendre dans la liste",
+    "categoryName": "Name des Verzeichnisses",
+    "delete": "Verzeichnis Löschen",
+    "deleteInfo": "Alle Dialoge innerhalb des Verzeichnisses werden gelöscht",
+    "moveDown": "In der Liste nach unten bewegen",
     "moveUp": "Monter dans la liste",
     "edit": "Éditer le nom",
     "disableNotifications": "Les notifications sont actives sur ce dossier, cliquez pour les désactiver.",
