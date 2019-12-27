@@ -22,7 +22,7 @@
     "beta": "beta",
     "donateLabel": "Support System-D",
     "betaVersion": "System-D.org is still in a beta version!",
-    "betaExplain": "You can probably find bugs or unusable/improvable features. We strive to make the user experience as enjoyable as possible despite very limited means (a volunteer developer helped occasionally by his friends).",
+    "betaExplain": "You can probably find bugs or unusable/improvable features. We strive to make the user experience as enjoyable as possible despite very limited means (a volunteer developer helped occasionally by his friends). ",
     "betaExplain2": "Thanks for ",
     "donate": "help us with your donations ",
     "betaExplainEnd": "and by sending us the bugs you encountered or ideas to improve existing or new features.",
@@ -83,7 +83,7 @@
     "genericTitle": "New activity on System-D",
     "genericAction": "See on website",
     "newPublication": "A new publication has been added in a followed topic",
-    "newResponse": "A comment has been made after your message",
+    "newResponse": "A comment has been made after your message.",
     "newMapMarker": "A new marker has been positioned on the map",
     "newInvitation": "You have been invited to participate to an activity"
   },
@@ -335,14 +335,14 @@
     "decline": "Decline",
     "accept": "Accept",
     "noLongerExist": "This invitation has expired",
-    "noLongerExistInfo": "Ask to the person who sent the invitation to send it again.",
+    "noLongerExistInfo": "Ask to the person who sent the invitation to send it again",
     "needToLoginFirst": "You must be connected to accept the invitation",
     "needToLoginFirstInfo": "Click on the button to login or register to join the project.",
     "needToLoginFirstButton": "Register"
   },
   "projectMembers": {
     "membersList": "Members list",
-    "admins": "Admins",
+    "admins": "Administrators",
     "members": "Members"
   },
   "member": {
@@ -484,15 +484,15 @@
   },
   "publicationItem": {
     "delete": "Delete",
-    "edit": "Editer",
+    "edit": "Edit",
     "deleteInfo": "This action will remove the publication and all its comments.",
     "deleteSuccess": "This publication and all its comments have been removed.",
     "pinnedPublicationHead": "Pinned publication"
   },
   "editText": {
-    "placeholder": "Contenu de votre publication ...",
-    "abort": "Annuler",
-    "publish": "Enregistrer"
+    "placeholder": "Publication content ...",
+    "abort": "Cancel",
+    "publish": "Save"
   },
   "showPollContent": {
     "answers": "answers"
@@ -626,7 +626,7 @@
     "setActivityInfo": "Set the activity where you want on the calendar.",
     "activityPlaced": "The activity has been set on the calendar.",
     "settings": "Settings",
-    "addBtn": "Ajouter un événement"
+    "addBtn": "Add event"
   },
   "calendarSettings": {
     "title": "Calendar parameters",
@@ -754,7 +754,7 @@
     "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
     "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregisterez votre tableur excel ou oppenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
     "uploadWarning": "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
-    "fileUpload": "Importer un fichier csv",
+    "fileUpload": "Import CSV file",
     "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"
   },
   "spreadsheet": {
