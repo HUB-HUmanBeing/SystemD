@@ -397,9 +397,9 @@
     "typePwd": "Geben Sie bitte Ihr Passwort ein",
     "confirm": "Bitte bestätigen Sie Ihr Passwort",
     "form": "Das Formular für die Anmeldung ist nicht korrekt",
-    "miss": "Il manque des informations",
-    "pwdChange": "Changement du mot de passe",
-    "encryptionKey": "Chiffrement de la clef privée à partir du nouveau mot de passe",
+    "miss": "Es fehlen Informationen",
+    "pwdChange": "Passwort ändern",
+    "encryptionKey": "Verschlüsseln des privaten Schlüssels mit neuem Passwort",
     "initialization": "Rénitialisation de la session chiffrée"
   },
   "userParams": {
