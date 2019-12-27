@@ -207,7 +207,7 @@
     "crypt": "Die Verschlüsselung Ihrer Inhalte auf System-D hängt von Ihrem Passwort ab, daher verwenden Sie bitte ein starkes Passwort.",
     "use": "Verwenden Sie den ",
     "characters": "Sonderzeichen",
-    "des": ", des ",
+    "des": ", von ",
     "capital": "Großbuchstaben",
     "and": " und der ",
     "number": "Ziffern",
@@ -228,7 +228,7 @@
     "endtoendencrypted": "Ende-zu-Ende-Verschlüsselung",
     "p2signin": "Wie bei Telegramm oder Signal wird niemand außer Ihnen und anderen, die am selben Projekt beteiligt sind, in der Lage sein, die von Ihnen geposteten Inhalte zu entziffern und zu lesen, nicht einmal die Entwickler dieser Plattform.",
     "next": "Weiter",
-    "p3signin": "D'autre part",
+    "p3signin": "Andererseits",
     "p3-1signin": "System-D schützt die Anonymität",
     "p3-2signin": "seiner Benutzer: keine E-Mail-Adresse und keine persönlichen Daten erforderlich. Allerdings haben wir nicht ",
     "p3-3signin": "keine Möglichkeit, Ihnen zu helfen, wenn Sie Ihr Passwort vergessen haben.",
@@ -346,7 +346,7 @@
     "members": "Mitglieder"
   },
   "member": {
-    "since": "Depuis",
+    "since": "Seit",
     "invitedBy": "Eingeladen von",
     "projectCreator": "Ersteller des Projekts",
     "quitProject": "Projekt verlassen",
@@ -373,7 +373,7 @@
   "editAvatar": {
     "edit": "Avatar bearbeiten",
     "delete": "Avatar löschen",
-    "OK": "Valider"
+    "OK": "Bestätigen"
   },
   "editPassword": {
     "oldPassword": "Altes Passwort",
@@ -387,7 +387,7 @@
     "crypt": "Die Verschlüsselung Ihrer Inhalte auf System-D hängt von Ihrem Passwort ab, daher verwenden Sie bitte ein starkes Passwort.",
     "use": "Verwenden Sie die ",
     "characters": "Sonderzeichen",
-    "des": ", des ",
+    "des": ", von ",
     "capital": "Großbuchstaben",
     "and": " und die ",
     "number": "Ziffern",
@@ -685,14 +685,14 @@
   "checkList": {
     "checkList": "Checkliste: ",
     "newCheck": "Überprüfen...",
-    "addCheck": "Ajouter un check",
+    "addCheck": "Einen Check hinzufügen",
     "saveCheckItems": "Speichern"
   },
   "projectTasks": {
     "title": "To-Do-Liste",
     "inProject": "Aufgaben im Projekt",
-    "calendarPlaced": "Placées sur l'agenda",
-    "waitingForStatus": "Tâches passées",
+    "calendarPlaced": "Auf den Kalender gesetzt",
+    "waitingForStatus": "Frühere Aufgaben",
     "done": "Erledigte Aufgaben",
     "inProjectDetail": "Die hier eingestellten Aufgaben haben noch kein genau definiertes Datum.",
     "calendarPlacedDetail": "Gestellte Aufgaben werden mit Terminen in der Zukunft in den Kalender eingetragen.",
