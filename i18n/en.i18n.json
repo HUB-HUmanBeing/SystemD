@@ -64,6 +64,7 @@
     "refreshCaptcha": "Refresh",
     "captcha": "Enter the 4 letters",
     "submit": "Send",
+    "githubDirectLink": "Utiliser directement le Github de System-d.org...",
     "succesMessage": "Thanks for your contribution! Your message has been sent to the developers",
     "githubLink": "To see the tracking of your feedback, go to the GitHub of the project",
     "return": "Return"
