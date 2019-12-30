@@ -1,29 +1,29 @@
 {
-  "_locale": "ca-ES",
+  "_locale": "fr-FR",
   "general": {
-    "error": "Une erreur s'est produite",
+    "error": "Προέκυψε σφάλμα",
     "changNavigator": "Nous sommes une équipe réduite de bénévoles et les développements nécessaires pour adapter ce site à votre navigateur ne sont pas encore terminés. Vous obtiendrez une expérience optimale en utilisant le navigateur Chrome ou sa version open-source Chromium."
   },
   "_templates_application": "===========================================================================================================================",
   "forbidden": {
     "noAccess": "Vous n'avez pas accès à cette page",
-    "backHome": "Retour à l'accueil"
+    "backHome": "Επιστροφή στην αρχική σελίδα"
   },
   "notFound": {
-    "noAddress": "Désolé, nous ne pouvons pas trouver de page à cette adresse.",
-    "backHome": "Retour à l'accueil"
+    "noAddress": "Λυπούμαστε, η σελίδα δεν βρέθηκε.",
+    "backHome": "Επιστροφή στην αρχική σελίδα"
   },
   "workInProgress": {
-    "nofunction": "Cette fonctionnalité n'est pas encore accessible",
-    "allow": "elle permettra :",
-    "infos": "Informations complémentaires :"
+    "nofunction": "Αυτή η λειτουργία δεν είναι ακόμα διαθέσιμη",
+    "allow": "θα επιτρέψει :",
+    "infos": "Περαιτέρω Πληροφορίες :"
   },
   "layout": {
-    "beta": "bêta",
+    "beta": "1. Δοκιμαστική Έκδοση\n2. Beta",
     "donateLabel": "Soutenir System-D",
     "betaVersion": "System-D.org est toujours en version bêta !",
     "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorables. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
-    "betaExplain2": "Merci de ",
+    "betaExplain2": "Ευχαριστούμε για ",
     "donate": "nous aider avec vos donations ",
     "betaExplainEnd": "et en faisant remonter les idées d'améliorations et bugs constatés.",
     "betaWarning": "Le protocole de chiffrement a été conçu avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
@@ -32,7 +32,7 @@
   },
   "_templates_includes": "===========================================================================================================================",
   "menuProject": {
-    "home": "Accueil",
+    "home": "Αρχική",
     "forum": "Forum",
     "params": "Paramètres",
     "calendar": "Agenda",
@@ -57,13 +57,13 @@
     "bugReport": "Bug",
     "suggestion": "Suggestions",
     "allowDeviceInfo": "Joindre automatiquement des informations sur le navigateur utilisé afin de faciliter le débuggage ? (navigateur, version, système d'exploitation, langue)",
-    "decline": "non",
-    "authorize": "oui",
+    "decline": "όχι",
+    "authorize": "ναι",
     "bugReportLabel": "Description du bug",
     "sugestionLabel": "Idées et suggestions",
     "refreshCaptcha": "Renouveler",
     "captcha": "Saisir les 4 lettres",
-    "submit": "Envoyer",
+    "submit": "Αποστολή",
     "githubDirectLink": "Utiliser directement le Github de System-d.org...",
     "succesMessage": "Merci de votre contribution ! Votre message à été transmis au développeurs",
     "githubLink": "Pour voir l'évolution de votre message, rendez-vous sur GitHub",
@@ -293,13 +293,13 @@
     "title": "Création du lien d'invitation",
     "infoQuote": "En transmettant des liens d'invitation, vous transmettez les clefs de chiffrement de votre projet à tous ceux qui auront accès au lien généré durant la période de validité.",
     "durationLabel": "Durée de validité du lien d'invitation",
-    "hour": "heure",
-    "day": "jour",
-    "week": "semaine",
-    "month": "mois",
+    "hour": "ώρα",
+    "day": "μέρα",
+    "week": "εβδομάδα",
+    "month": "μήνας",
     "remainingLabel1": "Valide pour inviter",
-    "user": "utilisateur",
-    "users": "utilisateurs",
+    "user": "χρήστης",
+    "users": "χρήστες",
     "ok": "Générer le lien d'invitation",
     "addMessage": "Ajouter un message d'invitation",
     "invitMessage": "Message envoyé avec votre invitation",
@@ -319,8 +319,8 @@
   },
   "invitationList": {
     "from": "Lien d'invitation créé",
-    "by": "Créée par",
-    "expireIn": "Expire dans",
+    "by": "Δημιουργήθηκε από",
+    "expireIn": "Λήγει στις\nΛήγει σε",
     "remaining": "Invitations restantes",
     "noInvits": "Il n'y a aucun lien d'invitation en cours de validité.",
     "newInvitation": "Générer un nouveau lien d'invitation."
@@ -333,22 +333,22 @@
     "description": "Description du projet",
     "noDescription": "Description non-renseignée",
     "message": "Message d'invitation",
-    "decline": "Décliner",
-    "accept": "Accepter",
-    "noLongerExist": "Cette invitation est expirée",
+    "decline": "Απόρριψη",
+    "accept": "Αποδοχή",
+    "noLongerExist": "Αυτή η πρόσκληση έχει λήξει\nΗ πρόσκλησή σας έχει λήξει",
     "noLongerExistInfo": "Demandez à la personne qui vous a envoyé l'invitation de vous en renvoyer une nouvelle",
     "needToLoginFirst": "Vous devez être connecté pour rejoindre un projet",
     "needToLoginFirstInfo": "Cliquez sur le bouton pour vous connecter ou vous inscrire et rejoindre le projet.",
-    "needToLoginFirstButton": "S'enregistrer"
+    "needToLoginFirstButton": "Εγγραφή"
   },
   "projectMembers": {
-    "membersList": "Liste des membres",
-    "admins": "Administrateurs",
-    "members": "Membres"
+    "membersList": "Λίστα μελών",
+    "admins": "Διαχειριστές",
+    "members": "Μέλη"
   },
   "member": {
-    "since": "Depuis",
-    "invitedBy": "Invité par",
+    "since": "Από",
+    "invitedBy": "Προσκλήθηκε από",
     "projectCreator": "Créateur du projet",
     "quitProject": "Quitter le projet",
     "quitProjectError": "Vous ne pouvez pas quitter le projet.",
@@ -378,10 +378,10 @@
   },
   "editPassword": {
     "oldPassword": "Ancien mot de passe",
-    "newPassword": "Nouveau mot de passe",
-    "repeatPassword": "Répéter mot de passe",
+    "newPassword": "Νέος κωδικός πρόσβασης",
+    "repeatPassword": "Επαναλάβετε τον κωδικό πρόσβασης",
     "strength": "Force",
-    "editPassword": "Modifier mot de passe"
+    "editPassword": "Αλλάξτε κωδικό πρόσβασης"
   },
   "editPasswordJs": {
     "previousPwd": "veuillez entrer votre précédent mot de passe",
@@ -415,24 +415,24 @@
   },
   "_templates_forum": "===========================================================================================================================",
   "categoryList": {
-    "categoryName": "Nom du dossier",
-    "new": "Nouveau dossier",
-    "myFiles": "DOCUMENTS",
+    "categoryName": "Όνομα φακέλου",
+    "new": "Νέος φάκελος",
+    "myFiles": "ΈΓΓΡΑΦΑ",
     "seeMore": "Voir plus"
   },
   "categoryItem": {
     "categoryName": "Nom du dossier",
-    "delete": "Supprimer le dossier",
+    "delete": "Διαγραφή αρχείου",
     "deleteInfo": "Toutes les conversations à l'intérieur du dossier seront supprimées",
     "moveDown": "Descendre dans la liste",
     "moveUp": "Monter dans la liste",
     "edit": "Éditer le nom",
     "disableNotifications": "Les notifications sont actives sur ce dossier, cliquez pour les désactiver.",
     "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver.",
-    "abort": "Annuler",
-    "showMore": "Voir plus",
+    "abort": "Ακύρωση",
+    "showMore": "Δείτε περισσότερα",
     "newTopic": "Créer une nouvelle discussion",
-    "noTopics": "Ce dossier est vide",
+    "noTopics": "Αυτός ο φάκελος είναι άδειος",
     "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
     "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier",
     "topicName": "Nom de la discussion"
@@ -484,7 +484,7 @@
     "showMore": "Voir plus..."
   },
   "publicationItem": {
-    "delete": "Supprimer",
+    "delete": "Διαγραφή",
     "edit": "Editer",
     "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
     "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
@@ -499,7 +499,7 @@
     "answers": "participants"
   },
   "pollOption": {
-    "vote": "votes"
+    "vote": "ψήφοι"
   },
   "newComment": {
     "placeholder": "Votre commentaire..."
@@ -567,10 +567,10 @@
   },
   "newMarker": {
     "title": "Nouveau marqueur",
-    "color": "Couleur",
+    "color": "Χρώμα",
     "type": "Type",
-    "icons": "Icones",
-    "arrows": "Flèches",
+    "icons": "Εικονίδια",
+    "arrows": "Βέλη",
     "lines": "Lignes",
     "text": "Zone de texte",
     "textLabel": "contenu de la zone de texte",
@@ -588,10 +588,10 @@
   },
   "markerDetail": {
     "markerName": "Nom du marqueur...",
-    "markerDetail": "Détail",
-    "editMarker": "éditer",
+    "markerDetail": "Λεπτομέρειες",
+    "editMarker": "επεξεργασία",
     "moveMarker": "déplacer",
-    "deleteMarker": "Supprimer",
+    "deleteMarker": "Διαγραφή",
     "coordinates": "Coordonnées :",
     "createdBy": "Créé par ",
     "lastEdit": " (édité)",
@@ -623,7 +623,7 @@
     "monthView": "Vue mensuelle",
     "listView": "Liste des évènements mensuels",
     "recurring": "(Récurrent)",
-    "unnamed": "Sans titre",
+    "unnamed": "Χωρίς τίτλο",
     "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
     "activityPlaced": "L'activité à été placée sur l'agenda.",
     "settings": "Paramètres",
@@ -636,7 +636,7 @@
     "defaultViewSaved": "La vue par défaut à été modifiée pour tout les membres du projet",
     "deleteOlds": "Supprimer les anciennes activités",
     "deleteOldsInfo": "Supprimer les activités dont la date de début remonte à plus de :",
-    "delete": "Supprimer",
+    "delete": "Διαγραφή",
     "oldsActivitiesDeleted": "Les anciennes activités ont été supprimées"
   },
   "colorLegend": {
@@ -661,25 +661,25 @@
     "showOnMap": "Voir"
   },
   "weekDays": {
-    "day0": "Dimanche",
-    "day1": "Lundi",
-    "day2": "Mardi",
-    "day3": "Mercredi",
-    "day4": "Jeudi",
-    "day5": "Vendredi",
-    "day6": "Samedi"
+    "day0": "Κυριακή",
+    "day1": "Δευτέρα",
+    "day2": "Τρίτη",
+    "day3": "Τετάρτη",
+    "day4": "Πέμπτη",
+    "day5": "Παρασκευή",
+    "day6": "Σάββατο"
   },
   "inviteMembers": {
-    "inviteEverybody": "Tous",
-    "removeEverybody": "Aucuns",
+    "inviteEverybody": "Όλα",
+    "removeEverybody": "Κανένα",
     "cancelModifs": "Annuler modifs",
     "save": "enregistrer"
   },
   "invitedPopup": {
     "detail": "Détail : ",
     "title": "Invitation à participer à une activité",
-    "start": "Début : ",
-    "end": "Fin : ",
+    "start": "Έναρξη: ",
+    "end": "Λήξη: ",
     "decline": "Décliner",
     "accept": "Accepter"
   },
@@ -734,7 +734,7 @@
     "recursiveInfo": "Donner un peu d'argent tout les mois à System-D pour soutenir son développement sur le long terme via la plate-forme libre et open-source LiberaPay :",
     "cryptos": "Donation en crypto-monnaies",
     "donateIn": "Envoyer un don sur le wallet de System-D en",
-    "wallet": "Wallet ",
+    "wallet": "Πορτοφόλι ",
     "copied": "Adresse du wallet copiée dans le presse papier"
   },
   "spreadsheetList": {

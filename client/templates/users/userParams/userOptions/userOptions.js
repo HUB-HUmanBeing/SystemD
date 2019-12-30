@@ -23,6 +23,12 @@ Template.userOptions.helpers({
                 langFormat: 'es-ES',
                 langIso639: 'ES',
                 selected: i18n.getLocale()==='es-ES'
+            },
+            {
+                name: "Deutsche",
+                langFormat: 'de-DE',
+                langIso639: 'DE',
+                selected: i18n.getLocale()==='de-DE'
             }
         ]
     }
