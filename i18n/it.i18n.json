@@ -1,30 +1,30 @@
 {
   "_locale": "it-IT",
   "general": {
-    "error": "Une erreur s'est produite",
-    "changNavigator": "Nous sommes une équipe réduite de bénévoles et les développements nécessaires pour adapter ce site à votre navigateur ne sont pas encore terminés. Vous obtiendrez une expérience optimale en utilisant le navigateur Chrome ou sa version open-source Chromium."
+    "error": "Si é verificato un errore",
+    "changNavigator": "Siamo un piccolo team di volontari e gli sviluppi necessari per adattare questo sito al vostro browser non sono ancora completi. Otterrete la migliore esperienza utilizzando il browser Chrome o la sua versione open-source Chromium."
   },
   "_templates_application": "===========================================================================================================================",
   "forbidden": {
-    "noAccess": "Vous n'avez pas accès à cette page",
-    "backHome": "Retour à l'accueil"
+    "noAccess": "Non hai accesso a questa pagina",
+    "backHome": "Torna alla pagina principale"
   },
   "notFound": {
-    "noAddress": "Désolé, nous ne pouvons pas trouver de page à cette adresse.",
-    "backHome": "Retour à l'accueil"
+    "noAddress": "Purtroppo, non possiamo trovare una pagina a questo indirizzo.",
+    "backHome": "Torna alla pagina principale"
   },
   "workInProgress": {
-    "nofunction": "Cette fonctionnalité n'est pas encore accessible",
-    "allow": "elle permettra :",
-    "infos": "Informations complémentaires :"
+    "nofunction": "La funzione non è ancora disponibile",
+    "allow": "lo permettera':",
+    "infos": "Dati supplementari:"
   },
   "layout": {
-    "beta": "bêta",
+    "beta": "beta",
     "donateLabel": "Soutenir System-D",
-    "betaVersion": "System-D.org est toujours en version bêta !",
+    "betaVersion": "System-D.org è ancora in beta!",
     "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorables. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
     "betaExplain2": "Merci de ",
-    "donate": "nous aider avec vos donations ",
+    "donate": "aiutateci con le vostre donazioni ",
     "betaExplainEnd": "et en faisant remonter les idées d'améliorations et bugs constatés.",
     "betaWarning": "Le protocole de chiffrement a été conçu avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
     "betaWarning2": "Nous ne pouvons donc pas assurer à 100% a nos utilisateurs que leurs données sont inviolables meme si c'est pour nous un objectif aussi prioritaire que l'ergonomie du site.",
@@ -34,17 +34,17 @@
   "menuProject": {
     "home": "Accueil",
     "forum": "Forum",
-    "params": "Paramètres",
+    "params": "Impostazioni",
     "calendar": "Agenda",
-    "tasks": "Tâches",
+    "tasks": "Azioni",
     "maps": "Carte",
-    "members": "Membres"
+    "members": "Membri"
   },
   "menu": {
-    "param": "Paramètres",
+    "param": "Impostazioni",
     "logout": "Déconnexion",
-    "noProject": "Vous n'êtes actuellement inscrit sur aucun projet.",
-    "clic": "Vous pouvez cliquer sur le bouton ci-dessous pour créer un projet ou attendre une invitation à un projet existant.",
+    "noProject": "Al presente non sei registrato in nessun progetto.",
+    "clic": "Potete cliccare sul pulsante qui sotto per creare un progetto o attendere un invito ad un progetto esistente.",
     "decryption": "Déchiffrement de la liste de vos projets.",
     "newProject": "Nouveau projet"
   },
