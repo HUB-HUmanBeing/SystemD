@@ -117,6 +117,7 @@
     "dFreeNetwork": "Jedem Nutzer und jedem Projekt soll es ermöglicht werden, die erarbeiteten Ressourcen zu teilen, um eine große, nicht kommerzielle Verwertung zu verwirklichen."
   },
   "landingContact": {
+    "contact": "CONTACT",
     "github": "Folgen Sie dem Fortschritt des Projekts, reichen Sie Ihre Anregungen und Pull-Requests ein.",
     "email": "Kontaktieren Sie mich per E-Mail, um Ihre Anmerkungen, Ideen, Vorschläge und Anregungen mitzuteilen.",
     "chat": "Nehmen Sie am Projektchat teil, um direkt mit dem Entwicklerteam zu reden."
@@ -737,9 +738,10 @@
     "wallet": "Wallet ",
     "copied": "Adresse des Wallet wurde in die Zwischenspeicher kopiert"
   },
+  "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Tabellenblätter",
-    "noSpreadsheet": "Keine Tabellenblätter",
+    "noSpreadsheet": "Aucun tableur",
     "newSpreadsheet": "Tabellenblatt hinzufügen",
     "showMore": "Mehr erfahren",
     "SpreadsheetName": "Name des Tabellenblatts"
@@ -747,13 +749,13 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Name des Tabellenblatts",
     "delete": "Tabellenblatt löschen",
-    "edit": "Names des Tabellenblatts ändern",
-    "abort": "Abbrechen",
+    "edit": "Modifier le nom du tableur",
+    "abort": "Annuler",
     "deleteInfo": "Dieses Tabellenblatt wird mitsamt seinem gesamten Inhalt gelöscht.",
     "deleteSuccess": "Das Tabellenblatt wurde gelöscht",
     "lastEdit": "Letzte Bearbeitung",
     "uploadTable": "Importieren eines vorhandenen Tabellenblatts aus einer CSV-Datei",
-    "uploadInfo": "Das bestehende Tabellenkalkulationssystem arbeitet mit \".csv\"-Dateien. Speichern Sie Ihre Excel- oder oppenOffice-Tabelle im CSV-Format und importieren Sie diese durch Klicken auf die Schaltfläche unten ",
+    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
     "uploadWarning": "Achtung, alle Daten in der Tabellenkalkulation werden unwiderruflich durch die Daten in der csv-Datei überschrieben!",
     "fileUpload": "Importieren einer CSV-Datei",
     "onlyCsvError": "Die hochgeladene Datei hat kein gültiges CSV-Format"
