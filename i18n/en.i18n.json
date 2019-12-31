@@ -117,6 +117,7 @@
     "dFreeNetwork": "Allow users and projects to share their resources in order to create a free and large non-commercial network."
   },
   "landingContact": {
+    "contact": "CONTACT",
     "github": "Follow the progress of project, make issues and pull requests.",
     "email": "Contact me by email to share yours observations, ideas, suggestions, propositions...",
     "chat": "Join us on the chat to discuss with the team of the project."
@@ -737,9 +738,10 @@
     "wallet": "Wallet ",
     "copied": "Wallet address copied into clipboard"
   },
+  "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Spreadsheets",
-    "noSpreadsheet": "No spreadsheet",
+    "noSpreadsheet": "Aucun tableur",
     "newSpreadsheet": "New spreadsheet",
     "showMore": "See more",
     "SpreadsheetName": "Spreadsheet name"
@@ -747,13 +749,13 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Spreadsheet name",
     "delete": "Delete spreadsheet",
-    "edit": "Change spreadsheet name",
-    "abort": "cancel",
+    "edit": "Modifier le nom du tableur",
+    "abort": "Annuler",
     "deleteInfo": "This spreadsheet and all its content will be deleted",
     "deleteSuccess": "The spreadsheet has been deleted",
     "lastEdit": "Last edit",
     "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
-    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregisterez votre tableur excel ou oppenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
+    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
     "uploadWarning": "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
     "fileUpload": "Import CSV file",
     "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"

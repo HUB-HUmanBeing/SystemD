@@ -117,6 +117,7 @@
     "dFreeNetwork": "Permitir que cada usuario y cada proyecto compartan los recursos producidos para lograr una circulación a gran escala sin ánimo de lucro."
   },
   "landingContact": {
+    "contact": "CONTACT",
     "github": "Venga y siga el progreso del proyecto, envíe sus ideas, cuestiones y solicitudes.",
     "email": "Contácteme por correo electrónico para compartir sus comentarios, ideas, sugerencias, propuestas.",
     "chat": "Únase al chat del proyecto para chatear con el equipo de una manera sencilla."
@@ -737,9 +738,10 @@
     "wallet": "Wallet",
     "copied": "Dirección del wallet copiada en el portapapeles"
   },
+  "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Hojas de cálculo",
-    "noSpreadsheet": "Ninguna hoja de cálculo",
+    "noSpreadsheet": "Aucun tableur",
     "newSpreadsheet": "Nueva hoja de cálculo",
     "showMore": "Ver más",
     "SpreadsheetName": "Nombre de la hoja de cálculo"
@@ -747,13 +749,13 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Nombre de la hoja de cálculo",
     "delete": "Borrar la hoja de cálculo",
-    "edit": "Cambiar el nombre de la hoja de cálculo",
-    "abort": "cancelar",
+    "edit": "Modifier le nom du tableur",
+    "abort": "Annuler",
     "deleteInfo": "La hoja de cálculo se eliminará con su contenido",
     "deleteSuccess": "La hoja de cálculo ha sido eliminada",
     "lastEdit": "Última edición",
     "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
-    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregisterez votre tableur excel ou oppenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
+    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
     "uploadWarning": "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
     "fileUpload": "Importer un fichier csv",
     "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"

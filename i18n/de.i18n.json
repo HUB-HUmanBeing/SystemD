@@ -53,7 +53,7 @@
     "noAccess": "Sie können diese Seite nicht aufrufen! Bitte loggen Sie sich ein."
   },
   "submitIssue": {
-    "btnLabel": "Fehler - Vorschläge",
+    "btnLabel": "Bugs - Anregungen",
     "bugReport": "Fehler",
     "suggestion": "Vorschläge",
     "allowDeviceInfo": "Füge automatisch Informationen über den verwendeten Browser an, um die Fehlersuche zu erleichtern? (Browser, Version, Betriebssystem, Sprache)",
@@ -66,7 +66,7 @@
     "submit": "Senden",
     "githubDirectLink": "Nutzen Sie direkt Github von System-d.org...",
     "succesMessage": "Vielen Dank für Ihren Beitrag! Ihre Nachricht wurde an die Entwickler weitergeleitet",
-    "githubLink": "Um den Bearbeitungsstatus Ihrer Nachricht zu sehen, gehen Sie zu GitHub",
+    "githubLink": "Um den Bearbeitungsstatus Ihrer Nachricht zu sehen, informieren Sie sich in GitHub",
     "return": "Zurück"
   },
   "newsFeed": {
@@ -111,15 +111,16 @@
     "3DevPhases": "DREI PHASEN DER ENTWICKLUNG",
     "createTool": "Ein für alle offenes Projektmanagement-Tool schaffen",
     "cTool": "Ein Instrument, das es den verschiedenen Kollektiven und Vereinen ermöglicht, sich effizient zu organisieren. Ein verschlüsseltes, kostenloses Open-Source-Tool zur Förderung der Horizontalität im Projektmanagement.",
-    "doOfSystemD": "Machen Sie SystemD zum sozialen Netzwerk des unkommerziellen Projekts",
+    "doOfSystemD": "Machen Sie System-D zum sozialen Netzwerk des unkommerziellen Projekts",
     "dOfSystD": "Entwicklung von Schnittstellen, die die Plattform zu einem Kommunikationsraum werden lässt, in dem sich die Mitglieder treffen und über verschiedene Projekte austauschen können: geolokalisierte Suche anhand von Interessensgebieten, verschlüsselten Nachrichten, gemeinsame Blogs usw.",
     "developFreeNetwork": "Entwicklung eines freien Netzwerks und mit anderen geteilten Nutzung",
     "dFreeNetwork": "Jedem Nutzer und jedem Projekt soll es ermöglicht werden, die erarbeiteten Ressourcen zu teilen, um eine große, nicht kommerzielle Verwertung zu verwirklichen."
   },
   "landingContact": {
+    "contact": "CONTACT",
     "github": "Folgen Sie dem Fortschritt des Projekts, reichen Sie Ihre Anregungen und Pull-Requests ein.",
     "email": "Kontaktieren Sie mich per E-Mail, um Ihre Anmerkungen, Ideen, Vorschläge und Anregungen mitzuteilen.",
-    "chat": "Nehmen Sie am Projektchat teil, um in möglichst unkomplizierter Form mit dem Team zu chatten."
+    "chat": "Nehmen Sie am Projektchat teil, um direkt mit dem Entwicklerteam zu reden."
   },
   "landingPlus": {
     "anonymous": "ANONYM",
@@ -127,7 +128,7 @@
     "free": "FREI",
     "pfree": "Wie sonst könnte man sich eine Plattform vorstellen, deren Ziel die Förderung nicht-marktwirtschaftlicher sozialer Beziehungen ist",
     "encrypted": "VERSCHLÜSSELT",
-    "pencrypted": "Die von Ihnen freigegebenen Inhalte sowie die Liste der Projekte, an denen Sie teilnehmen, werden \"End-to-End\" verschlüsselt ",
+    "pencrypted": "Die von Ihnen freigegebenen Inhalte sowie die Liste der Projekte, an denen Sie teilnehmen, werden \"Ende-zu-Ende\" verschlüsselt ",
     "signin": "Registrieren"
   },
   "landingRoadmap": {
@@ -140,10 +141,10 @@
     "p5firstPhase": "Einrichtung eines Diskussionsforums pro Projekt",
     "p6firstPhase": "Gemeinsamer Kalender für jedes der Projekte",
     "p7firstPhase": "Übersichtliche Aufgabenliste für jedes Projekt",
-    "p8firstPhase": "Schnittstelle zur Nutzung von oder Einbindung in SystemD",
+    "p8firstPhase": "Schnittstelle zur Nutzung von oder Einbindung in System-D",
     "secondPhase": "ZWEITE PHASE",
     "psecondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Qualifikationen eingeben kann",
-    "p2secondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Qualifikationen eingeben kann",
+    "p2secondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Interessen eingeben kann",
     "p3secondPhase": "Berücksichtigung des geographischen Orts",
     "p4secondPhase": "Erweiterte Suchwerkzeuge zur Ermittlung potenzieller Mitarbeiter / interessanter Projekte",
     "p5secondPhase": "Benutzer- und projektübergreifendes Messaging",
@@ -160,7 +161,7 @@
   },
   "landingTitle": {
     "h3title": "Eine verschlüsselte Plattform für nicht-kommerzielle Kooperationsprojekte",
-    "ptitle": "Erstellen Sie Projekte, laden Sie Ihre Freunde ein und nutzen Sie die kostenlosen und sicheren Anwendungen, um Ihren Verein oder Ihre Gruppe zusammen zu organisieren",
+    "ptitle": "Erstellen Sie Projekte, laden Sie Ihre Freunde ein und nutzen Sie die freien und sicheren Anwendungen, um Ihren Verein oder Ihre Gruppe zusammen zu organisieren",
     "signin": "Registrieren"
   },
   "landingTools": {
@@ -224,7 +225,7 @@
     "initialization": "Start einer neuen verschlüsselten Sitzung"
   },
   "signinContainer": {
-    "psignin": "System-D unterstützt Ihre Projekte, indem es Ihnen einen kostenlosen, gemeinschaftlich genutzten Arbeitsbereich zur Verfügung stellt, der völlig kostenlos ist",
+    "psignin": "System-D unterstützt Ihre Projekte, indem es Ihnen einen ganz und gar kostenfreien Arbeitsraum zur Gemeinschaftsarbeit zur Verfügung stellt",
     "linkSignin": "https://de.wikipedia.org/wiki/Ende-zu-Ende-Verschl%C3%BCsselung",
     "endtoendencrypted": "Ende-zu-Ende-Verschlüsselung",
     "p2signin": "Wie bei Telegramm oder Signal wird niemand außer Ihnen und anderen, die am selben Projekt beteiligt sind, in der Lage sein, die von Ihnen geposteten Inhalte zu entziffern und zu lesen, nicht einmal die Entwickler dieser Plattform.",
@@ -290,13 +291,13 @@
     "decrypting1": "Entschlüsselung von Projektdaten"
   },
   "newInvitation": {
-    "title": "Erstellen des Links für die Einladung",
-    "infoQuote": "Durch die Übermittlung von Einladungslinks übermitteln Sie die Chiffrierschlüssel Ihres Projekts an alle, die während der Gültigkeitsdauer Zugang zu dem generierten Link haben werden.",
+    "title": "Generieren des Links für die Einladung",
+    "infoQuote": "Durch das Senden von Einladungslinks übertragen Sie die Chiffrierschlüssel Ihres Projekts an alle, die während der Gültigkeitsdauer Zugang zu dem generierten Link haben werden.",
     "durationLabel": "Gültigkeitsdauer des Einladungslinks",
-    "hour": "Uhrzeit",
-    "day": "Tag",
-    "week": "Woche",
-    "month": "Monat",
+    "hour": "Stunde(n)",
+    "day": "Tag(e)",
+    "week": "Woche(n)",
+    "month": "Monat(e)",
     "remainingLabel1": "Gültig zur Einladung",
     "user": "Benutzer",
     "users": "Benutzer",
@@ -726,7 +727,7 @@
     "sustain": "Die Funktionalitäten von System-D zu erhalten und zu verbessern, sie für immer mehr Benutzer zugänglich zu machen und das Feedback der Benutzer zu verarbeiten.",
     "develop": "Um neue Features zu erstellen. Kommende Vorhaben:",
     "next1": "Unmittelbare Diskussionen zwischen Benutzern/ Benutzern und Projekten/ Projekten.",
-    "next2": "Suchen Sie ein Projekt oder einen Mitarbeiter nach Fähigkeiten, Interesse, Art der Tätigkeit, Standort.",
+    "next2": "Suche nach einem Projekt oder Mitarbeiter nach Fähigkeiten, Interesse, Art der Tätigkeit, Standort.",
     "next3": "Android-, Desktop- und IOS-Anwendungen",
     "ponctual": "Einmalige Spende ( Paypal )",
     "ponctualInfo": "Schicken Sie eine einmalige Spende über unser Paypal-Konto:",
@@ -737,9 +738,10 @@
     "wallet": "Wallet ",
     "copied": "Adresse des Wallet wurde in die Zwischenspeicher kopiert"
   },
+  "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Tabellenblätter",
-    "noSpreadsheet": "Keine Tabellenblätter",
+    "noSpreadsheet": "Aucun tableur",
     "newSpreadsheet": "Tabellenblatt hinzufügen",
     "showMore": "Mehr erfahren",
     "SpreadsheetName": "Name des Tabellenblatts"
@@ -747,13 +749,13 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Name des Tabellenblatts",
     "delete": "Tabellenblatt löschen",
-    "edit": "Names des Tabellenblatts ändern",
-    "abort": "Abbrechen",
+    "edit": "Modifier le nom du tableur",
+    "abort": "Annuler",
     "deleteInfo": "Dieses Tabellenblatt wird mitsamt seinem gesamten Inhalt gelöscht.",
     "deleteSuccess": "Das Tabellenblatt wurde gelöscht",
     "lastEdit": "Letzte Bearbeitung",
     "uploadTable": "Importieren eines vorhandenen Tabellenblatts aus einer CSV-Datei",
-    "uploadInfo": "Das bestehende Tabellenkalkulationssystem arbeitet mit \".csv\"-Dateien. Speichern Sie Ihre Excel- oder oppenOffice-Tabelle im CSV-Format und importieren Sie diese durch Klicken auf die Schaltfläche unten ",
+    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
     "uploadWarning": "Achtung, alle Daten in der Tabellenkalkulation werden unwiderruflich durch die Daten in der csv-Datei überschrieben!",
     "fileUpload": "Importieren einer CSV-Datei",
     "onlyCsvError": "Die hochgeladene Datei hat kein gültiges CSV-Format"
