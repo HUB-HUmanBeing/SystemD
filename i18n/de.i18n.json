@@ -290,7 +290,7 @@
     "decrypting1": "Entschlüsselung von Projektdaten"
   },
   "newInvitation": {
-    "title": "Erstellen des Links für die Einladung",
+    "title": "Generieren des Links für die Einladung",
     "infoQuote": "Durch die Übermittlung von Einladungslinks übermitteln Sie die Chiffrierschlüssel Ihres Projekts an alle, die während der Gültigkeitsdauer Zugang zu dem generierten Link haben werden.",
     "durationLabel": "Gültigkeitsdauer des Einladungslinks",
     "hour": "Uhrzeit",
