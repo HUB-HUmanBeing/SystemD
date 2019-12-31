@@ -750,7 +750,7 @@
     "spreadsheetName": "Name des Tabellenblatts",
     "delete": "Tabellenblatt löschen",
     "edit": "Modifier le nom du tableur",
-    "abort": "Annuler",
+    "abort": "Abbrechen",
     "deleteInfo": "Dieses Tabellenblatt wird mitsamt seinem gesamten Inhalt gelöscht.",
     "deleteSuccess": "Das Tabellenblatt wurde gelöscht",
     "lastEdit": "Letzte Bearbeitung",
