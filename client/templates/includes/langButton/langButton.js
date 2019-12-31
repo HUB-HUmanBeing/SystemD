@@ -28,7 +28,7 @@ Template.langButton.helpers({
                 selected: actualLang === 'es-ES'
             },
             {
-                name: "Deutsche",
+                name: "Deutsch",
                 langFormat: 'de-DE',
                 langIso639: 'DE',
                 selected: actualLang === 'de-DE'
