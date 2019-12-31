@@ -160,7 +160,7 @@
   },
   "landingTitle": {
     "h3title": "Eine verschlüsselte Plattform für nicht-kommerzielle Kooperationsprojekte",
-    "ptitle": "Erstellen Sie Projekte, laden Sie Ihre Freunde ein und nutzen Sie die kostenlosen und sicheren Anwendungen, um Ihren Verein oder Ihre Gruppe zusammen zu organisieren",
+    "ptitle": "Erstellen Sie Projekte, laden Sie Ihre Freunde ein und nutzen Sie die freien und sicheren Anwendungen, um Ihren Verein oder Ihre Gruppe zusammen zu organisieren",
     "signin": "Registrieren"
   },
   "landingTools": {
@@ -224,7 +224,7 @@
     "initialization": "Start einer neuen verschlüsselten Sitzung"
   },
   "signinContainer": {
-    "psignin": "System-D unterstützt Ihre Projekte, indem es Ihnen einen kostenlosen, gemeinschaftlich genutzten Arbeitsbereich zur Verfügung stellt, der völlig kostenlos ist",
+    "psignin": "System-D unterstützt Ihre Projekte, indem es Ihnen einen ganz und gar kostenfreien Arbeitsraum zur Gemeinschaftsarbeit zur Verfügung stellt",
     "linkSignin": "https://de.wikipedia.org/wiki/Ende-zu-Ende-Verschl%C3%BCsselung",
     "endtoendencrypted": "Ende-zu-Ende-Verschlüsselung",
     "p2signin": "Wie bei Telegramm oder Signal wird niemand außer Ihnen und anderen, die am selben Projekt beteiligt sind, in der Lage sein, die von Ihnen geposteten Inhalte zu entziffern und zu lesen, nicht einmal die Entwickler dieser Plattform.",
