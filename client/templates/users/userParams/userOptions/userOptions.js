@@ -25,7 +25,7 @@ Template.userOptions.helpers({
                 selected: i18n.getLocale()==='es-ES'
             },
             {
-                name: "Deutsche",
+                name: "Deutsch",
                 langFormat: 'de-DE',
                 langIso639: 'DE',
                 selected: i18n.getLocale()==='de-DE'
