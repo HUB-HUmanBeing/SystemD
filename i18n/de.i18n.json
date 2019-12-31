@@ -53,7 +53,7 @@
     "noAccess": "Sie können diese Seite nicht aufrufen! Bitte loggen Sie sich ein."
   },
   "submitIssue": {
-    "btnLabel": "Fehler - Vorschläge",
+    "btnLabel": "Bugs - Anregungen",
     "bugReport": "Fehler",
     "suggestion": "Vorschläge",
     "allowDeviceInfo": "Füge automatisch Informationen über den verwendeten Browser an, um die Fehlersuche zu erleichtern? (Browser, Version, Betriebssystem, Sprache)",
@@ -111,7 +111,7 @@
     "3DevPhases": "DREI PHASEN DER ENTWICKLUNG",
     "createTool": "Ein für alle offenes Projektmanagement-Tool schaffen",
     "cTool": "Ein Instrument, das es den verschiedenen Kollektiven und Vereinen ermöglicht, sich effizient zu organisieren. Ein verschlüsseltes, kostenloses Open-Source-Tool zur Förderung der Horizontalität im Projektmanagement.",
-    "doOfSystemD": "Machen Sie SystemD zum sozialen Netzwerk des unkommerziellen Projekts",
+    "doOfSystemD": "Machen Sie System-D zum sozialen Netzwerk des unkommerziellen Projekts",
     "dOfSystD": "Entwicklung von Schnittstellen, die die Plattform zu einem Kommunikationsraum werden lässt, in dem sich die Mitglieder treffen und über verschiedene Projekte austauschen können: geolokalisierte Suche anhand von Interessensgebieten, verschlüsselten Nachrichten, gemeinsame Blogs usw.",
     "developFreeNetwork": "Entwicklung eines freien Netzwerks und mit anderen geteilten Nutzung",
     "dFreeNetwork": "Jedem Nutzer und jedem Projekt soll es ermöglicht werden, die erarbeiteten Ressourcen zu teilen, um eine große, nicht kommerzielle Verwertung zu verwirklichen."
@@ -119,7 +119,7 @@
   "landingContact": {
     "github": "Folgen Sie dem Fortschritt des Projekts, reichen Sie Ihre Anregungen und Pull-Requests ein.",
     "email": "Kontaktieren Sie mich per E-Mail, um Ihre Anmerkungen, Ideen, Vorschläge und Anregungen mitzuteilen.",
-    "chat": "Nehmen Sie am Projektchat teil, um in möglichst unkomplizierter Form mit dem Team zu chatten."
+    "chat": "Nehmen Sie am Projektchat teil, um direkt mit dem Entwicklerteam zu reden."
   },
   "landingPlus": {
     "anonymous": "ANONYM",
@@ -127,7 +127,7 @@
     "free": "FREI",
     "pfree": "Wie sonst könnte man sich eine Plattform vorstellen, deren Ziel die Förderung nicht-marktwirtschaftlicher sozialer Beziehungen ist",
     "encrypted": "VERSCHLÜSSELT",
-    "pencrypted": "Die von Ihnen freigegebenen Inhalte sowie die Liste der Projekte, an denen Sie teilnehmen, werden \"End-to-End\" verschlüsselt ",
+    "pencrypted": "Die von Ihnen freigegebenen Inhalte sowie die Liste der Projekte, an denen Sie teilnehmen, werden \"Ende-zu-Ende\" verschlüsselt ",
     "signin": "Registrieren"
   },
   "landingRoadmap": {
@@ -140,10 +140,10 @@
     "p5firstPhase": "Einrichtung eines Diskussionsforums pro Projekt",
     "p6firstPhase": "Gemeinsamer Kalender für jedes der Projekte",
     "p7firstPhase": "Übersichtliche Aufgabenliste für jedes Projekt",
-    "p8firstPhase": "Schnittstelle zur Nutzung von oder Einbindung in SystemD",
+    "p8firstPhase": "Schnittstelle zur Nutzung von oder Einbindung in System-D",
     "secondPhase": "ZWEITE PHASE",
     "psecondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Qualifikationen eingeben kann",
-    "p2secondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Qualifikationen eingeben kann",
+    "p2secondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Interessen eingeben kann",
     "p3secondPhase": "Berücksichtigung des geographischen Orts",
     "p4secondPhase": "Erweiterte Suchwerkzeuge zur Ermittlung potenzieller Mitarbeiter / interessanter Projekte",
     "p5secondPhase": "Benutzer- und projektübergreifendes Messaging",
@@ -726,7 +726,7 @@
     "sustain": "Die Funktionalitäten von System-D zu erhalten und zu verbessern, sie für immer mehr Benutzer zugänglich zu machen und das Feedback der Benutzer zu verarbeiten.",
     "develop": "Um neue Features zu erstellen. Kommende Vorhaben:",
     "next1": "Unmittelbare Diskussionen zwischen Benutzern/ Benutzern und Projekten/ Projekten.",
-    "next2": "Suchen Sie ein Projekt oder einen Mitarbeiter nach Fähigkeiten, Interesse, Art der Tätigkeit, Standort.",
+    "next2": "Suche nach einem Projekt oder Mitarbeiter nach Fähigkeiten, Interesse, Art der Tätigkeit, Standort.",
     "next3": "Android-, Desktop- und IOS-Anwendungen",
     "ponctual": "Einmalige Spende ( Paypal )",
     "ponctualInfo": "Schicken Sie eine einmalige Spende über unser Paypal-Konto:",
