@@ -741,7 +741,7 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Tabellenblätter",
-    "noSpreadsheet": "Aucun tableur",
+    "noSpreadsheet": "Kein Tabellenblatt",
     "newSpreadsheet": "Tabellenblatt hinzufügen",
     "showMore": "Mehr erfahren",
     "SpreadsheetName": "Name des Tabellenblatts"
@@ -749,7 +749,7 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Name des Tabellenblatts",
     "delete": "Tabellenblatt löschen",
-    "edit": "Modifier le nom du tableur",
+    "edit": "Namen des Tabellenblatts ändern",
     "abort": "Abbrechen",
     "deleteInfo": "Dieses Tabellenblatt wird mitsamt seinem gesamten Inhalt gelöscht.",
     "deleteSuccess": "Das Tabellenblatt wurde gelöscht",
