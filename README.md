@@ -26,7 +26,7 @@ chat du projet : https://riot.im/app/#/room/!ztKzNaLEQMIgMTitwR:matrix.org?via=m
 > s'organiser efficacement. Un outil chiffré, gratuit, open-source
 > visant à favoriser l'horizontalité dans la gestion de projet.
 
-#### Faire de SystemD le réseau social du projet non-marchand
+#### Faire de SystemD le réseau social du projet collaboratif
 
 > Création des interfaces faisant de la plateforme un espace de
 > rencontre et de circulation des utilisateurs sur différents projets :

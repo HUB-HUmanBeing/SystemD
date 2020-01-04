@@ -106,11 +106,11 @@
   },
   "landingAim": {
     "ourPurpose": "NOTRE OBJECTIF",
-    "purpose": "Créer un outil qui accompagne la transition d'une société de l'argent en faillite à un mode de production basé sur la collaboration et le partage.",
+    "purpose": "Créer un outil qui accompagne la transition vers un mode de production basé sur la collaboration et le partage.",
     "3DevPhases": "TROIS PHASES DE DÉVELOPPEMENT",
     "createTool": "Créer un outil de gestion de projet ouvert à tous",
     "cTool": "Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet.",
-    "doOfSystemD": "Faire de SystemD le réseau social du projet non-marchand",
+    "doOfSystemD": "Faire de SystemD le réseau social du projet collaboratif",
     "dOfSystD": "Création des interfaces faisant de la plateforme un espace de rencontre et de circulation des utilisateurs sur différents projets : Recherche géolocalisée par compétences-centres d'intérets, messagerie chiffrée, blogs partagés, etc.",
     "developFreeNetwork": "Développer un réseau de gratuité et de partage",
     "dFreeNetwork": "Permettre à chaque utilisateur et chaque projet de mettre en partage les ressources produites afin de pouvoir réaliser une circulation non-marchande de grande ampleur."
@@ -158,7 +158,7 @@
     "signin": "Inscription"
   },
   "landingTitle": {
-    "h3title": "Plateforme chiffrée de projets collaboratifs non-marchands",
+    "h3title": "Plateforme chiffrée de projets collaboratifs",
     "ptitle": "Crééz des projets, invitez vos amis, et profitez des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif",
     "signin": "Inscription"
   },
