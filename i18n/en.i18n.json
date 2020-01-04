@@ -107,11 +107,11 @@
   },
   "landingAim": {
     "ourPurpose": "OUR PURPOSE",
-    "purpose": "Créer un outil qui accompagne la transition vers un mode de production basé sur la collaboration et le partage.",
+    "purpose": "Develop a tool to support the transition to a production model based on the free exchange, the sharing and the collaboration between humans.",
     "3DevPhases": "THREE PHASES OF DEVELOPMENT",
     "createTool": "Create a project management tool open to everyone.",
     "cTool": "A tool that will enable different groups and associations to organize themselves efficiently. A tool which is encrypted, free, open-source and aiming to promote horizontalization in project management.",
-    "doOfSystemD": "Faire de SystemD le réseau social du projet collaboratif",
+    "doOfSystemD": "Make System-D the social network of collaborative projects",
     "dOfSystD": "Creation of interfaces allowing the platform to be the user's traffic and meeting place through different projects: geolocated research by skills and centers of interest, encrypted mails, shared blogs, etc...",
     "developFreeNetwork": "To develop a free and sharing network",
     "dFreeNetwork": "Allow users and projects to share their resources in order to create a free and large non-commercial network."
@@ -160,7 +160,7 @@
     "signin": "Sign Up"
   },
   "landingTitle": {
-    "h3title": "Plateforme chiffrée de projets collaboratifs",
+    "h3title": "Encrypted platform for collaborative projects",
     "ptitle": "Make projects, join your friends, and take advantage of free and secure tools to organize your association or group together.",
     "signin": "Sign Up"
   },
