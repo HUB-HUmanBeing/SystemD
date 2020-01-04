@@ -112,12 +112,12 @@
     "createTool": "Ein für alle offenes Projektmanagement-Tool schaffen",
     "cTool": "Ein Instrument, das es den verschiedenen Kollektiven und Vereinen ermöglicht, sich effizient zu organisieren. Ein verschlüsseltes, kostenloses Open-Source-Tool zur Förderung der Horizontalität im Projektmanagement.",
     "doOfSystemD": "Machen Sie System-D zum sozialen Netzwerk des unkommerziellen Projekts",
-    "dOfSystD": "Entwicklung von Schnittstellen, die die Plattform zu einem Kommunikationsraum werden lässt, in dem sich die Mitglieder treffen und über verschiedene Projekte austauschen können: geolokalisierte Suche anhand von Interessensgebieten, verschlüsselten Nachrichten, gemeinsame Blogs usw.",
+    "dOfSystD": "Entwicklung von Schnittstellen, die die Plattform zu einem Kommunikationsraum werden lässt, in dem sich die Mitglieder treffen und über verschiedene Projekte austauschen können: geolokalisierte Suche anhand von Interessensgebieten, verschlüsselten Nachrichten, gemeinsamen Blogs usw.",
     "developFreeNetwork": "Entwicklung eines freien Netzwerks und mit anderen geteilten Nutzung",
     "dFreeNetwork": "Jedem Nutzer und jedem Projekt soll es ermöglicht werden, die erarbeiteten Ressourcen zu teilen, um eine große, nicht kommerzielle Verwertung zu verwirklichen."
   },
   "landingContact": {
-    "contact": "CONTACT",
+    "contact": "KONTAKT",
     "github": "Folgen Sie dem Fortschritt des Projekts, reichen Sie Ihre Anregungen und Pull-Requests ein.",
     "email": "Kontaktieren Sie mich per E-Mail, um Ihre Anmerkungen, Ideen, Vorschläge und Anregungen mitzuteilen.",
     "chat": "Nehmen Sie am Projektchat teil, um direkt mit dem Entwicklerteam zu reden."
@@ -723,9 +723,9 @@
     "why": "Wir brauchen Ihre Unterstützung",
     "whyText": "Das System-D Projekt wurde mit Herzblut in der Freizeit gebaut. Wenn Sie möchten, dass es weitergeführt wird und denen helfen wollen, die ihre freie Zeit zur Weiterentwicklung der bestehenden Funktionen investieren, sind Ihre Spenden wichtig.",
     "withTheMoney": "Ihre Spenden ermöglichen es:",
-    "servers": "Um die Plattform-Hosting-Gebühren für eine immer größer werdende Anzahl von Nutzern zu bezahlen",
-    "sustain": "Die Funktionalitäten von System-D zu erhalten und zu verbessern, sie für immer mehr Benutzer zugänglich zu machen und das Feedback der Benutzer zu verarbeiten.",
-    "develop": "Um neue Features zu erstellen. Kommende Vorhaben:",
+    "servers": "um die Plattform-Hosting-Gebühren für eine immer größer werdende Anzahl von Nutzern zu bezahlen",
+    "sustain": "die Funktionalitäten von System-D zu erhalten und zu verbessern, sie für immer mehr Benutzer zugänglich zu machen und das Feedback der Benutzer zu verarbeiten.",
+    "develop": "um neue Features zu erstellen. Kommende Vorhaben:",
     "next1": "Unmittelbare Diskussionen zwischen Benutzern/ Benutzern und Projekten/ Projekten.",
     "next2": "Suche nach einem Projekt oder Mitarbeiter nach Fähigkeiten, Interesse, Art der Tätigkeit, Standort.",
     "next3": "Android-, Desktop- und IOS-Anwendungen",
@@ -741,7 +741,7 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Tabellenblätter",
-    "noSpreadsheet": "Aucun tableur",
+    "noSpreadsheet": "Kein Tabellenblatt",
     "newSpreadsheet": "Tabellenblatt hinzufügen",
     "showMore": "Mehr erfahren",
     "SpreadsheetName": "Name des Tabellenblatts"
@@ -749,8 +749,8 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Name des Tabellenblatts",
     "delete": "Tabellenblatt löschen",
-    "edit": "Modifier le nom du tableur",
-    "abort": "Annuler",
+    "edit": "Namen des Tabellenblatts ändern",
+    "abort": "Abbrechen",
     "deleteInfo": "Dieses Tabellenblatt wird mitsamt seinem gesamten Inhalt gelöscht.",
     "deleteSuccess": "Das Tabellenblatt wurde gelöscht",
     "lastEdit": "Letzte Bearbeitung",
