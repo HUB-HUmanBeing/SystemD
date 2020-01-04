@@ -1,7 +1,7 @@
 <template name="avatar">
     <div class="responsive-img relative ">
         {{#unless compare avatarUrl '==' 'noAvatar'}}
-            <img src="{{avatarUrl}}" alt="" class="avatar responsive-img relative" style="z-index:200; border-radius: 50%; ">
+            <img src="{{avatarUrl}}" alt="" class="avatar responsive-img relative" style="z-index:200; border-radius: 50%;">
             {{else}}
             <div class="absolute full-width full-height" style="top: 0 ">
                 {{{avatarSvg}}}
