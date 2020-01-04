@@ -33,6 +33,16 @@ Template.commentItem.helpers({
     },
     loadingMore: function () {
         return Template.instance().isLoading.get()
+    },
+    isEditing:function () {
+        return Template.instance().isEditing.get()
+    },
+    abortEdition: function () {
+        let instance = Template.instance()
+        return function (newContent){
+            instance.isEditing.set(false)
+            instance.decryptedContent.set(newContent)
+        }
     }
 });
 
@@ -47,6 +57,10 @@ Template.commentItem.events({
                 Materialize.toast(__('commentItem.deleteSuccess'), 6000, 'toastOk')
             }
         })
+    },
+    'click [editComment]': function (event, instance) {
+        event.preventDefault()
+      instance.isEditing.set(true)
     },
     'click [answerComment]': function (event, instance) {
         event.preventDefault()
@@ -72,6 +86,7 @@ Template.commentItem.onCreated(function () {
     this.showAnswer = new ReactiveVar(false)
     this.limit = new ReactiveVar(3)
     this.isLoading = new ReactiveVar(true)
+    this.isEditing = new ReactiveVar(false)
     this.autorun(() => {
         let comment = Comment.findOne(this.data.comment._id)
         if (comment.commentCount > 0) {

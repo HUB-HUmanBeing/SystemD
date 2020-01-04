@@ -11,7 +11,9 @@ Template.registerHelper('length', function (array) {
 Template.registerHelper('isInArray', function (element, array) {
     return array.indexOf(element)!== -1
 })
-
+Template.registerHelper('currentUserId', function (element, array) {
+    return Meteor.userId()
+})
 Template.registerHelper('showDistance', function (distance) {
 
 //distance relative

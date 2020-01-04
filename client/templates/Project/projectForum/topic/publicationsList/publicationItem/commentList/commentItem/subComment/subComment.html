@@ -19,19 +19,26 @@
             </div>
 
             <div class="left-align commentSmartContent">
+
                 {{#if decryptedContent}}
-                    {{>smartContent content=decryptedContent refreshScrollbar=refreshScrollbar }}
+                    {{#if isEditing}}
+                        {{>editComment content=decryptedContent refreshScrollbar=refreshScrollbar comment=comment abortEdition=abortEdition}}
+                    {{else}}
+                        {{>smartContent content=decryptedContent refreshScrollbar=refreshScrollbar }}
+                    {{/if}}
                 {{/if}}
             </div>
-
+            {{#unless isEditing}}
             {{#if  isDeletable }}
                 <div class="commentFooter">
+                    <a href="" class="link" editSubComment><i class="material-icons">edit</i>{{__ "publicationItem.edit"}}</a>
 
                     <a href="" class="link" deleteComment><i class="material-icons">delete</i>{{__
                             "commentItem.delete"}}</a>
 
                 </div>
             {{/if}}
+{{/unless}}
         </div>
     </li>
 </template>

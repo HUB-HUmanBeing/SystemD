@@ -19,25 +19,34 @@
 
             <div class="left-align commentSmartContent relative">
                 {{#if decryptedContent}}
-                    {{>smartContent content=decryptedContent refreshScrollbar=refreshScrollbar }}
+                    {{#if isEditing}}
+                        {{>editComment content=decryptedContent refreshScrollbar=refreshScrollbar comment=comment abortEdition=abortEdition}}
+                    {{else}}
+                        {{>smartContent content=decryptedContent refreshScrollbar=refreshScrollbar }}
+                    {{/if}}
                 {{/if}}
 
             </div>
             <div class="commentFooter">
-                {{#unless compare showAnswer '||' comment.commentCount}}
-                    <a href="" class="link" answerComment><i class="material-icons">question_answer</i>{{__ ".answer"}}
-                    </a>
+                {{#unless isEditing}}
+                    {{#unless compare showAnswer '||' comment.commentCount}}
+                        <a href="" class="link" answerComment><i class="material-icons">question_answer</i>{{__
+                                ".answer"}}
+                        </a>
+                    {{/unless}}
+                    {{#if  isDeletable }}
+
+                        <a href="" class="link" editComment><i class="material-icons">edit</i>{{__ "publicationItem.edit"}}</a>
+                        <a href="" class="link" deleteComment><i class="material-icons">delete</i>{{__ ".delete"}}</a>
+                    {{/if}}
                 {{/unless}}
-                {{#if  isDeletable }}
-                    <a href="" class="link" deleteComment><i class="material-icons">delete</i>{{__ ".delete"}}</a>
-                {{/if}}
             </div>
             {{#if compare showAnswer '||' comment.commentCount}}
                 <div class="subCommentsContainer relative">
                     <hr class="hr"/>
                     <div class="newComment flex newSubComment">
                         <div class="userAvatar shadow">
-                            {{>avatar userId=(userIdFromMemberId comment.createdBy)}}
+                            {{>avatar userId=(currentUserId)}}
                         </div>
                         <div class="flex-auto">
                             {{>newSubComment comment=comment}}
