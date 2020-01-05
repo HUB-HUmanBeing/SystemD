@@ -101,7 +101,7 @@ pour uploader les paquets , utiliser la commande
    
     $ meteor npm install
 
-#### 4. Pour lancer le serveur d'assets :
+#### 4. Pour lancer le serveur d'assets (optionnel) :
 #####a- lancer un serveur d'assets avec docker
 dans un autre terminal lancez minio avec la commande suivante :
     $ docker run -p 9000:9000 --name system-d -e "MINIO_ACCESS_KEY=CeQueTuVeux"  -e "MINIO_SECRET_KEY=TonJoliMotDePasse" -v /mnt/data:/data  -v /mnt/config:/root/.minio minio/minio server /data
