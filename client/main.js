@@ -45,3 +45,17 @@ if (!document.getElementById('manifest')) {
     link.href = '/manifest.json';
     document.head.appendChild(link);
 }
+
+window.addEventListener('beforeinstallprompt', e => {
+    console.log('beforeinstallprompt Event fired');
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    this.deferredPrompt = e;
+    return false;
+    this.deferredPrompt.prompt();
+    this.deferredPrompt.userChoice.then(choice => {
+        console.log(choice);
+    });
+    this.deferredPrompt = null;
+});
+// When you want to trigger prompt:

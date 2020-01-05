@@ -35,10 +35,11 @@ Template.layout.onCreated(function () {
                         })
                     }, timer > 0 ? timer : 0)
 
-										//!\ bug sur firefox dans certaines conditions 
-                    //if (Meteor.user().private.projects.length) {
-                    //    pushController.initialize(Meteor.user())
-                    //}
+										//!\ bug sur firefox dans certaines conditions
+                    if (Meteor.user().private.projects.length) {
+                       pushController.initialize(Meteor.user())
+
+                    }
                 })
             } else {
                 hubCrypto.destroyCryptoSession(() => {
