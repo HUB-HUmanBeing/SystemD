@@ -107,11 +107,11 @@
   },
   "landingAim": {
     "ourPurpose": "UNSER ZIEL",
-    "purpose": "Ein Werkzeug zu schaffen, das den Übergang von einer bankrotten Geldgesellschaft zu einer auf Zusammenarbeit und Teilen basierenden Produktionsweise begleitet.",
+    "purpose": "Erstellung eines Werkzeugs, das den Übergang zu einem auf Zusammenarbeit und gemeinsamer Nutzung basierenden Produktionsweise unterstützt.",
     "3DevPhases": "DREI PHASEN DER ENTWICKLUNG",
     "createTool": "Ein für alle offenes Projektmanagement-Tool schaffen",
     "cTool": "Ein Instrument, das es den verschiedenen Kollektiven und Vereinen ermöglicht, sich effizient zu organisieren. Ein verschlüsseltes, kostenloses Open-Source-Tool zur Förderung der Horizontalität im Projektmanagement.",
-    "doOfSystemD": "Machen Sie System-D zum sozialen Netzwerk des unkommerziellen Projekts",
+    "doOfSystemD": "Machen Sie SystemD zum sozialen Netzwerk der Zusammenarbeit!",
     "dOfSystD": "Entwicklung von Schnittstellen, die die Plattform zu einem Kommunikationsraum werden lässt, in dem sich die Mitglieder treffen und über verschiedene Projekte austauschen können: geolokalisierte Suche anhand von Interessensgebieten, verschlüsselten Nachrichten, gemeinsamen Blogs usw.",
     "developFreeNetwork": "Entwicklung eines freien Netzwerks und mit anderen geteilten Nutzung",
     "dFreeNetwork": "Jedem Nutzer und jedem Projekt soll es ermöglicht werden, die erarbeiteten Ressourcen zu teilen, um eine große, nicht kommerzielle Verwertung zu verwirklichen."
@@ -160,7 +160,7 @@
     "signin": "Registrieren"
   },
   "landingTitle": {
-    "h3title": "Eine verschlüsselte Plattform für nicht-kommerzielle Kooperationsprojekte",
+    "h3title": "Eine verschlüsselte Plattform für Kooperationsprojekte",
     "ptitle": "Erstellen Sie Projekte, laden Sie Ihre Freunde ein und nutzen Sie die freien und sicheren Anwendungen, um Ihren Verein oder Ihre Gruppe zusammen zu organisieren",
     "signin": "Registrieren"
   },
