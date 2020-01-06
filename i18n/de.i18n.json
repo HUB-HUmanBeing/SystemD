@@ -270,7 +270,7 @@
   "editProjectAvatar": {
     "edit": "Avatar bearbeiten",
     "delete": "Avatar löschen",
-    "OK": "Absenden"
+    "OK": "Speichern"
   },
   "editProjectDescription": {
     "label": "Projektbeschreibung"
