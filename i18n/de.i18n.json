@@ -646,7 +646,7 @@
   },
   "activityDetail": {
     "activityTitle": "Aufgabe ohne Namen",
-    "activityDetail": "Détail",
+    "activityDetail": "Beschreibung",
     "editActivity": "speichern",
     "recursivity": "Wiederholung",
     "deleteActivity": "Entfernen",
