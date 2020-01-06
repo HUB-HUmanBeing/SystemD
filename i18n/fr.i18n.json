@@ -302,6 +302,7 @@
     "user": "utilisateur",
     "users": "utilisateurs",
     "ok": "Générer le lien d'invitation",
+    "loader": "Génération du lien d'invitation",
     "addMessage": "Ajouter un message d'invitation",
     "invitMessage": "Message envoyé avec votre invitation",
     "backToParams": "Retour aux paramètres du projet"
