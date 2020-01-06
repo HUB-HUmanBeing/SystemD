@@ -1,0 +1,34 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "..."
+    }
+  },
+  "minio": {
+    "endPoint": "localhost",
+    "port": 9000,
+    "useSsl": false,
+    "MINIO_ACCESS_KEY": "???",
+    "MINIO_SECRET_KEY": "???"
+  },
+  "public": {
+    "fastHashDifficulty": 5,
+    "frontSalt": "coucou",
+    "publicVapidKey": "",
+    "cryptos": {
+      "eth": "0x35309468064c217abEbE23ca92DaFba088224Ad5",
+      "xrp": "rfSf6dWXp1Q91NSsFaoAAfTseqvG89PJAQ",
+      "btc": "1Pi1TgDAe4N1CGvREUT3LC2pmo6yTx5zcE"
+    },
+    "maxFilesSize": 524288000,
+    "maxOneFile": 15728640,
+    "newsURL": "https://raw.githubusercontent.com/HUB-HUmanBeing/SystemD/master/public/news/newsFeed.json"
+  },
+  "webpushMail": "test@test.com",
+  "privateVapidKey": "",
+  "GcmApiKey": "",
+  "serverSalt": "un autre grain de sel",
+  "serverSaltRounds": 3,
+  "serverSaltHeavyRounds": 10,
+  "githubToken": "ton super token"
+}
