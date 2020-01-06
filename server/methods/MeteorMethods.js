@@ -16,7 +16,7 @@ Meteor.methods({
     getCaptcha() {
         let captcha = svgCaptcha.create({
             size: 4, // size of random string
-            ignoreChars: '0o1ilIOjJL', // filter out some characters like 0o1i
+            ignoreChars: '01OIazertyuiopmlkjhgfdsqwxcvbn', // filter out some characters like 0o1i
             noise: 1, // number of noise lines
             color: false, // characters will have distinct colors instead of grey, true if background option is set
             // background: '#ffffff',
