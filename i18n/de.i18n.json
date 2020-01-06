@@ -589,12 +589,12 @@
   },
   "markerDetail": {
     "markerName": "Name des Markers...",
-    "markerDetail": "Detail",
+    "markerDetail": "Beschreibung",
     "editMarker": "Bearbeiten",
     "moveMarker": "Verschieben",
     "deleteMarker": "Entfernen",
     "coordinates": "Kontaktdaten :",
-    "createdBy": "Hergestellt von ",
+    "createdBy": "Erstellt von ",
     "lastEdit": " (bearbeitet)",
     "goTo": "Auf geht's!"
   },
@@ -646,7 +646,7 @@
   },
   "activityDetail": {
     "activityTitle": "Aktivität ohne Namen",
-    "activityDetail": "Detail",
+    "activityDetail": "Détail",
     "editActivity": "speichern",
     "recursivity": "Wiederholung",
     "deleteActivity": "Entfernen",
