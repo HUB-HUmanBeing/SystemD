@@ -758,9 +758,38 @@
     "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
     "uploadWarning": "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
     "fileUpload": "Import CSV file",
-    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"
+    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV",
+    "searchInTable": "Rechercher dans le tableur"
   },
   "spreadsheet": {
-    "searchInTable": "Search in spreadsheet"
+    "noRecordsFound": "Rien à afficher",
+    "showingPage": "Page {0} sur {1} affichée",
+    "show": "Montrer",
+    "entries": "entrées",
+    "insertANewColumnBefore": "Insérer une colonne avant",
+    "insertANewColumnAfter": "Insérer une colonne après",
+    "deleteSelectedColumns": "Supprimer les colonnes sélectionnées",
+    "renameThisColumn": "Renommer cette colonne",
+    "orderAscending": "Ordre croissant",
+    "orderDescending": "Ordre décroissant",
+    "insertANewRowBefore": "Insérer une ligne avant",
+    "insertANewRowAfter": "Insérer une ligne après",
+    "deleteSelectedRows": "Supprimer les lignes sélectionnées",
+    "editComments": "Éditer les commentaires",
+    "addComments": "Ajouter un commentaire",
+    "comments": "Commentaires",
+    "clearComments": "Effacer les commentaires",
+    "copy": "Copier ...",
+    "paste": "Coller ...",
+    "saveAs": "Enregistrer sous ...",
+    "about": "À propos",
+    "areYouSureToDeleteTheSelectedRows": "Êtes-vous sûr de vouloir supprimer les lignes sélectionnées?",
+    "areYouSureToDeleteTheSelectedColumns": "Êtes-vous sûr de vouloir supprimer les colonnes sélectionnées?",
+    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "Cette action va supprimer toutes les cellules fusionnées, êtes-vous sûr?",
+    "thisActionWillClearYourSearchResultsAreYouSure": "Cette action va supprimer vos résultats de recherche, êtes-vous sûr?",
+    "thereIsAConflictWithAnotherMergedCell": "Il y a un conflit avec une autre cellule fusionnée",
+    "invalidMergeProperties": "Action invalide pour la fusion",
+    "cellAlreadyMerged": "Ces cellules sont déjà fusionnées",
+    "noCellsSelected": "Pas de cellules sélectionnées"
   }
 }
