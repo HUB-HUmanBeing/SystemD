@@ -288,7 +288,7 @@
     "deleteSuccess": "Dieses Projekt wurde gelöscht"
   },
   "projectLayout": {
-    "decrypting1": "Entschlüsselung von Projektdaten"
+    "decrypting1": "Entschlüsselung der Projektdaten"
   },
   "newInvitation": {
     "title": "Generieren des Links für die Einladung",
