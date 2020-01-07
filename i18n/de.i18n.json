@@ -350,7 +350,7 @@
   "member": {
     "since": "Seit",
     "invitedBy": "Eingeladen von",
-    "projectCreator": "Ersteller des Projekts",
+    "projectCreator": "Initiator des Projekts",
     "quitProject": "Projekt verlassen",
     "quitProjectError": "Sie können dieses Projekt nicht verlassen.",
     "quitProjectErrorTips": "Ernennen Sie mindestens einen neuen Administrator für das Projekt.",
