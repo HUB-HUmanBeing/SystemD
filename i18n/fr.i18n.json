@@ -546,7 +546,12 @@
   "showFileContent": {
     "deleted": "Le fichier à été supprimé."
   },
-	"_templates_map": "===========================================================================================================================",
+  "_templates_map": "===========================================================================================================================",
+  "projectMaps": {
+    "settings": "Paramètres",
+    "fullscreen": "Mettre en plein écran",
+    "newMarker": "Nouveau marqueur"
+  },
   "mapParams": {
     "topo": "Topo",
     "aerial": "Aérienne",
