@@ -79,37 +79,6 @@ isFirst:true,
             allowRenameColumn:false,
             toolbar: this.toolbar(isEditable, instance),
             search:true,
-            text:{
-                noRecordsFound:__('spreadsheet.noRecordsFound'),
-                showingPage:__('spreadsheet.showingPage'),
-                show:__('spreadsheet.show'),
-                entries:__('spreadsheet.entries'),
-                insertANewColumnBefore:__('spreadsheet.insertANewColumnBefore'),
-                insertANewColumnAfter:__('spreadsheet.insertANewColumnAfter'),
-                deleteSelectedColumns:__('spreadsheet.deleteSelectedColumns'),
-                renameThisColumn:__('spreadsheet.renameThisColumn'),
-                orderAscending:__('spreadsheet.orderAscending'),
-                orderDescending:__('spreadsheet.orderDescending'),
-                insertANewRowBefore:__('spreadsheet.insertANewRowBefore'),
-                insertANewRowAfter:__('spreadsheet.insertANewRowAfter'),
-                deleteSelectedRows:__('spreadsheet.deleteSelectedRows'),
-                editComments:__('spreadsheet.editComments'),
-                addComments:__('spreadsheet.addComments'),
-                comments:__('spreadsheet.comments'),
-                clearComments:__('spreadsheet.clearComments'),
-                copy:__('spreadsheet.copy'),
-                paste:__('spreadsheet.paste'),
-                saveAs:__('spreadsheet.saveAs'),
-                about:__('spreadsheet.about'),
-                areYouSureToDeleteTheSelectedRows:__('spreadsheet.areYouSureToDeleteTheSelectedRows'),
-                areYouSureToDeleteTheSelectedColumns:__('spreadsheet.areYouSureToDeleteTheSelectedColumns'),
-                thisActionWillDestroyAnyExistingMergedCellsAreYouSure:__('spreadsheet.thisActionWillDestroyAnyExistingMergedCellsAreYouSure'),
-                thisActionWillClearYourSearchResultsAreYouSure:__('spreadsheet.thisActionWillClearYourSearchResultsAreYouSure'),
-                thereIsAConflictWithAnotherMergedCell:__('spreadsheet.thereIsAConflictWithAnotherMergedCell'),
-                invalidMergeProperties:__('spreadsheet.invalidMergeProperties'),
-                cellAlreadyMerged:__('spreadsheet.cellAlreadyMerged'),
-                noCellsSelected:__('spreadsheet.noCellsSelected')
-            }
            // pagination:10,
 
         }
@@ -136,7 +105,7 @@ isFirst:true,
     },
     arrangeSearch(){
 Meteor.setTimeout(()=>{
-    $(".jexcel_search").attr("placeholder", __('spreadsheetHeader.searchInTable')+ '...')
+    $(".jexcel_search").attr("placeholder", __('spreadsheet.searchInTable')+ '...')
 },400)
     },
     destroy(el) {
