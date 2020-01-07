@@ -594,6 +594,8 @@
     "editIconInfo": "Cliquer sur la carte pour modifier la position du marqueur."
   },
   "markerDetail": {
+    "editColor": "Éditer la couleur",
+    "editIcon": "Éditer l'icône",
     "markerName": "Nom du marqueur...",
     "markerDetail": "Détail",
     "editMarker": "éditer",
