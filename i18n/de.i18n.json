@@ -64,7 +64,7 @@
     "refreshCaptcha": "Aktualisieren",
     "captcha": "Die 4 Buchstaben eingeben",
     "submit": "Senden",
-    "githubDirectLink": "Oder geben Sie uns gleich dieses Ticket für System-d.org in Github...",
+    "githubDirectLink": "Oder schreiben Sie System-D dieses Ticket gleich in Github...",
     "succesMessage": "Vielen Dank für Ihren Beitrag! Ihre Nachricht wurde an die Entwickler weitergeleitet",
     "githubLink": "Um den Bearbeitungsstatus Ihrer Nachricht zu sehen, informieren Sie sich in GitHub",
     "return": "Zurück"
@@ -230,7 +230,7 @@
     "endtoendencrypted": "Ende-zu-Ende-Verschlüsselung",
     "p2signin": "Wie bei Telegram oder Signal wird niemand außer Ihnen und anderen, die am selben Projekt beteiligt sind, in der Lage sein, die von Ihnen geposteten Inhalte zu entziffern und zu lesen, nicht einmal die Entwickler dieser Plattform.",
     "next": "Weiter",
-    "p3signin": "Andererseits",
+    "p3signin": "Insbesondere",
     "p3-1signin": "System-D schützt die Anonymität",
     "p3-2signin": "seiner Benutzer: keine E-Mail-Adresse und keine persönlichen Daten erforderlich. Allerdings haben wir nicht ",
     "p3-3signin": "keine Möglichkeit, Ihnen zu helfen, wenn Sie Ihr Passwort vergessen haben.",
