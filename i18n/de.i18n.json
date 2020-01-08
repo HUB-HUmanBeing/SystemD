@@ -759,12 +759,12 @@
     "uploadWarning": "Achtung, alle Daten in der Tabellenkalkulation werden unwiderruflich durch die Daten in der csv-Datei überschrieben!",
     "fileUpload": "Importieren einer CSV-Datei",
     "onlyCsvError": "Die hochgeladene Datei hat kein gültiges CSV-Format",
-    "searchInTable": "Rechercher dans le tableur"
+    "searchInTable": "Suche in der Tabelle"
   },
   "spreadsheet": {
-    "noRecordsFound": "Rien à afficher",
-    "showingPage": "Page {0} sur {1} affichée",
-    "show": "Montrer",
+    "noRecordsFound": "Es gibt nichts anzuzeigen",
+    "showingPage": "Seite {0} von {1} angezeigt",
+    "show": "Zeige",
     "entries": "entrées",
     "insertANewColumnBefore": "Insérer une colonne avant",
     "insertANewColumnAfter": "Insérer une colonne après",
