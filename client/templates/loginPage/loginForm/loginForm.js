@@ -47,7 +47,7 @@ Template.loginForm.events({
                             })
                         } else {
                             FlowRouter.go('/')
-                            Materialize.toast("Bienvenue sur System-D", 6000, 'toastOk')
+                            Materialize.toast(__("loginFormJs.welcome"), 6000, 'toastOk')
                         }
                     })
 

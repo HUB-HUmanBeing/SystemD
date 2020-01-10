@@ -46,6 +46,9 @@ Template.userOptions.events({
                 i18n.setLocale(language)
                 localStorage.setItem('lang', language);
                 moment.locale(language)
+                Meteor.setTimeout(() => {
+                    resetTooltips()
+                },200)
             }
         })
     }
