@@ -75,8 +75,8 @@ const PrivateUser = Class.create({
                 return []
             }
         },
-        pushSubscriptions: {
-            type: [pushSubscription],
+        tokens: {
+            type: [String],
             default: function () {
                 return []
             }
