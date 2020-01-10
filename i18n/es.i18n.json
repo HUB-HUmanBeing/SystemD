@@ -302,6 +302,7 @@
     "user": "usuario",
     "users": "usuarios",
     "ok": "Generar el enlace de invitación",
+    "loader": "Génération du lien d'invitation",
     "addMessage": "Adjuntar un mensaje de invitación",
     "invitMessage": "Mensaje enviado con su invitación",
     "backToParams": "Volver a los ajustes del proyecto"
@@ -546,6 +547,11 @@
     "deleted": "El fichero ha sido eliminado"
   },
   "_templates_map": "===========================================================================================================================",
+  "projectMaps": {
+    "settings": "Paramètres",
+    "fullscreen": "Mettre en plein écran",
+    "newMarker": "Nouveau marqueur"
+  },
   "mapParams": {
     "topo": "Topo ",
     "aerial": "aérea",
@@ -588,6 +594,8 @@
     "editIconInfo": "Haga clic en el mapa para modificar la ubicación del marcador."
   },
   "markerDetail": {
+    "editColor": "Éditer la couleur",
+    "editIcon": "Éditer l'icône",
     "markerName": "Nombre del marcador…",
     "markerDetail": "Detalle",
     "editMarker": "Editar  ",
