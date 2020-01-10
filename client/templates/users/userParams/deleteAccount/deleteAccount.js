@@ -18,7 +18,6 @@ Template.deleteAccount.events({
                 'deleteUserAccount',
                 passwordConfirmation,
                 (error, res) => {
-                    console.log("truc")
                     // si ca marche pas, on renvoie l'erreur par toast
                     if (error) {
                         Materialize.toast(__('deletAccountJs.error'), 4000, 'toastError');
