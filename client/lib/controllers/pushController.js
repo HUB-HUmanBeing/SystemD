@@ -1,6 +1,4 @@
-import cryptoTools from "../cryptoTools";
-import User from "../../../imports/classes/User";
-import * as Materialize from "meteor/materialize:materialize";
+
 import firebase from "firebase/app";
 import "firebase/messaging";
 

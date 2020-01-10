@@ -14,7 +14,6 @@ const NotifPush = {
     i18nNotifs: {},
 
     sendNotif(userIds, message) {
-console.log("SendNotif")
         this.getSubscriptions(userIds).forEach((pushSubscription) => {
             let notification = this.translateAndFormatMessage(pushSubscription.language, message)
             notification.icon = "https://www.system-d.org/images/icon/iconfatNotifs.png"
