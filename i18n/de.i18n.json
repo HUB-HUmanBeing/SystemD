@@ -576,7 +576,7 @@
     "title": "Neue Markierung",
     "color": "Farbe",
     "type": "Typ",
-    "icons": "Symbole",
+    "icons": "Icons",
     "arrows": "Pfeile",
     "lines": "Zeilen",
     "text": "Textfeld",
@@ -595,7 +595,7 @@
   },
   "markerDetail": {
     "editColor": "Farbe ändern",
-    "editIcon": "Symbol bearbeiten",
+    "editIcon": "Icon bearbeiten",
     "markerName": "Name des Markers...",
     "markerDetail": "Beschreibung",
     "editMarker": "Bearbeiten",
