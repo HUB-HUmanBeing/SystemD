@@ -302,7 +302,7 @@
     "user": "Benutzer",
     "users": "Benutzer",
     "ok": "Einladungslink erzeugen",
-    "loader": "Génération du lien d'invitation",
+    "loader": "Einladungslink erzeugen",
     "addMessage": "Eine Benachrichtigung über eine Einladung hinzufügen",
     "invitMessage": "Nachricht mit Ihrer Einladung gesendet",
     "backToParams": "Zurück zu den Projektvorgaben"
@@ -549,8 +549,8 @@
   "_templates_map": "===========================================================================================================================",
   "projectMaps": {
     "settings": "Einstellungen",
-    "fullscreen": "Mettre en plein écran",
-    "newMarker": "Nouveau marqueur"
+    "fullscreen": "In Vollbildmodus wechseln",
+    "newMarker": "Neue Markierung"
   },
   "mapParams": {
     "topo": "Topo",
@@ -594,8 +594,8 @@
     "editIconInfo": "Klicken Sie auf die Karte, um die Position des Markers zu verändern."
   },
   "markerDetail": {
-    "editColor": "Éditer la couleur",
-    "editIcon": "Éditer l'icône",
+    "editColor": "Farbe ändern",
+    "editIcon": "Symbol bearbeiten",
     "markerName": "Name des Markers...",
     "markerDetail": "Beschreibung",
     "editMarker": "Bearbeiten",
