@@ -27,39 +27,40 @@ isFirst:true,
         this.style=null
     },
     initialize(spreadsheetId, el, instance, isEditable) {
-        this.id = spreadsheetId
+        this.id = FlowRouter.current().queryParams.spreadsheetId
 
         let encryptedSpreadsheetContent = Spreadsheet.findOne({_id: spreadsheetId}).content
-        cryptoTools.decryptObject(encryptedSpreadsheetContent, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
-
-            if (spreadsheetContent.symEnc_datas && JSON.parse(spreadsheetContent.symEnc_datas).length) {
-                let newDatas = JSON.parse(spreadsheetContent.symEnc_datas)
-                if (this.datas != newDatas) {
-                    this.datas = newDatas
+        if(encryptedSpreadsheetContent){
+            cryptoTools.decryptObject(encryptedSpreadsheetContent, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
+                if (spreadsheetContent.symEnc_datas && JSON.parse(spreadsheetContent.symEnc_datas).length) {
+                    let newDatas = JSON.parse(spreadsheetContent.symEnc_datas)
+                    if (this.datas != newDatas) {
+                        this.datas = newDatas
+                    }
+                } else {
+                    this.datas = this.defaultDatas()
+                    this.saveDatas(this.datas)
                 }
-            } else {
-                this.datas = this.defaultDatas()
-                this.saveDatas(this.datas)
-            }
+                let newColumns = JSON.parse(spreadsheetContent.columns)
+                if (newColumns.length) {
 
-            let newColumns = JSON.parse(spreadsheetContent.columns)
-            if (newColumns.length) {
+                    this.columns = newColumns
 
-                this.columns = newColumns
+                } else {
+                    this.columns = this.defaultColumns()
+                    this.saveColumns(this.datas, this.columns)
+                }
+                if (spreadsheetContent.style && spreadsheetContent.style != "") {
+                    this.style = JSON.parse(spreadsheetContent.style)
 
-            } else {
-                this.columns = this.defaultColumns()
-                this.saveColumns(this.datas, this.columns)
-            }
-            if (spreadsheetContent.style && spreadsheetContent.style != "") {
-                this.style = JSON.parse(spreadsheetContent.style)
+                }
+                this.el = el
+                this.isEditable = isEditable
+                this.instance = instance
+                this.createTable(el, isEditable, instance)
+            })
+        }
 
-            }
-            this.el = el
-            this.isEditable = isEditable
-            this.instance = instance
-            this.createTable(el, isEditable, instance)
-        })
 
 
     },
@@ -79,6 +80,37 @@ isFirst:true,
             allowRenameColumn:false,
             toolbar: this.toolbar(isEditable, instance),
             search:true,
+            text:{
+                noRecordsFound:__('spreadsheet.noRecordsFound'),
+                showingPage:__('spreadsheet.showingPage'),
+                show:__('spreadsheet.show'),
+                entries:__('spreadsheet.entries'),
+                insertANewColumnBefore:__('spreadsheet.insertANewColumnBefore'),
+                insertANewColumnAfter:__('spreadsheet.insertANewColumnAfter'),
+                deleteSelectedColumns:__('spreadsheet.deleteSelectedColumns'),
+                renameThisColumn:__('spreadsheet.renameThisColumn'),
+                orderAscending:__('spreadsheet.orderAscending'),
+                orderDescending:__('spreadsheet.orderDescending'),
+                insertANewRowBefore:__('spreadsheet.insertANewRowBefore'),
+                insertANewRowAfter:__('spreadsheet.insertANewRowAfter'),
+                deleteSelectedRows:__('spreadsheet.deleteSelectedRows'),
+                editComments:__('spreadsheet.editComments'),
+                addComments:__('spreadsheet.addComments'),
+                comments:__('spreadsheet.comments'),
+                clearComments:__('spreadsheet.clearComments'),
+                copy:__('spreadsheet.copy'),
+                paste:__('spreadsheet.paste'),
+                saveAs:__('spreadsheet.saveAs'),
+                about:__('spreadsheet.about'),
+                areYouSureToDeleteTheSelectedRows:__('spreadsheet.areYouSureToDeleteTheSelectedRows'),
+                areYouSureToDeleteTheSelectedColumns:__('spreadsheet.areYouSureToDeleteTheSelectedColumns'),
+                thisActionWillDestroyAnyExistingMergedCellsAreYouSure:__('spreadsheet.thisActionWillDestroyAnyExistingMergedCellsAreYouSure'),
+                thisActionWillClearYourSearchResultsAreYouSure:__('spreadsheet.thisActionWillClearYourSearchResultsAreYouSure'),
+                thereIsAConflictWithAnotherMergedCell:__('spreadsheet.thereIsAConflictWithAnotherMergedCell'),
+                invalidMergeProperties:__('spreadsheet.invalidMergeProperties'),
+                cellAlreadyMerged:__('spreadsheet.cellAlreadyMerged'),
+                noCellsSelected:__('spreadsheet.noCellsSelected')
+            }
            // pagination:10,
 
         }
@@ -105,7 +137,7 @@ isFirst:true,
     },
     arrangeSearch(){
 Meteor.setTimeout(()=>{
-    $(".jexcel_search").attr("placeholder", __('spreadsheet.searchInTable')+ '...')
+    $(".jexcel_search").attr("placeholder", __('spreadsheetHeader.searchInTable')+ '...')
 },400)
     },
     destroy(el) {
@@ -267,7 +299,6 @@ Meteor.setTimeout(()=>{
     },
     events: {
         onchange: () => {
-
             spreadsheetController.saveDatas(this.table.getJson(),()=>{
                 spreadsheetController.saveStyles(this.table.getConfig().style)
             })
@@ -331,7 +362,7 @@ console.log(this.table.getConfig().style)
 
     },
     saveDatas(datas,cb) {
-        let currentSpreadsheet = Spreadsheet.findOne(this.id)
+        let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
         cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
             currentSpreadsheet.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, (err, res) => {
                 if (err) {
@@ -343,7 +374,7 @@ console.log(this.table.getConfig().style)
         })
     },
     saveColumns(datas, columns, cb) {
-        let currentSpreadsheet = Spreadsheet.findOne(this.id)
+        let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
         cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
             currentSpreadsheet.callMethod("saveColumns", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, JSON.stringify(columns), JSON.stringify(columns), (err, res) => {
                 if (err) {
@@ -360,7 +391,7 @@ console.log(this.table.getConfig().style)
         }else{
 
             Meteor.setTimeout(()=>{
-                let currentSpreadsheet = Spreadsheet.findOne(this.id)
+                let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
                 currentSpreadsheet.callMethod("saveStyles", projectController.getAuthInfo(FlowRouter.current().params.projectId), JSON.stringify(styles), (err, res) => {
                     if (err) {
                         console.log(err)
@@ -375,7 +406,7 @@ console.log(this.table.getConfig().style)
 
     checkForUpdates(el, isEditable, instance) {
         instance.autorun((computation) => {
-            let currentSpreadsheet = Spreadsheet.findOne(this.id)
+            let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
             if (currentSpreadsheet && this.table) {
                 cryptoTools.decryptObject(currentSpreadsheet.content, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
                     this.table.setData(spreadsheetContent.symEnc_datas)

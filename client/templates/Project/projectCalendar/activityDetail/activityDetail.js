@@ -70,6 +70,9 @@ Template.activityDetail.helpers({
     modalOpened: function () {
         return Template.instance().modalOpened.get()
     },
+    isDeletable: function () {
+        return Template.instance().activity.get().createdBy === projectController.getCurrentUserProject(FlowRouter.current().params.projectId).asymEnc_memberId || projectController.isAdmin(FlowRouter.current().params.projectId)
+    },
     invitableMembers: function () {
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)

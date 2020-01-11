@@ -1,11 +1,13 @@
 <template name="detailIconMarker">
     <div id="detailIconMarker">
         <div class="iconMarkerHead center-align relative" style="background-color: {{marker.iconMarker.symEnc_color}}">
-            <a href="" class="btn btn-floating editColorBtn" editColor><i class="material-icons">color_lens</i></a>
+            <a href="" class="btn btn-floating editColorBtn tooltipped" data-position="left"
+            data-delay="50" data-tooltip="{{__ "markerDetail.editColor"}}" editColor><i class="material-icons">color_lens</i></a>
 
 
             <div class="relative iconContainer">
-                <a href="" class="btn btn-floating editIconBtn" editIcon><i class="material-icons">edit</i></a>
+                <a href="" class="btn btn-floating editIconBtn tooltipped" data-position="left"
+                data-delay="50" data-tooltip="{{__ "markerDetail.editIcon"}}" editIcon><i class="material-icons">edit</i></a>
 
                 <i class="material-icons white-text large small-padding small-margin">{{marker.iconMarker.symEnc_icon}}</i>
 

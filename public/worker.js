@@ -1,4 +1,5 @@
 self.addEventListener("push", e => {
+    console.log(e)
     const data = e.data.json()
     //console.log("push recived",data)
     self.registration.showNotification(data.title, {
