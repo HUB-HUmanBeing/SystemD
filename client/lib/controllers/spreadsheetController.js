@@ -27,40 +27,39 @@ isFirst:true,
         this.style=null
     },
     initialize(spreadsheetId, el, instance, isEditable) {
-        this.id = FlowRouter.current().queryParams.spreadsheetId
+        this.id = spreadsheetId
 
         let encryptedSpreadsheetContent = Spreadsheet.findOne({_id: spreadsheetId}).content
-        if(encryptedSpreadsheetContent){
-            cryptoTools.decryptObject(encryptedSpreadsheetContent, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
-                if (spreadsheetContent.symEnc_datas && JSON.parse(spreadsheetContent.symEnc_datas).length) {
-                    let newDatas = JSON.parse(spreadsheetContent.symEnc_datas)
-                    if (this.datas != newDatas) {
-                        this.datas = newDatas
-                    }
-                } else {
-                    this.datas = this.defaultDatas()
-                    this.saveDatas(this.datas)
+        cryptoTools.decryptObject(encryptedSpreadsheetContent, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
+
+            if (spreadsheetContent.symEnc_datas && JSON.parse(spreadsheetContent.symEnc_datas).length) {
+                let newDatas = JSON.parse(spreadsheetContent.symEnc_datas)
+                if (this.datas != newDatas) {
+                    this.datas = newDatas
                 }
-                let newColumns = JSON.parse(spreadsheetContent.columns)
-                if (newColumns.length) {
+            } else {
+                this.datas = this.defaultDatas()
+                this.saveDatas(this.datas)
+            }
 
-                    this.columns = newColumns
+            let newColumns = JSON.parse(spreadsheetContent.columns)
+            if (newColumns.length) {
 
-                } else {
-                    this.columns = this.defaultColumns()
-                    this.saveColumns(this.datas, this.columns)
-                }
-                if (spreadsheetContent.style && spreadsheetContent.style != "") {
-                    this.style = JSON.parse(spreadsheetContent.style)
+                this.columns = newColumns
 
-                }
-                this.el = el
-                this.isEditable = isEditable
-                this.instance = instance
-                this.createTable(el, isEditable, instance)
-            })
-        }
+            } else {
+                this.columns = this.defaultColumns()
+                this.saveColumns(this.datas, this.columns)
+            }
+            if (spreadsheetContent.style && spreadsheetContent.style != "") {
+                this.style = JSON.parse(spreadsheetContent.style)
 
+            }
+            this.el = el
+            this.isEditable = isEditable
+            this.instance = instance
+            this.createTable(el, isEditable, instance)
+        })
 
 
     },
@@ -299,6 +298,7 @@ Meteor.setTimeout(()=>{
     },
     events: {
         onchange: () => {
+
             spreadsheetController.saveDatas(this.table.getJson(),()=>{
                 spreadsheetController.saveStyles(this.table.getConfig().style)
             })
@@ -362,7 +362,7 @@ console.log(this.table.getConfig().style)
 
     },
     saveDatas(datas,cb) {
-        let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
+        let currentSpreadsheet = Spreadsheet.findOne(this.id)
         cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
             currentSpreadsheet.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, (err, res) => {
                 if (err) {
@@ -374,7 +374,7 @@ console.log(this.table.getConfig().style)
         })
     },
     saveColumns(datas, columns, cb) {
-        let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
+        let currentSpreadsheet = Spreadsheet.findOne(this.id)
         cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
             currentSpreadsheet.callMethod("saveColumns", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, JSON.stringify(columns), JSON.stringify(columns), (err, res) => {
                 if (err) {
@@ -391,7 +391,7 @@ console.log(this.table.getConfig().style)
         }else{
 
             Meteor.setTimeout(()=>{
-                let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
+                let currentSpreadsheet = Spreadsheet.findOne(this.id)
                 currentSpreadsheet.callMethod("saveStyles", projectController.getAuthInfo(FlowRouter.current().params.projectId), JSON.stringify(styles), (err, res) => {
                     if (err) {
                         console.log(err)
@@ -406,7 +406,7 @@ console.log(this.table.getConfig().style)
 
     checkForUpdates(el, isEditable, instance) {
         instance.autorun((computation) => {
-            let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
+            let currentSpreadsheet = Spreadsheet.findOne(this.id)
             if (currentSpreadsheet && this.table) {
                 cryptoTools.decryptObject(currentSpreadsheet.content, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
                     this.table.setData(spreadsheetContent.symEnc_datas)

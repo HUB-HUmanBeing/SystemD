@@ -1,7 +1,6 @@
 import fs from 'fs'
 import cryptoServer from "./cryptoServer";
 import ProjectNotification from "./classes/ProjectNotification";
-import axios from "axios"
 
 /****************************
  * objet permettant de gerer les notification internes et push simultanément
@@ -12,31 +11,36 @@ const NotifPush = {
      * on stockera ici les listes de traductions récupérés afins de pas avoir a les récuperer plusieurs fois
      */
     i18nNotifs: {},
-
+    /*****************************
+     * retourne une instance de webPush prete à l'emploi
+     * @returns {{supportedContentEncodings, WebPushError, encrypt, getVapidHeaders, setGCMAPIKey, setVapidDetails, sendNotification, generateRequestDetails, generateVAPIDKeys}|*}
+     */
+    initializeWebpush() {
+        const webPush = require("web-push")
+        webPush.setVapidDetails(
+            "mailto:" + Meteor.settings.webpushMail,
+            Meteor.settings.public.publicVapidKey,
+            Meteor.settings.privateVapidKey
+        );
+        // if(Meteor.settings.GcmApiKey && Meteor.isProduction){
+        webPush.setGCMAPIKey(Meteor.settings.GcmApiKey);
+        //}
+        return webPush
+    },
     sendNotif(userIds, message) {
-        this.getSubscriptions(userIds).forEach((pushSubscription) => {
-            let notification = this.translateAndFormatMessage(pushSubscription.language, message)
-            notification.icon = "https://www.system-d.org/images/icon/iconfatNotifs.png"
-            notification.click_action = "https://www.system-d.org/"
-            let payload = {
-                notification: notification,
-            }
+        const webPush = this.initializeWebpush()
 
-            if (pushSubscription.tokens.length === 1) {
-                payload.to = pushSubscription.tokens[0]
-            } else {
-                payload.registration_ids = pushSubscription.tokens
-            }
-            axios.post("https://fcm.googleapis.com/fcm/send",
-                payload,
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'key=' + Meteor.settings.FcmServerKey
-                    }
-                }).then((res) => {
-                    console.log(res)
-            })
+        this.getSubscriptions(userIds).forEach((pushSubscription) => {
+            let payload = this.translateAndFormatMessage(pushSubscription.language, message)
+
+            let subscription = JSON.parse(pushSubscription.subscription)
+
+            webPush
+                .sendNotification(subscription, payload,{
+                    headers:{"Access-Control-Allow-Headers": "x-requested-with, x-requested-by"}
+                })
+                .then(() => {
+                })
                 .catch(err => console.error(err))
         })
     },
@@ -50,16 +54,15 @@ const NotifPush = {
         let usersToNotify = Meteor.users.find({_id: {"$in": userIds}}, {
             fields: {
                 "public.language": 1,
-                "private.tokens": 1
+                "private.pushSubscriptions": 1
             }
         })
         usersToNotify.fetch().forEach(user => {
-            let tokens = user.private.tokens
-            if (tokens && tokens.length) {
-                pushSubscriptions.push({tokens: tokens, language: user.public.language})
-            }
+            user.private.pushSubscriptions.forEach(sub => {
+                pushSubscriptions.push({subscription: sub.subscription, language: user.public.language})
+            })
+
         })
-        console.log(pushSubscriptions)
         return pushSubscriptions
     },
     /***********************
@@ -81,10 +84,11 @@ const NotifPush = {
             translatedTitle = this.i18nNotifs[language]["genericTitle"]
         }
         let translatedAction = this.i18nNotifs[language]["genericAction"]
-        return {
+        return new Buffer(JSON.stringify({
             title: translatedTitle,
             body: translatedMessage,
-        }
+            action: translatedAction
+        }))
     },
     /***********************************
      * verifie que le tableau de memmbres a notifier est valide avant d'envoyer les notifs
@@ -99,12 +103,14 @@ const NotifPush = {
             let index = membersToNotifyIds.indexOf(notifObject.memberId)
             if (index >= 0) {
                 if (cryptoServer.fastCompare(membersToNotifyIds[index] + notifObject.userId, notifObject.hashControl)) {
+
                     userIds.push(notifObject.userId)
                 }
             }
         })
+
         if (userIds.length) {
-            console.log("in")
+
             this.sendNotif([...new Set(userIds)], message)
         }
     },
@@ -129,7 +135,6 @@ const NotifPush = {
             url: url,
         })
         notif.save()
-
         this.CheckThenNotify(membersToNotifyIds, notifObjects, notifType)
     }
 }

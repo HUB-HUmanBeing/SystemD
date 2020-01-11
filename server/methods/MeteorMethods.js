@@ -54,12 +54,32 @@ Meteor.methods({
 
         return await callWithPromise
     },
-    registerToken(token) {
+    registerPushSubscription(subscription, navigatorFingerPrint) {
         check(Meteor.userId(), String)
         let user = User.findOne(Meteor.userId())
-        check(token, String)
+        check(subscription, String)
+        check(navigatorFingerPrint, String)
+        let found = false
+        user.private.pushSubscriptions.forEach((pushSubscription, i) => {
+            if (pushSubscription.navigatorFingerPrint === navigatorFingerPrint
+                || pushSubscription.subscription === subscription) {
+                if (!found) {
+                    user.private.pushSubscriptions[i] = {
+                        navigatorFingerPrint: navigatorFingerPrint,
+                        subscription: subscription
+                    }
+                    found = true
+                } else {
+                    user.private.pushSubscriptions.splice(i, 1)
+                }
 
-            user.private.tokens.push(token)
+            }
+        })
+        if (!found)
+            user.private.pushSubscriptions.push({
+                navigatorFingerPrint: navigatorFingerPrint,
+                subscription: subscription
+            })
         return user.save()
     },
     deleteAllNotifications(authInfo, projectId, section) {

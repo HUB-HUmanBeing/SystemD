@@ -4,8 +4,6 @@ import i18n from 'meteor/universe:i18n';
 import getLang from "./lib/getLang";
 import moment from "./lib/i18nMoment";
 import cryptoTools from "./lib/cryptoTools";
-import firebase from "firebase/app";
-import "firebase/messaging";
 
 Session.set('userAvatars', {})
 Session.set('projectAvatars', {})
@@ -47,20 +45,3 @@ if (!document.getElementById('manifest')) {
     link.href = '/manifest.json';
     document.head.appendChild(link);
 }
-
-var firebaseConfig = {
-    apiKey: "AIzaSyAJac4fZ9-AeF11GIXlV5sababxv6R6u1o",
-    authDomain: "system-d-9e42a.firebaseapp.com",
-    databaseURL: "https://system-d-9e42a.firebaseio.com",
-    projectId: "system-d-9e42a",
-    storageBucket: "system-d-9e42a.appspot.com",
-    messagingSenderId: "785822409291",
-    appId: "1:785822409291:web:fff86741f25864af2ea3ce"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-let messaging = firebase.messaging()
-messaging.usePublicVapidKey("BEr2R62aJ7hD5-2twsOm9gNmYI43Ele0-Sa2Lo7JGNuZ42lD1nNxB3bs6____ITKICqy8pwY9okqy45yhzT4zsY");
-messaging.onMessage((payload) => {
-    console.log(payload)
-});

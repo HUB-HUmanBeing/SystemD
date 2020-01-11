@@ -2,7 +2,7 @@ import hubCrypto from "../../lib/hubCrypto";
 import i18n from "meteor/universe:i18n";
 import moment from "../../lib/i18nMoment";
 import pushController from "../../lib/controllers/pushController";
-import User from "../../../imports/classes/User"
+
 Template.layout.helpers({
     //showAcceptNotifTemplate: function () {
     //    return Session.get("showAcceptNotif")
@@ -35,14 +35,10 @@ Template.layout.onCreated(function () {
                         })
                     }, timer > 0 ? timer : 0)
 
-                    if (Meteor.userId()) {
-                        let currentUser = User.findOne(Meteor.userId())
-                        if(currentUser && currentUser.private && currentUser.private.projects.length){
-                            pushController.initialize(currentUser)
-                        }
-
-
-                    }
+										//!\ bug sur firefox dans certaines conditions 
+                    //if (Meteor.user().private.projects.length) {
+                    //    pushController.initialize(Meteor.user())
+                    //}
                 })
             } else {
                 hubCrypto.destroyCryptoSession(() => {

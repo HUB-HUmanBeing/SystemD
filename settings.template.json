@@ -26,7 +26,7 @@
   },
   "webpushMail": "test@test.com",
   "privateVapidKey": "",
-  "FcmServerKey": "",
+  "GcmApiKey": "",
   "serverSalt": "un autre grain de sel",
   "serverSaltRounds": 3,
   "serverSaltHeavyRounds": 10,

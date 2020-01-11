@@ -52,7 +52,6 @@ Template.menu.onCreated(function () {
     }
     this.showInfo = new ReactiveVar()
     this.autorun(() => {
-
         let totalNotifCount = ProjectNotification.find().count()
         let title = "System-D"
         if (totalNotifCount) {
