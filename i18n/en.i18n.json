@@ -793,5 +793,22 @@
     "invalidMergeProperties": "Invalid merged properties",
     "cellAlreadyMerged": "Cell already merged",
     "noCellsSelected": "No cells selected"
+  },
+  "fullCalendar": {
+    "code": "en",
+    "dow": 1,
+    "doy": 4,
+    "prev": "Previous",
+    "next": "Next",
+    "today": "Today",
+    "year": "Year",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "list": "My planning",
+    "weekLabel": "week",
+    "allDayHtml": "All Day",
+    "eventLimitText": "more",
+    "noEventsMessage": "No event to show"
   }
 }
