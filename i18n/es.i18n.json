@@ -302,6 +302,7 @@
     "user": "usuario",
     "users": "usuarios",
     "ok": "Generar el enlace de invitación",
+    "loader": "Génération du lien d'invitation",
     "addMessage": "Adjuntar un mensaje de invitación",
     "invitMessage": "Mensaje enviado con su invitación",
     "backToParams": "Volver a los ajustes del proyecto"
@@ -546,6 +547,11 @@
     "deleted": "El fichero ha sido eliminado"
   },
   "_templates_map": "===========================================================================================================================",
+  "projectMaps": {
+    "settings": "Paramètres",
+    "fullscreen": "Mettre en plein écran",
+    "newMarker": "Nouveau marqueur"
+  },
   "mapParams": {
     "topo": "Topo ",
     "aerial": "aérea",
@@ -588,6 +594,8 @@
     "editIconInfo": "Haga clic en el mapa para modificar la ubicación del marcador."
   },
   "markerDetail": {
+    "editColor": "Éditer la couleur",
+    "editIcon": "Éditer l'icône",
     "markerName": "Nombre del marcador…",
     "markerDetail": "Detalle",
     "editMarker": "Editar  ",
@@ -758,9 +766,55 @@
     "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
     "uploadWarning": "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
     "fileUpload": "Importer un fichier csv",
-    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"
+    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV",
+    "searchInTable": "Rechercher dans le tableur"
   },
   "spreadsheet": {
-    "searchInTable": "Buscar en la hoja de cálculo"
+    "noRecordsFound": "Rien à afficher",
+    "showingPage": "Page {0} sur {1} affichée",
+    "show": "Montrer",
+    "entries": "entrées",
+    "insertANewColumnBefore": "Insérer une colonne avant",
+    "insertANewColumnAfter": "Insérer une colonne après",
+    "deleteSelectedColumns": "Supprimer les colonnes sélectionnées",
+    "renameThisColumn": "Renommer cette colonne",
+    "orderAscending": "Ordre croissant",
+    "orderDescending": "Ordre décroissant",
+    "insertANewRowBefore": "Insérer une ligne avant",
+    "insertANewRowAfter": "Insérer une ligne après",
+    "deleteSelectedRows": "Supprimer les lignes sélectionnées",
+    "editComments": "Éditer les commentaires",
+    "addComments": "Ajouter un commentaire",
+    "comments": "Commentaires",
+    "clearComments": "Effacer les commentaires",
+    "copy": "Copier ...",
+    "paste": "Coller ...",
+    "saveAs": "Enregistrer sous ...",
+    "about": "À propos",
+    "areYouSureToDeleteTheSelectedRows": "Êtes-vous sûr de vouloir supprimer les lignes sélectionnées?",
+    "areYouSureToDeleteTheSelectedColumns": "Êtes-vous sûr de vouloir supprimer les colonnes sélectionnées?",
+    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "Cette action va supprimer toutes les cellules fusionnées, êtes-vous sûr?",
+    "thisActionWillClearYourSearchResultsAreYouSure": "Cette action va supprimer vos résultats de recherche, êtes-vous sûr?",
+    "thereIsAConflictWithAnotherMergedCell": "Il y a un conflit avec une autre cellule fusionnée",
+    "invalidMergeProperties": "Action invalide pour la fusion",
+    "cellAlreadyMerged": "Ces cellules sont déjà fusionnées",
+    "noCellsSelected": "Pas de cellules sélectionnées"
+  },
+  "fullCalendar": {
+    "code": "fr",
+    "dow": 1,
+    "doy": 4,
+    "prev": "Précédent",
+    "next": "Suivant",
+    "today": "Aujourd'hui",
+    "year": "Année",
+    "month": "Mois",
+    "week": "Semaine",
+    "day": "Jour",
+    "list": "Mon planning",
+    "weekLabel": "Sem.",
+    "allDayHtml": "Toute la<br/>journée",
+    "eventLimitText": "en plus",
+    "noEventsMessage": "Aucun événement à afficher"
   }
 }
