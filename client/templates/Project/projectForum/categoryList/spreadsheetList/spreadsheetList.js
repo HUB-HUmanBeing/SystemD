@@ -113,6 +113,8 @@ Template.spreadsheetList.onCreated(function () {
                             cryptoTools.decryptArrayOfObject(encryptedSpreadsheets, {symKey: Session.get('currentProjectSimKey')}, (spreadsheets) => {
                                 this.spreadsheets.set(spreadsheets)
                             })
+                        }else{
+                            this.spreadsheets.set([])
                         }
                     })
 

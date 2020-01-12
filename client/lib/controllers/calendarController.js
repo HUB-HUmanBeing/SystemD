@@ -13,13 +13,27 @@ import mapParams from "./mapParams";
 const calendarController = {
     calendar: false,
     getLocale() {
-        switch (i18n.getLocale()) {
-            case 'fr-FR':
-                return frLocale
-                break
-            default:
-                return null;
-        }
+        return {
+            code: __("fullCalendar.code"),
+            week: {
+                dow: __("fullCalendar.dow"),
+                doy: __("fullCalendar.doy") // The week that contains Jan 4th is the first week of the year.
+            },
+            buttonText: {
+                prev: __("fullCalendar.prev"),
+                next: __("fullCalendar.next"),
+                today: __("fullCalendar.today"),
+                year: __("fullCalendar.year"),
+                month: __("fullCalendar.month"),
+                week: __("fullCalendar.week"),
+                day: __("fullCalendar.day"),
+                list: __("fullCalendar.list")
+            },
+            weekLabel: __("fullCalendar.weekLabel"),
+            allDayHtml: __("fullCalendar.allDayHtml"),
+            eventLimitText:__("fullCalendar.eventLimitText"),
+            noEventsMessage: __("fullCalendar.noEventsMessage")
+        };
     },
     calculateColumnNumber() {
         let width = document.getElementById('calendar').offsetWidth
@@ -152,7 +166,7 @@ const calendarController = {
                 }
                 FlowRouter.watchPathChange()
                 let activities = Activity.find({projectId: project._id, start: {$exists: true}}).fetch()
-                
+
                 cryptoTools.decryptArrayOfObject(activities, {symKey: Session.get("currentProjectSimKey")}, decryptedActivities => {
                         decryptedActivities.forEach(activity => {
                             eventSource.events.push(this.getEventFromActivity(activity, FlowRouter.current().queryParams.activityId))
@@ -165,7 +179,7 @@ const calendarController = {
                         currentEventSource.remove()
                     }
                     this.calendar.addEventSource(eventSource)
-                }, 100) 
+                }, 100)
             })
         })
 
