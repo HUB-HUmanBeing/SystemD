@@ -21,7 +21,6 @@ check@1.3.1
 coffeescript@1.0.17
 constellation:autopublish@0.4.4
 constellation:console@1.4.5
-constellation:dump-restore@0.4.4
 constellation:plugins@0.4.7
 constellation:position@0.4.4
 constellation:session@0.4.5
@@ -57,7 +56,6 @@ inter-process-messaging@0.1.0
 jagi:astronomy@2.7.1
 johanbrook:publication-collector@1.1.0
 jquery@1.11.11
-juliancwirko:s-alert@3.1.4
 kadira:blaze-layout@2.3.0
 kadira:flow-router@2.12.1
 lai:collection-extensions@0.2.1_1
