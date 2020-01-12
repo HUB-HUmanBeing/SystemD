@@ -35,7 +35,6 @@ const NotifPush = {
                         'Authorization': 'key=' + Meteor.settings.FcmServerKey
                     }
                 }).then((res) => {
-                    console.log(res)
             })
                 .catch(err => console.error(err))
         })
@@ -59,7 +58,6 @@ const NotifPush = {
                 pushSubscriptions.push({tokens: tokens, language: user.public.language})
             }
         })
-        console.log(pushSubscriptions)
         return pushSubscriptions
     },
     /***********************
@@ -104,7 +102,6 @@ const NotifPush = {
             }
         })
         if (userIds.length) {
-            console.log("in")
             this.sendNotif([...new Set(userIds)], message)
         }
     },
