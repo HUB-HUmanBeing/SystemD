@@ -84,15 +84,18 @@ Template.topic.onCreated(function () {
                 } else {
                     this.autorun(() => {
                         let encryptedTopic = Topic.findOne({_id: topicId})
-                        if (encryptedTopic.isMainTopic) {
-                            this.currentTopic.set(encryptedTopic)
-                            this.isRefreshing.set(false)
-                        } else {
-                            cryptoTools.decryptObject(encryptedTopic, {symKey: Session.get("currentProjectSimKey")}, (topic) => {
-                                this.currentTopic.set(topic)
-                                this.isRefreshing.set(false)
-                            })
-                        }
+                         if (encryptedTopic){
+                             if (encryptedTopic.isMainTopic) {
+                                 this.currentTopic.set(encryptedTopic)
+                                 this.isRefreshing.set(false)
+                             } else {
+                                 cryptoTools.decryptObject(encryptedTopic, {symKey: Session.get("currentProjectSimKey")}, (topic) => {
+                                     this.currentTopic.set(topic)
+                                     this.isRefreshing.set(false)
+                                 })
+                             }
+                         }
+
                     })
 
 
