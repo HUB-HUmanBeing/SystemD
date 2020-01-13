@@ -35,7 +35,7 @@
     "home": "Übersicht",
     "forum": "Forum",
     "params": "Einstellungen",
-    "calendar": "Kalender",
+    "calendar": "Terminkalender",
     "tasks": "Aufgaben",
     "maps": "Karte",
     "members": "Mitglieder"
@@ -139,7 +139,7 @@
     "p3firstPhase": "Benutzeroberfläche zur Projekterstellung",
     "p4firstPhase": "Dialoggestaltung zur Einladung zu Projekten und Mitgliederverwaltung",
     "p5firstPhase": "Einrichtung eines Diskussionsforums pro Projekt",
-    "p6firstPhase": "Gemeinsamer Kalender für jedes der Projekte",
+    "p6firstPhase": "Gemeinsamer Terminkalender für jedes der Projekte",
     "p7firstPhase": "Übersichtliche Aufgabenliste für jedes Projekt",
     "p8firstPhase": "Schnittstelle zur Nutzung von oder Einbindung in System-D",
     "secondPhase": "ZWEITE PHASE",
@@ -633,13 +633,13 @@
     "listView": "Liste der monatlichen Aktivitäten",
     "recurring": "(Wiederkehrend)",
     "unnamed": "Unbenannt",
-    "setActivityInfo": "Positionieren Sie die Aktivität dort, wo Sie diese auf dem Kalender haben wollen.",
-    "activityPlaced": "Die Aktivität wurde auf den Kalender gesetzt.",
+    "setActivityInfo": "Tragen Sie die Aktivität in den Terminkalender ein.",
+    "activityPlaced": "Die Aktivität wurde auf den Terminkalender gesetzt.",
     "settings": "Einstellungen",
     "addBtn": "Termin hinzufügen"
   },
   "calendarSettings": {
-    "title": "Kalender Einstellungen",
+    "title": "Terminkalender Einstellungen",
     "defaultView": "Standardansicht: ",
     "colorLegend": "Legende der Farbgebung : ",
     "defaultViewSaved": "Die Standardansicht wurde für alle Mitglieder des Projekts geändert",
@@ -701,7 +701,7 @@
   "projectTasks": {
     "title": "To-Do-Liste",
     "inProject": "Aufgaben im Projekt",
-    "calendarPlaced": "Auf den Kalender gesetzt",
+    "calendarPlaced": "Auf den Terminkalender gesetzt",
     "waitingForStatus": "Frühere Aufgaben",
     "done": "Erledigte Aufgaben",
     "inProjectDetail": "Die hier eingestellten Aufgaben haben noch kein genau definiertes Datum.",
