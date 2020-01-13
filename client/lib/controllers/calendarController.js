@@ -4,35 +4,34 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import list from '@fullcalendar/list';
 import interaction from '@fullcalendar/interaction';
 import dayGrid from '@fullcalendar/daygrid';
-import frLocale from '@fullcalendar/core/locales/fr';
 import Activity from "../../../imports/classes/Activity";
 import projectController from "./projectController";
 import cryptoTools from "../cryptoTools";
-import mapParams from "./mapParams";
+
 
 const calendarController = {
     calendar: false,
     getLocale() {
         return {
-            code: __("fullCalendar.code"),
+            code: __("fullCalendar.code")||'fr',
             week: {
-                dow: __("fullCalendar.dow"),
-                doy: __("fullCalendar.doy") // The week that contains Jan 4th is the first week of the year.
+                dow: __("fullCalendar.dow")||1,
+                doy: __("fullCalendar.doy")||4 // The week that contains Jan 4th is the first week of the year.
             },
             buttonText: {
-                prev: __("fullCalendar.prev"),
-                next: __("fullCalendar.next"),
-                today: __("fullCalendar.today"),
-                year: __("fullCalendar.year"),
-                month: __("fullCalendar.month"),
-                week: __("fullCalendar.week"),
-                day: __("fullCalendar.day"),
-                list: __("fullCalendar.list")
+                prev: __("fullCalendar.prev")||"Précédent",
+                next: __("fullCalendar.next")||"Suivant",
+                today: __("fullCalendar.today")||"Aujourd'hui",
+                year: __("fullCalendar.year")||"Année",
+                month: __("fullCalendar.month")||"Mois",
+                week: __("fullCalendar.week")||"Semaine",
+                day: __("fullCalendar.day")||"Jour",
+                list: __("fullCalendar.list")||"Mon planning"
             },
-            weekLabel: __("fullCalendar.weekLabel"),
-            allDayHtml: __("fullCalendar.allDayHtml"),
-            eventLimitText:__("fullCalendar.eventLimitText"),
-            noEventsMessage: __("fullCalendar.noEventsMessage")
+            weekLabel: __("fullCalendar.weekLabel")||"Sem.",
+            allDayHtml: __("fullCalendar.allDayHtml")||"Toute la<br/>journée",
+            eventLimitText:__("fullCalendar.eventLimitText")|| "en plus",
+            noEventsMessage: __("fullCalendar.noEventsMessage")||"Aucun événement à afficher"
         };
     },
     calculateColumnNumber() {
@@ -233,6 +232,7 @@ const calendarController = {
                 endTime: endTime,
             }
         } else {
+            console.log(activity)
             event = {
                 id: activity._id,
                 title: activity.symEnc_title ? activity.symEnc_title : __("projectCalendar.unnamed"),
