@@ -705,8 +705,8 @@
     "waitingForStatus": "Frühere Aufgaben",
     "done": "Erledigte Aufgaben",
     "inProjectDetail": "Die hier eingestellten Aufgaben haben noch kein genau definiertes Datum.",
-    "calendarPlacedDetail": "Gestellte Aufgaben werden mit Terminen in der Zukunft in den Kalender eingetragen.",
-    "waitingForStatusDetail": "Die Aufgaben in diesem Abschnitt wurden in den Kalender eingetragen, aber ihre Termine sind überschritten. Es liegt an Ihnen zu sehen, ob sie neu bearbeitet und neu geplant werden müssen oder ob sie als abgeschlossen betrachtet werden können",
+    "calendarPlacedDetail": "Gestellte Aufgaben werden mit Terminen die in der Zukunft liegen in den Kalender eingetragen.",
+    "waitingForStatusDetail": "Die Aufgaben in diesem Abschnitt wurden in den Termikalender eingetragen, aber ihre Termine sind überschritten. Es liegt an Ihnen zu sehen, ob sie neu bearbeitet und neu geplant werden müssen oder ob sie als abgeschlossen betrachtet werden können",
     "doneDetail": "Dieser Abschnitt gruppiert die Aufgaben, die als abgeschlossen angenommen wurden.",
     "newActivity": "Neue Aufgabe",
     "myTasks": "Meine Aufgaben"
