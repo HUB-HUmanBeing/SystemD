@@ -22,12 +22,12 @@
     "beta": "beta",
     "donateLabel": "Supportare Sistema-D",
     "betaVersion": "System-D.org è ancora in beta!",
-    "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorables. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
+    "betaExplain": "È molto probabile che si possano trovare bug e caratteristiche poco pratiche o migliorabili. Ci sforziamo di rendere l'esperienza dell'utente il più piacevole possibile nonostante i mezzi ancora molto limitati (uno sviluppatore volontario aiutato puntualmente dai suoi amici). ",
     "betaExplain2": "Grazie per ",
     "donate": "aiutateci con le vostre donazioni ",
     "betaExplainEnd": "e di segnalare idee per miglioramenti e bugs.",
-    "betaWarning": "Le protocole de chiffrement a été conçu avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
-    "betaWarning2": "Nous ne pouvons donc pas assurer à 100% a nos utilisateurs que leurs données sont inviolables meme si c'est pour nous un objectif aussi prioritaire que l'ergonomie du site.",
+    "betaWarning": "Il protocollo di cifratura è stato accuratamente progettato per garantire una protezione ottimale dei vostri dati. Tuttavia, non ha ancora beneficiato di competenze approfondite o di test di penetrazione da parte di hacker esperti. ",
+    "betaWarning2": "Non possiamo quindi garantire al 100% ai nostri utenti che i loro dati siano inviolabili, anche se questo è per noi una priorità tanto quanto l'ergonomia del sito.",
     "help": "Comunicare una vulnerabilità o un problema di sicurezza ..."
   },
   "_templates_includes": "===========================================================================================================================",
@@ -61,7 +61,7 @@
     "authorize": "sì",
     "bugReportLabel": "Descrizione bug",
     "sugestionLabel": "Idee e Suggerimenti",
-    "refreshCaptcha": "Renouveler",
+    "refreshCaptcha": "Rinfresca",
     "captcha": "Inserire i 4 caratteri",
     "submit": "Invia",
     "githubDirectLink": "Usa direttamente il Github di System-d.org...",
@@ -86,23 +86,23 @@
     "newPublication": "Un nuovo messaggio è stato aggiunto in una discussione che state seguendo",
     "newResponse": "È stato fatto un commento a seguito di uno dei vostri messaggi.",
     "newMapMarker": "Un nuovo marcatore è stato posizionato sulla mappa",
-    "newInvitation": "Vous avez été invité à participer à une activité"
+    "newInvitation": "Siete stati invitati a partecipare ad un'attività"
   },
   "showAcceptNotif": {
-    "showAcceptNotifs": "Cliquez sur accepter pour être averti des activités de votre projet.",
-    "showAcceptNotifsInfos": "Vous pourrez paramétrer ou désactiver les notifications plus tard."
+    "showAcceptNotifs": "Clicca su accetta per essere informato delle attività del tuo progetto.",
+    "showAcceptNotifsInfos": "Sarà possibile impostare o disattivare le notifiche in un secondo momento."
   },
   "beta": {
-    "beta": "bêta"
+    "beta": "beta"
   },
   "_templates_landingPage": "===========================================================================================================================",
   "landingHead": {
-    "aims": "Objectifs",
-    "features": "Atouts",
-    "roadMap": "Feuille de route",
-    "contact": "Contact",
-    "login": "Connexion",
-    "signUp": "Inscription",
+    "aims": "Scopi",
+    "features": "Funzioni",
+    "roadMap": "Roadmap",
+    "contact": "Contatto",
+    "login": "Accedi",
+    "signUp": "Iscriviti",
     "Logout": "Déconnexion"
   },
   "landingAim": {
@@ -155,8 +155,8 @@
     "p2thirdPhase": "Interface permettant de lister les ressources matérielles qu'un projet ou utilisateur souhaite mettre en partage",
     "p3thirdPhase": "Interface de recherche de ressources",
     "p4thirdPhase": "Possibilité de laisser des annonces concernant les besoins personnels et ceux des projets",
-    "p5thirdPhase": "Applications IOS, ANDROID et DESKTOP",
-    "p6thirdPhase": "Module de planning Scrum",
+    "p5thirdPhase": "Applicazioni IOS, ANDROID e DESKTOP",
+    "p6thirdPhase": "Modulo di pianificazione della Scum",
     "signin": "Inscription"
   },
   "landingTitle": {
