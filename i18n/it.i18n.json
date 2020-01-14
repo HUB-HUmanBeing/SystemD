@@ -57,35 +57,35 @@
     "bugReport": "Bug",
     "suggestion": "Suggerimenti",
     "allowDeviceInfo": "Allegare automaticamente informazioni sul browser utilizzato per facilitare il debug? (browser, versione, sistema operativo, lingua)",
-    "decline": "non",
-    "authorize": "oui",
-    "bugReportLabel": "Description du bug",
-    "sugestionLabel": "Idées et suggestions",
+    "decline": "no",
+    "authorize": "sì",
+    "bugReportLabel": "Descrizione bug",
+    "sugestionLabel": "Idee e Suggerimenti",
     "refreshCaptcha": "Renouveler",
-    "captcha": "Saisir les 4 lettres",
-    "submit": "Envoyer",
-    "githubDirectLink": "Utiliser directement le Github de System-d.org...",
-    "succesMessage": "Merci de votre contribution ! Votre message à été transmis au développeurs",
-    "githubLink": "Pour voir l'évolution de votre message, rendez-vous sur GitHub",
-    "return": "Retour"
+    "captcha": "Inserire i 4 caratteri",
+    "submit": "Invia",
+    "githubDirectLink": "Usa direttamente il Github di System-d.org...",
+    "succesMessage": "Grazie per il vostro contributo! Il vostro messaggio è stato inoltrato agli sviluppatori",
+    "githubLink": "Per vedere l'avanzamento del tuo messaggio, vai su GitHub",
+    "return": "Indietro"
   },
   "newsFeed": {
-    "btnLabel": "Actualités",
+    "btnLabel": "Novita",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   "notifModal": {
-    "title": "Notifications",
-    "deleteAll": "Tout supprimer"
+    "title": "Notifiche",
+    "deleteAll": "Elimina tutto"
   },
   "notifItem": {
-    "acceptedInvitation": "Une invitation a été acceptée et un nouveau membre a rejoint le projet.",
-    "memberQuit": "Un membre a quitté le projet.",
-    "memberPromoted": "Vous avez désormais les droits d'administrateur sur le projet.",
-    "genericTitle": "Nouvelle activité sur System-D",
-    "genericAction": "Voir sur le site",
-    "newPublication": "Une nouvelle publication a été ajoutée dans une discussion que vous suivez",
-    "newResponse": "Un Commentaire à été fait suite à l'un de vos messages.",
-    "newMapMarker": "Un nouveau marqueur à été placé sur la carte",
+    "acceptedInvitation": "Un invito è stato accettato e un nuovo membro si è unito al progetto.",
+    "memberQuit": "Un membro ha lasciato il progetto.",
+    "memberPromoted": "Ora avete i diritti di amministratore sul progetto.",
+    "genericTitle": "Nuova attività su System-D",
+    "genericAction": "Vedi sul sito",
+    "newPublication": "Un nuovo messaggio è stato aggiunto in una discussione che state seguendo",
+    "newResponse": "È stato fatto un commento a seguito di uno dei vostri messaggi.",
+    "newMapMarker": "Un nuovo marcatore è stato posizionato sulla mappa",
     "newInvitation": "Vous avez été invité à participer à une activité"
   },
   "showAcceptNotif": {
