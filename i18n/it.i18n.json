@@ -20,15 +20,15 @@
   },
   "layout": {
     "beta": "beta",
-    "donateLabel": "Soutenir System-D",
+    "donateLabel": "Supportare Sistema-D",
     "betaVersion": "System-D.org è ancora in beta!",
     "betaExplain": "Il est fort possible que vous trouviez des bugs et des fonctionnalités peu pratiques ou améliorables. Nous nous efforçons de rendre l'expérience utilisateur la plus agréable possible malgré des moyens encore très limités (Un développeur bénévole aidé ponctuellement par ses amis). ",
-    "betaExplain2": "Merci de ",
+    "betaExplain2": "Grazie per ",
     "donate": "aiutateci con le vostre donazioni ",
-    "betaExplainEnd": "et en faisant remonter les idées d'améliorations et bugs constatés.",
+    "betaExplainEnd": "e di segnalare idee per miglioramenti e bugs.",
     "betaWarning": "Le protocole de chiffrement a été conçu avec soin pour assurer la protection optimale de vos données. Cela dit, il n'a pu bénéficier pour l'instant ni d'une expertise approfondie ni de tests de pénétration par des hackers aguerris. ",
     "betaWarning2": "Nous ne pouvons donc pas assurer à 100% a nos utilisateurs que leurs données sont inviolables meme si c'est pour nous un objectif aussi prioritaire que l'ergonomie du site.",
-    "help": "Communiquer une vulnérabilité ou un problème de sécurité ..."
+    "help": "Comunicare una vulnerabilità o un problema di sicurezza ..."
   },
   "_templates_includes": "===========================================================================================================================",
   "menuProject": {
