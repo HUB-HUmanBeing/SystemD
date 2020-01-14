@@ -32,31 +32,31 @@
   },
   "_templates_includes": "===========================================================================================================================",
   "menuProject": {
-    "home": "Accueil",
+    "home": "Home",
     "forum": "Forum",
     "params": "Impostazioni",
-    "calendar": "Agenda",
+    "calendar": "Calendario",
     "tasks": "Azioni",
-    "maps": "Carte",
+    "maps": "Mappa",
     "members": "Membri"
   },
   "menu": {
     "param": "Impostazioni",
-    "logout": "Déconnexion",
+    "logout": "Scollegare",
     "noProject": "Al presente non sei registrato in nessun progetto.",
     "clic": "Potete cliccare sul pulsante qui sotto per creare un progetto o attendere un invito ad un progetto esistente.",
-    "decryption": "Déchiffrement de la liste de vos projets.",
-    "newProject": "Nouveau projet"
+    "decryption": "Decifrare l'elenco dei vostri progetti.",
+    "newProject": "Nuovo progetto"
   },
   "accessDenied": {
-    "denied": "Accès refusé",
-    "noAccess": "Vous ne pouvez pas accéder à cette page ! Veuillez vous connecter."
+    "denied": "Accesso negato",
+    "noAccess": "Non è possibile accedere a questa pagina! Effettuare il login."
   },
   "submitIssue": {
-    "btnLabel": "Bugs - Suggestions",
+    "btnLabel": "Bugs - Suggerimenti",
     "bugReport": "Bug",
-    "suggestion": "Suggestions",
-    "allowDeviceInfo": "Joindre automatiquement des informations sur le navigateur utilisé afin de faciliter le débuggage ? (navigateur, version, système d'exploitation, langue)",
+    "suggestion": "Suggerimenti",
+    "allowDeviceInfo": "Allegare automaticamente informazioni sul browser utilizzato per facilitare il debug? (browser, versione, sistema operativo, lingua)",
     "decline": "non",
     "authorize": "oui",
     "bugReportLabel": "Description du bug",
