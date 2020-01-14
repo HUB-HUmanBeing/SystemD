@@ -7,32 +7,48 @@ import dayGrid from '@fullcalendar/daygrid';
 import Activity from "../../../imports/classes/Activity";
 import projectController from "./projectController";
 import cryptoTools from "../cryptoTools";
-
+import frLocale from '@fullcalendar/core/locales/fr';
+import esLocale from '@fullcalendar/core/locales/es';
+import deLocale from '@fullcalendar/core/locales/de';
+import mapParams from "./mapParams";
 
 const calendarController = {
     calendar: false,
     getLocale() {
-        return {
-            code: __("fullCalendar.code")||'fr',
-            week: {
-                dow: __("fullCalendar.dow")||1,
-                doy: __("fullCalendar.doy")||4 // The week that contains Jan 4th is the first week of the year.
-            },
-            buttonText: {
-                prev: __("fullCalendar.prev")||"Précédent",
-                next: __("fullCalendar.next")||"Suivant",
-                today: __("fullCalendar.today")||"Aujourd'hui",
-                year: __("fullCalendar.year")||"Année",
-                month: __("fullCalendar.month")||"Mois",
-                week: __("fullCalendar.week")||"Semaine",
-                day: __("fullCalendar.day")||"Jour",
-                list: __("fullCalendar.list")||"Mon planning"
-            },
-            weekLabel: __("fullCalendar.weekLabel")||"Sem.",
-            allDayHtml: __("fullCalendar.allDayHtml")||"Toute la<br/>journée",
-            eventLimitText:__("fullCalendar.eventLimitText")|| "en plus",
-            noEventsMessage: __("fullCalendar.noEventsMessage")||"Aucun événement à afficher"
-        };
+        switch (i18n.getLocale()) {
+            case 'fr-FR':
+                return frLocale
+                break
+            case 'de-DE':
+                return deLocale
+                break
+            case 'es-ES':
+                return esLocale
+                break
+            default:
+                return null;
+        }
+        // return {
+        //     code: __("fullCalendar.code")||'fr',
+        //     week: {
+        //         dow: __("fullCalendar.dow")||1,
+        //         doy: __("fullCalendar.doy")||4 // The week that contains Jan 4th is the first week of the year.
+        //     },
+        //     buttonText: {
+        //         prev: __("fullCalendar.prev")||"Précédent",
+        //         next: __("fullCalendar.next")||"Suivant",
+        //         today: __("fullCalendar.today")||"Aujourd'hui",
+        //         year: __("fullCalendar.year")||"Année",
+        //         month: __("fullCalendar.month")||"Mois",
+        //         week: __("fullCalendar.week")||"Semaine",
+        //         day: __("fullCalendar.day")||"Jour",
+        //         list: __("fullCalendar.list")||"Mon planning"
+        //     },
+        //     weekLabel: __("fullCalendar.weekLabel")||"Sem.",
+        //     allDayHtml: __("fullCalendar.allDayHtml")||"Toute la<br/>journée",
+        //     eventLimitText:__("fullCalendar.eventLimitText")|| "en plus",
+        //     noEventsMessage: __("fullCalendar.noEventsMessage")||"Aucun événement à afficher"
+        // };
     },
     calculateColumnNumber() {
         let width = document.getElementById('calendar').offsetWidth
@@ -159,6 +175,7 @@ const calendarController = {
     initializeEventRenderer(instance, project) {
         Meteor.subscribe("CalendarActivitiesByProject", projectController.getAuthInfo(project._id), project._id, err => {
             instance.autorun(() => {
+                let start = new Date().getTime()
                 let eventSource = {
                     id: "currentProjectEvents",
                     events: []
