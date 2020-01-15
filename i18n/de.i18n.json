@@ -498,7 +498,7 @@
     "publish": "Speichern"
   },
   "showPollContent": {
-    "answers": "Beteiligte"
+    "answers": "Beteiligte(r)"
   },
   "pollOption": {
     "vote": "Stimmen"
@@ -719,7 +719,7 @@
     "delete": "Entfernen"
   },
   "taskItem": {
-    "participants": "Beteiligte",
+    "participants": "Beteiligte(r)",
     "inviteds": "Eingeladene Mitglieder",
     "checklist": "Checkliste",
     "start": "Beginn",
@@ -763,7 +763,7 @@
     "deleteSuccess": "Das Tabellenblatt wurde gelöscht",
     "lastEdit": "Letzte Bearbeitung",
     "uploadTable": "Importieren eines vorhandenen Tabellenblatts aus einer CSV-Datei",
-    "uploadInfo": "Das bestehende Tabellenkalkulationssystem arbeitet mit \".csv\"-Dateien. Speichern Sie Ihre Excel- oder oppenOffice-Tabelle im CSV-Format und importieren Sie diese durch Klicken auf die Schaltfläche unten ",
+    "uploadInfo": "Dieses Tabellenkalkulationssystem arbeitet mit \".csv\"-Dateien. Speichern Sie Ihre Excel- oder OpenOffice-Tabelle im CSV-Format und importieren Sie diese durch Klicken auf die Schaltfläche ",
     "uploadWarning": "Achtung, alle Daten in der Tabellenkalkulation werden unwiderruflich durch die Daten in der csv-Datei überschrieben!",
     "fileUpload": "Importieren einer CSV-Datei",
     "onlyCsvError": "Die hochgeladene Datei hat kein gültiges CSV-Format",
