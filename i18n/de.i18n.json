@@ -722,8 +722,8 @@
     "participants": "Beteiligte",
     "inviteds": "Eingeladene Mitglieder",
     "checklist": "Checkliste",
-    "start": "Anfangszeit",
-    "end": "Endezeit"
+    "start": "Beginn",
+    "end": "Ende"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
