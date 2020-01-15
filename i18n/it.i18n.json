@@ -228,44 +228,44 @@
     "psignin": "System-D accompagna i vostri progetti offrendovi uno spazio di lavoro collaborativo libero e gratuito",
     "linkSignin": "https://it.wikipedia.org/wiki/Crittografia_end-to-end",
     "endtoendencrypted": "crittografato end-to-end",
-    "p2signin": "Comme sur Telegram ou Signal, personne d'autre que vous et les personnes participant au même projet ne pourront déchiffrer et lire les contenus que vous postez, pas même les créateurs de cette plate-forme.",
-    "next": "Suivant",
-    "p3signin": "D'autre part",
-    "p3-1signin": "System-D preserve l'Anonymat",
-    "p3-2signin": "de ses utilisateurs : pas d'adresse mail requise ni d'informations personnelles. Cependant nous n'aurons ",
-    "p3-3signin": "aucun moyen de vous aider si vous oubliez votre mot de passe.",
-    "p3-4signin": "Ainsi, il est recommandé de :",
-    "spanSignin": "Noter le mot de passe que vous aurez choisi."
+    "p2signin": "Come su Telegram o Signal, nessuno tranne te e gli altri coinvolti nello stesso progetto sarà in grado di decifrare e leggere i contenuti che pubblichi, nemmeno i creatori di questa piattaforma.",
+    "next": "Successivo",
+    "p3signin": "D'altra parte",
+    "p3-1signin": "System-D preserva l'anonimato",
+    "p3-2signin": "dei suoi utenti: nessun indirizzo e-mail richiesto e nessuna informazione personale. Tuttavia, non avremo ",
+    "p3-3signin": "non c'è modo di aiutarti se dimentichi la tua password.",
+    "p3-4signin": "Pertanto, si raccomanda di :",
+    "spanSignin": "Annotate la password che avete scelto."
   },
   "loginPage": {
-    "signin": "Inscription",
-    "connection": "Connexion",
-    "backToHome": "Retour à l'accueil"
+    "signin": "Iscriviti",
+    "connection": "Accedi",
+    "backToHome": "Torna alla pagina principale"
   },
   "_templates_Projet": "===========================================================================================================================",
   "newProject": {
-    "createProject": "Créer un projet",
-    "nameProject": "Nom du projet",
-    "create": "Créer"
+    "createProject": "Creare un progetto",
+    "nameProject": "Nome del progetto",
+    "create": "Crea"
   },
   "newProjectJs": {
-    "error": "Une erreur s'est produite",
-    "name4": "votre nom de projet doit comporter au moins 4 caractères",
-    "name50": "votre nom de projet ne doit pas faire plus de 50 caractères",
-    "errmail": "votre nom de projet ne peut être une adresse e-mail",
-    "alreadyTaken": "ce nom de projet est déjà pris",
-    "nameProject": "veuillez donner un nom à votre projet",
-    "errForm": "Le formulaire de création de projet n'est pas valide",
-    "missInfo": "Il manque des informations",
-    "generation": "Génération des clefs de chiffrement du projet",
-    "creation": "Anonymisation de la liste de participants",
-    "initialization": "Connexion chiffrée au projet",
-    "theProject": "Le projet ",
-    "created": " a été créé."
+    "error": "Si é verificato un errore",
+    "name4": "il nome del vostro progetto deve essere lungo almeno 4 caratteri",
+    "name50": "il nome del progetto non deve essere lungo più di 50 caratteri",
+    "errmail": "il nome del progetto non può essere un indirizzo e-mail",
+    "alreadyTaken": "questo nome del progetto è già preso",
+    "nameProject": "Per favore, date un nome al vostro progetto",
+    "errForm": "Il modulo di creazione del progetto non è valido",
+    "missInfo": "Mancano informazioni",
+    "generation": "Generazione della chiave di crittografia del progetto",
+    "creation": "Anonimizzazione della lista dei partecipanti",
+    "initialization": "Connessione crittografata al progetto",
+    "theProject": "Il progetto ",
+    "created": " è stato creato."
   },
   "projectHome": {
-    "projectDescription": "Description du projet",
-    "noDescription": "Description non renseignée."
+    "projectDescription": "Descrizione del progetto",
+    "noDescription": "Descrizione non disponibile."
   },
   "editProjectAvatar": {
     "edit": "Editer l'avatar",
