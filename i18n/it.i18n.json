@@ -103,15 +103,15 @@
     "contact": "Contatto",
     "login": "Accedi",
     "signUp": "Iscriviti",
-    "Logout": "Déconnexion"
+    "Logout": "Scollegare"
   },
   "landingAim": {
-    "ourPurpose": "NOTRE OBJECTIF",
-    "purpose": "Créer un outil qui accompagne la transition vers un mode de production basé sur la collaboration et le partage.",
-    "3DevPhases": "TROIS PHASES DE DÉVELOPPEMENT",
-    "createTool": "Créer un outil de gestion de projet ouvert à tous",
-    "cTool": "Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet.",
-    "doOfSystemD": "Faire de SystemD le réseau social du projet collaboratif",
+    "ourPurpose": "IL NOSTRO OBIETTIVO",
+    "purpose": "Creare uno strumento che supporti la transizione verso una modalità di produzione basata sulla collaborazione e la condivisione.",
+    "3DevPhases": "TRE FASI DI SVILUPPO",
+    "createTool": "Creare uno strumento di gestione dei progetti aperto a tutti",
+    "cTool": "Uno strumento che permetterà alle diverse collettività e associazioni di organizzarsi in modo efficiente. Uno strumento criptato, gratuito e open-source per promuovere l'orizzontalità nella gestione dei progetti.",
+    "doOfSystemD": "Fare di SystemD il social network del progetto collaborativo",
     "dOfSystD": "Création des interfaces faisant de la plateforme un espace de rencontre et de circulation des utilisateurs sur différents projets : Recherche géolocalisée par compétences-centres d'intérets, messagerie chiffrée, blogs partagés, etc.",
     "developFreeNetwork": "Développer un réseau de gratuité et de partage",
     "dFreeNetwork": "Permettre à chaque utilisateur et chaque projet de mettre en partage les ressources produites afin de pouvoir réaliser une circulation non-marchande de grande ampleur."
