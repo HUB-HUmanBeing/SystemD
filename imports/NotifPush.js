@@ -15,28 +15,30 @@ const NotifPush = {
 
     sendNotif(userIds, message) {
         this.getSubscriptions(userIds).forEach((pushSubscription) => {
-            let notification = this.translateAndFormatMessage(pushSubscription.language, message)
-            notification.icon = "https://www.system-d.org/images/icon/iconfatNotifs.png"
-            notification.click_action = "https://www.system-d.org/"
-            let payload = {
-                notification: notification,
-            }
+            this.translateAndFormatMessage(pushSubscription.language, message, null,(notification)=>{
+                notification.icon = "https://www.system-d.org/images/icon/iconfatNotifs.png"
+                notification.click_action = "https://www.system-d.org/"
+                let payload = {
+                    notification: notification,
+                }
 
-            if (pushSubscription.tokens.length === 1) {
-                payload.to = pushSubscription.tokens[0]
-            } else {
-                payload.registration_ids = pushSubscription.tokens
-            }
-            axios.post("https://fcm.googleapis.com/fcm/send",
-                payload,
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'key=' + Meteor.settings.FcmServerKey
-                    }
-                }).then((res) => {
+                if (pushSubscription.tokens.length === 1) {
+                    payload.to = pushSubscription.tokens[0]
+                } else {
+                    payload.registration_ids = pushSubscription.tokens
+                }
+                axios.post("https://fcm.googleapis.com/fcm/send",
+                    payload,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'key=' + Meteor.settings.FcmServerKey
+                        }
+                    }).then((res) => {
+                })
+                    .catch(err => console.error(err))
             })
-                .catch(err => console.error(err))
+
         })
     },
     /******************************
@@ -67,22 +69,24 @@ const NotifPush = {
      * @param title
      * @returns {Buffer}
      */
-    translateAndFormatMessage(language, message, title) {
-        if (!(language in this.i18nNotifs)) {
-            this.i18nNotifs[language] = JSON.parse(fs.readFileSync(Meteor.absolutePath + '/i18n/' + language.split('-')[0] + '.i18n.json')).notifItem;
-        }
-        let translatedMessage = this.i18nNotifs[language][message]
+    translateAndFormatMessage(language, message, title,cb) {
+        let acceptLanguage = language || 'en-US';
+
+        i18n.runWithLocale(acceptLanguage, () => {
+            //In this scope everything should have 'acceptLanguage' as a default.
+        let translatedMessage = i18n.__('notifItem.'+message)
         let translatedTitle
         if (title) {
-            translatedTitle = this.i18nNotifs[language][title]
+            translatedTitle = i18n.__('notifItem.'+title)
         } else {
-            translatedTitle = this.i18nNotifs[language]["genericTitle"]
+            translatedTitle = i18n.__('notifItem.genericTitle')
         }
-        let translatedAction = this.i18nNotifs[language]["genericAction"]
-        return {
+        // let translatedAction = this.i18nNotifs[language]["genericAction"]
+        cb({
             title: translatedTitle,
             body: translatedMessage,
-        }
+        })
+        })
     },
     /***********************************
      * verifie que le tableau de memmbres a notifier est valide avant d'envoyer les notifs
