@@ -249,7 +249,6 @@ const calendarController = {
                 endTime: endTime,
             }
         } else {
-            console.log(activity)
             event = {
                 id: activity._id,
                 title: activity.symEnc_title ? activity.symEnc_title : __("projectCalendar.unnamed"),

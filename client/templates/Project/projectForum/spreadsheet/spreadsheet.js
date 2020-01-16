@@ -39,26 +39,31 @@ Template.spreadsheet.onCreated(function () {
     //add your statement here
     this.currentSpreadsheet = new ReactiveVar()
     this.isRefreshing = new ReactiveVar(true)
-    this.projectId = new ReactiveVar(null)
+
     this.handlerSubscription = null
     this.pinnedPublication = new ReactiveVar(false)
     this.autorun(() => {
-
+        this.currentSpreadsheet.set(false)
         this.isRefreshing.set(true)
         FlowRouter.watchPathChange()
         let currentProject = Project.findOne(FlowRouter.current().params.projectId)
         if (currentProject) {
 
-            this.projectId.set(FlowRouter.current().params.projectId)
+
             let spreadsheetId = FlowRouter.current().queryParams.spreadsheetId
-            this.handlerSubscription = Meteor.subscribe("singleSpreadsheet", projectController.getAuthInfo(this.projectId.get()), spreadsheetId, this.projectId.get(), err => {
+            this.handlerSubscription = Meteor.subscribe("singleSpreadsheet", projectController.getAuthInfo(FlowRouter.current().params.projectId), spreadsheetId, err => {
 
                 if (err) {
                     console.log(err)
                 } else {
                     this.autorun(() => {
+                        FlowRouter.watchPathChange()
+                   if(spreadsheetId != FlowRouter.current().queryParams.spreadsheetId){
+                       spreadsheetId = FlowRouter.current().queryParams.spreadsheetId
+                       this.currentSpreadsheet.set(false)
+                   }
                         let encryptedSpreadsheet = Spreadsheets.findOne({_id: spreadsheetId})
-                        if(encryptedSpreadsheet.currentEditor){
+                        if(encryptedSpreadsheet.currentEditor && encryptedSpreadsheet.createdBy){
                             cryptoTools.decryptObject(encryptedSpreadsheet, {symKey: Session.get("currentProjectSimKey")}, (spreadsheet) => {
                                 this.currentSpreadsheet.set(spreadsheet)
                                 this.isRefreshing.set(false)

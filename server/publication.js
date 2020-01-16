@@ -371,15 +371,14 @@ Meteor.publish('spreadsheets', function (authInfo, projectId,  limit) {
         }
     )
 })
-Meteor.publish('singleSpreadsheet', function (authInfo, spreadsheetId, projectId) {
+Meteor.publish('singleSpreadsheet', function (authInfo, spreadsheetId) {
 
     check(spreadsheetId, String)
-    check(projectId, String)
     let SpreadsheetCursor = Spreadsheets.find({_id: spreadsheetId})
     check(authInfo, {memberId: String, userSignature: String})
 
     if(SpreadsheetCursor.fetch()[0]){
-        projectId = SpreadsheetCursor.fetch()[0].projectId
+       let  projectId = SpreadsheetCursor.fetch()[0].projectId
         let currentProject = Project.findOne(projectId)
         check(currentProject.isMember(authInfo), true)
         return SpreadsheetCursor
