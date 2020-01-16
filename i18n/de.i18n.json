@@ -107,7 +107,7 @@
   },
   "landingAim": {
     "ourPurpose": "UNSER ZIEL",
-    "purpose": "Erstellung eines Werkzeugs, das den Übergang zu einem auf Zusammenarbeit und gemeinsamer Nutzung basierenden Produktionsweise unterstützt.",
+    "purpose": "Erstellung eines Werkzeugs, das den Übergang zu einer auf Zusammenarbeit und gemeinsamer Nutzung basierenden Produktionsweise unterstützt.",
     "3DevPhases": "DREI PHASEN DER ENTWICKLUNG",
     "createTool": "Ein für alle offenes Projektmanagement-Tool schaffen",
     "cTool": "Ein Instrument, das es den verschiedenen Kollektiven und Vereinen ermöglicht, sich effizient zu organisieren. Ein verschlüsseltes, kostenloses Open-Source-Tool zur Förderung der Horizontalität im Projektmanagement.",
@@ -313,7 +313,7 @@
     "copied": "Link zur Einladung in die Zwischenablage kopiert",
     "invitTitle": "Einladung zur Teilnahme am Projekt ",
     "invitMessage": "Sie sind dazu eingeladen worden, an einem Projekt auf System-D teilzunehmen: der verschlüsselten Plattform für kollaborative Projekte. Klicken Sie auf den Link, um die Einladung zu sehen.",
-    "infoQr": "Wenn sich die einzuladende Person mit Ihnen vor diesem Bildschirm befindet, kann sie diesen QR-Code auch mit einem beliebigen QR-Code-Lesegerät scannen, um auf die Einladung zugreifen zu können.",
+    "infoQr": "Wenn sich die einzuladende Person mit Ihnen vor diesem Bildschirm befindet, kann sie diesen QR-Code auch mit einem beliebigen QR-Code-Lesegerät scannen, um die Einladung anzunehmen.",
     "infoDestroy": "Durch das Löschen der Einladung verlieren Sie die Möglichkeit, den Einladungslink für den Zugriff auf die Chiffrierschlüssel Ihres Projekts zu verwenden.",
     "destroy": "Den Einladungslink löschen",
     "backToParams": "Zurück zu den Projektvorgaben",
