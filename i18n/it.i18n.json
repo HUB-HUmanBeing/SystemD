@@ -102,7 +102,7 @@
     "roadMap": "Roadmap",
     "contact": "Contatto",
     "login": "Accedi",
-    "signUp": "Iscriviti",
+    "signUp": "Registrazione",
     "Logout": "Scollegare"
   },
   "landingAim": {
@@ -129,7 +129,7 @@
     "pfree": "In quale altro modo dovrebbe essere una piattaforma il cui obiettivo è quello di promuovere le relazioni sociali al di là delle logiche del mercato",
     "encrypted": "ENCODATO",
     "pencrypted": "I contenuti che condividete, così come l'elenco dei progetti a cui partecipate, sono criptati \"end-to-end\" ",
-    "signin": "Iscriviti"
+    "signin": "Registrazione"
   },
   "landingRoadmap": {
     "roadmap": "ROADMAP",
@@ -157,66 +157,66 @@
     "p4thirdPhase": "Possibilità di lasciare annunci sulle esigenze personali e di progetto",
     "p5thirdPhase": "Applicazioni IOS, ANDROID e DESKTOP",
     "p6thirdPhase": "Modulo di pianificazione della Scum",
-    "signin": "Inscription"
+    "signin": "Registrazione"
   },
   "landingTitle": {
-    "h3title": "Plateforme chiffrée de projets collaboratifs",
-    "ptitle": "Crééz des projets, invitez vos amis, et profitez des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif",
-    "signin": "Inscription"
+    "h3title": "Piattaforma criptata per progetti di collaborazione",
+    "ptitle": "Create progetti, invitate i vostri amici e approfittate di strumenti gratuiti e sicuri per organizzare la vostra associazione o il vostro collettivo",
+    "signin": "Registrazione"
   },
   "landingTools": {
-    "calendar": "AGENDA PARTAGÉ",
-    "pcalendar": "Pour vous permettre de planifier avec votre collectif les prochains évènements de votre projet.",
-    "taskList": "LISTES DE TACHES",
-    "ptaskList": "Pour pouvoir voir d'un coup d'oeil l'avancement du travail, et inviter les participants à s'inscrire de manière active.",
-    "forum": "FORUM DE DISCUSSIONS",
-    "pforum": "Communiquer ensemble, par thématiques ou de manière générale afin de pouvoir faire circuler l'information de manière efficace.",
-    "modularTools": "DES OUTILS MODULAIRES",
-    "pmodularTools": "Cartes interactives, planning méthode agile, et d'autres outils développés peu à peu viendront compléter vos projets de manière modulaire.",
-    "simpleTools": "DES OUTILS SIMPLES ET SÉCURISÉS",
-    "psimpleTools": "Des outils d'organisation ergonomiques pour une prise en main rapide, et dont les contenus sont entièrement chiffrés pour une confidentialité optimale"
+    "calendar": "AGENDA CONDIVIDUATA",
+    "pcalendar": "Per permettervi di pianificare con il vostro collettivo i prossimi eventi del vostro progetto.",
+    "taskList": "ELENCO DELLE ATTIVITÀ DA FARE",
+    "ptaskList": "Poter vedere a colpo d'occhio lo stato di avanzamento dei lavori e invitare i partecipanti ad iscriversi attivamente.",
+    "forum": "FORUM DI DISCUSSIONE",
+    "pforum": "Comunicare insieme, per tema o in modo generale per poter far circolare efficacemente le informazioni.",
+    "modularTools": "UTENSILI MODULARI",
+    "pmodularTools": "Mappe interattive, agile pianificazione e altri strumenti sviluppati gradualmente completeranno i vostri progetti in modo modulare.",
+    "simpleTools": "STRUMENTI SEMPLICI E SECURIZZATI",
+    "psimpleTools": "Strumenti di organizzazione ergonomici per un avvio rapido, con contenuti completamente criptati per una confidenzialità ottimale"
   },
   "landingCounter": {
-    "members": "Membres inscrits",
-    "projects": "Projets créés",
-    "joinToo": "Inscrivez vous et profitez d'un outil pratique, gratuit et chiffré pour gérer vos projets avec vos amis, votre association ou votre collectif.",
-    "signin": "Inscription"
+    "members": "Membri registrati",
+    "projects": "Progetti creati",
+    "joinToo": "Registrati e usufruisci di uno strumento pratico, gratuito e criptato per gestire i tuoi progetti con i tuoi amici, la tua associazione o il tuo collettivo.",
+    "signin": "Registrazione"
   },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
-    "userName": "Nom d'utilisateur",
-    "password": "Mot de passe",
-    "connection": "Connexion"
+    "userName": "Nome utente",
+    "password": "Password",
+    "connection": "Accedi"
   },
   "loginFormJs": {
-    "key": "Récupération et déchiffrement de la clef privée",
-    "session": "Initialisation d'une nouvelle session chiffrée",
-    "welcome": "Bienvenue sur System-D"
+    "key": "Recupero e decrittazione di chiavi private",
+    "session": "Inizializzazione di una nuova sessione criptata",
+    "welcome": "Benvenuti a System-D"
   },
   "signinForm": {
-    "userNameChoice": "Choisir un nom d'utilisateur",
-    "passwordChoice": "Mot de passe",
-    "passwordRepeat": "Répéter mot de passe",
-    "accountCreate": "Créer un compte"
+    "userNameChoice": "Scegliere un nome utente",
+    "passwordChoice": "Password",
+    "passwordRepeat": "Ripetere la password",
+    "accountCreate": "Creare un account"
   },
   "signinFormJs": {
-    "error": "Une erreur s'est produite",
-    "name4": "votre nom d'utilisateur doit comporter au moins 4 caractères",
-    "name40": "votre nom d'utilisateur ne doit pas faire plus de 40 caractères",
-    "errmail": "votre nom d'utilisateur ne peut être une adresse e-mail",
-    "alreadyTaken": "ce nom d'utilisateur est déjà pris",
-    "putName": "veuillez inscrire votre nom d'utilisateur",
-    "crypt": "Le chiffrement de vos contenus sur System-D est basé sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.",
-    "use": "Utilisez des ",
-    "characters": "caractères spéciaux",
-    "des": ", des ",
-    "capital": "majuscules",
-    "and": " et des ",
-    "number": "chiffres",
-    "up": " afin d'augmenter la robustesse de votre mot de passe.",
-    "strength": "La robustesse du mot de passe doit au moins être de 1O",
-    "samePwd": "Les mots de passes ne sont pas identiques",
-    "typePwd": "Veuillez saisir un mot de passe",
+    "error": "Si é verificato un errore",
+    "name4": "il vostro nome utente deve essere lungo almeno 4 caratteri",
+    "name40": "il vostro nome utente non deve essere lungo più di 40 caratteri",
+    "errmail": "il vostro nome utente non può essere un indirizzo e-mail",
+    "alreadyTaken": "questo nome utente è già preso",
+    "putName": "inserite il vostro nome utente",
+    "crypt": "La crittografia dei vostri contenuti su System-D si basa sulla vostra password, quindi vi preghiamo di utilizzare una password forte.",
+    "use": "Utilizzate ",
+    "characters": "caratteri speciali",
+    "des": ", del ",
+    "capital": "maiuscole",
+    "and": " e ",
+    "number": "cifre",
+    "up": " per aumentare la forza della tua password.",
+    "strength": "La forza della password deve essere di almeno 1O",
+    "samePwd": "Le vostre due password non sono identiche",
+    "typePwd": "Inserite una password",
     "confirm": "Veuillez confirmer votre mot de passe",
     "form": "Le formulaire d'inscription n'est pas valide",
     "miss": "Il manque des informations",
@@ -238,7 +238,7 @@
     "spanSignin": "Annotate la password che avete scelto."
   },
   "loginPage": {
-    "signin": "Iscriviti",
+    "signin": "Registrazione",
     "connection": "Accedi",
     "backToHome": "Torna alla pagina principale"
   },
@@ -775,13 +775,13 @@
     "show": "Montrer",
     "entries": "entrées",
     "insertANewColumnBefore": "Insérer une colonne avant",
-    "insertANewColumnAfter": "Insérer une colonne après",
-    "deleteSelectedColumns": "Supprimer les colonnes sélectionnées",
-    "renameThisColumn": "Renommer cette colonne",
-    "orderAscending": "Ordre croissant",
-    "orderDescending": "Ordre décroissant",
-    "insertANewRowBefore": "Insérer une ligne avant",
-    "insertANewRowAfter": "Insérer une ligne après",
+    "insertANewColumnAfter": "Inserire una colonna dopo",
+    "deleteSelectedColumns": "Cancellare le colonne selezionate",
+    "renameThisColumn": "Rinomina questa colonna",
+    "orderAscending": "Ordine crescente",
+    "orderDescending": "Ordine discendente",
+    "insertANewRowBefore": "Inserire una riga prima",
+    "insertANewRowAfter": "Inserire una riga dopo",
     "deleteSelectedRows": "Supprimer les lignes sélectionnées",
     "editComments": "Éditer les commentaires",
     "addComments": "Ajouter un commentaire",
