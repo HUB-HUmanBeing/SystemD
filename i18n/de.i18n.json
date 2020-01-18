@@ -107,14 +107,14 @@
   },
   "landingAim": {
     "ourPurpose": "UNSER ZIEL",
-    "purpose": "Erstellung eines Werkzeugs, das den Übergang zu einem auf Zusammenarbeit und gemeinsamer Nutzung basierenden Produktionsweise unterstützt.",
+    "purpose": "Herstellung eines Werkzeugs, das den Übergang zu einer auf Zusammenarbeit und gemeinsamer Nutzung basierenden Produktionsweise unterstützt.",
     "3DevPhases": "DREI PHASEN DER ENTWICKLUNG",
-    "createTool": "Ein für alle offenes Projektmanagement-Tool schaffen",
+    "createTool": "Produktion eines für alle offenen Projektmanagement-Tools",
     "cTool": "Ein Instrument, das es den verschiedenen Kollektiven und Vereinen ermöglicht, sich effizient zu organisieren. Ein verschlüsseltes, kostenloses Open-Source-Tool zur Förderung der Horizontalität im Projektmanagement.",
-    "doOfSystemD": "Machen Sie System-D zum sozialen Netzwerk der Zusammenarbeit!",
+    "doOfSystemD": "Macht System-D zum sozialen Netzwerk der Zusammenarbeit!",
     "dOfSystD": "Entwicklung von Schnittstellen, die die Plattform zu einem Kommunikationsraum werden lässt, in dem sich die Mitglieder treffen und über verschiedene Projekte austauschen können: geolokalisierte Suche anhand von Interessensgebieten, verschlüsselten Nachrichten, gemeinsamen Blogs usw.",
-    "developFreeNetwork": "Entwicklung eines freien Netzwerks und mit anderen geteilten Nutzung",
-    "dFreeNetwork": "Bringe mit den geschaffenen Mitteln jeden Nutzer und jedes Projekt in die Lage große Wirkung jenseits der Marktlogik zu entfalten."
+    "developFreeNetwork": "Entwicklung eines frei nutzbaren Netzwerks des gemeinsamen Teilens",
+    "dFreeNetwork": "Versetze jeden Nutzer und jedes Projekt mit diesem Werkzeugkasten in die Position eine große Wirkung jenseits der Marktlogik zu entfalten."
   },
   "landingContact": {
     "contact": "KONTAKT",
@@ -313,7 +313,7 @@
     "copied": "Link zur Einladung in die Zwischenablage kopiert",
     "invitTitle": "Einladung zur Teilnahme am Projekt ",
     "invitMessage": "Sie sind dazu eingeladen worden, an einem Projekt auf System-D teilzunehmen: der verschlüsselten Plattform für kollaborative Projekte. Klicken Sie auf den Link, um die Einladung zu sehen.",
-    "infoQr": "Wenn sich die einzuladende Person mit Ihnen vor diesem Bildschirm befindet, kann sie diesen QR-Code auch mit einem beliebigen QR-Code-Lesegerät scannen, um auf die Einladung zugreifen zu können.",
+    "infoQr": "Wenn sich die einzuladende Person mit Ihnen vor diesem Bildschirm befindet, kann sie diesen QR-Code auch mit einem beliebigen QR-Code-Lesegerät scannen, um die Einladung anzunehmen.",
     "infoDestroy": "Durch das Löschen der Einladung verlieren Sie die Möglichkeit, den Einladungslink für den Zugriff auf die Chiffrierschlüssel Ihres Projekts zu verwenden.",
     "destroy": "Den Einladungslink löschen",
     "backToParams": "Zurück zu den Projektvorgaben",
@@ -498,7 +498,7 @@
     "publish": "Speichern"
   },
   "showPollContent": {
-    "answers": "Beteiligte"
+    "answers": "Beteiligte(r)"
   },
   "pollOption": {
     "vote": "Stimmen"
@@ -719,11 +719,11 @@
     "delete": "Entfernen"
   },
   "taskItem": {
-    "participants": "Beteiligte",
+    "participants": "Beteiligte(r)",
     "inviteds": "Eingeladene Mitglieder",
     "checklist": "Checkliste",
-    "start": "Anfangszeit",
-    "end": "Endezeit"
+    "start": "Beginn",
+    "end": "Ende"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
@@ -763,7 +763,7 @@
     "deleteSuccess": "Das Tabellenblatt wurde gelöscht",
     "lastEdit": "Letzte Bearbeitung",
     "uploadTable": "Importieren eines vorhandenen Tabellenblatts aus einer CSV-Datei",
-    "uploadInfo": "Das bestehende Tabellenkalkulationssystem arbeitet mit \".csv\"-Dateien. Speichern Sie Ihre Excel- oder oppenOffice-Tabelle im CSV-Format und importieren Sie diese durch Klicken auf die Schaltfläche unten ",
+    "uploadInfo": "Dieses Tabellenkalkulationssystem arbeitet mit \".csv\"-Dateien. Speichern Sie Ihre Excel- oder OpenOffice-Tabelle im CSV-Format und importieren Sie diese durch Klicken auf die Schaltfläche ",
     "uploadWarning": "Achtung, alle Daten in der Tabellenkalkulation werden unwiderruflich durch die Daten in der csv-Datei überschrieben!",
     "fileUpload": "Importieren einer CSV-Datei",
     "onlyCsvError": "Die hochgeladene Datei hat kein gültiges CSV-Format",

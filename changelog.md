@@ -3,9 +3,16 @@
 ## changelog
 
 #### en projet
-- Faire marcher les notification et réaliser un build pour une appli android
+- réaliser un build pour une appli android
 - module permettant de gerer des fiches ( demandé par un centre de soin qui aimerait y gerer ses fiches patients, mais qui pourra servir a tout ceux souhaitant archiver, gerer et trier de l'info de manière collaborative)
-- traduction en allemand et italien ( les contributeurs a cela sont vraiement formidables !)
+- traduction en  italien ( les contributeurs a cela sont vraiement formidables !)
+
+#### déployé le 17/01/20
+- débug des notifications qui sont désormais fonctionnelles sur chrome et sur les dernieres versions de firefox
+- débug du tableur qui supprimais les données dans certaines cirrconstances sur firefox
+- multiples débugs mineurs
+- débug envoi de fichiers
+
 #### déployé le 04/02/20
 - possibilité d'editer les commentaires
 - retrait du bandeau sur les manque de compatibilité firefox
@@ -13,6 +20,7 @@
 
 #### déployé le 22/12/19
 - possibilité d'editer les publications
+- traduction du site en allemand
 
 #### deployé le 21/12/19
 - Module de newsFeed

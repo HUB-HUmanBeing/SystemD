@@ -236,10 +236,11 @@ Template.categoryItem.onCreated(function () {
     this.categoryId = new ReactiveVar(this.data.category.categoryId)
 
     this.autorun(() => {
+        FlowRouter.current().params.projectId
         Meteor.subscribe(
             'topics',
-            projectController.getAuthInfo(this.data.currentProject._id),
-            this.data.currentProject._id,
+            projectController.getAuthInfo(FlowRouter.current().params.projectId),
+            FlowRouter.current().params.projectId,
             this.categoryId.get(),
             this.topicsLimit.get(),
             err => {

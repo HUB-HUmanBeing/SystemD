@@ -93,9 +93,11 @@ Template.spreadsheetList.onCreated(function () {
     this.spreadsheetsLimit = new ReactiveVar(5)
 
     this.autorun(() => {
+    FlowRouter.watchPathChange()
         Meteor.subscribe('spreadsheets',
-            projectController.getAuthInfo(this.data.currentProject._id),
-            this.data.currentProject._id,
+
+            projectController.getAuthInfo(FlowRouter.current().params.projectId),
+            FlowRouter.current().params.projectId,
             this.spreadsheetsLimit.get(),
             err => {
                 if (err) {

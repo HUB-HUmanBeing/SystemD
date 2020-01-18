@@ -3,6 +3,7 @@ import Spreadsheet from "../../../imports/classes/Spreadsheet";
 import cryptoTools from "../cryptoTools";
 import projectController from "./projectController";
 import isSameObject from "../isSameObject";
+import Spreadsheets from "../../../lib/collections/Spreadsheets";
 
 let spreadsheetController = {
     table: null,
@@ -30,7 +31,7 @@ isFirst:true,
         this.id = FlowRouter.current().queryParams.spreadsheetId
 
         let encryptedSpreadsheetContent = Spreadsheet.findOne({_id: spreadsheetId}).content
-        if(encryptedSpreadsheetContent){
+        if(encryptedSpreadsheetContent && Spreadsheets.findOne({_id: spreadsheetId}).createdBy &&spreadsheetId == FlowRouter.current().queryParams.spreadsheetId){
             cryptoTools.decryptObject(encryptedSpreadsheetContent, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
                 if (spreadsheetContent.symEnc_datas && JSON.parse(spreadsheetContent.symEnc_datas).length) {
                     let newDatas = JSON.parse(spreadsheetContent.symEnc_datas)
@@ -38,6 +39,8 @@ isFirst:true,
                         this.datas = newDatas
                     }
                 } else {
+                    console.log("réinitialisation des datas du tableur" , spreadsheetContent, Spreadsheet.findOne({_id: spreadsheetId}))
+                    console.log("spresheet route id" , FlowRouter.current().queryParams.spreadsheetId)
                     this.datas = this.defaultDatas()
                     this.saveDatas(this.datas)
                 }

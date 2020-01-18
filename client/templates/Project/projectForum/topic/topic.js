@@ -12,7 +12,7 @@ Template.topic.helpers({
         return Template.instance().currentTopic.get()
     },
     isRefreshing: function () {
-        return Template.instance().isRefreshing.get()
+       // return Template.instance().isRefreshing.get()
     },
     refreshScrollbar: function () {
         return Template.currentData().refreshScrollbar
@@ -36,15 +36,16 @@ Template.topic.events({
 
 Template.topic.onCreated(function () {
     //add your statement here
+
     this.currentTopic = new ReactiveVar()
     this.isRefreshing = new ReactiveVar(true)
     this.projectId = new ReactiveVar(null)
     this.handlerSubscription = null
     this.pinnedPublication = new ReactiveVar(false)
     this.autorun(() => {
+
         this.isRefreshing.set(true)
         FlowRouter.watchPathChange()
-
         if (this.projectId.get() !== FlowRouter.current().params.projectId && this.handlerSubscription) {
             this.handlerSubscription.stop()
         }
