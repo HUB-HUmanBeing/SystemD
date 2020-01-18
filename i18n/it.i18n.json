@@ -196,7 +196,7 @@
   "signinForm": {
     "userNameChoice": "Scegliere un nome utente",
     "passwordChoice": "Password",
-    "passwordRepeat": "Ripetere la password",
+    "passwordRepeat": "Ripeta la password",
     "accountCreate": "Creare un account"
   },
   "signinFormJs": {
@@ -370,19 +370,19 @@
     "deleteAccount": "Elimina account"
   },
   "deleteAccountJs": {
-    "error": "Une erreur s'est produite",
-    "deletedAccount": "Votre compte utilisateur à été définitivement supprimé"
+    "error": "Si é verificato un errore",
+    "deletedAccount": "Il vostro account utente è stato eliminato permanentemente"
   },
   "editAvatar": {
-    "edit": "Éditer l'avatar",
-    "delete": "Supprimer l'avatar",
+    "edit": "Modifica avatar",
+    "delete": "Cancella avatar",
     "OK": "Valider"
   },
   "editPassword": {
-    "oldPassword": "Ancien mot de passe",
-    "newPassword": "Nouveau mot de passe",
-    "repeatPassword": "Répéter mot de passe",
-    "strength": "Force",
+    "oldPassword": "Vecchia password",
+    "newPassword": "Nuova Password",
+    "repeatPassword": "Ripeta la password",
+    "strength": "Forza",
     "editPassword": "Modifier mot de passe"
   },
   "editPasswordJs": {
