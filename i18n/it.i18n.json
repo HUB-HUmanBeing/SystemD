@@ -322,13 +322,13 @@
   "invitationList": {
     "from": "Creazione del link per l'invito",
     "by": "Creato da",
-    "expireIn": "Expire dans",
-    "remaining": "Invitations restantes",
-    "noInvits": "Il n'y a aucun lien d'invitation en cours de validité.",
-    "newInvitation": "Générer un nouveau lien d'invitation."
+    "expireIn": "Scade in",
+    "remaining": "Inviti rimanenti",
+    "noInvits": "Non ci sono link di invito validi.",
+    "newInvitation": "Genera un nuovo link di invito."
   },
   "invitation": {
-    "title": "Invitation à rejoindre un projet",
+    "title": "Invito a partecipare a un progetto",
     "moreInfo": "Présentation de System-D",
     "project": "Projet",
     "userAlreadyInProject": "Vous participez déjà à ce projet",
