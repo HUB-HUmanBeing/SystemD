@@ -279,49 +279,49 @@
     "publicInfos": "Informazioni pubbliche",
     "createInvitelink": "Nuovo invito",
     "invitationList": "Inviti in corso",
-    "deleteProject": "Supprimer le projet"
+    "deleteProject": "Elimina il progetto"
   },
   "deleteProject": {
-    "deleteProjectInfo": "Cette action supprimera définitivement le projet",
-    "deleteProjectError": "Vous ne pouvez pas supprimer ce projet",
-    "deleteProjectErrorTips": "Il reste des membres à l'intérieur de ce projet",
-    "deleteSuccess": "Le projet a été supprimé"
+    "deleteProjectInfo": "Questa azione eliminerà definitivamente il progetto",
+    "deleteProjectError": "Non è possibile eliminare questo progetto",
+    "deleteProjectErrorTips": "Ci sono ancora membri all'interno di questo progetto",
+    "deleteSuccess": "Il progetto è stato eliminato"
   },
   "projectLayout": {
-    "decrypting1": "Déchiffrement des informations projet"
+    "decrypting1": "Decifrare le informazioni del progetto"
   },
   "newInvitation": {
-    "title": "Création du lien d'invitation",
-    "infoQuote": "En transmettant des liens d'invitation, vous transmettez les clefs de chiffrement de votre projet à tous ceux qui auront accès au lien généré durant la période de validité.",
-    "durationLabel": "Durée de validité du lien d'invitation",
-    "hour": "heure",
-    "day": "jour",
-    "week": "semaine",
-    "month": "mois",
-    "remainingLabel1": "Valide pour inviter",
-    "user": "utilisateur",
-    "users": "utilisateurs",
-    "ok": "Générer le lien d'invitation",
-    "loader": "Génération du lien d'invitation",
-    "addMessage": "Ajouter un message d'invitation",
-    "invitMessage": "Message envoyé avec votre invitation",
-    "backToParams": "Retour aux paramètres du projet"
+    "title": "Creazione del link di invito",
+    "infoQuote": "Trasmettendo i link di invito, trasmettete le chiavi di codifica del vostro progetto a tutti coloro che avranno accesso al link generato durante il periodo di validità.",
+    "durationLabel": "Periodo di validità del link di invito",
+    "hour": "ora",
+    "day": "giorno",
+    "week": "settimana",
+    "month": "mese",
+    "remainingLabel1": "Valido per invitare",
+    "user": "utente",
+    "users": "utenti",
+    "ok": "Genera un link di invito",
+    "loader": "Generazione di link di invito",
+    "addMessage": "Aggiungete un messaggio d'invito",
+    "invitMessage": "Messaggio inviato con il vostro invito",
+    "backToParams": "Torna ai parametri del progetto"
   },
   "showInvitation": {
-    "title": "Lien d'nvitation",
-    "infoLink": "Copiez ce lien et envoyez-le à la ou les personnes que vous souhaitez inviter.",
-    "copied": "Lien d'invitation copié dans le presse papier",
-    "invitTitle": "Invitation à rejoindre le projet ",
-    "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs. Cliquez sur le lien pour voir l'invitation.",
-    "infoQr": "Si la personne à inviter est à coté de vous, elle peut aussi flasher ce QR-code avec n'importe quelle application de lecture de QR-code pour accéder à l'invitation.",
-    "infoDestroy": "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux clefs de chiffrement de votre projet.",
-    "destroy": "Supprimer le lien d'invitation",
-    "backToParams": "Retour aux paramètres du projet",
-    "deleted": "le lien d'invitation à été détruit"
+    "title": "Link per l'invito",
+    "infoLink": "Copiate questo link e inviatelo alla persona o alle persone che desiderate invitare.",
+    "copied": "Link invito copiato negli appunti",
+    "invitTitle": "Invito a partecipare al progetto ",
+    "invitMessage": "Siete stati invitati a partecipare a un progetto su System-D: la piattaforma criptata per progetti di collaborazione. Clicca sul link per vedere l'invito.",
+    "infoQr": "Se la persona da invitare è accanto a voi, può anche flashare questo codice QR con qualsiasi applicazione di lettura di codici QR per accedere all'invito.",
+    "infoDestroy": "Rimuovendo l'invito, si elimina la possibilità di utilizzare il link dell'invito per accedere alle chiavi di cifratura del progetto.",
+    "destroy": "Rimuovere il link di invito",
+    "backToParams": "Torna ai parametri del progetto",
+    "deleted": "il link dell'invito è stato distrutto"
   },
   "invitationList": {
-    "from": "Lien d'invitation créé",
-    "by": "Créée par",
+    "from": "Creazione del link per l'invito",
+    "by": "Creato da",
     "expireIn": "Expire dans",
     "remaining": "Invitations restantes",
     "noInvits": "Il n'y a aucun lien d'invitation en cours de validité.",
