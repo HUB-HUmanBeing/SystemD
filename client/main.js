@@ -48,6 +48,8 @@ if (!document.getElementById('manifest')) {
     document.head.appendChild(link);
 }
 
+$('#inject-loader-wrapper').css("display", "none !important")
+
 var firebaseConfig = {
     apiKey: "AIzaSyAJac4fZ9-AeF11GIXlV5sababxv6R6u1o",
     authDomain: "system-d-9e42a.firebaseapp.com",
