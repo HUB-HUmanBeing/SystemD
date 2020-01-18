@@ -273,12 +273,12 @@
     "OK": "valider"
   },
   "editProjectDescription": {
-    "label": "Description du projet"
+    "label": "Descrizione del progetto"
   },
   "projectParams": {
-    "publicInfos": "Informations publiques",
-    "createInvitelink": "Nouvelle invitation",
-    "invitationList": "Invitations en cours",
+    "publicInfos": "Informazioni pubbliche",
+    "createInvitelink": "Nuovo invito",
+    "invitationList": "Inviti in corso",
     "deleteProject": "Supprimer le projet"
   },
   "deleteProject": {
