@@ -217,11 +217,11 @@
     "strength": "La forza della password deve essere di almeno 1O",
     "samePwd": "Le vostre due password non sono identiche",
     "typePwd": "Inserite una password",
-    "confirm": "Veuillez confirmer votre mot de passe",
-    "form": "Le formulaire d'inscription n'est pas valide",
-    "miss": "Il manque des informations",
-    "generation": "Génération des clefs de chiffrement",
-    "creation": "Création du compte utilisateur",
+    "confirm": "Per favore conferma la tua password",
+    "form": "Il modulo di registrazione non è valido",
+    "miss": "Mancano informazioni",
+    "generation": "Generazione di chiavi di cifratura",
+    "creation": "Creazione di un account utente",
     "initialization": "Inizializzazione di una nuova sessione criptata"
   },
   "signinContainer": {
@@ -268,8 +268,8 @@
     "noDescription": "Descrizione non disponibile."
   },
   "editProjectAvatar": {
-    "edit": "Editer l'avatar",
-    "delete": "Supprimer l'avatar",
+    "edit": "Modifica avatar",
+    "delete": "Cancella avatar",
     "OK": "valider"
   },
   "editProjectDescription": {
