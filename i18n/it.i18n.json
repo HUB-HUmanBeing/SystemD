@@ -329,45 +329,45 @@
   },
   "invitation": {
     "title": "Invito a partecipare a un progetto",
-    "moreInfo": "Présentation de System-D",
-    "project": "Projet",
-    "userAlreadyInProject": "Vous participez déjà à ce projet",
-    "description": "Description du projet",
-    "noDescription": "Description non-renseignée",
-    "message": "Message d'invitation",
-    "decline": "Décliner",
-    "accept": "Accepter",
-    "noLongerExist": "Cette invitation est expirée",
-    "noLongerExistInfo": "Demandez à la personne qui vous a envoyé l'invitation de vous en renvoyer une nouvelle",
-    "needToLoginFirst": "Vous devez être connecté pour rejoindre un projet",
-    "needToLoginFirstInfo": "Cliquez sur le bouton pour vous connecter ou vous inscrire et rejoindre le projet.",
-    "needToLoginFirstButton": "S'enregistrer"
+    "moreInfo": "Presentazione del System-D",
+    "project": "Progetto",
+    "userAlreadyInProject": "Sei già coinvolto in questo progetto",
+    "description": "Descrizione del progetto",
+    "noDescription": "Descrizione non riportata",
+    "message": "Messaggio di invito",
+    "decline": "Declina",
+    "accept": "Accettare",
+    "noLongerExist": "Questo invito è scaduto",
+    "noLongerExistInfo": "Chiedete alla persona che vi ha inviato l'invito a mandarvene uno nuovo",
+    "needToLoginFirst": "Per partecipare a un progetto è necessario aver effettuato il login",
+    "needToLoginFirstInfo": "Cliccare sul pulsante per effettuare il login o registrarsi e partecipare al progetto.",
+    "needToLoginFirstButton": "Registrarsi"
   },
   "projectMembers": {
-    "membersList": "Liste des membres",
-    "admins": "Administrateurs",
-    "members": "Membres"
+    "membersList": "Lista dei membri",
+    "admins": "Amministratori",
+    "members": "Membri"
   },
   "member": {
-    "since": "Depuis",
-    "invitedBy": "Invité par",
-    "projectCreator": "Créateur du projet",
-    "quitProject": "Quitter le projet",
-    "quitProjectError": "Vous ne pouvez pas quitter le projet.",
-    "quitProjectErrorTips": "Nommer au moins un nouvel administrateur pour le projet.",
-    "quitProjectInfo": "Vous serez retirés des participants au projet.",
-    "promoteUser": "Donner les droits d'administrateur",
-    "promoteUserInfo": "L'utilisateur pourra inviter et retirer des membres au projet.",
-    "kickUser": "Retirer l'utilisateur",
-    "kickUserInfo": "Retirer l'utilisateur de la liste des membres du projet.",
-    "removedSuccess": "L'utilisateur à été retiré des membres du projet",
-    "promoteSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
-    "quitSuccess": "Vous avez quitté le projet"
+    "since": "Da",
+    "invitedBy": "Invitato da",
+    "projectCreator": "Creatore del progetto",
+    "quitProject": "Abbandona il progetto",
+    "quitProjectError": "Non puoi abbandonare il progetto.",
+    "quitProjectErrorTips": "Nominate almeno un nuovo amministratore per il progetto.",
+    "quitProjectInfo": "Sarete allontanati dai partecipanti al progetto.",
+    "promoteUser": "Consegna dei privilegi di amministratore",
+    "promoteUserInfo": "L'utente potrà invitare e ritirare i membri al progetto.",
+    "kickUser": "Rimuovi l'utente",
+    "kickUserInfo": "Rimuovi l'utente dall'elenco dei membri del progetto.",
+    "removedSuccess": "L'utente è stato rimosso dai membri del progetto",
+    "promoteSuccess": "L'utente fa ora parte degli amministratori del progetto",
+    "quitSuccess": "Hai lasciato il progetto"
   },
   "_templates_users": "===========================================================================================================================",
   "deleteAccount": {
-    "confirmPassword": "Confirmer avec votre mot de passe",
-    "deleteAccount": "Supprimer le compte"
+    "confirmPassword": "Conferma la vostra password",
+    "deleteAccount": "Elimina account"
   },
   "deleteAccountJs": {
     "error": "Une erreur s'est produite",
@@ -403,10 +403,10 @@
     "miss": "Il manque des informations",
     "pwdChange": "Changement du mot de passe",
     "encryptionKey": "Chiffrement de la clef privée à partir du nouveau mot de passe",
-    "initialization": "Rénitialisation de la session chiffrée"
+    "initialization": "Resettaggio della sessione criptata"
   },
   "userParams": {
-    "editPassword": "Modifier le mot de passe",
+    "editPassword": "Modifica password",
     "peditPassword": "Nous n'aurons aucun moyen de vous aider si vous oubliez votre mot de passe. Ainsi, il est recommandé de noter le mot de passe que vous aurez choisi.",
     "deleteAccount": "Supprimer votre compte",
     "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
