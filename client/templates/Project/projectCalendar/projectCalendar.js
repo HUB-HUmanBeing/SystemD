@@ -65,6 +65,11 @@ Template.projectCalendar.helpers({
     },
     waitingActivity: function () {
         return Session.get("waitingActivity")
+    },
+    showSettingsBtn: function () {
+        FlowRouter.watchPathChange()
+
+        return (!Meteor.Device.isDesktop() || FlowRouter.current().queryParams.activityId )
     }
 });
 
@@ -102,6 +107,7 @@ Template.projectCalendar.events({
     },
     'click [goSettings]': function (event) {
         event.preventDefault()
+        resetTooltips()
         calendarController.goSettings()
     },
     'click [stopWaitingActivity]':function (event) {

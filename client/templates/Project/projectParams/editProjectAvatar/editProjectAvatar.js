@@ -46,7 +46,7 @@ Template.editProjectAvatar.events({
     },
     'click [chooseNewProjectAvatar]': function (event, instance) {
         event.preventDefault()
-        instance.croppie.result({type: 'blob', format: 'jpeg'}).then((result) => {
+        instance.croppie.result({type: 'blob', format: 'jpeg', backgroundColor: '#FFFFFF'}).then((result) => {
             const currentProject = instance.data.currentProject
             uploadFiles.uploadBlob(result, currentProject._id + '.jpg', currentProject, 'getUpdateProjectAvatarUrl', [projectController.getAuthInfo(instance.data.currentProject._id)], () => {
                 projectAvatarStore.updateProjectAvatar(currentProject._id)

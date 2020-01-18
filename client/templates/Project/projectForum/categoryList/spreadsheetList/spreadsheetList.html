@@ -1,9 +1,10 @@
 <template name="spreadsheetList">
     <div class="collapsible-header active flex shadow relative {{#if isCurrentCategory}}currentCategory{{/if}}">
 
-            <div class="flex-auto elipsis categoryTitle" title="{{category.symEnc_name}}">
-                <i class="material-icons link" style="transform: rotate(90deg)">view_comfy</i><span>{{__ ".spreadsheetList"}}</span>
-            </div>
+        <div class="flex-auto elipsis categoryTitle" title="{{category.symEnc_name}}">
+            <i class="material-icons link" style="transform: rotate(90deg)">view_comfy</i><span>{{__
+                ".spreadsheetList"}}</span>
+        </div>
     </div>
     <div class="collapsible-body transparent no-padding relative">
 
@@ -21,11 +22,11 @@
                     <div class="indeterminate"></div>
                 </div>
             {{else}}
-
+                {{#unless showNewSpreadsheet}}
                     <div class="small-padding" style="margin-bottom: -40px">
                         <p class="infoQuotes" style="margin: 5px;"><i>{{__ ".noSpreadsheet"}}</i></p>
                     </div>
-
+                {{/unless}}
             {{/if}}
         {{/if}}
         {{#if showNewSpreadsheet}}

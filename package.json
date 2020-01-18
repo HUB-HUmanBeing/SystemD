@@ -25,6 +25,7 @@
     "croppie": "2.6.3",
     "emojione-assets": "^4.5.0",
     "emojitsu": "^2.4.1",
+    "firebase": "^7.6.1",
     "hammerjs": "^2.0.8",
     "jdenticon": "^2.2.0",
     "jexcel": "^3.6.2",
