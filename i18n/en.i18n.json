@@ -22,7 +22,7 @@
     "beta": "beta",
     "donateLabel": "Support System-D",
     "betaVersion": "System-D.org is still in a beta version!",
-    "betaExplain": "You can probably find bugs or unusable/improvable features. We strive to make the user experience as enjoyable as possible despite very limited means (a volunteer developer helped occasionally by his friends).",
+    "betaExplain": "You can probably find bugs or unusable/improvable features. We strive to make the user experience as enjoyable as possible despite very limited means (a volunteer developer helped occasionally by his friends). ",
     "betaExplain2": "Thanks for ",
     "donate": "help us with your donations ",
     "betaExplainEnd": "and by sending us the bugs you encountered or ideas to improve existing or new features.",
@@ -64,6 +64,7 @@
     "refreshCaptcha": "Refresh",
     "captcha": "Enter the 4 letters",
     "submit": "Send",
+    "githubDirectLink": "Directly find us on GitHub...",
     "succesMessage": "Thanks for your contribution! Your message has been sent to the developers",
     "githubLink": "To see the tracking of your feedback, go to the GitHub of the project",
     "return": "Return"
@@ -83,7 +84,7 @@
     "genericTitle": "New activity on System-D",
     "genericAction": "See on website",
     "newPublication": "A new publication has been added in a followed topic",
-    "newResponse": "A comment has been made after your message",
+    "newResponse": "A comment has been made after your message.",
     "newMapMarker": "A new marker has been positioned on the map",
     "newInvitation": "You have been invited to participate to an activity"
   },
@@ -106,16 +107,17 @@
   },
   "landingAim": {
     "ourPurpose": "OUR PURPOSE",
-    "purpose": "Develop a tool to support the transition from a collapsing money society to a production model based on the free exchange, the sharing and the collaboration between humans.",
+    "purpose": "Develop a tool to support the transition to a production model based on the free exchange, the sharing and the collaboration between humans.",
     "3DevPhases": "THREE PHASES OF DEVELOPMENT",
     "createTool": "Create a project management tool open to everyone.",
     "cTool": "A tool that will enable different groups and associations to organize themselves efficiently. A tool which is encrypted, free, open-source and aiming to promote horizontalization in project management.",
-    "doOfSystemD": "Make System-D the social network of non-commercial projects",
+    "doOfSystemD": "Make System-D the social network of collaborative projects",
     "dOfSystD": "Creation of interfaces allowing the platform to be the user's traffic and meeting place through different projects: geolocated research by skills and centers of interest, encrypted mails, shared blogs, etc...",
     "developFreeNetwork": "To develop a free and sharing network",
     "dFreeNetwork": "Allow users and projects to share their resources in order to create a free and large non-commercial network."
   },
   "landingContact": {
+    "contact": "CONTACT",
     "github": "Follow the progress of project, make issues and pull requests.",
     "email": "Contact me by email to share yours observations, ideas, suggestions, propositions...",
     "chat": "Join us on the chat to discuss with the team of the project."
@@ -158,7 +160,7 @@
     "signin": "Sign Up"
   },
   "landingTitle": {
-    "h3title": "Encrypted platform for collaborative and free projects",
+    "h3title": "Encrypted platform for collaborative projects",
     "ptitle": "Make projects, join your friends, and take advantage of free and secure tools to organize your association or group together.",
     "signin": "Sign Up"
   },
@@ -300,6 +302,7 @@
     "user": "user",
     "users": "users",
     "ok": "Generate invitation link",
+    "loader": "Génération du lien d'invitation",
     "addMessage": "Add an invitation message",
     "invitMessage": "Message sent with your invitation",
     "backToParams": "Back to project parameters"
@@ -335,14 +338,14 @@
     "decline": "Decline",
     "accept": "Accept",
     "noLongerExist": "This invitation has expired",
-    "noLongerExistInfo": "Ask to the person who sent the invitation to send it again.",
+    "noLongerExistInfo": "Ask to the person who sent the invitation to send it again",
     "needToLoginFirst": "You must be connected to accept the invitation",
     "needToLoginFirstInfo": "Click on the button to login or register to join the project.",
     "needToLoginFirstButton": "Register"
   },
   "projectMembers": {
     "membersList": "Members list",
-    "admins": "Admins",
+    "admins": "Administrators",
     "members": "Members"
   },
   "member": {
@@ -484,9 +487,15 @@
   },
   "publicationItem": {
     "delete": "Delete",
+    "edit": "Edit",
     "deleteInfo": "This action will remove the publication and all its comments.",
     "deleteSuccess": "This publication and all its comments have been removed.",
     "pinnedPublicationHead": "Pinned publication"
+  },
+  "editText": {
+    "placeholder": "Publication content ...",
+    "abort": "Cancel",
+    "publish": "Save"
   },
   "showPollContent": {
     "answers": "answers"
@@ -538,6 +547,11 @@
     "deleted": "The file has been deleted"
   },
   "_templates_map": "===========================================================================================================================",
+  "projectMaps": {
+    "settings": "Paramètres",
+    "fullscreen": "Mettre en plein écran",
+    "newMarker": "Nouveau marqueur"
+  },
   "mapParams": {
     "topo": "Topo",
     "aerial": "Aerial",
@@ -580,6 +594,8 @@
     "editIconInfo": "Click on map to edit marker position."
   },
   "markerDetail": {
+    "editColor": "Éditer la couleur",
+    "editIcon": "Éditer l'icône",
     "markerName": "Marker name...",
     "markerDetail": "Detail",
     "editMarker": "Edit",
@@ -619,7 +635,8 @@
     "unnamed": "No title",
     "setActivityInfo": "Set the activity where you want on the calendar.",
     "activityPlaced": "The activity has been set on the calendar.",
-    "settings": "Settings"
+    "settings": "Settings",
+    "addBtn": "Add event"
   },
   "calendarSettings": {
     "title": "Calendar parameters",
@@ -687,6 +704,10 @@
     "calendarPlaced": "Set on calendar",
     "waitingForStatus": "Waiting validation",
     "done": "Done",
+    "inProjectDetail": "The tasks placed here do not yet have a fixed date.",
+    "calendarPlacedDetail": "The tasks placed here are placed in the calendar with dates in the future.",
+    "waitingForStatusDetail": "The tasks placed here have been placed on the calendar, but their dates have passed. It is up to you to see if they should be replanned, or if they can be considered as finished",
+    "doneDetail": "The tasks placed here have been considered finished.",
     "newActivity": "New task",
     "myTasks": "My tasks"
   },
@@ -725,6 +746,7 @@
     "wallet": "Wallet ",
     "copied": "Wallet address copied into clipboard"
   },
+  "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Spreadsheets",
     "noSpreadsheet": "No spreadsheet",
@@ -735,13 +757,66 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Spreadsheet name",
     "delete": "Delete spreadsheet",
-    "edit": "Change spreadsheet name",
-    "abort": "cancel",
+    "edit": "Edit spreadsheet name",
+    "abort": "Cancel",
     "deleteInfo": "This spreadsheet and all its content will be deleted",
     "deleteSuccess": "The spreadsheet has been deleted",
-    "lastEdit": "Last edit"
-  },
-  "spreadsheet": {
+    "lastEdit": "Last edit",
+    "uploadTable": "Import existing spreadsheet from a CSV file",
+    "uploadInfo": "The existing spreadsheet import system works from \".csv\" files. Save your excel or OpenOffice spreadsheet in CSV format and import it by clicking the button below ",
+    "uploadWarning": "Warning, all data in the spreadsheet will be permanently overwritten by the data in the csv file!",
+    "fileUpload": "Import CSV file",
+    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV",
     "searchInTable": "Search in spreadsheet"
+  },
+  "spreadsheet":{
+    "noRecordsFound": "No records found",
+    "showingPage": "Showing page {0} of {1} entries",
+    "show": "Show",
+    "search": "Search",
+    "entries": " entries",
+    "columnName": "Column name",
+    "insertANewColumnBefore": "Insert a new column before",
+    "insertANewColumnAfter": "Insert a new column after",
+    "deleteSelectedColumns": "Delete selected columns",
+    "renameThisColumn": "Rename this column",
+    "orderAscending": "Order ascending",
+    "orderDescending": "Order descending",
+    "insertANewRowBefore": "Insert a new row before",
+    "insertANewRowAfter": "Insert a new row after",
+    "deleteSelectedRows": "Delete selected rows",
+    "editComments": "Edit comments",
+    "addComments": "Add comments",
+    "comments": "Comments",
+    "clearComments": "Clear comments",
+    "copy": "Copy...",
+    "paste": "Paste...",
+    "saveAs": "Save as...",
+    "about": "About",
+    "areYouSureToDeleteTheSelectedRows": "Are you sure to delete the selected rows?",
+    "areYouSureToDeleteTheSelectedColumns": "Are you sure to delete the selected columns?",
+    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "This action will destroy any existing merged cells. Are you sure?",
+    "thisActionWillClearYourSearchResultsAreYouSure": "This action will clear your search results. Are you sure?",
+    "thereIsAConflictWithAnotherMergedCell": "There is a conflict with another merged cell",
+    "invalidMergeProperties": "Invalid merged properties",
+    "cellAlreadyMerged": "Cell already merged",
+    "noCellsSelected": "No cells selected"
+  },
+  "fullCalendar": {
+    "code": "en",
+    "dow": 1,
+    "doy": 4,
+    "prev": "Previous",
+    "next": "Next",
+    "today": "Today",
+    "year": "Year",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "list": "My planning",
+    "weekLabel": "week",
+    "allDayHtml": "All Day",
+    "eventLimitText": "more",
+    "noEventsMessage": "No event to show"
   }
 }

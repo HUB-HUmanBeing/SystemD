@@ -71,6 +71,7 @@ Template.notifItem.events({
                     //si ya pluus de notifs on ferme la modale
                     if (instance.data.notifs.length === 0) {
                         $('#notifModal').modal('close')
+                        resetTooltips()
                     }
                 }, 200)
 

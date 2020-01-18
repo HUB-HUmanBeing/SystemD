@@ -9,6 +9,16 @@ Template.subComment.helpers({
     isDeletable: function () {
         return Template.currentData().comment.createdBy === projectController.getCurrentUserProject(FlowRouter.current().params.projectId).asymEnc_memberId
     },
+    isEditing:function () {
+        return Template.instance().isEditing.get()
+    },
+    abortEdition: function () {
+        let instance = Template.instance()
+        return function (newContent){
+            instance.isEditing.set(false)
+            instance.decryptedContent.set(newContent)
+        }
+    }
 });
 
 Template.subComment.events({
@@ -24,6 +34,10 @@ Template.subComment.events({
             }
         })
     },
+    'click [editSubComment]': function (event, instance) {
+        event.preventDefault()
+        instance.isEditing.set(true)
+    },
 });
 
 Template.subComment.onCreated(function () {
@@ -32,6 +46,7 @@ Template.subComment.onCreated(function () {
     cryptoTools.sim_decrypt_data(this.data.comment.symEnc_content, Session.get("currentProjectSimKey"), decryptedContent => {
         this.decryptedContent.set(decryptedContent)
     })
+    this.isEditing = new ReactiveVar(false)
 });
 
 Template.subComment.onRendered(function () {

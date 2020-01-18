@@ -43,7 +43,7 @@ Template.editAvatar.events({
     },
     'click [chooseNewAvatar]' : function (event, instance) {
         event.preventDefault()
-        instance.croppie.result({ type:'blob', format:'jpeg' }).then((result)=>{
+        instance.croppie.result({ type:'blob', format:'jpeg' , backgroundColor: '#FFFFFF'}).then((result)=>{
             const currentUser = User.findOne(Meteor.userId())
             uploadFiles.uploadBlob(result, Meteor.userId()+'.jpg',currentUser,  'getUpdateAvatarUrl', [],()=>{
                 avatarStore.updateUserAvatar(Meteor.userId())

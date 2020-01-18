@@ -55,7 +55,7 @@ Template.notifModal.events({
                     Meteor.setTimeout(() => {
 
                         $('#notifModal').modal('close')
-
+resetTooltips()
                     }, 200)
 
                 }

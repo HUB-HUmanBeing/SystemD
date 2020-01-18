@@ -64,6 +64,7 @@
     "refreshCaptcha": "Renouveler",
     "captcha": "Saisir les 4 lettres",
     "submit": "Envoyer",
+    "githubDirectLink": "Utiliser directement le Github de System-d.org...",
     "succesMessage": "Merci de votre contribution ! Votre message à été transmis au développeurs",
     "githubLink": "Pour voir l'évolution de votre message, rendez-vous sur GitHub",
     "return": "Retour"
@@ -106,16 +107,17 @@
   },
   "landingAim": {
     "ourPurpose": "NOTRE OBJECTIF",
-    "purpose": "Créer un outil qui accompagne la transition d'une société de l'argent en faillite à un mode de production basé sur la collaboration et le partage.",
+    "purpose": "Créer un outil qui accompagne la transition vers un mode de production basé sur la collaboration et le partage.",
     "3DevPhases": "TROIS PHASES DE DÉVELOPPEMENT",
     "createTool": "Créer un outil de gestion de projet ouvert à tous",
     "cTool": "Un outil qui permettra aux différents collectifs et association de s'organiser efficacement. Un outil chiffré, gratuit, open-source visant à favoriser l'horizontalité dans la gestion de projet.",
-    "doOfSystemD": "Faire de SystemD le réseau social du projet non-marchand",
+    "doOfSystemD": "Faire de SystemD le réseau social du projet collaboratif",
     "dOfSystD": "Création des interfaces faisant de la plateforme un espace de rencontre et de circulation des utilisateurs sur différents projets : Recherche géolocalisée par compétences-centres d'intérets, messagerie chiffrée, blogs partagés, etc.",
     "developFreeNetwork": "Développer un réseau de gratuité et de partage",
     "dFreeNetwork": "Permettre à chaque utilisateur et chaque projet de mettre en partage les ressources produites afin de pouvoir réaliser une circulation non-marchande de grande ampleur."
   },
   "landingContact": {
+		"contact": "CONTACT",
     "github": "Venez suivre l'avancement du projet, déposer vos issues et pulls-requests.",
     "email": "Contactez moi par e-mail pour me faire part de vos remarques, idées, suggestions, propositions.",
     "chat": "Rejoignez le chat du projet pour discuter avec l'équipe en toute simplicité."
@@ -158,7 +160,7 @@
     "signin": "Inscription"
   },
   "landingTitle": {
-    "h3title": "Plateforme chiffrée de projets collaboratifs non-marchands",
+    "h3title": "Plateforme chiffrée de projets collaboratifs",
     "ptitle": "Crééz des projets, invitez vos amis, et profitez des outils gratuits et sécurisés pour organiser ensemble votre association ou collectif",
     "signin": "Inscription"
   },
@@ -300,6 +302,7 @@
     "user": "utilisateur",
     "users": "utilisateurs",
     "ok": "Générer le lien d'invitation",
+    "loader": "Génération du lien d'invitation",
     "addMessage": "Ajouter un message d'invitation",
     "invitMessage": "Message envoyé avec votre invitation",
     "backToParams": "Retour aux paramètres du projet"
@@ -543,7 +546,12 @@
   "showFileContent": {
     "deleted": "Le fichier à été supprimé."
   },
-	"_templates_map": "===========================================================================================================================",
+  "_templates_map": "===========================================================================================================================",
+  "projectMaps": {
+    "settings": "Paramètres",
+    "fullscreen": "Mettre en plein écran",
+    "newMarker": "Nouveau marqueur"
+  },
   "mapParams": {
     "topo": "Topo",
     "aerial": "Aérienne",
@@ -586,6 +594,8 @@
     "editIconInfo": "Cliquer sur la carte pour modifier la position du marqueur."
   },
   "markerDetail": {
+    "editColor": "Éditer la couleur",
+    "editIcon": "Éditer l'icône",
     "markerName": "Nom du marqueur...",
     "markerDetail": "Détail",
     "editMarker": "éditer",
@@ -736,9 +746,10 @@
     "wallet": "Wallet ",
     "copied": "Adresse du wallet copiée dans le presse papier"
   },
+	"_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Tableurs",
-    "noSpreadsheet" : "Aucuns tableurs",
+    "noSpreadsheet" : "Aucun tableur",
     "newSpreadsheet": "Nouveau tableur",
     "showMore": "Voir plus",
     "SpreadsheetName": "Nom du tableur"
@@ -747,18 +758,64 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Nom du tableur",
     "delete": "Supprimer le tableur",
-    "edit": "Changer le nom du tableur",
-    "abort": "annuler",
+    "edit": "Modifier le nom du tableur",
+    "abort": "Annuler",
     "deleteInfo": "Ce tableur sera supprimé ainsi que tout son contenu.",
     "deleteSuccess": "Le tableur à été supprimé",
     "lastEdit": "Dernière édition",
     "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
-    "uploadInfo" : "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregisterez votre tableur excel ou oppenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
+    "uploadInfo" : "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
     "uploadWarning" : "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
     "fileUpload": "Importer un fichier csv",
-    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV"
+    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV",
+    "searchInTable": "Rechercher dans le tableur"
   },
   "spreadsheet":{
-    "searchInTable": "Rechercher dans le tableur"
+    "noRecordsFound":"Rien à afficher",
+    "showingPage":"Page {0} sur {1} affichée",
+    "show":"Montrer",
+    "entries":"entrées",
+    "insertANewColumnBefore":"Insérer une colonne avant",
+    "insertANewColumnAfter":"Insérer une colonne après",
+    "deleteSelectedColumns":"Supprimer les colonnes sélectionnées",
+    "renameThisColumn":"Renommer cette colonne",
+    "orderAscending":"Ordre croissant",
+    "orderDescending":"Ordre décroissant",
+    "insertANewRowBefore":"Insérer une ligne avant",
+    "insertANewRowAfter":"Insérer une ligne après",
+    "deleteSelectedRows":"Supprimer les lignes sélectionnées",
+    "editComments":"Éditer les commentaires",
+    "addComments":"Ajouter un commentaire",
+    "comments":"Commentaires",
+    "clearComments":"Effacer les commentaires",
+    "copy":"Copier ...",
+    "paste":"Coller ...",
+    "saveAs":"Enregistrer sous ...",
+    "about":"À propos",
+    "areYouSureToDeleteTheSelectedRows":"Êtes-vous sûr de vouloir supprimer les lignes sélectionnées?",
+    "areYouSureToDeleteTheSelectedColumns":"Êtes-vous sûr de vouloir supprimer les colonnes sélectionnées?",
+    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure":"Cette action va supprimer toutes les cellules fusionnées, êtes-vous sûr?",
+    "thisActionWillClearYourSearchResultsAreYouSure":"Cette action va supprimer vos résultats de recherche, êtes-vous sûr?",
+    "thereIsAConflictWithAnotherMergedCell":"Il y a un conflit avec une autre cellule fusionnée",
+    "invalidMergeProperties":"Action invalide pour la fusion",
+    "cellAlreadyMerged":"Ces cellules sont déjà fusionnées",
+    "noCellsSelected":"Pas de cellules sélectionnées"
+  },
+  "fullCalendar": {
+    "code": "fr",
+    "dow": 1,
+    "doy": 4,
+    "prev": "Précédent",
+    "next": "Suivant",
+    "today": "Aujourd'hui",
+    "year": "Année",
+    "month": "Mois",
+    "week": "Semaine",
+    "day": "Jour",
+    "list": "Mon planning",
+    "weekLabel": "Sem.",
+    "allDayHtml": "Toute la<br/>journée",
+    "eventLimitText": "en plus",
+    "noEventsMessage": "Aucun événement à afficher"
   }
 }

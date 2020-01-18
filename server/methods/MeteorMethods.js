@@ -16,7 +16,7 @@ Meteor.methods({
     getCaptcha() {
         let captcha = svgCaptcha.create({
             size: 4, // size of random string
-            ignoreChars: '0o1ilIOjJL', // filter out some characters like 0o1i
+            ignoreChars: '01OIazertyuiopmlkjhgfdsqwxcvbn', // filter out some characters like 0o1i
             noise: 1, // number of noise lines
             color: false, // characters will have distinct colors instead of grey, true if background option is set
             // background: '#ffffff',
@@ -54,32 +54,12 @@ Meteor.methods({
 
         return await callWithPromise
     },
-    registerPushSubscription(subscription, navigatorFingerPrint) {
+    registerToken(token) {
         check(Meteor.userId(), String)
         let user = User.findOne(Meteor.userId())
-        check(subscription, String)
-        check(navigatorFingerPrint, String)
-        let found = false
-        user.private.pushSubscriptions.forEach((pushSubscription, i) => {
-            if (pushSubscription.navigatorFingerPrint === navigatorFingerPrint
-                || pushSubscription.subscription === subscription) {
-                if (!found) {
-                    user.private.pushSubscriptions[i] = {
-                        navigatorFingerPrint: navigatorFingerPrint,
-                        subscription: subscription
-                    }
-                    found = true
-                } else {
-                    user.private.pushSubscriptions.splice(i, 1)
-                }
+        check(token, String)
 
-            }
-        })
-        if (!found)
-            user.private.pushSubscriptions.push({
-                navigatorFingerPrint: navigatorFingerPrint,
-                subscription: subscription
-            })
+            user.private.tokens.push(token)
         return user.save()
     },
     deleteAllNotifications(authInfo, projectId, section) {

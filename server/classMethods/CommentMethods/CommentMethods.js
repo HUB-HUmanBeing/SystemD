@@ -75,6 +75,17 @@ Comment.extend({
                 }
             })
         },
+        editComment(authInfo, symEnc_content) {
+            check(authInfo, {memberId: String, userSignature: String})
+            check(symEnc_content,  String)
+            let comment = Comment.findOne(this._id)
+            let currentProject = Project.findOne(comment.projectId)
+            check(currentProject.isMember(authInfo), true)
+            check(authInfo.memberId === comment.createdBy, true)
+            comment.symEnc_content = symEnc_content
+            return comment.save()
+
+        },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
             let comment = Comment.findOne(this._id)

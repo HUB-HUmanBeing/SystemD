@@ -23,6 +23,12 @@ Template.userOptions.helpers({
                 langFormat: 'es-ES',
                 langIso639: 'ES',
                 selected: i18n.getLocale()==='es-ES'
+            },
+            {
+                name: "Deutsch",
+                langFormat: 'de-DE',
+                langIso639: 'DE',
+                selected: i18n.getLocale()==='de-DE'
             }
         ]
     }
@@ -40,6 +46,9 @@ Template.userOptions.events({
                 i18n.setLocale(language)
                 localStorage.setItem('lang', language);
                 moment.locale(language)
+                Meteor.setTimeout(() => {
+                    resetTooltips()
+                },200)
             }
         })
     }

@@ -87,7 +87,7 @@ Template.projectMaps.onCreated(function () {
     Meteor.setTimeout(() => {
         mapController.initialize(Project.findOne(projectId), this, ()=>{
            this.autorun(()=>{
-            let activityToPositionate=Session.get("activityToPositionate")["activity"]
+            let activityToPositionate=Session.get("activityToPositionate")?Session.get("activityToPositionate")["activity"]:false
                 if (activityToPositionate) {
                     let creationOptions = {activity: activityToPositionate}
                     mapController.startMarkerCreator('activityMarker', creationOptions, this.mapState)

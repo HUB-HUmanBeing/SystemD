@@ -1,0 +1,16 @@
+<template name="editComment">
+    <div class="newComment editComment">
+        <form class="relative no-padding" id="editCommentForm-{{comment._id}}" editCommentForm>
+
+            {{>beautyfullTextarea id=textareaId placeholder=(__ ".placeholder") minheight="0" rows="1" content=content}}
+
+
+            <button class="sendCommentBtn absolute">{{#if isCreating}}
+                {{>circleSpinner}}
+            {{else}}
+                <i class="material-icons left">done</i>
+            {{/if}}</button>
+        </form>
+    </div>
+
+</template>
