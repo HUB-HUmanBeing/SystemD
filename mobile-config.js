@@ -1,7 +1,7 @@
 App.info({
-    id: 'com.meteor.system-d',
+    id: 'com.meteor.systemd',
     name: 'System-D',
-    version: "0.0.6",
+    version: "0.0.7",
     description: 'Encrypted platform for collaborative and free projects',
     author: 'System-d team',
     email: 'rbanquo@protonmail.com',
