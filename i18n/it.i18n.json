@@ -458,15 +458,15 @@
     "deleteInfo": "Questa discussione e tutti i suoi contenuti saranno eliminati.",
     "deleteSuccess": "La discussione è stata eliminata",
     "notifEnabled": "Riceverete ora le notifiche per ogni nuova pubblicazione.",
-    "notifDisabled": "Les notifications ont été désactivées pour cette discussion."
+    "notifDisabled": "Le notifiche sono state disabilitate per questa discussione."
   },
   "newPublication": {
-    "return": "Retour",
-    "newPublication": "Nouvelle publication",
-    "text": "Texte",
-    "images": "Images et texte",
-    "poll": "Sondage",
-    "files": "Images, fichiers et texte"
+    "return": "Indietro",
+    "newPublication": "Nuova pubblicazione",
+    "text": "Testo",
+    "images": "Immagini e testi",
+    "poll": "Sondaggio",
+    "files": "Immagini, files e testo"
   },
   "textualContent": {
     "placeholder": "Contenu de votre publication ...",
