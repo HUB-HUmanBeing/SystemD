@@ -431,33 +431,33 @@
     "edit": "Modifica nome",
     "disableNotifications": "Le notifiche sono attive su questa cartella, fare clic per disattivarle.",
     "enlableNotifications": "Le notifiche sono disabilitate su questa cartella, fare clic per riattivarle.",
-    "abort": "Annuler",
-    "showMore": "Voir plus",
-    "newTopic": "Créer une nouvelle discussion",
-    "noTopics": "Ce dossier est vide",
-    "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
-    "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier",
-    "topicName": "Nom de la discussion"
+    "abort": "Annulla",
+    "showMore": "Mostra altro",
+    "newTopic": "Inizia una nuova discussione",
+    "noTopics": "Questa cartella è vuota",
+    "notifEnabled": "Ora riceverete le notifiche per tutte le discussioni in questa cartella",
+    "notifDisabled": "Le notifiche sono state disabilitate per tutti i thread di questa cartella",
+    "topicName": "Titolo della discussione"
   },
   "topic": {
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier en cours"
+    "downloadAndDecrypt": "Scaricare e decifrare il file corrente"
   },
   "topicItem": {
-    "unseenPublications": "Nouvelles publications",
-    "dragInfo": "Vous pouvez déplacer cette discussion dans une autre catégorie.",
-    "mainTopic": "DISCUSSION PRINCIPALE"
+    "unseenPublications": "Nuove pubblicazioni",
+    "dragInfo": "Potete spostare questa discussione in un'altra categoria.",
+    "mainTopic": "DISCUSSIONE PRINCIPALE"
   },
   "topicHeader": {
-    "mainTopic": "Discussion principale",
-    "topicName": "Nom de la discussion",
-    "delete": "Supprimer la discussion",
-    "edit": "Changer le nom de la discussion",
-    "disableNotifications": "Les notifications sont actives pour cette discussion, cliquez pour les désactiver.",
-    "enlableNotifications": "Les notifications sont désactivées pour cette discussion, cliquez pour les activer.",
-    "abort": "annuler",
-    "deleteInfo": "Cette discussion et tout son contenu seront supprimés.",
-    "deleteSuccess": "La discussion à été supprimée",
-    "notifEnabled": "Vous recevrez désormais des notifications pour chaque nouvelle publication.",
+    "mainTopic": "Discussione principale",
+    "topicName": "Titolo della discussione",
+    "delete": "Eliminare la discussione",
+    "edit": "Cambiare il nome della discussione",
+    "disableNotifications": "Le notifiche sono attive per questo thread, fare clic per disattivarle.",
+    "enlableNotifications": "Le notifiche sono disattivate per questo thread, fare clic per attivarle.",
+    "abort": "annulla",
+    "deleteInfo": "Questa discussione e tutti i suoi contenuti saranno eliminati.",
+    "deleteSuccess": "La discussione è stata eliminata",
+    "notifEnabled": "Riceverete ora le notifiche per ogni nuova pubblicazione.",
     "notifDisabled": "Les notifications ont été désactivées pour cette discussion."
   },
   "newPublication": {
