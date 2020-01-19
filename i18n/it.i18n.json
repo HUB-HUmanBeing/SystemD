@@ -469,25 +469,25 @@
     "files": "Immagini, files e testo"
   },
   "textualContent": {
-    "placeholder": "Contenu de votre publication ...",
-    "publish": "Publier"
+    "placeholder": "Contenuto della vostra pubblicazione ...",
+    "publish": "Pubblicare"
   },
   "pollContent": {
-    "placeholder": "Description du sondage",
-    "newProposition": "Proposition de réponse n°",
-    "addProposition": "Ajouter une proposition",
-    "publish": "Publier le sondage"
+    "placeholder": "Descrizione del sondaggio",
+    "newProposition": "Risposta proposta n.",
+    "addProposition": "Aggiungere una proposta",
+    "publish": "Pubblica il sondaggio"
   },
   "fileContent": {
-    "addFiles": "Ajouter un ou plusieurs documents",
-    "loadInfos": "Chiffrement et upload des documents"
+    "addFiles": "Aggiungete uno o più documenti",
+    "loadInfos": "Criptazione e upload di documenti"
   },
   "publicationsList": {
-    "showMore": "Voir plus..."
+    "showMore": "Mostra altro..."
   },
   "publicationItem": {
-    "delete": "Supprimer",
-    "edit": "Editer",
+    "delete": "Elimina",
+    "edit": "Modifica",
     "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
     "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
     "pinnedPublicationHead": "Publication épinglée"
