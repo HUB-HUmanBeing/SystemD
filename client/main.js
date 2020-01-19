@@ -47,8 +47,10 @@ if (!document.getElementById('manifest')) {
     link.href = '/manifest.json';
     document.head.appendChild(link);
 }
+$(document).ready(()=>{
+    $('#inject-loader-wrapper').css("display", "none")
+})
 
-$('#inject-loader-wrapper').css("display", "none !important")
 
 var firebaseConfig = {
     apiKey: "AIzaSyAJac4fZ9-AeF11GIXlV5sababxv6R6u1o",
