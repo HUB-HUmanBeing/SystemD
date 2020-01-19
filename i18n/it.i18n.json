@@ -488,27 +488,27 @@
   "publicationItem": {
     "delete": "Elimina",
     "edit": "Modifica",
-    "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
-    "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
-    "pinnedPublicationHead": "Publication épinglée"
+    "deleteInfo": "Questa azione eliminerà definitivamente la pubblicazione e tutti i suoi commenti",
+    "deleteSuccess": "Questa pubblicazione e tutti i suoi commenti sono stati eliminati",
+    "pinnedPublicationHead": "Pubblicazione fissata con spilla"
   },
   "editText": {
-    "placeholder": "Contenu de votre publication ...",
-    "abort": "Annuler",
-    "publish": "Enregistrer"
+    "placeholder": "Contenuto della vostra pubblicazione ...",
+    "abort": "Annulla",
+    "publish": "Salva"
   },
   "showPollContent": {
-    "answers": "participants"
+    "answers": "partecipanti"
   },
   "pollOption": {
-    "vote": "votes"
+    "vote": "voti"
   },
   "newComment": {
-    "placeholder": "Votre commentaire..."
+    "placeholder": "Il vostro commento..."
   },
   "commentList": {
-    "see": "Voir les",
-    "moreComments": "autres commentaires"
+    "see": "Vedi il",
+    "moreComments": "commenti aggiuntivi"
   },
   "commentItem": {
     "answer": "Répondre",
