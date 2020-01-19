@@ -64,7 +64,7 @@
     "refreshCaptcha": "Refresh",
     "captcha": "Enter the 4 letters",
     "submit": "Send",
-    "githubDirectLink": "Utiliser directement le Github de System-d.org...",
+    "githubDirectLink": "Directly find us on GitHub...",
     "succesMessage": "Thanks for your contribution! Your message has been sent to the developers",
     "githubLink": "To see the tracking of your feedback, go to the GitHub of the project",
     "return": "Return"
@@ -302,6 +302,7 @@
     "user": "user",
     "users": "users",
     "ok": "Generate invitation link",
+    "loader": "Génération du lien d'invitation",
     "addMessage": "Add an invitation message",
     "invitMessage": "Message sent with your invitation",
     "backToParams": "Back to project parameters"
@@ -546,6 +547,11 @@
     "deleted": "The file has been deleted"
   },
   "_templates_map": "===========================================================================================================================",
+  "projectMaps": {
+    "settings": "Paramètres",
+    "fullscreen": "Mettre en plein écran",
+    "newMarker": "Nouveau marqueur"
+  },
   "mapParams": {
     "topo": "Topo",
     "aerial": "Aerial",
@@ -588,6 +594,8 @@
     "editIconInfo": "Click on map to edit marker position."
   },
   "markerDetail": {
+    "editColor": "Éditer la couleur",
+    "editIcon": "Éditer l'icône",
     "markerName": "Marker name...",
     "markerDetail": "Detail",
     "editMarker": "Edit",
@@ -696,10 +704,10 @@
     "calendarPlaced": "Set on calendar",
     "waitingForStatus": "Waiting validation",
     "done": "Done",
-    "inProjectDetail": "Les taches placées ici n'ont pas encore de date fixée.",
-    "calendarPlacedDetail": "Les taches placées sont placées dans l'agenda avec des dates dans le futur.",
-    "waitingForStatusDetail": "Les taches se trouvant dans cette section ont étés placées sur l'agenda, mais leurs dates est dépassée. A vous de voir si elles doivent etre remises en projet, replanifiées, ou si on peut les considerer comme terminées",
-    "doneDetail": "Cette section regroupe les taches qui ont étés considérées comme terminées.",
+    "inProjectDetail": "The tasks placed here do not yet have a fixed date.",
+    "calendarPlacedDetail": "The tasks placed here are placed in the calendar with dates in the future.",
+    "waitingForStatusDetail": "The tasks placed here have been placed on the calendar, but their dates have passed. It is up to you to see if they should be replanned, or if they can be considered as finished",
+    "doneDetail": "The tasks placed here have been considered finished.",
     "newActivity": "New task",
     "myTasks": "My tasks"
   },
@@ -741,7 +749,7 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Spreadsheets",
-    "noSpreadsheet": "Aucun tableur",
+    "noSpreadsheet": "No spreadsheet",
     "newSpreadsheet": "New spreadsheet",
     "showMore": "See more",
     "SpreadsheetName": "Spreadsheet name"
@@ -749,14 +757,14 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Spreadsheet name",
     "delete": "Delete spreadsheet",
-    "edit": "Modifier le nom du tableur",
-    "abort": "Annuler",
+    "edit": "Edit spreadsheet name",
+    "abort": "Cancel",
     "deleteInfo": "This spreadsheet and all its content will be deleted",
     "deleteSuccess": "The spreadsheet has been deleted",
     "lastEdit": "Last edit",
-    "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
-    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
-    "uploadWarning": "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
+    "uploadTable": "Import existing spreadsheet from a CSV file",
+    "uploadInfo": "The existing spreadsheet import system works from \".csv\" files. Save your excel or OpenOffice spreadsheet in CSV format and import it by clicking the button below ",
+    "uploadWarning": "Warning, all data in the spreadsheet will be permanently overwritten by the data in the csv file!",
     "fileUpload": "Import CSV file",
     "onlyCsvError": "Le fichier envoyé n'est pas au format CSV",
     "searchInTable": "Search in spreadsheet"
@@ -793,5 +801,22 @@
     "invalidMergeProperties": "Invalid merged properties",
     "cellAlreadyMerged": "Cell already merged",
     "noCellsSelected": "No cells selected"
+  },
+  "fullCalendar": {
+    "code": "en",
+    "dow": 1,
+    "doy": 4,
+    "prev": "Previous",
+    "next": "Next",
+    "today": "Today",
+    "year": "Year",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "list": "My planning",
+    "weekLabel": "week",
+    "allDayHtml": "All Day",
+    "eventLimitText": "more",
+    "noEventsMessage": "No event to show"
   }
 }

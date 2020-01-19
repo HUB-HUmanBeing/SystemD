@@ -22,20 +22,20 @@
     "beta": "beta",
     "donateLabel": "System-D unterstützen",
     "betaVersion": "System-D.org ist noch in der Beta-Phase!",
-    "betaExplain": "Es kann sein, dass Sie Fehler und Funktionen vielleicht als unpraktisch oder verbesserungswürdig einstufen. Wir sind bestrebt, trotz sehr begrenzter Ressourcen das Anwendererlebnis so komfortabel wie möglich zu gestalten. (Ein freiwilliger Entwickler mit gelegentlicher Hilfe von Freunden). ",
+    "betaExplain": "Es kann sein, dass Sie Fehler und Funktionen vielleicht als unpraktisch oder verbesserungswürdig einstufen. Wir sind bestrebt, trotz sehr begrenzter Ressourcen das Anwendererlebnis so komfortabel wie möglich zu gestalten. (1 freiwilliger Entwickler mit gelegentlicher Hilfe von Freunden.) ",
     "betaExplain2": "Danke für ",
-    "donate": "helfen Sie uns mit Ihren Spenden ",
-    "betaExplainEnd": "und dem Mitteilen von Vorschlägen für Verbesserungen, sowie entdeckten Fehlern.",
+    "donate": "die Unterstützung durch Ihre Spenden ",
+    "betaExplainEnd": "und Vorschläge für Verbesserungen, sowie gemeldeten Fehlern.",
     "betaWarning": "Das Verschlüsselungsprotokoll wurde sorgfältig entwickelt, um einen optimalen Schutz Ihrer Daten zu gewährleisten. Allerdings ist es bisher nicht einer eingehenden Expertise oder Penetrationstests durch erfahrene Hacker unterzogen worden. ",
-    "betaWarning2": "Daher können wir unseren Nutzern nicht zu 100% versichern, dass ihre Daten geschützt sind, auch wenn dies für uns genauso wichtig ist wie die Ergonomie der Website.",
-    "help": "Die Mitteilung einer Schwachstelle oder eines Sicherheitsproblems ..."
+    "betaWarning2": "Daher können wir unseren Nutzern nicht zu 100% versichern, dass ihre Daten geschützt sind, auch wenn dieses für uns genauso wichtig ist wie die Ergonomie der Website.",
+    "help": "Meldung einer Schwachstelle oder eines Sicherheitsproblems per E-Mail ..."
   },
   "_templates_includes": "===========================================================================================================================",
   "menuProject": {
     "home": "Übersicht",
     "forum": "Forum",
     "params": "Einstellungen",
-    "calendar": "Kalender",
+    "calendar": "Terminkalender",
     "tasks": "Aufgaben",
     "maps": "Karte",
     "members": "Mitglieder"
@@ -64,7 +64,7 @@
     "refreshCaptcha": "Aktualisieren",
     "captcha": "Die 4 Buchstaben eingeben",
     "submit": "Senden",
-    "githubDirectLink": "Nutzen Sie direkt Github von System-d.org...",
+    "githubDirectLink": "Oder schreiben Sie System-D dieses Ticket gleich in Github...",
     "succesMessage": "Vielen Dank für Ihren Beitrag! Ihre Nachricht wurde an die Entwickler weitergeleitet",
     "githubLink": "Um den Bearbeitungsstatus Ihrer Nachricht zu sehen, informieren Sie sich in GitHub",
     "return": "Zurück"
@@ -107,14 +107,14 @@
   },
   "landingAim": {
     "ourPurpose": "UNSER ZIEL",
-    "purpose": "Erstellung eines Werkzeugs, das den Übergang zu einem auf Zusammenarbeit und gemeinsamer Nutzung basierenden Produktionsweise unterstützt.",
+    "purpose": "Herstellung eines Werkzeugs, das den Übergang zu einer auf Zusammenarbeit und gemeinsamer Nutzung basierenden Produktionsweise unterstützt.",
     "3DevPhases": "DREI PHASEN DER ENTWICKLUNG",
-    "createTool": "Ein für alle offenes Projektmanagement-Tool schaffen",
+    "createTool": "Produktion eines für alle offenen Projektmanagement-Tools",
     "cTool": "Ein Instrument, das es den verschiedenen Kollektiven und Vereinen ermöglicht, sich effizient zu organisieren. Ein verschlüsseltes, kostenloses Open-Source-Tool zur Förderung der Horizontalität im Projektmanagement.",
-    "doOfSystemD": "Machen Sie SystemD zum sozialen Netzwerk der Zusammenarbeit!",
+    "doOfSystemD": "Macht System-D zum sozialen Netzwerk der Zusammenarbeit!",
     "dOfSystD": "Entwicklung von Schnittstellen, die die Plattform zu einem Kommunikationsraum werden lässt, in dem sich die Mitglieder treffen und über verschiedene Projekte austauschen können: geolokalisierte Suche anhand von Interessensgebieten, verschlüsselten Nachrichten, gemeinsamen Blogs usw.",
-    "developFreeNetwork": "Entwicklung eines freien Netzwerks und mit anderen geteilten Nutzung",
-    "dFreeNetwork": "Jedem Nutzer und jedem Projekt soll es ermöglicht werden, die erarbeiteten Ressourcen zu teilen, um eine große, nicht kommerzielle Verwertung zu verwirklichen."
+    "developFreeNetwork": "Entwicklung eines frei nutzbaren Netzwerks des gemeinsamen Teilens",
+    "dFreeNetwork": "Versetze jeden Nutzer und jedes Projekt mit diesem Werkzeugkasten in die Position eine große Wirkung jenseits der Marktlogik zu entfalten."
   },
   "landingContact": {
     "contact": "KONTAKT",
@@ -126,7 +126,7 @@
     "anonymous": "ANONYM",
     "panonymous": "Loggen Sie sich mit einem Nickname ein, Sie brauchen nicht Ihre E-Mail-Adresse einzugeben und benutzen Sie den Tor-Browser für noch mehr Anonymität",
     "free": "FREI",
-    "pfree": "Wie sonst könnte man sich eine Plattform vorstellen, deren Ziel die Förderung nicht-marktwirtschaftlicher sozialer Beziehungen ist",
+    "pfree": "Wie sonst sollte eine Plattform sein, deren Ziel die Förderung sozialer Beziehungen jenseits der Marktlogik ist?",
     "encrypted": "VERSCHLÜSSELT",
     "pencrypted": "Die von Ihnen freigegebenen Inhalte sowie die Liste der Projekte, an denen Sie teilnehmen, werden \"Ende-zu-Ende\" verschlüsselt ",
     "signin": "Registrieren"
@@ -134,26 +134,26 @@
   "landingRoadmap": {
     "roadmap": "ROADMAP",
     "firstPhase": "ERSTE PHASE",
-    "pfirstPhase": "Schnittstelle zum Anlegen von Benutzerkonten und zur Verknüpfung mit der Plattform",
+    "pfirstPhase": "Benutzeroberfläche zum Anlegen von Benutzerkonten und zur Verknüpfung mit der Plattform",
     "p2firstPhase": "Benutzeroberfläche zur Bearbeitung von Benutzerprofilen",
     "p3firstPhase": "Benutzeroberfläche zur Projekterstellung",
-    "p4firstPhase": "Einladung zu Projekten und Mitgliederverwaltung",
+    "p4firstPhase": "Dialoggestaltung zur Einladung zu Projekten und Mitgliederverwaltung",
     "p5firstPhase": "Einrichtung eines Diskussionsforums pro Projekt",
-    "p6firstPhase": "Gemeinsamer Kalender für jedes der Projekte",
+    "p6firstPhase": "Gemeinsamer Terminkalender für jedes der Projekte",
     "p7firstPhase": "Übersichtliche Aufgabenliste für jedes Projekt",
     "p8firstPhase": "Schnittstelle zur Nutzung von oder Einbindung in System-D",
     "secondPhase": "ZWEITE PHASE",
-    "psecondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Qualifikationen eingeben kann",
-    "p2secondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Interessen eingeben kann",
+    "psecondPhase": "Gestaltung der Eingabemaske, so dass jeder Anwender seine Qualifikationen eingeben kann",
+    "p2secondPhase": "Programmierung der Oberfläche, so dass jeder Anwender seine Interessen eingeben kann",
     "p3secondPhase": "Berücksichtigung des geographischen Orts",
-    "p4secondPhase": "Erweiterte Suchwerkzeuge zur Ermittlung potenzieller Mitarbeiter / interessanter Projekte",
+    "p4secondPhase": "Suchwerkzeug mit Filtern zur Ermittlung potenzieller Mitarbeiter / interessanter Projekte",
     "p5secondPhase": "Benutzer- und projektübergreifendes Messaging",
     "p6secondPhase": "Privater Blog und Projektblog",
     "p7secondPhase": "Interaktives Kartenmodul für Projekte",
     "thirdPhase": "DRITTE PHASE",
-    "pthirdPhase": "Berücksichtigung von Nutzer-Feedback aus der zweiten Phase und Verbesserung der Funktionalitäten",
-    "p2thirdPhase": "Schnittstelle zur Auflistung der materiellen Ressourcen, die ein Projekt oder Benutzer gemeinsam nutzen möchte",
-    "p3thirdPhase": "Schnittstelle zur Suche von Ressourcen",
+    "pthirdPhase": "Berücksichtigung des Nutzer-Feedback aus der zweiten Phase und Verbesserung der Funktionalitäten",
+    "p2thirdPhase": "Dialoggestaltung zur Auflistung der materiellen Ressourcen, die ein Projekt oder Benutzer gemeinsam nutzen möchte",
+    "p3thirdPhase": "Bedienoberfläche zur Suche von Ressourcen",
     "p4thirdPhase": "Möglichkeit, Ankündigungen über persönliche und projektspezifische Anforderungen zu hinterlassen",
     "p5thirdPhase": "IOS-, ANDROID- und DESKTOP-Anwendungen",
     "p6thirdPhase": "Modul für die Planung mit Scrum",
@@ -225,14 +225,14 @@
     "initialization": "Start einer neuen verschlüsselten Sitzung"
   },
   "signinContainer": {
-    "psignin": "System-D unterstützt Ihre Projekte, indem es Ihnen einen ganz und gar kostenfreien Arbeitsraum zur Gemeinschaftsarbeit zur Verfügung stellt",
+    "psignin": "System-D unterstützt Ihre Projekte, indem es Ihnen einen ganz und gar kostenfreien Arbeitsraum zur Gemeinschaftsarbeit zur Verfügung stellt mit kompletter",
     "linkSignin": "https://de.wikipedia.org/wiki/Ende-zu-Ende-Verschl%C3%BCsselung",
     "endtoendencrypted": "Ende-zu-Ende-Verschlüsselung",
-    "p2signin": "Wie bei Telegramm oder Signal wird niemand außer Ihnen und anderen, die am selben Projekt beteiligt sind, in der Lage sein, die von Ihnen geposteten Inhalte zu entziffern und zu lesen, nicht einmal die Entwickler dieser Plattform.",
+    "p2signin": "Wie bei Telegram oder Signal wird niemand außer Ihnen und anderen, die am selben Projekt beteiligt sind, dazu in der Lage sein, die von Ihnen geposteten Inhalte zu entziffern und zu lesen, nicht einmal die Entwickler dieser Plattform.",
     "next": "Weiter",
-    "p3signin": "Andererseits",
+    "p3signin": "Insbesondere",
     "p3-1signin": "System-D schützt die Anonymität",
-    "p3-2signin": "seiner Benutzer: keine E-Mail-Adresse und keine persönlichen Daten erforderlich. Allerdings haben wir nicht ",
+    "p3-2signin": "seiner Benutzer: keine E-Mail-Adresse und keine persönlichen Daten erforderlich. Allerdings haben wir ",
     "p3-3signin": "keine Möglichkeit, Ihnen zu helfen, wenn Sie Ihr Passwort vergessen haben.",
     "p3-4signin": "Es wird daher empfohlen:",
     "spanSignin": "Notieren Sie sich das von Ihnen gewählte Passwort."
@@ -270,7 +270,7 @@
   "editProjectAvatar": {
     "edit": "Avatar bearbeiten",
     "delete": "Avatar löschen",
-    "OK": "Absenden"
+    "OK": "Speichern"
   },
   "editProjectDescription": {
     "label": "Projektbeschreibung"
@@ -288,7 +288,7 @@
     "deleteSuccess": "Dieses Projekt wurde gelöscht"
   },
   "projectLayout": {
-    "decrypting1": "Entschlüsselung von Projektdaten"
+    "decrypting1": "Entschlüsselung der Projektdaten"
   },
   "newInvitation": {
     "title": "Generieren des Links für die Einladung",
@@ -298,13 +298,14 @@
     "day": "Tag(e)",
     "week": "Woche(n)",
     "month": "Monat(e)",
-    "remainingLabel1": "Gültig zur Einladung",
+    "remainingLabel1": "Gültig zur Einladung für",
     "user": "Benutzer",
     "users": "Benutzer",
     "ok": "Einladungslink erzeugen",
+    "loader": "Einladungslink erzeugen",
     "addMessage": "Eine Benachrichtigung über eine Einladung hinzufügen",
     "invitMessage": "Nachricht mit Ihrer Einladung gesendet",
-    "backToParams": "Zurück zu den Einstellungen des Projekts"
+    "backToParams": "Zurück zu den Projektvorgaben"
   },
   "showInvitation": {
     "title": "Link zur Einladung",
@@ -312,8 +313,8 @@
     "copied": "Link zur Einladung in die Zwischenablage kopiert",
     "invitTitle": "Einladung zur Teilnahme am Projekt ",
     "invitMessage": "Sie sind dazu eingeladen worden, an einem Projekt auf System-D teilzunehmen: der verschlüsselten Plattform für kollaborative Projekte. Klicken Sie auf den Link, um die Einladung zu sehen.",
-    "infoQr": "Wenn die einzuladende Person neben Ihnen steht, kann sie diesen QR-Code auch mit einem beliebigen QR-Code-Lesegerät einblenden, um auf die Einladung zuzugreifen.",
-    "infoDestroy": "Durch das Löschen der Einladung verlieren Sie die Möglichkeit, den Einladungslink für den Zugriff auf die Chiffrierschlüssel für Ihr Projekt zu verwenden.",
+    "infoQr": "Wenn sich die einzuladende Person mit Ihnen vor diesem Bildschirm befindet, kann sie diesen QR-Code auch mit einem beliebigen QR-Code-Lesegerät scannen, um die Einladung anzunehmen.",
+    "infoDestroy": "Durch das Löschen der Einladung verlieren Sie die Möglichkeit, den Einladungslink für den Zugriff auf die Chiffrierschlüssel Ihres Projekts zu verwenden.",
     "destroy": "Den Einladungslink löschen",
     "backToParams": "Zurück zu den Projektvorgaben",
     "deleted": "Der Einladungslink wurde gelöscht"
@@ -344,13 +345,13 @@
   },
   "projectMembers": {
     "membersList": "Liste der Mitglieder",
-    "admins": "Admin-Benutzer",
+    "admins": "Administrator",
     "members": "Mitglieder"
   },
   "member": {
     "since": "Seit",
     "invitedBy": "Eingeladen von",
-    "projectCreator": "Ersteller des Projekts",
+    "projectCreator": "Initiator des Projekts",
     "quitProject": "Projekt verlassen",
     "quitProjectError": "Sie können dieses Projekt nicht verlassen.",
     "quitProjectErrorTips": "Ernennen Sie mindestens einen neuen Administrator für das Projekt.",
@@ -427,7 +428,7 @@
     "deleteInfo": "Alle Dialoge innerhalb des Verzeichnisses werden gelöscht",
     "moveDown": "In der Liste nach unten verschieben",
     "moveUp": "In der Liste nach oben verschieben",
-    "edit": "Name bearbeiten",
+    "edit": "Namen bearbeiten",
     "disableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen aktiv, klicken Sie diese an, um sie zu deaktivieren.",
     "enlableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen deaktiviert, klicken Sie diese an, um sie zu reaktivieren.",
     "abort": "Abbrechen",
@@ -497,7 +498,7 @@
     "publish": "Speichern"
   },
   "showPollContent": {
-    "answers": "Beteiligte"
+    "answers": "Beteiligte(r)"
   },
   "pollOption": {
     "vote": "Stimmen"
@@ -546,8 +547,13 @@
     "deleted": "Die Datei wurde gelöscht."
   },
   "_templates_map": "===========================================================================================================================",
+  "projectMaps": {
+    "settings": "Einstellungen",
+    "fullscreen": "In Vollbildmodus wechseln",
+    "newMarker": "Neue Markierung"
+  },
   "mapParams": {
-    "topo": "Thema",
+    "topo": "Topo",
     "aerial": "Luftbild",
     "standard": "Standard"
   },
@@ -570,7 +576,7 @@
     "title": "Neue Markierung",
     "color": "Farbe",
     "type": "Typ",
-    "icons": "Symbole",
+    "icons": "Icons",
     "arrows": "Pfeile",
     "lines": "Zeilen",
     "text": "Textfeld",
@@ -588,15 +594,17 @@
     "editIconInfo": "Klicken Sie auf die Karte, um die Position des Markers zu verändern."
   },
   "markerDetail": {
+    "editColor": "Farbe ändern",
+    "editIcon": "Icon bearbeiten",
     "markerName": "Name des Markers...",
-    "markerDetail": "Detail",
+    "markerDetail": "Beschreibung",
     "editMarker": "Bearbeiten",
     "moveMarker": "Verschieben",
     "deleteMarker": "Entfernen",
     "coordinates": "Kontaktdaten :",
-    "createdBy": "Hergestellt von ",
+    "createdBy": "Erstellt von ",
     "lastEdit": " (bearbeitet)",
-    "goTo": "Auf geht's!"
+    "goTo": "Zeige die Route dorthin!"
   },
   "detailMemberPosition": {
     "lastEdit": "Letzte Aktualisierung :",
@@ -625,13 +633,13 @@
     "listView": "Liste der monatlichen Aktivitäten",
     "recurring": "(Wiederkehrend)",
     "unnamed": "Unbenannt",
-    "setActivityInfo": "Positionieren Sie die Aktivität dort, wo Sie diese auf dem Kalender haben wollen.",
-    "activityPlaced": "Die Aktivität wurde auf den Kalender gesetzt.",
+    "setActivityInfo": "Tragen Sie die Aktivität in den Terminkalender ein.",
+    "activityPlaced": "Die Aktivität wurde auf den Terminkalender gesetzt.",
     "settings": "Einstellungen",
     "addBtn": "Termin hinzufügen"
   },
   "calendarSettings": {
-    "title": "Kalender Einstellungen",
+    "title": "Terminkalender Einstellungen",
     "defaultView": "Standardansicht: ",
     "colorLegend": "Legende der Farbgebung : ",
     "defaultViewSaved": "Die Standardansicht wurde für alle Mitglieder des Projekts geändert",
@@ -645,8 +653,8 @@
     "save": "Speichern"
   },
   "activityDetail": {
-    "activityTitle": "Aktivität ohne Namen",
-    "activityDetail": "Detail",
+    "activityTitle": "Aufgabe ohne Namen",
+    "activityDetail": "Beschreibung",
     "editActivity": "speichern",
     "recursivity": "Wiederholung",
     "deleteActivity": "Entfernen",
@@ -680,7 +688,7 @@
     "detail": "Detail:",
     "title": "Einladung zur Teilnahme an einer Aktivität",
     "start": "Beginn:",
-    "end": "Ende:",
+    "end": "Fällig: ",
     "decline": "Ablehnen",
     "accept": "Annehmen"
   },
@@ -693,12 +701,12 @@
   "projectTasks": {
     "title": "To-Do-Liste",
     "inProject": "Aufgaben im Projekt",
-    "calendarPlaced": "Auf den Kalender gesetzt",
+    "calendarPlaced": "Auf den Terminkalender gesetzt",
     "waitingForStatus": "Frühere Aufgaben",
     "done": "Erledigte Aufgaben",
     "inProjectDetail": "Die hier eingestellten Aufgaben haben noch kein genau definiertes Datum.",
-    "calendarPlacedDetail": "Gestellte Aufgaben werden mit Terminen in der Zukunft in den Kalender eingetragen.",
-    "waitingForStatusDetail": "Die Aufgaben in diesem Abschnitt wurden in den Kalender eingetragen, aber ihre Termine sind überschritten. Es liegt an Ihnen zu sehen, ob sie neu bearbeitet und neu geplant werden müssen oder ob sie als abgeschlossen betrachtet werden können",
+    "calendarPlacedDetail": "Gestellte Aufgaben werden mit Terminen die in der Zukunft liegen in den Kalender eingetragen.",
+    "waitingForStatusDetail": "Die Aufgaben in diesem Abschnitt wurden in den Termikalender eingetragen, aber ihre Termine sind überschritten. Es liegt an Ihnen zu sehen, ob sie neu bearbeitet und neu geplant werden müssen oder ob sie als abgeschlossen betrachtet werden können",
     "doneDetail": "Dieser Abschnitt gruppiert die Aufgaben, die als abgeschlossen angenommen wurden.",
     "newActivity": "Neue Aufgabe",
     "myTasks": "Meine Aufgaben"
@@ -711,11 +719,11 @@
     "delete": "Entfernen"
   },
   "taskItem": {
-    "participants": "Beteiligte",
+    "participants": "Beteiligte(r)",
     "inviteds": "Eingeladene Mitglieder",
     "checklist": "Checkliste",
-    "start": "Anfangszeit",
-    "end": "Endezeit"
+    "start": "Beginn",
+    "end": "Ende"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
@@ -724,10 +732,10 @@
     "whyText": "Das System-D Projekt wurde mit Herzblut in der Freizeit gebaut. Wenn Sie möchten, dass es weitergeführt wird und denen helfen wollen, die ihre freie Zeit zur Weiterentwicklung der bestehenden Funktionen investieren, sind Ihre Spenden wichtig.",
     "withTheMoney": "Ihre Spenden ermöglichen es:",
     "servers": "um die Plattform-Hosting-Gebühren für eine immer größer werdende Anzahl von Nutzern zu bezahlen",
-    "sustain": "die Funktionalitäten von System-D zu erhalten und zu verbessern, sie für immer mehr Benutzer zugänglich zu machen und das Feedback der Benutzer zu verarbeiten.",
-    "develop": "um neue Features zu erstellen. Kommende Vorhaben:",
+    "sustain": "die Funktionalitäten von System-D zu pflegen und zu verbessern, um sie für ein wachsendes Anwenderspektrum leicht bedienbar zu machen und das Benutzer-Feedback zu berücksichtigen.",
+    "develop": "um neue Features zu entwickeln. Die nächsten Aufgaben:",
     "next1": "Unmittelbare Diskussionen zwischen Benutzern/ Benutzern und Projekten/ Projekten.",
-    "next2": "Suche nach einem Projekt oder Mitarbeiter nach Fähigkeiten, Interesse, Art der Tätigkeit, Standort.",
+    "next2": "Suche nach einem Projekt oder Mitarbeiter nach Fähigkeiten, Interesse, Art der Tätigkeit, Ort.",
     "next3": "Android-, Desktop- und IOS-Anwendungen",
     "ponctual": "Einmalige Spende ( Paypal )",
     "ponctualInfo": "Schicken Sie eine einmalige Spende über unser Paypal-Konto:",
@@ -755,12 +763,58 @@
     "deleteSuccess": "Das Tabellenblatt wurde gelöscht",
     "lastEdit": "Letzte Bearbeitung",
     "uploadTable": "Importieren eines vorhandenen Tabellenblatts aus einer CSV-Datei",
-    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
+    "uploadInfo": "Dieses Tabellenkalkulationssystem arbeitet mit \".csv\"-Dateien. Speichern Sie Ihre Excel- oder OpenOffice-Tabelle im CSV-Format und importieren Sie diese durch Klicken auf die Schaltfläche ",
     "uploadWarning": "Achtung, alle Daten in der Tabellenkalkulation werden unwiderruflich durch die Daten in der csv-Datei überschrieben!",
     "fileUpload": "Importieren einer CSV-Datei",
-    "onlyCsvError": "Die hochgeladene Datei hat kein gültiges CSV-Format"
+    "onlyCsvError": "Die hochgeladene Datei hat kein gültiges CSV-Format",
+    "searchInTable": "Suche in der Tabelle"
   },
   "spreadsheet": {
-    "searchInTable": "Suche in der Tabelle"
+    "noRecordsFound": "Nichts anzuzeigen",
+    "showingPage": "Seite {0} von {1} angezeigt",
+    "show": "Zeige",
+    "entries": "Einträge",
+    "insertANewColumnBefore": "Spalte davor einfügen",
+    "insertANewColumnAfter": "Spalte danach einfügen",
+    "deleteSelectedColumns": "Ausgewählte Spalten löschen",
+    "renameThisColumn": "Spalte umbenennen",
+    "orderAscending": "Aufsteigend sortieren",
+    "orderDescending": "Absteigend sortieren",
+    "insertANewRowBefore": "Zeile davor einfügen",
+    "insertANewRowAfter": "Zeile danach einfügen",
+    "deleteSelectedRows": "Lösche ausgewählte Zeilen",
+    "editComments": "Kommentare bearbeiten",
+    "addComments": "Kommentar hinzufügen",
+    "comments": "Kommentare",
+    "clearComments": "Kommentare löschen",
+    "copy": "Kopieren ...",
+    "paste": "Einfügen ...",
+    "saveAs": "Speichern unter ...",
+    "about": "Über",
+    "areYouSureToDeleteTheSelectedRows": "Sind Sie sicher, dass Sie die ausgewählten Zeilen löschen möchten?",
+    "areYouSureToDeleteTheSelectedColumns": "Sind Sie sicher, dass Sie die ausgewählten Spalten löschen möchten?",
+    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "Diese Aktion wird alle miteinander verknüpften Zellen entfernen, sind Sie sicher?",
+    "thisActionWillClearYourSearchResultsAreYouSure": "Diese Aktion wird Ihre Suchergebnisse löschen, sind Sie sicher?",
+    "thereIsAConflictWithAnotherMergedCell": "Es gibt einen Konflikt mit einer anderen verknüpften Zelle",
+    "invalidMergeProperties": "Ungültige Aktion für das Verknüpfen",
+    "cellAlreadyMerged": "Diese Zellen sind schon miteinander verknüpft",
+    "noCellsSelected": "Keine Zellen ausgewählt"
+  },
+  "fullCalendar": {
+    "code": "de",
+    "dow": 1,
+    "doy": 4,
+    "prev": "Zurück",
+    "next": "Weiter",
+    "today": "Heute",
+    "year": "Jahr",
+    "month": "Monat",
+    "week": "Woche",
+    "day": "Tag",
+    "list": "Monatsplanung",
+    "weekLabel": "Wochen",
+    "allDayHtml": "Ganztägig",
+    "eventLimitText": "zusätzlich",
+    "noEventsMessage": "Keine anzuzeigenden Termine"
   }
 }

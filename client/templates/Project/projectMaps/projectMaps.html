@@ -5,20 +5,23 @@
             <ul id="mapButtons">
                 <li>
                     <a href="/project/{{currentProject._id}}/maps?side=mapSettings"
-                       class="btn-floating btn settingsBtn waves-effect waves-light small-shadow"><i
+                       class="btn-floating btn settingsBtn waves-effect waves-light small-shadow tooltipped" data-position="left"
+                       data-delay="50" data-tooltip="{{__ ".settings"}}"><i
                             class="material-icons">settings</i></a>
                 </li>
                 {{#if showFullScreen}}
                     <li>
                         <a href="#"
-                           class="btn-floating btn settingsBtn waves-effect waves-light small-shadow" fullScreen><i
+                           class="btn-floating btn settingsBtn waves-effect waves-light small-shadow tooltipped" data-position="left"
+                           data-delay="50" data-tooltip="{{__ ".fullscreen"}}" fullScreen><i
                                 class="material-icons">{{#if isFullScreen}}
                             fullscreen_exit{{else}}zoom_out_map{{/if}}</i></a>
                     </li>
                 {{/if}}
                 <li>
                     <a href="/project/{{currentProject._id}}/maps?side=newMarker"
-                       class="btn-floating btn danger-bg waves-effect waves-light addBtn btn-large shadow" newMarker><i
+                       class="btn-floating btn danger-bg waves-effect waves-light addBtn btn-large shadow tooltipped" data-position="left"
+                       data-delay="50" data-tooltip="{{__ ".newMarker"}}" newMarker><i
                             class="material-icons large">add</i></a>
                 </li>        
             </ul>

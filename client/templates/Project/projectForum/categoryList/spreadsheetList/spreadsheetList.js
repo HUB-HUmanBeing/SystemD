@@ -71,7 +71,6 @@ Template.spreadsheetList.events({
                     }, 200)
                     instance.showNewSpreadsheet.set(false)
                     instance.isCreating.set(false)
-                    console.log(res)
                     FlowRouter.go('/project/' + currentProjectId + '/forum/?spreadsheetId=' + res)
                 }
             })
@@ -94,9 +93,11 @@ Template.spreadsheetList.onCreated(function () {
     this.spreadsheetsLimit = new ReactiveVar(5)
 
     this.autorun(() => {
+    FlowRouter.watchPathChange()
         Meteor.subscribe('spreadsheets',
-            projectController.getAuthInfo(this.data.currentProject._id),
-            this.data.currentProject._id,
+
+            projectController.getAuthInfo(FlowRouter.current().params.projectId),
+            FlowRouter.current().params.projectId,
             this.spreadsheetsLimit.get(),
             err => {
                 if (err) {
@@ -113,6 +114,8 @@ Template.spreadsheetList.onCreated(function () {
                             cryptoTools.decryptArrayOfObject(encryptedSpreadsheets, {symKey: Session.get('currentProjectSimKey')}, (spreadsheets) => {
                                 this.spreadsheets.set(spreadsheets)
                             })
+                        }else{
+                            this.spreadsheets.set([])
                         }
                     })
 

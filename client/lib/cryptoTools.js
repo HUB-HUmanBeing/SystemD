@@ -78,7 +78,7 @@ const cryptoTools = {
 
         let saltedPrefix = this.generateRandomPassword(10)
         this.importPublicKey(stringifiedPublicKey, (public_key_object) => {
-            this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, public_key_object, this.convertStringToArrayBufferView(saltedPrefix + data)).then(
+            this.crypto().subtle.encrypt({"name": "RSA-OAEP", hash: {name: 'SHA-256'}}, public_key_object, this.convertStringToArrayBufferView(saltedPrefix + data)).then(
                 function (result) {
 
                     callback(new Uint8Array(result))
@@ -92,12 +92,12 @@ const cryptoTools = {
     },
     asym_decrypt_data(encrypted_data, stringifiedPrivateKey, callback) {
         this.importPrivateKey(stringifiedPrivateKey, (private_key_object) => {
-            this.crypto().subtle.decrypt({name: "RSA-OAEP"}, private_key_object, encrypted_data).then(
+            this.crypto().subtle.decrypt({name: "RSA-OAEP", hash: {name: 'SHA-256'}}, private_key_object, encrypted_data).then(
                 (result) => {
                     callback(this.convertArrayBufferViewtoString(new Uint8Array(result)).substring(10));
                 },
                 function (e) {
-                    console.log("asym decrypt faillure", e)
+                    console.error("asym decrypt faillure", e)
                 }
             );
         })
@@ -332,7 +332,7 @@ let dataB64 = this.convertStringToArrayBufferView(data)
             } else if (prefix == 'asymEnc') {
                 encryptedElement = new Promise((resolve, reject) => {
                     let saltedPrefix = this.generateRandomPassword(10)
-                    this.crypto().subtle.encrypt({"name": "RSA-OAEP"}, encryptionParams.publicKey, this.convertStringToArrayBufferView(saltedPrefix + element)).then(
+                    this.crypto().subtle.encrypt({"name": "RSA-OAEP", hash: {name: 'SHA-256'}}, encryptionParams.publicKey, this.convertStringToArrayBufferView(saltedPrefix + element)).then(
                         (result) => {
                             resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)))
                         },
@@ -443,12 +443,12 @@ let dataB64 = this.convertStringToArrayBufferView(data)
                 })
             } else if (prefix === 'asymEnc') {
                 decryptedElement = new Promise((resolve, reject) => {
-                    this.crypto().subtle.decrypt({name: "RSA-OAEP"}, encryptionParams.privateKey, this.convertStringToArrayBufferView(element)).then(
+                    this.crypto().subtle.decrypt({name: "RSA-OAEP", hash: {name: 'SHA-256'}}, encryptionParams.privateKey, this.convertStringToArrayBufferView(element)).then(
                         (result) => {
                             resolve(this.convertArrayBufferViewtoString(new Uint8Array(result)).substring(10));
                         },
                         function (e) {
-                            console.log("decryptObject : asym decrypt faillure", e)
+                            console.error("decryptObject : asym decrypt faillure", e)
                         }
                     );
                 })

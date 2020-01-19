@@ -46,7 +46,7 @@ Template.newInvitation.events({
         event.preventDefault()
         //we show the loader
         instance.newInvitationComplete.set([
-            "Génération du lien d'invitation"
+            __('newInvitation.loader')
         ])
         //on garde en memoire le timestamp de début de l'opération
         let startTs = Date.now()

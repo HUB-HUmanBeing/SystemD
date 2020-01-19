@@ -47,13 +47,14 @@
                                             class="material-icons">format_list_bulleted</i></a>
                                 </li>
                             {{/unless}}
+                            {{#if showSettingsBtn}}
                             <li>
                                 <a href="" goSettings
                                    class="btn-floating btn settingsBtn tooltipped" data-position="left" data-delay="250"
                                    data-tooltip="{{__ ".settings"}}"><i
                                         class="material-icons">settings</i></a>
                             </li>
-
+{{/if}}
                         </ul>
                     </div>
                 </div>

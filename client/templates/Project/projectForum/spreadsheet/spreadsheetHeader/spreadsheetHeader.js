@@ -90,6 +90,9 @@ Template.spreadsheetHeader.events({
         let searchInput = $('.jexcel_filter input')
         if (searchInput.hasClass("searchVisible")) {
             searchInput.val("")
+            if(table && table.resetSearch){
+                table.resetSearch()
+            }
             searchInput.removeClass("searchVisible")
             instance.showCloseSearch.set(false)
         } else {

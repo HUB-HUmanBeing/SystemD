@@ -121,6 +121,7 @@ const projectFilesController = {
     ,
 
     UploadData(url, blob, cb) {
+
         let xhr = new XMLHttpRequest();
         /*
         xhr.onreadystatechange = function() {

@@ -3,6 +3,7 @@ import Spreadsheet from "../../../imports/classes/Spreadsheet";
 import cryptoTools from "../cryptoTools";
 import projectController from "./projectController";
 import isSameObject from "../isSameObject";
+import Spreadsheets from "../../../lib/collections/Spreadsheets";
 
 let spreadsheetController = {
     table: null,
@@ -27,39 +28,42 @@ isFirst:true,
         this.style=null
     },
     initialize(spreadsheetId, el, instance, isEditable) {
-        this.id = spreadsheetId
+        this.id = FlowRouter.current().queryParams.spreadsheetId
 
         let encryptedSpreadsheetContent = Spreadsheet.findOne({_id: spreadsheetId}).content
-        cryptoTools.decryptObject(encryptedSpreadsheetContent, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
-
-            if (spreadsheetContent.symEnc_datas && JSON.parse(spreadsheetContent.symEnc_datas).length) {
-                let newDatas = JSON.parse(spreadsheetContent.symEnc_datas)
-                if (this.datas != newDatas) {
-                    this.datas = newDatas
+        if(encryptedSpreadsheetContent && Spreadsheets.findOne({_id: spreadsheetId}).createdBy &&spreadsheetId == FlowRouter.current().queryParams.spreadsheetId){
+            cryptoTools.decryptObject(encryptedSpreadsheetContent, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
+                if (spreadsheetContent.symEnc_datas && JSON.parse(spreadsheetContent.symEnc_datas).length) {
+                    let newDatas = JSON.parse(spreadsheetContent.symEnc_datas)
+                    if (this.datas != newDatas) {
+                        this.datas = newDatas
+                    }
+                } else {
+                    console.log("réinitialisation des datas du tableur" , spreadsheetContent, Spreadsheet.findOne({_id: spreadsheetId}))
+                    console.log("spresheet route id" , FlowRouter.current().queryParams.spreadsheetId)
+                    this.datas = this.defaultDatas()
+                    this.saveDatas(this.datas)
                 }
-            } else {
-                this.datas = this.defaultDatas()
-                this.saveDatas(this.datas)
-            }
+                let newColumns = JSON.parse(spreadsheetContent.columns)
+                if (newColumns.length) {
 
-            let newColumns = JSON.parse(spreadsheetContent.columns)
-            if (newColumns.length) {
+                    this.columns = newColumns
 
-                this.columns = newColumns
+                } else {
+                    this.columns = this.defaultColumns()
+                    this.saveColumns(this.datas, this.columns)
+                }
+                if (spreadsheetContent.style && spreadsheetContent.style != "") {
+                    this.style = JSON.parse(spreadsheetContent.style)
 
-            } else {
-                this.columns = this.defaultColumns()
-                this.saveColumns(this.datas, this.columns)
-            }
-            if (spreadsheetContent.style && spreadsheetContent.style != "") {
-                this.style = JSON.parse(spreadsheetContent.style)
+                }
+                this.el = el
+                this.isEditable = isEditable
+                this.instance = instance
+                this.createTable(el, isEditable, instance)
+            })
+        }
 
-            }
-            this.el = el
-            this.isEditable = isEditable
-            this.instance = instance
-            this.createTable(el, isEditable, instance)
-        })
 
 
     },
@@ -298,7 +302,6 @@ Meteor.setTimeout(()=>{
     },
     events: {
         onchange: () => {
-
             spreadsheetController.saveDatas(this.table.getJson(),()=>{
                 spreadsheetController.saveStyles(this.table.getConfig().style)
             })
@@ -362,7 +365,7 @@ console.log(this.table.getConfig().style)
 
     },
     saveDatas(datas,cb) {
-        let currentSpreadsheet = Spreadsheet.findOne(this.id)
+        let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
         cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
             currentSpreadsheet.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, (err, res) => {
                 if (err) {
@@ -374,7 +377,7 @@ console.log(this.table.getConfig().style)
         })
     },
     saveColumns(datas, columns, cb) {
-        let currentSpreadsheet = Spreadsheet.findOne(this.id)
+        let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
         cryptoTools.sim_encrypt_data(JSON.stringify(datas), Session.get("currentProjectSimKey"), (symEnc_datas) => {
             currentSpreadsheet.callMethod("saveColumns", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_datas, JSON.stringify(columns), JSON.stringify(columns), (err, res) => {
                 if (err) {
@@ -391,7 +394,7 @@ console.log(this.table.getConfig().style)
         }else{
 
             Meteor.setTimeout(()=>{
-                let currentSpreadsheet = Spreadsheet.findOne(this.id)
+                let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
                 currentSpreadsheet.callMethod("saveStyles", projectController.getAuthInfo(FlowRouter.current().params.projectId), JSON.stringify(styles), (err, res) => {
                     if (err) {
                         console.log(err)
@@ -406,7 +409,7 @@ console.log(this.table.getConfig().style)
 
     checkForUpdates(el, isEditable, instance) {
         instance.autorun((computation) => {
-            let currentSpreadsheet = Spreadsheet.findOne(this.id)
+            let currentSpreadsheet = Spreadsheet.findOne(FlowRouter.current().queryParams.spreadsheetId)
             if (currentSpreadsheet && this.table) {
                 cryptoTools.decryptObject(currentSpreadsheet.content, {symKey: Session.get("currentProjectSimKey")}, (spreadsheetContent) => {
                     this.table.setData(spreadsheetContent.symEnc_datas)
