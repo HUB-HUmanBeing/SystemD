@@ -33,7 +33,7 @@ const filesTypes = [
     {
         label: "deleted",
         mimes:["deleted"],
-        iconUrl: "/images/icon/files/delete-svgrepo-com.svg"
+        iconUrl: "/images/icon/files/deleted-file.png"
     }
 ]
 export default filesTypes
