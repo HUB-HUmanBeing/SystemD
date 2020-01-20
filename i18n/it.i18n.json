@@ -487,7 +487,7 @@
   },
   "publicationItem": {
     "delete": "Elimina",
-    "abort": "Annuler",
+    "abort": "Annulla",
     "edit": "Modifica",
     "deleteInfo": "Questa azione eliminerà definitivamente la pubblicazione e tutti i suoi commenti",
     "deleteSuccess": "Questa pubblicazione e tutti i suoi commenti sono stati eliminati",
@@ -614,22 +614,22 @@
   },
   "creatingPolyline": {
     "save": "Salva",
-    "undo": "annuler dernier point",
-    "createIconInfo": "Placer les différents points puis cliquer sur enregistrer"
+    "undo": "annullare l'ultimo punto",
+    "createIconInfo": "Posizionare i diversi punti e poi cliccare su salva"
   },
   "creatingShape": {
-    "save": "Enregistrer",
-    "undo": "annuler dernier point",
-    "circleInfo": "Positionner le centre du cercle puis élargissez son diamètre en glissant avec la souris.",
-    "rectangleInfo": "Positionner un coin du rectangle puis agrandissez le en glissant avec la souris.",
-    "polygonInfo": "Placer les différents sommets de votre forme puis cliquer sur le dernier point ou sur enregistrer"
+    "save": "Salva",
+    "undo": "annullare l'ultimo punto",
+    "circleInfo": "Posizionare il centro del cerchio e poi ingrandirne il diametro trascinandolo con il mouse.",
+    "rectangleInfo": "Posizionare un angolo del rettangolo, quindi ingrandirlo trascinandolo con il mouse.",
+    "polygonInfo": "Posizionate i diversi vertici della vostra forma e poi cliccate sull'ultimo punto o sul salvataggio"
   },
   "creatingArrow": {
-    "createArrowInfo": "Placer votre flèche sur la carte."
+    "createArrowInfo": "Posizionare la freccia sulla mappa."
   },
   "_templates_calendar": "===========================================================================================================================",
   "projectCalendar": {
-    "daysView": "Vue journalière",
+    "daysView": "Vista giornaliera",
     "monthView": "Vue mensuelle",
     "listView": "Liste des évènements mensuels",
     "recurring": "(Récurrent)",
