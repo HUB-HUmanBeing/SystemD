@@ -601,18 +601,18 @@
     "editMarker": "modifica",
     "moveMarker": "sposta",
     "deleteMarker": "Elimina",
-    "coordinates": "Coordonnées :",
-    "createdBy": "Créé par ",
-    "lastEdit": " (édité)",
-    "goTo": "Y aller !"
+    "coordinates": "Informazioni di contatto :",
+    "createdBy": "Creato da ",
+    "lastEdit": " (edito)",
+    "goTo": "Portami lì!"
   },
   "detailMemberPosition": {
-    "lastEdit": "Dernière mise à jour :",
-    "actualise": "actualiser",
-    "deleteMarker": "Supprimer"
+    "lastEdit": "Ultimo aggiornamento:",
+    "actualise": "aggiorna",
+    "deleteMarker": "Elimina"
   },
   "creatingPolyline": {
-    "save": "Enregistrer",
+    "save": "Salva",
     "undo": "annuler dernier point",
     "createIconInfo": "Placer les différents points puis cliquer sur enregistrer"
   },
