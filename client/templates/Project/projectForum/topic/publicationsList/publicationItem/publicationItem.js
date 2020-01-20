@@ -45,7 +45,10 @@ Template.publicationItem.events({
 
         })
     },
-
+    'click [cancelDeletion]': function (event,instance) {
+        event.preventDefault()
+        instance.showDelete.set(false)
+    }
 });
 
 Template.publicationItem.onCreated(function () {
