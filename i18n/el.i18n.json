@@ -487,6 +487,7 @@
   },
   "publicationItem": {
     "delete": "Διαγραφή",
+    "abort": "Annuler",
     "edit": "Editer",
     "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
     "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",

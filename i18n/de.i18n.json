@@ -143,8 +143,8 @@
     "p7firstPhase": "Übersichtliche Aufgabenliste für jedes Projekt",
     "p8firstPhase": "Schnittstelle zur Nutzung von oder Einbindung in System-D",
     "secondPhase": "ZWEITE PHASE",
-    "psecondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Qualifikationen eingeben kann",
-    "p2secondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Interessen eingeben kann",
+    "psecondPhase": "Gestaltung der Eingabemaske, so dass jeder Anwender seine Qualifikationen eingeben kann",
+    "p2secondPhase": "Programmierung der Oberfläche, so dass jeder Anwender seine Interessen eingeben kann",
     "p3secondPhase": "Berücksichtigung des geographischen Orts",
     "p4secondPhase": "Suchwerkzeug mit Filtern zur Ermittlung potenzieller Mitarbeiter / interessanter Projekte",
     "p5secondPhase": "Benutzer- und projektübergreifendes Messaging",
@@ -232,7 +232,7 @@
     "next": "Weiter",
     "p3signin": "Insbesondere",
     "p3-1signin": "System-D schützt die Anonymität",
-    "p3-2signin": "seiner Benutzer: keine E-Mail-Adresse und keine persönlichen Daten erforderlich. Allerdings haben wir nicht ",
+    "p3-2signin": "seiner Benutzer: keine E-Mail-Adresse und keine persönlichen Daten erforderlich. Allerdings haben wir ",
     "p3-3signin": "keine Möglichkeit, Ihnen zu helfen, wenn Sie Ihr Passwort vergessen haben.",
     "p3-4signin": "Es wird daher empfohlen:",
     "spanSignin": "Notieren Sie sich das von Ihnen gewählte Passwort."
@@ -487,6 +487,7 @@
   },
   "publicationItem": {
     "delete": "Entfernen",
+    "abort": "Annuler",
     "edit": "Bearbeiten",
     "deleteInfo": "Diese Aktion wird die Veröffentlichung und alle Kommentare unwiderruflich löschen",
     "deleteSuccess": "Diese Veröffentlichung und alle ihre Kommentare wurden entfernt",
@@ -688,7 +689,7 @@
     "detail": "Detail:",
     "title": "Einladung zur Teilnahme an einer Aktivität",
     "start": "Beginn:",
-    "end": "Ende:",
+    "end": "Fällig: ",
     "decline": "Ablehnen",
     "accept": "Annehmen"
   },
