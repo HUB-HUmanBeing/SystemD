@@ -27,8 +27,7 @@ App.setPreference('BackgroundColor', '0xff0000ff');
 App.setPreference('Orientation', 'portrait');
 //App.setPreference('StatusBarBackgroundColor', '#263238');
 
-App.addResourceFile('google-services.json', 'src/google-services.json', 'android');
-// App.accessRule('*');
+
 // App.accessRule('http://*');
 App.accessRule('https://*');
 App.accessRule('https://raw.githubusercontent.com/HUB-HUmanBeing/SystemD/master/public/news/newsFeed.json', { type: 'navigation' });
