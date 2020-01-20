@@ -487,6 +487,7 @@
   },
   "publicationItem": {
     "delete": "Elimina",
+    "abort": "Annuler",
     "edit": "Modifica",
     "deleteInfo": "Questa azione eliminerà definitivamente la pubblicazione e tutti i suoi commenti",
     "deleteSuccess": "Questa pubblicazione e tutti i suoi commenti sono stati eliminati",
