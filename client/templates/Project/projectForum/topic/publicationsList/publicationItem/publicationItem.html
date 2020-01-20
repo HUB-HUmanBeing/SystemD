@@ -51,11 +51,11 @@
         {{#if  isDeletable }}
             {{#unless showDelete}}
                 {{#unless isEditing}}
-                <div class="publicationFooter">
-                    <a href="#" class="link" edit><i class="material-icons">edit</i>{{__ ".edit"}}</a>
-                    <a href="#" class="link" showDelete><i class="material-icons">delete</i>{{__ ".delete"}}</a>
+                    <div class="publicationFooter">
+                        <a href="#" class="link" edit><i class="material-icons">edit</i>{{__ ".edit"}}</a>
+                        <a href="#" class="link" showDelete><i class="material-icons">delete</i>{{__ ".delete"}}</a>
 
-                </div>
+                    </div>
                 {{/unless}}
             {{else}}
                 <div class="row">
@@ -63,9 +63,9 @@
                         <p class="infoQuotes left-align">{{__ ".deleteInfo"}}</p>
 
                         <a href="#" class="btn btnStandard center-align waves-effect waves-light" cancelDeletion><i
-                            class="material-icons left">arrow_back</i>{{__".abort"}}</a>
+                                class="material-icons left">arrow_back</i>{{__".abort"}}</a>
                         <a href="#" class="btn btn-danger center-align waves-effect waves-light" deletePublication><i
-                            class="material-icons left">delete</i>{{__".delete"}}</a>
+                                class="material-icons left">delete</i>{{__".delete"}}</a>
                     </div>
                 </div>
 
