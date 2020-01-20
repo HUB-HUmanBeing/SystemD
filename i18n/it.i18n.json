@@ -527,59 +527,59 @@
     "seeMore": "Mostra altro"
   },
   "filePreview": {
-    "delete": "Supprimer le fichier"
+    "delete": "Eliminare il file"
   },
   "fullScreenFile": {
-    "download": "Télécharger",
-    "delete": "Supprimer le fichier",
-    "return": "Retour",
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier."
+    "download": "Scaricare",
+    "delete": "Eliminare il file",
+    "return": "Indietro",
+    "downloadAndDecrypt": "Scaricamento e decifrazione del file."
   },
   "projectFiles": {
-    "limitOneFile": "La taille des documents est limitée à 15 Mo",
-    "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
+    "limitOneFile": "La dimensione dei documenti è limitata a 15 MB",
+    "projectFiles.limitSize": "Avete raggiunto il limite di caricamento dei file per questo progetto. Si prega di cancellare i documenti prima di poterli scaricare di nuovo. "
   },
   "pinned": {
-    "pin": "Épingler la publication en en-tête de la discussion",
-    "unpin": "Désépingler la publication"
+    "pin": "Appuntare il messaggio all'intestazione della discussione",
+    "unpin": "Smonta la pubblicazione"
   },
   "showFileContent": {
-    "deleted": "Le fichier à été supprimé."
+    "deleted": "Il file è stato eliminato."
   },
   "_templates_map": "===========================================================================================================================",
   "projectMaps": {
-    "settings": "Paramètres",
-    "fullscreen": "Mettre en plein écran",
-    "newMarker": "Nouveau marqueur"
+    "settings": "Impostazioni",
+    "fullscreen": "Mettere a schermo pieno",
+    "newMarker": "Nuovo marcatore"
   },
   "mapParams": {
     "topo": "Topo",
-    "aerial": "Aérienne",
+    "aerial": "Aereo",
     "standard": "Standard"
   },
   "mapSettings": {
-    "title": "Paramètres",
-    "kindOfMap": "Type de carte : ",
-    "saveChoice": "Utiliser ce fond de carte par défaut pour tous les membres du projet.",
-    "save": "Enregistrer",
-    "defaultCenter": "Centrage par défaut : ",
-    "defaultCenterInfo": "Centrer la carte sur la zone que vous souhaitez voir apparaitre par défaut puis cliquez sur enregistrer",
-    "centerSaved": "Le centrage par défaut de votre carte à été modifié.",
-    "deleteOlds": "Retirer les anciens marqueurs :",
-    "deleteOldsInfo": "Retirer les marqueurs dont la date de création remonte à plus de :",
-    "chooseDuration": "Choisir durée",
-    "delete": "retirer",
-    "oldsMarkersDeleted": "Les anciens marqueurs ont été supprimés",
-    "colorLegend": "Légende couleur :"
+    "title": "Impostazioni",
+    "kindOfMap": "Tipo di mappa : ",
+    "saveChoice": "Utilizzare questa mappa di sfondo predefinita per tutti i membri del progetto.",
+    "save": "Salva",
+    "defaultCenter": "Centraggio di default : ",
+    "defaultCenterInfo": "Centrare la mappa sull'area che si desidera visualizzare per impostazione predefinita e poi cliccare su salva",
+    "centerSaved": "La centratura predefinita della carta è stata modificata.",
+    "deleteOlds": "Rimuovere i vecchi marcatori:",
+    "deleteOldsInfo": "Rimuovere i marcatori con una data di creazione più vecchia di :",
+    "chooseDuration": "Scegliere la durata",
+    "delete": "rimuovere",
+    "oldsMarkersDeleted": "I vecchi marcatori sono stati rimossi",
+    "colorLegend": "Leggenda dei colori :"
   },
   "newMarker": {
-    "title": "Nouveau marqueur",
-    "color": "Couleur",
-    "type": "Type",
-    "icons": "Icones",
-    "arrows": "Flèches",
-    "lines": "Lignes",
-    "text": "Zone de texte",
+    "title": "Nuovo marcatore",
+    "color": "Colore",
+    "type": "Tipo",
+    "icons": "Icone",
+    "arrows": "Frecce",
+    "lines": "Linee",
+    "text": "Zona Testo",
     "textLabel": "contenu de la zone de texte",
     "textSubmit": "Créer",
     "shapes": "Formes",
