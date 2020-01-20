@@ -511,108 +511,108 @@
     "moreComments": "commenti aggiuntivi"
   },
   "commentItem": {
-    "answer": "Répondre",
-    "delete": "Supprimer",
-    "deleteSuccess": "Commentaire supprimé.",
-    "see": "Voir les",
-    "moreComments": "autres réponses"
+    "answer": "Risponda a",
+    "delete": "Elimina",
+    "deleteSuccess": "Commento eliminato.",
+    "see": "Vedi il",
+    "moreComments": "altre risposte"
   },
   "newSubComment": {
-    "placeholder": "Votre réponse..."
+    "placeholder": "La vostra risposta..."
   },
   "files": {
     "projectUsing": " ",
-    "of": "sur",
+    "of": "su",
     "allowed": " ",
-    "seeMore": "Voir plus"
+    "seeMore": "Mostra altro"
   },
   "filePreview": {
-    "delete": "Supprimer le fichier"
+    "delete": "Eliminare il file"
   },
   "fullScreenFile": {
-    "download": "Télécharger",
-    "delete": "Supprimer le fichier",
-    "return": "Retour",
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier."
+    "download": "Scaricare",
+    "delete": "Eliminare il file",
+    "return": "Indietro",
+    "downloadAndDecrypt": "Scaricamento e decifrazione del file."
   },
   "projectFiles": {
-    "limitOneFile": "La taille des documents est limitée à 15 Mo",
-    "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
+    "limitOneFile": "La dimensione dei documenti è limitata a 15 MB",
+    "projectFiles.limitSize": "Avete raggiunto il limite di caricamento dei file per questo progetto. Si prega di cancellare i documenti prima di poterli scaricare di nuovo. "
   },
   "pinned": {
-    "pin": "Épingler la publication en en-tête de la discussion",
-    "unpin": "Désépingler la publication"
+    "pin": "Appuntare il messaggio all'intestazione della discussione",
+    "unpin": "Smonta la pubblicazione"
   },
   "showFileContent": {
-    "deleted": "Le fichier à été supprimé."
+    "deleted": "Il file è stato eliminato."
   },
   "_templates_map": "===========================================================================================================================",
   "projectMaps": {
-    "settings": "Paramètres",
-    "fullscreen": "Mettre en plein écran",
-    "newMarker": "Nouveau marqueur"
+    "settings": "Impostazioni",
+    "fullscreen": "Mettere a schermo pieno",
+    "newMarker": "Nuovo marcatore"
   },
   "mapParams": {
     "topo": "Topo",
-    "aerial": "Aérienne",
+    "aerial": "Aereo",
     "standard": "Standard"
   },
   "mapSettings": {
-    "title": "Paramètres",
-    "kindOfMap": "Type de carte : ",
-    "saveChoice": "Utiliser ce fond de carte par défaut pour tous les membres du projet.",
-    "save": "Enregistrer",
-    "defaultCenter": "Centrage par défaut : ",
-    "defaultCenterInfo": "Centrer la carte sur la zone que vous souhaitez voir apparaitre par défaut puis cliquez sur enregistrer",
-    "centerSaved": "Le centrage par défaut de votre carte à été modifié.",
-    "deleteOlds": "Retirer les anciens marqueurs :",
-    "deleteOldsInfo": "Retirer les marqueurs dont la date de création remonte à plus de :",
-    "chooseDuration": "Choisir durée",
-    "delete": "retirer",
-    "oldsMarkersDeleted": "Les anciens marqueurs ont été supprimés",
-    "colorLegend": "Légende couleur :"
+    "title": "Impostazioni",
+    "kindOfMap": "Tipo di mappa : ",
+    "saveChoice": "Utilizzare questa mappa di sfondo predefinita per tutti i membri del progetto.",
+    "save": "Salva",
+    "defaultCenter": "Centraggio di default : ",
+    "defaultCenterInfo": "Centrare la mappa sull'area che si desidera visualizzare per impostazione predefinita e poi cliccare su salva",
+    "centerSaved": "La centratura predefinita della carta è stata modificata.",
+    "deleteOlds": "Rimuovere i vecchi marcatori:",
+    "deleteOldsInfo": "Rimuovere i marcatori con una data di creazione più vecchia di :",
+    "chooseDuration": "Scegliere la durata",
+    "delete": "rimuovere",
+    "oldsMarkersDeleted": "I vecchi marcatori sono stati rimossi",
+    "colorLegend": "Leggenda dei colori :"
   },
   "newMarker": {
-    "title": "Nouveau marqueur",
-    "color": "Couleur",
-    "type": "Type",
-    "icons": "Icones",
-    "arrows": "Flèches",
-    "lines": "Lignes",
-    "text": "Zone de texte",
-    "textLabel": "contenu de la zone de texte",
-    "textSubmit": "Créer",
-    "shapes": "Formes",
-    "myPosition": "Ma Position",
-    "myPositionInfo": "Cliquer sur le bouton ci-dessous pour créer un marqueur sur la carte à partir de votre position",
-    "updateUserPosition": "indiquer ma position"
+    "title": "Nuovo marcatore",
+    "color": "Colore",
+    "type": "Tipo",
+    "icons": "Icone",
+    "arrows": "Frecce",
+    "lines": "Linee",
+    "text": "Zona Testo",
+    "textLabel": "contenuto della casella di testo",
+    "textSubmit": "Crea",
+    "shapes": "Forme",
+    "myPosition": "Ma posizione",
+    "myPositionInfo": "Cliccare sul pulsante qui sotto per creare un marcatore sulla mappa dalla vostra posizione",
+    "updateUserPosition": "indicare la mia posizione"
   },
   "creatingIcon": {
-    "createIconInfo": "Cliquer sur la carte pour positionner le marqueur."
+    "createIconInfo": "Cliccare sulla mappa per posizionare il marcatore."
   },
   "editingIcon": {
-    "editIconInfo": "Cliquer sur la carte pour modifier la position du marqueur."
+    "editIconInfo": "Cliccare sulla mappa per modificare la posizione del marcatore."
   },
   "markerDetail": {
-    "editColor": "Éditer la couleur",
-    "editIcon": "Éditer l'icône",
-    "markerName": "Nom du marqueur...",
-    "markerDetail": "Détail",
-    "editMarker": "éditer",
-    "moveMarker": "déplacer",
-    "deleteMarker": "Supprimer",
-    "coordinates": "Coordonnées :",
-    "createdBy": "Créé par ",
-    "lastEdit": " (édité)",
-    "goTo": "Y aller !"
+    "editColor": "Modifica colore",
+    "editIcon": "Modifica l'icona",
+    "markerName": "Nome del marcatore...",
+    "markerDetail": "Dettaglio",
+    "editMarker": "modifica",
+    "moveMarker": "sposta",
+    "deleteMarker": "Elimina",
+    "coordinates": "Informazioni di contatto :",
+    "createdBy": "Creato da ",
+    "lastEdit": " (edito)",
+    "goTo": "Portami lì!"
   },
   "detailMemberPosition": {
-    "lastEdit": "Dernière mise à jour :",
-    "actualise": "actualiser",
-    "deleteMarker": "Supprimer"
+    "lastEdit": "Ultimo aggiornamento:",
+    "actualise": "aggiorna",
+    "deleteMarker": "Elimina"
   },
   "creatingPolyline": {
-    "save": "Enregistrer",
+    "save": "Salva",
     "undo": "annuler dernier point",
     "createIconInfo": "Placer les différents points puis cliquer sur enregistrer"
   },
@@ -655,14 +655,14 @@
   "activityDetail": {
     "activityTitle": "Activité sans nom",
     "activityDetail": "Détail",
-    "editActivity": "enregistrer",
-    "recursivity": "Récurrence",
-    "deleteActivity": "Supprimer",
-    "participants": "Participants :",
-    "paricipating": "Vous participez à cette activité",
-    "invited": "Invités :",
-    "noInvited": "Aucun membre invité.",
-    "noParticipant": "Aucun participant",
+    "editActivity": "salva",
+    "recursivity": "Ricorrenza",
+    "deleteActivity": "Elimina",
+    "participants": "Partecipanti :",
+    "paricipating": "Partecipa a questa attività",
+    "invited": "Invitati:",
+    "noInvited": "Nessun membro invitato.",
+    "noParticipant": "Nessun partecipante",
     "quitActivity": "Quitter l'activité",
     "joinActivity": "Participer à l'activité",
     "inviteMember": "inviter des membres à se joindre à l'activité",
