@@ -511,20 +511,20 @@
     "moreComments": "commenti aggiuntivi"
   },
   "commentItem": {
-    "answer": "Répondre",
-    "delete": "Supprimer",
-    "deleteSuccess": "Commentaire supprimé.",
-    "see": "Voir les",
-    "moreComments": "autres réponses"
+    "answer": "Risponda a",
+    "delete": "Elimina",
+    "deleteSuccess": "Commento eliminato.",
+    "see": "Vedi il",
+    "moreComments": "altre risposte"
   },
   "newSubComment": {
-    "placeholder": "Votre réponse..."
+    "placeholder": "La vostra risposta..."
   },
   "files": {
     "projectUsing": " ",
-    "of": "sur",
+    "of": "su",
     "allowed": " ",
-    "seeMore": "Voir plus"
+    "seeMore": "Mostra altro"
   },
   "filePreview": {
     "delete": "Supprimer le fichier"
