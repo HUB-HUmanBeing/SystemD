@@ -584,23 +584,23 @@
     "textSubmit": "Crea",
     "shapes": "Forme",
     "myPosition": "Ma posizione",
-    "myPositionInfo": "Cliquer sur le bouton ci-dessous pour créer un marqueur sur la carte à partir de votre position",
-    "updateUserPosition": "indiquer ma position"
+    "myPositionInfo": "Cliccare sul pulsante qui sotto per creare un marcatore sulla mappa dalla vostra posizione",
+    "updateUserPosition": "indicare la mia posizione"
   },
   "creatingIcon": {
-    "createIconInfo": "Cliquer sur la carte pour positionner le marqueur."
+    "createIconInfo": "Cliccare sulla mappa per posizionare il marcatore."
   },
   "editingIcon": {
-    "editIconInfo": "Cliquer sur la carte pour modifier la position du marqueur."
+    "editIconInfo": "Cliccare sulla mappa per modificare la posizione del marcatore."
   },
   "markerDetail": {
-    "editColor": "Éditer la couleur",
-    "editIcon": "Éditer l'icône",
-    "markerName": "Nom du marqueur...",
-    "markerDetail": "Détail",
-    "editMarker": "éditer",
-    "moveMarker": "déplacer",
-    "deleteMarker": "Supprimer",
+    "editColor": "Modifica colore",
+    "editIcon": "Modifica l'icona",
+    "markerName": "Nome del marcatore...",
+    "markerDetail": "Dettaglio",
+    "editMarker": "modifica",
+    "moveMarker": "sposta",
+    "deleteMarker": "Elimina",
     "coordinates": "Coordonnées :",
     "createdBy": "Créé par ",
     "lastEdit": " (édité)",
