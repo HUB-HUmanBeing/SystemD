@@ -1,5 +1,5 @@
 App.info({
-    id: 'com.meteor.systemd',
+    id: 'com.systemd.systemd',
     name: 'System-D',
     version: "0.0.7",
     description: 'Encrypted platform for collaborative and free projects',
@@ -27,7 +27,7 @@ App.setPreference('BackgroundColor', '0xff0000ff');
 App.setPreference('Orientation', 'portrait');
 //App.setPreference('StatusBarBackgroundColor', '#263238');
 
-
+App.addResourceFile('google-services.json', 'src/google-services.json', 'android');
 // App.accessRule('*');
 // App.accessRule('http://*');
 App.accessRule('https://*');
