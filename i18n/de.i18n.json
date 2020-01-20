@@ -487,6 +487,7 @@
   },
   "publicationItem": {
     "delete": "Entfernen",
+    "abort": "Annuler",
     "edit": "Bearbeiten",
     "deleteInfo": "Diese Aktion wird die Veröffentlichung und alle Kommentare unwiderruflich löschen",
     "deleteSuccess": "Diese Veröffentlichung und alle ihre Kommentare wurden entfernt",
