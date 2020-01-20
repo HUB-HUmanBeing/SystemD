@@ -12,7 +12,9 @@ Publication.extend({
             if(this.type === "fileContent"){
                 this.fileContent.projectFileIds.forEach(fileId=>{
                     let projectFile = ProjectFile.findOne(fileId)
-                    projectFile.removeAndDeleteFile()
+                    if(projectFile){
+                        projectFile.removeAndDeleteFile()
+                    }
                 })
             }
             return this.remove(err=>{
