@@ -630,32 +630,32 @@
   "_templates_calendar": "===========================================================================================================================",
   "projectCalendar": {
     "daysView": "Vista giornaliera",
-    "monthView": "Vue mensuelle",
-    "listView": "Liste des évènements mensuels",
-    "recurring": "(Récurrent)",
-    "unnamed": "Sans titre",
-    "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
-    "activityPlaced": "L'activité à été placée sur l'agenda.",
-    "settings": "Paramètres",
-    "addBtn": "Ajouter un événement"
+    "monthView": "Vista mensile",
+    "listView": "Lista degli eventi mensili",
+    "recurring": "(Ricorrente)",
+    "unnamed": "Senza titolo",
+    "setActivityInfo": "Posizionare l'attività dove si desidera che sia in agenda.",
+    "activityPlaced": "L'attività è stata messa in agenda.",
+    "settings": "Impostazioni",
+    "addBtn": "Aggiunga un evento"
   },
   "calendarSettings": {
-    "title": "Paramètres de l'agenda",
-    "defaultView": "Vue par défaut : ",
-    "colorLegend": "Legende couleur : ",
-    "defaultViewSaved": "La vue par défaut à été modifiée pour tout les membres du projet",
-    "deleteOlds": "Supprimer les anciennes activités",
-    "deleteOldsInfo": "Supprimer les activités dont la date de début remonte à plus de :",
-    "delete": "Supprimer",
-    "oldsActivitiesDeleted": "Les anciennes activités ont été supprimées"
+    "title": "Impostazioni del calendario",
+    "defaultView": "Vista di default: ",
+    "colorLegend": "Leggenda dei colori : ",
+    "defaultViewSaved": "La vista predefinita è stata modificata per tutti i membri del progetto",
+    "deleteOlds": "Cancellare le vecchie attività",
+    "deleteOldsInfo": "Cancellare le attività con una data di inizio superiore a:",
+    "delete": "Elimina",
+    "oldsActivitiesDeleted": "Le vecchie attività sono state cancellate"
   },
   "colorLegend": {
-    "placeholder": "Non renseigné",
-    "save": "Enregistrer"
+    "placeholder": "Nessuna informazione",
+    "save": "Salva"
   },
   "activityDetail": {
-    "activityTitle": "Activité sans nom",
-    "activityDetail": "Détail",
+    "activityTitle": "Attività senza nome",
+    "activityDetail": "Dettaglio",
     "editActivity": "salva",
     "recursivity": "Ricorrenza",
     "deleteActivity": "Elimina",
@@ -664,43 +664,43 @@
     "invited": "Invitati:",
     "noInvited": "Nessun membro invitato.",
     "noParticipant": "Nessun partecipante",
-    "quitActivity": "Quitter l'activité",
-    "joinActivity": "Participer à l'activité",
-    "inviteMember": "inviter des membres à se joindre à l'activité",
-    "onMap": "Position sur la carte :",
-    "showOnMap": "Voir"
+    "quitActivity": "Esci dall'attività",
+    "joinActivity": "Partecipare all'attività",
+    "inviteMember": "invitare i membri a partecipare all'attività",
+    "onMap": "Posizione sulla mappa:",
+    "showOnMap": "Vedi"
   },
   "weekDays": {
-    "day0": "Dimanche",
-    "day1": "Lundi",
-    "day2": "Mardi",
-    "day3": "Mercredi",
-    "day4": "Jeudi",
-    "day5": "Vendredi",
-    "day6": "Samedi"
+    "day0": "Domenica",
+    "day1": "Lunedì",
+    "day2": "Martedì",
+    "day3": "Mercoledì",
+    "day4": "Giovedì",
+    "day5": "Venerdì",
+    "day6": "Sabato"
   },
   "inviteMembers": {
-    "inviteEverybody": "Tous",
-    "removeEverybody": "Aucuns",
-    "cancelModifs": "Annuler modifs",
-    "save": "enregistrer"
+    "inviteEverybody": "Tutti",
+    "removeEverybody": "Nessuno",
+    "cancelModifs": "Annulla le modifiche",
+    "save": "salva"
   },
   "invitedPopup": {
-    "detail": "Détail : ",
-    "title": "Invitation à participer à une activité",
-    "start": "Début : ",
-    "end": "Fin : ",
-    "decline": "Décliner",
-    "accept": "Accepter"
+    "detail": "Dettaglio: ",
+    "title": "Invito a partecipare ad un'attività",
+    "start": "Inizio: ",
+    "end": "Fine: ",
+    "decline": "Declina",
+    "accept": "Accettare"
   },
   "checkList": {
-    "checkList": "Check list : ",
-    "newCheck": "Check...",
-    "addCheck": "Ajouter un check",
-    "saveCheckItems": "Enregistrer"
+    "checkList": "Lista di controllo: ",
+    "newCheck": "Controlla...",
+    "addCheck": "Aggiungi un assegno",
+    "saveCheckItems": "Salva"
   },
   "projectTasks": {
-    "title": "Liste des tâches",
+    "title": "Elenco delle operazioni da fare",
     "inProject": "Tâches en projet",
     "calendarPlaced": "Placées sur l'agenda",
     "waitingForStatus": "Tâches passées",
