@@ -19,7 +19,7 @@
     "arraybuffer-to-string": "^1.0.2",
     "autolinker": "^3.11.0",
     "axios": "^0.18.1",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^3.0.7",
     "bcryptjs": "^2.4.3",
     "beautify-scrollbar": "^1.0.8",
     "croppie": "2.6.3",
