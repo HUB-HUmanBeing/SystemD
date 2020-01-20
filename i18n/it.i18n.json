@@ -196,7 +196,7 @@
   "signinForm": {
     "userNameChoice": "Scegliere un nome utente",
     "passwordChoice": "Password",
-    "passwordRepeat": "Ripetere la password",
+    "passwordRepeat": "Ripeta la password",
     "accountCreate": "Creare un account"
   },
   "signinFormJs": {
@@ -211,17 +211,17 @@
     "characters": "caratteri speciali",
     "des": ", del ",
     "capital": "maiuscole",
-    "and": " e ",
+    "and": " e di ",
     "number": "cifre",
     "up": " per aumentare la forza della tua password.",
     "strength": "La forza della password deve essere di almeno 1O",
     "samePwd": "Le vostre due password non sono identiche",
     "typePwd": "Inserite una password",
-    "confirm": "Veuillez confirmer votre mot de passe",
-    "form": "Le formulaire d'inscription n'est pas valide",
-    "miss": "Il manque des informations",
-    "generation": "Génération des clefs de chiffrement",
-    "creation": "Création du compte utilisateur",
+    "confirm": "Per favore conferma la tua password",
+    "form": "Il modulo di registrazione non è valido",
+    "miss": "Mancano informazioni",
+    "generation": "Generazione di chiavi di cifratura",
+    "creation": "Creazione di un account utente",
     "initialization": "Inizializzazione di una nuova sessione criptata"
   },
   "signinContainer": {
@@ -268,247 +268,247 @@
     "noDescription": "Descrizione non disponibile."
   },
   "editProjectAvatar": {
-    "edit": "Editer l'avatar",
-    "delete": "Supprimer l'avatar",
+    "edit": "Modifica avatar",
+    "delete": "Cancella avatar",
     "OK": "valider"
   },
   "editProjectDescription": {
-    "label": "Description du projet"
+    "label": "Descrizione del progetto"
   },
   "projectParams": {
-    "publicInfos": "Informations publiques",
-    "createInvitelink": "Nouvelle invitation",
-    "invitationList": "Invitations en cours",
-    "deleteProject": "Supprimer le projet"
+    "publicInfos": "Informazioni pubbliche",
+    "createInvitelink": "Nuovo invito",
+    "invitationList": "Inviti in corso",
+    "deleteProject": "Elimina il progetto"
   },
   "deleteProject": {
-    "deleteProjectInfo": "Cette action supprimera définitivement le projet",
-    "deleteProjectError": "Vous ne pouvez pas supprimer ce projet",
-    "deleteProjectErrorTips": "Il reste des membres à l'intérieur de ce projet",
-    "deleteSuccess": "Le projet a été supprimé"
+    "deleteProjectInfo": "Questa azione eliminerà definitivamente il progetto",
+    "deleteProjectError": "Non è possibile eliminare questo progetto",
+    "deleteProjectErrorTips": "Ci sono ancora membri all'interno di questo progetto",
+    "deleteSuccess": "Il progetto è stato eliminato"
   },
   "projectLayout": {
-    "decrypting1": "Déchiffrement des informations projet"
+    "decrypting1": "Decifrare le informazioni del progetto"
   },
   "newInvitation": {
-    "title": "Création du lien d'invitation",
-    "infoQuote": "En transmettant des liens d'invitation, vous transmettez les clefs de chiffrement de votre projet à tous ceux qui auront accès au lien généré durant la période de validité.",
-    "durationLabel": "Durée de validité du lien d'invitation",
-    "hour": "heure",
-    "day": "jour",
-    "week": "semaine",
-    "month": "mois",
-    "remainingLabel1": "Valide pour inviter",
-    "user": "utilisateur",
-    "users": "utilisateurs",
-    "ok": "Générer le lien d'invitation",
-    "loader": "Génération du lien d'invitation",
-    "addMessage": "Ajouter un message d'invitation",
-    "invitMessage": "Message envoyé avec votre invitation",
-    "backToParams": "Retour aux paramètres du projet"
+    "title": "Creazione del link di invito",
+    "infoQuote": "Trasmettendo i link di invito, trasmettete le chiavi di codifica del vostro progetto a tutti coloro che avranno accesso al link generato durante il periodo di validità.",
+    "durationLabel": "Periodo di validità del link di invito",
+    "hour": "ora",
+    "day": "giorno",
+    "week": "settimana",
+    "month": "mese",
+    "remainingLabel1": "Valido per invitare",
+    "user": "utente",
+    "users": "utenti",
+    "ok": "Genera un link di invito",
+    "loader": "Generazione di link di invito",
+    "addMessage": "Aggiungete un messaggio d'invito",
+    "invitMessage": "Messaggio inviato con il vostro invito",
+    "backToParams": "Torna ai parametri del progetto"
   },
   "showInvitation": {
-    "title": "Lien d'nvitation",
-    "infoLink": "Copiez ce lien et envoyez-le à la ou les personnes que vous souhaitez inviter.",
-    "copied": "Lien d'invitation copié dans le presse papier",
-    "invitTitle": "Invitation à rejoindre le projet ",
-    "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs. Cliquez sur le lien pour voir l'invitation.",
-    "infoQr": "Si la personne à inviter est à coté de vous, elle peut aussi flasher ce QR-code avec n'importe quelle application de lecture de QR-code pour accéder à l'invitation.",
-    "infoDestroy": "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux clefs de chiffrement de votre projet.",
-    "destroy": "Supprimer le lien d'invitation",
-    "backToParams": "Retour aux paramètres du projet",
-    "deleted": "le lien d'invitation à été détruit"
+    "title": "Link per l'invito",
+    "infoLink": "Copiate questo link e inviatelo alla persona o alle persone che desiderate invitare.",
+    "copied": "Link invito copiato negli appunti",
+    "invitTitle": "Invito a partecipare al progetto ",
+    "invitMessage": "Siete stati invitati a partecipare a un progetto su System-D: la piattaforma criptata per progetti di collaborazione. Clicca sul link per vedere l'invito.",
+    "infoQr": "Se la persona da invitare è accanto a voi, può anche flashare questo codice QR con qualsiasi applicazione di lettura di codici QR per accedere all'invito.",
+    "infoDestroy": "Rimuovendo l'invito, si elimina la possibilità di utilizzare il link dell'invito per accedere alle chiavi di cifratura del progetto.",
+    "destroy": "Rimuovere il link di invito",
+    "backToParams": "Torna ai parametri del progetto",
+    "deleted": "il link dell'invito è stato distrutto"
   },
   "invitationList": {
-    "from": "Lien d'invitation créé",
-    "by": "Créée par",
-    "expireIn": "Expire dans",
-    "remaining": "Invitations restantes",
-    "noInvits": "Il n'y a aucun lien d'invitation en cours de validité.",
-    "newInvitation": "Générer un nouveau lien d'invitation."
+    "from": "Creazione del link per l'invito",
+    "by": "Creato da",
+    "expireIn": "Scade in",
+    "remaining": "Inviti rimanenti",
+    "noInvits": "Non ci sono link di invito validi.",
+    "newInvitation": "Genera un nuovo link di invito."
   },
   "invitation": {
-    "title": "Invitation à rejoindre un projet",
-    "moreInfo": "Présentation de System-D",
-    "project": "Projet",
-    "userAlreadyInProject": "Vous participez déjà à ce projet",
-    "description": "Description du projet",
-    "noDescription": "Description non-renseignée",
-    "message": "Message d'invitation",
-    "decline": "Décliner",
-    "accept": "Accepter",
-    "noLongerExist": "Cette invitation est expirée",
-    "noLongerExistInfo": "Demandez à la personne qui vous a envoyé l'invitation de vous en renvoyer une nouvelle",
-    "needToLoginFirst": "Vous devez être connecté pour rejoindre un projet",
-    "needToLoginFirstInfo": "Cliquez sur le bouton pour vous connecter ou vous inscrire et rejoindre le projet.",
-    "needToLoginFirstButton": "S'enregistrer"
+    "title": "Invito a partecipare a un progetto",
+    "moreInfo": "Presentazione del System-D",
+    "project": "Progetto",
+    "userAlreadyInProject": "Sei già coinvolto in questo progetto",
+    "description": "Descrizione del progetto",
+    "noDescription": "Descrizione non riportata",
+    "message": "Messaggio di invito",
+    "decline": "Declina",
+    "accept": "Accettare",
+    "noLongerExist": "Questo invito è scaduto",
+    "noLongerExistInfo": "Chiedete alla persona che vi ha inviato l'invito a mandarvene uno nuovo",
+    "needToLoginFirst": "Per partecipare a un progetto è necessario aver effettuato il login",
+    "needToLoginFirstInfo": "Cliccare sul pulsante per effettuare il login o registrarsi e partecipare al progetto.",
+    "needToLoginFirstButton": "Registrarsi"
   },
   "projectMembers": {
-    "membersList": "Liste des membres",
-    "admins": "Administrateurs",
-    "members": "Membres"
+    "membersList": "Lista dei membri",
+    "admins": "Amministratori",
+    "members": "Membri"
   },
   "member": {
-    "since": "Depuis",
-    "invitedBy": "Invité par",
-    "projectCreator": "Créateur du projet",
-    "quitProject": "Quitter le projet",
-    "quitProjectError": "Vous ne pouvez pas quitter le projet.",
-    "quitProjectErrorTips": "Nommer au moins un nouvel administrateur pour le projet.",
-    "quitProjectInfo": "Vous serez retirés des participants au projet.",
-    "promoteUser": "Donner les droits d'administrateur",
-    "promoteUserInfo": "L'utilisateur pourra inviter et retirer des membres au projet.",
-    "kickUser": "Retirer l'utilisateur",
-    "kickUserInfo": "Retirer l'utilisateur de la liste des membres du projet.",
-    "removedSuccess": "L'utilisateur à été retiré des membres du projet",
-    "promoteSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
-    "quitSuccess": "Vous avez quitté le projet"
+    "since": "Da",
+    "invitedBy": "Invitato da",
+    "projectCreator": "Creatore del progetto",
+    "quitProject": "Abbandona il progetto",
+    "quitProjectError": "Non puoi abbandonare il progetto.",
+    "quitProjectErrorTips": "Nominate almeno un nuovo amministratore per il progetto.",
+    "quitProjectInfo": "Sarete allontanati dai partecipanti al progetto.",
+    "promoteUser": "Consegna dei privilegi di amministratore",
+    "promoteUserInfo": "L'utente potrà invitare e ritirare i membri al progetto.",
+    "kickUser": "Rimuovi l'utente",
+    "kickUserInfo": "Rimuovi l'utente dall'elenco dei membri del progetto.",
+    "removedSuccess": "L'utente è stato rimosso dai membri del progetto",
+    "promoteSuccess": "L'utente fa ora parte degli amministratori del progetto",
+    "quitSuccess": "Hai lasciato il progetto"
   },
   "_templates_users": "===========================================================================================================================",
   "deleteAccount": {
-    "confirmPassword": "Confirmer avec votre mot de passe",
-    "deleteAccount": "Supprimer le compte"
+    "confirmPassword": "Conferma la vostra password",
+    "deleteAccount": "Elimina account"
   },
   "deleteAccountJs": {
-    "error": "Une erreur s'est produite",
-    "deletedAccount": "Votre compte utilisateur à été définitivement supprimé"
+    "error": "Si é verificato un errore",
+    "deletedAccount": "Il vostro account utente è stato eliminato permanentemente"
   },
   "editAvatar": {
-    "edit": "Éditer l'avatar",
-    "delete": "Supprimer l'avatar",
+    "edit": "Modifica avatar",
+    "delete": "Cancella avatar",
     "OK": "Valider"
   },
   "editPassword": {
-    "oldPassword": "Ancien mot de passe",
-    "newPassword": "Nouveau mot de passe",
-    "repeatPassword": "Répéter mot de passe",
-    "strength": "Force",
-    "editPassword": "Modifier mot de passe"
+    "oldPassword": "Vecchia password",
+    "newPassword": "Nuova Password",
+    "repeatPassword": "Ripeta la password",
+    "strength": "Forza",
+    "editPassword": "Cambia password"
   },
   "editPasswordJs": {
-    "previousPwd": "veuillez entrer votre précédent mot de passe",
-    "crypt": "Le chiffrement de vos contenus sur System-D repose sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.",
-    "use": "Utilisez des ",
-    "characters": "caractères spéciaux",
-    "des": ", des ",
-    "capital": "majuscules",
-    "and": " et des ",
-    "number": "chiffres",
-    "up": " afin d'augmenter la force de votre mot de passe.",
-    "strength": "La force du mot de passe doit au moins être de 1O",
-    "samePwd": "Les mots de passe ne sont pas identiques",
-    "typePwd": "Veuillez saisir un mot de passe",
-    "confirm": "Veuillez confirmer votre mot de passe",
-    "form": "Le formulaire d'inscription n'est pas valide",
-    "miss": "Il manque des informations",
-    "pwdChange": "Changement du mot de passe",
-    "encryptionKey": "Chiffrement de la clef privée à partir du nouveau mot de passe",
-    "initialization": "Rénitialisation de la session chiffrée"
+    "previousPwd": "Si prega di inserire la password precedente",
+    "crypt": "La crittografia dei vostri contenuti su System-D si basa sulla vostra password, quindi vi preghiamo di utilizzare una password forte.",
+    "use": "Utilizza di ",
+    "characters": "caratteri speciali",
+    "des": ", del ",
+    "capital": "maiuscole",
+    "and": " e di ",
+    "number": "cifre",
+    "up": " al fine per aumentare la forza della tua password.",
+    "strength": "La forza della password deve essere di almeno 1O",
+    "samePwd": "Le password non sono uguali",
+    "typePwd": "Inserisca una password",
+    "confirm": "Si prega di confermare la password",
+    "form": "Il modulo di registrazione non è valido",
+    "miss": "Mancano informazioni",
+    "pwdChange": "Cambiare la password",
+    "encryptionKey": "Crittografare la chiave privata con la nuova password",
+    "initialization": "Resettaggio della sessione criptata"
   },
   "userParams": {
-    "editPassword": "Modifier le mot de passe",
-    "peditPassword": "Nous n'aurons aucun moyen de vous aider si vous oubliez votre mot de passe. Ainsi, il est recommandé de noter le mot de passe que vous aurez choisi.",
-    "deleteAccount": "Supprimer votre compte",
-    "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
-    "passwordDeleteAccount": "Entrez votre mot de passe afin de confirmer la suppression du compte."
+    "editPassword": "Modifica password",
+    "peditPassword": "Non avremo modo di aiutarti se dimentichi la tua password. Pertanto, si raccomanda di annotarsi la password scelta.",
+    "deleteAccount": "Elimina il vostro account",
+    "pdeleteAccount": "LA CANCELLAZIONE DEL VOSTRO ACCOUNT SARÀ IRREVOCABILE.",
+    "passwordDeleteAccount": "Si prega di inserire la password per confermare l'eliminazione dell'account."
   },
   "userOptions": {
-    "language": "Langue"
+    "language": "Lingua"
   },
   "_templates_forum": "===========================================================================================================================",
   "categoryList": {
-    "categoryName": "Nom du dossier",
-    "new": "Nouveau dossier",
-    "myFiles": "DOCUMENTS",
-    "seeMore": "Voir plus"
+    "categoryName": "Nome cartella",
+    "new": "Nuova Cartella",
+    "myFiles": "DOCUMENTI",
+    "seeMore": "Mostra altro"
   },
   "categoryItem": {
-    "categoryName": "Nom du dossier",
-    "delete": "Supprimer le dossier",
-    "deleteInfo": "Toutes les conversations à l'intérieur du dossier seront supprimées",
-    "moveDown": "Descendre dans la liste",
-    "moveUp": "Monter dans la liste",
-    "edit": "Éditer le nom",
-    "disableNotifications": "Les notifications sont actives sur ce dossier, cliquez pour les désactiver.",
-    "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver.",
-    "abort": "Annuler",
-    "showMore": "Voir plus",
-    "newTopic": "Créer une nouvelle discussion",
-    "noTopics": "Ce dossier est vide",
-    "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
-    "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier",
-    "topicName": "Nom de la discussion"
+    "categoryName": "Nome cartella",
+    "delete": "Elimina la cartella",
+    "deleteInfo": "Tutte le conversazioni all'interno della cartella saranno cancellate",
+    "moveDown": "Spostare in basso nella lista",
+    "moveUp": "Spostati nella lista",
+    "edit": "Modifica nome",
+    "disableNotifications": "Le notifiche sono attive su questa cartella, fare clic per disattivarle.",
+    "enlableNotifications": "Le notifiche sono disabilitate su questa cartella, fare clic per riattivarle.",
+    "abort": "Annulla",
+    "showMore": "Mostra altro",
+    "newTopic": "Inizia una nuova discussione",
+    "noTopics": "Questa cartella è vuota",
+    "notifEnabled": "Ora riceverete le notifiche per tutte le discussioni in questa cartella",
+    "notifDisabled": "Le notifiche sono state disabilitate per tutti i thread di questa cartella",
+    "topicName": "Titolo della discussione"
   },
   "topic": {
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier en cours"
+    "downloadAndDecrypt": "Scaricare e decifrare il file corrente"
   },
   "topicItem": {
-    "unseenPublications": "Nouvelles publications",
-    "dragInfo": "Vous pouvez déplacer cette discussion dans une autre catégorie.",
-    "mainTopic": "DISCUSSION PRINCIPALE"
+    "unseenPublications": "Nuove pubblicazioni",
+    "dragInfo": "Potete spostare questa discussione in un'altra categoria.",
+    "mainTopic": "DISCUSSIONE PRINCIPALE"
   },
   "topicHeader": {
-    "mainTopic": "Discussion principale",
-    "topicName": "Nom de la discussion",
-    "delete": "Supprimer la discussion",
-    "edit": "Changer le nom de la discussion",
-    "disableNotifications": "Les notifications sont actives pour cette discussion, cliquez pour les désactiver.",
-    "enlableNotifications": "Les notifications sont désactivées pour cette discussion, cliquez pour les activer.",
-    "abort": "annuler",
-    "deleteInfo": "Cette discussion et tout son contenu seront supprimés.",
-    "deleteSuccess": "La discussion à été supprimée",
-    "notifEnabled": "Vous recevrez désormais des notifications pour chaque nouvelle publication.",
-    "notifDisabled": "Les notifications ont été désactivées pour cette discussion."
+    "mainTopic": "Discussione principale",
+    "topicName": "Titolo della discussione",
+    "delete": "Eliminare la discussione",
+    "edit": "Cambiare il nome della discussione",
+    "disableNotifications": "Le notifiche sono attive per questo thread, fare clic per disattivarle.",
+    "enlableNotifications": "Le notifiche sono disattivate per questo thread, fare clic per attivarle.",
+    "abort": "annulla",
+    "deleteInfo": "Questa discussione e tutti i suoi contenuti saranno eliminati.",
+    "deleteSuccess": "La discussione è stata eliminata",
+    "notifEnabled": "Riceverete ora le notifiche per ogni nuova pubblicazione.",
+    "notifDisabled": "Le notifiche sono state disabilitate per questa discussione."
   },
   "newPublication": {
-    "return": "Retour",
-    "newPublication": "Nouvelle publication",
-    "text": "Texte",
-    "images": "Images et texte",
-    "poll": "Sondage",
-    "files": "Images, fichiers et texte"
+    "return": "Indietro",
+    "newPublication": "Nuova pubblicazione",
+    "text": "Testo",
+    "images": "Immagini e testi",
+    "poll": "Sondaggio",
+    "files": "Immagini, files e testo"
   },
   "textualContent": {
-    "placeholder": "Contenu de votre publication ...",
-    "publish": "Publier"
+    "placeholder": "Contenuto della vostra pubblicazione ...",
+    "publish": "Pubblicare"
   },
   "pollContent": {
-    "placeholder": "Description du sondage",
-    "newProposition": "Proposition de réponse n°",
-    "addProposition": "Ajouter une proposition",
-    "publish": "Publier le sondage"
+    "placeholder": "Descrizione del sondaggio",
+    "newProposition": "Risposta proposta n.",
+    "addProposition": "Aggiungere una proposta",
+    "publish": "Pubblica il sondaggio"
   },
   "fileContent": {
-    "addFiles": "Ajouter un ou plusieurs documents",
-    "loadInfos": "Chiffrement et upload des documents"
+    "addFiles": "Aggiungete uno o più documenti",
+    "loadInfos": "Criptazione e upload di documenti"
   },
   "publicationsList": {
-    "showMore": "Voir plus..."
+    "showMore": "Mostra altro..."
   },
   "publicationItem": {
-    "delete": "Supprimer",
-    "edit": "Editer",
-    "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
-    "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
-    "pinnedPublicationHead": "Publication épinglée"
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "deleteInfo": "Questa azione eliminerà definitivamente la pubblicazione e tutti i suoi commenti",
+    "deleteSuccess": "Questa pubblicazione e tutti i suoi commenti sono stati eliminati",
+    "pinnedPublicationHead": "Pubblicazione fissata con spilla"
   },
   "editText": {
-    "placeholder": "Contenu de votre publication ...",
-    "abort": "Annuler",
-    "publish": "Enregistrer"
+    "placeholder": "Contenuto della vostra pubblicazione ...",
+    "abort": "Annulla",
+    "publish": "Salva"
   },
   "showPollContent": {
-    "answers": "participants"
+    "answers": "partecipanti"
   },
   "pollOption": {
-    "vote": "votes"
+    "vote": "voti"
   },
   "newComment": {
-    "placeholder": "Votre commentaire..."
+    "placeholder": "Il vostro commento..."
   },
   "commentList": {
-    "see": "Voir les",
-    "moreComments": "autres commentaires"
+    "see": "Vedi il",
+    "moreComments": "commenti aggiuntivi"
   },
   "commentItem": {
     "answer": "Répondre",

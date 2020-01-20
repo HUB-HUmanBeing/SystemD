@@ -19,6 +19,7 @@ Template.newComment.events({
     'submit [newPublicationForm]': function (event, instance) {
         event.preventDefault()
         instance.isCreating.set(true)
+        resetTooltips()
         let content = preFormatMessage($("#newCommentText-" + instance.data.publication._id).val())
         cryptoTools.sim_encrypt_data(content, Session.get("currentProjectSimKey"), encryptedContent => {
             let comment = new Comment()
