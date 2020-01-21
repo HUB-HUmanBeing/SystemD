@@ -107,11 +107,11 @@
   },
   "landingAim": {
     "ourPurpose": "NUESTRO OBJETIVO",
-    "purpose": "Créer un outil qui accompagne la transition vers un mode de production basé sur la collaboration et le partage.",
+    "purpose": "Crear una herramienta que apoye la transición desde una sociedad del dinero en quiebra hacia un modo de producción basado en la colaboración y el compartir.",
     "3DevPhases": "TRES FASES DE DESARROLLO",
     "createTool": "Crear una herramienta de gestión de proyectos abierta a todos y todas",
     "cTool": "Una herramienta que permitirá a los diferentes grupos y asociaciones organizarse de forma eficaz. Una herramienta gratuita, open-source y diseñada para promover la horizontalidad en la gestión de proyectos.",
-    "doOfSystemD": "Faire de SystemD le réseau social du projet collaboratif",
+    "doOfSystemD": "Hacer de System-D la red social del proyecto sin ánimo de lucro",
     "dOfSystD": "Creación de interfaces que hacen de la plataforma un espacio de encuentro y difusión de usuarios en diferentes proyectos: búsqueda geolocalizada por centros de competencias y áreas de interés, mensajería encriptada, blogs compartidos, etc.",
     "developFreeNetwork": "Desarrollar una red de servicios gratuitos y compartidos",
     "dFreeNetwork": "Permitir que cada usuario y cada proyecto compartan los recursos producidos para lograr una circulación a gran escala sin ánimo de lucro."
@@ -160,7 +160,7 @@
     "signin": "Registro"
   },
   "landingTitle": {
-    "h3title": "Plateforme chiffrée de projets collaboratifs",
+    "h3title": "Plataforma encriptada para proyectos colaborativos sin ánimo de lucro",
     "ptitle": "Crea proyectos, invita a tus amigos y disfruta las herramientas gratuitas y seguras para organizar juntos tu asociación o colectivo.",
     "signin": "Registro"
   },
@@ -750,7 +750,7 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Hojas de cálculo",
-    "noSpreadsheet": "Aucun tableur",
+    "noSpreadsheet": "Ninguna hoja de cálculo",
     "newSpreadsheet": "Nueva hoja de cálculo",
     "showMore": "Ver más",
     "SpreadsheetName": "Nombre de la hoja de cálculo"
@@ -758,8 +758,8 @@
   "spreadsheetHeader": {
     "spreadsheetName": "Nombre de la hoja de cálculo",
     "delete": "Borrar la hoja de cálculo",
-    "edit": "Modifier le nom du tableur",
-    "abort": "Annuler",
+    "edit": "Cambiar el nombre de la hoja de cálculo",
+    "abort": "cancelar",
     "deleteInfo": "La hoja de cálculo se eliminará con su contenido",
     "deleteSuccess": "La hoja de cálculo ha sido eliminada",
     "lastEdit": "Última edición",
