@@ -701,26 +701,26 @@
   },
   "projectTasks": {
     "title": "Elenco delle operazioni da fare",
-    "inProject": "Tâches en projet",
-    "calendarPlaced": "Placées sur l'agenda",
-    "waitingForStatus": "Tâches passées",
-    "done": "Tâches terminées",
-    "inProjectDetail": "Les taches placées ici n'ont pas encore de date fixée.",
-    "calendarPlacedDetail": "Les taches placées sont placées dans l'agenda avec des dates dans le futur.",
-    "waitingForStatusDetail": "Les taches se trouvant dans cette section ont étés placées sur l'agenda, mais leurs dates est dépassée. A vous de voir si elles doivent etre remises en projet, replanifiées, ou si on peut les considerer comme terminées",
-    "doneDetail": "Cette section regroupe les taches qui ont étés considérées comme terminées.",
-    "newActivity": "Nouvelle tâche",
-    "myTasks": "Mes tâches"
+    "inProject": "Compiti di progetto",
+    "calendarPlaced": "Inserito in agenda",
+    "waitingForStatus": "Compiti passati",
+    "done": "Compiti completati",
+    "inProjectDetail": "I compiti qui inseriti non hanno ancora una data fissa.",
+    "calendarPlacedDetail": "I compiti collocati vengono inseriti nel calendario con le date nel futuro.",
+    "waitingForStatusDetail": "I compiti di questa sezione sono stati inseriti nel calendario, ma le loro date sono passate. Sta a voi vedere se devono essere riprogettati, riprogrammati o se possono essere considerati completati",
+    "doneDetail": "Questa sezione raggruppa i compiti che sono stati considerati completati.",
+    "newActivity": "Nuovo compito",
+    "myTasks": "I miei compiti"
   },
   "tasksSettings": {
-    "title": "Paramètres de la liste de tâches",
-    "colorLegend": "Legende couleur : ",
-    "deleteDone": "Supprimer les tâches terminées",
-    "doneActivitiesDeleted": "Les tâches terminées ont été supprimées",
-    "delete": "Supprimer"
+    "title": "Impostazioni dell'elenco delle compiti",
+    "colorLegend": "Leggenda dei colori: ",
+    "deleteDone": "Eliminare le compiti completati",
+    "doneActivitiesDeleted": "I compiti completati sono stati eliminati",
+    "delete": "Elimina"
   },
   "taskItem": {
-    "participants": "Participants",
+    "participants": "Partecipanti",
     "inviteds": "Membres invités",
     "checklist": "Check list",
     "start": "Début",
