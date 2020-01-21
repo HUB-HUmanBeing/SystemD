@@ -270,7 +270,7 @@
   "editProjectAvatar": {
     "edit": "Modifica avatar",
     "delete": "Cancella avatar",
-    "OK": "valider"
+    "OK": "confermare"
   },
   "editProjectDescription": {
     "label": "Descrizione del progetto"
@@ -376,7 +376,7 @@
   "editAvatar": {
     "edit": "Modifica avatar",
     "delete": "Cancella avatar",
-    "OK": "Valider"
+    "OK": "Confermare"
   },
   "editPassword": {
     "oldPassword": "Vecchia password",
@@ -721,46 +721,46 @@
   },
   "taskItem": {
     "participants": "Partecipanti",
-    "inviteds": "Membres invités",
-    "checklist": "Check list",
-    "start": "Début",
-    "end": "Fin"
+    "inviteds": "Membri invitati",
+    "checklist": "Lista di controllo",
+    "start": "Inizio",
+    "end": "Fine"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
-    "title": "Soutenir System-D",
-    "why": "Nous avons besoins de vos donations",
-    "whyText": "Le projet System-D à été bâti avec le cœur, sur du temps libre. Si vous souhaitez le voir perdurer et offrir à ceux qui le font vivre du temps libre pour developper de nouvelles fonctionnalités et améliorer les fonctionnalités existantes, vos donations sont importantes.",
-    "withTheMoney": "Vos donations permettent :",
-    "servers": "De payer les frais d'hébergement de la plate-forme pour un nombre toujours croissant d'utilisateurs",
-    "sustain": "De maintenir et améliorer les fonctionnalités de System-D, de les rendre accessible à toujours plus d'utilisateurs, et prendre en compte les retours utilisateurs.",
-    "develop": "De créer de nouvelles fonctionnalités. Prochains chantiers :",
-    "next1": "Discussions instantanées entre utilisateurs, utilisateurs et projets, projets.",
-    "next2": "Rechercher un projet ou un utilisateur par compétences, centre d'intérêt, type d'activité, localisation.",
-    "next3": "applications Android, Bureau, et IOS",
-    "ponctual": "Donation ponctuelle ( Paypal )",
-    "ponctualInfo": "Envoyer une donation ponctuelle via notre compte Paypal :",
-    "recursive": "Donation récurrente ( liberapay )",
-    "recursiveInfo": "Donner un peu d'argent tout les mois à System-D pour soutenir son développement sur le long terme via la plate-forme libre et open-source LiberaPay :",
-    "cryptos": "Donation en crypto-monnaies",
-    "donateIn": "Envoyer un don sur le wallet de System-D en",
+    "title": "Supportare Sistema-D",
+    "why": "Abbiamo bisogno delle vostre donazioni",
+    "whyText": "Il progetto System-D è stato costruito dal cuore, nel tempo libero. Se volete vederlo continuare e offrire a chi lo fa vivere il tempo libero per sviluppare nuove funzionalità e migliorare quelle esistenti, le vostre donazioni sono importanti.",
+    "withTheMoney": "Le vostre donazioni lo rendono possibile:",
+    "servers": "Pagare i costi di hosting della piattaforma per un numero sempre crescente di utenti",
+    "sustain": "Mantenere e migliorare le funzionalità di System-D, renderle accessibili a un numero sempre maggiore di utenti e tener conto del feedback degli utenti.",
+    "develop": "Per creare nuove funzionalità. Prossimi progetti:",
+    "next1": "Discussioni istantanee tra utenti<->utenti e progetti<->progetti.",
+    "next2": "Ricerca di un progetto o di un utente per competenze, interesse, tipo di attività, localizzazione.",
+    "next3": "Applicazioni Android, Desktop e IOS",
+    "ponctual": "Donazione una tantum ( Paypal )",
+    "ponctualInfo": "Invia una donazione una tantum tramite il nostro conto Paypal:",
+    "recursive": "Donazione ricorrente ( liberapay )",
+    "recursiveInfo": "Dare un po' di soldi ogni mese a System-D per sostenere il suo sviluppo a lungo termine attraverso la piattaforma gratuita e open-source LiberaPay :",
+    "cryptos": "Donazione in cripto-valuta",
+    "donateIn": "Inviare una donazione al wallet System-D in",
     "wallet": "Wallet ",
-    "copied": "Adresse du wallet copiée dans le presse papier"
+    "copied": "Indirizzo del wallet copiato negli appunti"
   },
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
-    "spreadsheetList": "Tableurs",
-    "noSpreadsheet": "Aucun tableur",
-    "newSpreadsheet": "Nouveau tableur",
-    "showMore": "Voir plus",
-    "SpreadsheetName": "Nom du tableur"
+    "spreadsheetList": "Fogli di calcolo",
+    "noSpreadsheet": "Nessun foglio di calcolo",
+    "newSpreadsheet": "Nuovo foglio di calcolo",
+    "showMore": "Mostra altro",
+    "SpreadsheetName": "Nome del foglio di calcolo"
   },
   "spreadsheetHeader": {
-    "spreadsheetName": "Nom du tableur",
-    "delete": "Supprimer le tableur",
-    "edit": "Modifier le nom du tableur",
-    "abort": "Annuler",
-    "deleteInfo": "Ce tableur sera supprimé ainsi que tout son contenu.",
+    "spreadsheetName": "Nome del foglio di calcolo",
+    "delete": "Eliminare il foglio di calcolo",
+    "edit": "Modifica del nome del foglio di calcolo",
+    "abort": "Annulla",
+    "deleteInfo": "Questo foglio di calcolo sarà eliminato insieme a tutto il suo contenuto.",
     "deleteSuccess": "Il foglio di calcolo è stato eliminato",
     "lastEdit": "Edizione più recente",
     "uploadTable": "Importare un foglio di calcolo esistente da un file CSV",
