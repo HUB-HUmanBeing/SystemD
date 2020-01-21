@@ -10,6 +10,7 @@ import cryptoTools from "../cryptoTools";
 import frLocale from '@fullcalendar/core/locales/fr';
 import esLocale from '@fullcalendar/core/locales/es';
 import deLocale from '@fullcalendar/core/locales/de';
+import itLocale from '@fullcalendar/core/locales/it';
 import mapParams from "./mapParams";
 
 const calendarController = {
@@ -24,6 +25,9 @@ const calendarController = {
                 break
             case 'es-ES':
                 return esLocale
+                break
+            case 'it-IT':
+                return itLocale
                 break
             default:
                 return null;

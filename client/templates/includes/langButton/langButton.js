@@ -32,6 +32,12 @@ Template.langButton.helpers({
                 langFormat: 'de-DE',
                 langIso639: 'DE',
                 selected: actualLang === 'de-DE'
+            },
+            {
+                name: "Italiano",
+                langFormat: 'it-IT',
+                langIso639: 'IT',
+                selected: actualLang === 'it-IT'
             }
         ]
     }
