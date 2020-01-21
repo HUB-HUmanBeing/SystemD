@@ -29,6 +29,12 @@ Template.userOptions.helpers({
                 langFormat: 'de-DE',
                 langIso639: 'DE',
                 selected: i18n.getLocale()==='de-DE'
+            },
+            {
+                name: "Italiano",
+                langFormat: 'it-IT',
+                langIso639: 'IT',
+                selected: i18n.getLocale()==='it-IT'
             }
         ]
     }
