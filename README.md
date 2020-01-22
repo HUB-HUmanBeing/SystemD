@@ -1,6 +1,7 @@
 
 ![enter image description here](https://i.imgur.com/nU2XbDJ.png)
-#  www.system-d.org
+#  www.system-d.org 
+[![Build Status](https://travis-ci.com/HUB-HUmanBeing/SystemD.svg?branch=develop)](https://travis-ci.com/HUB-HUmanBeing/SystemD)
 
 
 ## Plate forme web chiffrée de projets collaboratifs non marchands
