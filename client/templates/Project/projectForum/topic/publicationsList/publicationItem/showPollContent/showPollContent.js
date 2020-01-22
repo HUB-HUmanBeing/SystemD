@@ -45,12 +45,14 @@ Template.showPollContent.onCreated(function () {
     this.pollOptions = new ReactiveVar([])
     this.autorun(() => {
         let publication = Publication.findOne(this.data.id)
-        cryptoTools.sim_decrypt_data(publication.pollContent.symEnc_text, Session.get("currentProjectSimKey"), (decryptedSymEnc_text) => {
-            this.decryptedSymEnc_text.set(decryptedSymEnc_text)
-        })
-        cryptoTools.decryptArrayOfObject(this.data.content.options, {symKey: Session.get("currentProjectSimKey")}, (pollOptions) => {
-            this.pollOptions.set(pollOptions)
-        })
+        if (publication) {
+            cryptoTools.sim_decrypt_data(publication.pollContent.symEnc_text, Session.get("currentProjectSimKey"), (decryptedSymEnc_text) => {
+                this.decryptedSymEnc_text.set(decryptedSymEnc_text)
+            })
+            cryptoTools.decryptArrayOfObject(this.data.content.options, {symKey: Session.get("currentProjectSimKey")}, (pollOptions) => {
+                this.pollOptions.set(pollOptions)
+            })
+        }
     })
 
 });
