@@ -134,6 +134,9 @@ Template.activityDetail.helpers({
     },
     showGoto: function () {
         return FlowRouter.current().route.name === "project-maps"
+    },
+    chatOpened: function () {
+        return Template.instance().chatOpened.get()
     }
 });
 
@@ -299,6 +302,10 @@ Template.activityDetail.events({
     'click [toggleModalInviteMembers]': function (event, instance) {
         event.preventDefault()
         instance.modalOpened.set(!instance.modalOpened.get())
+    },
+    'click [toggleChat]': function (event, instance) {
+        event.preventDefault()
+        instance.chatOpened.set(!instance.chatOpened.get())
     }
 });
 
@@ -310,6 +317,7 @@ Template.activityDetail.onCreated(function () {
     this.editingColor = new ReactiveVar(false)
     this.modalOpened = new ReactiveVar(false)
     this.initialColor = new ReactiveVar(false)
+    this.chatOpened = new ReactiveVar(false)
     this.autorun(() => {
         FlowRouter.watchPathChange()
         let activityId = FlowRouter.current().queryParams.activityId

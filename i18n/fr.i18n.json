@@ -2,7 +2,8 @@
   "_locale": "fr-FR",
   "general": {
     "error": "Une erreur s'est produite",
-    "changNavigator": "Nous sommes une équipe réduite de bénévoles et les développements nécessaires pour adapter ce site à votre navigateur ne sont pas encore terminés. Vous obtiendrez une expérience optimale en utilisant le navigateur Chrome ou sa version open-source Chromium."
+    "changNavigator": "Nous sommes une équipe réduite de bénévoles et les développements nécessaires pour adapter ce site à votre navigateur ne sont pas encore terminés. Vous obtiendrez une expérience optimale en utilisant le navigateur Chrome ou sa version open-source Chromium.",
+    "loremipsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   "_templates_application": "===========================================================================================================================",
   "forbidden": {
