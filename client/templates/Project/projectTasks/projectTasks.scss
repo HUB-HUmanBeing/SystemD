@@ -278,51 +278,42 @@ overflow: hidden;
   }
 
 
-  #tasksSideNav {
+  #SideNav {
     height: 100%;
     color: $main-color;
     z-index: 600;
+    right: 0;
 
-
-    &.desktopTasksSideNav {
+    &.desktopSideNav {
       width: 300px;
 
-      #sideTasksContent {
+      #sideContent {
         overflow-x: hidden !important;
       }
 
     }
 
-    &.mobileTasksSideNav, &.tabletTasksSideNav, &.desktopTasksSideNav {
+    &.mobileSideNav, &.tabletSideNav, &.desktopSideNav {
       top: 0;
       position: absolute;
       transition: 0.3s ease-out;
 
     }
 
-    &.mobileTasksSideNav {
+    &.mobileSideNav {
       width: calc(100vw - 70px);
       right: calc(-100vw + 70px);
-
-      &.openedSideNav {
-        right: 0;
-      }
     }
 
-    &.tabletTasksSideNav, &.desktopTasksSideNav {
+    &.tabletSideNav, &.desktopSideNav {
       width: 300px;
-      right: -300px;
 
-      &.openedSideNav {
-        right: 0;
-
-        #sideTasksContent {
-          overflow: scroll;
-        }
+      #sideContent {
+        overflow: scroll;
       }
     }
 
-    #sideTasksContent {
+    #sideContent {
       height: 100%;
       position: absolute;
       top: 0;
