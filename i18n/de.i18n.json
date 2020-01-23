@@ -270,7 +270,7 @@
   "editProjectAvatar": {
     "edit": "Avatar bearbeiten",
     "delete": "Avatar löschen",
-    "OK": "bestätigen"
+    "OK": "Speichern"
   },
   "editProjectDescription": {
     "label": "Projektbeschreibung"
@@ -294,9 +294,9 @@
     "title": "Generieren des Links für die Einladung",
     "infoQuote": "Durch das Senden von Einladungslinks übertragen Sie die Chiffrierschlüssel Ihres Projekts an alle, die während der Gültigkeitsdauer Zugang zu dem generierten Link haben werden.",
     "durationLabel": "Gültigkeitsdauer des Einladungslinks",
-    "hour": "Stunde",
-    "day": "Tag",
-    "week": "Woche",
+    "hour": "Stunde(n)",
+    "day": "Tag(e)",
+    "week": "Woche(n)",
     "month": "Monat(e)",
     "remainingLabel1": "Gültig zur Einladung für",
     "user": "Benutzer",
@@ -724,7 +724,7 @@
     "inviteds": "Eingeladene Mitglieder",
     "checklist": "Checkliste",
     "start": "Beginn",
-    "end": "Ende"
+    "end": "Fällig"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
