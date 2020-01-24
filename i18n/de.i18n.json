@@ -420,7 +420,7 @@
     "categoryName": "Name des Verzeichnisses",
     "new": "Neues Verzeichnis",
     "myFiles": "DOKUMENTE",
-    "seeMore": "Mehr erfahren"
+    "seeMore": "Mehr anzeigen"
   },
   "categoryItem": {
     "categoryName": "Name des Verzeichnisses",
@@ -432,7 +432,7 @@
     "disableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen aktiv, klicken Sie diese an, um sie zu deaktivieren.",
     "enlableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen deaktiviert, klicken Sie diese an, um sie zu reaktivieren.",
     "abort": "Abbrechen",
-    "showMore": "Mehr erfahren",
+    "showMore": "Mehr anzeigen",
     "newTopic": "Ein neues Thema beginnen",
     "noTopics": "Dieses Verzeichnis ist leer",
     "notifEnabled": "Sie erhalten nun Benachrichtigungen für alle Diskussionen in diesem Verzeichnis",
@@ -483,7 +483,7 @@
     "loadInfos": "Verschlüsselung und Hochladen von Dokumenten"
   },
   "publicationsList": {
-    "showMore": "Mehr erfahren..."
+    "showMore": "Mehr anzeigen..."
   },
   "publicationItem": {
     "delete": "Entfernen",
@@ -502,7 +502,7 @@
     "answers": "Beteiligte(r)"
   },
   "pollOption": {
-    "vote": "Stimmen"
+    "vote": "Stimme(n)"
   },
   "newComment": {
     "placeholder": "Ihr Kommentar..."
@@ -525,7 +525,7 @@
     "projectUsing": " ",
     "of": "von",
     "allowed": " ",
-    "seeMore": "Mehr erfahren"
+    "seeMore": "Mehr anzeigen"
   },
   "filePreview": {
     "delete": "Datei löschen"
@@ -752,7 +752,7 @@
     "spreadsheetList": "Tabellenblätter",
     "noSpreadsheet": "Kein Tabellenblatt",
     "newSpreadsheet": "Tabellenblatt hinzufügen",
-    "showMore": "Mehr erfahren",
+    "showMore": "Mehr anzeigen",
     "SpreadsheetName": "Name des Tabellenblatts"
   },
   "spreadsheetHeader": {
