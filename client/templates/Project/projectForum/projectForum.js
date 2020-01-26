@@ -75,8 +75,19 @@ Template.projectForum.helpers({
                             instance.topicbs.destroy()
                         }
                         instance.topicbs = new BeautifyScrollbar('#topicContainer');
+                        let top = $('#topicContainer').scrollTop()
+                         if(!instance.isRefreshedFirst  ){
+                             if(top>0){
+                                 $('#topicContainer').scrollTop(0)
+                             }else{
+
+                                 instance.isRefreshedFirst = true
+                             }
+
+                         }
+
                     }
-                }, 200)
+                }, 300)
             }
 
         }

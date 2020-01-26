@@ -56,12 +56,15 @@ Template.filePreview.onRendered(function () {
             if (fileType.mimes.indexOf(file.symEnc_mimeType) > -1) {
                 switch (fileType.label) {
                     case "image":
-                        projectFilesController.getFile(file, (res) => {
-                            const img = document.getElementById('img-' + file._id);
-                            img.src = res;
-                            const btn = document.getElementById('downLoadLink-' + file._id)
-                            btn.href = res;
-                        })
+                        if(file.symEnc_mimeType !== "image/svg+xml"){
+                            projectFilesController.getFile(file, (res) => {
+                                const img = document.getElementById('img-' + file._id);
+                                img.src = res;
+                                const btn = document.getElementById('downLoadLink-' + file._id)
+                                btn.href = res;
+                            })
+                        }
+
                         break;
                     // case "video":
                     //     projectFilesController.getFile(file, (res)=>{

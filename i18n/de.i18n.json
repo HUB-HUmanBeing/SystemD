@@ -270,7 +270,7 @@
   "editProjectAvatar": {
     "edit": "Avatar bearbeiten",
     "delete": "Avatar löschen",
-    "OK": "Speichern"
+    "OK": "bestätigen"
   },
   "editProjectDescription": {
     "label": "Projektbeschreibung"
@@ -294,9 +294,9 @@
     "title": "Generieren des Links für die Einladung",
     "infoQuote": "Durch das Senden von Einladungslinks übertragen Sie die Chiffrierschlüssel Ihres Projekts an alle, die während der Gültigkeitsdauer Zugang zu dem generierten Link haben werden.",
     "durationLabel": "Gültigkeitsdauer des Einladungslinks",
-    "hour": "Stunde(n)",
-    "day": "Tag(e)",
-    "week": "Woche(n)",
+    "hour": "Stunde",
+    "day": "Tag",
+    "week": "Woche",
     "month": "Monat(e)",
     "remainingLabel1": "Gültig zur Einladung für",
     "user": "Benutzer",
@@ -487,6 +487,7 @@
   },
   "publicationItem": {
     "delete": "Entfernen",
+    "abort": "Abbrechen",
     "edit": "Bearbeiten",
     "deleteInfo": "Diese Aktion wird die Veröffentlichung und alle Kommentare unwiderruflich löschen",
     "deleteSuccess": "Diese Veröffentlichung und alle ihre Kommentare wurden entfernt",
