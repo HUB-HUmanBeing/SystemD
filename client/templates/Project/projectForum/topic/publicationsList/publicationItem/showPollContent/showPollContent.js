@@ -13,6 +13,9 @@ Template.showPollContent.helpers({
     pollOptions: function () {
         return Template.instance().pollOptions.get()
     },
+    propositions: function () {
+        return Template.instance().propositions.get()
+    },
     totalAnswer: function () {
         let total = 0
         Publication.findOne(Template.currentData().id).pollContent.options.forEach(option => {
@@ -36,13 +39,38 @@ Template.showPollContent.helpers({
 });
 
 Template.showPollContent.events({
-    //add your events here
+    'click [addProposition]':   function (event, instance){
+        event.preventDefault()
+        let newPropositionId = cryptoTools.generateId()
+        instance.propositions.set([...instance.propositions.get(), {value: "", id: newPropositionId}])
+        Meteor.setTimeout(() => {
+            $("#pollPropositionInput-" + newPropositionId).focus()
+        }, 100)
+    },
+    'click [removeProposition]': function (event, instance) {
+        event.preventDefault()
+        let id = event.currentTarget.id.split('-')[1]
+        let newArray = []
+        instance.propositions.get().forEach(proposition => {
+            if (proposition.id !== id) {
+                newArray.push(proposition)
+            }
+        })
+        instance.propositions.set(newArray)
+    },
+    'click [sendProposition]': function (event, instance) {
+        event.preventDefault()
+        let id = event.currentTarget.id.split('-')[1]
+        console.log(id)
+        $("#pollPropositionInput-"+newPropositionId).reset()
+    }
 });
 
 Template.showPollContent.onCreated(function () {
     //add your statement here
     this.decryptedSymEnc_text = new ReactiveVar(null)
     this.pollOptions = new ReactiveVar([])
+    this.propositions = new ReactiveVar([])
     this.autorun(() => {
         let publication = Publication.findOne(this.data.id)
         if (publication) {

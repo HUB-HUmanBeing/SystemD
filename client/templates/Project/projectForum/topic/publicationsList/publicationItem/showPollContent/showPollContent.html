@@ -10,11 +10,33 @@
             {{/if}}
             <ul class="poll collection">
                 {{#each option in pollOptions}}
-                    <li class="collection-item transparent no-padding">
+                    <li class="collection-pollOptions transparent no-padding">
                         {{>pollOption option=option index=@index id=id showResult=showResult totalAnswer=totalAnswer}}
+                    </li>
+                {{/each}}
+                {{#each proposition in propositions}}
+                    <li class="collection-propositions no-padding transparent relative flex">
+                        <i class="material-icons">check_box_outline_blank</i>
+                        <div class="inputContainer flex-auto">
+                            <input type="text" class="no-margin "
+                                    id="pollPropositionInput-{{proposition.id}}"
+                                    placeholder="{{__ "pollContent.newProposition"}} {{@index}}" value="{{proposition.value}}"
+                                    propositionInput>
+                            <div class="sendProposition" id="pollSendProposition-{{proposition.id}}" sendProposition>
+                                <i class="material-icons left tooltipped" data-position="top" data-delay="50" data-tooltip="{{__ ".send"}}">send</i>
+                            </div>
+                        </div>
+
+                        <a href="" class="removePropositionBtn" id="newPollProposition-{{proposition.id}}" removeProposition><i
+                            class="material-icons ">clear</i></a>
+
 
                     </li>
                 {{/each}}
+
+                <a href="" class="waves-effect waves-light addPropositionBtn left-align" addProposition>{{__
+                        "pollContent.addProposition"}}<i
+                        class="material-icons left">add</i></a>                    
             </ul>
             <p class="right-align answerTotalCount">{{totalAnswer}} {{__ ".answers"}}</p>
         {{/if}}

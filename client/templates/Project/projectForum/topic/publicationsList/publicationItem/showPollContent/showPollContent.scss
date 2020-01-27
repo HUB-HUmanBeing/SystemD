@@ -13,7 +13,7 @@
     margin: 0;
 
 
-    .collection-item {
+    .collection-pollOptions {
       border: none;
       margin-top: 5px;
 
@@ -43,5 +43,44 @@
         }
       }
     }
-  }
+
+    .collection-propositions {
+      padding: 10px !important;
+      i {
+        padding: 10px;
+        color: $link-color;
+      }
+      .inputContainer {
+        padding: 5px;
+
+
+        input {
+          margin: 10px;
+          padding: 0 10px;
+          background-color: $main-bg;
+          border-radius: 5px;
+          box-shadow: none;
+          border: none;
+          height: 2.2em;
+
+          &::placeholder {
+            color: $minus-color;
+            font-style: italic;
+          }
+        }
+      }
+
+      .sendProposition {
+          position: absolute;
+          right: 25px;
+          top: 20px;
+      }
+
+      .removePropositionButton {
+        padding-left: 20px;
+        padding-top: 10px;
+      }
+    }
+    
+  } 
 }
