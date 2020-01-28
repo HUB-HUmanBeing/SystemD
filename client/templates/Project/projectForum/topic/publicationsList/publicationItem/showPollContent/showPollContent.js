@@ -1,6 +1,7 @@
 import cryptoTools from "../../../../../../../lib/cryptoTools";
 import Publication from "../../../../../../../../imports/classes/Publication";
 import projectController from "../../../../../../../lib/controllers/projectController";
+import preFormatMessage from "../../../../../../../lib/preformatMessages";
 
 Template.showPollContent.helpers({
     //add you helpers here
@@ -13,8 +14,8 @@ Template.showPollContent.helpers({
     pollOptions: function () {
         return Template.instance().pollOptions.get()
     },
-    propositions: function () {
-        return Template.instance().propositions.get()
+    addingProposition: function () {
+        return Template.instance().addingProposition.get()
     },
     totalAnswer: function () {
         let total = 0
@@ -41,28 +42,36 @@ Template.showPollContent.helpers({
 Template.showPollContent.events({
     'click [addProposition]':   function (event, instance){
         event.preventDefault()
-        let newPropositionId = cryptoTools.generateId()
-        instance.propositions.set([...instance.propositions.get(), {value: "", id: newPropositionId}])
+        instance.addingProposition.set(true)
         Meteor.setTimeout(() => {
-            $("#pollPropositionInput-" + newPropositionId).focus()
-        }, 100)
+            $(".newPropositionInput").focus()
+        }, 200)
     },
     'click [removeProposition]': function (event, instance) {
         event.preventDefault()
-        let id = event.currentTarget.id.split('-')[1]
-        let newArray = []
-        instance.propositions.get().forEach(proposition => {
-            if (proposition.id !== id) {
-                newArray.push(proposition)
-            }
-        })
-        instance.propositions.set(newArray)
+        instance.addingProposition.set(false)
     },
-    'click [sendProposition]': function (event, instance) {
+    'submit [propositionForm]': function (event, instance) {
         event.preventDefault()
-        let id = event.currentTarget.id.split('-')[1]
-        console.log(id)
-        $("#pollPropositionInput-"+newPropositionId).reset()
+        let proposition = {symEnc_label:preFormatMessage($(".newPropositionInput").val())}
+        cryptoTools.encryptObject(proposition, {symKey: Session.get("currentProjectSimKey")}, (encryptedProposition) => {
+            let currentPublication = Publication.findOne(instance.data.id)
+            currentPublication.callMethod(
+                "addPollOption",
+                projectController.getAuthInfo(FlowRouter.current().params.projectId),
+                encryptedProposition,
+                (err, res) => {
+                    if (err) { 
+                        console.log(err)
+                    }else{
+                        instance.addingProposition.set(false)
+                        proposition.checkedBy=['me']
+                        instance.pollOptions.set([...instance.pollOptions.get(), proposition])
+                        console.log(instance.pollOptions.get())
+                    }
+                }
+            )
+        })
     }
 });
 
@@ -70,7 +79,7 @@ Template.showPollContent.onCreated(function () {
     //add your statement here
     this.decryptedSymEnc_text = new ReactiveVar(null)
     this.pollOptions = new ReactiveVar([])
-    this.propositions = new ReactiveVar([])
+    this.addingProposition = new ReactiveVar(false)
     this.autorun(() => {
         let publication = Publication.findOne(this.data.id)
         if (publication) {

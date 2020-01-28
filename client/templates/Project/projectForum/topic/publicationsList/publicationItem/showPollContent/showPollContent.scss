@@ -23,10 +23,6 @@
         margin-left: 35px;
         border-radius: 0.6em;
 
-        .selectOption {
-
-        }
-
         .countLabel {
           font-style: italic;
           font-size: 0.9em;
@@ -44,19 +40,36 @@
       }
     }
 
-    .collection-propositions {
-      padding: 10px !important;
+    .addPropositionBtn {
+      float: left;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-top: 15px;
+      position: relative;
+      color: $link-color;
       i {
-        padding: 10px;
         color: $link-color;
+        position: relative;
+        top: -3px;
+        margin-right: 5px;
       }
-      .inputContainer {
+    }
+
+    .newProposition {
+      padding-top: 10px;
+      .propositionForm {
         padding: 5px;
 
+        .removePropositionBtn{
+          padding-top:15px;
+          i{
+            color: $link-color;
+          }
+        }
 
-        input {
-          margin: 10px;
-          padding: 0 10px;
+        .newPropositionInput {
+          margin-top: 10px;
+          padding-left: 10px;
           background-color: $main-bg;
           border-radius: 5px;
           box-shadow: none;
@@ -68,17 +81,23 @@
             font-style: italic;
           }
         }
-      }
 
-      .sendProposition {
-          position: absolute;
-          right: 25px;
-          top: 20px;
-      }
-
-      .removePropositionButton {
-        padding-left: 20px;
-        padding-top: 10px;
+        button {
+          i{
+            color: $minus-color;
+            
+            &:hover {
+              color: $plus-color;
+            }
+          }
+          position: relative;
+          top: 0px;
+          right: 7px;
+          background-color: transparent;
+          border: none;
+          margin: 0;
+          padding: 0;
+        }
       }
     }
     
