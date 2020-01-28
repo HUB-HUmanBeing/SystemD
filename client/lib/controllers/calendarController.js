@@ -251,6 +251,7 @@ const calendarController = {
                 daysOfWeek: activity.daysOfWeek,
                 startTime: startTime,
                 endTime: endTime,
+                truc:"bidule"
             }
         } else {
             event = {
@@ -259,7 +260,8 @@ const calendarController = {
                 start: activity.start,
                 end: activity.end,
                 allDay: activity.allDay,
-                classNames: ["event-color-" + activity.color, participating]
+                classNames: ["event-color-" + activity.color, participating],
+                truc:"bidule"
             }
         }
         if (activity.checkList.length) {

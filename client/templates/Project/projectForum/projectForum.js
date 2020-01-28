@@ -37,23 +37,6 @@ Template.projectForum.helpers({
 
         FlowRouter.watchPathChange()
         let instance = Template.instance()
-        if (Meteor.Device.isDesktop() && !FlowRouter.current().queryParams.spreadsheetId) {
-            Meteor.setTimeout(() => {
-                let topicContainer = document.getElementById('topicContainer')
-                if (topicContainer && instance && Meteor.Device.isDesktop()) {
-                    if (instance.topicbs) {
-                        instance.topicbs.destroy()
-                    }
-                    instance.topicbs = new BeautifyScrollbar('#topicContainer');
-                }
-            }, 700)
-        }else{
-            if (instance.topicbs) {
-                instance.topicbs.destroy()
-            }
-        }
-
-
         return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId || !!FlowRouter.current().queryParams.spreadsheetId
     },
     showFiles: function () {
@@ -65,30 +48,22 @@ Template.projectForum.helpers({
         return Meteor.Device.isDesktop() || (!FlowRouter.current().queryParams.topicId && !FlowRouter.current().queryParams.files&& !FlowRouter.current().queryParams.spreadsheetId)
     },
     refreshScrollbar: function () {
+
         let instance = Template.instance()
         return function () {
-            if (Meteor.Device.isDesktop()) {
-                Meteor.setTimeout(() => {
-                    let topicContainer = document.getElementById('topicContainer')
-                    if (topicContainer && instance && Meteor.Device.isDesktop()) {
-                        if (instance.topicbs) {
-                            instance.topicbs.destroy()
-                        }
-                        instance.topicbs = new BeautifyScrollbar('#topicContainer');
-                        let top = $('#topicContainer').scrollTop()
-                         if(!instance.isRefreshedFirst  ){
-                             if(top>0){
-                                 $('#topicContainer').scrollTop(0)
-                             }else{
+            Meteor.setTimeout(()=>{
+                let top = $('#topicContainer').scrollTop()
+                let currentTopicId = FlowRouter.current().queryParams.topicId||"mainTopic"
+                if(instance.isRefreshedFirst != currentTopicId ){
+                    if(top>0){
 
-                                 instance.isRefreshedFirst = true
-                             }
+                        $('#topicContainer').scrollTop(0)
+                    }else{
 
-                         }
-
+                        instance.isRefreshedFirst = currentTopicId
                     }
-                }, 300)
-            }
+                }
+            }, 1000)
 
         }
     },

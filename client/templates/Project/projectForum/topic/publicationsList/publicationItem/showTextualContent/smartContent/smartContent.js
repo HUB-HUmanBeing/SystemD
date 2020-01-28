@@ -5,7 +5,11 @@ import urlParser from "js-video-url-parser";
 Template.smartContent.helpers({
     //add you helpers here
     smartifiedContent: function () {
+        let instance=Template.instance()
+        Meteor.setTimeout(() => {
 
+            instance.data.refreshScrollbar()
+        }, 200)
         return Autolinker.link(renderShortname(Template.currentData().content, {
             size: 32, // size of emojis to use when the default CDN is used
             className: "emojiImg", // CSS class to use when rendering image tags
@@ -15,13 +19,25 @@ Template.smartContent.helpers({
         }))
     },
     linkPreview: function () {
+        let instance=Template.instance()
+        Meteor.setTimeout(() => {
+
+            instance.data.refreshScrollbar()
+        }, 200)
         return Template.instance().linkPreview.get()
+
     },
     videoEmbedUrl: function () {
+        let instance=Template.instance()
+        Meteor.setTimeout(() => {
+
+            instance.data.refreshScrollbar()
+        }, 200)
         return urlParser.create({
             videoInfo: Template.instance().videoInfo.get(),
             format: 'embed'
         })
+
     }
 });
 
@@ -43,7 +59,7 @@ Template.smartContent.onRendered(function () {
     let firstUrl = null
     let videoUrl = null
     let instanceLinkPreview = this.linkPreview
-    let refreshScrollbar = this.data.refreshScrollbar
+
     content.split(" ").forEach(sequence => {
         if (sequence.match(regexUrl)) {
             if (!videoUrl && urlParser.parse(sequence)) {
@@ -100,9 +116,7 @@ Template.smartContent.onRendered(function () {
                     console.log(linkPreview.img)
                 }
                 instanceLinkPreview.set(linkPreview)
-                Meteor.setTimeout(() => {
-                    refreshScrollbar()
-                }, 400)
+
 
 
             }

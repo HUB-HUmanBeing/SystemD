@@ -270,7 +270,7 @@
   "editProjectAvatar": {
     "edit": "Avatar bearbeiten",
     "delete": "Avatar löschen",
-    "OK": "bestätigen"
+    "OK": "Speichern"
   },
   "editProjectDescription": {
     "label": "Projektbeschreibung"
@@ -294,9 +294,9 @@
     "title": "Generieren des Links für die Einladung",
     "infoQuote": "Durch das Senden von Einladungslinks übertragen Sie die Chiffrierschlüssel Ihres Projekts an alle, die während der Gültigkeitsdauer Zugang zu dem generierten Link haben werden.",
     "durationLabel": "Gültigkeitsdauer des Einladungslinks",
-    "hour": "Stunde",
-    "day": "Tag",
-    "week": "Woche",
+    "hour": "Stunde(n)",
+    "day": "Tag(e)",
+    "week": "Woche(n)",
     "month": "Monat(e)",
     "remainingLabel1": "Gültig zur Einladung für",
     "user": "Benutzer",
@@ -420,7 +420,7 @@
     "categoryName": "Name des Verzeichnisses",
     "new": "Neues Verzeichnis",
     "myFiles": "DOKUMENTE",
-    "seeMore": "Mehr erfahren"
+    "seeMore": "Mehr anzeigen"
   },
   "categoryItem": {
     "categoryName": "Name des Verzeichnisses",
@@ -432,7 +432,7 @@
     "disableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen aktiv, klicken Sie diese an, um sie zu deaktivieren.",
     "enlableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen deaktiviert, klicken Sie diese an, um sie zu reaktivieren.",
     "abort": "Abbrechen",
-    "showMore": "Mehr erfahren",
+    "showMore": "Mehr anzeigen",
     "newTopic": "Ein neues Thema beginnen",
     "noTopics": "Dieses Verzeichnis ist leer",
     "notifEnabled": "Sie erhalten nun Benachrichtigungen für alle Diskussionen in diesem Verzeichnis",
@@ -483,7 +483,7 @@
     "loadInfos": "Verschlüsselung und Hochladen von Dokumenten"
   },
   "publicationsList": {
-    "showMore": "Mehr erfahren..."
+    "showMore": "Mehr anzeigen..."
   },
   "publicationItem": {
     "delete": "Entfernen",
@@ -502,7 +502,7 @@
     "answers": "Beteiligte(r)"
   },
   "pollOption": {
-    "vote": "Stimmen"
+    "vote": "Stimme(n)"
   },
   "newComment": {
     "placeholder": "Ihr Kommentar..."
@@ -525,7 +525,7 @@
     "projectUsing": " ",
     "of": "von",
     "allowed": " ",
-    "seeMore": "Mehr erfahren"
+    "seeMore": "Mehr anzeigen"
   },
   "filePreview": {
     "delete": "Datei löschen"
@@ -724,7 +724,7 @@
     "inviteds": "Eingeladene Mitglieder",
     "checklist": "Checkliste",
     "start": "Beginn",
-    "end": "Ende"
+    "end": "Fällig"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
@@ -752,7 +752,7 @@
     "spreadsheetList": "Tabellenblätter",
     "noSpreadsheet": "Kein Tabellenblatt",
     "newSpreadsheet": "Tabellenblatt hinzufügen",
-    "showMore": "Mehr erfahren",
+    "showMore": "Mehr anzeigen",
     "SpreadsheetName": "Name des Tabellenblatts"
   },
   "spreadsheetHeader": {
