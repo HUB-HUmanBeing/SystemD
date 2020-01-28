@@ -13,6 +13,7 @@ Template.likeBox.events({
     //add your events here
     'click [toggleLike]': function (event, instance) {
         event.preventDefault()
+        resetTooltips()
         instance.data.class.callMethod("toggleLike",
             projectController.getAuthInfo(FlowRouter.current().params.projectId), (err) => {
                 if (err) {
