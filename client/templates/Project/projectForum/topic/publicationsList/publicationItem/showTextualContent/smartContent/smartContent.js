@@ -5,9 +5,10 @@ import urlParser from "js-video-url-parser";
 Template.smartContent.helpers({
     //add you helpers here
     smartifiedContent: function () {
+        let instance=Template.instance()
         Meteor.setTimeout(() => {
 
-            Template.instance().refreshScrollbar()
+            instance.data.refreshScrollbar()
         }, 200)
         return Autolinker.link(renderShortname(Template.currentData().content, {
             size: 32, // size of emojis to use when the default CDN is used
@@ -18,21 +19,25 @@ Template.smartContent.helpers({
         }))
     },
     linkPreview: function () {
-        return Template.instance().linkPreview.get()
+        let instance=Template.instance()
         Meteor.setTimeout(() => {
 
-            Template.instance().refreshScrollbar()
+            instance.data.refreshScrollbar()
         }, 200)
+        return Template.instance().linkPreview.get()
+
     },
     videoEmbedUrl: function () {
+        let instance=Template.instance()
+        Meteor.setTimeout(() => {
+
+            instance.data.refreshScrollbar()
+        }, 200)
         return urlParser.create({
             videoInfo: Template.instance().videoInfo.get(),
             format: 'embed'
         })
-        Meteor.setTimeout(() => {
 
-            Template.instance().refreshScrollbar()
-        }, 200)
     }
 });
 
