@@ -647,7 +647,10 @@
     "deleteOlds": "Löschen alter Aktivitäten",
     "deleteOldsInfo": "Löschen Sie Aktivitäten mit einem Startdatum von mehr als:",
     "delete": "Entfernen",
-    "oldsActivitiesDeleted": "Alte Aktivitäten wurden gelöscht"
+    "oldsActivitiesDeleted": "Alte Aktivitäten wurden gelöscht",
+    "exportICS": "Exporter au format ICS",
+    "exportICSInfos": "Récupérez l'ensemble de vos évènements déchiffrés au format ICS afin de les importer dans d'autres applications de calendrier.",
+    "export": "Exporter"
   },
   "colorLegend": {
     "placeholder": "Nicht angegeben",
