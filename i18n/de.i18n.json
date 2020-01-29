@@ -648,9 +648,9 @@
     "deleteOldsInfo": "Löschen Sie Aktivitäten mit einem Startdatum von mehr als:",
     "delete": "Entfernen",
     "oldsActivitiesDeleted": "Alte Aktivitäten wurden gelöscht",
-    "exportICS": "Exporter au format ICS",
-    "exportICSInfos": "Récupérez l'ensemble de vos évènements déchiffrés au format ICS afin de les importer dans d'autres applications de calendrier.",
-    "export": "Exporter"
+    "exportICS": "Speichern im ICS Format",
+    "exportICSInfos": "Laden Sie alle Ihre entschlüsselten Termine im ICS-Format herunter, um sie in andere Kalenderanwendungen zu importieren.",
+    "export": "Speichern als"
   },
   "colorLegend": {
     "placeholder": "Nicht angegeben",
