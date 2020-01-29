@@ -647,7 +647,10 @@
     "deleteOlds": "Cancellare le vecchie attività",
     "deleteOldsInfo": "Cancellare le attività con una data di inizio superiore a:",
     "delete": "Elimina",
-    "oldsActivitiesDeleted": "Le vecchie attività sono state cancellate"
+    "oldsActivitiesDeleted": "Le vecchie attività sono state cancellate",
+    "exportICS": "Exporter au format ICS",
+    "exportICSInfos": "Récupérez l'ensemble de vos évènements déchiffrés au format ICS afin de les importer dans d'autres applications de calendrier.",
+    "export": "Exporter"
   },
   "colorLegend": {
     "placeholder": "Nessuna informazione",
