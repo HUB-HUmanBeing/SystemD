@@ -647,7 +647,10 @@
     "deleteOlds": "Delete old activities",
     "deleteOldsInfo": "Delete activities older than :",
     "delete": "Delete",
-    "oldsActivitiesDeleted": "Old activities have been deleted"
+    "oldsActivitiesDeleted": "Old activities have been deleted",
+    "exportICS": "Exporter au format ICS",
+    "exportICSInfos": "Récupérez l'ensemble de vos évènements déchiffrés au format ICS afin de les importer dans d'autres applications de calendrier.",
+    "export": "Exporter"
   },
   "colorLegend": {
     "placeholder": "Your legend ...",
