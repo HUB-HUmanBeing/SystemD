@@ -3,6 +3,7 @@ import Activity from "../../../../../imports/classes/Activity";
 import cryptoTools from "../../../../lib/cryptoTools";
 import Project from "../../../../../imports/classes/Project";
 import ical from "ical"
+import moment from "../../../../lib/i18nMoment";
 
 /*! ics.js Wed Aug 20 2014 17:23:02 */
 var saveAs = saveAs || function (e) {
@@ -282,27 +283,52 @@ Template.calendarSettings.events({
         reader.onload = function (event) {
             let str = event.target.result
             let parsedCalendar = ical.parseICS(str)
+
             let  setDateFromStr = (dateStr)=>{
-            let res = new Date(dateStr.substr(0,3),dateStr.substr(4,5),dateStr.substr(6,7))
+                console.log(dateStr.substr(4,2),dateStr.substr(6,2))
+                let res = moment()
+                .year(dateStr.substr(0,4))
+                .month(dateStr.substr(4,2)-1)
+                .date(dateStr.substr(6,2))
+                .hour(23).minute(0).second(0).millisecond(0)
+                return res.toDate()
             }
+
             Object.keys(parsedCalendar).forEach((key, i) => {
                 let parsedEvent = parsedCalendar[key]
-                console.log(parsedEvent)
                 let unencryptedActivityParams = {
-                    symEnc_title: parsedEvent.description,
-                    symEnc_detail: parsedEvent.summary.val,
+                    symEnc_title:parsedEvent.summary.val ,
+                    symEnc_detail: parsedEvent.description,
                 }
-                unencryptedActivityParams.daysOfWeek = []
+
+                if(parsedEvent.rrule && parsedEvent.rrule.options && parsedEvent.rrule.options.byweekday && parsedEvent.rrule.options.byweekday.length){
+                    unencryptedActivityParams.daysOfWeek = []
+                    parsedEvent.rrule.options.byweekday.forEach(d=>{
+                        unencryptedActivityParams.daysOfWeek.push(d+1>6 ? 0 : d+1)
+                    })
+                }
+
                 if(parsedEvent.start.length === 8){
-                    unencryptedActivityParams.allDay = false
+                    unencryptedActivityParams.allDay = true
                     unencryptedActivityParams.start = setDateFromStr(parsedEvent.start)
                     unencryptedActivityParams.end = setDateFromStr(parsedEvent.end)
                 }else{
                     unencryptedActivityParams.start = parsedEvent.start
                     unencryptedActivityParams.end = parsedEvent.end
                 }
-                unencryptedActivityParams.symEnc_coordinates = null
-                console.log(unencryptedActivityParams)
+                cryptoTools.encryptObject(unencryptedActivityParams, {symKey: Session.get("currentProjectSimKey")}, (encryptedActivityParams) => {
+                   let newActivity =new Activity()
+                    let projectId = FlowRouter.current().params.projectId
+                    newActivity.callMethod("newCalendarActivity", projectController.getAuthInfo(projectId), projectId, encryptedActivityParams,{}, (err, res) => {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            if(i==Object.keys(parsedCalendar).length-1){
+                                Materialize.toast(__('calendarSettings.importSuccess'), 6000, 'toastOk')
+                            }
+                        }
+                    })
+                })
             })
         };
         reader.readAsText(file);
@@ -331,6 +357,7 @@ Template.calendarSettings.events({
                 cal.addEvent(
                     activity.symEnc_title,
                     activity.symEnc_detail,
+
                     null,
                     activity.start,
                     activity.end,

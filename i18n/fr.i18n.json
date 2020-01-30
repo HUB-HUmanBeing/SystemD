@@ -659,7 +659,11 @@
     "oldsActivitiesDeleted": "Les anciennes activités ont été supprimées",
     "exportICS": "Exporter au format ICS",
     "exportICSInfos" : "Récupérez l'ensemble de vos évènements déchiffrés au format ICS afin de les importer dans d'autres applications de calendrier.",
-    "export": "Exporter"
+    "export": "Exporter",
+    "importICS": "Importer au format ICS",
+    "importICSInfos": "Utilisez un fichier ICS afin d'importer les évènements qu'il contient sur l'agenda de ce projet",
+    "import": "Importer",
+    "importSuccess": "Evenements importés avec succès"
   },
   "colorLegend": {
     "placeholder": "Non renseigné",
