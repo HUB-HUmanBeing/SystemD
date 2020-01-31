@@ -1,7 +1,7 @@
 <template name="activityDetail">
-    <div id="SideNav" class="gradiant-dark shadow {{#if isDesktop}} desktopSideNav{{else}} {{#if
+    <div id="SideNav" class="gradiant-dark shadow {{#if chatOpened}}chatOpened{{/if}}{{#if isDesktop}} desktopSideNav{{else}} {{#if
         isPhone}}mobileSideNav{{else}}tabletSideNav{{/if}}{{/if}}">
-        <div id="sideContent" style="{{#unless isDesktop}}overflow: scroll;{{else}}{{/unless}}">
+        <div id="sideContent" style="{{#unless isDesktop}}overflow: scroll;{{else}}display:flex{{/unless}} ">
             <div id="activityDetail">
                 {{#if activity}}
                     <div class="row relative" style="margin-bottom: 5px">
@@ -289,6 +289,9 @@
                         </div>
                     {{/if}}
                 {{/if}}
+            </div>
+            <div class="vbar">
+
             </div>
             {{#if chatOpened}}
                 {{>activityChat}}

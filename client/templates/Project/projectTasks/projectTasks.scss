@@ -282,10 +282,14 @@ overflow: hidden;
     height: 100%;
     color: $main-color;
     z-index: 600;
-    right: 0;
+    right: -700px;
+
+    &.chatOpened {
+      right: 0;
+    }
 
     &.desktopSideNav {
-      width: 300px;
+      width: 1000px;
 
       #sideContent {
         overflow-x: hidden !important;
@@ -305,7 +309,7 @@ overflow: hidden;
       right: calc(-100vw + 70px);
     }
 
-    &.tabletSideNav, &.desktopSideNav {
+    &.tabletSideNav {
       width: 300px;
 
       #sideContent {
