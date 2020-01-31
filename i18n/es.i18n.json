@@ -361,7 +361,7 @@
     "kickUser": "Eliminar al usuario",
     "kickUserInfo": "Eliminar al usuario del listado de los miembros del proyecto",
     "removedSuccess": "El usuario ha sido eliminado de los miembros del proyecto",
-    "promoteSuccess": "El usuario es ahora parte de los administradores del proyecto",
+    "promotedSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
     "quitSuccess": "Usted ha abandonado el proyecto"
   },
   "_templates_users": "===========================================================================================================================",
@@ -505,7 +505,8 @@
     "vote": "Votos"
   },
   "newComment": {
-    "placeholder": "Su comentario…"
+    "placeholder": "Su comentario…",
+    "sendComment": "Publier"
   },
   "commentList": {
     "see": "Ver los",
@@ -528,7 +529,8 @@
     "seeMore": "Ver más"
   },
   "filePreview": {
-    "delete": "Eliminar el fichero"
+    "delete": "Eliminar el fichero",
+    "show": "Voir l'aperçu"
   },
   "fullScreenFile": {
     "download": "Descargar  ",
@@ -540,9 +542,16 @@
     "limitOneFile": "El tamaño de los documentos está limitado a 15 MB",
     "projectFiles.limitSize": "Se ha alcanzado el límite de carga de archivos para este proyecto. Por favor, elimine los documentos antes de que pueda volver a cargarlos. "
   },
+  "likeBox": {
+    "likePublication": "J'aime",
+    "unlikePublication": "Je n'aime plus"
+  },
   "pinned": {
     "pin": "Clavar la publicación en la parte superior de la discusión",
     "unpin": "Desanclar la publicación"
+  },
+  "beautyfullTextarea": {
+    "addEmoji": "Ajouter un émoji"
   },
   "showFileContent": {
     "deleted": "El fichero ha sido eliminado"
@@ -650,7 +659,11 @@
     "oldsActivitiesDeleted": "Se han eliminado las actividades antiguas.",
     "exportICS": "Exporter au format ICS",
     "exportICSInfos": "Récupérez l'ensemble de vos évènements déchiffrés au format ICS afin de les importer dans d'autres applications de calendrier.",
-    "export": "Exporter"
+    "export": "Exporter",
+    "importICS": "Importer au format ICS",
+    "importICSInfos": "Utilisez un fichier ICS afin d'importer les évènements qu'il contient sur l'agenda de ce projet",
+    "import": "Importer",
+    "importSuccess": "Evenements importés avec succès"
   },
   "colorLegend": {
     "placeholder": "No especificado",
