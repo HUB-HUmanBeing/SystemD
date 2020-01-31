@@ -198,6 +198,27 @@ Template.newInvitation.onCreated(function () {
         thumb.find('.value').html(this.logScale($('#remaining').val()))
       }
     });
+
+    // Listen MouseUp
+    $(document).on('mouseup touchend', range_wrapper, function () {
+        range_mousedown = false;
+        $(this).removeClass('active');
+      });
+
+    // Listen MouseOut
+    $(document).on('mouseout touchleave', range_wrapper, function () {
+    if (!range_mousedown) {
+
+        var thumb = $(this).children('.thumb');
+        var paddingLeft = parseInt($(this).css('padding-left'));
+        var marginLeft = 7 + paddingLeft + 'px';
+
+        if (thumb.hasClass('active')) {
+        thumb.velocity({ height: '0', width: '0', top: '10px', marginLeft: marginLeft }, { duration: 100 });
+        }
+        thumb.removeClass('active');
+    }
+    });
 });
 
 Template.newInvitation.onRendered(function () {
