@@ -47,6 +47,7 @@
       margin-top: 15px;
       position: relative;
       color: $link-color;
+
       i {
         color: $link-color;
         position: relative;
@@ -57,21 +58,25 @@
 
     .newProposition {
       padding-top: 10px;
-      .propositionForm {
-        padding: 5px;
 
-        .removePropositionBtn{
-          padding-top:15px;
-          i{
+      .propositionForm {
+        margin-top: 10px;
+        position: relative;
+
+        .removePropositionBtn {
+          padding-top: 15px;
+
+          i {
             color: $link-color;
           }
         }
 
         .newPropositionInput {
           margin-top: 10px;
+          margin-left: 10px;
           padding-left: 10px;
           background-color: $main-bg;
-          border-radius: 5px;
+          border-radius: 15px;
           box-shadow: none;
           border: none;
           height: 2.2em;
@@ -83,16 +88,17 @@
         }
 
         button {
-          i{
+          i {
             color: $minus-color;
-            
+
             &:hover {
               color: $plus-color;
             }
           }
-          position: relative;
-          top: 0px;
-          right: 7px;
+
+          position: absolute;
+          top: 15px;
+          right: 5px;
           background-color: transparent;
           border: none;
           margin: 0;
@@ -100,6 +106,6 @@
         }
       }
     }
-    
-  } 
+
+  }
 }
