@@ -48,7 +48,6 @@ Template.pollContent.events({
     'click [submitPublicationForm]': function (event, instance) {
         event.preventDefault()
         let propositions = instance.propositions.get()
-        console.log(propositions)
         let textContent = preFormatMessage($('#newPublicationText').val())
         let topic = instance.data.topic
         let options = []
