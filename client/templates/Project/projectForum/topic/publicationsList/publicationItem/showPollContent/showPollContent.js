@@ -44,6 +44,7 @@ Template.showPollContent.events({
         event.preventDefault()
         instance.addingProposition.set(true)
         Meteor.setTimeout(() => {
+            resetTooltips()
             $(".newPropositionInput").focus()
         }, 200)
     },
@@ -67,6 +68,7 @@ Template.showPollContent.events({
                         instance.addingProposition.set(false)
                         proposition.checkedBy=['me']
                         instance.pollOptions.set([...instance.pollOptions.get(), proposition])
+                        resetTooltips()
                     }
                 }
             )
