@@ -361,7 +361,7 @@
     "kickUser": "Benutzer entfernen",
     "kickUserInfo": "Entfernen Sie den Benutzer aus der Liste der Projektmitglieder.",
     "removedSuccess": "Der Benutzer wurde aus den Projektmitgliedern entfernt",
-    "promotedSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
+    "promotedSuccess": "Der Benutzer gehört nun zu den Projekt-Administratoren",
     "quitSuccess": "Sie haben das Projekt verlassen"
   },
   "_templates_users": "===========================================================================================================================",
@@ -506,7 +506,7 @@
   },
   "newComment": {
     "placeholder": "Ihr Kommentar...",
-    "sendComment": "Publier"
+    "sendComment": "Veröffentlichen"
   },
   "commentList": {
     "see": "Siehe",
@@ -530,7 +530,7 @@
   },
   "filePreview": {
     "delete": "Datei löschen",
-    "show": "Voir l'aperçu"
+    "show": "Vorschau ansehen"
   },
   "fullScreenFile": {
     "download": "Herunterladen",
@@ -543,15 +543,15 @@
     "projectFiles.limitSize": "Sie haben das Datei-Upload-Limit für dieses Projekt erreicht. Bitte löschen Sie andere Dokumente, bevor Sie diese wieder hochladen können. "
   },
   "likeBox": {
-    "likePublication": "J'aime",
-    "unlikePublication": "Je n'aime plus"
+    "likePublication": "Gefällt mir",
+    "unlikePublication": "Gefällt mir nicht"
   },
   "pinned": {
     "pin": "Anheften des Beitrags an den Titel der Diskussion",
     "unpin": "Entschlüsseln Sie die Veröffentlichung"
   },
   "beautyfullTextarea": {
-    "addEmoji": "Ajouter un émoji"
+    "addEmoji": "Emoji hinzufügen"
   },
   "showFileContent": {
     "deleted": "Die Datei wurde gelöscht."
@@ -660,10 +660,10 @@
     "exportICS": "Speichern im ICS Format",
     "exportICSInfos": "Laden Sie alle Ihre entschlüsselten Termine im ICS-Format herunter, um sie in andere Kalenderanwendungen zu importieren.",
     "export": "Speichern als",
-    "importICS": "Importer au format ICS",
-    "importICSInfos": "Utilisez un fichier ICS afin d'importer les évènements qu'il contient sur l'agenda de ce projet",
-    "import": "Importer",
-    "importSuccess": "Evenements importés avec succès"
+    "importICS": "Importe im ICS Format",
+    "importICSInfos": "Verwenden Sie eine ICS-Datei, um die darin enthaltenen Termine auf den Terminkalender zu importieren",
+    "import": "Importieren",
+    "importSuccess": "Termine sind erfolgreich importiert worden"
   },
   "colorLegend": {
     "placeholder": "Nicht angegeben",
