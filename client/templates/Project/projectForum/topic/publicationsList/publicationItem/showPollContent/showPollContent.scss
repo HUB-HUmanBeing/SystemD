@@ -90,12 +90,10 @@
         button {
           i {
             color: $minus-color;
-
             &:hover {
               color: $plus-color;
             }
           }
-
           position: absolute;
           top: 15px;
           right: 5px;
