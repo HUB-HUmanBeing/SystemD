@@ -36,7 +36,7 @@ Template.showPollContent.helpers({
     },
     abortEdition: function () {
         return Template.currentData().abortEdition
-    },
+    }
 });
 
 Template.showPollContent.events({
@@ -67,7 +67,6 @@ Template.showPollContent.events({
                         instance.addingProposition.set(false)
                         proposition.checkedBy=['me']
                         instance.pollOptions.set([...instance.pollOptions.get(), proposition])
-                        console.log(instance.pollOptions.get())
                     }
                 }
             )
@@ -86,7 +85,7 @@ Template.showPollContent.onCreated(function () {
             cryptoTools.sim_decrypt_data(publication.pollContent.symEnc_text, Session.get("currentProjectSimKey"), (decryptedSymEnc_text) => {
                 this.decryptedSymEnc_text.set(decryptedSymEnc_text)
             })
-            cryptoTools.decryptArrayOfObject(this.data.content.options, {symKey: Session.get("currentProjectSimKey")}, (pollOptions) => {
+            cryptoTools.decryptArrayOfObject(publication.pollContent.options, {symKey: Session.get("currentProjectSimKey")}, (pollOptions) => {
                 this.pollOptions.set(pollOptions)
             })
         }
