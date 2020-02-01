@@ -13,7 +13,7 @@
     margin: 0;
 
 
-    .collection-item {
+    .collection-pollOptions {
       border: none;
       margin-top: 5px;
 
@@ -22,10 +22,6 @@
         background-color: $main-bg;
         margin-left: 35px;
         border-radius: 0.6em;
-
-        .selectOption {
-
-        }
 
         .countLabel {
           font-style: italic;
@@ -43,5 +39,71 @@
         }
       }
     }
+
+    .addPropositionBtn {
+      float: left;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-top: 15px;
+      position: relative;
+      color: $link-color;
+
+      i {
+        color: $link-color;
+        position: relative;
+        top: -3px;
+        margin-right: 5px;
+      }
+    }
+
+    .newProposition {
+      padding-top: 10px;
+
+      .propositionForm {
+        margin-top: 10px;
+        position: relative;
+
+        .removePropositionBtn {
+          padding-top: 15px;
+
+          i {
+            color: $link-color;
+          }
+        }
+
+        .newPropositionInput {
+          margin-top: 10px;
+          margin-left: 10px;
+          padding-left: 10px;
+          background-color: $main-bg;
+          border-radius: 15px;
+          box-shadow: none;
+          border: none;
+          height: 2.2em;
+
+          &::placeholder {
+            color: $minus-color;
+            font-style: italic;
+          }
+        }
+
+        button {
+          i {
+            color: $minus-color;
+            &:hover {
+              color: $plus-color;
+            }
+          }
+          position: absolute;
+          top: 15px;
+          right: 5px;
+          background-color: transparent;
+          border: none;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+
   }
 }

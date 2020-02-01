@@ -70,19 +70,19 @@
         opacity: 1;
       }
     }
-&.editComment{
-  margin: 0 !important;
-  background-color: $contrasted-minus-bg;
-  border-radius: 5px;
-  .textareaSuperContainter {
-    box-shadow: none !important;
-    background-color: $contrasted-minus-bg;
-  }
-  textarea{
-    font-size: 1.1em !important;
-    background-color: $contrasted-minus-bg;
-  }
-}
+    &.editComment{
+      margin: 0 !important;
+      background-color: $contrasted-minus-bg;
+      border-radius: 5px;
+      .textareaSuperContainter {
+        box-shadow: none !important;
+        background-color: $contrasted-minus-bg;
+      }
+      textarea{
+        font-size: 1.1em !important;
+        background-color: $contrasted-minus-bg;
+      }
+    }
     .sendCommentBtn {
       position: absolute;
       top: 3px;
