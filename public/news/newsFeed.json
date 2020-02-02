@@ -1,7 +1,12 @@
 {
-	"lastUpdate": "1576949653952",
+	"lastUpdate": "1580583142196",
 	"newsArray": [
 		{
+			"title": "Les nouveautés sur System-d.org",
+			"content": "Vous l'avez sûrement remarqué, on est encore là pour développer les outils dont vous avez besoin! Ces dernières semaines, nous avons mis en ligne : \n\t - Les traductions en italien (merci beaucoup aux contributeurs, vous êtes géniaux·géniales!) \n\u0009 - La possibilité d'ajouter des propositions aux sondages en tant que membre du projet \n - La possibilité d'inviter jusqu'à 200 personnes en un seul lien d'invitation (contre 15 jusque là) \n\t - La possibilité d'importer et d'exporter des calendriers au format iCalendar. \n\n Merci beaucoup encore une fois à tous les contributeurs·contributrices pour votre aide et vos suggestions et à toutes les personnes qui font vivre le chat Riot 😊",
+			"img": "https://imgur.com/UZbNDc3.png",
+			"timestamp" : 1580583142196
+		},{
 			"title": "Sortie du module de news !",
 			"content": "Une fonctionnalité qui nous tenait à cœur depuis un moment : pouvoir vous tenir informés au jour le jour des actualités du projet. Lorsque de nouvelles news sont disponibles, vous verrez le petit logo news en bas à droite clignoter, et ainsi la (petite) équipe de dev que nous sommes pourra communiquer avec vous sur les avancées du projet !\nMerci au développeur rencontré cet été qui a participé grandement à rendre cette fonctionnalité possible, et qui contribue grandement à ce projet depuis peu.",
 			"img": "https://i.imgur.com/N04s1mh.gif",
@@ -14,7 +19,7 @@
 		},{
 			"title": "System-d.org disponible en espagnol !",
 			"content": "Un grand merci aux copains et copines qui ont œuvré pour traduire system-d.org en ESPAGNOL !\n\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\uD83C\uDDE8\uD83C\uDDFA\uD83C\uDDEA\uD83C\uDDF8\uD83C\uDDE8\uD83C\uDDF4\uD83C\uDDE8\uD83C\uDDF1\uD83C\uDDF2\uD83C\uDDFD\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\n\nla plateforme libre de projet chiffrée est désormais disponible en français, anglais et espagnol !",
-			"img": "https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/78974287_451685522215982_3229203463946633216_n.png?_nc_cat=110&_nc_eui2=AeG_hX3_RIh8qOYCuE85G4RkY9hD1wuv__xKhnthfU9aQ674lN7or-q4ChcwYLegLy5Cf_XTxmPqSvJxbYG6O9LZiym_jEcDk4MzKuPGpE4iYw&_nc_oc=AQnHzKMY6IYthUrag0dMYo-czcHnIjoyGz1o2EH-VBxdzqWR7CsSatnzACeZpIdKOeGahAqpAPkvJrsIDEAO2tk-&_nc_ht=scontent-cdt1-1.xx&oh=26eb367fc9419c7b6a187cceca092969&oe=5E698C0A",
+			"img": "https://imgur.com/Ex8dfl1.png",
 			"timestamp" : 1576949653952
 		}
 	]

@@ -4,8 +4,15 @@
 
 #### en projet
 - réaliser un build pour une appli android
+- Une conversation associée à chaque activité et marqueur de carte 
 - module permettant de gerer des fiches ( demandé par un centre de soin qui aimerait y gerer ses fiches patients, mais qui pourra servir a tout ceux souhaitant archiver, gerer et trier de l'info de manière collaborative)
+
+### déployé au 01/02/20
+- Possibilité d'ajouter des propositions aux sondages en tant que membre du projet.
+- Possibilité d'inviter jusqu'à 200 personnes en un lien d'invitation (contre 15 max jusque là)
 - traduction en  italien ( les contributeurs a cela sont vraiement formidables !)
+- ajout de l'import/export de calendrier au format ics
+- plein de petits debugs graphiques
 
 #### déployé le 17/01/20
 - débug des notifications qui sont désormais fonctionnelles sur chrome et sur les dernieres versions de firefox

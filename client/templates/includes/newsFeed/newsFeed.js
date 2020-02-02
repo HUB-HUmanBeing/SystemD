@@ -1,5 +1,4 @@
 import i18n from "meteor/universe:i18n";
-import Axios from "axios";
 
 Template.newsFeed.helpers({
     //add you helpers here
