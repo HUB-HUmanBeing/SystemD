@@ -499,7 +499,9 @@
     "publish": "Salva"
   },
   "showPollContent": {
-    "answers": "partecipanti"
+    "answers": "partecipanti",
+    "newProposition": "Nuova proposta...",
+    "send": "Pubblicare"
   },
   "pollOption": {
     "vote": "voti"
