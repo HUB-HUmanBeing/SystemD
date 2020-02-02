@@ -1,6 +1,12 @@
 {
-	"lastUpdate": "1576949653952",
+	"lastUpdate": "1580583142196",
 	"newsArray": [
+		{
+			"title": "Was ist neu auf System-d.org?",
+			"content": "Wie Sie vielleicht bemerkt haben, sind wir immer noch hier, um die Werkzeuge zu entwickeln, die Sie brauchen! In den letzten Wochen haben wir die Website weiter verbessert: \n\t - Italienische Übersetzungen (vielen Dank an die Mitwirkenden, Sie sind großartig!) \n\t - Die Möglichkeit, als ein Projektmitglied Vorschläge zu den Umfragen hinzuzufügen \n - Die Möglichkeit, bis zu 200 Personen in einem einzigen Einladungslink einzuladen (im Vergleich zu 15 bisher) \n\t - Die Möglichkeit, Kalender im iCalendar-Format zu importieren und zu exportieren. \n\n Vielen Dank noch einmal an alle Mitwirkenden für Ihre Hilfe und Vorschläge und an alle, die den Riot-Chat am Leben erhalten 😊",
+			"img": "https://imgur.com/UZbNDc3.png",
+			"timestamp": 1580583142196
+		},
 		{
 			"title": "Fertigstellung des Newsmoduls!",
 			"content": "Ein Feature, das uns schon seit einiger Zeit am Herzen liegt: Sie täglich über Projektneuigkeiten informieren zu können. Wenn neue Nachrichten verfügbar sind, sehen Sie das kleine Nachrichten-Logo in der rechten unteren Ecke blinken, so dass das (kleine) Entwicklerteam, das wir sind, mit Ihnen über den Fortschritt des Projekts kommunizieren kann!\nDanke an den Entwickler, den wir diesen Sommer kennengelernt haben, der wesentlich dazu beigetragen hat, dieses Feature zu ermöglichen.",
@@ -16,7 +22,7 @@
 		{
 			"title": "System-d.org ist auf Spanisch verfügbar!",
 			"content": "Vielen Dank an die Freunde, die an der Übersetzung von system-d.org ins SPANISCHE gearbeitet haben!\n🏴‍☠️🏴‍☠️🏴‍☠️🇨🇺🇪🇸🇨🇴🇨🇱🇲🇽🏴‍☠️🏴‍☠️🏴‍☠️\n\nDie freie, verschlüsselte Projektplattform ist jetzt in Französisch, Englisch und Spanisch verfügbar!",
-			"img": "https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/78974287_451685522215982_3229203463946633216_n.png?_nc_cat=110&_nc_eui2=AeG_hX3_RIh8qOYCuE85G4RkY9hD1wuv__xKhnthfU9aQ674lN7or-q4ChcwYLegLy5Cf_XTxmPqSvJxbYG6O9LZiym_jEcDk4MzKuPGpE4iYw&_nc_oc=AQnHzKMY6IYthUrag0dMYo-czcHnIjoyGz1o2EH-VBxdzqWR7CsSatnzACeZpIdKOeGahAqpAPkvJrsIDEAO2tk-&_nc_ht=scontent-cdt1-1.xx&oh=26eb367fc9419c7b6a187cceca092969&oe=5E698C0A",
+			"img": "https://imgur.com/Ex8dfl1.png",
 			"timestamp": 1576949653952
 		}
 	]

@@ -499,7 +499,9 @@
     "publish": "Speichern"
   },
   "showPollContent": {
-    "answers": "Beteiligte(r)"
+    "answers": "Beteiligte(r)",
+    "newProposition": "Neuer Vorschlag...",
+    "send": "Veröffentlichen"
   },
   "pollOption": {
     "vote": "Stimme(n)"
