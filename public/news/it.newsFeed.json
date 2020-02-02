@@ -1,8 +1,14 @@
 {
-	"lastUpdate": "1576949653952",
+	"lastUpdate": "1580583142196",
 	"newsArray": [
 		{
-			"title": "Rilascio del modulo news!",
+			"title": "Cosa c'è di nuovo su System-d.org",
+			"content": "Come avrete notato, siamo ancora qui per sviluppare gli strumenti di cui avete bisogno! Nelle ultime settimane, abbiamo messo online : \n\t - Traduzioni in italiano (grazie mille ai collaboratori, siete fantastici!) \n\t - La possibilità di aggiungere proposte ai sondaggi come membro del progetto \n - La possibilità di invitare fino a 200 persone in un unico link di invito (rispetto alle 15 di oggi) \n\t - La possibilità di importare ed esportare i calendari in formato iCalendar. \n\n Grazie ancora una volta a tutti i collaboratori per il vostro aiuto e i vostri suggerimenti e a tutte le persone che tengono viva la chat di Riot 😊",
+			"img": "https://imgur.com/UZbNDc3.png",
+			"timestamp": 1580583142196
+		},
+		{
+			"title": "Rilascia il modulo delle notizie!",
 			"content": "Una caratteristica che ci sta a cuore da tempo: potervi tenere informati quotidianamente sulle novità del progetto. Quando saranno disponibili nuove notizie, vedrete lampeggiare il logo della piccola notizia nell'angolo in basso a destra, così il (piccolo) team di sviluppo che siamo sarà in grado di comunicare con voi sullo stato di avanzamento del progetto!\nGrazie allo sviluppatore che abbiamo incontrato quest'estate, che ha contribuito a rendere possibile questa funzione, e che ha contribuito a questo progetto recentemente.",
 			"img": "https://i.imgur.com/N04s1mh.gif",
 			"timestamp": 1576949653952
