@@ -29,8 +29,12 @@ Template.newsFeed.onCreated(function () {
     this.lastView = window.localStorage.getItem('newsFeedHist');
     this.newsArray = new ReactiveVar([]);
 
-    let url = Meteor.isDevelopment ? "http://localhost:3000/news/newsFeed.json" :Meteor.settings.public.newsURL
+    lang=window.localStorage.getItem("lang").split("-")[0]
+    fileName=lang+".newsFeed.json"
+    
+    let url = Meteor.isDevelopment ? "http://localhost:3000/news/"+fileName :Meteor.settings.public.newsURL+fileName
     url +="?preventCache="+Date.now()
+
     $.get(
         url ,
         (newsJson) => {
