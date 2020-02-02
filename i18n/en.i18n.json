@@ -302,7 +302,7 @@
     "user": "user",
     "users": "users",
     "ok": "Generate invitation link",
-    "loader": "Génération du lien d'invitation",
+    "loader": "Invitation link creation",
     "addMessage": "Add an invitation message",
     "invitMessage": "Message sent with your invitation",
     "backToParams": "Back to project parameters"
@@ -361,7 +361,7 @@
     "kickUser": "Remove user",
     "kickUserInfo": "Remove user from the members of the project",
     "removedSuccess": "The user has been removed from the project members",
-    "promotedSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
+    "promotedSuccess": "The user is now admin of the project",
     "quitSuccess": "You have quit the project"
   },
   "_templates_users": "===========================================================================================================================",
@@ -487,7 +487,7 @@
   },
   "publicationItem": {
     "delete": "Delete",
-    "abort": "Annuler",
+    "abort": "Cancel",
     "edit": "Edit",
     "deleteInfo": "This action will remove the publication and all its comments.",
     "deleteSuccess": "This publication and all its comments have been removed.",
@@ -499,14 +499,16 @@
     "publish": "Save"
   },
   "showPollContent": {
-    "answers": "answers"
+    "answers": "answers",
+    "newProposition": "Nouvelle proposition...",
+    "send": "Publier"
   },
   "pollOption": {
     "vote": "votes"
   },
   "newComment": {
     "placeholder": "Your comment...",
-    "sendComment": "Publier"
+    "sendComment": "Publish"
   },
   "commentList": {
     "see": "See",
@@ -530,7 +532,7 @@
   },
   "filePreview": {
     "delete": "Delete file",
-    "show": "Voir l'aperçu"
+    "show": "Show preview"
   },
   "fullScreenFile": {
     "download": "Download",
@@ -543,24 +545,24 @@
     "projectFiles.limitSize": "You have reached the files upload limit on this project. Please delete documents before uploading."
   },
   "likeBox": {
-    "likePublication": "J'aime",
-    "unlikePublication": "Je n'aime plus"
+    "likePublication": "Like",
+    "unlikePublication": "Unlike"
   },
   "pinned": {
     "pin": "Pin publication",
     "unpin": "Unpin publication"
   },
   "beautyfullTextarea": {
-    "addEmoji": "Ajouter un émoji"
+    "addEmoji": "Add emoji"
   },
   "showFileContent": {
     "deleted": "The file has been deleted"
   },
   "_templates_map": "===========================================================================================================================",
   "projectMaps": {
-    "settings": "Paramètres",
-    "fullscreen": "Mettre en plein écran",
-    "newMarker": "Nouveau marqueur"
+    "settings": "Settings",
+    "fullscreen": "Toggle full screen",
+    "newMarker": "New Marker"
   },
   "mapParams": {
     "topo": "Topo",
@@ -604,8 +606,8 @@
     "editIconInfo": "Click on map to edit marker position."
   },
   "markerDetail": {
-    "editColor": "Éditer la couleur",
-    "editIcon": "Éditer l'icône",
+    "editColor": "Edit color",
+    "editIcon": "Edit Icon",
     "markerName": "Marker name...",
     "markerDetail": "Detail",
     "editMarker": "Edit",
@@ -657,13 +659,13 @@
     "deleteOldsInfo": "Delete activities older than :",
     "delete": "Delete",
     "oldsActivitiesDeleted": "Old activities have been deleted",
-    "exportICS": "Exporter au format ICS",
-    "exportICSInfos": "Récupérez l'ensemble de vos évènements déchiffrés au format ICS afin de les importer dans d'autres applications de calendrier.",
-    "export": "Exporter",
-    "importICS": "Importer au format ICS",
-    "importICSInfos": "Utilisez un fichier ICS afin d'importer les évènements qu'il contient sur l'agenda de ce projet",
-    "import": "Importer",
-    "importSuccess": "Evenements importés avec succès"
+    "exportICS": "Export as ICS",
+    "exportICSInfos": "Get all of your decrypted events in ICS format to import them into other calendar apps.",
+    "export": "Export",
+    "importICS": "Import as ICS",
+    "importICSInfos": "Use an ICS file to import the events it contains on this project's agenda",
+    "import": "Import",
+    "importSuccess": "Events successfully imported"
   },
   "colorLegend": {
     "placeholder": "Your legend ...",
@@ -784,38 +786,38 @@
     "uploadWarning": "Warning, all data in the spreadsheet will be permanently overwritten by the data in the csv file!",
     "fileUpload": "Import CSV file",
     "onlyCsvError": "The specified file is not CSV format",
-    "searchInTable": "Rechercher dans le tableur"
+    "searchInTable": "Search in spreadsheet"
   },
   "spreadsheet": {
-    "noRecordsFound": "Rien à afficher",
-    "showingPage": "Page {0} sur {1} affichée",
-    "show": "Montrer",
-    "entries": "entrées",
-    "insertANewColumnBefore": "Insérer une colonne avant",
-    "insertANewColumnAfter": "Insérer une colonne après",
-    "deleteSelectedColumns": "Supprimer les colonnes sélectionnées",
-    "renameThisColumn": "Renommer cette colonne",
-    "orderAscending": "Ordre croissant",
-    "orderDescending": "Ordre décroissant",
-    "insertANewRowBefore": "Insérer une ligne avant",
-    "insertANewRowAfter": "Insérer une ligne après",
-    "deleteSelectedRows": "Supprimer les lignes sélectionnées",
-    "editComments": "Éditer les commentaires",
-    "addComments": "Ajouter un commentaire",
-    "comments": "Commentaires",
-    "clearComments": "Effacer les commentaires",
-    "copy": "Copier ...",
-    "paste": "Coller ...",
-    "saveAs": "Enregistrer sous ...",
-    "about": "À propos",
-    "areYouSureToDeleteTheSelectedRows": "Êtes-vous sûr de vouloir supprimer les lignes sélectionnées?",
-    "areYouSureToDeleteTheSelectedColumns": "Êtes-vous sûr de vouloir supprimer les colonnes sélectionnées?",
-    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "Cette action va supprimer toutes les cellules fusionnées, êtes-vous sûr?",
-    "thisActionWillClearYourSearchResultsAreYouSure": "Cette action va supprimer vos résultats de recherche, êtes-vous sûr?",
-    "thereIsAConflictWithAnotherMergedCell": "Il y a un conflit avec une autre cellule fusionnée",
-    "invalidMergeProperties": "Action invalide pour la fusion",
-    "cellAlreadyMerged": "Ces cellules sont déjà fusionnées",
-    "noCellsSelected": "Pas de cellules sélectionnées"
+    "noRecordsFound": "Nothing to show",
+    "showingPage": "Displayed page {0} of {1}",
+    "show": "Show",
+    "entries": " entries",
+    "insertANewColumnBefore": "Insert a new column before",
+    "insertANewColumnAfter": "Insert a new column after",
+    "deleteSelectedColumns": "Delete selected columns",
+    "renameThisColumn": "Rename this column",
+    "orderAscending": "Order ascending",
+    "orderDescending": "Order descending",
+    "insertANewRowBefore": "Insert a new row before",
+    "insertANewRowAfter": "Insert a new row after",
+    "deleteSelectedRows": "Delete selected rows",
+    "editComments": "Edit comments",
+    "addComments": "Add comments",
+    "comments": "Comments",
+    "clearComments": "Clear comments",
+    "copy": "Copy...",
+    "paste": "Paste...",
+    "saveAs": "Save as...",
+    "about": "About",
+    "areYouSureToDeleteTheSelectedRows": "Are you sure to delete the selected rows?",
+    "areYouSureToDeleteTheSelectedColumns": "Are you sure to delete the selected columns?",
+    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "This action will delete all merged cells, are you sure?",
+    "thisActionWillClearYourSearchResultsAreYouSure": "This action will delete your search results, are you sure?",
+    "thereIsAConflictWithAnotherMergedCell": "There is a conflict with another cell merged",
+    "invalidMergeProperties": "Invalid merge action",
+    "cellAlreadyMerged": "These cells are already merged",
+    "noCellsSelected": "No cells selected"
   },
   "fullCalendar": {
     "code": "fr",
