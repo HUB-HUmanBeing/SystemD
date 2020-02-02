@@ -499,7 +499,9 @@
     "publish": "Enregistrer"
   },
   "showPollContent": {
-    "answers": "participants"
+    "answers": "participants",
+    "newProposition": "Nouvelle proposition...",
+    "send": "Publier"
   },
   "pollOption": {
     "vote": "votes"
