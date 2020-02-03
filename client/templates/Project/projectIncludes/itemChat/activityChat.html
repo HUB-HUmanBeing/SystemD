@@ -2,10 +2,11 @@
     <div class="activityChat">
         {{__ "general.loremipsum"}}
 
-
-        <form class="newItemComment">
-            <input type=text class="newItemInput" value="">
-
+        <form class="newItemCommentForm" newItemCommentForm>
+            <input type=text class="newItemCommentInput" value="">
+            <button newItemComment>
+                <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="{{__ "usual.send"}}">send</i>
+            </button>
         </form>
     </div>
 </template>

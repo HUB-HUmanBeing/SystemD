@@ -13,9 +13,8 @@ const cryptoTools = {
             return crypto
         } else {
             console.log("API crypto Not Supported")
-            Materialize.toast('Votre navigateur ne permet pas une connexion sécurisée', 6000, 'toasError')
+            Materialize.toast('Votre navigateur ne permet pas une connexion sécurisée', 6000, 'toastError')
         }
-
     },
     //vecteur d'initialisation utilisé pour les chiffrements symetriques
     vectorFromString(str) {

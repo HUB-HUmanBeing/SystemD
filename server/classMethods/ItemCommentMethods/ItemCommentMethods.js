@@ -1,25 +1,24 @@
 import {check} from "meteor/check";
-import {Class} from 'meteor/jagi:astronomy';
 import Project from "../../../imports/classes/Project";
 import ItemComment from "../../../imports/classes/ItemComment";
 import Activity from "../../../imports/classes/Activity";
-import Marker from "../../../imports/classes/MapMarker";
 import MapMarker from "../../../imports/classes/MapMarker";
 
 ItemComment.extend({
     meteorMethods: {
-        newItemComment(authInfo, ItemCommentParams) {
-            check(ItemCommentParams, {
+        newItemComment(authInfo, itemCommentParams) {
+            check(itemCommentParams, {
                 itemId: String,
-                itemType: Class,
+                itemType: String,
                 symEnc_content: String
             })
             check(authInfo, {memberId: String, userSignature: String})
 
-            if (ItemCommentParams.itemType==Activity){
-                let item = Activity.findOne(ItemCommentParams.itemId)
-            }else if (ItemCommentParams.itemType==MapMarker){
-                let item = MapMarker.findOne(ItemCommentParams.itemId)
+            let item={}
+            if (itemCommentParams.itemType=="Activity"){
+                item = Activity.findOne(itemCommentParams.itemId)
+            }else if (itemCommentParams.itemType=="MapMarker"){
+                item = MapMarker.findOne(itemCommentParams.itemId)
             }
             let currentProject = Project.findOne(item.projectId)
             check(currentProject.isMember(authInfo), true)
@@ -28,8 +27,9 @@ ItemComment.extend({
                 projectId: currentProject._id,
                 createdBy: authInfo.memberId
             }
-            ItemCommentParams = {...ItemCommentParams, ...computedParams}
-            let newItemComment= new ItemComment(ItemCommentParams)
+            itemCommentParams = {...itemCommentParams, ...computedParams}
+            let newItemComment= new ItemComment(itemCommentParams)
+            console.log(newItemComment)
             return newItemComment.save((err) => {
                 if (!err) {
                     item.commentCount++

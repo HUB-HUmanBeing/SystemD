@@ -14,7 +14,7 @@ const ItemComment = Class.create({
             index: 1
         },
         itemType: {
-            type: Class,
+            type: String
         },
         itemCommentId: {
             type: String,
