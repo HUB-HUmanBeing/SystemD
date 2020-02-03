@@ -175,6 +175,12 @@ const MapMarker = Class.create({
         markerText:{
             type:MarkerText,
             optional:true
+        },
+        commentCount: {
+            type: Number,
+            default: function () {
+                return 0;
+            }
         }
     },
     helpers: {}

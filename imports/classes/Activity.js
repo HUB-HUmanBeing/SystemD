@@ -92,10 +92,15 @@ const Activity = Class.create({
             default: function () {
                 return [];
             }
+        },
+        commentCount: {
+            type: Number,
+            default: function () {
+                return 0;
+            }
         }
     },
     helpers: {}
-
 });
 
 export default Activity
