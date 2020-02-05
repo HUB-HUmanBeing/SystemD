@@ -56,6 +56,7 @@
     "btnLabel": "Bugs - Anregungen",
     "bugReport": "Fehler",
     "suggestion": "Vorschläge",
+    "precisions": "BEACHTEN SIE: Wenn Sie mit den Entwicklern Kontakt aufnehmen möchten, lassen Sie uns bitte eine Möglichkeit, Sie zu kontaktieren, gehen Sie zum Projekt Riot oder verfolgen Sie die Entwicklung Ihres Tickets auf GitHub",
     "allowDeviceInfo": "Füge automatisch Informationen über den verwendeten Browser an, um die Fehlersuche zu erleichtern? (Browser, Version, Betriebssystem, Sprache)",
     "decline": "nein",
     "authorize": "ja",
@@ -65,6 +66,7 @@
     "captcha": "Die 4 Buchstaben eingeben",
     "submit": "Senden",
     "githubDirectLink": "Oder schreiben Sie System-D dieses Ticket gleich in Github...",
+    "riotDirectLink": "oder begeben Sie sich direkt in den Riot-Chatroom des Projekts...",
     "succesMessage": "Vielen Dank für Ihren Beitrag! Ihre Nachricht wurde an die Entwickler weitergeleitet",
     "githubLink": "Um den Bearbeitungsstatus Ihrer Nachricht zu sehen, informieren Sie sich in GitHub",
     "return": "Zurück"
@@ -665,7 +667,8 @@
     "importICS": "Importe im ICS Format",
     "importICSInfos": "Verwenden Sie eine ICS-Datei, um die darin enthaltenen Termine auf den Terminkalender zu importieren",
     "import": "Importieren",
-    "importSuccess": "Termine sind erfolgreich importiert worden"
+    "importSuccess": "Termine sind erfolgreich importiert worden",
+    "importError": "Eine oder mehrere Komponenten wurden während des Imports ignoriert, handelt es sich um eine iCalendar-Datei? (derzeit werden nur die Formate VTODO und VEVENT unterstützt)"
   },
   "colorLegend": {
     "placeholder": "Nicht angegeben",
