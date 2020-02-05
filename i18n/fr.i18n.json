@@ -665,7 +665,8 @@
     "importICS": "Importer au format ICS",
     "importICSInfos": "Utilisez un fichier ICS afin d'importer les évènements qu'il contient sur l'agenda de ce projet",
     "import": "Importer",
-    "importSuccess": "Evenements importés avec succès"
+    "importSuccess": "évènements importés avec succès",
+    "importError": "Un ou plusieurs composants ont été ignorés durant l'import, est-ce bien un fichier iCalendar? (seuls les formats VTODO et VEVENT sont supportés pour le moment)"
   },
   "colorLegend": {
     "placeholder": "Non renseigné",
