@@ -56,6 +56,7 @@
     "btnLabel": "Errores - Sugerencias",
     "bugReport": "Error",
     "suggestion": "Sugerencias",
+    "precisions": "ATTENTION : Si vous souhaitez prendre contact avec les développeurs, pensez à nous laisser un moyen de vous contacter, rendez-vous sur le Riot du projet, ou suivez l'évolution de votre ticket sur GitHub",
     "allowDeviceInfo": "Adjuntar automáticamente información sobre el navegador utilizado para facilitar la depuración? (navegador, versión, sistema operativo, idioma)",
     "decline": "no",
     "authorize": "si",
@@ -65,6 +66,7 @@
     "captcha": "Introduzca las 4 letras",
     "submit": "Enviar",
     "githubDirectLink": "Utiliser directement le Github de System-d.org...",
+    "riotDirectLink": "ou rendez-vous directement sur le chat Riot du projet...",
     "succesMessage": "Gracias por su contribución! Su mensaje ha sido enviado al desarrollador",
     "githubLink": "Para ver la evolución de su mensaje, vaya a GitHub",
     "return": "ir atrás "
@@ -665,7 +667,8 @@
     "importICS": "Importer au format ICS",
     "importICSInfos": "Utilisez un fichier ICS afin d'importer les évènements qu'il contient sur l'agenda de ce projet",
     "import": "Importer",
-    "importSuccess": "Evenements importés avec succès"
+    "importSuccess": "évènements importés avec succès",
+    "importError": "Un ou plusieurs composants ont été ignorés durant l'import, est-ce bien un fichier iCalendar? (seuls les formats VTODO et VEVENT sont supportés pour le moment)"
   },
   "colorLegend": {
     "placeholder": "No especificado",
