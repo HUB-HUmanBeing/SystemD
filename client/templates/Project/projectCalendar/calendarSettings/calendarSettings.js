@@ -262,7 +262,6 @@ Template.calendarSettings.events({
         if (duration) {
             let date = new Date()
             date.setDate(date.getDate() - duration)
-            console.log(date)
             ActivityInstance.callMethod("deleteOldsActivities", projectController.getAuthInfo(projectId), projectId, date, (err) => {
                 if (err) {
                     console.log(err)
@@ -285,7 +284,6 @@ Template.calendarSettings.events({
             let parsedCalendar = ical.parseICS(str)
 
             let  setDateFromStr = (dateStr)=>{
-                console.log(dateStr.substr(4,2),dateStr.substr(6,2))
                 let res = moment()
                 .year(dateStr.substr(0,4))
                 .month(dateStr.substr(4,2)-1)
@@ -293,42 +291,50 @@ Template.calendarSettings.events({
                 .hour(23).minute(0).second(0).millisecond(0)
                 return res.toDate()
             }
-
+            
+            let countImportedEvents=0
             Object.keys(parsedCalendar).forEach((key, i) => {
                 let parsedEvent = parsedCalendar[key]
-                let unencryptedActivityParams = {
-                    symEnc_title:parsedEvent.summary.val ,
-                    symEnc_detail: parsedEvent.description,
-                }
+                if(parsedEvent['type']=='VEVENT' | parsedEvent['type']=='VTODO'){
+                    countImportedEvents++
 
-                if(parsedEvent.rrule && parsedEvent.rrule.options && parsedEvent.rrule.options.byweekday && parsedEvent.rrule.options.byweekday.length){
-                    unencryptedActivityParams.daysOfWeek = []
-                    parsedEvent.rrule.options.byweekday.forEach(d=>{
-                        unencryptedActivityParams.daysOfWeek.push(d+1>6 ? 0 : d+1)
-                    })
-                }
+                    let unencryptedActivityParams = {
+                        symEnc_title:parsedEvent.summary ,
+                        symEnc_detail: parsedEvent.description,
+                    }
 
-                if(parsedEvent.start.length === 8){
-                    unencryptedActivityParams.allDay = true
-                    unencryptedActivityParams.start = setDateFromStr(parsedEvent.start)
-                    unencryptedActivityParams.end = setDateFromStr(parsedEvent.end)
-                }else{
-                    unencryptedActivityParams.start = parsedEvent.start
-                    unencryptedActivityParams.end = parsedEvent.end
-                }
-                cryptoTools.encryptObject(unencryptedActivityParams, {symKey: Session.get("currentProjectSimKey")}, (encryptedActivityParams) => {
-                   let newActivity =new Activity()
-                    let projectId = FlowRouter.current().params.projectId
-                    newActivity.callMethod("newCalendarActivity", projectController.getAuthInfo(projectId), projectId, encryptedActivityParams,{}, (err, res) => {
-                        if (err) {
-                            console.log(err)
-                        } else {
-                            if(i==Object.keys(parsedCalendar).length-1){
-                                Materialize.toast(__('calendarSettings.importSuccess'), 6000, 'toastOk')
+                    if(parsedEvent.rrule && parsedEvent.rrule.options && parsedEvent.rrule.options.byweekday && parsedEvent.rrule.options.byweekday.length){
+                        unencryptedActivityParams.daysOfWeek = []
+                        parsedEvent.rrule.options.byweekday.forEach(d=>{
+                            unencryptedActivityParams.daysOfWeek.push(d+1>6 ? 0 : d+1)
+                        })
+                    }
+
+                    if(parsedEvent.start.length === 8){
+                        unencryptedActivityParams.allDay = true
+                        unencryptedActivityParams.start = setDateFromStr(parsedEvent.start)
+                        unencryptedActivityParams.end = setDateFromStr(parsedEvent.end)
+                    }else{
+                        unencryptedActivityParams.start = parsedEvent.start
+                        unencryptedActivityParams.end = parsedEvent.end
+                    }
+                    cryptoTools.encryptObject(unencryptedActivityParams, {symKey: Session.get("currentProjectSimKey")}, (encryptedActivityParams) => {
+                    let newActivity =new Activity()
+                        let projectId = FlowRouter.current().params.projectId
+                        newActivity.callMethod("newCalendarActivity", projectController.getAuthInfo(projectId), projectId, encryptedActivityParams,{}, (err, res) => {
+                            if (err) {
+                                console.log(err)
+                            } else {
+                                if(i==Object.keys(parsedCalendar).length-1){
+                                    Materialize.toast(countImportedEvents+" "+__('calendarSettings.importSuccess'), 6000, 'toastOk')
+                                }
                             }
-                        }
+                        })
                     })
-                })
+                } 
+                else{
+                    Materialize.toast(__('calendarSettings.importError'),6000, 'toastError')
+                }
             })
         };
         reader.readAsText(file);
