@@ -6,7 +6,6 @@ const Comment = Class.create({
     name: 'Comment',
     collection: Comments,
     fields: {
-
         projectId: {
             type: String,
             index: 1

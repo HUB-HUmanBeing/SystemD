@@ -1,9 +1,7 @@
 import {check} from "meteor/check";
 import Project from "../../../imports/classes/Project";
-import Topic from "../../../imports/classes/Topic";
 import Activity from "../../../imports/classes/Activity";
 import NotifPush from "../../../imports/NotifPush";
-import Comment from "../../../imports/classes/Comment";
 import MapMarker from "../../../imports/classes/MapMarker";
 
 

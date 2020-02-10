@@ -3,8 +3,8 @@ import ItemComments from '../../lib/collections/ItemComments';
 
 const ItemComment = Class.create({
     name:'ItemComment',
-    collection:ItemComments,
-    fiels:{
+    collection: ItemComments,
+    fields:{
         projectId: {
             type: String,
             index: 1
@@ -16,10 +16,6 @@ const ItemComment = Class.create({
         itemType: {
             type: String
         },
-        itemCommentId: {
-            type: String,
-            index: 1   
-        },  
         createdBy: {
             type: String
         },

@@ -1,10 +1,21 @@
 <template name="activityChat">
     <div class="activityChat">
-        {{__ "general.loremipsum"}}
+        <ul class="itemCommentList">
+            {{#each itemComment in itemComments}}
+                {{#if displayAvatar}}
+                    <div class="userAvatar">
+                        {{>avatar userId=(userIdFromMemberId itemComment.createdBy)}}
+                    </div>                
+                {{/if}}
+                {{> itemCommentItem itemComment=itemComment}}
+            {{else}}
+                Rien à afficher
+            {{/each}}
+        </ul>
 
         <form class="newItemCommentForm" newItemCommentForm>
             <input type=text class="newItemCommentInput" value="">
-            <button newItemComment>
+            <button class="newItemCommentButton" newItemComment>
                 <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="{{__ "usual.send"}}">send</i>
             </button>
         </form>

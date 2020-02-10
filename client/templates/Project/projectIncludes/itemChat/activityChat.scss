@@ -2,4 +2,34 @@
 
 .activityChat {
     flex: 0 0 60%;
+    .userAvatar{
+        width: 2.6em;
+        height: 2.6em;   
+        z-index: 0;
+    }
+    .newItemCommentForm{
+        border-radius: 10px;
+        background-color: $light-bg;
+        height: 40px;
+        margin-left: 20px;
+        .newItemCommentInput{
+            border: none;
+            padding-left: 20px;
+        }
+        .newItemCommentButton{
+            bottom: -50px;
+            left: 530px;
+            position: relative;
+            background-color: transparent;
+            border:none;
+            color:$lighter-bg;
+            i {
+                color: $minus-color;
+        
+                &:hover {
+                color: $plus-color;
+                }
+            }
+        }
+    }
 }

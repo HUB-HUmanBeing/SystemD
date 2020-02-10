@@ -29,7 +29,6 @@ ItemComment.extend({
             }
             itemCommentParams = {...itemCommentParams, ...computedParams}
             let newItemComment= new ItemComment(itemCommentParams)
-            console.log(newItemComment)
             return newItemComment.save((err) => {
                 if (!err) {
                     item.commentCount++

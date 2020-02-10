@@ -1,0 +1,14 @@
+<template name="itemCommentItem">
+    <li class="itemCommentItem flex relative">
+        <div class="itemCommentContainer">
+            <div class="left-align itemCommentContent relative">
+                {{#if decryptedContent}}
+                    {{decryptedContent}}
+                {{/if}}
+            </div>
+            <div>
+                Created at : {{itemComment.createdAt}}
+            </div>
+        </div>
+    </li>
+</template>

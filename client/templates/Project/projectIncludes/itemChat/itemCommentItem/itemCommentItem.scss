@@ -1,0 +1,14 @@
+@import "{}/client/scss/variables.scss";
+
+.itemCommentItem {
+    .itemCommentContainer{
+        width: 100%;
+        background-color: $main-bg;
+        .itemCommentContent{
+
+        }
+        &:hover{
+            background-color: $light-bg;
+        }
+    }
+}

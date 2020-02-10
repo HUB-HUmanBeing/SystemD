@@ -1,18 +1,23 @@
 import cryptoTools from "../../../../lib/cryptoTools";
-import Project from "../../../../../imports/classes/Project";
 import ItemComment from "../../../../../imports/classes/ItemComment";
 import projectController from "../../../../lib/controllers/projectController";
 import preFormatMessage from "../../../../lib/preformatMessages";
-import Activity from "../../../../../imports/classes/Activity";
-import MapMarker from "../../../../../imports/classes/MapMarker";
 
-Template.projectLayout.helpers({
+Template.activityChat.helpers({
+    itemComments: function () {
+        return ItemComment.find({},{sort: {createdAt: 1}}).fetch()
+    },
+    displayAvatar: function() {
+        console.log(itemComment.createdBy)
+        return true
+    }
 });
 
-Template.projectLayout.events({
+Template.activityChat.events({
     'submit [newItemCommentForm]': function () {
         event.preventDefault()
         let textContent = preFormatMessage($(".newItemCommentInput").val())
+        $(".newItemCommentInput").val("")
         let itemType,itemId
         if(FlowRouter.current().queryParams.side=="activityDetail"){
             itemType = "Activity"
@@ -27,7 +32,6 @@ Template.projectLayout.events({
                 itemType : itemType,
                 itemId : itemId
             }
-            console.log(itemCommentParams)
             let newItemComment = new ItemComment()
             newItemComment.callMethod(
                 "newItemComment",
@@ -36,8 +40,6 @@ Template.projectLayout.events({
                 (err, res) => {
                     if (err) {
                         console.log(err)
-                    }else{
-                        console.log('Item comment created ! \n', newItemComment)
                     }
                 }
             )
@@ -45,17 +47,26 @@ Template.projectLayout.events({
     }
 });
 
-Template.projectLayout.onCreated(function () {
-    Meteor.subscribe("itemComments", projectController.getAuthInfo(FlowRouter.current().params.projectId), FlowRouter.current().queryParams.activityId, (err) => {
-        if(err){
-            console.log(err)
-        }
+Template.activityChat.onCreated(function () {
+    this.decrypted = new ReactiveVar(false)
+    this.lastCommentCreator = ""
+
+    this.autorun(() => {
+        FlowRouter.watchPathChange()
+        Meteor.subscribe("itemComments", projectController.getAuthInfo(FlowRouter.current().params.projectId), FlowRouter.current().params.projectId , FlowRouter.current().queryParams.activityId, (err) => {
+            if(err){
+                console.log(err)
+            }
+        })
+    
+  
     })
+    
 });
 
-Template.projectLayout.onRendered(function () {
+Template.activityChat.onRendered(function () {
 });
 
-Template.projectLayout.onDestroyed(function () {
+Template.activityChat.onDestroyed(function () {
 });
 

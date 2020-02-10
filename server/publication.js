@@ -324,7 +324,7 @@ Meteor.publish("itemComments", function (authInfo, projectId, itemId) {
     check(authInfo, {memberId: String, userSignature: String})
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
-    return ItemComments.find({projectId: projectId}, {itemId: itemId})
+    return ItemComments.find({projectId: projectId, itemId: itemId})
 })
 Meteor.publish("publicationFiles", function (authInfo, projectId, filesId) {
     check(projectId, String)
