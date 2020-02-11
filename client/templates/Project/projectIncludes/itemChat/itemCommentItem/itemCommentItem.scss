@@ -1,14 +1,51 @@
 @import "{}/client/scss/variables.scss";
 
 .itemCommentItem {
+    margin-right: 25px;
+    background-color: $contrasted-bg;
+
+    .timeBanner{
+        text-align: center;
+        flex:none;
+    }
+    
     .itemCommentContainer{
         width: 100%;
-        background-color: $main-bg;
-        .itemCommentContent{
+        display: flex;
+        
+        .userAvatar{
+            flex: 0 0 1;
+        }
 
+        .username{
+            flex: none;
         }
-        &:hover{
-            background-color: $light-bg;
+
+        .createdAt{
+            visibility: hidden;
         }
+
+        .itemCommentContent{
+            flex: auto;
+            &:hover{
+                background-color: $light-bg;
+                .createdAt{
+                    visibility: visible;
+                }
+            }
+        }
+
+        .deleteComment {
+            padding: 5px 0px 5px 15px;
+            cursor: pointer;
+            i{
+              color: rgba($minus-color,0.7);
+              &:hover {
+                color: $plus-color;      
+              }
+            }
+            
+          }
+        
     }
 }

@@ -5,7 +5,19 @@ import preFormatMessage from "../../../../lib/preformatMessages";
 
 Template.activityChat.helpers({
     itemComments: function () {
-        return ItemComment.find({},{sort: {createdAt: 1}}).fetch()
+        comments=ItemComment.find({},{sort: {createdAt: 1}}).fetch()
+        comments.forEach( (comment,i) => {
+            if(i!==0){
+                previousComment=comments[i-1]
+                if (comment.createdAt.toDateString() === previousComment.createdAt.toDateString()){
+                    comment.hideTimeBanner = true;
+                    if (comment.createdBy === previousComment.createdBy){
+                        comment.hideUserInfo = true;
+                    }
+                }
+            }
+        })
+        return comments
     },
     displayAvatar: function() {
         console.log(itemComment.createdBy)
@@ -14,7 +26,7 @@ Template.activityChat.helpers({
 });
 
 Template.activityChat.events({
-    'submit [newItemCommentForm]': function () {
+    'submit [newItemCommentForm]': function (event, instance) {
         event.preventDefault()
         let textContent = preFormatMessage($(".newItemCommentInput").val())
         $(".newItemCommentInput").val("")
@@ -50,16 +62,17 @@ Template.activityChat.events({
 Template.activityChat.onCreated(function () {
     this.decrypted = new ReactiveVar(false)
     this.lastCommentCreator = ""
+    this.itemComments= new ReactiveVar()
 
     this.autorun(() => {
         FlowRouter.watchPathChange()
         Meteor.subscribe("itemComments", projectController.getAuthInfo(FlowRouter.current().params.projectId), FlowRouter.current().params.projectId , FlowRouter.current().queryParams.activityId, (err) => {
             if(err){
                 console.log(err)
+            }else{
+                
             }
-        })
-    
-  
+        })  
     })
     
 });

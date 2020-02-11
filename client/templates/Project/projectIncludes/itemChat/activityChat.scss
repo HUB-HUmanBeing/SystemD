@@ -1,7 +1,9 @@
 @import "{}/client/scss/variables.scss";
 
 .activityChat {
-    flex: 0 0 60%;
+    padding-left: 30px;
+    flex: 0 0 70%;
+    background-color: $contrasted-bg;
     .userAvatar{
         width: 2.6em;
         height: 2.6em;   
@@ -11,7 +13,7 @@
         border-radius: 10px;
         background-color: $light-bg;
         height: 40px;
-        margin-left: 20px;
+        width: 600px;
         .newItemCommentInput{
             border: none;
             padding-left: 20px;

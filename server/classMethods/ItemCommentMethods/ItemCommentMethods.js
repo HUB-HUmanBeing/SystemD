@@ -40,10 +40,10 @@ ItemComment.extend({
         },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
-            let itemComment = ItemComment.findOnde(this._id)
+            let itemComment = ItemComment.findOne(this._id)
             let currentProject = Project.findOne(itemComment.projectId)
             check(currentProject.isMember(authInfo), true)
-            check(authInfo.memberId === comment.createdBy, true)
+            check(authInfo.memberId === itemComment.createdBy, true)
 
             return itemComment.remove()
         }

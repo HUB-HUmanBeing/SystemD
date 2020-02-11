@@ -1,14 +1,30 @@
 <template name="itemCommentItem">
-    <li class="itemCommentItem flex relative">
+    <li class="itemCommentItem relative">
+        {{#unless itemComment.hideTimeBanner}}
+                <div class="timeBanner">
+                    {{timeBanner}}
+                </div>
+        {{/unless}}
         <div class="itemCommentContainer">
+            {{#unless itemComment.hideUserInfo}}
+                <div class="userAvatar left">
+                    {{>avatar userId=(userIdFromMemberId itemComment.createdBy)}}
+                </div>
+                <div class="username">
+                    {{usernameFromMemberId itemComment.createdBy}}
+                </div>
+            {{/unless}}
             <div class="left-align itemCommentContent relative">
+                <div class="createdAt">
+                    {{localeDate}}
+                </div>
                 {{#if decryptedContent}}
                     {{decryptedContent}}
                 {{/if}}
             </div>
-            <div>
-                Created at : {{itemComment.createdAt}}
-            </div>
+            {{#if isDeletable}}
+                <a class="deleteComment" deleteComment><i class="material-icons">clear</i></a>
+            {{/if}}
         </div>
     </li>
 </template>

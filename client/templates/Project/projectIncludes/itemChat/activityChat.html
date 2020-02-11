@@ -2,11 +2,6 @@
     <div class="activityChat">
         <ul class="itemCommentList">
             {{#each itemComment in itemComments}}
-                {{#if displayAvatar}}
-                    <div class="userAvatar">
-                        {{>avatar userId=(userIdFromMemberId itemComment.createdBy)}}
-                    </div>                
-                {{/if}}
                 {{> itemCommentItem itemComment=itemComment}}
             {{else}}
                 Rien à afficher
