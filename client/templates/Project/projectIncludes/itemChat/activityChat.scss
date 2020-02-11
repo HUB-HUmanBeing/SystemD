@@ -4,6 +4,8 @@
     padding-left: 30px;
     flex: 0 0 70%;
     background-color: $contrasted-bg;
+    overflow-y:scroll;
+
     .userAvatar{
         width: 2.6em;
         height: 2.6em;   

@@ -21,10 +21,13 @@
                 {{#if decryptedContent}}
                     {{decryptedContent}}
                 {{/if}}
+                {{#if isDeletable}}
+                    <a class="deleteComment right tooltipped"
+                        data-position="bottom" 
+                        data-delay="50" 
+                        data-tooltip="test" deleteComment><i class="material-icons">clear</i></a>
+                {{/if}}
             </div>
-            {{#if isDeletable}}
-                <a class="deleteComment" deleteComment><i class="material-icons">clear</i></a>
-            {{/if}}
         </div>
     </li>
 </template>
