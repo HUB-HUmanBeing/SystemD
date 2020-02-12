@@ -1,8 +1,8 @@
-import mapParams from "../../../../../lib/controllers/mapParams";
-import cryptoTools from "../../../../../lib/cryptoTools";
-import projectController from "../../../../../lib/controllers/projectController";
+import cryptoTools from "../../../../../../lib/cryptoTools";
+import projectController from "../../../../../../lib/controllers/projectController";
+import mapParams from "../../../../../../lib/controllers/mapParams";
 
-Template.detailArrow.helpers({
+Template.detailShape.helpers({
     //add you helpers here
     editingColor: function () {
         return Template.instance().editingColor.get()
@@ -10,10 +10,24 @@ Template.detailArrow.helpers({
     colors: function () {
         return mapParams.colors
     },
+    shapeIcon: function () {
+        switch (Template.currentData().marker.shape.shapeType) {
+            case "circle":
+                return "radio_button_unchecked"
+                break
+            case "rectangle":
+                return "crop_landscape"
+                break
+            case "polygon":
+                return "star_border"
+                break
+            default:
+                break
+        }
+    }
 });
 
-Template.detailArrow.events({
-    //add your events here
+Template.detailShape.events({
     //add your events here
     'click [editColor]': function (event, instance) {
         event.preventDefault()
@@ -36,16 +50,16 @@ Template.detailArrow.events({
     },
 });
 
-Template.detailArrow.onCreated(function () {
+Template.detailShape.onCreated(function () {
     //add your statement here
     this.editingColor = new ReactiveVar(false)
 });
 
-Template.detailArrow.onRendered(function () {
+Template.detailShape.onRendered(function () {
     //add your statement here
 });
 
-Template.detailArrow.onDestroyed(function () {
+Template.detailShape.onDestroyed(function () {
     //add your statement here
 });
 

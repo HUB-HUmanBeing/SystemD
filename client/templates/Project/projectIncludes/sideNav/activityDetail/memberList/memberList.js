@@ -1,4 +1,4 @@
-import avatarStore from "../../../../../lib/filesStore/avatarStore";
+import avatarStore from "../../../../../../lib/filesStore/avatarStore";
 import Avatars from "@dicebear/avatars";
 import sprites from "@dicebear/avatars-identicon-sprites";
 

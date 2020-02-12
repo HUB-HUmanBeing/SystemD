@@ -1,12 +1,12 @@
-import cryptoTools from "../../../../lib/cryptoTools";
-import projectController from "../../../../lib/controllers/projectController";
-import Activity from "../../../../../imports/classes/Activity";
-import mapParams from "../../../../lib/controllers/mapParams";
-import calendarController from "../../../../lib/controllers/calendarController";
-import notificationController from "../../../../lib/controllers/notificationController";
-import mapController from "../../../../lib/controllers/mapController";
-import iconMarker from "../../../../lib/controllers/markers/iconMarker";
-import activityMarker from "../../../../lib/controllers/markers/activityMarker";
+import cryptoTools from "../../../../../lib/cryptoTools";
+import projectController from "../../../../../lib/controllers/projectController";
+import Activity from "../../../../../../imports/classes/Activity";
+import mapParams from "../../../../../lib/controllers/mapParams";
+import calendarController from "../../../../../lib/controllers/calendarController";
+import notificationController from "../../../../../lib/controllers/notificationController";
+import mapController from "../../../../../lib/controllers/mapController";
+import iconMarker from "../../../../../lib/controllers/markers/iconMarker";
+import activityMarker from "../../../../../lib/controllers/markers/activityMarker";
 
 Template.activityDetail.helpers({
     //add you helpers here
@@ -136,7 +136,7 @@ Template.activityDetail.helpers({
         return FlowRouter.current().route.name === "project-maps"
     },
     chatOpened: function () {
-        return Template.instance().chatOpened.get()
+        return Template.currentData().chatOpened
     }
 });
 
@@ -302,16 +302,10 @@ Template.activityDetail.events({
     'click [toggleModalInviteMembers]': function (event, instance) {
         event.preventDefault()
         instance.modalOpened.set(!instance.modalOpened.get())
-    },
-    'click [toggleChat]': function (event, instance) {
-        event.preventDefault()
-        instance.chatOpened.set(!instance.chatOpened.get())
     }
 });
 
 Template.activityDetail.onCreated(function () {
-    //add your statement here
-    //add your statement here
     this.activity = new ReactiveVar(false)
     this.showEditFormButton = new ReactiveVar(false)
     this.editingColor = new ReactiveVar(false)

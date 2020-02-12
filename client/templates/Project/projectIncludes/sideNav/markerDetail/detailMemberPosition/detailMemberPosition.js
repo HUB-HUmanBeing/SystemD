@@ -1,7 +1,6 @@
-import memberPosition from "../../../../../lib/controllers/markers/memberPosition";
-import projectController from "../../../../../lib/controllers/projectController";
-import mapController from "../../../../../lib/controllers/mapController";
-import MapMarker from "../../../../../../imports/classes/MapMarker";
+import memberPosition from "../../../../../../lib/controllers/markers/memberPosition";
+import projectController from "../../../../../../lib/controllers/projectController";
+import mapController from "../../../../../../lib/controllers/mapController";
 
 Template.detailMemberPosition.helpers({
     //add you helpers here

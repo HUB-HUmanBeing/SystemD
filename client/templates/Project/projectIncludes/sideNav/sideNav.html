@@ -1,0 +1,7 @@
+<template name="sideNav">
+    <div id="sideNav" class="gradiant-dark shadow {{#if chatOpened}}chatOpened{{/if}} {{sideNavParams}} {{deviceType}} {{where}}">
+        <div id="sideContent" style="{{#unless isDesktop}}overflow: scroll;{{/unless}}" class="sexyScrollbar">
+            {{#Template.dynamic template=sideNavParams data=sideNavData}}{{/Template.dynamic}}
+         </div>
+    </div>
+</template>

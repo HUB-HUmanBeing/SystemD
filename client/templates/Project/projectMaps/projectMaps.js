@@ -11,7 +11,7 @@ Template.projectMaps.helpers({
     currentProject: function () {
         return Project.findOne(FlowRouter.current().params.projectId)
     },
-    sideNav: function () {
+    sideNavParams: function () {
         FlowRouter.watchPathChange()
         return (!Template.instance().mapState.get().type) && FlowRouter.current().queryParams.side
     },
@@ -21,18 +21,10 @@ Template.projectMaps.helpers({
     isFullScreen: function () {
         return Template.instance().isFullScreen.get()
     },
-    sideNavData: function () {
-        return {
-            project: Project.findOne(FlowRouter.current().params.projectId),
-            mapState: Template.instance().mapState,
-            colorLegend: Template.instance().colorLegend.get()
-        }
-    },
     mapState: function () {
         return Template.instance().mapState.get()
 
     }
-
 });
 
 Template.projectMaps.events({

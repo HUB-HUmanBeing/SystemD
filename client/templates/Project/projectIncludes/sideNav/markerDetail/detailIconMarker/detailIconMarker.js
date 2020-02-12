@@ -1,8 +1,7 @@
-import iconMarker from "../../../../../lib/controllers/markers/iconMarker";
-import mapParams from "../../../../../lib/controllers/mapParams";
-import mapController from "../../../../../lib/controllers/mapController";
-import projectController from "../../../../../lib/controllers/projectController";
-import cryptoTools from "../../../../../lib/cryptoTools";
+import iconMarker from "../../../../../../lib/controllers/markers/iconMarker";
+import mapParams from "../../../../../../lib/controllers/mapParams";
+import projectController from "../../../../../../lib/controllers/projectController";
+import cryptoTools from "../../../../../../lib/cryptoTools";
 
 Template.detailIconMarker.helpers({
     //add you helpers here

@@ -1,8 +1,8 @@
-import mapParams from "../../../../../lib/controllers/mapParams";
-import cryptoTools from "../../../../../lib/cryptoTools";
-import projectController from "../../../../../lib/controllers/projectController";
+import mapParams from "../../../../../../lib/controllers/mapParams";
+import cryptoTools from "../../../../../../lib/cryptoTools";
+import projectController from "../../../../../../lib/controllers/projectController";
 
-Template.detailPolyline.helpers({
+Template.detailArrow.helpers({
     //add you helpers here
     editingColor: function () {
         return Template.instance().editingColor.get()
@@ -10,10 +10,10 @@ Template.detailPolyline.helpers({
     colors: function () {
         return mapParams.colors
     },
-
 });
 
-Template.detailPolyline.events({
+Template.detailArrow.events({
+    //add your events here
     //add your events here
     'click [editColor]': function (event, instance) {
         event.preventDefault()
@@ -36,16 +36,16 @@ Template.detailPolyline.events({
     },
 });
 
-Template.detailPolyline.onCreated(function () {
+Template.detailArrow.onCreated(function () {
     //add your statement here
     this.editingColor = new ReactiveVar(false)
 });
 
-Template.detailPolyline.onRendered(function () {
+Template.detailArrow.onRendered(function () {
     //add your statement here
 });
 
-Template.detailPolyline.onDestroyed(function () {
+Template.detailArrow.onDestroyed(function () {
     //add your statement here
 });
 

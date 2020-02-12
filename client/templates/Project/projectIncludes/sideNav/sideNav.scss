@@ -1,0 +1,122 @@
+@import "{}/client/scss/variables.scss";
+
+#sideNav {
+  z-index:601;
+  top: 0;
+  height: 100%;
+  color: $main-color;
+  padding-bottom: 40px;
+  
+  #sideContent {
+    display: flex;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  &.desktopSideNav {
+
+    &.project-tasks {
+      transition: 0.3s ease-out;
+      position: absolute;
+      &.activityDetail {
+        width: 1000px;
+        right: -700px;
+
+        &.chatOpened{
+          right: 0;
+        }
+      }
+    }
+
+    &.project-calendar {
+
+      position: absolute;
+      &.activityDetail {
+        width: 1000px;
+        right: -700px;
+
+        &.chatOpened{
+          transition: 0.3s ease-out;
+          right: 0;
+        }
+      }
+
+      &.calendarSettings{
+        width: 300px;
+        right: 0;
+      }
+    }
+
+    &.project-maps {
+      transition: 0.3s ease-out;
+      position: absolute;
+
+      &.markerDetail {
+        width: 1000px;
+        right: -700px;
+
+        &.chatOpened{
+          right: 0;
+        }
+      }
+
+      &.activityDetail {
+        width: 1000px;
+        right: -700px;
+
+        &.chatOpened{
+          right: 0;
+        }
+      }
+    }
+  }
+  
+
+  /* height: 100%;
+  color: $main-color;
+  z-index: 600;
+  right: -700px;
+
+  &.chatOpened {
+    right: 0;
+  }
+
+  
+
+  &.desktopSideNav {
+    width: 1000px;
+
+    #sideContent {
+      overflow-x: hidden !important;
+    }
+
+  }
+
+  &.mobileSideNav, &.tabletSideNav, &.desktopSideNav {
+    top: 0;
+    position: absolute;
+    transition: 0.3s ease-out;
+
+  }
+
+  &.mobileSideNav {
+    width: calc(100vw - 70px);
+    right: calc(-100vw + 70px);
+  }
+
+  &.tabletSideNav {
+    width: 300px;
+
+    #sideContent {
+      overflow: scroll;
+    }
+  }
+
+  #sideContent {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-bottom: 50px;
+  } */
+}

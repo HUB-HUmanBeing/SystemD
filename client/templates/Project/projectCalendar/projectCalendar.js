@@ -10,7 +10,7 @@ Template.projectCalendar.helpers({
         FlowRouter.watchPathChange()
         return Project.findOne(FlowRouter.current().params.projectId)
     },
-    sideNav: function () {
+    sideNavParams: function () {
         FlowRouter.watchPathChange()
         if(Meteor.Device.isDesktop()){
             return FlowRouter.current().queryParams.side?FlowRouter.current().queryParams.side : "calendarSettings"

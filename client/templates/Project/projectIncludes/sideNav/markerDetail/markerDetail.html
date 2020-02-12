@@ -4,6 +4,8 @@
             <div class="row relative" style="margin-bottom: 5px">
                 {{#Template.dynamic template=templateName data=data}}{{/Template.dynamic}}
                 {{#unless compare templateName '==' "detailMemberPosition"}}
+                <a href="" class="btn btn-floating waves-effect waves-light toggleChatBtn" toggleChat><i
+                    class="material-icons">{{#if chatOpened}}chevron_right{{else}}chevron_left{{/if}}</i></a>
                     <div class="publicationHeader small-padding">
                         <div class="authorInfo left-align flex">
                             <div class="userAvatar small-shadow">
@@ -89,4 +91,7 @@
             {{/if}}
         {{/if}}
     </div>
+    {{#if chatOpened}}
+        {{>activityChat}}
+    {{/if}}
 </template>

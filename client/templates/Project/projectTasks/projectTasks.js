@@ -9,16 +9,10 @@ Template.projectTasks.helpers({
     currentProject: function () {
         return Project.findOne(FlowRouter.current().params.projectId)
     },
-    sideNav: function () {
+    sideNavParams: function () {
         FlowRouter.watchPathChange()
         Template.instance().lastChange.set(Date.now())
         return FlowRouter.current().queryParams.side
-    },
-    sideNavData: function () {
-        return {
-            project: Project.findOne(FlowRouter.current().params.projectId),
-            colorLegend: Template.instance().colorLegend.get()
-        }
     },
     colorLegend: function () {
         return Template.instance().colorLegend.get()

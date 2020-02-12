@@ -1,5 +1,5 @@
-import cryptoTools from "../../../../../lib/cryptoTools";
-import projectController from "../../../../../lib/controllers/projectController";
+import cryptoTools from "../../../../../../lib/cryptoTools";
+import projectController from "../../../../../../lib/controllers/projectController";
 
 Template.itemCommentItem.helpers({
     decryptedContent: function() {
@@ -25,7 +25,7 @@ Template.itemCommentItem.helpers({
         }
     },
     isDeletable: function () {
-        return projectController.getCurrentUserProject(FlowRouter.current().params.projectId).asymEnc_memberId
+        return ( projectController.getCurrentUserProject(FlowRouter.current().params.projectId).asymEnc_memberId === Template.currentData().itemComment.createdBy )
     }
 });
 

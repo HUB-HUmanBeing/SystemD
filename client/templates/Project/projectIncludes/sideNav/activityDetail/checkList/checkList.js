@@ -1,6 +1,6 @@
-import cryptoTools from "../../../../../lib/cryptoTools";
-import projectController from "../../../../../lib/controllers/projectController";
-import Activity from "../../../../../../imports/classes/Activity";
+import cryptoTools from "../../../../../../lib/cryptoTools";
+import projectController from "../../../../../../lib/controllers/projectController";
+import Activity from "../../../../../../../imports/classes/Activity";
 
 Template.checkList.helpers({
     //add you helpers here

@@ -1,8 +1,8 @@
-import cryptoTools from "../../../../../lib/cryptoTools";
-import projectController from "../../../../../lib/controllers/projectController";
-import mapParams from "../../../../../lib/controllers/mapParams";
+import mapParams from "../../../../../../lib/controllers/mapParams";
+import cryptoTools from "../../../../../../lib/cryptoTools";
+import projectController from "../../../../../../lib/controllers/projectController";
 
-Template.detailShape.helpers({
+Template.detailPolyline.helpers({
     //add you helpers here
     editingColor: function () {
         return Template.instance().editingColor.get()
@@ -10,24 +10,10 @@ Template.detailShape.helpers({
     colors: function () {
         return mapParams.colors
     },
-    shapeIcon: function () {
-        switch (Template.currentData().marker.shape.shapeType) {
-            case "circle":
-                return "radio_button_unchecked"
-                break
-            case "rectangle":
-                return "crop_landscape"
-                break
-            case "polygon":
-                return "star_border"
-                break
-            default:
-                break
-        }
-    }
+
 });
 
-Template.detailShape.events({
+Template.detailPolyline.events({
     //add your events here
     'click [editColor]': function (event, instance) {
         event.preventDefault()
@@ -50,16 +36,16 @@ Template.detailShape.events({
     },
 });
 
-Template.detailShape.onCreated(function () {
+Template.detailPolyline.onCreated(function () {
     //add your statement here
     this.editingColor = new ReactiveVar(false)
 });
 
-Template.detailShape.onRendered(function () {
+Template.detailPolyline.onRendered(function () {
     //add your statement here
 });
 
-Template.detailShape.onDestroyed(function () {
+Template.detailPolyline.onDestroyed(function () {
     //add your statement here
 });
 

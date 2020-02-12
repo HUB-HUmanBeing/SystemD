@@ -165,13 +165,15 @@
       thead {
         background-color: $main-bg;
       }
-.fc-list-empty-wrap2{
-  background: linear-gradient(45deg, $light-bg 0%, $contrasted-bg 100%) !important;
-  *{
-    color:$main-color;
-    background-color: transparent !important;
-  }
-}
+
+      .fc-list-empty-wrap2{
+        background: linear-gradient(45deg, $light-bg 0%, $contrasted-bg 100%) !important;
+        *{
+          color:$main-color;
+          background-color: transparent !important;
+        }
+      }
+
       .fc-toolbar {
         display: none;
       }
@@ -387,61 +389,9 @@
     }
   }
 
-
-  #calendarSideNav {
-    height: 100%;
-    color: $main-color;
-    z-index: 600;
-
-
-    &.desktopCalendarSideNav {
-      width: 300px;
-
-      position: relative;
-
-      #sideCalendarContent {
-        overflow-x: hidden !important;
-      }
-
-    }
-
-    &.mobileCalendarSideNav, &.tabletCalendarSideNav {
-      top: 0;
-      position: absolute;
-      transition: 0.3s ease-out;
-
-    }
-
-    &.mobileCalendarSideNav {
-      width: calc(100vw - 70px);
-      right: calc(-100vw + 70px);
-
-      &.openedSideNav {
-        right: 0;
-      }
-    }
-
-    &.tabletCalendarSideNav {
-      width: 300px;
-      right: -300px;
-
-      &.openedSideNav {
-        right: 0;
-
-        #sideCalendarContent {
-          overflow: scroll;
-        }
-      }
-    }
-
-    #sideCalendarContent {
-      height: 100%;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      padding-bottom: 50px;
-    }
-
-
+  .sideNavBack {
+    width: 300px;
+    right: 0px;
+    position: relative;
   }
 }

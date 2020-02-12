@@ -1,7 +1,7 @@
-import cryptoTools from "../../../../lib/cryptoTools";
-import ItemComment from "../../../../../imports/classes/ItemComment";
-import projectController from "../../../../lib/controllers/projectController";
-import preFormatMessage from "../../../../lib/preformatMessages";
+import cryptoTools from "../../../../../lib/cryptoTools";
+import ItemComment from "../../../../../../imports/classes/ItemComment";
+import projectController from "../../../../../lib/controllers/projectController";
+import preFormatMessage from "../../../../../lib/preformatMessages";
 
 Template.activityChat.helpers({
     itemComments: function () {
@@ -34,9 +34,9 @@ Template.activityChat.events({
         if(FlowRouter.current().queryParams.side=="activityDetail"){
             itemType = "Activity"
             itemId = FlowRouter.current().queryParams.activityId
-        }else if(FlowRouter.current().queryParams.side=="mapMarkerDetail"){
+        }else if(FlowRouter.current().queryParams.side=="markerDetail"){
             itemType = "MapMarker"
-            itemId = FlowRouter.current().queryParams.mapMarkerId
+            itemId = FlowRouter.current().queryParams.markerId
         }
         cryptoTools.sim_encrypt_data(textContent, Session.get("currentProjectSimKey"), (symEnc_text) => {
             let itemCommentParams = {
@@ -66,7 +66,8 @@ Template.activityChat.onCreated(function () {
 
     this.autorun(() => {
         FlowRouter.watchPathChange()
-        Meteor.subscribe("itemComments", projectController.getAuthInfo(FlowRouter.current().params.projectId), FlowRouter.current().params.projectId , FlowRouter.current().queryParams.activityId, (err) => {
+        itemId = FlowRouter.current().queryParams.side=="activityDetail" ? FlowRouter.current().queryParams.activityId : FlowRouter.current().queryParams.markerId
+        Meteor.subscribe("itemComments", projectController.getAuthInfo(FlowRouter.current().params.projectId), FlowRouter.current().params.projectId , itemId , (err) => {
             if(err){
                 console.log(err)
             }else{

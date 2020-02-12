@@ -1,7 +1,7 @@
-import MapMarker from "../../../../../imports/classes/MapMarker";
-import projectController from "../../../../lib/controllers/projectController";
-import cryptoTools from "../../../../lib/cryptoTools";
-import mapController from "../../../../lib/controllers/mapController";
+import MapMarker from "../../../../../../imports/classes/MapMarker";
+import projectController from "../../../../../lib/controllers/projectController";
+import cryptoTools from "../../../../../lib/cryptoTools";
+import mapController from "../../../../../lib/controllers/mapController";
 
 Template.markerDetail.helpers({
     //add you helpers here
@@ -45,7 +45,9 @@ Template.markerDetail.helpers({
             let coordinatesArray = JSON.parse(marker[marker.markerType].symEnc_coordinates)
             return coordinatesArray[0] + " , " + coordinatesArray[1]
         }
-
+    },
+    chatOpened: function () {
+        return Template.currentData().chatOpened
     }
 });
 

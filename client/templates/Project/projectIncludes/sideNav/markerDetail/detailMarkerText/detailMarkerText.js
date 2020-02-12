@@ -1,6 +1,6 @@
-import cryptoTools from "../../../../../lib/cryptoTools";
-import projectController from "../../../../../lib/controllers/projectController";
-import mapParams from "../../../../../lib/controllers/mapParams";
+import cryptoTools from "../../../../../../lib/cryptoTools";
+import projectController from "../../../../../../lib/controllers/projectController";
+import mapParams from "../../../../../../lib/controllers/mapParams";
 
 Template.detailMarkerText.helpers({
     //add you helpers here

@@ -112,14 +112,12 @@
                 </div>
 
             </div>
-            {{#if sideNav}}
-
+            {{#if sideNavParams}}
                 <div class="closeSideNav" closeSideNav></div>
-
             {{/if}}
         </div>
-        {{#if sideNav}}
-                    {{#Template.dynamic template=sideNav data=sideNavData}}{{/Template.dynamic}}
+        {{#if sideNavParams}}
+            {{>sideNav sideNavParams=sideNavParams}}
         {{/if}}
     </div>
 </template>
