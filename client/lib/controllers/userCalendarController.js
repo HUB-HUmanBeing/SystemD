@@ -32,27 +32,6 @@ const calendarController = {
             default:
                 return null;
         }
-        // return {
-        //     code: __("fullCalendar.code")||'fr',
-        //     week: {
-        //         dow: __("fullCalendar.dow")||1,
-        //         doy: __("fullCalendar.doy")||4 // The week that contains Jan 4th is the first week of the year.
-        //     },
-        //     buttonText: {
-        //         prev: __("fullCalendar.prev")||"Précédent",
-        //         next: __("fullCalendar.next")||"Suivant",
-        //         today: __("fullCalendar.today")||"Aujourd'hui",
-        //         year: __("fullCalendar.year")||"Année",
-        //         month: __("fullCalendar.month")||"Mois",
-        //         week: __("fullCalendar.week")||"Semaine",
-        //         day: __("fullCalendar.day")||"Jour",
-        //         list: __("fullCalendar.list")||"Mon planning"
-        //     },
-        //     weekLabel: __("fullCalendar.weekLabel")||"Sem.",
-        //     allDayHtml: __("fullCalendar.allDayHtml")||"Toute la<br/>journée",
-        //     eventLimitText:__("fullCalendar.eventLimitText")|| "en plus",
-        //     noEventsMessage: __("fullCalendar.noEventsMessage")||"Aucun événement à afficher"
-        // };
     },
     calculateColumnNumber() {
         let width = document.getElementById('calendar').offsetWidth
@@ -61,8 +40,7 @@ const calendarController = {
     },
     columnNumber: 7,
     currentProject: {},
-    initialize(project, instance) {
-        this.currentProject = project
+    initialize() {
         this.columnNumber = this.calculateColumnNumber()
         let days = {
             type: 'timeGridWeek',
@@ -73,10 +51,9 @@ const calendarController = {
         if (this.columnNumber == 7){
             delete days.duration
         }
-        console.log(project)
         this.calendar = new Calendar(document.getElementById('calendar'), {
             plugins: [dayGridPlugin, timeGridPlugin, interaction, dayGrid, list],
-            defaultView: project.private.calendar.defaultView,
+            defaultView: "days",
             header: {
                 left: 'prev,next',
                 center: 'title',
@@ -92,90 +69,27 @@ const calendarController = {
                 }
             },
             longPressDelay: 500,
-            //selectLongPressDelay:500,
             locale: this.getLocale(),
             height: "parent",
-            editable: true,
-            selectable: true,
-            eventResizableFromStart: true,
+            editable: false,
+            selectable: false,
+            eventResizableFromStart: false,
             navLinks: true,
             nowIndicator: true,
             navLinkDayClick: (date, jsEvent) => {
                 this.changeView("days", date)
             },
-            // eventRender: function(info) {
-            //     console.log(info)
-            //     if(Meteor.Device.isDesktop()){
-            //         let html = `<div>coucou</div>`
-            //         $(info.el).tooltip({
-            //             delay:350,
-            //             position:"top",
-            //             tooltip: html,
-            //             html:true
-            //         })
-            //     }
-            // },
             eventLimit: true,
-            select: (info) => {
-                if (Session.get("waitingActivity")) {
-                    let activity = new Activity()
-                    activity._id = Session.get("waitingActivity")._id
-                    let activityParams = {
-                        start: info.start,
-                        end: info.end,
-                        allDay: info.allDay
-                    }
-                    if (!activityParams.end) {
-                        let start = activityParams.start
-                        start.setHours(start.getHours() + 1)
-                        activityParams.end = start
-                    }
-                    let projectId = FlowRouter.current().params.projectId
-                    activity.callMethod("editCalendarActivityTime", projectController.getAuthInfo(projectId), activityParams, (err, res) => {
-                        if (err) {
-                            console.log(err)
-                        } else {
-                            FlowRouter.go('/project/' + projectId + '/tasks')
-                            Materialize.toast(__('projectCalendar.activityPlaced'), 6000, 'toastOk')
-
-                        }
-                    })
-                } else if (Session.get("addEvent")){
-                    Session.set("addEvent",false)
-                    let activity = new Activity()
-                    let activityParams = {
-                        start: info.start,
-                        end: info.end,
-                        allDay: info.allDay
-                    }
-                    //instance.createParams.set(activityParams)
-                    activity.callMethod("newCalendarActivity", projectController.getAuthInfo(project._id), project._id, activityParams, {}, (err, res) => {
-                        if (err) {
-                            console.log(err)
-                        } else {
-                            this.calendar.unselect()
-                            this.getEventDetail(res)
-                        }
-                    })
-                }
-            },
-            eventClick: (info) => {
-                this.getEventDetail(info.event.id)
-            },
-            eventResize: (info) => {
+            eventClick: (info) => {},
+      /*       eventResize: (info) => {
                 this.editEvent(info, project)
             },
             eventDrop: (info) => {
                 this.editEvent(info, project)
-            },
+            }, */
 
         });
-
         this.calendar.render();
-        Meteor.setTimeout(() => {
-            this.initializeRouterView(instance, project)
-            this.initializeEventRenderer(instance, project)
-        }, 50)
     },
     initializeEventRenderer(instance, project) {
         Meteor.subscribe("CalendarActivitiesByProject", projectController.getAuthInfo(project._id), project._id, err => {
@@ -185,7 +99,6 @@ const calendarController = {
                     id: "currentProjectEvents",
                     events: []
                 }
-                FlowRouter.watchPathChange()
                 let activities = Activity.find({projectId: project._id, start: {$exists: true}}).fetch()
 
                 cryptoTools.decryptArrayOfObject(activities, {symKey: Session.get("currentProjectSimKey")}, decryptedActivities => {
@@ -195,15 +108,10 @@ const calendarController = {
                 })
 
                 Meteor.setTimeout(() => {
-                    let currentEventSource = this.calendar.getEventSourceById("currentProjectEvents")
-                    if (currentEventSource) {
-                        currentEventSource.remove()
-                    }
                     this.calendar.addEventSource(eventSource)
                 }, 100)
             })
         })
-
     },
     editEvent(info, project) {
         let activity = Activity.findOne(info.event.id)
@@ -233,6 +141,7 @@ const calendarController = {
         let event
 
         let participating = ""
+
         if (activity.participants.length) {
             participating = activity.participants.indexOf(projectController.getCurrentMemberId(activity.projectId)) === -1 ? "" : "participating"
         }
@@ -278,6 +187,8 @@ const calendarController = {
             event.classNames.push(' focusedActivity')
         }
 
+        event.classNames.push(activity.projectId)
+
         return event
     },
     initializeRouterView(instance, project) {
@@ -301,22 +212,21 @@ const calendarController = {
         } else {
             delete currentQueryParams.date
         }
-        FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
-
+        FlowRouter.go('/user-calendar/', {}, currentQueryParams)
     },
     getEventDetail(eventId) {
         let currentQueryParams = FlowRouter.current().queryParams
 
         currentQueryParams.side = "activityDetail"
         currentQueryParams.activityId = eventId
-        FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
+        FlowRouter.go('/user-calendar/', {}, currentQueryParams)
     },
     goSettings(eventId) {
         let currentQueryParams = FlowRouter.current().queryParams
 
         currentQueryParams.side = "calendarSettings"
         delete currentQueryParams.activityId
-        FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
+        FlowRouter.go('/user-calendar/', {}, currentQueryParams)
     },
     closeSideNav() {
         let current = FlowRouter.current()
@@ -324,15 +234,14 @@ const calendarController = {
         delete current.queryParams.side
         delete current.queryParams.activityId
 
-        let route = current.route.name.substring(8)
-        FlowRouter.go('/project/' + current.params.projectId + '/'+route, {}, current.queryParams)
+        FlowRouter.go('/user-calendar/', {}, current.queryParams)
     },
     changePeriod(isPrevious) {
         $('.fc-' + (isPrevious ? 'prev' : 'next') + '-button').click()
         let currentQueryParams = FlowRouter.current().queryParams
         delete currentQueryParams.date
         currentQueryParams.time = Number(currentQueryParams.time ? currentQueryParams.time : "0") + (isPrevious ? -1 : 1)
-        FlowRouter.go('/project/' + this.currentProject._id + '/calendar', {}, currentQueryParams)
+        FlowRouter.go('/user-calendar/', {}, currentQueryParams)
 
     }
 }

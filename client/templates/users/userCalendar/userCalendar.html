@@ -1,0 +1,75 @@
+<template name="userCalendar">
+    <div id="userCalendar" class=" {{#if isDesktop}} flex desktopProjectCalendar {{else}}{{#if
+            isPhone}} mobileProjectCalendar {{else}} tabletProjectCalendar{{/if}}{{/if}}">
+        <div id="calendarContainer"
+             class="relative flex  {{#if isDesktop}} flex-auto {{/if}}">
+            <div class="calendarHeader">
+                <div class="titleContainer flex relative">
+                    <a href="" class="previousPeriod btn-floating btn" previousPeriod>
+                        <i class="material-icons ">navigate_before</i>
+                    </a>
+                    <div class="flex-auto elipsis title">
+                        {{title}}
+                    </div>
+                    <a href="" class=" btn-floating btn" nextPeriod>
+                        <i class="material-icons ">navigate_next</i>
+                    </a>
+
+                    <div class="fixed-action-btn calendarButtons ">
+                        <a class="btn-floating btn waves-effect waves-light">
+                            <i class=" material-icons {{#if compare currentView.name "=="
+                                                            "days"}} dayBtn {{/if}}">{{currentView.icon}}</i>
+                        </a>
+                        <ul>
+                            {{#unless compare currentView.name "==" "days"}}
+                                <li>
+                                    <a href="#"
+                                       class="btn-floating btn waves-effect waves-light tooltipped" data-position="left"
+                                       data-delay="250"
+                                       data-tooltip="{{__ ".daysView"}}" dayView><i
+                                            class="material-icons dayBtn">view_list</i></a>
+                                </li>
+                            {{/unless}}
+                            {{#unless compare currentView.name "==" "month"}}
+                                <li>
+                                    <a href="#"
+                                       class="btn-floating btn waves-effect waves-light tooltipped" data-position="left"
+                                       data-delay="250"
+                                       data-tooltip="{{__ ".monthView"}}" monthView><i
+                                            class="material-icons">view_comfy</i></a>
+                                </li>
+                            {{/unless}}
+                            {{#unless compare currentView.name "==" "listMonth"}}
+                                <li>
+                                    <a href="#"
+                                       class="btn-floating btn  small-shadow tooltipped" data-position="left"
+                                       data-delay="250" data-tooltip="{{__ ".listView"}}" listView><i
+                                            class="material-icons">format_list_bulleted</i></a>
+                                </li>
+                            {{/unless}}
+                            {{#if showSettingsBtn}}
+                            <li>
+                                <a href="" goSettings
+                                   class="btn-floating btn settingsBtn tooltipped" data-position="left" data-delay="250"
+                                   data-tooltip="{{__ ".settings"}}"><i
+                                        class="material-icons">settings</i></a>
+                            </li>
+{{/if}}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex-auto relative">
+                <div id="calendar" class="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{>invitedPopup}}
+    {{#if createParams}}
+        {{>createPopup createParams=createParams parentInstance=parentInstance colorLegend=colorLegend}}
+    {{/if}}
+</template>

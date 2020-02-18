@@ -71,13 +71,13 @@ Template.menu.onCreated(function () {
 Template.menu.onRendered(function () {
     //initialisation des accordéons
     Meteor.setTimeout(() => {
-        $("#userOptionsBtn").dropdown({
+        $("#userMenuBtn").dropdown({
             belowOrigin: true
         });
     }, 1500)
     Meteor.setTimeout(() => {
         this.showInfo.set(true)
-        $("#userOptionsBtn").dropdown({
+        $("#userMenuBtn").dropdown({
             belowOrigin: true
         });
     }, 2500)

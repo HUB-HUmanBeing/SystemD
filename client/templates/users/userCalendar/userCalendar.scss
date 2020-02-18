@@ -1,0 +1,443 @@
+@import "{}/client/scss/variables.scss";
+
+
+#userCalendar {
+  width: 100%;
+  position: relative;
+  .addBtn {
+    background-color: $danger-text;
+    position: absolute;
+    //bottom: calc(5em - 28px);
+    right: 20px;
+    bottom:50px;
+    margin-top: -7px;
+    margin-left: 10px;
+    margin-right: 10px;
+    z-index: 600;
+
+    i {
+      font-size: 2.6em;
+    }
+  }
+  &.desktopProjectCalendar {
+    height: 100vh;
+
+    .fc-view-container, .fc-listMonth-view {
+      overflow-x: hidden;
+      position: relative;
+
+      &:after {
+        content: " ";
+        position: absolute;
+        width: 1px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 101;
+        background-color: $grey;
+      }
+    }
+
+    .fc-listMonth-view {
+      .fc-scroller {
+        width: calc(100% + 15px);
+      }
+    }
+
+    .fc-days-view {
+      width: calc(100% + 15px);
+    }
+  }
+
+  &.mobileProjectCalendar {
+    height: calc(100vh - 121px);
+  }
+
+  &.tabletProjectCalendar {
+    height: calc(100vh - 129px);
+  }
+
+  #calendarContainer {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    padding: 5px;
+    flex-direction: column;
+
+    .waitingActivityInfo {
+      color: $main-color;
+
+      position: absolute;
+      bottom: -5px;
+      z-index: 400;
+      right: -5px;
+      left: -5px;
+      background-color: $lighter-bg;
+      border: 3px solid $blue-highlight-color;
+
+      a {
+        background-color: $lighter-bg;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: $blue-highlight-color;
+        }
+      }
+    }
+
+    .calendarHeader {
+      margin: 1em 0 1em 0;
+
+      a {
+        background-color: $lighter-bg;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: $blue-highlight-color;
+        }
+      }
+
+      .titleContainer {
+        .title {
+          padding: 0 5px;
+          text-align: center;
+          font-size: calc(1em + 50%);
+          line-height: 40px;
+          color: $plus-color;
+        }
+      }
+
+
+
+      .calendarButtons {
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 500;
+        margin: 0;
+        padding: 0 0 0 5px;
+
+        ul {
+          bottom: auto !important;
+        }
+
+        .btn-large {
+          background-color: $blue-highlight-color !important;
+        }
+
+        .dayBtn {
+          transform: rotate(90deg) !important;
+        }
+
+        a {
+          position: relative;
+          z-index: 400;
+
+        }
+
+        li {
+          margin: 7px 0px 0 0 !important;
+
+
+        }
+
+      }
+    }
+
+    .closeSideNav {
+      content: " ";
+      top: 0;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 101;
+    }
+
+
+    #calendar {
+      width: 100%;
+      height: 100%;
+      //background-color: $main-color;
+      z-index: 100;
+
+      thead {
+        background-color: $main-bg;
+      }
+.fc-list-empty-wrap2{
+  background: linear-gradient(45deg, $light-bg 0%, $contrasted-bg 100%) !important;
+  *{
+    color:$main-color;
+    background-color: transparent !important;
+  }
+}
+      .fc-toolbar {
+        display: none;
+      }
+
+      .fc-view-container {
+        background-color: $light-bg;
+
+        .fc-event {
+          border: none;
+          padding: 3px;
+          border-left: 1em solid;
+          border-radius: 0 !important;
+          background-color: $grey !important;
+          -webkit-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4);
+          -moz-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4) !important;
+
+         //border-image: url('/images/aquarelle.jpg') 10 10 10;
+        }
+
+
+        .focusedActivity {
+
+          background-color: #586772 !important;
+
+          -webkit-box-shadow: inset 0px 0px 5px 0px rgba($plus-color,0.75) !important;
+          -moz-box-shadow: inset 0px 0px 5px 0px rgba($plus-color,0.75) !important;
+          box-shadow: inset 0px 0px 5px 0px rgba($plus-color,0.75) !important;
+        }
+
+        .participating::after {
+          content: " ";
+          background-color: $plus-color;
+          display: block;
+          z-index: 30;
+          position: absolute;
+          top: 8px;
+          left: -8.5px;
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+        }
+
+        .event-color-0 {
+          border-color: #205386
+
+        }
+
+        .event-color-1 {
+          border-color: #286e2c;
+
+        }
+
+        .event-color-2 {
+          border-color: #ecba00;
+
+        }
+
+        .event-color-3 {
+          border-color: #d25a00;
+
+        }
+
+        .event-color-4 {
+          border-color: #961717;
+
+        }
+
+        .event-color-5 {
+          border-color: #8110b9;
+
+        }
+
+        .event-color-6 {
+          border-color: #445963;
+        }
+
+        .fc-today {
+          background-color: rgba($minus-color, 0.1);
+        }
+
+        .fc-more {
+          color: $link-color !important;
+        }
+
+        .fc-popover {
+          background-color: $light-bg;
+
+          .fc-header {
+            background-color: $main-bg;
+            color: $main-color !important;
+          }
+        }
+
+        .fc-axis, .fc-axis * {
+          color: $main-color;
+          border: none;
+        }
+
+        .fc-day-header {
+          color: $main-color;
+        }
+
+        .fc-day-top {
+          background-color: $main-bg;
+        }
+
+        .fc-divider {
+          background-color: rgba($minus-color, 0.5);
+        }
+
+        .fc-day-header, .fc-day-top {
+          a {
+            color: $link-color;
+          }
+        }
+
+        .fc-now-indicator-line {
+          border: 1px solid $focus-color !important;
+        }
+
+        .fc-now-indicator-arrow {
+          border-right-color: $focus-color !important;
+          border-left-color: $focus-color !important;
+          border-top-color: transparent !important;
+          border-bottom-color: transparent !important;
+        }
+
+        * {
+          border-color: $grey;
+        }
+
+        .fc-axis {
+          //width: auto !important;
+          width: 30px !important;
+
+          &.fc-time {
+            &.fc-widget-content {
+              position: relative;
+
+              span {
+                position: relative;
+                top: -10px;
+              }
+            }
+          }
+        }
+
+        .fc-day-grid {
+          .fc-axis {
+            &.fc-widget-content span {
+              display: none;
+            }
+
+          }
+        }
+
+        .fc-time-grid-event {
+          * {
+            color: $main-color;
+
+
+          }
+
+          &:hover {
+            z-index: 10 !important;
+
+            * {
+              color: $plus-color !important;
+            }
+
+          }
+
+        }
+
+        .fc-time-grid .fc-slats .fc-minor td {
+          border-top-color: rgba($grey, 0.6) !important;
+        }
+
+        .fc-time-grid, .fc-week {
+          .fc-widget-content {
+
+            &.fc-axis {
+              cursor: default !important;
+            }
+          }
+
+        }
+      }
+
+      .fc-listMonth-view {
+        .fc-widget-header {
+          background-color: $contrasted-bg;
+
+          * {
+            color: $link-color;
+          }
+        }
+
+        .fc-list-item {
+          color: $main-color;
+          cursor: pointer;
+
+          &:hover {
+            color: $plus-color !important;
+
+            td {
+              background-color: $lighter-bg !important;
+
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #calendarSideNav {
+    height: 100%;
+    color: $main-color;
+    z-index: 600;
+
+    &.desktopCalendarSideNav {
+      width: 300px;
+      position: relative;
+
+      #sideCalendarContent {
+        overflow-x: hidden !important;
+      }
+    }
+
+    &.mobileCalendarSideNav, &.tabletCalendarSideNav {
+      top: 0;
+      position: absolute;
+      transition: 0.3s ease-out;
+
+    }
+
+    &.mobileCalendarSideNav {
+      width: calc(100vw - 70px);
+      right: calc(-100vw + 70px);
+
+      &.openedSideNav {
+        right: 0;
+      }
+    }
+
+    &.tabletCalendarSideNav {
+      width: 300px;
+      right: -300px;
+
+      &.openedSideNav {
+        right: 0;
+
+        #sideCalendarContent {
+          overflow: scroll;
+        }
+      }
+    }
+
+    #sideCalendarContent {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      padding-bottom: 50px;
+    }
+
+
+  }
+}

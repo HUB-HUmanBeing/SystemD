@@ -54,6 +54,14 @@ FlowRouter.route('/user-params', {
         BlazeLayout.render('mainLayout', {main: 'userParams'});
     },
 });
+
+FlowRouter.route('/user-calendar', {
+    name: 'App.userCalendar',
+    triggersEnter: [checkLoggedOrReroute],
+    action() {
+        BlazeLayout.render('mainLayout', {main: 'userCalendar'});
+    },
+});
 /***********
  * invitation Route
  */
