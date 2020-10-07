@@ -182,7 +182,7 @@ Meteor.setTimeout(()=>{
             },
             {
                 type: 'i',
-                content: 'file_upload',
+                content: 'file_download',
                 onclick() {
                     console.log(table.getJson())
                     table.download();

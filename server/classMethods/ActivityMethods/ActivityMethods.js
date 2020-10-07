@@ -11,11 +11,7 @@ Activity.extend({
     meteorMethods: {
 
         newCalendarActivity(authInfo, projectId, ActivityParmas, notifObjects) {
-            check(ActivityParmas, {
-                start: Date,
-                end: Date,
-                allDay: Boolean
-            })
+            check(ActivityParmas, Object)
             check(authInfo, {memberId: String, userSignature: String})
             check(projectId, String)
             let currentProject = Project.findOne(projectId)

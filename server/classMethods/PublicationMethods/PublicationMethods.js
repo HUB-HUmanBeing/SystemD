@@ -117,7 +117,19 @@ Publication.extend({
                 }
             })
         },
+        addPollOption(authInfo, encryptedOption) {
+            check(authInfo, {memberId: String, userSignature: String})
+            check(encryptedOption, Object)
+            let publication = Publication.findOne(this._id)
+            let currentProject = Project.findOne(publication.projectId)
 
+            check(currentProject.isMember(authInfo),true)
+
+            encryptedOption.checkedBy=[authInfo.memberId]
+            publication.pollContent.options.push(encryptedOption)
+
+            return publication.save()
+        },
         chooseProposition(authInfo, i) {
             check(authInfo, {memberId: String, userSignature: String})
             check(i, Number)

@@ -46,9 +46,12 @@ Template.showFileContent.onCreated(function () {
     this.decryptedContent = new ReactiveVar(null)
     this.autorun(()=>{
         let  publication = Publication.findOne(this.data.id)
-        cryptoTools.decryptObject(publication.fileContent, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
-            this.decryptedContent.set(decryptedContent)
-        })
+        if (publication){
+            cryptoTools.decryptObject(publication.fileContent, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
+                this.decryptedContent.set(decryptedContent)
+            })
+        }
+
     })
 
     this.files = new ReactiveVar([])

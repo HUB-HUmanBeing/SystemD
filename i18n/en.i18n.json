@@ -56,6 +56,7 @@
     "btnLabel": "Issues - Suggestions",
     "bugReport": "Issues",
     "suggestion": "Suggestions",
+    "precisions": "ATTENTION : Si vous souhaitez prendre contact avec les développeurs, pensez à nous laisser un moyen de vous contacter, rendez-vous sur le Riot du projet, ou suivez l'évolution de votre ticket sur GitHub",
     "allowDeviceInfo": "Automatically join navigator information in order to help bug-fixing? (navigator, version, exploitation system, language)",
     "decline": "no",
     "authorize": "yes",
@@ -65,6 +66,7 @@
     "captcha": "Enter the 4 letters",
     "submit": "Send",
     "githubDirectLink": "Directly find us on GitHub...",
+    "riotDirectLink": "ou rendez-vous directement sur le chat Riot du projet...",
     "succesMessage": "Thanks for your contribution! Your message has been sent to the developers",
     "githubLink": "To see the tracking of your feedback, go to the GitHub of the project",
     "return": "Return"
@@ -302,7 +304,7 @@
     "user": "user",
     "users": "users",
     "ok": "Generate invitation link",
-    "loader": "Génération du lien d'invitation",
+    "loader": "Invitation link creation",
     "addMessage": "Add an invitation message",
     "invitMessage": "Message sent with your invitation",
     "backToParams": "Back to project parameters"
@@ -361,7 +363,7 @@
     "kickUser": "Remove user",
     "kickUserInfo": "Remove user from the members of the project",
     "removedSuccess": "The user has been removed from the project members",
-    "promoteSuccess": "The user is now admin of the project",
+    "promotedSuccess": "The user is now admin of the project",
     "quitSuccess": "You have quit the project"
   },
   "_templates_users": "===========================================================================================================================",
@@ -487,7 +489,7 @@
   },
   "publicationItem": {
     "delete": "Delete",
-    "abort": "Annuler",
+    "abort": "Cancel",
     "edit": "Edit",
     "deleteInfo": "This action will remove the publication and all its comments.",
     "deleteSuccess": "This publication and all its comments have been removed.",
@@ -499,13 +501,16 @@
     "publish": "Save"
   },
   "showPollContent": {
-    "answers": "answers"
+    "answers": "answers",
+    "newProposition": "Nouvelle proposition...",
+    "send": "Publier"
   },
   "pollOption": {
     "vote": "votes"
   },
   "newComment": {
-    "placeholder": "Your comment..."
+    "placeholder": "Your comment...",
+    "sendComment": "Publish"
   },
   "commentList": {
     "see": "See",
@@ -528,7 +533,8 @@
     "seeMore": "See more"
   },
   "filePreview": {
-    "delete": "Delete file"
+    "delete": "Delete file",
+    "show": "Show preview"
   },
   "fullScreenFile": {
     "download": "Download",
@@ -540,18 +546,25 @@
     "limitOneFile": "Document size is limited at 15 Mo",
     "projectFiles.limitSize": "You have reached the files upload limit on this project. Please delete documents before uploading."
   },
+  "likeBox": {
+    "likePublication": "Like",
+    "unlikePublication": "Unlike"
+  },
   "pinned": {
     "pin": "Pin publication",
     "unpin": "Unpin publication"
+  },
+  "beautyfullTextarea": {
+    "addEmoji": "Add emoji"
   },
   "showFileContent": {
     "deleted": "The file has been deleted"
   },
   "_templates_map": "===========================================================================================================================",
   "projectMaps": {
-    "settings": "Paramètres",
-    "fullscreen": "Mettre en plein écran",
-    "newMarker": "Nouveau marqueur"
+    "settings": "Settings",
+    "fullscreen": "Toggle full screen",
+    "newMarker": "New Marker"
   },
   "mapParams": {
     "topo": "Topo",
@@ -595,8 +608,8 @@
     "editIconInfo": "Click on map to edit marker position."
   },
   "markerDetail": {
-    "editColor": "Éditer la couleur",
-    "editIcon": "Éditer l'icône",
+    "editColor": "Edit color",
+    "editIcon": "Edit Icon",
     "markerName": "Marker name...",
     "markerDetail": "Detail",
     "editMarker": "Edit",
@@ -647,7 +660,15 @@
     "deleteOlds": "Delete old activities",
     "deleteOldsInfo": "Delete activities older than :",
     "delete": "Delete",
-    "oldsActivitiesDeleted": "Old activities have been deleted"
+    "oldsActivitiesDeleted": "Old activities have been deleted",
+    "exportICS": "Export as ICS",
+    "exportICSInfos": "Get all of your decrypted events in ICS format to import them into other calendar apps.",
+    "export": "Export",
+    "importICS": "Import as ICS",
+    "importICSInfos": "Use an ICS file to import the events it contains on this project's agenda",
+    "import": "Import",
+    "importSuccess": "évènements importés avec succès",
+    "importError": "Un ou plusieurs composants ont été ignorés durant l'import, est-ce bien un fichier iCalendar? (seuls les formats VTODO et VEVENT sont supportés pour le moment)"
   },
   "colorLegend": {
     "placeholder": "Your legend ...",
@@ -768,38 +789,38 @@
     "uploadWarning": "Warning, all data in the spreadsheet will be permanently overwritten by the data in the csv file!",
     "fileUpload": "Import CSV file",
     "onlyCsvError": "The specified file is not CSV format",
-    "searchInTable": "Rechercher dans le tableur"
+    "searchInTable": "Search in spreadsheet"
   },
   "spreadsheet": {
-    "noRecordsFound": "Rien à afficher",
-    "showingPage": "Page {0} sur {1} affichée",
-    "show": "Montrer",
-    "entries": "entrées",
-    "insertANewColumnBefore": "Insérer une colonne avant",
-    "insertANewColumnAfter": "Insérer une colonne après",
-    "deleteSelectedColumns": "Supprimer les colonnes sélectionnées",
-    "renameThisColumn": "Renommer cette colonne",
-    "orderAscending": "Ordre croissant",
-    "orderDescending": "Ordre décroissant",
-    "insertANewRowBefore": "Insérer une ligne avant",
-    "insertANewRowAfter": "Insérer une ligne après",
-    "deleteSelectedRows": "Supprimer les lignes sélectionnées",
-    "editComments": "Éditer les commentaires",
-    "addComments": "Ajouter un commentaire",
-    "comments": "Commentaires",
-    "clearComments": "Effacer les commentaires",
-    "copy": "Copier ...",
-    "paste": "Coller ...",
-    "saveAs": "Enregistrer sous ...",
-    "about": "À propos",
-    "areYouSureToDeleteTheSelectedRows": "Êtes-vous sûr de vouloir supprimer les lignes sélectionnées?",
-    "areYouSureToDeleteTheSelectedColumns": "Êtes-vous sûr de vouloir supprimer les colonnes sélectionnées?",
-    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "Cette action va supprimer toutes les cellules fusionnées, êtes-vous sûr?",
-    "thisActionWillClearYourSearchResultsAreYouSure": "Cette action va supprimer vos résultats de recherche, êtes-vous sûr?",
-    "thereIsAConflictWithAnotherMergedCell": "Il y a un conflit avec une autre cellule fusionnée",
-    "invalidMergeProperties": "Action invalide pour la fusion",
-    "cellAlreadyMerged": "Ces cellules sont déjà fusionnées",
-    "noCellsSelected": "Pas de cellules sélectionnées"
+    "noRecordsFound": "Nothing to show",
+    "showingPage": "Displayed page {0} of {1}",
+    "show": "Show",
+    "entries": " entries",
+    "insertANewColumnBefore": "Insert a new column before",
+    "insertANewColumnAfter": "Insert a new column after",
+    "deleteSelectedColumns": "Delete selected columns",
+    "renameThisColumn": "Rename this column",
+    "orderAscending": "Order ascending",
+    "orderDescending": "Order descending",
+    "insertANewRowBefore": "Insert a new row before",
+    "insertANewRowAfter": "Insert a new row after",
+    "deleteSelectedRows": "Delete selected rows",
+    "editComments": "Edit comments",
+    "addComments": "Add comments",
+    "comments": "Comments",
+    "clearComments": "Clear comments",
+    "copy": "Copy...",
+    "paste": "Paste...",
+    "saveAs": "Save as...",
+    "about": "About",
+    "areYouSureToDeleteTheSelectedRows": "Are you sure to delete the selected rows?",
+    "areYouSureToDeleteTheSelectedColumns": "Are you sure to delete the selected columns?",
+    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "This action will delete all merged cells, are you sure?",
+    "thisActionWillClearYourSearchResultsAreYouSure": "This action will delete your search results, are you sure?",
+    "thereIsAConflictWithAnotherMergedCell": "There is a conflict with another cell merged",
+    "invalidMergeProperties": "Invalid merge action",
+    "cellAlreadyMerged": "These cells are already merged",
+    "noCellsSelected": "No cells selected"
   },
   "fullCalendar": {
     "code": "fr",

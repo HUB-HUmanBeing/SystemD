@@ -1,10 +1,11 @@
 <template name="likeBox">
 
-    <div class="likeBox small-shadow relative" toggleLike>
+    <div class="likeBox small-shadow relative " toggleLike>
         {{#if class.likedBy.length}}
             <span class="likeCounter">{{class.likedBy.length}}</span>
         {{/if}}
-        <i class="material-icons {{#if liked}}liked{{else}}unliked{{/if}}">{{#if liked}}
+        <i class="material-icons {{#if liked}}liked{{else}}unliked{{/if}} tooltipped"
+        data-position="top" data-delay="50" data-tooltip="{{#if liked}}{{__ ".unlikePublication"}}{{else}}{{__ ".likePublication"}}{{/if}}">{{#if liked}}
             favorite{{else}}favorite_border{{/if}}</i>
     </div>
 </template>

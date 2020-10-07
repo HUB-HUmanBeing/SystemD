@@ -56,6 +56,7 @@
     "btnLabel": "Bugs - Anregungen",
     "bugReport": "Fehler",
     "suggestion": "Vorschläge",
+    "precisions": "BEACHTEN SIE: Wenn Sie mit den Entwicklern Kontakt aufnehmen möchten, lassen Sie uns bitte eine Möglichkeit, Sie zu kontaktieren, gehen Sie zum Projekt Riot oder verfolgen Sie die Entwicklung Ihres Tickets auf GitHub",
     "allowDeviceInfo": "Füge automatisch Informationen über den verwendeten Browser an, um die Fehlersuche zu erleichtern? (Browser, Version, Betriebssystem, Sprache)",
     "decline": "nein",
     "authorize": "ja",
@@ -65,6 +66,7 @@
     "captcha": "Die 4 Buchstaben eingeben",
     "submit": "Senden",
     "githubDirectLink": "Oder schreiben Sie System-D dieses Ticket gleich in Github...",
+    "riotDirectLink": "oder begeben Sie sich direkt in den Riot-Chatroom des Projekts...",
     "succesMessage": "Vielen Dank für Ihren Beitrag! Ihre Nachricht wurde an die Entwickler weitergeleitet",
     "githubLink": "Um den Bearbeitungsstatus Ihrer Nachricht zu sehen, informieren Sie sich in GitHub",
     "return": "Zurück"
@@ -361,7 +363,7 @@
     "kickUser": "Benutzer entfernen",
     "kickUserInfo": "Entfernen Sie den Benutzer aus der Liste der Projektmitglieder.",
     "removedSuccess": "Der Benutzer wurde aus den Projektmitgliedern entfernt",
-    "promoteSuccess": "Der Benutzer gehört nun zu den Projekt-Administratoren",
+    "promotedSuccess": "Der Benutzer gehört nun zu den Projekt-Administratoren",
     "quitSuccess": "Sie haben das Projekt verlassen"
   },
   "_templates_users": "===========================================================================================================================",
@@ -420,7 +422,7 @@
     "categoryName": "Name des Verzeichnisses",
     "new": "Neues Verzeichnis",
     "myFiles": "DOKUMENTE",
-    "seeMore": "Mehr erfahren"
+    "seeMore": "Mehr anzeigen"
   },
   "categoryItem": {
     "categoryName": "Name des Verzeichnisses",
@@ -432,7 +434,7 @@
     "disableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen aktiv, klicken Sie diese an, um sie zu deaktivieren.",
     "enlableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen deaktiviert, klicken Sie diese an, um sie zu reaktivieren.",
     "abort": "Abbrechen",
-    "showMore": "Mehr erfahren",
+    "showMore": "Mehr anzeigen",
     "newTopic": "Ein neues Thema beginnen",
     "noTopics": "Dieses Verzeichnis ist leer",
     "notifEnabled": "Sie erhalten nun Benachrichtigungen für alle Diskussionen in diesem Verzeichnis",
@@ -483,11 +485,11 @@
     "loadInfos": "Verschlüsselung und Hochladen von Dokumenten"
   },
   "publicationsList": {
-    "showMore": "Mehr erfahren..."
+    "showMore": "Mehr anzeigen..."
   },
   "publicationItem": {
     "delete": "Entfernen",
-    "abort": "Annuler",
+    "abort": "Abbrechen",
     "edit": "Bearbeiten",
     "deleteInfo": "Diese Aktion wird die Veröffentlichung und alle Kommentare unwiderruflich löschen",
     "deleteSuccess": "Diese Veröffentlichung und alle ihre Kommentare wurden entfernt",
@@ -499,13 +501,16 @@
     "publish": "Speichern"
   },
   "showPollContent": {
-    "answers": "Beteiligte(r)"
+    "answers": "Beteiligte(r)",
+    "newProposition": "Neuer Vorschlag...",
+    "send": "Veröffentlichen"
   },
   "pollOption": {
-    "vote": "Stimmen"
+    "vote": "Stimme(n)"
   },
   "newComment": {
-    "placeholder": "Ihr Kommentar..."
+    "placeholder": "Ihr Kommentar...",
+    "sendComment": "Veröffentlichen"
   },
   "commentList": {
     "see": "Siehe",
@@ -525,10 +530,11 @@
     "projectUsing": " ",
     "of": "von",
     "allowed": " ",
-    "seeMore": "Mehr erfahren"
+    "seeMore": "Mehr anzeigen"
   },
   "filePreview": {
-    "delete": "Datei löschen"
+    "delete": "Datei löschen",
+    "show": "Vorschau ansehen"
   },
   "fullScreenFile": {
     "download": "Herunterladen",
@@ -540,9 +546,16 @@
     "limitOneFile": "Die Größe der Dokumente ist auf 15 MB begrenzt",
     "projectFiles.limitSize": "Sie haben das Datei-Upload-Limit für dieses Projekt erreicht. Bitte löschen Sie andere Dokumente, bevor Sie diese wieder hochladen können. "
   },
+  "likeBox": {
+    "likePublication": "Gefällt mir",
+    "unlikePublication": "Gefällt mir nicht"
+  },
   "pinned": {
     "pin": "Anheften des Beitrags an den Titel der Diskussion",
     "unpin": "Entschlüsseln Sie die Veröffentlichung"
+  },
+  "beautyfullTextarea": {
+    "addEmoji": "Emoji hinzufügen"
   },
   "showFileContent": {
     "deleted": "Die Datei wurde gelöscht."
@@ -647,7 +660,15 @@
     "deleteOlds": "Löschen alter Aktivitäten",
     "deleteOldsInfo": "Löschen Sie Aktivitäten mit einem Startdatum von mehr als:",
     "delete": "Entfernen",
-    "oldsActivitiesDeleted": "Alte Aktivitäten wurden gelöscht"
+    "oldsActivitiesDeleted": "Alte Aktivitäten wurden gelöscht",
+    "exportICS": "Speichern im ICS Format",
+    "exportICSInfos": "Laden Sie alle Ihre entschlüsselten Termine im ICS-Format herunter, um sie in andere Kalenderanwendungen zu importieren.",
+    "export": "Speichern als",
+    "importICS": "Importe im ICS Format",
+    "importICSInfos": "Verwenden Sie eine ICS-Datei, um die darin enthaltenen Termine auf den Terminkalender zu importieren",
+    "import": "Importieren",
+    "importSuccess": "Termine sind erfolgreich importiert worden",
+    "importError": "Eine oder mehrere Komponenten wurden während des Imports ignoriert, handelt es sich um eine iCalendar-Datei? (derzeit werden nur die Formate VTODO und VEVENT unterstützt)"
   },
   "colorLegend": {
     "placeholder": "Nicht angegeben",
@@ -724,7 +745,7 @@
     "inviteds": "Eingeladene Mitglieder",
     "checklist": "Checkliste",
     "start": "Beginn",
-    "end": "Ende"
+    "end": "Fällig"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
@@ -752,7 +773,7 @@
     "spreadsheetList": "Tabellenblätter",
     "noSpreadsheet": "Kein Tabellenblatt",
     "newSpreadsheet": "Tabellenblatt hinzufügen",
-    "showMore": "Mehr erfahren",
+    "showMore": "Mehr anzeigen",
     "SpreadsheetName": "Name des Tabellenblatts"
   },
   "spreadsheetHeader": {

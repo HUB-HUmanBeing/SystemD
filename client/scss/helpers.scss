@@ -350,3 +350,42 @@ body, html {
 .emojiImg {
   opacity: 0.75;
 }
+.sexyScrollbar{
+  scrollbar-width: thin;
+  scrollbar-color: rgba($blue-highlight-color, 0.5) transparent ;
+
+
+}
+.sexyScrollbar::-webkit-scrollbar {
+  width: 7px !important;
+  height: 7px !important;
+}
+.sexyScrollbar::-webkit-scrollbar-button {
+  width: 6px !important;
+  height: 6px !important;
+}
+.sexyScrollbar::-webkit-scrollbar-thumb {
+  background: rgba($blue-highlight-color, 0.5) !important;
+  border: 0px none #ffffff !important;
+  border-radius: 50px !important;
+}
+.sexyScrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba($blue-highlight-color, 0.7) !important;
+}
+.sexyScrollbar::-webkit-scrollbar-thumb:active {
+  background: rgba($blue-highlight-color, 0.7) !important;
+}
+.sexyScrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+  border: 81px none #ffffff !important;
+  border-radius: 50px !important;
+}
+.sexyScrollbar::-webkit-scrollbar-track:hover {
+  background: rgba($light-bg, 0.5) !important;
+}
+.sexyScrollbar::-webkit-scrollbar-track:active {
+  background: rgba($light-bg, 0.5) !important;
+}
+.sexyScrollbar::-webkit-scrollbar-corner {
+  background: transparent !important;
+}

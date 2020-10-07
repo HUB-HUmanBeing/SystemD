@@ -7,7 +7,8 @@
         <button class="sendCommentBtn absolute">{{#if isCreating}}
             {{>circleSpinner}}
         {{else}}
-            <i class="material-icons left">send</i>
+            <i class="material-icons left tooltipped"
+            data-position="top" data-delay="50" data-tooltip="{{__ ".sendComment"}}">send</i>
         {{/if}}</button>
 
 
