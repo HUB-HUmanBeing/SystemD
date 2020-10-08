@@ -38,6 +38,7 @@
     "leaflet-draw": "^1.0.4",
     "leaflet-minimap": "^3.6.1",
     "leaflet-swoopy": "^3.4.1",
+    "leaflet.browser.print": "^1.0.6",
     "meteor-node-stubs": "^0.4.1",
     "minio": "^7.0.16",
     "moment-timezone": "^0.5.31",
