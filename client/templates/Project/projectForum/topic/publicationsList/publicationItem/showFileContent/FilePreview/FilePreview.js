@@ -17,6 +17,7 @@ Template.filePreview.helpers({
     },
     showWideUrl: function () {
         return Template.instance().showWideUrl.get()
+
     }
 
 });
@@ -30,7 +31,13 @@ Template.filePreview.events({
         projectFilesController.getFile(file, (res) => {
             file.showWideUrl = res
             Session.set('fullSizeFile', file)
-
+            Meteor.setTimeout(()=>{
+              let  container = document.querySelector("#fullScreenItem");
+                let  demo = wheelzoom(container.querySelectorAll('img'),{
+                    zoom: 0.10,
+                    maxZoom: -1
+                });
+            },400)
         })
     },
     "click [deleteFile]": function (event, instance) {

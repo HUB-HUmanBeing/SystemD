@@ -49,6 +49,7 @@
     "string-to-arraybuffer": "^1.0.2",
     "svg-captcha": "^1.4.0",
     "web-push": "^3.4.4",
+    "zooming": "^2.1.1",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {

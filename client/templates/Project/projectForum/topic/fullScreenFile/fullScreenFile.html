@@ -1,7 +1,7 @@
 <template name="fullScreenFile">
     <div class="fullScreenFileView">
         <div class="closeFullScreenView" closeFullScreenView></div>
-        <div class="fullScreenItem">
+        <div class="fullScreenItem" id="fullScreenItem">
             <div class="fileContainer">
                 {{#if compare file "==" "waiting"}}
                     <div class="preloader-wrapper big active">
@@ -52,7 +52,7 @@
                                 {{else}}
 
                                     <img src="{{getFileIcon file.symEnc_mimeType}}" alt=""
-                                         class="shadow fileIcon"
+                                         class="shadow fileIcon zoomable"
                                          title="{{file.symEnc_fileName}}" id="img-{{file._id}}">
 
                                 {{/if}}
