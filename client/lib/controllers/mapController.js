@@ -79,7 +79,7 @@ const mapController = {
 
             })
             .addTo(this.map);
-      
+
             L.control.browserPrint({
                 title: '',
                 documentTitle: "System-D.org  -  " +project.name,
