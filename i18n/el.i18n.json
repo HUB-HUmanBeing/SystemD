@@ -689,7 +689,8 @@
     "joinActivity": "Participer à l'activité",
     "inviteMember": "inviter des membres à se joindre à l'activité",
     "onMap": "Position sur la carte :",
-    "showOnMap": "Voir"
+    "showOnMap": "Voir",
+    "placeholderActivityDetail": "Déscription de l'activité..."
   },
   "weekDays": {
     "day0": "Κυριακή",
