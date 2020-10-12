@@ -689,7 +689,8 @@
     "joinActivity": "Participar a la actividad",
     "inviteMember": "Invitar miembros para que se junten a la actividad",
     "onMap": "Ubicación en el mapa:",
-    "showOnMap": "Ver"
+    "showOnMap": "Ver",
+    "placeholderActivityDetail": "Déscription de l'activité..."
   },
   "weekDays": {
     "day0": "Domingo",
