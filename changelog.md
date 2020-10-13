@@ -10,11 +10,10 @@
 ### déployé au 12/10/20
 - possibilité d'imprimer la carte du projet avec ses marqueurs
 - contenu des checklist des activités sur plusieurs lignes pour les détailler plus
-- correctif du bug qui permettait d'accepter 2 fois la meme invitation.
+- correctif du bug qui permettait d'accepter 2 fois la même invitation.
 - ajout d'un emoji chat suite a une demande faite par un utilisateur (bises à toi)
-- possibilité de zoomer sur les apercus d'images
-- fix du bug qui permettait pas de voir les fichiers projets lorsqu'ils etaient trop nombreux
-
+- possibilité de zoomer sur les aperçus d'images
+- fix du bug qui permettait pas de voir les fichiers projets lorsqu'ils étaient trop nombreux
 ### déployé au 01/02/20
 - Possibilité d'ajouter des propositions aux sondages en tant que membre du projet.
 - Possibilité d'inviter jusqu'à 200 personnes en un lien d'invitation (contre 15 max jusque là)
