@@ -38,7 +38,6 @@ Template.loginForm.events({
                         if (invitationId && invitationPassword) {
                             inviteController.acceptInvitationId(invitationId, invitationPassword, (projectId) => {
                                 hubCrypto.decryptAndStoreProjectListInSession(() => {
-                                    console.log(projectId)
                                     FlowRouter.go('/project/' + projectId + "/home")
                                     Materialize.toast(__('loginFormJs.welcome'), 6000, 'toastOk')
                                     Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'toastOk')

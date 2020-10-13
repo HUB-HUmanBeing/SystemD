@@ -26,15 +26,15 @@
       .inputContainer {
         padding: 5px;
 
-
-        input {
+        textarea {
           margin: 10px;
-          padding: 0 10px;
+          padding: 10px;
           background-color: $main-bg;
           border-radius: 5px;
           box-shadow: none;
           border: none;
-          height: 2.2em;
+          height: 1em;
+          min-height: 0px !important;
 
           &::placeholder {
             color: $minus-color;

@@ -19,6 +19,7 @@ Template.topic.helpers({
     },
     file: function () {
         return Session.get('fullSizeFile')
+
     },
     pinnedPublication: function () {
         return Template.instance().pinnedPublication.get()

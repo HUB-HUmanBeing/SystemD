@@ -31,8 +31,7 @@ Template.newsFeed.onCreated(function () {
 
     lang=window.localStorage.getItem("lang").split("-")[0]
     fileName=lang+".newsFeed.json"
-    
-    let url = Meteor.isDevelopment ? "http://localhost:3000/news/"+fileName :Meteor.settings.public.newsURL+fileName
+    let url = Meteor.isDevelopment ? "http://localhost:3000/news/"+fileName : Meteor.settings.public.newsURL+fileName
     url +="?preventCache="+Date.now()
 
     $.get(

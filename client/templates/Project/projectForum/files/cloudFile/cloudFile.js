@@ -17,7 +17,13 @@ Template.cloudFile.events({
         projectFilesController.getFile(file, (res) => {
             file.showWideUrl = res
             Session.set('fullSizeFile', file)
-
+            Meteor.setTimeout(()=>{
+                let  container = document.querySelector("#fullScreenItem");
+                let  demo = wheelzoom(container.querySelectorAll('img'),{
+                    zoom: 0.10,
+                    maxZoom: -1
+                });
+            },400)
         })
     }
 });

@@ -93,7 +93,7 @@ Template.checkList.events({
             }else {
                 Meteor.setTimeout(() => {
                     $("#checkInput-"+(activity.checkList.length)).focus()
-                }, 500)
+                }, 600)
             }
         })
 
@@ -134,6 +134,10 @@ Template.checkList.onCreated(function () {
 
 Template.checkList.onRendered(function () {
     //add your statement here
+    Meteor.setTimeout(()=>{
+        $(".inputContainer textarea" ).trigger('autoresize');
+    },500)
+
 });
 
 Template.checkList.onDestroyed(function () {

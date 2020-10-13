@@ -690,7 +690,7 @@
     "inviteMember": "Invite members to join activity",
     "onMap": "Map position :",
     "showOnMap": "See on map",
-    "placeholderActivityDetail": "Déscription de l'activité..."
+    "placeholderActivityDetail": "Activity detail..."
   },
   "weekDays": {
     "day0": "Sunday",

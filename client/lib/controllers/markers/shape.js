@@ -69,6 +69,10 @@ const shape = {
                     this.saveMarker(options, JSON.stringify([e.layer.toGeoJSON().geometry.coordinates[1], e.layer.toGeoJSON().geometry.coordinates[0]]), {radius: e.layer.options.radius})
                     mapState.set({})
                 }
+
+                mapController.map.on("draw:drawstop",(l)=>{
+                    mapState.set({})
+                });
                 break
             case "polygon":
                 mapController.drawControl.setDrawingOptions({
