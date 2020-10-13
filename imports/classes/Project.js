@@ -72,6 +72,30 @@ const ForumCategory = Class.create({
         }
     }
 })
+const CloudFolder = Class.create({
+    name: 'CloudFolder',
+    fields: {
+        folderId: String,
+        symEnc_name: {
+            type: String
+        },
+        createdBy:{
+            type: String
+        },
+        createdAt: {
+            type: Date,
+            default: function () {
+                return new Date()
+            }
+        },
+        parentFolderId: {
+            type: String,
+            default: function () {
+                return "root"
+            }
+        },
+    }
+})
 const Map = Class.create({
     name: "Map",
     fields: {
@@ -173,6 +197,12 @@ const ProjectPrivate = Class.create({
         },
         forumCategories: {
             type: [ForumCategory],
+            default: function () {
+                return [];
+            }
+        },
+        CloudFolders: {
+            type: [CloudFolder],
             default: function () {
                 return [];
             }

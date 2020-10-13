@@ -1,6 +1,16 @@
 <template name="files">
     <div id="topic" class="full-height flex-auto cloudPage" style="{{#if isDesktop}}padding-top:10px{{/if}}">
-
+        <div class="fixed-action-btn" style="{{#if isDesktop}}position: absolute {{/if}}">
+            <a class="btn-floating btn danger-bg waves-effect waves-light addBtn btn-large shadow">
+                <i class="large material-icons">add</i>
+            </a>
+            <ul>
+                <li><a class="btn-floating newCloudItem tooltipped" data-position="left" data-delay="50"
+                       data-tooltip="{{__ ".newFolder"}}" newFolder><i class="material-icons">create_new_folder</i></a></li>
+                <li><a class="btn-floating newCloudItem tooltipped" data-position="left" data-delay="50"
+                       data-tooltip="{{__ ".newFile"}}" newFile><i class="material-icons">insert_drive_file</i></a></li>
+            </ul>
+        </div>
         <div class="no-margin">
             <div class="col s12">
 

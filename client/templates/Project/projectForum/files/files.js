@@ -21,7 +21,11 @@ Template.files.events({
     "click [seeMore]" : function (event, instance) {
         event.preventDefault()
         instance.limit.set(instance.limit.get()+5)
-    }
+    },
+    "click [newFolder]" : function (event, instance) {
+        event.preventDefault()
+
+    },
 });
 
 Template.files.onCreated(function () {

@@ -5,8 +5,8 @@
         {{#if isDesktop}}
             <div class="blurTop"></div>
         {{/if}}
-        <div class="forumContainer col s12 flex  {{#if
-                isDesktop}}full-height  {{/if}} main-color no-padding ">
+        <div class="forumContainer col s12 flex   {{#if
+                isDesktop}}full-height relative {{/if}} main-color no-padding ">
             {{#if showCategories}}
 
                 <div id="categoryListContainer" class="beautify-scroll-container"
@@ -23,7 +23,7 @@
                 </div>
             {{/if}}
             {{#if showFiles}}
-                <div id="topicContainer" class="flex-auto topicContainer sexyScrollbar center-align"
+                <div id="topicContainer" class="flex-auto topicContainer sexyScrollbar center-align "
                      style="{{#if isDesktop}}
                      height:  100vh ;
                              padding: 40px 0 300px 0;
@@ -34,7 +34,7 @@
                              padding: 30px 0 300px 0;
                      {{/if}}"
                 >
-                    <div class="topicSubContainer center-align">
+                    <div class="topicSubContainer center-align ">
                         {{>files currentProject=currentProject refreshScrollbar=refreshScrollbar}}
                     </div>
                 </div>

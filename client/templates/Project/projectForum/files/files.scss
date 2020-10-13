@@ -1,16 +1,59 @@
 @import "{}/client/scss/variables.scss";
 
 
-.cloudPage{
-  .filesContainer{
+.cloudPage {
+
+  .fixed-action-btn {
+  //  right: 35px;
+    bottom: 150px;
+
+    .btn {
+      width: 70px;
+      height: 70px;
+      background-color: $danger-text;
+
+      i {
+        line-height: 70px;
+        font-size: 40px;
+      }
+
+      &:hover {
+        i {
+          color: $plus-color
+        }
+      }
+    }
+
+    .newCloudItem {
+      width: 50px;
+      height: 50px;
+      background-color: $blue-highlight-color;
+
+      i {
+        line-height: 50px;
+        font-size: 30px;
+      }
+
+      &:hover {
+        background-color: $danger-text;
+        i {
+          color: $plus-color
+        }
+      }
+    }
+  }
+
+  .filesContainer {
     padding-bottom: 300px;
   }
-  .filesSize{
-    .infoQuotes{
+
+  .filesSize {
+    .infoQuotes {
       margin: 3px;
       font-size: 0.9em;
     }
-    .percentage{
+
+    .percentage {
       width: 40px;
       height: 40px;
       line-height: 40px;
@@ -21,16 +64,18 @@
       font-style: italic;
       font-weight: bold;
     }
-    .filesSizeContainer{
+
+    .filesSizeContainer {
       margin-left: 6px;
-margin-top: 9px;
+      margin-top: 9px;
       height: 19px;
       border-radius: 9.5px;
       background-color: $contrasted-plus-bg;
       border: 2px solid $contrasted-plus-bg;
       position: relative;
     }
-    .totalFileSize{
+
+    .totalFileSize {
       content: ' ';
       background-color: $blue-highlight-color;
       height: 15px;
