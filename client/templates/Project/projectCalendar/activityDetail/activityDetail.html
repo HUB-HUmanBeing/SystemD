@@ -73,10 +73,24 @@
                                    placeholder="{{__ ".activityTitle"}}"
                                    value="{{activity.symEnc_title}}">
                         </div>
-                        <div class="input-field ">
-                            <textarea id="editActivityDetail" class="materialize-textarea no-margin"
-                                      value="{{activity.symEnc_detail}}"></textarea>
-                            <label for="editActivityDetail">{{__ ".activityDetail"}}</label>
+                        <div class="editActivityDetail" textareaDetail>
+                            <p class="sectionLabel no-margin">{{__ ".activityDetail"}} :</p>
+                            <div class="small-margin">
+                                {{#if editingTextareaDetail}}
+                                {{>beautyfullTextarea
+                                        id="editActivityDetail"
+                                        initialContent=activity.symEnc_detail
+                                        placeholder=(__ ".placeholderActivityDetail")
+                                        minheight="0"
+                                        rows="1"}}
+                            {{else}}
+                                {{#if activity.symEnc_detail}}
+                                    {{>smartContent content=activity.symEnc_detail  refreshScrollbar=null }}
+                                {{else}}
+                                    <i class="">{{__ ".placeholderActivityDetail"}}</i>
+                                {{/if}}
+                            {{/if}}</div>
+
                         </div>
                         {{#if showEditFormButton}}
                             <div class="right-align" style="margin-top: 10px">
@@ -209,7 +223,7 @@
                     <div class="col s12">
                         <div class="hr"></div>
                         <div class="flex">
-                            <p class="sectionLabel flex-auto no-margin">{{__ ".recursivity"}}</p>
+                            <p class="sectionLabel flex-auto no-margin">{{__ ".recursivity"}} :</p>
                             <div class="switch" style="">
                                 <label>
 

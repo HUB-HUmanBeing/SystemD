@@ -165,7 +165,7 @@
         margin-top: 5px;
         margin-right: -14px;
         z-index: 600;
-  
+
         i {
           font-size: 2.4em;
         }
@@ -284,16 +284,7 @@
           font-weight: bold;
         }
       }
-
-    .leaflet-control-zoom {
-      border: none;
-
-      .leaflet-control-zoom-in {
-        margin-bottom: 2px;
-        z-index: 102;
-      }
-
-      .leaflet-control-zoom-out, .leaflet-control-zoom-in {
+      .leaflet-control-zoom-out, .leaflet-control-zoom-in, .leaflet-browser-print {
         color: $plus-color !important;
         z-index: 102;
         border-radius: 5px;
@@ -302,6 +293,29 @@
         -moz-box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
         box-shadow: 2px 2px 6px -1px rgba(0, 0, 0, 0.15);
       }
+      .leaflet-control-browser-print{
+        border: none !important;
+        margin-top: 10px !important;
+      }
+      .leaflet-control-browser-print a {
+        border-radius: 4px;
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: $main-bg;
+        background-image: url(images/icon/print.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer; }
+    .leaflet-control-zoom {
+      border: none;
+
+      .leaflet-control-zoom-in {
+        margin-bottom: 2px;
+        z-index: 102;
+      }
+
+
     }
 
     .leaflet-control-geocoder {
@@ -311,30 +325,30 @@
         min-height: 30px;
         border: none !important;
       }
-      
+
       .leaflet-touch .leaflet-control-geocoder {
         min-width: 30px;
         min-height: 30px;
       }
-      
+
       .leaflet-control-geocoder a,
       .leaflet-control-geocoder .leaflet-control-geocoder-icon {
         border-bottom: none;
         display: inline-block;
       }
-      
+
       .leaflet-control-geocoder .leaflet-control-geocoder-alternatives a {
         width: inherit;
         height: inherit;
         line-height: inherit;
       }
-      
+
       .leaflet-control-geocoder a:hover,
       .leaflet-control-geocoder .leaflet-control-geocoder-icon:hover {
         border-bottom: none;
         display: inline-block;
       }
-      
+
       .leaflet-control-geocoder-form {
         display: none;
         vertical-align: middle;
@@ -351,7 +365,7 @@
         background-color: $main-bg;
         width: 220px;
       }
-      
+
       .leaflet-control-geocoder-icon {
         border-radius: 4px;
         width: 30px;
@@ -363,27 +377,27 @@
         background-position: center;
         cursor: pointer;
       }
-      
+
       .leaflet-touch .leaflet-control-geocoder-icon {
         width: 35px;
         height: 35px;
       }
-      
+
       .leaflet-control-geocoder-throbber .leaflet-control-geocoder-icon {
         background-image: url(images/icon/geocoder_throbber.gif);
       }
-      
+
       .leaflet-control-geocoder-form-no-error {
         display: none;
         background-color: $main-bg;
         color: white !important;
       }
-      
+
       .leaflet-control-geocoder-form input:focus {
         outline: none;
         background-color: $main-bg;
       }
-      
+
       .leaflet-control-geocoder-form button {
         display: none;
         background-color: $main-bg;
@@ -402,7 +416,7 @@
         margin: 0;
         background-color: $main-bg;
       }
-      
+
       .leaflet-control-geocoder-alternatives-minimized {
         display: none;
         height: 0;
@@ -416,7 +430,7 @@
         border-bottom: 1px solid $main-bg;
         cursor: pointer;
       }
-      
+
       .leaflet-control-geocoder-alternatives li a,
       .leaflet-control-geocoder-alternatives li a:hover {
         width: inherit;
@@ -427,7 +441,7 @@
         text-align: left;
         color: white;
       }
-      
+
       .leaflet-control-geocoder-alternatives li:last-child {
         border-bottom: none;
       }
@@ -444,7 +458,7 @@
         background-color: $main-bg;
         color: $main-color;
       }
-      
+
     }
 
     #mapFooter {

@@ -118,8 +118,30 @@
       }
     }
 
-    #editActivityDetail {
-      min-height: 1rem !important;
+    .editActivityDetail {
+      margin-top: 10px;
+      label{
+
+      }
+      #editActivityDetail{
+
+      }
+      .iframeContainer{
+        border:10px solid $contrasted-bg;
+
+      }
+      .small-margin{
+font-size: 0.95em;
+color: $plus-color;
+        .smartifiedContent{
+          cursor: text;
+        }
+        i{
+          cursor: text;
+          font-size: 1.1em;
+          color: $minus-color;
+        }
+      }
     }
 
     .input-field {

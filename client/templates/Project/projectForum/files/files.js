@@ -11,11 +11,7 @@ Template.files.helpers({
         return ProjectFile.find({projectId:Template.currentData().currentProject._id}).fetch()
     },
     file: function () {
-        let refreshScrollbar =     Template.currentData().refreshScrollbar
-        Meteor.setTimeout(()=>{
 
-            refreshScrollbar()
-        }, 500)
         return Session.get('fullSizeFile')
     },
 });
