@@ -201,7 +201,7 @@ const ProjectPrivate = Class.create({
                 return [];
             }
         },
-        CloudFolders: {
+        cloudFolders: {
             type: [CloudFolder],
             default: function () {
                 return [];

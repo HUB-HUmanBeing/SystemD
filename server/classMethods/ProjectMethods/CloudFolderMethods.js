@@ -20,7 +20,7 @@ Project.extend({
             check(authInfo, {memberId: String, userSignature: String})
             let currentProject = Project.findOne(this._id)
             check(currentProject.isMember(authInfo), true)
-            currentProject.private.Folders.push(
+            currentProject.private.cloudFolders.push(
                 {
                     folderId: folderId,
                     symEnc_name:symEnc_name,

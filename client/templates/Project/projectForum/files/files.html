@@ -6,7 +6,8 @@
             </a>
             <ul>
                 <li><a class="btn-floating newCloudItem tooltipped" data-position="left" data-delay="50"
-                       data-tooltip="{{__ ".newFolder"}}" newFolder><i class="material-icons">create_new_folder</i></a></li>
+                       data-tooltip="{{__ ".newFolder"}}" newFolder><i class="material-icons">create_new_folder</i></a>
+                </li>
                 <li><a class="btn-floating newCloudItem tooltipped" data-position="left" data-delay="50"
                        data-tooltip="{{__ ".newFile"}}" newFile><i class="material-icons">insert_drive_file</i></a></li>
             </ul>
@@ -21,14 +22,21 @@
                            style="margin-right: 10px"><i
                                 class="material-icons left">arrow_back</i></a>
                     {{/unless}}
-                    <div class="flex-auto elipsis left-align topicTitle">
+                    <div class="flex-auto  left-align topicTitle">
+                        <a href="/project/{{currentProject._id}}/forum?files=true" class="cloudFile relative elipsis ">
                         {{__ "categoryList.myFiles"}}
+                    </a>
+                        {{#each folder in parentFolders}}
+                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}" title="{{folder.symEnc_name}}" class="cloudFile relative elipsis ">
+                                {{folder.symEnc_name}}
+                            </a>
+                            {{/each}}
                     </div>
                 </div>
 
             </div>
         </div>
-        <div class="row filesSize">
+        <div class="row filesSize no-margin">
             <div class="col s12 relative">
                 <p class="infoQuotes left-align">
                     {{__ ".projectUsing"}} <b>{{formatBytes currentProject.private.totalFilesSize}}</b> {{__ ".of"}}
@@ -47,6 +55,50 @@
         <div class="row filesContainer">
             <div class="col s12 relative">
                 <div class="row">
+                    {{#if parentFolder}}
+                        <div class="col s6 m4 xl3 ">
+                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{parentFolder.folderId}}" class="cloudFile relative ">
+                            <div class="fileIcon">
+                                <img src="/images/icon/files/returnParent.png" alt="" class="plus-color"  title="{{__ ".returnTo"}} {{parentFolder.symEnc_Name}}">
+                                <div class="fileLabel " >
+                                    {{__ ".returnTo"}} {{parentFolder.symEnc_Name}}
+                                </div>
+                            </div>
+                            </a>
+                            {{parentFolder.symEnc_Name}}
+                        </div>
+                        {{/if}}
+                    {{#each folder in folders}}
+                        <div class="col s6 m4 xl3 ">
+                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}" class="cloudFile relative ">
+                                <div class="fileIcon">
+                                    <img src="/images/icon/files/folder.png" alt="" class=""  title="{{folder.symEnc_name}}">
+                                    <div class="fileLabel elipsis" title="{{folder.symEnc_name}}">
+                                        {{folder.symEnc_name}}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/each}}
+                    {{#if newFolderForm}}
+                        <div class="col s6 m4 xl3 ">
+                            <div id="newFolder" class="cloudFile relative shadow">
+                                <div class="fileIcon" id="" focusFile>
+                                    <img src="/images/icon/files/folder.png" alt="" class="">
+                                    <form id="newFolderForm" class="flex" newFolderForm>
+
+                                        <input type="text" id="newFolderNameInput" minlength="1" class="flex-auto"
+                                               placeholder="{{__ ".newFolderPlaceholder"}}">
+                                        <div class="relative">
+                                            <button href=""
+                                                    class="btn btn-floating waves-effect shadow waves-light absolute">
+                                                <i class="material-icons prefix">done</i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
 
                     {{#each fileItem in files}}
                         <div class="col s6 m4 xl3 ">

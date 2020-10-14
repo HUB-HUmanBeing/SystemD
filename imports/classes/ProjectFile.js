@@ -33,7 +33,8 @@ const ProjectFile = Class.create({
             type: String,
             default: function () {
                 return null
-            }
+            },
+            index: 1
         },
     },
     helpers: {

@@ -2,19 +2,37 @@
 
 
 .cloudPage {
-
+.topicTitle{
+  a{
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba($contrasted-plus-bg,1) 30%, rgba($contrasted-plus-bg,1) 100%);
+    border-bottom-right-radius: 18px;
+    border-top-right-radius: 18px;
+    padding: 0 15px 0 20px;
+    margin-left: -20px;
+text-align: center;
+    max-width: 200px;
+    display: inline-block;
+    border-right: 2px solid $blue-highlight-color;
+    transition: 0.4s ease-out;
+    &:hover{
+      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba($blue-highlight-color,1) 30%, rgba($blue-highlight-color,1) 100%);
+      color: $plus-color;
+      border-right: 2px solid $plus-color;
+    }
+  }
+}
   .fixed-action-btn {
   //  right: 35px;
     bottom: 150px;
 
     .btn {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       background-color: $danger-text;
 
       i {
-        line-height: 70px;
-        font-size: 40px;
+        line-height: 60px;
+        font-size: 37px;
       }
 
       &:hover {
@@ -25,13 +43,13 @@
     }
 
     .newCloudItem {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       background-color: $blue-highlight-color;
 
       i {
-        line-height: 50px;
-        font-size: 30px;
+        line-height: 40px;
+        font-size: 23px;
       }
 
       &:hover {
@@ -42,9 +60,40 @@
       }
     }
   }
+  #newFolder{
+    background-color: $contrasted-bg;
+   //margin: -10px 0px -10px 0px;
+    //padding: 10px 0px 20px 0px;
+
+    #newFolderForm{
+      input{
+        border: none !important;
+        border-bottom: none !important;
+        margin-bottom: 0px !important;
+        height: 12px;
+        font-size: 0.9em;
+        padding: 5px 15px 5px 5px;
+        &::placeholder{
+          color: $minus-color;
+          font-style: italic;
+        }
+      }
+      button{
+        right:-25px;
+        bottom: -20px;
+        background-color: $blue-highlight-color;
+        &:hover{
+          i{
+            color: $plus-color !important;
+          }
+        }
+      }
+    }
+  }
 
   .filesContainer {
     padding-bottom: 300px;
+
   }
 
   .filesSize {
