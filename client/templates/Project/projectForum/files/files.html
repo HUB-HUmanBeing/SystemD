@@ -23,14 +23,17 @@
                                 class="material-icons left">arrow_back</i></a>
                     {{/unless}}
                     <div class="flex-auto  left-align topicTitle">
-                        <a href="/project/{{currentProject._id}}/forum?files=true" class="cloudFile relative elipsis ">
-                        {{__ "categoryList.myFiles"}}
-                    </a>
+                        <a href="/project/{{currentProject._id}}/forum?files=true" class="cloudFile relative elipsis {{#if compare parentFolders.length "==" 0}}currentFolder{{/if}}">
+                            {{__ "categoryList.myFiles"}}
+                        </a>
                         {{#each folder in parentFolders}}
-                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}" title="{{folder.symEnc_name}}" class="cloudFile relative elipsis ">
-                                {{folder.symEnc_name}}
+                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}
+                            "
+                            title="{{folder.symEnc_name}}"
+                            class="cloudFile relative elipsis {{#if folder.current}}currentFolder{{/if}}">
+                            {{folder.symEnc_name}}
                             </a>
-                            {{/each}}
+                        {{/each}}
                     </div>
                 </div>
 
@@ -57,26 +60,28 @@
                 <div class="row">
                     {{#if parentFolder}}
                         <div class="col s6 m4 xl3 ">
-                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{parentFolder.folderId}}" class="cloudFile relative ">
+                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{parentFolder.folderId}}
+                            " class="cloudFile relative ">
                             <div class="fileIcon">
-                                <img src="/images/icon/files/returnParent.png" alt="" class="plus-color"  title="{{__ ".returnTo"}} {{parentFolder.symEnc_Name}}">
-                                <div class="fileLabel " >
-                                    {{__ ".returnTo"}} {{parentFolder.symEnc_Name}}
+                                <img src="/images/icon/files/returnParent.png" alt="" class="plus-color"
+                                     title="{{__ ".returnTo"}} {{parentFolder.symEnc_name}}">
+                                <div class="fileLabel elipsis">
+                                    {{__ ".returnTo"}} {{parentFolder.symEnc_name}}
                                 </div>
                             </div>
                             </a>
-                            {{parentFolder.symEnc_Name}}
                         </div>
-                        {{/if}}
+                    {{/if}}
                     {{#each folder in folders}}
                         <div class="col s6 m4 xl3 ">
-                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}" class="cloudFile relative ">
-                                <div class="fileIcon">
-                                    <img src="/images/icon/files/folder.png" alt="" class=""  title="{{folder.symEnc_name}}">
-                                    <div class="fileLabel elipsis" title="{{folder.symEnc_name}}">
-                                        {{folder.symEnc_name}}
-                                    </div>
+                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}
+                            " class="cloudFile relative ">
+                            <div class="fileIcon">
+                                <img src="/images/icon/files/folder.png" alt="" class="" title="{{folder.symEnc_name}}">
+                                <div class="fileLabel elipsis" title="{{folder.symEnc_name}}">
+                                    {{folder.symEnc_name}}
                                 </div>
+                            </div>
                             </a>
                         </div>
                     {{/each}}

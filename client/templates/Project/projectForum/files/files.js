@@ -23,37 +23,8 @@ Template.files.helpers({
         return Template.instance().folders.get()
     },
     parentFolder: function () {
-        FlowRouter.watchPathChange()
-        let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
-        if (currentFolderId == "root" || Template.instance().allFolders.get().length ==0){
-            return false
-        }else{
-            let parentFolder = null
-            let currentFolder = null
-            let folders = Template.instance().allFolders.get()
+       return Template.instance().parentFolder.get()
 
-                folders.forEach((folder)=>{
-                    if(folder.folderId== currentFolderId){
-                        currentFolder =folder
-
-                    }
-                })
-            if(currentFolder.parentFolderId == "root"){
-                return {
-                    symEnc_name: __("files.myFiles"),
-                    _id: "root"
-                }
-            }else{
-                folders.forEach((folder)=>{
-                    if(folder.folderId== currentFolder.parentFolderId){
-                        parentFolder =folder
-                    }
-                })
-            }
-
-            console.log(parentFolder)
-            return parentFolder
-        }
     },
     parentFolders: function () {
         FlowRouter.watchPathChange()
@@ -63,15 +34,18 @@ Template.files.helpers({
         }else{
             let parentFolders = []
             let folders = Template.instance().allFolders.get()
-            function getParentFolderFromId(id){
+            function getParentFolderFromId(id, current){
                 folders.forEach((folder)=>{
                     if(folder.folderId== id){
+                        if(current){
+                            folder.current = true
+                        }
                         parentFolders.push(folder)
-                        getParentFolderFromId(folder.parentFolderId)
+                        getParentFolderFromId(folder.parentFolderId, false)
                     }
                 })
             }
-            getParentFolderFromId(currentFolderId)
+            getParentFolderFromId(currentFolderId, true)
             return parentFolders.reverse()
         }
     }
@@ -123,6 +97,7 @@ Template.files.onCreated(function () {
     //add your statement here
     this.newFolderForm = new ReactiveVar(false)
     this.folders = new ReactiveVar([])
+    this.parentFolder = new ReactiveVar(null)
     this.allFolders = new ReactiveVar([])
     let projectId = Template.currentData().currentProject._id
     this.limit = new ReactiveVar(20)
@@ -166,6 +141,42 @@ Template.files.onCreated(function () {
             }
         })
 
+    })
+    this.autorun(()=>{
+        FlowRouter.watchPathChange()
+        let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
+        let currentProject = Projects.findOne({_id: projectId})
+        let folders = []
+
+        if (currentFolderId != "root" && currentProject.private.cloudFolders.length>0){
+            let parentFolder = null
+            let currentFolder = null
+
+
+            currentProject.private.cloudFolders.forEach((folder)=>{
+                if(folder.folderId== currentFolderId){
+                    currentFolder =folder
+
+                }
+            })
+            if(currentFolder.parentFolderId == "root"){
+                this.parentFolder.set({
+                    symEnc_name: __("categoryList.myFiles"),
+                    _id: "root"
+                })
+            }else{
+                currentProject.private.cloudFolders.forEach((folder)=>{
+                    if(folder.folderId== currentFolder.parentFolderId){
+                        cryptoTools.decryptObject(folder, {symKey: Session.get("currentProjectSimKey")}, deryptedParentFolder => {
+
+                            this.parentFolder.set(deryptedParentFolder)
+                        })
+                    }
+                })
+            }
+
+
+        }
     })
 });
 
