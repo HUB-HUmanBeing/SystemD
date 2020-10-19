@@ -26,6 +26,9 @@ Template.files.helpers({
     contextMenu: function () {
         return Template.instance().contextMenu.get()
     },
+    renameItemId: function () {
+        return Template.instance().renameItem.get()
+    },
     parentFolders: function () {
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
@@ -67,10 +70,10 @@ Template.files.events({
 
         }, 200)
     },
-    "contextmenu .contextmenu img, contextmenu .filesContainer, click [openContextMenu]": function (event, instance) {
+    "contextmenu .contextmenu img, contextmenu .contextmenu span, contextmenu .filesContainer, click [openContextMenu]": function (event, instance) {
         event.preventDefault()
         event.stopPropagation()
-        console.log(event)
+
         let clickX = event.originalEvent.pageX
         let clickY = event.originalEvent.pageY
         let position = ""
@@ -84,20 +87,53 @@ Template.files.events({
         } else {
             position += "bottom:" + (window.innerHeight - clickY) + "px ;"
         }
-        instance.contextMenu.set(
-            {
-                position: position,
-                cut: true,
-                paste: true,
-                delete: true,
-                new: true,
-                rename: true,
-            }
-        )
+
+        let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+        if (cloudIconRef) {
+            let type = cloudIconRef.split("-")[0]
+            let id = cloudIconRef.split("-")[1]
+
+            instance.contextMenu.set(
+                {
+                    position: position,
+                    cut: !!cloudIconRef,
+                    paste: (type != "file" &&  instance.selectedItems.get().length>0),
+                    delete: !!cloudIconRef,
+                    new: false,
+                    rename: (cloudIconRef && instance.selectedItems.get().length== 0)?cloudIconRef :false,
+                }
+            )
+        }else{
+
+            instance.contextMenu.set(
+                {
+                    position: position,
+                    cut: !!cloudIconRef,
+                    paste:  true,
+                    delete: !!cloudIconRef,
+                    new: true,
+                    rename: false,
+                }
+            )
+        }
+
     },
     "click [closeContextMenu]": function (event, instance) {
         event.preventDefault()
         instance.contextMenu.set(false)
+    },
+    "click [closeEditMenu]": function (event, instance) {
+        event.preventDefault()
+        instance.renameItem.set(false)
+        instance.newFolderForm.set(false)
+    },
+    "click [rename]" : function (event, instance) {
+        event.preventDefault()
+        instance.contextMenu.set(false)
+        instance.renameItem.set(event.currentTarget.getAttribute("renameItem").split("-")[1])
+        Meteor.setTimeout(() => {
+            $("#newFolderNameInput").focus()
+        }, 200)
     },
     "contextmenu [closeContextMenu]": function (event, instance) {
         event.preventDefault()
@@ -144,6 +180,33 @@ Template.files.events({
             })
         })
     },
+    "submit [editFolderForm]": function (event, instance) {
+        event.preventDefault()
+        event.stopPropagation()
+        let currentProject = instance.data.currentProject
+        let folderName = event.target.newFolderNameInput.value
+        if (!folderName) {
+            Meteor.setTimeout(() => {
+                $("#newFolderNameInput").focus()
+            }, 200)
+            return
+        }
+        let parentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
+        cryptoTools.sim_encrypt_data(folderName, Session.get("currentProjectSimKey"), (symEnc_name) => {
+            currentProject.callMethod("editCloudFolderName", projectController.getAuthInfo(currentProject._id), symEnc_name, instance.renameItem.get(), (err, res) => {
+                if (err) {
+                    Materialize.toast(__('general.error'), 6000, 'toastError')
+                    console.log(err)
+                } else {
+                    instance.renameItem.set(false)
+                    instance.newFolderForm.set(false)
+                    Meteor.setTimeout(() => {
+                        resetTooltips()
+                    }, 200)
+                }
+            })
+        })
+    },
 });
 
 Template.files.onCreated(function () {
@@ -156,6 +219,8 @@ Template.files.onCreated(function () {
     let projectId = Template.currentData().currentProject._id
     this.limit = new ReactiveVar(20)
     this.selectedItems = new ReactiveVar([])
+    this.copiedItems = new ReactiveVar([])
+    this.renameItem = new ReactiveVar(false)
     this.autorun(() => {
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
@@ -172,8 +237,8 @@ Template.files.onCreated(function () {
         if (folders.length) {
             cryptoTools.decryptArrayOfObject(folders, {symKey: Session.get("currentProjectSimKey")}, decryptedFolders => {
                 this.folders.set(decryptedFolders.sort((a, b) => {
-                    if (a.symEnc_name > b.symEnc_name) return 1
-                    if (a.symEnc_name < b.symEnc_name) return -1;
+                    if (a.createdAt > b.createdAt) return -1
+                    if (a.createdAt < b.createdAt) return 1;
                     return 0;
                 }))
             })

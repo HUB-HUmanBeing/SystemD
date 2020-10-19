@@ -16,12 +16,12 @@
                 <!--            {{else}}-->
 
             <img src="{{getFileIcon file.symEnc_mimeType}}" alt="" class="shadow"
-                 title="{{file.symEnc_fileName}}" id="img-{{file._id}}">
+                 title="{{file.symEnc_fileName}}" id="img-{{file._id}}" cloudIconRef="file-{{file._id}}">
 
                 <!--            {{/if}}-->
             <!--        {{/if}}-->
-        <div class="fileLabel elipsis" title="{{file.symEnc_fileName}}">
-            {{file.symEnc_fileName}}
+        <div class="fileLabel elipsis" title="{{file.symEnc_fileName}}" >
+           <span cloudIconRef="file-{{file._id}}">{{file.symEnc_fileName}}</span>
         </div>
         {{#unless file.deleted}}
             {{#unless onFilePage}}

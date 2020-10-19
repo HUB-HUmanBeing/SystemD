@@ -30,27 +30,28 @@ Project.extend({
             currentProject.save()
 
         },
-        // /*****************************
-        //  * edition du nom d'une catégorie
-        //  * @param authInfo
-        //  * @param index
-        //  * @param categoryName
-        //  */
-        // editForumCategoryName(authInfo,index, categoryName) {
-        //     check(categoryName, String)
-        //     check(index, Number)
-        //     check(authInfo, {memberId: String, userSignature: String})
-        //     let currentProject = Project.findOne(this._id)
-        //     check(currentProject.isAdmin(authInfo), true)
-        //     currentProject.private.forumCategories[index].symEnc_name=categoryName
-        //     currentProject.save()
-        //
-        // },
-        // /*******************************
-        //  * supression d'une catégorie
-        //  * @param authInfo
-        //  * @param index
-        //  */
+        /*****************************
+         * edition du nom d'une catégorie
+         */
+        editCloudFolderName(authInfo,name, id) {
+            check(name, String)
+            check(id, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(this._id)
+            check(currentProject.isMember(authInfo), true)
+            currentProject.private.cloudFolders.forEach((folder,i)=>{
+                if(folder.folderId == id){
+                    currentProject.private.cloudFolders[i].symEnc_name=name
+                }
+            })
+            currentProject.save()
+
+        },
+        /*******************************
+         * supression d'une catégorie
+         * @param authInfo
+         * @param index
+         */
         // deleteForumCategory(authInfo,index) {
         //
         //     check(index, Number)

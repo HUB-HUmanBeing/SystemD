@@ -77,7 +77,7 @@ padding: 5px;
     }
   }
 
-  .closeContextMenu {
+  .closeContextMenu, .closeEditMenu {
     position: fixed;
     top: 0px;
     bottom: 0px;
@@ -152,39 +152,44 @@ padding: 5px;
       }
     }
   }
+  #newFolderForm {
+    z-index:40001 ;
+    *{
+      z-index:40001 ;
+    }
 
-  #newFolder {
+    input {
+      border: none !important;
+      border-bottom: none !important;
+      margin-bottom: 0px !important;
+      height: 12px;
+      font-size: 0.9em;
+      padding: 5px 15px 5px 5px;
+
+      &::placeholder {
+        color: $minus-color;
+        font-style: italic;
+      }
+    }
+
+    button {
+      right: -25px;
+      bottom: -20px;
+      background-color: $blue-highlight-color;
+
+      &:hover {
+        i {
+          color: $plus-color !important;
+        }
+      }
+    }
+  }
+  .newFolder {
     background-color: $contrasted-bg;
     //margin: -10px 0px -10px 0px;
     //padding: 10px 0px 20px 0px;
 
-    #newFolderForm {
-      input {
-        border: none !important;
-        border-bottom: none !important;
-        margin-bottom: 0px !important;
-        height: 12px;
-        font-size: 0.9em;
-        padding: 5px 15px 5px 5px;
 
-        &::placeholder {
-          color: $minus-color;
-          font-style: italic;
-        }
-      }
-
-      button {
-        right: -25px;
-        bottom: -20px;
-        background-color: $blue-highlight-color;
-
-        &:hover {
-          i {
-            color: $plus-color !important;
-          }
-        }
-      }
-    }
   }
 
   .filesContainer {
