@@ -16,7 +16,8 @@ ProjectFile.extend({
                 symEnc_fileName: String,
                 size: Number,
                 symEnc_mimeType: String,
-                projectId: String
+                projectId: String,
+                parentFolderId: String
             })
             let projectFilesSize = Project.findOne(projectFileParams.projectId).private.totalFilesSize
             if (((projectFileParams.size + projectFilesSize) < Meteor.settings.public.maxFilesSize)&&((projectFileParams.size ) < Meteor.settings.public.maxOneFile)) {

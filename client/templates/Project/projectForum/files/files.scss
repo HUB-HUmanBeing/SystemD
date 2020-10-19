@@ -1,32 +1,119 @@
 @import "{}/client/scss/variables.scss";
 
+.dropFile {
+  background-image: url("/images/trame/trame5.png"), url("/images/trame/upload.png");
+  background-repeat: repeat, no-repeat;
+  background-position: left top, center;
+  background-size: auto, 200px 200px;
+  opacity: 0.92;
+
+  * {
+    opacity: 0.9;
+  }
+
+}
 
 .cloudPage {
-.topicTitle{
-  a{
-    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba($contrasted-plus-bg,1) 30%, rgba($contrasted-plus-bg,1) 100%);
-    border-bottom-right-radius: 18px;
-    border-top-right-radius: 18px;
-    padding: 0 15px 0 20px;
-    margin-left: -20px;
-text-align: center;
-    max-width: 200px;
-    display: inline-block;
-    border-right: 2px solid $blue-highlight-color;
-    transition: 0.4s ease-out;
+  .cloudItem{
+    .actionBtns{
+      opacity: 0;
+      transition: 0.3s;
+      position: absolute;
+      top: -15px;
+      right: 00px;
+      width: 100px;
+     a{
+        background-color: $contrasted-minus-bg !important;
+        position: relative !important;
+        display: inline-block;
+      }
+    }
     &:hover{
-      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba($blue-highlight-color,1) 30%, rgba($blue-highlight-color,1) 100%);
-      color: $plus-color;
-      border-right: 2px solid $plus-color;
+      .actionBtns{
+        opacity: 1 !important;
+      }
     }
   }
-  .currentFolder{
-    color: $plus-color !important;
+
+  .contextMenuBtn{
 
   }
-}
+  .contextMenuContainer {
+    position: fixed;
+    z-index: 40001;
+    background-color: $contrasted-minus-bg !important;
+    border: none !important;
+
+    ul {
+      margin: 0px !important;
+      border: none !important;
+
+      li {
+        line-height: 1em;
+        text-align: left;
+        background-color: $contrasted-minus-bg !important;
+        border: none !important;
+        font-size: 0.9em;
+        cursor: pointer;
+        line-height: 1.5em;
+padding: 5px;
+        span {
+        position: relative;
+          top:-5px
+        }
+
+        i {
+          margin-right: 10px;
+          line-height: 1.5em;
+          font-size: 1.5em;
+        }
+
+        &:hover {
+          background-color: $main-bg !important;
+
+          color: $plus-color !important;
+        }
+      }
+    }
+  }
+
+  .closeContextMenu {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 40000;
+  }
+
+  .topicTitle {
+    a {
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba($contrasted-plus-bg, 1) 30%, rgba($contrasted-plus-bg, 1) 100%);
+      border-bottom-right-radius: 18px;
+      border-top-right-radius: 18px;
+      padding: 0 15px 0 20px;
+      margin-left: -20px;
+      text-align: center;
+      max-width: 200px;
+      display: inline-block;
+      border-right: 2px solid $blue-highlight-color;
+      transition: 0.4s ease-out;
+
+      &:hover {
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba($blue-highlight-color, 1) 30%, rgba($blue-highlight-color, 1) 100%);
+        color: $plus-color;
+        border-right: 2px solid $plus-color;
+      }
+    }
+
+    .currentFolder {
+      color: $plus-color !important;
+
+    }
+  }
+
   .fixed-action-btn {
-  //  right: 35px;
+    //  right: 35px;
     bottom: 150px;
 
     .btn {
@@ -58,36 +145,41 @@ text-align: center;
 
       &:hover {
         background-color: $danger-text;
+
         i {
           color: $plus-color
         }
       }
     }
   }
-  #newFolder{
+
+  #newFolder {
     background-color: $contrasted-bg;
-   //margin: -10px 0px -10px 0px;
+    //margin: -10px 0px -10px 0px;
     //padding: 10px 0px 20px 0px;
 
-    #newFolderForm{
-      input{
+    #newFolderForm {
+      input {
         border: none !important;
         border-bottom: none !important;
         margin-bottom: 0px !important;
         height: 12px;
         font-size: 0.9em;
         padding: 5px 15px 5px 5px;
-        &::placeholder{
+
+        &::placeholder {
           color: $minus-color;
           font-style: italic;
         }
       }
-      button{
-        right:-25px;
+
+      button {
+        right: -25px;
         bottom: -20px;
         background-color: $blue-highlight-color;
-        &:hover{
-          i{
+
+        &:hover {
+          i {
             color: $plus-color !important;
           }
         }
@@ -96,14 +188,18 @@ text-align: center;
   }
 
   .filesContainer {
-    padding-bottom: 300px;
+    padding-bottom: 800px;
 
   }
 
   .filesSize {
-    .infoQuotes {
+    padding: 10px 0;
+
+    .volumeInfo {
       margin: 3px;
       font-size: 0.9em;
+      left: 66px;
+      top: -10px;
     }
 
     .percentage {

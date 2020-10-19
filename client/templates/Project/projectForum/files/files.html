@@ -1,5 +1,5 @@
 <template name="files">
-    <div id="topic" class="full-height flex-auto cloudPage" style="{{#if isDesktop}}padding-top:10px{{/if}}">
+    <div id="topic" class="full-height flex-auto cloudPage " style="">
         <div class="fixed-action-btn" style="{{#if isDesktop}}position: absolute {{/if}}">
             <a class="btn-floating btn danger-bg waves-effect waves-light addBtn btn-large shadow">
                 <i class="large material-icons">add</i>
@@ -8,9 +8,26 @@
                 <li><a class="btn-floating newCloudItem tooltipped" data-position="left" data-delay="50"
                        data-tooltip="{{__ ".newFolder"}}" newFolder><i class="material-icons">create_new_folder</i></a>
                 </li>
+                <input type="file" id="uploadFile" style="display: none" uploadFile>
                 <li><a class="btn-floating newCloudItem tooltipped" data-position="left" data-delay="50"
-                       data-tooltip="{{__ ".newFile"}}" newFile><i class="material-icons">insert_drive_file</i></a></li>
+                       data-tooltip="{{__ ".newFile"}}" newFile><i class="material-icons">cloud_upload</i></a></li>
             </ul>
+        </div>
+        <div class="row filesSize no-margin relative">
+            <div class="col s12 relative">
+
+                <div class="flex">
+                    <div class="percentage shadow">{{percentage}}%</div>
+                    <div class="filesSizeContainer flex-auto shadow">
+                        <div class="totalFileSize" style="width: {{percentage}}%"></div>
+                    </div>
+                </div>
+                <p class="volumeInfo absolute">
+                    {{__ ".projectUsing"}} <b>{{formatBytes currentProject.private.totalFilesSize}}</b> {{__ ".of"}}
+                    <b>2 Go</b> {{__ ".allowed"}}
+                </p>
+
+            </div>
         </div>
         <div class="no-margin">
             <div class="col s12">
@@ -23,7 +40,9 @@
                                 class="material-icons left">arrow_back</i></a>
                     {{/unless}}
                     <div class="flex-auto  left-align topicTitle">
-                        <a href="/project/{{currentProject._id}}/forum?files=true" class="cloudFile relative elipsis {{#if compare parentFolders.length "==" 0}}currentFolder{{/if}}">
+                        <a href="/project/{{currentProject._id}}/forum?files=true"
+                           class="cloudFile relative elipsis {{#if compare parentFolders.length "=="
+                                                                   0}}currentFolder{{/if}}">
                             {{__ "categoryList.myFiles"}}
                         </a>
                         {{#each folder in parentFolders}}
@@ -39,56 +58,16 @@
 
             </div>
         </div>
-        <div class="row filesSize no-margin">
-            <div class="col s12 relative">
-                <p class="infoQuotes left-align">
-                    {{__ ".projectUsing"}} <b>{{formatBytes currentProject.private.totalFilesSize}}</b> {{__ ".of"}}
-                    <b>2 Go</b> {{__ ".allowed"}}
-                </p>
-                <div class="flex">
-                    <div class="percentage shadow">{{percentage}}%</div>
-                    <div class="filesSizeContainer flex-auto shadow">
-                        <div class="totalFileSize" style="width: {{percentage}}%"></div>
-                    </div>
-                </div>
 
-
-            </div>
-        </div>
         <div class="row filesContainer">
             <div class="col s12 relative">
                 <div class="row">
-                    {{#if parentFolder}}
-                        <div class="col s6 m4 xl3 ">
-                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{parentFolder.folderId}}
-                            " class="cloudFile relative ">
-                            <div class="fileIcon">
-                                <img src="/images/icon/files/returnParent.png" alt="" class="plus-color"
-                                     title="{{__ ".returnTo"}} {{parentFolder.symEnc_name}}">
-                                <div class="fileLabel elipsis">
-                                    {{__ ".returnTo"}} {{parentFolder.symEnc_name}}
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-                    {{/if}}
-                    {{#each folder in folders}}
-                        <div class="col s6 m4 xl3 ">
-                            <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}
-                            " class="cloudFile relative ">
-                            <div class="fileIcon">
-                                <img src="/images/icon/files/folder.png" alt="" class="" title="{{folder.symEnc_name}}">
-                                <div class="fileLabel elipsis" title="{{folder.symEnc_name}}">
-                                    {{folder.symEnc_name}}
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-                    {{/each}}
                     {{#if newFolderForm}}
-                        <div class="col s6 m4 xl3 ">
+                        <div class="col s6 m4 xl3 cloudItem">
+
                             <div id="newFolder" class="cloudFile relative shadow">
                                 <div class="fileIcon" id="" focusFile>
+
                                     <img src="/images/icon/files/folder.png" alt="" class="">
                                     <form id="newFolderForm" class="flex" newFolderForm>
 
@@ -104,10 +83,40 @@
                             </div>
                         </div>
                     {{/if}}
+                    {{#each folder in folders}}
+                        <div class="col s6 m4 xl3 contextmenu relative cloudItem">
+                            <div class="actionBtns relative">
+                                <a href="" role="button"
+                                   class="btn btn-floating contextMenuBtn shadow waves-effect waves-light tooltipped"
+                                   data-position="top" data-delay="50" data-tooltip="{{__ ".actions"}}"
+                                   openContextMenu><i class="material-icons main-color">settings</i></a>
+
+                            </div>
+                            <div  class="cloudFile relative ">
+
+                            <div class="fileIcon">
+                                <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}
+                                "> <img src="/images/icon/files/folder.png" alt="" class="" title="{{folder.symEnc_name}}"></a>
+
+                                <div class="fileLabel elipsis" title="{{folder.symEnc_name}}">
+                                    {{folder.symEnc_name}}
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    {{/each}}
+
 
                     {{#each fileItem in files}}
-                        <div class="col s6 m4 xl3 ">
-                            {{>cloudFile file=fileItem index= @index}}
+                        <div class="col s6 m4 xl3 contextmenu cloudItem relative">
+                            <div class="actionBtns relative">
+                                <a href="" role="button"
+                                   class="btn btn-floating contextMenuBtn shadow waves-effect waves-light tooltipped"
+                                   data-position="top" data-delay="50" data-tooltip="{{__ ".actions"}}"
+                                   openContextMenu><i class="material-icons main-color">settings</i></a>
+
+                            </div>
+                            {{>cloudFile file=fileItem index=@index onFilePage=true}}
                         </div>
                     {{/each}}
 
@@ -119,10 +128,41 @@
 
         {{#if file}}
 
-            {{>fullScreenFile file=file deletable=true}}
+            {{>fullScreenFile file=file deletable=true }}
 
 
         {{/if}}
-
+        {{#if contextMenu}}
+            <div class="closeContextMenu" closeContextMenu></div>
+            <div class="contextMenuContainer shadow" style="{{contextMenu.position}}">
+                <ul class="collection">
+                    {{#if contextMenu.cut}}
+                        <li class="collection-item">
+                            <i class="material-icons">content_cut</i><span>{{__ ".cut"}}</span>
+                        </li>
+                    {{/if}}
+                    {{#if contextMenu.paste}}
+                        <li class="collection-item">
+                            <i class="material-icons">content_paste</i><span>{{__ ".paste"}}</span>
+                        </li>
+                    {{/if}}
+                    {{#if contextMenu.new}}
+                        <li class="collection-item">
+                            <i class="material-icons">create_new_folder</i><span>{{__ ".new_folder"}}</span>
+                        </li>
+                    {{/if}}
+                    {{#if contextMenu.rename}}
+                        <li class="collection-item" newFolder>
+                            <i class="material-icons">create</i><span>{{__ ".rename"}}</span>
+                        </li>
+                    {{/if}}
+                    {{#if contextMenu.delete}}
+                        <li class="collection-item">
+                            <i class="material-icons">delete</i><span>{{__ ".delete"}}</span>
+                        </li>
+                    {{/if}}
+                </ul>
+            </div>
+        {{/if}}
     </div>
 </template>

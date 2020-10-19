@@ -24,21 +24,23 @@
             {{file.symEnc_fileName}}
         </div>
         {{#unless file.deleted}}
-            {{#if deletable}}
-                <div class="actionBtns">
+            {{#unless onFilePage}}
+                {{#if deletable}}
+                    <div class="actionBtns">
+                        <a href="" role="button"
+                           class="btn btn-floating download-file shadow waves-effect waves-light tooltipped"
+                           data-position="top" data-delay="50" data-tooltip="{{__ ".delete"}}"
+                           deleteFile><i class="material-icons danger-color">delete_forever</i></a>
+
+                    </div>
+                {{else}}
                     <a href="" role="button"
                        class="btn btn-floating download-file shadow waves-effect waves-light tooltipped"
-                       data-position="top" data-delay="50" data-tooltip="{{__ ".delete"}}"
-                       deleteFile><i class="material-icons danger-color">delete_forever</i></a>
+                       data-position="top" data-delay="50" data-tooltip="{{__ ".show"}}"
+                       downLoadFile id="downLoadLink-{{file._id}}"><i class="material-icons">remove_red_eye</i></a>
 
-                </div>
-            {{else}}
-                <a href="" role="button"
-                   class="btn btn-floating download-file shadow waves-effect waves-light tooltipped"
-                   data-position="top" data-delay="50" data-tooltip="{{__ ".show"}}"
-                   downLoadFile id="downLoadLink-{{file._id}}"><i class="material-icons">remove_red_eye</i></a>
-
-            {{/if}}
+                {{/if}}
+            {{/unless}}
         {{/unless}}
     </div>
 
