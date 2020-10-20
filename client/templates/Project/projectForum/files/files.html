@@ -65,7 +65,7 @@
                     {{#if newFolderForm}}
                         <div class="col s6 m4 xl3 cloudItem">
 
-                            <div  class="cloudFile relative shadow newFolder">
+                            <div  class="cloudFile relative shadow newFolder" >
                                 <div class="fileIcon" id="" focusFile>
 
                                     <img src="/images/icon/files/folder.png" alt="" class="">
@@ -95,11 +95,16 @@
 
                             </div>
                             {{/unless}}
-                            <div  class="cloudFile relative {{#if compare renameItemId "==" folder.folderId}} newFolder shadow {{/if}}">
+                            <div  class="cloudFile relative {{#if compare renameItemId "==" folder.folderId}} newFolder shadow {{/if}}"
+                                  cloudIconRef="folder-{{folder.folderId}}"
+                                  draggable="true"
+                            >
 
-                            <div class="fileIcon">
-                                <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}
-                                "> <img src="/images/icon/files/folder.png" cloudIconRef="folder-{{folder.folderId}}" alt="" class="" title="{{folder.symEnc_name}}"></a>
+                            <div class="fileIcon" >
+                                <div class="selectionContainer">
+                                <span href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}" openFolder>
+                                <img src="/images/icon/files/folder.png" cloudIconRef="folder-{{folder.folderId}}" alt="" class="" title="{{folder.symEnc_name}}">
+                                </span>
                                 {{#if compare renameItemId "==" folder.folderId}}
                                     <div class="closeEditMenu" closeEditMenu></div>
                                     <form id="newFolderForm" class="flex" editFolderForm>
@@ -117,18 +122,18 @@
                                         <span cloudIconRef="folder-{{folder.folderId}}">{{folder.symEnc_name}}</span>
                                     </div>
                                     {{/if}}
-
+                                </div>
                             </div>
                             </div>
                         </div>
                     {{/each}}
                     {{#each fileItem in files}}
-                        <div class="col s6 m4 xl3 contextmenu cloudItem relative">
+                        <div class="col s6 m4 xl3 contextmenu cloudItem relative" cloudIconRef="file-{{fileItem._id}}">
                             <div class="actionBtns relative">
                                 <a href="" role="button"
                                    class="btn btn-floating contextMenuBtn shadow waves-effect waves-light tooltipped"
                                    data-position="top" data-delay="50" data-tooltip="{{__ ".actions"}}"
-                                   openContextMenu cloudIconRef="file-{{fileItem.id}}"><i class="material-icons main-color">settings</i></a>
+                                   openContextMenu cloudIconRef="file-{{fileItem._id}}"><i class="material-icons main-color">settings</i></a>
 
                             </div>
                             {{>cloudFile file=fileItem index=@index onFilePage=true}}

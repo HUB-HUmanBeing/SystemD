@@ -3,6 +3,7 @@ import ProjectFile from "../../../../../imports/classes/ProjectFile";
 import cryptoTools from "../../../../lib/cryptoTools";
 import Projects from "../../../../../lib/collections/Projects";
 import projectFilesController from "../../../../lib/projectFilesController";
+import Selectable from "selectable.js"
 
 Template.files.helpers({
     //add you helpers here
@@ -22,6 +23,9 @@ Template.files.helpers({
     },
     folders: function () {
         return Template.instance().folders.get()
+    },
+    selectedItems: function () {
+        return Template.instance().selectedItems.get()
     },
     contextMenu: function () {
         return Template.instance().contextMenu.get()
@@ -62,9 +66,14 @@ Template.files.events({
         event.preventDefault()
         instance.limit.set(instance.limit.get() + 10)
     },
+    "dblclick [openFolder]": function (event, instance) {
+        console.log(event.currentTarget.getAttribute("href"))
+        FlowRouter.go(event.currentTarget.getAttribute("href"))
+    },
     "click [newFolder]": function (event, instance) {
         event.preventDefault()
         instance.newFolderForm.set(true)
+        instance.contextMenu.set(false)
         Meteor.setTimeout(() => {
             $("#newFolderNameInput").focus()
 
@@ -97,19 +106,19 @@ Template.files.events({
                 {
                     position: position,
                     cut: !!cloudIconRef,
-                    paste: (type != "file" &&  instance.selectedItems.get().length>0),
+                    paste: (type != "file" && instance.selectedItems.get().length > 0),
                     delete: !!cloudIconRef,
                     new: false,
-                    rename: (cloudIconRef && instance.selectedItems.get().length== 0)?cloudIconRef :false,
+                    rename: (type != "file" && instance.selectedItems.get().length == 0) ? cloudIconRef : false,
                 }
             )
-        }else{
+        } else {
 
             instance.contextMenu.set(
                 {
                     position: position,
                     cut: !!cloudIconRef,
-                    paste:  true,
+                    paste: true,
                     delete: !!cloudIconRef,
                     new: true,
                     rename: false,
@@ -127,7 +136,7 @@ Template.files.events({
         instance.renameItem.set(false)
         instance.newFolderForm.set(false)
     },
-    "click [rename]" : function (event, instance) {
+    "click [rename]": function (event, instance) {
         event.preventDefault()
         instance.contextMenu.set(false)
         instance.renameItem.set(event.currentTarget.getAttribute("renameItem").split("-")[1])
@@ -221,7 +230,36 @@ Template.files.onCreated(function () {
     this.selectedItems = new ReactiveVar([])
     this.copiedItems = new ReactiveVar([])
     this.renameItem = new ReactiveVar(false)
+
+    let onEnd = (e, selected, unselected) => {
+        let selectedItems = []
+        this.selectable.getSelectedItems().forEach((item) => {
+            selectedItems.push(item.node.getAttribute("cloudIconRef"))
+        })
+        this.selectedItems.set(selectedItems)
+    };
+    this.selectableStop = ()=>{
+        if (this.selectable) {
+            this.selectable.off("end", onEnd)
+            this.selectable.destroy();
+        }
+    }
+    this.selectableInit = () => {
+        this.selectableStop()
+
+        Meteor.setTimeout(() => {
+            this.selectable = new Selectable({
+                filter: ".cloudFile",
+                appendTo: ".filesContainer"
+            });
+
+            this.selectable.on("end", onEnd)
+        }, 400)
+
+    }
+
     this.autorun(() => {
+        this.selectableStop()
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
         let currentProject = Projects.findOne({_id: projectId})
@@ -241,6 +279,7 @@ Template.files.onCreated(function () {
                     if (a.createdAt < b.createdAt) return 1;
                     return 0;
                 }))
+                this.selectableInit()
             })
         } else {
             this.folders.set([])
@@ -251,18 +290,20 @@ Template.files.onCreated(function () {
         }, 200)
     })
     this.autorun(() => {
+        this.selectableStop()
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
         Meteor.subscribe("projectFiles", projectController.getAuthInfo(projectId), projectId, currentFolderId, this.limit.get(), (err) => {
             if (err) {
                 console.log(err)
             } else {
-
+                this.selectableInit()
             }
         })
 
     })
     this.autorun(() => {
+        this.selectableStop()
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
         let currentProject = Projects.findOne({_id: projectId})
@@ -298,10 +339,13 @@ Template.files.onCreated(function () {
 
         }
     })
+
 });
 
 Template.files.onRendered(function () {
     //add your statement here
+    this.selectableStop()
+
     let dropContainer = $('.uploadFileZone')[0]
     dropContainer.ondragover = function (evt) {
         evt.preventDefault();
@@ -336,5 +380,6 @@ Template.files.onRendered(function () {
 
 Template.files.onDestroyed(function () {
     //add your statement here
+    this.selectableStop()
 });
 

@@ -12,17 +12,31 @@
   }
 
 }
+.ui-selected{
+  .selectionContainer{
+    background: rgba($blue-highlight-color, 0.5);
+    background-origin: padding-box !important;
+  }
 
+}
 .cloudPage {
   .cloudItem{
+.fileIcon{
+  padding:  10px 0 !important;
+  .selectionContainer{
+    padding:  5px 0 !important;
+  }
+}
     .actionBtns{
       opacity: 0;
-      transition: 0.3s;
+      transition: 0.8s ease-out;
       position: absolute;
       top: -15px;
-      right: 00px;
+      right: 10px;
       width: 100px;
+      z-index: 20000;
      a{
+       z-index: 20000;
         background-color: $contrasted-minus-bg !important;
         position: relative !important;
         display: inline-block;
@@ -30,6 +44,7 @@
     }
     &:hover{
       .actionBtns{
+        right: 0px;
         opacity: 1 !important;
       }
     }

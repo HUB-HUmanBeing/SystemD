@@ -1,5 +1,6 @@
 <template name="filePreview">
-    <div class="fileIcon" id="filePreviewCarousel-{{carouselIndex index}}" focusFile>
+    <div class="fileIcon" id="filePreviewCarousel-{{carouselIndex index}}" focusFile  cloudIconRef="file-{{file._id}}">
+        <div class="selectionContainer">
     <!--        {{#if compare type "==" "video"}}-->
         <!--            <video controls>-->
 
@@ -22,6 +23,7 @@
             <!--        {{/if}}-->
         <div class="fileLabel elipsis" title="{{file.symEnc_fileName}}" >
            <span cloudIconRef="file-{{file._id}}">{{file.symEnc_fileName}}</span>
+        </div>
         </div>
         {{#unless file.deleted}}
             {{#unless onFilePage}}
