@@ -530,7 +530,23 @@
     "projectUsing": " ",
     "of": "sur",
     "allowed": " ",
-    "seeMore": "Voir plus"
+    "seeMore": "Voir plus",
+    "newFile": "Uploader un fichier",
+    "newFolder": "Nouveau dossier",
+    "actions" : "Actions",
+    "newFolderPlaceholder": "Nom du dossier ...",
+    "cut": "Couper",
+    "paste": "Coller",
+    "rename": "Renommer",
+    "delete": "Supprimer",
+    "deleteItems" :  "Confirmer la supression définitive de ",
+    "folders": "dossiers",
+    "files": "fichiers",
+    "and": "et de",
+    "deleteItemsInfos": "Attention, tout les elements contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "confirmDelete": "Supprimer",
+    "cancelDelete" : "Annuler"
+
   },
   "filePreview": {
     "delete": "Supprimer le fichier",

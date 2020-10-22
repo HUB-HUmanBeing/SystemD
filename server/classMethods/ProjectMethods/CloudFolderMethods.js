@@ -3,6 +3,7 @@ import minioTools from "../../../imports/minioTools";
 import Project from "../../../imports/classes/Project";
 import User from "../../../imports/classes/User";
 import Topic from "../../../imports/classes/Topic";
+import ProjectFile from "../../../imports/classes/ProjectFile";
 
 Project.extend({
     meteorMethods: {
@@ -47,31 +48,64 @@ Project.extend({
             currentProject.save()
 
         },
+        moveFolder(authInfo, id, parentId) {
+            check(id, String)
+            check(parentId, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(this._id)
+            check(currentProject.isMember(authInfo), true)
+            currentProject.private.cloudFolders.forEach((folder,i)=>{
+                if(folder.folderId == id){
+                    currentProject.private.cloudFolders[i].parentFolderId=parentId
+                }
+            })
+            currentProject.save()
+
+        },
         /*******************************
          * supression d'une catégorie
          * @param authInfo
          * @param index
          */
-        // deleteForumCategory(authInfo,index) {
-        //
-        //     check(index, Number)
-        //     check(authInfo, {memberId: String, userSignature: String})
-        //     let currentProject = Project.findOne(this._id)
-        //     check(currentProject.isAdmin(authInfo), true)
-        //
-        //     let insideTopics = Topic.find({"$and": [
-        //             {projectId: currentProject._id},
-        //             {categoryId: currentProject.private.forumCategories[index].categoryId}
-        //         ]
-        //     }).fetch()
-        //     insideTopics.forEach((topic)=>{
-        //         topic.removeRecursive()
-        //     })
-        //
-        //     currentProject.private.forumCategories.splice(index, 1)
-        //     currentProject.save()
-        //
-        // },
+        async deleteFolder(authInfo,folderId) {
+
+            check(folderId, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(this._id)
+            check(currentProject.isMember(authInfo), true)
+            let indexToDelete = []
+            let idToDelete=[]
+            let recursiveDelete= (id)=>{
+                currentProject.private.cloudFolders.forEach((folder, i)=>{
+                    if(folder.folderId == id){
+                        indexToDelete.push(i)
+                        idToDelete.push(id)
+                    } else if(folder.parentFolderId==id){
+                        recursiveDelete(folder.folderId)
+                    }
+                })
+            }
+            recursiveDelete(folderId)
+
+            let newArray = []
+            currentProject.private.cloudFolders.forEach((el,i)=>{
+                if(indexToDelete.indexOf(i)== -1){
+                    newArray.push(el)
+                }
+            })
+currentProject.private.cloudFolders = newArray
+            currentProject.save((err) => {
+                let filesToRemove = ProjectFile.find({"$and": [
+                        {projectId: currentProject._id},
+                        {parentFolderId: {"$in": idToDelete}}
+                    ]
+                }).fetch()
+                filesToRemove.forEach((file)=>{
+                    file.removeAndDeleteFile()
+                })
+            })
+
+        },
         // /**************************
         //  * déplacement d'une catégorie
         //  * @param authInfo

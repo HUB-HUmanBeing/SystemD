@@ -35,6 +35,18 @@ ProjectFile.extend({
                 return {url: result, id: id}
             }
         },
+        moveFile(authInfo, fileId,parentId) {
+            check(fileId, String)
+            check(parentId, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let file = ProjectFile.findOne(fileId)
+            let currentProject = Project.findOne(file.projectId)
+            check(currentProject.isMember(authInfo), true)
+
+                file.parentFolderId=parentId
+            file.save()
+
+        },
         async deleteProjectFile(authInfo, fileId) {
             check(authInfo, {memberId: String, userSignature: String})
             let file = ProjectFile.findOne(fileId)

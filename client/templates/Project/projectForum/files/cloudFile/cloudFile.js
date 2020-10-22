@@ -10,7 +10,7 @@ Template.cloudFile.helpers({
 
 Template.cloudFile.events({
     //add your events here
-    "click [showWide]": function (event, instance) {
+    "dblclick [showWide]": function (event, instance) {
         event.preventDefault()
         Session.set('fullSizeFile', "waiting")
         let file = instance.decrypted.get()
