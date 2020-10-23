@@ -16,6 +16,7 @@ background-color: rgba($lighter-bg, 0.7);
 }
 
 .cloudPage {
+
   .ui-selected{
     .selectionContainer{
       background: rgba($blue-highlight-color, 0.5) !important;
@@ -128,6 +129,11 @@ padding: 5px 15px;
 
 
   .topicTitle {
+    .droppableFolder{
+
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba($light-bg, 1) 30%, rgba($light-bg, 1) 100%) !important;
+
+    }
     a {
       background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba($contrasted-plus-bg, 1) 30%, rgba($contrasted-plus-bg, 1) 100%);
       border-bottom-right-radius: 18px;
@@ -236,7 +242,12 @@ padding: 5px 15px;
 
   .filesContainer {
     padding-bottom: 800px;
+    .droppableFolder{
+      border: 2px solid $minus-color;
+      margin: -2px;
+      background: $light-bg;
 
+    }
   }
 
   .filesSize {

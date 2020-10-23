@@ -35,14 +35,17 @@ Template.files.helpers({
     selectedItems: function () {
         return Template.instance().selectedItems.get()
     },
-    itemsToDelete: function (){
-      let  selectedItems = Template.instance().toDeleteItems.get()
-        let res = {folders:0, files:0}
-        selectedItems.forEach((item=>{
-            if(item.split('-')[0] == "folder"){
-                res.folders ++
-            }else{
-                res.files ++
+    draggedItems: function () {
+        return Template.instance().draggedItems.get()
+    },
+    itemsToDelete: function () {
+        let selectedItems = Template.instance().toDeleteItems.get()
+        let res = {folders: 0, files: 0}
+        selectedItems.forEach((item => {
+            if (item.split('-')[0] == "folder") {
+                res.folders++
+            } else {
+                res.files++
             }
         }))
         return res
@@ -126,11 +129,11 @@ Template.files.events({
             let type = cloudIconRef.split("-")[0]
             let id = cloudIconRef.split("-")[1]
 
-            if(type != "file" && instance.cutedItems.get().length > 0
+            if (type != "file" && instance.cutedItems.get().length > 0
                 && instance.selectedItems.get().length <= 1
-                && instance.cutedItems.get().indexOf(cloudIconRef) == -1){
+                && instance.cutedItems.get().indexOf(cloudIconRef) == -1) {
                 paste = {
-                    label:  "(" + instance.cutedItems.get().length + ")",
+                    label: "(" + instance.cutedItems.get().length + ")",
                     ref: cloudIconRef
                 }
             }
@@ -140,10 +143,10 @@ Template.files.events({
             }
 
 
-                instance.contextMenu.set(
+            instance.contextMenu.set(
                 {
                     position: position,
-                    cut: type != "folderMenu"?{
+                    cut: type != "folderMenu" ? {
                         label: "(" + instance.selectedItems.get().length + ")",
                         ref: cloudIconRef
                     } : false,
@@ -156,17 +159,17 @@ Template.files.events({
         } else {
             instance.selectedItems.set([])
             let paste = false
-            if(instance.cutedItems.get().length){
+            if (instance.cutedItems.get().length) {
                 paste = {
-                    label:  "(" + instance.cutedItems.get().length + ")",
-                    ref: "folder-"+ (FlowRouter.current().queryParams.currentFolderId ? FlowRouter.current().queryParams.currentFolderId : "root")
+                    label: "(" + instance.cutedItems.get().length + ")",
+                    ref: "folder-" + (FlowRouter.current().queryParams.currentFolderId ? FlowRouter.current().queryParams.currentFolderId : "root")
                 }
             }
             instance.contextMenu.set(
                 {
                     position: position,
-                    cut:false,
-                    paste:paste,
+                    cut: false,
+                    paste: paste,
                     delete: false,
                     new: true,
                     rename: false,
@@ -212,7 +215,7 @@ Template.files.events({
         let currentProject = instance.data.currentProject
         let folderName = $("#newFolderNameInput").val()
         if (!folderName) {
-                instance.newFolderForm.set(false)
+            instance.newFolderForm.set(false)
             return
         }
         let parentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
@@ -258,6 +261,7 @@ Template.files.events({
     },
     "click .fileIcon img, click .fileIcon span": function (event, instance) {
         let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+
         event.stopPropagation();
         let selectedItems = instance.selectedItems.get()
         if (event.ctrlKey || event.metaKey) {
@@ -348,11 +352,11 @@ Template.files.events({
     "click [cancelDelete]": function (event, instance) {
         $('#modalConfirmDelete').modal('close')
     },
-    "click [confirmDelete]" : function (event, instance) {
+    "click [confirmDelete]": function (event, instance) {
         $('#modalConfirmDelete').modal('close')
         let itemsToDelete = instance.toDeleteItems.get()
         let currentProject = instance.data.currentProject
-        itemsToDelete.forEach((item, i)=>{
+        itemsToDelete.forEach((item, i) => {
             let type = item.split("-")[0]
             let id = item.split("-")[1]
             let callback = (err, res) => {
@@ -379,6 +383,85 @@ Template.files.events({
 
         })
     },
+    "dragstart .cloudFile .fileIcon": function (event, instance) {
+        let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+
+        instance.draggedItems.set(instance.selectedItems.get().indexOf(cloudIconRef) == -1 ? [cloudIconRef] : instance.selectedItems.get())
+        instance.selectedItems.set([])
+        instance.contextMenu.set(false)
+    },
+    "dragend .folderItem .fileIcon": function (event, instance) {
+        let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+        instance.draggedItems.set([])
+    },
+    "dragover .parentDropFolder ,dragover .folderItem .fileIcon": function (event, instance) {
+        event.preventDefault()
+
+    },
+    "dragenter .parentDropFolder, dragenter .folderItem .fileIcon": function (event, instance) {
+        event.preventDefault()
+        if (instance.draggedItems.get().length > 0) {
+            let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+            instance.dropCounter[cloudIconRef] = instance.dropCounter[cloudIconRef] || 0
+            instance.dropCounter[cloudIconRef]++
+            if (instance.dropCounter[cloudIconRef] == 1) {
+
+                if (instance.draggedItems.get().indexOf(cloudIconRef) == -1) {
+
+                    $(event.currentTarget).addClass("droppableFolder")
+                }
+            }
+        }
+    },
+    "dragleave  .parentDropFolder, dragleave .folderItem .fileIcon": function (event, instance) {
+        event.preventDefault()
+        if (instance.draggedItems.get().length > 0) {
+            let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+            instance.dropCounter[cloudIconRef]--
+            if (instance.dropCounter[cloudIconRef] == 0) {
+                $(event.currentTarget).removeClass("droppableFolder")
+            }
+        }
+    },
+    "drop  .parentDropFolder, drop .folderItem .fileIcon": function (event, instance) {
+
+        event.preventDefault();
+        if (instance.draggedItems.get().length > 0) {
+            $(event.currentTarget).removeClass("droppableFolder")
+            let ref = event.currentTarget.getAttribute("cloudIconRef")
+            if (instance.draggedItems.get().indexOf(ref) == -1) {
+                // pretty simple -- but not for IE :(
+                let parentFolderId = ref ? ref.split("-")[1] : "root"
+                let currentProject = instance.data.currentProject
+
+                instance.draggedItems.get().forEach((draggedItem, i) => {
+                    let type = draggedItem.split("-")[0]
+                    let id = draggedItem.split("-")[1]
+
+                    let callback = (err, res) => {
+                        if (err) {
+                            Materialize.toast(__('general.error'), 6000, 'toastError')
+                            console.log(err)
+                        } else {
+                            if (i == instance.draggedItems.get().length - 1) {
+                                instance.draggedItems.set([])
+                                instance.selectedItems.set([])
+                                Meteor.setTimeout(() => {
+                                    resetTooltips()
+                                }, 200)
+                            }
+                        }
+                    }
+                    if (type == "folder") {
+                        currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                    } else if (type == "file") {
+                        let file = ProjectFile.findOne({_id: id})
+                        file.callMethod("moveFile", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                    }
+                })
+            }
+        }
+    }
 });
 
 Template.files.onCreated(function () {
@@ -392,11 +475,12 @@ Template.files.onCreated(function () {
     let projectId = Template.currentData().currentProject._id
     this.limit = new ReactiveVar(20)
     this.selectedItems = new ReactiveVar([])
+    this.draggedItems = new ReactiveVar([])
     this.cutedItems = new ReactiveVar([])
     this.toDeleteItems = new ReactiveVar([])
     this.renameItem = new ReactiveVar(false)
 
-
+    this.dropCounter = {}
     this.autorun(() => {
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
@@ -441,20 +525,20 @@ Template.files.onCreated(function () {
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
         let currentProject = Projects.findOne({_id: projectId})
-       currentProject = Project.findOne({_id: projectId})
+        currentProject = Project.findOne({_id: projectId})
         let folders = []
 
         if (currentFolderId != "root" && currentProject.private.cloudFolders.length > 0) {
             currentProject.private.cloudFolders.forEach((folder) => {
-             if (folder.folderId == currentFolderId) {
+                if (folder.folderId == currentFolderId) {
                     let currentFolder = folder
-                    if(currentFolder){
-                        if ( currentFolder.parentFolderId == "root") {
+                    if (currentFolder) {
+                        if (currentFolder.parentFolderId == "root") {
                             this.parentFolder.set({
                                 symEnc_name: __("categoryList.myFiles"),
                                 _id: "root"
                             })
-                        } else  {
+                        } else {
                             currentProject.private.cloudFolders.forEach((folder) => {
                                 if (folder.folderId == currentFolder.parentFolderId) {
                                     cryptoTools.decryptObject(folder, {symKey: Session.get("currentProjectSimKey")}, deryptedParentFolder => {
@@ -472,45 +556,51 @@ Template.files.onCreated(function () {
         }
     })
 
-    this.autorun(()=>{
+    this.initializeDropFile = () => {
+        let draggedItems = this.draggedItems
+        let dropContainer = $('.uploadFileZone')[0]
+        dropContainer.ondragover = function (evt) {
 
+            evt.preventDefault();
 
-    })
+        };
+        let counter = 0
+        dropContainer.ondragenter = function (evt) {
+            evt.preventDefault()
+            if (counter === 0) {
+                if (draggedItems.get().length === 0) {
+                    $(this).addClass("dropFile")
+                }
+            }
+            counter++
+        }
+        dropContainer.ondragleave = function (evt) {
+            evt.preventDefault()
+            counter--
+            if (counter === 0) {
+                if (draggedItems.get().length === 0) {
+                    $(this).removeClass("dropFile")
+                }
+            }
+        }
+
+        dropContainer.ondrop = (evt) => {
+            evt.preventDefault();
+            if (draggedItems.get().length === 0) {
+                // pretty simple -- but not for IE :(
+                let fileInput = evt.dataTransfer.files;
+                projectFilesController.encryptAndUploadFiles(fileInput, FlowRouter.current().params.projectId, this, FlowRouter.current().queryParams.currentFolderId || "root", null,)
+                $('.uploadFileZone').removeClass("dropFile")
+            }
+        };
+    }
 });
 
 Template.files.onRendered(function () {
     //add your statement here
     $('#modalConfirmDelete').modal();
-    let dropContainer = $('.uploadFileZone')[0]
-    dropContainer.ondragover = function (evt) {
-        evt.preventDefault();
-    };
-    let counter = 0
-    dropContainer.ondragenter = function (evt) {
-        evt.preventDefault()
-        if (counter === 0) {
-            $(this).addClass("dropFile")
-        }
-        counter++
+    this.initializeDropFile()
 
-    }
-    dropContainer.ondragleave = function (evt) {
-        evt.preventDefault()
-        counter--
-        if (counter === 0) {
-            $(this).removeClass("dropFile")
-        }
-
-    }
-
-    dropContainer.ondrop = (evt) => {
-        evt.preventDefault();
-        // pretty simple -- but not for IE :(
-        let fileInput = evt.dataTransfer.files;
-        projectFilesController.encryptAndUploadFiles(fileInput, FlowRouter.current().params.projectId, this, FlowRouter.current().queryParams.currentFolderId || "root", null,)
-        $('.uploadFileZone').removeClass("dropFile")
-
-    };
 });
 
 Template.files.onDestroyed(function () {

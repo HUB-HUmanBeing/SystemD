@@ -1,6 +1,6 @@
 <template name="cloudFile">
 {{#if decryptedFile}}
- <div class="cloudFile relative" showWide>
+ <div class="cloudFile relative"    draggable="true" cloudIconRef="file-{{file._id}}" showWide>
 
      {{>filePreview file= decryptedFile index = index deletable=true onFilePage=onFilePage}}
  </div>

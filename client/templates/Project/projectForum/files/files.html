@@ -41,8 +41,8 @@
                     {{/unless}}
                     <div class="flex-auto  left-align topicTitle contextmenu">
                         <a href="/project/{{currentProject._id}}/forum?files=true"
-                           class="cloudFile relative elipsis {{#if compare parentFolders.length "=="
-                                                                   0}}currentFolder{{/if}}"
+                           class="cloudFile parentDropFolder relative elipsis {{#if compare parentFolders.length "=="
+                                                                                    0}}currentFolder{{/if}}"
                            cloudIconRef="folderMenu-root">
                             {{__ "categoryList.myFiles"}}
                         </a>
@@ -50,7 +50,7 @@
                             <a href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}
                             "
                             title="{{folder.symEnc_name}}"
-                            class="cloudFile relative elipsis {{#if folder.current}}
+                            class="cloudFile relative elipsis parentDropFolder {{#if folder.current}}
                             currentFolder{{/if}} " cloudIconRef="folderMenu-{{folder.folderId}}">
                             {{folder.symEnc_name}}
                             </a>
@@ -69,13 +69,13 @@
 
                             <div class="cloudFile relative  shadow newFolder">
                                 <div class="fileIcon" id="" focusFile>
-
-                                    <img src="/images/icon/files/folder.png" alt="" class="">
-                                    <div class="closeEditMenu" closeCreateMenu></div>
                                     <div class="selectionContainer">
+                                        <img src="/images/icon/files/folder.png" alt="" class="">
+                                        <div class="closeEditMenu" closeCreateMenu></div>
                                         <form id="newFolderForm" class="flex" newFolderForm>
 
-                                            <input type="text" id="newFolderNameInput" minlength="1" class="flex-auto"
+                                            <input type="text" id="newFolderNameInput" minlength="1"
+                                                   class="flex-auto"
                                                    placeholder="{{__ ".newFolderPlaceholder"}}">
                                             <div class="relative">
                                                 <button href=""
@@ -91,7 +91,11 @@
                     {{#each folder in folders}}
                         <div class="col s6 m4 xl3 contextmenu relative cloudItem
 {{#if isSelected selectedItems "folder" folder.folderId}} ui-selected {{/if}}
-                            {{#if isSelected cutedItems "folder" folder.folderId}} cuted {{/if}} ">
+                            {{#if isSelected cutedItems "folder" folder.folderId}} cuted {{/if}}
+                            {{#if isSelected draggedItems "folder" folder.folderId}} dragged {{/if}}"
+
+                             cloudIconRef="folder-{{folder.folderId}}"
+                        >
                             {{#unless compare renameItemId "==" folder.folderId}}
                                 <div class="actionBtns relative">
                                     <a href="" role="button"
@@ -102,14 +106,16 @@
 
                                 </div>
                             {{/unless}}
-                            <div class="cloudFile relative {{#if compare renameItemId "=="
-                                                                 folder.folderId}} newFolder shadow {{/if}}"
+                            <div class="cloudFile folderItem  relative {{#if compare renameItemId "=="
+                                                                             folder.folderId}} newFolder shadow {{/if}}"
                                  cloudIconRef="folder-{{folder.folderId}}"
+                                 draggable="true"
                             >
 
-                                <div class="fileIcon" cloudIconRef="folder-{{folder.folderId}}">
+                                <div class="fileIcon " cloudIconRef="folder-{{folder.folderId}}">
                                     <div class="selectionContainer">
-                                        <span href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}" openFolder>
+                                        <span href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}
+                                        " openFolder>
                                         <img src="/images/icon/files/folder.png"
                                              cloudIconRef="folder-{{folder.folderId}}" alt="" class=""
                                              title="{{folder.symEnc_name}}">
@@ -141,7 +147,9 @@
                     {{#each fileItem in files}}
                         <div class="col s6 m4 xl3 contextmenu cloudItem relative
                             {{#if isSelected selectedItems "file" fileItem._id}} ui-selected {{/if}}
-                            {{#if isSelected cutedItems "file" fileItem._id}} cuted {{/if}}"
+                            {{#if isSelected cutedItems "file" fileItem._id}} cuted {{/if}}
+                            {{#if isSelected draggedItems "file" fileItem._id}} dragged {{/if}}"
+
                              cloudIconRef="file-{{fileItem._id}}">
                             <div class="actionBtns relative">
                                 <a href="" role="button"
@@ -204,15 +212,18 @@
         {{/if}}
 
 
-
     </div>
-    <div class="closeConfirmDelete modal contrasted-bg" id="modalConfirmDelete" >
+    <div class="closeConfirmDelete modal contrasted-bg" id="modalConfirmDelete">
         <div class="modal-content">
 
             <h5 class="left-align danger-color" style="margin-bottom: 15px">{{__ ".deleteItems"}}
-{{#if itemsToDelete.folders}}{{itemsToDelete.folders}} {{__ ".folders"}}{{/if}}{{#if compare itemsToDelete.folders "&&" itemsToDelete.files }} {{__ ".and"}} {{/if}}
+                {{#if itemsToDelete.folders}}{{itemsToDelete.folders}} {{__ ".folders"}}{{/if}}{{#if compare
+                                                                                                     itemsToDelete.folders
+                                                                                                     "&&"
+                                                                                                     itemsToDelete.files }} {{__
+                        ".and"}} {{/if}}
                 {{#if itemsToDelete.files}}{{itemsToDelete.files}} {{__ ".files"}}{{/if}}    </h5>
-{{#if itemsToDelete.folders}}<p class="left-align infoQuotes">{{__ ".deleteItemsInfos"}}</p>{{/if}}
+            {{#if itemsToDelete.folders}}<p class="left-align infoQuotes">{{__ ".deleteItemsInfos"}}</p>{{/if}}
 
 
             <div class="row no-margin">
@@ -222,9 +233,9 @@
                     </button>
                 </div>
                 <div class="col s6">
-                <button class="btn  btnStandard center-align waves-effect waves-light shadow " cancelDelete><i
-                        class="material-icons right">clear</i>{{__ '.cancelDelete'}}
-                </button>
+                    <button class="btn  btnStandard center-align waves-effect waves-light shadow " cancelDelete><i
+                            class="material-icons right">clear</i>{{__ '.cancelDelete'}}
+                    </button>
                 </div>
             </div>
 
