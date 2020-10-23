@@ -112,10 +112,11 @@
 
                             >
                                 <div class="selectionContainer">
-                                <div class="fileIcon relative "  draggable="true" cloudIconRef="folder-{{folder.folderId}}">
-                                    <div class="centerPoint" cloudIconRef="folder-{{folder.folderId}}"></div>
-                                        <span href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}
-                                        " openFolder>
+                                    <div class="fileIcon relative " draggable="true"
+                                         cloudIconRef="folder-{{folder.folderId}}">
+                                        <div class="centerPoint" cloudIconRef="folder-{{folder.folderId}}"></div>
+                                        <span href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}"
+                                        openFolder>
                                         <img src="/images/icon/files/folder.png"
                                              cloudIconRef="folder-{{folder.folderId}}" alt="" class=""
                                              title="{{folder.symEnc_name}}">
@@ -241,7 +242,8 @@
         </div>
     </div>
     {{#if mouseSelection.current}}
-   <div class="mouseSelection" style="{{mouseSelection.current}}" > </div>-->
+        <div class="mouseSelection" style="{{mouseSelection.current}}"></div>
+        -->
 
     {{/if}}
 </template>

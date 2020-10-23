@@ -33,6 +33,7 @@ Template.files.helpers({
         return Template.instance().folders.get()
     },
     selectedItems: function () {
+
         return Template.instance().selectedItems.get()
     },
     draggedItems: function () {
@@ -494,7 +495,7 @@ Template.files.events({
 
             }
         }
-
+true
 
     },
 
@@ -562,11 +563,13 @@ Template.files.onCreated(function () {
                 folders.push(folder)
             }
         })
+
         cryptoTools.decryptArrayOfObject(currentProject.private.cloudFolders, {symKey: Session.get("currentProjectSimKey")}, decryptedFolders => {
             this.allFolders.set(decryptedFolders)
         })
         if (folders.length) {
             cryptoTools.decryptArrayOfObject(folders, {symKey: Session.get("currentProjectSimKey")}, decryptedFolders => {
+
                 this.folders.set(decryptedFolders.sort((a, b) => {
                     if (a.createdAt > b.createdAt) return -1
                     if (a.createdAt < b.createdAt) return 1;
@@ -698,7 +701,7 @@ Template.files.onRendered(function () {
 
             Meteor.setTimeout(()=>{
                 this.selectedItems.set(selectedItems)
-            },300)
+            },100)
 
         }
 
