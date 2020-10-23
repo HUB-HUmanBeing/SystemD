@@ -1,29 +1,31 @@
 <template name="filePreview">
-    <div class="fileIcon  {{#unless onFilePage}}focusFile{{/unless}}" id="filePreviewCarousel-{{carouselIndex index}}"   cloudIconRef="file-{{file._id}}">
-        <div class="selectionContainer">
-    <!--        {{#if compare type "==" "video"}}-->
-        <!--            <video controls>-->
+    <div class="selectionContainer">
+        <div class="fileIcon   {{#unless onFilePage}}focusFile{{/unless}}"
+             id="filePreviewCarousel-{{carouselIndex index}}"  draggable="true" cloudIconRef="file-{{file._id}}">
 
-        <!--                <source src="" type="{{file.symEnc_mimeType}}" id="video-{{file._id}}">-->
-        <!--                <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>-->
-        <!--            </video>-->
-            <!--        {{else}}-->
-            <!--            {{#if compare type "==" "audio"}}-->
-            <!--                <audio controls title="{{file.symEnc_fileName}}">-->
-            <!--                    <source src="" type="{{file.symEnc_mimeType}}" id="audio-{{file._id}}">-->
-            <!--                    Your browser does not support the audio element.-->
-            <!--                </audio>-->
+        <!--        {{#if compare type "==" "video"}}-->
+            <!--            <video controls>-->
 
-                <!--            {{else}}-->
+            <!--                <source src="" type="{{file.symEnc_mimeType}}" id="video-{{file._id}}">-->
+            <!--                <p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p>-->
+            <!--            </video>-->
+                <!--        {{else}}-->
+                <!--            {{#if compare type "==" "audio"}}-->
+                <!--                <audio controls title="{{file.symEnc_fileName}}">-->
+                <!--                    <source src="" type="{{file.symEnc_mimeType}}" id="audio-{{file._id}}">-->
+                <!--                    Your browser does not support the audio element.-->
+                <!--                </audio>-->
 
-            <img src="{{getFileIcon file.symEnc_mimeType}}" alt="" class="shadow"
-                 title="{{file.symEnc_fileName}}" id="img-{{file._id}}" cloudIconRef="file-{{file._id}}">
+                    <!--            {{else}}-->
 
-                <!--            {{/if}}-->
-            <!--        {{/if}}-->
-        <div class="fileLabel elipsis" title="{{file.symEnc_fileName}}" >
-           <span cloudIconRef="file-{{file._id}}">{{file.symEnc_fileName}}</span>
-        </div>
+                <img src="{{getFileIcon file.symEnc_mimeType}}" alt="" class="shadow"
+                     title="{{file.symEnc_fileName}}" id="img-{{file._id}}" cloudIconRef="file-{{file._id}}">
+
+                    <!--            {{/if}}-->
+                <!--        {{/if}}-->
+            <div class="fileLabel elipsis" title="{{file.symEnc_fileName}}">
+                <span cloudIconRef="file-{{file._id}}">{{file.symEnc_fileName}}</span>
+            </div>
         </div>
         {{#unless file.deleted}}
             {{#unless onFilePage}}

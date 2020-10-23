@@ -14,13 +14,26 @@ background-color: rgba($lighter-bg, 0.7);
 
 
 }
+.mouseSelection{
+  border: 2px dotted $minus-color;
+  position: fixed;
+  content: " ";
+  z-index: 200000;
 
+}
 .cloudPage {
 
+*{
+  user-select: none;
+}
+  input{
+    user-select: auto !important;
+  }
   .ui-selected{
     .selectionContainer{
       background: rgba($blue-highlight-color, 0.5) !important;
       background-origin: padding-box !important;
+
     }
 
   }
@@ -34,14 +47,25 @@ border: 2px dotted $main-color;
     }
   }
   .cloudItem{
+    .selectionContainer{
+    padding:  10px 25px !important;
+  }
 .fileIcon{
   padding:  10px 0 !important;
   img, span{
     cursor: pointer;
   }
-  .selectionContainer{
-    padding:  10px 5px !important;
+  .centerPoint{
+    content: " ";
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    top:50%;
+    left:50%;
+    background-color: transparent;
+    z-index:0;
   }
+
 }
     .actionBtns{
       opacity: 0;

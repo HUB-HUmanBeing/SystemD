@@ -59,6 +59,9 @@ Template.files.helpers({
     renameItemId: function () {
         return Template.instance().renameItem.get()
     },
+    mouseSelection: function () {
+        return Template.instance().mouseSelection.get()
+    },
     parentFolders: function () {
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
@@ -385,7 +388,10 @@ Template.files.events({
     },
     "dragstart .cloudFile .fileIcon": function (event, instance) {
         let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
-
+        if (instance.mouseSelectionTimout) {
+            Meteor.clearTimeout(instance.mouseSelectionTimout)
+            instance.mouseSelection.set(false)
+        }
         instance.draggedItems.set(instance.selectedItems.get().indexOf(cloudIconRef) == -1 ? [cloudIconRef] : instance.selectedItems.get())
         instance.selectedItems.set([])
         instance.contextMenu.set(false)
@@ -396,8 +402,9 @@ Template.files.events({
     },
     "dragover .parentDropFolder ,dragover .folderItem .fileIcon": function (event, instance) {
         event.preventDefault()
-
+        instance.mouseSelection.set(false)
     },
+
     "dragenter .parentDropFolder, dragenter .folderItem .fileIcon": function (event, instance) {
         event.preventDefault()
         if (instance.draggedItems.get().length > 0) {
@@ -461,7 +468,70 @@ Template.files.events({
                 })
             }
         }
-    }
+    },
+    "mousedown .cloudFile .fileIcon": function (event, instance) {
+        event.stopPropagation()
+        instance.mouseSelection.set(false)
+        if (this.mouseSelectionTimout) {
+            Meteor.clearTimeout(this.mouseSelectionTimout)
+        }
+    },
+    "mousedown .filesContainer": function (event, instance) {
+
+        if (instance.draggedItems.get().length == 0) {
+            let mouseSelection = instance.mouseSelection.get()
+            if (!mouseSelection) {
+                let x = event.clientX
+                let y = event.clientY
+                instance.mouseSelectionTimout = Meteor.setTimeout(() => {
+                    instance.mouseSelection.set({
+                        start: {
+                            x: x,
+                            y: y
+                        }, current: false,
+                    })
+                }, 300)
+
+            }
+        }
+
+
+    },
+
+    "mousemove .filesContainer": function (event, instance) {
+        if (instance.draggedItems.get().length == 0) {
+            let mouseSelection = instance.mouseSelection.get()
+            if (mouseSelection) {
+
+
+                let x = event.clientX
+                let y = event.clientY
+                let start = mouseSelection.start
+                let left = 0
+                let right = 0
+                let bottom = 0
+                let top = 0
+                if (x < start.x) {
+                    left = x
+                    right = start.x
+                } else {
+                    right = x
+                    left = start.x
+                }
+                if (y < start.y) {
+                    top = y
+                    bottom = start.y
+                } else {
+                    top = start.y
+                    bottom = y
+                }
+                let current = "top: " + top + "px; bottom: " + (window.innerHeight - bottom) + "px; right: " + (window.innerWidth - right) + "px; left: " + left + "px;"
+                instance.mouseSelection.set({
+                    start: start, current: current,
+                })
+            }
+        }
+    },
 });
 
 Template.files.onCreated(function () {
@@ -479,7 +549,8 @@ Template.files.onCreated(function () {
     this.cutedItems = new ReactiveVar([])
     this.toDeleteItems = new ReactiveVar([])
     this.renameItem = new ReactiveVar(false)
-
+    this.mouseSelection = new ReactiveVar(false)
+    this.mouseSelectionTimout = false
     this.dropCounter = {}
     this.autorun(() => {
         FlowRouter.watchPathChange()
@@ -600,7 +671,39 @@ Template.files.onRendered(function () {
     //add your statement here
     $('#modalConfirmDelete').modal();
     this.initializeDropFile()
+    window.addEventListener('mouseup', event => {
+        if (this.mouseSelectionTimout) {
+            Meteor.clearTimeout(this.mouseSelectionTimout)
+        }
 
+        let x = event.clientX
+        let y = event.clientY
+        let mouseSelection = this.mouseSelection.get()
+        if (mouseSelection) {
+            this.mouseSelection.set(false)
+            let selectedItems = []
+            $(".centerPoint").each((index, point) => {
+                if (
+                    ((y < point.getBoundingClientRect().top && point.getBoundingClientRect().top < mouseSelection.start.y) ||
+                        (mouseSelection.start.y < point.getBoundingClientRect().top && point.getBoundingClientRect().top < y))
+                    &&
+                    ((x < point.getBoundingClientRect().left && point.getBoundingClientRect().left < mouseSelection.start.x) ||
+                        (mouseSelection.start.x < point.getBoundingClientRect().left && point.getBoundingClientRect().left < x))
+                ) {
+                    let cloudIconRef =point.getAttribute("cloudIconRef")
+
+             selectedItems.push(cloudIconRef)
+                }
+            })
+
+            Meteor.setTimeout(()=>{
+                this.selectedItems.set(selectedItems)
+            },300)
+
+        }
+
+
+    });
 });
 
 Template.files.onDestroyed(function () {

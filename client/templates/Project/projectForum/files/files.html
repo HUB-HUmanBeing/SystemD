@@ -109,11 +109,11 @@
                             <div class="cloudFile folderItem  relative {{#if compare renameItemId "=="
                                                                              folder.folderId}} newFolder shadow {{/if}}"
                                  cloudIconRef="folder-{{folder.folderId}}"
-                                 draggable="true"
-                            >
 
-                                <div class="fileIcon " cloudIconRef="folder-{{folder.folderId}}">
-                                    <div class="selectionContainer">
+                            >
+                                <div class="selectionContainer">
+                                <div class="fileIcon relative "  draggable="true" cloudIconRef="folder-{{folder.folderId}}">
+                                    <div class="centerPoint" cloudIconRef="folder-{{folder.folderId}}"></div>
                                         <span href="/project/{{currentProject._id}}/forum?files=true&currentFolderId={{folder.folderId}}
                                         " openFolder>
                                         <img src="/images/icon/files/folder.png"
@@ -211,7 +211,6 @@
             </div>
         {{/if}}
 
-
     </div>
     <div class="closeConfirmDelete modal contrasted-bg" id="modalConfirmDelete">
         <div class="modal-content">
@@ -241,4 +240,8 @@
 
         </div>
     </div>
+    {{#if mouseSelection.current}}
+   <div class="mouseSelection" style="{{mouseSelection.current}}" > </div>-->
+
+    {{/if}}
 </template>
