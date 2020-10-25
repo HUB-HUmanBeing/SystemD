@@ -97,7 +97,11 @@ Template.files.events({
         instance.limit.set(instance.limit.get() + 10)
     },
     "dblclick [openFolder]": function (event, instance) {
-        FlowRouter.go(event.currentTarget.getAttribute("href"))
+        let href = event.currentTarget.getAttribute("href")
+        if (instance.cutedItems.get().indexOf("folder-" + href.split("=")[2]) == -1) {
+            FlowRouter.go(event.currentTarget.getAttribute("href"))
+        }
+
     },
     "click [newFolder]": function (event, instance) {
         event.preventDefault()
@@ -495,7 +499,7 @@ Template.files.events({
 
             }
         }
-true
+        true
 
     },
 
@@ -693,16 +697,72 @@ Template.files.onRendered(function () {
                     ((x < point.getBoundingClientRect().left && point.getBoundingClientRect().left < mouseSelection.start.x) ||
                         (mouseSelection.start.x < point.getBoundingClientRect().left && point.getBoundingClientRect().left < x))
                 ) {
-                    let cloudIconRef =point.getAttribute("cloudIconRef")
+                    let cloudIconRef = point.getAttribute("cloudIconRef")
 
-             selectedItems.push(cloudIconRef)
+                    selectedItems.push(cloudIconRef)
                 }
             })
 
-            Meteor.setTimeout(()=>{
+            Meteor.setTimeout(() => {
                 this.selectedItems.set(selectedItems)
-            },100)
+            }, 100)
 
+        }
+
+
+    });
+    window.addEventListener('keydown', e => {
+        const ctrlDown = false,
+            ctrlKey = 17,
+            cmdKey = 91,
+            vKey = 86,
+            xKey = 88,
+            cKey = 67;
+        if ((e.ctrlKey || e.metaKey) && (e.keyCode == cKey)) {
+            this.cutedItems.set(this.selectedItems.get())
+            this.selectedItems.set([])
+            this.contextMenu.set(false)
+        } else if ((e.ctrlKey || e.metaKey) && (e.keyCode == xKey)) {
+            this.cutedItems.set(this.selectedItems.get())
+            this.selectedItems.set([])
+            this.contextMenu.set(false)
+        } else if ((e.ctrlKey || e.metaKey) && (e.keyCode == vKey)) {
+            let parentFolderId
+            if (this.selectedItems.get().length == 1 && this.selectedItems.get()[0].split("-")[0] == "folder") {
+                let ref = this.selectedItems.get()[0]
+                parentFolderId = ref ? ref.split("-")[1] : "root"
+            } else {
+                parentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
+            }
+            if (parentFolderId) {
+                let currentProject = this.data.currentProject
+                this.cutedItems.get().forEach((cutedItem, i) => {
+                    let type = cutedItem.split("-")[0]
+                    let id = cutedItem.split("-")[1]
+
+                    let callback = (err, res) => {
+                        if (err) {
+                            Materialize.toast(__('general.error'), 6000, 'toastError')
+                            console.log(err)
+                        } else {
+                            if (i == this.cutedItems.get().length - 1) {
+                                this.cutedItems.set([])
+                                this.selectedItems.set([])
+                                Meteor.setTimeout(() => {
+                                    resetTooltips()
+                                }, 200)
+                            }
+                        }
+                    }
+
+                    if (type == "folder") {
+                        currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                    } else if (type == "file") {
+                        let file = new ProjectFile
+                        file.callMethod("moveFile", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                    }
+                })
+            }
         }
 
 
