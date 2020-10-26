@@ -97,7 +97,7 @@
                              cloudIconRef="folder-{{folder.folderId}}"
                         >
                             {{#unless compare renameItemId "==" folder.folderId}}
-                                <div class="actionBtns relative">
+                                <div class="actionBtns{{#unless isDesktop}} actionBtnsMobile {{/unless}} relative">
                                     <a href="" role="button"
                                        class="btn btn-floating contextMenuBtn shadow waves-effect waves-light tooltipped"
                                        data-position="left" data-delay="50" data-tooltip="{{__ ".actions"}}"
@@ -152,7 +152,7 @@
                             {{#if isSelected draggedItems "file" fileItem._id}} dragged {{/if}}"
 
                              cloudIconRef="file-{{fileItem._id}}">
-                            <div class="actionBtns relative">
+                            <div class="actionBtns {{#unless isDesktop}} actionBtnsMobile {{/unless}} relative">
                                 <a href="" role="button"
                                    class="btn btn-floating contextMenuBtn shadow waves-effect waves-light tooltipped"
                                    data-position="left" data-delay="50" data-tooltip="{{__ ".actions"}}"
@@ -160,7 +160,7 @@
                                         class="material-icons main-color">settings</i></a>
 
                             </div>
-                            {{>cloudFile file=fileItem index=@index onFilePage=true}}
+                            {{>cloudFile file=fileItem index=@index onFilePage=true parentInstance=parentInstance}}
                         </div>
                     {{/each}}
 

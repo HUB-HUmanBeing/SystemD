@@ -1,72 +1,82 @@
 @import "{}/client/scss/variables.scss";
 
 .dropFile {
-  background-image:  url("/images/trame/upload.png");
-  background-repeat:  no-repeat;
-  background-position:  center;
-  background-size:  200px 200px;
-background-color: rgba($lighter-bg, 0.7);
-  border: 2px dotted $minus-color;
-  ;
-.topicSubContainer{
-  opacity:0.3;
-}
+  background-image: url("/images/trame/upload.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 200px 200px;
+  background-color: rgba($lighter-bg, 0.7);
+  border: 2px dotted $minus-color;;
+
+  .topicSubContainer {
+    opacity: 0.3;
+  }
 
 
 }
-.mouseSelection{
+
+.mouseSelection {
   border: 2px dotted $minus-color;
   position: fixed;
   content: " ";
   z-index: 200000;
 
 }
+
 .cloudPage {
 
-*{
-  user-select: none;
-}
-  input{
+  * {
+    user-select: none;
+  }
+
+  input {
     user-select: auto !important;
   }
-  .ui-selected{
-    .selectionContainer{
+
+  .ui-selected {
+    .selectionContainer {
       background: rgba($blue-highlight-color, 0.5) !important;
       background-origin: padding-box !important;
 
     }
 
   }
-  .cuted{
+
+  .cuted {
     .selectionContainer {
       background-color: $lighter-bg;
-border: 2px dotted $main-color;
+      border: 2px dotted $main-color;
       margin: -2px;
       background-origin: padding-box !important;
       opacity: 0.7;
     }
   }
-  .cloudItem{
-    .selectionContainer{
-    padding:  10px 25px !important;
-  }
-.fileIcon{
-  padding:  10px 0 !important;
-  img, span{
-    cursor: pointer;
-  }
-  .centerPoint{
-    content: " ";
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    top:50%;
-    left:50%;
-    background-color: transparent;
-  }
 
-}
-    .actionBtns{
+  .cloudItem {
+    .selectionContainer {
+      padding: 10px 25px !important;
+    }
+
+    .fileIcon {
+      padding: 10px 0 !important;
+
+      img, span {
+        cursor: pointer;
+      }
+
+      .centerPoint {
+        content: " ";
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        top: 50%;
+        left: 50%;
+        background-color: transparent;
+      }
+
+    }
+
+    .actionBtns {
       opacity: 0;
       transition: 0.8s ease-out;
       position: absolute;
@@ -74,36 +84,47 @@ border: 2px dotted $main-color;
       right: 10px;
       width: 100px;
       z-index: 200;
-     a{
-       z-index: 200;
+
+      a {
+        z-index: 200;
         background-color: $contrasted-minus-bg !important;
         position: relative !important;
         display: inline-block;
       }
     }
-    &:hover{
-      .actionBtns{
+
+    &:hover {
+      .actionBtns {
         right: 0px;
         opacity: 1 !important;
       }
     }
   }
 
-  .contextMenuBtn{
+  .actionBtnsMobile {
+    top: -10px !important;
+    right: 10px !important;
+    opacity: 1 !important;
+  }
+
+  .contextMenuBtn {
 
   }
+
   .contextMenuContainer {
     position: fixed;
     z-index: 40001;
-    background-color: $lighter-bg  !important;
+    background-color: $lighter-bg !important;
     border: none !important;
 
     ul {
       margin: 0px !important;
       border: none !important;
-      .hr{
-        margin:-3px 0 !important;
+
+      .hr {
+        margin: -3px 0 !important;
       }
+
       li {
         line-height: 1em;
         text-align: left;
@@ -112,10 +133,11 @@ border: 2px dotted $main-color;
         font-size: 0.9em;
         cursor: pointer;
         line-height: 1.5em;
-padding: 5px 15px;
+        padding: 5px 15px;
+
         span {
-        position: relative;
-          top:-5px;
+          position: relative;
+          top: -5px;
           margin-right: 15px;
         }
 
@@ -127,9 +149,10 @@ padding: 5px 15px;
 
         &:hover {
           background-color: $light-bg !important;
-*{
-  color: $plus-color !important;
-}
+
+          * {
+            color: $plus-color !important;
+          }
 
         }
       }
@@ -144,19 +167,20 @@ padding: 5px 15px;
     left: 0px;
     z-index: 40000;
   }
-  .closeConfirmDelete{
+
+  .closeConfirmDelete {
     background-color: $contrasted-bg;
     opacity: 0.5;
   }
 
 
-
   .topicTitle {
-    .droppableFolder{
+    .droppableFolder {
 
       background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba($light-bg, 1) 30%, rgba($light-bg, 1) 100%) !important;
 
     }
+
     a {
       background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba($contrasted-plus-bg, 1) 30%, rgba($contrasted-plus-bg, 1) 100%);
       border-bottom-right-radius: 18px;
@@ -222,10 +246,12 @@ padding: 5px 15px;
       }
     }
   }
+
   #newFolderForm {
-    z-index:40001 ;
-    *{
-      z-index:40001 ;
+    z-index: 40001;
+
+    * {
+      z-index: 40001;
     }
 
     input {
@@ -255,6 +281,7 @@ padding: 5px 15px;
       }
     }
   }
+
   .newFolder {
     background-color: $contrasted-bg;
     //margin: -10px 0px -10px 0px;
@@ -265,7 +292,8 @@ padding: 5px 15px;
 
   .filesContainer {
     padding-bottom: 800px;
-    .droppableFolder{
+
+    .droppableFolder {
       border: 2px solid $minus-color;
       margin: -2px;
       background: $light-bg;

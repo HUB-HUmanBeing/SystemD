@@ -63,6 +63,9 @@ Template.files.helpers({
     mouseSelection: function () {
         return Template.instance().mouseSelection.get()
     },
+    parentInstance: function () {
+        return Template.instance()
+    },
     parentFolders: function () {
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
@@ -96,12 +99,43 @@ Template.files.events({
         event.preventDefault()
         instance.limit.set(instance.limit.get() + 10)
     },
-    "dblclick [openFolder]": function (event, instance) {
-        let href = event.currentTarget.getAttribute("href")
-        if (instance.cutedItems.get().indexOf("folder-" + href.split("=")[2]) == -1) {
-            FlowRouter.go(event.currentTarget.getAttribute("href"))
+    "dblclick [openFolder], touch [openFolder]": function (event, instance) {
+        if (Meteor.Device.isDesktop()) {
+            let href = event.currentTarget.getAttribute("href")
+            if (instance.cutedItems.get().indexOf("folder-" + href.split("=")[2]) == -1) {
+                FlowRouter.go(event.currentTarget.getAttribute("href"))
+            }
         }
+    },
+    "touchstart .folderItem": function (event, instance) {
+        if (!Meteor.Device.isDesktop()) {
+            instance.touchTimestamp = Date.now()
+        }
+    },
+    "touchend .folderItem": function (event, instance) {
+        if (!Meteor.Device.isDesktop()) {
+            let ref = event.currentTarget.getAttribute("cloudIconRef")
+            let folderId = ref.split('-')[1]
+            if (Date.now() - instance.touchTimestamp < 300) {
+                if(ref.split('-')[0]== "folder"){
+                    if (instance.cutedItems.get().indexOf(folderId) == -1) {
+                        FlowRouter.go("/project/"+instance.data.currentProject._id +"/forum?files=true&currentFolderId=" +folderId)
+                    }
+                }else{
+                    return true
+                }
 
+            }else{
+                let selectedItems = instance.selectedItems.get()
+                if(selectedItems.indexOf(ref) == -1){
+                    selectedItems.push(ref)
+                }else{
+                    selectedItems.splice(selectedItems.indexOf(ref),1)
+                }
+                instance.selectedItems.set(selectedItems)
+            }
+
+        }
     },
     "click [newFolder]": function (event, instance) {
         event.preventDefault()
@@ -116,73 +150,77 @@ Template.files.events({
         event.preventDefault()
         event.stopPropagation()
 
-        let clickX = event.originalEvent.pageX
-        let clickY = event.originalEvent.pageY
-        let position = ""
-        if (clickX < window.innerWidth / 2) {
-            position += "left:" + clickX + "px ;"
-        } else {
-            position += "right:" + (window.innerWidth - clickX) + "px ;"
-        }
-        if (clickY < window.innerHeight / 2) {
-            position += "top:" + clickY + "px ;"
-        } else {
-            position += "bottom:" + (window.innerHeight - clickY) + "px ;"
-        }
+        if(Meteor.Device.isDesktop() || event.type == 'click'){
 
-        let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
-        let paste = false
-
-        if (cloudIconRef) {
-            let type = cloudIconRef.split("-")[0]
-            let id = cloudIconRef.split("-")[1]
-
-            if (type != "file" && instance.cutedItems.get().length > 0
-                && instance.selectedItems.get().length <= 1
-                && instance.cutedItems.get().indexOf(cloudIconRef) == -1) {
-                paste = {
-                    label: "(" + instance.cutedItems.get().length + ")",
-                    ref: cloudIconRef
-                }
+            let clickX = event.originalEvent.pageX
+            let clickY = event.originalEvent.pageY
+            let position = ""
+            if (clickX < window.innerWidth / 2) {
+                position += "left:" + clickX + "px ;"
+            } else {
+                position += "right:" + (window.innerWidth - clickX) + "px ;"
+            }
+            if (clickY < window.innerHeight / 2) {
+                position += "top:" + clickY + "px ;"
+            } else {
+                position += "bottom:" + (window.innerHeight - clickY) + "px ;"
             }
 
-            if (instance.selectedItems.get().indexOf(cloudIconRef) == -1) {
-                instance.selectedItems.set([cloudIconRef])
-            }
-
-
-            instance.contextMenu.set(
-                {
-                    position: position,
-                    cut: type != "folderMenu" ? {
-                        label: "(" + instance.selectedItems.get().length + ")",
-                        ref: cloudIconRef
-                    } : false,
-                    paste: paste,
-                    delete: type != "folderMenu",
-                    new: false,
-                    rename: (type == "folder" && instance.selectedItems.get().length == 1) ? cloudIconRef : false,
-                }
-            )
-        } else {
-            instance.selectedItems.set([])
+            let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
             let paste = false
-            if (instance.cutedItems.get().length) {
-                paste = {
-                    label: "(" + instance.cutedItems.get().length + ")",
-                    ref: "folder-" + (FlowRouter.current().queryParams.currentFolderId ? FlowRouter.current().queryParams.currentFolderId : "root")
+
+            if (cloudIconRef) {
+                let type = cloudIconRef.split("-")[0]
+                let id = cloudIconRef.split("-")[1]
+
+                if (type != "file" && instance.cutedItems.get().length > 0
+                    && instance.selectedItems.get().length <= 1
+                    && instance.cutedItems.get().indexOf(cloudIconRef) == -1) {
+                    paste = {
+                        label: "(" + instance.cutedItems.get().length + ")",
+                        ref: cloudIconRef
+                    }
                 }
+
+                if (instance.selectedItems.get().indexOf(cloudIconRef) == -1) {
+                    instance.selectedItems.set([cloudIconRef])
+                }
+
+
+                instance.contextMenu.set(
+                    {
+                        position: position,
+                        cut: type != "folderMenu" ? {
+                            label: "(" + instance.selectedItems.get().length + ")",
+                            ref: cloudIconRef
+                        } : false,
+                        paste: paste,
+                        delete: type != "folderMenu",
+                        new: false,
+                        rename: (type == "folder" && instance.selectedItems.get().length == 1) ? cloudIconRef : false,
+                    }
+                )
+            } else {
+                instance.selectedItems.set([])
+                let paste = false
+                if (instance.cutedItems.get().length) {
+                    paste = {
+                        label: "(" + instance.cutedItems.get().length + ")",
+                        ref: "folder-" + (FlowRouter.current().queryParams.currentFolderId ? FlowRouter.current().queryParams.currentFolderId : "root")
+                    }
+                }
+                instance.contextMenu.set(
+                    {
+                        position: position,
+                        cut: false,
+                        paste: paste,
+                        delete: false,
+                        new: true,
+                        rename: false,
+                    }
+                )
             }
-            instance.contextMenu.set(
-                {
-                    position: position,
-                    cut: false,
-                    paste: paste,
-                    delete: false,
-                    new: true,
-                    rename: false,
-                }
-            )
+
         }
 
     },
@@ -268,43 +306,45 @@ Template.files.events({
         })
     },
     "click .fileIcon img, click .fileIcon span": function (event, instance) {
-        let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+        if (Meteor.Device.isDesktop()) {
+            let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
 
-        event.stopPropagation();
-        let selectedItems = instance.selectedItems.get()
-        if (event.ctrlKey || event.metaKey) {
+            event.stopPropagation();
+            let selectedItems = instance.selectedItems.get()
+            if (event.ctrlKey || event.metaKey) {
 
-            if (selectedItems.indexOf(cloudIconRef) == -1) {
-                selectedItems.push(cloudIconRef)
-            } else {
-                selectedItems.splice(selectedItems.indexOf(cloudIconRef), 1)
-            }
-            instance.selectedItems.set(selectedItems)
-        } else if (event.shiftKey) {
-            if (selectedItems.length == 0) {
-                instance.selectedItems.set([cloudIconRef])
-            } else {
-                let ordenedCloudLabels = []
-                $(".fileIcon").each(function () {
-                    ordenedCloudLabels.push(this.getAttribute("cloudIconRef"))
-                })
-                let selectedIndex = ordenedCloudLabels.indexOf(cloudIconRef)
-                ordenedCloudLabels.forEach((presentItem, i) => {
-                    selectedItems.forEach(selectedItem => {
-                        if ((ordenedCloudLabels.indexOf(selectedItem) <= i && i <= selectedIndex)
-                            ||
-                            (ordenedCloudLabels.indexOf(selectedItem) >= i && i >= selectedIndex)) {
-                            if (selectedItems.indexOf(presentItem) == -1) {
-                                selectedItems.push(presentItem)
-                            }
-                        }
-                    })
-
-                })
+                if (selectedItems.indexOf(cloudIconRef) == -1) {
+                    selectedItems.push(cloudIconRef)
+                } else {
+                    selectedItems.splice(selectedItems.indexOf(cloudIconRef), 1)
+                }
                 instance.selectedItems.set(selectedItems)
+            } else if (event.shiftKey) {
+                if (selectedItems.length == 0) {
+                    instance.selectedItems.set([cloudIconRef])
+                } else {
+                    let ordenedCloudLabels = []
+                    $(".fileIcon").each(function () {
+                        ordenedCloudLabels.push(this.getAttribute("cloudIconRef"))
+                    })
+                    let selectedIndex = ordenedCloudLabels.indexOf(cloudIconRef)
+                    ordenedCloudLabels.forEach((presentItem, i) => {
+                        selectedItems.forEach(selectedItem => {
+                            if ((ordenedCloudLabels.indexOf(selectedItem) <= i && i <= selectedIndex)
+                                ||
+                                (ordenedCloudLabels.indexOf(selectedItem) >= i && i >= selectedIndex)) {
+                                if (selectedItems.indexOf(presentItem) == -1) {
+                                    selectedItems.push(presentItem)
+                                }
+                            }
+                        })
+
+                    })
+                    instance.selectedItems.set(selectedItems)
+                }
+            } else {
+                instance.selectedItems.set([cloudIconRef])
             }
-        } else {
-            instance.selectedItems.set([cloudIconRef])
         }
     },
     "click #topic": function (event, instance) {
@@ -392,148 +432,163 @@ Template.files.events({
         })
     },
     "dragstart .cloudFile .fileIcon": function (event, instance) {
-        let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
-        if (instance.mouseSelectionTimout) {
-            Meteor.clearTimeout(instance.mouseSelectionTimout)
-            instance.mouseSelection.set(false)
+        if (Meteor.Device.isDesktop()) {
+            let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+            if (instance.mouseSelectionTimout) {
+                Meteor.clearTimeout(instance.mouseSelectionTimout)
+                instance.mouseSelection.set(false)
+            }
+            instance.draggedItems.set(instance.selectedItems.get().indexOf(cloudIconRef) == -1 ? [cloudIconRef] : instance.selectedItems.get())
+            instance.selectedItems.set([])
+            instance.contextMenu.set(false)
         }
-        instance.draggedItems.set(instance.selectedItems.get().indexOf(cloudIconRef) == -1 ? [cloudIconRef] : instance.selectedItems.get())
-        instance.selectedItems.set([])
-        instance.contextMenu.set(false)
     },
     "dragend .folderItem .fileIcon": function (event, instance) {
-        let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
-        instance.draggedItems.set([])
+        if (Meteor.Device.isDesktop()) {
+            let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+            instance.draggedItems.set([])
+        }
     },
     "dragover .parentDropFolder ,dragover .folderItem .fileIcon": function (event, instance) {
-        event.preventDefault()
-        instance.mouseSelection.set(false)
+        if (Meteor.Device.isDesktop()) {
+            event.preventDefault()
+            instance.mouseSelection.set(false)
+        }
     },
 
     "dragenter .parentDropFolder, dragenter .folderItem .fileIcon": function (event, instance) {
-        event.preventDefault()
-        if (instance.draggedItems.get().length > 0) {
-            let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
-            instance.dropCounter[cloudIconRef] = instance.dropCounter[cloudIconRef] || 0
-            instance.dropCounter[cloudIconRef]++
-            if (instance.dropCounter[cloudIconRef] == 1) {
+        if (Meteor.Device.isDesktop()) {
+            event.preventDefault()
+            if (instance.draggedItems.get().length > 0) {
+                let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+                instance.dropCounter[cloudIconRef] = instance.dropCounter[cloudIconRef] || 0
+                instance.dropCounter[cloudIconRef]++
+                if (instance.dropCounter[cloudIconRef] == 1) {
 
-                if (instance.draggedItems.get().indexOf(cloudIconRef) == -1) {
+                    if (instance.draggedItems.get().indexOf(cloudIconRef) == -1) {
 
-                    $(event.currentTarget).addClass("droppableFolder")
+                        $(event.currentTarget).addClass("droppableFolder")
+                    }
                 }
             }
         }
     },
     "dragleave  .parentDropFolder, dragleave .folderItem .fileIcon": function (event, instance) {
-        event.preventDefault()
-        if (instance.draggedItems.get().length > 0) {
-            let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
-            instance.dropCounter[cloudIconRef]--
-            if (instance.dropCounter[cloudIconRef] == 0) {
-                $(event.currentTarget).removeClass("droppableFolder")
+        if (Meteor.Device.isDesktop()) {
+            event.preventDefault()
+            if (instance.draggedItems.get().length > 0) {
+                let cloudIconRef = event.currentTarget.getAttribute("cloudIconRef")
+                instance.dropCounter[cloudIconRef]--
+                if (instance.dropCounter[cloudIconRef] == 0) {
+                    $(event.currentTarget).removeClass("droppableFolder")
+                }
             }
         }
     },
     "drop  .parentDropFolder, drop .folderItem .fileIcon": function (event, instance) {
+        if (Meteor.Device.isDesktop()) {
+            event.preventDefault();
+            if (instance.draggedItems.get().length > 0) {
+                $(event.currentTarget).removeClass("droppableFolder")
+                let ref = event.currentTarget.getAttribute("cloudIconRef")
+                if (instance.draggedItems.get().indexOf(ref) == -1) {
+                    // pretty simple -- but not for IE :(
+                    let parentFolderId = ref ? ref.split("-")[1] : "root"
+                    let currentProject = instance.data.currentProject
 
-        event.preventDefault();
-        if (instance.draggedItems.get().length > 0) {
-            $(event.currentTarget).removeClass("droppableFolder")
-            let ref = event.currentTarget.getAttribute("cloudIconRef")
-            if (instance.draggedItems.get().indexOf(ref) == -1) {
-                // pretty simple -- but not for IE :(
-                let parentFolderId = ref ? ref.split("-")[1] : "root"
-                let currentProject = instance.data.currentProject
+                    instance.draggedItems.get().forEach((draggedItem, i) => {
+                        let type = draggedItem.split("-")[0]
+                        let id = draggedItem.split("-")[1]
 
-                instance.draggedItems.get().forEach((draggedItem, i) => {
-                    let type = draggedItem.split("-")[0]
-                    let id = draggedItem.split("-")[1]
-
-                    let callback = (err, res) => {
-                        if (err) {
-                            Materialize.toast(__('general.error'), 6000, 'toastError')
-                            console.log(err)
-                        } else {
-                            if (i == instance.draggedItems.get().length - 1) {
-                                instance.draggedItems.set([])
-                                instance.selectedItems.set([])
-                                Meteor.setTimeout(() => {
-                                    resetTooltips()
-                                }, 200)
+                        let callback = (err, res) => {
+                            if (err) {
+                                Materialize.toast(__('general.error'), 6000, 'toastError')
+                                console.log(err)
+                            } else {
+                                if (i == instance.draggedItems.get().length - 1) {
+                                    instance.draggedItems.set([])
+                                    instance.selectedItems.set([])
+                                    Meteor.setTimeout(() => {
+                                        resetTooltips()
+                                    }, 200)
+                                }
                             }
                         }
-                    }
-                    if (type == "folder") {
-                        currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
-                    } else if (type == "file") {
-                        let file = ProjectFile.findOne({_id: id})
-                        file.callMethod("moveFile", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
-                    }
-                })
+                        if (type == "folder") {
+                            currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                        } else if (type == "file") {
+                            let file = ProjectFile.findOne({_id: id})
+                            file.callMethod("moveFile", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                        }
+                    })
+                }
             }
         }
     },
     "mousedown .cloudFile .fileIcon": function (event, instance) {
-        event.stopPropagation()
-        instance.mouseSelection.set(false)
-        if (this.mouseSelectionTimout) {
-            Meteor.clearTimeout(this.mouseSelectionTimout)
+        if (Meteor.Device.isDesktop()) {
+            event.stopPropagation()
+            instance.mouseSelection.set(false)
+            if (this.mouseSelectionTimout) {
+                Meteor.clearTimeout(this.mouseSelectionTimout)
+            }
         }
     },
     "mousedown .filesContainer": function (event, instance) {
+        if (Meteor.Device.isDesktop()) {
+            if (instance.draggedItems.get().length == 0) {
+                let mouseSelection = instance.mouseSelection.get()
+                if (!mouseSelection) {
+                    let x = event.clientX
+                    let y = event.clientY
+                    instance.mouseSelectionTimout = Meteor.setTimeout(() => {
+                        instance.mouseSelection.set({
+                            start: {
+                                x: x,
+                                y: y
+                            }, current: false,
+                        })
+                    }, 300)
 
-        if (instance.draggedItems.get().length == 0) {
-            let mouseSelection = instance.mouseSelection.get()
-            if (!mouseSelection) {
-                let x = event.clientX
-                let y = event.clientY
-                instance.mouseSelectionTimout = Meteor.setTimeout(() => {
-                    instance.mouseSelection.set({
-                        start: {
-                            x: x,
-                            y: y
-                        }, current: false,
-                    })
-                }, 300)
-
+                }
             }
+            true
         }
-        true
-
     },
 
     "mousemove .filesContainer": function (event, instance) {
-        if (instance.draggedItems.get().length == 0) {
-            let mouseSelection = instance.mouseSelection.get()
-            if (mouseSelection) {
+        if (Meteor.Device.isDesktop()) {
+            if (instance.draggedItems.get().length == 0) {
+                let mouseSelection = instance.mouseSelection.get()
+                if (mouseSelection) {
 
 
-                let x = event.clientX
-                let y = event.clientY
-                let start = mouseSelection.start
-                let left = 0
-                let right = 0
-                let bottom = 0
-                let top = 0
-                if (x < start.x) {
-                    left = x
-                    right = start.x
-                } else {
-                    right = x
-                    left = start.x
+                    let x = event.clientX
+                    let y = event.clientY
+                    let start = mouseSelection.start
+                    let left = 0
+                    let right = 0
+                    let bottom = 0
+                    let top = 0
+                    if (x < start.x) {
+                        left = x
+                        right = start.x
+                    } else {
+                        right = x
+                        left = start.x
+                    }
+                    if (y < start.y) {
+                        top = y
+                        bottom = start.y
+                    } else {
+                        top = start.y
+                        bottom = y
+                    }
+                    let current = "top: " + top + "px; bottom: " + (window.innerHeight - bottom) + "px; right: " + (window.innerWidth - right) + "px; left: " + left + "px;"
+                    instance.mouseSelection.set({
+                        start: start, current: current,
+                    })
                 }
-                if (y < start.y) {
-                    top = y
-                    bottom = start.y
-                } else {
-                    top = start.y
-                    bottom = y
-                }
-                let current = "top: " + top + "px; bottom: " + (window.innerHeight - bottom) + "px; right: " + (window.innerWidth - right) + "px; left: " + left + "px;"
-                instance.mouseSelection.set({
-                    start: start, current: current,
-                })
             }
         }
     },
@@ -556,6 +611,7 @@ Template.files.onCreated(function () {
     this.renameItem = new ReactiveVar(false)
     this.mouseSelection = new ReactiveVar(false)
     this.mouseSelectionTimout = false
+    this.touchTimestamp = 0
     this.dropCounter = {}
     this.autorun(() => {
         FlowRouter.watchPathChange()
@@ -635,42 +691,44 @@ Template.files.onCreated(function () {
     })
 
     this.initializeDropFile = () => {
-        let draggedItems = this.draggedItems
-        let dropContainer = $('.uploadFileZone')[0]
-        dropContainer.ondragover = function (evt) {
+        if (Meteor.Device.isDesktop()) {
+            let draggedItems = this.draggedItems
+            let dropContainer = $('.uploadFileZone')[0]
+            dropContainer.ondragover = function (evt) {
 
-            evt.preventDefault();
+                evt.preventDefault();
 
-        };
-        let counter = 0
-        dropContainer.ondragenter = function (evt) {
-            evt.preventDefault()
-            if (counter === 0) {
-                if (draggedItems.get().length === 0) {
-                    $(this).addClass("dropFile")
+            };
+            let counter = 0
+            dropContainer.ondragenter = function (evt) {
+                evt.preventDefault()
+                if (counter === 0) {
+                    if (draggedItems.get().length === 0) {
+                        $(this).addClass("dropFile")
+                    }
+                }
+                counter++
+            }
+            dropContainer.ondragleave = function (evt) {
+                evt.preventDefault()
+                counter--
+                if (counter === 0) {
+                    if (draggedItems.get().length === 0) {
+                        $(this).removeClass("dropFile")
+                    }
                 }
             }
-            counter++
-        }
-        dropContainer.ondragleave = function (evt) {
-            evt.preventDefault()
-            counter--
-            if (counter === 0) {
-                if (draggedItems.get().length === 0) {
-                    $(this).removeClass("dropFile")
-                }
-            }
-        }
 
-        dropContainer.ondrop = (evt) => {
-            evt.preventDefault();
-            if (draggedItems.get().length === 0) {
-                // pretty simple -- but not for IE :(
-                let fileInput = evt.dataTransfer.files;
-                projectFilesController.encryptAndUploadFiles(fileInput, FlowRouter.current().params.projectId, this, FlowRouter.current().queryParams.currentFolderId || "root", null,)
-                $('.uploadFileZone').removeClass("dropFile")
-            }
-        };
+            dropContainer.ondrop = (evt) => {
+                evt.preventDefault();
+                if (draggedItems.get().length === 0) {
+                    // pretty simple -- but not for IE :(
+                    let fileInput = evt.dataTransfer.files;
+                    projectFilesController.encryptAndUploadFiles(fileInput, FlowRouter.current().params.projectId, this, FlowRouter.current().queryParams.currentFolderId || "root", null,)
+                    $('.uploadFileZone').removeClass("dropFile")
+                }
+            };
+        }
     }
 });
 
@@ -679,37 +737,37 @@ Template.files.onRendered(function () {
     $('#modalConfirmDelete').modal();
     this.initializeDropFile()
     window.addEventListener('mouseup', event => {
-        if (this.mouseSelectionTimout) {
-            Meteor.clearTimeout(this.mouseSelectionTimout)
+        if (Meteor.Device.isDesktop()) {
+            if (this.mouseSelectionTimout) {
+                Meteor.clearTimeout(this.mouseSelectionTimout)
+            }
+
+            let x = event.clientX
+            let y = event.clientY
+            let mouseSelection = this.mouseSelection.get()
+            if (mouseSelection) {
+                this.mouseSelection.set(false)
+                let selectedItems = []
+                $(".centerPoint").each((index, point) => {
+                    if (
+                        ((y < point.getBoundingClientRect().top && point.getBoundingClientRect().top < mouseSelection.start.y) ||
+                            (mouseSelection.start.y < point.getBoundingClientRect().top && point.getBoundingClientRect().top < y))
+                        &&
+                        ((x < point.getBoundingClientRect().left && point.getBoundingClientRect().left < mouseSelection.start.x) ||
+                            (mouseSelection.start.x < point.getBoundingClientRect().left && point.getBoundingClientRect().left < x))
+                    ) {
+                        let cloudIconRef = point.getAttribute("cloudIconRef")
+
+                        selectedItems.push(cloudIconRef)
+                    }
+                })
+
+                Meteor.setTimeout(() => {
+                    this.selectedItems.set(selectedItems)
+                }, 100)
+
+            }
         }
-
-        let x = event.clientX
-        let y = event.clientY
-        let mouseSelection = this.mouseSelection.get()
-        if (mouseSelection) {
-            this.mouseSelection.set(false)
-            let selectedItems = []
-            $(".centerPoint").each((index, point) => {
-                if (
-                    ((y < point.getBoundingClientRect().top && point.getBoundingClientRect().top < mouseSelection.start.y) ||
-                        (mouseSelection.start.y < point.getBoundingClientRect().top && point.getBoundingClientRect().top < y))
-                    &&
-                    ((x < point.getBoundingClientRect().left && point.getBoundingClientRect().left < mouseSelection.start.x) ||
-                        (mouseSelection.start.x < point.getBoundingClientRect().left && point.getBoundingClientRect().left < x))
-                ) {
-                    let cloudIconRef = point.getAttribute("cloudIconRef")
-
-                    selectedItems.push(cloudIconRef)
-                }
-            })
-
-            Meteor.setTimeout(() => {
-                this.selectedItems.set(selectedItems)
-            }, 100)
-
-        }
-
-
     });
     window.addEventListener('keydown', e => {
         const ctrlDown = false,
