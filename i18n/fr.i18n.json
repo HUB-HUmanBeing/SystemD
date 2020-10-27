@@ -539,13 +539,14 @@
     "paste": "Coller",
     "rename": "Renommer",
     "delete": "Supprimer",
-    "deleteItems" :  "Confirmer la supression définitive de ",
+    "deleteItems" :  "Confirmer la suppression définitive de ",
     "folders": "dossiers",
     "files": "fichiers",
     "and": "et de",
-    "deleteItemsInfos": "Attention, tout les elements contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
     "confirmDelete": "Supprimer",
-    "cancelDelete" : "Annuler"
+    "cancelDelete" : "Annuler",
+    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
 
   },
   "filePreview": {

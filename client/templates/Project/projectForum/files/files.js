@@ -117,20 +117,20 @@ Template.files.events({
             let ref = event.currentTarget.getAttribute("cloudIconRef")
             let folderId = ref.split('-')[1]
             if (Date.now() - instance.touchTimestamp < 300) {
-                if(ref.split('-')[0]== "folder"){
+                if (ref.split('-')[0] == "folder") {
                     if (instance.cutedItems.get().indexOf(folderId) == -1) {
-                        FlowRouter.go("/project/"+instance.data.currentProject._id +"/forum?files=true&currentFolderId=" +folderId)
+                        FlowRouter.go("/project/" + instance.data.currentProject._id + "/forum?files=true&currentFolderId=" + folderId)
                     }
-                }else{
+                } else {
                     return true
                 }
 
-            }else{
+            } else {
                 let selectedItems = instance.selectedItems.get()
-                if(selectedItems.indexOf(ref) == -1){
+                if (selectedItems.indexOf(ref) == -1) {
                     selectedItems.push(ref)
-                }else{
-                    selectedItems.splice(selectedItems.indexOf(ref),1)
+                } else {
+                    selectedItems.splice(selectedItems.indexOf(ref), 1)
                 }
                 instance.selectedItems.set(selectedItems)
             }
@@ -150,7 +150,7 @@ Template.files.events({
         event.preventDefault()
         event.stopPropagation()
 
-        if(Meteor.Device.isDesktop() || event.type == 'click'){
+        if (Meteor.Device.isDesktop() || event.type == 'click') {
 
             let clickX = event.originalEvent.pageX
             let clickY = event.originalEvent.pageY
@@ -382,7 +382,11 @@ Template.files.events({
             }
 
             if (type == "folder") {
-                currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                if (instance.isAllowedToPaste(id, parentFolderId)) {
+                    currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                } else {
+                    Materialize.toast(__('files.notAllowedToPaste'), 6000, 'toastError')
+                }
             } else if (type == "file") {
                 let file = ProjectFile.findOne({_id: id})
                 file.callMethod("moveFile", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
@@ -515,7 +519,11 @@ Template.files.events({
                             }
                         }
                         if (type == "folder") {
-                            currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                            if (instance.isAllowedToPaste(id, parentFolderId)) {
+                                currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                            } else {
+                                Materialize.toast(__('files.notAllowedToPaste'), 6000, 'toastError')
+                            }
                         } else if (type == "file") {
                             let file = ProjectFile.findOne({_id: id})
                             file.callMethod("moveFile", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
@@ -613,6 +621,33 @@ Template.files.onCreated(function () {
     this.mouseSelectionTimout = false
     this.touchTimestamp = 0
     this.dropCounter = {}
+    this.getFolder = (folderId) => {
+        let res = null
+        console.log(this.allFolders.get(), folderId)
+        this.allFolders.get().forEach((folder) => {
+            if (folder.folderId == folderId) {
+                res = folder
+            }
+        })
+        return res
+    }
+    this.isAllowedToPaste = (idToPaste, folderId) => {
+
+        let parentFolderList = [folderId]
+        let checkParent = (id) => {
+            if (folderId != "root" && folderId) {
+                let folder = this.getFolder(id)
+
+                if (id != "root"){
+                    parentFolderList.push(folder.parentFolderId)
+                    checkParent(folder.parentFolderId)
+                }
+
+            }
+        }
+        checkParent(folderId)
+        return parentFolderList.indexOf(idToPaste) == -1
+    }
     this.autorun(() => {
         FlowRouter.watchPathChange()
         let currentFolderId = FlowRouter.current().queryParams.currentFolderId || "root"
@@ -814,7 +849,11 @@ Template.files.onRendered(function () {
                     }
 
                     if (type == "folder") {
-                        currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                        if (this.isAllowedToPaste(id, parentFolderId)) {
+                            currentProject.callMethod("moveFolder", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
+                        } else {
+                            Materialize.toast(__('files.notAllowedToPaste'), 6000, 'toastError')
+                        }
                     } else if (type == "file") {
                         let file = new ProjectFile
                         file.callMethod("moveFile", projectController.getAuthInfo(currentProject._id), id, parentFolderId, callback)
