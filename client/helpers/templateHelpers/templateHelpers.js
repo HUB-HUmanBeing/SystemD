@@ -6,6 +6,9 @@ import filesTypes from "../../lib/filesTypes";
 Template.registerHelper('length', function (array) {
     return array.length
 })
+Template.registerHelper('isSelected', function (selectedItems, type, itemId) {
+     return selectedItems.indexOf(type + "-" +itemId) !== -1
+})
 
 
 Template.registerHelper('isInArray', function (element, array) {
