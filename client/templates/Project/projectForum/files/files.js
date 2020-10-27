@@ -623,7 +623,6 @@ Template.files.onCreated(function () {
     this.dropCounter = {}
     this.getFolder = (folderId) => {
         let res = null
-        console.log(this.allFolders.get(), folderId)
         this.allFolders.get().forEach((folder) => {
             if (folder.folderId == folderId) {
                 res = folder
