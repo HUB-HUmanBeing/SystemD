@@ -530,7 +530,23 @@
     "projectUsing": " ",
     "of": "sur",
     "allowed": " ",
-    "seeMore": "Voir plus"
+    "seeMore": "Voir plus",
+    "newFile": "Uploader un fichier",
+    "newFolder": "Nouveau dossier",
+    "actions": "Actions",
+    "newFolderPlaceholder": "Nom du dossier ...",
+    "cut": "Couper",
+    "paste": "Coller",
+    "rename": "Renommer",
+    "delete": "Supprimer",
+    "deleteItems": "Confirmer la suppression définitive de ",
+    "folders": "dossiers",
+    "files": "fichiers",
+    "and": "et de",
+    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "confirmDelete": "Supprimer",
+    "cancelDelete": "Annuler",
+    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
   },
   "filePreview": {
     "delete": "Supprimer le fichier",
@@ -689,7 +705,8 @@
     "joinActivity": "Participer à l'activité",
     "inviteMember": "inviter des membres à se joindre à l'activité",
     "onMap": "Position sur la carte :",
-    "showOnMap": "Voir"
+    "showOnMap": "Voir",
+    "placeholderActivityDetail": "Déscription de l'activité..."
   },
   "weekDays": {
     "day0": "Κυριακή",
