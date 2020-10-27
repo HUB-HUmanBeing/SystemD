@@ -530,7 +530,23 @@
     "projectUsing": " ",
     "of": "of",
     "allowed": " ",
-    "seeMore": "See more"
+    "seeMore": "See more",
+    "newFile": "Uploader un fichier",
+    "newFolder": "Nouveau dossier",
+    "actions": "Actions",
+    "newFolderPlaceholder": "Nom du dossier ...",
+    "cut": "Couper",
+    "paste": "Coller",
+    "rename": "Renommer",
+    "delete": "Supprimer",
+    "deleteItems": "Confirmer la suppression définitive de ",
+    "folders": "dossiers",
+    "files": "fichiers",
+    "and": "et de",
+    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "confirmDelete": "Supprimer",
+    "cancelDelete": "Annuler",
+    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
   },
   "filePreview": {
     "delete": "Delete file",
@@ -690,7 +706,7 @@
     "inviteMember": "Invite members to join activity",
     "onMap": "Map position :",
     "showOnMap": "See on map",
-    "placeholderActivityDetail": "Activity detail..."
+    "placeholderActivityDetail": "Déscription de l'activité..."
   },
   "weekDays": {
     "day0": "Sunday",
@@ -836,7 +852,7 @@
     "day": "Jour",
     "list": "Mon planning",
     "weekLabel": "Sem.",
-    "allDayHtml": "Toute la<br/>journée",
+    "allDayHtml": "All day<br/>event",
     "eventLimitText": "en plus",
     "noEventsMessage": "Aucun événement à afficher"
   }
