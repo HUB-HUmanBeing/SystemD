@@ -56,7 +56,7 @@
     "btnLabel": "Issues - Suggestions",
     "bugReport": "Issues",
     "suggestion": "Suggestions",
-    "precisions": "ATTENTION : Si vous souhaitez prendre contact avec les développeurs, pensez à nous laisser un moyen de vous contacter, rendez-vous sur le Riot du projet, ou suivez l'évolution de votre ticket sur GitHub",
+    "precisions": "WARNING: If you want to get in touch with developers, please leave us a way to contact you, go to the Project Riot, or track the progress of your issue on GitHub",
     "allowDeviceInfo": "Automatically join navigator information in order to help bug-fixing? (navigator, version, exploitation system, language)",
     "decline": "no",
     "authorize": "yes",
@@ -66,7 +66,7 @@
     "captcha": "Enter the 4 letters",
     "submit": "Send",
     "githubDirectLink": "Directly find us on GitHub...",
-    "riotDirectLink": "ou rendez-vous directement sur le chat Riot du projet...",
+    "riotDirectLink": "or go directly to the Riot chat of the project...",
     "succesMessage": "Thanks for your contribution! Your message has been sent to the developers",
     "githubLink": "To see the tracking of your feedback, go to the GitHub of the project",
     "return": "Return"
@@ -502,8 +502,8 @@
   },
   "showPollContent": {
     "answers": "answers",
-    "newProposition": "Nouvelle proposition...",
-    "send": "Publier"
+    "newProposition": "New proposal...",
+    "send": "Publish"
   },
   "pollOption": {
     "vote": "votes"
@@ -531,22 +531,22 @@
     "of": "of",
     "allowed": " ",
     "seeMore": "See more",
-    "newFile": "Uploader un fichier",
-    "newFolder": "Nouveau dossier",
+    "newFile": "Upload file",
+    "newFolder": "New folder",
     "actions": "Actions",
-    "newFolderPlaceholder": "Nom du dossier ...",
-    "cut": "Couper",
-    "paste": "Coller",
-    "rename": "Renommer",
-    "delete": "Supprimer",
-    "deleteItems": "Confirmer la suppression définitive de ",
-    "folders": "dossiers",
-    "files": "fichiers",
-    "and": "et de",
-    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
-    "confirmDelete": "Supprimer",
-    "cancelDelete": "Annuler",
-    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
+    "newFolderPlaceholder": "Folder name ...",
+    "cut": "Cut",
+    "paste": "Paste",
+    "rename": "Rename",
+    "delete": "Delete",
+    "deleteItems": "Confirm definitive deletion of ",
+    "folders": "folders",
+    "files": "files",
+    "and": "and",
+    "deleteItemsInfos": "Warning, all the elements contained in the selected folders will also be deleted.",
+    "confirmDelete": "Delete",
+    "cancelDelete": "Cancel",
+    "notAllowedToPaste": "Can't move a folder inside itself."
   },
   "filePreview": {
     "delete": "Delete file",
@@ -683,8 +683,8 @@
     "importICS": "Import as ICS",
     "importICSInfos": "Use an ICS file to import the events it contains on this project's agenda",
     "import": "Import",
-    "importSuccess": "évènements importés avec succès",
-    "importError": "Un ou plusieurs composants ont été ignorés durant l'import, est-ce bien un fichier iCalendar? (seuls les formats VTODO et VEVENT sont supportés pour le moment)"
+    "importSuccess": "Events successfully imported",
+    "importError": "One or more components were ignored during import, is it an iCalendar file? (only VTODO and VEVENT formats are supported at the moment)"
   },
   "colorLegend": {
     "placeholder": "Your legend ...",
@@ -706,7 +706,7 @@
     "inviteMember": "Invite members to join activity",
     "onMap": "Map position :",
     "showOnMap": "See on map",
-    "placeholderActivityDetail": "Déscription de l'activité..."
+    "placeholderActivityDetail": "Activity description"
   },
   "weekDays": {
     "day0": "Sunday",
@@ -843,17 +843,17 @@
     "code": "fr",
     "dow": 1,
     "doy": 4,
-    "prev": "Précédent",
-    "next": "Suivant",
-    "today": "Aujourd'hui",
-    "year": "Année",
-    "month": "Mois",
-    "week": "Semaine",
-    "day": "Jour",
-    "list": "Mon planning",
-    "weekLabel": "Sem.",
+    "prev": "Previous",
+    "next": "Next",
+    "today": "Today",
+    "year": "Year",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "list": "My schedule",
+    "weekLabel": "Week",
     "allDayHtml": "All day<br/>event",
-    "eventLimitText": "en plus",
-    "noEventsMessage": "Aucun événement à afficher"
+    "eventLimitText": "more",
+    "noEventsMessage": "No events to show."
   }
 }
