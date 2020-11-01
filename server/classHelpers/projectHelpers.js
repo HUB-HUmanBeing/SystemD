@@ -1,6 +1,8 @@
 import {check} from "meteor/check";
 import Project from "/imports/classes/Project";
 import cryptoServer from "/imports/cryptoServer";
+import Topic from "../../imports/classes/Topic";
+import ProjectFile from "../../imports/classes/ProjectFile";
 
 /***********************
  * on met ici les helpers de la classe projet dispo uniquement coté serveur

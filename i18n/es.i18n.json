@@ -530,7 +530,23 @@
     "projectUsing": " ",
     "of": "sobre",
     "allowed": " ",
-    "seeMore": "Ver más"
+    "seeMore": "Ver más",
+    "newFile": "Uploader un fichier",
+    "newFolder": "Nouveau dossier",
+    "actions": "Actions",
+    "newFolderPlaceholder": "Nom du dossier ...",
+    "cut": "Couper",
+    "paste": "Coller",
+    "rename": "Renommer",
+    "delete": "Supprimer",
+    "deleteItems": "Confirmer la suppression définitive de ",
+    "folders": "dossiers",
+    "files": "fichiers",
+    "and": "et de",
+    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "confirmDelete": "Supprimer",
+    "cancelDelete": "Annuler",
+    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
   },
   "filePreview": {
     "delete": "Eliminar el fichero",
@@ -689,7 +705,8 @@
     "joinActivity": "Participar a la actividad",
     "inviteMember": "Invitar miembros para que se junten a la actividad",
     "onMap": "Ubicación en el mapa:",
-    "showOnMap": "Ver"
+    "showOnMap": "Ver",
+    "placeholderActivityDetail": "Déscription de l'activité..."
   },
   "weekDays": {
     "day0": "Domingo",

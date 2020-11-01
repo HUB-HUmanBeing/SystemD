@@ -29,7 +29,7 @@ const ProjectNotification = Class.create({
             type: Date,
             default: function () {
                 return new Date()
-            }
+            },
         },
     },
     helpers: {

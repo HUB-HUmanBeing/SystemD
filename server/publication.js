@@ -331,13 +331,20 @@ Meteor.publish("publicationFiles", function (authInfo, projectId, filesId) {
             ]
     })
 })
-Meteor.publish("projectFiles", function (authInfo, projectId, limit) {
+Meteor.publish("projectFiles", function (authInfo, projectId,parentFolderId, limit) {
     check(projectId, String)
+    check(parentFolderId, String)
     check(authInfo, {memberId: String, userSignature: String})
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
+    if(parentFolderId == "root"){
+        parentFolderId = {$in:["root", null]}
+    }
     return ProjectFiles.find(
-        {projectId: projectId}, {
+        {
+            projectId: projectId,
+            parentFolderId: parentFolderId
+        }, {
             limit: limit,
             sort: {
                 createdAt: -1
