@@ -3,10 +3,10 @@
         style="padding: 8px 20px !important; "
 
     >
-        <a href="/project/{{spreadsheet.projectId}}/forum?spreadsheetId={{spreadsheet._id}}" class="">
+        <a href="/project/{{spreadsheet.projectId}}/forum?{{#if isPad}}padId{{else}}spreadsheetId{{/if}}={{spreadsheet._id}}" class="">
         <div class="flex">
             <div class="flex-auto elipsis ">
-                <i class="material-icons left" style="transform: rotate(90deg)">view_comfy</i><span>
+                <i class="material-icons left" style="{{#unless isPad}}transform: rotate(90deg){{/unless}}">{{#if isPad}}format_align_justify{{else}}view_comfy{{/if}}</i><span>
                 {{spreadsheet.symEnc_name}}
                 </span>
             </div>

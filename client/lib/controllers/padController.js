@@ -5,7 +5,7 @@ import projectController from "./projectController";
 import isSameObject from "../isSameObject";
 import Spreadsheets from "../../../lib/collections/Spreadsheets";
 
-let spreadsheetController = {
+let padController = {
     table: null,
     reactiveTable: null,
     id: null,
@@ -429,4 +429,4 @@ console.log(this.table.getConfig().style)
 }
 
 
-export default spreadsheetController
+export default padController

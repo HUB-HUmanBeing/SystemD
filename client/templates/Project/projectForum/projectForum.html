@@ -69,7 +69,11 @@
                             {{#if isSpreadsheet}}
                                 {{>spreadsheet refreshScrollbar=refreshScrollbar}}
                             {{else}}
-                                {{>topic refreshScrollbar=refreshScrollbar}}
+                                {{#if isPad}}
+                                    {{>pad refreshScrollbar=refreshScrollbar}}
+                                {{else}}
+                                    {{>topic refreshScrollbar=refreshScrollbar}}
+                                {{/if}}
                             {{/if}}
                         </div>
 

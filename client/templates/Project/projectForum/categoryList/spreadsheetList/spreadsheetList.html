@@ -2,8 +2,8 @@
     <div class="collapsible-header active flex shadow relative {{#if isCurrentCategory}}currentCategory{{/if}}">
 
         <div class="flex-auto elipsis categoryTitle" title="{{category.symEnc_name}}">
-            <i class="material-icons link" style="transform: rotate(90deg)">view_comfy</i><span>{{__
-                ".spreadsheetList"}}</span>
+            <i class="material-icons link" style="{{#unless isPad}}transform: rotate(90deg){{/unless}}">{{#if isPad}}format_align_justify{{else}}view_comfy{{/if}}</i>
+            <span>{{#if isPad}}{{__ ".padList"}}{{else}}{{__ ".spreadsheetList"}}{{/if}}</span>
         </div>
     </div>
     <div class="collapsible-body transparent no-padding relative">
@@ -13,7 +13,7 @@
             <ul class="collection shadow ">
 
                 {{#each spreadsheet in spreadsheets}}
-                    {{>spreadsheetItem spreadsheet=spreadsheet}}
+                    {{>spreadsheetItem spreadsheet=spreadsheet isPad=isPad}}
                 {{/each}}
             </ul>
         {{else}}
@@ -24,7 +24,7 @@
             {{else}}
                 {{#unless showNewSpreadsheet}}
                     <div class="small-padding" style="margin-bottom: -40px">
-                        <p class="infoQuotes" style="margin: 5px;"><i>{{__ ".noSpreadsheet"}}</i></p>
+                        <p class="infoQuotes" style="margin: 5px;"><i>{{#if isPad}}{{__ ".noPad"}}{{else}}{{__ ".noSpreadsheet"}}{{/if}}</i></p>
                     </div>
                 {{/unless}}
             {{/if}}
@@ -34,7 +34,7 @@
                 <div class="input-field flex-auto small-padding small-margin">
                     <input id="newSpreadsheetName" type="text" required
                            class="validate no-margin">
-                    <label for="newSpreadsheetName">{{__ ".SpreadsheetName"}}</label>
+                    <label for="newSpreadsheetName">{{#if isPad}}{{__ ".PadName"}}{{else}}{{__ ".SpreadsheetName"}}{{/if}}</label>
                 </div>
                 <div class="">
                     <button href="" class="btn btn-floating waves-effect waves-light">
@@ -49,7 +49,7 @@
                 <a href="" class="btn btn-floating tooltipped waves-light waves-effect absolute newTopicBtn"
                    data-position="left"
                    data-delay="50"
-                   data-tooltip="{{__ ".newSpreadsheet"}}"
+                   data-tooltip="{{#if isPad}}{{__ ".newPad"}}{{else}}{{__ ".newSpreadsheet"}}{{/if}}"
                    style="{{#if isDesktop}}
                    opacity: 0;right: 55px;
                    {{else}}

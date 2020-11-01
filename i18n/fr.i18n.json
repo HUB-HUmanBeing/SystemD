@@ -792,7 +792,11 @@
     "noSpreadsheet" : "Aucun tableur",
     "newSpreadsheet": "Nouveau tableur",
     "showMore": "Voir plus",
-    "SpreadsheetName": "Nom du tableur"
+    "SpreadsheetName": "Nom du tableur",
+    "padList": "Textes",
+    "noPad" : "Aucun texte",
+    "newPad": "Nouveau texte",
+    "PadName": "Nom du texte"
 
   },
   "spreadsheetHeader": {

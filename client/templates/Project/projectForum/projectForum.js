@@ -70,6 +70,10 @@ Template.projectForum.helpers({
     isSpreadsheet: function () {
         FlowRouter.watchPathChange()
         return !!FlowRouter.current().queryParams.spreadsheetId
+    },
+    isPad: function () {
+        FlowRouter.watchPathChange()
+        return !!FlowRouter.current().queryParams.padId
     }
 });
 

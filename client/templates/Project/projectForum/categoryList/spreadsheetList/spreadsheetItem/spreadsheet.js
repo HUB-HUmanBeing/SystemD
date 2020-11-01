@@ -5,7 +5,12 @@ Template.spreadsheetItem.helpers({
     //add you helpers here
     isCurrentSpreadsheet: function () {
         FlowRouter.watchPathChange()
-        return Template.currentData().spreadsheet._id === FlowRouter.current().queryParams.spreadsheetId
+        if(Template.currentData().isPad){
+            return Template.currentData().spreadsheet._id === FlowRouter.current().queryParams.padId
+        }else{
+            return Template.currentData().spreadsheet._id === FlowRouter.current().queryParams.spreadsheetId
+        }
+
     },
 });
 
