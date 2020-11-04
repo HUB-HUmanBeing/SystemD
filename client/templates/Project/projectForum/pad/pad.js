@@ -40,7 +40,7 @@ Template.pad.onCreated(function () {
     this.currentPad = new ReactiveVar()
     this.isRefreshing = new ReactiveVar(true)
 
-    this.handlerSubscription = null
+
     this.pinnedPublication = new ReactiveVar(false)
     this.autorun(() => {
         this.currentPad.set(false)
@@ -51,7 +51,7 @@ Template.pad.onCreated(function () {
 
 
             let padId = FlowRouter.current().queryParams.padId
-            this.handlerSubscription = Meteor.subscribe("singlePad", projectController.getAuthInfo(FlowRouter.current().params.projectId), padId, err => {
+          Meteor.subscribe("singlePad", projectController.getAuthInfo(FlowRouter.current().params.projectId), padId, err => {
 
                 if (err) {
                     console.log(err)
@@ -63,12 +63,12 @@ Template.pad.onCreated(function () {
                        this.currentPad.set(false)
                    }
                         let encryptedPad = Pads.findOne({_id: padId})
-                        if(encryptedPad.currentEditor && encryptedPad.createdBy){
+
                             cryptoTools.decryptObject(encryptedPad, {symKey: Session.get("currentProjectSimKey")}, (pad) => {
                                 this.currentPad.set(pad)
                                 this.isRefreshing.set(false)
                             })
-                        }
+
 
                     })
                 }

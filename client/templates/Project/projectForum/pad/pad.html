@@ -4,9 +4,7 @@
 
             {{#if currentPad}}
                 {{>padHeader currentPad=currentPad refreshRender=refreshRender}}
-{{#if currentPad.currentEditor}}
-<!--                {{>padContent currentPad=currentPad}}-->
-    {{/if}}
+            {{>padContent currentPad=currentPad}}
             {{/if}}
 
         </div>

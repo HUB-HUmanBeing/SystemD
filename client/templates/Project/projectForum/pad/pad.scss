@@ -1,20 +1,58 @@
 @import "{}/client/scss/variables.scss";
 
-.padSubContainer{
-  position: relative;
-  #padEditorContainer{
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    top: 60px;
-    right:-10px;
-    border-radius: 50%;
-    z-index: 1000;
-    overflow: hidden;
-    border: 3px solid $blue-highlight-color;
-&:hover{
 
-}
+.padContentContainer{
+height: 100%;
+  flex:1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  #padContent{
+    flex:1;
+    height: 30vh !important;
+    .ql-editor{
+
+      &::-webkit-scrollbar {
+        width: 11px;
+        height: 11px;
+      }
+
+      &::-webkit-scrollbar-button {
+        width: 0px;
+        height: 0px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba($blue-highlight-color, 0.7);
+        border-radius: 50px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgba($blue-highlight-color, 0.8);
+      }
+
+      &::-webkit-scrollbar-thumb:active {
+        background: rgba($blue-highlight-color, 1);
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+
+        border-radius: 52px;
+      }
+
+     &::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+
+    }
   }
+}
+.padSubContainer{
+height: 100% !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
 }
 

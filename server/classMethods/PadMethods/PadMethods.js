@@ -13,15 +13,15 @@ Pad.extend({
          * @param PadParmas
          * @returns {void | null | undefined | *}
          */
-        newPad(authInfo, spreadsheetParmas) {
-            check(spreadsheetParmas, {
+        newPad(authInfo, padParmas) {
+            check(padParmas, {
                 projectId: String,
                 symEnc_name: String,
             })
             check(authInfo, {memberId: String, userSignature: String})
-            let currentProject = Project.findOne(spreadsheetParmas.projectId)
+            let currentProject = Project.findOne(padParmas.projectId)
             check(currentProject.isMember(authInfo), true)
-            let newPad = new Pad(spreadsheetParmas)
+            let newPad = new Pad(padParmas)
 
 
             newPad.createdBy = authInfo.memberId
@@ -39,72 +39,91 @@ Pad.extend({
         editName(authInfo, symEnc_name) {
             check(symEnc_name, String)
             check(authInfo, {memberId: String, userSignature: String})
-            let spreadsheet = Pad.findOne(this._id)
-            let currentProject = Project.findOne(spreadsheet.projectId)
-            check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && spreadsheet.createdBy === authInfo.memberId), true)
-            spreadsheet.symEnc_name = symEnc_name
-            spreadsheet.lastActivity = new Date()
-            return spreadsheet.save()
+            let pad = Pad.findOne(this._id)
+            let currentProject = Project.findOne(pad.projectId)
+            check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && pad.createdBy === authInfo.memberId), true)
+            pad.symEnc_name = symEnc_name
+            pad.lastActivity = new Date()
+            return pad.save()
         },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
-            let spreadsheet = Pad.findOne(this._id)
-            let currentProject = Project.findOne(spreadsheet.projectId)
-            check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && spreadsheet.createdBy === authInfo.memberId), true)
-            return spreadsheet.remove()
+            let pad = Pad.findOne(this._id)
+            let currentProject = Project.findOne(pad.projectId)
+            check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && pad.createdBy === authInfo.memberId), true)
+            return pad.remove((err) => {
+                if (!err) {
+                    currentProject.private.padCount--
+                    currentProject.save()
+                }
+            })
         },
-        setEditor(authInfo){
+        getContent(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
-            let spreadsheet = Pad.findOne(this._id)
-            let currentProject = Project.findOne(spreadsheet.projectId)
+            let pad = Pad.findOne(this._id)
+            let currentProject = Project.findOne(pad.projectId)
+            check((currentProject.isMember(authInfo)), true)
+            return pad.symEnc_content
+        },
+        saveCursor(authInfo, range){
+            check(authInfo, {memberId: String, userSignature: String})
+            check(range , String)
+
+            let pad = Pad.findOne(this._id)
+            let currentProject = Project.findOne(pad.projectId)
             check(currentProject.isMember(authInfo) , true)
-            spreadsheet.currentEditor ={
-                memberId: authInfo.memberId,
-                lastActivityAt: new Date()
+            let newCursor = {
+                range:range,
+                updatedAt: new Date(),
+                memberId: authInfo.memberId
             }
-            return spreadsheet.save()
+            let cursorFound =false
+            pad.cursors.forEach((cursor,i)=>{
+                if(cursor.memberId == newCursor.memberId){
+                    pad.cursors[i] = newCursor
+                    cursorFound = true
+                }
+            })
+            if(!cursorFound){
+                pad.cursors.push(newCursor)
+            }
+            return pad.save()
         },
-        quitEdition(authInfo){
+        saveDatas(authInfo, symEnc_content, symEnc_change, range){
+            check(symEnc_content , String)
+            check(symEnc_change , String)
+            check(range , String)
             check(authInfo, {memberId: String, userSignature: String})
-            let spreadsheet = Pad.findOne(this._id)
-            let currentProject = Project.findOne(spreadsheet.projectId)
+            let pad = Pad.findOne(this._id)
+            let currentProject = Project.findOne(pad.projectId)
             check(currentProject.isMember(authInfo) , true)
-            spreadsheet.currentEditor ={}
-            return spreadsheet.save()
+            pad.lastActivity = new Date()
+            pad.symEnc_content= symEnc_content
+            let change = {
+                symEnc_change:symEnc_change,
+                createdAt: new Date(),
+                createdBy: authInfo.memberId
+            }
+            let newCursor = {
+                range:range,
+                updatedAt: new Date(),
+                memberId: authInfo.memberId
+            }
+            let cursorFound =false
+            pad.cursors.forEach((cursor,i)=>{
+                if(cursor.memberId == newCursor.memberId){
+                    pad.cursors[i] = newCursor
+                    cursorFound = true
+                }
+            })
+            if(!cursorFound){
+                    pad.cursors.push(newCursor)
+            }
+            pad.changes.push(change)
+            if(pad.changes.length>10){
+                pad.changes.splice(0, 1)
+            }
+            return pad.save()
         },
-        saveDatas(authInfo, symEnc_datas){
-            check(symEnc_datas , String)
-            check(authInfo, {memberId: String, userSignature: String})
-            let spreadsheet = Pad.findOne(this._id)
-            let currentProject = Project.findOne(spreadsheet.projectId)
-            check(currentProject.isMember(authInfo) , true)
-            spreadsheet.lastActivity = new Date()
-            spreadsheet.content.symEnc_datas = symEnc_datas
-            return spreadsheet.save()
-        },
-        saveColumns(authInfo, symEnc_datas, columns, style){
-            check(columns , String)
-            check(style , String)
-            check(symEnc_datas , String)
-            check(authInfo, {memberId: String, userSignature: String})
-            let spreadsheet = Pad.findOne(this._id)
-            let currentProject = Project.findOne(spreadsheet.projectId)
-            check(currentProject.isMember(authInfo) , true)
-            spreadsheet.lastActivity = new Date()
-            spreadsheet.content.symEnc_datas = symEnc_datas
-            spreadsheet.content.style = style
-            spreadsheet.content.columns = columns
-            return spreadsheet.save()
-        },
-        saveStyles(authInfo, style){
-            check(style , String)
-            check(authInfo, {memberId: String, userSignature: String})
-            let spreadsheet = Pad.findOne(this._id)
-            let currentProject = Project.findOne(spreadsheet.projectId)
-            check(currentProject.isMember(authInfo) , true)
-            spreadsheet.lastActivity = new Date()
-            spreadsheet.content.style = style
-            return spreadsheet.save()
-        }
     }
 })

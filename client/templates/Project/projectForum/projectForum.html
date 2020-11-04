@@ -6,10 +6,10 @@
             <div class="blurTop"></div>
         {{/if}}
         <div class="forumContainer col s12 flex   {{#if
-                isDesktop}}full-height relative {{/if}} main-color no-padding ">
+                isDesktop}}full-height relative {{/if}}  no-padding ">
             {{#if showCategories}}
 
-                <div id="categoryListContainer" class="beautify-scroll-container"
+                <div id="categoryListContainer" class="beautify-scroll-container main-color"
                      style="{{#if isDesktop}}
                      height:  100vh ;width: 22em;padding: 40px 0 250px 0;
                      {{else}}
@@ -23,7 +23,8 @@
                 </div>
             {{/if}}
             {{#if showFiles}}
-                <div id="topicContainer" class="flex-auto  topicContainer uploadFileZone  sexyScrollbar center-align "
+                <div id="topicContainer"
+                     class="flex-auto main-color topicContainer uploadFileZone  sexyScrollbar center-align "
                      style="{{#if isDesktop}}
                      height:  100vh ;
                              padding: 40px 0 300px 0;
@@ -41,11 +42,13 @@
             {{else}}
 
                 {{#if showTopic}}
-                    <div id="topicContainer" class="flex-auto  center-align {{#if
-                            isSpreadsheet}} full-height spreadsheetContainer beautify-scroll-container{{else}} topicContainer sexyScrollbar{{/if}}"
+                    <div id="topicContainer"
+                         class="flex-auto  center-align {{#unless isPad}} main-color{{/unless}} {{#if compare
+                                                                                                      isSpreadsheet "||"
+                                                                                                      isPad}} full-height spreadsheetContainer beautify-scroll-container{{else}} topicContainer sexyScrollbar{{/if}}"
                          style="{{#if isDesktop}}
                          height:  100vh ;
-                             {{#if isSpreadsheet}}
+                             {{#if compare isSpreadsheet "||" isPad}}
 
                              padding: 40px 0 0px 0;
                              {{else}}
@@ -53,7 +56,7 @@
                              {{/if}}
                          {{else}}
 
-                             {{#if isSpreadsheet}}
+                             {{#if compare isSpreadsheet "||" isPad}}
                              height:  calc(100vh + 30px) !important;
                                      padding: 40px 0 0px 0;
                              {{else}}
@@ -65,7 +68,8 @@
 
                          {{/if}}"
                     >
-                        <div class="topicSubContainer center-align {{#if isSpreadsheet}} full-height {{/if}}">
+                        <div class="topicSubContainer center-align {{#if compare isSpreadsheet "||"
+                                                                         isPad}} full-height {{/if}}">
                             {{#if isSpreadsheet}}
                                 {{>spreadsheet refreshScrollbar=refreshScrollbar}}
                             {{else}}
@@ -82,7 +86,9 @@
             {{/if}}
         </div>
         {{#if compare isDesktop "&!" isSpreadsheet}}
-            <div class="blurBottom"></div>
+            {{#if compare isDesktop "&!" isPad}}
+                <div class="blurBottom"></div>
+            {{/if}}
         {{/if}}
     </div>
 </template>

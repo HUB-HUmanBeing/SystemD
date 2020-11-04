@@ -1,38 +1,39 @@
 import {Class} from 'meteor/jagi:astronomy';
 import Pads from "../../lib/collections/Pads";
-const CurrentPadEditor = Class.create({
-    name: 'CurrentPadEditor',
+
+
+const Padchange = Class.create({
+    name: 'Padchange',
     fields:{
-        memberId: {
-            type:String,
-            optional: true,
+        symEnc_change: {
+            type:String
         },
-        lastActivityAt:{
-            type:Date,
-            optional: true,
-        }
+        createdAt:{
+            type: Date,
+            default: function () {
+                return new Date()
+            }
+        },
+        createdBy: {
+            type:String
+        },
     }
 })
-const PadsContent = Class.create({
-    name: 'PadsContent',
+const Cursor = Class.create({
+    name: 'Cursor',
     fields:{
-        symEnc_datas: {
-            type:String,
-            optional: true,
+        range: {
+            type: String
         },
-        columns:{
-            type:String,
+        updatedAt:{
+            type: Date,
             default: function () {
-                return "[]"
+                return new Date()
             }
         },
-        style:{
-            type:String,
-            default: function () {
-                return "{}"
-            }
+        memberId: {
+            type:String
         },
-
     }
 })
 
@@ -57,16 +58,20 @@ const Pad = Class.create({
             },
             index:-1
         },
-        currentEditor:{
-            type: CurrentPadEditor,
+        symEnc_content: {
+            type:String,
+            optional: true,
+        },
+        changes: {
+            type: [Padchange],
             default: function () {
-                return {};
+                return [];
             }
         },
-        content:{
-            type:PadsContent,
+        cursors: {
+            type: [Cursor],
             default: function () {
-                return {};
+                return [];
             }
         }
     },

@@ -85,7 +85,7 @@ Template.spreadsheetList.events({
     },
     'click [showMore]': function (event, instance) {
         event.preventDefault()
-        instance.spreadsheetsLimit.set(instance.spreadsheetsLimit.get() + 5)
+        instance.spreadsheetsLimit.set(instance.spreadsheetsLimit.get() + 30)
     }
 });
 
@@ -97,7 +97,7 @@ Template.spreadsheetList.onCreated(function () {
     this.spreadsheets = new ReactiveVar([])
     this.isLoading = new ReactiveVar(true)
     this.isCreating = new ReactiveVar(false)
-    this.spreadsheetsLimit = new ReactiveVar(5)
+    this.spreadsheetsLimit = new ReactiveVar(3)
 
     this.autorun(() => {
     FlowRouter.watchPathChange()

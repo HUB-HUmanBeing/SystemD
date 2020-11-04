@@ -422,7 +422,16 @@ Meteor.publish('pads', function (authInfo, projectId,  limit) {
 Meteor.publish('singlePad', function (authInfo, padId) {
 
     check(padId, String)
-    let PadCursor = Pads.find({_id: padId})
+    let PadCursor = Pads.find({_id: padId},{
+        fields: {
+            _id: 1,
+            symEnc_name: 1,
+            lastActivity: 1,
+            projectId:1,
+changes:1,
+            cursors:1
+        }
+    })
     check(authInfo, {memberId: String, userSignature: String})
 
     if(PadCursor.fetch()[0]){
