@@ -33,7 +33,7 @@ Template.showFileContent.helpers({
 
 Template.showFileContent.events({
     //add your events here
-    'click [focusFile]': function (event, instance) {
+    'click .focusFile': function (event, instance) {
         event.preventDefault()
         let index =  event.currentTarget.id.split('-')[1]
         instance.focusedFile.set(instance.files.get()[index])

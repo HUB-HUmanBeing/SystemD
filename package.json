@@ -46,6 +46,7 @@
     "papaparse": "^5.3.0",
     "qrious": "^4.0.2",
     "secure-random-password": "^0.1.0",
+    "selectable.js": "^0.17.8",
     "string-to-arraybuffer": "^1.0.2",
     "svg-captcha": "^1.4.0",
     "web-push": "^3.4.4",
