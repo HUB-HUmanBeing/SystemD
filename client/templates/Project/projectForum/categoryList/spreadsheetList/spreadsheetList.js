@@ -77,7 +77,6 @@ Template.spreadsheetList.events({
                     }, 200)
                     instance.showNewSpreadsheet.set(false)
                     instance.isCreating.set(false)
-                  console.log(res)
                     FlowRouter.go('/project/' + currentProjectId + '/forum/?'+(instance.data.isPad? "padId" :"spreadsheetId")+'=' + res)
                 }
             })

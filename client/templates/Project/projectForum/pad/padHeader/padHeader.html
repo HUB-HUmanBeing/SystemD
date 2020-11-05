@@ -32,7 +32,60 @@
                         {{__ ".lastEdit"}} : {{formatDate currentPad.lastActivity}}
 
                     </div>
+                    <div class="relative" style="width: 40px; margin-right: 5px">
+                        <div class="fixed-action-btn  horizontal absolute categorySettings downloadPad">
+                            <a class="btn-floating tooltipped waves-light waves-effect"
+                               data-position="bottom"
+                               data-delay="50" data-tooltip="{{__ ".otherEditors"}}">
+                                <i class="material-icons">file_download</i>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a class="btn-floating tooltipped waves-light waves-effect"
+                                       data-position="bottom"
+                                       data-delay="50" data-tooltip="{{__ ".pdf"}}"
+                                       downloadPdf
+                                    >
+                                        PDF
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn-floating tooltipped waves-light waves-effect"
+                                       data-position="bottom"
+                                       data-delay="50" data-tooltip="{{__ ".docx"}}"
+                                       downloadDocx
+                                    >
+                                        DOCX
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{#if cursors }}
+                        <div class="relative" style="width: 40px; margin-right: 5px">
+                            <div class="fixed-action-btn  horizontal absolute categorySettings">
+                                <a class="btn-floating tooltipped waves-light waves-effect"
+                                   data-position="bottom"
+                                   data-delay="50" data-tooltip="{{__ ".otherEditors"}}">
+                                    <i class="material-icons">{{#if compare cursors.length ">" 1}}
+                                        group{{else}}person{{/if}}</i>
+                                </a>
+                                <ul>
+                                    {{#each cursor in cursors}}
+                                        <li>
+                                            <a class="btn-floating tooltipped waves-light waves-effect"
+                                               data-position="bottom"
+                                               data-delay="50" data-tooltip="{{cursor.name}}"
+                                               style="border: 4px solid {{cursor.color}}">
+                                                {{>avatar userId=(userIdFromMemberId cursor.id)}}
 
+                                            </a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    {{/if}}
                     {{#if isEditable}}
                         <div class="relative" style="width: 40px; margin-right: 5px">
                             <div class="fixed-action-btn  horizontal absolute categorySettings">

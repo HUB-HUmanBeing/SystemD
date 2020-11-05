@@ -2,6 +2,7 @@ import cryptoTools from "../../../../../lib/cryptoTools";
 import projectController from "../../../../../lib/controllers/projectController";
 import Pad from "/imports/classes/Pad";
 import Papa from "papaparse"
+import padController from "../../../../../lib/controllers/padController";
 
 Template.padHeader.helpers({
     //add you helpers here
@@ -80,7 +81,14 @@ Template.padHeader.events({
             }
         })
     },
-
+'click [downloadPdf]' : function (event, instance) {
+    event.preventDefault()
+    padController.download("pdf", instance.data.currentPad.symEnc_name)
+},
+'click [downloadDocx]' : function (event, instance) {
+    event.preventDefault()
+    padController.download("docx",  instance.data.currentPad.symEnc_name)
+}
 });
 
 Template.padHeader.onCreated(function () {

@@ -2,6 +2,23 @@ import padController from "../../../../../lib/controllers/padController";
 
 Template.padContent.helpers({
     //add you helpers here
+    saveSatus: function (){
+        let needToSave = Template.currentData().needToSave
+        Meteor.setTimeout(()=>{
+            resetTooltips()
+        },100)
+        if(needToSave){
+            Template.instance().saved = true
+            return "saving"
+
+        }else{
+            if(Template.instance().saved == true){
+                return "saved"
+            }else{
+                return false
+            }
+        }
+    }
 });
 
 Template.padContent.events({
@@ -15,9 +32,10 @@ Template.padContent.onCreated(function () {
 
 Template.padContent.onRendered(function () {
     //add your statement here
+    this.saved = false
     this.padController.initialize(
         FlowRouter.current().queryParams.padId,
-        this
+        this.data.padInstance
     )
     this.pad = this.padController.pad
 });

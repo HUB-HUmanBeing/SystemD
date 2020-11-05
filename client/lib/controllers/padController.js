@@ -4,6 +4,9 @@ import projectController from "./projectController";
 import Pad from "../../../imports/classes/Pad";
 import Pads from "../../../lib/collections/Pads";
 import QuillCursors from 'quill-cursors';
+import MagicUrl from 'quill-magic-url';
+import 'quill-paste-smart';
+import {QuillDeltaToHtmlConverter} from 'quill-delta-to-html';
 
 let Delta = Quill.import('delta');
 let padController = {
@@ -15,36 +18,30 @@ let padController = {
         "#e9d074",
         "#8f4848",
     ],
-    toolbarOptions: [
-        ['bold', 'italic', 'underline', 'strike'],
-        ['blockquote', 'code-block'],
-
-        [{'header': 1}, {'header': 2}],
-        [{'list': 'ordered'}, {'list': 'bullet'}],
-        [{'script': 'sub'}, {'script': 'super'}],
-        [{'indent': '-1'}, {'indent': '+1'}],
-        [{'direction': 'rtl'}],
-
-        [{'size': ['small', false, 'large', 'huge']}],
-        [{'header': [1, 2, 3, 4, 5, 6, false]}],
-
-        [{'color': []}, {'background': []}],
-        [{'font': []}],
-        [{'align': []}],
-
-        ['clean']
-    ],
     options: {
         debug: 'warn',
         modules: {
+            clipboard: {
+                allowed: {
+                    tags: ['a', 'b', 'strong', 'u', 's', 'i', 'p', 'br', 'ul', 'ol', 'li', 'span'],
+                    attributes: ['href', 'rel', 'target', 'class']
+                },
+                keepSelection: true,
+            },
             cursors: {
                 transformOnTextChange: true,
             },
+            history: {
+                delay: 1000,
+                maxStack: 500,
+                userOnly: true
+            },
+            magicUrl: true,
             'toolbar': [
                 [{'font': []}, {'size': []}],
                 ['bold', 'italic', 'underline', 'strike'],
                 [{'color': []}, {'background': []}],
-                ['blockquote', 'code-block', 'link'],
+                ['blockquote', 'code-block'],
                 [{'list': 'ordered'}, {'list': 'bullet'}],
                 [{align: ''}, {align: 'center'}, {align: 'right'}, {align: 'justify'}],
             ]
@@ -54,11 +51,12 @@ let padController = {
         theme: 'snow'
     },
     initialize(padId, instance) {
+        Quill.register('modules/magicUrl', MagicUrl);
         Quill.register('modules/cursors', QuillCursors);
         this.editor = new Quill('#padContent', this.options);
         this.cursors = this.editor.getModule('cursors');
         this.editor.disable()
-this.lastSaveDuration = 1000
+        this.lastSaveDuration = 1000
         this.currentPad = Pad.findOne(padId)
         this.uploadVersionDate = this.currentPad.lastActivity
         this.memberId = projectController.getAuthInfo(FlowRouter.current().params.projectId).memberId
@@ -70,14 +68,16 @@ this.lastSaveDuration = 1000
             this.editor.focus()
         })
     },
-    getMemberName(memberId) {
+    getMember(memberId) {
         let requiredMember
-        Session.get("currentProjectMembers").forEach((member) => {
+        let allMembers = Session.get("currentProjectMembers")
+        allMembers.forEach((member, i) => {
             if (member.memberId === memberId) {
                 requiredMember = member
+                requiredMember.color = "hsla(" + Math.floor((i / allMembers.length) * 360) + ", 53%, 50%, 1)"
             }
         })
-        return requiredMember.symEnc_username;
+        return requiredMember
     },
     startApiChangeListener(padId, instance) {
 
@@ -87,14 +87,14 @@ this.lastSaveDuration = 1000
                 if (change.createdBy != this.memberId && change.createdAt > this.uploadVersionDate) {
                     this.uploadVersionDate = change.createdAt
                     cryptoTools.sim_decrypt_data(change.symEnc_change, Session.get("currentProjectSimKey"), decryptedContent => {
-                        let delta = new Delta(JSON.parse(decryptedContent))
+                        let delta = new Delta(JSON.parse(this.preparseJson(decryptedContent)))
                         this.editor.updateContents(delta, "silent")
                     })
                 }
             })
             pad.cursors.forEach(cursor => {
                 if (cursor.memberId != this.memberId &&
-                    Date.now() - cursor.updatedAt < 10000) {
+                    Date.now() - cursor.updatedAt < 2 * 60000) {
                     let found = false
                     this.cursors.cursors().forEach(existingCursor => {
                         if (existingCursor.id == cursor.memberId) {
@@ -102,16 +102,25 @@ this.lastSaveDuration = 1000
                         }
                     })
                     if (!found) {
+                        let member = this.getMember(cursor.memberId)
                         this.cursors.createCursor(
                             cursor.memberId,
-                            this.getMemberName(cursor.memberId),
-                            this.cursorColors[this.cursors.cursors().length % 6])
+                            member.symEnc_username,
+                            member.color)
                     }
-                    this.cursors.moveCursor(cursor.memberId, JSON.parse(cursor.range))
+                    Meteor.setTimeout(() => {
+                        this.cursors.moveCursor(cursor.memberId, JSON.parse(cursor.range))
+                        instance.cursors.set(this.cursors.cursors())
+                    }, 100)
+
                 }
             })
         })
     },
+    preparseJson(input) {
+        return input
+    },
+
     getContent(cb) {
         this.currentPad.callMethod("getContent", projectController.getAuthInfo(FlowRouter.current().params.projectId), (err, res) => {
             if (err) {
@@ -119,8 +128,8 @@ this.lastSaveDuration = 1000
             } else {
                 if (res) {
                     cryptoTools.sim_decrypt_data(res, Session.get("currentProjectSimKey"), decryptedContent => {
-                        let delta = new Delta(JSON.parse(decryptedContent))
-                        this.editor.updateContents(delta)
+                        let delta = new Delta(JSON.parse(this.preparseJson(decryptedContent)))
+                        this.editor.setContents(delta)
                         cb()
                     })
                 } else {
@@ -135,24 +144,23 @@ this.lastSaveDuration = 1000
         this.change = new Delta();
         this.editor.on('text-change', (delta, oldContents, source) => {
             this.change = this.change.compose(delta);
+            if (this.change.length() > 0) {
+                instance.needToSave.set(true)
+            }
         });
 
 // Save periodically
         Meteor.setInterval(() => {
             if (this.change.length() > 0) {
-                const data = JSON.stringify(this.editor.getContents())
-                localStorage.setItem('storedText', data);
-
-                let content = this.editor.getContents()
+                let content = JSON.stringify(this.editor.getContents())
                 this.saveContent(
-                    JSON.stringify(content),
+                    content,
                     JSON.stringify(this.change),
                     this.editor.getSelection(),
                     padId,
                     instance)
-                this.change = new Delta();
             }
-        },  1000 + this.lastSaveDuration);
+        }, 1000 + this.lastSaveDuration);
 
 // Check for unsaved data
         window.onbeforeunload = function () {
@@ -171,19 +179,59 @@ this.lastSaveDuration = 1000
         })
     },
     saveContent(content, change, range, padId, instance) {
-let start = Date.now()
-        cryptoTools.sim_encrypt_data(change, Session.get("currentProjectSimKey"), (symEnc_change) => {
-            cryptoTools.sim_encrypt_data(content, Session.get("currentProjectSimKey"), (symEnc_content) => {
-                this.currentPad.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_content, symEnc_change, JSON.stringify(range), (err, res) => {
-                    if (err) {
-                        console.log(err)
-                    }else{
-                        this.lastSaveDuration = Date.now() - start
-                    }
-                })
+        let start = Date.now()
+        cryptoTools.sim_encrypt_data(content, Session.get("currentProjectSimKey"), (symEnc_content) => {
+
+            cryptoTools.sim_decrypt_data(symEnc_content, Session.get("currentProjectSimKey"), (transformed) => {
+                try {
+                    let parsable = JSON.parse(transformed)
+                    cryptoTools.sim_encrypt_data(change, Session.get("currentProjectSimKey"), (symEnc_change) => {
+                        this.currentPad.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_content, symEnc_change, JSON.stringify(range), (err, res) => {
+                            if (err) {
+                                console.log(err)
+                            } else {
+                                instance.needToSave.set(false)
+                                this.lastSaveDuration = Date.now() - start
+                                this.change = new Delta();
+                            }
+                        })
+                    })
+                } catch (e) {
+                    this.editor.disable()
+                    Materialize.toast(__('pad.errorSave'), 6000, 'toastError')
+                    this.getContent(() => {
+                        this.editor.enable()
+                    })
+                    this.change = new Delta();
+                }
+
             })
+
+
         })
-    }
+    },
+    download(format, name) {
+        let deltaOps = this.editor.getContents().ops;
+        let converter = new QuillDeltaToHtmlConverter(deltaOps, {inlineStyles: true});
+        let html = converter.convert();
+        this.currentPad.callMethod(format == "pdf" ?"getPdfBlob" :"getDocxBlob" , html, (err, res) => {
+            if (err) {
+                Materialize.toast(__('pad.errorDownload'), 6000, 'toastError')
+                console.log(err)
+            } else {
+                let a = document.createElement("a");
+                document.body.appendChild(a);
+                a.style = "display: none";
+                let blob = new Blob([res], {type: format == "pdf" ?"application/pdf" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document"})
+                let url = window.URL.createObjectURL(blob);
+                a.href = url;
+                a.download = name+(format == "pdf" ?".pdf":".docx");
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        })
+
+    },
 }
 
 

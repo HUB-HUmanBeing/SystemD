@@ -2,10 +2,8 @@ import projectController from "../../../../lib/controllers/projectController";
 import cryptoTools from "../../../../lib/cryptoTools";
 import Pad from "/imports/classes/Pad";
 import Project from "../../../../../imports/classes/Project";
-import Publications from "../../../../../lib/collections/Publications";
-import Publication from "../../../../../imports/classes/Publication"
-    import jexcel from "jexcel";
 import Pads from "../../../../../lib/collections/Pads";
+import 'quill-paste-smart';
 
 Template.pad.helpers({
     //add you helpers here
@@ -14,6 +12,15 @@ Template.pad.helpers({
     },
     isRefreshing: function () {
         return Template.instance().isRefreshing.get()
+    },
+    needToSave: function () {
+        return Template.instance().needToSave.get()
+    },
+    cursors: function () {
+        Meteor.setTimeout(() => {
+            resetTooltips()
+        }, 200)
+        return Template.instance().cursors.get()
     },
     refreshScrollbar: function () {
         return Template.currentData().refreshScrollbar
@@ -27,6 +34,9 @@ Template.pad.helpers({
                 instance.currentPad.set(currentPad)
             },500)
         }
+    },
+    padInstance: function (){
+        return Template.instance()
     }
 
 });
@@ -38,6 +48,8 @@ Template.pad.events({
 Template.pad.onCreated(function () {
     //add your statement here
     this.currentPad = new ReactiveVar()
+    this.needToSave = new ReactiveVar(false)
+    this.cursors = new ReactiveVar([])
     this.isRefreshing = new ReactiveVar(true)
 
 

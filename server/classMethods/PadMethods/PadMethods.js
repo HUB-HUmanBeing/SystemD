@@ -125,5 +125,33 @@ Pad.extend({
             }
             return pad.save()
         },
+        async getPdfBlob(html){
+            check(html,  String)
+            const html_to_pdf = require('html-pdf-node');
+
+            let options = { format: 'A4' , margin:{
+                    top:70,
+                    right:50,
+                    bottom :70,
+                    left:50,
+                }
+                };
+            let file = { content: html };
+            let pdf = await html_to_pdf.generatePdf(file, options)
+            return pdf
+        } ,
+        async getDocxBlob(html){
+            check(html,  String)
+            const HTMLtoDOCX = require('html-to-docx');
+            let docx = await HTMLtoDOCX(`<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+    </head>
+    <body>`+ html + `</body>
+</html>`, null, {})
+            return docx
+        }
     }
 })
