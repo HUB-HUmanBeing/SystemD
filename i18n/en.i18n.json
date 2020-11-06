@@ -435,12 +435,12 @@
     "enlableNotifications": "Notifications are disabled on this folder, click to enable.",
     "abort": "Cancel",
     "showMore": "Show more Topics",
-    "newTopic": "Nouveau fil de discussion",
+    "newTopic": "New topic",
     "noTopics": "This folder is empty",
     "notifEnabled": "You will now receive notifications for all topics in this folder.",
     "notifDisabled": "Notifications are now disabled for all topics in this folder.",
     "topicName": "Topic name",
-    "chooseType": "Ajouter ..."
+    "chooseType": "Add..."
   },
   "topic": {
     "downloadAndDecrypt": "Downloading and decrypting file..."
@@ -449,7 +449,7 @@
     "unseenPublications": "New publications",
     "dragInfo": "You can move this topic in another category",
     "mainTopic": "MAIN TOPIC",
-    "topic": "fil de discussion"
+    "topic": "Topic"
   },
   "topicHeader": {
     "mainTopic": "Main topic",
@@ -709,10 +709,10 @@
     "onMap": "Map position :",
     "showOnMap": "See on map",
     "placeholderActivityDetail": "Activity description",
-    "onAgenda": "Placé sur l'agenda :",
-    "start": "Début ",
-    "end": "Fin ",
-    "duration": "Durée "
+    "onAgenda": "Set on calendar :",
+    "start": "Beginning ",
+    "end": "End ",
+    "duration": "Duration "
   },
   "weekDays": {
     "day0": "Sunday",
@@ -794,14 +794,14 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Spreadsheets",
-    "noSpreadsheet": "Dossier vide",
+    "noSpreadsheet": "Empty folder",
     "newSpreadsheet": "New spreadsheet",
     "showMore": "See more",
     "SpreadsheetName": "Spreadsheet name",
-    "padList": "Textes",
-    "noPad": "Dossier vide",
-    "newPad": "Nouveau texte",
-    "PadName": "Nom du texte"
+    "padList": "Texts",
+    "noPad": "Empty folder",
+    "newPad": "New text",
+    "PadName": "Text Name"
   },
   "spreadsheetHeader": {
     "spreadsheetName": "Spreadsheet name",
@@ -819,8 +819,8 @@
     "searchInTable": "Search in spreadsheet"
   },
   "spreadsheetItem": {
-    "pad": "Texte collaboratif",
-    "spreadsheet": "Tableur collaboratif"
+    "pad": "Collaborative text",
+    "spreadsheet": "Collaborative spreadsheet"
   },
   "spreadsheet": {
     "noRecordsFound": "Nothing to show",
@@ -871,22 +871,22 @@
     "noEventsMessage": "No events to show."
   },
   "padContent": {
-    "saved": "Texte enregistré"
+    "saved": "Text saved"
   },
   "padHeader": {
-    "padName": "Nom du texte",
-    "lastEdit": "Derniere édition",
-    "otherEditors": "Autres participants",
-    "download": "Télécharger...",
-    "pdf": "Télécharger au format pdf",
-    "docx": "Télécharger au format docx",
-    "delete": "Supprimer",
-    "edit": "Editer le nom du texte",
-    "abort": "Annuler",
-    "deleteInfo": "Ce texte sera supprimé ainsi que tout son contenu."
+    "padName": "Text Name",
+    "lastEdit": "Last edit",
+    "otherEditors": "Other participants",
+    "download": "Download...",
+    "pdf": "Download as PDF",
+    "docx": "Save as DOCX",
+    "delete": "Delete",
+    "edit": "Edit text name",
+    "abort": "Cancel",
+    "deleteInfo": "This text will be deleted along with all its contents."
   },
   "pad": {
-    "errorPaste": "Le texte contient des caractères qui ne peuvent être enregistrés.",
-    "errorDownload": "Une erreur est survenue et votre texte ne peut être téléchargé sous ce format."
+    "errorPaste": "The text contains characters that cannot be saved.",
+    "errorDownload": "An error occurred and your text cannot be downloaded in this format."
   }
 }
