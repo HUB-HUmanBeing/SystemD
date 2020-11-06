@@ -8,6 +8,7 @@ import mapController from "../../../../lib/controllers/mapController";
 import iconMarker from "../../../../lib/controllers/markers/iconMarker";
 import activityMarker from "../../../../lib/controllers/markers/activityMarker";
 import preFormatMessage from "../../../../lib/preformatMessages";
+import moment from "../../../../lib/i18nMoment";
 
 Template.activityDetail.helpers({
     //add you helpers here
@@ -138,6 +139,15 @@ Template.activityDetail.helpers({
     },
     showGoto: function () {
         return FlowRouter.current().route.name === "project-maps"
+    },
+    duration: function (){
+        let activity = Template.instance().activity.get()
+
+        let start = moment(activity.start); // some random moment in time (in ms)
+        let end = moment(activity.end); // some random moment after start (in ms)
+        let diff = end.diff(start);
+// execution
+        return moment.utc(diff).format("hh : mm" );
     }
 });
 
@@ -152,7 +162,7 @@ Template.activityDetail.events({
         event.preventDefault()
         let params = {
             symEnc_title: $('#activityTitle').val(),
-            symEnc_detail: preFormatMessage($('#editActivityDetail').val())
+            symEnc_detail: $('#editActivityDetail').val()? preFormatMessage($('#editActivityDetail').val()) : ""
         }
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)
@@ -251,6 +261,33 @@ Template.activityDetail.events({
         } else {
             Session.set("activityToPositionate", {activity: activity, from: FlowRouter.current().route.name})
             FlowRouter.go("/project/" + activity.projectId + "/maps")
+        }
+    },
+    'change [agendaSwitch]': function (event, instance) {
+
+        let activityId = FlowRouter.current().queryParams.activityId
+        let activity = Activity.findOne(activityId)
+        if (activity.start) {
+            Session.set("draggedTaskItem", null)
+            activity.callMethod(
+                "changeList",
+                projectController.getAuthInfo(FlowRouter.current().params.projectId),
+                "todo",
+                (err, res) => {
+                    if (err) {
+
+                        console.log(err)
+                    }else{
+                        if((FlowRouter.current().route.name === "project-calendar")){
+                            FlowRouter.go('/project/' + activity.projectId + "/calendar")
+                        }
+                    }
+                }
+            )
+        } else {
+            Session.set("waitingActivity", activity)
+            FlowRouter.go('/project/' + activity.projectId + "/calendar")
+            Materialize.toast(__('projectCalendar.setActivityInfo'), 6000, 'toastOk')
         }
     },
     'click [moveMarker]': function (event, instance) {

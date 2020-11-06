@@ -1,0 +1,19 @@
+@import "{}/client/scss/variables.scss";
+
+#padHeader{
+  position: relative;;
+  .lastEdit{
+    position: absolute;
+bottom: -14px;
+    left:50px;
+    font-size: 0.9em;
+    font-style: italic;
+    color: $minus-color
+  }
+  .downloadPad{
+    a{
+      font-size: 12px !important;
+      text-align: center;
+    }
+  }
+}

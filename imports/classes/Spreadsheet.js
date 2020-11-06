@@ -50,6 +50,11 @@ const Spreadsheet = Class.create({
         symEnc_name: {
             type:String
         },
+        categoryId: {
+            type: String,
+            optional: true,
+            index: 1
+        },
         lastActivity:{
             type: Date,
             default: function () {

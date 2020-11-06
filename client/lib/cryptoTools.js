@@ -468,8 +468,7 @@ let dataB64 = this.convertStringToArrayBufferView(data)
 
         }
         return decryptedElement
-    }
-    ,
+    },
     /***************
      * fonction permettant de dechiffrer tout les couples clef valeur d'un objet suivant les prefixes des clefs
      * @param object ---l'objet a deciffrer

@@ -1,0 +1,29 @@
+<template name="padContent">
+    <div class="padContentContainer">
+        {{#if saveSatus}}
+            <a class="btn-floating saveIndicator ">
+                {{#if compare saveSatus "==" "saved"}}
+<i class="material-icons tooltipped" data-position="left"
+   data-delay="50" data-tooltip="{{__ ".saved"}}" >save</i>
+                {{else}}
+                    <div class="preloader-wrapper small active">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+            </a>
+        {{/if}}
+        <div id="padContent"></div>
+    </div>
+
+
+</template>
