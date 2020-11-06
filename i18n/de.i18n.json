@@ -435,11 +435,12 @@
     "enlableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen deaktiviert, klicken Sie diese an, um sie zu reaktivieren.",
     "abort": "Abbrechen",
     "showMore": "Mehr anzeigen",
-    "newTopic": "Ein neues Thema beginnen",
+    "newTopic": "Nouveau fil de discussion",
     "noTopics": "Dieses Verzeichnis ist leer",
     "notifEnabled": "Sie erhalten nun Benachrichtigungen für alle Diskussionen in diesem Verzeichnis",
     "notifDisabled": "Die Benachrichtigungen wurden für alle Threads in diesem Verzeichnis deaktiviert",
-    "topicName": "Titel des Themas"
+    "topicName": "Titel des Themas",
+    "chooseType": "Ajouter ..."
   },
   "topic": {
     "downloadAndDecrypt": "Herunterladen und Entschlüsseln der aktuellen Datei"
@@ -447,7 +448,8 @@
   "topicItem": {
     "unseenPublications": "Neue Beiträge",
     "dragInfo": "Sie können diese Diskussion in eine andere Kategorie verschieben.",
-    "mainTopic": "HAUPTTHEMA"
+    "mainTopic": "HAUPTTHEMA",
+    "topic": "fil de discussion"
   },
   "topicHeader": {
     "mainTopic": "Hauptthema",
@@ -706,7 +708,11 @@
     "inviteMember": "Mitglieder zur Teilnahme an der Aktivität einladen",
     "onMap": "Lage auf der Karte:",
     "showOnMap": "Anzeigen",
-    "placeholderActivityDetail": "Beschreibung der Aktivität..."
+    "placeholderActivityDetail": "Beschreibung der Aktivität...",
+    "onAgenda": "Placé sur l'agenda :",
+    "start": "Début ",
+    "end": "Fin ",
+    "duration": "Durée "
   },
   "weekDays": {
     "day0": "Sonntag",
@@ -788,10 +794,14 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Tabellenblätter",
-    "noSpreadsheet": "Kein Tabellenblatt",
+    "noSpreadsheet": "Dossier vide",
     "newSpreadsheet": "Tabellenblatt hinzufügen",
     "showMore": "Mehr anzeigen",
-    "SpreadsheetName": "Name des Tabellenblatts"
+    "SpreadsheetName": "Name des Tabellenblatts",
+    "padList": "Textes",
+    "noPad": "Dossier vide",
+    "newPad": "Nouveau texte",
+    "PadName": "Nom du texte"
   },
   "spreadsheetHeader": {
     "spreadsheetName": "Name des Tabellenblatts",
@@ -807,6 +817,10 @@
     "fileUpload": "Importieren einer CSV-Datei",
     "onlyCsvError": "Die hochgeladene Datei hat kein gültiges CSV-Format",
     "searchInTable": "Suche in der Tabelle"
+  },
+  "spreadsheetItem": {
+    "pad": "Texte collaboratif",
+    "spreadsheet": "Tableur collaboratif"
   },
   "spreadsheet": {
     "noRecordsFound": "Nichts anzuzeigen",
@@ -855,5 +869,24 @@
     "allDayHtml": "Ganztägig",
     "eventLimitText": "zusätzlich",
     "noEventsMessage": "Keine anzuzeigenden Termine"
+  },
+  "padContent": {
+    "saved": "Texte enregistré"
+  },
+  "padHeader": {
+    "padName": "Nom du texte",
+    "lastEdit": "Derniere édition",
+    "otherEditors": "Autres participants",
+    "download": "Télécharger...",
+    "pdf": "Télécharger au format pdf",
+    "docx": "Télécharger au format docx",
+    "delete": "Supprimer",
+    "edit": "Editer le nom du texte",
+    "abort": "Annuler",
+    "deleteInfo": "Ce texte sera supprimé ainsi que tout son contenu."
+  },
+  "pad": {
+    "errorPaste": "Le texte contient des caractères qui ne peuvent être enregistrés.",
+    "errorDownload": "Une erreur est survenue et votre texte ne peut être téléchargé sous ce format."
   }
 }
