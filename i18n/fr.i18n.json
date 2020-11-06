@@ -709,7 +709,11 @@
     "inviteMember": "inviter des membres à se joindre à l'activité",
     "onMap": "Position sur la carte :",
     "showOnMap": "Voir",
-    "placeholderActivityDetail": "Déscription de l'activité..."
+    "placeholderActivityDetail": "Déscription de l'activité...",
+    "onAgenda": "Placé sur l'agenda :",
+    "start": "Début ",
+    "end" : "Fin ",
+    "duration": "Durée "
   },
   "weekDays": {
     "day0": "Dimanche",
