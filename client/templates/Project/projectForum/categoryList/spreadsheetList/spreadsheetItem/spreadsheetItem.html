@@ -1,12 +1,17 @@
 <template name="spreadsheetItem">
-    <li class="collection-item topicItem {{#if isCurrentSpreadsheet }}currentTopic{{/if}}"
+    <li class="collection-item topicItem {{#if isCurrentSpreadsheet }}currentTopic{{/if}} {{#if isDragged}}dragged{{/if}}"
         style="padding: 8px 20px !important; "
-
+        draggable={{isDraggable}}
+        data-position="bottom"
+        data-delay="1000" data-tooltip="{{__ ".dragInfo"}}"
+        id="{{#if isPad}}padItem{{else}}spreadsheetItem{{/if}}-{{spreadsheet._id}}"
     >
-        <a href="/project/{{spreadsheet.projectId}}/forum?{{#if isPad}}padId{{else}}spreadsheetId{{/if}}={{spreadsheet._id}}" class="">
+        <a href="/project/{{spreadsheet.projectId}}/forum?{{#if spreadsheet.categoryId}}categoryId={{spreadsheet.categoryId}}&{{/if}}{{#if isPad}}padId{{else}}spreadsheetId{{/if}}={{spreadsheet._id}}" class="">
         <div class="flex">
             <div class="flex-auto elipsis ">
-                <i class="material-icons left" style="{{#unless isPad}}transform: rotate(90deg){{/unless}}">{{#if isPad}}format_align_justify{{else}}view_comfy{{/if}}</i><span>
+                <i class="material-icons left  tooltipped"
+                   data-position="right"
+                   data-delay="200" data-tooltip="{{#if isPad}}{{__ ".pad"}}{{else}}{{__ ".spreadsheet"}}{{/if}}" style="{{#unless isPad}}transform: rotate(90deg){{/unless}}">{{#if isPad}}format_align_justify{{else}}view_comfy{{/if}}</i><span>
                 {{spreadsheet.symEnc_name}}
                 </span>
             </div>

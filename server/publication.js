@@ -332,14 +332,14 @@ Meteor.publish("publicationFiles", function (authInfo, projectId, filesId) {
             ]
     })
 })
-Meteor.publish("projectFiles", function (authInfo, projectId,parentFolderId, limit) {
+Meteor.publish("projectFiles", function (authInfo, projectId, parentFolderId, limit) {
     check(projectId, String)
     check(parentFolderId, String)
     check(authInfo, {memberId: String, userSignature: String})
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
-    if(parentFolderId == "root"){
-        parentFolderId = {$in:["root", null]}
+    if (parentFolderId == "root") {
+        parentFolderId = {$in: ["root", null]}
     }
     return ProjectFiles.find(
         {
@@ -353,16 +353,18 @@ Meteor.publish("projectFiles", function (authInfo, projectId,parentFolderId, lim
         }
     )
 })
-Meteor.publish('spreadsheets', function (authInfo, projectId,  limit) {
+Meteor.publish('spreadsheets', function (authInfo, projectId, categoryId, limit) {
     check(authInfo, {memberId: String, userSignature: String})
     check(projectId, String)
+    check(categoryId, String)
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
     check(limit, Number)
 
     return Spreadsheets.find({
             "$and": [
-                {projectId: projectId}
+                {projectId: projectId},
+                {categoryId: categoryId ? categoryId : {$in: ["", null]}}
             ]
         }, {
             limit: limit,
@@ -373,7 +375,8 @@ Meteor.publish('spreadsheets', function (authInfo, projectId,  limit) {
                 _id: 1,
                 symEnc_name: 1,
                 lastActivity: 1,
-                projectId:1,
+                projectId: 1,
+                categoryId: 1,
 
             }
         }
@@ -385,24 +388,26 @@ Meteor.publish('singleSpreadsheet', function (authInfo, spreadsheetId) {
     let SpreadsheetCursor = Spreadsheets.find({_id: spreadsheetId})
     check(authInfo, {memberId: String, userSignature: String})
 
-    if(SpreadsheetCursor.fetch()[0]){
-       let  projectId = SpreadsheetCursor.fetch()[0].projectId
+    if (SpreadsheetCursor.fetch()[0]) {
+        let projectId = SpreadsheetCursor.fetch()[0].projectId
         let currentProject = Project.findOne(projectId)
         check(currentProject.isMember(authInfo), true)
         return SpreadsheetCursor
     }
 
 })
-Meteor.publish('pads', function (authInfo, projectId,  limit) {
+Meteor.publish('pads', function (authInfo, projectId, categoryId, limit) {
     check(authInfo, {memberId: String, userSignature: String})
     check(projectId, String)
+    check(categoryId, String)
     let currentProject = Project.findOne(projectId)
     check(currentProject.isMember(authInfo), true)
     check(limit, Number)
 
     return Pads.find({
             "$and": [
-                {projectId: projectId}
+                {projectId: projectId},
+                {categoryId: categoryId ? categoryId : {$in: ["", null]}}
             ]
         }, {
             limit: limit,
@@ -413,7 +418,8 @@ Meteor.publish('pads', function (authInfo, projectId,  limit) {
                 _id: 1,
                 symEnc_name: 1,
                 lastActivity: 1,
-                projectId:1,
+                projectId: 1,
+                categoryId: 1,
 
             }
         }
@@ -422,20 +428,21 @@ Meteor.publish('pads', function (authInfo, projectId,  limit) {
 Meteor.publish('singlePad', function (authInfo, padId) {
 
     check(padId, String)
-    let PadCursor = Pads.find({_id: padId},{
+    let PadCursor = Pads.find({_id: padId}, {
         fields: {
             _id: 1,
             symEnc_name: 1,
             lastActivity: 1,
-            projectId:1,
-changes:1,
-            cursors:1
+            projectId: 1,
+            categoryId: 1,
+            changes: 1,
+            cursors: 1
         }
     })
     check(authInfo, {memberId: String, userSignature: String})
 
-    if(PadCursor.fetch()[0]){
-       let  projectId = PadCursor.fetch()[0].projectId
+    if (PadCursor.fetch()[0]) {
+        let projectId = PadCursor.fetch()[0].projectId
         let currentProject = Project.findOne(projectId)
         check(currentProject.isMember(authInfo), true)
         return PadCursor

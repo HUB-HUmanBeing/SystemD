@@ -100,6 +100,7 @@
 
   .jexcel_filter {
     display: none;
+    visibility: hidden;
     position: absolute;
     width: 100%;
 
@@ -119,6 +120,7 @@
 
     .searchVisible {
       display: block;
+      visibility: visible;
     }
   }
 

@@ -45,6 +45,11 @@ const Pad = Class.create({
             type: String,
             index: 1
         },
+        categoryId: {
+            type: String,
+            optional: true,
+            index: 1
+        },
         createdBy: {
           type:String
         },

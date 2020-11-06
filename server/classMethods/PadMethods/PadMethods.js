@@ -1,7 +1,5 @@
 import {check} from "meteor/check";
-import minioTools from "../../../imports/minioTools";
 import Project from "../../../imports/classes/Project";
-import User from "../../../imports/classes/User";
 import Pad from "../../../imports/classes/Pad";
 
 
@@ -17,6 +15,7 @@ Pad.extend({
             check(padParmas, {
                 projectId: String,
                 symEnc_name: String,
+                categoryId: String,
             })
             check(authInfo, {memberId: String, userSignature: String})
             let currentProject = Project.findOne(padParmas.projectId)
@@ -25,13 +24,17 @@ Pad.extend({
 
 
             newPad.createdBy = authInfo.memberId
-            newPad.currentEditor ={
+            newPad.currentEditor = {
                 memberId: authInfo.memberId,
                 lastActivityAt: new Date()
             }
             return newPad.save((err) => {
                 if (!err) {
-                    currentProject.private.padCount++
+                   if(newPad.categoryId){
+                       currentProject.private.forumCategories[newPad.categoryId].topicCount++
+                   }else{
+                       currentProject.private.padCount++
+                   }
                     currentProject.save()
                 }
             })
@@ -46,14 +49,28 @@ Pad.extend({
             pad.lastActivity = new Date()
             return pad.save()
         },
+        changeCategory(authInfo, categoryId) {
+            check(categoryId, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(this.projectId)
+            check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && this.memberId === authInfo.createdBy), true)
+            this.categoryId = categoryId
+            this.lastActivity = new Date()
+            return this.save()
+        },
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
             let pad = Pad.findOne(this._id)
+            let categoryId = pad.categoryId
             let currentProject = Project.findOne(pad.projectId)
             check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && pad.createdBy === authInfo.memberId), true)
             return pad.remove((err) => {
                 if (!err) {
-                    currentProject.private.padCount--
+                    if(categoryId){
+                        currentProject.private.forumCategories[categoryId].topicCount--
+                    }else{
+                        currentProject.private.padCount--
+                    }
                     currentProject.save()
                 }
             })
@@ -65,98 +82,98 @@ Pad.extend({
             check((currentProject.isMember(authInfo)), true)
             return pad.symEnc_content
         },
-        saveCursor(authInfo, range){
+        saveCursor(authInfo, range) {
             check(authInfo, {memberId: String, userSignature: String})
-            check(range , String)
+            check(range, String)
 
             let pad = Pad.findOne(this._id)
             let currentProject = Project.findOne(pad.projectId)
-            check(currentProject.isMember(authInfo) , true)
+            check(currentProject.isMember(authInfo), true)
             let newCursor = {
-                range:range,
+                range: range,
                 updatedAt: new Date(),
                 memberId: authInfo.memberId
             }
-            let cursorFound =false
-            pad.cursors.forEach((cursor,i)=>{
-                if(cursor.memberId == newCursor.memberId){
+            let cursorFound = false
+            pad.cursors.forEach((cursor, i) => {
+                if (cursor.memberId == newCursor.memberId) {
                     pad.cursors[i] = newCursor
                     cursorFound = true
                 }
             })
-            if(!cursorFound){
+            if (!cursorFound) {
                 pad.cursors.push(newCursor)
             }
             return pad.save()
         },
-        quitEdition(authInfo){
+        quitEdition(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
             let pad = Pad.findOne(this._id)
             let currentProject = Project.findOne(pad.projectId)
-            check(currentProject.isMember(authInfo) , true)
+            check(currentProject.isMember(authInfo), true)
             let newCursors = pad.cursors
-            pad.cursors.forEach((cursor,i)=>{
-                console.log(cursor)
-                if(cursor.memberId == authInfo.memberId){
-                   newCursors = pad.cursors.splice(i,1)
+            pad.cursors.forEach((cursor, i) => {
+                if (cursor.memberId == authInfo.memberId) {
+                    newCursors = pad.cursors.splice(i, 1)
                 }
             })
             pad.cursors = newCursors
             return pad.save()
         },
-        saveDatas(authInfo, symEnc_content, symEnc_change, range){
-            check(symEnc_content , String)
-            check(symEnc_change , String)
-            check(range , String)
+        saveDatas(authInfo, symEnc_content, symEnc_change, range) {
+            check(symEnc_content, String)
+            check(symEnc_change, String)
+            check(range, String)
             check(authInfo, {memberId: String, userSignature: String})
             let pad = Pad.findOne(this._id)
             let currentProject = Project.findOne(pad.projectId)
-            check(currentProject.isMember(authInfo) , true)
+            check(currentProject.isMember(authInfo), true)
             pad.lastActivity = new Date()
-            pad.symEnc_content= symEnc_content
+            pad.symEnc_content = symEnc_content
             let change = {
-                symEnc_change:symEnc_change,
+                symEnc_change: symEnc_change,
                 createdAt: new Date(),
                 createdBy: authInfo.memberId
             }
             let newCursor = {
-                range:range,
+                range: range,
                 updatedAt: new Date(),
                 memberId: authInfo.memberId
             }
-            let cursorFound =false
-            pad.cursors.forEach((cursor,i)=>{
-                if(cursor.memberId == newCursor.memberId){
+            let cursorFound = false
+            pad.cursors.forEach((cursor, i) => {
+                if (cursor.memberId == newCursor.memberId) {
                     pad.cursors[i] = newCursor
                     cursorFound = true
                 }
             })
-            if(!cursorFound){
-                    pad.cursors.push(newCursor)
+            if (!cursorFound) {
+                pad.cursors.push(newCursor)
             }
             pad.changes.push(change)
-            if(pad.changes.length>10){
+            if (pad.changes.length > 10) {
                 pad.changes.splice(0, 1)
             }
             return pad.save()
         },
-        async getPdfBlob(html){
-            check(html,  String)
+        async getPdfBlob(html) {
+            check(html, String)
             const html_to_pdf = require('html-pdf-node');
 
-            let options = { format: 'A4' , margin:{
-                    top:70,
-                    right:50,
-                    bottom :70,
-                    left:50,
+            let options = {
+                format: 'A4', margin: {
+                    top: 70,
+                    right: 50,
+                    bottom: 70,
+                    left: 50,
                 }
-                };
-            let file = { content: html };
+            };
+            let file = {content: html};
             let pdf = await html_to_pdf.generatePdf(file, options)
             return pdf
-        } ,
-        async getDocxBlob(html){
-            check(html,  String)
+        },
+        async getDocxBlob(html) {
+            check(html, String)
             const HTMLtoDOCX = require('html-to-docx');
             let docx = await HTMLtoDOCX(`<!DOCTYPE html>
 <html lang="fr">
@@ -164,7 +181,7 @@ Pad.extend({
         <meta charset="UTF-8" />
         <title>Document</title>
     </head>
-    <body>`+ html + `</body>
+    <body>` + html + `</body>
 </html>`, null, {})
             return docx
         }

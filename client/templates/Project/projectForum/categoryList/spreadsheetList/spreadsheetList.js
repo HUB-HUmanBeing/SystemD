@@ -24,7 +24,7 @@ Template.spreadsheetList.helpers({
     },
     isCurrentCategory: function () {
         FlowRouter.watchPathChange()
-        return FlowRouter.current().queryParams[Template.instance().data.isPad? "padId" :"spreadsheetId"]
+        return !FlowRouter.current().queryParams.categoryId && FlowRouter.current().queryParams[Template.instance().data.isPad ? "padId" : "spreadsheetId"]
     },
     isLoading: function () {
         return Template.instance().isLoading.get()
@@ -58,16 +58,17 @@ Template.spreadsheetList.events({
         let currentProjectId = instance.data.currentProject._id
         let spreadsheetParmas = {
             projectId: currentProjectId,
+            categoryId: "",
             symEnc_name: event.target.newSpreadsheetName.value,
         }
         cryptoTools.encryptObject(spreadsheetParmas, {symKey: Session.get("currentProjectSimKey")}, (encryptedSpreadsheetParams) => {
             let instanceToCreate
-                if(instance.data.isPad){
-                    instanceToCreate= new Pad()
-                }else{
-                    instanceToCreate= new Spreadsheet()
-                }
-            instanceToCreate.callMethod(instance.data.isPad?'newPad':'newSpreadsheet', projectController.getAuthInfo(currentProjectId), encryptedSpreadsheetParams, (err, res) => {
+            if (instance.data.isPad) {
+                instanceToCreate = new Pad()
+            } else {
+                instanceToCreate = new Spreadsheet()
+            }
+            instanceToCreate.callMethod(instance.data.isPad ? 'newPad' : 'newSpreadsheet', projectController.getAuthInfo(currentProjectId), encryptedSpreadsheetParams, (err, res) => {
                 if (err) {
                     Materialize.toast(__('general.error'), 6000, 'toastError')
                     console.warn(err)
@@ -77,7 +78,7 @@ Template.spreadsheetList.events({
                     }, 200)
                     instance.showNewSpreadsheet.set(false)
                     instance.isCreating.set(false)
-                    FlowRouter.go('/project/' + currentProjectId + '/forum/?'+(instance.data.isPad? "padId" :"spreadsheetId")+'=' + res)
+                    FlowRouter.go('/project/' + currentProjectId + '/forum?' + (instance.data.isPad ? "padId" : "spreadsheetId") + '=' + res)
                 }
             })
         })
@@ -99,19 +100,19 @@ Template.spreadsheetList.onCreated(function () {
     this.spreadsheetsLimit = new ReactiveVar(3)
 
     this.autorun(() => {
-    FlowRouter.watchPathChange()
-        Meteor.subscribe(this.data.isPad?'pads' :'spreadsheets',
+        FlowRouter.watchPathChange()
+        Meteor.subscribe(this.data.isPad ? 'pads' : 'spreadsheets',
 
             projectController.getAuthInfo(FlowRouter.current().params.projectId),
-            FlowRouter.current().params.projectId,
+            FlowRouter.current().params.projectId, "",
             this.spreadsheetsLimit.get(),
             err => {
                 if (err) {
                     console.log(err)
                 } else {
                     this.autorun(() => {
-                        let Class = this.data.isPad? Pad:Spreadsheet
-                        let encryptedSpreadsheets = Class.find({}, {
+                        let Class = this.data.isPad ? Pad : Spreadsheet
+                        let encryptedSpreadsheets = Class.find( {categoryId: {$in: ["", null]}}, {
                             sort: {
                                 lastActivity: -1
                             }
@@ -121,7 +122,7 @@ Template.spreadsheetList.onCreated(function () {
                             cryptoTools.decryptArrayOfObject(encryptedSpreadsheets, {symKey: Session.get('currentProjectSimKey')}, (spreadsheets) => {
                                 this.spreadsheets.set(spreadsheets)
                             })
-                        }else{
+                        } else {
                             this.spreadsheets.set([])
                         }
                     })
