@@ -125,7 +125,6 @@ Template.categoryItem.events({
     'click [moveDown]': function (event, instance) {
         event.preventDefault()
         event.stopPropagation()
-        console.log("coucou")
         $('.tooltipped').tooltip('remove')
         let currentProject = instance.data.currentProject
         currentProject.callMethod("moveForumCategory", projectController.getAuthInfo(currentProject._id), instance.data.index, "down", (err, res) => {
@@ -209,7 +208,6 @@ Template.categoryItem.events({
         instance.isCreating.set(true)
         $('.tooltipped').tooltip('remove')
         let type = event.currentTarget.getAttribute("elementType")
-        console.log(type)
         let currentProjectId = instance.data.currentProject._id
         if (type == "topic") {
             let topicParmas = {
