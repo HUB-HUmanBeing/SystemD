@@ -9,6 +9,8 @@ import 'quill-paste-smart';
 import {QuillDeltaToHtmlConverter} from 'quill-delta-to-html';
 
 let Delta = Quill.import('delta');
+Quill.register('modules/magicUrl', MagicUrl);
+Quill.register('modules/cursors', QuillCursors);
 let padController = {
     cursorColors: [
         "#406080",
@@ -51,8 +53,7 @@ let padController = {
         theme: 'snow'
     },
     initialize(padId, instance) {
-        Quill.register('modules/magicUrl', MagicUrl);
-        Quill.register('modules/cursors', QuillCursors);
+
         this.editor = new Quill('#padContent', this.options);
         this.cursors = this.editor.getModule('cursors');
         this.editor.disable()
@@ -83,15 +84,18 @@ let padController = {
 
         instance.autorun(() => {
             let pad = Pads.findOne(padId)
+            pad = Pad.findOne(padId)
             pad.changes.forEach(change => {
                 if (change.createdBy != this.memberId && change.createdAt > this.uploadVersionDate) {
                     this.uploadVersionDate = change.createdAt
                     cryptoTools.sim_decrypt_data(change.symEnc_change, Session.get("currentProjectSimKey"), decryptedContent => {
-                        let delta = new Delta(JSON.parse(this.preparseJson(decryptedContent)))
+                        let delta = new Delta(JSON.parse(decryptedContent))
+                        console.log(delta)
                         this.editor.updateContents(delta, "silent")
                     })
                 }
             })
+
             pad.cursors.forEach(cursor => {
                 if (cursor.memberId != this.memberId &&
                     Date.now() - cursor.updatedAt < 2 * 60000) {
@@ -112,15 +116,10 @@ let padController = {
                         this.cursors.moveCursor(cursor.memberId, JSON.parse(cursor.range))
                         instance.cursors.set(this.cursors.cursors())
                     }, 100)
-
                 }
             })
         })
     },
-    preparseJson(input) {
-        return input
-    },
-
     getContent(cb) {
         this.currentPad.callMethod("getContent", projectController.getAuthInfo(FlowRouter.current().params.projectId), (err, res) => {
             if (err) {
@@ -128,7 +127,7 @@ let padController = {
             } else {
                 if (res) {
                     cryptoTools.sim_decrypt_data(res, Session.get("currentProjectSimKey"), decryptedContent => {
-                        let delta = new Delta(JSON.parse(this.preparseJson(decryptedContent)))
+                        let delta = new Delta(JSON.parse(decryptedContent))
                         this.editor.setContents(delta)
                         cb()
                     })
@@ -160,6 +159,7 @@ let padController = {
                     padId,
                     instance)
             }
+            this.change = new Delta();
         }, 1000 + this.lastSaveDuration);
 
 // Check for unsaved data
@@ -181,40 +181,24 @@ let padController = {
     saveContent(content, change, range, padId, instance) {
         let start = Date.now()
         cryptoTools.sim_encrypt_data(content, Session.get("currentProjectSimKey"), (symEnc_content) => {
+            cryptoTools.sim_encrypt_data(change, Session.get("currentProjectSimKey"), (symEnc_change) => {
+                this.currentPad.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_content, symEnc_change, JSON.stringify(range), (err, res) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        instance.needToSave.set(false)
+                        this.lastSaveDuration = Date.now() - start
 
-            cryptoTools.sim_decrypt_data(symEnc_content, Session.get("currentProjectSimKey"), (transformed) => {
-                try {
-                    let parsable = JSON.parse(transformed)
-                    cryptoTools.sim_encrypt_data(change, Session.get("currentProjectSimKey"), (symEnc_change) => {
-                        this.currentPad.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_content, symEnc_change, JSON.stringify(range), (err, res) => {
-                            if (err) {
-                                console.log(err)
-                            } else {
-                                instance.needToSave.set(false)
-                                this.lastSaveDuration = Date.now() - start
-                                this.change = new Delta();
-                            }
-                        })
-                    })
-                } catch (e) {
-                    this.editor.disable()
-                    Materialize.toast(__('pad.errorSave'), 6000, 'toastError')
-                    this.getContent(() => {
-                        this.editor.enable()
-                    })
-                    this.change = new Delta();
-                }
-
+                    }
+                })
             })
-
-
         })
     },
     download(format, name) {
         let deltaOps = this.editor.getContents().ops;
         let converter = new QuillDeltaToHtmlConverter(deltaOps, {inlineStyles: true});
         let html = converter.convert();
-        this.currentPad.callMethod(format == "pdf" ?"getPdfBlob" :"getDocxBlob" , html, (err, res) => {
+        this.currentPad.callMethod(format == "pdf" ? "getPdfBlob" : "getDocxBlob", html, (err, res) => {
             if (err) {
                 Materialize.toast(__('pad.errorDownload'), 6000, 'toastError')
                 console.log(err)
@@ -222,16 +206,23 @@ let padController = {
                 let a = document.createElement("a");
                 document.body.appendChild(a);
                 a.style = "display: none";
-                let blob = new Blob([res], {type: format == "pdf" ?"application/pdf" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document"})
+                let blob = new Blob([res], {type: format == "pdf" ? "application/pdf" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document"})
                 let url = window.URL.createObjectURL(blob);
                 a.href = url;
-                a.download = name+(format == "pdf" ?".pdf":".docx");
+                a.download = name + (format == "pdf" ? ".pdf" : ".docx");
                 a.click();
                 window.URL.revokeObjectURL(url);
             }
         })
 
     },
+    quitEdition() {
+        this.currentPad.callMethod("quitEdition", projectController.getAuthInfo(FlowRouter.current().params.projectId), (err, res) => {
+            if (err) {
+                console.log(err)
+            }
+        })
+    }
 }
 
 

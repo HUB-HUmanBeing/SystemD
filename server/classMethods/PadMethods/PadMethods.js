@@ -89,6 +89,21 @@ Pad.extend({
             }
             return pad.save()
         },
+        quitEdition(authInfo){
+            check(authInfo, {memberId: String, userSignature: String})
+            let pad = Pad.findOne(this._id)
+            let currentProject = Project.findOne(pad.projectId)
+            check(currentProject.isMember(authInfo) , true)
+            let newCursors = pad.cursors
+            pad.cursors.forEach((cursor,i)=>{
+                console.log(cursor)
+                if(cursor.memberId == authInfo.memberId){
+                   newCursors = pad.cursors.splice(i,1)
+                }
+            })
+            pad.cursors = newCursors
+            return pad.save()
+        },
         saveDatas(authInfo, symEnc_content, symEnc_change, range){
             check(symEnc_content , String)
             check(symEnc_change , String)

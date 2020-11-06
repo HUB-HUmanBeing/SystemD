@@ -43,6 +43,6 @@ Template.padContent.onRendered(function () {
 Template.padContent.onDestroyed(function () {
     //add your statement here
 
-
+    this.padController.quitEdition()
 });
 
