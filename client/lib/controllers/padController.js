@@ -152,14 +152,29 @@ let padController = {
         Meteor.setInterval(() => {
             if (this.change.length() > 0) {
                 let content = JSON.stringify(this.editor.getContents())
-                this.saveContent(
-                    content,
-                    JSON.stringify(this.change),
-                    this.editor.getSelection(),
-                    padId,
-                    instance)
+                let allowed = true
+                try {
+                    let decrypted = cryptoTools.convertArrayBufferViewtoString(cryptoTools.convertStringToArrayBufferView(content))
+                    JSON.parse(decrypted)
+                } catch (e) {
+                    console.log(e)
+                        this.editor.history.undo();
+                    Materialize.toast(__('pad.errorPaste'), 6000, 'toastError')
+                    allowed = false
+                    instance.needToSave.set(false)
+
+                }
+                if (allowed) {
+                    this.saveContent(
+                        content,
+                        JSON.stringify(this.change),
+                        this.editor.getSelection(),
+                        padId,
+                        instance)
+                }
+                this.change = new Delta();
             }
-            this.change = new Delta();
+
         }, 1000 + this.lastSaveDuration);
 
 // Check for unsaved data
