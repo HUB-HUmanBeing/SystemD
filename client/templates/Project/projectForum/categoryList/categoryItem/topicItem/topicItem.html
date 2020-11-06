@@ -1,6 +1,6 @@
 <template name="topicItem">
     <li class="collection-item topicItem {{#if isCurrentTopic }}currentTopic{{/if}} {{#if compare  isAdmin '&!' topic.isMainTopic}}tooltipped{{/if}} {{#if isDragged}}dragged{{/if}} {{#if topic.isMainTopic}}{{/if}}"
-        style="{{#if topic.isMainTopic}}padding: 0 !important;{{else}}padding: 8px 20px !important;{{/if}} "
+        style="{{#if topic.isMainTopic}}padding: 0 !important;{{else}}padding: 6px 20px !important;{{/if}} "
         draggable={{isDraggable}}
         data-position="bottom"
         data-delay="1000" data-tooltip="{{__ ".dragInfo"}}"
@@ -8,7 +8,9 @@
     >
         <a href="/project/{{topic.projectId}}/forum/?{{#if topic.isMainTopic}}mainTopic=true&{{else}}categoryId={{topic.categoryId}}&{{/if}}topicId={{topicId}}" class="">
         <div class="flex">
-            <div class="flex-auto elipsis ">
+            <div class="flex-auto elipsis  tooltipped"
+                 data-position="right"
+                 data-delay="50" data-tooltip="{{__ ".topic"}}">
                 <i class="material-icons left">{{icon}}</i><span>
                 {{#if topic.isMainTopic}}
                     {{__ ".mainTopic"}}

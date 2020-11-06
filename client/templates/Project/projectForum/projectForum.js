@@ -36,8 +36,7 @@ Template.projectForum.helpers({
     showTopic: function () {
 
         FlowRouter.watchPathChange()
-        let instance = Template.instance()
-        return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId || !!FlowRouter.current().queryParams.spreadsheetId
+      return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId || !!FlowRouter.current().queryParams.spreadsheetId || !!FlowRouter.current().queryParams.padId
     },
     showFiles: function () {
         FlowRouter.watchPathChange()
@@ -45,7 +44,7 @@ Template.projectForum.helpers({
     },
     showCategories: function () {
         FlowRouter.watchPathChange()
-        return Meteor.Device.isDesktop() || (!FlowRouter.current().queryParams.topicId && !FlowRouter.current().queryParams.files&& !FlowRouter.current().queryParams.spreadsheetId)
+        return Meteor.Device.isDesktop() || (!FlowRouter.current().queryParams.topicId && !FlowRouter.current().queryParams.files&& !FlowRouter.current().queryParams.spreadsheetId && !FlowRouter.current().queryParams.padId)
     },
     refreshScrollbar: function () {
 
@@ -70,6 +69,10 @@ Template.projectForum.helpers({
     isSpreadsheet: function () {
         FlowRouter.watchPathChange()
         return !!FlowRouter.current().queryParams.spreadsheetId
+    },
+    isPad: function () {
+        FlowRouter.watchPathChange()
+        return !!FlowRouter.current().queryParams.padId
     }
 });
 

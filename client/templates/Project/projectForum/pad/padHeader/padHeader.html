@@ -1,0 +1,138 @@
+<template name="padHeader">
+    <div id="padHeader" class="row" style="margin: 0 0 20px 0 !important;">
+        <div class="col s12">
+            {{#if isEditing}}
+                <div id="topicHeader">
+                    <form id="editPadForm" action="" editPadForm class="flex  ">
+                        <div class="input-field flex-auto small-padding small-margin">
+                            <input id="editPadName" type="text" value="{{currentPad.symEnc_name}}"
+                                   required
+                                   class="validate no-margin">
+                            <label for="editPadName">{{__ ".padName"}}</label>
+                        </div>
+                        <div class="">
+                            <button href="" class="btn btn-floating waves-effect waves-light"><i
+                                    class="material-icons prefix">done</i></button>
+                        </div>
+                    </form>
+                </div>
+
+            {{else}}
+                <div id="topicHeader" class=" flex">
+                    {{#unless isDesktop}}
+                        <a href="/project/{{currentPad.projectId}}/forum"
+                           class="btn btn-floating waves-effect waves-light "
+                           style="margin-right: 10px"><i
+                                class="material-icons left">arrow_back</i></a>
+                    {{/unless}}
+                    <div class="flex-auto elipsis left-align topicTitle">
+                        {{currentPad.symEnc_name}}
+                    </div>
+                    <div class="lastEdit">
+                        {{__ ".lastEdit"}} : {{formatDate currentPad.lastActivity}}
+
+                    </div>
+                    <div class="relative" style="width: 40px; margin-right: 5px">
+                        <div class="fixed-action-btn  horizontal absolute categorySettings downloadPad">
+                            <a class="btn-floating tooltipped waves-light waves-effect"
+                               data-position="bottom"
+                               data-delay="50" data-tooltip="{{__ ".download"}}">
+                                <i class="material-icons">file_download</i>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a class="btn-floating tooltipped waves-light waves-effect"
+                                       data-position="bottom"
+                                       data-delay="50" data-tooltip="{{__ ".pdf"}}"
+                                       downloadPdf
+                                    >
+                                        PDF
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn-floating tooltipped waves-light waves-effect"
+                                       data-position="bottom"
+                                       data-delay="50" data-tooltip="{{__ ".docx"}}"
+                                       downloadDocx
+                                    >
+                                        DOCX
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{#if cursors }}
+                        <div class="relative" style="width: 40px; margin-right: 5px">
+                            <div class="fixed-action-btn  horizontal absolute categorySettings">
+                                <a class="btn-floating tooltipped waves-light waves-effect"
+                                   data-position="bottom"
+                                   data-delay="50" data-tooltip="{{__ ".otherEditors"}}">
+                                    <i class="material-icons">{{#if compare cursors.length ">" 1}}
+                                        group{{else}}person{{/if}}</i>
+                                </a>
+                                <ul>
+                                    {{#each cursor in cursors}}
+                                        <li>
+                                            <a class="btn-floating tooltipped waves-light waves-effect"
+                                               data-position="bottom"
+                                               data-delay="50" data-tooltip="{{cursor.name}}"
+                                               style="border: 4px solid {{cursor.color}}">
+                                                {{>avatar userId=(userIdFromMemberId cursor.id)}}
+
+                                            </a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{#if isEditable}}
+                        <div class="relative" style="width: 40px; margin-right: 5px">
+                            <div class="fixed-action-btn  horizontal absolute categorySettings">
+                                <a class="btn-floating waves-effect waves-light ">
+                                    <i class="material-icons">settings</i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a class="btn-floating tooltipped waves-light waves-effect"
+                                           data-position="bottom"
+                                           data-delay="50" data-tooltip="{{__ ".delete"}}" showDelete>
+                                            <i
+                                                    class="material-icons">delete_forever</i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn-floating tooltipped waves-light waves-effect"
+                                           data-position="bottom"
+                                           data-delay="50" data-tooltip="{{__ ".edit"}}" editName>
+                                            <i
+                                                    class="material-icons">mode_edit</i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+            {{/if}}
+            {{#if showDelete}}
+                <div class="shadow contrasted-bg small-padding relative" style="margin-top: 15px">
+                    <a href="" class="absolute tooltipped waves-light waves-effect"
+                       data-position="bottom"
+                       data-delay="50" data-tooltip="{{__ ".abort"}}" abortDelete style="right: 0;top: 6px"><i
+                            class="material-icons left">clear</i></a>
+
+
+                    <p class="left-align infoQuotes" style="margin: 35px 0 15px 0; text-transform: none;">
+                        {{__ ".deleteInfo"}}
+                    </p>
+                    <button class="btn full-width  btn-danger center-align waves-effect waves-light shadow"
+                            delete><i
+                            class="material-icons left">delete_forever</i>{{__ '.delete'}}
+                    </button>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+
+</template>

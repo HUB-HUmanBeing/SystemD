@@ -65,6 +65,7 @@ Template.registerHelper('formatDate', function (date, capitalize) {
 
 })
 
+
 Template.registerHelper('usernameFromMemberId', function (memberId) {
     let requiredMember = {}
     Session.get("currentProjectMembers").forEach((member) => {

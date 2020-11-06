@@ -1,0 +1,13 @@
+<template name="pad">
+    {{#unless isRefreshing}}
+        <div id="" class="full-height flex-auto padSubContainer" style="{{#if isDesktop}}padding-top:10px{{/if}}">
+
+            {{#if currentPad}}
+                {{>padHeader currentPad=currentPad refreshRender=refreshRender cursors=cursors }}
+            {{>padContent currentPad=currentPad padInstance=padInstance needToSave= needToSave}}
+            {{/if}}
+
+        </div>
+    {{/unless}}
+
+</template>

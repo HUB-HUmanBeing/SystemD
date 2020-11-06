@@ -36,12 +36,16 @@
                     <li class="categoryItem" style="margin-bottom: 20px;">
                         {{>spreadsheetList currentProject=currentProject}}
                     </li>
+                    <li class="categoryItem" style="margin-bottom: 20px;">
+                        {{>spreadsheetList currentProject=currentProject isPad=true}}
+                    </li>
                     {{#each category in categories}}
                         {{>categoryItem category=category currentProject=currentProject index=@index}}
                     {{/each}}
                 </ul>
             </div>
         </div>
+
         <div class="row">
             <div class="col s12">
 

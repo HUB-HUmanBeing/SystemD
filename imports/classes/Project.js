@@ -234,6 +234,12 @@ const ProjectPrivate = Class.create({
             default: function () {
                 return 0
             }
+        },
+        padCount:{
+            type: Number,
+            default: function () {
+                return 0
+            }
         }
     }
 });

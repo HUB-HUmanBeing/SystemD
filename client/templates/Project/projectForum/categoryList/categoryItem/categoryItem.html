@@ -99,7 +99,16 @@
                 <ul class="collection shadow ">
 
                     {{#each topic in topics}}
+                        {{#if compare topic.elementType "==" "topic"}}
                         {{>topicItem topic= topic}}
+                            {{else}}
+                            {{#if compare topic.elementType "==" "pad"}}
+                                {{>spreadsheetItem spreadsheet=topic isPad=true}}
+
+                            {{else}}
+                                {{>spreadsheetItem spreadsheet=topic isPad=false}}
+                            {{/if}}
+                            {{/if}}
                     {{/each}}
                 </ul>
             {{else}}
@@ -116,33 +125,50 @@
                 {{/if}}
             {{/if}}
             {{#if showNewTopic}}
-                <form action="" newTopicForm class="flex  " style="padding: 20px 15px 0 10px">
+                <form action="" newTopicForm class="flex  " style="padding: 20px 15px 0 10px" elementType="{{showNewTopic}}">
                     <div class="input-field flex-auto small-padding small-margin">
                         <input id="newTopicName" type="text" required
                                class="validate no-margin">
-                        <label for="newTopicName">{{__ ".topicName"}}</label>
+                        <label for="newTopicName">{{#if compare showNewTopic "==" "topic"}}{{__ ".topicName"}}{{else}}{{#if compare showNewTopic "==" "pad"}}{{__ "spreadsheetList.PadName"}}{{else}}{{__ "spreadsheetList.SpreadsheetName"}}{{/if}}{{/if}}</label>
                     </div>
                     <div class="">
                         <button href="" class="btn btn-floating waves-effect waves-light">
                             {{#if isCreating}}{{>circleSpinner}}{{else}}<i
-                                class="material-icons prefix">done</i>{{/if}}</button>
+                                    class="material-icons prefix">done</i>{{/if}}</button>
                     </div>
                 </form>
 
             {{/if}}
             {{#unless showNewTopic}}
-                <div class="relative">
-                    <a href="" class="btn btn-floating tooltipped waves-light waves-effect absolute newTopicBtn"
-                       data-position="left"
-                       data-delay="50"
-                       data-tooltip="{{__ ".newTopic"}}"
-                       style="{{#if isDesktop}}
-                       opacity: 0;right: 55px;
-                       {{else}}
-                       right: 25px !important;opacity: 1 !important;
-                       {{/if}}"><i
-                            class="material-icons right" openNewTopic>playlist_add</i></a>
-                </div>
+                {{#if isChoosingType}}
+<div class="row no-margin shadow">
+    <div class="col s4 choosingTypeBtn tooltipped waves-light waves-effect center-align"
+         data-position="top"
+         data-delay="50"
+         data-tooltip="{{__ "spreadsheetList.newSpreadsheet"}}" openNewTopic elementType="spreadsheet"><i class="material-icons" style="transform: rotate(90deg)">view_comfy</i></div>
+    <div class="col s4 choosingTypeBtn tooltipped waves-light waves-effect center-align"
+         data-position="top"
+         data-delay="50"
+         data-tooltip="{{__ "spreadsheetList.newPad"}}" openNewTopic  elementType="pad"><i class="material-icons" >format_align_justify</i></div>
+    <div class="col s4 choosingTypeBtn tooltipped waves-light waves-effect center-align"
+         data-position="top"
+         data-delay="50"
+         data-tooltip="{{__ ".newTopic"}}" openNewTopic  elementType="topic"><i class="material-icons">chat</i></div>
+</div>
+                {{else}}
+                    <div class="relative">
+                        <a href="" class="btn btn-floating tooltipped waves-light waves-effect absolute newTopicBtn"
+                           data-position="left"
+                           data-delay="50"
+                           data-tooltip="{{__ ".chooseType"}}"
+                           style="{{#if isDesktop}}
+                           opacity: 0;right: 55px;
+                           {{else}}
+                           right: 25px !important;opacity: 1 !important;
+                           {{/if}}"><i
+                                class="material-icons right" chooseType >add</i></a>
+                    </div>
+                {{/if}}
             {{/unless}}
             {{#unless showNewTopic}}
                 <div class="small-padding relative center-align transparent">
