@@ -158,7 +158,7 @@ let padController = {
                     JSON.parse(decrypted)
                 } catch (e) {
                     console.log(e)
-                        this.editor.history.undo();
+                    this.editor.history.undo();
                     Materialize.toast(__('pad.errorPaste'), 6000, 'toastError')
                     allowed = false
                     instance.needToSave.set(false)
@@ -195,18 +195,30 @@ let padController = {
     },
     saveContent(content, change, range, padId, instance) {
         let start = Date.now()
-        cryptoTools.sim_encrypt_data(content, Session.get("currentProjectSimKey"), (symEnc_content) => {
-            cryptoTools.sim_encrypt_data(change, Session.get("currentProjectSimKey"), (symEnc_change) => {
-                this.currentPad.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_content, symEnc_change, JSON.stringify(range), (err, res) => {
+        cryptoTools.sim_encrypt_data(change, Session.get("currentProjectSimKey"), (symEnc_change) => {
+            this.currentPad.callMethod(
+                "saveChanges",
+                projectController.getAuthInfo(FlowRouter.current().params.projectId),
+                symEnc_change,
+                JSON.stringify(range),
+                (err, res) => {
                     if (err) {
                         console.log(err)
                     } else {
-                        instance.needToSave.set(false)
-                        this.lastSaveDuration = Date.now() - start
+                        cryptoTools.sim_encrypt_data(content, Session.get("currentProjectSimKey"), (symEnc_content) => {
+                            this.currentPad.callMethod("saveDatas", projectController.getAuthInfo(FlowRouter.current().params.projectId), symEnc_content, symEnc_change, JSON.stringify(range), (err, res) => {
+                                if (err) {
+                                    console.log(err)
+                                } else {
+                                    instance.needToSave.set(false)
+                                    this.lastSaveDuration = Date.now() - start
 
+                                }
+                            })
+                        })
                     }
                 })
-            })
+
         })
     },
     download(format, name) {

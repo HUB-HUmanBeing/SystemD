@@ -3,6 +3,8 @@ import minioTools from "../../../imports/minioTools";
 import Project from "../../../imports/classes/Project";
 import User from "../../../imports/classes/User";
 import Topic from "../../../imports/classes/Topic";
+import Spreadsheet from "../../../imports/classes/Spreadsheet";
+import Pad from "../../../imports/classes/Pad";
 
 Project.extend({
     meteorMethods: {
@@ -60,6 +62,24 @@ Project.extend({
             insideTopics.forEach((topic)=>{
                 topic.removeRecursive()
             })
+            let insidePads = Pad.find({"$and": [
+                    {projectId: currentProject._id},
+                    {categoryId: currentProject.private.forumCategories[index].categoryId}
+                ]
+            }).fetch()
+            insidePads.forEach((pad)=>{
+                pad.remove()
+            })
+
+            let insideSpreadsheets = Spreadsheet.find({"$and": [
+                    {projectId: currentProject._id},
+                    {categoryId: currentProject.private.forumCategories[index].categoryId}
+                ]
+            }).fetch()
+            insideSpreadsheets.forEach((spreadsheet)=>{
+                spreadsheet.remove()
+            })
+
 
             currentProject.private.forumCategories.splice(index, 1)
             currentProject.save()

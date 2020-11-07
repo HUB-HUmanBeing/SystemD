@@ -120,8 +120,7 @@ Pad.extend({
             pad.cursors = newCursors
             return pad.save()
         },
-        saveDatas(authInfo, symEnc_content, symEnc_change, range) {
-            check(symEnc_content, String)
+        saveChanges(authInfo,  symEnc_change, range) {
             check(symEnc_change, String)
             check(range, String)
             check(authInfo, {memberId: String, userSignature: String})
@@ -129,7 +128,6 @@ Pad.extend({
             let currentProject = Project.findOne(pad.projectId)
             check(currentProject.isMember(authInfo), true)
             pad.lastActivity = new Date()
-            pad.symEnc_content = symEnc_content
             let change = {
                 symEnc_change: symEnc_change,
                 createdAt: new Date(),
@@ -154,6 +152,16 @@ Pad.extend({
             if (pad.changes.length > 10) {
                 pad.changes.splice(0, 1)
             }
+            return pad.save()
+        },
+        saveDatas(authInfo, symEnc_content) {
+            check(symEnc_content, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let pad = Pad.findOne(this._id)
+            let currentProject = Project.findOne(pad.projectId)
+            check(currentProject.isMember(authInfo), true)
+            pad.lastActivity = new Date()
+            pad.symEnc_content = symEnc_content
             return pad.save()
         },
         async getPdfBlob(html) {
