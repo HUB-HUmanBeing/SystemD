@@ -49,7 +49,6 @@ let padController = {
             ]
         },
         readonly: true,
-        placeholder: 'Compose an epic...',
         theme: 'snow'
     },
     initialize(padId, instance) {
