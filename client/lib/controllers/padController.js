@@ -220,7 +220,7 @@ let padController = {
 
         })
     },
-    download(format, name) {
+    download(format, name, cb) {
         let deltaOps = this.editor.getContents().ops;
         let converter = new QuillDeltaToHtmlConverter(deltaOps, {inlineStyles: true});
         let html = converter.convert();
@@ -228,6 +228,7 @@ let padController = {
             if (err) {
                 Materialize.toast(__('pad.errorDownload'), 6000, 'toastError')
                 console.log(err)
+                cb()
             } else {
                 let a = document.createElement("a");
                 document.body.appendChild(a);
@@ -238,6 +239,7 @@ let padController = {
                 a.download = name + (format == "pdf" ? ".pdf" : ".docx");
                 a.click();
                 window.URL.revokeObjectURL(url);
+                cb()
             }
         })
 
