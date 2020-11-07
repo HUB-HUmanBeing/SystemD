@@ -2,7 +2,7 @@
     <li class="categoryItem">
         <div class="collapsible-header active flex shadow relative {{#if isCurrentCategory}}currentCategory{{/if}}">
             {{#if isEditing}}
-
+                <div class="closeNewCategory" closeEditName></div>
                 <form id="editCategoryForm" action="" editCategoryForm class="flex  ">
                     <div class="input-field flex-auto small-padding small-margin" openSettings>
                         <input id="editCategoryName" type="text" value="{{category.symEnc_name}}" required
@@ -125,7 +125,9 @@
                 {{/if}}
             {{/if}}
             {{#if showNewTopic}}
-                <form action="" newTopicForm class="flex  " style="padding: 20px 15px 0 10px" elementType="{{showNewTopic}}">
+                <div class="closeNewCategory" closeNewTopic></div>
+                <form action="" newTopicForm class="flex  " style="padding: 20px 15px 0 10px; position: relative;
+    z-index: 2001;" elementType="{{showNewTopic}}">
                     <div class="input-field flex-auto small-padding small-margin">
                         <input id="newTopicName" type="text" required
                                class="validate no-margin">
@@ -141,7 +143,9 @@
             {{/if}}
             {{#unless showNewTopic}}
                 {{#if isChoosingType}}
-<div class="row no-margin shadow">
+                    <div class="closeNewCategory" closeNewTopic></div>
+<div class="row no-margin shadow"  style="position: relative;
+    z-index: 2001;">
     <div class="col s4 choosingTypeBtn tooltipped waves-light waves-effect center-align"
          data-position="top"
          data-delay="50"

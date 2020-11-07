@@ -50,6 +50,15 @@ Template.spreadsheetList.events({
         }, 400)
         instance.showNewSpreadsheet.set(true)
     },
+    "click [closeNewSpreadsheet]": function (event, instance) {
+        event.preventDefault()
+        event.stopPropagation()
+        $('.tooltipped').tooltip('remove')
+        Meteor.setTimeout(() => {
+            resetTooltips()
+        }, 400)
+        instance.showNewSpreadsheet.set(false)
+    },
     "submit [newSpreadsheetForm]": function (event, instance) {
         event.preventDefault()
         event.stopPropagation()

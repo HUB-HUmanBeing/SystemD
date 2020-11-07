@@ -32,9 +32,15 @@ Template.categoryList.events({
     'click [showNewCategory]': function (event, instance) {
         event.preventDefault()
         instance.showNewCategory.set(true)
+        resetTooltips()
         Meteor.setTimeout(() => {
             $('#newCategoryName').focus()
         }, 200)
+    },
+    'click [hideNewCategory]': function (event, instance) {
+        event.preventDefault()
+        instance.showNewCategory.set(false)
+       resetTooltips()
     },
     "submit [newCategoryForm]": function (event, instance) {
         event.preventDefault()

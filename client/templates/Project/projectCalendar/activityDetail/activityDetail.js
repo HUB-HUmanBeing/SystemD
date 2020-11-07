@@ -142,12 +142,16 @@ Template.activityDetail.helpers({
     },
     duration: function (){
         let activity = Template.instance().activity.get()
-
-        let start = moment(activity.start); // some random moment in time (in ms)
-        let end = moment(activity.end); // some random moment after start (in ms)
-        let diff = end.diff(start);
+if(activity.end){
+    let start = moment(activity.start); // some random moment in time (in ms)
+    let end = moment(activity.end); // some random moment after start (in ms)
+    let diff = end.diff(start);
 // execution
-        return moment.utc(diff).format("hh : mm" );
+    return moment.utc(diff).format("HH : mm" );
+}else{
+    return "00:30"
+}
+
     }
 });
 

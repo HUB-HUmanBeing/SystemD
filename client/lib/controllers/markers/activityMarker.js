@@ -91,10 +91,11 @@ const activityMarker = {
             element.remove();
         }
     },
-    reroute(activityId){   
+    reroute(activityId){
         let route = Session.get("activityToPositionate")["from"].substring(8);
 
         Session.set("activityToPositionate", false)
+        resetTooltips()
         FlowRouter.go("/project/"+FlowRouter.current().params.projectId+"/"+route+"?side=activityDetail&activityId="+activityId)
     },
     showMarker(activity) {

@@ -30,7 +30,9 @@
             {{/if}}
         {{/if}}
         {{#if showNewSpreadsheet}}
-            <form action="" newSpreadsheetForm class="flex  " style="padding: 20px 15px 0 10px">
+            <div class="closeNewCategory" closeNewSpreadsheet></div>
+            <form action="" newSpreadsheetForm class="flex  " style="padding: 20px 15px 0 10px ;position: relative;
+    z-index: 2001;">
                 <div class="input-field flex-auto small-padding small-margin">
                     <input id="newSpreadsheetName" type="text" required
                            class="validate no-margin">

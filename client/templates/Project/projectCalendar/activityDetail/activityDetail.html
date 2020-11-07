@@ -128,20 +128,39 @@
                     </div>
                 </div>
             {{/if}}
-            {{#if showDates}}
-                <div class="row no-margin">
-                    <div class="col s12">
-                        <div class="hr"></div>
-                    </div>
-                    <div class="col s12">
+            <div class="row no-margin">
+                <div class="col s12">
+                    <div class="hr"></div>
+                    <div class="flex">
+                        <p class="sectionLabel flex-auto no-margin">{{__ ".onAgenda"}}</p>
+                        <div class="switch" style="">
+                            <label>
 
-                        <b>{{__ "invitedPopup.start"}}</b> {{formatDate activity.start}}
+                                <input agendaSwitch type="checkbox" id="recursivitySwitch" checked={{ boolean
+                                        activity.start}}>
+                                <span class="lever" style="margin: 5px 0"></span>
+
+                            </label>
+                        </div>
                     </div>
-                    <div class="col s12">
-                        <b>{{__ "invitedPopup.end"}}</b> {{formatDate activity.end}}
-                    </div>
+
+                    {{#if activity.start}}
+                        <div class="col s12">
+
+                            <b style="margin-right: 10px">{{__ "invitedPopup.start"}} </b> {{formatDate activity.start}}
+                        </div>
+                        <div class="col s12">
+                            <b style="margin-right: 10px">{{__ "invitedPopup.end"}} </b> {{formatDate activity.end}}
+                        </div>
+                        <div class="col s12">
+                            <b style="margin-right: 10px">{{__ ".duration"}} </b> {{duration}}
+                        </div>
+
+
+                    {{/if}}
                 </div>
-            {{/if}}
+            </div>
+
             <div class="row no-margin">
                 <div class="col s12">
                     <div class="hr"></div>
@@ -285,30 +304,6 @@
                                 {{/if}}
                             </div>
                         </div>
-
-                    {{/if}}
-                </div>
-            </div>
-            <div class="row no-margin">
-                <div class="col s12">
-                    <div class="hr"></div>
-                    <div class="flex">
-                        <p class="sectionLabel flex-auto no-margin">{{__ ".onAgenda"}}</p>
-                        <div class="switch" style="">
-                            <label>
-
-                                <input agendaSwitch type="checkbox" id="recursivitySwitch" checked={{ boolean
-                                        activity.start}}>
-                                <span class="lever" style="margin: 5px 0"></span>
-
-                            </label>
-                        </div>
-                    </div>
-
-                    {{#if activity.start}}
-                        <div class="coordinates"><b style="margin-right: 10px">{{__ ".start"}} : </b> {{formatDate activity.start}}</div>
-                        <div class="coordinates"><b style="margin-right: 10px">{{__ ".end"}} : </b> {{formatDate activity.end}}</div>
-                        <div class="coordinates"><b style="margin-right: 10px">{{__ ".duration"}} : </b> {{ duration}} h</div>
 
                     {{/if}}
                 </div>

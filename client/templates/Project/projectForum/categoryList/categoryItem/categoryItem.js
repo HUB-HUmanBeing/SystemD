@@ -74,6 +74,14 @@ Template.categoryItem.events({
             resetTooltips()
         }, 200)
         instance.isEditing.set(true)
+    },   'click [closeEditName]': function (event, instance) {
+        event.preventDefault()
+        event.stopPropagation()
+
+
+            resetTooltips()
+
+        instance.isEditing.set(false)
     },
     'click [showDelete]': function (event, instance) {
         event.preventDefault()
@@ -200,6 +208,17 @@ Template.categoryItem.events({
             resetTooltips()
         }, 200)
         instance.showNewTopic.set(event.currentTarget.getAttribute("elementType"))
+        instance.isChoosingType.set(false)
+    },
+    "click [closeNewTopic]": function (event, instance) {
+        event.preventDefault()
+        event.stopPropagation()
+        $('.tooltipped').tooltip('remove')
+        Meteor.setTimeout(() => {
+            $('#newTopicName').focus()
+            resetTooltips()
+        }, 200)
+        instance.showNewTopic.set(false)
         instance.isChoosingType.set(false)
     },
     "submit [newTopicForm]": function (event, instance) {
