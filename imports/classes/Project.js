@@ -72,6 +72,30 @@ const ForumCategory = Class.create({
         }
     }
 })
+const CloudFolder = Class.create({
+    name: 'CloudFolder',
+    fields: {
+        folderId: String,
+        symEnc_name: {
+            type: String
+        },
+        createdBy:{
+            type: String
+        },
+        createdAt: {
+            type: Date,
+            default: function () {
+                return new Date()
+            }
+        },
+        parentFolderId: {
+            type: String,
+            default: function () {
+                return "root"
+            }
+        },
+    }
+})
 const Map = Class.create({
     name: "Map",
     fields: {
@@ -177,6 +201,12 @@ const ProjectPrivate = Class.create({
                 return [];
             }
         },
+        cloudFolders: {
+            type: [CloudFolder],
+            default: function () {
+                return [];
+            }
+        },
         mainTopicId: {
             type: String,
             optional: true
@@ -200,6 +230,12 @@ const ProjectPrivate = Class.create({
             }
         },
         spreadsheetCount:{
+            type: Number,
+            default: function () {
+                return 0
+            }
+        },
+        padCount:{
             type: Number,
             default: function () {
                 return 0

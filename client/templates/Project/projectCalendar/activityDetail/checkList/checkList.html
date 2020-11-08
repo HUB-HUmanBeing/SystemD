@@ -25,10 +25,11 @@
                                 class="material-icons">{{#if check.checked}}done{{else}}check_box_outline_blank{{/if}}</i></a>
 
                         <div class="inputContainer flex-auto">
-                            <input type="text" class="no-margin "
+                            <textarea type="textarea" class="no-margin materialize-textarea "
                                    id="checkInput-{{@index}}"
-                                   placeholder="{{__ ".newCheck"}}" value="{{check.symEnc_label}}"
-                                   checkInput>
+                                      rows = "1"
+                                   placeholder="{{__ ".newCheck"}}"
+                                   checkInput>{{check.symEnc_label}}</textarea>
                         </div>
 
                         <a href="" class="removePropositionBtn"

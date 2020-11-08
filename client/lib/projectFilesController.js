@@ -6,10 +6,10 @@ import Project from "../../imports/classes/Project";
 
 const projectFilesController = {
 
-    encryptAndUploadFiles(files, projectId, instance, cb) {
+    encryptAndUploadFiles(files, projectId, instance,parentFolderId, cb) {
         let totalSize = 0
         let projectFilesSize = Project.findOne(FlowRouter.current().params.projectId).private.totalFilesSize
-        let filesArray = instance.files.get()
+        let filesArray = instance.files ? instance.files.get() : []
         for (let i = 0; i < files.length; i++) {
             let tempId = cryptoTools.generateId()
             totalSize += files[i].size
@@ -31,19 +31,22 @@ const projectFilesController = {
                         }
                         reader.readAsDataURL(files[i]);
                     }
-                    this.getUploadLink(files[i], projectId, (uploadLink, fileId) => {
+                    this.getUploadLink(files[i], projectId, parentFolderId,(uploadLink, fileId) => {
                         this.encryptFile(files[i], fileId, (encryptedBlob) => {
                             this.uploadFile(encryptedBlob, uploadLink, projectId, () => {
                                 Meteor.setTimeout(() => {
-                                    let newFiles = instance.files.get()
-                                    newFiles.forEach((file, j) => {
-                                        if (file.tempId == tempId) {
-                                            newFiles[j].id = fileId
-                                            newFiles[j].status = "done"
-                                            instance.files.set(newFiles)
-                                        }
+                                    if( instance.files){
+                                        let newFiles = instance.files.get()
+                                        newFiles.forEach((file, j) => {
+                                            if (file.tempId == tempId) {
+                                                newFiles[j].id = fileId
+                                                newFiles[j].status = "done"
+                                                instance.files.set(newFiles)
+                                            }
 
-                                    })
+                                        })
+                                    }
+
 
                                 }, 200)
 
@@ -60,16 +63,20 @@ const projectFilesController = {
 
 
         }
-        instance.files.set(filesArray)
+        if( instance.files){
+            instance.files.set(filesArray)
+        }
+
     },
-    getUploadLink(file, projectId, callback) {
+    getUploadLink(file, projectId,parentFolderId, callback) {
         let projectFile = new ProjectFile
 
         let projectFileParams = {
             symEnc_fileName: file.name,
             size: file.size,
             symEnc_mimeType: file.type,
-            projectId: projectId
+            projectId: projectId,
+            parentFolderId: parentFolderId || "root"
         }
         cryptoTools.encryptObject(projectFileParams, {symKey: Session.get("currentProjectSimKey")}, (encryptedProjectFileParams) => {
             projectFile.callMethod('newProjectFile', projectController.getAuthInfo(FlowRouter.current().params.projectId), encryptedProjectFileParams, (err, res) => {

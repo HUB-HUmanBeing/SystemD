@@ -435,11 +435,12 @@
     "enlableNotifications": "Le notifiche sono disabilitate su questa cartella, fare clic per riattivarle.",
     "abort": "Annulla",
     "showMore": "Mostra altro",
-    "newTopic": "Inizia una nuova discussione",
+    "newTopic": "Nouveau fil de discussion",
     "noTopics": "Questa cartella è vuota",
     "notifEnabled": "Ora riceverete le notifiche per tutte le discussioni in questa cartella",
     "notifDisabled": "Le notifiche sono state disabilitate per tutti i thread di questa cartella",
-    "topicName": "Titolo della discussione"
+    "topicName": "Titolo della discussione",
+    "chooseType": "Ajouter ..."
   },
   "topic": {
     "downloadAndDecrypt": "Scaricare e decifrare il file corrente"
@@ -447,7 +448,8 @@
   "topicItem": {
     "unseenPublications": "Nuove pubblicazioni",
     "dragInfo": "Potete spostare questa discussione in un'altra categoria.",
-    "mainTopic": "DISCUSSIONE PRINCIPALE"
+    "mainTopic": "DISCUSSIONE PRINCIPALE",
+    "topic": "fil de discussion"
   },
   "topicHeader": {
     "mainTopic": "Discussione principale",
@@ -465,7 +467,7 @@
   "newPublication": {
     "return": "Indietro",
     "newPublication": "Nuova pubblicazione",
-    "text": "Testo",
+    "text": "Contenu textuel",
     "images": "Immagini e testi",
     "poll": "Sondaggio",
     "files": "Immagini, files e testo"
@@ -530,7 +532,23 @@
     "projectUsing": " ",
     "of": "su",
     "allowed": " ",
-    "seeMore": "Mostra altro"
+    "seeMore": "Mostra altro",
+    "newFile": "Uploader un fichier",
+    "newFolder": "Nouveau dossier",
+    "actions": "Actions",
+    "newFolderPlaceholder": "Nom du dossier ...",
+    "cut": "Couper",
+    "paste": "Coller",
+    "rename": "Renommer",
+    "delete": "Supprimer",
+    "deleteItems": "Confirmer la suppression définitive de ",
+    "folders": "dossiers",
+    "files": "fichiers",
+    "and": "et de",
+    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "confirmDelete": "Supprimer",
+    "cancelDelete": "Annuler",
+    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
   },
   "filePreview": {
     "delete": "Eliminare il file",
@@ -689,7 +707,12 @@
     "joinActivity": "Partecipare all'attività",
     "inviteMember": "invitare i membri a partecipare all'attività",
     "onMap": "Posizione sulla mappa:",
-    "showOnMap": "Vedi"
+    "showOnMap": "Vedi",
+    "placeholderActivityDetail": "Descrizione Attività...",
+    "onAgenda": "Placé sur l'agenda :",
+    "start": "Début ",
+    "end": "Fin ",
+    "duration": "Durée :"
   },
   "weekDays": {
     "day0": "Domenica",
@@ -771,10 +794,14 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Fogli di calcolo",
-    "noSpreadsheet": "Nessun foglio di calcolo",
+    "noSpreadsheet": "Dossier vide",
     "newSpreadsheet": "Nuovo foglio di calcolo",
     "showMore": "Mostra altro",
-    "SpreadsheetName": "Nome del foglio di calcolo"
+    "SpreadsheetName": "Nome del foglio di calcolo",
+    "padList": "Textes",
+    "noPad": "Dossier vide",
+    "newPad": "Nouveau texte",
+    "PadName": "Nom du texte"
   },
   "spreadsheetHeader": {
     "spreadsheetName": "Nome del foglio di calcolo",
@@ -790,6 +817,10 @@
     "fileUpload": "Importare un file CSV",
     "onlyCsvError": "Il file inviato non è in formato CSV",
     "searchInTable": "Cerca in foglio di calcolo"
+  },
+  "spreadsheetItem": {
+    "pad": "Texte collaboratif",
+    "spreadsheet": "Tableur collaboratif"
   },
   "spreadsheet": {
     "noRecordsFound": "Niente da visualizzare",
@@ -838,5 +869,24 @@
     "allDayHtml": "Tutta la<br/>giornata",
     "eventLimitText": "con più una",
     "noEventsMessage": "Nessun evento da visualizzare"
+  },
+  "padContent": {
+    "saved": "Texte enregistré"
+  },
+  "padHeader": {
+    "padName": "Nom du texte",
+    "lastEdit": "Derniere édition",
+    "otherEditors": "Autres participants",
+    "download": "Télécharger...",
+    "pdf": "Télécharger au format pdf",
+    "docx": "Télécharger au format docx",
+    "delete": "Supprimer",
+    "edit": "Editer le nom du texte",
+    "abort": "Annuler",
+    "deleteInfo": "Ce texte sera supprimé ainsi que tout son contenu."
+  },
+  "pad": {
+    "errorPaste": "Le texte contient des caractères qui ne peuvent être enregistrés.",
+    "errorDownload": "Une erreur est survenue et votre texte ne peut être téléchargé sous ce format."
   }
 }

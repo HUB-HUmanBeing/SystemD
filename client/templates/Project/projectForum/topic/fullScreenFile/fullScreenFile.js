@@ -42,6 +42,7 @@ Template.fullScreenFile.onCreated(function () {
 Template.fullScreenFile.onRendered(function () {
     //add your statement here
     resetTooltips()
+
 });
 
 Template.fullScreenFile.onDestroyed(function () {

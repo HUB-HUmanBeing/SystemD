@@ -7,8 +7,10 @@ Template.smartContent.helpers({
     smartifiedContent: function () {
         let instance=Template.instance()
         Meteor.setTimeout(() => {
+if(instance.data.refreshScrollbar){
+    instance.data.refreshScrollbar()
+}
 
-            instance.data.refreshScrollbar()
         }, 200)
         return Autolinker.link(renderShortname(Template.currentData().content, {
             size: 32, // size of emojis to use when the default CDN is used
@@ -21,8 +23,9 @@ Template.smartContent.helpers({
     linkPreview: function () {
         let instance=Template.instance()
         Meteor.setTimeout(() => {
-
-            instance.data.refreshScrollbar()
+            if(instance.data.refreshScrollbar){
+                instance.data.refreshScrollbar()
+            }
         }, 200)
         return Template.instance().linkPreview.get()
 
@@ -31,7 +34,9 @@ Template.smartContent.helpers({
         let instance=Template.instance()
         Meteor.setTimeout(() => {
 
-            instance.data.refreshScrollbar()
+            if(instance.data.refreshScrollbar){
+                instance.data.refreshScrollbar()
+            }
         }, 200)
         return urlParser.create({
             videoInfo: Template.instance().videoInfo.get(),
@@ -65,7 +70,7 @@ Template.smartContent.onRendered(function () {
             if (!videoUrl && urlParser.parse(sequence)) {
                 videoUrl = urlParser.parse(sequence)
                 this.videoInfo.set(videoUrl)
-                refreshScrollbar()
+
             } else if (!firstUrl) {
                 firstUrl = sequence
             }

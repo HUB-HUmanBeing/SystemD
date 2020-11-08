@@ -7,7 +7,11 @@
     margin-left: -15px;
     width: calc(100% + 15px);
   }
-
+.topicItem{
+  i{
+    font-size: 25px;
+  }
+}
   .currentCategory {
     background: linear-gradient(to right, $blue-highlight-color 0%, $lighter-bg 20%, $lighter-bg 100%);
 
@@ -15,7 +19,19 @@
       color: $plus-color !important;
     }
   }
-
+.choosingTypeBtn{
+  background-color: $contrasted-plus-bg;
+  cursor: pointer;
+  i{
+    margin: 15px;
+  }
+  &:hover{
+    background-color: $blue-highlight-color;
+    i{
+      color: $plus-color;
+    }
+  }
+}
   .newTopicBtn {
     opacity: 0;
     right: 55px;
@@ -114,7 +130,8 @@ text-align: left;
     #editCategoryForm {
       margin-top: 20px;
       width: 100%;
-
+      position: relative;
+      z-index: 2001;
       .btn-floating {
         padding: 0px 5px;
         transition: 0.3s;

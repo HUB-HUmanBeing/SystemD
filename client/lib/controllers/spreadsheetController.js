@@ -39,8 +39,6 @@ isFirst:true,
                         this.datas = newDatas
                     }
                 } else {
-                    console.log("réinitialisation des datas du tableur" , spreadsheetContent, Spreadsheet.findOne({_id: spreadsheetId}))
-                    console.log("spresheet route id" , FlowRouter.current().queryParams.spreadsheetId)
                     this.datas = this.defaultDatas()
                     this.saveDatas(this.datas)
                 }

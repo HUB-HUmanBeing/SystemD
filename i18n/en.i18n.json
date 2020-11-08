@@ -56,7 +56,7 @@
     "btnLabel": "Issues - Suggestions",
     "bugReport": "Issues",
     "suggestion": "Suggestions",
-    "precisions": "ATTENTION : Si vous souhaitez prendre contact avec les développeurs, pensez à nous laisser un moyen de vous contacter, rendez-vous sur le Riot du projet, ou suivez l'évolution de votre ticket sur GitHub",
+    "precisions": "WARNING: If you want to get in touch with developers, please leave us a way to contact you, go to the Project Riot, or track the progress of your issue on GitHub",
     "allowDeviceInfo": "Automatically join navigator information in order to help bug-fixing? (navigator, version, exploitation system, language)",
     "decline": "no",
     "authorize": "yes",
@@ -66,7 +66,7 @@
     "captcha": "Enter the 4 letters",
     "submit": "Send",
     "githubDirectLink": "Directly find us on GitHub...",
-    "riotDirectLink": "ou rendez-vous directement sur le chat Riot du projet...",
+    "riotDirectLink": "or go directly to the Riot chat of the project...",
     "succesMessage": "Thanks for your contribution! Your message has been sent to the developers",
     "githubLink": "To see the tracking of your feedback, go to the GitHub of the project",
     "return": "Return"
@@ -435,11 +435,12 @@
     "enlableNotifications": "Notifications are disabled on this folder, click to enable.",
     "abort": "Cancel",
     "showMore": "Show more Topics",
-    "newTopic": "Create a new Topic",
+    "newTopic": "New topic",
     "noTopics": "This folder is empty",
     "notifEnabled": "You will now receive notifications for all topics in this folder.",
     "notifDisabled": "Notifications are now disabled for all topics in this folder.",
-    "topicName": "Topic name"
+    "topicName": "Topic name",
+    "chooseType": "Add..."
   },
   "topic": {
     "downloadAndDecrypt": "Downloading and decrypting file..."
@@ -447,7 +448,8 @@
   "topicItem": {
     "unseenPublications": "New publications",
     "dragInfo": "You can move this topic in another category",
-    "mainTopic": "MAIN TOPIC"
+    "mainTopic": "MAIN TOPIC",
+    "topic": "Topic"
   },
   "topicHeader": {
     "mainTopic": "Main topic",
@@ -465,7 +467,7 @@
   "newPublication": {
     "return": "Back",
     "newPublication": "New publication",
-    "text": "Text",
+    "text": "Text content",
     "images": "Images and text",
     "poll": "Poll",
     "files": "Images, files and text"
@@ -502,8 +504,8 @@
   },
   "showPollContent": {
     "answers": "answers",
-    "newProposition": "Nouvelle proposition...",
-    "send": "Publier"
+    "newProposition": "New proposal...",
+    "send": "Publish"
   },
   "pollOption": {
     "vote": "votes"
@@ -530,7 +532,23 @@
     "projectUsing": " ",
     "of": "of",
     "allowed": " ",
-    "seeMore": "See more"
+    "seeMore": "See more",
+    "newFile": "Upload file",
+    "newFolder": "New folder",
+    "actions": "Actions",
+    "newFolderPlaceholder": "Folder name ...",
+    "cut": "Cut",
+    "paste": "Paste",
+    "rename": "Rename",
+    "delete": "Delete",
+    "deleteItems": "Confirm definitive deletion of ",
+    "folders": "folders",
+    "files": "files",
+    "and": "and",
+    "deleteItemsInfos": "Warning, all the elements contained in the selected folders will also be deleted.",
+    "confirmDelete": "Delete",
+    "cancelDelete": "Cancel",
+    "notAllowedToPaste": "Can't move a folder inside itself."
   },
   "filePreview": {
     "delete": "Delete file",
@@ -667,8 +685,8 @@
     "importICS": "Import as ICS",
     "importICSInfos": "Use an ICS file to import the events it contains on this project's agenda",
     "import": "Import",
-    "importSuccess": "évènements importés avec succès",
-    "importError": "Un ou plusieurs composants ont été ignorés durant l'import, est-ce bien un fichier iCalendar? (seuls les formats VTODO et VEVENT sont supportés pour le moment)"
+    "importSuccess": "Events successfully imported",
+    "importError": "One or more components were ignored during import, is it an iCalendar file? (only VTODO and VEVENT formats are supported at the moment)"
   },
   "colorLegend": {
     "placeholder": "Your legend ...",
@@ -689,7 +707,12 @@
     "joinActivity": "Participate to activity",
     "inviteMember": "Invite members to join activity",
     "onMap": "Map position :",
-    "showOnMap": "See on map"
+    "showOnMap": "See on map",
+    "placeholderActivityDetail": "Activity description",
+    "onAgenda": "Set on calendar :",
+    "start": "Beginning ",
+    "end": "End ",
+    "duration": "Duration :"
   },
   "weekDays": {
     "day0": "Sunday",
@@ -771,10 +794,14 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Spreadsheets",
-    "noSpreadsheet": "No spreadsheet",
+    "noSpreadsheet": "Empty folder",
     "newSpreadsheet": "New spreadsheet",
     "showMore": "See more",
-    "SpreadsheetName": "Spreadsheet name"
+    "SpreadsheetName": "Spreadsheet name",
+    "padList": "Texts",
+    "noPad": "Empty folder",
+    "newPad": "New text",
+    "PadName": "Text Name"
   },
   "spreadsheetHeader": {
     "spreadsheetName": "Spreadsheet name",
@@ -790,6 +817,10 @@
     "fileUpload": "Import CSV file",
     "onlyCsvError": "The specified file is not CSV format",
     "searchInTable": "Search in spreadsheet"
+  },
+  "spreadsheetItem": {
+    "pad": "Collaborative text",
+    "spreadsheet": "Collaborative spreadsheet"
   },
   "spreadsheet": {
     "noRecordsFound": "Nothing to show",
@@ -826,17 +857,36 @@
     "code": "fr",
     "dow": 1,
     "doy": 4,
-    "prev": "Précédent",
-    "next": "Suivant",
-    "today": "Aujourd'hui",
-    "year": "Année",
-    "month": "Mois",
-    "week": "Semaine",
-    "day": "Jour",
-    "list": "Mon planning",
-    "weekLabel": "Sem.",
-    "allDayHtml": "Toute la<br/>journée",
-    "eventLimitText": "en plus",
-    "noEventsMessage": "Aucun événement à afficher"
+    "prev": "Previous",
+    "next": "Next",
+    "today": "Today",
+    "year": "Year",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+    "list": "My schedule",
+    "weekLabel": "Week",
+    "allDayHtml": "All day<br/>event",
+    "eventLimitText": "more",
+    "noEventsMessage": "No events to show."
+  },
+  "padContent": {
+    "saved": "Text saved"
+  },
+  "padHeader": {
+    "padName": "Text Name",
+    "lastEdit": "Last edit",
+    "otherEditors": "Other participants",
+    "download": "Download...",
+    "pdf": "Download as PDF",
+    "docx": "Save as DOCX",
+    "delete": "Delete",
+    "edit": "Edit text name",
+    "abort": "Cancel",
+    "deleteInfo": "This text will be deleted along with all its contents."
+  },
+  "pad": {
+    "errorPaste": "The text contains characters that cannot be saved.",
+    "errorDownload": "An error occurred and your text cannot be downloaded in this format."
   }
 }

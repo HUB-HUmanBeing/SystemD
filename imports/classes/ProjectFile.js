@@ -29,6 +29,13 @@ const ProjectFile = Class.create({
         createdBy:{
             type: String
         },
+        parentFolderId: {
+            type: String,
+            default: function () {
+                return null
+            },
+            index: 1
+        },
     },
     helpers: {
     }
