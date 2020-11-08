@@ -71,7 +71,7 @@ Template.fileContent.events({
         $('#fileInput').click()
     },
     'change [fileInput]':function (event,instance) {
-        projectFilesController.encryptAndUploadFiles(event.currentTarget.files, FlowRouter.current().params.projectId, instance, (err)=>{
+        projectFilesController.encryptAndUploadFiles(event.currentTarget.files, FlowRouter.current().params.projectId, instance, null,(err)=>{
             if(err){
                 Materialize.toast(err, 6000, 'toastError')
             }
@@ -119,7 +119,7 @@ let dropContainer = $('.fileUploader')[0]
         evt.preventDefault();
         // pretty simple -- but not for IE :(
         let fileInput = evt.dataTransfer.files;
-        projectFilesController.encryptAndUploadFiles(fileInput, FlowRouter.current().params.projectId, this)
+        projectFilesController.encryptAndUploadFiles(fileInput, FlowRouter.current().params.projectId, this, null,)
         $('.fileUploader').css("opacity", 0.5).css("border", " 2px dashed white")
 
     };

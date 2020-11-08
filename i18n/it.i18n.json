@@ -56,6 +56,7 @@
     "btnLabel": "Bugs - Suggerimenti",
     "bugReport": "Bug",
     "suggestion": "Suggerimenti",
+    "precisions": "AVVISO: Se vuoi contattare gli sviluppatori, lasciaci un modo per contattarti, vai al progetto Riot, o segui l'evoluzione del tuo biglietto su GitHub",
     "allowDeviceInfo": "Allegare automaticamente informazioni sul browser utilizzato per facilitare il debug? (browser, versione, sistema operativo, lingua)",
     "decline": "no",
     "authorize": "sì",
@@ -65,6 +66,7 @@
     "captcha": "Inserire i 4 caratteri",
     "submit": "Invia",
     "githubDirectLink": "Usa direttamente il Github di System-d.org...",
+    "riotDirectLink": "o andare direttamente alla chat del progetto Riot...",
     "succesMessage": "Grazie per il vostro contributo! Il vostro messaggio è stato inoltrato agli sviluppatori",
     "githubLink": "Per vedere l'avanzamento del tuo messaggio, vai su GitHub",
     "return": "Indietro"
@@ -196,7 +198,7 @@
   "signinForm": {
     "userNameChoice": "Scegliere un nome utente",
     "passwordChoice": "Password",
-    "passwordRepeat": "Ripetere la password",
+    "passwordRepeat": "Ripeta la password",
     "accountCreate": "Creare un account"
   },
   "signinFormJs": {
@@ -211,17 +213,17 @@
     "characters": "caratteri speciali",
     "des": ", del ",
     "capital": "maiuscole",
-    "and": " e ",
+    "and": " e di ",
     "number": "cifre",
     "up": " per aumentare la forza della tua password.",
     "strength": "La forza della password deve essere di almeno 1O",
     "samePwd": "Le vostre due password non sono identiche",
     "typePwd": "Inserite una password",
-    "confirm": "Veuillez confirmer votre mot de passe",
-    "form": "Le formulaire d'inscription n'est pas valide",
-    "miss": "Il manque des informations",
-    "generation": "Génération des clefs de chiffrement",
-    "creation": "Création du compte utilisateur",
+    "confirm": "Per favore conferma la tua password",
+    "form": "Il modulo di registrazione non è valido",
+    "miss": "Mancano informazioni",
+    "generation": "Generazione di chiavi di cifratura",
+    "creation": "Creazione di un account utente",
     "initialization": "Inizializzazione di una nuova sessione criptata"
   },
   "signinContainer": {
@@ -268,513 +270,564 @@
     "noDescription": "Descrizione non disponibile."
   },
   "editProjectAvatar": {
-    "edit": "Editer l'avatar",
-    "delete": "Supprimer l'avatar",
-    "OK": "valider"
+    "edit": "Modifica avatar",
+    "delete": "Cancella avatar",
+    "OK": "confermare"
   },
   "editProjectDescription": {
-    "label": "Description du projet"
+    "label": "Descrizione del progetto"
   },
   "projectParams": {
-    "publicInfos": "Informations publiques",
-    "createInvitelink": "Nouvelle invitation",
-    "invitationList": "Invitations en cours",
-    "deleteProject": "Supprimer le projet"
+    "publicInfos": "Informazioni pubbliche",
+    "createInvitelink": "Nuovo invito",
+    "invitationList": "Inviti in corso",
+    "deleteProject": "Elimina il progetto"
   },
   "deleteProject": {
-    "deleteProjectInfo": "Cette action supprimera définitivement le projet",
-    "deleteProjectError": "Vous ne pouvez pas supprimer ce projet",
-    "deleteProjectErrorTips": "Il reste des membres à l'intérieur de ce projet",
-    "deleteSuccess": "Le projet a été supprimé"
+    "deleteProjectInfo": "Questa azione eliminerà definitivamente il progetto",
+    "deleteProjectError": "Non è possibile eliminare questo progetto",
+    "deleteProjectErrorTips": "Ci sono ancora membri all'interno di questo progetto",
+    "deleteSuccess": "Il progetto è stato eliminato"
   },
   "projectLayout": {
-    "decrypting1": "Déchiffrement des informations projet"
+    "decrypting1": "Decifrare le informazioni del progetto"
   },
   "newInvitation": {
-    "title": "Création du lien d'invitation",
-    "infoQuote": "En transmettant des liens d'invitation, vous transmettez les clefs de chiffrement de votre projet à tous ceux qui auront accès au lien généré durant la période de validité.",
-    "durationLabel": "Durée de validité du lien d'invitation",
-    "hour": "heure",
-    "day": "jour",
-    "week": "semaine",
-    "month": "mois",
-    "remainingLabel1": "Valide pour inviter",
-    "user": "utilisateur",
-    "users": "utilisateurs",
-    "ok": "Générer le lien d'invitation",
-    "loader": "Génération du lien d'invitation",
-    "addMessage": "Ajouter un message d'invitation",
-    "invitMessage": "Message envoyé avec votre invitation",
-    "backToParams": "Retour aux paramètres du projet"
+    "title": "Creazione del link di invito",
+    "infoQuote": "Trasmettendo i link di invito, trasmettete le chiavi di codifica del vostro progetto a tutti coloro che avranno accesso al link generato durante il periodo di validità.",
+    "durationLabel": "Periodo di validità del link di invito",
+    "hour": "ora",
+    "day": "giorno",
+    "week": "settimana",
+    "month": "mese",
+    "remainingLabel1": "Valido per invitare",
+    "user": "utente",
+    "users": "utenti",
+    "ok": "Genera un link di invito",
+    "loader": "Generazione di link di invito",
+    "addMessage": "Aggiungete un messaggio d'invito",
+    "invitMessage": "Messaggio inviato con il vostro invito",
+    "backToParams": "Torna ai parametri del progetto"
   },
   "showInvitation": {
-    "title": "Lien d'nvitation",
-    "infoLink": "Copiez ce lien et envoyez-le à la ou les personnes que vous souhaitez inviter.",
-    "copied": "Lien d'invitation copié dans le presse papier",
-    "invitTitle": "Invitation à rejoindre le projet ",
-    "invitMessage": "Vous avez été invité à rejoindre un projet sur System-D : la plate-forme chiffrée de projets collaboratifs. Cliquez sur le lien pour voir l'invitation.",
-    "infoQr": "Si la personne à inviter est à coté de vous, elle peut aussi flasher ce QR-code avec n'importe quelle application de lecture de QR-code pour accéder à l'invitation.",
-    "infoDestroy": "En supprimant l'invitation, vous supprimez la possibilité d'utiliser le lien d'invitation pour avoir accès aux clefs de chiffrement de votre projet.",
-    "destroy": "Supprimer le lien d'invitation",
-    "backToParams": "Retour aux paramètres du projet",
-    "deleted": "le lien d'invitation à été détruit"
+    "title": "Link per l'invito",
+    "infoLink": "Copiate questo link e inviatelo alla persona o alle persone che desiderate invitare.",
+    "copied": "Link invito copiato negli appunti",
+    "invitTitle": "Invito a partecipare al progetto ",
+    "invitMessage": "Siete stati invitati a partecipare a un progetto su System-D: la piattaforma criptata per progetti di collaborazione. Clicca sul link per vedere l'invito.",
+    "infoQr": "Se la persona da invitare è accanto a voi, può anche flashare questo codice QR con qualsiasi applicazione di lettura di codici QR per accedere all'invito.",
+    "infoDestroy": "Rimuovendo l'invito, si elimina la possibilità di utilizzare il link dell'invito per accedere alle chiavi di cifratura del progetto.",
+    "destroy": "Rimuovere il link di invito",
+    "backToParams": "Torna ai parametri del progetto",
+    "deleted": "il link dell'invito è stato distrutto"
   },
   "invitationList": {
-    "from": "Lien d'invitation créé",
-    "by": "Créée par",
-    "expireIn": "Expire dans",
-    "remaining": "Invitations restantes",
-    "noInvits": "Il n'y a aucun lien d'invitation en cours de validité.",
-    "newInvitation": "Générer un nouveau lien d'invitation."
+    "from": "Creazione del link per l'invito",
+    "by": "Creato da",
+    "expireIn": "Scade in",
+    "remaining": "Inviti rimanenti",
+    "noInvits": "Non ci sono link di invito validi.",
+    "newInvitation": "Genera un nuovo link di invito."
   },
   "invitation": {
-    "title": "Invitation à rejoindre un projet",
-    "moreInfo": "Présentation de System-D",
-    "project": "Projet",
-    "userAlreadyInProject": "Vous participez déjà à ce projet",
-    "description": "Description du projet",
-    "noDescription": "Description non-renseignée",
-    "message": "Message d'invitation",
-    "decline": "Décliner",
-    "accept": "Accepter",
-    "noLongerExist": "Cette invitation est expirée",
-    "noLongerExistInfo": "Demandez à la personne qui vous a envoyé l'invitation de vous en renvoyer une nouvelle",
-    "needToLoginFirst": "Vous devez être connecté pour rejoindre un projet",
-    "needToLoginFirstInfo": "Cliquez sur le bouton pour vous connecter ou vous inscrire et rejoindre le projet.",
-    "needToLoginFirstButton": "S'enregistrer"
+    "title": "Invito a partecipare a un progetto",
+    "moreInfo": "Presentazione del System-D",
+    "project": "Progetto",
+    "userAlreadyInProject": "Sei già coinvolto in questo progetto",
+    "description": "Descrizione del progetto",
+    "noDescription": "Descrizione non riportata",
+    "message": "Messaggio di invito",
+    "decline": "Declina",
+    "accept": "Accettare",
+    "noLongerExist": "Questo invito è scaduto",
+    "noLongerExistInfo": "Chiedete alla persona che vi ha inviato l'invito a mandarvene uno nuovo",
+    "needToLoginFirst": "Per partecipare a un progetto è necessario aver effettuato il login",
+    "needToLoginFirstInfo": "Cliccare sul pulsante per effettuare il login o registrarsi e partecipare al progetto.",
+    "needToLoginFirstButton": "Registrarsi"
   },
   "projectMembers": {
-    "membersList": "Liste des membres",
-    "admins": "Administrateurs",
-    "members": "Membres"
+    "membersList": "Lista dei membri",
+    "admins": "Amministratori",
+    "members": "Membri"
   },
   "member": {
-    "since": "Depuis",
-    "invitedBy": "Invité par",
-    "projectCreator": "Créateur du projet",
-    "quitProject": "Quitter le projet",
-    "quitProjectError": "Vous ne pouvez pas quitter le projet.",
-    "quitProjectErrorTips": "Nommer au moins un nouvel administrateur pour le projet.",
-    "quitProjectInfo": "Vous serez retirés des participants au projet.",
-    "promoteUser": "Donner les droits d'administrateur",
-    "promoteUserInfo": "L'utilisateur pourra inviter et retirer des membres au projet.",
-    "kickUser": "Retirer l'utilisateur",
-    "kickUserInfo": "Retirer l'utilisateur de la liste des membres du projet.",
-    "removedSuccess": "L'utilisateur à été retiré des membres du projet",
-    "promoteSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
-    "quitSuccess": "Vous avez quitté le projet"
+    "since": "Da",
+    "invitedBy": "Invitato da",
+    "projectCreator": "Creatore del progetto",
+    "quitProject": "Abbandona il progetto",
+    "quitProjectError": "Non puoi abbandonare il progetto.",
+    "quitProjectErrorTips": "Nominate almeno un nuovo amministratore per il progetto.",
+    "quitProjectInfo": "Sarete allontanati dai partecipanti al progetto.",
+    "promoteUser": "Consegna dei privilegi di amministratore",
+    "promoteUserInfo": "L'utente potrà invitare e ritirare i membri al progetto.",
+    "kickUser": "Rimuovi l'utente",
+    "kickUserInfo": "Rimuovi l'utente dall'elenco dei membri del progetto.",
+    "removedSuccess": "L'utente è stato rimosso dai membri del progetto",
+    "promotedSuccess": "L'utente fa ora parte degli amministratori del progetto",
+    "quitSuccess": "Hai lasciato il progetto"
   },
   "_templates_users": "===========================================================================================================================",
   "deleteAccount": {
-    "confirmPassword": "Confirmer avec votre mot de passe",
-    "deleteAccount": "Supprimer le compte"
+    "confirmPassword": "Conferma la vostra password",
+    "deleteAccount": "Elimina account"
   },
   "deleteAccountJs": {
-    "error": "Une erreur s'est produite",
-    "deletedAccount": "Votre compte utilisateur à été définitivement supprimé"
+    "error": "Si é verificato un errore",
+    "deletedAccount": "Il vostro account utente è stato eliminato permanentemente"
   },
   "editAvatar": {
-    "edit": "Éditer l'avatar",
-    "delete": "Supprimer l'avatar",
-    "OK": "Valider"
+    "edit": "Modifica avatar",
+    "delete": "Cancella avatar",
+    "OK": "Confermare"
   },
   "editPassword": {
-    "oldPassword": "Ancien mot de passe",
-    "newPassword": "Nouveau mot de passe",
-    "repeatPassword": "Répéter mot de passe",
-    "strength": "Force",
-    "editPassword": "Modifier mot de passe"
+    "oldPassword": "Vecchia password",
+    "newPassword": "Nuova Password",
+    "repeatPassword": "Ripeta la password",
+    "strength": "Forza",
+    "editPassword": "Cambia password"
   },
   "editPasswordJs": {
-    "previousPwd": "veuillez entrer votre précédent mot de passe",
-    "crypt": "Le chiffrement de vos contenus sur System-D repose sur votre mot de passe, c'est pourquoi nous vous invitons à utiliser un mot de passe fort.",
-    "use": "Utilisez des ",
-    "characters": "caractères spéciaux",
-    "des": ", des ",
-    "capital": "majuscules",
-    "and": " et des ",
-    "number": "chiffres",
-    "up": " afin d'augmenter la force de votre mot de passe.",
-    "strength": "La force du mot de passe doit au moins être de 1O",
-    "samePwd": "Les mots de passe ne sont pas identiques",
-    "typePwd": "Veuillez saisir un mot de passe",
-    "confirm": "Veuillez confirmer votre mot de passe",
-    "form": "Le formulaire d'inscription n'est pas valide",
-    "miss": "Il manque des informations",
-    "pwdChange": "Changement du mot de passe",
-    "encryptionKey": "Chiffrement de la clef privée à partir du nouveau mot de passe",
-    "initialization": "Rénitialisation de la session chiffrée"
+    "previousPwd": "Si prega di inserire la password precedente",
+    "crypt": "La crittografia dei vostri contenuti su System-D si basa sulla vostra password, quindi vi preghiamo di utilizzare una password forte.",
+    "use": "Utilizza di ",
+    "characters": "caratteri speciali",
+    "des": ", del ",
+    "capital": "maiuscole",
+    "and": " e di ",
+    "number": "cifre",
+    "up": " al fine per aumentare la forza della tua password.",
+    "strength": "La forza della password deve essere di almeno 1O",
+    "samePwd": "Le password non sono uguali",
+    "typePwd": "Inserisca una password",
+    "confirm": "Si prega di confermare la password",
+    "form": "Il modulo di registrazione non è valido",
+    "miss": "Mancano informazioni",
+    "pwdChange": "Cambiare la password",
+    "encryptionKey": "Crittografare la chiave privata con la nuova password",
+    "initialization": "Resettaggio della sessione criptata"
   },
   "userParams": {
-    "editPassword": "Modifier le mot de passe",
-    "peditPassword": "Nous n'aurons aucun moyen de vous aider si vous oubliez votre mot de passe. Ainsi, il est recommandé de noter le mot de passe que vous aurez choisi.",
-    "deleteAccount": "Supprimer votre compte",
-    "pdeleteAccount": "LA SUPPRESSION DE VOTRE COMPTE SERA DEFINITIVE.",
-    "passwordDeleteAccount": "Entrez votre mot de passe afin de confirmer la suppression du compte."
+    "editPassword": "Modifica password",
+    "peditPassword": "Non avremo modo di aiutarti se dimentichi la tua password. Pertanto, si raccomanda di annotarsi la password scelta.",
+    "deleteAccount": "Elimina il vostro account",
+    "pdeleteAccount": "LA CANCELLAZIONE DEL VOSTRO ACCOUNT SARÀ IRREVOCABILE.",
+    "passwordDeleteAccount": "Si prega di inserire la password per confermare l'eliminazione dell'account."
   },
   "userOptions": {
-    "language": "Langue"
+    "language": "Lingua"
   },
   "_templates_forum": "===========================================================================================================================",
   "categoryList": {
-    "categoryName": "Nom du dossier",
-    "new": "Nouveau dossier",
-    "myFiles": "DOCUMENTS",
-    "seeMore": "Voir plus"
+    "categoryName": "Nome cartella",
+    "new": "Nuova Cartella",
+    "myFiles": "DOCUMENTI",
+    "seeMore": "Mostra altro"
   },
   "categoryItem": {
-    "categoryName": "Nom du dossier",
-    "delete": "Supprimer le dossier",
-    "deleteInfo": "Toutes les conversations à l'intérieur du dossier seront supprimées",
-    "moveDown": "Descendre dans la liste",
-    "moveUp": "Monter dans la liste",
-    "edit": "Éditer le nom",
-    "disableNotifications": "Les notifications sont actives sur ce dossier, cliquez pour les désactiver.",
-    "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver.",
-    "abort": "Annuler",
-    "showMore": "Voir plus",
-    "newTopic": "Créer une nouvelle discussion",
-    "noTopics": "Ce dossier est vide",
-    "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
-    "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier",
-    "topicName": "Nom de la discussion"
+    "categoryName": "Nome cartella",
+    "delete": "Elimina la cartella",
+    "deleteInfo": "Tutte le conversazioni all'interno della cartella saranno cancellate",
+    "moveDown": "Spostare in basso nella lista",
+    "moveUp": "Spostati nella lista",
+    "edit": "Modifica nome",
+    "disableNotifications": "Le notifiche sono attive su questa cartella, fare clic per disattivarle.",
+    "enlableNotifications": "Le notifiche sono disabilitate su questa cartella, fare clic per riattivarle.",
+    "abort": "Annulla",
+    "showMore": "Mostra altro",
+    "newTopic": "Nouveau fil de discussion",
+    "noTopics": "Questa cartella è vuota",
+    "notifEnabled": "Ora riceverete le notifiche per tutte le discussioni in questa cartella",
+    "notifDisabled": "Le notifiche sono state disabilitate per tutti i thread di questa cartella",
+    "topicName": "Titolo della discussione",
+    "chooseType": "Ajouter ..."
   },
   "topic": {
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier en cours"
+    "downloadAndDecrypt": "Scaricare e decifrare il file corrente"
   },
   "topicItem": {
-    "unseenPublications": "Nouvelles publications",
-    "dragInfo": "Vous pouvez déplacer cette discussion dans une autre catégorie.",
-    "mainTopic": "DISCUSSION PRINCIPALE"
+    "unseenPublications": "Nuove pubblicazioni",
+    "dragInfo": "Potete spostare questa discussione in un'altra categoria.",
+    "mainTopic": "DISCUSSIONE PRINCIPALE",
+    "topic": "fil de discussion"
   },
   "topicHeader": {
-    "mainTopic": "Discussion principale",
-    "topicName": "Nom de la discussion",
-    "delete": "Supprimer la discussion",
-    "edit": "Changer le nom de la discussion",
-    "disableNotifications": "Les notifications sont actives pour cette discussion, cliquez pour les désactiver.",
-    "enlableNotifications": "Les notifications sont désactivées pour cette discussion, cliquez pour les activer.",
-    "abort": "annuler",
-    "deleteInfo": "Cette discussion et tout son contenu seront supprimés.",
-    "deleteSuccess": "La discussion à été supprimée",
-    "notifEnabled": "Vous recevrez désormais des notifications pour chaque nouvelle publication.",
-    "notifDisabled": "Les notifications ont été désactivées pour cette discussion."
+    "mainTopic": "Discussione principale",
+    "topicName": "Titolo della discussione",
+    "delete": "Eliminare la discussione",
+    "edit": "Cambiare il nome della discussione",
+    "disableNotifications": "Le notifiche sono attive per questo thread, fare clic per disattivarle.",
+    "enlableNotifications": "Le notifiche sono disattivate per questo thread, fare clic per attivarle.",
+    "abort": "annulla",
+    "deleteInfo": "Questa discussione e tutti i suoi contenuti saranno eliminati.",
+    "deleteSuccess": "La discussione è stata eliminata",
+    "notifEnabled": "Riceverete ora le notifiche per ogni nuova pubblicazione.",
+    "notifDisabled": "Le notifiche sono state disabilitate per questa discussione."
   },
   "newPublication": {
-    "return": "Retour",
-    "newPublication": "Nouvelle publication",
-    "text": "Texte",
-    "images": "Images et texte",
-    "poll": "Sondage",
-    "files": "Images, fichiers et texte"
+    "return": "Indietro",
+    "newPublication": "Nuova pubblicazione",
+    "text": "Contenu textuel",
+    "images": "Immagini e testi",
+    "poll": "Sondaggio",
+    "files": "Immagini, files e testo"
   },
   "textualContent": {
-    "placeholder": "Contenu de votre publication ...",
-    "publish": "Publier"
+    "placeholder": "Contenuto della vostra pubblicazione ...",
+    "publish": "Pubblicare"
   },
   "pollContent": {
-    "placeholder": "Description du sondage",
-    "newProposition": "Proposition de réponse n°",
-    "addProposition": "Ajouter une proposition",
-    "publish": "Publier le sondage"
+    "placeholder": "Descrizione del sondaggio",
+    "newProposition": "Risposta proposta n.",
+    "addProposition": "Aggiungere una proposta",
+    "publish": "Pubblica il sondaggio"
   },
   "fileContent": {
-    "addFiles": "Ajouter un ou plusieurs documents",
-    "loadInfos": "Chiffrement et upload des documents"
+    "addFiles": "Aggiungete uno o più documenti",
+    "loadInfos": "Criptazione e upload di documenti"
   },
   "publicationsList": {
-    "showMore": "Voir plus..."
+    "showMore": "Mostra altro..."
   },
   "publicationItem": {
-    "delete": "Supprimer",
-    "edit": "Editer",
-    "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
-    "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
-    "pinnedPublicationHead": "Publication épinglée"
+    "delete": "Elimina",
+    "abort": "Annulla",
+    "edit": "Modifica",
+    "deleteInfo": "Questa azione eliminerà definitivamente la pubblicazione e tutti i suoi commenti",
+    "deleteSuccess": "Questa pubblicazione e tutti i suoi commenti sono stati eliminati",
+    "pinnedPublicationHead": "Pubblicazione fissata con spilla"
   },
   "editText": {
-    "placeholder": "Contenu de votre publication ...",
-    "abort": "Annuler",
-    "publish": "Enregistrer"
+    "placeholder": "Contenuto della vostra pubblicazione ...",
+    "abort": "Annulla",
+    "publish": "Salva"
   },
   "showPollContent": {
-    "answers": "participants"
+    "answers": "partecipanti",
+    "newProposition": "Nuova proposta...",
+    "send": "Pubblicare"
   },
   "pollOption": {
-    "vote": "votes"
+    "vote": "voti"
   },
   "newComment": {
-    "placeholder": "Votre commentaire..."
+    "placeholder": "Il vostro commento...",
+    "sendComment": "Pubblicare"
   },
   "commentList": {
-    "see": "Voir les",
-    "moreComments": "autres commentaires"
+    "see": "Vedi il",
+    "moreComments": "commenti aggiuntivi"
   },
   "commentItem": {
-    "answer": "Répondre",
-    "delete": "Supprimer",
-    "deleteSuccess": "Commentaire supprimé.",
-    "see": "Voir les",
-    "moreComments": "autres réponses"
+    "answer": "Risponda a",
+    "delete": "Elimina",
+    "deleteSuccess": "Commento eliminato.",
+    "see": "Vedi il",
+    "moreComments": "altre risposte"
   },
   "newSubComment": {
-    "placeholder": "Votre réponse..."
+    "placeholder": "La vostra risposta..."
   },
   "files": {
     "projectUsing": " ",
-    "of": "sur",
+    "of": "su",
     "allowed": " ",
-    "seeMore": "Voir plus"
+    "seeMore": "Mostra altro",
+    "newFile": "Uploader un fichier",
+    "newFolder": "Nouveau dossier",
+    "actions": "Actions",
+    "newFolderPlaceholder": "Nom du dossier ...",
+    "cut": "Couper",
+    "paste": "Coller",
+    "rename": "Renommer",
+    "delete": "Supprimer",
+    "deleteItems": "Confirmer la suppression définitive de ",
+    "folders": "dossiers",
+    "files": "fichiers",
+    "and": "et de",
+    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "confirmDelete": "Supprimer",
+    "cancelDelete": "Annuler",
+    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
   },
   "filePreview": {
-    "delete": "Supprimer le fichier"
+    "delete": "Eliminare il file",
+    "show": "Mostra la pagina generale"
   },
   "fullScreenFile": {
-    "download": "Télécharger",
-    "delete": "Supprimer le fichier",
-    "return": "Retour",
-    "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier."
+    "download": "Scaricare",
+    "delete": "Eliminare il file",
+    "return": "Indietro",
+    "downloadAndDecrypt": "Scaricamento e decifrazione del file."
   },
   "projectFiles": {
-    "limitOneFile": "La taille des documents est limitée à 15 Mo",
-    "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
+    "limitOneFile": "La dimensione dei documenti è limitata a 15 MB",
+    "projectFiles.limitSize": "Avete raggiunto il limite di caricamento dei file per questo progetto. Si prega di cancellare i documenti prima di poterli scaricare di nuovo. "
+  },
+  "likeBox": {
+    "likePublication": "Mi piace",
+    "unlikePublication": "Non mi piace"
   },
   "pinned": {
-    "pin": "Épingler la publication en en-tête de la discussion",
-    "unpin": "Désépingler la publication"
+    "pin": "Appuntare il messaggio all'intestazione della discussione",
+    "unpin": "Smonta la pubblicazione"
+  },
+  "beautyfullTextarea": {
+    "addEmoji": "Aggiungete un emoji"
   },
   "showFileContent": {
-    "deleted": "Le fichier à été supprimé."
+    "deleted": "Il file è stato eliminato."
   },
   "_templates_map": "===========================================================================================================================",
   "projectMaps": {
-    "settings": "Paramètres",
-    "fullscreen": "Mettre en plein écran",
-    "newMarker": "Nouveau marqueur"
+    "settings": "Impostazioni",
+    "fullscreen": "Mettere a schermo pieno",
+    "newMarker": "Nuovo marcatore"
   },
   "mapParams": {
     "topo": "Topo",
-    "aerial": "Aérienne",
+    "aerial": "Aereo",
     "standard": "Standard"
   },
   "mapSettings": {
-    "title": "Paramètres",
-    "kindOfMap": "Type de carte : ",
-    "saveChoice": "Utiliser ce fond de carte par défaut pour tous les membres du projet.",
-    "save": "Enregistrer",
-    "defaultCenter": "Centrage par défaut : ",
-    "defaultCenterInfo": "Centrer la carte sur la zone que vous souhaitez voir apparaitre par défaut puis cliquez sur enregistrer",
-    "centerSaved": "Le centrage par défaut de votre carte à été modifié.",
-    "deleteOlds": "Retirer les anciens marqueurs :",
-    "deleteOldsInfo": "Retirer les marqueurs dont la date de création remonte à plus de :",
-    "chooseDuration": "Choisir durée",
-    "delete": "retirer",
-    "oldsMarkersDeleted": "Les anciens marqueurs ont été supprimés",
-    "colorLegend": "Légende couleur :"
+    "title": "Impostazioni",
+    "kindOfMap": "Tipo di mappa : ",
+    "saveChoice": "Utilizzare questa mappa di sfondo predefinita per tutti i membri del progetto.",
+    "save": "Salva",
+    "defaultCenter": "Centraggio di default : ",
+    "defaultCenterInfo": "Centrare la mappa sull'area che si desidera visualizzare per impostazione predefinita e poi cliccare su salva",
+    "centerSaved": "La centratura predefinita della carta è stata modificata.",
+    "deleteOlds": "Rimuovere i vecchi marcatori:",
+    "deleteOldsInfo": "Rimuovere i marcatori con una data di creazione più vecchia di :",
+    "chooseDuration": "Scegliere la durata",
+    "delete": "rimuovere",
+    "oldsMarkersDeleted": "I vecchi marcatori sono stati rimossi",
+    "colorLegend": "Leggenda dei colori :"
   },
   "newMarker": {
-    "title": "Nouveau marqueur",
-    "color": "Couleur",
-    "type": "Type",
-    "icons": "Icones",
-    "arrows": "Flèches",
-    "lines": "Lignes",
-    "text": "Zone de texte",
-    "textLabel": "contenu de la zone de texte",
-    "textSubmit": "Créer",
-    "shapes": "Formes",
-    "myPosition": "Ma Position",
-    "myPositionInfo": "Cliquer sur le bouton ci-dessous pour créer un marqueur sur la carte à partir de votre position",
-    "updateUserPosition": "indiquer ma position"
+    "title": "Nuovo marcatore",
+    "color": "Colore",
+    "type": "Tipo",
+    "icons": "Icone",
+    "arrows": "Frecce",
+    "lines": "Linee",
+    "text": "Zona Testo",
+    "textLabel": "contenuto della casella di testo",
+    "textSubmit": "Crea",
+    "shapes": "Forme",
+    "myPosition": "Ma posizione",
+    "myPositionInfo": "Cliccare sul pulsante qui sotto per creare un marcatore sulla mappa dalla vostra posizione",
+    "updateUserPosition": "indicare la mia posizione"
   },
   "creatingIcon": {
-    "createIconInfo": "Cliquer sur la carte pour positionner le marqueur."
+    "createIconInfo": "Cliccare sulla mappa per posizionare il marcatore."
   },
   "editingIcon": {
-    "editIconInfo": "Cliquer sur la carte pour modifier la position du marqueur."
+    "editIconInfo": "Cliccare sulla mappa per modificare la posizione del marcatore."
   },
   "markerDetail": {
-    "editColor": "Éditer la couleur",
-    "editIcon": "Éditer l'icône",
-    "markerName": "Nom du marqueur...",
-    "markerDetail": "Détail",
-    "editMarker": "éditer",
-    "moveMarker": "déplacer",
-    "deleteMarker": "Supprimer",
-    "coordinates": "Coordonnées :",
-    "createdBy": "Créé par ",
-    "lastEdit": " (édité)",
-    "goTo": "Y aller !"
+    "editColor": "Modifica colore",
+    "editIcon": "Modifica l'icona",
+    "markerName": "Nome del marcatore...",
+    "markerDetail": "Dettaglio",
+    "editMarker": "modifica",
+    "moveMarker": "sposta",
+    "deleteMarker": "Elimina",
+    "coordinates": "Informazioni di contatto :",
+    "createdBy": "Creato da ",
+    "lastEdit": " (edito)",
+    "goTo": "Portami lì!"
   },
   "detailMemberPosition": {
-    "lastEdit": "Dernière mise à jour :",
-    "actualise": "actualiser",
-    "deleteMarker": "Supprimer"
+    "lastEdit": "Ultimo aggiornamento:",
+    "actualise": "aggiorna",
+    "deleteMarker": "Elimina"
   },
   "creatingPolyline": {
-    "save": "Enregistrer",
-    "undo": "annuler dernier point",
-    "createIconInfo": "Placer les différents points puis cliquer sur enregistrer"
+    "save": "Salva",
+    "undo": "annullare l'ultimo punto",
+    "createIconInfo": "Posizionare i diversi punti e poi cliccare su salva"
   },
   "creatingShape": {
-    "save": "Enregistrer",
-    "undo": "annuler dernier point",
-    "circleInfo": "Positionner le centre du cercle puis élargissez son diamètre en glissant avec la souris.",
-    "rectangleInfo": "Positionner un coin du rectangle puis agrandissez le en glissant avec la souris.",
-    "polygonInfo": "Placer les différents sommets de votre forme puis cliquer sur le dernier point ou sur enregistrer"
+    "save": "Salva",
+    "undo": "annullare l'ultimo punto",
+    "circleInfo": "Posizionare il centro del cerchio e poi ingrandirne il diametro trascinandolo con il mouse.",
+    "rectangleInfo": "Posizionare un angolo del rettangolo, quindi ingrandirlo trascinandolo con il mouse.",
+    "polygonInfo": "Posizionate i diversi vertici della vostra forma e poi cliccate sull'ultimo punto o sul salvataggio"
   },
   "creatingArrow": {
-    "createArrowInfo": "Placer votre flèche sur la carte."
+    "createArrowInfo": "Posizionare la freccia sulla mappa."
   },
   "_templates_calendar": "===========================================================================================================================",
   "projectCalendar": {
-    "daysView": "Vue journalière",
-    "monthView": "Vue mensuelle",
-    "listView": "Liste des évènements mensuels",
-    "recurring": "(Récurrent)",
-    "unnamed": "Sans titre",
-    "setActivityInfo": "Positionnez l'activité où vous le souhaitez sur l'agenda.",
-    "activityPlaced": "L'activité à été placée sur l'agenda.",
-    "settings": "Paramètres",
-    "addBtn": "Ajouter un événement"
+    "daysView": "Vista giornaliera",
+    "monthView": "Vista mensile",
+    "listView": "Lista degli eventi mensili",
+    "recurring": "(Ricorrente)",
+    "unnamed": "Senza titolo",
+    "setActivityInfo": "Posizionare l'attività dove si desidera che sia in agenda.",
+    "activityPlaced": "L'attività è stata messa in agenda.",
+    "settings": "Impostazioni",
+    "addBtn": "Aggiunga un evento"
   },
   "calendarSettings": {
-    "title": "Paramètres de l'agenda",
-    "defaultView": "Vue par défaut : ",
-    "colorLegend": "Legende couleur : ",
-    "defaultViewSaved": "La vue par défaut à été modifiée pour tout les membres du projet",
-    "deleteOlds": "Supprimer les anciennes activités",
-    "deleteOldsInfo": "Supprimer les activités dont la date de début remonte à plus de :",
-    "delete": "Supprimer",
-    "oldsActivitiesDeleted": "Les anciennes activités ont été supprimées"
+    "title": "Impostazioni del calendario",
+    "defaultView": "Vista di default: ",
+    "colorLegend": "Leggenda dei colori : ",
+    "defaultViewSaved": "La vista predefinita è stata modificata per tutti i membri del progetto",
+    "deleteOlds": "Cancellare le vecchie attività",
+    "deleteOldsInfo": "Cancellare le attività con una data di inizio superiore a:",
+    "delete": "Elimina",
+    "oldsActivitiesDeleted": "Le vecchie attività sono state cancellate",
+    "exportICS": "Salva in formato ICS",
+    "exportICSInfos": "Recupera tutti i tuoi eventi decifrati in formato ICS per importarli in altre applicazioni di calendario.",
+    "export": "Esporta",
+    "importICS": "Importare in formato ICS",
+    "importICSInfos": "Utilizzare un file ICS per importare gli eventi in esso contenuti nell'agenda di questo progetto",
+    "import": "Importa",
+    "importSuccess": "eventi importati con successo",
+    "importError": "Uno o più componenti sono stati ignorati durante l'importazione, è un file iCalendar? (per il momento sono supportati solo i formati VTODO e VEVENT)"
   },
   "colorLegend": {
-    "placeholder": "Non renseigné",
-    "save": "Enregistrer"
+    "placeholder": "Nessuna informazione",
+    "save": "Salva"
   },
   "activityDetail": {
-    "activityTitle": "Activité sans nom",
-    "activityDetail": "Détail",
-    "editActivity": "enregistrer",
-    "recursivity": "Récurrence",
-    "deleteActivity": "Supprimer",
-    "participants": "Participants :",
-    "paricipating": "Vous participez à cette activité",
-    "invited": "Invités :",
-    "noInvited": "Aucun membre invité.",
-    "noParticipant": "Aucun participant",
-    "quitActivity": "Quitter l'activité",
-    "joinActivity": "Participer à l'activité",
-    "inviteMember": "inviter des membres à se joindre à l'activité",
-    "onMap": "Position sur la carte :",
-    "showOnMap": "Voir"
+    "activityTitle": "Attività senza nome",
+    "activityDetail": "Dettaglio",
+    "editActivity": "salva",
+    "recursivity": "Ricorrenza",
+    "deleteActivity": "Elimina",
+    "participants": "Partecipanti :",
+    "paricipating": "Partecipa a questa attività",
+    "invited": "Invitati:",
+    "noInvited": "Nessun membro invitato.",
+    "noParticipant": "Nessun partecipante",
+    "quitActivity": "Esci dall'attività",
+    "joinActivity": "Partecipare all'attività",
+    "inviteMember": "invitare i membri a partecipare all'attività",
+    "onMap": "Posizione sulla mappa:",
+    "showOnMap": "Vedi",
+    "placeholderActivityDetail": "Descrizione Attività...",
+    "onAgenda": "Placé sur l'agenda :",
+    "start": "Début ",
+    "end": "Fin ",
+    "duration": "Durée :"
   },
   "weekDays": {
-    "day0": "Dimanche",
-    "day1": "Lundi",
-    "day2": "Mardi",
-    "day3": "Mercredi",
-    "day4": "Jeudi",
-    "day5": "Vendredi",
-    "day6": "Samedi"
+    "day0": "Domenica",
+    "day1": "Lunedì",
+    "day2": "Martedì",
+    "day3": "Mercoledì",
+    "day4": "Giovedì",
+    "day5": "Venerdì",
+    "day6": "Sabato"
   },
   "inviteMembers": {
-    "inviteEverybody": "Tous",
-    "removeEverybody": "Aucuns",
-    "cancelModifs": "Annuler modifs",
-    "save": "enregistrer"
+    "inviteEverybody": "Tutti",
+    "removeEverybody": "Nessuno",
+    "cancelModifs": "Annulla le modifiche",
+    "save": "salva"
   },
   "invitedPopup": {
-    "detail": "Détail : ",
-    "title": "Invitation à participer à une activité",
-    "start": "Début : ",
-    "end": "Fin : ",
-    "decline": "Décliner",
-    "accept": "Accepter"
+    "detail": "Dettaglio: ",
+    "title": "Invito a partecipare ad un'attività",
+    "start": "Inizio: ",
+    "end": "Fine: ",
+    "decline": "Declina",
+    "accept": "Accettare"
   },
   "checkList": {
-    "checkList": "Check list : ",
-    "newCheck": "Check...",
-    "addCheck": "Ajouter un check",
-    "saveCheckItems": "Enregistrer"
+    "checkList": "Lista di controllo: ",
+    "newCheck": "Controlla...",
+    "addCheck": "Aggiungi un assegno",
+    "saveCheckItems": "Salva"
   },
   "projectTasks": {
-    "title": "Liste des tâches",
-    "inProject": "Tâches en projet",
-    "calendarPlaced": "Placées sur l'agenda",
-    "waitingForStatus": "Tâches passées",
-    "done": "Tâches terminées",
-    "inProjectDetail": "Les taches placées ici n'ont pas encore de date fixée.",
-    "calendarPlacedDetail": "Les taches placées sont placées dans l'agenda avec des dates dans le futur.",
-    "waitingForStatusDetail": "Les taches se trouvant dans cette section ont étés placées sur l'agenda, mais leurs dates est dépassée. A vous de voir si elles doivent etre remises en projet, replanifiées, ou si on peut les considerer comme terminées",
-    "doneDetail": "Cette section regroupe les taches qui ont étés considérées comme terminées.",
-    "newActivity": "Nouvelle tâche",
-    "myTasks": "Mes tâches"
+    "title": "Elenco delle operazioni da fare",
+    "inProject": "Compiti di progetto",
+    "calendarPlaced": "Inserito in agenda",
+    "waitingForStatus": "Compiti passati",
+    "done": "Compiti completati",
+    "inProjectDetail": "I compiti qui inseriti non hanno ancora una data fissa.",
+    "calendarPlacedDetail": "I compiti collocati vengono inseriti nel calendario con le date nel futuro.",
+    "waitingForStatusDetail": "I compiti di questa sezione sono stati inseriti nel calendario, ma le loro date sono passate. Sta a voi vedere se devono essere riprogettati, riprogrammati o se possono essere considerati completati",
+    "doneDetail": "Questa sezione raggruppa i compiti che sono stati considerati completati.",
+    "newActivity": "Nuovo compito",
+    "myTasks": "I miei compiti"
   },
   "tasksSettings": {
-    "title": "Paramètres de la liste de tâches",
-    "colorLegend": "Legende couleur : ",
-    "deleteDone": "Supprimer les tâches terminées",
-    "doneActivitiesDeleted": "Les tâches terminées ont été supprimées",
-    "delete": "Supprimer"
+    "title": "Impostazioni dell'elenco delle compiti",
+    "colorLegend": "Leggenda dei colori: ",
+    "deleteDone": "Eliminare le compiti completati",
+    "doneActivitiesDeleted": "I compiti completati sono stati eliminati",
+    "delete": "Elimina"
   },
   "taskItem": {
-    "participants": "Participants",
-    "inviteds": "Membres invités",
-    "checklist": "Check list",
-    "start": "Début",
-    "end": "Fin"
+    "participants": "Partecipanti",
+    "inviteds": "Membri invitati",
+    "checklist": "Lista di controllo",
+    "start": "Inizio",
+    "end": "Fine"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
-    "title": "Soutenir System-D",
-    "why": "Nous avons besoins de vos donations",
-    "whyText": "Le projet System-D à été bâti avec le cœur, sur du temps libre. Si vous souhaitez le voir perdurer et offrir à ceux qui le font vivre du temps libre pour developper de nouvelles fonctionnalités et améliorer les fonctionnalités existantes, vos donations sont importantes.",
-    "withTheMoney": "Vos donations permettent :",
-    "servers": "De payer les frais d'hébergement de la plate-forme pour un nombre toujours croissant d'utilisateurs",
-    "sustain": "De maintenir et améliorer les fonctionnalités de System-D, de les rendre accessible à toujours plus d'utilisateurs, et prendre en compte les retours utilisateurs.",
-    "develop": "De créer de nouvelles fonctionnalités. Prochains chantiers :",
-    "next1": "Discussions instantanées entre utilisateurs, utilisateurs et projets, projets.",
-    "next2": "Rechercher un projet ou un utilisateur par compétences, centre d'intérêt, type d'activité, localisation.",
-    "next3": "applications Android, Bureau, et IOS",
-    "ponctual": "Donation ponctuelle ( Paypal )",
-    "ponctualInfo": "Envoyer une donation ponctuelle via notre compte Paypal :",
-    "recursive": "Donation récurrente ( liberapay )",
-    "recursiveInfo": "Donner un peu d'argent tout les mois à System-D pour soutenir son développement sur le long terme via la plate-forme libre et open-source LiberaPay :",
-    "cryptos": "Donation en crypto-monnaies",
-    "donateIn": "Envoyer un don sur le wallet de System-D en",
+    "title": "Supportare Sistema-D",
+    "why": "Abbiamo bisogno delle vostre donazioni",
+    "whyText": "Il progetto System-D è stato costruito dal cuore, nel tempo libero. Se volete vederlo continuare e offrire a chi lo fa vivere il tempo libero per sviluppare nuove funzionalità e migliorare quelle esistenti, le vostre donazioni sono importanti.",
+    "withTheMoney": "Le vostre donazioni lo rendono possibile:",
+    "servers": "Pagare i costi di hosting della piattaforma per un numero sempre crescente di utenti",
+    "sustain": "Mantenere e migliorare le funzionalità di System-D, renderle accessibili a un numero sempre maggiore di utenti e tener conto del feedback degli utenti.",
+    "develop": "Per creare nuove funzionalità. Prossimi progetti:",
+    "next1": "Discussioni istantanee tra utenti-utenti e progetti-progetti.",
+    "next2": "Ricerca di un progetto o di un utente per competenze, interesse, tipo di attività, localizzazione.",
+    "next3": "Applicazioni Android, Desktop e IOS",
+    "ponctual": "Donazione una tantum ( Paypal )",
+    "ponctualInfo": "Invia una donazione una tantum tramite il nostro conto Paypal:",
+    "recursive": "Donazione ricorrente ( liberapay )",
+    "recursiveInfo": "Dare un po' di soldi ogni mese a System-D per sostenere il suo sviluppo a lungo termine attraverso la piattaforma gratuita e open-source LiberaPay:",
+    "cryptos": "Donazione in cripto-valuta",
+    "donateIn": "Inviare una donazione al wallet System-D in",
     "wallet": "Wallet ",
-    "copied": "Adresse du wallet copiée dans le presse papier"
+    "copied": "Indirizzo del wallet copiato negli appunti"
   },
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
-    "spreadsheetList": "Tableurs",
-    "noSpreadsheet": "Aucun tableur",
-    "newSpreadsheet": "Nouveau tableur",
-    "showMore": "Voir plus",
-    "SpreadsheetName": "Nom du tableur"
+    "spreadsheetList": "Fogli di calcolo",
+    "noSpreadsheet": "Dossier vide",
+    "newSpreadsheet": "Nuovo foglio di calcolo",
+    "showMore": "Mostra altro",
+    "SpreadsheetName": "Nome del foglio di calcolo",
+    "padList": "Textes",
+    "noPad": "Dossier vide",
+    "newPad": "Nouveau texte",
+    "PadName": "Nom du texte"
   },
   "spreadsheetHeader": {
-    "spreadsheetName": "Nom du tableur",
-    "delete": "Supprimer le tableur",
-    "edit": "Modifier le nom du tableur",
-    "abort": "Annuler",
-    "deleteInfo": "Ce tableur sera supprimé ainsi que tout son contenu.",
-    "deleteSuccess": "Le tableur à été supprimé",
-    "lastEdit": "Dernière édition",
-    "uploadTable": "Importer un tableur existant à partir d'un fichier CSV",
-    "uploadInfo": "Le système d'import de tableur existant fonctionne à partir de fichiers en \".csv\" . Enregistrez votre tableur excel ou OpenOffice au format CSV et importez le en cliquant sur le bouton ci dessous ",
-    "uploadWarning": "Attention, toutes les données du tableur seront écrasées définitivement par les données du fichier csv !",
-    "fileUpload": "Importer un fichier csv",
-    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV",
-    "searchInTable": "Rechercher dans le tableur"
+    "spreadsheetName": "Nome del foglio di calcolo",
+    "delete": "Eliminare il foglio di calcolo",
+    "edit": "Modifica del nome del foglio di calcolo",
+    "abort": "Annulla",
+    "deleteInfo": "Questo foglio di calcolo sarà eliminato insieme a tutto il suo contenuto.",
+    "deleteSuccess": "Il foglio di calcolo è stato eliminato",
+    "lastEdit": "Edizione più recente",
+    "uploadTable": "Importare un foglio di calcolo esistente da un file CSV",
+    "uploadInfo": "Il sistema di importazione dei fogli di calcolo esistente funziona a partire da file \".csv\". Salvate il vostro foglio di calcolo Excel o OpenOffice in formato CSV e importatelo cliccando sul pulsante qui sotto ",
+    "uploadWarning": "Attenzione, tutti i dati del foglio di calcolo saranno sovrascritti in modo permanente dai dati del file csv!",
+    "fileUpload": "Importare un file CSV",
+    "onlyCsvError": "Il file inviato non è in formato CSV",
+    "searchInTable": "Cerca in foglio di calcolo"
+  },
+  "spreadsheetItem": {
+    "pad": "Texte collaboratif",
+    "spreadsheet": "Tableur collaboratif"
   },
   "spreadsheet": {
-    "noRecordsFound": "Rien à afficher",
-    "showingPage": "Page {0} sur {1} affichée",
-    "show": "Montrer",
-    "entries": "entrées",
-    "insertANewColumnBefore": "Insérer une colonne avant",
+    "noRecordsFound": "Niente da visualizzare",
+    "showingPage": "Pagina {0} di {1} visualizzato",
+    "show": "Visualizza",
+    "entries": "voci",
+    "insertANewColumnBefore": "Inserire una colonna anteriore",
     "insertANewColumnAfter": "Inserire una colonna dopo",
     "deleteSelectedColumns": "Cancellare le colonne selezionate",
     "renameThisColumn": "Rinomina questa colonna",
@@ -782,39 +835,58 @@
     "orderDescending": "Ordine discendente",
     "insertANewRowBefore": "Inserire una riga prima",
     "insertANewRowAfter": "Inserire una riga dopo",
-    "deleteSelectedRows": "Supprimer les lignes sélectionnées",
-    "editComments": "Éditer les commentaires",
-    "addComments": "Ajouter un commentaire",
-    "comments": "Commentaires",
-    "clearComments": "Effacer les commentaires",
-    "copy": "Copier ...",
-    "paste": "Coller ...",
-    "saveAs": "Enregistrer sous ...",
-    "about": "À propos",
-    "areYouSureToDeleteTheSelectedRows": "Êtes-vous sûr de vouloir supprimer les lignes sélectionnées?",
-    "areYouSureToDeleteTheSelectedColumns": "Êtes-vous sûr de vouloir supprimer les colonnes sélectionnées?",
-    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "Cette action va supprimer toutes les cellules fusionnées, êtes-vous sûr?",
-    "thisActionWillClearYourSearchResultsAreYouSure": "Cette action va supprimer vos résultats de recherche, êtes-vous sûr?",
-    "thereIsAConflictWithAnotherMergedCell": "Il y a un conflit avec une autre cellule fusionnée",
-    "invalidMergeProperties": "Action invalide pour la fusion",
-    "cellAlreadyMerged": "Ces cellules sont déjà fusionnées",
-    "noCellsSelected": "Pas de cellules sélectionnées"
+    "deleteSelectedRows": "Cancellare le righe selezionate",
+    "editComments": "Modifica i commenti",
+    "addComments": "Aggiungere un commento",
+    "comments": "Commenti",
+    "clearComments": "Cancellare i commenti",
+    "copy": "Copia ...",
+    "paste": "Inserire...",
+    "saveAs": "Salva come ...",
+    "about": "Sulla app",
+    "areYouSureToDeleteTheSelectedRows": "Siete sicuri di voler cancellare le linee selezionate?",
+    "areYouSureToDeleteTheSelectedColumns": "Siete sicuri di voler cancellare le colonne selezionate?",
+    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "Questa azione rimuoverà tutte le cellule fuse, siete sicuri?",
+    "thisActionWillClearYourSearchResultsAreYouSure": "Questa azione cancellerà i risultati della vostra ricerca, siete sicuri?",
+    "thereIsAConflictWithAnotherMergedCell": "C'è un conflitto con un'altra cellula fusa",
+    "invalidMergeProperties": "Azione non valida per la fusione",
+    "cellAlreadyMerged": "Queste cellule sono già fuse",
+    "noCellsSelected": "Nessuna cella selezionata"
   },
   "fullCalendar": {
-    "code": "fr",
+    "code": "it",
     "dow": 1,
     "doy": 4,
-    "prev": "Précédent",
-    "next": "Suivant",
-    "today": "Aujourd'hui",
-    "year": "Année",
-    "month": "Mois",
-    "week": "Semaine",
-    "day": "Jour",
-    "list": "Mon planning",
-    "weekLabel": "Sem.",
-    "allDayHtml": "Toute la<br/>journée",
-    "eventLimitText": "en plus",
-    "noEventsMessage": "Aucun événement à afficher"
+    "prev": "Indietro",
+    "next": "Successivo",
+    "today": "Oggi",
+    "year": "Anno",
+    "month": "Mese",
+    "week": "Settimana",
+    "day": "Giorno",
+    "list": "Previsione mensile",
+    "weekLabel": "Sett.",
+    "allDayHtml": "Tutta la<br/>giornata",
+    "eventLimitText": "con più una",
+    "noEventsMessage": "Nessun evento da visualizzare"
+  },
+  "padContent": {
+    "saved": "Texte enregistré"
+  },
+  "padHeader": {
+    "padName": "Nom du texte",
+    "lastEdit": "Derniere édition",
+    "otherEditors": "Autres participants",
+    "download": "Télécharger...",
+    "pdf": "Télécharger au format pdf",
+    "docx": "Télécharger au format docx",
+    "delete": "Supprimer",
+    "edit": "Editer le nom du texte",
+    "abort": "Annuler",
+    "deleteInfo": "Ce texte sera supprimé ainsi que tout son contenu."
+  },
+  "pad": {
+    "errorPaste": "Le texte contient des caractères qui ne peuvent être enregistrés.",
+    "errorDownload": "Une erreur est survenue et votre texte ne peut être téléchargé sous ce format."
   }
 }

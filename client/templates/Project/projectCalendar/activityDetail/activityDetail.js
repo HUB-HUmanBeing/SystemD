@@ -7,6 +7,8 @@ import notificationController from "../../../../lib/controllers/notificationCont
 import mapController from "../../../../lib/controllers/mapController";
 import iconMarker from "../../../../lib/controllers/markers/iconMarker";
 import activityMarker from "../../../../lib/controllers/markers/activityMarker";
+import preFormatMessage from "../../../../lib/preformatMessages";
+import moment from "../../../../lib/i18nMoment";
 
 Template.activityDetail.helpers({
     //add you helpers here
@@ -49,6 +51,9 @@ Template.activityDetail.helpers({
     },
     editingColor: function () {
         return Template.instance().editingColor.get()
+    },
+    editingTextareaDetail: function () {
+        return Template.instance().editingTextareaDetail.get()
     },
     colors: function () {
         return mapParams.colors
@@ -134,6 +139,19 @@ Template.activityDetail.helpers({
     },
     showGoto: function () {
         return FlowRouter.current().route.name === "project-maps"
+    },
+    duration: function (){
+        let activity = Template.instance().activity.get()
+if(activity.end){
+    let start = moment(activity.start); // some random moment in time (in ms)
+    let end = moment(activity.end); // some random moment after start (in ms)
+    let diff = end.diff(start);
+// execution
+    return moment.utc(diff).format("HH : mm" );
+}else{
+    return "00:30"
+}
+
     }
 });
 
@@ -148,7 +166,7 @@ Template.activityDetail.events({
         event.preventDefault()
         let params = {
             symEnc_title: $('#activityTitle').val(),
-            symEnc_detail: $('#editActivityDetail').val()
+            symEnc_detail: $('#editActivityDetail').val()? preFormatMessage($('#editActivityDetail').val()) : ""
         }
         let activityId = FlowRouter.current().queryParams.activityId
         let activity = Activity.findOne(activityId)
@@ -162,6 +180,7 @@ Template.activityDetail.events({
                         console.log(err)
                     } else {
                         instance.showEditFormButton.set(false)
+                        instance.editingTextareaDetail.set(false)
                     }
                 })
         })
@@ -185,6 +204,10 @@ Template.activityDetail.events({
         event.preventDefault()
         resetTooltips()
         instance.editingColor.set(!instance.editingColor.get())
+    },
+    'click [textareaDetail]': function (event, instance) {
+        event.preventDefault()
+        instance.editingTextareaDetail.set(true)
     },
     'click [selectColor]': function (event, instance) {
         event.preventDefault()
@@ -242,6 +265,33 @@ Template.activityDetail.events({
         } else {
             Session.set("activityToPositionate", {activity: activity, from: FlowRouter.current().route.name})
             FlowRouter.go("/project/" + activity.projectId + "/maps")
+        }
+    },
+    'change [agendaSwitch]': function (event, instance) {
+
+        let activityId = FlowRouter.current().queryParams.activityId
+        let activity = Activity.findOne(activityId)
+        if (activity.start) {
+            Session.set("draggedTaskItem", null)
+            activity.callMethod(
+                "changeList",
+                projectController.getAuthInfo(FlowRouter.current().params.projectId),
+                "todo",
+                (err, res) => {
+                    if (err) {
+
+                        console.log(err)
+                    }else{
+                        if((FlowRouter.current().route.name === "project-calendar")){
+                            FlowRouter.go('/project/' + activity.projectId + "/calendar")
+                        }
+                    }
+                }
+            )
+        } else {
+            Session.set("waitingActivity", activity)
+            FlowRouter.go('/project/' + activity.projectId + "/calendar")
+            Materialize.toast(__('projectCalendar.setActivityInfo'), 6000, 'toastOk')
         }
     },
     'click [moveMarker]': function (event, instance) {
@@ -308,6 +358,7 @@ Template.activityDetail.onCreated(function () {
     this.activity = new ReactiveVar(false)
     this.showEditFormButton = new ReactiveVar(false)
     this.editingColor = new ReactiveVar(false)
+    this.editingTextareaDetail = new ReactiveVar(false)
     this.modalOpened = new ReactiveVar(false)
     this.initialColor = new ReactiveVar(false)
     this.autorun(() => {
@@ -325,7 +376,7 @@ Template.activityDetail.onCreated(function () {
                         activityMarker.startHighlightMapIcon(decryptedObject)
                     },500)
                 }
-
+                this.editingTextareaDetail.set(false)
                 if (!decryptedObject.symEnc_title) {
                     Meteor.setTimeout(() => {
                         $('#activityTitle').focus()
@@ -342,6 +393,7 @@ Template.activityDetail.onCreated(function () {
 Template.activityDetail.onRendered(function () {
     //add your statement here
     resetTooltips()
+    this.editingTextareaDetail.set(false)
 });
 
 Template.activityDetail.onDestroyed(function () {

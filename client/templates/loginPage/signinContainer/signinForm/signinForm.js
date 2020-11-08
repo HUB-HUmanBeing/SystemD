@@ -260,10 +260,10 @@ Template.signinForm.events({
                                             if (invitationId && invitationPassword) {
                                                 inviteController.acceptInvitationId(invitationId, invitationPassword, (projectId) => {
                                                     hubCrypto.decryptAndStoreProjectListInSession(() => {
+                                                        Materialize.toast(__('loginFormJs.welcome'), 6000, 'toastOk')
                                                         Materialize.toast(__('loginPage.invitationAccepted'), 6000, 'toastOk')
                                                         //si tout va bien on redirige vers la page pour completer le profil
                                                         FlowRouter.go('/user-params')
-                                                        Materialize.toast(__('loginFormJs.welcome'), 6000, 'toastOk')
                                                         window.localStorage.setItem("lastOpenedProjectId", projectId)
                                                     })
 

@@ -135,7 +135,18 @@ const inviteController = {
      */
     acceptInvitationId(invitationId, password, callback) {
         this.getCurrentInvitAndProject(invitationId, password, (invitation, project) => {
-            this.acceptInvitation(invitation, project, password, callback)
+            let found = false
+            Session.get("projects").forEach((currentProject)=>{
+                if (currentProject.asymEnc_projectId == project._id){
+                    found = true
+                }
+            })
+            if(!found){
+                this.acceptInvitation(invitation, project, password, callback)
+            }else{
+                callback(project._id)
+            }
+
         })
     }
 

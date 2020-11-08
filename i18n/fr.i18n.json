@@ -56,6 +56,7 @@
     "btnLabel": "Bugs - Suggestions",
     "bugReport": "Bug",
     "suggestion": "Suggestions",
+    "precisions": "ATTENTION : Si vous souhaitez prendre contact avec les développeurs, pensez à nous laisser un moyen de vous contacter, rendez-vous sur le Riot du projet, ou suivez l'évolution de votre ticket sur GitHub",
     "allowDeviceInfo": "Joindre automatiquement des informations sur le navigateur utilisé afin de faciliter le débuggage ? (navigateur, version, système d'exploitation, langue)",
     "decline": "non",
     "authorize": "oui",
@@ -65,6 +66,7 @@
     "captcha": "Saisir les 4 lettres",
     "submit": "Envoyer",
     "githubDirectLink": "Utiliser directement le Github de System-d.org...",
+    "riotDirectLink": "ou rendez-vous directement sur le chat Riot du projet...",
     "succesMessage": "Merci de votre contribution ! Votre message à été transmis au développeurs",
     "githubLink": "Pour voir l'évolution de votre message, rendez-vous sur GitHub",
     "return": "Retour"
@@ -361,7 +363,7 @@
     "kickUser": "Retirer l'utilisateur",
     "kickUserInfo": "Retirer l'utilisateur de la liste des membres du projet.",
     "removedSuccess": "L'utilisateur à été retiré des membres du projet",
-    "promoteSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
+    "promotedSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
     "quitSuccess": "Vous avez quitté le projet"
   },
   "_templates_users":  "===========================================================================================================================",
@@ -433,11 +435,12 @@
     "enlableNotifications": "Les notifications sont désactivées sur ce dossier, cliquez pour les réactiver.",
     "abort": "Annuler",
     "showMore": "Voir plus",
-    "newTopic": "Créer une nouvelle discussion",
+    "newTopic": "Nouveau fil de discussion",
     "noTopics": "Ce dossier est vide",
     "notifEnabled": "Vous recevrez désormais des notifications pour toutes les discussions de ce dossier",
     "notifDisabled": "Les notifications ont été désactivées pour toutes les discussions de ce dossier",
-    "topicName": "Nom de la discussion"
+    "topicName": "Nom de la discussion",
+    "chooseType": "Ajouter ..."
   },
   "topic": {
     "downloadAndDecrypt": "Téléchargement et déchiffrement du fichier en cours"
@@ -445,7 +448,8 @@
   "topicItem": {
     "unseenPublications": "Nouvelles publications",
     "dragInfo": "Vous pouvez déplacer cette discussion dans une autre catégorie.",
-    "mainTopic": "DISCUSSION PRINCIPALE"
+    "mainTopic": "DISCUSSION PRINCIPALE",
+    "topic" : "fil de discussion"
   },
   "topicHeader": {
     "mainTopic": "Discussion principale",
@@ -463,7 +467,7 @@
   "newPublication": {
     "return": "Retour",
     "newPublication": "Nouvelle publication",
-    "text": "Texte",
+    "text": "Contenu textuel",
     "images": "Images et texte",
     "poll": "Sondage",
     "files": "Images, fichiers et texte"
@@ -487,6 +491,7 @@
   },
   "publicationItem": {
     "delete": "Supprimer",
+    "abort": "Annuler",
     "edit": "Editer",
     "deleteInfo": "Cette action supprimera définitivement la publication et tous ses commentaires",
     "deleteSuccess": "Cette publication et tous ses commentaires ont été supprimés",
@@ -498,13 +503,16 @@
     "publish": "Enregistrer"
   },
   "showPollContent": {
-    "answers": "participants"
+    "answers": "participants",
+    "newProposition": "Nouvelle proposition...",
+    "send": "Publier"
   },
   "pollOption": {
     "vote": "votes"
   },
   "newComment": {
-    "placeholder": "Votre commentaire..."
+    "placeholder": "Votre commentaire...",
+    "sendComment": "Publier"
   },
   "commentList": {
     "see": "Voir les",
@@ -524,10 +532,28 @@
     "projectUsing": " ",
     "of": "sur",
     "allowed": " ",
-    "seeMore": "Voir plus"
+    "seeMore": "Voir plus",
+    "newFile": "Uploader un fichier",
+    "newFolder": "Nouveau dossier",
+    "actions" : "Actions",
+    "newFolderPlaceholder": "Nom du dossier ...",
+    "cut": "Couper",
+    "paste": "Coller",
+    "rename": "Renommer",
+    "delete": "Supprimer",
+    "deleteItems" :  "Confirmer la suppression définitive de ",
+    "folders": "dossiers",
+    "files": "fichiers",
+    "and": "et de",
+    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "confirmDelete": "Supprimer",
+    "cancelDelete" : "Annuler",
+    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
+
   },
   "filePreview": {
-    "delete": "Supprimer le fichier"
+    "delete": "Supprimer le fichier",
+    "show": "Voir l'aperçu"
   },
   "fullScreenFile": {
     "download": "Télécharger",
@@ -539,9 +565,16 @@
     "limitOneFile": "La taille des documents est limitée à 15 Mo",
     "projectFiles.limitSize": "Vous avez atteint la limite d'upload de fichier pour ce projet. Veuillez supprimer des documents avant de pouvoir uploader à nouveau. "
   },
+  "likeBox": {
+    "likePublication": "J'aime",
+    "unlikePublication": "Je n'aime plus"
+  },
   "pinned": {
     "pin": "Épingler la publication en en-tête de la discussion",
     "unpin": "Désépingler la publication"
+  },
+  "beautyfullTextarea": {
+    "addEmoji": "Ajouter un émoji"
   },
   "showFileContent": {
     "deleted": "Le fichier à été supprimé."
@@ -646,7 +679,15 @@
     "deleteOlds": "Supprimer les anciennes activités",
     "deleteOldsInfo": "Supprimer les activités dont la date de début remonte à plus de :",
     "delete": "Supprimer",
-    "oldsActivitiesDeleted": "Les anciennes activités ont été supprimées"
+    "oldsActivitiesDeleted": "Les anciennes activités ont été supprimées",
+    "exportICS": "Exporter au format ICS",
+    "exportICSInfos" : "Récupérez l'ensemble de vos évènements déchiffrés au format ICS afin de les importer dans d'autres applications de calendrier.",
+    "export": "Exporter",
+    "importICS": "Importer au format ICS",
+    "importICSInfos": "Utilisez un fichier ICS afin d'importer les évènements qu'il contient sur l'agenda de ce projet",
+    "import": "Importer",
+    "importSuccess": "évènements importés avec succès",
+    "importError": "Un ou plusieurs composants ont été ignorés durant l'import, est-ce bien un fichier iCalendar? (seuls les formats VTODO et VEVENT sont supportés pour le moment)"
   },
   "colorLegend": {
     "placeholder": "Non renseigné",
@@ -667,7 +708,12 @@
     "joinActivity": "Participer à l'activité",
     "inviteMember": "inviter des membres à se joindre à l'activité",
     "onMap": "Position sur la carte :",
-    "showOnMap": "Voir"
+    "showOnMap": "Voir",
+    "placeholderActivityDetail": "Déscription de l'activité...",
+    "onAgenda": "Placé sur l'agenda :",
+    "start": "Début ",
+    "end" : "Fin ",
+    "duration": "Durée :"
   },
   "weekDays": {
     "day0": "Dimanche",
@@ -749,10 +795,14 @@
 	"_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Tableurs",
-    "noSpreadsheet" : "Aucun tableur",
+    "noSpreadsheet" : "Dossier vide",
     "newSpreadsheet": "Nouveau tableur",
     "showMore": "Voir plus",
-    "SpreadsheetName": "Nom du tableur"
+    "SpreadsheetName": "Nom du tableur",
+    "padList": "Textes",
+    "noPad" : "Dossier vide",
+    "newPad": "Nouveau texte",
+    "PadName": "Nom du texte"
 
   },
   "spreadsheetHeader": {
@@ -769,6 +819,10 @@
     "fileUpload": "Importer un fichier csv",
     "onlyCsvError": "Le fichier envoyé n'est pas au format CSV",
     "searchInTable": "Rechercher dans le tableur"
+  },
+  "spreadsheetItem": {
+    "pad": "Texte collaboratif",
+    "spreadsheet": "Tableur collaboratif"
   },
   "spreadsheet":{
     "noRecordsFound":"Rien à afficher",
@@ -817,5 +871,25 @@
     "allDayHtml": "Toute la<br/>journée",
     "eventLimitText": "en plus",
     "noEventsMessage": "Aucun événement à afficher"
-  }
+  },
+  "padContent": {
+    "saved": "Texte enregistré"
+  },
+  "padHeader": {
+    "padName": "Nom du texte",
+    "lastEdit" : "Derniere édition",
+    "otherEditors" : "Autres participants",
+    "download": "Télécharger...",
+    "pdf": "Télécharger au format pdf",
+    "docx": "Télécharger au format docx",
+    "delete": "Supprimer",
+    "edit": "Editer le nom du texte",
+    "abort": "Annuler",
+    "deleteInfo": "Ce texte sera supprimé ainsi que tout son contenu."
+  },
+  "pad":{
+    "errorPaste": "Le texte contient des caractères qui ne peuvent être enregistrés.",
+    "errorDownload": "Une erreur est survenue et votre texte ne peut être téléchargé sous ce format."
+}
+
 }

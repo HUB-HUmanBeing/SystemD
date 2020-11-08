@@ -8,7 +8,7 @@ Template.newPublication.helpers({
             {
                 type: "textualContent",
                 label: __("newPublication.text"),
-                icon: "subject"
+                icon: "create"
             },
             {
                 type: "fileContent",

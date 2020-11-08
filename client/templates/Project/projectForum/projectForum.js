@@ -36,25 +36,7 @@ Template.projectForum.helpers({
     showTopic: function () {
 
         FlowRouter.watchPathChange()
-        let instance = Template.instance()
-        if (Meteor.Device.isDesktop() && !FlowRouter.current().queryParams.spreadsheetId) {
-            Meteor.setTimeout(() => {
-                let topicContainer = document.getElementById('topicContainer')
-                if (topicContainer && instance && Meteor.Device.isDesktop()) {
-                    if (instance.topicbs) {
-                        instance.topicbs.destroy()
-                    }
-                    instance.topicbs = new BeautifyScrollbar('#topicContainer');
-                }
-            }, 700)
-        }else{
-            if (instance.topicbs) {
-                instance.topicbs.destroy()
-            }
-        }
-
-
-        return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId || !!FlowRouter.current().queryParams.spreadsheetId
+      return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.topicId || !!FlowRouter.current().queryParams.spreadsheetId || !!FlowRouter.current().queryParams.padId
     },
     showFiles: function () {
         FlowRouter.watchPathChange()
@@ -62,28 +44,35 @@ Template.projectForum.helpers({
     },
     showCategories: function () {
         FlowRouter.watchPathChange()
-        return Meteor.Device.isDesktop() || (!FlowRouter.current().queryParams.topicId && !FlowRouter.current().queryParams.files&& !FlowRouter.current().queryParams.spreadsheetId)
+        return Meteor.Device.isDesktop() || (!FlowRouter.current().queryParams.topicId && !FlowRouter.current().queryParams.files&& !FlowRouter.current().queryParams.spreadsheetId && !FlowRouter.current().queryParams.padId)
     },
     refreshScrollbar: function () {
+
         let instance = Template.instance()
         return function () {
-            if (Meteor.Device.isDesktop()) {
-                Meteor.setTimeout(() => {
-                    let topicContainer = document.getElementById('topicContainer')
-                    if (topicContainer && instance && Meteor.Device.isDesktop()) {
-                        if (instance.topicbs) {
-                            instance.topicbs.destroy()
-                        }
-                        instance.topicbs = new BeautifyScrollbar('#topicContainer');
+            Meteor.setTimeout(()=>{
+                let top = $('#topicContainer').scrollTop()
+                let currentTopicId = FlowRouter.current().queryParams.topicId||"mainTopic"
+                if(instance.isRefreshedFirst != currentTopicId ){
+                    if(top>0){
+
+                        $('#topicContainer').scrollTop(0)
+                    }else{
+
+                        instance.isRefreshedFirst = currentTopicId
                     }
-                }, 200)
-            }
+                }
+            }, 1000)
 
         }
     },
     isSpreadsheet: function () {
         FlowRouter.watchPathChange()
         return !!FlowRouter.current().queryParams.spreadsheetId
+    },
+    isPad: function () {
+        FlowRouter.watchPathChange()
+        return !!FlowRouter.current().queryParams.padId
     }
 });
 

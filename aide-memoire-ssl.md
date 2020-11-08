@@ -1,4 +1,4 @@
-
+docker 
 ## Install du serveur minio et generation certificat ssl
 
     #install certbot
@@ -20,10 +20,10 @@
     
     cp /etc/letsencrypt/live/asset.system-d.org/privkey.pem /mnt/config/certs/private.key
     cp /etc/letsencrypt/live/asset.system-d.org/fullchain.pem /mnt/config/certs/public.crt
-
+    service nginx stop
     docker start minio
     
-    service nginx stop
+    
     
     
     #au cas ou, pour renouver tout :

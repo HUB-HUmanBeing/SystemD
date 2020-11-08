@@ -23,9 +23,11 @@ Template.showTextualContent.onCreated(function () {
     this.decryptedContent = new ReactiveVar(null)
     this.autorun(()=>{
        let  publication = Publication.findOne(this.data.id)
-        cryptoTools.decryptObject(publication.textualContent, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
-            this.decryptedContent.set(decryptedContent)
-        })
+        if (publication) {
+            cryptoTools.decryptObject(publication.textualContent, {symKey: Session.get("currentProjectSimKey")}, (decryptedContent) => {
+                this.decryptedContent.set(decryptedContent)
+            })
+        }
     })
 
 

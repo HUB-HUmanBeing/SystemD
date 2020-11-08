@@ -56,6 +56,7 @@
     "btnLabel": "Errores - Sugerencias",
     "bugReport": "Error",
     "suggestion": "Sugerencias",
+    "precisions": "ATTENTION : Si vous souhaitez prendre contact avec les développeurs, pensez à nous laisser un moyen de vous contacter, rendez-vous sur le Riot du projet, ou suivez l'évolution de votre ticket sur GitHub",
     "allowDeviceInfo": "Adjuntar automáticamente información sobre el navegador utilizado para facilitar la depuración? (navegador, versión, sistema operativo, idioma)",
     "decline": "no",
     "authorize": "si",
@@ -65,6 +66,7 @@
     "captcha": "Introduzca las 4 letras",
     "submit": "Enviar",
     "githubDirectLink": "Utiliser directement le Github de System-d.org...",
+    "riotDirectLink": "ou rendez-vous directement sur le chat Riot du projet...",
     "succesMessage": "Gracias por su contribución! Su mensaje ha sido enviado al desarrollador",
     "githubLink": "Para ver la evolución de su mensaje, vaya a GitHub",
     "return": "ir atrás "
@@ -107,11 +109,11 @@
   },
   "landingAim": {
     "ourPurpose": "NUESTRO OBJETIVO",
-    "purpose": "Créer un outil qui accompagne la transition vers un mode de production basé sur la collaboration et le partage.",
+    "purpose": "Crear una herramienta que apoye la transición desde una sociedad del dinero en quiebra hacia un modo de producción basado en la colaboración y el compartir.",
     "3DevPhases": "TRES FASES DE DESARROLLO",
     "createTool": "Crear una herramienta de gestión de proyectos abierta a todos y todas",
     "cTool": "Una herramienta que permitirá a los diferentes grupos y asociaciones organizarse de forma eficaz. Una herramienta gratuita, open-source y diseñada para promover la horizontalidad en la gestión de proyectos.",
-    "doOfSystemD": "Faire de SystemD le réseau social du projet collaboratif",
+    "doOfSystemD": "Hacer de System-D la red social del proyecto sin ánimo de lucro",
     "dOfSystD": "Creación de interfaces que hacen de la plataforma un espacio de encuentro y difusión de usuarios en diferentes proyectos: búsqueda geolocalizada por centros de competencias y áreas de interés, mensajería encriptada, blogs compartidos, etc.",
     "developFreeNetwork": "Desarrollar una red de servicios gratuitos y compartidos",
     "dFreeNetwork": "Permitir que cada usuario y cada proyecto compartan los recursos producidos para lograr una circulación a gran escala sin ánimo de lucro."
@@ -160,7 +162,7 @@
     "signin": "Registro"
   },
   "landingTitle": {
-    "h3title": "Plateforme chiffrée de projets collaboratifs",
+    "h3title": "Plataforma encriptada para proyectos colaborativos sin ánimo de lucro",
     "ptitle": "Crea proyectos, invita a tus amigos y disfruta las herramientas gratuitas y seguras para organizar juntos tu asociación o colectivo.",
     "signin": "Registro"
   },
@@ -361,7 +363,7 @@
     "kickUser": "Eliminar al usuario",
     "kickUserInfo": "Eliminar al usuario del listado de los miembros del proyecto",
     "removedSuccess": "El usuario ha sido eliminado de los miembros del proyecto",
-    "promoteSuccess": "El usuario es ahora parte de los administradores del proyecto",
+    "promotedSuccess": "L'utilisateur fait désormais partie des administrateurs du projet",
     "quitSuccess": "Usted ha abandonado el proyecto"
   },
   "_templates_users": "===========================================================================================================================",
@@ -433,11 +435,12 @@
     "enlableNotifications": "Las notificaciones no están activadas en esta carpeta, haga clic para reactivarlas.",
     "abort": "Cancelar",
     "showMore": "Ver más",
-    "newTopic": "Crear una nueva discusión",
+    "newTopic": "Nouveau fil de discussion",
     "noTopics": "Esta carpeta está vacía",
     "notifEnabled": "Ahora recibirá notificaciones para todas las discusiones de esta carpeta",
     "notifDisabled": "Las notificaciones son desactivadas para todas las discusiones de esta carpeta.",
-    "topicName": "Nombre de la discusión"
+    "topicName": "Nombre de la discusión",
+    "chooseType": "Ajouter ..."
   },
   "topic": {
     "downloadAndDecrypt": "Descargar y descifrar el fichero actual"
@@ -445,7 +448,8 @@
   "topicItem": {
     "unseenPublications": "Nuevas publicaciones",
     "dragInfo": "Puede trasladar esta discusión a otra categoría.",
-    "mainTopic": "DISCUSIÓN PRINCIPAL"
+    "mainTopic": "DISCUSIÓN PRINCIPAL",
+    "topic": "fil de discussion"
   },
   "topicHeader": {
     "mainTopic": "DISCUSIÓN PRINCIPAL",
@@ -463,7 +467,7 @@
   "newPublication": {
     "return": "Volver  ",
     "newPublication": "Publicación nueva",
-    "text": "Texto",
+    "text": "Contenu textuel",
     "images": "Imágenes y texto",
     "poll": "Encuesta",
     "files": "Imágenes, ficheros y texto"
@@ -487,6 +491,7 @@
   },
   "publicationItem": {
     "delete": "Eliminar  ",
+    "abort": "Annuler",
     "edit": "Editer",
     "deleteInfo": "Esta acción eliminará permanentemente la publicación y todos los comentarios",
     "deleteSuccess": "Esta publicación y todos sus comentarios han sido eliminados",
@@ -498,13 +503,16 @@
     "publish": "Enregistrer"
   },
   "showPollContent": {
-    "answers": "Participantes"
+    "answers": "Participantes",
+    "newProposition": "Nouvelle proposition...",
+    "send": "Publier"
   },
   "pollOption": {
     "vote": "Votos"
   },
   "newComment": {
-    "placeholder": "Su comentario…"
+    "placeholder": "Su comentario…",
+    "sendComment": "Publier"
   },
   "commentList": {
     "see": "Ver los",
@@ -524,10 +532,27 @@
     "projectUsing": " ",
     "of": "sobre",
     "allowed": " ",
-    "seeMore": "Ver más"
+    "seeMore": "Ver más",
+    "newFile": "Uploader un fichier",
+    "newFolder": "Nouveau dossier",
+    "actions": "Actions",
+    "newFolderPlaceholder": "Nom du dossier ...",
+    "cut": "Couper",
+    "paste": "Coller",
+    "rename": "Renommer",
+    "delete": "Supprimer",
+    "deleteItems": "Confirmer la suppression définitive de ",
+    "folders": "dossiers",
+    "files": "fichiers",
+    "and": "et de",
+    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "confirmDelete": "Supprimer",
+    "cancelDelete": "Annuler",
+    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
   },
   "filePreview": {
-    "delete": "Eliminar el fichero"
+    "delete": "Eliminar el fichero",
+    "show": "Voir l'aperçu"
   },
   "fullScreenFile": {
     "download": "Descargar  ",
@@ -539,9 +564,16 @@
     "limitOneFile": "El tamaño de los documentos está limitado a 15 MB",
     "projectFiles.limitSize": "Se ha alcanzado el límite de carga de archivos para este proyecto. Por favor, elimine los documentos antes de que pueda volver a cargarlos. "
   },
+  "likeBox": {
+    "likePublication": "J'aime",
+    "unlikePublication": "Je n'aime plus"
+  },
   "pinned": {
     "pin": "Clavar la publicación en la parte superior de la discusión",
     "unpin": "Desanclar la publicación"
+  },
+  "beautyfullTextarea": {
+    "addEmoji": "Ajouter un émoji"
   },
   "showFileContent": {
     "deleted": "El fichero ha sido eliminado"
@@ -646,7 +678,15 @@
     "deleteOlds": "Eliminar las actividades antiguas",
     "deleteOldsInfo": "Eliminar las actividades con una fecha de inicio superior a:",
     "delete": "Eliminar  ",
-    "oldsActivitiesDeleted": "Se han eliminado las actividades antiguas."
+    "oldsActivitiesDeleted": "Se han eliminado las actividades antiguas.",
+    "exportICS": "Exporter au format ICS",
+    "exportICSInfos": "Récupérez l'ensemble de vos évènements déchiffrés au format ICS afin de les importer dans d'autres applications de calendrier.",
+    "export": "Exporter",
+    "importICS": "Importer au format ICS",
+    "importICSInfos": "Utilisez un fichier ICS afin d'importer les évènements qu'il contient sur l'agenda de ce projet",
+    "import": "Importer",
+    "importSuccess": "évènements importés avec succès",
+    "importError": "Un ou plusieurs composants ont été ignorés durant l'import, est-ce bien un fichier iCalendar? (seuls les formats VTODO et VEVENT sont supportés pour le moment)"
   },
   "colorLegend": {
     "placeholder": "No especificado",
@@ -667,7 +707,12 @@
     "joinActivity": "Participar a la actividad",
     "inviteMember": "Invitar miembros para que se junten a la actividad",
     "onMap": "Ubicación en el mapa:",
-    "showOnMap": "Ver"
+    "showOnMap": "Ver",
+    "placeholderActivityDetail": "Déscription de l'activité...",
+    "onAgenda": "Placé sur l'agenda :",
+    "start": "Début ",
+    "end": "Fin ",
+    "duration": "Durée :"
   },
   "weekDays": {
     "day0": "Domingo",
@@ -749,16 +794,20 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Hojas de cálculo",
-    "noSpreadsheet": "Aucun tableur",
+    "noSpreadsheet": "Dossier vide",
     "newSpreadsheet": "Nueva hoja de cálculo",
     "showMore": "Ver más",
-    "SpreadsheetName": "Nombre de la hoja de cálculo"
+    "SpreadsheetName": "Nombre de la hoja de cálculo",
+    "padList": "Textes",
+    "noPad": "Dossier vide",
+    "newPad": "Nouveau texte",
+    "PadName": "Nom du texte"
   },
   "spreadsheetHeader": {
     "spreadsheetName": "Nombre de la hoja de cálculo",
     "delete": "Borrar la hoja de cálculo",
-    "edit": "Modifier le nom du tableur",
-    "abort": "Annuler",
+    "edit": "Cambiar el nombre de la hoja de cálculo",
+    "abort": "cancelar",
     "deleteInfo": "La hoja de cálculo se eliminará con su contenido",
     "deleteSuccess": "La hoja de cálculo ha sido eliminada",
     "lastEdit": "Última edición",
@@ -768,6 +817,10 @@
     "fileUpload": "Importer un fichier csv",
     "onlyCsvError": "Le fichier envoyé n'est pas au format CSV",
     "searchInTable": "Rechercher dans le tableur"
+  },
+  "spreadsheetItem": {
+    "pad": "Texte collaboratif",
+    "spreadsheet": "Tableur collaboratif"
   },
   "spreadsheet": {
     "noRecordsFound": "Rien à afficher",
@@ -816,5 +869,24 @@
     "allDayHtml": "Toute la<br/>journée",
     "eventLimitText": "en plus",
     "noEventsMessage": "Aucun événement à afficher"
+  },
+  "padContent": {
+    "saved": "Texte enregistré"
+  },
+  "padHeader": {
+    "padName": "Nom du texte",
+    "lastEdit": "Derniere édition",
+    "otherEditors": "Autres participants",
+    "download": "Télécharger...",
+    "pdf": "Télécharger au format pdf",
+    "docx": "Télécharger au format docx",
+    "delete": "Supprimer",
+    "edit": "Editer le nom du texte",
+    "abort": "Annuler",
+    "deleteInfo": "Ce texte sera supprimé ainsi que tout son contenu."
+  },
+  "pad": {
+    "errorPaste": "Le texte contient des caractères qui ne peuvent être enregistrés.",
+    "errorDownload": "Une erreur est survenue et votre texte ne peut être téléchargé sous ce format."
   }
 }

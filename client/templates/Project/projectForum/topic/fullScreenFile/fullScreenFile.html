@@ -1,7 +1,7 @@
 <template name="fullScreenFile">
     <div class="fullScreenFileView">
         <div class="closeFullScreenView" closeFullScreenView></div>
-        <div class="fullScreenItem">
+        <div class="fullScreenItem" id="fullScreenItem">
             <div class="fileContainer">
                 {{#if compare file "==" "waiting"}}
                     <div class="preloader-wrapper big active">
@@ -52,7 +52,7 @@
                                 {{else}}
 
                                     <img src="{{getFileIcon file.symEnc_mimeType}}" alt=""
-                                         class="shadow fileIcon"
+                                         class="shadow fileIcon zoomable"
                                          title="{{file.symEnc_fileName}}" id="img-{{file._id}}">
 
                                 {{/if}}
@@ -70,11 +70,6 @@
                            class="btn btn-floating downloadFileBtn tooltipped"
                            data-position="top" data-delay="50" data-tooltip="{{__ ".download"}}"><i
                                 class="material-icons">file_download</i></a>
-                        {{#if deletable}}
-                            <a href="" role="button" class="btn btn-floating downloadFileBtn shadow waves-effect waves-light tooltipped"
-                               data-position="top" data-delay="50" data-tooltip="{{__ ".delete"}}"
-                               deleteFile ><i class="material-icons danger-color">delete_forever</i></a>
-                            {{/if}}
 
                         <a href="" class="btn btn-floating downloadFileBtn tooltipped"
                            data-position="top" data-delay="50" data-tooltip="{{__ ".return"}}" closeFullScreenView><i

@@ -56,6 +56,7 @@
     "btnLabel": "Issues - Suggestions",
     "bugReport": "Issues",
     "suggestion": "Suggestions",
+    "precisions": "WARNING: If you want to get in touch with developers, please leave us a way to contact you, go to the Project Riot, or track the progress of your issue on GitHub",
     "allowDeviceInfo": "Automatically join navigator information in order to help bug-fixing? (navigator, version, exploitation system, language)",
     "decline": "no",
     "authorize": "yes",
@@ -65,6 +66,7 @@
     "captcha": "Enter the 4 letters",
     "submit": "Send",
     "githubDirectLink": "Directly find us on GitHub...",
+    "riotDirectLink": "or go directly to the Riot chat of the project...",
     "succesMessage": "Thanks for your contribution! Your message has been sent to the developers",
     "githubLink": "To see the tracking of your feedback, go to the GitHub of the project",
     "return": "Return"
@@ -302,7 +304,7 @@
     "user": "user",
     "users": "users",
     "ok": "Generate invitation link",
-    "loader": "Génération du lien d'invitation",
+    "loader": "Invitation link creation",
     "addMessage": "Add an invitation message",
     "invitMessage": "Message sent with your invitation",
     "backToParams": "Back to project parameters"
@@ -361,7 +363,7 @@
     "kickUser": "Remove user",
     "kickUserInfo": "Remove user from the members of the project",
     "removedSuccess": "The user has been removed from the project members",
-    "promoteSuccess": "The user is now admin of the project",
+    "promotedSuccess": "The user is now admin of the project",
     "quitSuccess": "You have quit the project"
   },
   "_templates_users": "===========================================================================================================================",
@@ -433,11 +435,12 @@
     "enlableNotifications": "Notifications are disabled on this folder, click to enable.",
     "abort": "Cancel",
     "showMore": "Show more Topics",
-    "newTopic": "Create a new Topic",
+    "newTopic": "New topic",
     "noTopics": "This folder is empty",
     "notifEnabled": "You will now receive notifications for all topics in this folder.",
     "notifDisabled": "Notifications are now disabled for all topics in this folder.",
-    "topicName": "Topic name"
+    "topicName": "Topic name",
+    "chooseType": "Add..."
   },
   "topic": {
     "downloadAndDecrypt": "Downloading and decrypting file..."
@@ -445,7 +448,8 @@
   "topicItem": {
     "unseenPublications": "New publications",
     "dragInfo": "You can move this topic in another category",
-    "mainTopic": "MAIN TOPIC"
+    "mainTopic": "MAIN TOPIC",
+    "topic": "Topic"
   },
   "topicHeader": {
     "mainTopic": "Main topic",
@@ -463,7 +467,7 @@
   "newPublication": {
     "return": "Back",
     "newPublication": "New publication",
-    "text": "Text",
+    "text": "Text content",
     "images": "Images and text",
     "poll": "Poll",
     "files": "Images, files and text"
@@ -487,6 +491,7 @@
   },
   "publicationItem": {
     "delete": "Delete",
+    "abort": "Cancel",
     "edit": "Edit",
     "deleteInfo": "This action will remove the publication and all its comments.",
     "deleteSuccess": "This publication and all its comments have been removed.",
@@ -498,13 +503,16 @@
     "publish": "Save"
   },
   "showPollContent": {
-    "answers": "answers"
+    "answers": "answers",
+    "newProposition": "New proposal...",
+    "send": "Publish"
   },
   "pollOption": {
     "vote": "votes"
   },
   "newComment": {
-    "placeholder": "Your comment..."
+    "placeholder": "Your comment...",
+    "sendComment": "Publish"
   },
   "commentList": {
     "see": "See",
@@ -524,10 +532,27 @@
     "projectUsing": " ",
     "of": "of",
     "allowed": " ",
-    "seeMore": "See more"
+    "seeMore": "See more",
+    "newFile": "Upload file",
+    "newFolder": "New folder",
+    "actions": "Actions",
+    "newFolderPlaceholder": "Folder name ...",
+    "cut": "Cut",
+    "paste": "Paste",
+    "rename": "Rename",
+    "delete": "Delete",
+    "deleteItems": "Confirm definitive deletion of ",
+    "folders": "folders",
+    "files": "files",
+    "and": "and",
+    "deleteItemsInfos": "Warning, all the elements contained in the selected folders will also be deleted.",
+    "confirmDelete": "Delete",
+    "cancelDelete": "Cancel",
+    "notAllowedToPaste": "Can't move a folder inside itself."
   },
   "filePreview": {
-    "delete": "Delete file"
+    "delete": "Delete file",
+    "show": "Show preview"
   },
   "fullScreenFile": {
     "download": "Download",
@@ -539,18 +564,25 @@
     "limitOneFile": "Document size is limited at 15 Mo",
     "projectFiles.limitSize": "You have reached the files upload limit on this project. Please delete documents before uploading."
   },
+  "likeBox": {
+    "likePublication": "Like",
+    "unlikePublication": "Unlike"
+  },
   "pinned": {
     "pin": "Pin publication",
     "unpin": "Unpin publication"
+  },
+  "beautyfullTextarea": {
+    "addEmoji": "Add emoji"
   },
   "showFileContent": {
     "deleted": "The file has been deleted"
   },
   "_templates_map": "===========================================================================================================================",
   "projectMaps": {
-    "settings": "Paramètres",
-    "fullscreen": "Mettre en plein écran",
-    "newMarker": "Nouveau marqueur"
+    "settings": "Settings",
+    "fullscreen": "Toggle full screen",
+    "newMarker": "New Marker"
   },
   "mapParams": {
     "topo": "Topo",
@@ -594,8 +626,8 @@
     "editIconInfo": "Click on map to edit marker position."
   },
   "markerDetail": {
-    "editColor": "Éditer la couleur",
-    "editIcon": "Éditer l'icône",
+    "editColor": "Edit color",
+    "editIcon": "Edit Icon",
     "markerName": "Marker name...",
     "markerDetail": "Detail",
     "editMarker": "Edit",
@@ -646,7 +678,15 @@
     "deleteOlds": "Delete old activities",
     "deleteOldsInfo": "Delete activities older than :",
     "delete": "Delete",
-    "oldsActivitiesDeleted": "Old activities have been deleted"
+    "oldsActivitiesDeleted": "Old activities have been deleted",
+    "exportICS": "Export as ICS",
+    "exportICSInfos": "Get all of your decrypted events in ICS format to import them into other calendar apps.",
+    "export": "Export",
+    "importICS": "Import as ICS",
+    "importICSInfos": "Use an ICS file to import the events it contains on this project's agenda",
+    "import": "Import",
+    "importSuccess": "Events successfully imported",
+    "importError": "One or more components were ignored during import, is it an iCalendar file? (only VTODO and VEVENT formats are supported at the moment)"
   },
   "colorLegend": {
     "placeholder": "Your legend ...",
@@ -667,7 +707,12 @@
     "joinActivity": "Participate to activity",
     "inviteMember": "Invite members to join activity",
     "onMap": "Map position :",
-    "showOnMap": "See on map"
+    "showOnMap": "See on map",
+    "placeholderActivityDetail": "Activity description",
+    "onAgenda": "Set on calendar :",
+    "start": "Beginning ",
+    "end": "End ",
+    "duration": "Duration :"
   },
   "weekDays": {
     "day0": "Sunday",
@@ -749,10 +794,14 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Spreadsheets",
-    "noSpreadsheet": "No spreadsheet",
+    "noSpreadsheet": "Empty folder",
     "newSpreadsheet": "New spreadsheet",
     "showMore": "See more",
-    "SpreadsheetName": "Spreadsheet name"
+    "SpreadsheetName": "Spreadsheet name",
+    "padList": "Texts",
+    "noPad": "Empty folder",
+    "newPad": "New text",
+    "PadName": "Text Name"
   },
   "spreadsheetHeader": {
     "spreadsheetName": "Spreadsheet name",
@@ -766,16 +815,18 @@
     "uploadInfo": "The existing spreadsheet import system works from \".csv\" files. Save your excel or OpenOffice spreadsheet in CSV format and import it by clicking the button below ",
     "uploadWarning": "Warning, all data in the spreadsheet will be permanently overwritten by the data in the csv file!",
     "fileUpload": "Import CSV file",
-    "onlyCsvError": "Le fichier envoyé n'est pas au format CSV",
+    "onlyCsvError": "The specified file is not CSV format",
     "searchInTable": "Search in spreadsheet"
   },
-  "spreadsheet":{
-    "noRecordsFound": "No records found",
-    "showingPage": "Showing page {0} of {1} entries",
+  "spreadsheetItem": {
+    "pad": "Collaborative text",
+    "spreadsheet": "Collaborative spreadsheet"
+  },
+  "spreadsheet": {
+    "noRecordsFound": "Nothing to show",
+    "showingPage": "Displayed page {0} of {1}",
     "show": "Show",
-    "search": "Search",
     "entries": " entries",
-    "columnName": "Column name",
     "insertANewColumnBefore": "Insert a new column before",
     "insertANewColumnAfter": "Insert a new column after",
     "deleteSelectedColumns": "Delete selected columns",
@@ -795,15 +846,15 @@
     "about": "About",
     "areYouSureToDeleteTheSelectedRows": "Are you sure to delete the selected rows?",
     "areYouSureToDeleteTheSelectedColumns": "Are you sure to delete the selected columns?",
-    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "This action will destroy any existing merged cells. Are you sure?",
-    "thisActionWillClearYourSearchResultsAreYouSure": "This action will clear your search results. Are you sure?",
-    "thereIsAConflictWithAnotherMergedCell": "There is a conflict with another merged cell",
-    "invalidMergeProperties": "Invalid merged properties",
-    "cellAlreadyMerged": "Cell already merged",
+    "thisActionWillDestroyAnyExistingMergedCellsAreYouSure": "This action will delete all merged cells, are you sure?",
+    "thisActionWillClearYourSearchResultsAreYouSure": "This action will delete your search results, are you sure?",
+    "thereIsAConflictWithAnotherMergedCell": "There is a conflict with another cell merged",
+    "invalidMergeProperties": "Invalid merge action",
+    "cellAlreadyMerged": "These cells are already merged",
     "noCellsSelected": "No cells selected"
   },
   "fullCalendar": {
-    "code": "en",
+    "code": "fr",
     "dow": 1,
     "doy": 4,
     "prev": "Previous",
@@ -813,10 +864,29 @@
     "month": "Month",
     "week": "Week",
     "day": "Day",
-    "list": "My planning",
-    "weekLabel": "week",
-    "allDayHtml": "All Day",
+    "list": "My schedule",
+    "weekLabel": "Week",
+    "allDayHtml": "All day<br/>event",
     "eventLimitText": "more",
-    "noEventsMessage": "No event to show"
+    "noEventsMessage": "No events to show."
+  },
+  "padContent": {
+    "saved": "Text saved"
+  },
+  "padHeader": {
+    "padName": "Text Name",
+    "lastEdit": "Last edit",
+    "otherEditors": "Other participants",
+    "download": "Download...",
+    "pdf": "Download as PDF",
+    "docx": "Save as DOCX",
+    "delete": "Delete",
+    "edit": "Edit text name",
+    "abort": "Cancel",
+    "deleteInfo": "This text will be deleted along with all its contents."
+  },
+  "pad": {
+    "errorPaste": "The text contains characters that cannot be saved.",
+    "errorDownload": "An error occurred and your text cannot be downloaded in this format."
   }
 }

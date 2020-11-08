@@ -70,7 +70,7 @@ Template.member.events({
                             if (err) {
                                 console.log(err)
                             } else {
-                                Materialize.toast(__("member.PromotedSuccess"), 6000, "toastOk")
+                                Materialize.toast(__("member.promotedSuccess"), 6000, "toastOk")
                             }
                         })
                 })

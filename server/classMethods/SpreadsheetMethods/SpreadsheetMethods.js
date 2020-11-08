@@ -17,6 +17,7 @@ Spreadsheet.extend({
             check(spreadsheetParmas, {
                 projectId: String,
                 symEnc_name: String,
+                categoryId:  String,
             })
             check(authInfo, {memberId: String, userSignature: String})
             let currentProject = Project.findOne(spreadsheetParmas.projectId)
@@ -31,10 +32,23 @@ Spreadsheet.extend({
             }
             return newSpreadsheet.save((err) => {
                 if (!err) {
-                    currentProject.private.spreadsheetCount++
+                    if(newSpreadsheet.categoryId){
+                        currentProject.private.forumCategories[newSpreadsheet.categoryId].topicCount++
+                    }else{
+                        currentProject.private.spreadsheetCount++
+                    }
                     currentProject.save()
                 }
             })
+        },
+        changeCategory(authInfo, categoryId) {
+            check(categoryId, String)
+            check(authInfo, {memberId: String, userSignature: String})
+            let currentProject = Project.findOne(this.projectId)
+            check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && this.memberId === authInfo.createdBy), true)
+            this.categoryId = categoryId
+            this.lastActivity = new Date()
+            return this.save()
         },
         editName(authInfo, symEnc_name) {
             check(symEnc_name, String)
@@ -49,9 +63,19 @@ Spreadsheet.extend({
         delete(authInfo) {
             check(authInfo, {memberId: String, userSignature: String})
             let spreadsheet = Spreadsheet.findOne(this._id)
+            let categoryId = spreadsheet.categoryId
             let currentProject = Project.findOne(spreadsheet.projectId)
             check(currentProject.isAdmin(authInfo) || (currentProject.isMember(authInfo) && spreadsheet.createdBy === authInfo.memberId), true)
-            return spreadsheet.remove()
+            return spreadsheet.remove((err) => {
+                if (!err) {
+                    if(categoryId){
+                        currentProject.private.forumCategories[categoryId].topicCount--
+                    }else{
+                        currentProject.private.spreadsheetCount--
+                    }
+                    currentProject.save()
+                }
+            })
         },
         setEditor(authInfo){
             check(authInfo, {memberId: String, userSignature: String})

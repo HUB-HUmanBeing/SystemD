@@ -73,10 +73,24 @@
                                    placeholder="{{__ ".activityTitle"}}"
                                    value="{{activity.symEnc_title}}">
                         </div>
-                        <div class="input-field ">
-                            <textarea id="editActivityDetail" class="materialize-textarea no-margin"
-                                      value="{{activity.symEnc_detail}}"></textarea>
-                            <label for="editActivityDetail">{{__ ".activityDetail"}}</label>
+                        <div class="editActivityDetail" textareaDetail>
+                            <p class="sectionLabel no-margin">{{__ ".activityDetail"}} :</p>
+                            <div class="small-margin">
+                                {{#if editingTextareaDetail}}
+                                {{>beautyfullTextarea
+                                        id="editActivityDetail"
+                                        initialContent=activity.symEnc_detail
+                                        placeholder=(__ ".placeholderActivityDetail")
+                                        minheight="0"
+                                        rows="1"}}
+                            {{else}}
+                                {{#if activity.symEnc_detail}}
+                                    {{>smartContent content=activity.symEnc_detail  refreshScrollbar=null }}
+                                {{else}}
+                                    <i class="">{{__ ".placeholderActivityDetail"}}</i>
+                                {{/if}}
+                            {{/if}}</div>
+
                         </div>
                         {{#if showEditFormButton}}
                             <div class="right-align" style="margin-top: 10px">
@@ -114,20 +128,39 @@
                     </div>
                 </div>
             {{/if}}
-            {{#if showDates}}
-                <div class="row no-margin">
-                    <div class="col s12">
-                        <div class="hr"></div>
-                    </div>
-                    <div class="col s12">
+            <div class="row no-margin">
+                <div class="col s12">
+                    <div class="hr"></div>
+                    <div class="flex">
+                        <p class="sectionLabel flex-auto no-margin">{{__ ".onAgenda"}}</p>
+                        <div class="switch" style="">
+                            <label>
 
-                        <b>{{__ "invitedPopup.start"}}</b> {{formatDate activity.start}}
+                                <input agendaSwitch type="checkbox" id="recursivitySwitch" checked={{ boolean
+                                        activity.start}}>
+                                <span class="lever" style="margin: 5px 0"></span>
+
+                            </label>
+                        </div>
                     </div>
-                    <div class="col s12">
-                        <b>{{__ "invitedPopup.end"}}</b> {{formatDate activity.end}}
-                    </div>
+
+                    {{#if activity.start}}
+                        <div class="col s12">
+
+                            <b style="margin-right: 10px">{{__ "invitedPopup.start"}} </b> {{formatDate activity.start}}
+                        </div>
+                        <div class="col s12">
+                            <b style="margin-right: 10px">{{__ "invitedPopup.end"}} </b> {{formatDate activity.end}}
+                        </div>
+                        <div class="col s12">
+                            <b style="margin-right: 10px">{{__ ".duration"}} </b> {{duration}}
+                        </div>
+
+
+                    {{/if}}
                 </div>
-            {{/if}}
+            </div>
+
             <div class="row no-margin">
                 <div class="col s12">
                     <div class="hr"></div>
@@ -209,7 +242,7 @@
                     <div class="col s12">
                         <div class="hr"></div>
                         <div class="flex">
-                            <p class="sectionLabel flex-auto no-margin">{{__ ".recursivity"}}</p>
+                            <p class="sectionLabel flex-auto no-margin">{{__ ".recursivity"}} :</p>
                             <div class="switch" style="">
                                 <label>
 

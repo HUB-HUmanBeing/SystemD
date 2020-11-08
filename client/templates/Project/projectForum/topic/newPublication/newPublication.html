@@ -4,7 +4,7 @@
             <div class="col s12 flex left-align newPublicationTitle no-padding"
                  selectType={{selectedType}}
                  style="{{#if selectedType}}cursor:pointer{{/if}}">
-                <div><i class="material-icons ">{{#if selectedType}}keyboard_backspace{{else}}create{{/if}}</i></div>
+{{#if selectedType}} <div><i class="material-icons ">keyboard_backspace</i></div>{{/if}}
                 <h5 class="flex-auto ">
                     {{#if selectedType}}
                         {{__ ".return"}}

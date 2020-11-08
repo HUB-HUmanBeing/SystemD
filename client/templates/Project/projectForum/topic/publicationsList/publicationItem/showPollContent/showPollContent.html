@@ -10,14 +10,28 @@
             {{/if}}
             <ul class="poll collection">
                 {{#each option in pollOptions}}
-                    <li class="collection-item transparent no-padding">
+                    <li class="collection-pollOptions transparent no-padding">
                         {{>pollOption option=option index=@index id=id showResult=showResult totalAnswer=totalAnswer}}
-
                     </li>
                 {{/each}}
+                {{#if addingProposition}}
+                    <li class="newProposition">
+                        <form class="propositionForm flex" propositionForm>
+                            <a href="" class="removePropositionBtn" removeProposition><i
+                                class="material-icons ">clear</i></a>
+                            <input type="text" class="newPropositionInput" id="newPropositionInput" placeholder="{{__ ".newProposition"}}" value="">
+                            <button>
+                                <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="{{__ ".send"}}">send</i>
+                            </button>
+                        </form>
+                    </li>
+                {{else}}
+                <a href="" class="waves-effect waves-light addPropositionBtn left-align" addProposition>{{__
+                        "pollContent.addProposition"}}<i
+                        class="material-icons left">add</i></a>    
+                {{/if}}                
             </ul>
             <p class="right-align answerTotalCount">{{totalAnswer}} {{__ ".answers"}}</p>
         {{/if}}
     </div>
-
 </template>

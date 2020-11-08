@@ -56,6 +56,7 @@
     "btnLabel": "Bugs - Anregungen",
     "bugReport": "Fehler",
     "suggestion": "Vorschläge",
+    "precisions": "BEACHTEN SIE: Wenn Sie mit den Entwicklern Kontakt aufnehmen möchten, lassen Sie uns bitte eine Möglichkeit, Sie zu kontaktieren, gehen Sie zum Projekt Riot oder verfolgen Sie die Entwicklung Ihres Tickets auf GitHub",
     "allowDeviceInfo": "Füge automatisch Informationen über den verwendeten Browser an, um die Fehlersuche zu erleichtern? (Browser, Version, Betriebssystem, Sprache)",
     "decline": "nein",
     "authorize": "ja",
@@ -65,6 +66,7 @@
     "captcha": "Die 4 Buchstaben eingeben",
     "submit": "Senden",
     "githubDirectLink": "Oder schreiben Sie System-D dieses Ticket gleich in Github...",
+    "riotDirectLink": "oder begeben Sie sich direkt in den Riot-Chatroom des Projekts...",
     "succesMessage": "Vielen Dank für Ihren Beitrag! Ihre Nachricht wurde an die Entwickler weitergeleitet",
     "githubLink": "Um den Bearbeitungsstatus Ihrer Nachricht zu sehen, informieren Sie sich in GitHub",
     "return": "Zurück"
@@ -143,8 +145,8 @@
     "p7firstPhase": "Übersichtliche Aufgabenliste für jedes Projekt",
     "p8firstPhase": "Schnittstelle zur Nutzung von oder Einbindung in System-D",
     "secondPhase": "ZWEITE PHASE",
-    "psecondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Qualifikationen eingeben kann",
-    "p2secondPhase": "Übersichtliche Oberfläche, so dass jeder Anwender seine Interessen eingeben kann",
+    "psecondPhase": "Gestaltung der Eingabemaske, so dass jeder Anwender seine Qualifikationen eingeben kann",
+    "p2secondPhase": "Programmierung der Oberfläche, so dass jeder Anwender seine Interessen eingeben kann",
     "p3secondPhase": "Berücksichtigung des geographischen Orts",
     "p4secondPhase": "Suchwerkzeug mit Filtern zur Ermittlung potenzieller Mitarbeiter / interessanter Projekte",
     "p5secondPhase": "Benutzer- und projektübergreifendes Messaging",
@@ -232,7 +234,7 @@
     "next": "Weiter",
     "p3signin": "Insbesondere",
     "p3-1signin": "System-D schützt die Anonymität",
-    "p3-2signin": "seiner Benutzer: keine E-Mail-Adresse und keine persönlichen Daten erforderlich. Allerdings haben wir nicht ",
+    "p3-2signin": "seiner Benutzer: keine E-Mail-Adresse und keine persönlichen Daten erforderlich. Allerdings haben wir ",
     "p3-3signin": "keine Möglichkeit, Ihnen zu helfen, wenn Sie Ihr Passwort vergessen haben.",
     "p3-4signin": "Es wird daher empfohlen:",
     "spanSignin": "Notieren Sie sich das von Ihnen gewählte Passwort."
@@ -361,7 +363,7 @@
     "kickUser": "Benutzer entfernen",
     "kickUserInfo": "Entfernen Sie den Benutzer aus der Liste der Projektmitglieder.",
     "removedSuccess": "Der Benutzer wurde aus den Projektmitgliedern entfernt",
-    "promoteSuccess": "Der Benutzer gehört nun zu den Projekt-Administratoren",
+    "promotedSuccess": "Der Benutzer gehört nun zu den Projekt-Administratoren",
     "quitSuccess": "Sie haben das Projekt verlassen"
   },
   "_templates_users": "===========================================================================================================================",
@@ -420,7 +422,7 @@
     "categoryName": "Name des Verzeichnisses",
     "new": "Neues Verzeichnis",
     "myFiles": "DOKUMENTE",
-    "seeMore": "Mehr erfahren"
+    "seeMore": "Mehr anzeigen"
   },
   "categoryItem": {
     "categoryName": "Name des Verzeichnisses",
@@ -432,12 +434,13 @@
     "disableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen aktiv, klicken Sie diese an, um sie zu deaktivieren.",
     "enlableNotifications": "Für dieses Verzeichnis sind Benachrichtigungen deaktiviert, klicken Sie diese an, um sie zu reaktivieren.",
     "abort": "Abbrechen",
-    "showMore": "Mehr erfahren",
-    "newTopic": "Ein neues Thema beginnen",
+    "showMore": "Mehr anzeigen",
+    "newTopic": "Nouveau fil de discussion",
     "noTopics": "Dieses Verzeichnis ist leer",
     "notifEnabled": "Sie erhalten nun Benachrichtigungen für alle Diskussionen in diesem Verzeichnis",
     "notifDisabled": "Die Benachrichtigungen wurden für alle Threads in diesem Verzeichnis deaktiviert",
-    "topicName": "Titel des Themas"
+    "topicName": "Titel des Themas",
+    "chooseType": "Ajouter ..."
   },
   "topic": {
     "downloadAndDecrypt": "Herunterladen und Entschlüsseln der aktuellen Datei"
@@ -445,7 +448,8 @@
   "topicItem": {
     "unseenPublications": "Neue Beiträge",
     "dragInfo": "Sie können diese Diskussion in eine andere Kategorie verschieben.",
-    "mainTopic": "HAUPTTHEMA"
+    "mainTopic": "HAUPTTHEMA",
+    "topic": "fil de discussion"
   },
   "topicHeader": {
     "mainTopic": "Hauptthema",
@@ -463,7 +467,7 @@
   "newPublication": {
     "return": "Zurück",
     "newPublication": "Neuer Beitrag",
-    "text": "Text",
+    "text": "Contenu textuel",
     "images": "Bilder und Text",
     "poll": "Umfrage",
     "files": "Bilder, Dateien und Text"
@@ -483,10 +487,11 @@
     "loadInfos": "Verschlüsselung und Hochladen von Dokumenten"
   },
   "publicationsList": {
-    "showMore": "Mehr erfahren..."
+    "showMore": "Mehr anzeigen..."
   },
   "publicationItem": {
     "delete": "Entfernen",
+    "abort": "Abbrechen",
     "edit": "Bearbeiten",
     "deleteInfo": "Diese Aktion wird die Veröffentlichung und alle Kommentare unwiderruflich löschen",
     "deleteSuccess": "Diese Veröffentlichung und alle ihre Kommentare wurden entfernt",
@@ -498,13 +503,16 @@
     "publish": "Speichern"
   },
   "showPollContent": {
-    "answers": "Beteiligte(r)"
+    "answers": "Beteiligte(r)",
+    "newProposition": "Neuer Vorschlag...",
+    "send": "Veröffentlichen"
   },
   "pollOption": {
-    "vote": "Stimmen"
+    "vote": "Stimme(n)"
   },
   "newComment": {
-    "placeholder": "Ihr Kommentar..."
+    "placeholder": "Ihr Kommentar...",
+    "sendComment": "Veröffentlichen"
   },
   "commentList": {
     "see": "Siehe",
@@ -524,10 +532,27 @@
     "projectUsing": " ",
     "of": "von",
     "allowed": " ",
-    "seeMore": "Mehr erfahren"
+    "seeMore": "Mehr anzeigen",
+    "newFile": "Uploader un fichier",
+    "newFolder": "Nouveau dossier",
+    "actions": "Actions",
+    "newFolderPlaceholder": "Nom du dossier ...",
+    "cut": "Couper",
+    "paste": "Coller",
+    "rename": "Renommer",
+    "delete": "Supprimer",
+    "deleteItems": "Confirmer la suppression définitive de ",
+    "folders": "dossiers",
+    "files": "fichiers",
+    "and": "et de",
+    "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
+    "confirmDelete": "Supprimer",
+    "cancelDelete": "Annuler",
+    "notAllowedToPaste": "Impossible de déplacer un dossier à l'intérieur de lui même !"
   },
   "filePreview": {
-    "delete": "Datei löschen"
+    "delete": "Datei löschen",
+    "show": "Vorschau ansehen"
   },
   "fullScreenFile": {
     "download": "Herunterladen",
@@ -539,9 +564,16 @@
     "limitOneFile": "Die Größe der Dokumente ist auf 15 MB begrenzt",
     "projectFiles.limitSize": "Sie haben das Datei-Upload-Limit für dieses Projekt erreicht. Bitte löschen Sie andere Dokumente, bevor Sie diese wieder hochladen können. "
   },
+  "likeBox": {
+    "likePublication": "Gefällt mir",
+    "unlikePublication": "Gefällt mir nicht"
+  },
   "pinned": {
     "pin": "Anheften des Beitrags an den Titel der Diskussion",
     "unpin": "Entschlüsseln Sie die Veröffentlichung"
+  },
+  "beautyfullTextarea": {
+    "addEmoji": "Emoji hinzufügen"
   },
   "showFileContent": {
     "deleted": "Die Datei wurde gelöscht."
@@ -646,7 +678,15 @@
     "deleteOlds": "Löschen alter Aktivitäten",
     "deleteOldsInfo": "Löschen Sie Aktivitäten mit einem Startdatum von mehr als:",
     "delete": "Entfernen",
-    "oldsActivitiesDeleted": "Alte Aktivitäten wurden gelöscht"
+    "oldsActivitiesDeleted": "Alte Aktivitäten wurden gelöscht",
+    "exportICS": "Speichern im ICS Format",
+    "exportICSInfos": "Laden Sie alle Ihre entschlüsselten Termine im ICS-Format herunter, um sie in andere Kalenderanwendungen zu importieren.",
+    "export": "Speichern als",
+    "importICS": "Importe im ICS Format",
+    "importICSInfos": "Verwenden Sie eine ICS-Datei, um die darin enthaltenen Termine auf den Terminkalender zu importieren",
+    "import": "Importieren",
+    "importSuccess": "Termine sind erfolgreich importiert worden",
+    "importError": "Eine oder mehrere Komponenten wurden während des Imports ignoriert, handelt es sich um eine iCalendar-Datei? (derzeit werden nur die Formate VTODO und VEVENT unterstützt)"
   },
   "colorLegend": {
     "placeholder": "Nicht angegeben",
@@ -667,7 +707,12 @@
     "joinActivity": "An der Aktivität teilnehmen",
     "inviteMember": "Mitglieder zur Teilnahme an der Aktivität einladen",
     "onMap": "Lage auf der Karte:",
-    "showOnMap": "Anzeigen"
+    "showOnMap": "Anzeigen",
+    "placeholderActivityDetail": "Beschreibung der Aktivität...",
+    "onAgenda": "Placé sur l'agenda :",
+    "start": "Début ",
+    "end": "Fin ",
+    "duration": "Durée :"
   },
   "weekDays": {
     "day0": "Sonntag",
@@ -688,7 +733,7 @@
     "detail": "Detail:",
     "title": "Einladung zur Teilnahme an einer Aktivität",
     "start": "Beginn:",
-    "end": "Ende:",
+    "end": "Fällig: ",
     "decline": "Ablehnen",
     "accept": "Annehmen"
   },
@@ -723,7 +768,7 @@
     "inviteds": "Eingeladene Mitglieder",
     "checklist": "Checkliste",
     "start": "Beginn",
-    "end": "Ende"
+    "end": "Fällig"
   },
   "_templates_donate": "===========================================================================================================================",
   "donate": {
@@ -749,10 +794,14 @@
   "_templates_spreadsheet": "===========================================================================================================================",
   "spreadsheetList": {
     "spreadsheetList": "Tabellenblätter",
-    "noSpreadsheet": "Kein Tabellenblatt",
+    "noSpreadsheet": "Dossier vide",
     "newSpreadsheet": "Tabellenblatt hinzufügen",
-    "showMore": "Mehr erfahren",
-    "SpreadsheetName": "Name des Tabellenblatts"
+    "showMore": "Mehr anzeigen",
+    "SpreadsheetName": "Name des Tabellenblatts",
+    "padList": "Textes",
+    "noPad": "Dossier vide",
+    "newPad": "Nouveau texte",
+    "PadName": "Nom du texte"
   },
   "spreadsheetHeader": {
     "spreadsheetName": "Name des Tabellenblatts",
@@ -768,6 +817,10 @@
     "fileUpload": "Importieren einer CSV-Datei",
     "onlyCsvError": "Die hochgeladene Datei hat kein gültiges CSV-Format",
     "searchInTable": "Suche in der Tabelle"
+  },
+  "spreadsheetItem": {
+    "pad": "Texte collaboratif",
+    "spreadsheet": "Tableur collaboratif"
   },
   "spreadsheet": {
     "noRecordsFound": "Nichts anzuzeigen",
@@ -816,5 +869,24 @@
     "allDayHtml": "Ganztägig",
     "eventLimitText": "zusätzlich",
     "noEventsMessage": "Keine anzuzeigenden Termine"
+  },
+  "padContent": {
+    "saved": "Texte enregistré"
+  },
+  "padHeader": {
+    "padName": "Nom du texte",
+    "lastEdit": "Derniere édition",
+    "otherEditors": "Autres participants",
+    "download": "Télécharger...",
+    "pdf": "Télécharger au format pdf",
+    "docx": "Télécharger au format docx",
+    "delete": "Supprimer",
+    "edit": "Editer le nom du texte",
+    "abort": "Annuler",
+    "deleteInfo": "Ce texte sera supprimé ainsi que tout son contenu."
+  },
+  "pad": {
+    "errorPaste": "Le texte contient des caractères qui ne peuvent être enregistrés.",
+    "errorDownload": "Une erreur est survenue et votre texte ne peut être téléchargé sous ce format."
   }
 }
