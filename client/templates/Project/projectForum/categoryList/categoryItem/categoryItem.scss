@@ -130,7 +130,8 @@ text-align: left;
     #editCategoryForm {
       margin-top: 20px;
       width: 100%;
-
+      position: relative;
+      z-index: 2001;
       .btn-floating {
         padding: 0px 5px;
         transition: 0.3s;

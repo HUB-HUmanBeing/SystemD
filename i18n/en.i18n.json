@@ -467,7 +467,7 @@
   "newPublication": {
     "return": "Back",
     "newPublication": "New publication",
-    "text": "Text",
+    "text": "Text content",
     "images": "Images and text",
     "poll": "Poll",
     "files": "Images, files and text"
@@ -712,7 +712,7 @@
     "onAgenda": "Set on calendar :",
     "start": "Beginning ",
     "end": "End ",
-    "duration": "Duration "
+    "duration": "Duration :"
   },
   "weekDays": {
     "day0": "Sunday",

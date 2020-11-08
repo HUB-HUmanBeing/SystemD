@@ -467,7 +467,7 @@
   "newPublication": {
     "return": "Indietro",
     "newPublication": "Nuova pubblicazione",
-    "text": "Testo",
+    "text": "Contenu textuel",
     "images": "Immagini e testi",
     "poll": "Sondaggio",
     "files": "Immagini, files e testo"
@@ -712,7 +712,7 @@
     "onAgenda": "Placé sur l'agenda :",
     "start": "Début ",
     "end": "Fin ",
-    "duration": "Durée "
+    "duration": "Durée :"
   },
   "weekDays": {
     "day0": "Domenica",

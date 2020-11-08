@@ -467,7 +467,7 @@
   "newPublication": {
     "return": "Zurück",
     "newPublication": "Neuer Beitrag",
-    "text": "Text",
+    "text": "Contenu textuel",
     "images": "Bilder und Text",
     "poll": "Umfrage",
     "files": "Bilder, Dateien und Text"
@@ -712,7 +712,7 @@
     "onAgenda": "Placé sur l'agenda :",
     "start": "Début ",
     "end": "Fin ",
-    "duration": "Durée "
+    "duration": "Durée :"
   },
   "weekDays": {
     "day0": "Sonntag",

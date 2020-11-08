@@ -37,8 +37,25 @@
                             <a class="btn-floating tooltipped waves-light waves-effect"
                                data-position="bottom"
                                data-delay="50" data-tooltip="{{__ ".download"}}">
+                                {{#unless isDownloading}}
                                 <i class="material-icons">file_download</i>
+                                    {{else}}
+                                    <div class="preloader-wrapper small active" style="position: relative; top:-1px">
+                                        <div class="spinner-layer spinner-blue-only">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/unless}}
                             </a>
+                {{#unless isDownloading}}
                             <ul>
                                 <li>
                                     <a class="btn-floating tooltipped waves-light waves-effect"
@@ -59,6 +76,7 @@
                                     </a>
                                 </li>
                             </ul>
+                    {{/unless}}
                         </div>
                     </div>
                     {{#if cursors }}

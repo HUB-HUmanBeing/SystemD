@@ -1,13 +1,15 @@
 import cryptoTools from "../../../../../lib/cryptoTools";
 import projectController from "../../../../../lib/controllers/projectController";
 import Pad from "/imports/classes/Pad";
-import Papa from "papaparse"
 import padController from "../../../../../lib/controllers/padController";
 
 Template.padHeader.helpers({
     //add you helpers here
     isEditing: function () {
         return Template.instance().isEditing.get()
+    },
+    isDownloading: function () {
+        return Template.instance().isDownloading.get()
     },
     showDelete: function () {
         return Template.instance().showDelete.get()
@@ -81,19 +83,34 @@ Template.padHeader.events({
             }
         })
     },
-'click [downloadPdf]' : function (event, instance) {
-    event.preventDefault()
-    padController.download("pdf", instance.data.currentPad.symEnc_name)
-},
-'click [downloadDocx]' : function (event, instance) {
-    event.preventDefault()
-    padController.download("docx",  instance.data.currentPad.symEnc_name)
-}
+    'click [downloadPdf]': function (event, instance) {
+        event.preventDefault()
+        if (!instance.isDownloading.get()) {
+            instance.isDownloading.set(true)
+            resetTooltips()
+            padController.download("pdf", instance.data.currentPad.symEnc_name, () => {
+                instance.isDownloading.set(false)
+                resetTooltips()
+            })
+        }
+    },
+    'click [downloadDocx]': function (event, instance) {
+        event.preventDefault()
+        if (!instance.isDownloading.get()) {
+            instance.isDownloading.set(true)
+            resetTooltips()
+            padController.download("docx", instance.data.currentPad.symEnc_name, () => {
+                instance.isDownloading.set(false)
+                resetTooltips()
+            })
+        }
+    }
 });
 
 Template.padHeader.onCreated(function () {
     //add your statement here
     this.isEditing = new ReactiveVar(false)
+    this.isDownloading = new ReactiveVar(false)
     this.showDelete = new ReactiveVar(false)
     this.showCloseSearch = new ReactiveVar(false)
 });
