@@ -64,7 +64,6 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 let messaging = firebase.messaging()
-messaging.usePublicVapidKey("BEr2R62aJ7hD5-2twsOm9gNmYI43Ele0-Sa2Lo7JGNuZ42lD1nNxB3bs6____ITKICqy8pwY9okqy45yhzT4zsY");
 messaging.onMessage((payload) => {
     console.log(payload)
 });

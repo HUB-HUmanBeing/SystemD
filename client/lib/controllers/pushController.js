@@ -18,7 +18,7 @@ const pushController = {
     },
     async getToken(user){
 
-            const token = await firebase.messaging().getToken();
+            const token = await firebase.messaging().getToken( {vapidKey: Meteor.settings.public.publicVapidKey});
             if (token) {
                 this.saveToken(token,user)
             }
