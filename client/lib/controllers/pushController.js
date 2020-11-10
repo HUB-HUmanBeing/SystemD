@@ -8,8 +8,14 @@ const pushController = {
      * @param user
      */
     async initialize(user) {
+        let permission = null
+if( Meteor.isCordova){
+    permission = await cordova.plugins.firebase.messaging.requestPermission({forceShow: true});
 
-        const permission = await Notification.requestPermission();
+}else{
+    permission = await Notification.requestPermission();
+}
+
         if (permission === 'granted') {
             this.getToken(user);
         } else {
@@ -17,9 +23,15 @@ const pushController = {
         }
     },
     async getToken(user){
+        let token = null
+        if( Meteor.isCordova){
+            token = await cordova.plugins.firebase.messaging.getToken("apns-string")
 
-            const token = await firebase.messaging().getToken( {vapidKey: Meteor.settings.public.publicVapidKey});
-            if (token) {
+        }else{
+            token = await firebase.messaging().getToken( {vapidKey: Meteor.settings.public.publicVapidKey});
+
+        }
+           if (token) {
                 this.saveToken(token,user)
             }
 

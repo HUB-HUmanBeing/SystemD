@@ -40,30 +40,34 @@ TemplatesNames.forEach(name => {
 //  console.log("switchHttps")
 //     switchHTTPS('3003');
 // }
-if (!document.getElementById('manifest')) {
-    var link = document.createElement('link');
-    link.id = 'manifest';
-    link.rel = 'manifest';
-    link.href = '/manifest.json';
-    document.head.appendChild(link);
-}
 $(document).ready(()=>{
     $('#inject-loader-wrapper').css("display", "none")
 })
+console.log("connectionID", Meteor.connectionId.get())
+if(!Meteor.isCordova){
+    if (!document.getElementById('manifest')) {
+        var link = document.createElement('link');
+        link.id = 'manifest';
+        link.rel = 'manifest';
+        link.href = '/manifest.json';
+        document.head.appendChild(link);
+    }
 
 
-var firebaseConfig = {
-    apiKey: "AIzaSyAJac4fZ9-AeF11GIXlV5sababxv6R6u1o",
-    authDomain: "system-d-9e42a.firebaseapp.com",
-    databaseURL: "https://system-d-9e42a.firebaseio.com",
-    projectId: "system-d-9e42a",
-    storageBucket: "system-d-9e42a.appspot.com",
-    messagingSenderId: "785822409291",
-    appId: "1:785822409291:web:fff86741f25864af2ea3ce"
-};
+    var firebaseConfig = {
+        apiKey: "AIzaSyAJac4fZ9-AeF11GIXlV5sababxv6R6u1o",
+        authDomain: "system-d-9e42a.firebaseapp.com",
+        databaseURL: "https://system-d-9e42a.firebaseio.com",
+        projectId: "system-d-9e42a",
+        storageBucket: "system-d-9e42a.appspot.com",
+        messagingSenderId: "785822409291",
+        appId: "1:785822409291:web:fff86741f25864af2ea3ce"
+    };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-let messaging = firebase.messaging()
-messaging.onMessage((payload) => {
-    console.log(payload)
-});
+    firebase.initializeApp(firebaseConfig);
+    let messaging = firebase.messaging()
+    messaging.onMessage((payload) => {
+        console.log(payload)
+    });
+
+}
