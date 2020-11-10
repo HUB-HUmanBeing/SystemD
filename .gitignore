@@ -1,8 +1,6 @@
 node_modules/
 settings.json
 .vscode/
-/cordova-build-override/google-services.json
+/google-services.json
 
 cordova-build-override/
-
-mobile-config.js

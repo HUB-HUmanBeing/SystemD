@@ -38,10 +38,7 @@ Template.layout.onCreated(function () {
                     if (Meteor.userId()) {
                         let currentUser = User.findOne(Meteor.userId())
                         if(currentUser && currentUser.private && currentUser.private.projects.length){
-
-                               pushController.initialize(currentUser)
-
-
+                            pushController.initialize(currentUser)
                         }
 
 
