@@ -8,7 +8,7 @@ self.addEventListener("push", e => {
         badge: "/images/favicons/favicon-96.png",
         tag: data.body,
         vibrate: [100, 100, 200, 100, 300],
-        sound: "/sounds/just-like-that.mp3",
+        sound: "/sounds/to-the-point-568",
         actions: [{
             title: data.action,
             action: "See on website",

@@ -3,7 +3,6 @@ import {Meteor} from "meteor/meteor";
 import i18n from 'meteor/universe:i18n';
 import getLang from "./lib/getLang";
 import moment from "./lib/i18nMoment";
-import cryptoTools from "./lib/cryptoTools";
 import firebase from "firebase/app";
 import "firebase/messaging";
 
@@ -47,23 +46,41 @@ if (!document.getElementById('manifest')) {
     link.href = '/manifest.json';
     document.head.appendChild(link);
 }
-$(document).ready(()=>{
+$(document).ready(() => {
     $('#inject-loader-wrapper').css("display", "none")
 })
 
+if (!Meteor.isCordova) {
+    var firebaseConfig = {
+        apiKey: "AIzaSyAJac4fZ9-AeF11GIXlV5sababxv6R6u1o",
+        authDomain: "system-d-9e42a.firebaseapp.com",
+        databaseURL: "https://system-d-9e42a.firebaseio.com",
+        projectId: "system-d-9e42a",
+        storageBucket: "system-d-9e42a.appspot.com",
+        messagingSenderId: "785822409291",
+        appId: "1:785822409291:web:fff86741f25864af2ea3ce"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    let messaging = firebase.messaging()
+    messaging.onMessage((payload) => {
+        console.log(payload)
+    });
 
-var firebaseConfig = {
-    apiKey: "AIzaSyAJac4fZ9-AeF11GIXlV5sababxv6R6u1o",
-    authDomain: "system-d-9e42a.firebaseapp.com",
-    databaseURL: "https://system-d-9e42a.firebaseio.com",
-    projectId: "system-d-9e42a",
-    storageBucket: "system-d-9e42a.appspot.com",
-    messagingSenderId: "785822409291",
-    appId: "1:785822409291:web:fff86741f25864af2ea3ce"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-let messaging = firebase.messaging()
-messaging.onMessage((payload) => {
-    console.log(payload)
-});
+} else {
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        cordova.plugins.firebase.messaging.createChannel({
+            id: "systemdorg",
+            name: "System-D.org",
+            importance: 3,
+            badge: true,
+            vibration: [100, 100, 200, 100, 300],
+            light: false,
+        });
+        cordova.plugins.firebase.messaging.clearNotifications(function () {
+        });
+    }
+
+}

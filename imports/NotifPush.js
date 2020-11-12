@@ -18,6 +18,7 @@ const NotifPush = {
             this.translateAndFormatMessage(pushSubscription.language, message, null,(notification)=>{
                 notification.icon = "https://www.system-d.org/images/icon/iconfatNotifs.png"
                 notification.click_action = "https://www.system-d.org/"
+                notification.sound = "/sounds/to-the-point-568.mp3"
                 let payload = {
                     notification: notification,
                 }

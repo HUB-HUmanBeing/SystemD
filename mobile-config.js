@@ -9,19 +9,19 @@ App.info({
 });
 
 App.icons({
-    'android_mdpi': 'public/android/Icon-48.png',
-    'android_hdpi': 'public/android/Icon-72.png',
-    'android_xhdpi': 'public/android/Icon-96.png',
-    'android_xxhdpi': 'public/android/Icon-144.png',
-    'android_xxxhdpi': 'public/android/Icon-192.png',
+    'android_mdpi': 'public/android/mipmap-mdpi/ic_launcher.png',
+    'android_hdpi': 'public/android/mipmap-hdpi/ic_launcher.png',
+    'android_xhdpi': 'public/android/mipmap-xhdpi/ic_launcher.png',
+    'android_xxhdpi': 'public/android/mipmap-xxhdpi/ic_launcher.png',
+    'android_xxxhdpi': 'public/android/mipmap-xxxhdpi/ic_launcher.png',
     // More screen sizes and platforms...
 });
 App.launchScreens({
     android_mdpi_portrait: 'public/android/large-480.png',
     android_hdpi_portrait: 'public/android/large-800.png',
     android_xhdpi_portrait: 'public/android/large-1280.png',
-    android_xxhdpi_portrait: 'public/android/large-1280.png',
-    android_xxxhdpi_portrait: 'public/android/large-1280.png',
+    android_xxhdpi_portrait: 'public/android/xlarge-1600.png',
+    android_xxxhdpi_portrait: 'public/android/xxlarge-1920.png',
 })
 App.setPreference('BackgroundColor', '0xff0000ff');
 App.setPreference('Orientation', 'portrait');
@@ -30,6 +30,7 @@ App.setPreference('Orientation', 'portrait');
 
 // App.accessRule('http://*');
 App.accessRule('https://*');
+App.accessRule('http://localhost:12560/*');
 App.accessRule('https://raw.githubusercontent.com/HUB-HUmanBeing/SystemD/master/public/news/newsFeed.json', { type: 'navigation' });
 // App.accessRule('https://*', { type: 'navigation' });
 App.accessRule('*.openstreetmap.org/*', { type: 'navigation' });
@@ -39,3 +40,6 @@ App.accessRule('https://server.arcgisonline.com/*', { type: 'navigation' });
 App.accessRule('http://a.tiles.mapbox.com/*', { type: 'navigation' });
 App.accessRule('https://api.tiles.mapbox.com/*', { type: 'navigation' });
 App.accessRule('https://placeholdit.imgix.net/*', { type: 'navigation' });
+
+App.addResourceFile("cordova-build-override/google-services.json", "app/google-services.json", "android")
+
