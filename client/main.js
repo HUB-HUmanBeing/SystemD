@@ -81,6 +81,7 @@ if (!Meteor.isCordova) {
         });
         cordova.plugins.firebase.messaging.clearNotifications(function () {
         });
+
     }
 
 }

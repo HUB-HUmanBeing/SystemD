@@ -27,6 +27,18 @@ Template.fullScreenFile.events({
         resetTooltips()
         Session.set('fullSizeFile', false)
     },
+    "click [downloadItem]": function (event, instance) {
+        if(Meteor.isCordova){
+            console.log("download")
+            console.log(event.currentTarget.getAttribute("href"))
+            downloader.init({folder: "SystemD"});
+            downloader.get(event.currentTarget.getAttribute("href"));
+            event.preventDefault()
+        }else{
+            return true
+        }
+
+    },
     "click [deleteFile]": function (event, instance) {
         event.preventDefault()
         projectFilesController.deleteSaved(Session.get('fullSizeFile')._id, () => {

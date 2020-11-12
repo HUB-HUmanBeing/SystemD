@@ -17,7 +17,7 @@ const NotifPush = {
         this.getSubscriptions(userIds).forEach((pushSubscription) => {
             this.translateAndFormatMessage(pushSubscription.language, message, null,(notification)=>{
                 notification.icon = "https://www.system-d.org/images/icon/iconfatNotifs.png"
-                notification.click_action = "https://www.system-d.org/"
+                notification.click_action = Meteor.isDevelopment ?  "http://localhost:12560" :"https://www.system-d.org/"
                 notification.sound = "/sounds/to-the-point-568.mp3"
                 let payload = {
                     notification: notification,

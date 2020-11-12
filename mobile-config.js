@@ -29,8 +29,14 @@ App.setPreference('Orientation', 'portrait');
 
 
 // App.accessRule('http://*');
-App.accessRule('https://*');
-App.accessRule('http://localhost:12560/*');
+App.accessRule('https://www.system-d.org/*');
+App.accessRule('https://www.asset.system-d.org/*');
+App.accessRule('blob:*', { type: "intent" });
+App.accessRule('blob:*', { type: "navigation" });
+App.accessRule('data:*', { type: "intent" });
+App.accessRule('data:*', { type: "navigation" });
+
+App.accessRule('http://localhost:*');
 App.accessRule('https://raw.githubusercontent.com/HUB-HUmanBeing/SystemD/master/public/news/newsFeed.json', { type: 'navigation' });
 // App.accessRule('https://*', { type: 'navigation' });
 App.accessRule('*.openstreetmap.org/*', { type: 'navigation' });

@@ -1,3 +1,5 @@
+cordova-plugin-file-downloader@0.4.0
 cordova-plugin-firebase-messaging@5.0.0
 cordova-plugin-splashscreen@4.1.0
 cordova-plugin-statusbar@2.3.0
+cordova-plugin-web-share@1.2.0
