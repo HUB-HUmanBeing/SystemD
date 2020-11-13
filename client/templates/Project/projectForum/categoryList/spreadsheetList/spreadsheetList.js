@@ -20,7 +20,8 @@ Template.spreadsheetList.helpers({
         return Template.instance().spreadsheets.get()
     },
     hasMore: function () {
-        return Template.instance().spreadsheetsLimit.get() < Template.currentData().currentProject.private.spreadsheetCount
+        let count = Template.instance().data.isPad ? Template.currentData().currentProject.private.padCount : Template.currentData().currentProject.private.spreadsheetCount
+        return Template.instance().spreadsheetsLimit.get() < count
     },
     isCurrentCategory: function () {
         FlowRouter.watchPathChange()
