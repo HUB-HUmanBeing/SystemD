@@ -1,18 +1,19 @@
 {
   "name": "System-D",
-  "short_name": "System-D",
+  "short_name": "systemd",
   "description": "Encrypted platform for collaboratives and free projects",
   "background_color": "#1E272C",
+  "display": "standalone",
   "icons": [
     {
-      "src": "/android/Icon-32.png",
-      "sizes": "32x32",
-      "type": "image/png"
+      "src": "/android/Icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
     },
     {
-      "src": "/android/Icon-64.png",
-      "sizes": "64x64",
-      "type": "image/png"
+      "src": "/android/Icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     },
     {
       "src": "/android/Icon-96.png",
@@ -23,15 +24,9 @@
       "src": "/android/Icon-144.png",
       "sizes": "144x144",
       "type": "image/png"
-    },
-    {
-      "src": "/android/Icon-196.png",
-      "sizes": "196x196",
-      "type": "image/png"
     }
   ],
   "start_url": "/",
-  "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
   "theme_color": "#3367D6"

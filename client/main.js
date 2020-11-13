@@ -76,12 +76,16 @@ if (!Meteor.isCordova) {
             name: "System-D.org",
             importance: 3,
             badge: true,
+            sound: "notifsound",
             vibration: [100, 100, 200, 100, 300],
             light: false,
         });
-        cordova.plugins.firebase.messaging.clearNotifications(function () {
+         cordova.plugins.firebase.messaging.clearNotifications(function () {
         });
-
+        cordova.plugins.firebase.messaging.onBackgroundMessage(function(payload) {
+            console.log("New background FCM message: ");
+            console.log(JSON.parse(payload));
+        });
     }
 
 }

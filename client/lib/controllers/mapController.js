@@ -1,9 +1,12 @@
 import * as L from "leaflet";
+import Search from "leaflet-control-geocoder";
 import cryptoTools from "../cryptoTools";
 import mapParams from "./mapParams";
+import MiniMap from 'leaflet-minimap';
 import iconMarker from "./markers/iconMarker";
 import MapMarker from "../../../imports/classes/MapMarker";
 import memberPosition from "./markers/memberPosition";
+import {Draw} from 'leaflet-draw';
 import polyline from "./markers/polyline";
 import shape from "./markers/shape";
 import arrow from "./markers/arrow";
@@ -76,7 +79,7 @@ const mapController = {
 
             })
             .addTo(this.map);
-if(!meteor.isCordova){
+
     L.control.browserPrint({
         title: '',
         documentTitle: "System-D.org  -  " + project.name,
@@ -87,7 +90,7 @@ if(!meteor.isCordova){
         ],
         manualMode: false
     }).addTo(this.map)
-}
+
 
             //
             this.map.addControl(this.drawControl);

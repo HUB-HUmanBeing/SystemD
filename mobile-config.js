@@ -48,4 +48,3 @@ App.accessRule('https://api.tiles.mapbox.com/*', { type: 'navigation' });
 App.accessRule('https://placeholdit.imgix.net/*', { type: 'navigation' });
 
 App.addResourceFile("cordova-build-override/google-services.json", "app/google-services.json", "android")
-
