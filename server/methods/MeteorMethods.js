@@ -8,7 +8,7 @@ import NotifPush from "../../imports/NotifPush";
 import Project from "../../imports/classes/Project";
 import ProjectNotification from "../../imports/classes/ProjectNotification";
 import Projects from "../../lib/collections/Projects"
-
+import moment from 'moment-timezone'
 Meteor.methods({
     getServerDate() {
         return new Date()
@@ -98,9 +98,21 @@ Meteor.methods({
         })
     },
     getCounter(){
+        let tenLastMonth = []
+
+        for (let i = 20; i > 0; i--) {
+            let today = new Date()
+            let date = moment().subtract(i, 'hours').format()
+            console.log(date)
+           tenLastMonth.push({
+               date: date,
+              total: Meteor.users.find({"private.createdAt": {$lte: new Date(date)}}).count()
+           })
+        }
         return {
             projects: Projects.find({}).count(),
-            members: Meteor.users.find({}).count()
+            members: Meteor.users.find({}).count(),
+            tenLastMonth:tenLastMonth
         }
     }
 })
