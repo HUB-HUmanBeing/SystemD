@@ -28,8 +28,9 @@ Template.filePreview.events({
         event.preventDefault()
         Session.set('fullSizeFile', "waiting")
         let file = Template.currentData().file
-        projectFilesController.getFile(file, (res) => {
+        projectFilesController.getFile(file, (res, blob) => {
             file.showWideUrl = res
+            file.blob = blob
             Session.set('fullSizeFile', file)
             Meteor.setTimeout(()=>{
               let  container = document.querySelector("#fullScreenItem");
@@ -64,7 +65,7 @@ Template.filePreview.onRendered(function () {
                 switch (fileType.label) {
                     case "image":
                         if(file.symEnc_mimeType !== "image/svg+xml"){
-                            projectFilesController.getFile(file, (res) => {
+                            projectFilesController.getFile(file, (res, blob) => {
                                 const img = document.getElementById('img-' + file._id);
                                 img.src = res;
                                 const btn = document.getElementById('downLoadLink-' + file._id)

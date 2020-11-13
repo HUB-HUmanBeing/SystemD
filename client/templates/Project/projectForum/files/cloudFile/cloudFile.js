@@ -15,7 +15,7 @@ Template.cloudFile.events({
             event.preventDefault()
             Session.set('fullSizeFile', "waiting")
             let file = instance.decrypted.get()
-            projectFilesController.getFile(file, (res) => {
+            projectFilesController.getFile(file, (res, blob) => {
                 file.showWideUrl = res
                 Session.set('fullSizeFile', file)
                 Meteor.setTimeout(() => {
@@ -38,8 +38,10 @@ Template.cloudFile.events({
             if (Date.now() - instance.touchTimestamp < 300) {
                 Session.set('fullSizeFile', "waiting")
                 let file = instance.decrypted.get()
-                projectFilesController.getFile(file, (res) => {
+                projectFilesController.getFile(file, (res, blob) => {
                     file.showWideUrl = res
+
+                    file.blob = blob
                     Session.set('fullSizeFile', file)
                     Meteor.setTimeout(() => {
                         let container = document.querySelector("#fullScreenItem");

@@ -29,11 +29,8 @@ Template.fullScreenFile.events({
     },
     "click [downloadItem]": function (event, instance) {
         if(Meteor.isCordova){
-            console.log("download")
-            console.log(event.currentTarget.getAttribute("href"))
-            downloader.init({folder: "SystemD"});
-            downloader.get(event.currentTarget.getAttribute("href"));
-            event.preventDefault()
+           projectFilesController.saveBlob2File(Session.get('fullSizeFile').symEnc_fileName, window.blobToDownload)
+            resetTooltips()
         }else{
             return true
         }

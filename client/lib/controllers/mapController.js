@@ -79,18 +79,19 @@ const mapController = {
 
             })
             .addTo(this.map);
+            if(!meteor.isCordova) {
 
-    L.control.browserPrint({
-        title: '',
-        documentTitle: "System-D.org  -  " + project.name,
-        printModes: [
+                L.control.browserPrint({
+                    title: '',
+                    documentTitle: "System-D.org  -  " + project.name,
+                    printModes: [
 
-            L.control.browserPrint.mode.landscape(),
-            "Portrait",
-        ],
-        manualMode: false
-    }).addTo(this.map)
-
+                        L.control.browserPrint.mode.landscape(),
+                        "Portrait",
+                    ],
+                    manualMode: false
+                }).addTo(this.map)
+            }
 
             //
             this.map.addControl(this.drawControl);
