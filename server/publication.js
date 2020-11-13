@@ -420,6 +420,7 @@ Meteor.publish('pads', function (authInfo, projectId, categoryId, limit) {
                 lastActivity: 1,
                 projectId: 1,
                 categoryId: 1,
+                createdBy: 1,
 
             }
         }
@@ -436,7 +437,8 @@ Meteor.publish('singlePad', function (authInfo, padId) {
             projectId: 1,
             categoryId: 1,
             changes: 1,
-            cursors: 1
+            cursors: 1,
+            createdBy: 1,
         }
     })
     check(authInfo, {memberId: String, userSignature: String})
