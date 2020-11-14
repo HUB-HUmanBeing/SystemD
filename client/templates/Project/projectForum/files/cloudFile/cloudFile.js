@@ -40,8 +40,6 @@ Template.cloudFile.events({
                 let file = instance.decrypted.get()
                 projectFilesController.getFile(file, (res, blob) => {
                     file.showWideUrl = res
-
-                    file.blob = blob
                     Session.set('fullSizeFile', file)
                     Meteor.setTimeout(() => {
                         let container = document.querySelector("#fullScreenItem");

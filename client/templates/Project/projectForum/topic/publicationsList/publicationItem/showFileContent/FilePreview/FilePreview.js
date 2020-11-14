@@ -30,7 +30,6 @@ Template.filePreview.events({
         let file = Template.currentData().file
         projectFilesController.getFile(file, (res, blob) => {
             file.showWideUrl = res
-            file.blob = blob
             Session.set('fullSizeFile', file)
             Meteor.setTimeout(()=>{
               let  container = document.querySelector("#fullScreenItem");

@@ -79,7 +79,7 @@ const mapController = {
 
             })
             .addTo(this.map);
-            if(!meteor.isCordova) {
+            if(!Meteor.isCordova) {
 
                 L.control.browserPrint({
                     title: '',
