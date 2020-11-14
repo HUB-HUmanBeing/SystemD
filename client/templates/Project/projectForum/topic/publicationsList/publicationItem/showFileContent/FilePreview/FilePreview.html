@@ -30,9 +30,14 @@
         {{#unless file.deleted}}
             {{#unless onFilePage}}
                     <a href="" role="button"
-                       class="btn btn-floating download-file shadow waves-effect waves-light tooltipped"
+                       class="btn btn-floating download-file download-file-preview shadow waves-effect waves-light tooltipped"
                        data-position="top" data-delay="50" data-tooltip="{{__ ".show"}}"
-                       downLoadFile id="downLoadLink-{{file._id}}"><i class="material-icons">remove_red_eye</i></a>
+                       downLoadFile id="downLoadLink-{{file._id}}" style="
+                       position: absolute;
+    top: -5px;
+    right: -15px;
+    background-color: #2E3C43;
+    transition: 0.3s;"><i class="material-icons">remove_red_eye</i></a>
 
             {{/unless}}
         {{/unless}}
