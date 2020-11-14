@@ -2,6 +2,7 @@
   "_locale": "de-DE",
   "general": {
     "error": "Ein Fehler ist aufgetreten",
+    "userCount": "nombre d'utilisateurs",
     "changNavigator": "Wir sind ein kleines Team von Freiwilligen Die Entwicklungen, die notwendig sind, um diese Plattform an Ihren Browser anzupassen, sind noch nicht abgeschlossen. Die beste Erfahrung erhalten Sie mit dem Chrome-Browser oder seiner Open-Source-Chromium-Version."
   },
   "_templates_application": "===========================================================================================================================",
