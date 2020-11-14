@@ -2,6 +2,7 @@
   "_locale": "it",
   "general": {
     "error": "Si é verificato un errore",
+    "userCount": "nombre d'utilisateurs",
     "changNavigator": "Siamo un piccolo team di volontari e gli sviluppi necessari per adattare questo sito al vostro browser non sono ancora completi. Otterrete la migliore esperienza utilizzando il browser Chrome o la sua versione open-source Chromium."
   },
   "_templates_application": "===========================================================================================================================",
