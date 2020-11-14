@@ -29,21 +29,40 @@
             </div>
             <div class="col s12 m7 xl8">
                 <div class="row center-align">
-                    {{#unless currentUserId}}
-                        <p class="infoQuotes main-color left-alignr">{{__ '.joinToo'}}</p>
-                        <img src="/images/icon/systemd-logo-white.png" alt=""><br>
-                        <a href="/login" class="center-align waves-effect waves-light btn-large focus-color "><i
-                                class=" material-icons left">account_circle</i>{{__ '.signin'}}</a>
-                    {{else}}
-                        {{#if compare counters "&&" counters.tenLastMonth}}
-                            {{>grafCounter counters=counters}}
-                        {{/if}}
-                    {{/unless}}
+
+                    {{#if compare counters "&&" counters.tenLastMonth}}
+                        {{>grafCounter counters=counters}}
+                    {{/if}}
+
                 </div>
             </div>
+
         </div>
+        {{#unless currentUserId}}
+
+            <div class="hr"></div>
+            <div class="row" style="margin: 100px 0">
+                <div class="col s12">
+                    <div class="row center-align">
+
+                        <div class="col s12 m3 offset-m3 center-align">
+                            <p class="infoQuotes main-color left-alignr">{{__ '.joinToo'}}</p>
 
 
+                        </div>
+                        <div class="col s12 m3 center-align">
+
+                            <img src="/images/icon/systemd-logo-white.png" alt=""><br>
+                            <a href="/login" class="center-align waves-effect waves-light btn-large focus-color "><i
+                                    class=" material-icons left">account_circle</i>{{__ '.signin'}}</a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {{/unless}}
         <div class="hr"></div>
+
     </div>
 </template>
