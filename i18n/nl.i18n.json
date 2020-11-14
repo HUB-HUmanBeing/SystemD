@@ -2,6 +2,7 @@
   "_locale": "nl",
   "general": {
     "error": "Une erreur s'est produite",
+    "userCount": "nombre d'utilisateurs",
     "changNavigator": "Nous sommes une équipe réduite de bénévoles et les développements nécessaires pour adapter ce site à votre navigateur ne sont pas encore terminés. Vous obtiendrez une expérience optimale en utilisant le navigateur Chrome ou sa version open-source Chromium."
   },
   "_templates_application": "===========================================================================================================================",
