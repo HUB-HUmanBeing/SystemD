@@ -22,6 +22,7 @@
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "beautify-scrollbar": "^1.0.8",
+    "chart.js": "^2.9.4",
     "croppie": "2.6.3",
     "emojione-assets": "^4.5.0",
     "emojitsu": "^2.4.1",

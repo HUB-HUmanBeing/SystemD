@@ -17,6 +17,7 @@ Template.landingCounter.onCreated(function () {
     this.counters = new ReactiveVar({})
 
     Meteor.call('getCounter', (err,res)=>{
+        console.log(res)
         this.counters.set(res)
     })
 

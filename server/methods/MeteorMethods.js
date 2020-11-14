@@ -100,10 +100,9 @@ Meteor.methods({
     getCounter(){
         let tenLastMonth = []
 
-        for (let i = 20; i > 0; i--) {
+        for (let i = 12; i >= 0; i--) {
             let today = new Date()
-            let date = moment().subtract(i, 'hours').format()
-            console.log(date)
+            let date = moment().subtract(i, 'months').format()
            tenLastMonth.push({
                date: date,
               total: Meteor.users.find({"private.createdAt": {$lte: new Date(date)}}).count()
