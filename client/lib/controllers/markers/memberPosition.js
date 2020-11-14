@@ -60,7 +60,7 @@ const memberPosition = {
                     }
                 })
             })
-        })
+        }, (e)=>{console.log(JSON.stringify(e))}, { timeout: 3000 })
     },
     showMarker(marker) {
         cryptoTools.decryptObject(marker.memberPosition, {symKey: Session.get("currentProjectSimKey")}, decryptedIconMarker => {

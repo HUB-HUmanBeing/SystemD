@@ -29,6 +29,8 @@ App.setPreference('Orientation', 'portrait');
 
 
 // App.accessRule('http://*');
+App.accessRule('https://*',  { type: "intent" });
+
 App.accessRule('https://www.system-d.org/*');
 App.accessRule('https://www.asset.system-d.org/*');
 App.accessRule('blob:*', { type: "intent" });

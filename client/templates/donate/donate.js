@@ -54,7 +54,6 @@ Template.donate.events({
            //
            function onDeviceReady() {
                // external url
-               console.log(href)
                window.open(encodeURI(href), '_system');
 
            }
