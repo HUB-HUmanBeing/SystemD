@@ -2,6 +2,7 @@
   "_locale": "en-US",
   "general": {
     "error": "An error has occurred",
+    "userCount": "number of users",
     "changNavigator": "We are a small team of volunteers and the needed development works to ensure the portability to your browser are not yet completed.\nYou will have an optimal user experience using Chrome browser or its open-source version Chromium."
   },
   "_templates_application": "===========================================================================================================================",
@@ -183,6 +184,10 @@
     "projects": "Created projects",
     "joinToo": "Sign-in and have fun with a useful, free and cyphered tool for organise your projects with your friends, your associations or collectives.",
     "signin": "Sign-in"
+  },
+  "grafCounter": {
+    "months": "per month",
+    "weeks": "per week"
   },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
