@@ -25,12 +25,13 @@ App.launchScreens({
 })
 App.setPreference('BackgroundColor', '0xff0000ff');
 App.setPreference('Orientation', 'portrait');
-//App.setPreference('StatusBarBackgroundColor', '#263238');
+App.setPreference('Orientation', 'portrait');
+App.setPreference('loadUrlTimeoutValue', '60000');
 
 
 // App.accessRule('http://*');
 App.accessRule('https://*',  { type: "intent" });
-
+App.accessRule('http://*');
 App.accessRule('https://www.system-d.org/*');
 App.accessRule('https://www.asset.system-d.org/*');
 App.accessRule('blob:*', { type: "intent" });

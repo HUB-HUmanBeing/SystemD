@@ -1,13 +1,13 @@
 <template name="landingCounter">
     <div class="container ">
         <div class="row">
-            <div class="col s12 m7">
+            <div class="col s12 m5 xl4">
                 <div class="row flex  flex-middle">
                     <div class="center-align">
                         <img src="/images/icon/user_icon.png" alt="" class="contrasted-bg shadow">
                     </div>
                     <div class="number">
-                        <h3 class="hand-police main-color">{{counters.members}}</h3>
+                        <h4 class="hand-police main-color">{{counters.members}}</h4>
                     </div>
                     <div class="flex-auto flex-middle">
                         <p class="hand-police main-color" style="font-size: 1.3em"> {{__ '.members'}}</p>
@@ -19,7 +19,7 @@
                         <img src="/images/icon/project_icon.png" alt="" class="contrasted-bg shadow">
                     </div>
                     <div class="number">
-                        <h3 class="hand-police main-color">{{counters.projects}}</h3>
+                        <h4 class="hand-police main-color">{{counters.projects}}</h4>
                     </div>
                     <div class="flex-auto flex-middle">
                         <p class="hand-police main-color" style="font-size: 1.3em"> {{__ '.projects'}}</p>
@@ -27,18 +27,42 @@
 
                 </div>
             </div>
-            <div class="col s12 m5">
+            <div class="col s12 m7 xl8">
                 <div class="row center-align">
-                    {{#unless currentUserId}}
-                        <p class="infoQuotes main-color left-alignr">{{__ '.joinToo'}}</p>
-                        <img src="/images/icon/systemd-logo-white.png" alt=""><br>
-                        <a href="/login" class="center-align waves-effect waves-light btn-large focus-color "><i class=" material-icons left">account_circle</i>{{__ '.signin'}}</a>
-                    {{/unless}}
+
+                    {{#if compare counters "&&" counters.tenLastMonth}}
+                        {{>grafCounter counters=counters}}
+                    {{/if}}
+
                 </div>
             </div>
+
         </div>
+        {{#unless currentUserId}}
+
+            <div class="hr"></div>
+            <div class="row" style="margin: 100px 0">
+                <div class="col s12">
+                    <div class="row center-align">
+
+                        <div class="col s12 m3 offset-m3 center-align">
+                            <p class="infoQuotes main-color left-alignr">{{__ '.joinToo'}}</p>
 
 
+                        </div>
+                        <div class="col s12 m3 center-align">
+
+                            <img src="/images/icon/systemd-logo-white.png" alt=""><br>
+                            <a href="/login" class="center-align waves-effect waves-light btn-large focus-color "><i
+                                    class=" material-icons left">account_circle</i>{{__ '.signin'}}</a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {{/unless}}
         <div class="hr"></div>
+
     </div>
 </template>
