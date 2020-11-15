@@ -186,7 +186,7 @@
     "signin": "Inscription"
   },
   "grafCounter": {
-    "months": "upar mois",
+    "months": "par mois",
     "weeks": "par semaines"
   },
   "_templates_loginPage": "===========================================================================================================================",
