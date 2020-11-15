@@ -185,6 +185,10 @@
     "joinToo": "Registrieren Sie sich und verfügen Sie über ein praktisches, kostenloses und verschlüsseltes Online-Tool zur Verwaltung Ihrer Projekte mit Ihren Freunden, Ihrem Verein oder Ihrer Gruppe.",
     "signin": "Registrieren"
   },
+  "grafCounter": {
+    "months": "par mois",
+    "weeks": "par semaines"
+  },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
     "userName": "Benutzername",
