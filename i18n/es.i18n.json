@@ -185,6 +185,10 @@
     "joinToo": "Regístrese y benefíciese de una herramienta práctica, gratuita y económica para gestionar tus proyectos con tus amigos, tu asociación o tu colectivo.",
     "signin": "Registro "
   },
+  "grafCounter": {
+    "months": "par mois",
+    "weeks": "par semaines"
+  },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
     "userName": "Nombre de usuario",
