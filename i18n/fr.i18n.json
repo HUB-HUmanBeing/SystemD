@@ -185,6 +185,10 @@
     "joinToo": "Inscrivez vous et profitez d'un outil pratique, gratuit et chiffré pour gérer vos projets avec vos amis, votre association ou votre collectif.",
     "signin": "Inscription"
   },
+  "grafCounter": {
+    "months": "upar mois",
+    "weeks": "par semaines"
+  },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
     "userName": "Nom d'utilisateur",
