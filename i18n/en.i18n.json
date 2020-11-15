@@ -185,6 +185,10 @@
     "joinToo": "Sign-in and have fun with a useful, free and cyphered tool for organise your projects with your friends, your associations or collectives.",
     "signin": "Sign-in"
   },
+  "grafCounter": {
+    "months": "par mois",
+    "weeks": "par semaines"
+  },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
     "userName": "Username",
