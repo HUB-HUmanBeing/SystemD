@@ -2,6 +2,7 @@
   "_locale": "it",
   "general": {
     "error": "Si é verificato un errore",
+    "userCount": "nombre d'utilisateurs",
     "changNavigator": "Siamo un piccolo team di volontari e gli sviluppi necessari per adattare questo sito al vostro browser non sono ancora completi. Otterrete la migliore esperienza utilizzando il browser Chrome o la sua versione open-source Chromium."
   },
   "_templates_application": "===========================================================================================================================",
@@ -183,6 +184,10 @@
     "projects": "Progetti creati",
     "joinToo": "Registrati e usufruisci di uno strumento pratico, gratuito e criptato per gestire i tuoi progetti con i tuoi amici, la tua associazione o il tuo collettivo.",
     "signin": "Registrazione"
+  },
+  "grafCounter": {
+    "months": "par mois",
+    "weeks": "par semaines"
   },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {

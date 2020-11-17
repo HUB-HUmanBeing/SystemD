@@ -31,7 +31,7 @@ Template.beautyfullTextarea.onRendered(function () {
     //add your statement here
     $('#'+this.data.id).trigger('autoresize');
     $('#'+this.data.id).characterCounter();
-    $('#'+this.data.id).focus()
+   // $('#'+this.data.id).focus()
 });
 
 Template.beautyfullTextarea.onDestroyed(function () {

@@ -98,21 +98,26 @@ Meteor.methods({
         })
     },
     getCounter(){
-        let tenLastMonth = []
 
-        for (let i = 12; i >= 0; i--) {
-            let today = new Date()
-            let date = moment().subtract(i, 'months').format()
-           tenLastMonth.push({
-               date: date,
-              total: Meteor.users.find({"private.createdAt": {$lte: new Date(date)}}).count()
-           })
-        }
         return {
             projects: Projects.find({}).count(),
             members: Meteor.users.find({}).count(),
-            tenLastMonth:tenLastMonth
+
         }
+    }, getCounterArray(temporality, length){
+        check(temporality, String)
+        check(length, Number)
+        let tenLastMonth = []
+
+        for (let i = length; i >= 0; i--) {
+            let today = new Date()
+            let date = moment().subtract(i, temporality).format()
+            tenLastMonth.push({
+                date: date,
+                total: Meteor.users.find({"private.createdAt": {$lte: new Date(date)}}).count()
+            })
+        }
+        return  tenLastMonth
     }
 })
 if(Meteor.isDevelopment){

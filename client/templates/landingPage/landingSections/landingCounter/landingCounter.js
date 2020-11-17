@@ -25,19 +25,7 @@ Template.landingCounter.onCreated(function () {
 });
 
 Template.landingCounter.onRendered(function () {
-    //add your statement here
-    // this.memberCounter = new CountUp('myTargetElement', 5844);
-    // if (!this.memberCounter.error) {
-    //     this.memberCounter.start();
-    // } else {
-    //     console.error(this.memberCounter.error);
-    // }
-    // this.projectCounter = new CountUp('myTargetElement', 5844);
-    // if (!this.projectCounter.error) {
-    //     this.projectCounter.start();
-    // } else {
-    //     this.projectCounter.error(this.projectCounter.error);
-    // }
+
 });
 
 Template.landingCounter.onDestroyed(function () {
