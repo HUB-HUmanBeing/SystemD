@@ -129,3 +129,4 @@ commande de déploiement (rassurez vous, ca ne marche qu'en etant correctement i
 
     DEPLOY_HOSTNAME=eu-west-1.galaxy-deploy.meteor.com meteor deploy --settings settings.json system-d.eu.meteorapp.com
 
+    meteor build  ~Bureau/build-output-directory --server=https://www.system-d.org/:443

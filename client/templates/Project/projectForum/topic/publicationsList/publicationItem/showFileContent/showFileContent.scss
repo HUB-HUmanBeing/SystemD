@@ -8,7 +8,30 @@
   .mobileCaroussel {
     height: 30vh;
     overflow-x: scroll;
+    .selectionContainer{
+      position: relative;
+      .download-file{
+        position: absolute !important;
+        top: -50px !important;
+        left: 27px !important;
+        background-color: $light-bg;
+        transition: 0.3s;
+        *{
+          transition: 0.3s;
+          color: $main-color;
+        }
+        &:hover{
+          background-color: $blue-highlight-color !important;
+          *{
+            color: $plus-color;
+          }
+        }
+      }
+      .downloadLink{
+        display: none;
+      }
 
+    }
     .mobileCarousselScroller{
       display: inline-block !important;
       white-space: nowrap;

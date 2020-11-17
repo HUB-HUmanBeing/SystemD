@@ -2,6 +2,7 @@
   "_locale": "de-DE",
   "general": {
     "error": "Ein Fehler ist aufgetreten",
+    "userCount": "Zahl der Nutzer",
     "changNavigator": "Wir sind ein kleines Team von Freiwilligen Die Entwicklungen, die notwendig sind, um diese Plattform an Ihren Browser anzupassen, sind noch nicht abgeschlossen. Die beste Erfahrung erhalten Sie mit dem Chrome-Browser oder seiner Open-Source-Chromium-Version."
   },
   "_templates_application": "===========================================================================================================================",
@@ -183,6 +184,10 @@
     "projects": "Erstellte Projekte",
     "joinToo": "Registrieren Sie sich und verfügen Sie über ein praktisches, kostenloses und verschlüsseltes Online-Tool zur Verwaltung Ihrer Projekte mit Ihren Freunden, Ihrem Verein oder Ihrer Gruppe.",
     "signin": "Registrieren"
+  },
+  "grafCounter": {
+    "months": "par mois",
+    "weeks": "par semaines"
   },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
@@ -440,7 +445,7 @@
     "notifEnabled": "Sie erhalten nun Benachrichtigungen für alle Diskussionen in diesem Verzeichnis",
     "notifDisabled": "Die Benachrichtigungen wurden für alle Threads in diesem Verzeichnis deaktiviert",
     "topicName": "Titel des Themas",
-    "chooseType": "Ajouter ..."
+    "chooseType": "Hinzufügen..."
   },
   "topic": {
     "downloadAndDecrypt": "Herunterladen und Entschlüsseln der aktuellen Datei"
@@ -535,15 +540,15 @@
     "seeMore": "Mehr anzeigen",
     "newFile": "Uploader un fichier",
     "newFolder": "Nouveau dossier",
-    "actions": "Actions",
+    "actions": "Aktionen",
     "newFolderPlaceholder": "Nom du dossier ...",
-    "cut": "Couper",
-    "paste": "Coller",
-    "rename": "Renommer",
+    "cut": "Ausschneiden",
+    "paste": "Einfügen",
+    "rename": "Umbenennen",
     "delete": "Supprimer",
     "deleteItems": "Confirmer la suppression définitive de ",
     "folders": "dossiers",
-    "files": "fichiers",
+    "files": "Dateien",
     "and": "et de",
     "deleteItemsInfos": "Attention, tout les éléments contenus dans les dossiers sélectionnés seront aussi supprimés.",
     "confirmDelete": "Supprimer",
@@ -798,7 +803,7 @@
     "newSpreadsheet": "Tabellenblatt hinzufügen",
     "showMore": "Mehr anzeigen",
     "SpreadsheetName": "Name des Tabellenblatts",
-    "padList": "Textes",
+    "padList": "Texte",
     "noPad": "Dossier vide",
     "newPad": "Nouveau texte",
     "PadName": "Nom du texte"
@@ -877,12 +882,12 @@
     "padName": "Nom du texte",
     "lastEdit": "Derniere édition",
     "otherEditors": "Autres participants",
-    "download": "Télécharger...",
+    "download": "Herunterladen...",
     "pdf": "Télécharger au format pdf",
     "docx": "Télécharger au format docx",
-    "delete": "Supprimer",
-    "edit": "Editer le nom du texte",
-    "abort": "Annuler",
+    "delete": "Entfernen",
+    "edit": "Dateiname ändern",
+    "abort": "Abbrechen",
     "deleteInfo": "Ce texte sera supprimé ainsi que tout son contenu."
   },
   "pad": {

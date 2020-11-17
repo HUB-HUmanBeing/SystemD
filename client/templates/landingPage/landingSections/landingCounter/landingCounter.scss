@@ -13,22 +13,26 @@
   }
   .container{
     padding:20px 0 !important;
-    overflow: hidden;
+
+  }
+  canvas{
+    margin: 50px 20px 0 10px;
   }
   .flex{
     position: relative;
     margin-top: 20px;
-    padding: 30px;
+    padding: 40px 0px 10px 5px;
 
     .number{
-      padding:0 10px 0 20px;
+      padding:0 10px 0 0px;
     }
     img{
       position: relative;
       border-radius: 10px;
-      width: 100px;
-      height: 100px;
+      width: 70px;
+      height: 70px;
       padding: 5px;
+      margin: 10px;
       background-color: $lighter-bg;
       border: 3px solid $focus-color;
 
@@ -36,10 +40,5 @@
 
 
   }
-  .m5{
-    margin-top: 50px;
-    img{
-      margin: 30px;
-    }
-  }
+
 }
