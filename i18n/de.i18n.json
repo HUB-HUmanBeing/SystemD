@@ -186,8 +186,8 @@
     "signin": "Registrieren"
   },
   "grafCounter": {
-    "months": "par mois",
-    "weeks": "par semaines"
+    "months": "monatlich",
+    "weeks": "pro Woche"
   },
   "_templates_loginPage": "===========================================================================================================================",
   "loginForm": {
