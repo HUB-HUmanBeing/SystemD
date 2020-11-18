@@ -1,8 +1,51 @@
 @import "{}/client/scss/variables.scss";
 
 $menuFocusColor: $blue-highlight-color;
+
+.menuProjectsScrollbar {
+  .project-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid $blue-highlight-color;
+  }
+
+  .projectTitle {
+    padding-left: 0.6em;
+
+    font-size: 1.05em;
+    color: $info-color;
+    transition: 0.3s;
+  }
+
+  .notifCount {
+    color: $minus-color !important;
+    background-color: $danger-color;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 17px;
+    line-height: 15px;
+    margin-right: 5px;
+    top: 2px;
+    left: 35px;
+    //border: 2px solid $link-color;
+  }
+
+  .notifCount:hover {
+    color: $plus-color !important;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  }
+
+
+}
+
 #projectsList {
-  margin-top: -5px;
+  margin-top: -15px;
   padding: 0 5px;
   border: none;
   box-shadow: none;
@@ -16,43 +59,6 @@ $menuFocusColor: $blue-highlight-color;
       transition: background-color 0.3s;
       position: relative;
       border-left: 0px solid $menuFocusColor;
-
-      .project-avatar {
-        width: 55px;
-        height: 55px;
-        border-radius: 10px;
-        overflow: hidden;
-        border: 2px solid $blue-highlight-color;
-      }
-
-      .projectTitle {
-        padding-left: 0.6em;
-
-        font-size: 1.05em;
-        color: $info-color;
-        transition: 0.3s;
-      }
-
-      .notifCount {
-        color: $minus-color !important;
-        background-color: $danger-color;
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        padding-top: 8px ;
-        text-align: center;
-        font-size: 17px;
-        line-height: 15px;
-        margin-right: 5px;
-        top:2px;
-        left: 35px;
-        //border: 2px solid $link-color;
-      }
-      .notifCount:hover{
-        color: $plus-color !important;
-        -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-      }
 
       &:hover {
         margin-left: -5px;
@@ -96,7 +102,7 @@ $menuFocusColor: $blue-highlight-color;
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            padding: 7px 8px ;
+            padding: 7px 8px;
 
             font-size: 12px;
             font-weight: bold;
@@ -104,7 +110,8 @@ $menuFocusColor: $blue-highlight-color;
             right: 12px;
             //border: 2px solid $link-color;
           }
-          .notifCountSection:hover{
+
+          .notifCountSection:hover {
             color: $plus-color;
             -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
             box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);

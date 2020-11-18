@@ -39,9 +39,12 @@
         </div>
         {{#if currentUserId}}
             <div class="flex-auto">
+
                 <div id="{{#if isDesktop}}menuProjectsContainer{{else}}mobileMenuProjectsContainer{{/if}}">
+
                     {{#if showProjects}}
                         <div class="menuProjectsScrollbar">
+                            {{>userMenu}}
                             {{>projectList }}
                         </div>
 

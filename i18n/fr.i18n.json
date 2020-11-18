@@ -895,6 +895,8 @@
   "pad":{
     "errorPaste": "Le texte contient des caractères qui ne peuvent être enregistrés.",
     "errorDownload": "Une erreur est survenue et votre texte ne peut être téléchargé sous ce format."
-}
-
+},
+  "userMenu": {
+    "messenger": "MESSAGERIE"
+  }
 }

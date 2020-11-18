@@ -1,0 +1,23 @@
+<template name="userMenu">
+
+    <div id="userMenu" class="flex full-width flex-middle">
+        <div class="project-avatar relative" style="">
+
+            <img src="/images/icon/message_icon.png" class="responsive-img" alt="">
+            {{#if totalNotifs}}
+                <div class="notifCount waves-effect waves-light  absolute"
+                     id="messagingNotifications#all" openNotifModal style="z-index: 201">
+                    {{onlyZeroToNine totalNotifs}}
+                </div>
+            {{/if}}
+        </div>
+
+
+        <div class="flex-auto elipsis projectTitle ">
+            {{__ ".messenger"}}
+        </div>
+
+    </div>
+    <div class="" style="margin: 0 10px"><div class="hr"></div></div>
+
+</template>
