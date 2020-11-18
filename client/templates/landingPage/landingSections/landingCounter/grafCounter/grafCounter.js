@@ -33,7 +33,7 @@ Template.grafCounter.onCreated(function () {
                     data.push(count.total)
                 })
                 let ctx = document.getElementById('graph').getContext('2d');
-                let chart = new Chart(ctx, {
+                let params = {
                     // The type of chart we want to create
                     type: 'line',
 
@@ -43,8 +43,11 @@ Template.grafCounter.onCreated(function () {
                         datasets: [{
                             label: false,
                             backgroundColor: '#165261',
-                            borderColor: '#165261',
-                            data: data
+                            borderColor: '#E79627',
+                            hoverBorderColor:'#E79627',
+                            pointBorderColor: '#E79627',
+                            data: data,
+                            borderWidth: 1
                         }]
                     },
 
@@ -54,7 +57,14 @@ Template.grafCounter.onCreated(function () {
                             display: false
                         }
                     }
-                });
+                }
+                if(this.chart){
+                    this.chart.destroy()
+                    this.chart = new Chart(ctx,params );
+                }else{
+                    this.chart = new Chart(ctx,params );
+                }
+
             })
 
         })
@@ -72,5 +82,8 @@ Template.grafCounter.onRendered(function () {
 
 Template.grafCounter.onDestroyed(function () {
     //add your statement here
+    if(this.chart){
+        this.chart.destroy()
+    }
 });
 
