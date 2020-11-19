@@ -29,6 +29,8 @@ const shape = {
                         Meteor.setTimeout(() => {
                             $('#markerName').focus()
                         }, 300)
+                    }else{
+                        FlowRouter.go("/project/" + newMarkerParams.projectId + "/maps")
                     }
                 }
             )

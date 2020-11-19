@@ -1,2 +1,6 @@
+cordova-plugin-file@6.0.2
+cordova-plugin-firebase-messaging@5.0.0
+cordova-plugin-geolocation@4.0.2
 cordova-plugin-splashscreen@4.1.0
 cordova-plugin-statusbar@2.3.0
+cordova-plugin-web-share@1.2.0

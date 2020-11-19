@@ -207,6 +207,7 @@ const projectFilesController = {
                                     const blob = new Blob([new Uint8Array(decrypted)], {
                                         type: 'application/octet-stream'
                                     });
+                                    window.blobToDownload = blob
                                     const url = URL.createObjectURL(blob);
                                     callback(url) //create new file from the decrypted content
 
@@ -240,7 +241,46 @@ const projectFilesController = {
                 callback(res)
             }
         })
-    }
+    },
+    saveBlob2File (fileName, blob) {
+    var folder = cordova.file.externalRootDirectory + 'Download'
+    window.resolveLocalFileSystemURL(folder, (dirEntry) =>{
+        console.log('file system open: ' + dirEntry.name)
+        this.createFile(dirEntry, fileName, blob)
+    }, this.onErrorLoadFs)
+},
+
+createFile (dirEntry, fileName, blob) {
+    // Creates a new file
+    dirEntry.getFile(fileName, { create: true, exclusive: false },  (fileEntry)=> {
+        this.writeFile(fileEntry, blob)
+    }, this.onErrorCreateFile)
+},
+
+writeFile (fileEntry, dataObj) {
+    // Create a FileWriter object for our FileEntry
+    fileEntry.createWriter( (fileWriter)=> {
+        fileWriter.onwriteend =  ()=> {
+            Materialize.toast(__('fullScreenFile.downloadSuccess'), 3000, 'toastOk')
+        }
+
+        fileWriter.onerror =  (error) =>{
+            console.log('Failed file write: ' + error)
+            this.onErrorCreateFile(error)
+        }
+        fileWriter.write(dataObj)
+    })
+},
+
+onErrorLoadFs (error) {
+    console.log(error)
+    Materialize.toast(__('general.error'), 6000, 'toastError')
+},
+
+ onErrorCreateFile (error) {
+    console.log(error)
+     Materialize.toast(__('general.error'), 6000, 'toastError')
+}
 
 }
 

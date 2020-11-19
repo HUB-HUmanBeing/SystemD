@@ -55,7 +55,6 @@ Template.editComment.onRendered(function () {
     });
     $("#editCommentText-" + this.data.comment._id).keypress(function (e) {
         if (e.key === "Escape") {
-            cpnsole.log("in")
             this.data.abortEdition(this.data.content)
         }
     });

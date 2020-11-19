@@ -23,9 +23,3 @@ WebApp.connectHandlers.use(function(req, res, next) {
 });
 
 
-// if(Meteor.isDevelopment){
-//     let key = process.env.PWD + '/private/localhost.key';
-//     let cert = process.env.PWD + '/private/localhost.cert';
-//     SSL(key, cert, 3003);
-// }
-

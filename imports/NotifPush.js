@@ -1,4 +1,3 @@
-import fs from 'fs'
 import cryptoServer from "./cryptoServer";
 import ProjectNotification from "./classes/ProjectNotification";
 import axios from "axios"
@@ -17,7 +16,11 @@ const NotifPush = {
         this.getSubscriptions(userIds).forEach((pushSubscription) => {
             this.translateAndFormatMessage(pushSubscription.language, message, null,(notification)=>{
                 notification.icon = "https://www.system-d.org/images/icon/iconfatNotifs.png"
-                notification.click_action = "https://www.system-d.org/"
+            notification.sound = "notifsound"
+
+            notification.tag = notification.title
+            notification.color = "#165261"
+            notification.android_channel_id = "systemdorg"
                 let payload = {
                     notification: notification,
                 }
@@ -69,23 +72,23 @@ const NotifPush = {
      * @param title
      * @returns {Buffer}
      */
-    translateAndFormatMessage(language, message, title,cb) {
+    translateAndFormatMessage(language, message, title, cb) {
         let acceptLanguage = language || 'en-US';
 
         i18n.runWithLocale(acceptLanguage, () => {
             //In this scope everything should have 'acceptLanguage' as a default.
-        let translatedMessage = i18n.__('notifItem.'+message)
-        let translatedTitle
-        if (title) {
-            translatedTitle = i18n.__('notifItem.'+title)
-        } else {
-            translatedTitle = i18n.__('notifItem.genericTitle')
-        }
-        // let translatedAction = this.i18nNotifs[language]["genericAction"]
-        cb({
-            title: translatedTitle,
-            body: translatedMessage,
-        })
+            let translatedMessage = i18n.__('notifItem.' + message)
+            let translatedTitle
+            if (title) {
+                translatedTitle = i18n.__('notifItem.' + title)
+            } else {
+                translatedTitle = i18n.__('notifItem.genericTitle')
+            }
+            // let translatedAction = this.i18nNotifs[language]["genericAction"]
+            cb({
+                title: translatedTitle,
+                body: translatedMessage,
+            })
         })
     },
     /***********************************

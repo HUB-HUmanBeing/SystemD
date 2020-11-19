@@ -40,10 +40,10 @@ Template.markerDetail.helpers({
     },
     coordinates: function () {
         let marker = Template.instance().marker.get()
-        if (marker.markerType == "memberPosition" || marker.markerType == "iconMarker"||marker.markerType == "markerText") {
+        if (marker.markerType == "memberPosition" || marker.markerType == "iconMarker" || marker.markerType == "markerText") {
 
             let coordinatesArray = JSON.parse(marker[marker.markerType].symEnc_coordinates)
-            return coordinatesArray[0] + " , " + coordinatesArray[1]
+            return {lat: coordinatesArray[0], lon: coordinatesArray[1]}
         }
 
     }
@@ -96,14 +96,27 @@ Template.markerDetail.events({
         mapController.moveMarker(instance.marker.get(), instance.data.mapState)
     },
     'click [goTo]': function (event, instance) {
+        if (Meteor.isCordova) {
+            let marker = instance.marker.get()
+            let coordinatesArray = JSON.parse(marker[marker.markerType].symEnc_coordinates)
+            document.addEventListener("deviceready", onDeviceReady, false);
 
-        navigator.geolocation.getCurrentPosition(function (location) {
-            let userPosition = [location.coords.latitude, location.coords.longitude]
-            let pointToGo = JSON.parse(instance.data.marker[instance.data.marker.markerType].symEnc_coordinates)
-            let url = "https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=" + userPosition[0] + "%2C" + userPosition[1] + "%3B" + pointToGo[0] + "%2C" + pointToGo[1]
-            var win = window.open(url, '_blank');
-            win.focus();
-        })
+            // device APIs are available
+            //
+            function onDeviceReady() {
+                window.open(encodeURI('geo:0,0?q=' + coordinatesArray[0] + "," + coordinatesArray[1]), '_system');
+            }
+        } else {
+            navigator.geolocation.getCurrentPosition(function (location) {
+                let userPosition = [location.coords.latitude, location.coords.longitude]
+                let pointToGo = JSON.parse(instance.data.marker[instance.data.marker.markerType].symEnc_coordinates)
+                let url = "https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=" + userPosition[0] + "%2C" + userPosition[1] + "%3B" + pointToGo[0] + "%2C" + pointToGo[1]
+                var win = window.open(url, '_blank');
+                win.focus();
+            })
+
+        }
+
     }
 });
 

@@ -73,11 +73,12 @@
                 <div class="row no-margin">
                     <div class="col s12">
                         <div class="hr"></div>
-                        <p class="sectionLabel">{{__ ".coordinates"}}</p>
-                        <div class="coordinates">{{coordinates}}</div>
+                        <p class="sectionLabel">{{__ ".coordinates"}} </p>
+                        <div class="coordinates">lat:{{coordinates.lat}} <br> lon:{{coordinates.lon}}</div>
                         <div class="row">
                             <div class="col s12 no-padding center-align">
                                 <br>
+
                                 <a href="" class="btn btnStandard waves-effect waves-light full-width" goTo>
                                     <i class="material-icons left ">near_me</i> {{__ ".goTo"}}
                                 </a>
