@@ -1,7 +1,7 @@
 App.info({
     id: 'com.systemd.systemd',
     name: 'System-D',
-    version: "0.0.8",
+    version: "0.1.0",
     description: 'Encrypted platform for collaborative and free projects',
     author: 'System-d team',
     email: 'rbanquo@protonmail.com',
@@ -23,16 +23,17 @@ App.launchScreens({
     android_xxhdpi_portrait: 'public/android/xlarge-1600.png',
     android_xxxhdpi_portrait: 'public/android/xxlarge-1920.png',
 })
-App.setPreference('BackgroundColor', '0xff0000ff');
-App.setPreference('Orientation', 'portrait');
+App.setPreference('BackgroundColor', '#263238');
 App.setPreference('Orientation', 'portrait');
 App.setPreference('loadUrlTimeoutValue', '60000');
 App.setPreference('android-targetSdkVersion', '29', "android");
 
-
-// App.accessRule('http://*');
+App.accessRule('*');
+App.accessRule('http://*');
+App.accessRule('https://*');
+App.accessRule('http://*', { type: 'navigation' });
+App.accessRule('https://*', { type: 'navigation' });
 App.accessRule('https://*', {type: "intent"});
-//App.accessRule('http://*');
 App.accessRule('https://www.system-d.org/*');
 App.accessRule('https://www.asset.system-d.org/*');
 App.accessRule('blob:*', {type: "intent"});

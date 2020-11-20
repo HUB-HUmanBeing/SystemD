@@ -1,7 +1,7 @@
 
 ## génération de l'apk et procedure pour signer :
 
-        meteor build  ~/Bureau/SystemD_mobile --server=https://www.system-d.org/:443
+        meteor build  ~/Bureau/SystemD_mobile --server=https://www.system-d.org:443
 
         cd /home/banquo/Bureau/SystemD_mobile/android/project/app/build/outputs/apk/release
         jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 app-release-unsigned.apk SystemD
