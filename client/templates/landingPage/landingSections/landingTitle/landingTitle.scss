@@ -18,6 +18,16 @@
     bottom:0;
   }
 }
+#cordovalink{
+  margin: 15px 0px;
+  img{
+    width: 12em ;
+  }
+  position: absolute;
+
+  z-index: 200;
+
+}
 #landingTitle {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefefd+0,aebf76+100 */

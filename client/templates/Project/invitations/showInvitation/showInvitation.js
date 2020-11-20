@@ -103,7 +103,7 @@ Template.showInvitation.onCreated(function () {
                 //on déchiffre la clef d'invitation
                     cryptoTools.sim_decrypt_data(currentInvitationPassword, Session.get("currentProjectSimKey"), (decryptedInvitPassword) => {
                         this.decryptedInvitPassword.set(decryptedInvitPassword)
-                        this.magicLink.set(window.location.origin + "/invitation/" + this.invitationId + "?password=" + decryptedInvitPassword)
+                        this.magicLink.set((Meteor.isCordova ? "https://www.system-d.org" : window.location.origin )+ "/invitation/" + this.invitationId + "?password=" + decryptedInvitPassword)
                         //on souscrit à l'invitation
                         Meteor.subscribe('invitation', this.invitationId, cryptoTools.hash(decryptedInvitPassword), (err) => {
                             if (err) {

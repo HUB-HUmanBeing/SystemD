@@ -1,9 +1,9 @@
 <template name="landingPage">
 
     <div class="landing-page main-bg relative" style="margin-top: -64px;">
-        <div class="relative" style="margin-top: {{#if isDesktop}}0px{{else}}74px{{/if}}">{{> langButton}}</div>
+        <div class="relative">{{> langButton}}</div>
 
-        <div id="landingTitle" class="landing-section gradiant relative">
+        <div id="landingTitle" class="landing-section gradiant relative" style="top: 0;">
             {{>birdsBg}}
             {{>landingTitle}}
         </div>

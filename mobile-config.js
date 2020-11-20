@@ -1,7 +1,7 @@
 App.info({
     id: 'com.systemd.systemd',
     name: 'System-D',
-    version: "0.1.0",
+    version: "0.1.2",
     description: 'Encrypted platform for collaborative and free projects',
     author: 'System-d team',
     email: 'rbanquo@protonmail.com',
@@ -16,13 +16,13 @@ App.icons({
     'android_xxxhdpi': 'public/android/mipmap-xxxhdpi/ic_launcher.png',
     // More screen sizes and platforms...
 });
-App.launchScreens({
+ App.launchScreens({
     android_mdpi_portrait: 'public/android/large-480.png',
     android_hdpi_portrait: 'public/android/large-800.png',
     android_xhdpi_portrait: 'public/android/large-1280.png',
     android_xxhdpi_portrait: 'public/android/xlarge-1600.png',
     android_xxxhdpi_portrait: 'public/android/xxlarge-1920.png',
-})
+ })
 App.setPreference('BackgroundColor', '#263238');
 App.setPreference('Orientation', 'portrait');
 App.setPreference('loadUrlTimeoutValue', '60000');
