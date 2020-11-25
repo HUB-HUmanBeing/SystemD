@@ -3,4 +3,5 @@ settings.json
 .vscode/
 /google-services.json
 
-cordova-build-override/
+
+cordova-build-override/google-services.json

@@ -20,8 +20,17 @@
             {{#unless currentUserId}}
             <a href="/login" class="center-align waves-effect waves-light btn-large focus-color "><i class=" material-icons left">account_circle</i>{{__ '.signin'}}</a>
             {{/unless}}
+
         </div>
 
+
       </div>
+
 {{/animate}}
+    {{#unless Meteor.isCordova}}
+        <div id="cordovalink"  style="{{#if isDesktop}}  margin: 10px 0px; right: 70px;{{else}}  margin: 15px 0px; left: 20px;{{/if}}">
+            <a  href='https://play.google.com/store/apps/details?id=com.systemd.systemd&gl=FR&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='images/icon/google-play-badge.png'/></a>
+
+        </div>
+    {{/unless}}
   </template>

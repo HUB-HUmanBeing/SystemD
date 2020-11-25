@@ -5,11 +5,22 @@ import urlParser from "js-video-url-parser";
 Template.smartContent.helpers({
     //add you helpers here
     smartifiedContent: function () {
-        let instance=Template.instance()
+        let instance = Template.instance()
         Meteor.setTimeout(() => {
-if(instance.data.refreshScrollbar){
-    instance.data.refreshScrollbar()
-}
+            if (instance.data.refreshScrollbar) {
+                instance.data.refreshScrollbar()
+            }
+            if(Meteor.isCordova){
+                $(".smartifiedContent a").click(function() {
+                    let href= $(this).attr("href")
+
+                        // external url
+
+                        window.open(encodeURI(href), '_system');
+
+
+                })
+            }
 
         }, 200)
         return Autolinker.link(renderShortname(Template.currentData().content, {
@@ -21,9 +32,9 @@ if(instance.data.refreshScrollbar){
         }))
     },
     linkPreview: function () {
-        let instance=Template.instance()
+        let instance = Template.instance()
         Meteor.setTimeout(() => {
-            if(instance.data.refreshScrollbar){
+            if (instance.data.refreshScrollbar) {
                 instance.data.refreshScrollbar()
             }
         }, 200)
@@ -31,10 +42,10 @@ if(instance.data.refreshScrollbar){
 
     },
     videoEmbedUrl: function () {
-        let instance=Template.instance()
+        let instance = Template.instance()
         Meteor.setTimeout(() => {
 
-            if(instance.data.refreshScrollbar){
+            if (instance.data.refreshScrollbar) {
                 instance.data.refreshScrollbar()
             }
         }, 200)
@@ -121,7 +132,6 @@ Template.smartContent.onRendered(function () {
                     console.log(linkPreview.img)
                 }
                 instanceLinkPreview.set(linkPreview)
-
 
 
             }

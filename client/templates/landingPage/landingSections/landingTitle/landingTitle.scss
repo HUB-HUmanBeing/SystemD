@@ -1,5 +1,7 @@
 @import "{}/client/scss/variables.scss";
-
+.side-nav{
+  background-color: $contrasted-bg !important;
+}
 .bg-logo {
   position: absolute;
   top: 0;
@@ -17,6 +19,16 @@
     right: 0;
     bottom:0;
   }
+}
+#cordovalink{
+  margin: 15px 0px;
+  img{
+    width: 12em ;
+  }
+  position: absolute;
+
+  z-index: 200;
+
 }
 #landingTitle {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */

@@ -45,6 +45,22 @@ Template.donate.events({
         Materialize.toast(__("donate.copied"), 6000, "toastOk")
         instance.copied.set(true)
     },
+    "click [openLink]": function (event, instance) {
+       if(Meteor.isCordova){
+           let href= event.currentTarget.getAttribute("href")
+           document.addEventListener("deviceready", onDeviceReady, false);
+
+           // device APIs are available
+           //
+           function onDeviceReady() {
+               // external url
+               window.open(encodeURI(href), '_system');
+
+           }
+       }
+
+
+    },
 });
 
 Template.donate.onCreated(function () {

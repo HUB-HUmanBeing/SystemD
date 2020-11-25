@@ -350,6 +350,15 @@ body, html {
 .emojiImg {
   opacity: 0.75;
 }
+.switch label .lever:after {
+  background-color: $minus-color;
+}
+.switch label input[type=checkbox]:checked + .lever {
+  background-color: rgba($link-color, 0.5);
+}
+.switch label input[type=checkbox]:checked + .lever:after {
+  background-color: $link-color;
+}
 .sexyScrollbar{
   scrollbar-width: thin;
   scrollbar-color: rgba($blue-highlight-color, 0.5) transparent ;
