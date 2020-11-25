@@ -1,5 +1,7 @@
 @import "{}/client/scss/variables.scss";
-
+.side-nav{
+  background-color: $contrasted-bg !important;
+}
 .bg-logo {
   position: absolute;
   top: 0;
