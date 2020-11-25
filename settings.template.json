@@ -16,8 +16,8 @@
     "frontSalt": "coucou",
     "publicVapidKey": "",
     "cryptos": {
-      "eth": "0x35309468064c217abEbE23ca92DaFba088224Ad5",
-      "xrp": "rfSf6dWXp1Q91NSsFaoAAfTseqvG89PJAQ",
+      "eth": "0x1B209AE0c8Da107686d46aFdfa6Ecc5F1622932a",
+      "xrp": "rsbzsTndCq4nLRoYGN1S2X7zfUxcBqF2dY",
       "btc": "1Pi1TgDAe4N1CGvREUT3LC2pmo6yTx5zcE"
     },
     "maxFilesSize": 524288000,
