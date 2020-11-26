@@ -54,6 +54,13 @@ FlowRouter.route('/user-params', {
         BlazeLayout.render('mainLayout', {main: 'userParams'});
     },
 });
+FlowRouter.route('/messenger', {
+    name: 'App.messenger',
+    triggersEnter: [checkLoggedOrReroute],
+    action() {
+        BlazeLayout.render('mainLayout', {main: 'messenger'});
+    },
+});
 /***********
  * invitation Route
  */

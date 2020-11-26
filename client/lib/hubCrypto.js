@@ -227,5 +227,31 @@ const hubCrypto = {
             })
         })
     },
+    /***********************************
+     * gérération du trousseau de clef nécessaire a la création d'une nouvelle conversation
+     * @param stringifiedCreatorPublicKey //clef publique du créateur du projet
+     * @param callback //fonction de retour dont on passera en argument le trousseau de clef
+     */
+    generateNewConversationBrunchOfKeys( stringifiedCreatorPublicKey, callback) {
+        //on commence par générer la clef symétrique
+        cryptoTools.generateSimKey((key) => {
+            cryptoTools.getExportableKey(key, conversationKey => {
+                //on genere la paire de clef asymetriques rsa
+                cryptoTools.asym_encrypt_data(conversationKey, stringifiedCreatorPublicKey, (strigifiedEncryptedConversationKey) => {
+                    //on prepare le trousseau de clef
+                    let brunchOfKeys = {
+                        //clef symetrique du projet chiffrée pour l'utilisateur qui en est le créateur
+                        encryptedConversationKey: strigifiedEncryptedConversationKey,
+                        //Clef symétrique du projet
+                        conversationKey: conversationKey,
+                        stringifiedSymKey: conversationKey
+                    }
+                    //on renvoie le trousseau dans le callback
+                    callback(brunchOfKeys)
+
+                })
+            })
+        })
+    },
 }
 export default hubCrypto

@@ -11,17 +11,7 @@ const projectController = {
         return userProject
 
     },
-    //ne pas utiliser, c'est buggé
-    getCurrentUserProjectIndex(projectId){
-        let userProjectIndex = null
-        Session.get("projects").forEach((project,i)=>{
-            if(project.asymEnc_projectId === projectId){
-                userProjectIndex = i
-            }
-        })
-        return userProjectIndex
 
-    },
     isAdmin(projectId){
         return this.getCurrentUserProject(projectId).asymEnc_role === "admin"
     },

@@ -28,6 +28,34 @@ const ProjectUser = Class.create({
         }
     },
 });
+const ConversationUser = Class.create({
+    name: 'ConversationUser',
+    fields: {
+        asymEnc_conversationId: {
+            type: String
+        },
+        asymEnc_memberId: {
+            type: String
+        },
+        asymEnc_conversationName: {
+            type: String,
+            optional: true
+        },
+        asymEnc_conversationSymKey: {
+            type: String
+        },
+        asymEnc_role: {
+            type: String,
+        },
+        asymEnc_adminPassword: {
+            type: String
+        },
+        //permet d'authentifier un admin du projet hashServer(hashclient(memberId + adminPassword))
+        hashedAdminSignature: {
+            type: String
+        }
+    },
+});
 const Profile = Class.create({
     name: 'Profile',
     fields: {},
@@ -67,10 +95,17 @@ const PrivateUser = Class.create({
             type: Date,
             default: function () {
                 return new Date()
-            }
+            },
+            index:true
         },
         projects: {
             type: [ProjectUser],
+            default: function () {
+                return []
+            }
+        },
+        conversations: {
+            type: [ConversationUser],
             default: function () {
                 return []
             }

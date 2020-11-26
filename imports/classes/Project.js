@@ -140,6 +140,34 @@ const Calendar = Class.create({
 
     }
 })
+const ConversationProject = Class.create({
+    name: 'ConversationProject',
+    fields: {
+        asymEnc_conversationId: {
+            type: String
+        },
+        asymEnc_memberId: {
+            type: String
+        },
+        asymEnc_conversationName: {
+            type: String,
+            optional: true
+        },
+        asymEnc_conversationSymKey: {
+            type: String
+        },
+        asymEnc_role: {
+            type: String,
+        },
+        asymEnc_adminPassword: {
+            type: String
+        },
+        //permet d'authentifier un admin du projet hashServer(hashclient(memberId + adminPassword))
+        hashedAdminSignature: {
+            type: String
+        }
+    },
+});
 const ProjectPublic = Class.create({
     name: 'ProjectPublic',
     fields: {
@@ -193,6 +221,12 @@ const ProjectPrivate = Class.create({
             type: [ProjectInvitation],
             default: function () {
                 return [];
+            }
+        },
+        conversations: {
+            type: [ConversationProject],
+            default: function () {
+                return []
             }
         },
         forumCategories: {

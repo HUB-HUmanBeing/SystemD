@@ -1,0 +1,74 @@
+<template name="messenger">
+    <div id="projectForum" class=" bird-background row no-margin"
+         style="{{#if
+                 isDesktop}}padding-top: 0px; height: 100vh; width: calc( 100% - 210px ){{else}}padding-top: 0;width: 100%;{{/if}}">
+        {{#if isDesktop}}
+            <div class="blurTop"></div>
+        {{/if}}
+        <div class="forumContainer col s12 flex   {{#if
+                isDesktop}}full-height relative {{/if}}  no-padding ">
+            {{#if showConversationList}}
+
+                <div id="categoryListContainer" class="beautify-scroll-container main-color"
+                     style="{{#if isDesktop}}
+                     height:  100vh ;width: 22em;padding: 40px 0 250px 0;
+                     {{else}}
+                         {{#if isTablet}}
+                         margin: 0 20%;
+                         {{/if}}
+                             padding: 20px 0 40px 0;margin-bottom: 40px;
+                     {{/if}}"
+                >
+                    <div id="categoryList" class="">
+                        <div class="row">
+                            <div class="col s12 mainTopicItem">
+                                <ul class="collection shadow no-margin" style="text-align: left">
+                                    <li class="collection-item topicItem"
+                                        style="padding: 0 !important;"
+                                    >
+                                        <a href="" class="" newConversation>
+                                            <div class="flex">
+                                                <div class="flex-auto elipsis  "
+                                                >
+                                                    <i class="material-icons left">add</i><span>
+
+                                                    {{__ ".newConversation"}}
+                                                </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+
+
+            {{#if showConversation}}
+                <div id="topicContainer"
+                     class="flex-auto  center-align  full-height spreadsheetContainer beautify-scroll-container"
+                     style="{{#if isDesktop}}
+                     height:  100vh ;
+
+                             padding: 40px 0 0px 0;
+                     {{else}}
+                     height:  calc(100vh + 30px) !important;
+                             padding: 40px 0 0px 0;
+                     {{/if}}"
+                >
+                    conv
+                </div>
+            {{/if}}
+
+        </div>
+        {{#if isDesktop }}
+            {{#if isDesktop}}
+                <div class="blurBottom"></div>
+            {{/if}}
+        {{/if}}
+    </div>
+</template>
