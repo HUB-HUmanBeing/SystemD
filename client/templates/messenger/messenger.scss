@@ -1,0 +1,24 @@
+@import "{}/client/scss/variables.scss";
+
+.messengerMainContainer{
+  .messengerTitleContainer{
+    display: flex;
+    .avatar-container{
+      width: 46px;
+      height: 46px;
+border-radius: 50%;
+      overflow: hidden;
+      display: block;
+    }
+    .projectAvatar{
+      border-radius: 5px !important;
+      border: 3px solid $blue-highlight-color;
+       }
+    .messengerTitle{
+      line-height: 46px;
+      padding-left: 7px;
+      font-size: 1.1em;
+    }
+  }
+
+}

@@ -41,14 +41,15 @@
             <div class="flex-auto">
 
                 <div id="{{#if isDesktop}}menuProjectsContainer{{else}}mobileMenuProjectsContainer{{/if}}">
-
+                    <div class="menuProjectsScrollbar">
+                        {{>userMenu}}
                     {{#if showProjects}}
-                        <div class="menuProjectsScrollbar">
-                            {{>userMenu}}
+
                             {{>projectList }}
-                        </div>
+
 
                     {{else}}
+
                         {{#if showInfo}}
                             <p class="infoQuotes " style=" margin: 25px 10px;">{{__ '.noProject'}} <br><br>{{__
                                     '.clic'}}</p>
@@ -63,6 +64,7 @@
 
                         {{/if}}
                     {{/if}}
+                    </div>
                     <div class="row" style="margin: 25px 10px;">
                         <a href="/new-project" class="btn btnStandard full-width" style=" padding: 0 5px 0 5px !important;">
                             <i class="focus-color material-icons left" style="    margin-right: 5px; ">add_box</i>

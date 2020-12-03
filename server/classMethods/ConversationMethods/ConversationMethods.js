@@ -31,6 +31,7 @@ Meteor.methods({
         let newConversation = new Conversation()
         newConversation.hashedSymKey = brunchOfKeys.hashedSymKey
         newConversation.hashedAdminPassword = brunchOfKeys.hashedAdminPassword
+        newConversation.lasActivity = new Date()
         newConversation.members.push(firstMember)
         return newConversation.save()
 

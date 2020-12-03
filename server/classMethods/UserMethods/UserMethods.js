@@ -24,6 +24,22 @@ User.extend({
             check(this._id , Meteor.userId())
             this.private.projects.unshift(userProjectToAdd)
             return this.save()
+        },
+        addConversation(userConversationToAdd){
+            check(userConversationToAdd,{
+                asymEnc_conversationId : String,
+                asymEnc_conversationName: String,
+                asymEnc_conversationSymKey: String,
+                asymEnc_memberId: String,
+                asymEnc_role: String,
+                asymEnc_adminPassword:String,
+                hashedAdminSignature:  String
+
+            })
+            userConversationToAdd.hashedAdminSignature = cryptoServer.hash(userConversationToAdd.hashedAdminSignature)
+            check(this._id , Meteor.userId())
+            this.private.conversations.unshift(userConversationToAdd)
+            return this.save()
         }
     }
 });

@@ -39,7 +39,8 @@
     "calendar": "Agenda",
     "tasks": "Tâches",
     "maps": "Carte",
-    "members": "Membres"
+    "members": "Membres",
+    "messenger": "Messagerie"
   },
   "menu": {
     "param": "Paramètres",
@@ -899,6 +900,11 @@
     "errorDownload": "Une erreur est survenue et votre texte ne peut être téléchargé sous ce format."
 },
   "userMenu": {
-    "messenger": "MESSAGERIE"
+    "messenger": "MA MESSAGERIE"
+  },
+  "messenger": {
+    "personalMessenger": "Messagerie personnelle",
+    "projectMessenger": "Messagerie projet :",
+    "newConversation": "Nouvelle conversation"
   }
 }

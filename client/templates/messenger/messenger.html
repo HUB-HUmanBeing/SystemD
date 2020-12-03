@@ -1,5 +1,5 @@
 <template name="messenger">
-    <div id="projectForum" class=" bird-background row no-margin"
+    <div id="projectForum" class=" bird-background row no-margin messengerMainContainer"
          style="{{#if
                  isDesktop}}padding-top: 0px; height: 100vh; width: calc( 100% - 210px ){{else}}padding-top: 0;width: 100%;{{/if}}">
         {{#if isDesktop}}
@@ -20,6 +20,22 @@
                      {{/if}}"
                 >
                     <div id="categoryList" class="">
+                        <div class="row">
+                            <div class="col s12 messengerTitleContainer flex-middle">
+                                {{#if project}}
+                                    <div class="avatar-container shadows2 projectAvatar flex-middle">
+                                        {{>projectAvatar projectId=project.asymEnc_projectId}}
+                                    </div>
+                                    <div class="messengerTitle flex-middle  flex-auto elipsis">{{__ ".projectMessenger"}} {{project.asymEnc_projectName}}</div>
+                                {{else}}
+                                    <div class="avatar-container shadows2 flex-middle">
+                                        {{>avatar userId=currentUserId}}
+                                    </div>
+                                        <div class="messengerTitle flex-middle flex-auto">{{__ ".personalMessenger"}}</div>
+
+                                {{/if}}
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col s12 mainTopicItem">
                                 <ul class="collection shadow no-margin" style="text-align: left">

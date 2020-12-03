@@ -3,6 +3,7 @@
 #userMenu{
   margin: 0 0 -14px 0;
   padding: 10px 5px;
+
   .project-avatar{
     border: none !important;
     height: 35px !important;
@@ -13,18 +14,23 @@
     opacity: 0.8;
     border: none;
   }
-  &:hover {
-    margin-left: -5px;
+  &:hover,&.isActive {
+    //margin-left: -5px;
     border-left: 5px solid $blue-highlight-color;
     background-color: $main-bg !important;
-    //margin-right: -5px;
-    padding-right: 5px;
+    margin-right: -10px;
+    padding-left: 0px !important;
+
     img{
       opacity: 1;
+      margin-right: -5px;
     }
     .projectTitle {
       color: $main-color !important;
     }
   }
+&.isActive{
+  background: linear-gradient(to right, $blue-highlight-color 0%, rgba($blue-highlight-color, 0.65) 20%, rgba($light-bg, 0.65) 100%) !important;
 
+}
 }

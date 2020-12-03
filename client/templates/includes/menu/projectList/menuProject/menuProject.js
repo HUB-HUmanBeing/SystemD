@@ -65,6 +65,13 @@ Template.menuProject.helpers({
                 isActive: isActive('members'),
                 notifsCount: notifsCountBySection('members')
             },
+            {
+                name: __("menuProject.messenger"),
+                path: 'messenger',
+                icon: 'email',
+                isActive: isActive('messenger'),
+                notifsCount: notifsCountBySection('messenger')
+            }
         ]
         if (projectController.isAdmin(Template.currentData().project.asymEnc_projectId)) {
             sectionsList.push({

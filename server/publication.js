@@ -16,6 +16,7 @@ import Activities from "../lib/collections/Activities";
 import ProjectFiles from "../lib/collections/ProjectFiles";
 import Spreadsheets from "../lib/collections/Spreadsheets";
 import Pads from "../lib/collections/Pads";
+import Conversations from "../lib/collections/Conversations";
 /******************************************
  * si l'utilisateur est l'utilisateur courant, on lui renvoi tout
  **********************************/
@@ -449,6 +450,47 @@ Meteor.publish('singlePad', function (authInfo, padId) {
         check(currentProject.isMember(authInfo), true)
         return PadCursor
     }
+
+})
+Meteor.publish('conversationList', function (conversationsParams, limit) {
+
+    check(conversationsParams, Array)
+    check(limit, Number)
+    let conversationsIds = []
+    conversationsParams.forEach(param => {
+        check(param.id, String)
+        check(param.authInfo, {
+            memberId: String,
+            userSignature: String
+        })
+        conversationsIds.push(param.id)
+    })
+    let conversationsCursor = Conversations.find({_id: {$in: conversationsIds}}, {
+        limit: limit,
+        sort: {
+            lastActivity: -1
+        }
+    })
+
+    conversationsCursor.fetch().forEach(conv => {
+        let isMember = false
+        conversationsParams.forEach(param => {
+            if (param.id === conv._id) {
+                conv.members.forEach(member => {
+                    if (member.memberId === param.authInfo.memberId) {
+                        if (cryptoServer.compare(param.authInfo.userSignature, member.userSignature)) {
+                            isMember = true
+                        }
+                    }
+                })
+            }
+        })
+        check(isMember, true)
+
+    })
+
+    return conversationsCursor
+
 
 })
 

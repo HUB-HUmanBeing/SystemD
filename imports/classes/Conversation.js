@@ -80,6 +80,13 @@ const Conversation = Class.create({
             },
             index:true
         },
+        lastActivity: {
+            type: Date,
+            default: function () {
+                return new Date()
+            },
+            index:true
+        },
         hashedSymKey: {
             type: String,
         },

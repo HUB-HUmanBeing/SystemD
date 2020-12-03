@@ -58,6 +58,13 @@ FlowRouter.route('/project/:projectId/members', {
         BlazeLayout.render('projectLayout', {main: 'projectMembers'});
     },
 });
+FlowRouter.route('/project/:projectId/messenger', {
+    name: 'project-messenger',
+    triggersEnter: [checkLoggedOrReroute],
+    action() {
+        BlazeLayout.render('projectLayout', {main: 'messenger'});
+    },
+});
 FlowRouter.route('/project/:projectId/params', {
     name: 'project-params',
     triggersEnter: [checkLoggedOrReroute],

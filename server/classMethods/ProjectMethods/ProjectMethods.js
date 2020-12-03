@@ -2,7 +2,6 @@ import {check} from "meteor/check";
 import Project from "../../../imports/classes/Project";
 import cryptoServer from "../../../imports/cryptoServer";
 import Topic from "../../../imports/classes/Topic";
-import minioTools from "../../../imports/minioTools";
 
 /*********************************
  * METHODES DE LA COLLECTION USERS
@@ -20,6 +19,7 @@ Meteor.methods({
         const project = Project.findOne({name: projectName})
         return !!project
     },
+
     /************
      * Methode de création d'un nouveau projet
      * On check tout et on sauvegarde
@@ -36,10 +36,10 @@ Meteor.methods({
             asymPublicKey: String,
             symEnc_asymPrivateKey: String,
             hashedSymKey: String,
-            hashedAdminPassword:String
+            hashedAdminPassword: String
         })
         check(firstMember, {
-            memberId : String,
+            memberId: String,
             role: String,
             symEnc_userId: String,
             symEnc_username: String,
@@ -58,16 +58,16 @@ Meteor.methods({
 
 
         return {
-            projectId : newProject.save((err, res)=>{
-               let projectId= res
-                let mainTopic =new Topic({
+            projectId: newProject.save((err, res) => {
+                let projectId = res
+                let mainTopic = new Topic({
                     projectId: projectId,
                     symEnc_name: "mainTopic",
                     membersToNotify: [firstMember.memberId],
-                    isMainTopic:true,
-                    createdBy:firstMember.memberId
+                    isMainTopic: true,
+                    createdBy: firstMember.memberId
                 })
-                let mainTopicId= mainTopic.save()
+                let mainTopicId = mainTopic.save()
                 let createdProject = Project.findOne(res)
                 createdProject.private.mainTopicId = mainTopicId
                 createdProject.save()

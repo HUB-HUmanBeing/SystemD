@@ -1,5 +1,9 @@
 Template.userMenu.helpers({
     //add you helpers here
+    isActive: function (){
+        FlowRouter.watchPathChange()
+        return FlowRouter.current().route.name == "App.messenger"
+    }
 });
 
 Template.userMenu.events({

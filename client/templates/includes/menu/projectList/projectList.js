@@ -71,7 +71,12 @@ Template.projectList.onCreated(function () {
             let currentSection = currentRoute.route.name.split("-")[1]
             this.currentProjectSection.set(currentSection)
         } else {
-            this.currentProjectId.set(window.localStorage.getItem("lastOpenedProjectId"))
+            if(currentRoute.route.name == "App.messenger"){
+                this.currentProjectId.set("")
+            }else{
+                this.currentProjectId.set(window.localStorage.getItem("lastOpenedProjectId"))
+            }
+
         }
 
     })
