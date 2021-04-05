@@ -1,13 +1,12 @@
 import {check} from "meteor/check";
-import Project from "/imports/classes/Project";
+import Conversation from "/imports/classes/Conversation";
 import cryptoServer from "/imports/cryptoServer";
-import Topic from "../../imports/classes/Topic";
-import ProjectFile from "../../imports/classes/ProjectFile";
+
 
 /***********************
  * on met ici les helpers de la classe projet dispo uniquement coté serveur
  */
-Project.extend({
+Conversation.extend({
     helpers: {
         /****************
          * true si l'utilisateur est membre du projet
@@ -20,7 +19,7 @@ Project.extend({
                 userSignature: String
             })
             let result = false
-            this.private.members.forEach(member=>{
+            this.members.forEach(member=>{
                 if(member.memberId === authInfo.memberId){
                     if(cryptoServer.compare(authInfo.userSignature,member.userSignature)){
                         result = true
@@ -35,7 +34,7 @@ Project.extend({
                 userSignature: String
             })
             let result = false
-            this.private.members.forEach(member=>{
+            this.members.forEach(member=>{
                 if(member.memberId === authInfo.memberId){
                     if(cryptoServer.compare(authInfo.userSignature,member.userSignature)){
                         result = true
@@ -55,7 +54,7 @@ Project.extend({
                 userSignature: String
             })
             let result = false
-            this.private.members.forEach(member=>{
+            this.members.forEach(member=>{
                 if(member.memberId === authInfo.memberId){
                     if(cryptoServer.compare(authInfo.userSignature, member.userSignature)){
                         result = member.role === "admin"

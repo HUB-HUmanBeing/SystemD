@@ -1,3 +1,21 @@
 <template name="convListItem">
+    {{#if decryptedConv}}
+        <li class="convItem {{#if selected }}selected{{/if}}">
+            <a href="{{#if project}}/project/{{project.asymEnc_projectId}}{{/if}}/messenger?convId={{conv._id}}" class="" >
+            <div class="flex">
+                <div class="flex-middle">
+                    <div class="avatar-container shadows2 flex-middle">
+                        {{>avatar userId=currentUserId}}
+                    </div>
+               </div>
+                <div class="text-container flex-middle flex-auto">
+                    <div class="messengerTitle elipsis">{{name}}</div>
+                    <div class="lastMessage elipsis ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dicta dolor dolorem fugiat quod, tempora tempore. Deleniti dolor ea ex excepturi harum, nam non praesentium quas quo sapiente veniam, voluptate!</div>
+                </div>
 
+
+            </div>
+            </a>
+        </li>
+    {{/if}}
 </template>

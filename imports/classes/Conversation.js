@@ -58,19 +58,9 @@ const Conversation = Class.create({
     name: 'Conversation',
     collection: Conversations,
     fields: {
-        name: {
+        symEnc_name: {
             type: String,
-            validators: [
-                {
-                    type: 'maxLength',
-                    param: 50
-                },
-                {
-                    type: 'minLength',
-                    param: 4,
-                    message: 'Conversation name is too short'
-                }
-            ],
+
             optional:true,
         },
         createdAt: {

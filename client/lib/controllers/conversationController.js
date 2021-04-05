@@ -3,10 +3,12 @@ import hubCrypto from "../hubCrypto";
 import User from "../../../imports/classes/User";
 import projectController from "./projectController";
 import Projects from "../../../lib/collections/Projects";
+import Conversation from "../../../imports/classes/Conversation";
+import Conversations from "../../../lib/collections/Conversations";
 
 
 const conversationController = {
-
+    decryptedConvList: [],
     createNewConversation(project, usersToInvite, projectsToInvite, cb) {
         //on genere un password administrateur
         let adminPassword = cryptoTools.generateRandomPassword()
@@ -69,12 +71,12 @@ const conversationController = {
                                     } else {
                                         //on redirige
                                         if (usersToInvite.length == 0 && projectsToInvite.length == 0) {
-                                            FlowRouter.go('project' + project._id + '/messenger?conversationId=' + createdConversationId + "&addMembers=true")
+                                            FlowRouter.go('/project/' + project._id + '/messenger?convId=' + createdConversationId + "&members=true&addMembers=true")
                                             //on referme le loader
                                             cb()
                                         } else {
                                             this.inviteMemberToConversation(createdConversationId, usersToInvite, projectsToInvite, () => {
-                                                FlowRouter.go('project' + project._id + '/messenger?conversationId=' + createdConversationId)
+                                                FlowRouter.go('/project/' + project._id + '/messenger?convId=' + createdConversationId)
                                                 cb()
                                             })
                                         }
@@ -91,12 +93,12 @@ const conversationController = {
                                     } else {
                                         //on redirige
                                         if (usersToInvite.length == 0 && projectsToInvite.length == 0) {
-                                            FlowRouter.go('/messenger?conversationId=' + createdConversationId + "&addMembers=true")
+                                            FlowRouter.go('/messenger?convId=' + createdConversationId + "&members=true&addMembers=true")
                                             //on referme le loader
                                             cb()
                                         } else {
                                             this.inviteMemberToConversation(createdConversationId, usersToInvite, projectsToInvite, () => {
-                                                FlowRouter.go('/messenger?conversationId=' + createdConversationId)
+                                                FlowRouter.go('/messenger?convId=' + createdConversationId)
                                                 cb()
                                             })
                                         }
@@ -114,14 +116,14 @@ const conversationController = {
     inviteMemberToConversation(conversationId, usersToInvite, projectsToInvite, cb) {
         console.log("todo: enchainer sur inviter un utilisateur a rejoindre la conv")
     },
-    getAuthInfo(convId) {
-
-    },
-    initializeConversationList(instance) {
+    initializeConversationList(instance, cb) {
+        this.decryptedConvList = []
         this.decryptUserConversationList(instance, (decryptedUserConversationList) => {
+            Session.set("decryptedUserConversationList", decryptedUserConversationList)
             let conversationsParams = []
-            console.log(decryptedUserConversationList)
+            let conversationIds = []
             decryptedUserConversationList.forEach((conv) => {
+                conversationIds.push(conv.asymEnc_conversationId)
                 conversationsParams.push({
                     id: conv.asymEnc_conversationId,
                     authInfo: {
@@ -136,7 +138,16 @@ const conversationController = {
                     if (err) {
                         console.log(err)
                     } else {
-                        console.log("gagné")
+                        if (Conversations.find({_id: {$in: conversationIds}})) {
+                            let conversations = Conversation.find({_id: {$in: conversationIds}}, {
+                                sort: {
+                                    lastActivity: -1
+                                }
+                            })
+                            instance.conversationList.set(conversations)
+                            this.decryptedConvList = conversations
+                            cb()
+                        }
                     }
                 })
             })
@@ -155,16 +166,66 @@ const conversationController = {
                     })
             } else if (Meteor.users.findOne(Meteor.userId()) && User.findOne(Meteor.userId())) {
                 conversationList = User.findOne(Meteor.userId()).private.conversations
+                if (Session.get('stringifiedAsymPrivateKey')) {
+                    cryptoTools.decryptArrayOfObject(conversationList,
+                        {privateKey: Session.get('stringifiedAsymPrivateKey')},
+                        (decryptedConversations) => {
+                            cb(decryptedConversations)
+                        })
 
-                cryptoTools.decryptArrayOfObject(conversationList,
-                    {privateKey: Session.get('stringifiedAsymPrivateKey')},
-                    (decryptedConversations) => {
-                        cb(decryptedConversations)
-                    })
+                }
 
             }
         })
 
+    },
+    getSimKey(convId) {
+        let key = null
+        Session.get("decryptedUserConversationList").forEach(userConv => {
+            if (userConv.asymEnc_conversationId === convId) {
+                key = userConv.asymEnc_conversationSymKey
+            }
+        })
+        return key
+    },
+    currentUserMemberForConv(convId) {
+        let res = null
+        Session.get("decryptedUserConversationList").forEach(userConv => {
+            if (userConv.asymEnc_conversationId === convId) {
+                res = userConv
+            }
+        })
+        return res
+    },
+    getAuthInfo(convId, instance){
+        let currentUserConv = this.currentUserMemberForConv(convId)
+
+       return {
+            memberId: currentUserConv.asymEnc_memberId,
+            userSignature: cryptoTools.hash(currentUserConv.asymEnc_memberId + Session.get(instance.project ? 'currentProjectPrivateKey' : "stringifiedAsymPrivateKey"))
+        }
+    },
+    getConv(convId){
+        let res= null
+        this.decryptedConvList.forEach(conv=>{
+            if(conv._id==convId){
+                res = conv
+            }
+        })
+        return res
+    },
+    getConvName(conv, otherMembers){
+        if (conv.symEnc_name) {
+            return conv.symEnc_name
+        } else if (otherMembers.length == 1) {
+            return otherMembers[0].symEnc_username
+        } else if (otherMembers.length == 2) {
+            return otherMembers[0].symEnc_username + " & " + Template.instance().otherMembers.get()[1].symEnc_username
+        } else if (otherMembers.length > 2) {
+            return otherMembers[0].symEnc_username + ", " + Template.instance().otherMembers.get()[1].symEnc_username + " & " + (Template.instance().otherMembers.get().length -2 ) + __("convListItem.others")
+        } else {
+            return __("convListItem.newConv")
+        }
     }
 }
 export default conversationController

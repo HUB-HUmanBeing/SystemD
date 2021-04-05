@@ -2,6 +2,8 @@ import {check} from "meteor/check";
 import Conversation from "../../../imports/classes/Conversation";
 import cryptoServer from "../../../imports/cryptoServer";
 import minioTools from "../../../imports/minioTools";
+import Topic from "../../../imports/classes/Topic";
+import Project from "../../../imports/classes/Project";
 
 /*********************************
  * METHODES DE LA COLLECTION USERS
@@ -35,6 +37,7 @@ Meteor.methods({
         newConversation.members.push(firstMember)
         return newConversation.save()
 
-    }
+    },
+
 
 })

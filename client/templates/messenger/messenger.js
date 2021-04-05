@@ -7,26 +7,35 @@ Template.messenger.helpers({
     showConversation: function () {
 
         FlowRouter.watchPathChange()
-        return Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.conversationId
+        return !Template.instance().isLoading.get() && (Meteor.Device.isDesktop() || !!FlowRouter.current().queryParams.convId)
+    },
+    showMembers: function () {
+
+        FlowRouter.watchPathChange()
+        return !!FlowRouter.current().queryParams.members
     },
 
     showConversationList: function () {
         FlowRouter.watchPathChange()
-        return Meteor.Device.isDesktop() || !FlowRouter.current().queryParams.conversationId
+        return Meteor.Device.isDesktop() || !FlowRouter.current().queryParams.convId
     },
-    project:function (){
+    project: function () {
         FlowRouter.watchPathChange()
-        if(FlowRouter.current().params.projectId){
+        if (FlowRouter.current().params.projectId) {
             return projectController.getCurrentUserProject(FlowRouter.current().params.projectId)
         }
-    }
+    },
+    conversations: function () {
+        return Template.instance().conversationList.get()
+    },
+
 });
 
 Template.messenger.events({
     //add your events here
-    'click [newConversation]': function (event, instance){
+    'click [newConversation]': function (event, instance) {
 
-        conversationController.createNewConversation(instance.project, [], [], ()=>{
+        conversationController.createNewConversation(instance.project, [], [], () => {
             console.log("ok")
         })
     }
@@ -35,13 +44,22 @@ Template.messenger.events({
 Template.messenger.onCreated(function () {
     //add your statement here
     this.conversationList = new ReactiveVar([])
+
     this.limit = new ReactiveVar(15)
     this.project = null
     let projectId = FlowRouter.current().params.projectId
-    if(projectId){
-        this.project =  Project.findOne(projectId)
+    if (projectId) {
+        this.project = Project.findOne(projectId)
     }
-    conversationController.initializeConversationList(this)
+    this.isLoading = new ReactiveVar(true)
+    conversationController.initializeConversationList(this, () => {
+        this.autorun(() => {
+            FlowRouter.watchPathChange()
+            let currentConvId = FlowRouter.current().queryParams.convId
+this.isLoading.set(false)
+            let currentConv
+        })
+    })
 });
 
 Template.messenger.onRendered(function () {

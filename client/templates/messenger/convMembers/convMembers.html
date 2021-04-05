@@ -1,3 +1,27 @@
-<template name="members">
+<template name="convMembers">
+    <div id="convMembers">
+        <ul class="tabs tabs-fixed-width transparent focus-color" >
+
+            <li class="tab col transparent focus-color  {{#unless isInvit}}active{{/unless}} "><a
+                    href="{{#if project}}/project/{{project.asymEnc_projectId}}{{/if}}/messenger?convId={{ currentConv._id }}&members=true" >{{__ ".members"}}</a>
+            </li>
+            <li class="tab col transparent focus-color {{#if isInvit}}active{{/if}}"><a
+                    href="{{#if project}}/project/{{project.asymEnc_projectId}}{{/if}}/messenger?convId={{ currentConv._id }}&members=true&addMembers=true" >{{__ ".invitate"}}</a>
+            </li>
+        </ul>
+        <div class="memberContainer">
+            {{#if isInvit}}
+                <div id="convinvitations" class="col s12 ">
+                    invitation
+                </div>
+
+            {{else}}
+                <div id="convmembers" class="col s12 ">
+                    members
+                </div>
+            {{/if}}
+
+        </div>
+    </div>
 
 </template>

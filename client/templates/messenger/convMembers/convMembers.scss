@@ -1,0 +1,17 @@
+@import "{}/client/scss/variables.scss";
+
+
+#convMembers{
+
+  .tab{
+   *{
+     color: $focus-color !important;
+   }
+    &.active{
+    border-bottom: 2px solid $focus-color;
+  }
+    &:hover{
+      background-color: rgba($main-color, 0.1) !important;
+    }
+  }
+}

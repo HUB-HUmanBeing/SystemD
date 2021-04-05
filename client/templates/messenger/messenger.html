@@ -23,15 +23,17 @@
                         <div class="row">
                             <div class="col s12 messengerTitleContainer flex-middle">
                                 {{#if project}}
+                                    <div class="messengerTitle flex-middle  flex-auto elipsis">{{__ ".projectMessenger"}} {{project.asymEnc_projectName}}</div>
+
                                     <div class="avatar-container shadows2 projectAvatar flex-middle">
                                         {{>projectAvatar projectId=project.asymEnc_projectId}}
                                     </div>
-                                    <div class="messengerTitle flex-middle  flex-auto elipsis">{{__ ".projectMessenger"}} {{project.asymEnc_projectName}}</div>
-                                {{else}}
+                               {{else}}
+                                    <div class="messengerTitle flex-middle flex-auto">{{__ ".personalMessenger"}}</div>
+
                                     <div class="avatar-container shadows2 flex-middle">
                                         {{>avatar userId=currentUserId}}
                                     </div>
-                                        <div class="messengerTitle flex-middle flex-auto">{{__ ".personalMessenger"}}</div>
 
                                 {{/if}}
                             </div>
@@ -59,6 +61,19 @@
                             </div>
 
                         </div>
+                        <div class="row">
+                            <div class="col s12 convList">
+                                <ul class=" no-margin" style="text-align: left">
+
+                                    {{#each conv in conversations}}
+                                        {{> convListItem conv = conv project=project}}
+
+                                    {{/each}}
+                                </ul>
+
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             {{/if}}
@@ -76,7 +91,16 @@
                              padding: 40px 0 0px 0;
                      {{/if}}"
                 >
-                    conv
+                    <div id="topic" class="full-height flex-auto" style="{{#if isDesktop}}padding-top:10px{{/if}}">
+
+                            {{>convHeader  project=project }}
+
+{{#if showMembers}}
+    {{>convMembers project=project}}
+    {{else}}
+    chat
+    {{/if}}
+                    </div>
                 </div>
             {{/if}}
 
