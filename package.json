@@ -45,7 +45,7 @@
     "leaflet.browser.print": "^1.0.6",
     "meteor-node-stubs": "^0.4.1",
     "minio": "^7.0.16",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "octonode": "^0.9.5",
     "papaparse": "^5.3.0",
     "qrious": "^4.0.2",
