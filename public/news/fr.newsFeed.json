@@ -6,12 +6,6 @@
 			"content": "System-d.org etait géré bénévolement et sa maintenance couteuse fait que nous devons arreter ce projet à la fin de l'été. \n la bonne nouvelle c'est que vous pourrez bientot retrouver l'ensemble des fonctionnalités que vous appréciez sur Simpleteam.org, avec en bonus : \n\t - Chat de discussion pour faciliter vos échanges. \n\t - Appli mobile avec notifications pour rester connecter avec votre team. \n\t - Cloud fonctionnel et Possibilité d'étendre le volume de stockage du cloud. \n\t - Une maintenance professionelle garantissant un acces optimal. \n\t",
 			"img": "https://www.simpleteam.org/assets/img/screenshot/desktop/chat.png",
 			"timestamp": 1712665220220
-		},
-		{
-			"title": "Les nouveautés sur System-d.org",
-			"content": "Vous l'avez sûrement remarqué, on est encore là pour développer les outils dont vous avez besoin! Ces dernières semaines, nous avons mis en ligne : \n\t - Les traductions en italien (merci beaucoup aux contributeurs, vous êtes géniaux·géniales!) \n\u0009 - La possibilité d'ajouter des propositions aux sondages en tant que membre du projet \n - La possibilité d'inviter jusqu'à 200 personnes en un seul lien d'invitation (contre 15 jusque là) \n\t - La possibilité d'importer et d'exporter des calendriers au format iCalendar. \n\n Merci beaucoup encore une fois à tous les contributeurs·contributrices pour votre aide et vos suggestions et à toutes les personnes qui font vivre le chat Riot 😊",
-			"img": "https://imgur.com/UZbNDc3.png",
-			"timestamp": 1580583142196
 		}
 	]
 }
