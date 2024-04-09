@@ -1,28 +1,17 @@
 {
-	"lastUpdate": "1580583142196",
+	"lastUpdate": "1712665220220",
 	"newsArray": [
 		{
-			"title": "Les nouveautés sur System-d.org!",
+			"title": "Simpleteam.org va remplacer System-d.org",
+			"content": "System-d.org etait géré bénévolement et sa maintenance couteuse fait que nous devons arreter ce projet à la fin de l'été. \n la bonne nouvelle c'est que vous pourrez bientot retrouver l'ensemble des fonctionnalités que vous appréciez sur Simpleteam.org, avec en bonus : \n\t - Chat de discussion pour faciliter vos échanges. \n\t - Appli mobile avec notifications pour rester connecter avec votre team. \n\t - Cloud fonctionnel et Possibilité d'étendre le volume de stockage du cloud. \n\t - Une maintenance professionelle garantissant un acces optimal. \n\t",
+			"img": "https://www.simpleteam.org/assets/img/screenshot/desktop/chat.png",
+			"timestamp": 1712665220220
+		},
+		{
+			"title": "Les nouveautés sur System-d.org",
 			"content": "Vous l'avez sûrement remarqué, on est encore là pour développer les outils dont vous avez besoin! Ces dernières semaines, nous avons mis en ligne : \n\t - Les traductions en italien (merci beaucoup aux contributeurs, vous êtes géniaux·géniales!) \n\u0009 - La possibilité d'ajouter des propositions aux sondages en tant que membre du projet \n - La possibilité d'inviter jusqu'à 200 personnes en un seul lien d'invitation (contre 15 jusque là) \n\t - La possibilité d'importer et d'exporter des calendriers au format iCalendar. \n\n Merci beaucoup encore une fois à tous les contributeurs·contributrices pour votre aide et vos suggestions et à toutes les personnes qui font vivre le chat Riot 😊",
 			"img": "https://imgur.com/UZbNDc3.png",
-			"timestamp" : 1580583142196
-		},{
-			"title": "Sortie du module de news !",
-			"content": "Une fonctionnalité qui nous tenait à cœur depuis un moment : pouvoir vous tenir informés au jour le jour des actualités du projet. Lorsque de nouvelles news sont disponibles, vous verrez le petit logo news en bas à droite clignoter, et ainsi la (petite) équipe de dev que nous sommes pourra communiquer avec vous sur les avancées du projet !\nMerci au développeur rencontré cet été qui a participé grandement à rendre cette fonctionnalité possible, et qui contribue grandement à ce projet depuis peu.",
-			"img": "https://i.imgur.com/N04s1mh.gif",
-			"timestamp" : 1576949653952
-		},{
-			"title": "System-d.org s'améliore de jour en jour",
-			"content": "Grâce aux idées que vous nous faites remonter, System-d.org s'améliore de jour en jour ! Aujourd'hui, déploiement des derniers petits ajouts :\n\n- Débuggage du scroll de la todo list sur firefox\n- Ajout d'un label au dessus des groupes de tâches dans la todo list\n- Possibilité de faire une recherche sur la carte\n- Possibilité d'uploader un tableur existant dans les tableurs de vos projets\n- Possibilité de cocher plusieurs items dans les sondages\n- Changement de la licence pour passer sur la plus libre GNU AFFERO GPL",
-			"img": "https://i.imgur.com/TJI3cXw.gif",
-			"timestamp" : 1576949653952
-		},{
-			"title": "System-d.org disponible en espagnol !",
-			"content": "Un grand merci aux copains et copines qui ont œuvré pour traduire system-d.org en ESPAGNOL !\n\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\uD83C\uDDE8\uD83C\uDDFA\uD83C\uDDEA\uD83C\uDDF8\uD83C\uDDE8\uD83C\uDDF4\uD83C\uDDE8\uD83C\uDDF1\uD83C\uDDF2\uD83C\uDDFD\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\uD83C\uDFF4\u200D☠️\n\nla plateforme libre de projet chiffrée est désormais disponible en français, anglais et espagnol !",
-			"img": "https://imgur.com/Ex8dfl1.png",
-			"timestamp" : 1576949653952
+			"timestamp": 1580583142196
 		}
 	]
-
 }
-
